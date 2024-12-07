@@ -11,8 +11,4 @@ RUN bun install
 # Copy the rest of the application
 COPY . .
 
-# Copy the test runner script
-COPY runner.test.sh /runner.test.sh
-RUN chmod +x /runner.test.sh
-
 CMD ["bun", "test", "--watch"]

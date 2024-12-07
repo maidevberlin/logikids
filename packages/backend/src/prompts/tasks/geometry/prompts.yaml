@@ -32,26 +32,20 @@ general:
       }
 
 # Shape-specific prompts
-area_rectangle:
+area:
   model: llama3.2
   prompt: |
-    Generate a task about calculating the area of a rectangle. The task should include 
+    Generate a task about calculating the area of a simple shape. The task should include 
     the length and width measurements. Provide the task and the solution in square units.
 
-area_triangle:
+perimeter:
   model: llama3.2
   prompt: |
-    Generate a task about calculating the area of a triangle. The task should include 
-    the base and height measurements. Provide the task and the solution in square units.
-
-perimeter_rectangle:
-  model: llama3.2
-  prompt: |
-    Generate a task about calculating the perimeter of a rectangle. The task should include 
+    Generate a task about calculating the perimeter of a simple shape. The task should include 
     the length and width measurements. Provide the task and the solution in linear units.
 
-circle_circumference:
+circle:
   model: llama3.2
   prompt: |
     Generate a task about calculating the circumference of a circle. The task should include 
-    the radius or diameter measurement. Provide the task and the solution in linear units. 
+    the radius or diameter measurement. Use 3.14 for pi. Provide the task and the solution in linear units. 

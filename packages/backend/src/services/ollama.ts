@@ -67,13 +67,16 @@ export class OllamaService {
     } catch (error) {
       console.error('Error parsing Ollama response:', error);
       if (error instanceof z.ZodError) {
-        // Provide more detailed validation errors
         const validationErrors = error.errors.map(err => 
           `${err.path.join('.')}: ${err.message}`
         ).join(', ');
         throw new Error(`Invalid response format: ${validationErrors}`);
       }
-      throw new Error(`Failed to parse task response: ${error.message}`);
+      // Type guard for Error instances
+      if (error instanceof Error) {
+        throw new Error(`Failed to parse task response: ${error.message}`);
+      }
+      throw new Error('Failed to parse task response: Unknown error');
     }
   }
 } 

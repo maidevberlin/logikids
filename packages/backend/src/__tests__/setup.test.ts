@@ -1,4 +1,9 @@
-import { describe, expect, test } from "bun:test";
+import { describe, expect, test, beforeAll } from "bun:test";
+import './mocks/ollama.mock';
+
+beforeAll(() => {
+  // Any global test setup can go here
+});
 
 describe("Test Setup", () => {
     test("should verify test environment is working", () => {

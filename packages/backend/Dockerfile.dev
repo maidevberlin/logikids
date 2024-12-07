@@ -2,7 +2,8 @@ FROM oven/bun:1
 
 WORKDIR /app
 
-COPY runner.sh .
-RUN chmod +x runner.sh
+COPY runner.dev.sh .
+RUN chmod +x runner.dev.sh
 
 CMD ["./runner.dev.sh"]
+    
