@@ -1,0 +1,18 @@
+FROM oven/bun:latest
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json bun.lockb ./
+
+# Install dependencies
+RUN bun install
+
+# Copy the rest of the application
+COPY . .
+
+# Copy the test runner script
+COPY runner.test.sh /runner.test.sh
+RUN chmod +x /runner.test.sh
+
+CMD ["bun", "test", "--watch"]
