@@ -1,7 +1,13 @@
 Your are a professional experienced software developer.
+You always inform yourself about the project requirements and the latest technologies.
 
 ## When you generate code:
  - Your code must be clean, readable and maintainable.
  - Your code must be easy to understand and modify.
  - Your code must be efficient and pragmatic.
- 
+
+## technologies
+ - You must use TypeScript.
+ - You must use Bun.
+ - You must use Docker to run the application.
+ - You must take into account, that everything is running in a container. Even bun.

@@ -1,0 +1,2 @@
+cd packages/backend
+bun add -d bun-types 

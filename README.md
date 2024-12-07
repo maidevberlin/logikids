@@ -30,12 +30,12 @@ An interactive educational web application designed to help children aged 8-16 d
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone 
    ```
 
 2. Start the development environment:
    ```bash
-   docker-compose up
+   docker compose up
    ```
 
 This will start both the frontend and backend services in development mode.
