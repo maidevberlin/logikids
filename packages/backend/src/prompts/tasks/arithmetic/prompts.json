@@ -1,0 +1,18 @@
+{
+  "addition": {
+    "prompt": "Generate an addition task suitable for children. The task should include two numbers to be added together. Provide the task and the solution. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  },
+  "multiplication": {
+    "prompt": "Generate a multiplication task suitable for children. The task should include two numbers to be multiplied. Provide the task and the solution. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  },
+  "subtraction": {
+    "prompt": "Generate a subtraction task suitable for children. The task should include two numbers where one is subtracted from the other. Provide the task and the solution. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  },
+  "division": {
+    "prompt": "Generate a division task suitable for children. The task should include two numbers for division. Provide the task and the solution. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  }
+} 

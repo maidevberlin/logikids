@@ -1,0 +1,48 @@
+name: Backend Tests
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'packages/backend/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'packages/backend/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      ollama:
+        image: ollama/ollama:latest
+        ports:
+          - 11434:11434
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: packages/backend/package-lock.json
+
+    - name: Install dependencies
+      working-directory: packages/backend
+      run: npm ci
+
+    - name: Run tests
+      working-directory: packages/backend
+      run: npm run test:ci
+      env:
+        NODE_ENV: test
+        OLLAMA_HOST: http://localhost:11434
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        directory: packages/backend/coverage/
+        flags: backend 

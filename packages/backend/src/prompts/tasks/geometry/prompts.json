@@ -1,0 +1,14 @@
+{
+  "area": {
+    "prompt": "Generate a geometry task about calculating the area of a shape. The task should be suitable for children. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number, unit: string } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  },
+  "perimeter": {
+    "prompt": "Generate a geometry task about calculating the perimeter of a shape. The task should be suitable for children. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number, unit: string } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  },
+  "volume": {
+    "prompt": "Generate a geometry task about calculating the volume of a 3D shape. The task should be suitable for children. Format your response as JSON with the following structure: { task: string, solution: number, metadata: { difficulty: 'easy'|'medium'|'hard', ageGroup: string, estimatedTimeMinutes: number, unit: string } }. Keep the task simple and clear.",
+    "model": "llama3.2"
+  }
+} 
