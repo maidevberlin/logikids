@@ -17,8 +17,8 @@ export const mockOllamaResponse = {
 
 // Mock the fetch function for Ollama API calls
 global.fetch = mock(() => 
-  Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve(mockOllamaResponse)
-  })
+  Promise.resolve(new Response(JSON.stringify(mockOllamaResponse), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
+  }))
 ); 
