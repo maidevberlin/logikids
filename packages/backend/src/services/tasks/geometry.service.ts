@@ -1,7 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { OllamaService } from '../ollama';
-import { GeometryOperation } from '../../types/task';
 
 export class GeometryService {
   private geometryPrompts: Record<string, { prompt: string; model: string }> | null = null;
@@ -15,20 +14,36 @@ export class GeometryService {
     return this.geometryPrompts;
   }
 
-  async generateTask(requestedOperation?: GeometryOperation) {
+  async generateTask(requestedType?: string) {
     const prompts = await this.loadPrompts();
-    const operations = Object.keys(prompts) as GeometryOperation[];
+    const taskTypes = Object.keys(prompts).filter(type => type !== 'general');
     
-    if (requestedOperation && !operations.includes(requestedOperation)) {
-      throw new Error(`Invalid operation. Available operations: ${operations.join(', ')}`);
+    console.log('Available task types:', taskTypes);
+    console.log('Requested type:', requestedType);
+
+    if (requestedType && !taskTypes.includes(requestedType)) {
+      throw new Error(`Invalid task type. Available types: ${taskTypes.join(', ')}`);
     }
 
-    const operation = requestedOperation || operations[Math.floor(Math.random() * operations.length)];
-    const { prompt, model } = prompts[operation];
+    const taskType = requestedType || taskTypes[Math.floor(Math.random() * taskTypes.length)];
+    const { prompt, model } = prompts[taskType];
 
-    const task = await OllamaService.generateTask(model, prompt);
+    console.log('Selected task type:', taskType);
+    console.log('General prompt:', prompts.general.prompt);
+    console.log('Task-specific prompt:', prompt);
+
+    // Combine the general prompt with the specific task prompt
+    const fullPrompt = `${prompts.general.prompt}\n\nNow, please ${prompt}`;
+    
+    console.log('Full combined prompt:', fullPrompt);
+    console.log('Using model:', model);
+
+    const task = await OllamaService.generateTask(model, fullPrompt);
+    
+    console.log('Generated task:', task);
+    
     return {
-      operation,
+      type: taskType,
       ...task
     };
   }
