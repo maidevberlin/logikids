@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import yaml from 'js-yaml';
 import { OllamaService } from '../ollama';
 import { ArithmeticOperation } from '../../types/task';
 
@@ -8,9 +9,9 @@ export class ArithmeticService {
 
   private async loadPrompts() {
     if (!this.arithmeticPrompts) {
-      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'tasks', 'arithmetic', 'prompts.json');
+      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'tasks', 'arithmetic', 'prompts.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
-      this.arithmeticPrompts = JSON.parse(content) as Record<string, { prompt: string; model: string }>;
+      this.arithmeticPrompts = yaml.load(content) as Record<string, { prompt: string; model: string }>;
     }
     return this.arithmeticPrompts;
   }
