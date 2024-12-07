@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { ArithmeticService } from '../../services/tasks/arithmetic.service';
 import { ArithmeticOperation } from '../../types/task';
+import { ArithmeticService } from '../../services/tasks/arithmetic.service';
 
 export class ArithmeticController {
   private static arithmeticService = new ArithmeticService();

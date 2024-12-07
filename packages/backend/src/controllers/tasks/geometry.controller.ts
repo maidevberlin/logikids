@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { GeometryService } from '../../services/tasks/geometry.service';
 import { GeometryOperation } from '../../types/task';
+import { GeometryService } from '../../services/tasks/geometry.service';
 
 export class GeometryController {
   private static geometryService = new GeometryService();
