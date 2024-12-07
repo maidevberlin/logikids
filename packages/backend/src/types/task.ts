@@ -12,4 +12,5 @@ export interface TaskResponse {
   metadata: TaskMetadata;
 }
 
-export type ArithmeticOperation = 'addition' | 'subtraction' | 'multiplication' | 'division'; 
+export type ArithmeticOperation = 'addition' | 'subtraction' | 'multiplication' | 'division';
+export type GeometryOperation = 'area' | 'perimeter' | 'volume'; 
