@@ -23,13 +23,15 @@ class LogikidsService {
     return response.json();
   }
 
-  async getTask(type: TaskType, operation?: ArithmeticOperation | GeometryOperation): Promise<TaskResponse & { options: string[] }> {
+  async getTask(type: TaskType, operation?: ArithmeticOperation | GeometryOperation, signal?: AbortSignal): Promise<TaskResponse & { options: string[] }> {
     const baseTaskUrl = `${this.baseUrl}/tasks/${type}`;
     const url = operation 
       ? `${baseTaskUrl}/${operation}`
       : baseTaskUrl;
     
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      signal
+    });
     return this.handleResponse<TaskResponse & { options: string[] }>(response);
   }
 
@@ -39,7 +41,7 @@ class LogikidsService {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ task, type }),
+      body: JSON.stringify(type ? { ...task, type } : task),
     });
     return this.handleResponse<HintResponse>(response);
   }

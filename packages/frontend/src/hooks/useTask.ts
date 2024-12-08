@@ -26,18 +26,35 @@ function useTaskBase(type: TaskType, operation?: ArithmeticOperation | GeometryO
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    const abortController = new AbortController()
+
     const fetchTask = async () => {
       try {
-        const data = await logikids.getTask(type, operation)
-        setTask(data)
+        setLoading(true)
+        setError(null)
+        const data = await logikids.getTask(type, operation, abortController.signal)
+        // Only set the state if the request wasn't aborted
+        if (!abortController.signal.aborted) {
+          setTask(data)
+        }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred')
+        // Only set error if it's not an abort error and the request wasn't aborted
+        if (err instanceof Error && err.name !== 'AbortError' && !abortController.signal.aborted) {
+          setError(err.message)
+        }
       } finally {
-        setLoading(false)
+        if (!abortController.signal.aborted) {
+          setLoading(false)
+        }
       }
     }
 
     fetchTask()
+
+    // Cleanup function to abort any in-flight requests
+    return () => {
+      abortController.abort()
+    }
   }, [type, operation])
 
   const requestHint = async () => {
