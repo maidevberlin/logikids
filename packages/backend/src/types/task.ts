@@ -23,3 +23,4 @@ export type TaskResponse = z.infer<typeof taskResponseSchema>;
 
 export type ArithmeticOperation = 'addition' | 'subtraction' | 'multiplication' | 'division';
 export type GeometryOperation = 'area' | 'perimeter' | 'circle'; 
+
