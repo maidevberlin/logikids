@@ -1,0 +1,92 @@
+import { ReactNode } from 'react'
+import { LoadingSpinner } from '../LoadingSpinner'
+import { TaskHeader } from './TaskHeader'
+import { HintSection } from './HintSection'
+import { TaskOption } from './TaskOption'
+import { AnswerForm } from './AnswerForm'
+import { TaskResponse } from '../../types/task'
+
+interface TaskCardProps {
+  isLoading: boolean
+  task: TaskResponse & { options: string[] } | null
+  hint: { hint: string } | null
+  type: 'arithmetic' | 'geometry'
+  operation?: string
+  answer?: string
+  selectedAnswer?: string | null
+  isCorrect?: boolean | null
+  onAnswerChange?: (value: string) => void
+  onAnswerSubmit?: (event: React.FormEvent) => void
+  onRequestHint: () => void
+  onNextTask: () => void
+  children?: ReactNode
+}
+
+export function TaskCard({ 
+  isLoading,
+  task,
+  hint,
+  type,
+  operation,
+  answer = '',
+  selectedAnswer = null,
+  isCorrect = null,
+  onAnswerChange = () => {},
+  onAnswerSubmit = () => {},
+  onRequestHint,
+  onNextTask,
+  children
+}: TaskCardProps) {
+  return (
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto">
+        <TaskHeader type={type} operation={operation} />
+
+        <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="min-h-[200px]">
+            {isLoading || !task ? (
+              <div className="flex items-center justify-center h-[200px]">
+                <LoadingSpinner />
+              </div>
+            ) : (
+              <div className="space-y-8">
+                <h2 className="text-2xl font-bold text-gray-900">{task.task}</h2>
+                
+                {task.options ? (
+                  <div className="grid grid-cols-2 gap-4 mt-6">
+                    {task.options.map((option: string, index: number) => (
+                      <TaskOption
+                        key={index}
+                        option={option}
+                        selected={option === selectedAnswer}
+                        correct={option === task.solution.toString()}
+                        onSelect={onNextTask}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <AnswerForm
+                    answer={answer}
+                    selectedAnswer={selectedAnswer}
+                    isCorrect={isCorrect}
+                    onAnswerChange={onAnswerChange}
+                    onSubmit={onAnswerSubmit}
+                    onNextTask={onNextTask}
+                  />
+                )}
+
+                <HintSection 
+                  hint={hint} 
+                  onRequestHint={onRequestHint} 
+                  onSkip={onNextTask}
+                />
+
+                {children}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+} 
