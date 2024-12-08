@@ -8,7 +8,8 @@ export class GeometryService {
   private geometryPrompts: Record<string, { prompt: string; model: string }> | null = null;
 
   private async loadPrompts() {
-    if (!this.geometryPrompts) {
+    const isDevelopment = process.env.NODE_ENV !== 'production';
+    if (!this.geometryPrompts || isDevelopment) {
       const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'tasks', 'geometry', 'prompts.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
       this.geometryPrompts = yaml.load(content) as Record<string, { prompt: string; model: string }>;

@@ -15,8 +15,9 @@ export class HintsService {
   private hintsPrompts: Record<string, HintPrompt> | null = null;
 
   private async loadPrompts() {
-    if (!this.hintsPrompts) {
-      const promptPath = path.join(process.cwd(), 'src', 'prompts', 'hints', 'hints.yaml');
+    const isDevelopment = process.env.NODE_ENV !== 'production';
+    if (!this.hintsPrompts || isDevelopment) {
+      const promptPath = path.join(process.cwd(), 'src', 'prompts', 'hints.yaml');
       const content = await fs.readFile(promptPath, 'utf-8');
       this.hintsPrompts = yaml.load(content) as Record<string, HintPrompt>;
     }
@@ -29,7 +30,6 @@ export class HintsService {
       if (!prompts) {
         throw new Error('Failed to load hint prompts');
       }
-
       if (requestedType && !TYPE_VALUES.includes(requestedType)) {
         throw new Error(`Invalid hint type. Available types: ${TYPE_VALUES.join(', ')}`);
       }
@@ -44,8 +44,12 @@ export class HintsService {
         age: task.metadata.age
       };
       
-      // Combine the general prompt with the specific hint prompt
-      const fullPrompt = `${prompts.general.prompt}\n\n${Mustache.render(prompt, view)}`;
+      // Render both the general prompt and the specific hint prompt with Mustache
+      const renderedGeneralPrompt = Mustache.render(prompts.general.prompt, view);
+      const renderedSpecificPrompt = Mustache.render(prompt, view);
+      const fullPrompt = `${renderedGeneralPrompt}\n\n${renderedSpecificPrompt}`;
+      console.log("fullPrompt", fullPrompt);
+
       const hint = await OllamaService.generateHint(model, fullPrompt);
       
       return hint;

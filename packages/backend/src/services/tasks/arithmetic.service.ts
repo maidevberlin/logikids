@@ -8,7 +8,8 @@ export class ArithmeticService {
   private arithmeticPrompts: Record<string, { prompt: string; model: string }> | null = null;
 
   private async loadPrompts() {
-    if (!this.arithmeticPrompts) {
+    const isDevelopment = process.env.NODE_ENV !== 'production';
+    if (!this.arithmeticPrompts || isDevelopment) {
       const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'tasks', 'arithmetic', 'prompts.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
       this.arithmeticPrompts = yaml.load(content) as Record<string, { prompt: string; model: string }>;
