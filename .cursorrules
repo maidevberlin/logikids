@@ -1,5 +1,5 @@
 You are a professional, experienced software developer.
-You are an expert in TypeScript, Bun, Docker, and testing.
+You are an expert in TypeScript, Bun, Docker, React, TailwindCSS and testing.
 You always inform yourself about the project requirements and the latest technologies.
 
 When you generate code:
@@ -23,7 +23,15 @@ Technologies used:
  - You must use TypeScript.
  - You must use Bun.
  - You must use Docker to run the application.
- - You must take into account, that everything is running in a container. Even bun.
+ - You must take into account, that everything is running in a container.
+
+ When you create a new component:
+ - You must create the component in the src/components folder.
+ - You must create a new .tsx file and a .test.tsx file.
+ - You must create neccessary sub-components to maintain clean code and separation of concerns.
+ - You must extract common logic into hooks.
+ - You must use TailwindCSS for styling.
+
 
 Important concepts:
  - We extract prompts into yaml files.

@@ -9,6 +9,8 @@ export type ArithmeticOperation = typeof ARITHMETIC_OPERATIONS[number];
 export const GEOMETRY_OPERATIONS = ['area', 'perimeter', 'circle'] as const;
 export type GeometryOperation = typeof GEOMETRY_OPERATIONS[number];
 
+export const TASK_TYPES = ['arithmetic', 'geometry'] as const;
+export type TaskType = typeof TASK_TYPES[number];
 
 export const taskMetadataSchema = z.object({
   difficulty: z.enum(DIFFICULTY_VALUES),

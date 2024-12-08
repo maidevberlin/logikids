@@ -2,8 +2,11 @@ FROM oven/bun:1
 
 WORKDIR /app
 
+RUN apt-get update && \
+    apt-get install -y curl dnsutils && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY runner.dev.sh .
 RUN chmod +x runner.dev.sh
 
 CMD ["./runner.dev.sh"]
-    
