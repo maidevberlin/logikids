@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { OLLAMA_HOST } from '../config/models';
 import { TaskResponse, taskResponseSchema } from '../types/task';
-import { HintResponse, hintResponseSchema } from '../types/hints';
+import { HintResponse, hintResponseSchema, DEFAULT_TYPE } from '../types/hints';
 
 export class OllamaService {
   private static async generateCompletion(model: string, prompt: string): Promise<string> {
@@ -71,14 +71,31 @@ export class OllamaService {
   public static async generateHint(model: string, prompt: string): Promise<HintResponse> {
     const response = await this.generateCompletion(model, prompt);
     try {
-      // Extract the JSON from the response
+      // First try to extract JSON from the response
       const jsonMatch = response.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) {
-        console.error('Full response that failed to match:', response);
-        throw new Error('No valid JSON found in response');
+      let parsedResponse;
+      
+      if (jsonMatch) {
+        try {
+          parsedResponse = JSON.parse(jsonMatch[0]);
+        } catch (e) {
+          // If JSON parsing fails, create a structured response from the raw text
+          parsedResponse = {
+            hint: response.trim(),
+            metadata: {
+              type: DEFAULT_TYPE
+            }
+          };
+        }
+      } else {
+        // If no JSON found, create a structured response from the raw text
+        parsedResponse = {
+          hint: response.trim(),
+          metadata: {
+            type: DEFAULT_TYPE
+          }
+        };
       }
-
-      const parsedResponse = JSON.parse(jsonMatch[0]);
       
       // Validate the parsed response using zod
       return this.validateHintResponse(parsedResponse);

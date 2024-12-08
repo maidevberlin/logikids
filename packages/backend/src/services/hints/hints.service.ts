@@ -4,6 +4,7 @@ import yaml from 'js-yaml';
 import { OllamaService } from '../ollama';
 import { TaskResponse } from '../../types/task';
 import Mustache from 'mustache';
+import { DEFAULT_TYPE, Type, TYPE_VALUES } from '../../types/hints';
 
 interface HintPrompt {
   prompt: string;
@@ -11,23 +12,30 @@ interface HintPrompt {
 }
 
 export class HintsService {
-  private hintsPrompt: HintPrompt | null = null;
+  private hintsPrompts: Record<string, HintPrompt> | null = null;
 
-  private async loadPrompt() {
-    if (!this.hintsPrompt) {
-      const promptPath = path.join(process.cwd(), 'src', 'prompts', 'hints', 'generate.yaml');
+  private async loadPrompts() {
+    if (!this.hintsPrompts) {
+      const promptPath = path.join(process.cwd(), 'src', 'prompts', 'hints', 'hints.yaml');
       const content = await fs.readFile(promptPath, 'utf-8');
-      this.hintsPrompt = yaml.load(content) as HintPrompt;
+      this.hintsPrompts = yaml.load(content) as Record<string, HintPrompt>;
     }
-    return this.hintsPrompt;
+    return this.hintsPrompts;
   }
 
-  async generateHint(task: TaskResponse) {
+  async generateHint(task: TaskResponse, requestedType?: Type) {
     try {
-      const promptTemplate = await this.loadPrompt();
-      if (!promptTemplate) {
-        throw new Error('Failed to load hint prompt template');
+      const prompts = await this.loadPrompts();
+      if (!prompts) {
+        throw new Error('Failed to load hint prompts');
       }
+
+      if (requestedType && !TYPE_VALUES.includes(requestedType)) {
+        throw new Error(`Invalid hint type. Available types: ${TYPE_VALUES.join(', ')}`);
+      }
+
+      const type = requestedType || DEFAULT_TYPE;
+      const { prompt, model } = prompts[type];
 
       const view = {
         task: task.task,
@@ -36,11 +44,11 @@ export class HintsService {
         age: task.metadata.age
       };
       
-      const prompt = Mustache.render(promptTemplate.prompt, view);
-      const hint = await OllamaService.generateHint(promptTemplate.model, prompt);
-      return {
-        hint
-      };
+      // Combine the general prompt with the specific hint prompt
+      const fullPrompt = `${prompts.general.prompt}\n\n${Mustache.render(prompt, view)}`;
+      const hint = await OllamaService.generateHint(model, fullPrompt);
+      
+      return hint;
     } catch (error) {
       console.error('Error generating hint:', error);
       throw new Error('Failed to generate hint');

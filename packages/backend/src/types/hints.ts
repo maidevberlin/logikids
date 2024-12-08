@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
-export type Type = 'conceptual' | 'procedural' | 'strategic';
+export const TYPE_VALUES = ['conceptual', 'procedural', 'strategic'] as const;
+export type Type = typeof TYPE_VALUES[number];
+export const DEFAULT_TYPE: Type = 'procedural';
 
 export interface HintResponse {
     hint: string;
@@ -12,7 +14,6 @@ export interface HintResponse {
 export const hintResponseSchema = z.object({
     hint: z.string(),
     metadata: z.object({
-      relevanceScore: z.number().min(0).max(1),
-      type: z.enum(['conceptual', 'procedural', 'strategic']),
+      type: z.enum(TYPE_VALUES),
     }),
   });

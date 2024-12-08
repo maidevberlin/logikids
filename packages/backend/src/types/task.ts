@@ -1,9 +1,17 @@
 import { z } from 'zod';
 
-export type Difficulty = 'easy' | 'medium' | 'hard';
+export const DIFFICULTY_VALUES = ['easy', 'medium', 'hard'] as const;
+export type Difficulty = typeof DIFFICULTY_VALUES[number];
+
+export const ARITHMETIC_OPERATIONS = ['addition', 'subtraction', 'multiplication', 'division'] as const;
+export type ArithmeticOperation = typeof ARITHMETIC_OPERATIONS[number];
+
+export const GEOMETRY_OPERATIONS = ['area', 'perimeter', 'circle'] as const;
+export type GeometryOperation = typeof GEOMETRY_OPERATIONS[number];
+
 
 export const taskMetadataSchema = z.object({
-  difficulty: z.enum(['easy', 'medium', 'hard']),
+  difficulty: z.enum(DIFFICULTY_VALUES),
   age: z.object({
     min: z.number(),
     max: z.number(),
@@ -21,6 +29,4 @@ export const taskResponseSchema = z.object({
 
 export type TaskResponse = z.infer<typeof taskResponseSchema>;
 
-export type ArithmeticOperation = 'addition' | 'subtraction' | 'multiplication' | 'division';
-export type GeometryOperation = 'area' | 'perimeter' | 'circle'; 
 
