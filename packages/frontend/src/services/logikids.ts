@@ -1,50 +1,40 @@
-import { TaskResponse, ArithmeticOperation, GeometryOperation, TaskType } from '../../../backend/src/types/task';
-import { HintResponse, Type } from '../../../backend/src/types/hints';
-import config from '../config';
+import { TaskResponse, TaskType } from '../../../backend/src/types/task';
 
-class LogikidsService {
-  private static instance: LogikidsService;
-  private baseUrl = config.apiBaseUrl;
+export class LogikidsService {
+  private baseUrl: string;
 
-  private constructor() {}
-
-  public static getInstance(): LogikidsService {
-    if (!LogikidsService.instance) {
-      LogikidsService.instance = new LogikidsService();
-    }
-    return LogikidsService.instance;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
   }
 
-  private async handleResponse<T>(response: Response): Promise<T> {
+  async getTask(type: TaskType, signal?: AbortSignal): Promise<TaskResponse> {
+    console.log(`${this.baseUrl}/tasks/${type}`)
+    const response = await fetch(`${this.baseUrl}/tasks/${type}`, {
+      signal,
+    });
+
     if (!response.ok) {
-      const error = await response.json().catch(() => ({ error: 'An error occurred' }));
-      throw new Error(error.error || 'An error occurred');
+      throw new Error('Failed to fetch task');
     }
+
     return response.json();
   }
 
-  async getTask(type: TaskType, operation?: ArithmeticOperation | GeometryOperation, signal?: AbortSignal): Promise<TaskResponse & { options: string[] }> {
-    const baseTaskUrl = `${this.baseUrl}/tasks/${type}`;
-    const url = operation 
-      ? `${baseTaskUrl}/${operation}`
-      : baseTaskUrl;
-    
-    const response = await fetch(url, {
-      signal
-    });
-    return this.handleResponse<TaskResponse & { options: string[] }>(response);
-  }
-
-  async getHint(task: TaskResponse, type?: Type): Promise<HintResponse> {
-    const response = await fetch(`${this.baseUrl}/hints`, {
+  async getHint(type: TaskType, task: TaskResponse, signal?: AbortSignal): Promise<string> {
+    const response = await fetch(`${this.baseUrl}/hints/${type}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(type ? { ...task, type } : task),
+      body: JSON.stringify(task),
+      signal,
     });
-    return this.handleResponse<HintResponse>(response);
-  }
-}
 
-export const logikids = LogikidsService.getInstance(); 
+    if (!response.ok) {
+      throw new Error('Failed to fetch hint');
+    }
+
+    const data = await response.json();
+    return data.hint;
+  }
+} 

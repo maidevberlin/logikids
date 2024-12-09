@@ -1,13 +1,26 @@
-import { useParams, useNavigate } from 'react-router-dom'
-import { GeometryOperation } from '../../../backend/src/types/task'
+import { useNavigate } from 'react-router-dom'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useGeometryTask } from '../hooks/useTask'
+import { useTaskAnswer } from '../hooks/useTaskAnswer'
 import { TaskCard } from '../components/TaskCard'
 
 export default function GeometryTaskPage() {
   const navigate = useNavigate()
-  const { operation } = useParams<{ operation?: GeometryOperation }>()
-  const { task, hint, loading, error, requestHint } = useGeometryTask(operation as GeometryOperation)
+  const { task, hint, loading, error, requestHint } = useGeometryTask()
+  const {
+    answer,
+    selectedAnswer,
+    isCorrect,
+    handleAnswerChange,
+    handleAnswerSubmit,
+  } = useTaskAnswer({ type: 'geometry' })
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    if (task) {
+      handleAnswerSubmit(task.solution)
+    }
+  }
 
   const handleNextTask = () => {
     navigate(0)
@@ -21,7 +34,11 @@ export default function GeometryTaskPage() {
       task={task}
       hint={hint}
       type="geometry"
-      operation={operation}
+      answer={answer}
+      selectedAnswer={selectedAnswer}
+      isCorrect={isCorrect}
+      onAnswerChange={handleAnswerChange}
+      onAnswerSubmit={handleSubmit}
       onRequestHint={requestHint}
       onNextTask={handleNextTask}
     />

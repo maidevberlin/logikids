@@ -1,61 +1,76 @@
 import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
-import { OllamaService } from '../ollama';
+import { OllamaClient } from '../ollama';
 import { TaskResponse } from '../../types/task';
-import Mustache from 'mustache';
-import { DEFAULT_TYPE, Type, TYPE_VALUES } from '../../types/hints';
+import { HintResponse, hintResponseSchema } from '../../types/hints';
 
 interface HintPrompt {
-  prompt: string;
   model: string;
+  prompt: string;
+}
+
+interface PromptVariables {
+  task: string;
+  solution: string;
+  difficulty: string;
+  age: string;
 }
 
 export class HintsService {
-  private hintsPrompts: Record<string, HintPrompt> | null = null;
+  private hintsPrompts: HintPrompt | null = null;
+  private ollama: OllamaClient;
+
+  constructor() {
+    this.ollama = new OllamaClient();
+  }
 
   private async loadPrompts() {
     const isDevelopment = process.env.NODE_ENV !== 'production';
     if (!this.hintsPrompts || isDevelopment) {
-      const promptPath = path.join(process.cwd(), 'src', 'prompts', 'hints.yaml');
-      const content = await fs.readFile(promptPath, 'utf-8');
-      this.hintsPrompts = yaml.load(content) as Record<string, HintPrompt>;
+      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'hints.yaml');
+      const content = await fs.readFile(promptsPath, 'utf-8');
+      const prompt = yaml.load(content) as HintPrompt;
+      this.hintsPrompts = prompt;
     }
     return this.hintsPrompts;
   }
 
-  async generateHint(task: TaskResponse, requestedType?: Type) {
-    try {
-      const prompts = await this.loadPrompts();
-      if (!prompts) {
-        throw new Error('Failed to load hint prompts');
-      }
-      if (requestedType && !TYPE_VALUES.includes(requestedType)) {
-        throw new Error(`Invalid hint type. Available types: ${TYPE_VALUES.join(', ')}`);
-      }
+  private replacePromptVariables(prompt: string, task: TaskResponse): string {
+    const variables: PromptVariables = {
+      task: task.task,
+      solution: task.solution.toString(),
+      difficulty: task.metadata.difficulty,
+      age: `${task.metadata.age.min}-${task.metadata.age.max}`
+    };
 
-      const type = requestedType || DEFAULT_TYPE;
-      const { prompt, model } = prompts[type];
+    return prompt.replace(
+      /\{\{(\w+)\}\}/g,
+      (match, key) => variables[key as keyof PromptVariables] || match
+    );
+  }
 
-      const view = {
-        task: task.task,
-        solution: task.solution,
-        difficulty: task.metadata.difficulty,
-        age: task.metadata.age
-      };
-      
-      // Render both the general prompt and the specific hint prompt with Mustache
-      const renderedGeneralPrompt = Mustache.render(prompts.general.prompt, view);
-      const renderedSpecificPrompt = Mustache.render(prompt, view);
-      const fullPrompt = `${renderedGeneralPrompt}\n\n${renderedSpecificPrompt}`;
-      console.log("fullPrompt", fullPrompt);
-
-      const hint = await OllamaService.generateHint(model, fullPrompt);
-      
-      return hint;
-    } catch (error) {
-      console.error('Error generating hint:', error);
-      throw new Error('Failed to generate hint');
+  async generateHint(task: TaskResponse): Promise<HintResponse> {
+    const prompts = await this.loadPrompts();
+    if (!prompts) {
+      throw new Error('Failed to load hint prompts');
     }
+
+    const processedPrompt = this.replacePromptVariables(prompts.prompt, task);
+    const response = await this.ollama.generate(prompts.model, processedPrompt);
+    
+    // Try to parse JSON first
+    const json = OllamaClient.extractJSON(response.response);
+    if (json) {
+      return hintResponseSchema.parse(json);
+    }
+
+    // If no valid JSON found, create a structured response from the raw text
+    return hintResponseSchema.parse({
+      hint: response.response.trim(),
+      metadata: {
+        type: 'conceptual'
+      }
+    });
   }
 } 

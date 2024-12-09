@@ -1,40 +1,45 @@
 import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
-import { OllamaService } from '../ollama';
-import { GeometryOperation } from '../../types/task';
+import { OllamaClient } from '../ollama';
+import { TaskResponse, taskResponseSchema } from '../../types/task';
+
+interface GeometryPrompt {
+  model: string;
+  prompt: string;
+}
 
 export class GeometryService {
-  private geometryPrompts: Record<string, { prompt: string; model: string }> | null = null;
+  private geometryPrompts: GeometryPrompt | null = null;
+  private ollama: OllamaClient;
+
+  constructor() {
+    this.ollama = new OllamaClient();
+  }
 
   private async loadPrompts() {
     const isDevelopment = process.env.NODE_ENV !== 'production';
     if (!this.geometryPrompts || isDevelopment) {
-      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'tasks', 'geometry', 'prompts.yaml');
+      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'geometry.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
-      this.geometryPrompts = yaml.load(content) as Record<string, { prompt: string; model: string }>;
+      const prompt = yaml.load(content) as GeometryPrompt;
+      this.geometryPrompts = prompt;
     }
     return this.geometryPrompts;
   }
 
-  async generateTask(requestedOperation?: GeometryOperation) {
+  async generateTask(): Promise<TaskResponse> {
     const prompts = await this.loadPrompts();
-    const operations = Object.keys(prompts).filter(op => op !== 'general') as GeometryOperation[];
-    
-    if (requestedOperation && !operations.includes(requestedOperation)) {
-      throw new Error(`Invalid operation. Available operations: ${operations.join(', ')}`);
+    if (!prompts) {
+      throw new Error('Failed to load geometry prompts');
     }
 
-    const operation = requestedOperation || operations[Math.floor(Math.random() * operations.length)];
-    const { prompt, model } = prompts[operation];
+    const response = await this.ollama.generate(prompts.model, prompts.prompt);
+    const json = OllamaClient.extractJSON(response.response);
+    if (!json) {
+      throw new Error('Failed to parse JSON from model response');
+    }
 
-    // Combine the general prompt with the specific task prompt
-    const fullPrompt = `${prompts.general.prompt}\n\nNow, please ${prompt}`;
-    const task = await OllamaService.generateTask(model, fullPrompt);
-    
-    return {
-      operation,
-      ...task
-    };
+    return taskResponseSchema.parse(json);
   }
 } 

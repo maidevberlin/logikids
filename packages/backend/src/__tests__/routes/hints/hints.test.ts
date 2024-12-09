@@ -1,8 +1,9 @@
-import { describe, expect, test, beforeEach } from "bun:test";
+import { describe, expect, test, beforeEach, mock } from "bun:test";
 import supertest from "supertest";
 import app from "../../../index";
 import { TaskResponse } from "../../../types/task";
-import { Type } from "../../../types/hints";
+import { HintResponse } from "../../../types/hints";
+import "../../../__tests__/mocks/ollama.mock";
 
 describe("Hints API", () => {
   const request = supertest(app);
@@ -26,37 +27,20 @@ describe("Hints API", () => {
       }
     };
 
-    // Mock successful Ollama response
-    (global.fetch as any).mockImplementationOnce(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({
-          response: JSON.stringify({
-            hint: "Denke an die Grundrechenarten. Was machst du, wenn du zwei Zahlen zusammenfügst?",
-            metadata: {
-              type: "conceptual"
-            }
-          })
-        })
-      })
-    );
-
     const response = await request
       .post("/api/hints")
       .send(taskData)
       .expect("Content-Type", /json/)
       .expect(200);
-
-    const data = response.body;
     
-    // Verify the hint response structure
+    const data = response.body as HintResponse;
+    
+    // Verify fetch was called for Ollama
+    expect(global.fetch).toHaveBeenCalled();
+    
+    // Verify the response matches the HintResponse schema
     expect(data).toHaveProperty("hint");
     expect(typeof data.hint).toBe("string");
-    expect(data).toHaveProperty("metadata");
-    expect(data.metadata).toHaveProperty("type");
-    expect(["conceptual", "procedural", "strategic"] as Type[]).toContain(data.metadata.type);
-    
-    expect(global.fetch).toHaveBeenCalled();
   });
 
   test("POST /api/hints with invalid task format should return 400", async () => {

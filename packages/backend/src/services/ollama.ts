@@ -1,12 +1,36 @@
-import { z } from 'zod';
 import { OLLAMA_HOST } from '../config/models';
-import { TaskResponse, taskResponseSchema } from '../types/task';
-import { HintResponse, hintResponseSchema, DEFAULT_TYPE } from '../types/hints';
 
-export class OllamaService {
-  private static async generateCompletion(model: string, prompt: string): Promise<string> {
+interface GenerateOptions {
+  stream?: boolean;
+  temperature?: number;
+  top_k?: number;
+  top_p?: number;
+  context?: number[];
+}
+
+interface GenerateResponse {
+  model: string;
+  response: string;
+  context?: number[];
+}
+
+export class OllamaClient {
+  constructor(private baseUrl: string = OLLAMA_HOST) {}
+
+  /**
+   * Generates a completion using the Ollama API
+   * @param model The model to use for generation
+   * @param prompt The prompt to generate from
+   * @param options Additional generation options
+   * @returns The generated response
+   */
+  public async generate(
+    model: string, 
+    prompt: string, 
+    options: GenerateOptions = { stream: false }
+  ): Promise<GenerateResponse> {
     try {
-      const response = await fetch(`${OLLAMA_HOST}/api/generate`, {
+      const response = await fetch(`${this.baseUrl}/api/generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -14,7 +38,7 @@ export class OllamaService {
         body: JSON.stringify({
           model,
           prompt,
-          stream: false,
+          ...options,
         }),
       });
 
@@ -22,95 +46,26 @@ export class OllamaService {
         throw new Error(`Ollama API error: ${response.statusText}`);
       }
 
-      const data = await response.json();
-      return data.response;
+      return await response.json();
     } catch (error) {
       console.error('Error calling Ollama:', error);
-      throw new Error('Failed to generate task using Ollama');
+      throw new Error('Failed to generate completion using Ollama');
     }
   }
 
-  private static validateTaskResponse(response: unknown): TaskResponse {
-    return taskResponseSchema.parse(response);
-  }
-
-  private static validateHintResponse(response: unknown): HintResponse {
-    return hintResponseSchema.parse(response);
-  }
-
-  public static async generateTask(model: string, prompt: string): Promise<TaskResponse> {
-    const response = await this.generateCompletion(model, prompt);
+  /**
+   * Extracts JSON from a text response if present
+   * @param text The text to extract JSON from
+   * @returns The parsed JSON object or null if no valid JSON found
+   */
+  public static extractJSON(text: string): unknown | null {
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) return null;
+    
     try {
-      // Extract the JSON from the response
-      const jsonMatch = response.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) {
-        console.error('Full response that failed to match:', response);
-        throw new Error('No valid JSON found in response');
-      }
-
-      const parsedResponse = JSON.parse(jsonMatch[0]);
-      
-      // Validate the parsed response using zod
-      return this.validateTaskResponse(parsedResponse);
-    } catch (error) {
-      console.error('Error parsing Ollama response:', error);
-      if (error instanceof z.ZodError) {
-        const validationErrors = error.errors.map(err => 
-          `${err.path.join('.')}: ${err.message}`
-        ).join(', ');
-        throw new Error(`Invalid response format: ${validationErrors}`);
-      }
-      // Type guard for Error instances
-      if (error instanceof Error) {
-        throw new Error(`Failed to parse task response: ${error.message}`);
-      }
-      throw new Error('Failed to parse task response: Unknown error');
-    }
-  }
-
-  public static async generateHint(model: string, prompt: string): Promise<HintResponse> {
-    const response = await this.generateCompletion(model, prompt);
-    try {
-      // First try to extract JSON from the response
-      const jsonMatch = response.match(/\{[\s\S]*\}/);
-      let parsedResponse;
-      
-      if (jsonMatch) {
-        try {
-          parsedResponse = JSON.parse(jsonMatch[0]);
-        } catch (e) {
-          // If JSON parsing fails, create a structured response from the raw text
-          parsedResponse = {
-            hint: response.trim(),
-            metadata: {
-              type: DEFAULT_TYPE
-            }
-          };
-        }
-      } else {
-        // If no JSON found, create a structured response from the raw text
-        parsedResponse = {
-          hint: response.trim(),
-          metadata: {
-            type: DEFAULT_TYPE
-          }
-        };
-      }
-      
-      // Validate the parsed response using zod
-      return this.validateHintResponse(parsedResponse);
-    } catch (error) {
-      console.error('Error parsing Ollama hint response:', error);
-      if (error instanceof z.ZodError) {
-        const validationErrors = error.errors.map(err => 
-          `${err.path.join('.')}: ${err.message}`
-        ).join(', ');
-        throw new Error(`Invalid hint response format: ${validationErrors}`);
-      }
-      if (error instanceof Error) {
-        throw new Error(`Failed to parse hint response: ${error.message}`);
-      }
-      throw new Error('Failed to parse hint response: Unknown error');
+      return JSON.parse(jsonMatch[0]);
+    } catch {
+      return null;
     }
   }
 } 

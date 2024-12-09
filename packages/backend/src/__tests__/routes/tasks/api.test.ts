@@ -11,15 +11,21 @@ describe("General API behavior", () => {
       .expect(404);
   });
 
-  test("POST /api/tasks/arithmetic should return 404 (method not allowed)", async () => {
+  test("POST /api/tasks should return 404 (method not allowed)", async () => {
     await request
-      .post("/api/tasks/arithmetic")
+      .post("/api/tasks")
       .expect(404);
   });
 
-  test("POST /api/tasks/geometry should return 404 (method not allowed)", async () => {
+  test("PUT /api/tasks should return 404 (method not allowed)", async () => {
     await request
-      .post("/api/tasks/geometry")
+      .put("/api/tasks")
+      .expect(404);
+  });
+
+  test("DELETE /api/tasks should return 404 (method not allowed)", async () => {
+    await request
+      .delete("/api/tasks")
       .expect(404);
   });
 

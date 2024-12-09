@@ -1,5 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom'
-import { ArithmeticOperation } from '../../../backend/src/types/task'
+import { useNavigate } from 'react-router-dom'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useArithmeticTask } from '../hooks/useTask'
 import { useArithmeticAnswer } from '../hooks/useArithmeticAnswer'
@@ -7,8 +6,7 @@ import { TaskCard } from '../components/TaskCard'
 
 export default function ArithmeticTaskPage() {
   const navigate = useNavigate()
-  const { operation } = useParams<{ operation?: ArithmeticOperation }>()
-  const { task, hint, loading, error, requestHint } = useArithmeticTask(operation)
+  const { task, hint, loading, error, requestHint } = useArithmeticTask()
   const {
     answer,
     selectedAnswer,
@@ -36,7 +34,6 @@ export default function ArithmeticTaskPage() {
       task={task}
       hint={hint}
       type="arithmetic"
-      operation={operation}
       answer={answer}
       selectedAnswer={selectedAnswer}
       isCorrect={isCorrect}

@@ -2,20 +2,17 @@ import { Request, Response } from 'express';
 import { taskResponseSchema } from '../../types/task';
 import { z } from 'zod';
 import { HintsService } from '../../services/hints/hints.service';
-import { Type } from '../../types/hints';
 
 export class HintsController {
   private static hintsService = new HintsService();
 
   static async generateHint(req: Request, res: Response) {
-    try {
-      const type = req.params.type as Type | undefined;
-      
+    try {      
       // Validate the incoming task
       const task = taskResponseSchema.parse(req.body);
 
       // Generate hint using the service
-      const hint = await HintsController.hintsService.generateHint(task, type);
+      const hint = await HintsController.hintsService.generateHint(task);
 
       return res.json(hint);
     } catch (error) {

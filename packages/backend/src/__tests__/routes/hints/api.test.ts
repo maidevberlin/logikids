@@ -23,7 +23,7 @@ describe("General Hints API behavior", () => {
       .expect(404);
   });
 
-  test("Non-existent hint routes should return 404", async () => {
+  test("Non-existent routes should return 404", async () => {
     await request
       .get("/api/hints/nonexistent")
       .expect(404);

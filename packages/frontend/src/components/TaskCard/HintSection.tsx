@@ -1,31 +1,32 @@
 interface HintSectionProps {
-  hint: { hint: string } | null
-  onRequestHint: () => void
-  onSkip: () => void
+  hint: string | null;
+  onRequestHint: () => void;
+  onSkip: () => void;
 }
 
 export function HintSection({ hint, onRequestHint, onSkip }: HintSectionProps) {
   return (
-    <div className="mt-8">
-      <div className="flex justify-between items-center">
-        <button
-          onClick={onRequestHint}
-          className="text-indigo-600 hover:text-indigo-700 font-medium"
-        >
-          Need a hint?
-        </button>
-        <button
-          onClick={onSkip}
-          className="text-gray-500 hover:text-gray-700 font-medium text-sm"
-        >
-          Skip this task &rarr;
-        </button>
-      </div>
-      {hint && (
-        <div className="mt-4 p-4 bg-indigo-50 rounded-lg">
-          <p className="text-gray-800">{hint.hint}</p>
+    <div className="mt-6">
+      {hint ? (
+        <div className="bg-blue-50 p-4 rounded-lg">
+          <p className="text-blue-700">{hint}</p>
+        </div>
+      ) : (
+        <div className="flex gap-4">
+          <button
+            onClick={onRequestHint}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Get Hint
+          </button>
+          <button
+            onClick={onSkip}
+            className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
+          >
+            Skip
+          </button>
         </div>
       )}
     </div>
-  )
+  );
 } 

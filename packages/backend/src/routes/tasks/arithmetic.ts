@@ -3,7 +3,6 @@ import { ArithmeticController } from '../../controllers/tasks/arithmetic.control
 
 const router = Router();
 
-// GET /:operation?
-router.get('/:operation?', ArithmeticController.getTask);
+router.get('/', ArithmeticController.getTask);
 
 export default router; 

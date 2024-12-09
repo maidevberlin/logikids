@@ -1,40 +1,42 @@
 import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
-import { OllamaService } from '../ollama';
-import { ArithmeticOperation } from '../../types/task';
+import { OllamaClient } from '../ollama';
+import { TaskResponse, taskResponseSchema } from '../../types/task';
+
+interface ArithmeticPrompt {
+  model: string;
+  prompt: string;
+}
 
 export class ArithmeticService {
-  private arithmeticPrompts: Record<string, { prompt: string; model: string }> | null = null;
+  private arithmeticPrompts: ArithmeticPrompt | null = null;
+  private ollama: OllamaClient;
+
+  constructor() {
+    this.ollama = new OllamaClient();
+  }
 
   private async loadPrompts() {
     const isDevelopment = process.env.NODE_ENV !== 'production';
     if (!this.arithmeticPrompts || isDevelopment) {
-      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'tasks', 'arithmetic', 'prompts.yaml');
+      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'arithmetic.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
-      this.arithmeticPrompts = yaml.load(content) as Record<string, { prompt: string; model: string }>;
+      const prompt = yaml.load(content) as ArithmeticPrompt;
+      this.arithmeticPrompts = prompt;
     }
     return this.arithmeticPrompts;
   }
 
-  async generateTask(requestedOperation?: ArithmeticOperation) {
-    const prompts = await this.loadPrompts();
-    const operations = Object.keys(prompts).filter(op => op !== 'general') as ArithmeticOperation[];
-
-    if (requestedOperation && !operations.includes(requestedOperation)) {
-      throw new Error(`Invalid operation. Available operations: ${operations.join(', ')}`);
+  async generateTask(): Promise<TaskResponse> {
+    const { prompt, model } = await this.loadPrompts();
+    const response = await this.ollama.generate(model, prompt);
+    
+    const json = OllamaClient.extractJSON(response.response);
+    if (!json) {
+      throw new Error('Failed to parse JSON from model response');
     }
 
-    const operation = requestedOperation || operations[Math.floor(Math.random() * operations.length)];
-    const { prompt, model } = prompts[operation];
-
-    // Combine the general prompt with the specific task prompt
-    const fullPrompt = `${prompts.general.prompt}\n\nNow, please ${prompt}`;
-    const task = await OllamaService.generateTask(model, fullPrompt);
-
-    return {
-      operation,
-      ...task
-    };
+    return taskResponseSchema.parse(json);
   }
 } 
