@@ -1,5 +1,4 @@
 # General prompt for all arithmetic tasks
-model: llama3.2
 prompt: |
   ## Your role
     You are an engaging math teacher.

@@ -1,20 +1,25 @@
 import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
-import { OllamaClient } from '../../services/ollama';
 import { TaskResponse, taskResponseSchema } from '../../types/task';
+import { getConfig } from '../../config';
+import { AIClientFactory } from '../../services/ai/factory';
+import { AIClient } from '../../services/ai/base';
 
 interface ArithmeticPrompt {
-  model: string;
   prompt: string;
 }
 
 export class ArithmeticService {
   private arithmeticPrompts: ArithmeticPrompt | null = null;
-  private ollama: OllamaClient;
+  private aiClient: AIClient | null = null;
 
-  constructor() {
-    this.ollama = new OllamaClient();
+  private async getAIClient(): Promise<AIClient> {
+    if (!this.aiClient) {
+      const config = await getConfig('ai');
+      this.aiClient = AIClientFactory.create(config);
+    }
+    return this.aiClient;
   }
 
   private async loadPrompts() {
@@ -29,10 +34,14 @@ export class ArithmeticService {
   }
 
   async generateTask(): Promise<TaskResponse> {
-    const { prompt, model } = await this.loadPrompts();
-    const response = await this.ollama.generate(model, prompt);
+    const [{ prompt }, aiClient] = await Promise.all([
+      this.loadPrompts(),
+      this.getAIClient(),
+    ]);
+
+    const response = await aiClient.generate(prompt);
     
-    const json = OllamaClient.extractJSON(response.response);
+    const json = AIClient.extractJSON(response.response);
     if (!json) {
       throw new Error('Failed to parse JSON from model response');
     }

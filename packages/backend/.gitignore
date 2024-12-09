@@ -1,16 +1,12 @@
 # Config files
 config.yaml
 
-# Dependencies
+# Node modules
 node_modules/
-.pnp/
-.pnp.js
 
 # Build output
 dist/
 build/
-.next/
-out/
 
 # Environment variables
 .env
