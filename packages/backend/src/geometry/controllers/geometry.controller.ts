@@ -1,14 +1,12 @@
 import { Request, Response } from 'express';
-import { GeometryOperation } from '../../types/task';
-import { GeometryService } from '../../services/tasks/geometry.service';
+import { GeometryService } from '../services/geometry.service';
 
 export class GeometryController {
   private static geometryService = new GeometryService();
 
   static async getTask(req: Request, res: Response) {
     try {
-      const requestedOperation = req.params.operation as GeometryOperation | undefined;
-      const task = await GeometryController.geometryService.generateTask(requestedOperation);
+      const task = await GeometryController.geometryService.generateTask();
       res.json(task);
     } catch (error) {
       if (error instanceof Error && error.message.includes('Invalid operation')) {

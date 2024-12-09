@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ArithmeticController } from '../../controllers/tasks/arithmetic.controller';
+import { ArithmeticController } from '../../arithmetic/controllers/arithmetic.controller';
 
 const router = Router();
 

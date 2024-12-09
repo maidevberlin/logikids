@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
-import { OllamaClient } from '../ollama';
+import { OllamaClient } from '../../services/ollama';
 import { TaskResponse, taskResponseSchema } from '../../types/task';
 
 interface GeometryPrompt {
@@ -20,7 +20,7 @@ export class GeometryService {
   private async loadPrompts() {
     const isDevelopment = process.env.NODE_ENV !== 'production';
     if (!this.geometryPrompts || isDevelopment) {
-      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'geometry.yaml');
+      const promptsPath = path.join(process.cwd(), 'src', 'geometry', 'prompts', 'geometry.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
       const prompt = yaml.load(content) as GeometryPrompt;
       this.geometryPrompts = prompt;

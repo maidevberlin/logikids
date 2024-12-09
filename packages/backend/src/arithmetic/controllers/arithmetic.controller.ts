@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ArithmeticService } from '../../services/tasks/arithmetic.service';
+import { ArithmeticService } from '../services/arithmetic.service';
 
 export class ArithmeticController {
   private static arithmeticService = new ArithmeticService();

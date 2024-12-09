@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
-import { OllamaClient } from '../ollama';
+import { OllamaClient } from '../../services/ollama';
 import { TaskResponse, taskResponseSchema } from '../../types/task';
 
 interface ArithmeticPrompt {
@@ -20,7 +20,7 @@ export class ArithmeticService {
   private async loadPrompts() {
     const isDevelopment = process.env.NODE_ENV !== 'production';
     if (!this.arithmeticPrompts || isDevelopment) {
-      const promptsPath = path.join(process.cwd(), 'src', 'prompts', 'arithmetic.yaml');
+      const promptsPath = path.join(process.cwd(), 'src', 'arithmetic', 'prompts', 'arithmetic.yaml');
       const content = await fs.readFile(promptsPath, 'utf-8');
       const prompt = yaml.load(content) as ArithmeticPrompt;
       this.arithmeticPrompts = prompt;

@@ -8,7 +8,6 @@ export class LogikidsService {
   }
 
   async getTask(type: TaskType, signal?: AbortSignal): Promise<TaskResponse> {
-    console.log(`${this.baseUrl}/tasks/${type}`)
     const response = await fetch(`${this.baseUrl}/tasks/${type}`, {
       signal,
     });
