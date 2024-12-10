@@ -10,6 +10,8 @@ export const baseTaskResponseSchema = z.object({
       max: z.number(),
     }),
     estimatedTimeMinutes: z.number(),
+    provider: z.enum(['ollama', 'openai']),
+    model: z.string()
   }),
 });
 

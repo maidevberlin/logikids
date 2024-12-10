@@ -6,7 +6,7 @@ export class OpenAIClient extends AIClient {
   private client: OpenAI;
 
   constructor(private config: OpenAIConfig) {
-    super();
+    super('openai', config.model);
     this.client = new OpenAI({
       apiKey: config.apiKey,
     });
@@ -24,6 +24,8 @@ export class OpenAIClient extends AIClient {
 
       return {
         response: completion.choices[0]?.message?.content || '',
+        provider: this.provider,
+        model: this.model
       };
     } catch (error) {
       console.error('Error calling OpenAI:', error);

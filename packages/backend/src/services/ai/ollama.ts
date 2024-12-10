@@ -3,7 +3,7 @@ import { AIClient, GenerateOptions, GenerateResponse } from './base';
 
 export class OllamaClient extends AIClient {
   constructor(private config: OllamaConfig) {
-    super();
+    super('ollama', config.model);
   }
 
   async generate(prompt: string, options: GenerateOptions = {}): Promise<GenerateResponse> {
@@ -31,6 +31,8 @@ export class OllamaClient extends AIClient {
       return {
         response: result.response,
         context: result.context,
+        provider: this.provider,
+        model: this.model
       };
     } catch (error) {
       console.error('Error calling Ollama:', error);

@@ -40,6 +40,10 @@ export abstract class BaseTaskService {
 
     try {
       const jsonResponse = JSON.parse(response.response);
+      if (jsonResponse.metadata) {
+        jsonResponse.metadata.provider = this.aiClient.provider;
+        jsonResponse.metadata.model = this.aiClient.model;
+      }
       return await this.validateAndTransformResponse(jsonResponse);
     } catch (error) {
       if (error instanceof Error) {

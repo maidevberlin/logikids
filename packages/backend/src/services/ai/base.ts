@@ -8,15 +8,16 @@ export interface GenerateOptions {
 export interface GenerateResponse {
   response: string;
   context?: unknown;
-}
-
-export abstract class AIService {
-  protected constructor(protected model: string) {}
-
-  abstract generate(prompt: string): Promise<string | null>;
+  provider: 'ollama' | 'openai';
+  model: string;
 }
 
 export abstract class AIClient {
+  constructor(
+    public readonly provider: 'ollama' | 'openai',
+    public readonly model: string
+  ) {}
+
   abstract generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse>;
 
   /**
@@ -33,5 +34,12 @@ export abstract class AIClient {
     } catch {
       return null;
     }
+  }
+
+  /**
+   * Creates an instance of the appropriate AI client based on configuration
+   */
+  public static async create(): Promise<AIClient> {
+    return createAIClient();
   }
 } 
