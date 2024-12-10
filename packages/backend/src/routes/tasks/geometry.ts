@@ -1,9 +1,11 @@
 import { Router } from 'express';
-import { GeometryController } from '../../geometry/controllers/geometry.controller';
+import { GeometryTaskController } from '../../geometry/controllers/task.controller';
 
 const router = Router();
 
-// GET /:operation?
-router.get('/:operation?', GeometryController.getTask);
+// Initialize controller
+GeometryTaskController.initializeService().catch(console.error);
+
+router.get('/:operation?', (req, res) => new GeometryTaskController().getTask(req, res));
 
 export default router; 

@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { ArithmeticHintsController } from '../../arithmetic/controllers/arithmetic-hints.controller';
-import { GeometryHintsController } from '../../geometry/controllers/geometry-hints.controller';
+import { ArithmeticHintController } from '../../arithmetic/controllers/hint.controller';
+import { GeometryHintController } from '../../geometry/controllers/hint.controller';
 
 const router = Router();
 
-router.post('/arithmetic', ArithmeticHintsController.generateHint);
-router.post('/geometry', GeometryHintsController.generateHint);
+router.post('/arithmetic', (req, res) => new ArithmeticHintController().generateHint(req, res));
+router.post('/geometry', (req, res) => new GeometryHintController().generateHint(req, res));
 
 export default router; 

@@ -10,6 +10,12 @@ export interface GenerateResponse {
   context?: unknown;
 }
 
+export abstract class AIService {
+  protected constructor(protected model: string) {}
+
+  abstract generate(prompt: string): Promise<string | null>;
+}
+
 export abstract class AIClient {
   abstract generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse>;
 

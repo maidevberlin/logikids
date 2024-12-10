@@ -1,19 +1,10 @@
 import { z } from 'zod';
+import { arithmeticTaskResponseSchema } from '../arithmetic/types/task';
+import { geometryTaskResponseSchema } from '../geometry/types/task';
 
-export const TASK_TYPES = ['arithmetic', 'geometry'] as const;
-export type TaskType = typeof TASK_TYPES[number];
-
-export const taskResponseSchema = z.object({
-  task: z.string(),
-  solution: z.number(),
-  metadata: z.object({
-    difficulty: z.enum(['easy', 'medium', 'hard']),
-    age: z.object({
-      min: z.number(),
-      max: z.number(),
-    }),
-    estimatedTimeMinutes: z.number(),
-  }),
-});
+export const taskResponseSchema = z.discriminatedUnion('type', [
+  arithmeticTaskResponseSchema,
+  geometryTaskResponseSchema
+]);
 
 export type TaskResponse = z.infer<typeof taskResponseSchema>;
