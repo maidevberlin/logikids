@@ -1,10 +1,7 @@
 import { z } from 'zod';
-import { arithmeticTaskResponseSchema } from '../arithmetic/types/task';
-import { geometryTaskResponseSchema } from '../geometry/types/task';
 
-export const taskResponseSchema = z.discriminatedUnion('type', [
-  arithmeticTaskResponseSchema,
-  geometryTaskResponseSchema
-]);
+export const TASK_TYPES = ['arithmetic', 'geometry'] as const;
+export type TaskType = typeof TASK_TYPES[number];
 
-export type TaskResponse = z.infer<typeof taskResponseSchema>;
+export { baseTaskResponseSchema, type BaseTaskResponse } from '../shared/types/baseTask';
+export { taskResponseSchema, type TaskResponse } from './taskResponses';

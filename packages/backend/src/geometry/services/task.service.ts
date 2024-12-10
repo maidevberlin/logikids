@@ -2,7 +2,7 @@ import path from 'path';
 import { AIClient } from '../../services/ai/base';
 import { geometryTaskResponseSchema, GeometryTaskResponse } from '../types/task';
 import { BaseTaskService } from '../../services/tasks/base-task.service';
-import { baseTaskResponseSchema } from '../../shared/types/task';
+import { baseTaskResponseSchema } from '../../types/task';
 
 export class GeometryTaskService extends BaseTaskService {
   protected promptPath = path.join(process.cwd(), 'src', 'geometry', 'prompts', 'task.yaml');

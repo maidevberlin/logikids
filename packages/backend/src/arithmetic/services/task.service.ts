@@ -1,9 +1,8 @@
 import path from 'path';
 import { AIClient } from '../../services/ai/base';
-import { TaskResponse } from '../../types/task';
 import { arithmeticTaskResponseSchema, ArithmeticTaskResponse } from '../types/task';
 import { BaseTaskService } from '../../services/tasks/base-task.service';
-import { baseTaskResponseSchema } from '../../shared/types/task';
+import { baseTaskResponseSchema } from '../../types/task';
 
 export class ArithmeticTaskService extends BaseTaskService {
   protected promptPath = path.join(process.cwd(), 'src', 'arithmetic', 'prompts', 'task.yaml');

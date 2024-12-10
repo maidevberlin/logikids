@@ -2,12 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import tasksRouter from './routes/tasks/index';
 import hintsRouter from './routes/hints/index';
-import { ArithmeticHintService } from './arithmetic/services/hint.service';
-import { GeometryHintService } from './geometry/services/hint.service';
 import { getConfig } from './config';
 
 const app = express();
-const port = 3000;
+const config = await getConfig('server');
+const port = config.port;
 
 app.use(cors());
 app.use(express.json());

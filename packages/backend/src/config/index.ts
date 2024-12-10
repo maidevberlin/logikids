@@ -2,21 +2,25 @@ import { z } from 'zod';
 import yaml from 'js-yaml';
 import { join } from 'path';
 import { AIConfig, aiConfigSchema, defaultConfig as defaultAIConfig } from './ai';
+import { defaultServerConfig, ServerConfig, serverConfigSchema } from '../types/serverConfig';
 
 export interface Config {
   ai: AIConfig;
+  server: ServerConfig;
   // Add other configuration sections here as needed
 }
 
 const configSchema = z.object({
   ai: aiConfigSchema,
-  // Add other configuration sections here as needed
+  server: serverConfigSchema,
+  // Add other configuration sections here as neede
 });
 
 export type ConfigSchema = z.infer<typeof configSchema>;
 
 const defaultConfig: Config = {
   ai: defaultAIConfig,
+  server: defaultServerConfig,
 };
 
 let cachedConfig: Config | null = null;
@@ -49,7 +53,7 @@ export async function loadConfig(): Promise<Config> {
     // Transform to our internal config format
     const config: Config = {
       ai: validated.ai,
-      // Add other configuration sections here as needed
+      server: validated.server,
     };
 
     // Validate the AI provider-specific config is present
