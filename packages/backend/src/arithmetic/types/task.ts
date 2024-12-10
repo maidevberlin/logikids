@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { baseTaskResponseSchema } from '../../shared/types/baseTask';
+import { baseTaskResponseSchema } from '../../types/baseTask';
 
 export const arithmeticTaskResponseSchema = baseTaskResponseSchema.extend({
   type: z.literal('arithmetic'),
