@@ -34,7 +34,6 @@ export abstract class BaseTaskService {
     }
 
     const response = await this.aiClient.generate(prompts.prompt);
-    console.log('Response:', response);
     if (!response) {
       throw new Error('Failed to generate response from AI');
     }
