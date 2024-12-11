@@ -24,12 +24,6 @@ describe("ArithmeticHintService", () => {
     // Create mock AI client
     const mockResponse = {
       hint: "Try breaking down the addition into smaller parts",
-      metadata: {
-        difficulty: "easy" as const,
-        helpfulness: 0.8,
-        provider: "ollama" as const,
-        model: "llama2"
-      }
     };
 
     mockAIClient = {
