@@ -2,6 +2,9 @@ FROM oven/bun:latest
 
 WORKDIR /app
 
+# Install nodemon globally for watching files
+RUN bun install -g nodemon
+
 # Copy package files
 COPY package.json bun.lockb ./
 
@@ -11,4 +14,5 @@ RUN bun install
 # Copy the rest of the application
 COPY . .
 
-CMD ["bun", "test", "--watch"]
+# Use nodemon to watch for changes and run tests
+CMD ["bunx", "nodemon", "--watch", "src", "--ext", "ts,tsx,yaml", "--exec", "bun test"]

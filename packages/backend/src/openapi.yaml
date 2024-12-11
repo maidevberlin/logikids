@@ -1,0 +1,169 @@
+openapi: 3.0.0
+info:
+  title: LogiKids API
+  version: 1.0.0
+  description: API for generating mathematical tasks and hints for children
+
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+
+components:
+  schemas:
+    TaskMetadata:
+      type: object
+      properties:
+        difficulty:
+          type: string
+          enum: [easy, medium, hard]
+        age:
+          type: object
+          properties:
+            min:
+              type: integer
+              minimum: 5
+            max:
+              type: integer
+              minimum: 5
+        estimatedTimeMinutes:
+          type: integer
+          minimum: 1
+        provider:
+          type: string
+        model:
+          type: string
+      required:
+        - difficulty
+        - age
+        - estimatedTimeMinutes
+
+    Task:
+      type: object
+      properties:
+        task:
+          type: string
+        solution:
+          type: number
+        type:
+          type: string
+          enum: [arithmetic, geometry]
+        metadata:
+          $ref: '#/components/schemas/TaskMetadata'
+      required:
+        - task
+        - solution
+        - type
+        - metadata
+
+    Hint:
+      type: object
+      properties:
+        hint:
+          type: string
+      required:
+        - hint
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+paths:
+  /geometry/task:
+    get:
+      summary: Generate a geometry task
+      description: Generates a new geometry task suitable for children
+      responses:
+        '200':
+          description: A geometry task was successfully generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /geometry/hint:
+    post:
+      summary: Get a hint for a geometry task
+      description: Generates a helpful hint for solving the given geometry task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: A hint was successfully generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hint'
+        '400':
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /arithmetic/task:
+    get:
+      summary: Generate an arithmetic task
+      description: Generates a new arithmetic task suitable for children
+      responses:
+        '200':
+          description: An arithmetic task was successfully generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /arithmetic/hint:
+    post:
+      summary: Get a hint for an arithmetic task
+      description: Generates a helpful hint for solving the given arithmetic task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: A hint was successfully generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hint'
+        '400':
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error' 
