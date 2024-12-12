@@ -27,13 +27,14 @@ export abstract class BaseTaskService {
 
   protected abstract validateAndTransformResponse(jsonResponse: unknown): Promise<TaskResponse>;
 
-  async generateTask(): Promise<TaskResponse> {
+  async generateTask(language: string = 'en'): Promise<TaskResponse> {
     const prompts = await this.loadPrompts();
     if (!prompts) {
       throw new Error('Failed to load prompts');
     }
     
-    const response = await this.aiClient.generate(prompts.prompt);
+    const filledPrompt = prompts.prompt.replaceAll('{{language}}', language);
+    const response = await this.aiClient.generate(filledPrompt);
     if (!response) {
       throw new Error('Failed to generate response from AI');
     }

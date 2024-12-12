@@ -14,10 +14,10 @@ export class GeometryTaskController extends BaseTaskController {
     }
   }
 
-  protected async generateTaskInternal(): Promise<TaskResponse> {
+  protected async generateTaskInternal(language?: string): Promise<TaskResponse> {
     if (!GeometryTaskController.geometryService) {
       await GeometryTaskController.initializeService();
     }
-    return GeometryTaskController.geometryService.generateTask();
+    return GeometryTaskController.geometryService.generateTask(language);
   }
 } 

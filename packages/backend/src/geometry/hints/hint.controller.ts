@@ -15,10 +15,10 @@ export class GeometryHintController extends BaseHintsController {
     }
   }
 
-  protected async generateHintInternal(task: TaskResponse): Promise<HintResponse> {
+  protected async generateHintInternal(task: TaskResponse, language?: string): Promise<HintResponse> {
     if (!GeometryHintController.hintsService) {
       await GeometryHintController.initializeService();
     }
-    return GeometryHintController.hintsService.generateHint(task);
+    return GeometryHintController.hintsService.generateHint(task, language);
   }
 } 

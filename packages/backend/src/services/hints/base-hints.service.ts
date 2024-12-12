@@ -25,14 +25,15 @@ export abstract class BaseHintsService {
     return this.hintsPrompt;
   }
 
-  async generateHint(task: TaskResponse): Promise<HintResponse> {
+  async generateHint(task: TaskResponse, language: string = 'en'): Promise<HintResponse> {
     const { prompt } = await this.loadPrompts();
     
     const filledPrompt = prompt
       .replace('{{task}}', task.task)
       .replace('{{solution}}', task.solution.toString())
       .replace('{{difficulty}}', task.metadata.difficulty)
-      .replace('{{age}}', `${task.metadata.age.min}-${task.metadata.age.max}`);
+      .replace('{{age}}', `${task.metadata.age.min}-${task.metadata.age.max}`)
+      .replace('{{language}}', language);
 
     const response = await this.aiClient.generate(filledPrompt);
     if (!response) {

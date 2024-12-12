@@ -15,10 +15,10 @@ export class ArithmeticHintController extends BaseHintsController {
     }
   }
 
-  protected async generateHintInternal(task: TaskResponse): Promise<HintResponse> {
+  protected async generateHintInternal(task: TaskResponse, language?: string): Promise<HintResponse> {
     if (!ArithmeticHintController.hintsService) {
       await ArithmeticHintController.initializeService();
     }
-    return ArithmeticHintController.hintsService.generateHint(task);
+    return ArithmeticHintController.hintsService.generateHint(task, language);
   }
 } 

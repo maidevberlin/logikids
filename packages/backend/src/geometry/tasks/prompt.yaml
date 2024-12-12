@@ -13,15 +13,17 @@ prompt: |
   - You must provide all information needed to solve the task.
   - You must randomly choose between area, perimeter, and circle calculations.
   - You must ensure the measurements are appropriate for children.
+  - You must provide the task description in this language: {{language}}
   
   ## Your reply
   You strictly obey the following rules for your reply:
   - You reply must be in JSON format.
   - ALL property names must be in double quotes.
   - The JSON must be strictly valid - no comments, no trailing commas, no additional text outside the JSON.
+  - The task field MUST be in the language: {{language}}
   - Your response must be in JSON with the following structure:
     {
-      "task": string,
+      "task": string,  // This must be in the language: {{language}}
       "solution": number,
       "metadata": {
         "difficulty": "easy"|"medium"|"hard",

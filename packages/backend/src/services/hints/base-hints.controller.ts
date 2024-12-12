@@ -11,12 +11,23 @@ export abstract class BaseHintsController {
     this.aiClient = aiClient;
   }
 
-  protected abstract generateHintInternal(task: TaskResponse): Promise<HintResponse>;
+  protected abstract generateHintInternal(task: TaskResponse, language?: string): Promise<HintResponse>;
+
+  protected getPreferredLanguage(req: Request): string {
+    // Get Accept-Language header and parse the first language
+    const acceptLanguage = req.headers['accept-language'];
+    if (!acceptLanguage) return 'en'; // Default to English
+
+    // Parse the Accept-Language header and get the first language code
+    const firstLanguage = acceptLanguage.split(',')[0].trim().split(';')[0];
+    return firstLanguage || 'en';
+  }
 
   public async generateHint(req: Request, res: Response) {
     try {
       const task = taskResponseSchema.parse(req.body);
-      const hint = await this.generateHintInternal(task);
+      const language = this.getPreferredLanguage(req);
+      const hint = await this.generateHintInternal(task, language);
       return res.json(hint);
     } catch (error) {
       if (error instanceof z.ZodError) {

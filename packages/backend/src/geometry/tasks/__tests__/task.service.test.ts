@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach, mock } from "bun:test";
-import { GeometryTaskService } from "../task.service";
 import { AIClient } from "../../../services/ai/base";
 import { GeometryTaskResponse } from "../task";
+import { GeometryTaskService } from "../task.service";
 
 describe("GeometryTaskService", () => {
   let taskService: GeometryTaskService;

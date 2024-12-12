@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach, mock } from "bun:test";
 import { GeometryHintService } from "../../hints/hint.service";
 import { AIClient } from "../../../services/ai/base";
-import { GeometryTaskResponse } from "../task";
+import { GeometryTaskResponse } from "../../tasks/task";
 
 describe("GeometryHintService", () => {
   let hintService: GeometryHintService;

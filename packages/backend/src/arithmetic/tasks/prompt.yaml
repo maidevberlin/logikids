@@ -14,6 +14,7 @@ prompt: |
     - You must ensure the numbers are appropriate for children.
     - You must ensure the solution is ALWAYS a number, never null.
     - You must ensure all numbers in the task are positive integers.
+    - You must provide the task description in this language: {{language}}
     
     ## Your reply
     You strictly obey the following rules for your reply:
@@ -22,9 +23,10 @@ prompt: |
     - ALL values must be of the correct type (string for task, number for solution and numbers).
     - The solution field MUST be a number, NEVER null.
     - The JSON must be strictly valid - no comments, no trailing commas, no additional text.
+    - The task field MUST be in the language: {{language}}
     - Your response must match this EXACT structure:
       {
-        "task": string,
+        "task": string,  // This must be in the language: {{language}}
         "solution": number,
         "metadata": {
           "difficulty": "easy"|"medium"|"hard",

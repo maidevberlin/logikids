@@ -14,10 +14,10 @@ export class ArithmeticTaskController extends BaseTaskController {
     }
   }
 
-  protected async generateTaskInternal(): Promise<TaskResponse> {
+  protected async generateTaskInternal(language?: string): Promise<TaskResponse> {
     if (!ArithmeticTaskController.arithmeticService) {
       await ArithmeticTaskController.initializeService();
     }
-    return ArithmeticTaskController.arithmeticService.generateTask();
+    return ArithmeticTaskController.arithmeticService.generateTask(language);
   }
 } 
