@@ -1,7 +1,7 @@
 import { TaskResponse } from '../../types/task';
-import { HintResponse } from '../../types/hints';
+import { HintResponse } from '../../types/hint';
 import { BaseHintsController } from '../../services/hints/base-hints.controller';
-import { ArithmeticHintService } from '../services/hint.service';
+import { ArithmeticHintService } from './hint.service';
 import { createAIClient } from '../../services/config';
 
 export class ArithmeticHintController extends BaseHintsController {

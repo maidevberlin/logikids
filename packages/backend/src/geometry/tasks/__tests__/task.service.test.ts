@@ -1,25 +1,24 @@
 import { describe, test, expect, beforeEach, mock } from "bun:test";
-import { ArithmeticTaskService } from "../task.service";
+import { GeometryTaskService } from "../task.service";
 import { AIClient } from "../../../services/ai/base";
-import { ArithmeticTaskResponse } from "../../types/task";
-import { response } from "express";
+import { GeometryTaskResponse } from "../task";
 
-describe("ArithmeticTaskService", () => {
-  let taskService: ArithmeticTaskService;
+describe("GeometryTaskService", () => {
+  let taskService: GeometryTaskService;
   let mockAIClient: AIClient;
 
   beforeEach(() => {
     // Create mock AI client
     const mockResponse = {
-        task: "2 + 2",
-        solution: 4,
-        metadata: {
-            difficulty: "easy" as const,
-            age: { min: 6, max: 8 },
-            estimatedTimeMinutes: 2,
-            provider: "ollama" as const,
-            model: "llama2"
-        }
+      task: "GEOMETRY_TASK_SERVICE_TEST: Calculate area",
+      solution: 16,
+      metadata: {
+        difficulty: "easy" as const,
+        age: { min: 8, max: 10 },
+        estimatedTimeMinutes: 3,
+        provider: "ollama" as const,
+        model: "llama2"
+      }
     };
 
     mockAIClient = {
@@ -28,11 +27,11 @@ describe("ArithmeticTaskService", () => {
       provider: "ollama"
     } as unknown as AIClient;
 
-    taskService = new ArithmeticTaskService(mockAIClient);
+    taskService = new GeometryTaskService(mockAIClient);
     
     // Mock loadPrompts
     taskService["loadPrompts"] = mock(() => Promise.resolve({
-      prompt: "Generate an arithmetic task",
+      prompt: "Generate a geometry task",
       response_format: "{}"
     }));
   });
@@ -40,13 +39,13 @@ describe("ArithmeticTaskService", () => {
   test("should validate and transform a valid response", async () => {
     // Arrange
     const validResponse = {
-      task: "2 + 2",
-      solution: 4,
-      explanation: "Adding two and two equals four",
+      task: "GEOMETRY_TASK_SERVICE_VALIDATE: Calculate square",
+      solution: 16,
+      explanation: "The area of a square is calculated by squaring its side length",
       metadata: {
         difficulty: "easy" as const,
-        age: { min: 6, max: 8 },
-        estimatedTimeMinutes: 2,
+        age: { min: 8, max: 10 },
+        estimatedTimeMinutes: 3,
         provider: "ollama" as const,
         model: "llama2"
       }
@@ -57,29 +56,29 @@ describe("ArithmeticTaskService", () => {
 
     // Assert
     expect(result).toEqual({
-      task: "2 + 2",
-      solution: 4,
+      task: "GEOMETRY_TASK_SERVICE_VALIDATE: Calculate square",
+      solution: 16,
       metadata: {
         difficulty: "easy",
-        age: { min: 6, max: 8 },
-        estimatedTimeMinutes: 2,
+        age: { min: 8, max: 10 },
+        estimatedTimeMinutes: 3,
         provider: "ollama",
         model: "llama2"
       },
-      type: "arithmetic"
+      type: "geometry"
     });
   });
 
   test("should throw error for invalid response", async () => {
     // Arrange
     const invalidResponse = {
-      task: "2 + 2",
+      task: "Calculate area",
       // Missing required fields
     };
 
     // Act & Assert
     await expect(taskService["validateAndTransformResponse"](invalidResponse))
-      .rejects.toThrow("Invalid arithmetic task response");
+      .rejects.toThrow("Invalid geometry task response");
   });
 
   test("should generate task using AI client", async () => {
@@ -89,16 +88,16 @@ describe("ArithmeticTaskService", () => {
     // Assert
     expect(mockAIClient.generate).toHaveBeenCalled();
     expect(result).toEqual({
-      task: "2 + 2",
-      solution: 4,
+      task: "GEOMETRY_TASK_SERVICE_TEST: Calculate area",
+      solution: 16,
       metadata: {
         difficulty: "easy",
-        age: { min: 6, max: 8 },
-        estimatedTimeMinutes: 2,
+        age: { min: 8, max: 10 },
+        estimatedTimeMinutes: 3,
         provider: "ollama",
         model: "llama2"
       },
-      type: "arithmetic"
+      type: "geometry"
     });
   });
 }); 

@@ -1,6 +1,6 @@
 import { TaskResponse } from '../../types/task';
 import { BaseTaskController } from '../../services/tasks/base-task.controller';
-import { GeometryTaskService } from '../services/task.service';
+import { GeometryTaskService } from './task.service';
 import { createAIClient } from '../../services/config';
 
 export class GeometryTaskController extends BaseTaskController {

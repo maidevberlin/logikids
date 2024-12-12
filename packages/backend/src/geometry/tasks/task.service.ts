@@ -1,28 +1,28 @@
 import path from 'path';
 import { AIClient } from '../../services/ai/base';
-import { arithmeticTaskResponseSchema, ArithmeticTaskResponse } from '../types/task';
+import { geometryTaskResponseSchema, GeometryTaskResponse } from './task';
 import { BaseTaskService } from '../../services/tasks/base-task.service';
 import { baseTaskResponseSchema } from '../../types/task';
 
-export class ArithmeticTaskService extends BaseTaskService {
-  protected promptPath = path.join(process.cwd(), 'src', 'arithmetic', 'prompts', 'task.yaml');
-  protected taskType = 'arithmetic';
+export class GeometryTaskService extends BaseTaskService {
+  protected promptPath = path.join(process.cwd(), 'src', 'geometry', 'tasks', 'prompt.yaml');
+  protected taskType = 'geometry';
 
   constructor(aiClient: AIClient) {
     super(aiClient);
   }
 
-  protected async validateAndTransformResponse(jsonResponse: unknown): Promise<ArithmeticTaskResponse> {
+  protected async validateAndTransformResponse(jsonResponse: unknown): Promise<GeometryTaskResponse> {
     try {
       // First validate the base structure without type
       const baseResponse = baseTaskResponseSchema.parse(jsonResponse);
       // Then add type and validate the complete structure
-      return arithmeticTaskResponseSchema.parse({
+      return geometryTaskResponseSchema.parse({
         ...baseResponse,
         type: this.taskType
       });
     } catch (error) {
-      throw new Error(`Invalid arithmetic task response: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(`Invalid geometry task response: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 } 

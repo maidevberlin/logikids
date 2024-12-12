@@ -3,7 +3,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { AIClient } from '../ai/base';
 import { TaskResponse } from '../../types/task';
-import { HintResponse, hintResponseSchema } from '../../types/hints';
+import { HintResponse, hintResponseSchema } from '../../types/hint';
 
 interface HintPrompt {
   prompt: string;

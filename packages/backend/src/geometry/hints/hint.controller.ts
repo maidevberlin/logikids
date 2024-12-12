@@ -1,7 +1,7 @@
 import { TaskResponse } from '../../types/task';
-import { HintResponse } from '../../types/hints';
+import { HintResponse } from '../../types/hint';
 import { BaseHintsController } from '../../services/hints/base-hints.controller';
-import { GeometryHintService } from '../services/hint.service';
+import { GeometryHintService } from './hint.service';
 import { createAIClient } from '../../services/config';
 
 export class GeometryHintController extends BaseHintsController {

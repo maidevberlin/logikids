@@ -1,6 +1,6 @@
 import { TaskResponse } from '../../types/task';
 import { BaseTaskController } from '../../services/tasks/base-task.controller';
-import { ArithmeticTaskService } from '../services/task.service';
+import { ArithmeticTaskService } from './task.service';
 import { createAIClient } from '../../services/config';
 
 export class ArithmeticTaskController extends BaseTaskController {

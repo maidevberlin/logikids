@@ -32,7 +32,7 @@ export abstract class BaseTaskService {
     if (!prompts) {
       throw new Error('Failed to load prompts');
     }
-
+    
     const response = await this.aiClient.generate(prompts.prompt);
     if (!response) {
       throw new Error('Failed to generate response from AI');

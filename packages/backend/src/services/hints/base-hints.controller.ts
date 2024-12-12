@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { taskResponseSchema, TaskResponse } from '../../types/task';
-import { HintResponse } from '../../types/hints';
+import { HintResponse } from '../../types/hint';
 import { AIClient } from '../ai/base';
 
 export abstract class BaseHintsController {

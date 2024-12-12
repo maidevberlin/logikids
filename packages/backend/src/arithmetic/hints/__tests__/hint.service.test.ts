@@ -1,14 +1,14 @@
 import { describe, test, expect, beforeEach, mock } from "bun:test";
 import { ArithmeticHintService } from "../hint.service";
 import { AIClient } from "../../../services/ai/base";
-import { ArithmeticTaskResponse } from "../../types/task";
+import { ArithmeticTaskResponse } from "../../tasks/task";
 
 describe("ArithmeticHintService", () => {
   let hintService: ArithmeticHintService;
   let mockAIClient: AIClient;
 
   const mockTask: ArithmeticTaskResponse = {
-    task: "What is 15 + 27?",
+    task: "ARITHMETIC_HINT_SERVICE_TEST: 15 + 27",
     solution: 42,
     type: "arithmetic",
     metadata: {

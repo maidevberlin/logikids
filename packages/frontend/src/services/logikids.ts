@@ -8,7 +8,7 @@ export class LogikidsService {
   }
 
   async getTask(type: TaskType, signal?: AbortSignal): Promise<TaskResponse> {
-    const response = await fetch(`${this.baseUrl}/tasks/${type}`, {
+    const response = await fetch(`${this.baseUrl}/${type}/task`, {
       signal,
     });
 
@@ -20,7 +20,7 @@ export class LogikidsService {
   }
 
   async getHint(type: TaskType, task: TaskResponse, signal?: AbortSignal): Promise<string> {
-    const response = await fetch(`${this.baseUrl}/hints/${type}`, {
+    const response = await fetch(`${this.baseUrl}/${type}/hint`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

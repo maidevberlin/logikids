@@ -1,14 +1,14 @@
 import { describe, test, expect, beforeEach, mock } from "bun:test";
-import { GeometryHintService } from "../hint.service";
+import { GeometryHintService } from "../../hints/hint.service";
 import { AIClient } from "../../../services/ai/base";
-import { GeometryTaskResponse } from "../../types/task";
+import { GeometryTaskResponse } from "../task";
 
 describe("GeometryHintService", () => {
   let hintService: GeometryHintService;
   let mockAIClient: AIClient;
 
   const mockTask: GeometryTaskResponse = {
-    task: "Calculate the area of a square with side length 4",
+    task: "GEOMETRY_HINT_SERVICE_TEST: Calculate square area",
     solution: 16,
     type: "geometry",
     metadata: {

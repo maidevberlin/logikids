@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { arithmeticTaskResponseSchema } from '../arithmetic/types/task';
-import { geometryTaskResponseSchema } from '../geometry/types/task';
+import { arithmeticTaskResponseSchema } from '../arithmetic/tasks/task';
+import { geometryTaskResponseSchema } from '../geometry/tasks/task';
 
 export const taskResponseSchema = z.discriminatedUnion('type', [
   arithmeticTaskResponseSchema,

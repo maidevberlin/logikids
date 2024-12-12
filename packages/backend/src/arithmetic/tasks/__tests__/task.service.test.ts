@@ -1,37 +1,38 @@
 import { describe, test, expect, beforeEach, mock } from "bun:test";
-import { GeometryTaskService } from "../task.service";
+import { ArithmeticTaskService } from "../task.service";
 import { AIClient } from "../../../services/ai/base";
-import { GeometryTaskResponse } from "../../types/task";
+import { ArithmeticTaskResponse } from "../task";
+import { response } from "express";
 
-describe("GeometryTaskService", () => {
-  let taskService: GeometryTaskService;
+describe("ArithmeticTaskService", () => {
+  let taskService: ArithmeticTaskService;
   let mockAIClient: AIClient;
 
   beforeEach(() => {
     // Create mock AI client
     const mockResponse = {
-      task: "Calculate the area of a square with side length 4",
-      solution: 16,
-      metadata: {
-        difficulty: "easy" as const,
-        age: { min: 8, max: 10 },
-        estimatedTimeMinutes: 3,
-        provider: "ollama" as const,
-        model: "llama2"
-      }
+        task: "ARITHMETIC_TASK_SERVICE_TEST: 21 + 21",
+        solution: 4,
+        metadata: {
+            difficulty: "easy" as const,
+            age: { min: 6, max: 8 },
+            estimatedTimeMinutes: 2,
+            provider: "ollama" as const,
+            model: "llama23"
+        }
     };
 
     mockAIClient = {
       generate: mock(() => Promise.resolve({response: JSON.stringify(mockResponse)})),
-      model: "llama2",
+      model: "llama23",
       provider: "ollama"
     } as unknown as AIClient;
 
-    taskService = new GeometryTaskService(mockAIClient);
+    taskService = new ArithmeticTaskService(mockAIClient);
     
     // Mock loadPrompts
     taskService["loadPrompts"] = mock(() => Promise.resolve({
-      prompt: "Generate a geometry task",
+      prompt: "Generate an arithmetic task",
       response_format: "{}"
     }));
   });
@@ -39,15 +40,15 @@ describe("GeometryTaskService", () => {
   test("should validate and transform a valid response", async () => {
     // Arrange
     const validResponse = {
-      task: "Calculate the area of a square with side length 4",
-      solution: 16,
-      explanation: "The area of a square is calculated by squaring its side length",
+      task: "ARITHMETIC_TASK_SERVICE_VALIDATE: 1 + 1",
+      solution: 4,
+      explanation: "Adding two and two equals four",
       metadata: {
         difficulty: "easy" as const,
-        age: { min: 8, max: 10 },
-        estimatedTimeMinutes: 3,
+        age: { min: 6, max: 8 },
+        estimatedTimeMinutes: 2,
         provider: "ollama" as const,
-        model: "llama2"
+        model: "llama21"
       }
     };
 
@@ -56,29 +57,29 @@ describe("GeometryTaskService", () => {
 
     // Assert
     expect(result).toEqual({
-      task: "Calculate the area of a square with side length 4",
-      solution: 16,
+      task: "ARITHMETIC_TASK_SERVICE_VALIDATE: 1 + 1",
+      solution: 4,
       metadata: {
         difficulty: "easy",
-        age: { min: 8, max: 10 },
-        estimatedTimeMinutes: 3,
+        age: { min: 6, max: 8 },
+        estimatedTimeMinutes: 2,
         provider: "ollama",
-        model: "llama2"
+        model: "llama21"
       },
-      type: "geometry"
+      type: "arithmetic"
     });
   });
 
   test("should throw error for invalid response", async () => {
     // Arrange
     const invalidResponse = {
-      task: "Calculate area",
+      task: "3 + 3",
       // Missing required fields
     };
 
     // Act & Assert
     await expect(taskService["validateAndTransformResponse"](invalidResponse))
-      .rejects.toThrow("Invalid geometry task response");
+      .rejects.toThrow("Invalid arithmetic task response");
   });
 
   test("should generate task using AI client", async () => {
@@ -86,18 +87,20 @@ describe("GeometryTaskService", () => {
     const result = await taskService.generateTask();
 
     // Assert
-    expect(mockAIClient.generate).toHaveBeenCalled();
     expect(result).toEqual({
-      task: "Calculate the area of a square with side length 4",
-      solution: 16,
+      task: "ARITHMETIC_TASK_SERVICE_TEST: 21 + 21",
+      solution: 4,
       metadata: {
         difficulty: "easy",
-        age: { min: 8, max: 10 },
-        estimatedTimeMinutes: 3,
+        age: { min: 6, max: 8 },
+        estimatedTimeMinutes: 2,
         provider: "ollama",
-        model: "llama2"
+        model: "llama23"
       },
-      type: "geometry"
+      type: "arithmetic"
     });
+    
+    expect(mockAIClient.generate).toHaveBeenCalled();
+    
   });
 }); 
