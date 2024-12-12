@@ -3,6 +3,7 @@ import cors from 'cors';
 import { getConfig } from './config';
 import arithmeticRouter from './arithmetic/router';
 import geometryRouter from './geometry/router';
+import visRouter from './arithmetic/vis/vis.router';
 
 const app = express();
 const config = await getConfig('server');
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use('/api/arithmetic', arithmeticRouter);
 app.use('/api/geometry', geometryRouter);
+app.use('/api/arithmetic/vis', visRouter);
 
 // Initialize services
 // Start server

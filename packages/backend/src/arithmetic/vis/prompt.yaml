@@ -1,0 +1,20 @@
+prompt: |
+    Create a clear, educational visualization for the following arithmetic problem:
+    
+    The visualization should:
+    - Be child-friendly and engaging
+    - Use bright, clear colors
+    - Include relevant numbers and mathematical symbols
+    - Show the problem in a visual way that helps understanding
+    - Not include the solution
+    - Use a clean, simple style suitable for elementary school students 
+
+    ## Task Information
+    This is the task the student is solving:
+    Task: {{task}}
+    This is the solution to the task:
+    Solution: {{solution}}
+    This is the difficulty level of the task:
+    Difficulty Level: {{difficulty}}
+    This is the target age group of the task:
+    Target Age: {{age}}

@@ -35,7 +35,7 @@ export abstract class BaseHintsService {
       .replace('{{age}}', `${task.metadata.age.min}-${task.metadata.age.max}`)
       .replace('{{language}}', language);
 
-    const response = await this.aiClient.generate(filledPrompt);
+    const response = await this.aiClient.generateText(filledPrompt);
     if (!response) {
       throw new Error('Failed to generate hint');
     }

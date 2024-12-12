@@ -1,13 +1,25 @@
-export interface GenerateOptions {
+export interface TextGenerateOptions {
   temperature?: number;
   maxTokens?: number;
   topP?: number;
   topK?: number;
 }
 
-export interface GenerateResponse {
+export interface ImageGenerateOptions {
+  size?: string;
+  quality?: string;
+  style?: string;
+}
+
+export interface TextGenerateResponse {
   response: string;
   context?: unknown;
+  provider: 'ollama' | 'openai';
+  model: string;
+}
+
+export interface ImageGenerateResponse {
+  url: string;
   provider: 'ollama' | 'openai';
   model: string;
 }
@@ -15,10 +27,12 @@ export interface GenerateResponse {
 export abstract class AIClient {
   constructor(
     public readonly provider: 'ollama' | 'openai',
-    public readonly model: string
+    public readonly model: string,
+    public readonly type: 'text' | 'image'
   ) {}
 
-  abstract generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse>;
+  abstract generateText(prompt: string, options?: TextGenerateOptions): Promise<TextGenerateResponse>;
+  abstract generateImage(prompt: string, options?: ImageGenerateOptions): Promise<ImageGenerateResponse>;
 
   /**
    * Extracts JSON from a text response if present
@@ -34,12 +48,5 @@ export abstract class AIClient {
     } catch {
       return null;
     }
-  }
-
-  /**
-   * Creates an instance of the appropriate AI client based on configuration
-   */
-  public static async create(): Promise<AIClient> {
-    return createAIClient();
   }
 } 
