@@ -1,59 +1,45 @@
-import { useState, useCallback, useEffect } from 'react';
-import { TaskResponse, TaskType } from '../../../backend/src/types/task';
+import { useQuery } from '@tanstack/react-query';
+import { TaskResponse, TaskType, Age, Difficulty } from '../types/task';
 import { LogikidsService } from '../services/logikids';
 import config from '../config';
+import { taskDefaults } from '../config';
 
-interface UseTaskReturn {
-  task: TaskResponse | null;
-  hint: string | null;
-  loading: boolean;
-  error: string | null;
-  requestHint: () => Promise<void>;
+interface TaskParams {
+  age?: Age;
+  difficulty?: Difficulty;
 }
 
-function useTaskBase(type: TaskType): UseTaskReturn {
-  const [task, setTask] = useState<TaskResponse | null>(null);
-  const [hint, setHint] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+const logikidsService = new LogikidsService(config.apiBaseUrl);
 
-  const logikidsService = new LogikidsService(config.apiBaseUrl);
+function useTask(type: TaskType, params?: TaskParams) {
+  const { data: task, isLoading, error, refetch } = useQuery({
+    queryKey: ['task', type, params?.age, params?.difficulty],
+    queryFn: async () => {
+      const response = await fetch(
+        `${config.apiBaseUrl}/${type}/task?${new URLSearchParams({
+          age: (params?.age ?? taskDefaults.age).toString(),
+          difficulty: params?.difficulty ?? taskDefaults.difficulty,
+        })}`
+      );
+      
+      if (!response.ok) throw new Error('Failed to fetch task');
+      return response.json();
+    },
+  });
 
-  const fetchTask = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const newTask = await logikidsService.getTask(type);
-      setTask(newTask);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch task');
-    } finally {
-      setLoading(false);
-    }
-  }, [type]);
-
-  const requestHint = useCallback(async () => {
+  const requestHint = async () => {
     if (!task) return;
+    return logikidsService.getHint(type, task);
+  };
 
-    try {
-      const newHint = await logikidsService.getHint(type, task);
-      setHint(newHint);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch hint');
-    }
-  }, [task, type]);
-
-  useEffect(() => {
-    fetchTask();
-  }, [fetchTask]);
-
-  return { task, hint, loading, error, requestHint };
+  return {
+    task,
+    loading: isLoading,
+    error: error instanceof Error ? error.message : null,
+    requestHint,
+    refetch,
+  };
 }
 
-export function useArithmeticTask(): UseTaskReturn {
-  return useTaskBase('arithmetic');
-}
-
-export function useGeometryTask(): UseTaskReturn {
-  return useTaskBase('geometry');
-} 
+export const useArithmeticTask = (params?: TaskParams) => useTask('arithmetic', params);
+export const useGeometryTask = () => useTask('geometry'); 

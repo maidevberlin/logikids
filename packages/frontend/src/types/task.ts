@@ -7,8 +7,11 @@ export type GeometryOperation = typeof GEOMETRY_OPERATIONS[number]
 export const TASK_TYPES = ['arithmetic', 'geometry'] as const
 export type TaskType = typeof TASK_TYPES[number]
 
+export type Difficulty = 'easy' | 'medium' | 'hard'
+export type Age = number // age between 6 and 19
+
 export interface TaskMetadata {
-  difficulty: 'easy' | 'medium' | 'hard'
+  difficulty: Difficulty
   age: {
     min: number
     max: number

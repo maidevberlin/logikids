@@ -10,4 +10,9 @@ const config: Config = {
     : '/api',
 };
 
-export default config; 
+export default config;
+
+export const taskDefaults = {
+  age: 12,
+  difficulty: 'medium' as const
+} as const 
