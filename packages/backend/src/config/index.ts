@@ -31,22 +31,23 @@ export async function loadConfig(): Promise<Config> {
     return cachedConfig;
   }
 
+
   try {
     // Try to read the config file from project root (two levels up from this file)
     const configPath = join(process.cwd(), 'config.yaml');
     const file = Bun.file(configPath);
-
+    
     // Check if file exists and is readable
     if (!(await file.exists())) {
       console.warn('No config.yaml found in project root, using default configuration');
       cachedConfig = defaultConfig;
       return defaultConfig;
     }
-
+    
     // Read and parse the config file
     const content = await file.text();
     const parsedConfig = yaml.load(content) as unknown;
-    
+  
     // Validate the config
     const validated = configSchema.parse(parsedConfig);
     
@@ -83,6 +84,5 @@ export async function loadConfig(): Promise<Config> {
 // Helper function to get a specific section of the config
 export async function getConfig<K extends keyof Config>(section: K): Promise<Config[K]> {
   const config = await loadConfig();
-  console.log('section', section);
   return config[section];
 } 

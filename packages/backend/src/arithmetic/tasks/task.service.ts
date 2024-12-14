@@ -1,16 +1,11 @@
 import path from 'path';
-import { AIClient } from '../../services/ai/base';
 import { arithmeticTaskResponseSchema, ArithmeticTaskResponse } from './task';
-import { BaseTaskService } from '../../services/tasks/base-task.service';
 import { baseTaskResponseSchema } from '../../types/task';
+import { BaseTaskService } from '../../common/tasks/base-task.service';
 
 export class ArithmeticTaskService extends BaseTaskService {
-  protected promptPath = path.join(process.cwd(), 'src', 'arithmetic', 'tasks', 'prompt.yaml');
+  protected promptPath = path.join(__dirname, 'prompt.yaml');
   protected taskType = 'arithmetic';
-
-  constructor(aiClient: AIClient) {
-    super(aiClient);
-  }
 
   protected async validateAndTransformResponse(jsonResponse: unknown): Promise<ArithmeticTaskResponse> {
     try {

@@ -3,25 +3,11 @@ import { z } from 'zod';
 import { taskResponseSchema, TaskResponse } from '../../types/task';
 import { HintResponse } from '../../types/hint';
 import { AIClient } from '../ai/base';
+import { BaseController } from '../../common/baseController';
 
-export abstract class BaseHintsController {
-  protected static aiClient: AIClient;
-
-  protected static initialize(aiClient: AIClient) {
-    this.aiClient = aiClient;
-  }
+export abstract class BaseHintsController extends BaseController {
 
   protected abstract generateHintInternal(task: TaskResponse, language?: string): Promise<HintResponse>;
-
-  protected getPreferredLanguage(req: Request): string {
-    // Get Accept-Language header and parse the first language
-    const acceptLanguage = req.headers['accept-language'];
-    if (!acceptLanguage) return 'en'; // Default to English
-
-    // Parse the Accept-Language header and get the first language code
-    const firstLanguage = acceptLanguage.split(',')[0].trim().split(';')[0];
-    return firstLanguage || 'en';
-  }
 
   public async generateHint(req: Request, res: Response) {
     try {

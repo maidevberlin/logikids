@@ -34,7 +34,7 @@ export abstract class BaseTaskService {
     }
     
     const filledPrompt = prompts.prompt.replaceAll('{{language}}', language);
-    const response = await this.aiClient.generateText(filledPrompt);
+    const response = await this.aiClient.generate(filledPrompt);
     if (!response) {
       throw new Error('Failed to generate response from AI');
     }

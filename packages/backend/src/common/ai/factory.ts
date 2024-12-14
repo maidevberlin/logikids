@@ -3,28 +3,27 @@ import { OllamaClient } from './ollama';
 import { OpenAIClient } from './openai';
 import { getConfig } from '../../config';
 
-export async function createAIClient(type: 'text' | 'image' = 'text'): Promise<AIClient> {
+export async function createAIClient(): Promise<AIClient> {
   const aiConfig = await getConfig('ai');
-  const config = aiConfig[type];
   
-  if (!config) {
-    throw new Error(`No configuration found for AI type: ${type}`);
+  if (!aiConfig) {
+    throw new Error(`No configuration found for AI`);
   }
-  
-  switch (config.provider) {
+
+  switch (aiConfig.provider) {
     case 'ollama':
-      if (!config.ollama) {
+      if (!aiConfig.ollama) {
         throw new Error('Ollama configuration is required when using Ollama provider');
       }
-      return new OllamaClient(config.ollama, type);
+      return new OllamaClient(aiConfig.ollama);
       
     case 'openai':
-      if (!config.openai) {
+      if (!aiConfig.openai) {
         throw new Error('OpenAI configuration is required when using OpenAI provider');
       }
-      return new OpenAIClient(config.openai, type);
+      return new OpenAIClient(aiConfig.openai);
       
     default:
-      throw new Error(`Unsupported AI provider: ${config.provider}`);
+      throw new Error(`Unsupported AI provider: ${aiConfig.provider}`);
   }
 } 
