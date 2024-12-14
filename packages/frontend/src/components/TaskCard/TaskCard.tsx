@@ -34,11 +34,16 @@ export function TaskCard({
   onNextTask,
   children
 }: TaskCardProps) {
+  const handleNextTask = () => {
+    // Show loading state immediately when clicking next
+    onNextTask()
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         <TaskHeader type={type} />
-
+        
         <div className="bg-white rounded-xl shadow-lg p-8">
           <div className="min-h-[200px]">
             {isLoading || !task ? (
@@ -48,20 +53,35 @@ export function TaskCard({
             ) : (
               <div className="space-y-8">
                 <h2 className="text-2xl font-bold text-gray-900">{task.task}</h2>
-                
-                <AnswerForm
-                  answer={answer}
-                  selectedAnswer={selectedAnswer}
-                  isCorrect={isCorrect}
-                  onAnswerChange={onAnswerChange}
-                  onSubmit={onAnswerSubmit}
-                  onNextTask={onNextTask}
-                />
+
+                {isCorrect === true && (
+                  <div className="mb-4">
+                    <div className="text-green-600 font-semibold mb-2">
+                      Congratulations! That's correct! 🎉
+                    </div>
+                    <button
+                      onClick={handleNextTask}
+                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+                    >
+                      Next Task
+                    </button>
+                  </div>
+                )}
+
+                {isCorrect !== true && (
+                  <AnswerForm
+                    answer={answer}
+                    selectedAnswer={selectedAnswer}
+                    isCorrect={isCorrect}
+                    onAnswerChange={onAnswerChange}
+                    onSubmit={onAnswerSubmit}
+                  />
+                )}
 
                 <HintSection 
                   hint={hint} 
                   onRequestHint={onRequestHint} 
-                  onSkip={onNextTask}
+                  onSkip={handleNextTask}
                 />
 
                 {children}

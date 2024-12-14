@@ -1,46 +1,26 @@
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 
-interface UseArithmeticAnswerReturn {
-  answer: string
-  selectedAnswer: string | null
-  isCorrect: boolean | null
-  handleAnswerChange: (value: string) => void
-  handleAnswerSubmit: (solution: number) => void
-  isValid: boolean
-}
-
-export function useArithmeticAnswer(): UseArithmeticAnswerReturn {
-  const [answer, setAnswer] = useState<string>('')
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+export function useArithmeticAnswer() {
+  const [answer, setAnswer] = useState('')
+  const [selectedAnswer, setSelectedAnswer] = useState<string>('')
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
-  const handleAnswerChange = useCallback((value: string) => {
-    // Only allow numeric input (including empty string for backspace)
-    if (value === '' || /^\d+$/.test(value)) {
-      // If the answer changes, reset the submission states
-      if (value !== selectedAnswer) {
-        setSelectedAnswer(null)
-        setIsCorrect(null)
-      }
-      setAnswer(value)
-    }
-  }, [selectedAnswer])
+  const handleAnswerChange = (value: string) => {
+    setAnswer(value)
+    setSelectedAnswer(value)
+  }
 
-  const handleAnswerSubmit = useCallback((solution: number) => {
-    const numericAnswer = Number(answer)
-    
-    // Validate input
-    if (isNaN(numericAnswer)) {
-      return
-    }
+  const handleAnswerSubmit = (solution: string) => {
+    const normalizedAnswer = answer.trim()
+    const normalizedSolution = String(solution).trim()
+    setIsCorrect(normalizedAnswer === normalizedSolution)
+  }
 
-    const correct = numericAnswer === solution
-    setIsCorrect(correct)
-    setSelectedAnswer(answer)
-  }, [answer])
-
-  // Validate if the current answer is a valid number
-  const isValid = answer !== '' && !isNaN(Number(answer))
+  const reset = () => {
+    setAnswer('')
+    setSelectedAnswer('')
+    setIsCorrect(null)
+  }
 
   return {
     answer,
@@ -48,6 +28,6 @@ export function useArithmeticAnswer(): UseArithmeticAnswerReturn {
     isCorrect,
     handleAnswerChange,
     handleAnswerSubmit,
-    isValid,
+    reset,
   }
 } 

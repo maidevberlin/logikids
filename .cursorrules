@@ -20,6 +20,7 @@ When you generate code:
  - Your code must be easy to understand and modify.
  - Your code must be tested. If you believe there are no tests, create or modify them.
  - If you think other files will be affected by your changes, you must update them. If you cannot update them, inform the user.
+ - If you have any problems finding the perfect solution, ask me.
 
 When you have to fix a bug:
  - You will always find the root cause of the bug first.

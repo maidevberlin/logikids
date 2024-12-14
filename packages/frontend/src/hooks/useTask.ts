@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { TaskResponse, TaskType, Age, Difficulty } from '../types/task';
+import { TaskType, Age, Difficulty } from '../types/task';
 import { LogikidsService } from '../services/logikids';
 import config from '../config';
 import { taskDefaults } from '../config';
@@ -12,7 +12,7 @@ interface TaskParams {
 const logikidsService = new LogikidsService(config.apiBaseUrl);
 
 function useTask(type: TaskType, params?: TaskParams) {
-  const { data: task, isLoading, error, refetch } = useQuery({
+  const { data: task, isLoading, error, refetch, isFetching } = useQuery({
     queryKey: ['task', type, params?.age, params?.difficulty],
     queryFn: async () => {
       const response = await fetch(
@@ -34,7 +34,7 @@ function useTask(type: TaskType, params?: TaskParams) {
 
   return {
     task,
-    loading: isLoading,
+    loading: isLoading || isFetching,
     error: error instanceof Error ? error.message : null,
     requestHint,
     refetch,

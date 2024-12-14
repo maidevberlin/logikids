@@ -1,18 +1,18 @@
-import { useNavigate } from 'react-router-dom'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useArithmeticTask } from '../hooks/useTask'
 import { useTaskHint } from '../hooks/useTaskHint'
 import { useArithmeticAnswer } from '../hooks/useArithmeticAnswer'
 import { TaskCard } from '../components/TaskCard'
 import { TaskOptions } from '../components/TaskOptions/TaskOptions'
-import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Difficulty, Age } from '../types/task'
 import { taskDefaults } from '../config'
 
 export default function ArithmeticTaskPage() {
-  const navigate = useNavigate()
-  const [age, setAge] = useState<Age>(taskDefaults.age)
-  const [difficulty, setDifficulty] = useState<Difficulty>(taskDefaults.difficulty)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const age = Number(searchParams.get('age') ?? taskDefaults.age) as Age
+  const difficulty = (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty
+  
   const { task, loading, error, refetch } = useArithmeticTask({age, difficulty})
   const { hint, requestHint } = useTaskHint('arithmetic', task)
   
@@ -22,7 +22,24 @@ export default function ArithmeticTaskPage() {
     isCorrect,
     handleAnswerChange,
     handleAnswerSubmit,
+    reset,
   } = useArithmeticAnswer()
+
+  const handleAgeChange = (newAge: Age) => {
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev)
+      newParams.set('age', String(newAge))
+      return newParams
+    })
+  }
+
+  const handleDifficultyChange = (newDifficulty: Difficulty) => {
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev)
+      newParams.set('difficulty', newDifficulty)
+      return newParams
+    })
+  }
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
@@ -32,6 +49,7 @@ export default function ArithmeticTaskPage() {
   }
 
   const handleNextTask = () => {
+    reset()
     refetch()
   }
 
@@ -42,8 +60,8 @@ export default function ArithmeticTaskPage() {
       <TaskOptions
         age={age}
         difficulty={difficulty}
-        onAgeChange={setAge}
-        onDifficultyChange={setDifficulty}
+        onAgeChange={handleAgeChange}
+        onDifficultyChange={handleDifficultyChange}
       />
 
       <TaskCard
