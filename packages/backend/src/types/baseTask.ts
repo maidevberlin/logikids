@@ -5,10 +5,7 @@ export const baseTaskResponseSchema = z.object({
   solution: z.number(),
   metadata: z.object({
     difficulty: z.enum(['easy', 'medium', 'hard']),
-    age: z.object({
-      min: z.number(),
-      max: z.number(),
-    }),
+    age: z.number(),
     estimatedTimeMinutes: z.number(),
     provider: z.enum(['ollama', 'openai']),
     model: z.string()

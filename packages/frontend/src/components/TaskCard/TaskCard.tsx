@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import { LoadingSpinner } from '../LoadingSpinner'
 import { TaskHeader } from './TaskHeader'
 import { HintSection } from './HintSection'
-import { TaskOption } from './TaskOption'
 import { AnswerForm } from './AnswerForm'
 import { TaskResponse } from '../../types/task'
 

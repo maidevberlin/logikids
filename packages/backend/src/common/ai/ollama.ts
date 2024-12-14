@@ -26,6 +26,7 @@ export class OllamaClient extends AIClient {
       }
 
       const result = await response.json();
+      console.log('Ollama result:', result.response);
       return {
         response: result.response,
         context: result.context,

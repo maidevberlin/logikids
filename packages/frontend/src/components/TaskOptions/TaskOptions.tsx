@@ -1,5 +1,4 @@
 import { Difficulty, Age } from '../../types/task'
-import { taskDefaults } from '../../config'
 
 interface TaskOptionsProps {
   age: Age

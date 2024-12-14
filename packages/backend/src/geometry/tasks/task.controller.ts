@@ -1,5 +1,5 @@
 import { TaskResponse } from '../../types/task';
-import { BaseTaskController } from '../../services/tasks/base-task.controller';
+import { BaseTaskController, TaskQuery } from '../../common/tasks/base-task.controller';
 import { GeometryTaskService } from './task.service';
 import { createAIClient } from '../../services/config';
 
@@ -14,10 +14,10 @@ export class GeometryTaskController extends BaseTaskController {
     }
   }
 
-  protected async generateTaskInternal(language?: string): Promise<TaskResponse> {
+  protected async generateTaskInternal(query: TaskQuery, language?: string): Promise<TaskResponse> {
     if (!GeometryTaskController.geometryService) {
       await GeometryTaskController.initializeService();
     }
-    return GeometryTaskController.geometryService.generateTask(language);
+    return GeometryTaskController.geometryService.generateTask(query, language);
   }
 } 
