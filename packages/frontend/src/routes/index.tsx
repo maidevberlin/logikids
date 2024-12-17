@@ -2,8 +2,8 @@ import { RouteObject } from 'react-router-dom'
 import Welcome from '../pages/Welcome'
 import Learn from '../pages/Learn'
 import ArithmeticTaskPage from '../pages/ArithmeticTaskPage'
-import GeometryTaskPage from '../pages/GeometryTaskPage'
 import App from '../App'
+import LogicTaskPage from '../pages/LogicTaskPage'
 
 export const routes: RouteObject[] = [
   {
@@ -22,12 +22,12 @@ export const routes: RouteObject[] = [
             element: <Learn />,
           },
           {
-            path: 'arithmetic/:operation?',
+            path: 'arithmetic/',
             element: <ArithmeticTaskPage />,
           },
           {
-            path: 'geometry/:operation?',
-            element: <GeometryTaskPage />,
+            path: 'logic/',
+            element: <LogicTaskPage />,
           },
         ],
       },

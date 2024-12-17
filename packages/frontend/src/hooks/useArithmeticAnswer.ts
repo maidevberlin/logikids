@@ -1,24 +1,23 @@
 import { useState } from 'react'
 
 export function useArithmeticAnswer() {
-  const [answer, setAnswer] = useState('')
-  const [selectedAnswer, setSelectedAnswer] = useState<string>('')
+  const [answer, setAnswer] = useState<number | null>(null)
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
-  const handleAnswerChange = (value: string) => {
+  const handleAnswerChange = (value: number) => {
     setAnswer(value)
-    setSelectedAnswer(value)
+    setIsCorrect(null)
   }
 
-  const handleAnswerSubmit = (solution: string) => {
-    const normalizedAnswer = answer.trim()
-    const normalizedSolution = String(solution).trim()
-    setIsCorrect(normalizedAnswer === normalizedSolution)
+  const handleAnswerSubmit = (solution: number) => {
+    setSelectedAnswer(answer)
+    setIsCorrect(answer === solution)
   }
 
   const reset = () => {
-    setAnswer('')
-    setSelectedAnswer('')
+    setAnswer(null)
+    setSelectedAnswer(null)
     setIsCorrect(null)
   }
 

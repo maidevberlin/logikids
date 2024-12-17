@@ -42,4 +42,3 @@ function useTask(type: TaskType, params?: TaskParams) {
 }
 
 export const useArithmeticTask = (params?: TaskParams) => useTask('arithmetic', params);
-export const useGeometryTask = () => useTask('geometry'); 

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import {
   CalculatorIcon,
-  Square3Stack3DIcon,
+  PuzzlePieceIcon,
 } from '@heroicons/react/24/outline'
 
 const tasks = [
   { name: 'Arithmetic', path: '/learn/arithmetic', icon: CalculatorIcon },
-  { name: 'Geometry', path: '/learn/geometry', icon: Square3Stack3DIcon },
+  { name: 'Logic', path: '/learn/logic', icon: PuzzlePieceIcon },
 ]
 
 function TaskCard({ name, path, Icon }: { name: string; path: string; Icon: any }) {

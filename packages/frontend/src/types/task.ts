@@ -1,4 +1,4 @@
-export const TASK_TYPES = ['arithmetic', 'geometry'] as const
+export const TASK_TYPES = ['arithmetic', 'logic'] as const
 export type TaskType = typeof TASK_TYPES[number]
 
 export type Difficulty = 'easy' | 'medium' | 'hard'

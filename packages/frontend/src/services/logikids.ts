@@ -1,4 +1,3 @@
-import { HintType } from '../types/hints';
 import { TaskResponse, TaskType } from '../types/task';
 
 export class LogikidsService {
@@ -20,7 +19,7 @@ export class LogikidsService {
     return response.json();
   }
 
-  async getHint(type: HintType, task: TaskResponse, signal?: AbortSignal): Promise<string> {
+  async getHint(type: TaskType, task: TaskResponse, signal?: AbortSignal): Promise<string> {
     const response = await fetch(`${this.baseUrl}/${type}/hint`, {
       method: 'POST',
       headers: {

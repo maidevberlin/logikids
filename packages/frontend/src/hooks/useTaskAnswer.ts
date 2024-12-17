@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 
 interface UseTaskAnswerOptions {
-  type: 'arithmetic' | 'geometry'
+  type: 'arithmetic' | 'logic'
   validator?: (value: string) => boolean
 }
 
