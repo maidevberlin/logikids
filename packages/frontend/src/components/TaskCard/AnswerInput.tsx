@@ -19,7 +19,7 @@ export function AnswerInput({ answer, isDisabled, onChange, shouldShake }: Answe
         onChange={(e) => onChange(Number(e.target.value.trim()))}
         disabled={isDisabled}
         className={`block w-full rounded-lg border-gray-300 shadow-sm 
-          focus:border-indigo-500 focus:ring-indigo-500 
+          focus:border-primary-500 focus:ring-primary-500 
           disabled:opacity-50 disabled:cursor-not-allowed
           text-lg py-4 px-6
           ${shouldShake ? 'animate-shake' : ''}`}

@@ -11,7 +11,7 @@ export function TaskHeader({ operation, type = 'arithmetic' }: TaskHeaderProps) 
     <>
       <Link
         to="/learn"
-        className="inline-flex items-center text-indigo-600 hover:text-indigo-700 mb-8"
+        className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-8"
       >
         <ArrowLeftIcon className="h-5 w-5 mr-2" />
         Back to Learning Paths

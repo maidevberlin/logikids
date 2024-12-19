@@ -57,7 +57,7 @@ export function AnswerForm({
           className={`w-full py-4 px-6 text-lg font-medium rounded-lg border border-transparent 
             ${isCorrect 
               ? 'bg-green-600 hover:bg-green-700 focus:ring-green-500' 
-              : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'
+              : 'bg-primary-600 hover:bg-primary-700 focus:ring-primary-500'
             }
             text-white shadow-sm 
             focus:outline-none focus:ring-2 focus:ring-offset-2 

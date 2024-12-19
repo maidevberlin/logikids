@@ -20,7 +20,7 @@ export function DifficultySelect({ difficulty, onDifficultyChange }: DifficultyS
   return (
     <Listbox value={difficulty} onChange={onDifficultyChange}>
       <div className="relative">
-        <Listbox.Button className="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-3 text-rightfocus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-500">
+        <Listbox.Button className="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-3 text-rightfocus:outline-none focus-visible:border-primary-500 focus-visible:ring-2 focus-visible:ring-primary-500">
           <span className={`inline-flex rounded-md px-2 py-1 text-sm font-medium ${selectedDifficulty.color}`}>
             {selectedDifficulty.label}
           </span>
@@ -41,7 +41,7 @@ export function DifficultySelect({ difficulty, onDifficultyChange }: DifficultyS
                 value={level.value}
                 className={({ active }) =>
                   `relative cursor-pointer select-none py-2 pl-3 pr-9 text-right ${
-                    active ? 'bg-indigo-50' : 'bg-white'
+                    active ? 'bg-primary-50' : 'bg-white'
                   }`
                 }
               >

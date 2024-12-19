@@ -15,7 +15,7 @@ function TaskCard({ name, path, Icon }: { name: string; path: string; Icon: any 
       to={path}
       className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
     >
-      <Icon className="h-12 w-12 text-indigo-600 mb-4" />
+      <Icon className="h-12 w-12 text-primary-600 mb-4" />
       <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
     </Link>
   )
