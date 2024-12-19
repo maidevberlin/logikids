@@ -1,11 +1,11 @@
-import { RouteObject } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import Welcome from '../pages/Welcome'
 import Learn from '../pages/Learn'
 import ArithmeticTaskPage from '../pages/ArithmeticTaskPage'
 import App from '../App'
 import LogicTaskPage from '../pages/LogicTaskPage'
 
-export const routes: RouteObject[] = [
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
@@ -33,4 +33,4 @@ export const routes: RouteObject[] = [
       },
     ],
   },
-] 
+]) 

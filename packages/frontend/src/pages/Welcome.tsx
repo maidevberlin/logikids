@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Welcome() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4 min-h-screen">
       <div className="bg-white p-8 rounded-xl shadow-xl max-w-md w-full transform transition-all hover:scale-105">
         <h1 className="text-4xl font-bold text-blue-800 mb-6 text-center">Welcome to Logikids</h1>
         <p className="text-gray-600 text-center text-lg">Start your journey into the exciting world of mathematics and logical thinking!</p>

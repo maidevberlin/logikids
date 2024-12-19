@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { TaskType, Age, Difficulty } from '../types/task';
 import { LogikidsService } from '../services/logikids';
+import { handleApiError } from '../utils/apiErrors';
 import config from '../config';
 import { taskDefaults } from '../config';
 
@@ -22,9 +23,10 @@ function useTask(type: TaskType, params?: TaskParams) {
         })}`
       );
       
-      if (!response.ok) throw new Error('Failed to fetch task');
+      if (!response.ok) throw response;
       return response.json();
     },
+    retry: false,
   });
 
   const requestHint = async () => {
@@ -35,7 +37,7 @@ function useTask(type: TaskType, params?: TaskParams) {
   return {
     task,
     loading: isLoading || isFetching,
-    error: error instanceof Error ? error.message : null,
+    error: error ? handleApiError(error).message : null,
     requestHint,
     refetch,
   };

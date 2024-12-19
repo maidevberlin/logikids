@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Age } from '../../types/task'
-import { AgeSelect } from '../TaskOptions/AgeSelect'
+import { NumberInput } from '../Common/NumberInput'
 
 interface SettingsModalProps {
   isOpen: boolean
@@ -60,13 +60,13 @@ export function SettingsModal({
                 </div>
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                    <Dialog.Title as="h3" className="text-lg font-semibold leading-6 text-gray-900">
+                    <Dialog.Title as="h3" className="text-2xl font-bold leading-6 text-gray-900">
                       Settings
                     </Dialog.Title>
-                    <div className="mt-6 space-y-6">
+                    <div className="mt-8 space-y-8">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                          Name
+                        <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
+                          What's your name?
                         </label>
                         <input
                           type="text"
@@ -74,12 +74,22 @@ export function SettingsModal({
                           id="name"
                           value={name}
                           onChange={(e) => onNameChange(e.target.value)}
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
-                          placeholder="Enter your name"
+                          className="block w-full rounded-xl border-2 border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-primary-500 focus:ring-primary-500 transition-colors"
+                          placeholder="Type your name here..."
                         />
                       </div>
                       <div>
-                        <AgeSelect age={age} onAgeChange={onAgeChange} />
+                        <label htmlFor="age" className="block text-lg font-medium text-gray-700 mb-2">
+                          How old are you?
+                        </label>
+                        <div className="flex justify-center sm:justify-start">
+                          <NumberInput
+                            value={Number(age)}
+                            onChange={(value) => onAgeChange(value as Age)}
+                            min={5}
+                            max={20}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
