@@ -1,5 +1,5 @@
-import { useArithmeticTask } from '../hooks/useTask'
-import { useTaskHint } from '../hooks/useTaskHint'
+import { useTask } from '../hooks/useTask'
+import { useHint } from '../hooks/useTaskHint'
 import { useArithmeticAnswer } from '../hooks/useArithmeticAnswer'
 import { useSettings } from '../hooks/useSettings'
 import { TaskCard } from '../components/TaskCard'
@@ -8,12 +8,12 @@ import { useSearchParams } from 'react-router-dom'
 import { Difficulty } from '../types/task'
 import { taskDefaults } from '../config'
 
-export default function ArithmeticTaskPage() {
+export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
   const difficulty = (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty
-  const { task, loading, error, refetch } = useArithmeticTask({ age: settings.age, difficulty })
-  const { hint, requestHint } = useTaskHint('arithmetic', task)
+  const { task, loading, error, refetch } = useTask({ age: settings.age, difficulty })
+  const { hint, requestHint } = useHint(task)
   
   console.log(settings);
 
@@ -60,7 +60,6 @@ export default function ArithmeticTaskPage() {
         isLoading={loading}
         task={task}
         hint={hint}
-        type="arithmetic"
         answer={answer}
         selectedAnswer={selectedAnswer}
         isCorrect={isCorrect}

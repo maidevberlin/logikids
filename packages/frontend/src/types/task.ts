@@ -1,24 +1,15 @@
-export const TASK_TYPES = ['arithmetic', 'logic'] as const
-export type TaskType = typeof TASK_TYPES[number]
-
 export type Difficulty = 'easy' | 'medium' | 'hard'
-export type Age = number // age between 6 and 19
+export type Age = number
 
 export interface TaskMetadata {
   difficulty: Difficulty
   age: Age
-  estimatedTimeMinutes: number
+  provider: string
+  model: string
 }
 
-export interface TaskResponse {
+export interface Task {
   task: string
   solution: number
   metadata: TaskMetadata
 }
-
-export interface Task {
-  id: string
-  task: string
-  correctAnswer: string
-  type: TaskType
-} 

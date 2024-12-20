@@ -1,9 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Welcome from '../pages/Welcome'
-import Learn from '../pages/Learn'
-import ArithmeticTaskPage from '../pages/ArithmeticTaskPage'
+import TaskPage from '../pages/TaskPage'
 import App from '../App'
-import LogicTaskPage from '../pages/LogicTaskPage'
 
 export const router = createBrowserRouter([
   {
@@ -15,20 +13,12 @@ export const router = createBrowserRouter([
         element: <Welcome />,
       },
       {
-        path: 'learn',
+        path: 'tasks',
         children: [
           {
             index: true,
-            element: <Learn />,
-          },
-          {
-            path: 'arithmetic/',
-            element: <ArithmeticTaskPage />,
-          },
-          {
-            path: 'logic/',
-            element: <LogicTaskPage />,
-          },
+            element: <TaskPage />,
+          }
         ],
       },
     ],

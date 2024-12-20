@@ -3,14 +3,13 @@ import { LoadingSpinner } from '../LoadingSpinner'
 import { TaskHeader } from './TaskHeader'
 import { HintSection } from './HintSection'
 import { AnswerForm } from './AnswerForm'
-import { TaskResponse, Difficulty } from '../../types/task'
+import { Task, Difficulty } from '../../types/task'
 import { DifficultySelect } from '../TaskOptions/DifficultySelect'
 
 interface TaskCardProps {
   isLoading: boolean
-  task: TaskResponse | null
+  task: Task | null
   hint: string | null
-  type: 'arithmetic' | 'geometry'
   answer?: number | null
   selectedAnswer?: number | null
   isCorrect?: boolean | null
@@ -27,7 +26,6 @@ export function TaskCard({
   isLoading,
   task,
   hint,
-  type,
   answer = null,
   selectedAnswer = null,
   isCorrect = null,
@@ -42,7 +40,7 @@ export function TaskCard({
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
-        <TaskHeader type={type} />
+        <TaskHeader />
         
         <div className="bg-white rounded-xl shadow-lg p-8 relative">
           <div className="absolute top-6 right-6 w-32">

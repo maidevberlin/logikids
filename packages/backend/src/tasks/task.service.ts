@@ -1,8 +1,8 @@
+import path from 'path';
 import fs from 'fs/promises';
 import yaml from 'js-yaml';
-import { AIClient } from '../ai/base';
-import { TaskResponse } from '../../types/task';
-import { TaskQuery } from './base-task.controller';
+import { AIClient } from '../common/ai/base';
+import { taskResponseSchema, TaskRequest, TaskMetadata, Task } from './types';
 
 interface BasePrompt {
   prompt: string;
@@ -11,10 +11,9 @@ interface BasePrompt {
 const DEFAULT_AGE = 8;
 const DEFAULT_DIFFICULTY = 'medium' as const;
 
-export abstract class BaseTaskService {
+export class TaskService {
   protected prompts: BasePrompt | null = null;
-  protected abstract promptPath: string;
-  protected abstract taskType: string;
+  protected promptPath = path.join(__dirname, '/prompts/arithmetic.yaml');
 
   constructor(protected aiClient: AIClient) {}
 
@@ -28,9 +27,7 @@ export abstract class BaseTaskService {
     return this.prompts;
   }
 
-  protected abstract validateAndTransformResponse(jsonResponse: unknown): Promise<TaskResponse>;
-
-  async generateTask(query: TaskQuery, language: string = 'en'): Promise<TaskResponse> {
+  async generateTask(query: TaskRequest, language: string = 'en'): Promise<Task> {
     const prompts = await this.loadPrompts();
     if (!prompts) {
       throw new Error('Failed to load prompts');
@@ -51,15 +48,17 @@ export abstract class BaseTaskService {
 
     try {
       const jsonResponse = JSON.parse(response.response);
-      
-      if (jsonResponse.metadata) {
-        jsonResponse.metadata.provider = this.aiClient.provider;
-        jsonResponse.metadata.model = this.aiClient.model;
-        jsonResponse.metadata.age = age;
-        jsonResponse.metadata.difficulty = difficulty;
+      if (!jsonResponse.metadata) {
+        jsonResponse.metadata = { 
+          ...jsonResponse.metadata,
+          provider: this.aiClient.provider,
+          model: this.aiClient.model,
+          age,
+          difficulty
+        } as TaskMetadata;
       }
 
-      return await this.validateAndTransformResponse(jsonResponse);
+      return taskResponseSchema.parse(jsonResponse);
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(`Failed to parse AI response: ${error.message}`);

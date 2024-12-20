@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { getConfig } from './config';
-import arithmeticRouter from './arithmetic/router';
+import tasksRouter from './tasks/router';
+import hintsRouter from './hints/router';
 
 const app = express();
 const config = await getConfig('server');
@@ -10,7 +11,8 @@ const port = config.port;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/arithmetic', arithmeticRouter);
+app.use('/api/task', tasksRouter);
+app.use('/api/hint', hintsRouter);
 // app.use('/api/geometry', geometryRouter);
 
 // Initialize services

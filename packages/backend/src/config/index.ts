@@ -2,7 +2,7 @@ import { z } from 'zod';
 import yaml from 'js-yaml';
 import { join } from 'path';
 import { AIConfig, aiConfigSchema, defaultConfig as defaultAIConfig } from './ai';
-import { defaultServerConfig, ServerConfig, serverConfigSchema } from '../types/serverConfig';
+import { defaultServerConfig, ServerConfig, serverConfigSchema } from './server';
 
 export interface Config {
   ai: AIConfig;

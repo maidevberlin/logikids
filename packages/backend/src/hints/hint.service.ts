@@ -1,17 +1,17 @@
-import fs from 'fs/promises';
 import path from 'path';
+import fs from 'fs/promises';
 import yaml from 'js-yaml';
-import { AIClient } from '../ai/base';
-import { TaskResponse } from '../../types/task';
-import { HintResponse, hintResponseSchema } from '../../types/hint';
+import { AIClient } from '../common/ai/base';
+import { HintResponse, hintResponseSchema } from './types';
+import { Task } from '../tasks/types';
 
 interface HintPrompt {
   prompt: string;
 }
 
-export abstract class BaseHintsService {
+export class HintsService {
   private hintsPrompt: HintPrompt | null = null;
-  protected abstract promptPath: string;
+  protected promptPath = path.join(__dirname, '/prompt.yaml');
 
   constructor(protected aiClient: AIClient) {}
 
@@ -25,14 +25,14 @@ export abstract class BaseHintsService {
     return this.hintsPrompt;
   }
 
-  async generateHint(task: TaskResponse, language: string = 'en'): Promise<HintResponse> {
+  async generateHint(task: Task, language: string = 'en'): Promise<HintResponse> {
     const { prompt } = await this.loadPrompts();
     
     const filledPrompt = prompt
       .replace('{{task}}', task.task)
       .replace('{{solution}}', task.solution.toString())
       .replace('{{difficulty}}', task.metadata.difficulty)
-      .replace('{{age}}', `${task.metadata.age.min}-${task.metadata.age.max}`)
+      .replace('{{age}}', `${task.metadata.age}`)
       .replace('{{language}}', language);
 
     const response = await this.aiClient.generate(filledPrompt);
@@ -45,10 +45,7 @@ export abstract class BaseHintsService {
       return hintResponseSchema.parse(jsonResponse);
     } catch (error) {
       return hintResponseSchema.parse({
-        hint: response.response.trim(),
-        metadata: {
-          type: task.type
-        }
+        hint: response.response.trim()
       });
     }
   }

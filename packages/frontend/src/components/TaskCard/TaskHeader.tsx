@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 
-interface TaskHeaderProps {
-  operation?: string
-  type?: 'arithmetic' | 'geometry'
-}
 
-export function TaskHeader({ operation, type = 'arithmetic' }: TaskHeaderProps) {
+export function TaskHeader() {
   return (
     <>
       <Link
@@ -18,9 +14,7 @@ export function TaskHeader({ operation, type = 'arithmetic' }: TaskHeaderProps) 
       </Link>
 
       <h1 className="text-2xl font-bold text-gray-900 mb-6">
-        {operation 
-          ? `${operation.charAt(0).toUpperCase() + operation.slice(1)} Task`
-          : `${type.charAt(0).toUpperCase() + type.slice(1)} Task`}
+        Task
       </h1>
     </>
   )
