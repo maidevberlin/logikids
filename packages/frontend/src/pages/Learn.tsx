@@ -25,7 +25,7 @@ export default function Learn() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Choose Your Learning Path</h1>
+        <h1>Choose Your Learning Path</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {tasks.map((task) => (

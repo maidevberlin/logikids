@@ -12,10 +12,11 @@ export default function ArithmeticTaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
   const difficulty = (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty
-  
   const { task, loading, error, refetch } = useArithmeticTask({ age: settings.age, difficulty })
   const { hint, requestHint } = useTaskHint('arithmetic', task)
   
+  console.log(settings);
+
   const {
     answer,
     selectedAnswer,
