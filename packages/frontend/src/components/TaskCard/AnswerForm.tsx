@@ -53,7 +53,7 @@ export function AnswerForm({
         <button
           type={isCorrect ? 'button' : 'submit'}
           onClick={isCorrect ? onNextTask : undefined}
-          disabled={!isCorrect && !answer}
+          disabled={!isCorrect && answer === null}
           className={`w-full py-4 px-6 text-lg font-medium rounded-lg border border-transparent 
             ${isCorrect 
               ? 'bg-green-600 hover:bg-green-700 focus:ring-green-500' 
