@@ -47,18 +47,18 @@ export class TaskService {
     }
 
     try {
-      const jsonResponse = JSON.parse(response.response);
-      if (!jsonResponse.metadata) {
-        jsonResponse.metadata = { 
-          ...jsonResponse.metadata,
-          provider: this.aiClient.provider,
-          model: this.aiClient.model,
-          age,
-          difficulty
-        } as TaskMetadata;
-      }
+      const task = JSON.parse(response.response);
+      const taskResponse = taskResponseSchema.parse(task) as Task;
+      taskResponse.metadata = { 
+        difficulty,
+        age,
+        provider: this.aiClient.provider,
+        model: this.aiClient.model,
+        language
+      } as TaskMetadata
 
-      return taskResponseSchema.parse(jsonResponse);
+      return taskResponse;
+
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(`Failed to parse AI response: ${error.message}`);

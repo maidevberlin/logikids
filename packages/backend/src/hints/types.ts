@@ -1,9 +1,10 @@
 import { z } from 'zod';
 
-export interface HintResponse {
+export interface Hint {
   hint: string;
+  language: string;
 }
 
-export const hintResponseSchema = z.object({
+export const hintSchema = z.object({
   hint: z.string()
 });

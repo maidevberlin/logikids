@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { BaseController } from '../common/baseController';
-import { HintResponse as Hint } from './types';
+import { Hint as Hint } from './types';
 import { Task, taskResponseSchema } from '../tasks/types';
 import { HintsService } from './hint.service';
 

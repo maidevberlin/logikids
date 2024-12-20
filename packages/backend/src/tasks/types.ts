@@ -23,15 +23,10 @@ export interface TaskMetadata {
   age: Age
   provider: string
   model: string
+  language: string
 }
 
 export const taskResponseSchema = z.object({
   task: z.string(),
-  solution: z.number(),
-  metadata: z.object({
-    difficulty: z.enum(['easy', 'medium', 'hard']),
-    age: z.number(),
-    provider: z.enum(['ollama', 'openai']),
-    model: z.string()
-  }),
+  solution: z.number()
 });

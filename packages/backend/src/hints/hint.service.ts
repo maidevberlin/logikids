@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import yaml from 'js-yaml';
 import { AIClient } from '../common/ai/base';
-import { HintResponse, hintResponseSchema } from './types';
+import { Hint, hintSchema } from './types';
 import { Task } from '../tasks/types';
 
 interface HintPrompt {
@@ -25,7 +25,7 @@ export class HintsService {
     return this.hintsPrompt;
   }
 
-  async generateHint(task: Task, language: string = 'en'): Promise<HintResponse> {
+  async generateHint(task: Task, language: string = 'en'): Promise<Hint> {
     const { prompt } = await this.loadPrompts();
     
     const filledPrompt = prompt
@@ -42,11 +42,19 @@ export class HintsService {
 
     try {
       const jsonResponse = JSON.parse(response.response);
-      return hintResponseSchema.parse(jsonResponse);
+      const hint = hintSchema.parse(jsonResponse);
+      return {
+        ...hint,
+        language
+      };
     } catch (error) {
-      return hintResponseSchema.parse({
+      const hint = hintSchema.parse({
         hint: response.response.trim()
       });
+      return {
+        ...hint,
+        language
+      };
     }
   }
 } 
