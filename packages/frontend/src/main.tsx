@@ -1,11 +1,14 @@
+// External imports
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 
+// Internal imports
 import './i18n/config'
 import './index.css'
 import { router } from './routes'
 import { LoadingState } from './components/base/LoadingState'
+import { ErrorBoundary } from './components/base/ErrorBoundary'
 
 const rootElement = document.getElementById('root')
 
@@ -15,8 +18,10 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <Suspense fallback={<LoadingState />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingState />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ErrorBoundary>
   </React.StrictMode>
 ) 
