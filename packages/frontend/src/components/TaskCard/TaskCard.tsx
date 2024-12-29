@@ -5,16 +5,17 @@ import { HintSection } from './HintSection'
 import { AnswerForm } from './AnswerForm'
 import { Task, Difficulty } from '../../types/task'
 import { DifficultySelect } from '../TaskOptions/DifficultySelect'
+import { Hint } from '../../types/hint'
 
 interface TaskCardProps {
   isLoading: boolean
-  task: Task | null
-  hint: string | null
+  task: Task
+  hint: Hint | null
   answer?: number | null
   selectedAnswer?: number | null
   isCorrect?: boolean | null
   difficulty: Difficulty
-  onAnswerChange?: (value: number) => void
+  onAnswerChange?: (value: number | null) => void
   onAnswerSubmit?: (event: React.FormEvent) => void
   onRequestHint: () => void
   onNextTask: () => void

@@ -1,39 +1,48 @@
-import { Task } from '../types/task';
+import { api, ApiResponse } from './api';
+import { Task, TaskParams } from '../types/task';
+import { Hint, HintParams } from '../types/hint';
 
-export class LogikidsService {
-  private baseUrl: string;
-
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
+export class LogikidsApiError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'LogikidsApiError';
   }
+}
 
-  async getTask(signal?: AbortSignal): Promise<Task> {
-    const response = await fetch(`${this.baseUrl}/task`, {
-      signal,
+export const logikids = {
+  getTask: (params: TaskParams, signal?: AbortSignal): ApiResponse<Task> => {
+    return api.get<any, Task>('/task', {params, signal})
+    .then(task => {
+      if (!task) {
+        throw new LogikidsApiError('No task data received from server');
+      }
+      return task;
+    })
+    .catch((error) => {
+      if (error.response?.status === 404) {
+        throw new LogikidsApiError('No tasks found for the selected criteria');
+      }
+      if (error instanceof LogikidsApiError) {
+        throw error;
+      }
+      throw new LogikidsApiError(error.message || 'Failed to fetch task');
     });
+  },
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch task');
-    }
-
-    return response.json();
+  getHint: (params: HintParams, signal?: AbortSignal): ApiResponse<Hint> => {
+    return api.post<any, Hint>('/hint', params, { signal })
+      .then((hint) => {
+        if (!hint) {
+          throw new LogikidsApiError('No hint data received from server');
+        }
+        return hint;
+      })
+      .catch((error) => {
+        if (error.response?.status === 404) {
+          throw new LogikidsApiError('Hint not available for this task');
+        }
+        throw error;
+      });
   }
+}; 
 
-  async getHint(task: Task, signal?: AbortSignal): Promise<string> {
-    const response = await fetch(`${this.baseUrl}/hint`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(task),
-      signal,
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch hint');
-    }
-
-    const data = await response.json();
-    return data.hint;
-  }
-} 

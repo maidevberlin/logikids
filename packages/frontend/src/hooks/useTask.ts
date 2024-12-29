@@ -1,44 +1,43 @@
-import { useQuery } from '@tanstack/react-query';
-import { Age, Difficulty } from '../types/task';
-import { LogikidsService } from '../services/logikids';
-import { handleApiError } from '../utils/apiErrors';
-import config from '../config';
-import { taskDefaults } from '../config';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { TaskParams } from '../types/task';
+import { logikids } from '../services/logikids';
 
-interface TaskParams {
-  age?: Age;
-  difficulty?: Difficulty;
-}
-
-const logikidsService = new LogikidsService(config.apiBaseUrl);
-
-export const useTask = (params?: TaskParams) => {
-  const { data: task, isLoading, error, refetch, isFetching } = useQuery({
-    queryKey: ['task', params?.age, params?.difficulty],
-    queryFn: async () => {
-      const response = await fetch(
-        `${config.apiBaseUrl}/task?${new URLSearchParams({
-          age: (params?.age ?? taskDefaults.age).toString(),
-          difficulty: params?.difficulty ?? taskDefaults.difficulty,
-        })}`
-      );
-      
-      if (!response.ok) throw response;
-      return response.json();
-    },
+export const useTask = (params: TaskParams) => {
+  const {
+    data: task,
+    isLoading: isTaskLoading,
+    error: taskError,
+    refetch,
+    isFetching: isTaskFetching
+  } = useQuery({
+    queryKey: ['task', params],
+    queryFn: ({ signal }) => logikids.getTask(params, signal),
     retry: false,
   });
 
-  const requestHint = async () => {
-    if (!task) return;
-    return logikidsService.getHint(task);
-  };
+  const {
+    mutate: requestHint,
+    data: hint = null,
+    isPending: isHintLoading,
+    error: hintError,
+    reset: resetHint,
+  } = useMutation({
+    mutationFn: () => {
+      if (!task) throw new Error('No task available');
+      return logikids.getHint({task, previousHints: []});
+    }
+  });
 
   return {
     task,
-    loading: isLoading || isFetching,
-    error: error ? handleApiError(error).message : null,
+    hint,
+    isTaskLoading,
+    isTaskFetching,
+    isHintLoading,
+    taskError: taskError ? taskError.message : null,
+    hintError: hintError ? (hintError as Error).message : null,
     requestHint,
+    resetHint,
     refetch,
   };
 }

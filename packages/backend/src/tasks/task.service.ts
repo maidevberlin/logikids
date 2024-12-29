@@ -2,25 +2,22 @@ import path from 'path';
 import fs from 'fs/promises';
 import yaml from 'js-yaml';
 import { AIClient } from '../common/ai/base';
-import { taskResponseSchema, TaskRequest, TaskMetadata, Task } from './types';
+import { taskResponseSchema, TaskRequest, TaskMetadata, Task, Subject } from './types';
 
 interface BasePrompt {
   prompt: string;
 }
 
-const DEFAULT_AGE = 8;
-const DEFAULT_DIFFICULTY = 'medium' as const;
-
 export class TaskService {
   protected prompts: BasePrompt | null = null;
-  protected promptPath = path.join(__dirname, '/prompts/arithmetic.yaml');
+  protected promptPath = path.join(__dirname, '/prompts');
 
   constructor(protected aiClient: AIClient) {}
 
-  protected async loadPrompts() {
+  protected async loadPrompts( subject: Subject) {
     const isDevelopment = process.env.NODE_ENV !== 'production';
     if (!this.prompts || isDevelopment) {
-      const content = await fs.readFile(this.promptPath, 'utf-8');
+      const content = await fs.readFile(this.promptPath + `/${subject}.yaml`, 'utf-8');
       const prompt = yaml.load(content) as BasePrompt;
       this.prompts = prompt;
     }
@@ -28,14 +25,15 @@ export class TaskService {
   }
 
   async generateTask(query: TaskRequest, language: string = 'en'): Promise<Task> {
-    const prompts = await this.loadPrompts();
+    const subject = query.subject;
+    const prompts = await this.loadPrompts(subject);
     if (!prompts) {
       throw new Error('Failed to load prompts');
     }
     
-    const age = query.age ?? DEFAULT_AGE;
-    const difficulty = query.difficulty ?? DEFAULT_DIFFICULTY;
-    
+    const age = query.age;
+    const difficulty = query.difficulty;
+
     let filledPrompt = prompts.prompt
       .replaceAll('{{language}}', language)
       .replaceAll('{{age}}', age.toString())
@@ -46,18 +44,22 @@ export class TaskService {
       throw new Error('Failed to generate response from AI');
     }
 
+    const metadata = { 
+      difficulty,
+      age,
+      provider: this.aiClient.provider,
+      model: this.aiClient.model,
+      language,
+      subject
+    } as TaskMetadata
+
     try {
       const task = JSON.parse(response.response);
-      const taskResponse = taskResponseSchema.parse(task) as Task;
-      taskResponse.metadata = { 
-        difficulty,
-        age,
-        provider: this.aiClient.provider,
-        model: this.aiClient.model,
-        language
-      } as TaskMetadata
-
-      return taskResponse;
+      const taskResponse = taskResponseSchema.parse(task);
+      return {
+        ...taskResponse,
+        metadata
+      } as Task;
 
     } catch (error) {
       if (error instanceof Error) {

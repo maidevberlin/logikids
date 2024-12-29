@@ -5,7 +5,7 @@ interface AnswerFormProps {
   answer: number | null
   selectedAnswer: number | null
   isCorrect: boolean | null
-  onAnswerChange: (value: number) => void
+  onAnswerChange: (value: number | null) => void
   onSubmit: (event: React.FormEvent) => void
   onNextTask?: () => void
   onRequestHint?: () => void

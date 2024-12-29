@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Age } from '../types/task'
-import { taskDefaults } from '../config'
 
 interface Settings {
   age: Age
@@ -8,7 +7,7 @@ interface Settings {
 }
 
 const defaultSettings: Settings = {
-  age: taskDefaults.age,
+  age: 12,
   name: ''
 }
 

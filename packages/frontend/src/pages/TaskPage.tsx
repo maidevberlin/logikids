@@ -1,30 +1,28 @@
 import { useTask } from '../hooks/useTask'
-import { useHint } from '../hooks/useTaskHint'
-import { useArithmeticAnswer } from '../hooks/useArithmeticAnswer'
 import { useSettings } from '../hooks/useSettings'
 import { TaskCard } from '../components/TaskCard'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useSearchParams } from 'react-router-dom'
-import { Difficulty } from '../types/task'
-import { taskDefaults } from '../config'
+import { Difficulty, taskDefaults } from '../types/task'
+import { useState } from 'react'
 
 export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
   const difficulty = (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty
-  const { task, loading, error, refetch } = useTask({ age: settings.age, difficulty })
-  const { hint, requestHint } = useHint(task)
   
-  console.log(settings);
+  const { 
+    task, 
+    hint,
+    isTaskLoading,
+    taskError,
+    refetch, 
+    requestHint,
+  } = useTask({ age: settings.age, difficulty, subject: 'math' })
 
-  const {
-    answer,
-    selectedAnswer,
-    isCorrect,
-    handleAnswerChange,
-    handleAnswerSubmit,
-    reset,
-  } = useArithmeticAnswer()
+  const [answer, setAnswer] = useState<number | null>(null)
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
     setSearchParams(prev => {
@@ -34,22 +32,28 @@ export default function TaskPage() {
     })
   }
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    if (task) {
-      handleAnswerSubmit(task.solution)
-    }
+  const handleAnswerChange = (newAnswer: number | null) => {
+    setAnswer(newAnswer)
+    setSelectedAnswer(newAnswer)
+  }
+
+  const handleSubmit = () => {
+    if (!task) return
+    const correct = answer === task.solution
+    setIsCorrect(correct)
   }
 
   const handleNextTask = () => {
-    reset()
+    setAnswer(null)
+    setSelectedAnswer(null)
+    setIsCorrect(null)
     refetch()
   }
 
-  if (error) {
+  if (taskError) {
     return (
       <div className="flex items-center justify-center h-full">
-        <ErrorDisplay message={error} onRetry={() => refetch()} />
+        <ErrorDisplay message={taskError} onRetry={() => refetch()} />
       </div>
     )
   }
@@ -57,8 +61,8 @@ export default function TaskPage() {
   return (
     <div className="space-y-4">
       <TaskCard
-        isLoading={loading}
-        task={task}
+        isLoading={isTaskLoading}
+        task={task!}
         hint={hint}
         answer={answer}
         selectedAnswer={selectedAnswer}

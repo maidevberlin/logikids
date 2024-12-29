@@ -6,16 +6,12 @@ import { TaskRequest, taskRequestSchema, Task } from './types';
 
 export class TaskController extends BaseController {
 
-  protected generateTaskInternal(query: TaskRequest, language?: string): Promise<Task>{
-    const taskService = new TaskService(this.aiClient);
-    return taskService.generateTask(query, language);
-  }
-
   public async getTask(req: Request, res: Response): Promise<void> {
     try {
       const query = taskRequestSchema.parse(req.query);
       const language = this.getPreferredLanguage(req);
-      const task = await this.generateTaskInternal(query, language);
+      const taskService = new TaskService(this.aiClient);
+      const task = await taskService.generateTask(query, language);
       res.json(task);
     } catch (error) {
       if (error instanceof z.ZodError) {

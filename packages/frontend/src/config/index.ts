@@ -11,8 +11,3 @@ const config: Config = {
 };
 
 export default config;
-
-export const taskDefaults = {
-  age: 12,
-  difficulty: 'medium' as const
-} as const 

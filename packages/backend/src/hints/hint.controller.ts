@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { BaseController } from '../common/baseController';
-import { Hint as Hint } from './types';
+import { Hint as Hint, hintParamsSchema } from './types';
 import { Task, taskResponseSchema } from '../tasks/types';
 import { HintsService } from './hint.service';
 
@@ -9,10 +9,11 @@ export class HintsController extends BaseController {
 
   public async generateHint(req: Request, res: Response): Promise<void> {
     try {
-      const task = taskResponseSchema.parse(req.body);
+      const hintParams = hintParamsSchema.parse(req.body);
+
       const language = this.getPreferredLanguage(req);
       const hintService = new HintsService(this.aiClient);
-      const hint = await hintService.generateHint(task, language);
+      const hint = await hintService.generateHint(hintParams, language);
       res.json(hint);
     } catch (error) {
       if (error instanceof z.ZodError) {

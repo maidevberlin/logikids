@@ -1,24 +1,22 @@
 import { useState, useEffect } from 'react'
 import { TaskOption } from './TaskOption'
+import { Hint } from '../../types/hint'
 
-interface HintDisplayProps {
-  hint: string
-}
 
-function HintDisplay({ hint }: HintDisplayProps) {
+function HintDisplay({ hint }: { hint: Hint }) {
   const [shouldFlash, setShouldFlash] = useState(false)
 
   useEffect(() => {
     setShouldFlash(true)
     const timer = setTimeout(() => setShouldFlash(false), 600)
     return () => clearTimeout(timer)
-  }, [hint])
+  }, [hint.hint])
 
   return (
     <div className={`bg-blue-50 p-4 rounded-lg transition-colors duration-300 ${
       shouldFlash ? 'bg-blue-100' : 'bg-blue-50'
     }`}>
-      <p className="text-blue-700">{hint}</p>
+      <p className="text-blue-700">{hint.hint}</p>
     </div>
   )
 }
@@ -45,7 +43,7 @@ function HintActions({ hasHint, onRequestHint, onSkip }: HintActionsProps) {
 }
 
 interface HintSectionProps {
-  hint: string | null
+  hint: Hint | null
   onRequestHint: () => void
   onSkip: () => void
 }
@@ -55,7 +53,7 @@ export function HintSection({ hint, onRequestHint, onSkip }: HintSectionProps) {
     <div className="space-y-4">
       {hint && <HintDisplay hint={hint} />}
       <HintActions 
-        hasHint={Boolean(hint)}
+        hasHint={Boolean(hint?.hint)}
         onRequestHint={onRequestHint}
         onSkip={onSkip}
       />
