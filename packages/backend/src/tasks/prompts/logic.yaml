@@ -3,57 +3,66 @@ prompt: |
   ## Your role
     You are an expert in logic and reasoning.
     Your task is to generate a logic task{{concept}} for students of age {{age}}.
-    You will be asked several times to generate a task, so you must be very creative, so you don't repeat the same task.
+    You must be highly creative and generate diverse tasks using different logical concepts.
+    
+    ## Task Types
+    You must randomly choose ONE of these task types for each generation:
+    1. Sequential Reasoning: Tasks involving steps or events in sequence
+    2. Categorical Logic: Tasks about classification and grouping
+    3. Conditional Logic: If-then relationships and implications
+    4. Truth Tables: Tasks with true/false statements
+    5. Pattern Recognition: Finding logical patterns or rules
+    6. Deductive Reasoning: Drawing conclusions from given premises
+    7. Analogical Reasoning: Understanding relationships between concepts
+    8. Spatial Logic: Tasks involving positions, arrangements, or movements
+    9. Set Theory: Tasks involving groups and their relationships
+    10. Probability Logic: Tasks about likelihood and possibilities
+    
+    ## Task Contexts
+    You must randomly choose ONE of these contexts to frame your task:
+    1. Mystery/Detective scenarios
+    2. Fantasy/Adventure stories
+    3. Real-world situations
+    4. Sports and games
+    5. Science experiments
+    6. Historical events
+    7. Environmental scenarios
+    8. Technology and computers
+    9. Social situations
+    10. Business scenarios
     
     ## Your rules
     You strictly obey the following rules when generating the task:
     - You must keep the task clear and understandable.
-    - You must not reveal the solution in the task-description.
-    - You must provide all information needed to solve the task.
     - You must ensure the task is {{difficulty}} for a {{age}} year old student.
-    - You must ensure, that the task requires thinking and reasoning, NOT calculation.
     - You must create plausible but incorrect options for multiple choice.
     - You must provide helpful hints that guide towards the solution.
     {{concept_rule}}
     
-    ## Your reply
-    You strictly obey the following rules for your reply:
-    - You must ONLY output valid JSON, nothing else.
-    - ALL property names must be in double quotes.
-    - ALL values must be of the correct type.
-    - The JSON must be strictly valid - no comments, no trailing commas, no additional text.
-    - The task field MUST be in the language: {{language}}
-    - Your response must match this EXACT structure:
-      {
-        "title": string,       // A short, engaging title for the task
-        "task": string,        // The task description
-        "options": string[],   // 4 multiple-choice options, including the correct answer
-        "solution": {
-          "index": number,     // The index of the correct answer in options array
-          "explanation": string // Explanation why this is the correct solution
-        },
-        "hints": string[]      // 3-5 progressive hints to help solve the task
-      }
+    ## Output Format Rules
+    CRITICAL: You must follow these rules EXACTLY:
+    1. Output ONLY the JSON object - no markdown, no code blocks, no additional text
+    2. Do NOT wrap the JSON in ```json or any other formatting
+    3. Do NOT add any explanatory text before or after the JSON
+    4. Start your response with the opening brace {
+    5. End your response with the closing brace }
+    6. Use ONLY double quotes for property names and string values
+    7. Do NOT use any comments in the JSON
+    8. Do NOT use any trailing commas
+    9. The JSON must be valid and parseable
+    10. ALL texts must be in the language: {{language}}
+    11. Use HTML to format the task and options for better readability
 
-    ## Example valid response
+    ## JSON Structure
+    Your response must match this EXACT structure:
     {
-    "title": "The Mysterious Boxes",
-    "task": "<p>You are an investigator trying to solve the puzzle of three mysterious boxes. Each box contains either a true statement or a false statement written on it. Your task is to figure out which box contains the diamond based on the logic provided.</p><p><strong>The Boxes:</strong></p><ul><li><strong>Box 1:</strong> 'The diamond is in Box 2.'</li><li><strong>Box 2:</strong> 'The diamond is not in Box 3.'</li><li><strong>Box 3:</strong> 'The diamond is not in Box 1.'</li></ul><p><strong>Rules:</strong></p><ul><li>Only one of the statements on the boxes is true.</li><li>The diamond is in one of the boxes.</li></ul><p><strong>Which box contains the diamond?</strong></p>",
-    "options": [
-      "The diamond is in Box 1.",
-      "The diamond is in Box 2.",
-      "The diamond is in Box 3.",
-      "There is no diamond in any box."
-    ],
-    "solution": {
-      "index": 0,
-      "explanation": "If Box 2's statement is true ('The diamond is not in Box 3'), it means the statements on Box 1 ('The diamond is in Box 2') and Box 3 ('The diamond is not in Box 1') must be false. This works without contradictions, and it leads to the diamond being in Box 1."
-    },
-    "hints": [
-      "Review the rule that only one statement can be true. If one statement is true, the others must be false.",
-      "Start by assuming Box 1's statement is true. See if the other statements lead to a contradiction.",
-      "Next, assume Box 2's statement is true. Check if this fits the rules without contradictions.",
-      "Finally, assume Box 3's statement is true. Verify if this creates a logical contradiction.",
-      "Determine which assumption works without contradictions to find the box with the diamond."
-    ]
+      "title": string,
+      "task": string,
+      "options": string[],
+      "solution": {
+        "index": number,
+        "explanation": string
+      },
+      "hints": string[]
+    }
   }

@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { LightBulbIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 import { TaskOption } from './TaskOption'
 
 interface HintProps {
@@ -28,17 +30,39 @@ interface HintSectionProps {
 
 export function HintSection({ hints, onSkip }: HintSectionProps) {
   const [visibleHints, setVisibleHints] = useState(0)
+  const [shouldShake, setShouldShake] = useState(false)
   const hasMoreHints = visibleHints < hints.length
   const hasHints = hints.length > 0
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (hasMoreHints) {
+        setShouldShake(true)
+      }
+    }, 30000)
+
+    return () => clearTimeout(timer)
+  }, [hasMoreHints])
 
   const handleRequestHint = () => {
     if (hasMoreHints) {
       setVisibleHints(prev => prev + 1)
+      setShouldShake(false)
     }
   }
 
   if (!hasHints) {
-    return null
+    return (
+      <div className="flex justify-end">
+        <Link
+          to="/tasks"
+          className="inline-flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors"
+        >
+          Skip
+          <ArrowRightIcon className="h-5 w-5" />
+        </Link>
+      </div>
+    )
   }
 
   return (
@@ -58,20 +82,28 @@ export function HintSection({ hints, onSkip }: HintSectionProps) {
         )}
       </AnimatePresence>
       
-      <div className="flex gap-4">
-        <TaskOption 
-          onSelect={handleRequestHint}
-          label={visibleHints === 0 ? 'Get Hint' : 'Get Another Hint'}
-          disabled={!hasMoreHints}
-          variant="secondary"
-        />
-        {visibleHints > 0 && (
+      <div className="flex justify-between">
+        <motion.div animate={{ scale: shouldShake ? 1.05 : 1 }} className={shouldShake ? 'animate-shake' : ''}>
           <TaskOption 
-            onSelect={onSkip}
-            label="Skip"
+            onSelect={handleRequestHint}
+            label={
+              <span className="inline-flex items-center gap-2">
+                <LightBulbIcon className="h-5 w-5" />
+                {visibleHints === 0 ? 'Get Hint' : 'Get Another Hint'}
+              </span>
+            }
+            disabled={!hasMoreHints}
             variant="secondary"
+            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
           />
-        )}
+        </motion.div>
+        <Link
+          to="/tasks"
+          className="inline-flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors"
+        >
+          Skip
+          <ArrowRightIcon className="h-5 w-5" />
+        </Link>
       </div>
     </div>
   )

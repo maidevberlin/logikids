@@ -1,9 +1,8 @@
 import { useTask } from '../hooks/useTask'
 import { useSettings } from '../hooks/useSettings'
 import { TaskCard } from '../components/TaskCard'
-import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useSearchParams } from 'react-router-dom'
-import { Difficulty, Subject, taskDefaults } from '../types/task'
+import { Difficulty, Subject, taskDefaults, Task } from '../types/task'
 
 export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -38,31 +37,22 @@ export default function TaskPage() {
     })
   }
 
-  if (error) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <ErrorDisplay message={error} onRetry={nextTask} />
-      </div>
-    )
-  }
-
   return (
     <div className="space-y-4">
-      {task && (
-        <TaskCard
-          isLoading={isLoading}
-          task={task}
-          selectedAnswer={selectedAnswer}
-          isCorrect={isCorrect}
-          difficulty={difficulty}
-          subject={subject}
-          onAnswerSelect={selectAnswer}
-          onAnswerSubmit={checkAnswer}
-          onNextTask={nextTask}
-          onDifficultyChange={handleDifficultyChange}
-          onSubjectChange={handleSubjectChange}
-        />
-      )}
+      <TaskCard
+        isLoading={isLoading}
+        task={task ?? {} as Task}
+        selectedAnswer={selectedAnswer}
+        isCorrect={isCorrect}
+        difficulty={difficulty}
+        subject={subject}
+        error={error}
+        onAnswerSelect={selectAnswer}
+        onAnswerSubmit={checkAnswer}
+        onNextTask={nextTask}
+        onDifficultyChange={handleDifficultyChange}
+        onSubjectChange={handleSubjectChange}
+      />
     </div>
   )
 } 

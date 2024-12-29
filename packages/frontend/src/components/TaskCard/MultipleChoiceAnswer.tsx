@@ -9,6 +9,7 @@ interface MultipleChoiceAnswerProps {
   onAnswerSelect: (index: number) => void
   onSubmit: () => void
   onNextTask: () => void
+  solutionExplanation: string
 }
 
 export function MultipleChoiceAnswer({
@@ -18,6 +19,7 @@ export function MultipleChoiceAnswer({
   onAnswerSelect,
   onSubmit,
   onNextTask,
+  solutionExplanation
 }: MultipleChoiceAnswerProps) {
   return (
     <div className="space-y-4">
@@ -46,21 +48,38 @@ export function MultipleChoiceAnswer({
               }
             `}
           >
-            <div className="text-lg font-medium text-gray-900">
-              {text}
-            </div>
+            <div 
+              className="text-lg font-medium text-gray-900 prose prose-blue max-w-none"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
           </motion.button>
         ))}
       </div>
 
       <AnimatePresence mode="wait">
         {isCorrect !== null && (
-          <Feedback isCorrect={isCorrect} />
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="space-y-4"
+          >
+            <Feedback isCorrect={isCorrect} />
+            {isCorrect && (
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h3 className="text-lg font-medium text-green-800 mb-2">Solution Explanation</h3>
+                <div 
+                  className="prose prose-blue max-w-none text-green-700"
+                  dangerouslySetInnerHTML={{ __html: solutionExplanation }}
+                />
+              </div>
+            )}
+          </motion.div>
         )}
       </AnimatePresence>
       
       <motion.div 
-        className="flex justify-end"
+        className="w-full"
         layout
       >
         {isCorrect === null ? (
@@ -69,12 +88,14 @@ export function MultipleChoiceAnswer({
             label="Check Answer"
             disabled={selectedAnswer === null}
             variant="primary"
+            className="w-full"
           />
         ) : isCorrect ? (
           <TaskOption
             onSelect={onNextTask}
             label="Next Task"
             variant="success"
+            className="w-full"
           />
         ) : (
           <TaskOption
@@ -84,6 +105,7 @@ export function MultipleChoiceAnswer({
             }}
             label="Try Again"
             variant="warning"
+            className="w-full"
           />
         )}
       </motion.div>

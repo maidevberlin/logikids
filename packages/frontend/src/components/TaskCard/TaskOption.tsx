@@ -1,15 +1,19 @@
+import { ReactNode } from 'react'
+
 interface TaskOptionProps {
   onSelect: () => void
-  label: string
+  label: ReactNode
   disabled?: boolean
   variant?: 'primary' | 'success' | 'secondary' | 'warning'
+  className?: string
 }
 
 export function TaskOption({ 
   onSelect, 
   label, 
   disabled = false,
-  variant = 'primary' 
+  variant = 'primary',
+  className = ''
 }: TaskOptionProps) {
   const variantClasses = {
     primary: 'bg-primary-500 hover:bg-primary-600 focus:ring-primary-500',
@@ -28,6 +32,7 @@ export function TaskOption({
         disabled:opacity-50 disabled:cursor-not-allowed
         transition-colors duration-200
         ${variantClasses[variant]}
+        ${className}
       `}
     >
       {label}
