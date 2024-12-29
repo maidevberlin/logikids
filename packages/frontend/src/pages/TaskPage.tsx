@@ -39,7 +39,7 @@ export default function TaskPage() {
 
   const handleSubmit = () => {
     if (!task) return
-    const correct = answer === task.solution
+    const correct = answer === task.solution.index
     setIsCorrect(correct)
   }
 

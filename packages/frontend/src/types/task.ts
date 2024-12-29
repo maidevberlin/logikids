@@ -1,30 +1,11 @@
-export type Difficulty = 'easy' | 'medium' | 'hard'
-export type Age = number
-export type Subject = 'math' | 'logic'
+import type { Task as BackendTask, TaskRequest, Difficulty, Subject, Age } from '@logikids/backend/tasks/types';
 
-export interface TaskMetadata {
-  difficulty: Difficulty
-  age: Age
-  subject: Subject
-  provider: string
-  model: string
-  language: string
-}
-
-export interface Task {
-  task: string
-  solution: number
-  metadata: TaskMetadata
-}
-
-export interface TaskParams {
-  age: Age
-  difficulty: Difficulty
-  subject: Subject
-}
+export type { Difficulty, Subject, Age };
+export type Task = BackendTask;
+export type TaskParams = TaskRequest;
 
 export const taskDefaults = {
-  age: 12,
-  difficulty: 'medium' as const,
-  subject: 'math' as const,
-} as const
+  difficulty: 'medium' as Difficulty,
+  subject: 'math' as Subject,
+  age: 10 as Age,
+};
