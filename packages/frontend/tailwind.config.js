@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#eff6ff',   // Light blue base
+          50: '#eff6ff',
           100: '#dbeafe',
           200: '#bfdbfe',
           300: '#93c5fd',
@@ -21,7 +21,7 @@ export default {
           950: '#172554',
         },
         secondary: {
-          50: '#f0fdfa',   // Teal base
+          50: '#f0fdfa',
           100: '#ccfbf1',
           200: '#99f6e4',
           300: '#5eead4',

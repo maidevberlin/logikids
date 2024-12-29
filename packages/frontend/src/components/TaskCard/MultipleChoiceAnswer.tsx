@@ -1,6 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { FadeInOut } from '../base/Animations/FadeInOut'
+import { Card } from '../base/Card'
 import { TaskOption } from './TaskOption'
 import { Feedback } from './Feedback'
+import { SolutionExplanation } from './SolutionExplanation'
 
 interface MultipleChoiceAnswerProps {
   options: string[]
@@ -10,6 +14,7 @@ interface MultipleChoiceAnswerProps {
   onSubmit: () => void
   onNextTask: () => void
   solutionExplanation: string
+  isLoading?: boolean
 }
 
 export function MultipleChoiceAnswer({
@@ -19,64 +24,76 @@ export function MultipleChoiceAnswer({
   onAnswerSelect,
   onSubmit,
   onNextTask,
-  solutionExplanation
+  solutionExplanation,
+  isLoading = false
 }: MultipleChoiceAnswerProps) {
+  const { t } = useTranslation()
+
+  const handleTryAgain = () => {
+    onAnswerSelect(-1)
+  }
+
+  if (isLoading) {
+    return (
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          {[1, 2, 3, 4].map((_, index) => (
+            <Card key={index} className="p-4">
+              <div className="animate-pulse">
+                <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <div className="w-full">
+          <div className="animate-pulse">
+            <div className="h-10 bg-gray-200 rounded w-full"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         {options.map((text, index) => (
-          <motion.button
+          <Card
             key={index}
-            onClick={() => onAnswerSelect(index)}
-            disabled={isCorrect !== null}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`
-              p-4 rounded-lg border-2 transition-colors text-left
-              disabled:cursor-not-allowed
-              ${
-                selectedAnswer === index
-                  ? 'border-primary-500 bg-primary-50'
-                  : 'border-gray-200 hover:border-primary-300'
-              }
-              ${
-                isCorrect !== null && index === selectedAnswer
+            variant={
+              isCorrect !== null
+                ? index === selectedAnswer
                   ? isCorrect
-                    ? 'border-green-500 bg-green-50'
-                    : 'border-red-500 bg-red-50'
-                  : ''
-              }
+                    ? 'success'
+                    : 'error'
+                  : 'default'
+                : 'default'
+            }
+            interactive={isCorrect === null}
+            onClick={() => isCorrect === null && onAnswerSelect(index)}
+            className={`
+              p-4 transition-all duration-200
+              ${selectedAnswer === index && isCorrect === null ? 'ring-2 ring-primary-500 ring-offset-2' : ''}
             `}
           >
             <div 
-              className="text-lg font-medium text-gray-900 prose prose-blue max-w-none"
-              dangerouslySetInnerHTML={{ __html: text }}
+              className="prose prose-blue max-w-none text-left"
+              dangerouslySetInnerHTML={{ __html: text }} 
             />
-          </motion.button>
+          </Card>
         ))}
       </div>
 
-      <AnimatePresence mode="wait">
+      <FadeInOut show={isCorrect !== null ? true : false} className="space-y-4">
         {isCorrect !== null && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="space-y-4"
-          >
+          <>
             <Feedback isCorrect={isCorrect} />
             {isCorrect && (
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h3 className="text-lg font-medium text-green-800 mb-2">Solution Explanation</h3>
-                <div 
-                  className="prose prose-blue max-w-none text-green-700"
-                  dangerouslySetInnerHTML={{ __html: solutionExplanation }}
-                />
-              </div>
+              <SolutionExplanation explanation={solutionExplanation} />
             )}
-          </motion.div>
+          </>
         )}
-      </AnimatePresence>
+      </FadeInOut>
       
       <motion.div 
         className="w-full"
@@ -85,7 +102,7 @@ export function MultipleChoiceAnswer({
         {isCorrect === null ? (
           <TaskOption
             onSelect={onSubmit}
-            label="Check Answer"
+            label={t('task.checkAnswer')}
             disabled={selectedAnswer === null}
             variant="primary"
             className="w-full"
@@ -93,17 +110,14 @@ export function MultipleChoiceAnswer({
         ) : isCorrect ? (
           <TaskOption
             onSelect={onNextTask}
-            label="Next Task"
+            label={t('task.nextTask')}
             variant="success"
             className="w-full"
           />
         ) : (
           <TaskOption
-            onSelect={() => {
-              // Re-enable answer selection
-              onAnswerSelect(-1)
-            }}
-            label="Try Again"
+            onSelect={handleTryAgain}
+            label={t('task.tryAgain')}
             variant="warning"
             className="w-full"
           />

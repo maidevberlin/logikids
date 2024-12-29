@@ -1,12 +1,11 @@
-import { ReactNode } from 'react'
-import { LoadingSpinner } from '../LoadingSpinner'
-import { TaskContent } from './TaskContent'
-import { HintSection } from './HintSection'
-import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
+import { memo } from 'react'
 import { Task, Difficulty, Subject } from '../../types/task'
-import { DifficultySelect } from '../TaskOptions/DifficultySelect'
-import { SubjectSelect } from '../TaskOptions/SubjectSelect'
+import { Card } from '../base/Card'
 import { ErrorDisplay } from '../ErrorDisplay'
+import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
+import { TaskOptions } from './TaskOptions'
+import { Heading } from '../base/Typography/Heading'
+import { HintSection } from './Hint/HintSection'
 
 interface TaskCardProps {
   isLoading: boolean
@@ -21,14 +20,13 @@ interface TaskCardProps {
   onNextTask: () => void
   onDifficultyChange: (difficulty: Difficulty) => void
   onSubjectChange: (subject: Subject) => void
-  children?: ReactNode
 }
 
-export function TaskCard({ 
+function TaskCardComponent({
   isLoading,
   task,
-  selectedAnswer = null,
-  isCorrect = null,
+  selectedAnswer,
+  isCorrect,
   difficulty,
   subject,
   error,
@@ -36,76 +34,82 @@ export function TaskCard({
   onAnswerSubmit,
   onNextTask,
   onDifficultyChange,
-  onSubjectChange,
-  children
+  onSubjectChange
 }: TaskCardProps) {
   return (
-    <div className="min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="flex justify-end mb-4">
-          <div className="flex gap-2">
-            <div className="w-36">
-              <SubjectSelect
-                subject={subject}
-                onSubjectChange={onSubjectChange}
-              />
-            </div>
-            <div className="w-36">
-              <DifficultySelect
-                difficulty={difficulty}
-                onDifficultyChange={onDifficultyChange}
-              />
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-white rounded-xl shadow-lg p-6 relative min-h-[400px]">
-          {isLoading ? (
-            <div className="absolute inset-0 bg-white flex items-center justify-center rounded-xl">
-              <LoadingSpinner />
-            </div>
-          ) : error ? (
-            <div className="flex items-center justify-center h-full">
-              <ErrorDisplay 
-                message={error} 
-                onRetry={onNextTask}
-              />
-            </div>
-          ) : !task?.title ? (
-            <div className="absolute inset-0 bg-white flex items-center justify-center rounded-xl">
-              <LoadingSpinner />
-            </div>
+    <div className="space-y-4">
+      <TaskOptions
+        difficulty={difficulty}
+        subject={subject}
+        onDifficultyChange={onDifficultyChange}
+        onSubjectChange={onSubjectChange}
+      />
+      
+      <Card variant={error ? 'error' : 'default'}>
+        <div className="space-y-4">
+          {error ? (
+            <ErrorDisplay 
+              message={error} 
+              onRetry={onNextTask} 
+              isLoading={isLoading}
+              standalone={false}
+            />
           ) : (
             <>
-              <TaskContent 
-                title={task.title}
-                description={task.task}
-              />
-              
-              <div className="space-y-8">
-                <MultipleChoiceAnswer
-                  options={task.options}
-                  selectedAnswer={selectedAnswer}
-                  isCorrect={isCorrect}
-                  onAnswerSelect={onAnswerSelect}
-                  onSubmit={onAnswerSubmit}
-                  onNextTask={onNextTask}
-                  solutionExplanation={task.solution.explanation}
-                />
-                
-                {isCorrect !== true && (
-                  <HintSection 
-                    hints={task.hints}
-                    onSkip={onNextTask}
+              {isLoading ? (
+                <div className="animate-pulse space-y-4">
+                  <div className="h-8 bg-gray-200 rounded w-3/4"></div>
+                  <div className="space-y-3">
+                    <div className="h-4 bg-gray-200 rounded"></div>
+                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                    <div className="h-4 bg-gray-200 rounded w-4/6"></div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <Heading level={2}>{task.title}</Heading>
+                  <div 
+                    className="prose prose-blue max-w-none"
+                    dangerouslySetInnerHTML={{ __html: task.task }} 
                   />
-                )}
-              </div>
+                </>
+              )}
               
-              {children}
+              <MultipleChoiceAnswer
+                options={isLoading ? [] : task.options}
+                selectedAnswer={selectedAnswer}
+                isCorrect={isCorrect}
+                onAnswerSelect={onAnswerSelect}
+                onSubmit={onAnswerSubmit}
+                onNextTask={onNextTask}
+                solutionExplanation={isLoading ? '' : task.solution.explanation}
+                isLoading={isLoading}
+              />
+
+              {!isLoading && isCorrect !== true && (
+                <HintSection
+                  hints={task.hints}
+                  onSkip={onNextTask}
+                />
+              )}
             </>
           )}
         </div>
-      </div>
+      </Card>
     </div>
   )
-} 
+}
+
+// Memoize TaskCard to prevent unnecessary re-renders
+export const TaskCard = memo(TaskCardComponent, (prevProps, nextProps) => {
+  // Custom comparison function to determine if re-render is needed
+  return (
+    prevProps.isLoading === nextProps.isLoading &&
+    prevProps.error === nextProps.error &&
+    prevProps.selectedAnswer === nextProps.selectedAnswer &&
+    prevProps.isCorrect === nextProps.isCorrect &&
+    prevProps.difficulty === nextProps.difficulty &&
+    prevProps.subject === nextProps.subject &&
+    prevProps.task === nextProps.task // Compare the entire task object
+  )
+}) 

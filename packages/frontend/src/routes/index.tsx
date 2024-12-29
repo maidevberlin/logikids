@@ -1,7 +1,10 @@
+import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import Welcome from '../pages/Welcome'
-import TaskPage from '../pages/TaskPage'
 import App from '../App'
+
+// Lazy load route components
+const Welcome = lazy(() => import('../pages/Welcome'))
+const TaskPage = lazy(() => import('../pages/TaskPage'))
 
 export const router = createBrowserRouter([
   {

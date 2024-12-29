@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 interface FeedbackProps {
   isCorrect: boolean
@@ -9,9 +10,10 @@ export function Feedback({
   isCorrect, 
   message 
 }: FeedbackProps) {
+  const { t } = useTranslation()
   const defaultMessage = isCorrect 
-    ? 'Correct! Well done!' 
-    : 'Not quite right. Try another answer!'
+    ? t('feedback.correct')
+    : t('feedback.incorrect')
 
   return (
     <motion.div

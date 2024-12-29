@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react'
 import { useTask } from '../hooks/useTask'
 import { useSettings } from '../hooks/useSettings'
 import { TaskCard } from '../components/TaskCard'
@@ -7,8 +8,13 @@ import { Difficulty, Subject, taskDefaults, Task } from '../types/task'
 export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
-  const difficulty = (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty
-  const subject = (searchParams.get('subject') ?? taskDefaults.subject) as Subject
+  
+  // Memoize task parameters
+  const taskParams = useMemo(() => ({
+    difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
+    subject: (searchParams.get('subject') ?? taskDefaults.subject) as Subject,
+    age: settings.age
+  }), [searchParams, settings.age])
   
   const { 
     task, 
@@ -19,40 +25,59 @@ export default function TaskPage() {
     checkAnswer,
     selectAnswer,
     nextTask
-  } = useTask({ age: settings.age, difficulty, subject })
+  } = useTask(taskParams)
 
-  const handleDifficultyChange = (newDifficulty: Difficulty) => {
+  // Memoize handlers to prevent unnecessary re-renders
+  const handleDifficultyChange = useCallback((newDifficulty: Difficulty) => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
       newParams.set('difficulty', newDifficulty)
       return newParams
     })
-  }
+  }, [setSearchParams])
 
-  const handleSubjectChange = (newSubject: Subject) => {
+  const handleSubjectChange = useCallback((newSubject: Subject) => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
       newParams.set('subject', newSubject)
       return newParams
     })
-  }
+  }, [setSearchParams])
+
+  // Memoize TaskCard props to prevent unnecessary re-renders
+  const taskCardProps = useMemo(() => ({
+    isLoading,
+    task: task ?? {} as Task,
+    selectedAnswer,
+    isCorrect,
+    difficulty: taskParams.difficulty,
+    subject: taskParams.subject,
+    error,
+    onAnswerSelect: selectAnswer,
+    onAnswerSubmit: checkAnswer,
+    onNextTask: nextTask,
+    onDifficultyChange: handleDifficultyChange,
+    onSubjectChange: handleSubjectChange
+  }), [
+    isLoading,
+    task,
+    selectedAnswer,
+    isCorrect,
+    taskParams.difficulty,
+    taskParams.subject,
+    error,
+    selectAnswer,
+    checkAnswer,
+    nextTask,
+    handleDifficultyChange,
+    handleSubjectChange
+  ])
 
   return (
-    <div className="space-y-4">
-      <TaskCard
-        isLoading={isLoading}
-        task={task ?? {} as Task}
-        selectedAnswer={selectedAnswer}
-        isCorrect={isCorrect}
-        difficulty={difficulty}
-        subject={subject}
-        error={error}
-        onAnswerSelect={selectAnswer}
-        onAnswerSubmit={checkAnswer}
-        onNextTask={nextTask}
-        onDifficultyChange={handleDifficultyChange}
-        onSubjectChange={handleSubjectChange}
-      />
+    <div className="container mx-auto px-4 py-8">
+      <div className="max-w-3xl mx-auto">
+        <TaskCard {...taskCardProps} />
+      </div>
     </div>
   )
 } 

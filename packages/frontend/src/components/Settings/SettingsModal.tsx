@@ -1,8 +1,13 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { Age } from '../../types/task'
+import { useTranslation } from 'react-i18next'
 import { NumberInput } from '../Common/NumberInput'
+import { Text } from '../base/Typography/Text'
+import { Heading } from '../base/Typography/Heading'
+import { Input } from '../base/Form/Input'
+import { LanguageSwitcher } from '../base/LanguageSwitcher'
+import { Age } from '../../types/task'
 
 interface SettingsModalProps {
   isOpen: boolean
@@ -21,6 +26,8 @@ export function SettingsModal({
   onAgeChange,
   onNameChange,
 }: SettingsModalProps) {
+  const { t } = useTranslation()
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -60,35 +67,37 @@ export function SettingsModal({
                 </div>
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                    <Dialog.Title as="h3" className="text-2xl font-bold leading-6 text-gray-900">
-                      Settings
-                    </Dialog.Title>
+                    <Heading level={3}>
+                      {t('settings.title')}
+                    </Heading>
                     <div className="mt-8 space-y-8">
+                      <Input
+                        type="text"
+                        value={name}
+                        onChange={onNameChange}
+                        label={t('settings.nameLabel')}
+                        placeholder={t('settings.namePlaceholder')}
+                        fullWidth
+                      />
                       <div>
-                        <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
-                          What's your name?
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          value={name}
-                          onChange={(e) => onNameChange(e.target.value)}
-                          className="block w-full rounded-xl border-2 border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-primary-500 focus:ring-primary-500 transition-colors"
-                          placeholder="Type your name here..."
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="age" className="block text-lg font-medium text-gray-700 mb-2">
-                          How old are you?
-                        </label>
-                        <div className="flex justify-center sm:justify-start">
+                        <Text as="label" htmlFor="age" weight="medium">
+                          {t('settings.ageLabel')}
+                        </Text>
+                        <div className="mt-2 flex justify-center sm:justify-start">
                           <NumberInput
                             value={Number(age)}
                             onChange={(value) => onAgeChange(value as Age)}
-                            min={5}
+                            min={6}
                             max={20}
                           />
+                        </div>
+                      </div>
+                      <div>
+                        <Text as="label" weight="medium">
+                          {t('settings.languageLabel')}
+                        </Text>
+                        <div className="mt-2">
+                          <LanguageSwitcher />
                         </div>
                       </div>
                     </div>

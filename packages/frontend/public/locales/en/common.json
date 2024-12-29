@@ -1,0 +1,32 @@
+{
+  "welcome": {
+    "title": "Welcome to Logikids",
+    "subtitle": "Start your journey into the exciting world of mathematics and logical thinking!",
+    "startButton": "Start Learning"
+  },
+  "task": {
+    "checkAnswer": "Check Answer",
+    "nextTask": "Next Task",
+    "tryAgain": "Try Again",
+    "getHint": "Get Hint",
+    "getAnotherHint": "Get Another Hint",
+    "skip": "Skip",
+    "solutionExplanation": "Solution Explanation"
+  },
+  "feedback": {
+    "correct": "Correct! Well done!",
+    "incorrect": "Not quite right. Try another answer!"
+  },
+  "settings": {
+    "title": "Settings",
+    "nameLabel": "What's your name?",
+    "namePlaceholder": "Type your name here...",
+    "ageLabel": "How old are you?",
+    "languageLabel": "Choose your language"
+  },
+  "error": {
+    "tryAgain": "Try Again",
+    "backToHome": "Back to Home",
+    "loadingFailed": "Failed to load task"
+  }
+} 

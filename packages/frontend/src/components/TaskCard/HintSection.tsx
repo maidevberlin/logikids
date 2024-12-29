@@ -1,27 +1,11 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { LightBulbIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
-import { TaskOption } from './TaskOption'
-
-interface HintProps {
-  hint: string
-  index: number
-}
-
-function Hint({ hint, index }: HintProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 20 }}
-      transition={{ delay: index * 0.1 }}
-      className="bg-blue-50 p-4 rounded-lg"
-    >
-      <p className="text-blue-700">{hint}</p>
-    </motion.div>
-  )
-}
+import { useTranslation } from 'react-i18next'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { Button } from '../base/Button'
+import { FadeInOut } from '../base/Animations/FadeInOut'
+import { Card } from '../base/Card'
+import { Text } from '../base/Typography/Text'
+import { HintButton } from './Hint/HintButton'
 
 interface HintSectionProps {
   hints: string[]
@@ -29,81 +13,65 @@ interface HintSectionProps {
 }
 
 export function HintSection({ hints, onSkip }: HintSectionProps) {
+  const { t } = useTranslation()
   const [visibleHints, setVisibleHints] = useState(0)
-  const [shouldShake, setShouldShake] = useState(false)
   const hasMoreHints = visibleHints < hints.length
   const hasHints = hints.length > 0
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (hasMoreHints) {
-        setShouldShake(true)
+        setVisibleHints(prev => prev + 1)
       }
     }, 30000)
 
     return () => clearTimeout(timer)
   }, [hasMoreHints])
 
-  const handleRequestHint = () => {
-    if (hasMoreHints) {
-      setVisibleHints(prev => prev + 1)
-      setShouldShake(false)
-    }
-  }
-
   if (!hasHints) {
     return (
       <div className="flex justify-end">
-        <Link
-          to="/tasks"
-          className="inline-flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors"
+        <Button
+          onClick={onSkip}
+          variant="outline"
+          size="sm"
         >
-          Skip
-          <ArrowRightIcon className="h-5 w-5" />
-        </Link>
+          <span className="inline-flex items-center gap-2">
+            {t('task.skip')}
+            <ArrowRightIcon className="h-5 w-5" />
+          </span>
+        </Button>
       </div>
     )
   }
 
   return (
     <div className="space-y-4">
-      <AnimatePresence>
-        {visibleHints > 0 && (
-          <motion.div 
-            className="space-y-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {hints.slice(0, visibleHints).map((hint, index) => (
-              <Hint key={index} hint={hint} index={index} />
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <FadeInOut show={visibleHints > 0} className="space-y-2">
+        {hints.slice(0, visibleHints).map((hint, index) => (
+          <Card key={index} variant="primary" className="p-4">
+            <Text>{hint}</Text>
+          </Card>
+        ))}
+      </FadeInOut>
       
       <div className="flex justify-between">
-        <motion.div animate={{ scale: shouldShake ? 1.05 : 1 }} className={shouldShake ? 'animate-shake' : ''}>
-          <TaskOption 
-            onSelect={handleRequestHint}
-            label={
-              <span className="inline-flex items-center gap-2">
-                <LightBulbIcon className="h-5 w-5" />
-                {visibleHints === 0 ? 'Get Hint' : 'Get Another Hint'}
-              </span>
-            }
-            disabled={!hasMoreHints}
-            variant="secondary"
-            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
-          />
-        </motion.div>
-        <Link
-          to="/tasks"
-          className="inline-flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors"
+        <HintButton
+          onClick={() => setVisibleHints(prev => prev + 1)}
+          disabled={!hasMoreHints}
+          shouldShake={hasMoreHints}
+          isFirstHint={visibleHints === 0}
+        />
+        <Button
+          onClick={onSkip}
+          variant="outline"
+          size="sm"
         >
-          Skip
-          <ArrowRightIcon className="h-5 w-5" />
-        </Link>
+          <span className="inline-flex items-center gap-2">
+            {t('task.skip')}
+            <ArrowRightIcon className="h-5 w-5" />
+          </span>
+        </Button>
       </div>
     </div>
   )
