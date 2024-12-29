@@ -1,18 +1,11 @@
+import { BaseService } from '../common/baseService';
+import { TaskRequest, Task, taskResponseSchema } from './types';
 import { AIClient } from '../common/ai/base';
-import { 
-  taskResponseSchema, 
-  TaskRequest, 
-  Task
-} from './types';
-import { AIGenerationError, ValidationError } from '../common/errors';
-import { PromptService } from '../common/services/prompt.service';
-import { z } from 'zod';
+import { AIGenerationError } from '../common/errors';
 
-export class TaskService {
-  private readonly promptService: PromptService;
-
-  constructor(private readonly aiClient: AIClient) {
-    this.promptService = new PromptService(__dirname);
+export class TaskService extends BaseService {
+  constructor(aiClient: AIClient) {
+    super(aiClient, __dirname);
   }
 
   private createTask(response: string, request: TaskRequest, language: string): Task {
@@ -39,26 +32,14 @@ export class TaskService {
   }
 
   async generateTask(request: TaskRequest, language = 'en'): Promise<Task> {
-    const prompt = await this.promptService.getPrompt(request.subject);
-    
-    const filledPrompt = prompt.prompt
-      .replace(/\{\{language\}\}/g, language)
-      .replace(/\{\{age\}\}/g, request.age.toString())
-      .replace(/\{\{difficulty\}\}/g, request.difficulty);
-
-    const response = await this.aiClient.generate(filledPrompt);
-    
-    if (!response?.response) {
-      throw new AIGenerationError('Failed to generate task');
-    }
-
-    try {
-      return this.createTask(response.response, request, language);
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        throw new ValidationError(error.errors);
-      }
-      throw error;
-    }
+    return this.generateFromPrompt(
+      request.subject,
+      {
+        language,
+        age: request.age.toString(),
+        difficulty: request.difficulty
+      },
+      (response) => this.createTask(response, request, language)
+    );
   }
 } 

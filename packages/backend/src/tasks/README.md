@@ -20,21 +20,10 @@ Query Parameters:
 - `difficulty`: 'easy' | 'medium' | 'hard' - Task difficulty
 - `subject`: 'math' | 'logic' - Task subject
 
-Response:
-```typescript
-{
-  task: string;          // The task text
-  solution: number;      // The numerical solution
-  metadata: {
-    difficulty: string;  // Task difficulty
-    age: number;        // Target age
-    subject: string;    // Task subject
-    provider: string;   // AI provider used
-    model: string;      // AI model used
-    language: string;   // Response language
-  }
-}
-```
+Features:
+- Language-aware responses (using Accept-Language header)
+- Zod schema validation for requests and responses
+- AI-powered task generation using templates
 
 ## Prompt Templates
 

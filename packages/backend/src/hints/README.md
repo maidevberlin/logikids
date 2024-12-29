@@ -15,33 +15,11 @@ This domain handles the generation of contextual hints for tasks using AI, helpi
 ### POST /api/hint
 Generates a hint for a specific task, considering previous hints.
 
-Request Body:
-```typescript
-{
-  task: {
-    task: string;          // The task text
-    solution: number;      // The task's solution
-    metadata: {           // Task metadata
-      difficulty: string;
-      age: number;
-      subject: string;
-      provider: string;
-      model: string;
-      language: string;
-    }
-  },
-  previousHints: {        // Array of previously given hints
-    hint: string;
-  }[]
-}
-```
-
-Response:
-```typescript
-{
-  hint: string;  // The generated hint text
-}
-```
+Features:
+- Language-aware responses (using Accept-Language header)
+- Supports both JSON and plain text AI responses
+- Zod schema validation for requests and responses
+- Considers previous hints for context-aware help
 
 ## Prompt Templates
 
