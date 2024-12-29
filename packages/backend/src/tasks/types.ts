@@ -6,19 +6,28 @@ export type Subject = 'math' | 'logic';
 export interface TaskRequest {
   age: Age,
   difficulty: Difficulty,
-  subject: Subject
+  subject: Subject,
+  concept?: string;
 } 
 
 export const taskRequestSchema = z.object({
   age: z.coerce.number().min(6).max(21),
   difficulty: z.enum(['easy', 'medium', 'hard']),
   subject: z.enum(['math', 'logic']),
+  concept: z.string().optional()
 });
 
-export interface Task{
-  task: string
-  solution: number
-  metadata: TaskMetadata
+export interface Task {
+  type: 'math' | 'logic';
+  title: string;
+  task: string;
+  options: string[];
+  solution: {
+    index: number;
+    explanation: string;
+  };
+  hints: string[];
+  metadata: TaskMetadata;
 }
 
 export interface TaskMetadata {
@@ -39,13 +48,17 @@ export const taskMetadataSchema = z.object({
   language: z.string(),
 });
 
-export const taskSchema = z.object({
+export const taskResponseSchema = z.object({
+  title: z.string(),
   task: z.string(),
-  solution: z.number(),
-  metadata: taskMetadataSchema,
+  options: z.array(z.string()).length(4),
+  solution: z.object({
+    index: z.number().min(0).max(3),
+    explanation: z.string()
+  }),
+  hints: z.array(z.string()).min(1)
 });
 
-export const taskResponseSchema = z.object({
-  task: z.string(),
-  solution: z.number()
+export const taskSchema = taskResponseSchema.extend({
+  metadata: taskMetadataSchema
 });

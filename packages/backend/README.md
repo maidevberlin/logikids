@@ -1,6 +1,6 @@
 # Logikids Backend
 
-This is the backend service for the Logikids application, a platform designed to help kids learn programming logic through interactive tasks and AI-powered hints.
+This is the backend service for the Logikids application, a platform designed to help kids learn programming logic through interactive tasks with integrated AI-powered hints.
 
 ## Technical Stack
 
@@ -20,15 +20,17 @@ src/
 ├── common/         # Shared utilities and base classes
 │   └── ai/        # AI service implementations (OpenAI, Ollama)
 ├── config/        # Configuration management
-├── hints/         # Hint generation domain
-├── tasks/         # Task management domain
+├── tasks/         # Task management domain with integrated hints
 └── index.ts       # Application entry point
 ```
 
 ## Key Features
 
-- Task Management API
-- AI-Powered Hint Generation
+- Task Management API with:
+  - Multiple-choice options
+  - Integrated hints and explanations
+  - Support for math and logic tasks
+  - Optional concept-focused tasks
 - Configurable AI Providers (OpenAI/Ollama)
 - Domain-Driven Architecture
 - Docker Support for Development and Production
@@ -60,10 +62,11 @@ src/
 ## API Endpoints
 
 ### Tasks
-- `GET /api/task` - Generate a task based on age, difficulty, and subject
-
-### Hints
-- `POST /api/hint` - Generate hint for a task
+- `GET /api/task` - Generate a task based on:
+  - age (6-21)
+  - difficulty (easy/medium/hard)
+  - subject (math/logic)
+  - concept (optional, for focused learning)
 
 For detailed API documentation and types, please refer to the types.ts files in each domain folder.
 

@@ -13,7 +13,10 @@ You are a professional, experienced software developer in the following technolo
 
 # The Project Setup
  - IMPORTANT: Our whole setup is containerized. You must read the ./docker-compose.yml file BEFORE you execute any command. You will always run the command INSIDE the container using docker compose exec or docker run.
- - We maintaining a README.md in every folder of the project. You must read it before you start coding.
+ - We maintaining a README.md in every folder of the project:
+   - You must read it before you start coding or propose any changes.
+   - You must keep it up to date.
+   - You must never repeat code in the README.md.
  
 # Coding Rules
  - You must always provide best practise code. You must ask for more context when you need it to provide the best solution.

@@ -19,11 +19,14 @@ Query Parameters:
 - `age`: number (6-21) - Target age group
 - `difficulty`: 'easy' | 'medium' | 'hard' - Task difficulty
 - `subject`: 'math' | 'logic' - Task subject
+- `concept`: string (optional) - Specific concept to focus on
 
 Features:
 - Language-aware responses (using Accept-Language header)
+- Multiple-choice options with explanations
+- Progressive hints for guided learning
+- Concept-focused tasks for targeted learning
 - Zod schema validation for requests and responses
-- AI-powered task generation using templates
 
 ## Prompt Templates
 
@@ -34,4 +37,6 @@ Task prompts are stored in YAML files in the `/prompts` directory:
 Variables available in prompts:
 - `{{language}}` - Target language
 - `{{age}}` - Target age
-- `{{difficulty}}` - Task difficulty 
+- `{{difficulty}}` - Task difficulty
+- `{{concept}}` - Optional concept focus
+- `{{concept_rule}}` - Optional concept-specific rule 
