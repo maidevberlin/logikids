@@ -1,10 +1,20 @@
 import { Router } from 'express';
 import { createAIClient } from '../common/ai/factory';
 import { TaskController } from './task.controller';
+import { errorHandler } from '../common/middleware/errorHandler';
 
-const router = Router();
-const aiClient = await createAIClient();
+export async function createTaskRouter(): Promise<Router> {
+  const router = Router();
+  const aiClient = await createAIClient();
+  const taskController = new TaskController(aiClient);
 
-router.get('/', (req, res) => new TaskController(aiClient).getTask(req, res));
+  router.get('/', (req, res, next) => 
+    taskController.getTask(req, res).catch(next)
+  );
 
-export default router; 
+  router.use(errorHandler);
+
+  return router;
+}
+
+export default await createTaskRouter(); 

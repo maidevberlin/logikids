@@ -1,55 +1,53 @@
-import path from 'path';
-import fs from 'fs/promises';
-import yaml from 'js-yaml';
 import { AIClient } from '../common/ai/base';
 import { Hint, HintParams, hintSchema } from './types';
-import { Task } from '../tasks/types';
+import { AIGenerationError, ValidationError } from '../common/errors';
+import { PromptService } from '../common/services/prompt.service';
+import { z } from 'zod';
 
-interface HintPrompt {
-  prompt: string;
-}
+export class HintService {
+  private readonly promptService: PromptService;
 
-export class HintsService {
-  private hintsPrompt: HintPrompt | null = null;
-  protected promptPath = path.join(__dirname, '/prompts/prompt.yaml');
-
-  constructor(protected aiClient: AIClient) {}
-
-  protected async loadPrompts() {
-    const isDevelopment = process.env.NODE_ENV !== 'production';
-    if (!this.hintsPrompt || isDevelopment) {
-      const content = await fs.readFile(this.promptPath, 'utf-8');
-      const prompt = yaml.load(content) as HintPrompt;
-      this.hintsPrompt = prompt;
-    }
-    return this.hintsPrompt;
+  constructor(private readonly aiClient: AIClient) {
+    this.promptService = new PromptService(__dirname);
   }
 
-  async generateHint(hintParams: HintParams, language: string = 'en'): Promise<Hint> {
-    const { prompt } = await this.loadPrompts();
+  private createHint(response: string): Hint {
+    try {
+      const parsedResponse = JSON.parse(response);
+      return hintSchema.parse(parsedResponse);
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        // Fallback for non-JSON responses
+        return hintSchema.parse({ hint: response.trim() });
+      }
+      throw error;
+    }
+  }
+
+  async generateHint(params: HintParams, language = 'en'): Promise<Hint> {
+    const prompt = await this.promptService.getPrompt('prompt');
     
-    const filledPrompt = prompt
-      .replace('{{task}}', hintParams.task.task)
-      .replace('{{solution}}', hintParams.task.solution.toString())
-      .replace('{{difficulty}}', hintParams.task.metadata.difficulty)
-      .replace('{{age}}', `${hintParams.task.metadata.age}`)
-      .replace('{{language}}', language)
-      .replace('{{previousHints}}', hintParams.previousHints.map((hint: Hint) => hint.hint).join('\n'));
+    const filledPrompt = prompt.prompt
+      .replace(/\{\{task\}\}/g, params.task.task)
+      .replace(/\{\{solution\}\}/g, params.task.solution.toString())
+      .replace(/\{\{difficulty\}\}/g, params.task.metadata.difficulty)
+      .replace(/\{\{age\}\}/g, params.task.metadata.age.toString())
+      .replace(/\{\{language\}\}/g, language)
+      .replace(/\{\{previousHints\}\}/g, params.previousHints.map(hint => hint.hint).join('\n'));
 
     const response = await this.aiClient.generate(filledPrompt);
-    if (!response) {
-      throw new Error('Failed to generate hint');
+    
+    if (!response?.response) {
+      throw new AIGenerationError('Failed to generate hint');
     }
 
     try {
-      const jsonResponse = JSON.parse(response.response);
-      const hint = hintSchema.parse(jsonResponse);
-      return hint;
+      return this.createHint(response.response);
     } catch (error) {
-      const hint = hintSchema.parse({
-        hint: response.response.trim()
-      });
-      return hint;
+      if (error instanceof z.ZodError) {
+        throw new ValidationError(error.errors);
+      }
+      throw error;
     }
   }
 } 

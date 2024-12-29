@@ -1,10 +1,20 @@
 import { Router } from 'express';
 import { createAIClient } from '../common/ai/factory';
-import { HintsController } from './hint.controller';
+import { HintController } from './hint.controller';
+import { errorHandler } from '../common/middleware/errorHandler';
 
-const router = Router();
-const aiClient = await createAIClient();
+export async function createHintRouter(): Promise<Router> {
+  const router = Router();
+  const aiClient = await createAIClient();
+  const hintsController = new HintController(aiClient);
 
-router.post('/', (req, res) => new HintsController(aiClient).generateHint(req, res));
+  router.post('/', (req, res, next) => 
+    hintsController.generateHint(req, res).catch(next)
+  );
 
-export default router;
+  router.use(errorHandler);
+
+  return router;
+}
+
+export default await createHintRouter();

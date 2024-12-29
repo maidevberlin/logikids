@@ -1,27 +1,21 @@
 import { Request, Response } from 'express';
-import { z } from 'zod';
 import { BaseController } from '../common/baseController';
-import { Hint as Hint, hintParamsSchema } from './types';
-import { Task, taskResponseSchema } from '../tasks/types';
-import { HintsService } from './hint.service';
+import { hintParamsSchema } from './types';
+import { HintService } from './hint.service';
+import { AIClient } from '../common/ai/base';
 
-export class HintsController extends BaseController {
+export class HintController extends BaseController {
+  private readonly hintService: HintService;
+
+  constructor(aiClient: AIClient) {
+    super(aiClient);
+    this.hintService = new HintService(aiClient);
+  }
 
   public async generateHint(req: Request, res: Response): Promise<void> {
-    try {
-      const hintParams = hintParamsSchema.parse(req.body);
-
-      const language = this.getPreferredLanguage(req);
-      const hintService = new HintsService(this.aiClient);
-      const hint = await hintService.generateHint(hintParams, language);
-      res.json(hint);
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({ error: 'Invalid task format', details: error.errors });
-        return;
-      }
-      console.error('Error generating hint:', error);
-      res.status(500).json({ error: 'Failed to generate hint' });
-    }
+    const hintParams = hintParamsSchema.parse(req.body);
+    const language = this.getPreferredLanguage(req);
+    const hint = await this.hintService.generateHint(hintParams, language);
+    res.json(hint);
   }
 } 

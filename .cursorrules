@@ -1,42 +1,57 @@
-You are a professional, experienced software developer.
+# Your Role
+You are a professional, experienced software developer in the following technologies, that we use in this project:
+  - TypeScript
+  - Bun
+  - Docker
+  - React
+  - TailwindCSS for styling
+  - Zod for data validation
+  - React Query for data fetching
+  - React Router for routing
+  - React Testing Library for testing
+  - Jest for testing
 
-You are an expert in the following technologies, that we use in this project:
- - TypeScript
- - Bun
- - Docker
- - React
- - TailwindCSS
- - Zod
- - React Query
- - React Router
- - React Testing Library
- - Jest
+# The Project Setup
+ - IMPORTANT: Our whole setup is containerized. You must read the ./docker-compose.yml file BEFORE you execute any command. You will always run the command INSIDE the container using docker compose exec or docker run.
+ - We maintaining a README.md in every folder of the project. You must read it before you start coding.
  
-When you generate code:
- - Your are a responsible developer. You always read related code to understand the project requirements.
- - If you are not provided with enough context, youmust actively search or ask for it.
- - Your code has to follow the principles that are implemented already in the project.
- - Your code must be clean, readable and maintainable.
- - Your code must be easy to understand and modify.
- - Your code must be tested. If you believe there are no tests, create or modify them.
- - If you think other files will be affected by your changes, you must update them. If you cannot update them, inform the user.
- - If you have any problems finding the perfect solution, ask me.
+# Coding Rules
+ - You must always provide best practise code. You must ask for more context when you need it to provide the best solution.
+ - You must always investigate the root cause of a problem before providing a solution. If you need more context, ask the user. You must never apply workarounds.
+ - You must always use the correct and proper naming for variables, functions, components, etc.
+ - You must always re-validate your generated code BEFORE you propose it to the user:
+   - You must read the README.md in the folder you are working in.
+   - You must activly search for inconsistencies between generated and existing code.
 
-When you have to fix a bug:
- - You will always find the root cause of the bug first.
- - You never apply workarounds.
- - If you are not sure about the root cause, you will ask for help (executing commands, reading logs, add application logs, etc.).
 
-When you want to execute a command:
- - Our whole setup is containerized.
- - You must read the docker-compose.yml file in the root of the project to find the correct container to run the command in.
- - Commmands, that do not use docker, will fail - except for docker compose commands.
- - You will always run the command INSIDE the container using docker compose exec or docker run.
+ # Frontend-specific rules:
+ The frontend lives in the packages/frontend folder.
+ The folder structure is as follows:
+ - src/components: contains all the components
+ - src/hooks: contains all the hooks
+ - src/lib: contains all the lib files
+ - src/pages: contains all the pages
+ - src/types: contains all the types
+ - src/services: contains all the services
+ - src/routes: contains all the routes
  
- When you create a new component:
- - You must create the component in the src/components folder.
- - You must create a new .tsx file and a .test.tsx file.
- - You must create neccessary sub-components to maintain clean code and separation of concerns.
- - The render-part of a component should not exceed 20 lines of code. If so, restructure the component with sub-components.
+## Rules for creating a new component:
+ - You must create a component-folder in the src/components folder.
+ - Every component must have a .tsx file, a .test.tsx and a .stories.tsx file.
+ - You must create sub-components for separation of concerns. The render-part of a component must not exceed 20 lines of code.
  - You must extract common logic into hooks.
- - You must use TailwindCSS for styling.
+
+
+# Backend-specific rules:
+The backend lives in the packages/backend folder.
+The folder structure is domain-driven:
+- src/common: contains all the common files
+- src/config: contains all the config files
+- src/tasks: contains all the tasks-domain related files
+- src/hints: contains all the hints-domain related files
+
+Domain-specific folders contain the following files:
+- router.ts: contains the router for the domain
+- types.ts: contains the types for the domain
+- <domain>.controller.ts: contains the controller for the domain
+- <domain>.service.ts: contains the service for the domain

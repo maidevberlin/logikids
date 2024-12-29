@@ -1,69 +1,62 @@
-import path from 'path';
-import fs from 'fs/promises';
-import yaml from 'js-yaml';
 import { AIClient } from '../common/ai/base';
-import { taskResponseSchema, TaskRequest, TaskMetadata, Task, Subject } from './types';
-
-interface BasePrompt {
-  prompt: string;
-}
+import { 
+  taskResponseSchema, 
+  TaskRequest, 
+  Task
+} from './types';
+import { AIGenerationError, ValidationError } from '../common/errors';
+import { PromptService } from '../common/services/prompt.service';
+import { z } from 'zod';
 
 export class TaskService {
-  protected prompts: BasePrompt | null = null;
-  protected promptPath = path.join(__dirname, '/prompts');
+  private readonly promptService: PromptService;
 
-  constructor(protected aiClient: AIClient) {}
-
-  protected async loadPrompts( subject: Subject) {
-    const isDevelopment = process.env.NODE_ENV !== 'production';
-    if (!this.prompts || isDevelopment) {
-      const content = await fs.readFile(this.promptPath + `/${subject}.yaml`, 'utf-8');
-      const prompt = yaml.load(content) as BasePrompt;
-      this.prompts = prompt;
-    }
-    return this.prompts;
+  constructor(private readonly aiClient: AIClient) {
+    this.promptService = new PromptService(__dirname);
   }
 
-  async generateTask(query: TaskRequest, language: string = 'en'): Promise<Task> {
-    const subject = query.subject;
-    const prompts = await this.loadPrompts(subject);
-    if (!prompts) {
-      throw new Error('Failed to load prompts');
-    }
-    
-    const age = query.age;
-    const difficulty = query.difficulty;
-
-    let filledPrompt = prompts.prompt
-      .replaceAll('{{language}}', language)
-      .replaceAll('{{age}}', age.toString())
-      .replaceAll('{{difficulty}}', difficulty);
-
-    const response = await this.aiClient.generate(filledPrompt);
-    if (!response) {
-      throw new Error('Failed to generate response from AI');
-    }
-
-    const metadata = { 
-      difficulty,
-      age,
-      provider: this.aiClient.provider,
-      model: this.aiClient.model,
-      language,
-      subject
-    } as TaskMetadata
-
+  private createTask(response: string, request: TaskRequest, language: string): Task {
     try {
-      const task = JSON.parse(response.response);
-      const taskResponse = taskResponseSchema.parse(task);
+      const parsedResponse = JSON.parse(response);
+      const taskResponse = taskResponseSchema.parse(parsedResponse);
       return {
         ...taskResponse,
-        metadata
-      } as Task;
-
+        metadata: {
+          difficulty: request.difficulty,
+          age: request.age,
+          provider: this.aiClient.provider,
+          model: this.aiClient.model,
+          language,
+          subject: request.subject
+        }
+      };
     } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(`Failed to parse AI response: ${error.message}`);
+      if (error instanceof SyntaxError) {
+        throw new AIGenerationError('AI response is not valid JSON');
+      }
+      throw error;
+    }
+  }
+
+  async generateTask(request: TaskRequest, language = 'en'): Promise<Task> {
+    const prompt = await this.promptService.getPrompt(request.subject);
+    
+    const filledPrompt = prompt.prompt
+      .replace(/\{\{language\}\}/g, language)
+      .replace(/\{\{age\}\}/g, request.age.toString())
+      .replace(/\{\{difficulty\}\}/g, request.difficulty);
+
+    const response = await this.aiClient.generate(filledPrompt);
+    
+    if (!response?.response) {
+      throw new AIGenerationError('Failed to generate task');
+    }
+
+    try {
+      return this.createTask(response.response, request, language);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        throw new ValidationError(error.errors);
       }
       throw error;
     }

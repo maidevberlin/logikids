@@ -13,10 +13,7 @@ app.use(express.json());
 
 app.use('/api/task', tasksRouter);
 app.use('/api/hint', hintsRouter);
-// app.use('/api/geometry', geometryRouter);
 
-// Initialize services
-// Start server
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running at http://0.0.0.0:${port}`);
 });
