@@ -1,41 +1,40 @@
 import { ReactNode } from 'react'
 import { LoadingSpinner } from '../LoadingSpinner'
 import { TaskHeader } from './TaskHeader'
+import { TaskContent } from './TaskContent'
 import { HintSection } from './HintSection'
-import { AnswerForm } from './AnswerForm'
-import { Task, Difficulty } from '../../types/task'
+import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
+import { Task, Difficulty, Subject } from '../../types/task'
 import { DifficultySelect } from '../TaskOptions/DifficultySelect'
-import { Hint } from '../../types/hint'
+import { SubjectSelect } from '../TaskOptions/SubjectSelect'
 
 interface TaskCardProps {
   isLoading: boolean
   task: Task
-  hint: Hint | null
-  answer?: number | null
-  selectedAnswer?: number | null
-  isCorrect?: boolean | null
+  selectedAnswer: number | null
+  isCorrect: boolean | null
   difficulty: Difficulty
-  onAnswerChange?: (value: number | null) => void
-  onAnswerSubmit?: (event: React.FormEvent) => void
-  onRequestHint: () => void
+  subject: Subject
+  onAnswerSelect: (index: number) => void
+  onAnswerSubmit: () => void
   onNextTask: () => void
   onDifficultyChange: (difficulty: Difficulty) => void
+  onSubjectChange: (subject: Subject) => void
   children?: ReactNode
 }
 
 export function TaskCard({ 
   isLoading,
   task,
-  hint,
-  answer = null,
   selectedAnswer = null,
   isCorrect = null,
   difficulty,
-  onAnswerChange = () => {},
-  onAnswerSubmit = () => {},
-  onRequestHint = () => {},
+  subject,
+  onAnswerSelect,
+  onAnswerSubmit,
   onNextTask,
   onDifficultyChange,
+  onSubjectChange,
   children
 }: TaskCardProps) {
   return (
@@ -44,11 +43,19 @@ export function TaskCard({
         <TaskHeader />
         
         <div className="bg-white rounded-xl shadow-lg p-8 relative">
-          <div className="absolute top-6 right-6 w-32">
-            <DifficultySelect
-              difficulty={difficulty}
-              onDifficultyChange={onDifficultyChange}
-            />
+          <div className="flex justify-between items-center mb-8">
+            <div className="w-40">
+              <SubjectSelect
+                subject={subject}
+                onSubjectChange={onSubjectChange}
+              />
+            </div>
+            <div className="w-40">
+              <DifficultySelect
+                difficulty={difficulty}
+                onDifficultyChange={onDifficultyChange}
+              />
+            </div>
           </div>
           
           <div className="min-h-[200px]">
@@ -58,21 +65,22 @@ export function TaskCard({
               </div>
             ) : (
               <div className="space-y-8">
-                <h2 className="text-2xl font-bold text-gray-900 mt-14">{task.task}</h2>
+                <TaskContent 
+                  title={task.title}
+                  description={task.task}
+                />
 
-                <AnswerForm
-                  answer={answer}
+                <MultipleChoiceAnswer
+                  options={task.options}
                   selectedAnswer={selectedAnswer}
                   isCorrect={isCorrect}
-                  onAnswerChange={onAnswerChange}
+                  onAnswerSelect={onAnswerSelect}
                   onSubmit={onAnswerSubmit}
                   onNextTask={onNextTask}
-                  onRequestHint={onRequestHint}
                 />
 
                 <HintSection 
-                  hint={hint} 
-                  onRequestHint={onRequestHint} 
+                  hints={task.hints}
                   onSkip={onNextTask}
                 />
 

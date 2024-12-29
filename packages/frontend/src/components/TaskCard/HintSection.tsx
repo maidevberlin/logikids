@@ -1,62 +1,78 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { TaskOption } from './TaskOption'
-import { Hint } from '../../types/hint'
 
-
-function HintDisplay({ hint }: { hint: Hint }) {
-  const [shouldFlash, setShouldFlash] = useState(false)
-
-  useEffect(() => {
-    setShouldFlash(true)
-    const timer = setTimeout(() => setShouldFlash(false), 600)
-    return () => clearTimeout(timer)
-  }, [hint.hint])
-
-  return (
-    <div className={`bg-blue-50 p-4 rounded-lg transition-colors duration-300 ${
-      shouldFlash ? 'bg-blue-100' : 'bg-blue-50'
-    }`}>
-      <p className="text-blue-700">{hint.hint}</p>
-    </div>
-  )
+interface HintProps {
+  hint: string
+  index: number
 }
 
-interface HintActionsProps {
-  hasHint: boolean
-  onRequestHint: () => void
-  onSkip: () => void
-}
-
-function HintActions({ hasHint, onRequestHint, onSkip }: HintActionsProps) {
+function Hint({ hint, index }: HintProps) {
   return (
-    <div className="flex gap-4">
-      <TaskOption 
-        onSelect={onRequestHint}
-        label={hasHint ? 'Get Another Hint' : 'Get Hint'}
-      />
-      <TaskOption 
-        onSelect={onSkip}
-        label="Skip"
-      />
-    </div>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      transition={{ delay: index * 0.1 }}
+      className="bg-blue-50 p-4 rounded-lg"
+    >
+      <p className="text-blue-700">{hint}</p>
+    </motion.div>
   )
 }
 
 interface HintSectionProps {
-  hint: Hint | null
-  onRequestHint: () => void
+  hints: string[]
   onSkip: () => void
 }
 
-export function HintSection({ hint, onRequestHint, onSkip }: HintSectionProps) {
+export function HintSection({ hints, onSkip }: HintSectionProps) {
+  const [visibleHints, setVisibleHints] = useState(0)
+  const hasMoreHints = visibleHints < hints.length
+  const hasHints = hints.length > 0
+
+  const handleRequestHint = () => {
+    if (hasMoreHints) {
+      setVisibleHints(prev => prev + 1)
+    }
+  }
+
+  if (!hasHints) {
+    return null
+  }
+
   return (
     <div className="space-y-4">
-      {hint && <HintDisplay hint={hint} />}
-      <HintActions 
-        hasHint={Boolean(hint?.hint)}
-        onRequestHint={onRequestHint}
-        onSkip={onSkip}
-      />
+      <AnimatePresence>
+        {visibleHints > 0 && (
+          <motion.div 
+            className="space-y-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {hints.slice(0, visibleHints).map((hint, index) => (
+              <Hint key={index} hint={hint} index={index} />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <div className="flex gap-4">
+        <TaskOption 
+          onSelect={handleRequestHint}
+          label={visibleHints === 0 ? 'Get Hint' : 'Get Another Hint'}
+          disabled={!hasMoreHints}
+          variant="secondary"
+        />
+        {visibleHints > 0 && (
+          <TaskOption 
+            onSelect={onSkip}
+            label="Skip"
+            variant="secondary"
+          />
+        )}
+      </div>
     </div>
   )
 } 

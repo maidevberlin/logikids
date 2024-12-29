@@ -1,6 +1,5 @@
 import { api, ApiResponse } from './api';
 import { Task, TaskParams } from '../types/task';
-import { Hint, HintParams } from '../types/hint';
 
 export class LogikidsApiError extends Error {
   constructor(message: string) {
@@ -27,22 +26,6 @@ export const logikids = {
       }
       throw new LogikidsApiError(error.message || 'Failed to fetch task');
     });
-  },
-
-  getHint: (params: HintParams, signal?: AbortSignal): ApiResponse<Hint> => {
-    return api.post<any, Hint>('/hint', params, { signal })
-      .then((hint) => {
-        if (!hint) {
-          throw new LogikidsApiError('No hint data received from server');
-        }
-        return hint;
-      })
-      .catch((error) => {
-        if (error.response?.status === 404) {
-          throw new LogikidsApiError('Hint not available for this task');
-        }
-        throw error;
-      });
   }
 }; 
 

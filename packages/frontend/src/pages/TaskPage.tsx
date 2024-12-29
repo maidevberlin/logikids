@@ -3,26 +3,24 @@ import { useSettings } from '../hooks/useSettings'
 import { TaskCard } from '../components/TaskCard'
 import { ErrorDisplay } from '../components/ErrorDisplay'
 import { useSearchParams } from 'react-router-dom'
-import { Difficulty, taskDefaults } from '../types/task'
-import { useState } from 'react'
+import { Difficulty, Subject, taskDefaults } from '../types/task'
 
 export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
   const difficulty = (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty
+  const subject = (searchParams.get('subject') ?? taskDefaults.subject) as Subject
   
   const { 
     task, 
-    hint,
-    isTaskLoading,
-    taskError,
-    refetch, 
-    requestHint,
-  } = useTask({ age: settings.age, difficulty, subject: 'math' })
-
-  const [answer, setAnswer] = useState<number | null>(null)
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+    isLoading,
+    error,
+    selectedAnswer,
+    isCorrect,
+    checkAnswer,
+    selectAnswer,
+    nextTask
+  } = useTask({ age: settings.age, difficulty, subject })
 
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
     setSearchParams(prev => {
@@ -32,48 +30,39 @@ export default function TaskPage() {
     })
   }
 
-  const handleAnswerChange = (newAnswer: number | null) => {
-    setAnswer(newAnswer)
-    setSelectedAnswer(newAnswer)
+  const handleSubjectChange = (newSubject: Subject) => {
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev)
+      newParams.set('subject', newSubject)
+      return newParams
+    })
   }
 
-  const handleSubmit = () => {
-    if (!task) return
-    const correct = answer === task.solution.index
-    setIsCorrect(correct)
-  }
-
-  const handleNextTask = () => {
-    setAnswer(null)
-    setSelectedAnswer(null)
-    setIsCorrect(null)
-    refetch()
-  }
-
-  if (taskError) {
+  if (error) {
     return (
       <div className="flex items-center justify-center h-full">
-        <ErrorDisplay message={taskError} onRetry={() => refetch()} />
+        <ErrorDisplay message={error} onRetry={nextTask} />
       </div>
     )
   }
 
   return (
     <div className="space-y-4">
-      <TaskCard
-        isLoading={isTaskLoading}
-        task={task!}
-        hint={hint}
-        answer={answer}
-        selectedAnswer={selectedAnswer}
-        isCorrect={isCorrect}
-        difficulty={difficulty}
-        onAnswerChange={handleAnswerChange}
-        onAnswerSubmit={handleSubmit}
-        onRequestHint={requestHint}
-        onNextTask={handleNextTask}
-        onDifficultyChange={handleDifficultyChange}
-      />
+      {task && (
+        <TaskCard
+          isLoading={isLoading}
+          task={task}
+          selectedAnswer={selectedAnswer}
+          isCorrect={isCorrect}
+          difficulty={difficulty}
+          subject={subject}
+          onAnswerSelect={selectAnswer}
+          onAnswerSubmit={checkAnswer}
+          onNextTask={nextTask}
+          onDifficultyChange={handleDifficultyChange}
+          onSubjectChange={handleSubjectChange}
+        />
+      )}
     </div>
   )
 } 

@@ -1,43 +1,48 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
-import { TaskParams } from '../types/task';
+import { useQuery } from '@tanstack/react-query';
+import { TaskParams, Task } from '../types/task';
 import { logikids } from '../services/logikids';
+import { useState, useCallback } from 'react';
 
 export const useTask = (params: TaskParams) => {
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
   const {
     data: task,
-    isLoading: isTaskLoading,
-    error: taskError,
-    refetch,
-    isFetching: isTaskFetching
-  } = useQuery({
+    isLoading,
+    isFetching,
+    error,
+    refetch
+  } = useQuery<Task>({
     queryKey: ['task', params],
     queryFn: ({ signal }) => logikids.getTask(params, signal),
     retry: false,
   });
 
-  const {
-    mutate: requestHint,
-    data: hint = null,
-    isPending: isHintLoading,
-    error: hintError,
-    reset: resetHint,
-  } = useMutation({
-    mutationFn: () => {
-      if (!task) throw new Error('No task available');
-      return logikids.getHint({task, previousHints: []});
-    }
-  });
+  const checkAnswer = useCallback(() => {
+    if (!task || selectedAnswer === null) return;
+    setIsCorrect(selectedAnswer === task.solution.index);
+  }, [task, selectedAnswer]);
+
+  const selectAnswer = useCallback((index: number) => {
+    setSelectedAnswer(index);
+    setIsCorrect(null);
+  }, []);
+
+  const nextTask = useCallback(async () => {
+    setSelectedAnswer(null);
+    setIsCorrect(null);
+    await refetch();
+  }, [refetch]);
 
   return {
     task,
-    hint,
-    isTaskLoading,
-    isTaskFetching,
-    isHintLoading,
-    taskError: taskError ? taskError.message : null,
-    hintError: hintError ? (hintError as Error).message : null,
-    requestHint,
-    resetHint,
-    refetch,
+    isLoading: isLoading || isFetching,
+    error: error ? (error as Error).message : null,
+    selectedAnswer,
+    isCorrect,
+    checkAnswer,
+    selectAnswer,
+    nextTask
   };
 }
