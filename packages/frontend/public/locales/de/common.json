@@ -14,24 +14,31 @@
     "backToHome": "Zurück zur Startseite"
   },
   "stats": {
-    "title": "Mein Fortschritt",
-    "greeting": "Hallo {{name}}, hier ist dein Lernfortschritt!",
-    "comingSoon": "Statistiken und Fortschrittsverfolgung kommen bald!",
-    "backToHome": "Zurück zur Startseite"
+    "title": "Statistiken",
+    "greeting": "Hallo {{name}}, hier sind deine Lernstatistiken!",
+    "noTasksYet": "Du hast noch keine Aufgaben gelöst. Beginne mit dem Lösen von Aufgaben, um deinen Fortschritt zu sehen!",
+    "totalTasks": "Aufgaben Gesamt",
+    "successRate": "Erfolgsquote",
+    "averageHints": "Ø Hinweise",
+    "bySubject": "Fortschritt nach Fach",
+    "tasks": "Aufgaben",
+    "success": "Erfolg",
+    "hints": "Hinweise"
   },
   "task": {
     "title": "Aufgabe",
+    "difficulty": "Schwierigkeit",
+    "getHint": "Hinweis anzeigen",
+    "getAnotherHint": "Weiteren Hinweis anzeigen",
+    "skip": "Aufgabe überspringen",
+    "solutionExplanation": "Lösungserklärung",
     "checkAnswer": "Antwort prüfen",
     "nextTask": "Nächste Aufgabe",
-    "tryAgain": "Nochmal versuchen",
-    "getHint": "Tipp anzeigen",
-    "getAnotherHint": "Weiteren Tipp anzeigen",
-    "skip": "Überspringen",
-    "solutionExplanation": "Lösungserklärung"
+    "tryAgain": "Nochmal versuchen"
   },
   "feedback": {
-    "correct": "Richtig! Gut gemacht!",
-    "incorrect": "Nicht ganz richtig. Versuche eine andere Antwort!"
+    "correct": "Richtig!",
+    "incorrect": "Nicht ganz richtig. Versuche es nochmal!"
   },
   "settings": {
     "title": "Einstellungen",
@@ -41,9 +48,8 @@
     "languageLabel": "Wähle deine Sprache"
   },
   "error": {
-    "tryAgain": "Nochmal versuchen",
-    "backToHome": "Zurück zur Startseite",
-    "loadingFailed": "Aufgabe konnte nicht geladen werden"
+    "tryAgain": "Erneut versuchen",
+    "backToHome": "Zurück zur Startseite"
   },
   "subjects": {
     "math": "Mathematik",
@@ -53,5 +59,8 @@
     "easy": "Leicht",
     "medium": "Mittel",
     "hard": "Schwer"
+  },
+  "common": {
+    "loading": "Lädt..."
   }
 } 

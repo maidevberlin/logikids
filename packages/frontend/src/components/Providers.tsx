@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '../services/queryClient'
-import { SettingsProvider } from './Settings/SettingsProvider'
+import { NavigationProvider } from './Navigation'
 import { ErrorBoundary } from './base/ErrorBoundary'
 
 interface ProvidersProps {
@@ -12,9 +12,9 @@ export function Providers({ children }: ProvidersProps) {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <SettingsProvider>
+        <NavigationProvider>
           {children}
-        </SettingsProvider>
+        </NavigationProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   )

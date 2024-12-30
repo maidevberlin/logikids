@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useEffect } from 'react'
+import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useTask } from '../hooks/useTask'
 import { useSettings } from '../hooks/useSettings'
+import { useProgress } from '../hooks/useProgress'
 import { TaskCard } from '../components/TaskCard'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -13,6 +14,8 @@ export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
   const { t } = useTranslation()
+  const { updateStats } = useProgress()
+  const [hintsUsed, setHintsUsed] = useState(0)
   
   // Memoize task parameters
   const taskParams = useMemo(() => ({
@@ -32,10 +35,23 @@ export default function TaskPage() {
     nextTask
   } = useTask(taskParams)
 
-  // Reset answer when task parameters change
+  // Reset answer and hints when task parameters change
   useEffect(() => {
     selectAnswer(null)
+    setHintsUsed(0)
   }, [taskParams, selectAnswer])
+
+  // Track progress when answer is checked
+  useEffect(() => {
+    if (isCorrect !== null) {
+      updateStats({
+        subject: taskParams.subject,
+        difficulty: taskParams.difficulty,
+        correct: isCorrect,
+        hintsUsed,
+      })
+    }
+  }, [isCorrect, taskParams.subject, taskParams.difficulty, hintsUsed, updateStats])
 
   // Memoize handlers to prevent unnecessary re-renders
   const handleDifficultyChange = useCallback((newDifficulty: Difficulty) => {
@@ -54,6 +70,10 @@ export default function TaskPage() {
     })
   }, [setSearchParams])
 
+  const handleHintUsed = useCallback(() => {
+    setHintsUsed(prev => prev + 1)
+  }, [])
+
   // Memoize TaskCard props to prevent unnecessary re-renders
   const taskCardProps = useMemo(() => ({
     isLoading,
@@ -66,6 +86,7 @@ export default function TaskPage() {
     onAnswerSubmit: checkAnswer,
     onNextTask: nextTask,
     onDifficultyChange: handleDifficultyChange,
+    onHintUsed: handleHintUsed,
   }), [
     isLoading,
     task,
@@ -77,6 +98,7 @@ export default function TaskPage() {
     checkAnswer,
     nextTask,
     handleDifficultyChange,
+    handleHintUsed,
   ])
 
   return (

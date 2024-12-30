@@ -14,6 +14,7 @@ import { TIMING } from '../../../constants/timing'
 interface HintSectionProps {
   hints: string[]
   hasWrongAnswer?: boolean
+  onHintUsed?: () => void
 }
 
 const HINT_ICONS = [
@@ -43,7 +44,11 @@ const HINT_ICONS = [
   }
 ]
 
-export function HintSection({ hints, hasWrongAnswer = false }: HintSectionProps) {
+export function HintSection({ 
+  hints, 
+  hasWrongAnswer = false,
+  onHintUsed 
+}: HintSectionProps) {
   const [visibleHints, setVisibleHints] = useState(0)
   const [shouldGlowHint, setShouldGlowHint] = useState(false)
   const [wrongAnswerCount, setWrongAnswerCount] = useState(0)
@@ -67,11 +72,12 @@ export function HintSection({ hints, hasWrongAnswer = false }: HintSectionProps)
       const showHintTimer = setTimeout(() => {
         setVisibleHints(prev => prev + 1)
         setShouldGlowHint(false)
+        onHintUsed?.()
       }, TIMING.HINT_WRONG_ANSWER_DELAY)
 
       return () => clearTimeout(showHintTimer)
     }
-  }, [wrongAnswerCount, hasMoreHints])
+  }, [wrongAnswerCount, hasMoreHints, onHintUsed])
 
   // Start glowing after period of inactivity
   useEffect(() => {
@@ -116,6 +122,7 @@ export function HintSection({ hints, hasWrongAnswer = false }: HintSectionProps)
           onClick={() => {
             setVisibleHints(prev => prev + 1)
             setShouldGlowHint(false)
+            onHintUsed?.()
           }}
           disabled={!hasMoreHints}
           shouldShake={false}

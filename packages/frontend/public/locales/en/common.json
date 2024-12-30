@@ -14,24 +14,31 @@
     "backToHome": "Back to Home"
   },
   "stats": {
-    "title": "My Progress",
-    "greeting": "Hi {{name}}, here's your learning progress!",
-    "comingSoon": "Statistics and progress tracking coming soon!",
-    "backToHome": "Back to Home"
+    "title": "Statistics",
+    "greeting": "Hi {{name}}, here are your learning statistics!",
+    "noTasksYet": "You haven't completed any tasks yet. Start solving tasks to see your progress!",
+    "totalTasks": "Total Tasks",
+    "successRate": "Success Rate",
+    "averageHints": "Avg. Hints",
+    "bySubject": "Progress by Subject",
+    "tasks": "Tasks",
+    "success": "Success",
+    "hints": "Hints"
   },
   "task": {
     "title": "Task",
+    "difficulty": "Difficulty",
+    "getHint": "Get a Hint",
+    "getAnotherHint": "Get Another Hint",
+    "skip": "Skip Task",
+    "solutionExplanation": "Solution Explanation",
     "checkAnswer": "Check Answer",
     "nextTask": "Next Task",
-    "tryAgain": "Try Again",
-    "getHint": "Get Hint",
-    "getAnotherHint": "Get Another Hint",
-    "skip": "Skip",
-    "solutionExplanation": "Solution Explanation"
+    "tryAgain": "Try Again"
   },
   "feedback": {
-    "correct": "Correct! Well done!",
-    "incorrect": "Not quite right. Try another answer!"
+    "correct": "Correct!",
+    "incorrect": "Not quite right. Try again!"
   },
   "settings": {
     "title": "Settings",
@@ -42,16 +49,18 @@
   },
   "error": {
     "tryAgain": "Try Again",
-    "backToHome": "Back to Home",
-    "loadingFailed": "Failed to load task"
+    "backToHome": "Back to Home"
   },
   "subjects": {
-    "math": "Math",
+    "math": "Mathematics",
     "logic": "Logic"
   },
   "difficulty": {
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+  "common": {
+    "loading": "Loading..."
   }
 } 
