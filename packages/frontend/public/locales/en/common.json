@@ -1,10 +1,26 @@
 {
   "welcome": {
     "title": "Welcome to Logikids",
+    "personalizedTitle": "Welcome back, {{name}}!",
     "subtitle": "Start your journey into the exciting world of mathematics and logical thinking!",
-    "startButton": "Start Learning"
+    "personalizedSubtitle": "Ready to continue your learning adventure?",
+    "startButton": "Start Learning",
+    "setupAccount": "Setup Your Account"
+  },
+  "account": {
+    "title": "My Account",
+    "saveButton": "Save Changes",
+    "saved": "Changes saved successfully!",
+    "backToHome": "Back to Home"
+  },
+  "stats": {
+    "title": "My Progress",
+    "greeting": "Hi {{name}}, here's your learning progress!",
+    "comingSoon": "Statistics and progress tracking coming soon!",
+    "backToHome": "Back to Home"
   },
   "task": {
+    "title": "Current Task",
     "checkAnswer": "Check Answer",
     "nextTask": "Next Task",
     "tryAgain": "Try Again",

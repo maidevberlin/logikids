@@ -4,11 +4,13 @@ import { Age } from '../types/task'
 interface Settings {
   age: Age
   name: string
+  language: string
 }
 
 const defaultSettings: Settings = {
   age: 12,
-  name: ''
+  name: '',
+  language: 'en'
 }
 
 const STORAGE_KEY = 'logikids_settings'
@@ -51,9 +53,14 @@ export function useSettings() {
     setSettings(prev => ({ ...prev, name }))
   }
 
+  const updateLanguage = (language: string) => {
+    setSettings(prev => ({ ...prev, language }))
+  }
+
   return {
     settings,
     updateAge,
-    updateName
+    updateName,
+    updateLanguage
   }
 } 

@@ -1,13 +1,18 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useEffect } from 'react'
 import { useTask } from '../hooks/useTask'
 import { useSettings } from '../hooks/useSettings'
 import { TaskCard } from '../components/TaskCard'
 import { useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { Difficulty, Subject, taskDefaults, Task } from '../types/task'
+import { Breadcrumb } from '../components/base/Breadcrumb/Breadcrumb'
+import { cn } from '../components/base/styles/utils'
+import { container, background } from '../components/base/styles/common'
 
 export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { settings } = useSettings()
+  const { t } = useTranslation()
   
   // Memoize task parameters
   const taskParams = useMemo(() => ({
@@ -26,6 +31,11 @@ export default function TaskPage() {
     selectAnswer,
     nextTask
   } = useTask(taskParams)
+
+  // Reset answer when task parameters change
+  useEffect(() => {
+    selectAnswer(null)
+  }, [taskParams, selectAnswer])
 
   // Memoize handlers to prevent unnecessary re-renders
   const handleDifficultyChange = useCallback((newDifficulty: Difficulty) => {
@@ -51,33 +61,43 @@ export default function TaskPage() {
     selectedAnswer,
     isCorrect,
     difficulty: taskParams.difficulty,
-    subject: taskParams.subject,
     error,
     onAnswerSelect: selectAnswer,
     onAnswerSubmit: checkAnswer,
     onNextTask: nextTask,
     onDifficultyChange: handleDifficultyChange,
-    onSubjectChange: handleSubjectChange
   }), [
     isLoading,
     task,
     selectedAnswer,
     isCorrect,
     taskParams.difficulty,
-    taskParams.subject,
     error,
     selectAnswer,
     checkAnswer,
     nextTask,
     handleDifficultyChange,
-    handleSubjectChange
   ])
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-3xl mx-auto">
-        <TaskCard {...taskCardProps} />
+    <>
+      <Breadcrumb 
+        currentPage={t('task.title')} 
+        subject={taskParams.subject}
+        onSubjectChange={handleSubjectChange}
+      />
+      <div className={cn(
+        'min-h-screen py-12',
+        background.solid.gray
+      )}>
+        <div className={cn(
+          container.base,
+          container.maxWidth.lg,
+          'p-8'
+        )}>
+          <TaskCard {...taskCardProps} />
+        </div>
       </div>
-    </div>
+    </>
   )
 } 

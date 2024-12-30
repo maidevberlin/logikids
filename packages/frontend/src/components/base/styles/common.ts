@@ -1,3 +1,5 @@
+import { TIMING } from '../../../constants/timing'
+
 // Layout
 export const container = {
   base: 'mx-auto px-4 sm:px-6 lg:px-8 w-full',
@@ -189,4 +191,20 @@ export const size = {
     full: 'h-full',
     screen: 'h-screen'
   }
-} 
+}
+
+export const transition = {
+  base: 'transition-all',
+  duration: {
+    fast: `duration-${TIMING.TRANSITION_DURATION.FAST}`,
+    default: `duration-${TIMING.TRANSITION_DURATION.DEFAULT}`,
+    slow: `duration-${TIMING.TRANSITION_DURATION.SLOW}`,
+    slower: `duration-${TIMING.TRANSITION_DURATION.SLOWER}`
+  },
+  combined: {
+    default: `transition-all duration-${TIMING.TRANSITION_DURATION.DEFAULT}`,
+    fast: `transition-all duration-${TIMING.TRANSITION_DURATION.FAST}`,
+    slow: `transition-all duration-${TIMING.TRANSITION_DURATION.SLOW}`,
+    slower: `transition-all duration-${TIMING.TRANSITION_DURATION.SLOWER}`
+  }
+} as const 

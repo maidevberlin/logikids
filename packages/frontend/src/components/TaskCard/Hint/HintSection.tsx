@@ -9,6 +9,7 @@ import {
   PuzzlePieceIcon,
   CheckCircleIcon 
 } from '@heroicons/react/24/outline'
+import { TIMING } from '../../../constants/timing'
 
 interface HintSectionProps {
   hints: string[]
@@ -44,41 +45,44 @@ const HINT_ICONS = [
 
 export function HintSection({ hints, hasWrongAnswer = false }: HintSectionProps) {
   const [visibleHints, setVisibleHints] = useState(0)
-  const [shouldShakeHint, setShouldShakeHint] = useState(false)
+  const [shouldGlowHint, setShouldGlowHint] = useState(false)
+  const [wrongAnswerCount, setWrongAnswerCount] = useState(0)
   const hasMoreHints = visibleHints < hints.length
   const hasHints = hints.length > 0
 
-  // Show next hint on wrong answer
+  // Track wrong answers
   useEffect(() => {
-    if (hasWrongAnswer && hasMoreHints) {
-      setVisibleHints(prev => prev + 1)
-      setShouldShakeHint(false)
+    if (hasWrongAnswer) {
+      setWrongAnswerCount(prev => prev + 1)
     }
-  }, [hasWrongAnswer, hasMoreHints])
+  }, [hasWrongAnswer])
 
-  // Timer effect for auto-showing hints
+  // Auto-show hint after wrong answer
   useEffect(() => {
-    // Reset shake state when visible hints change
-    setShouldShakeHint(false)
-
-    const shakeTimer = setTimeout(() => {
-      if (hasMoreHints) {
-        setShouldShakeHint(true)
-      }
-    }, 60000) // 1 minute
-
-    const showHintTimer = setTimeout(() => {
-      if (hasMoreHints) {
+    if (wrongAnswerCount > 0 && hasMoreHints) {
+      // Start glowing immediately when wrong answer is given
+      setShouldGlowHint(true)
+      
+      // Show hint automatically after a short delay
+      const showHintTimer = setTimeout(() => {
         setVisibleHints(prev => prev + 1)
-        setShouldShakeHint(false)
-      }
-    }, 90000) // 1.5 minutes
+        setShouldGlowHint(false)
+      }, TIMING.HINT_WRONG_ANSWER_DELAY)
 
-    return () => {
-      clearTimeout(shakeTimer)
-      clearTimeout(showHintTimer)
+      return () => clearTimeout(showHintTimer)
     }
-  }, [hasMoreHints, visibleHints])
+  }, [wrongAnswerCount, hasMoreHints])
+
+  // Start glowing after period of inactivity
+  useEffect(() => {
+    if (hasMoreHints && !shouldGlowHint) {
+      const glowTimer = setTimeout(() => {
+        setShouldGlowHint(true)
+      }, TIMING.HINT_GLOW_TIMEOUT)
+
+      return () => clearTimeout(glowTimer)
+    }
+  }, [hasMoreHints, shouldGlowHint])
 
   if (!hasHints) {
     return null
@@ -107,14 +111,15 @@ export function HintSection({ hints, hasWrongAnswer = false }: HintSectionProps)
         })}
       </FadeInOut>
       
-      <div className="flex justify-start">
+      <div className="flex justify-center">
         <HintButton
           onClick={() => {
             setVisibleHints(prev => prev + 1)
-            setShouldShakeHint(false)
+            setShouldGlowHint(false)
           }}
           disabled={!hasMoreHints}
-          shouldShake={shouldShakeHint && hasMoreHints}
+          shouldShake={false}
+          shouldGlow={shouldGlowHint && hasMoreHints}
           isFirstHint={visibleHints === 0}
         />
       </div>

@@ -43,11 +43,22 @@ export default {
         'pulse-subtle': {
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
           '50%': { transform: 'scale(1.02)', opacity: '0.9' },
+        },
+        'hint-glow': {
+          '0%, 100%': {
+            color: '#eab308',
+            textShadow: '0 0 7px rgba(234,179,8,0.3)'
+          },
+          '50%': {
+            color: '#facc15',
+            textShadow: '0 0 10px rgba(234,179,8,0.6)'
+          }
         }
       },
       animation: {
         shake: 'shake 0.6s ease-in-out',
         'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite',
+        'hint-glow': 'hint-glow 1.5s ease-in-out infinite'
       },
     },
   },

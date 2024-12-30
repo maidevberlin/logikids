@@ -1,5 +1,6 @@
 import { api, ApiResponse } from './api';
 import { Task, TaskParams } from '../types/task';
+import { getCurrentLanguage } from '../i18n/config';
 
 export class LogikidsApiError extends Error {
   constructor(message: string) {
@@ -10,7 +11,13 @@ export class LogikidsApiError extends Error {
 
 export const logikids = {
   getTask: (params: TaskParams, signal?: AbortSignal): ApiResponse<Task> => {
-    return api.get<any, Task>('/task', {params, signal})
+    return api.get<any, Task>('/task', {
+      params, 
+      signal,
+      headers: {
+        'Accept-Language': getCurrentLanguage()
+      }
+    })
     .then(task => {
       if (!task) {
         throw new LogikidsApiError('No task data received from server');

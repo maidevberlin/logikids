@@ -108,7 +108,7 @@ export function MultipleChoiceAnswer({
             size="lg"
             className={`
               w-full
-              ${selectedAnswer !== null && isCorrect === null ? 'animate-pulse-subtle border-2 border-green-300' : ''}
+              ${selectedAnswer !== null && isCorrect === null ? 'animate-pulse-subtle border-2 border-primary-300 hover:bg-primary-50' : ''}
             `}
           />
         ) : isCorrect ? (

@@ -3,15 +3,32 @@ import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import Backend from 'i18next-http-backend'
 
+// Get browser language
+const getBrowserLanguage = () => {
+  return navigator.language.split('-')[0] // Get primary language code
+}
+
+// Get language from settings if available
+const STORAGE_KEY = 'logikids_settings'
+const storedSettings = localStorage.getItem(STORAGE_KEY)
+const storedLanguage = storedSettings 
+  ? JSON.parse(storedSettings).language 
+  : null
+
+// Use stored language first, then browser language, then fallback to English
+const initialLanguage = storedLanguage || getBrowserLanguage() || 'en'
+
+// Export for use in other parts of the application
+export const getCurrentLanguage = () => i18n.language
+
 i18n
   // Load translations using http -> see /public/locales
   .use(Backend)
-  // Detect user language
-  .use(LanguageDetector)
   // Pass the i18n instance to react-i18next
   .use(initReactI18next)
   .init({
-    // Default language
+    // Use stored language or fallback to English
+    lng: initialLanguage,
     fallbackLng: 'en',
     // Debug mode in development
     debug: import.meta.env.DEV,

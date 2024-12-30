@@ -33,6 +33,7 @@
     "postcss": "^8.x",
     "tailwindcss": "^3.x",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }

@@ -1,5 +1,17 @@
-export const HINT_TIMING = {
-  SHAKE_DELAY: 30000, // 30 seconds before showing hint shake animation
+export const TIMING = {
+  // Task-related timings
+  WRONG_ANSWER_RESET: 3000, // 3 seconds before auto-resetting wrong answer
+
+  // Hint-related timings
+  HINT_GLOW_TIMEOUT: 10000, // 10 seconds of inactivity before starting to glow
+  HINT_WRONG_ANSWER_DELAY: 5000, // 3 seconds after wrong answer before showing hint automatically
+
+  // Animation durations
   FADE_DURATION: 200, // 200ms for fade animations
-  SHAKE_DURATION: 500 // 500ms for shake animation
+  TRANSITION_DURATION: {
+    FAST: 100,
+    DEFAULT: 200,
+    SLOW: 300,
+    SLOWER: 500
+  }
 } as const 

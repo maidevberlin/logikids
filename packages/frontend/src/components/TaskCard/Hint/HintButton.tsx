@@ -9,6 +9,7 @@ interface HintButtonProps {
   onClick: () => void
   disabled: boolean
   shouldShake: boolean
+  shouldGlow: boolean
   isFirstHint: boolean
 }
 
@@ -16,9 +17,15 @@ export function HintButton({
   onClick, 
   disabled,
   shouldShake,
+  shouldGlow,
   isFirstHint
 }: HintButtonProps) {
   const { t } = useTranslation('common')
+
+  const glowClasses = shouldGlow ? [
+    'text-yellow-500',
+    'animate-hint-glow'
+  ] : []
 
   return (
     <Shake shouldShake={shouldShake}>
@@ -29,9 +36,13 @@ export function HintButton({
       >
         <span className={cn(
           flex.center,
-          flex.gap.sm
+          flex.gap.sm,
+          ...glowClasses
         )}>
-          <LightBulbIcon className="h-5 w-5" />
+          <LightBulbIcon className={cn(
+            "h-5 w-5",
+            ...glowClasses
+          )} />
           {isFirstHint ? t('task.getHint') : t('task.getAnotherHint')}
         </span>
       </Button>

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Select } from './Form'
+import { useSettings } from '../../hooks/useSettings'
 
 const languages = [
   { value: 'en', label: 'English' },
@@ -8,12 +9,18 @@ const languages = [
 
 export function LanguageSwitcher() {
   const { i18n } = useTranslation()
+  const { settings, updateLanguage } = useSettings()
+
+  const handleLanguageChange = (lang: string) => {
+    i18n.changeLanguage(lang)
+    updateLanguage(lang)
+  }
 
   return (
     <Select
-      value={i18n.language}
+      value={settings.language}
       options={languages}
-      onChange={(lang) => i18n.changeLanguage(lang)}
+      onChange={handleLanguageChange}
       size="sm"
     />
   )

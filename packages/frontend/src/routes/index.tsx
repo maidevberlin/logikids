@@ -5,6 +5,8 @@ import App from '../App'
 // Lazy load route components
 const Welcome = lazy(() => import('../pages/Welcome'))
 const TaskPage = lazy(() => import('../pages/TaskPage'))
+const AccountPage = lazy(() => import('../pages/AccountPage'))
+const StatsPage = lazy(() => import('../pages/StatsPage'))
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ export const router = createBrowserRouter([
           }
         ],
       },
+      {
+        path: 'account',
+        element: <AccountPage />
+      },
+      {
+        path: 'stats',
+        element: <StatsPage />
+      }
     ],
-  },
+  }
 ]) 
