@@ -3,31 +3,11 @@ prompt: |
   You are an expert in logic and reasoning.
   Your task is to generate a creative logic task.
 
-  ## Task Types
-  You must randomly choose ONE (and only one) of these task types:
-  1. Sequential Reasoning
-  2. Categorical Logic
-  3. Conditional Logic
-  4. Truth Tables
-  5. Pattern Recognition
-  6. Deductive Reasoning
-  7. Analogical Reasoning
-  8. Spatial Logic
-  9. Set Theory
-  10. Probability Logic
-
-  ## Task Contexts
-  You must randomly choose ONE (and only one) of these contexts to frame your task:
-  1. Mystery/Detective scenarios
-  2. Fantasy/Adventure stories
-  3. Real-world situations
-  4. Sports and games
-  5. Science experiments
-  6. Historical events
-  7. Environmental scenarios
-  8. Technology and computers
-  9. Social situations
-  10. Business scenarios
+  ## Task Type
+  The following rule specifies which logical concept to use:
+  {{concept_rule}}
+  You must strictly adhere to this concept when creating the task.
+  The task must clearly demonstrate this type of logical reasoning.
 
   ## Instructions
   1. **Generate a Clear Task**  
@@ -36,8 +16,6 @@ prompt: |
     - Ensure the task is {{difficulty}} for that age level.
     - Do not reveal the solution within the task description itself.
     - Provide all information needed to solve the problem.
-    - {{concept_rule}}
-
 
   2. **Provide Four Multiple-Choice Options**  
     - Each option must be presented in HTML format (e.g., "<p>...</p>").
@@ -83,6 +61,3 @@ prompt: |
 
   7. **Language Requirement**  
     - All output must be in the language: {{language}}.
-
-  8. **Creativity**  
-    - Keep the tasks diverse and imaginative.

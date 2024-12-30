@@ -13,9 +13,13 @@ export class TaskController extends BaseController {
   }
 
   public async getTask(req: Request, res: Response): Promise<void> {
-    const query = taskRequestSchema.parse(req.query);
+    const query = {
+      ...req.query,
+      age: req.query.age ? parseInt(req.query.age as string, 10) : undefined
+    };
+    const validatedQuery = taskRequestSchema.parse(query);
     const language = this.getPreferredLanguage(req);
-    const task = await this.taskService.generateTask(query, language);
+    const task = await this.taskService.generateTask(validatedQuery, language);
     res.json(task);
   }
 } 

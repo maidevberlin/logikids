@@ -51,7 +51,7 @@
     "tryAgain": "Try Again",
     "backToHome": "Back to Home"
   },
-  "subjects": {
+  "subject": {
     "math": "Mathematics",
     "logic": "Logic"
   },
@@ -60,7 +60,26 @@
     "medium": "Medium",
     "hard": "Hard"
   },
-  "common": {
-    "loading": "Loading..."
+  "taskType": {
+    "random": "Random",
+    "arithmetic": "Arithmetic Operations",
+    "number_patterns": "Number Patterns",
+    "geometry": "Geometry",
+    "fractions": "Fractions and Decimals",
+    "measurement": "Measurement",
+    "word_problems": "Word Problems",
+    "data_analysis": "Data Analysis",
+    "probability": "Probability",
+    "algebra": "Algebra",
+    "mental_math": "Mental Math",
+    "sequential": "Sequential Reasoning",
+    "categorical": "Categorical Logic",
+    "conditional": "Conditional Logic",
+    "truth_tables": "Truth Tables",
+    "pattern_recognition": "Pattern Recognition",
+    "deductive": "Deductive Reasoning",
+    "analogical": "Analogical Reasoning",
+    "spatial": "Spatial Logic",
+    "set_theory": "Set Theory"
   }
 } 

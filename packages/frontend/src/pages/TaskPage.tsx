@@ -5,7 +5,7 @@ import { useProgress } from '../hooks/useProgress'
 import { TaskCard } from '../components/TaskCard'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Difficulty, Subject, taskDefaults, Task } from '../types/task'
+import { Difficulty, Subject, TaskType, taskDefaults, Task } from '../types/task'
 import { Breadcrumb } from '../components/base/Breadcrumb/Breadcrumb'
 import { cn } from '../components/base/styles/utils'
 import { container, background } from '../components/base/styles/common'
@@ -21,6 +21,7 @@ export default function TaskPage() {
   const taskParams = useMemo(() => ({
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
     subject: (searchParams.get('subject') ?? taskDefaults.subject) as Subject,
+    taskType: (searchParams.get('taskType') ?? taskDefaults.taskType) as TaskType,
     age: settings.age
   }), [searchParams, settings.age])
   
@@ -66,9 +67,21 @@ export default function TaskPage() {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
       newParams.set('subject', newSubject)
+      // Reset taskType when subject changes
+      newParams.set('taskType', 'random')
       return newParams
     })
   }, [setSearchParams])
+
+  const handleTaskTypeChange = useCallback((newTaskType: TaskType) => {
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev)
+      // Ensure both subject and taskType are set
+      newParams.set('subject', taskParams.subject)
+      newParams.set('taskType', newTaskType)
+      return newParams
+    })
+  }, [setSearchParams, taskParams.subject])
 
   const handleHintUsed = useCallback(() => {
     setHintsUsed(prev => prev + 1)
@@ -106,7 +119,9 @@ export default function TaskPage() {
       <Breadcrumb 
         currentPage={t('task.title')} 
         subject={taskParams.subject}
+        taskType={taskParams.taskType}
         onSubjectChange={handleSubjectChange}
+        onTaskTypeChange={handleTaskTypeChange}
       />
       <div className={cn(
         'min-h-screen py-12',

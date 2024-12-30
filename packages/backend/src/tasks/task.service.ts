@@ -1,62 +1,37 @@
-import { BaseService } from '../common/baseService';
-import { TaskRequest, Task, taskResponseSchema, Subject } from './types';
+import { TaskRequest, Task } from './types';
 import { AIClient } from '../common/ai/base';
-import { AIGenerationError } from '../common/errors';
-import { ValidationError } from '../common/errors';
-import { z } from 'zod';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
+import { getAvailableTaskTypes, getSpecificTaskType } from './config/taskTypes';
 
-export class TaskService extends BaseService {
-  constructor(aiClient: AIClient) {
-    super(aiClient, __dirname);
+export class TaskService {
+  constructor(private readonly aiClient: AIClient) {}
+
+  private async readPromptFile(path: string): Promise<{ prompt: string }> {
+    const content = await readFile(join(__dirname, '..', path), 'utf-8');
+    return { prompt: content };
   }
 
-  private createTask(response: string, request: TaskRequest, language: string): Task {
-    try {
-      const parsedResponse = taskResponseSchema.parse(JSON.parse(response));
-      return {
-        ...parsedResponse,
-        type: request.subject === 'math' ? 'math' : 'logic',
-        metadata: {
-          difficulty: request.difficulty,
-          age: request.age,
-          provider: this.aiClient.provider,
-          model: this.aiClient.model,
-          language,
-          subject: request.subject
-        }
-      };
-    } catch (error) {
-      if (error instanceof SyntaxError) {
-        throw new AIGenerationError('AI response is not valid JSON');
-      }
-      if (error instanceof z.ZodError) {
-        throw new ValidationError(error.errors);
-      }
-      throw error;
-    }
-  }
-
-  private fillPromptVariables(prompt: string, request: TaskRequest, language: string): string {
-    const conceptText = request.concept ? ` focusing on ${request.concept}` : '';
-    const conceptRule = request.concept ? `- You must focus on the mathematical concept: ${request.concept}` : '';
-
-    return prompt
-      .replace(/\{\{language\}\}/g, language)
-      .replace(/\{\{age\}\}/g, request.age.toString())
-      .replace(/\{\{difficulty\}\}/g, request.difficulty)
-      .replace(/\{\{concept\}\}/g, conceptText)
-      .replace(/\{\{concept_rule\}\}/g, conceptRule);
-  }
-
-  async generateTask(request: TaskRequest, language = 'en'): Promise<Task> {
-    const prompt = await this.promptService.getPrompt(request.subject);
-    const filledPrompt = this.fillPromptVariables(prompt.prompt, request, language);
+  public async generateTask(request: TaskRequest, language: string): Promise<Task> {
+    const { subject, taskType } = request;
+    const promptFile = await this.readPromptFile(`tasks/prompts/${subject}.yaml`);
     
-    const response = await this.aiClient.generate(filledPrompt);
+    // Set concept rule based on task type
+    const conceptRule = taskType === 'random' 
+      ? getAvailableTaskTypes(subject)
+      : getSpecificTaskType(subject, taskType);
+
+    const prompt = promptFile.prompt
+      .replace('{{age}}', request.age.toString())
+      .replace('{{difficulty}}', request.difficulty)
+      .replace('{{language}}', language)
+      .replace('{{concept_rule}}', conceptRule);
+
+    const response = await this.aiClient.generate(prompt);
     if (!response?.response) {
-      throw new AIGenerationError('Failed to generate task');
+      throw new Error('Failed to generate task');
     }
 
-    return this.createTask(response.response, request, language);
+    return JSON.parse(response.response);
   }
 } 

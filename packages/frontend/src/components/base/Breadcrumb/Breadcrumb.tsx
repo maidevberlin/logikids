@@ -2,19 +2,31 @@ import { Link } from 'react-router-dom'
 import { ChevronRightIcon, HomeIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
 import { cn } from '../../base/styles/utils'
 import { interactive, position } from '../../base/styles/common'
-import { Subject } from '../../../types/task'
+import { Subject, TaskType } from '../../../types/task'
 import { Menu } from '@headlessui/react'
+import { TaskTypeSelector } from '../TaskTypeSelector'
+import { useTranslation } from 'react-i18next'
 
 interface BreadcrumbProps {
   currentPage: string
   subject?: Subject
+  taskType?: TaskType
   onSubjectChange?: (subject: Subject) => void
+  onTaskTypeChange?: (taskType: TaskType) => void
 }
 
-export function Breadcrumb({ currentPage, subject, onSubjectChange }: BreadcrumbProps) {
+export function Breadcrumb({ 
+  currentPage, 
+  subject, 
+  taskType,
+  onSubjectChange,
+  onTaskTypeChange 
+}: BreadcrumbProps) {
+  const { t } = useTranslation();
+  
   const subjects: { value: Subject, label: string }[] = [
-    { value: 'math', label: 'Math' },
-    { value: 'logic', label: 'Logic' }
+    { value: 'math', label: t('subject.math') },
+    { value: 'logic', label: t('subject.logic') }
   ]
 
   return (
@@ -82,6 +94,20 @@ export function Breadcrumb({ currentPage, subject, onSubjectChange }: Breadcrumb
                 </Menu.Items>
               </Menu>
             </li>
+            {taskType && onTaskTypeChange && (
+              <>
+                <li>
+                  <ChevronRightIcon className="w-4 h-4 text-gray-400" />
+                </li>
+                <li>
+                  <TaskTypeSelector
+                    subject={subject}
+                    value={taskType}
+                    onChange={onTaskTypeChange}
+                  />
+                </li>
+              </>
+            )}
           </>
         )}
       </ol>
