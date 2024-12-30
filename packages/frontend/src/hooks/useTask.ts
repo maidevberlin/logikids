@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { TaskParams, Task } from '../types/task';
+import { TaskRequest, Task } from '../types/task';
 import { logikids } from '../services/logikids';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../i18n/config';
 import { TIMING } from '../constants/timing';
 
-export const useTask = (params: TaskParams) => {
+export const useTask = (params: TaskRequest) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const resetTimeoutRef = useRef<number>();

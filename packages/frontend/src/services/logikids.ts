@@ -1,5 +1,5 @@
 import { api, ApiResponse } from './api';
-import { Task, TaskParams } from '../types/task';
+import { Task, TaskRequest } from '../types/task';
 import { getCurrentLanguage } from '../i18n/config';
 
 export class LogikidsApiError extends Error {
@@ -10,7 +10,7 @@ export class LogikidsApiError extends Error {
 }
 
 export const logikids = {
-  getTask: (params: TaskParams, signal?: AbortSignal): ApiResponse<Task> => {
+  getTask: (params: TaskRequest, signal?: AbortSignal): ApiResponse<Task> => {
     return api.get<any, Task>('/task', {
       params, 
       signal,

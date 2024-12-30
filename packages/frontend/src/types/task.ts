@@ -1,25 +1,12 @@
 import type { Task as BackendTask, TaskRequest, Age, Subject, Difficulty, MathTaskType, LogicTaskType, TaskType } from '@logikids/backend/tasks/types';
 
-export type Task = BackendTask & {
-  title: string;
-  task: string; // HTML content
-  hints: string[];
-  options: string[];
-  solution: { index: number };
-};
+export type Task = BackendTask;
 
-export type { Subject, Difficulty, MathTaskType, LogicTaskType, TaskType, Age };
+export type { Subject, Difficulty, MathTaskType, LogicTaskType, TaskType, Age, TaskRequest };
 
-export interface TaskParams {
-  difficulty: Difficulty;
-  subject: Subject;
-  age: number;
-  taskType?: TaskType;
-}
-
-export const taskDefaults = {
-  difficulty: 'medium' as Difficulty,
-  subject: 'math' as Subject,
-  age: 10 as Age,
-  taskType: 'random' as TaskType,
+export const taskDefaults: TaskRequest = {
+  difficulty: 'medium',
+  subject: 'math',
+  age: 10,
+  taskType: 'random'
 };
