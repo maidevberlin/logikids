@@ -64,34 +64,48 @@ function TaskCardComponent({
                 <Heading level={2}>{task.title}</Heading>
                 <Menu as="div" className="relative">
                   <Menu.Button className={cn(
-                    'inline-flex items-center gap-2 px-4 py-2',
-                    'text-sm font-medium rounded-md',
-                    'text-gray-700 bg-white',
-                    'border border-gray-300',
-                    interactive.hover.opacity,
-                    interactive.focus
+                    'text-gray-500 hover:text-primary-600',
+                    'flex items-center space-x-1',
+                    'text-sm',
+                    interactive.transition
                   )}>
-                    {t('task.difficulty')}: {t(`difficulty.${difficulty}`)}
-                    <ChevronDownIcon className="h-5 w-5" />
+                    <span className={cn(
+                      'inline-flex rounded-md px-2 py-1 text-sm font-medium',
+                      difficulty === 'easy' && 'bg-green-100 text-green-800',
+                      difficulty === 'medium' && 'bg-yellow-100 text-yellow-800',
+                      difficulty === 'hard' && 'bg-red-100 text-red-800'
+                    )}>
+                      {t(`difficulty.${difficulty}`)}
+                    </span>
+                    <ChevronDownIcon className="h-3 w-3" />
                   </Menu.Button>
                   <Menu.Items className={cn(
-                    'absolute right-0 mt-2 w-48',
+                    'absolute right-0 mt-1',
                     'bg-white rounded-md shadow-lg',
-                    'border border-gray-100',
-                    'z-10'
+                    'py-1 w-32',
+                    'z-20'
                   )}>
                     {(['easy', 'medium', 'hard'] as const).map((d) => (
                       <Menu.Item key={d}>
                         {({ active }) => (
                           <button
-                            onClick={() => onDifficultyChange(d)}
                             className={cn(
-                              'block w-full text-left px-4 py-2',
-                              'text-sm',
-                              active ? 'bg-gray-50' : ''
+                              'block w-full text-left px-4 py-1 text-sm',
+                              'flex items-center space-x-2',
+                              active ? 'bg-gray-50' : '',
+                              d === 'easy' && 'text-green-800',
+                              d === 'medium' && 'text-yellow-800',
+                              d === 'hard' && 'text-red-800'
                             )}
+                            onClick={() => onDifficultyChange(d)}
                           >
-                            {t(`difficulty.${d}`)}
+                            <span className={cn(
+                              'w-2 h-2 rounded-full',
+                              d === 'easy' && 'bg-green-400',
+                              d === 'medium' && 'bg-yellow-400',
+                              d === 'hard' && 'bg-red-400'
+                            )} />
+                            <span>{t(`difficulty.${d}`)}</span>
                           </button>
                         )}
                       </Menu.Item>
