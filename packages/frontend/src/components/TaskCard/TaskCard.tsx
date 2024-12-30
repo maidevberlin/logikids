@@ -6,6 +6,7 @@ import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
 import { TaskOptions } from './TaskOptions'
 import { Heading } from '../base/Typography/Heading'
 import { HintSection } from './Hint/HintSection'
+import { SkipLink } from './SkipLink'
 
 interface TaskCardProps {
   isLoading: boolean
@@ -15,7 +16,7 @@ interface TaskCardProps {
   difficulty: Difficulty
   subject: Subject
   error: string | null
-  onAnswerSelect: (index: number) => void
+  onAnswerSelect: (index: number | null) => void
   onAnswerSubmit: () => void
   onNextTask: () => void
   onDifficultyChange: (difficulty: Difficulty) => void
@@ -89,13 +90,19 @@ function TaskCardComponent({
               {!isLoading && isCorrect !== true && (
                 <HintSection
                   hints={task.hints}
-                  onSkip={onNextTask}
+                  hasWrongAnswer={isCorrect === false}
                 />
               )}
             </>
           )}
         </div>
       </Card>
+
+      {!isLoading && !error && isCorrect !== true && (
+        <div className="flex justify-end">
+          <SkipLink onClick={onNextTask} />
+        </div>
+      )}
     </div>
   )
 }

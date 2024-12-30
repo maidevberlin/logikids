@@ -28,5 +28,14 @@
     "tryAgain": "Try Again",
     "backToHome": "Back to Home",
     "loadingFailed": "Failed to load task"
+  },
+  "subjects": {
+    "math": "Math",
+    "logic": "Logic"
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
   }
 } 

@@ -5,17 +5,17 @@
     "startButton": "Jetzt Lernen"
   },
   "task": {
-    "checkAnswer": "Antwort Prüfen",
+    "checkAnswer": "Antwort prüfen",
     "nextTask": "Nächste Aufgabe",
-    "tryAgain": "Nochmal Versuchen",
-    "getHint": "Tipp Anzeigen",
-    "getAnotherHint": "Weiteren Tipp Anzeigen",
+    "tryAgain": "Nochmal versuchen",
+    "getHint": "Tipp anzeigen",
+    "getAnotherHint": "Weiteren Tipp anzeigen",
     "skip": "Überspringen",
     "solutionExplanation": "Lösungserklärung"
   },
   "feedback": {
     "correct": "Richtig! Gut gemacht!",
-    "incorrect": "Nicht ganz richtig. Versuche es nochmal!"
+    "incorrect": "Nicht ganz richtig. Versuche eine andere Antwort!"
   },
   "settings": {
     "title": "Einstellungen",
@@ -25,8 +25,17 @@
     "languageLabel": "Wähle deine Sprache"
   },
   "error": {
-    "tryAgain": "Nochmal Versuchen",
-    "backToHome": "Zurück zum Start",
+    "tryAgain": "Nochmal versuchen",
+    "backToHome": "Zurück zur Startseite",
     "loadingFailed": "Aufgabe konnte nicht geladen werden"
+  },
+  "subjects": {
+    "math": "Mathematik",
+    "logic": "Logik"
+  },
+  "difficulty": {
+    "easy": "Leicht",
+    "medium": "Mittel",
+    "hard": "Schwer"
   }
 } 

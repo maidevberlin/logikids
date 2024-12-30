@@ -10,7 +10,7 @@ interface MultipleChoiceAnswerProps {
   options: string[]
   selectedAnswer: number | null
   isCorrect: boolean | null
-  onAnswerSelect: (index: number) => void
+  onAnswerSelect: (index: number | null) => void
   onSubmit: () => void
   onNextTask: () => void
   solutionExplanation: string
@@ -30,7 +30,7 @@ export function MultipleChoiceAnswer({
   const { t } = useTranslation()
 
   const handleTryAgain = () => {
-    onAnswerSelect(-1)
+    onAnswerSelect(null)
   }
 
   if (isLoading) {
@@ -105,13 +105,18 @@ export function MultipleChoiceAnswer({
             label={t('task.checkAnswer')}
             disabled={selectedAnswer === null}
             variant="primary"
-            className="w-full"
+            size="lg"
+            className={`
+              w-full
+              ${selectedAnswer !== null && isCorrect === null ? 'animate-pulse-subtle border-2 border-green-300' : ''}
+            `}
           />
         ) : isCorrect ? (
           <TaskOption
             onSelect={onNextTask}
             label={t('task.nextTask')}
             variant="success"
+            size="lg"
             className="w-full"
           />
         ) : (
@@ -119,6 +124,7 @@ export function MultipleChoiceAnswer({
             onSelect={handleTryAgain}
             label={t('task.tryAgain')}
             variant="warning"
+            size="lg"
             className="w-full"
           />
         )}

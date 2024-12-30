@@ -40,9 +40,14 @@ export default {
           '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-4px)' },
           '20%, 40%, 60%, 80%': { transform: 'translateX(4px)' },
         },
+        'pulse-subtle': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.02)', opacity: '0.9' },
+        }
       },
       animation: {
         shake: 'shake 0.6s ease-in-out',
+        'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite',
       },
     },
   },

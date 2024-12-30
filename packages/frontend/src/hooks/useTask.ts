@@ -17,6 +17,9 @@ export const useTask = (params: TaskParams) => {
     queryKey: ['task', params],
     queryFn: ({ signal }) => logikids.getTask(params, signal),
     retry: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    staleTime: Infinity,
   });
 
   const checkAnswer = useCallback(() => {
@@ -24,7 +27,7 @@ export const useTask = (params: TaskParams) => {
     setIsCorrect(selectedAnswer === task.solution.index);
   }, [task, selectedAnswer]);
 
-  const selectAnswer = useCallback((index: number) => {
+  const selectAnswer = useCallback((index: number | null) => {
     setSelectedAnswer(index);
     setIsCorrect(null);
   }, []);

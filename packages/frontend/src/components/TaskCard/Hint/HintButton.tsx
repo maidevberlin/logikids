@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { LightBulbIcon } from '@heroicons/react/24/outline'
 import { Button } from '../../base/Button'
 import { Shake } from '../../base/Animations'
@@ -17,6 +18,8 @@ export function HintButton({
   shouldShake,
   isFirstHint
 }: HintButtonProps) {
+  const { t } = useTranslation('common')
+
   return (
     <Shake shouldShake={shouldShake}>
       <Button
@@ -29,7 +32,7 @@ export function HintButton({
           flex.gap.sm
         )}>
           <LightBulbIcon className="h-5 w-5" />
-          {isFirstHint ? 'Get Hint' : 'Get Another Hint'}
+          {isFirstHint ? t('task.getHint') : t('task.getAnotherHint')}
         </span>
       </Button>
     </Shake>

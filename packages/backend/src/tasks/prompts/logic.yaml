@@ -36,7 +36,11 @@ prompt: |
     - You must keep the task clear and understandable.
     - You must ensure the task is {{difficulty}} for a {{age}} year old student.
     - You must create plausible but incorrect options for multiple choice.
-    - You must provide helpful hints that guide towards the solution.
+    - You must provide 4 helpful hints that guide towards the solution:
+      - The first hint must help the student to understand the task and context.
+      - The second hint should help to gather all information needed to solve the task and give an idea how to solve it.
+      - The third hint should guide the student half through the solution.
+      - The fourth hint should give a full step by step explanation of the final solution.
     {{concept_rule}}
     
     ## Output Format Rules
@@ -65,4 +69,3 @@ prompt: |
       },
       "hints": string[]
     }
-  }

@@ -1,96 +1,122 @@
 import { useState, useEffect } from 'react'
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import DOMPurify from 'dompurify'
 import { FadeInOut } from '../../base/Animations/FadeInOut'
-import { HintBox } from './HintBox'
+import { Card } from '../../base/Card'
 import { HintButton } from './HintButton'
-import { HINT_TIMING } from '../../../constants/timing'
-import { flex, text, interactive } from '../../base/styles'
-import { cn } from '../../base/styles/utils'
+import { 
+  LightBulbIcon, 
+  InformationCircleIcon,
+  PuzzlePieceIcon,
+  CheckCircleIcon 
+} from '@heroicons/react/24/outline'
 
 interface HintSectionProps {
   hints: string[]
-  onSkip: () => void
+  hasWrongAnswer?: boolean
 }
 
-export function HintSection({ hints, onSkip }: HintSectionProps) {
+const HINT_ICONS = [
+  { 
+    icon: LightBulbIcon, 
+    title: 'Context Hint', 
+    bgColor: 'bg-gray-50/50',
+    iconColor: 'text-gray-500'
+  },
+  { 
+    icon: InformationCircleIcon, 
+    title: 'Information Hint', 
+    bgColor: 'bg-gray-50/50',
+    iconColor: 'text-blue-500'
+  },
+  { 
+    icon: PuzzlePieceIcon, 
+    title: 'Solution Approach', 
+    bgColor: 'bg-gray-50/50',
+    iconColor: 'text-cyan-500'
+  },
+  { 
+    icon: CheckCircleIcon, 
+    title: 'Complete Solution', 
+    bgColor: 'bg-gray-50/50',
+    iconColor: 'text-green-500'
+  }
+]
+
+export function HintSection({ hints, hasWrongAnswer = false }: HintSectionProps) {
   const [visibleHints, setVisibleHints] = useState(0)
-  const [shouldShake, setShouldShake] = useState(false)
+  const [shouldShakeHint, setShouldShakeHint] = useState(false)
   const hasMoreHints = visibleHints < hints.length
   const hasHints = hints.length > 0
 
+  // Show next hint on wrong answer
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (hasMoreHints) {
-        setShouldShake(true)
-      }
-    }, HINT_TIMING.SHAKE_DELAY)
-
-    return () => clearTimeout(timer)
-  }, [hasMoreHints])
-
-  const handleRequestHint = () => {
-    if (hasMoreHints) {
+    if (hasWrongAnswer && hasMoreHints) {
       setVisibleHints(prev => prev + 1)
-      setShouldShake(false)
+      setShouldShakeHint(false)
     }
-  }
+  }, [hasWrongAnswer, hasMoreHints])
+
+  // Timer effect for auto-showing hints
+  useEffect(() => {
+    // Reset shake state when visible hints change
+    setShouldShakeHint(false)
+
+    const shakeTimer = setTimeout(() => {
+      if (hasMoreHints) {
+        setShouldShakeHint(true)
+      }
+    }, 60000) // 1 minute
+
+    const showHintTimer = setTimeout(() => {
+      if (hasMoreHints) {
+        setVisibleHints(prev => prev + 1)
+        setShouldShakeHint(false)
+      }
+    }, 90000) // 1.5 minutes
+
+    return () => {
+      clearTimeout(shakeTimer)
+      clearTimeout(showHintTimer)
+    }
+  }, [hasMoreHints, visibleHints])
 
   if (!hasHints) {
-    return (
-      <div className={cn(flex.end)}>
-        <button
-          onClick={onSkip}
-          className={cn(
-            flex.center,
-            flex.gap.sm,
-            text.size.sm,
-            text.weight.medium,
-            text.color.primary,
-            interactive.transition,
-            'hover:text-primary-700'
-          )}
-        >
-          Skip
-          <ArrowRightIcon className="h-4 w-4" />
-        </button>
-      </div>
-    )
+    return null
   }
 
   return (
     <div className="space-y-4">
-      <FadeInOut 
-        show={visibleHints > 0} 
-        className="space-y-2"
-        duration={HINT_TIMING.FADE_DURATION}
-      >
-        {hints.slice(0, visibleHints).map((hint, index) => (
-          <HintBox key={index} hint={hint} index={index} />
-        ))}
+      <FadeInOut show={visibleHints > 0} className="space-y-2">
+        {hints.slice(0, visibleHints).map((hint, index) => {
+          const { icon: IconComponent, title, bgColor, iconColor } = HINT_ICONS[index] || HINT_ICONS[0]
+          return (
+            <Card key={index} variant="primary" className={`p-4 ${bgColor}`}>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <IconComponent className={`w-8 h-8 ${iconColor}`} title={title} />
+                </div>
+                <div
+                  className="flex-grow"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(hint)
+                  }}
+                />
+              </div>
+            </Card>
+          )
+        })}
       </FadeInOut>
       
-      <div className={cn(flex.between, flex.center)}>
+      <div className="flex justify-start">
         <HintButton
-          onClick={handleRequestHint}
+          onClick={() => {
+            setVisibleHints(prev => prev + 1)
+            setShouldShakeHint(false)
+          }}
           disabled={!hasMoreHints}
-          shouldShake={shouldShake}
+          shouldShake={shouldShakeHint && hasMoreHints}
           isFirstHint={visibleHints === 0}
         />
-        <button
-          onClick={onSkip}
-          className={cn(
-            flex.center,
-            flex.gap.sm,
-            text.size.sm,
-            text.weight.medium,
-            text.color.primary,
-            interactive.transition,
-            'hover:text-primary-700'
-          )}
-        >
-          Skip
-          <ArrowRightIcon className="h-4 w-4" />
-        </button>
       </div>
     </div>
   )
