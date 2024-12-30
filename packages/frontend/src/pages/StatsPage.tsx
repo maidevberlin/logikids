@@ -7,7 +7,7 @@ import { Text } from '../components/base/Typography/Text'
 import { cn } from '../components/base/styles/utils'
 import { container, background } from '../components/base/styles/common'
 import { Subject, Difficulty } from '../types/task'
-import { PieChart, Pie, Cell, ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
+import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 
 const SUBJECTS: Subject[] = ['math', 'logic']
 const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard']
@@ -52,34 +52,6 @@ const TaskProgressBar = ({ value }: { value: number }) => {
 }
 
 // Add these helper components for better organization
-const DonutChart = ({ value, total, color }: { value: number, total: number, color: string }) => {
-  const data = [
-    { name: 'Complete', value: value },
-    { name: 'Remaining', value: total - value }
-  ]
-  
-  return (
-    <div className="h-48 w-full flex items-center justify-center">
-      <div className="w-48">
-        <ResponsiveContainer width="100%" height={192}>
-          <PieChart>
-            <Pie
-              data={data}
-              innerRadius={40}
-              outerRadius={60}
-              paddingAngle={5}
-              dataKey="value"
-            >
-              <Cell fill={color} />
-              <Cell fill="#E5E7EB" />
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  )
-}
-
 const GaugeMeter = ({ value }: { value: number }) => {
   const data = [{ value: 100 }] // Always fill the background
   // Ensure value is between 0 and 100
@@ -180,12 +152,10 @@ const DIFFICULTY_CLASSES = {
 }
 
 const SubjectStatsBar = ({ 
-  subject, 
   difficulty, 
   successRate, 
   totalTasks 
 }: { 
-  subject: Subject
   difficulty: Difficulty
   successRate: number
   totalTasks: number 
@@ -233,7 +203,6 @@ export default function StatsPage() {
     getOverallSuccessRate,
     getOverallAverageHints,
     getSuccessRate,
-    getAverageHints,
     getTotalTasks
   } = useProgress()
 
@@ -360,7 +329,6 @@ export default function StatsPage() {
                         {DIFFICULTIES.map(difficulty => (
                           <SubjectStatsBar
                             key={difficulty}
-                            subject={subject}
                             difficulty={difficulty}
                             successRate={getSuccessRate(subject, difficulty)}
                             totalTasks={getTotalTasks(subject, difficulty)}

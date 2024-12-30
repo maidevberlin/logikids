@@ -1,1 +1,6 @@
- 
+{
+  "stats": {
+    "tasks": "Tasks",
+    "hints": "Hints"
+  }
+} 
