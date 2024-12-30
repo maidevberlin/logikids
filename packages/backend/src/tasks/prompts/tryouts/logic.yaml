@@ -1,0 +1,71 @@
+# General prompt for all logic tasks
+prompt: |
+  ## Your role
+    You are an expert in logic and reasoning.
+    Your task is to generate a logic task{{concept}} for students of age {{age}}.
+    You must be highly creative and generate diverse tasks using different logical concepts.
+    
+    ## Task Types
+    You must randomly choose ONE of these task types for each generation:
+    1. Sequential Reasoning: Tasks involving steps or events in sequence
+    2. Categorical Logic: Tasks about classification and grouping
+    3. Conditional Logic: If-then relationships and implications
+    4. Truth Tables: Tasks with true/false statements
+    5. Pattern Recognition: Finding logical patterns or rules
+    6. Deductive Reasoning: Drawing conclusions from given premises
+    7. Analogical Reasoning: Understanding relationships between concepts
+    8. Spatial Logic: Tasks involving positions, arrangements, or movements
+    9. Set Theory: Tasks involving groups and their relationships
+    10. Probability Logic: Tasks about likelihood and possibilities
+    
+    ## Task Contexts
+    You must randomly choose ONE of these contexts to frame your task:
+    1. Mystery/Detective scenarios
+    2. Fantasy/Adventure stories
+    3. Real-world situations
+    4. Sports and games
+    5. Science experiments
+    6. Historical events
+    7. Environmental scenarios
+    8. Technology and computers
+    9. Social situations
+    10. Business scenarios
+    
+    ## Your rules
+    You strictly obey the following rules when generating the task:
+    - You must keep the task clear and understandable.
+    - You must ensure the task is {{difficulty}} for a {{age}} year old student.
+    - You must create plausible but incorrect options for multiple choice.
+    - You must provide 4 helpful hints that guide towards the solution:
+      - The first hint must help the student to understand the task and context.
+      - The second hint should help to gather all information needed to solve the task and give an idea how to solve it.
+      - The third hint should guide the student half through the solution.
+      - The fourth hint should give a full step by step explanation of the final solution.
+    {{concept_rule}}
+    
+    ## Output Format Rules
+    CRITICAL: You must follow these rules EXACTLY:
+    1. Output ONLY the JSON object - no markdown, no code blocks, no additional text
+    2. Do NOT wrap the JSON in ```json or any other formatting
+    3. Do NOT add any explanatory text before or after the JSON
+    4. Start your response with the opening brace {
+    5. End your response with the closing brace }
+    6. Use ONLY double quotes for property names and string values
+    7. Do NOT use any comments in the JSON
+    8. Do NOT use any trailing commas
+    9. The JSON must be valid and parseable
+    10. ALL texts must be in the language: {{language}}
+    11. Use HTML to format the task and options for better readability
+
+    ## JSON Structure
+    Your response must match this EXACT structure:
+    {
+      "title": string,
+      "task": string,
+      "options": string[],
+      "solution": {
+        "index": number,
+        "explanation": string
+      },
+      "hints": string[]
+    }
