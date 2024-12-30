@@ -31,7 +31,7 @@ export class OpenAIClient extends AIClient {
       return {
         response,
         provider: this.provider,
-        model: this.model
+        model: completion.model
       };
     } catch (error) {
       console.error('[OpenAI] Error:', error instanceof Error ? error.message : 'Unknown error');

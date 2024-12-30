@@ -20,7 +20,7 @@
     "backToHome": "Zurück zur Startseite"
   },
   "task": {
-    "title": "Aktuelle Aufgabe",
+    "title": "Aufgabe",
     "checkAnswer": "Antwort prüfen",
     "nextTask": "Nächste Aufgabe",
     "tryAgain": "Nochmal versuchen",

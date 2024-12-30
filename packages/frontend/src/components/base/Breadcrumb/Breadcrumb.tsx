@@ -40,7 +40,7 @@ export function Breadcrumb({ currentPage, subject, onSubjectChange }: Breadcrumb
           <ChevronRightIcon className="w-4 h-4 text-gray-400" />
         </li>
         <li className="text-gray-500 text-sm">
-          Tasks
+          {currentPage}
         </li>
         {subject && onSubjectChange && (
           <>

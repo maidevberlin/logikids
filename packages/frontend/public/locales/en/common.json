@@ -20,7 +20,7 @@
     "backToHome": "Back to Home"
   },
   "task": {
-    "title": "Current Task",
+    "title": "Task",
     "checkAnswer": "Check Answer",
     "nextTask": "Next Task",
     "tryAgain": "Try Again",
