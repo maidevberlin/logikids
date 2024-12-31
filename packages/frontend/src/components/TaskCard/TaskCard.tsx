@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Task, Difficulty } from '../../types/task'
+import { Task, Difficulty } from '@logikids/backend/tasks/types'
 import { Card } from '../base/Card'
 import { ErrorDisplay } from '../ErrorDisplay'
 import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'

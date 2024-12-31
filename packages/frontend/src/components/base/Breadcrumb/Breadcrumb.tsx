@@ -1,58 +1,43 @@
-import { Link } from 'react-router-dom'
-import { ChevronRightIcon, HomeIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
-import { cn } from '../../base/styles/utils'
-import { interactive, position } from '../../base/styles/common'
-import { Subject, TaskType } from '../../../types/task'
-import { Menu } from '@headlessui/react'
-import { TaskTypeSelector } from '../TaskTypeSelector'
-import { useTranslation } from 'react-i18next'
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
+import { HomeIcon } from '@heroicons/react/24/solid';
+import { Subject } from '@logikids/backend/tasks/types';
+import { SubjectSelect } from '../../TaskOptions/SubjectSelect';
+import { ConceptSelector } from '../ConceptSelector';
+import { cn } from '../styles/utils';
+import { Link } from 'react-router-dom';
 
 interface BreadcrumbProps {
-  currentPage: string
-  subject?: Subject
-  taskType?: TaskType
-  onSubjectChange?: (subject: Subject) => void
-  onTaskTypeChange?: (taskType: TaskType) => void
+  currentPage: string;
+  subject?: Subject;
+  concept?: string;
+  onSubjectChange?: (subject: Subject) => void;
+  onConceptChange?: (concept: string) => void;
 }
 
 export function Breadcrumb({ 
   currentPage, 
   subject, 
-  taskType,
+  concept,
   onSubjectChange,
-  onTaskTypeChange 
+  onConceptChange 
 }: BreadcrumbProps) {
-  const { t } = useTranslation();
   
-  const subjects: { value: Subject, label: string }[] = [
-    { value: 'math', label: t('subject.math') },
-    { value: 'logic', label: t('subject.logic') }
-  ]
-
   return (
-    <nav className={cn(
-      position.fixed,
-      'top-4 left-4',
-      'z-10'
-    )}>
-      <ol className="flex items-center space-x-2">
+    <nav className="bg-white">
+      <ol className={cn(
+        'flex items-center space-x-4',
+        'max-w-7xl mx-auto px-4 py-3'
+      )}>
         <li>
-          <Link
-            to="/"
-            className={cn(
-              'text-gray-500 hover:text-primary-600',
-              'flex items-center',
-              interactive.transition
-            )}
-          >
-            <HomeIcon className="w-4 h-4" />
+          <Link to="/" className="text-gray-500 hover:text-gray-700">
+            <HomeIcon className="w-5 h-5" />
           </Link>
         </li>
         <li>
           <ChevronRightIcon className="w-4 h-4 text-gray-400" />
         </li>
-        <li className="text-gray-500 text-sm">
-          {currentPage}
+        <li>
+          <span className="text-gray-500">{currentPage}</span>
         </li>
         {subject && onSubjectChange && (
           <>
@@ -60,50 +45,21 @@ export function Breadcrumb({
               <ChevronRightIcon className="w-4 h-4 text-gray-400" />
             </li>
             <li>
-              <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className={cn(
-                  'text-gray-500 hover:text-primary-600',
-                  'flex items-center space-x-1',
-                  'text-sm',
-                  interactive.transition
-                )}>
-                  <span>{subjects.find(s => s.value === subject)?.label}</span>
-                  <ChevronDownIcon className="w-3 h-3" />
-                </Menu.Button>
-                <Menu.Items className={cn(
-                  'absolute left-0 mt-1',
-                  'bg-white rounded-md shadow-lg',
-                  'py-1 w-24',
-                  'z-20'
-                )}>
-                  {subjects.map((subj) => (
-                    <Menu.Item key={subj.value}>
-                      {({ active }) => (
-                        <button
-                          className={cn(
-                            'block w-full text-left px-4 py-1 text-sm',
-                            active ? 'bg-primary-50 text-primary-600' : 'text-gray-700'
-                          )}
-                          onClick={() => onSubjectChange(subj.value)}
-                        >
-                          {subj.label}
-                        </button>
-                      )}
-                    </Menu.Item>
-                  ))}
-                </Menu.Items>
-              </Menu>
+              <SubjectSelect
+                subject={subject}
+                onSubjectChange={onSubjectChange}
+              />
             </li>
-            {taskType && onTaskTypeChange && (
+            {onConceptChange && (
               <>
                 <li>
                   <ChevronRightIcon className="w-4 h-4 text-gray-400" />
                 </li>
                 <li>
-                  <TaskTypeSelector
+                  <ConceptSelector
                     subject={subject}
-                    value={taskType}
-                    onChange={onTaskTypeChange}
+                    value={concept || 'random'}
+                    onChange={onConceptChange}
                   />
                 </li>
               </>
@@ -112,5 +68,5 @@ export function Breadcrumb({
         )}
       </ol>
     </nav>
-  )
+  );
 } 

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Difficulty, Subject } from './task'
+import { Difficulty, Subject } from '@logikids/backend/tasks/types'
 
 // Base stats schema for a specific combination
 export const TaskStatsSchema = z.object({

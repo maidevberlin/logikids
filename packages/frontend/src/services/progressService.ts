@@ -4,7 +4,7 @@ import {
   StatUpdate,
   TaskStats
 } from '../types/progress'
-import { Subject, Difficulty } from '../types/task'
+import { Subject, Difficulty } from '@logikids/backend/tasks/types'
 
 const STORAGE_KEY = 'logikids_progress'
 

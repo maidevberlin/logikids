@@ -1,5 +1,5 @@
 import { api, ApiResponse } from './api';
-import { Task, TaskRequest } from '../types/task';
+import { Task, TaskRequest } from '@logikids/backend/tasks/types';
 import { getCurrentLanguage } from '../i18n/config';
 
 export class LogikidsApiError extends Error {

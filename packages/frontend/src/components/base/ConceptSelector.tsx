@@ -2,19 +2,31 @@ import { Menu } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { cn } from './styles/utils';
 import { interactive } from './styles/common';
-import { Subject, MathTaskType, LogicTaskType } from '../../types/task';
+import { Subject } from '@logikids/backend/tasks/types';
+import { subjects } from '../../config/subjects';
 import { useTranslation } from 'react-i18next';
-import { getTaskTypes } from '../../config/taskTypes';
 
-interface TaskTypeSelectorProps {
+interface ConceptSelectorProps {
   subject: Subject;
   value: string;
-  onChange: (value: MathTaskType | LogicTaskType) => void;
+  onChange: (value: string) => void;
 }
 
-export function TaskTypeSelector({ subject, value, onChange }: TaskTypeSelectorProps) {
+export function ConceptSelector({ subject, value, onChange }: ConceptSelectorProps) {
   const { t } = useTranslation();
-  const taskTypes = getTaskTypes(subject);
+  const subjectConfig = subjects[subject];
+  const concepts = [
+    {
+      value: 'random',
+      translationKey: 'taskType.random'
+    },
+    ...Object.entries(subjectConfig.concepts).map(([id]) => ({
+      value: id,
+      translationKey: `taskType.${id}`
+    }))
+  ];
+
+  const selectedConcept = concepts.find(c => c.value === value);
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -24,7 +36,7 @@ export function TaskTypeSelector({ subject, value, onChange }: TaskTypeSelectorP
         'text-sm',
         interactive.transition
       )}>
-        <span>{t(taskTypes.find(type => type.value === value)?.translationKey || '')}</span>
+        <span>{selectedConcept ? t(selectedConcept.translationKey) : ''}</span>
         <ChevronDownIcon className="w-3 h-3" />
       </Menu.Button>
       <Menu.Items className={cn(
@@ -33,17 +45,17 @@ export function TaskTypeSelector({ subject, value, onChange }: TaskTypeSelectorP
         'py-1 w-48',
         'z-20'
       )}>
-        {taskTypes.map((type) => (
-          <Menu.Item key={type.value}>
+        {concepts.map((concept) => (
+          <Menu.Item key={concept.value}>
             {({ active }) => (
               <button
                 className={cn(
                   'block w-full text-left px-4 py-1 text-sm',
                   active ? 'bg-primary-50 text-primary-600' : 'text-gray-700'
                 )}
-                onClick={() => onChange(type.value as MathTaskType | LogicTaskType)}
+                onClick={() => onChange(concept.value)}
               >
-                {t(type.translationKey)}
+                {t(concept.translationKey)}
               </button>
             )}
           </Menu.Item>

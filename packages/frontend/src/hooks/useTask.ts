@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { TaskRequest, Task } from '../types/task';
+import { TaskRequest, Task } from '@logikids/backend/tasks/types';
 import { logikids } from '../services/logikids';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../i18n/config';

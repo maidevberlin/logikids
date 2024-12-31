@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Age } from '../types/task'
+import { Age } from '@logikids/backend/tasks/types'
 
 interface Settings {
   age: Age

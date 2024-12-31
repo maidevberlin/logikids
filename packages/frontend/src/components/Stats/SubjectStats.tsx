@@ -1,7 +1,7 @@
 import { Text } from '../base/Typography/Text'
 import { Heading } from '../base/Typography/Heading'
 import { cn } from '../base/styles/utils'
-import { Subject, Difficulty } from '../../types/task'
+import { Subject, Difficulty } from '@logikids/backend/tasks/types'
 
 const SUBJECTS: Subject[] = ['math', 'logic']
 const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard']

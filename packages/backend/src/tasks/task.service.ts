@@ -1,37 +1,36 @@
 import { TaskRequest, Task } from './types';
 import { AIClient } from '../common/ai/base';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
-import { getAvailableTaskTypes, getSpecificTaskType } from './config/taskTypes';
+import { subjects, promptBuilders } from './subjects';
 
 export class TaskService {
   constructor(private readonly aiClient: AIClient) {}
 
-  private async readPromptFile(path: string): Promise<{ prompt: string }> {
-    const content = await readFile(join(__dirname, '..', path), 'utf-8');
-    return { prompt: content };
-  }
-
   public async generateTask(request: TaskRequest, language: string): Promise<Task> {
-    const { subject, taskType } = request;
-    const promptFile = await this.readPromptFile(`tasks/prompts/${subject}.yaml`);
+    const { subject } = request;
     
-    // Set concept rule based on task type
-    const conceptRule = taskType === 'random' 
-      ? getAvailableTaskTypes(subject)
-      : getSpecificTaskType(subject, taskType);
+    if (!subjects[subject]) {
+      throw new Error(`Subject ${subject} not found`);
+    }
 
-    const prompt = promptFile.prompt
-      .replace('{{age}}', request.age.toString())
-      .replace('{{difficulty}}', request.difficulty)
-      .replace('{{language}}', language)
-      .replace('{{concept_rule}}', conceptRule);
+    const PromptBuilder = promptBuilders[subject];
+    const promptBuilder = new PromptBuilder();
+    const prompt = promptBuilder.buildPrompt({ 
+      age: request.age,
+      difficulty: request.difficulty,
+      concept: request.concept,
+      language 
+    });
 
     const response = await this.aiClient.generate(prompt);
     if (!response?.response) {
-      throw new Error('Failed to generate task');
+      throw new Error('Failed to generate task: No response from AI');
     }
 
-    return JSON.parse(response.response);
+    const parsedResponse = AIClient.extractJSON(response.response);
+    if (!parsedResponse) {
+      throw new Error('Failed to parse AI response as JSON');
+    }
+
+    return parsedResponse as Task;
   }
 } 

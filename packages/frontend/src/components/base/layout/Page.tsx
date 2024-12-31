@@ -4,19 +4,18 @@ import { background, size, cn } from '../styles'
 interface PageProps {
   children: ReactNode
   className?: string
-  background?: 'gradient' | 'white' | 'gray'
+  background?: 'gradient' | 'white'
 }
 
 const backgroundMap = {
   gradient: background.gradient.blue,
-  white: background.solid.white,
-  gray: background.solid.gray
+  white: background.solid.white
 }
 
 export function Page({ 
   children, 
   className = '',
-  background = 'gradient'
+  background = 'white'
 }: PageProps) {
   return (
     <main className={cn(

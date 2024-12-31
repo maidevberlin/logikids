@@ -9,9 +9,13 @@
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
-    "./types": {
+    "./tasks/types": {
       "types": "./src/tasks/types.ts",
       "default": "./src/tasks/types.ts"
+    },
+    "./tasks/subjects": {
+      "types": "./src/tasks/subjects/index.ts",
+      "default": "./src/tasks/subjects/index.ts"
     }
   },
   "scripts": {

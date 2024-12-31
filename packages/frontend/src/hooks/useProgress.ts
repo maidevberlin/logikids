@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Subject, Difficulty } from '../types/task'
+import { Subject, Difficulty } from '@logikids/backend/tasks/types'
 import { UserProgress, StatUpdate } from '../types/progress'
 import * as progressService from '../services/progressService'
 

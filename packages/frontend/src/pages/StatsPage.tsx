@@ -5,8 +5,9 @@ import { Breadcrumb } from '../components/base/Breadcrumb/Breadcrumb'
 import { Heading } from '../components/base/Typography/Heading'
 import { Text } from '../components/base/Typography/Text'
 import { cn } from '../components/base/styles/utils'
-import { container, background } from '../components/base/styles/common'
+import { container } from '../components/base/styles/common'
 import { TaskProgress, PerformanceStats, SubjectStats } from '../components/Stats'
+import { Page } from '../components/base/layout/Page'
 
 export default function StatsPage() {
   const { t } = useTranslation()
@@ -25,9 +26,9 @@ export default function StatsPage() {
 
   if (totalTasks === 0) {
     return (
-      <>
+      <Page>
         <Breadcrumb currentPage={t('stats.title')} />
-        <div className={cn('min-h-screen py-12', background.solid.gray)}>
+        <div className="py-12">
           <div className={cn(container.base, container.maxWidth.md)}>
             <div className={cn(
               'bg-white rounded-xl shadow-xl p-8',
@@ -53,14 +54,14 @@ export default function StatsPage() {
             </div>
           </div>
         </div>
-      </>
+      </Page>
     )
   }
 
   return (
-    <>
+    <Page>
       <Breadcrumb currentPage={t('stats.title')} />
-      <div className={cn('min-h-screen py-12', background.solid.gray)}>
+      <div className="py-12">
         <div className={cn(container.base, container.maxWidth.md)}>
           <div className={cn(
             'bg-white rounded-xl shadow-xl p-8',
@@ -92,6 +93,6 @@ export default function StatsPage() {
           </div>
         </div>
       </div>
-    </>
+    </Page>
   )
 } 

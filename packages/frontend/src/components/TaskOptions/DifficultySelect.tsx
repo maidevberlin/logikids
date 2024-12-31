@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Difficulty } from '../../types/task'
+import { Difficulty } from '@logikids/backend/tasks/types'
 import { BaseSelect, SelectOption } from './BaseSelect'
 
 interface DifficultySelectProps {

@@ -27,14 +27,10 @@
   },
   "task": {
     "title": "Task",
-    "difficulty": "Difficulty",
-    "getHint": "Get a Hint",
-    "getAnotherHint": "Get Another Hint",
-    "skip": "Skip Task",
-    "solutionExplanation": "Solution Explanation",
-    "checkAnswer": "Check Answer",
-    "nextTask": "Next Task",
-    "tryAgain": "Try Again"
+    "check": "Check Answer",
+    "next": "Next Task",
+    "hint": "Need a Hint?",
+    "skip": "Skip Hint"
   },
   "feedback": {
     "correct": "Correct!",
@@ -51,7 +47,28 @@
     "tryAgain": "Try Again",
     "backToHome": "Back to Home"
   },
-  "subject": {
+  "concepts": {
+    "math": {
+      "random": "Random",
+      "arithmetic": "Arithmetic Operations",
+      "geometry": "Geometry",
+      "fractions": "Fractions and Decimals",
+      "measurement": "Measurement",
+      "word_problems": "Word Problems",
+      "data_analysis": "Data Analysis",
+      "probability": "Probability",
+      "algebra": "Algebra",
+      "mental_math": "Mental Math"
+    },
+    "logic": {
+      "random": "Random",
+      "sequential": "Sequential Reasoning",
+      "categorical": "Categorical Logic",
+      "conditional": "Conditional Logic",
+      "deductive": "Deductive Reasoning"
+    }
+  },
+  "subjects": {
     "math": "Mathematics",
     "logic": "Logic"
   },
@@ -59,27 +76,5 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
-  },
-  "taskType": {
-    "random": "Random",
-    "arithmetic": "Arithmetic Operations",
-    "number_patterns": "Number Patterns",
-    "geometry": "Geometry",
-    "fractions": "Fractions and Decimals",
-    "measurement": "Measurement",
-    "word_problems": "Word Problems",
-    "data_analysis": "Data Analysis",
-    "probability": "Probability",
-    "algebra": "Algebra",
-    "mental_math": "Mental Math",
-    "sequential": "Sequential Reasoning",
-    "categorical": "Categorical Logic",
-    "conditional": "Conditional Logic",
-    "truth_tables": "Truth Tables",
-    "pattern_recognition": "Pattern Recognition",
-    "deductive": "Deductive Reasoning",
-    "analogical": "Analogical Reasoning",
-    "spatial": "Spatial Logic",
-    "set_theory": "Set Theory"
   }
 } 

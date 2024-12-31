@@ -4,7 +4,7 @@ import { NumberInput } from '../base/Form/NumberInput'
 import { Text } from '../base/Typography/Text'
 import { spacing } from '../base/styles'
 import { cn } from '../base/styles/utils'
-import { Age } from '../../types/task'
+import { Age } from '@logikids/backend/tasks/types'
 
 interface PersonalInfoProps {
   name: string

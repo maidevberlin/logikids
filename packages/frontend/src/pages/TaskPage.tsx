@@ -5,10 +5,18 @@ import { useProgress } from '../hooks/useProgress'
 import { TaskCard } from '../components/TaskCard'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Difficulty, Subject, TaskType, taskDefaults, Task } from '../types/task'
+import { Task, TaskRequest, Subject, Difficulty } from '@logikids/backend/tasks/types'
 import { Breadcrumb } from '../components/base/Breadcrumb/Breadcrumb'
 import { cn } from '../components/base/styles/utils'
-import { container, background } from '../components/base/styles/common'
+import { container } from '../components/base/styles/common'
+import { Page } from '../components/base/layout/Page'
+
+const taskDefaults: TaskRequest = {
+  difficulty: 'medium',
+  subject: 'math',
+  age: 10,
+  concept: 'random'
+};
 
 export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -21,7 +29,7 @@ export default function TaskPage() {
   const taskParams = useMemo(() => ({
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
     subject: (searchParams.get('subject') ?? taskDefaults.subject) as Subject,
-    taskType: (searchParams.get('taskType') ?? taskDefaults.taskType) as TaskType,
+    concept: (searchParams.get('concept') ?? taskDefaults.concept),
     age: settings.age
   }), [searchParams, settings.age])
   
@@ -67,18 +75,18 @@ export default function TaskPage() {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
       newParams.set('subject', newSubject)
-      // Reset taskType when subject changes
-      newParams.set('taskType', 'random')
+      // Reset concept when subject changes
+      newParams.set('concept', 'random')
       return newParams
     })
   }, [setSearchParams])
 
-  const handleTaskTypeChange = useCallback((newTaskType: TaskType) => {
+  const handleConceptChange = useCallback((newConcept: string) => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
-      // Ensure both subject and taskType are set
+      // Ensure both subject and concept are set
       newParams.set('subject', taskParams.subject)
-      newParams.set('taskType', newTaskType)
+      newParams.set('concept', newConcept)
       return newParams
     })
   }, [setSearchParams, taskParams.subject])
@@ -115,26 +123,23 @@ export default function TaskPage() {
   ])
 
   return (
-    <>
+    <Page>
       <Breadcrumb 
         currentPage={t('task.title')} 
         subject={taskParams.subject}
-        taskType={taskParams.taskType}
+        concept={taskParams.concept}
         onSubjectChange={handleSubjectChange}
-        onTaskTypeChange={handleTaskTypeChange}
+        onConceptChange={handleConceptChange}
       />
-      <div className={cn(
-        'min-h-screen py-12',
-        background.solid.gray
-      )}>
+      <div className="py-8">
         <div className={cn(
           container.base,
           container.maxWidth.lg,
-          'p-8'
+          'px-4'
         )}>
           <TaskCard {...taskCardProps} />
         </div>
       </div>
-    </>
+    </Page>
   )
 } 
