@@ -6,6 +6,7 @@ import { TaskOption } from './TaskOption'
 import { Feedback } from './Feedback'
 import { SolutionExplanation } from './SolutionExplanation'
 import { cn } from '../base/styles/utils'
+import { motionProps } from '../../hooks/useAnimation'
 
 interface MultipleChoiceAnswerProps {
   options: string[]
@@ -36,22 +37,21 @@ export function MultipleChoiceAnswer({
 
   if (isLoading) {
     return (
-      <div className="space-y-4">
+      <motion.div 
+        className="space-y-4"
+        {...motionProps.fadeInOut}
+      >
         <div className="grid grid-cols-2 gap-4">
           {[1, 2, 3, 4].map((_, index) => (
             <Card key={index} className="p-4">
-              <div className="animate-pulse">
-                <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
-              </div>
+              <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto" />
             </Card>
           ))}
         </div>
         <div className="w-full">
-          <div className="animate-pulse">
-            <div className="h-10 bg-gray-200 rounded w-full"></div>
-          </div>
+          <div className="h-10 bg-gray-200 rounded w-full" />
         </div>
-      </div>
+      </motion.div>
     )
   }
 
@@ -97,7 +97,7 @@ export function MultipleChoiceAnswer({
       
       <motion.div 
         className="w-full"
-        layout
+        {...motionProps.slideInOut}
       >
         {isCorrect === null ? (
           <TaskOption
@@ -108,7 +108,7 @@ export function MultipleChoiceAnswer({
             size="lg"
             className={cn(
               'w-full',
-              selectedAnswer !== null && isCorrect === null && 'animate-pulse-subtle border-2 border-primary-300 hover:bg-primary-50'
+              selectedAnswer !== null && 'border-2 border-primary-300 hover:bg-primary-50'
             )}
           />
         ) : isCorrect ? (

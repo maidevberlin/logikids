@@ -1,5 +1,5 @@
 export type BaseSize = 'sm' | 'md' | 'lg'
-export type BaseVariant = 'default' | 'primary' | 'success' | 'error' | 'warning'
+export type BaseVariant = 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
 export type BaseColorVariant = BaseVariant | 'outline'
 
 export interface BaseStyleProps {

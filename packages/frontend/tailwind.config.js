@@ -35,30 +35,34 @@ export default {
         },
       },
       keyframes: {
-        shake: {
-          '0%, 100%': { transform: 'translateX(0)' },
-          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-4px)' },
-          '20%, 40%, 60%, 80%': { transform: 'translateX(4px)' },
+        spin: {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' }
+        },
+        pulse: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: .5 }
         },
         'pulse-subtle': {
-          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
-          '50%': { transform: 'scale(1.02)', opacity: '0.9' },
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: .8 }
         },
-        'hint-glow': {
-          '0%, 100%': {
-            color: '#eab308',
-            textShadow: '0 0 7px rgba(234,179,8,0.3)'
-          },
-          '50%': {
-            color: '#facc15',
-            textShadow: '0 0 10px rgba(234,179,8,0.6)'
-          }
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '25%': { transform: 'translateX(-4px)' },
+          '75%': { transform: 'translateX(4px)' }
+        },
+        glow: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.6, filter: 'brightness(150%)' }
         }
       },
       animation: {
-        shake: 'shake 0.6s ease-in-out',
-        'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite',
-        'hint-glow': 'hint-glow 1.5s ease-in-out infinite'
+        spin: 'spin 1s linear infinite',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-subtle': 'pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        shake: 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+        'hint-glow': 'glow 2s ease-in-out infinite'
       },
     },
   },

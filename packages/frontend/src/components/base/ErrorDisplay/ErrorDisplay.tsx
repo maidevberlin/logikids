@@ -11,6 +11,8 @@ import { Card } from '../Card/Card'
 import { Text } from '../Typography/Text'
 import { Button } from '../Button/Button'
 import { cn } from '../styles/utils'
+import { useSpinAnimation } from '../../../hooks/useAnimation'
+import { useEffect } from 'react'
 
 export type ErrorSeverity = 'error' | 'warning' | 'fatal'
 
@@ -72,6 +74,16 @@ export function ErrorDisplay({
   const { t } = useTranslation()
   const config = severityConfig[severity]
   const Icon = config.icon
+  const [isSpinning, startSpin, stopSpin] = useSpinAnimation()
+
+  // Start/stop spinning based on loading state
+  useEffect(() => {
+    if (isLoading) {
+      startSpin()
+    } else {
+      stopSpin()
+    }
+  }, [isLoading, startSpin, stopSpin])
 
   const content = (
     <div className="text-center space-y-6">
@@ -94,7 +106,7 @@ export function ErrorDisplay({
             disabled={isLoading}
           >
             <span className="inline-flex items-center gap-2">
-              <ArrowPathIcon className={cn('h-6 w-6', isLoading && 'animate-spin')} />
+              <ArrowPathIcon className={cn('h-6 w-6', isSpinning && 'animate-spin')} />
               {isLoading ? t('common.loading') : t('error.tryAgain')}
             </span>
           </Button>
