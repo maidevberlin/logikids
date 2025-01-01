@@ -1,47 +1,53 @@
 import { ReactNode } from 'react'
-import { getColorClasses } from '../../../theme/utils'
-import type { ColorVariant } from '../../../theme/utils'
+import { cn } from '../styles/utils'
+import { BaseVariant } from '../types'
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
+type HeadingColor = BaseVariant | 'muted' | 'white'
 
 interface HeadingProps {
-  level: HeadingLevel
   children: ReactNode
-  variant?: ColorVariant
+  level?: HeadingLevel
+  color?: HeadingColor
   className?: string
 }
 
-const sizeClasses: Record<HeadingLevel, string> = {
-  1: 'text-4xl',
-  2: 'text-3xl',
-  3: 'text-2xl',
-  4: 'text-xl',
-  5: 'text-lg',
-  6: 'text-base'
+const levelClasses: Record<HeadingLevel, string> = {
+  1: 'text-4xl font-bold',
+  2: 'text-3xl font-bold',
+  3: 'text-2xl font-semibold',
+  4: 'text-xl font-semibold',
+  5: 'text-lg font-medium',
+  6: 'text-base font-medium'
 }
 
-export function Heading({ 
-  level, 
-  children, 
-  variant = 'default',
-  className = '' 
+const colorClasses: Record<HeadingColor, string> = {
+  default: 'text-gray-900',
+  muted: 'text-gray-600',
+  primary: 'text-primary-600',
+  success: 'text-success-600',
+  error: 'text-error-600',
+  warning: 'text-warning-600',
+  white: 'text-white'
+}
+
+export function Heading({
+  children,
+  level = 2,
+  color = 'default',
+  className = ''
 }: HeadingProps) {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements
-  const colorClasses = getColorClasses({
-    variant,
-    text: true
-  })
+  const Component = `h${level}` as const
 
   return (
-    <Tag 
-      className={`
-        ${sizeClasses[level]}
-        ${colorClasses}
-        font-bold
-        ${className}
-      `}
+    <Component
+      className={cn(
+        levelClasses[level],
+        colorClasses[color],
+        className
+      )}
     >
       {children}
-    </Tag>
+    </Component>
   )
 } 

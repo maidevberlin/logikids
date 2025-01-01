@@ -5,9 +5,9 @@ import {
   ArrowPathIcon, 
   HomeIcon 
 } from '@heroicons/react/24/outline';
-import { Card } from './base/Card';
+import { Card } from './base/Card/Card';
 import { Text } from './base/Typography/Text';
-import { Button } from './base/Button';
+import { Button } from './base/Button/Button';
 
 interface ErrorDisplayProps {
   message: string;

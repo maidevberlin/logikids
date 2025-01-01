@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
-import { getColorClasses } from '../../../theme/utils'
-import type { ColorVariant } from '../../../theme/utils'
+import { cn } from '../styles/utils'
+import { BaseVariant } from '../types'
 
 type TextSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl'
 type TextWeight = 'normal' | 'medium' | 'semibold' | 'bold'
-type TextColor = ColorVariant | 'muted'
+type TextColor = BaseVariant | 'muted' | 'white'
 
 interface TextProps {
   children: ReactNode
@@ -31,6 +31,16 @@ const weightClasses: Record<TextWeight, string> = {
   bold: 'font-bold'
 }
 
+const colorClasses: Record<TextColor, string> = {
+  default: 'text-gray-900',
+  muted: 'text-gray-600',
+  primary: 'text-primary-600',
+  success: 'text-success-600',
+  error: 'text-error-600',
+  warning: 'text-warning-600',
+  white: 'text-white'
+}
+
 export function Text({
   children,
   size = 'base',
@@ -40,35 +50,14 @@ export function Text({
   as: Component = 'p',
   htmlFor
 }: TextProps) {
-  const colorClasses = getColorClasses({
-    variant: color === 'muted' ? 'default' : color,
-    text: true
-  })
-
-  if (color === 'muted') {
-    return (
-      <Component
-        className={`
-          ${sizeClasses[size]}
-          ${weightClasses[weight]}
-          text-gray-600
-          ${className}
-        `}
-        {...(htmlFor ? { htmlFor } : {})}
-      >
-        {children}
-      </Component>
-    )
-  }
-
   return (
     <Component
-      className={`
-        ${sizeClasses[size]}
-        ${weightClasses[weight]}
-        ${colorClasses}
-        ${className}
-      `}
+      className={cn(
+        sizeClasses[size],
+        weightClasses[weight],
+        colorClasses[color],
+        className
+      )}
       {...(htmlFor ? { htmlFor } : {})}
     >
       {children}

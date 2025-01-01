@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { FadeInOut } from '../base/Animations/FadeInOut'
-import { Card } from '../base/Card'
+import { Card } from '../base/Card/Card'
 import { TaskOption } from './TaskOption'
 import { Feedback } from './Feedback'
 import { SolutionExplanation } from './SolutionExplanation'
+import { cn } from '../base/styles/utils'
 
 interface MultipleChoiceAnswerProps {
   options: string[]
@@ -69,12 +70,11 @@ export function MultipleChoiceAnswer({
                   : 'default'
                 : 'default'
             }
-            interactive={isCorrect === null}
-            onClick={() => isCorrect === null && onAnswerSelect(index)}
-            className={`
-              p-4 transition-all duration-200
-              ${selectedAnswer === index && isCorrect === null ? 'ring-2 ring-primary-500 ring-offset-2' : ''}
-            `}
+            onClick={isCorrect === null ? () => onAnswerSelect(index) : undefined}
+            className={cn(
+              'p-4 transition-all duration-200',
+              selectedAnswer === index && isCorrect === null && 'ring-2 ring-primary-500 ring-offset-2'
+            )}
           >
             <div 
               className="prose prose-blue max-w-none text-left"
@@ -106,10 +106,10 @@ export function MultipleChoiceAnswer({
             disabled={selectedAnswer === null}
             variant="primary"
             size="lg"
-            className={`
-              w-full
-              ${selectedAnswer !== null && isCorrect === null ? 'animate-pulse-subtle border-2 border-primary-300 hover:bg-primary-50' : ''}
-            `}
+            className={cn(
+              'w-full',
+              selectedAnswer !== null && isCorrect === null && 'animate-pulse-subtle border-2 border-primary-300 hover:bg-primary-50'
+            )}
           />
         ) : isCorrect ? (
           <TaskOption

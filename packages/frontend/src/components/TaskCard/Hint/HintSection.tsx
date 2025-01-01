@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import DOMPurify from 'dompurify'
 import { FadeInOut } from '../../base/Animations/FadeInOut'
-import { Card } from '../../base/Card'
+import { Card } from '../../base/Card/Card'
 import { HintButton } from './HintButton'
 import { 
   LightBulbIcon, 

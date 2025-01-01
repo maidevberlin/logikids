@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { Task, Difficulty } from '@logikids/backend/tasks/types'
-import { Card } from '../base/Card'
+import { Card } from '../base/Card/Card'
 import { ErrorDisplay } from '../ErrorDisplay'
 import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
 import { Heading } from '../base/Typography/Heading'

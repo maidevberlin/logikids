@@ -1,7 +1,14 @@
 import { Component, ErrorInfo, ReactNode } from 'react'
+import { ErrorDisplay } from './ErrorDisplay/ErrorDisplay'
 
 interface Props {
   children: ReactNode
+  /** Whether to show error details (like stack trace) in production */
+  showErrorDetails?: boolean
+  /** Custom error message */
+  fallbackMessage?: string
+  /** Whether to show the home button */
+  showHomeButton?: boolean
 }
 
 interface State {
@@ -19,24 +26,31 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // Log to error reporting service
     console.error('Uncaught error:', error, errorInfo)
   }
 
+  private handleRetry = () => {
+    this.setState({ hasError: false, error: undefined })
+  }
+
   public render() {
+    const { 
+      showErrorDetails = process.env.NODE_ENV === 'development',
+      fallbackMessage = 'The application encountered an unexpected error.',
+      showHomeButton = true
+    } = this.props
+
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100">
-          <div className="text-center p-8 bg-white rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold text-red-600 mb-4">Oops! Something went wrong</h1>
-            <p className="text-gray-600 mb-4">The application encountered an unexpected error.</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-            >
-              Refresh Page
-            </button>
-          </div>
-        </div>
+        <ErrorDisplay 
+          message={fallbackMessage}
+          details={showErrorDetails ? this.state.error?.stack : undefined}
+          onRetry={this.handleRetry}
+          severity="fatal"
+          standalone
+          showHomeButton={showHomeButton}
+        />
       )
     }
 

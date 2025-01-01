@@ -17,4 +17,7 @@ The following rules are very IMPORTANT:
  - You must always follow best practices and patterns. You must keep the code clean, simple and maintainable. You must never over-comlicate or over-engineer the code.
  - You must always keep the code DRY (Don't Repeat Yourself). You must always try to reuse code and functions.
  - When fixing bugs: You must always find the root cause of the bug and fix it. You must never just apply a quick fix or workaround.
+ - When refactoring: You must always keep current code up to date (import paths, etc). You must always remove old unused files.
+ - Code structure: You must organize the code in a domain-driven way. You must create a folder for each domain (e.g. `Task`, `User`, `Project`, etc).
+ 
  

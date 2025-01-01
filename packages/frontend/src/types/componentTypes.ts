@@ -1,9 +1,9 @@
 import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode } from 'react'
-import type { ColorVariant } from '../theme/utils'
+import { BaseSize, BaseVariant, BaseColorVariant } from '../components/base/types'
 
 // Common types
-export type Size = 'sm' | 'md' | 'lg'
-export type Variant = ColorVariant | 'outline'
+export type Size = BaseSize
+export type Variant = BaseColorVariant
 
 // Base component props
 export interface BaseProps {
@@ -35,7 +35,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 export interface SelectOption {
   value: string
   label: string
-  color?: ColorVariant
+  color?: BaseVariant
 }
 
 export interface SelectProps extends BaseProps {
@@ -52,7 +52,7 @@ export interface SelectProps extends BaseProps {
 
 // Card props
 export interface CardProps extends BaseProps {
-  variant?: ColorVariant
+  variant?: BaseVariant
   isInteractive?: boolean
   isElevated?: boolean
   onClick?: () => void
@@ -61,7 +61,7 @@ export interface CardProps extends BaseProps {
 // Typography props
 export type TextSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl'
 export type TextWeight = 'normal' | 'medium' | 'semibold' | 'bold'
-export type TextColor = ColorVariant | 'muted'
+export type TextColor = BaseVariant | 'muted' | 'white'
 export type TextElement = 'p' | 'span' | 'div' | 'label'
 
 export interface TextProps extends BaseProps {
@@ -76,7 +76,7 @@ export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 
 export interface HeadingProps extends BaseProps {
   level: HeadingLevel
-  variant?: ColorVariant
+  variant?: BaseVariant
 }
 
 // Animation props
@@ -96,7 +96,7 @@ export interface InteractiveProps extends BaseProps {
 
 // Layout props
 export interface ContainerProps extends BaseProps {
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
+  maxWidth?: Size | 'full'
 }
 
 export interface PageProps extends BaseProps {
@@ -104,5 +104,5 @@ export interface PageProps extends BaseProps {
 }
 
 export interface SectionProps extends BaseProps {
-  padding?: 'none' | 'sm' | 'md' | 'lg'
+  padding?: 'none' | Size
 } 

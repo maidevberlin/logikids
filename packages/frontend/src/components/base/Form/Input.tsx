@@ -1,7 +1,7 @@
 import { ChangeEvent, InputHTMLAttributes } from 'react'
-import { getColorClasses } from '../../../theme/utils'
+import { cn } from '../styles/utils'
+import { BaseSize } from '../types'
 
-type InputSize = 'sm' | 'md' | 'lg'
 type InputVariant = 'default' | 'error'
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
@@ -9,15 +9,20 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' 
   onChange: (value: string) => void
   label?: string
   error?: string
-  size?: InputSize
+  size?: BaseSize
   variant?: InputVariant
   fullWidth?: boolean
 }
 
-const sizeClasses: Record<InputSize, string> = {
+const sizeClasses: Record<BaseSize, string> = {
   sm: 'px-3 py-1.5 text-sm',
   md: 'px-4 py-2 text-base',
   lg: 'px-6 py-3 text-lg'
+}
+
+const variantClasses: Record<InputVariant, string> = {
+  default: 'border-gray-300 hover:border-gray-400 focus:border-primary-500 focus:ring-primary-500',
+  error: 'border-error-300 hover:border-error-400 text-error-900 focus:border-error-500 focus:ring-error-500'
 }
 
 export function Input({
@@ -35,41 +40,28 @@ export function Input({
     onChange(e.target.value)
   }
 
-  const colorClasses = getColorClasses({
-    variant: variant === 'error' ? 'error' : 'default',
-    border: true,
-    text: true,
-    hover: true
-  })
-
   return (
-    <div className={`${fullWidth ? 'w-full' : ''}`}>
+    <div className={cn(fullWidth && 'w-full')}>
       {label && (
-        <label className={`
-          block mb-2 font-medium
-          ${getColorClasses({ variant: 'default', text: true })}
-        `}>
+        <label className="block mb-2 font-medium text-gray-700">
           {label}
         </label>
       )}
       <input
         value={value}
         onChange={handleChange}
-        className={`
-          ${sizeClasses[size]}
-          ${colorClasses}
-          w-full rounded-lg border-2
-          focus:outline-none focus:ring-2 focus:ring-offset-2
-          transition-colors duration-200
-          ${className}
-        `}
+        className={cn(
+          'w-full rounded-lg border-2',
+          'focus:outline-none focus:ring-2 focus:ring-offset-2',
+          'transition-colors duration-200',
+          sizeClasses[size],
+          variantClasses[variant],
+          className
+        )}
         {...props}
       />
       {error && (
-        <p className={`
-          mt-2 text-sm
-          ${getColorClasses({ variant: 'error', text: true })}
-        `}>
+        <p className="mt-2 text-sm text-error-600">
           {error}
         </p>
       )}

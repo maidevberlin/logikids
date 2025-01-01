@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react'
-import { getColorClasses } from '../../../theme/utils'
-import { BaseSize, BaseStyleProps, BaseSizeProps, BaseVariantProps } from '../types'
+import { cn } from '../styles/utils'
+import { BaseSize, BaseStyleProps, BaseSizeProps, BaseVariantProps, BaseColorVariant } from '../types'
 
 interface ButtonProps extends 
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -16,6 +16,15 @@ const sizeClasses: Record<BaseSize, string> = {
   lg: 'px-6 py-3 text-lg'
 }
 
+const variantClasses: Record<NonNullable<BaseColorVariant>, string> = {
+  default: 'bg-gray-100 hover:bg-gray-200 text-gray-900',
+  primary: 'bg-primary-600 hover:bg-primary-700 text-white',
+  success: 'bg-success-600 hover:bg-success-700 text-white',
+  error: 'bg-error-600 hover:bg-error-700 text-white',
+  warning: 'bg-warning-600 hover:bg-warning-700 text-white',
+  outline: 'border-2 border-gray-300 hover:border-gray-400 text-gray-700 hover:bg-gray-50'
+}
+
 export function Button({ 
   variant = 'primary',
   size = 'md',
@@ -25,25 +34,17 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const colorVariant = variant === 'outline' ? 'default' : variant
-  const colorClasses = getColorClasses({
-    variant: colorVariant,
-    text: variant === 'outline',
-    border: variant === 'outline',
-    hover: !disabled
-  })
-
   return (
     <button
-      className={`
-        ${sizeClasses[size]}
-        ${colorClasses}
-        ${fullWidth ? 'w-full' : ''}
-        rounded-lg font-medium transition-all duration-200
-        ${variant === 'outline' ? 'border-2' : ''}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md active:scale-95'}
-        ${className}
-      `}
+      className={cn(
+        'rounded-lg font-medium transition-all duration-200',
+        sizeClasses[size],
+        variantClasses[variant],
+        fullWidth && 'w-full',
+        disabled && 'opacity-50 cursor-not-allowed',
+        !disabled && 'hover:shadow-md active:scale-95',
+        className
+      )}
       disabled={disabled}
       {...props}
     >

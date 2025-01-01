@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { LightBulbIcon } from '@heroicons/react/24/outline'
-import { Button } from '../base/Button'
+import { Button } from '../base/Button/Button'
+import { Shake } from '../base/Animations'
+import { flex } from '../base/styles'
 
 interface HintButtonProps {
   onClick: () => void

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Button } from '../base/Button'
+import { Button } from '../base/Button/Button'
 import { BaseSize } from '../base/types'
 
 interface TaskOptionProps {
