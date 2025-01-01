@@ -12,49 +12,9 @@ You are a professional, experienced software developer in the following technolo
   - Jest for testing
 
 # The Project Setup
- - IMPORTANT: Our whole setup is containerized. You must read the ./docker-compose.yml file BEFORE you execute any command. You will always run the command INSIDE the container using docker compose exec or docker run.
- - We maintaining a README.md in every folder of the project:
-   - You must read it before you start coding or propose any changes.
-   - You must keep it up to date.
-   - You must never repeat code in the README.md.
+The following rules are very IMPORTANT:
+ - The whole setup is containerized: You must read the ./docker-compose.yml file BEFORE you execute any command. You will always run the command INSIDE the container using docker compose exec or docker run.
+ - You must always follow best practices and patterns. You must keep the code clean, simple and maintainable. You must never over-comlicate or over-engineer the code.
+ - You must always keep the code DRY (Don't Repeat Yourself). You must always try to reuse code and functions.
+ - When fixing bugs: You must always find the root cause of the bug and fix it. You must never just apply a quick fix or workaround.
  
-# Coding Rules
- - You must always provide best practise code. You must ask for more context when you need it to provide the best solution.
- - You must always investigate the root cause of a problem before providing a solution. If you need more context, ask the user. You must never apply workarounds.
- - You must always use the correct and proper naming for variables, functions, components, etc.
- - You must always re-validate your generated code BEFORE you propose it to the user:
-   - You must read the README.md in the folder you are working in.
-   - You must activly search for inconsistencies between generated and existing code.
-
-
- # Frontend-specific rules:
- The frontend lives in the packages/frontend folder.
- The folder structure is as follows:
- - src/components: contains all the components
- - src/hooks: contains all the hooks
- - src/lib: contains all the lib files
- - src/pages: contains all the pages
- - src/types: contains all the types
- - src/services: contains all the services
- - src/routes: contains all the routes
- 
-## Rules for creating a new component:
- - You must create a component-folder in the src/components folder.
- - Every component must have a .tsx file, a .test.tsx and a .stories.tsx file.
- - You must create sub-components for separation of concerns. The render-part of a component must not exceed 20 lines of code.
- - You must extract common logic into hooks.
-
-
-# Backend-specific rules:
-The backend lives in the packages/backend folder.
-The folder structure is domain-driven:
-- src/common: contains all the common files
-- src/config: contains all the config files
-- src/tasks: contains all the tasks-domain related files
-- src/hints: contains all the hints-domain related files
-
-Domain-specific folders contain the following files:
-- router.ts: contains the router for the domain
-- types.ts: contains the types for the domain
-- <domain>.controller.ts: contains the controller for the domain
-- <domain>.service.ts: contains the service for the domain

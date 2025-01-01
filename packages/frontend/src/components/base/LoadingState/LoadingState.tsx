@@ -3,19 +3,23 @@ import { BaseStyleProps } from '../types'
 
 interface LoadingStateProps extends BaseStyleProps {
   fullScreen?: boolean
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+  variant?: 'primary' | 'secondary' | 'white'
 }
 
 export function LoadingState({ 
   className = '',
-  fullScreen = false 
+  fullScreen = false,
+  size = 'lg',
+  variant = 'primary'
 }: LoadingStateProps) {
   return (
-    <div className={`
-      ${fullScreen ? 'fixed inset-0 z-50' : 'absolute inset-0'} 
-      bg-white flex items-center justify-center rounded-xl
-      ${className}
-    `}>
-      <LoadingSpinner size="lg" />
-    </div>
+    <LoadingSpinner 
+      container
+      fullScreen={fullScreen}
+      size={size}
+      variant={variant}
+      className={className}
+    />
   )
 } 
