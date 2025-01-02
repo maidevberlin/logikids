@@ -1,72 +1,64 @@
-import { ChevronRightIcon } from '@heroicons/react/24/solid';
-import { HomeIcon } from '@heroicons/react/24/solid';
-import { Subject } from '@logikids/backend/tasks/types';
-import { SubjectSelect } from '../../TaskOptions/SubjectSelect';
-import { ConceptSelector } from '../ConceptSelector';
-import { cn } from '../styles/utils';
-import { Link } from 'react-router-dom';
-
-interface BreadcrumbProps {
-  currentPage: string;
-  subject?: Subject;
-  concept?: string;
-  onSubjectChange?: (subject: Subject) => void;
-  onConceptChange?: (concept: string) => void;
-}
+import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/solid'
+import { Subject } from '@logikids/backend/tasks/types'
+import { SubjectSelect } from '../../Task/SubjectSelect'
+import { ConceptSelector } from '../../Task/ConceptSelector'
+import { Link } from 'react-router-dom'
+import { cn } from '../../../utils/cn'
+import { BreadcrumbProps } from './types'
+import { styles } from './styles'
 
 export function Breadcrumb({ 
   currentPage, 
   subject, 
   concept,
   onSubjectChange,
-  onConceptChange 
+  onConceptChange,
+  className
 }: BreadcrumbProps) {
-  
   return (
-    <nav className="bg-white">
-      <ol className={cn(
-        'flex items-center space-x-4',
-        'max-w-7xl mx-auto px-4 py-3'
-      )}>
+    <nav className={cn(styles.base, className)}>
+      <ol className={styles.list}>
         <li>
-          <Link to="/" className="text-gray-500 hover:text-gray-700">
-            <HomeIcon className="w-5 h-5" />
+          <Link to="/" className={styles.home}>
+            <HomeIcon className={styles.homeIcon} />
           </Link>
         </li>
         <li>
-          <ChevronRightIcon className="w-4 h-4 text-gray-400" />
+          <ChevronRightIcon className={styles.separator} />
         </li>
         <li>
-          <span className="text-gray-500">{currentPage}</span>
+          <span className={styles.current}>{currentPage}</span>
         </li>
         {subject && onSubjectChange && (
           <>
             <li>
-              <ChevronRightIcon className="w-4 h-4 text-gray-400" />
+              <ChevronRightIcon className={styles.separator} />
             </li>
             <li>
               <SubjectSelect
                 subject={subject}
                 onSubjectChange={onSubjectChange}
+                className={styles.select}
               />
             </li>
-            {onConceptChange && (
-              <>
-                <li>
-                  <ChevronRightIcon className="w-4 h-4 text-gray-400" />
-                </li>
-                <li>
-                  <ConceptSelector
-                    subject={subject}
-                    value={concept || 'random'}
-                    onChange={onConceptChange}
-                  />
-                </li>
-              </>
-            )}
+          </>
+        )}
+        {concept && onConceptChange && subject && (
+          <>
+            <li>
+              <ChevronRightIcon className={styles.separator} />
+            </li>
+            <li>
+              <ConceptSelector
+                subject={subject}
+                value={concept}
+                onChange={onConceptChange}
+                className={styles.select}
+              />
+            </li>
           </>
         )}
       </ol>
     </nav>
-  );
+  )
 } 

@@ -9,10 +9,16 @@ const getBrowserLanguage = () => {
 
 // Get language from settings if available
 const STORAGE_KEY = 'logikids_settings'
-const storedSettings = localStorage.getItem(STORAGE_KEY)
-const storedLanguage = storedSettings 
-  ? JSON.parse(storedSettings).language 
-  : null
+let storedLanguage = null
+
+try {
+  const storedSettings = localStorage.getItem(STORAGE_KEY)
+  storedLanguage = storedSettings 
+    ? JSON.parse(storedSettings).language 
+    : null
+} catch (error) {
+  console.warn('Could not access localStorage:', error)
+}
 
 // Use stored language first, then browser language, then fallback to English
 const initialLanguage = storedLanguage || getBrowserLanguage() || 'en'

@@ -1,4 +1,4 @@
-import { ApiError, ApiErrorCode, isApiError, isTaskError } from '../types/apiTypes'
+import { ApiError, ApiErrorCode, isApiError } from "../api/types"
 
 // Custom error classes
 export class AppError extends Error {
@@ -78,17 +78,6 @@ export function handleError(error: unknown): void {
   } else {
     console.error('Unknown error:', error)
   }
-}
-
-// Validation utilities
-export function getValidationErrors(error: unknown): Record<string, string[]> {
-  if (isTaskError(error) && error.details?.validationErrors) {
-    return error.details.validationErrors
-  }
-  if (error instanceof ValidationError) {
-    return error.validationErrors
-  }
-  return {}
 }
 
 // Type guards

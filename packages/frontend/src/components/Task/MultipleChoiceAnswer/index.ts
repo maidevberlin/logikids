@@ -1,0 +1,1 @@
+export { MultipleChoiceAnswer } from './MultipleChoiceAnswer'

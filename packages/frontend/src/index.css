@@ -1,9 +1,3 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
-@import './theme/theme.css';
-
-h1 {
-  @apply text-3xl font-bold text-gray-900 mb-8;
-}
+@tailwind utilities; 

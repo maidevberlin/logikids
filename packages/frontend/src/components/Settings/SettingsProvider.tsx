@@ -1,9 +1,5 @@
-import { ReactNode } from 'react'
 import { SettingsButton } from './SettingsButton'
-
-interface SettingsProviderProps {
-  children: ReactNode
-}
+import { SettingsProviderProps } from './types'
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
   return (

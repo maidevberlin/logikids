@@ -1,3 +1,7 @@
+export { BaseLayout } from './BaseLayout'
 export { Container } from './Container'
+export { Header } from './Header'
+export { Modal } from './Modal'
+export { Navigation } from './Navigation'
 export { Page } from './Page'
 export { Section } from './Section' 

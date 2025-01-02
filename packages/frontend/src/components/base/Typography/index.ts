@@ -1,3 +1,3 @@
-export { Text } from './Text'
-export { Heading } from './Heading'
-export { Label } from './Label' 
+export * from './Text'
+export * from './Heading'
+export * from './Label' 
