@@ -3,6 +3,7 @@ import { TaskRequest, Task } from '@logikids/backend/tasks/types';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../../i18n/config';
 import { logikids } from '../../api/logikids';
+import { TIMING } from './constants';
 
 export const useTask = (params: TaskRequest) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { useMemo } from 'react'
 import { useSettings } from '../../Settings/useSettings'
 import { useProgress } from '../useProgress'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
@@ -24,10 +25,13 @@ export default function StatsPage({}: StatsPageProps) {
   const overallSuccessRate = getOverallSuccessRate()
   const overallAverageHints = getOverallAverageHints()
 
+  const navigation = useMemo(() => (
+    <Breadcrumb currentPage={t('stats.title')} />
+  ), [t])
+
   if (totalTasks === 0) {
     return (
-      <Page>
-        <Breadcrumb currentPage={t('stats.title')} />
+      <Page navigation={navigation}>
         <div className={styles.container}>
           <div className={cn(containerStyles.base, containerStyles.sizes.md)}>
             <div className={styles.card}>
@@ -56,8 +60,7 @@ export default function StatsPage({}: StatsPageProps) {
   }
 
   return (
-    <Page>
-      <Breadcrumb currentPage={t('stats.title')} />
+    <Page navigation={navigation}>
       <div className={styles.container}>
         <div className={cn(containerStyles.base, containerStyles.sizes.md)}>
           <div className={styles.card}>

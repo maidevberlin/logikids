@@ -20,7 +20,7 @@ export const styles = {
   // Card Variants
   variants: {
     default: 'bg-white border-gray-200 hover:border-gray-300',
-    primary: 'bg-white border-primary-200 hover:border-primary-300',
+    primary: 'bg-white border-2 border-primary-400 hover:border-primary-500',
     secondary: 'bg-white border-secondary-200 hover:border-secondary-300',
     success: 'bg-white border-success-200 hover:border-success-300',
     error: 'bg-white border-error-200 hover:border-error-300',

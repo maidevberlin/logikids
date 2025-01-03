@@ -7,25 +7,23 @@ import { styles } from './styles'
 
 export function TaskButton({ 
   onClick,
-  variant = 'primary',
-  disabled = false,
   className
 }: TaskButtonProps) {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  
-  const handleClick = onClick || (() => navigate('/tasks'))
-  
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick()
+    } else {
+      navigate('/task')
+    }
+  }
+
   return (
     <button
       onClick={handleClick}
-      disabled={disabled}
-      className={cn(
-        styles.base,
-        styles.variant[variant],
-        disabled && styles.disabled,
-        className
-      )}
+      className={cn(styles.base, className)}
       aria-label={t('task.title')}
     >
       <PlayIcon className={styles.icon} />

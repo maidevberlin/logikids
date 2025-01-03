@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { cn } from '../../../utils/cn';
-import { subjects } from '../../Subject/subjects';
+import { subjects } from '../subjects';
 import { useTranslation } from 'react-i18next';
 import { ConceptSelectorProps } from './types';
 import { styles } from './styles';
@@ -12,11 +12,11 @@ export function ConceptSelector({ subject, value, onChange, className }: Concept
   const concepts = [
     {
       value: 'random',
-      translationKey: 'taskType.random'
+      translationKey: `concepts.random`
     },
     ...Object.entries(subjectConfig.concepts).map(([id]) => ({
       value: id,
-      translationKey: `taskType.${id}`
+      translationKey: `concepts.${subject}.${id}`
     }))
   ];
 

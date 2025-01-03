@@ -3,10 +3,8 @@ import { ReactNode } from 'react'
 export interface ShakeProps {
   /** The content to animate */
   children: ReactNode
-  /** Whether to trigger the shake animation */
-  shouldShake: boolean
-  /** The scale factor during the shake */
-  scale?: number
+  /** Whether the shake animation is active */
+  active?: boolean
   /** Additional CSS classes */
   className?: string
 }

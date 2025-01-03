@@ -6,5 +6,6 @@ export type PageBackground = keyof typeof styles.variants
 export interface PageProps {
   children: ReactNode
   className?: string
-  background?: PageBackground
+  background?: 'white' | 'gradient'
+  navigation: ReactNode
 } 

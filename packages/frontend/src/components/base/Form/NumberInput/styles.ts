@@ -1,6 +1,6 @@
 export const styles = {
   container: `
-    flex flex-col items-center gap-1
+    flex flex-col gap-1
   `,
   controls: `
     flex items-stretch h-12

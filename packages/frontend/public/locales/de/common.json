@@ -60,29 +60,26 @@
     "medium": "Mittel",
     "hard": "Schwer"
   },
+  "concepts": {
+    "random": "Zufällig",
+    "math": {
+      "algebra": "Algebra",
+      "geometry": "Geometrie",
+      "fractions": "Brüche und Dezimalzahlen",
+      "measurement": "Maßeinheiten",
+      "word_problems": "Textaufgaben",
+      "data_analysis": "Datenanalyse",
+      "probability": "Wahrscheinlichkeit",
+      "mental_math": "Kopfrechnen"
+    },
+    "logic": {
+      "sequential": "Sequenzielles Denken",
+      "categorical": "Kategorische Logik",
+      "conditional": "Konditionale Logik",
+      "deductive": "Deduktives Denken"
+    }
+  },
   "common": {
     "loading": "Lädt..."
-  },
-  "taskType": {
-    "random": "Zufällig",
-    "arithmetic": "Arithmetische Operationen",
-    "number_patterns": "Zahlenfolgen",
-    "geometry": "Geometrie",
-    "fractions": "Brüche und Dezimalzahlen",
-    "measurement": "Maßeinheiten",
-    "word_problems": "Textaufgaben",
-    "data_analysis": "Datenanalyse",
-    "probability": "Wahrscheinlichkeit",
-    "algebra": "Algebra",
-    "mental_math": "Kopfrechnen",
-    "sequential": "Sequentielles Denken",
-    "categorical": "Kategorische Logik",
-    "conditional": "Konditionale Logik",
-    "truth_tables": "Wahrheitstabellen",
-    "pattern_recognition": "Mustererkennung",
-    "deductive": "Deduktives Denken",
-    "analogical": "Analoges Denken",
-    "spatial": "Räumliches Denken",
-    "set_theory": "Mengenlehre"
   }
 } 

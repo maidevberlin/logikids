@@ -1,57 +1,42 @@
 export const styles = {
   base: `
+    relative z-20
     space-y-4
   `,
   list: `
-    space-y-2
+    space-y-3
   `,
   item: {
     base: `
-      p-4 rounded-lg border
+      rounded-lg p-4
+      transition-all duration-300
     `,
     content: `
-      flex gap-4
+      flex gap-3 items-start
     `,
     icon: `
-      w-8 h-8 flex-shrink-0
+      flex-shrink-0 w-5 h-5
+      relative top-0.5
     `,
     text: `
-      flex-grow prose
+      prose prose-sm max-w-none
     `
   },
   variants: {
     1: {
-      base: `
-        bg-info-50 border-info-200
-      `,
-      icon: `
-        text-info-500
-      `,
-      text: `
-        text-info-800
-      `
+      base: `bg-info-50/90 border border-info-200`,
+      icon: `text-info-400`,
+      text: `text-info-800`
     },
     2: {
-      base: `
-        bg-warning-50 border-warning-200
-      `,
-      icon: `
-        text-warning-500
-      `,
-      text: `
-        text-warning-800
-      `
+      base: `bg-warning-50/90 border border-warning-200`,
+      icon: `text-warning-400`,
+      text: `text-warning-800`
     },
     3: {
-      base: `
-        bg-error-50 border-error-200
-      `,
-      icon: `
-        text-error-500
-      `,
-      text: `
-        text-error-800
-      `
+      base: `bg-error-50/90 border border-error-200`,
+      icon: `text-error-400`,
+      text: `text-error-800`
     }
   }
 } as const 

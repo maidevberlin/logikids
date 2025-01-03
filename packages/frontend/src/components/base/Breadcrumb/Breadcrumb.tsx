@@ -1,7 +1,6 @@
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/solid'
-import { Subject } from '@logikids/backend/tasks/types'
-import { SubjectSelect } from '../../Task/SubjectSelect'
-import { ConceptSelector } from '../../Task/ConceptSelector'
+import { SubjectSelect } from '../../Subject/SubjectSelect'
+import { ConceptSelector } from '../../Subject/ConceptSelector'
 import { Link } from 'react-router-dom'
 import { cn } from '../../../utils/cn'
 import { BreadcrumbProps } from './types'
@@ -36,9 +35,8 @@ export function Breadcrumb({
             </li>
             <li>
               <SubjectSelect
-                subject={subject}
-                onSubjectChange={onSubjectChange}
-                className={styles.select}
+                value={subject}
+                onChange={onSubjectChange}
               />
             </li>
           </>

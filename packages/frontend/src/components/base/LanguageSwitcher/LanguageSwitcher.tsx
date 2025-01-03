@@ -3,7 +3,6 @@ import { Select } from '../Form'
 import { useSettings } from '../../Settings/useSettings'
 import { LanguageSwitcherProps } from './types'
 import { cn } from '../../../utils/cn'
-import { styles } from './styles'
 
 const languages = [
   { value: 'en', label: 'English' },
@@ -20,14 +19,11 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   }
 
   return (
-    <div className={cn(styles.base, className)}>
-      <Select
-        value={settings.language}
-        options={languages}
-        onChange={handleLanguageChange}
-        size="sm"
-        className={styles.select}
-      />
-    </div>
+    <Select
+      value={settings.language}
+      options={languages}
+      onChange={handleLanguageChange}
+      className={className}
+    />
   )
 } 

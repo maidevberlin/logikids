@@ -124,15 +124,18 @@ export default function TaskPage({}: TaskPageProps) {
     handleHintUsed,
   ])
 
+  const navigation = useMemo(() => (
+    <Breadcrumb
+      currentPage={t('task.title')}
+      subject={taskParams.subject}
+      concept={taskParams.concept}
+      onSubjectChange={handleSubjectChange}
+      onConceptChange={handleConceptChange}
+    />
+  ), [t, taskParams.subject, taskParams.concept, handleSubjectChange, handleConceptChange])
+
   return (
-    <Page>
-      <Breadcrumb 
-        currentPage={t('task.title')} 
-        subject={taskParams.subject}
-        concept={taskParams.concept}
-        onSubjectChange={handleSubjectChange}
-        onConceptChange={handleConceptChange}
-      />
+    <Page navigation={navigation}>
       <div className={styles.container}>
         <div className={cn(
           containerStyles.base,

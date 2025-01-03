@@ -1,6 +1,6 @@
 export const styles = {
   base: `
-    fixed top-4 right-4 z-10
+    inline-flex items-center justify-center
   `,
   icon: `
     h-5 w-5

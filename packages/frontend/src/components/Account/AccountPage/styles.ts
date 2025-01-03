@@ -1,9 +1,12 @@
 export const styles = {
   card: `
-    bg-white rounded-xl shadow-xl p-8
-    transform transition-all duration-300
+    bg-white
+    rounded-lg
+    shadow-sm
+    p-8
   `,
   title: `
+    text-2xl font-bold text-gray-900
     mb-8
   `,
   content: `

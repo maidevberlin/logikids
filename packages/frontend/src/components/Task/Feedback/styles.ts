@@ -1,13 +1,15 @@
 export const styles = {
   base: `
     p-4 rounded-lg border
+    relative z-30
   `,
   content: `
-    flex gap-3
+    flex gap-3 items-start
   `,
   icon: {
     base: `
       h-5 w-5 flex-shrink-0
+      relative top-0.5
     `,
     success: `
       text-success-400

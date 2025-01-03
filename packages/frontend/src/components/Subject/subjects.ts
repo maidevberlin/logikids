@@ -11,14 +11,13 @@ export interface SubjectConfig {
 export const subjects: Record<Subject, SubjectConfig> = {
   math: {
     concepts: {
-      arithmetic: { displayName: 'Arithmetic Operations' },
+      algebra: { displayName: 'Algebra' },
       geometry: { displayName: 'Geometry' },
       fractions: { displayName: 'Fractions and Decimals' },
       measurement: { displayName: 'Measurement' },
       word_problems: { displayName: 'Word Problems' },
       data_analysis: { displayName: 'Data Analysis' },
       probability: { displayName: 'Probability' },
-      algebra: { displayName: 'Algebra' },
       mental_math: { displayName: 'Mental Math' }
     }
   },

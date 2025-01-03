@@ -162,7 +162,7 @@ base/
 └── Layout/
     ├── Container/
     ├── Header/
-    └── Navigation/
+    └── .../
 ```
 
 ### Domain Components

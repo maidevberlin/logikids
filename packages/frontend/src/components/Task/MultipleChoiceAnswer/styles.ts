@@ -1,16 +1,16 @@
 export const styles = {
   base: `
+    relative
     space-y-4
   `,
   grid: `
     grid grid-cols-2 gap-4
+    relative z-10
   `,
   option: {
     base: `
-      p-4 transition-all duration-200
-    `,
-    selected: `
-      ring-2 ring-primary-500 ring-offset-2
+      p-4
+      relative
     `,
     content: `
       prose prose-blue max-w-none text-left
@@ -28,11 +28,13 @@ export const styles = {
     `
   },
   feedback: `
+    relative z-20
     space-y-4
   `,
   action: {
     base: `
       w-full
+      relative z-10
     `,
     ready: `
       border-2 border-primary-300 hover:bg-primary-50

@@ -1,12 +1,24 @@
 import { SettingsButton } from '../../../Settings/SettingsButton'
-import logoUrl from '../../../../assets/logo.svg'
+import { StatsButton } from '../../../Stats/StatsButton'
+import { TaskButton } from '../../../Task/TaskCard/TaskButton'
+import { HeaderProps } from './types'
 import { styles } from './styles'
 
-export function Header() {
+export function Header({ 
+  navigation
+}: HeaderProps) {
   return (
     <header className={styles.base}>
-      <img src={logoUrl} alt="Logo" className={styles.logo} />
-      <SettingsButton />
+      <div className={styles.content}>
+        <div className={styles.left}>
+          {navigation}
+        </div>
+        <div className={styles.right}>
+          <TaskButton className={styles.button} />
+          <StatsButton className={styles.button} />
+          <SettingsButton className={styles.button} />
+        </div>
+      </div>
     </header>
   )
 } 

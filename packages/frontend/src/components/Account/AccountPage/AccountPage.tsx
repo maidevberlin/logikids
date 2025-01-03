@@ -1,22 +1,24 @@
 import { useTranslation } from 'react-i18next'
+import { useMemo } from 'react'
 import { Heading } from '../../base/Typography/Heading'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
-import { PersonalInfo, LanguageSettings } from '..'
+import { SettingsForm } from '../SettingsForm'
 import { Page } from '../../base/Layout'
 import { Container } from '../../base/Layout/Container'
 import { Section } from '../../base/Layout/Section'
-import { useSettings } from '../../Settings/useSettings'
 import { cn } from '../../../utils/cn'
 import { styles } from './styles'
 import type { AccountPageProps } from './types'
 
 export default function AccountPage({}: AccountPageProps) {
   const { t } = useTranslation()
-  const { settings, updateAge, updateName } = useSettings()
+
+  const navigation = useMemo(() => (
+    <Breadcrumb currentPage={t('account.title')} />
+  ), [t])
 
   return (
-    <Page>
-      <Breadcrumb currentPage={t('account.title')} />
+    <Page navigation={navigation}>
       <Section>
         <Container maxWidth="md">
           <div className={cn(styles.card)}>
@@ -25,14 +27,7 @@ export default function AccountPage({}: AccountPageProps) {
             </Heading>
 
             <div className={styles.content}>
-              <PersonalInfo
-                name={settings.name}
-                age={settings.age}
-                onNameChange={updateName}
-                onAgeChange={updateAge}
-              />
-              
-              <LanguageSettings />
+              <SettingsForm />
             </div>
           </div>
         </Container>

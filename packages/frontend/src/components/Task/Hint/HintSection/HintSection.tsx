@@ -108,7 +108,6 @@ export function HintSection({
             onHintUsed?.()
           }}
           disabled={!hasMoreHints}
-          shouldShake={false}
           shouldGlow={shouldGlowHint && hasMoreHints}
           isFirstHint={visibleHints === 0}
         />

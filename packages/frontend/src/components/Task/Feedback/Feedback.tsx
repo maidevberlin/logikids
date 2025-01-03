@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { 
   CheckCircleIcon,
   ExclamationTriangleIcon,
@@ -28,13 +27,12 @@ export function Feedback({
   message,
   variant,
   showIcon = true,
-  animate = true,
   className = ''
 }: FeedbackProps) {
   const config = variantConfig[variant]
   const Icon = config.icon
 
-  const content = (
+  return (
     <div 
       className={cn(
         styles.base,
@@ -54,18 +52,4 @@ export function Feedback({
       </div>
     </div>
   )
-
-  if (animate) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-      >
-        {content}
-      </motion.div>
-    )
-  }
-
-  return content
 } 

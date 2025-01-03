@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { FadeInOut } from '../../base/Animations/FadeInOut' 
+import { useEffect, useState } from 'react'
+import { FadeInOut, Interactive, Sequence } from '../../base/Animations'
 import { Card } from '../../base/Card'
 import { TaskOption } from '../TaskCard/TaskOption'
 import { Feedback } from '../Feedback'
@@ -7,6 +8,7 @@ import { SolutionExplanation } from '../TaskCard/SolutionExplanation'
 import { cn } from '../../../utils/cn'
 import { MultipleChoiceAnswerProps } from './types'
 import { styles } from './styles'
+import { TIMING } from '../constants'
 
 export function MultipleChoiceAnswer({
   options,
@@ -19,10 +21,26 @@ export function MultipleChoiceAnswer({
   isLoading = false
 }: MultipleChoiceAnswerProps) {
   const { t } = useTranslation()
+  const [showFeedback, setShowFeedback] = useState(false)
 
-  const handleTryAgain = () => {
-    onAnswerSelect(null)
-  }
+  // Handle feedback visibility and answer reset
+  useEffect(() => {
+    if (isCorrect === false) {
+      setShowFeedback(true)
+      const timeoutId = setTimeout(() => {
+        setShowFeedback(false)
+        // Wait for fade out animation before resetting
+        setTimeout(() => {
+          onAnswerSelect(null)
+        }, 200) // Match FadeInOut default duration
+      }, TIMING.WRONG_ANSWER_RESET)
+      return () => clearTimeout(timeoutId)
+    } else if (isCorrect === true) {
+      setShowFeedback(true)
+    } else {
+      setShowFeedback(false)
+    }
+  }, [isCorrect, onAnswerSelect])
 
   if (isLoading) {
     return (
@@ -45,48 +63,46 @@ export function MultipleChoiceAnswer({
     <div className={styles.base}>
       <div className={styles.grid}>
         {options.map((text, index) => (
-          <Card
+          <Interactive 
             key={index}
-            variant={
-              isCorrect !== null
-                ? index === selectedAnswer
+            onClick={isCorrect === null ? () => onAnswerSelect(index) : undefined}
+            disabled={isCorrect !== null}
+            className={styles.option.base}
+          >
+            <Card
+              variant={
+                isCorrect !== null && index === selectedAnswer
                   ? isCorrect
                     ? 'success'
                     : 'error'
-                  : 'default'
-                : 'default'
-            }
-            onClick={isCorrect === null ? () => onAnswerSelect(index) : undefined}
-            className={cn(
-              styles.option.base,
-              selectedAnswer === index && isCorrect === null && styles.option.selected
-            )}
-          >
-            <div 
-              className={styles.option.content}
-              dangerouslySetInnerHTML={{ __html: text }} 
-            />
-          </Card>
+                  : selectedAnswer === index && isCorrect === null
+                    ? 'primary'
+                    : 'default'
+              }
+            >
+              <div 
+                className={styles.option.content}
+                dangerouslySetInnerHTML={{ __html: text }} 
+              />
+            </Card>
+          </Interactive>
         ))}
       </div>
 
-      <FadeInOut show={isCorrect !== null ? true : false} className={styles.feedback}>
-        {isCorrect !== null && (
-          <>
-            <Feedback 
-              message={isCorrect ? t('feedback.correct') : t('feedback.incorrect')}
-              variant={isCorrect ? 'success' : 'error'}
-              animate
-              showIcon
-            />
-            {isCorrect && (
-              <SolutionExplanation explanation={solutionExplanation} />
-            )}
-          </>
-        )}
-      </FadeInOut>
+      <div className={styles.feedback}>
+        <FadeInOut show={showFeedback}>
+          <Feedback 
+            message={isCorrect ? t('feedback.correct') : t('feedback.incorrect')}
+            variant={isCorrect ? 'success' : 'error'}
+            showIcon
+          />
+          {isCorrect && (
+            <SolutionExplanation explanation={solutionExplanation} />
+          )}
+        </FadeInOut>
+      </div>
       
-      <div className={styles.action.base}>
+      <Sequence key={isCorrect === null ? 'check' : isCorrect ? 'next' : 'try-again'}>
         {isCorrect === null ? (
           <TaskOption
             onClick={onSubmit}
@@ -109,14 +125,14 @@ export function MultipleChoiceAnswer({
           />
         ) : (
           <TaskOption
-            onClick={handleTryAgain}
+            onClick={() => onAnswerSelect(null)}
             label={t('task.tryAgain')}
             variant="warning"
             size="lg"
             className={styles.action.base}
           />
         )}
-      </div>
+      </Sequence>
     </div>
   )
 } 

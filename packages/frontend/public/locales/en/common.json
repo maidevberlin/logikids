@@ -27,10 +27,14 @@
   },
   "task": {
     "title": "Task",
-    "check": "Check Answer",
-    "next": "Next Task",
-    "hint": "Need a Hint?",
-    "skip": "Skip Hint"
+    "difficulty": "Difficulty",
+    "getHint": "Show Hint",
+    "getAnotherHint": "Show Another Hint",
+    "skip": "Skip Task",
+    "solutionExplanation": "Solution Explanation",
+    "checkAnswer": "Check Answer",
+    "nextTask": "Next Task",
+    "tryAgain": "Try Again"
   },
   "feedback": {
     "correct": "Correct!",
@@ -47,28 +51,7 @@
     "tryAgain": "Try Again",
     "backToHome": "Back to Home"
   },
-  "concepts": {
-    "math": {
-      "random": "Random",
-      "arithmetic": "Arithmetic Operations",
-      "geometry": "Geometry",
-      "fractions": "Fractions and Decimals",
-      "measurement": "Measurement",
-      "word_problems": "Word Problems",
-      "data_analysis": "Data Analysis",
-      "probability": "Probability",
-      "algebra": "Algebra",
-      "mental_math": "Mental Math"
-    },
-    "logic": {
-      "random": "Random",
-      "sequential": "Sequential Reasoning",
-      "categorical": "Categorical Logic",
-      "conditional": "Conditional Logic",
-      "deductive": "Deductive Reasoning"
-    }
-  },
-  "subjects": {
+  "subject": {
     "math": "Mathematics",
     "logic": "Logic"
   },
@@ -76,5 +59,27 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+  "concepts": {
+    "random": "Random",
+    "math": {
+      "algebra": "Algebra",
+      "geometry": "Geometry",
+      "fractions": "Fractions and Decimals",
+      "measurement": "Measurement",
+      "word_problems": "Word Problems",
+      "data_analysis": "Data Analysis",
+      "probability": "Probability",
+      "mental_math": "Mental Math"
+    },
+    "logic": {
+      "sequential": "Sequential Reasoning",
+      "categorical": "Categorical Logic",
+      "conditional": "Conditional Logic",
+      "deductive": "Deductive Reasoning"
+    }
+  },
+  "common": {
+    "loading": "Loading..."
   }
 } 

@@ -5,7 +5,7 @@ import { cn } from '../../../utils/cn'
 import { SubjectSelectProps } from './types'
 import { styles } from './styles'
 
-export function SubjectSelect({ value, onChange, disabled }: SubjectSelectProps) {
+export function SubjectSelect({ value, onChange, disabled, className }: SubjectSelectProps) {
   const { t } = useTranslation()
 
   const options = [
@@ -22,7 +22,7 @@ export function SubjectSelect({ value, onChange, disabled }: SubjectSelectProps)
   const selectedOption = options.find(opt => opt.value === value)
 
   return (
-    <Menu as="div" className={styles.base}>
+    <Menu as="div" className={cn(styles.base, className)}>
       <Menu.Button 
         className={styles.button}
         disabled={disabled}

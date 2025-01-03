@@ -15,15 +15,15 @@ export function Interactive({
 
   return (
     <Component
-      onClick={onClick}
-      disabled={disabled}
       whileHover={!disabled ? { scale: 1.02 } : undefined}
       whileTap={!disabled ? { scale: 0.98 } : undefined}
-      transition={{
-        duration: INTERACTIVE_TIMING.duration.fast / 1000,
-        ease: INTERACTIVE_TIMING.easing.default
-      }}
-      className={cn(styles.base, disabled && styles.disabled, className)}
+      transition={INTERACTIVE_TIMING.easing.spring}
+      onClick={!disabled ? onClick : undefined}
+      className={cn(
+        styles.base,
+        disabled && styles.disabled,
+        className
+      )}
     >
       {children}
     </Component>

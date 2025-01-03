@@ -7,8 +7,6 @@ export interface FeedbackProps {
   variant: FeedbackVariant
   /** Whether to show the icon */
   showIcon?: boolean
-  /** Whether to animate the feedback */
-  animate?: boolean
   /** Additional CSS classes */
   className?: string
 } 

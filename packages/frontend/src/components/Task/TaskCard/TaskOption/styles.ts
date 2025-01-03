@@ -14,6 +14,9 @@ export const styles = {
     `,
     error: `
       bg-white text-error-600 border-error-200 hover:bg-error-50
+    `,
+    outline: `
+      bg-white text-gray-600 border-gray-200 hover:bg-gray-50
     `
   },
   disabled: `

@@ -5,21 +5,16 @@ import { cn } from '../../../../utils/cn'
 import { styles } from './styles'
 
 export function Shake({ 
-  children, 
-  shouldShake,
-  scale = 1.02,
+  children,
+  active = false,
   className = ''
 }: ShakeProps) {
   return (
     <motion.div
-      animate={shouldShake ? {
-        x: [0, -10, 10, -10, 10, 0],
-        scale: [1, scale, scale, scale, scale, 1]
+      animate={active ? {
+        x: [0, -10, 10, -10, 10, -5, 5, 0]
       } : undefined}
-      transition={{
-        duration: SHAKE_TIMING.duration.fast / 1000,
-        ease: SHAKE_TIMING.easing.default
-      }}
+      transition={SHAKE_TIMING.easing.spring}
       className={cn(styles.base, className)}
     >
       {children}

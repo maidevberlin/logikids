@@ -3,6 +3,11 @@ export const INTERACTIVE_TIMING = {
     fast: 100
   },
   easing: {
-    default: 'cubic-bezier(0.4, 0, 0.2, 1)'
+    default: [0.4, 0, 0.2, 1],
+    spring: {
+      type: "spring",
+      stiffness: 400,
+      damping: 30
+    }
   }
 } as const 
