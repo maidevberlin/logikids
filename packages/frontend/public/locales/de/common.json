@@ -63,20 +63,17 @@
   "concepts": {
     "random": "Zufällig",
     "math": {
-      "algebra": "Algebra",
-      "geometry": "Geometrie",
-      "fractions": "Brüche und Dezimalzahlen",
-      "measurement": "Maßeinheiten",
+      "arithmetic": "Grundrechenarten",
+      "mental_math": "Kopfrechnen",
       "word_problems": "Textaufgaben",
-      "data_analysis": "Datenanalyse",
-      "probability": "Wahrscheinlichkeit",
-      "mental_math": "Kopfrechnen"
+      "fractions": "Brüche & Dezimalzahlen",
+      "geometry": "Geometrie",
+      "measurement": "Maße & Einheiten"
     },
     "logic": {
-      "sequential": "Sequenzielles Denken",
-      "categorical": "Kategorische Logik",
-      "conditional": "Konditionale Logik",
-      "deductive": "Deduktives Denken"
+      "patterns": "Mustererkennung",
+      "conditional": "Wenn-Dann Logik",
+      "sorting": "Sortieren & Gruppieren"
     }
   },
   "common": {

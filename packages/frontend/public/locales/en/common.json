@@ -63,20 +63,17 @@
   "concepts": {
     "random": "Random",
     "math": {
-      "algebra": "Algebra",
-      "geometry": "Geometry",
-      "fractions": "Fractions and Decimals",
-      "measurement": "Measurement",
+      "arithmetic": "Basic Arithmetic",
+      "mental_math": "Mental Math",
       "word_problems": "Word Problems",
-      "data_analysis": "Data Analysis",
-      "probability": "Probability",
-      "mental_math": "Mental Math"
+      "fractions": "Fractions & Decimals",
+      "geometry": "Geometry",
+      "measurement": "Measurement & Units"
     },
     "logic": {
-      "sequential": "Sequential Reasoning",
-      "categorical": "Categorical Logic",
-      "conditional": "Conditional Logic",
-      "deductive": "Deductive Reasoning"
+      "patterns": "Pattern Recognition",
+      "conditional": "If-Then Logic",
+      "sorting": "Sorting & Grouping"
     }
   },
   "common": {

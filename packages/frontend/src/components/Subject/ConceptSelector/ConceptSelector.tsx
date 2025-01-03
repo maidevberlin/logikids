@@ -14,7 +14,7 @@ export function ConceptSelector({ subject, value, onChange, className }: Concept
       value: 'random',
       translationKey: `concepts.random`
     },
-    ...Object.entries(subjectConfig.concepts).map(([id]) => ({
+    ...subjectConfig.concepts.map((id) => ({
       value: id,
       translationKey: `concepts.${subject}.${id}`
     }))

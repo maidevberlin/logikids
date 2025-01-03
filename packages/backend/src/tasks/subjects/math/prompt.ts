@@ -1,5 +1,5 @@
 import { BasePromptBuilder } from '../../core/prompt-builder';
-import { mathSubject } from './config';
+import { mathSubject } from './base';
 
 export class MathPromptBuilder extends BasePromptBuilder {
   constructor() {

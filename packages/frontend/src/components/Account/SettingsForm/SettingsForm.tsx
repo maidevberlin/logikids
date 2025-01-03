@@ -33,7 +33,7 @@ export function SettingsForm() {
           value={settings.age}
           onChange={updateAge}
           min={6}
-          max={12}
+          max={20}
         />
       </FormField>
 

@@ -1,5 +1,5 @@
-import { mathSubject } from './math/config';
-import { logicSubject } from './logic/config';
+import { mathSubject } from './math/base';
+import { logicSubject } from './logic/base';
 import { MathPromptBuilder } from './math/prompt';
 import { LogicPromptBuilder } from './logic/prompt';
 import { Subject } from '../core/types';

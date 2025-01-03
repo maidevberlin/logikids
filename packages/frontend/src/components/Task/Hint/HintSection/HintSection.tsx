@@ -81,7 +81,7 @@ export function HintSection({
       <FadeInOut show={visibleHints > 0} className={styles.list}>
         {hints.slice(0, visibleHints).map((hint, index) => {
           const { icon: IconComponent } = HINT_ICONS[index] || HINT_ICONS[0]
-          const variant = (index + 1) as 1 | 2 | 3
+          const variant = ((index % 4) + 1) as 1 | 2 | 3 | 4
           return (
             <div key={index} className={cn(styles.item.base, styles.variants[variant].base)}>
               <div className={styles.item.content}>

@@ -16,7 +16,7 @@ export function TaskButton({
     if (onClick) {
       onClick()
     } else {
-      navigate('/task')
+      navigate('/tasks')
     }
   }
 

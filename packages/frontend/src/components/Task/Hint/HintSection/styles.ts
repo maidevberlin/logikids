@@ -34,9 +34,14 @@ export const styles = {
       text: `text-warning-800`
     },
     3: {
-      base: `bg-error-50/90 border border-error-200`,
-      icon: `text-error-400`,
-      text: `text-error-800`
+      base: `bg-purple-50/90 border border-purple-200`,
+      icon: `text-purple-400`,
+      text: `text-purple-800`
+    },
+    4: {
+      base: `bg-success-50/90 border border-success-200`,
+      icon: `text-success-400`,
+      text: `text-success-800`
     }
   }
 } as const 

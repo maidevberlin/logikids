@@ -1,32 +1,27 @@
 import { Subject } from '@logikids/backend/tasks/types';
 
-export interface Concept {
-  displayName: string;
-}
+export type Concept = string;
 
 export interface SubjectConfig {
-  concepts: Record<string, Concept>;
+  concepts: Concept[];
 }
 
 export const subjects: Record<Subject, SubjectConfig> = {
   math: {
-    concepts: {
-      algebra: { displayName: 'Algebra' },
-      geometry: { displayName: 'Geometry' },
-      fractions: { displayName: 'Fractions and Decimals' },
-      measurement: { displayName: 'Measurement' },
-      word_problems: { displayName: 'Word Problems' },
-      data_analysis: { displayName: 'Data Analysis' },
-      probability: { displayName: 'Probability' },
-      mental_math: { displayName: 'Mental Math' }
-    }
+    concepts: [
+      'arithmetic',
+      'mental_math',
+      'word_problems',
+      'fractions',
+      'geometry',
+      'measurement'
+    ]
   },
   logic: {
-    concepts: {
-      sequential: { displayName: 'Sequential Reasoning' },
-      categorical: { displayName: 'Categorical Logic' },
-      conditional: { displayName: 'Conditional Logic' },
-      deductive: { displayName: 'Deductive Reasoning' }
-    }
+    concepts: [
+      'patterns',
+      'conditional',
+      'sorting'
+    ]
   }
 }; 
