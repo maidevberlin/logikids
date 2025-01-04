@@ -2,7 +2,7 @@ import { Concept } from "../../core/types";
 
 export const mathConcepts: Record<string, Concept> = {
   arithmetic: {
-    displayName: 'Basic Arithmetic',
+    name: 'Basic Arithmetic',
     description: 'Fundamental operations with numbers including addition, subtraction, multiplication, and division',
     promptTemplate: `
 Your task is to create a basic arithmetic problem that focuses on:
@@ -12,7 +12,7 @@ Your task is to create a basic arithmetic problem that focuses on:
     `
   },
   mental_math: {
-    displayName: 'Mental Math',
+    name: 'Mental Math',
     description: 'Quick calculations and number sense without writing',
     promptTemplate: `
 Your task is to create a mental math problem that focuses on:
@@ -22,7 +22,7 @@ Your task is to create a mental math problem that focuses on:
     `
   },
   word_problems: {
-    displayName: 'Word Problems',
+    name: 'Word Problems',
     description: 'Real-world problem solving using mathematical concepts',
     promptTemplate: `
 Your task is to create a word problem that focuses on:
@@ -32,7 +32,7 @@ Your task is to create a word problem that focuses on:
     `
   },
   fractions: {
-    displayName: 'Fractions & Decimals',
+    name: 'Fractions & Decimals',
     description: 'Understanding and working with fractions, decimals, and percentages',
     promptTemplate: `
 Your task is to create a fraction/decimal problem that focuses on:
@@ -42,7 +42,7 @@ Your task is to create a fraction/decimal problem that focuses on:
     `
   },
   geometry: {
-    displayName: 'Geometry',
+    name: 'Geometry',
     description: 'Geometric concepts including shapes, angles, and spatial reasoning',
     promptTemplate: `
 Your task is to create a geometry problem that focuses on:
@@ -53,7 +53,7 @@ Your task is to create a geometry problem that focuses on:
     `
   },
   measurement: {
-    displayName: 'Measurement & Units',
+    name: 'Measurement & Units',
     description: 'Working with different units of measurement and conversions',
     promptTemplate: `
 Your task is to create a measurement problem that focuses on:

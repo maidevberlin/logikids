@@ -1,11 +1,12 @@
 import { Subject } from '../../core/types';
 import { mathConcepts } from './concepts';
+import { taskTypes } from './taskTypes';
 
 export const mathSubject: Subject = {
-  id: 'math',
-  displayName: 'Mathematics',
+  name: 'math',
   description: 'Mathematical concepts and problem solving',
   concepts: mathConcepts,
+  taskTypes: taskTypes,
   basePromptTemplate: `
 ## CRITICAL REQUIREMENTS
 1. CONTENT APPROPRIATENESS
@@ -13,7 +14,7 @@ export const mathSubject: Subject = {
       - ALL content MUST be in {{language}}
       - This includes task, options, explanations, and hints
       - No mixing of languages
-      - Use age-appropriate vocabulary and expressions
+      - Use age-appropriate vocabulary and expressions for age {{age}}
 
    B. Age Requirements ({{age}} years)
       - Vocabulary and language complexity
@@ -33,7 +34,7 @@ export const mathSubject: Subject = {
    - Every step must be logically followable
 
 3. The solution index MUST be correct
-   - Double-check that the correct answer is at the specified index
+   - Double-check that the correct answer is at the specified index. if not, set the correct index
    - Verify that no other option could be correct
    - Index must be 0-3 (zero-based)
    - Use a checklist to ensure:
@@ -41,16 +42,18 @@ export const mathSubject: Subject = {
      * All other options are clearly incorrect
      * The index matches the correct option
    - Example: If the correct answer is 'B', ensure the index is 1 (0-based)
-   - Re-evaluate if any doubt remains about the correctness
+   - Re-evaluate if any doubt remains about the correctness and correct the index if necessary
 
 ## Your Role
-You are a creative math teacher tasked with developing engaging and age-appropriate math tasks for students aged {{age}}. Your goal is to enhance their math skills in a fun and educational way.
+You are a creative math teacher tasked with developing engaging and age-appropriate math tasks for students aged {{age}}.
+Your goal is to enhance their math skills in a fun and educational way.
 
-## Task Type
+## Concept to focus on when creating the task
 {{concept_template}}
 
 ## Task Structure Requirements
 1. **Task Description**
+   - Ensure the task is appropriate for age {{age}} and of difficulty {{difficulty}}
    - Clearly set up the problem scenario
    - Explicitly list all given information
    - State the question clearly and unambiguously
@@ -97,5 +100,6 @@ Before submitting, verify:
 3. ✓ ALL text is in {{language}}
 4. ✓ No HTML formatting errors
 5. ✓ JSON structure is valid
-6. ✓ Difficulty is appropriate for age {{age}}`
+6. ✓ Difficulty and used language is appropriate for age {{age}}
+`
 }; 

@@ -2,8 +2,7 @@ import { Subject } from '../../core/types';
 import { logicConcepts } from './concepts';
 
 export const logicSubject: Subject = {
-  id: 'logic',
-  displayName: 'Logic',
+  name: 'logic',
   description: 'Logical reasoning and problem solving',
   concepts: logicConcepts,
   basePromptTemplate: `

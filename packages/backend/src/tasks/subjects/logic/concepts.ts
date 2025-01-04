@@ -2,7 +2,7 @@ import { Concept } from '../../core/types';
 
 export const logicConcepts: Record<string, Concept> = {
   patterns: {
-    displayName: 'Pattern Recognition',
+    name: 'patterns',
     description: 'Finding and understanding patterns in logical sequences',
     promptTemplate: `
 Your task is to create a pattern recognition problem that focuses on:
@@ -12,7 +12,7 @@ Your task is to create a pattern recognition problem that focuses on:
     `
   },
   conditional: {
-    displayName: 'If-Then Logic',
+    name: 'conditional',
     description: 'Understanding cause and effect relationships',
     promptTemplate: `
 Your task is to create an if-then logic problem that focuses on:
@@ -22,7 +22,7 @@ Your task is to create an if-then logic problem that focuses on:
     `
   },
   sorting: {
-    displayName: 'Sorting & Grouping',
+    name: 'sorting',
     description: 'Classifying items based on logical rules',
     promptTemplate: `
 Your task is to create a sorting problem that focuses on:

@@ -1,16 +1,16 @@
+export interface Subject {
+  name: string;
+  description: string;
+  concepts: Record<string, Concept>;
+  taskTypes: Record<string, TaskType>;
+  basePromptTemplate: string;
+}
+
 export interface Concept {
-  displayName: string;
+  name: string;
   description: string;
   promptTemplate: string;
   validateResponse?: (response: any) => boolean;
-}
-
-export interface Subject {
-  id: string;
-  displayName: string;
-  description: string;
-  concepts: Record<string, Concept>;
-  basePromptTemplate: string;
 }
 
 export interface TaskPromptBuilder {
@@ -28,4 +28,10 @@ export interface TaskGenerationParams {
   age: number;
   difficulty: string;
   language: string;
-} 
+}
+
+export interface TaskType {
+  name: string;
+  description: string;
+  promptTemplate: string;
+}
