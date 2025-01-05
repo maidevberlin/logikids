@@ -1,6 +1,6 @@
 export const styles = {
   base: `
-    space-y-4
+    space-y-4 opacity-90
   `,
   content: `
     space-y-8

@@ -15,6 +15,15 @@ import { Page } from '../../base/Layout'
 import { styles } from './styles'
 import type { TaskPageProps } from './types'
 
+// Import background patterns
+import mathPattern from '../../../assets/math.webp'
+import logicPattern from '../../../assets/logic.webp'
+
+const patterns = {
+  math: mathPattern,
+  logic: logicPattern
+} as const
+
 const taskDefaults: TaskRequest = {
   difficulty: 'medium',
   subject: 'math',
@@ -105,6 +114,7 @@ export default function TaskPage({}: TaskPageProps) {
     task: task ?? {} as Task,
     selectedAnswer,
     difficulty: taskParams.difficulty,
+    subject: taskParams.subject,
     error,
     isCorrect,
     onAnswerSelect: selectAnswer,
@@ -117,6 +127,7 @@ export default function TaskPage({}: TaskPageProps) {
     task,
     selectedAnswer,
     taskParams.difficulty,
+    taskParams.subject,
     error,
     isCorrect,
     selectAnswer,
@@ -138,7 +149,14 @@ export default function TaskPage({}: TaskPageProps) {
 
   return (
     <Page navigation={navigation}>
-      <div className={styles.container}>
+      <div className={cn(
+        styles.container,
+        styles.subjects[taskParams.subject]
+      )}>
+        <div 
+          className={styles.pattern} 
+          style={{ backgroundImage: `url(${patterns[taskParams.subject]})` }} 
+        />
         <div className={cn(
           containerStyles.base,
           containerStyles.sizes.lg,

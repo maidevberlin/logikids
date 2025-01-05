@@ -25,6 +25,11 @@ export const styles = {
     success: 'bg-white border-success-200 hover:border-success-300',
     error: 'bg-white border-error-200 hover:border-error-300',
     warning: 'bg-white border-warning-200 hover:border-warning-300',
-    info: 'bg-white border-info-200 hover:border-info-300'
+    info: 'bg-white border-info-200 hover:border-info-300',
+    // Colorful variants
+    softBlue: 'bg-blue-50 border-2 border-blue-300 hover:border-blue-400 hover:bg-blue-100',
+    softOrange: 'bg-orange-50 border-2 border-orange-300 hover:border-orange-400 hover:bg-orange-100',
+    softPurple: 'bg-purple-50 border-2 border-purple-300 hover:border-purple-400 hover:bg-purple-100',
+    softTeal: 'bg-teal-50 border-2 border-teal-300 hover:border-teal-400 hover:bg-teal-100'
   }
 } as const 

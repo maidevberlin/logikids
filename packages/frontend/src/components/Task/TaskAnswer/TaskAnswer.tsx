@@ -113,37 +113,39 @@ function TaskAnswerComponent<T extends Task>({
         </FadeInOut>
       </div>
       
-      <Sequence key={isCorrect === null ? 'check' : isCorrect ? 'next' : 'try-again'}>
-        {isCorrect === null ? (
-          <TaskOption
-            onClick={onAnswerSubmit}
-            label={t('task.checkAnswer')}
-            disabled={selectedAnswer === null}
-            variant="primary"
-            size="lg"
-            className={cn(
-              "mt-4 w-full",
-              selectedAnswer !== null && "animate-bounce"
-            )}
-          />
-        ) : isCorrect ? (
-          <TaskOption
-            onClick={onNextTask}
-            label={t('task.nextTask')}
-            variant="success"
-            size="lg"
-            className="mt-4 w-full"
-          />
-        ) : (
-          <TaskOption
-            onClick={() => onAnswerSelect(null)}
-            label={t('task.tryAgain')}
-            variant="warning"
-            size="lg"
-            className="mt-4 w-full"
-          />
-        )}
-      </Sequence>
+      {!isLoading && (
+        <Sequence key={isCorrect === null ? 'check' : isCorrect ? 'next' : 'try-again'}>
+          {isCorrect === null ? (
+            <TaskOption
+              onClick={onAnswerSubmit}
+              label={t('task.checkAnswer')}
+              disabled={selectedAnswer === null}
+              variant="primary"
+              size="lg"
+              className={cn(
+                "mt-4 w-full",
+                selectedAnswer !== null && "animate-bounce"
+              )}
+            />
+          ) : isCorrect ? (
+            <TaskOption
+              onClick={onNextTask}
+              label={t('task.nextTask')}
+              variant="success"
+              size="lg"
+              className="mt-4 w-full"
+            />
+          ) : (
+            <TaskOption
+              onClick={() => onAnswerSelect(null)}
+              label={t('task.tryAgain')}
+              variant="warning"
+              size="lg"
+              className="mt-4 w-full"
+            />
+          )}
+        </Sequence>
+      )}
       
       {!isLoading && isCorrect !== true && (
         <HintSection
