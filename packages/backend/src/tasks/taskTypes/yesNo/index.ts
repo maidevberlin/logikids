@@ -1,0 +1,1 @@
+export { yesNoType } from './type'; 

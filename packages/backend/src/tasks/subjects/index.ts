@@ -1,17 +1,12 @@
-import { mathSubject } from './math/base';
-import { logicSubject } from './logic/base';
-import { MathPromptBuilder } from './math/prompt';
-import { LogicPromptBuilder } from './logic/prompt';
-import { Subject } from '../core/types';
+import { SubjectsMap } from './types';
+import { mathSubject } from './math/subject';
+import { logicSubject } from './logic/subject';
 
-export const test:string = 'test'
-
-export const subjects: Record<string, Subject> = {
+export const subjects: SubjectsMap = {
   math: mathSubject,
-  logic: logicSubject,
-};
+  logic: logicSubject
+} as const;
 
-export const promptBuilders = {
-  math: MathPromptBuilder,
-  logic: LogicPromptBuilder,
-}; 
+export * from './types';
+export * from './math';
+export * from './logic';

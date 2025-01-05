@@ -1,0 +1,1 @@
+export { multipleChoiceType } from './type'; 

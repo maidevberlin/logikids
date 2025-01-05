@@ -1,34 +1,27 @@
-import { Concept } from '../../core/types';
+import { prompt as patternsPrompt } from '../../prompts/logic/concepts/patterns';
+import { prompt as conditionalPrompt } from '../../prompts/logic/concepts/conditional';
+import { prompt as sortingPrompt } from '../../prompts/logic/concepts/sorting';
+import { Concept, LogicConceptId } from '../types';
 
-export const logicConcepts: Record<string, Concept> = {
+export const logicConcepts: Record<LogicConceptId, Concept> = {
   patterns: {
-    name: 'patterns',
+    id: 'patterns',
+    name: 'Pattern Recognition',
     description: 'Finding and understanding patterns in logical sequences',
-    promptTemplate: `
-Your task is to create a pattern recognition problem that focuses on:
-- Visual or numerical pattern identification
-- Pattern continuation or completion
-- Clear sequence of observations
-    `
+    promptTemplate: patternsPrompt
   },
+
   conditional: {
-    name: 'conditional',
+    id: 'conditional',
+    name: 'Conditional Logic',
     description: 'Understanding cause and effect relationships',
-    promptTemplate: `
-Your task is to create an if-then logic problem that focuses on:
-- Simple cause and effect relationships
-- Clear logical connections
-- Everyday scenarios and examples
-    `
+    promptTemplate: conditionalPrompt
   },
+
   sorting: {
-    name: 'sorting',
+    id: 'sorting',
+    name: 'Logical Sorting',
     description: 'Classifying items based on logical rules',
-    promptTemplate: `
-Your task is to create a sorting problem that focuses on:
-- Clear classification rules
-- Logical grouping principles
-- Visual or concrete examples
-    `
+    promptTemplate: sortingPrompt
   }
 }; 

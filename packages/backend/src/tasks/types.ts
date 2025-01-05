@@ -1,26 +1,32 @@
 import { z } from 'zod';
+import { SUBJECTS, SubjectId } from './subjects/types';
+import { TASK_TYPES } from './taskTypes/types';
 
+// Difficulty Levels
+export const DIFFICULTIES = [
+  'easy',
+  'medium',
+  'hard'
+] as const;
+export type Difficulty = typeof DIFFICULTIES[number];
+
+// Request schema and type
 export const taskRequestSchema = z.object({
-  subject: z.enum(['math', 'logic']),
-  concept: z.string(),
+  subject: z.enum([SUBJECTS.math.id, SUBJECTS.logic.id]),
+  concept: z.string(), // We'll refine this with getConceptSchema
+  taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
   age: z.number().min(5).max(18),
-  difficulty: z.enum(['easy', 'medium', 'hard'])
+  difficulty: z.enum(DIFFICULTIES)
 });
-
-// Export the enum types explicitly
-export type Subject = z.infer<typeof taskRequestSchema>['subject'];
-export type Difficulty = z.infer<typeof taskRequestSchema>['difficulty'];
-export type Age = z.infer<typeof taskRequestSchema>['age'];
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;
 
-export interface Task {
-  title: string;
-  task: string;
-  options: string[];
-  solution: {
-    index: number;
-    explanation: string;
-  };
-  hints: string[];
+// Parameters for task generation
+export interface TaskGenerationParams {
+  subject: SubjectId;
+  concept: string;
+  age: number;
+  difficulty: Difficulty;
+  language: string;
+  taskType?: string;
 }
