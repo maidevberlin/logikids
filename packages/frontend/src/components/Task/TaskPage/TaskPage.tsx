@@ -5,7 +5,9 @@ import { useProgress } from '../../Stats/useProgress'
 import { TaskCard } from '..'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Task, TaskRequest, Subject, Difficulty } from '@logikids/backend/tasks/types'
+import { TaskRequest, Difficulty } from '@logikids/backend/tasks/types'
+import { SubjectId } from '@logikids/backend/tasks/subjects/types'
+import { Task } from '../types'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { cn } from '../../../utils'
 import { styles as containerStyles } from '../../base/Layout/Container/styles'
@@ -30,7 +32,7 @@ export default function TaskPage({}: TaskPageProps) {
   // Memoize task parameters
   const taskParams = useMemo(() => ({
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
-    subject: (searchParams.get('subject') ?? taskDefaults.subject) as Subject,
+    subject: (searchParams.get('subject') ?? taskDefaults.subject) as SubjectId,
     concept: (searchParams.get('concept') ?? taskDefaults.concept),
     age: settings.age
   }), [searchParams, settings.age])
@@ -40,7 +42,6 @@ export default function TaskPage({}: TaskPageProps) {
     isLoading,
     error,
     selectedAnswer,
-    isCorrect,
     checkAnswer,
     selectAnswer,
     nextTask
@@ -54,7 +55,8 @@ export default function TaskPage({}: TaskPageProps) {
 
   // Track progress when answer is checked
   useEffect(() => {
-    if (isCorrect !== null) {
+    if (task && selectedAnswer !== null) {
+      const isCorrect = task.options[selectedAnswer]?.isCorrect ?? false;
       updateStats({
         subject: taskParams.subject,
         difficulty: taskParams.difficulty,
@@ -62,7 +64,7 @@ export default function TaskPage({}: TaskPageProps) {
         hintsUsed,
       })
     }
-  }, [isCorrect, taskParams.subject, taskParams.difficulty, hintsUsed, updateStats])
+  }, [task, selectedAnswer, taskParams.subject, taskParams.difficulty, hintsUsed, updateStats])
 
   // Memoize handlers to prevent unnecessary re-renders
   const handleDifficultyChange = useCallback((newDifficulty: Difficulty) => {
@@ -73,7 +75,7 @@ export default function TaskPage({}: TaskPageProps) {
     })
   }, [setSearchParams])
 
-  const handleSubjectChange = useCallback((newSubject: Subject) => {
+  const handleSubjectChange = useCallback((newSubject: SubjectId) => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
       newParams.set('subject', newSubject)
@@ -102,7 +104,6 @@ export default function TaskPage({}: TaskPageProps) {
     isLoading,
     task: task ?? {} as Task,
     selectedAnswer,
-    isCorrect,
     difficulty: taskParams.difficulty,
     error,
     onAnswerSelect: selectAnswer,
@@ -114,7 +115,6 @@ export default function TaskPage({}: TaskPageProps) {
     isLoading,
     task,
     selectedAnswer,
-    isCorrect,
     taskParams.difficulty,
     error,
     selectAnswer,

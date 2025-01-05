@@ -1,9 +1,40 @@
 import { z } from 'zod'
 import { Subject, Difficulty } from '../Task/types'
 
+// Task stats structure
+export interface TaskStats {
+  correct: number
+  wrong: number
+  hintsUsed: number
+}
+
+// Stats for each difficulty level
+export interface DifficultyStats {
+  easy: TaskStats
+  medium: TaskStats
+  hard: TaskStats
+}
+
 // Stats for all subjects
 export const ProgressStatsSchema = z.record(
-  z.enum(['math', 'logic'] as const)
+  z.enum(['math', 'logic'] as const),
+  z.object({
+    easy: z.object({
+      correct: z.number(),
+      wrong: z.number(),
+      hintsUsed: z.number()
+    }),
+    medium: z.object({
+      correct: z.number(),
+      wrong: z.number(),
+      hintsUsed: z.number()
+    }),
+    hard: z.object({
+      correct: z.number(),
+      wrong: z.number(),
+      hintsUsed: z.number()
+    })
+  })
 )
 
 // Complete user progress

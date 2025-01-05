@@ -5,4 +5,4 @@ export { ConceptSelector } from '../Subject/ConceptSelector'
 export { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
 
 // Re-export base types
-export type { Task, TaskResponse, TaskListResponse } from './types' 
+export type { Task } from './types' 

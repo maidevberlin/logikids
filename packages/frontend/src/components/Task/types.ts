@@ -1,18 +1,16 @@
-import type { Task as BackendTask, Difficulty, Subject } from '@logikids/backend/tasks/types'
+import type { Difficulty } from '@logikids/backend/tasks/types'
+import type { SubjectId as Subject } from '@logikids/backend/tasks/subjects/types'
+import type { MultipleChoiceOption } from './MultipleChoiceAnswer/types'
 
 export type Age = number
 export type { Difficulty, Subject }
 
 // Base Task type
-export interface Task extends BackendTask {
+export interface Task {
   title: string
   task: string // HTML content
   hints: string[]
-  options: string[]
-  solution: {
-    index: number
-    explanation: string
-  }
+  options: MultipleChoiceOption[]
 }
 
 // Default values
@@ -21,22 +19,3 @@ export const TASK_DEFAULTS = {
   subject: 'math' as Subject,
   age: 10 as Age,
 } as const
-
-// API types
-export interface TaskResponse {
-  task: Task
-  nextTaskId: string | null
-}
-
-export interface TaskListResponse {
-  items: Task[]
-  total: number
-  page: number
-  pageSize: number
-  hasMore: boolean
-  filters: {
-    difficulty: Difficulty[]
-    subject: Subject[]
-    ageRange: [number, number]
-  }
-} 

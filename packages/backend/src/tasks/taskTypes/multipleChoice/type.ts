@@ -1,5 +1,5 @@
 import { TaskType, TaskResponse, TASK_TYPES } from '../types';
-import { MultipleChoiceResponse, TYPE_ID } from './types';
+import { MultipleChoiceResponse, MultipleChoiceOption, TYPE_ID } from './types';
 import { prompt } from '../../prompts/taskTypes/multipleChoice';
 
 export const multipleChoiceType: TaskType<MultipleChoiceResponse> = {
@@ -12,7 +12,7 @@ export const multipleChoiceType: TaskType<MultipleChoiceResponse> = {
       return false;
     }
 
-    const r = response as any;
+    const r = response as Partial<MultipleChoiceResponse>;
 
     // Check basic TaskResponse properties
     if (typeof r.title !== 'string' || !r.title) return false;
@@ -22,11 +22,29 @@ export const multipleChoiceType: TaskType<MultipleChoiceResponse> = {
 
     // Check MultipleChoice specific properties
     if (!Array.isArray(r.options) || r.options.length !== 4) return false;
-    if (!r.options.every((opt: unknown) => typeof opt === 'string' && opt)) return false;
 
-    if (!r.solution || typeof r.solution !== 'object') return false;
-    if (typeof r.solution.index !== 'number' || r.solution.index < 0 || r.solution.index > 3) return false;
-    if (typeof r.solution.explanation !== 'string' || !r.solution.explanation) return false;
+    // Validate each option structure
+    const isValidOption = (opt: unknown): opt is MultipleChoiceOption => {
+      if (!opt || typeof opt !== 'object') return false;
+      
+      const option = opt as Partial<MultipleChoiceOption>;
+      
+      if (typeof option.text !== 'string' || !option.text) return false;
+      if (typeof option.isCorrect !== 'boolean') return false;
+      
+      // If option is correct, it must have an explanation
+      if (option.isCorrect && (typeof option.explanation !== 'string' || !option.explanation)) {
+        return false;
+      }
+      
+      return true;
+    };
+
+    if (!r.options.every(isValidOption)) return false;
+
+    // Validate that exactly one option is correct
+    const correctOptions = r.options.filter(isValidOption).filter(opt => opt.isCorrect);
+    if (correctOptions.length !== 1) return false;
 
     return true;
   }

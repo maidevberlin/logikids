@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { TaskRequest, Task } from '@logikids/backend/tasks/types';
+import { TaskRequest } from '@logikids/backend/tasks/types';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../../i18n/config';
 import { logikids } from '../../api/logikids';
 import { TIMING } from './constants';
+import { Task } from './types';
 
 export const useTask = (params: TaskRequest) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -48,7 +49,9 @@ export const useTask = (params: TaskRequest) => {
 
   const checkAnswer = useCallback(() => {
     if (!task || selectedAnswer === null) return;
-    const correct = selectedAnswer === task.solution.index;
+    
+    const selectedOption = task.options[selectedAnswer];
+    const correct = selectedOption.isCorrect;
     setIsCorrect(correct);
 
     // Clear any existing timeout
@@ -84,14 +87,22 @@ export const useTask = (params: TaskRequest) => {
     await refetch();
   }, [refetch]);
 
+  // Get the explanation for the correct answer
+  const getExplanation = useCallback(() => {
+    if (!task) return '';
+    const correctOption = task.options.find(opt => opt.isCorrect);
+    return correctOption?.explanation || '';
+  }, [task]);
+
   return {
     task,
     isLoading: isLoading || isFetching,
     error: error ? (error as Error).message : null,
     selectedAnswer,
     isCorrect,
+    explanation: getExplanation(),
     checkAnswer,
     selectAnswer,
     nextTask
   };
-} 
+}; 

@@ -13,15 +13,19 @@ import { TIMING } from '../constants'
 export function MultipleChoiceAnswer({
   options,
   selectedAnswer,
-  isCorrect,
   onAnswerSelect,
   onSubmit,
   onNextTask,
-  solutionExplanation,
   isLoading = false
 }: MultipleChoiceAnswerProps) {
   const { t } = useTranslation()
   const [showFeedback, setShowFeedback] = useState(false)
+
+  // Determine if the current answer is correct
+  const isCorrect = selectedAnswer !== null ? options[selectedAnswer]?.isCorrect ?? null : null
+
+  // Get explanation from the selected option if it's correct
+  const explanation = selectedAnswer !== null && isCorrect ? options[selectedAnswer]?.explanation : ''
 
   // Handle feedback visibility and answer reset
   useEffect(() => {
@@ -62,7 +66,7 @@ export function MultipleChoiceAnswer({
   return (
     <div className={styles.base}>
       <div className={styles.grid}>
-        {options.map((text, index) => (
+        {options.map((option, index) => (
           <Interactive 
             key={index}
             onClick={isCorrect === null ? () => onAnswerSelect(index) : undefined}
@@ -82,7 +86,7 @@ export function MultipleChoiceAnswer({
             >
               <div 
                 className={styles.option.content}
-                dangerouslySetInnerHTML={{ __html: text }} 
+                dangerouslySetInnerHTML={{ __html: option.text }} 
               />
             </Card>
           </Interactive>
@@ -96,8 +100,8 @@ export function MultipleChoiceAnswer({
             variant={isCorrect ? 'success' : 'error'}
             showIcon
           />
-          {isCorrect && (
-            <SolutionExplanation explanation={solutionExplanation} />
+          {isCorrect && explanation && (
+            <SolutionExplanation explanation={explanation} />
           )}
         </FadeInOut>
       </div>

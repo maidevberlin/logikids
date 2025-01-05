@@ -2,33 +2,41 @@ import {
   UserProgress, 
   UserProgressSchema, 
   StatUpdate,
-  TaskStats
+  TaskStats,
+  DifficultyStats
 } from './types'
-import { Subject, Difficulty } from '@logikids/backend/tasks/types'
+import { Subject, Difficulty } from '../Task/types'
+import { Task } from '../Task/types'
+import { MultipleChoiceOption } from '../Task/MultipleChoiceAnswer/types'
 
 const STORAGE_KEY = 'logikids_progress'
 
+// Initialize empty stats
+const createEmptyTaskStats = (): TaskStats => ({
+  correct: 0,
+  wrong: 0,
+  hintsUsed: 0
+})
+
 // Initialize empty stats for a subject
-const createEmptySubjectStats = () => {
-  return {
-    easy: { correct: 0, wrong: 0, hintsUsed: 0 },
-    medium: { correct: 0, wrong: 0, hintsUsed: 0 },
-    hard: { correct: 0, wrong: 0, hintsUsed: 0 },
-  }
-}
+const createEmptySubjectStats = (): DifficultyStats => ({
+  easy: createEmptyTaskStats(),
+  medium: createEmptyTaskStats(),
+  hard: createEmptyTaskStats()
+})
 
 // Initialize empty progress
 const createEmptyProgress = (): UserProgress => ({
   version: 1,
   stats: {
     math: createEmptySubjectStats(),
-    logic: createEmptySubjectStats(),
+    logic: createEmptySubjectStats()
   },
-  lastUpdated: Date.now(),
+  lastUpdated: Date.now()
 })
 
 // Ensure subject stats exist
-const ensureSubjectStats = (progress: UserProgress, subject: Subject) => {
+const ensureSubjectStats = (progress: UserProgress, subject: Subject): DifficultyStats => {
   if (!progress.stats[subject]) {
     progress.stats[subject] = createEmptySubjectStats()
   }
@@ -36,10 +44,10 @@ const ensureSubjectStats = (progress: UserProgress, subject: Subject) => {
 }
 
 // Ensure difficulty stats exist
-const ensureDifficultyStats = (progress: UserProgress, subject: Subject, difficulty: Difficulty) => {
+const ensureDifficultyStats = (progress: UserProgress, subject: Subject, difficulty: Difficulty): TaskStats => {
   const subjectStats = ensureSubjectStats(progress, subject)
   if (!subjectStats[difficulty]) {
-    subjectStats[difficulty] = { correct: 0, wrong: 0, hintsUsed: 0 }
+    subjectStats[difficulty] = createEmptyTaskStats()
   }
   return subjectStats[difficulty]
 }
@@ -70,6 +78,12 @@ export const saveProgress = (progress: UserProgress): void => {
     console.error('Failed to save progress:', error)
     throw new Error('Failed to save progress')
   }
+}
+
+// Helper to check if an answer is correct
+export const isAnswerCorrect = (task: Task, selectedAnswer: number | null): boolean => {
+  if (selectedAnswer === null) return false;
+  return task.options[selectedAnswer].isCorrect;
 }
 
 // Update stats for a specific task

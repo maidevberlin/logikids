@@ -16,7 +16,6 @@ function TaskCardComponent({
   isLoading,
   task,
   selectedAnswer,
-  isCorrect,
   difficulty,
   error,
   onAnswerSelect,
@@ -26,6 +25,9 @@ function TaskCardComponent({
   onHintUsed,
 }: TaskCardProps) {
   const { t } = useTranslation()
+
+  // Check if current answer is correct
+  const isCorrect = task && selectedAnswer !== null ? task.options[selectedAnswer]?.isCorrect : null
 
   if (error) {
     return (
@@ -51,11 +53,9 @@ function TaskCardComponent({
           <MultipleChoiceAnswer
             options={[]}
             selectedAnswer={null}
-            isCorrect={null}
             onAnswerSelect={() => {}}
             onSubmit={() => {}}
             onNextTask={() => {}}
-            solutionExplanation=""
             isLoading={true}
           />
         </div>
@@ -111,11 +111,9 @@ function TaskCardComponent({
           <MultipleChoiceAnswer
             options={task.options}
             selectedAnswer={selectedAnswer}
-            isCorrect={isCorrect}
             onAnswerSelect={onAnswerSelect}
             onSubmit={onAnswerSubmit}
             onNextTask={onNextTask}
-            solutionExplanation={task.solution.explanation}
             isLoading={isLoading}
           />
 
