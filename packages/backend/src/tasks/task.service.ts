@@ -75,6 +75,10 @@ export class TaskService {
       throw new Error('Generated task does not match the expected format');
     }
 
-    return parsedResponse;
+    // Add the type field to the response
+    return {
+      ...parsedResponse,
+      type: selectedTaskType.id
+    };
   }
 } 

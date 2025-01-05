@@ -42,6 +42,7 @@ export default function TaskPage({}: TaskPageProps) {
     isLoading,
     error,
     selectedAnswer,
+    isCorrect,
     checkAnswer,
     selectAnswer,
     nextTask
@@ -55,8 +56,7 @@ export default function TaskPage({}: TaskPageProps) {
 
   // Track progress when answer is checked
   useEffect(() => {
-    if (task && selectedAnswer !== null) {
-      const isCorrect = task.options[selectedAnswer]?.isCorrect ?? false;
+    if (task && selectedAnswer !== null && isCorrect !== null) {
       updateStats({
         subject: taskParams.subject,
         difficulty: taskParams.difficulty,
@@ -64,7 +64,7 @@ export default function TaskPage({}: TaskPageProps) {
         hintsUsed,
       })
     }
-  }, [task, selectedAnswer, taskParams.subject, taskParams.difficulty, hintsUsed, updateStats])
+  }, [task, selectedAnswer, isCorrect, taskParams.subject, taskParams.difficulty, hintsUsed, updateStats])
 
   // Memoize handlers to prevent unnecessary re-renders
   const handleDifficultyChange = useCallback((newDifficulty: Difficulty) => {
@@ -106,6 +106,7 @@ export default function TaskPage({}: TaskPageProps) {
     selectedAnswer,
     difficulty: taskParams.difficulty,
     error,
+    isCorrect,
     onAnswerSelect: selectAnswer,
     onAnswerSubmit: checkAnswer,
     onNextTask: nextTask,
@@ -117,6 +118,7 @@ export default function TaskPage({}: TaskPageProps) {
     selectedAnswer,
     taskParams.difficulty,
     error,
+    isCorrect,
     selectAnswer,
     checkAnswer,
     nextTask,

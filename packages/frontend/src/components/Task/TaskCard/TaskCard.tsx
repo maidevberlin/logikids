@@ -7,6 +7,7 @@ import { ErrorDisplay } from '../../base/Error/ErrorDisplay'
 import { Heading } from '../../base/Typography/Heading'
 import { cn } from '../../../utils/cn'
 import { MultipleChoiceAnswer } from '../MultipleChoiceAnswer'
+import { YesNoAnswer } from '../YesNoAnswer'
 import { HintSection } from '../Hint/HintSection'
 import { SkipLink } from './SkipLink/SkipLink'
 import { TaskCardProps } from './types'
@@ -18,6 +19,7 @@ function TaskCardComponent({
   selectedAnswer,
   difficulty,
   error,
+  isCorrect,
   onAnswerSelect,
   onAnswerSubmit,
   onNextTask,
@@ -25,9 +27,6 @@ function TaskCardComponent({
   onHintUsed,
 }: TaskCardProps) {
   const { t } = useTranslation()
-
-  // Check if current answer is correct
-  const isCorrect = task && selectedAnswer !== null ? task.options[selectedAnswer]?.isCorrect : null
 
   if (error) {
     return (
@@ -50,14 +49,25 @@ function TaskCardComponent({
             <div className={cn(styles.loading.line.base, styles.loading.line.threeFourths)} />
             <div className={cn(styles.loading.line.base, styles.loading.line.fiveSixths)} />
           </div>
-          <MultipleChoiceAnswer
-            options={[]}
-            selectedAnswer={null}
-            onAnswerSelect={() => {}}
-            onSubmit={() => {}}
-            onNextTask={() => {}}
-            isLoading={true}
-          />
+          {task?.type === 'multiple_choice' ? (
+            <MultipleChoiceAnswer
+              options={[]}
+              selectedAnswer={null}
+              onAnswerSelect={() => {}}
+              onSubmit={() => {}}
+              onNextTask={() => {}}
+              isLoading={true}
+            />
+          ) : (
+            <YesNoAnswer
+              selectedAnswer={null}
+              onAnswerSelect={() => {}}
+              onSubmit={() => {}}
+              onNextTask={() => {}}
+              isLoading={true}
+              solution={{ answer: false, explanation: '' }}
+            />
+          )}
         </div>
       </Card>
     )
@@ -108,14 +118,25 @@ function TaskCardComponent({
             dangerouslySetInnerHTML={{ __html: task.task }} 
           />
           
-          <MultipleChoiceAnswer
-            options={task.options}
-            selectedAnswer={selectedAnswer}
-            onAnswerSelect={onAnswerSelect}
-            onSubmit={onAnswerSubmit}
-            onNextTask={onNextTask}
-            isLoading={isLoading}
-          />
+          {task.type === 'multiple_choice' ? (
+            <MultipleChoiceAnswer
+              options={task.options}
+              selectedAnswer={selectedAnswer as number}
+              onAnswerSelect={(answer) => onAnswerSelect(answer)}
+              onSubmit={onAnswerSubmit}
+              onNextTask={onNextTask}
+              isLoading={isLoading}
+            />
+          ) : (
+            <YesNoAnswer
+              selectedAnswer={selectedAnswer as boolean}
+              onAnswerSelect={(answer) => onAnswerSelect(answer)}
+              onSubmit={onAnswerSubmit}
+              onNextTask={onNextTask}
+              isLoading={isLoading}
+              solution={task.solution}
+            />
+          )}
 
           {!isLoading && isCorrect !== true && (
             <HintSection

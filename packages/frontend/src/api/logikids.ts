@@ -1,6 +1,5 @@
 import { api, ApiResponse } from './api';
 import { TaskRequest } from '@logikids/backend/tasks/types';
-import { MultipleChoiceResponse } from '@logikids/backend/tasks/taskTypes/multipleChoice/types';
 import { Task } from '../components/Task/types';
 import { getCurrentLanguage } from '../i18n/config';
 
@@ -11,17 +10,9 @@ export class LogikidsApiError extends Error {
   }
 }
 
-// Transform backend response to frontend Task type
-const transformResponse = (response: MultipleChoiceResponse): Task => ({
-  title: response.title,
-  task: response.task,
-  hints: response.hints,
-  options: response.options
-});
-
 export const logikids = {
   getTask: (params: TaskRequest, signal?: AbortSignal): ApiResponse<Task> => {
-    return api.get<TaskRequest, MultipleChoiceResponse>('/task', {
+    return api.get<TaskRequest, Task>('/task', {
       params, 
       signal,
       headers: {
@@ -32,7 +23,7 @@ export const logikids = {
       if (!response) {
         throw new LogikidsApiError('No response received from server');
       }
-      return transformResponse(response);
+      return response;
     })
     .catch((error) => {
       if (error.response?.status === 404) {

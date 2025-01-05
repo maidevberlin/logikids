@@ -7,7 +7,6 @@ import {
 } from './types'
 import { Subject, Difficulty } from '../Task/types'
 import { Task } from '../Task/types'
-import { MultipleChoiceOption } from '../Task/MultipleChoiceAnswer/types'
 
 const STORAGE_KEY = 'logikids_progress'
 

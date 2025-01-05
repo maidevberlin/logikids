@@ -4,10 +4,10 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../../i18n/config';
 import { logikids } from '../../api/logikids';
 import { TIMING } from './constants';
-import { Task } from './types';
+import { Task, MultipleChoiceTask, YesNoTask } from './types';
 
 export const useTask = (params: TaskRequest) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const resetTimeoutRef = useRef<number>();
 
@@ -50,8 +50,12 @@ export const useTask = (params: TaskRequest) => {
   const checkAnswer = useCallback(() => {
     if (!task || selectedAnswer === null) return;
     
-    const selectedOption = task.options[selectedAnswer];
-    const correct = selectedOption.isCorrect;
+    let correct: boolean;
+    if (task.type === 'multiple_choice') {
+      correct = (task as MultipleChoiceTask).options[selectedAnswer as number].isCorrect;
+    } else {
+      correct = selectedAnswer === (task as YesNoTask).solution.answer;
+    }
     setIsCorrect(correct);
 
     // Clear any existing timeout
@@ -68,12 +72,12 @@ export const useTask = (params: TaskRequest) => {
     }
   }, [task, selectedAnswer]);
 
-  const selectAnswer = useCallback((index: number | null) => {
+  const selectAnswer = useCallback((answer: number | boolean | null) => {
     // Clear any existing timeout when selecting a new answer
     if (resetTimeoutRef.current) {
       window.clearTimeout(resetTimeoutRef.current);
     }
-    setSelectedAnswer(index);
+    setSelectedAnswer(answer);
     setIsCorrect(null);
   }, []);
 
@@ -90,8 +94,12 @@ export const useTask = (params: TaskRequest) => {
   // Get the explanation for the correct answer
   const getExplanation = useCallback(() => {
     if (!task) return '';
-    const correctOption = task.options.find(opt => opt.isCorrect);
-    return correctOption?.explanation || '';
+    if (task.type === 'multiple_choice') {
+      const correctOption = (task as MultipleChoiceTask).options.find(opt => opt.isCorrect);
+      return correctOption?.explanation || '';
+    } else {
+      return (task as YesNoTask).solution.explanation;
+    }
   }, [task]);
 
   return {

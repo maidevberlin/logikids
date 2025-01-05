@@ -46,19 +46,12 @@ export class TaskTypeRegistry {
    * @throws Error if no task types are registered
    */
   getRandomTaskType(): TaskType {
-    // For testing: always return multiple-choice
-    const multipleChoice = this.get('multiple_choice');
-    if (!multipleChoice) {
-      throw new Error('Multiple choice task type not registered');
-    }
-    return multipleChoice;
-
     // Original implementation:
-    // const types = Array.from(this.taskTypes.values());
-    // if (types.length === 0) {
-    //   throw new Error('No task types registered');
-    // }
-    // return types[Math.floor(Math.random() * types.length)];
+    const types = Array.from(this.taskTypes.values());
+    if (types.length === 0) {
+      throw new Error('No task types registered');
+    }
+    return types[Math.floor(Math.random() * types.length)];
   }
 
   /**

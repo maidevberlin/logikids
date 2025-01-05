@@ -33,7 +33,19 @@ export class PromptBuilder<C extends ConceptId = ConceptId> {
     };
 
     // Use the subject's base template as the main template
-    // It already contains placeholders for concept_template and task_type_template
-    return TemplateProcessor.replace(this.subject.basePromptTemplate, variables);
+    const finalPrompt = TemplateProcessor.replace(this.subject.basePromptTemplate, variables);
+
+    if(process.env.NODE_ENV === 'development') {
+      // Debug logging
+      console.log('\n=== PROMPT GENERATION DEBUG ===');
+      console.log('Subject:', this.subject.id);
+      console.log('Concept:', params.concept);
+      console.log('Task Type:', this.taskType.id);
+      console.log('\nVariables:', JSON.stringify(variables, null, 2));
+      console.log('\nFinal Prompt:\n', finalPrompt);
+      console.log('==============================\n');
+    }
+
+    return finalPrompt;
   }
 } 

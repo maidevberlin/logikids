@@ -34,7 +34,9 @@
     "solutionExplanation": "Solution Explanation",
     "checkAnswer": "Check Answer",
     "nextTask": "Next Task",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "yes": "Yes",
+    "no": "No"
   },
   "feedback": {
     "correct": "Correct!",

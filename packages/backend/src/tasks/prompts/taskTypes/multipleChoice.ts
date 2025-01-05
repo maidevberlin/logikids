@@ -6,15 +6,16 @@ Age: {{age}} | Difficulty: {{difficulty}}
    - Write a clear, focused problem statement
    - Include ALL necessary information for solving
    - Use simple, age-appropriate language
-   - Format in HTML for readability
+   - Use HTML formatting for readability and highlighting important information
 
 2. ANSWER OPTIONS [CRITICAL]
    - Create EXACTLY 4 options
    - Each option must have:
      * text: Clear, concise option text
-     * isCorrect: boolean (true/false)
+     * isCorrect: boolean (true/false). It is critical that ONLY the CORRECT option is marked as isCorrect=true.
      * explanation: Required for correct option only
-   - EXACTLY ONE option must be correct
+   - EXACTLY ONE option must be correct.
+   - Double check that the correct option is marked as correct. Update the JSON if necessary.
    - The correct option MUST have an explanation
    - Example structure:
      {

@@ -10,6 +10,7 @@ export type TaskTypeId = typeof TASK_TYPES[keyof typeof TASK_TYPES];
 
 // Base response interface that all task types must implement
 export interface TaskResponse {
+  type: TaskTypeId;
   title: string;
   task: string;
   hints: string[];
@@ -22,4 +23,4 @@ export interface TaskType<T extends TaskResponse = TaskResponse> {
   description: string;
   promptTemplate: string;
   validateResponse: (response: unknown) => response is T;
-} 
+}
