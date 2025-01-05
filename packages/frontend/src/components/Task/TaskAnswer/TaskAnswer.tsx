@@ -4,13 +4,16 @@ import { YesNoAnswer } from './YesNoAnswer'
 import { HintSection } from '../Hint/HintSection'
 import { TaskAnswerProps, TaskAnswerType } from './types'
 import { Task, MultipleChoiceTask, YesNoTask } from '../types'
-import { FadeInOut, Sequence } from '../../base/Animations'
+import { FadeInOut, Sequence, Pulse } from '../../base/Animations'
 import { Feedback } from '../Feedback'
-import { SolutionExplanation } from '../TaskCard/SolutionExplanation'
-import { TaskOption } from '../TaskCard/TaskOption'
+import { TaskOption } from '../TaskCard/TaskOption/TaskOption'
 import { useTranslation } from 'react-i18next'
-import { cn } from '../../../utils/cn'
 import { TIMING } from '../constants'
+import { 
+  ArrowRightCircleIcon, 
+  CheckCircleIcon,
+  ArrowPathIcon 
+} from '@heroicons/react/24/outline'
 
 function TaskAnswerComponent<T extends Task>({
   task,
@@ -97,56 +100,63 @@ function TaskAnswerComponent<T extends Task>({
   }
 
   return (
-    <div>
+    <div className="space-y-4">
       {renderAnswer()}
 
       <div className="mt-4">
         <FadeInOut show={showFeedback}>
           <Feedback 
-            message={isCorrect ? t('feedback.correct') : t('feedback.incorrect')}
+            message={isCorrect 
+              ? `${t('feedback.correct')}${getExplanation() ? `\n\n${getExplanation()}` : ''}`
+              : t('feedback.incorrect')
+            }
             variant={isCorrect ? 'success' : 'error'}
             showIcon
           />
-          {isCorrect && (
-            <SolutionExplanation explanation={getExplanation()} />
-          )}
         </FadeInOut>
       </div>
       
       {!isLoading && (
         <Sequence key={isCorrect === null ? 'check' : isCorrect ? 'next' : 'try-again'}>
           {isCorrect === null ? (
-            <TaskOption
-              onClick={onAnswerSubmit}
-              label={t('task.checkAnswer')}
-              disabled={selectedAnswer === null}
-              variant="primary"
-              size="lg"
-              className={cn(
-                "mt-4 w-full",
-                selectedAnswer !== null && "animate-bounce"
-              )}
-            />
+            <Pulse 
+              isPulsing={selectedAnswer !== null} 
+              scale={3.0}
+              continuous
+            >
+              <div className="flex justify-center">
+                <TaskOption
+                  onClick={onAnswerSubmit}
+                  label={t('task.checkAnswer')}
+                  disabled={selectedAnswer === null}
+                  variant="primary"
+                  icon={CheckCircleIcon}
+                />
+              </div>
+            </Pulse>
           ) : isCorrect ? (
-            <TaskOption
-              onClick={onNextTask}
-              label={t('task.nextTask')}
-              variant="success"
-              size="lg"
-              className="mt-4 w-full"
-            />
+            <div className="flex justify-center">
+              <TaskOption
+                onClick={onNextTask}
+                label={t('task.nextTask')}
+                variant="success"
+                icon={ArrowRightCircleIcon}
+                iconPosition="right"
+              />
+            </div>
           ) : (
-            <TaskOption
-              onClick={() => onAnswerSelect(null)}
-              label={t('task.tryAgain')}
-              variant="warning"
-              size="lg"
-              className="mt-4 w-full"
-            />
+            <div className="flex justify-center">
+              <TaskOption
+                onClick={() => onAnswerSelect(null)}
+                label={t('task.tryAgain')}
+                variant="warning"
+                icon={ArrowPathIcon}
+              />
+            </div>
           )}
         </Sequence>
       )}
-      
+
       {!isLoading && isCorrect !== true && (
         <HintSection
           hints={task.hints}

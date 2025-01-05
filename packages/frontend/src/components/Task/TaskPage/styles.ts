@@ -17,6 +17,6 @@ export const styles = {
   },
   pattern: `
     absolute inset-0
-    opacity-50 bg-cover
+    opacity-100 bg-cover
   `
 } as const

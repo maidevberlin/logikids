@@ -14,6 +14,10 @@ export const styles = {
     `,
     content: `
       prose prose-blue max-w-none text-left
+    `,
+    selected: `
+      prose prose-invert max-w-none text-left text-white
+      [&_*]:text-white
     `
   },
   loading: {

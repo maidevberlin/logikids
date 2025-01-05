@@ -30,6 +30,11 @@ export const styles = {
     softBlue: 'bg-blue-50 border-2 border-blue-300 hover:border-blue-400 hover:bg-blue-100',
     softOrange: 'bg-orange-50 border-2 border-orange-300 hover:border-orange-400 hover:bg-orange-100',
     softPurple: 'bg-purple-50 border-2 border-purple-300 hover:border-purple-400 hover:bg-purple-100',
-    softTeal: 'bg-teal-50 border-2 border-teal-300 hover:border-teal-400 hover:bg-teal-100'
+    softTeal: 'bg-teal-50 border-2 border-teal-300 hover:border-teal-400 hover:bg-teal-100',
+    // Selected variants with inverted colors
+    selectedBlue: 'bg-blue-500 border-2 border-blue-600 text-white hover:bg-blue-600',
+    selectedOrange: 'bg-orange-500 border-2 border-orange-600 text-white hover:bg-orange-600',
+    selectedPurple: 'bg-purple-500 border-2 border-purple-600 text-white hover:bg-purple-600',
+    selectedTeal: 'bg-teal-500 border-2 border-teal-600 text-white hover:bg-teal-600'
   }
 } as const 

@@ -4,6 +4,7 @@ export interface PulseProps {
   children: ReactNode
   isPulsing?: boolean
   scale?: number
+  continuous?: boolean
   className?: string
 }
 

@@ -3,6 +3,10 @@ export type MultipleChoiceVariant =
   | 'softOrange'
   | 'softPurple'
   | 'softTeal'
+  | 'selectedBlue'
+  | 'selectedOrange'
+  | 'selectedPurple'
+  | 'selectedTeal'
 
 export interface MultipleChoiceAnswerProps {
   options: {

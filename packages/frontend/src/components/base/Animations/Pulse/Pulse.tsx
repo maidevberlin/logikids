@@ -8,16 +8,20 @@ export function Pulse({
   children, 
   isPulsing = false,
   scale = 1.05,
+  continuous = false,
   className = ''
 }: PulseProps) {
   return (
     <motion.div
       animate={isPulsing ? {
         scale: [1, scale, 1]
-      } : undefined}
+      } : { scale: 1 }}
       transition={{
         duration: PULSE_TIMING.duration / 1000,
-        ease: PULSE_TIMING.easing
+        ease: PULSE_TIMING.easing,
+        repeat: continuous ? Infinity : 0,
+        repeatDelay: 0.5, // 0.5 second delay between pulses
+        repeatType: "loop"
       }}
       className={cn(styles.base, className)}
     >

@@ -3,6 +3,11 @@ import { Subject, ConceptId } from '../subjects/types';
 import { TaskType } from '../taskTypes/types';
 import { TemplateProcessor } from './template';
 
+const LANGUAGE_NAMES: Record<string, string> = {
+  'en': 'English',
+  'de': 'German'
+};
+
 /**
  * Builds prompts by combining subject, concept, and task type templates
  */
@@ -13,6 +18,13 @@ export class PromptBuilder<C extends ConceptId = ConceptId> {
   ) {}
 
   /**
+   * Format language code to full name (e.g. "de" -> "German")
+   */
+  private formatLanguage(code: string): string {
+    return LANGUAGE_NAMES[code] || code;
+  }
+
+  /**
    * Build the final prompt by combining templates and replacing variables
    */
   buildPrompt(params: TaskGenerationParams): string {
@@ -21,19 +33,24 @@ export class PromptBuilder<C extends ConceptId = ConceptId> {
       throw new Error(`Concept ${params.concept} not found in subject ${this.subject.id}`);
     }
 
-    // Prepare variables for template replacement
-    const variables = {
+    // Prepare base variables
+    const baseVariables = {
       age: params.age,
       difficulty: params.difficulty,
-      language: params.language,
+      language: this.formatLanguage(params.language),
       concept_name: concept.name,
       subject_name: this.subject.name,
-      concept_template: concept.promptTemplate,
-      task_type_template: this.taskType.promptTemplate
+    };
+
+    // Process sub-templates first
+    const processedVariables = {
+      ...baseVariables,
+      concept_template: TemplateProcessor.replace(concept.promptTemplate, baseVariables),
+      task_type_template: TemplateProcessor.replace(this.taskType.promptTemplate, baseVariables)
     };
 
     // Use the subject's base template as the main template
-    const finalPrompt = TemplateProcessor.replace(this.subject.basePromptTemplate, variables);
+    const finalPrompt = TemplateProcessor.replace(this.subject.basePromptTemplate, processedVariables);
 
     if(process.env.NODE_ENV === 'development') {
       // Debug logging
@@ -41,7 +58,7 @@ export class PromptBuilder<C extends ConceptId = ConceptId> {
       console.log('Subject:', this.subject.id);
       console.log('Concept:', params.concept);
       console.log('Task Type:', this.taskType.id);
-      console.log('\nVariables:', JSON.stringify(variables, null, 2));
+      console.log('\nVariables:', JSON.stringify(processedVariables, null, 2));
       console.log('\nFinal Prompt:\n', finalPrompt);
       console.log('==============================\n');
     }

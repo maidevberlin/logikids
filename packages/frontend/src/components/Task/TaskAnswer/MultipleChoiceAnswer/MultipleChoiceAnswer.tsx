@@ -2,8 +2,10 @@ import { Interactive } from '../../../base/Animations'
 import { Card } from '../../../base/Card'
 import { MultipleChoiceAnswerProps, MultipleChoiceVariant } from './types'
 import { styles } from './styles'
+import { cn } from '../../../../utils/cn'
 
 const colorVariants: MultipleChoiceVariant[] = ['softBlue', 'softOrange', 'softPurple', 'softTeal']
+const selectedVariants: MultipleChoiceVariant[] = ['selectedBlue', 'selectedOrange', 'selectedPurple', 'selectedTeal']
 
 export function MultipleChoiceAnswer({
   options,
@@ -35,12 +37,14 @@ export function MultipleChoiceAnswer({
           <Card
             variant={
               selectedAnswer === index
-                ? 'primary'
+                ? selectedVariants[index % selectedVariants.length]
                 : colorVariants[index % colorVariants.length]
             }
           >
             <div 
-              className={styles.option.content}
+              className={cn(
+                selectedAnswer === index ? styles.option.selected : styles.option.content
+              )}
               dangerouslySetInnerHTML={{ __html: option.text }} 
             />
           </Card>
