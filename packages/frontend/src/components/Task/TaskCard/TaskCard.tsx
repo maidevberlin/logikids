@@ -6,9 +6,7 @@ import { Card } from '../../base/Card'
 import { ErrorDisplay } from '../../base/Error/ErrorDisplay'
 import { Heading } from '../../base/Typography/Heading'
 import { cn } from '../../../utils/cn'
-import { MultipleChoiceAnswer } from '../MultipleChoiceAnswer'
-import { YesNoAnswer } from '../YesNoAnswer'
-import { HintSection } from '../Hint/HintSection'
+import { TaskAnswer } from '../TaskAnswer'
 import { SkipLink } from './SkipLink/SkipLink'
 import { TaskCardProps } from './types'
 import { styles } from './styles'
@@ -49,25 +47,22 @@ function TaskCardComponent({
             <div className={cn(styles.loading.line.base, styles.loading.line.threeFourths)} />
             <div className={cn(styles.loading.line.base, styles.loading.line.fiveSixths)} />
           </div>
-          {task?.type === 'multiple_choice' ? (
-            <MultipleChoiceAnswer
-              options={[]}
-              selectedAnswer={null}
-              onAnswerSelect={() => {}}
-              onSubmit={() => {}}
-              onNextTask={() => {}}
-              isLoading={true}
-            />
-          ) : (
-            <YesNoAnswer
-              selectedAnswer={null}
-              onAnswerSelect={() => {}}
-              onSubmit={() => {}}
-              onNextTask={() => {}}
-              isLoading={true}
-              solution={{ answer: false, explanation: '' }}
-            />
-          )}
+          <TaskAnswer
+            task={{
+              type: 'multiple_choice',
+              options: [],
+              title: '',
+              task: '',
+              hints: []
+            }}
+            selectedAnswer={null}
+            isLoading={true}
+            isCorrect={null}
+            onAnswerSelect={() => {}}
+            onAnswerSubmit={() => {}}
+            onNextTask={() => {}}
+            onHintUsed={() => {}}
+          />
         </div>
       </Card>
     )
@@ -118,33 +113,16 @@ function TaskCardComponent({
             dangerouslySetInnerHTML={{ __html: task.task }} 
           />
           
-          {task.type === 'multiple_choice' ? (
-            <MultipleChoiceAnswer
-              options={task.options}
-              selectedAnswer={selectedAnswer as number}
-              onAnswerSelect={(answer) => onAnswerSelect(answer)}
-              onSubmit={onAnswerSubmit}
-              onNextTask={onNextTask}
-              isLoading={isLoading}
-            />
-          ) : (
-            <YesNoAnswer
-              selectedAnswer={selectedAnswer as boolean}
-              onAnswerSelect={(answer) => onAnswerSelect(answer)}
-              onSubmit={onAnswerSubmit}
-              onNextTask={onNextTask}
-              isLoading={isLoading}
-              solution={task.solution}
-            />
-          )}
-
-          {!isLoading && isCorrect !== true && (
-            <HintSection
-              hints={task.hints}
-              hasWrongAnswer={isCorrect === false}
-              onHintUsed={onHintUsed}
-            />
-          )}
+          <TaskAnswer
+            task={task}
+            selectedAnswer={selectedAnswer}
+            isLoading={isLoading}
+            isCorrect={isCorrect}
+            onAnswerSelect={onAnswerSelect}
+            onAnswerSubmit={onAnswerSubmit}
+            onNextTask={onNextTask}
+            onHintUsed={onHintUsed}
+          />
         </div>
       </Card>
 

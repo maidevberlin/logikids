@@ -5,10 +5,12 @@ export interface MultipleChoiceOption {
 }
 
 export interface MultipleChoiceAnswerProps {
-  options: MultipleChoiceOption[]
+  options: {
+    text: string
+    isCorrect: boolean
+    explanation?: string
+  }[]
   selectedAnswer: number | null
-  onAnswerSelect: (index: number | null) => void
-  onSubmit: () => void
-  onNextTask: () => void
+  onAnswerSelect: (answer: number | null) => void
   isLoading?: boolean
 } 

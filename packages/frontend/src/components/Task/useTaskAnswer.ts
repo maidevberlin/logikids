@@ -1,36 +1,41 @@
 import { useState, useCallback } from 'react'
+import { Task, MultipleChoiceTask, YesNoTask } from './types'
+import { TaskAnswerType } from './TaskAnswer/types'
 
-interface UseTaskAnswerOptions {
-  type: 'arithmetic' | 'logic'
-  validator?: (value: string) => boolean
+interface UseTaskAnswerOptions<T extends Task> {
+  task: T
+  validator?: (value: TaskAnswerType<T>) => boolean
 }
 
-export function useTaskAnswer({ type, validator }: UseTaskAnswerOptions) {
-  const [answer, setAnswer] = useState<string>('')
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswerOptions<T>) {
+  const [selectedAnswer, setSelectedAnswer] = useState<TaskAnswerType<T> | null>(null)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
-  const handleAnswerChange = useCallback((value: string) => {
-    if (type === 'arithmetic' && !(value === '' || /^\d+$/.test(value))) {
+  const handleAnswerSelect = useCallback((answer: TaskAnswerType<T>) => {
+    if (validator && !validator(answer)) {
       return
+    }
+
+    setSelectedAnswer(answer)
+    setIsCorrect(null)
+  }, [validator])
+
+  const handleAnswerSubmit = useCallback(() => {
+    if (!selectedAnswer) return
+
+    let correct: boolean
+    if (task.type === 'multiple_choice') {
+      const multipleChoiceTask = task as MultipleChoiceTask
+      correct = multipleChoiceTask.options[selectedAnswer as number].isCorrect
+    } else {
+      const yesNoTask = task as YesNoTask
+      correct = selectedAnswer === yesNoTask.solution.answer
     }
     
-    if (validator && !validator(value)) {
-      return
-    }
-
-    setAnswer(value)
-    setSelectedAnswer(null)
-    setIsCorrect(null)
-  }, [type, validator])
-
-  const handleAnswerSubmit = useCallback((solution: number | string) => {
-    const correct = answer === String(solution)
     setIsCorrect(correct)
-    setSelectedAnswer(answer)
-  }, [answer])
+  }, [task, selectedAnswer])
 
-  const isValid = answer !== '' && (!validator || validator(answer))
+  const isValid = selectedAnswer !== null && (!validator || validator(selectedAnswer))
 
-  return { answer, selectedAnswer, isCorrect, handleAnswerChange, handleAnswerSubmit, isValid }
+  return { selectedAnswer, isCorrect, handleAnswerSelect, handleAnswerSubmit, isValid }
 } 

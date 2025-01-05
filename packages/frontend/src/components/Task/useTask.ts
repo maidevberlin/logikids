@@ -5,6 +5,7 @@ import i18n from '../../i18n/config';
 import { logikids } from '../../api/logikids';
 import { TIMING } from './constants';
 import { Task, MultipleChoiceTask, YesNoTask } from './types';
+import { TaskAnswerType } from './TaskAnswer/types';
 
 export const useTask = (params: TaskRequest) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | null>(null);
@@ -72,7 +73,7 @@ export const useTask = (params: TaskRequest) => {
     }
   }, [task, selectedAnswer]);
 
-  const selectAnswer = useCallback((answer: number | boolean | null) => {
+  const selectAnswer = useCallback(<T extends Task>(answer: TaskAnswerType<T> | null) => {
     // Clear any existing timeout when selecting a new answer
     if (resetTimeoutRef.current) {
       window.clearTimeout(resetTimeoutRef.current);

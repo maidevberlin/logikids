@@ -12,5 +12,5 @@ export interface TaskCardProps {
   onAnswerSubmit: () => void
   onNextTask: () => void
   onDifficultyChange: (difficulty: Difficulty) => void
-  onHintUsed: (index: number) => void
+  onHintUsed: () => void
 }
