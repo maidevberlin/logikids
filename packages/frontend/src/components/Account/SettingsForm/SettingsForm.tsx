@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Input, NumberInput, FormField, Select } from '../../base/Form'
-import { useSettings } from '../../Settings/useSettings'
+import { useSettings } from '../Settings/useSettings'
 import { styles } from './styles'
 
 const languages = [

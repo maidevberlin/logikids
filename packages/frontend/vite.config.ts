@@ -11,8 +11,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Only for TypeScript types, not for runtime imports
-      '@logikids/backend': resolve(__dirname, '../../packages/backend/src')
     }
   },
   server: {

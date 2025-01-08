@@ -1,8 +1,7 @@
-import { Subject } from '@logikids/backend/tasks/types';
-import { Concept } from '../../Subject/subjects';
+import { SubjectId, Concept } from '../../Subject';
 
 export interface ConceptSelectorProps {
-  subject: Subject;
+  subject: SubjectId;
   value: Concept | 'random';
   onChange: (value: Concept | 'random') => void;
   className?: string;

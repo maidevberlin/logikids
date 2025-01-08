@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Subject, Difficulty } from '@logikids/backend/tasks/types'
 import { UserProgress, StatUpdate } from './types'
 import * as progressService from './progressService'
+import { SubjectId } from '../Subject/types'
+import { Difficulty } from '../Task/types'
 
 export function useProgress() {
   const [progress, setProgress] = useState<UserProgress>(progressService.loadProgress)
@@ -21,17 +22,17 @@ export function useProgress() {
   }, [])
 
   // Get success rate for a subject/difficulty
-  const getSuccessRate = useCallback((subject: Subject, difficulty: Difficulty): number => {
+  const getSuccessRate = useCallback((subject: SubjectId, difficulty: Difficulty): number => {
     return progressService.getSuccessRate(progress, subject, difficulty)
   }, [progress])
 
   // Get average hints used for a subject/difficulty
-  const getAverageHints = useCallback((subject: Subject, difficulty: Difficulty): number => {
+  const getAverageHints = useCallback((subject: SubjectId, difficulty: Difficulty): number => {
     return progressService.getAverageHints(progress, subject, difficulty)
   }, [progress])
 
   // Get total tasks completed for a subject/difficulty
-  const getTotalTasks = useCallback((subject: Subject, difficulty: Difficulty): number => {
+  const getTotalTasks = useCallback((subject: SubjectId, difficulty: Difficulty): number => {
     const stats = progressService.getStats(progress, subject, difficulty)
     return stats.correct + stats.wrong
   }, [progress])

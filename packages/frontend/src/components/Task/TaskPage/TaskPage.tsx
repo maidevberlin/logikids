@@ -1,13 +1,11 @@
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useTask } from '../useTask'
-import { useSettings } from '../../Settings/useSettings'
+import { useSettings } from '../../Account/Settings/useSettings'
 import { useProgress } from '../../Stats/useProgress'
 import { TaskCard } from '..'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { TaskRequest, Difficulty } from '@logikids/backend/tasks/types'
-import { SubjectId } from '@logikids/backend/tasks/subjects/types'
-import { Task } from '../types'
+import { Difficulty, Task } from '../types'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { cn } from '../../../utils'
 import { styles as containerStyles } from '../../base/Layout/Container/styles'
@@ -18,6 +16,8 @@ import type { TaskPageProps } from './types'
 // Import background patterns
 import mathPattern from '../../../assets/math.webp'
 import logicPattern from '../../../assets/logic.webp'
+import { TaskRequest } from '../../../api/logikids'
+import { SubjectId } from '../../Subject'
 
 const patterns = {
   math: mathPattern,

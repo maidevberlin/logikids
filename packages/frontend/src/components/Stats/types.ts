@@ -1,5 +1,6 @@
 import { z } from 'zod'
-import { Subject, Difficulty } from '../Task/types'
+import { Difficulty } from '../Task/types'
+import { SubjectId } from '../Subject'
 
 // Task stats structure
 export interface TaskStats {
@@ -49,7 +50,7 @@ export type UserProgress = z.infer<typeof UserProgressSchema>
 
 // Helper type for updating stats
 export type StatUpdate = {
-  subject: Subject
+  subject: SubjectId
   difficulty: Difficulty
   correct?: boolean
   hintsUsed?: number

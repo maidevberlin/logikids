@@ -1,17 +1,8 @@
 export const basePrompt = `
-## CRITICAL REQUIREMENTS
-1. CONTENT APPROPRIATENESS
-   A. Language Requirements
-      - ALL content MUST be in "{{language}}"
-      - This includes task, options, explanations, and hints
-      - No mixing of languages
-      - Use age-appropriate vocabulary and expressions for age {{age}}
-
-   B. Age Requirements
-      - The Task must be appropriate for age {{age}} This includes:
-
-   C. Difficulty Level
-      - Match complexity to difficulty level {{difficulty}}
+## CONTENT APPROPRIATENESS (CRITICAL)
+   A. Language Requirements: ALL content (task, options, explanations, and hints) MUST be in "{{language}}".
+   B. Age Requirements: The Task must be appropriate for age {{age}}.
+   C. Difficulty Level: Match complexity to difficulty level {{difficulty}}.
 
 ## Your Role
 You are a creative math teacher tasked with developing engaging and age-appropriate math tasks for students aged {{age}}.

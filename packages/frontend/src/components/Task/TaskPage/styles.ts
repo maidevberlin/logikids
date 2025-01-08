@@ -2,10 +2,10 @@ export const styles = {
   container: `
     relative
     min-h-screen w-full
-    pt-16 pb-8
   `,
   content: `
     relative z-10
+    pt-16
   `,
   subjects: {
     math: `

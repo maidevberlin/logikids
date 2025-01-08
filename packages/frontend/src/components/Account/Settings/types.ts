@@ -1,4 +1,4 @@
-import { Age } from '../Task/types'
+import { Age } from '../../Task/types'
 
 export interface Settings {
   /** User's age */

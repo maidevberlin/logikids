@@ -1,4 +1,4 @@
-import { SettingsButton } from '../../../Settings/SettingsButton'
+import { SettingsButton } from '../../../Account/Settings/SettingsButton'
 import { StatsButton } from '../../../Stats/StatsButton'
 import { TaskButton } from '../../../Task/TaskCard/TaskButton'
 import { HeaderProps } from './types'

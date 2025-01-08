@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
-import { useSettings } from '../../Settings/useSettings'
+import { useSettings } from '../../Account/Settings/useSettings'
 import { useProgress } from '../useProgress'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { Heading } from '../../base/Typography/Heading'

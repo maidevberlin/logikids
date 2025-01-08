@@ -1,14 +1,14 @@
-import { Subject } from '@logikids/backend/tasks/types'
+import { SubjectId } from "../../Subject/types"
 
 export interface BreadcrumbProps {
   /** The current page name */
   currentPage: string
   /** Optional subject for subject selection */
-  subject?: Subject
+  subject?: SubjectId
   /** Optional concept for concept selection */
   concept?: string
   /** Callback when subject changes */
-  onSubjectChange?: (subject: Subject) => void
+  onSubjectChange?: (subject: SubjectId) => void
   /** Callback when concept changes */
   onConceptChange?: (concept: string) => void
   /** Additional CSS classes */

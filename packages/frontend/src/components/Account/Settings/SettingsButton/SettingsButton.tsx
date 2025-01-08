@@ -1,7 +1,7 @@
 import { Cog6ToothIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { cn } from '../../../utils/cn'
+import { cn } from '../../../../utils/cn'
 import { SettingsButtonProps } from './types'
 import { styles } from './styles'
 

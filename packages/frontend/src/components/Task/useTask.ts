@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { TaskRequest } from '@logikids/backend/tasks/types';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../../i18n/config';
 import { logikids } from '../../api/logikids';
 import { TIMING } from './constants';
 import { Task, MultipleChoiceTask, YesNoTask } from './types';
 import { TaskAnswerType } from './TaskAnswer/types';
+import { TaskRequest } from '../../api/logikids';
 
 export const useTask = (params: TaskRequest) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | null>(null);

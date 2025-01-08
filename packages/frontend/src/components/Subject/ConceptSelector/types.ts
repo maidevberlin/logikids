@@ -1,7 +1,7 @@
-import { Subject } from '@logikids/backend/tasks/types'
+import { SubjectId } from "../types"
 
 export interface ConceptSelectorProps {
-  subject: Subject
+  subject: SubjectId
   value: string
   onChange: (value: string) => void
   className?: string

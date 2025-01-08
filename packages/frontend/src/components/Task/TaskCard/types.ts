@@ -1,5 +1,5 @@
-import { Task } from '../types'
-import { Difficulty } from '@logikids/backend/tasks/types'
+import { Difficulty, Task } from '../types'
+
 
 export interface TaskCardProps {
   isLoading: boolean

@@ -5,8 +5,9 @@ import {
   TaskStats,
   DifficultyStats
 } from './types'
-import { Subject, Difficulty } from '../Task/types'
+import { Difficulty } from '../Task/types'
 import { Task } from '../Task/types'
+import { SubjectId } from '../Subject'
 
 const STORAGE_KEY = 'logikids_progress'
 
@@ -35,7 +36,7 @@ const createEmptyProgress = (): UserProgress => ({
 })
 
 // Ensure subject stats exist
-const ensureSubjectStats = (progress: UserProgress, subject: Subject): DifficultyStats => {
+const ensureSubjectStats = (progress: UserProgress, subject: SubjectId): DifficultyStats => {
   if (!progress.stats[subject]) {
     progress.stats[subject] = createEmptySubjectStats()
   }
@@ -43,7 +44,7 @@ const ensureSubjectStats = (progress: UserProgress, subject: Subject): Difficult
 }
 
 // Ensure difficulty stats exist
-const ensureDifficultyStats = (progress: UserProgress, subject: Subject, difficulty: Difficulty): TaskStats => {
+const ensureDifficultyStats = (progress: UserProgress, subject: SubjectId, difficulty: Difficulty): TaskStats => {
   const subjectStats = ensureSubjectStats(progress, subject)
   if (!subjectStats[difficulty]) {
     subjectStats[difficulty] = createEmptyTaskStats()
@@ -80,9 +81,13 @@ export const saveProgress = (progress: UserProgress): void => {
 }
 
 // Helper to check if an answer is correct
+// this needs to be replaced with useTaskAnswer or useTask. they should have a check.
 export const isAnswerCorrect = (task: Task, selectedAnswer: number | null): boolean => {
   if (selectedAnswer === null) return false;
-  return task.options[selectedAnswer].isCorrect;
+  if (task.type === 'multiple_choice') {
+    return task.options[selectedAnswer].isCorrect;
+  }
+  return selectedAnswer === (task.solution.answer ? 1 : 0);
 }
 
 // Update stats for a specific task
@@ -119,7 +124,7 @@ export const updateStats = (
 // Get stats for a specific subject and difficulty
 export const getStats = (
   progress: UserProgress,
-  subject: Subject,
+  subject: SubjectId,
   difficulty: Difficulty
 ): TaskStats => {
   return ensureDifficultyStats(progress, subject, difficulty)
@@ -128,7 +133,7 @@ export const getStats = (
 // Calculate success rate for a specific subject and difficulty
 export const getSuccessRate = (
   progress: UserProgress,
-  subject: Subject,
+  subject: SubjectId,
   difficulty: Difficulty
 ): number => {
   const stats = getStats(progress, subject, difficulty)
@@ -139,7 +144,7 @@ export const getSuccessRate = (
 // Calculate average hints used per task
 export const getAverageHints = (
   progress: UserProgress,
-  subject: Subject,
+  subject: SubjectId,
   difficulty: Difficulty
 ): number => {
   const stats = getStats(progress, subject, difficulty)

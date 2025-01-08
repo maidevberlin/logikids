@@ -25,6 +25,7 @@ export const styles = {
     `
   },
   message: `
+    prose prose-sm prose-blue max-w-none
     font-medium
   `,
   variant: {

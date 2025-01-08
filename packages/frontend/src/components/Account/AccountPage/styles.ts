@@ -3,13 +3,12 @@ export const styles = {
     bg-white
     rounded-lg
     shadow-sm
-    p-8
+    py-8 sm:py-12
   `,
   title: `
-    text-2xl font-bold text-gray-900
     mb-8
   `,
   content: `
-    flex flex-col gap-8
+    space-y-8
   `
 } as const 

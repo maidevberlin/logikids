@@ -3,23 +3,13 @@ import { Menu } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { cn } from '../../../utils/cn'
 import { SubjectSelectProps } from './types'
+import { SUBJECT_VALUES } from '../types'
 import { styles } from './styles'
 
 export function SubjectSelect({ value, onChange, disabled, className }: SubjectSelectProps) {
   const { t } = useTranslation()
 
-  const options = [
-    { 
-      value: 'math', 
-      label: t('subject.math')
-    },
-    { 
-      value: 'logic',
-      label: t('subject.logic')
-    }
-  ] as const
-
-  const selectedOption = options.find(opt => opt.value === value)
+  const getLabel = (subject: typeof value) => t(`subject.${subject}`)
 
   return (
     <Menu as="div" className={cn(styles.base, className)}>
@@ -27,21 +17,21 @@ export function SubjectSelect({ value, onChange, disabled, className }: SubjectS
         className={styles.button}
         disabled={disabled}
       >
-        <span>{selectedOption?.label}</span>
+        <span>{getLabel(value)}</span>
         <ChevronDownIcon className={styles.icon} />
       </Menu.Button>
       <Menu.Items className={styles.menu}>
-        {options.map((option) => (
-          <Menu.Item key={option.value}>
+        {SUBJECT_VALUES.map((subject) => (
+          <Menu.Item key={subject}>
             {({ active }) => (
               <button
                 className={cn(
                   styles.item.base,
                   active && styles.item.active
                 )}
-                onClick={() => onChange(option.value)}
+                onClick={() => onChange(subject)}
               >
-                {option.label}
+                {getLabel(subject)}
               </button>
             )}
           </Menu.Item>

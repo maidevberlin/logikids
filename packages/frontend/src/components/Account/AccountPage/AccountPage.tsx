@@ -5,7 +5,6 @@ import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { SettingsForm } from '../SettingsForm'
 import { Page } from '../../base/Layout'
 import { Container } from '../../base/Layout/Container'
-import { Section } from '../../base/Layout/Section'
 import { cn } from '../../../utils/cn'
 import { styles } from './styles'
 import type { AccountPageProps } from './types'
@@ -19,19 +18,17 @@ export default function AccountPage({}: AccountPageProps) {
 
   return (
     <Page navigation={navigation}>
-      <Section>
-        <Container maxWidth="md">
-          <div className={cn(styles.card)}>
-            <Heading level={1} className={styles.title}>
-              {t('account.title')}
-            </Heading>
+      <Container maxWidth="md">
+        <div className={cn(styles.card)}>
+          <Heading level={1} className={styles.title}>
+            {t('account.title')}
+          </Heading>
 
-            <div className={styles.content}>
-              <SettingsForm />
-            </div>
+          <div className={styles.content}>
+            <SettingsForm />
           </div>
-        </Container>
-      </Section>
+        </div>
+      </Container>
     </Page>
   )
 } 

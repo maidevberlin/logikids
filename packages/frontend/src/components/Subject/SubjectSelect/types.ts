@@ -1,8 +1,8 @@
-import { Subject } from '@logikids/backend/tasks/types'
+import { SubjectId } from "../types"
 
 export interface SubjectSelectProps {
-  value: Subject
-  onChange: (subject: Subject) => void
+  value: SubjectId
+  onChange: (subject: SubjectId) => void
   disabled?: boolean
   className?: string
 } 

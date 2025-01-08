@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Select } from '../Form'
-import { useSettings } from '../../Settings/useSettings'
+import { useSettings } from '../../Account/Settings/useSettings'
 import { LanguageSwitcherProps } from './types'
-import { cn } from '../../../utils/cn'
 
 const languages = [
   { value: 'en', label: 'English' },

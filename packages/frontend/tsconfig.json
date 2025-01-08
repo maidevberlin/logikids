@@ -15,7 +15,6 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@logikids/backend/*": ["../../packages/backend/src/*"]
     },
 
     /* Linting */

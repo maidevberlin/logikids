@@ -1,15 +1,14 @@
 import { Menu } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { cn } from '../../../utils/cn';
-import { Subject } from '@logikids/backend/tasks/types';
-import { subjects, Concept } from '../../Subject/subjects';
+import { subjects, SubjectId, Concept } from '../../Subject';
 import { useTranslation } from 'react-i18next';
 import { ConceptSelectorProps } from './types';
 import { styles } from './styles';
 
 export function ConceptSelector({ subject, value, onChange, className }: ConceptSelectorProps) {
   const { t } = useTranslation();
-  const subjectConfig = subjects[subject as Subject];
+  const subjectConfig = subjects[subject as SubjectId];
 
   const concepts = [
     { value: 'random' as const },

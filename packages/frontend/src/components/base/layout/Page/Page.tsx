@@ -22,7 +22,6 @@ export function Page({
       <main className={cn(
         styles.base,
         styles.variants[background],
-        'pt-16', // Add padding top to account for fixed header
         className
       )}>
         {children}

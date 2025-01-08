@@ -1,5 +1,6 @@
 import { FadeInOut } from '../../../base/Animations/FadeInOut'
 import { useTranslation } from 'react-i18next'
+import DOMPurify from 'dompurify'
 import { SolutionExplanationProps } from './types'
 import { styles } from './styles'
 
@@ -13,7 +14,7 @@ export function SolutionExplanation({ explanation }: SolutionExplanationProps) {
       </h3>
       <div 
         className={styles.content}
-        dangerouslySetInnerHTML={{ __html: explanation }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(explanation) }}
       />
     </FadeInOut>
   )

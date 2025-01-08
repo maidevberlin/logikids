@@ -46,9 +46,10 @@ export function Feedback({
         {showIcon && (
           <Icon className={cn(styles.icon.base, styles.icon[variant])} />
         )}
-        <p className={styles.message}>
-          {message}
-        </p>
+        <div 
+          className={styles.message}
+          dangerouslySetInnerHTML={{ __html: message }}
+        />
       </div>
     </div>
   )

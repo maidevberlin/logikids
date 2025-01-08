@@ -1,7 +1,8 @@
+import { z } from 'zod';
 import { api, ApiResponse } from './api';
-import { TaskRequest } from '@logikids/backend/tasks/types';
-import { Task } from '../components/Task/types';
+import { DIFFICULTIES, Task, TASK_TYPES } from '../components/Task/types';
 import { getCurrentLanguage } from '../i18n/config';
+import { subjects } from '../components/Subject';
 
 export class LogikidsApiError extends Error {
   constructor(message: string) {
@@ -9,6 +10,17 @@ export class LogikidsApiError extends Error {
     this.name = 'LogikidsApiError';
   }
 }
+// Request schema and type
+export const taskRequestSchema = z.object({
+  subject: z.enum([subjects.math.id, subjects.logic.id]),
+  concept: z.string(), // We'll refine this with getConceptSchema
+  taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
+  age: z.number().min(5).max(18),
+  difficulty: z.enum(DIFFICULTIES)
+});
+
+export type TaskRequest = z.infer<typeof taskRequestSchema>;
+
 
 export const logikids = {
   getTask: (params: TaskRequest, signal?: AbortSignal): ApiResponse<Task> => {

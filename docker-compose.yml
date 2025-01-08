@@ -9,6 +9,7 @@ services:
       - ./packages/frontend:/app
     environment:
       - NODE_ENV=development
+      - VITE_API_URL=http://localhost:5175
     networks:
       - app-network
 
@@ -16,8 +17,12 @@ services:
     build:
       context: ./packages/frontend
       dockerfile: Dockerfile.prod
+      args:
+        VITE_API_URL: http://localhost:5176
     ports:
       - "5174:80"
+    environment:
+      - NODE_ENV=production
     networks:
       - app-network
 

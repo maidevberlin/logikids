@@ -42,18 +42,12 @@ export function getErrorMessage(error: unknown): string {
 
 export function getApiErrorMessage(error: ApiError): string {
   switch (error.code) {
-    case ApiErrorCode.NOT_FOUND:
-      return 'The requested resource was not found'
-    case ApiErrorCode.VALIDATION_ERROR:
-      return 'Please check your input and try again'
-    case ApiErrorCode.UNAUTHORIZED:
-      return 'Please log in to continue'
-    case ApiErrorCode.FORBIDDEN:
-      return 'You do not have permission to perform this action'
-    case ApiErrorCode.INTERNAL_ERROR:
-      return 'An internal server error occurred'
     case ApiErrorCode.BAD_REQUEST:
       return 'Invalid request'
+    case ApiErrorCode.VALIDATION_ERROR:
+      return 'Please check your input and try again'
+    case ApiErrorCode.INTERNAL_ERROR:
+      return 'An internal server error occurred'
     default:
       return 'An unknown error occurred'
   }
