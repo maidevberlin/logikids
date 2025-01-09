@@ -1,6 +1,7 @@
 export const styles = {
   container: `
     w-full
+    pt-16
   `,
   card: `
     bg-white

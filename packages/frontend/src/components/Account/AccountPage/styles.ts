@@ -10,5 +10,8 @@ export const styles = {
   `,
   content: `
     space-y-8
+  `,
+  container: `
+    pt-16
   `
 } as const 

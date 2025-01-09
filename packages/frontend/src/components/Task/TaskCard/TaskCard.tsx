@@ -7,7 +7,6 @@ import { ErrorDisplay } from '../../base/Error/ErrorDisplay'
 import { Heading } from '../../base/Typography/Heading'
 import { cn } from '../../../utils/cn'
 import { TaskAnswer } from '../TaskAnswer'
-import { SkipLink } from './SkipLink/SkipLink'
 import { TaskCardProps } from './types'
 import { styles } from './styles'
 
@@ -125,12 +124,6 @@ function TaskCardComponent({
           />
         </div>
       </Card>
-
-      {!isLoading && !error && isCorrect !== true && (
-        <div className={styles.footer}>
-          <SkipLink onClick={onNextTask} />
-        </div>
-      )}
     </div>
   )
 }

@@ -28,11 +28,11 @@ export function DifficultySelect({ value, onChange, disabled }: DifficultySelect
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button 
-        className={styles.button}
+        className={cn(styles.button, 'hover:opacity-80')}
         disabled={disabled}
       >
         <span className={styles.difficulty[value]}>{selectedOption?.label}</span>
-        <ChevronDownIcon className="w-3 h-3" />
+        <ChevronDownIcon className="w-3 h-3 ml-1 text-gray-400" />
       </Menu.Button>
       <Menu.Items className={styles.menu}>
         {options.map((option) => (
@@ -41,7 +41,8 @@ export function DifficultySelect({ value, onChange, disabled }: DifficultySelect
               <button
                 className={cn(
                   styles.item.base,
-                  active && styles.item.active
+                  active && styles.item.active,
+                  'flex items-center'
                 )}
                 onClick={() => onChange(option.value)}
               >

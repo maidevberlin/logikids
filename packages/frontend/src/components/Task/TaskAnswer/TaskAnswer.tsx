@@ -14,6 +14,8 @@ import {
   CheckCircleIcon,
   ArrowPathIcon 
 } from '@heroicons/react/24/outline'
+import { SkipLink } from '../TaskCard/SkipLink/SkipLink'
+import { styles } from './styles'
 
 function TaskAnswerComponent<T extends Task>({
   task,
@@ -100,10 +102,10 @@ function TaskAnswerComponent<T extends Task>({
   }
 
   return (
-    <div className="space-y-4">
+    <div className={styles.container}>
       {renderAnswer()}
 
-      <div className="mt-4">
+      <div className={styles.feedback}>
         <FadeInOut show={showFeedback}>
           <Feedback 
             message={isCorrect 
@@ -124,7 +126,7 @@ function TaskAnswerComponent<T extends Task>({
               scale={3.0}
               continuous
             >
-              <div className="flex justify-center">
+              <div className={styles.actionContainer}>
                 <TaskOption
                   onClick={onAnswerSubmit}
                   label={t('task.checkAnswer')}
@@ -135,7 +137,7 @@ function TaskAnswerComponent<T extends Task>({
               </div>
             </Pulse>
           ) : isCorrect ? (
-            <div className="flex justify-center">
+            <div className={styles.actionContainer}>
               <TaskOption
                 onClick={onNextTask}
                 label={t('task.nextTask')}
@@ -145,7 +147,7 @@ function TaskAnswerComponent<T extends Task>({
               />
             </div>
           ) : (
-            <div className="flex justify-center">
+            <div className={styles.actionContainer}>
               <TaskOption
                 onClick={() => onAnswerSelect(null)}
                 label={t('task.tryAgain')}
@@ -158,11 +160,19 @@ function TaskAnswerComponent<T extends Task>({
       )}
 
       {!isLoading && isCorrect !== true && (
-        <HintSection
-          hints={task.hints}
-          hasWrongAnswer={isCorrect === false}
-          onHintUsed={onHintUsed}
-        />
+        <div className={styles.hintContainer}>
+          <div className={styles.hintRow}>
+            <div className={styles.spacer} />
+            <HintSection
+              hints={task.hints}
+              hasWrongAnswer={isCorrect === false}
+              onHintUsed={onHintUsed}
+            />
+            <div className={styles.skipContainer}>
+              <SkipLink onClick={onNextTask} />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

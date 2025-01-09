@@ -18,17 +18,19 @@ export default function AccountPage({}: AccountPageProps) {
 
   return (
     <Page navigation={navigation}>
-      <Container maxWidth="md">
-        <div className={cn(styles.card)}>
-          <Heading level={1} className={styles.title}>
-            {t('account.title')}
-          </Heading>
+      <div className={styles.container}>
+        <Container maxWidth="md">
+          <div className={cn(styles.card)}>
+            <Heading level={1} className={styles.title}>
+              {t('account.title')}
+            </Heading>
 
-          <div className={styles.content}>
-            <SettingsForm />
+            <div className={styles.content}>
+              <SettingsForm />
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </Page>
   )
 } 
