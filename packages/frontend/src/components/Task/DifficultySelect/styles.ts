@@ -3,11 +3,11 @@ export const styles = {
     flex items-center space-x-1 text-sm transition-all duration-200
   `,
   menu: `
-    absolute right-0 mt-1 bg-white rounded-md shadow-lg py-1 w-48 z-20
+    absolute right-0 mt-1 bg-white rounded-md shadow-lg py-1 min-w-fit z-20
   `,
   item: {
     base: `
-      block w-full text-left px-4 py-1 text-sm
+      block w-full text-right px-4 py-1 text-sm flex items-center justify-end whitespace-nowrap
     `,
     active: `
       bg-primary-50

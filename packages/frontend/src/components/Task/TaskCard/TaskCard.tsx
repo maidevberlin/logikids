@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Menu } from '@headlessui/react'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { useTranslation } from 'react-i18next'
 import { Card } from '../../base/Card'
@@ -9,6 +9,7 @@ import { cn } from '../../../utils/cn'
 import { TaskAnswer } from '../TaskAnswer'
 import { TaskCardProps } from './types'
 import { styles } from './styles'
+import { DifficultySelect } from '../DifficultySelect'
 
 function TaskCardComponent({
   isLoading,
@@ -73,39 +74,10 @@ function TaskCardComponent({
         <div className={styles.content}>
           <div className={styles.header}>
             <Heading level={2}>{task.title}</Heading>
-            <Menu as="div" className={styles.menu.base}>
-              <Menu.Button className={styles.menu.button}>
-                <span className={cn(
-                  styles.menu.label,
-                  `difficulty-${difficulty}`
-                )}>
-                  {t(`difficulty.${difficulty}`)}
-                </span>
-                <ChevronDownIcon className={styles.menu.icon} />
-              </Menu.Button>
-              <Menu.Items className={styles.menu.items}>
-                {(['easy', 'medium', 'hard'] as const).map((d) => (
-                  <Menu.Item key={d}>
-                    {({ active }) => (
-                      <button
-                        className={cn(
-                          styles.menu.item.base,
-                          active && styles.menu.item.active,
-                          `difficulty-${d}`
-                        )}
-                        onClick={() => onDifficultyChange(d)}
-                      >
-                        <span className={cn(
-                          styles.menu.item.dot,
-                          `difficulty-${d}-dot`
-                        )} />
-                        <span>{t(`difficulty.${d}`)}</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                ))}
-              </Menu.Items>
-            </Menu>
+            <DifficultySelect
+              value={difficulty}
+              onChange={onDifficultyChange}
+            />
           </div>
           <div 
             className={styles.task}

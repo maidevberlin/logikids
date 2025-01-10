@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Menu } from '@headlessui/react'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { cn } from '../../../utils/cn'
 import { DifficultySelectProps } from './types'
@@ -27,22 +27,21 @@ export function DifficultySelect({ value, onChange, disabled }: DifficultySelect
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <Menu.Button 
+      <MenuButton 
         className={cn(styles.button, 'hover:opacity-80')}
         disabled={disabled}
       >
         <span className={styles.difficulty[value]}>{selectedOption?.label}</span>
         <ChevronDownIcon className="w-3 h-3 ml-1 text-gray-400" />
-      </Menu.Button>
-      <Menu.Items className={styles.menu}>
+      </MenuButton>
+      <MenuItems className={styles.menu}>
         {options.map((option) => (
-          <Menu.Item key={option.value}>
-            {({ active }) => (
+          <MenuItem key={option.value}>
+            {({ active }: { active: boolean }) => (
               <button
                 className={cn(
                   styles.item.base,
-                  active && styles.item.active,
-                  'flex items-center'
+                  active && styles.item.active
                 )}
                 onClick={() => onChange(option.value)}
               >
@@ -51,9 +50,9 @@ export function DifficultySelect({ value, onChange, disabled }: DifficultySelect
                 </span>
               </button>
             )}
-          </Menu.Item>
+          </MenuItem>
         ))}
-      </Menu.Items>
+      </MenuItems>
     </Menu>
   )
 } 
