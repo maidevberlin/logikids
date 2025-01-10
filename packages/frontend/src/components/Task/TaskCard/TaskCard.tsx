@@ -1,7 +1,4 @@
 import { memo } from 'react'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { useTranslation } from 'react-i18next'
 import { Card } from '../../base/Card'
 import { ErrorDisplay } from '../../base/Error/ErrorDisplay'
 import { Heading } from '../../base/Typography/Heading'
@@ -24,7 +21,6 @@ function TaskCardComponent({
   onDifficultyChange,
   onHintUsed,
 }: TaskCardProps) {
-  const { t } = useTranslation()
 
   if (error) {
     return (
