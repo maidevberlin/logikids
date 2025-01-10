@@ -18,7 +18,8 @@ export const SUBJECTS = {
     concepts: [
       'patterns',
       'conditional',
-      'sorting'
+      'sorting',
+      'sequences'
     ]
   }
 } as const;

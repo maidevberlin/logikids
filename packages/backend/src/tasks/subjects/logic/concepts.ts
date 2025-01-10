@@ -1,6 +1,7 @@
 import { prompt as patternsPrompt } from '../../prompts/logic/concepts/patterns';
 import { prompt as conditionalPrompt } from '../../prompts/logic/concepts/conditional';
 import { prompt as sortingPrompt } from '../../prompts/logic/concepts/sorting';
+import { prompt as sequencesPrompt } from '../../prompts/logic/concepts/sequences';
 import { Concept, LogicConceptId } from '../types';
 
 export const logicConcepts: Record<LogicConceptId, Concept> = {
@@ -23,5 +24,12 @@ export const logicConcepts: Record<LogicConceptId, Concept> = {
     name: 'Logical Sorting',
     description: 'Classifying items based on logical rules',
     promptTemplate: sortingPrompt
+  },
+
+  sequences: {
+    id: 'sequences',
+    name: 'Logical Sequences',
+    description: 'Learn to identify and complete logical sequences by understanding patterns and rules.',
+    promptTemplate: sequencesPrompt
   }
 }; 

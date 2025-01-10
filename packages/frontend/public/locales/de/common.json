@@ -75,7 +75,8 @@
     "logic": {
       "patterns": "Mustererkennung",
       "conditional": "Wenn-Dann Logik",
-      "sorting": "Sortieren & Gruppieren"
+      "sorting": "Sortieren & Gruppieren",
+      "sequences": "Logische Folgen"
     }
   },
   "common": {

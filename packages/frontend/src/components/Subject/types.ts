@@ -26,7 +26,8 @@ export const subjects: Record<SubjectId, SubjectConfig> = {
     concepts: [
       'patterns',
       'conditional',
-      'sorting'
+      'sorting',
+      'sequences'
     ]
   }
 }; 
