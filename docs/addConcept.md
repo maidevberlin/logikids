@@ -26,6 +26,62 @@ This guide explains how to add a new concept to an existing subject in LogiKids.
   }
   ```
 
+## Concept Prompt Structure
+
+When creating a concept prompt (`[yourConcept].ts`), follow these guidelines:
+
+1. **Core Structure**
+   - Start with "Focus on creating a [concept] problem that:"
+   - List key requirements as bullet points
+   - Keep it concise and focused
+
+2. **Required Elements**
+   - Core concept focus
+   - Age appropriateness
+   - Skill building aspects
+   - Problem characteristics
+   - Thinking process guidance
+
+3. **Parameters**
+   - Use {{age}} for age-specific requirements
+   - Avoid mentioning other parameters (handled by base prompt)
+
+4. **Do Not Include**
+   - Difficulty levels (handled by task type prompts)
+   - Language requirements (handled by base prompt)
+   - Answer format instructions (handled by task type prompts)
+   - Parameter documentation
+
+### Example Concept Prompts
+
+Here are well-structured concept prompts:
+
+```typescript
+// Analogical Thinking
+export const prompt = `
+Focus on creating an analogical thinking problem that:
+- Uses relationships between different concepts
+- Is appropriate for age {{age}} students
+- Uses clear, familiar examples for comparisons
+- Builds relationship recognition skills
+- Encourages systematic thinking
+- Uses age-appropriate complexity
+- Ensures cultural appropriateness
+`;
+
+// Pattern Recognition
+export const prompt = `
+Focus on creating a pattern recognition problem that:
+- Uses clear, visual patterns when possible
+- Is appropriate for age {{age}} students
+- Has a logical sequence or progression
+- Builds pattern recognition skills
+- Uses age-appropriate complexity
+- Can be solved through careful observation
+- Encourages systematic thinking
+`;
+```
+
 ## Overview
 
 A concept in LogiKids needs:
@@ -58,50 +114,6 @@ export const SUBJECTS = {
 2. Add or update the concept implementation following existing patterns
 3. Implement any specific logic needed for the new concept
 
-#### c. Create Prompt Templates
-
-1. Go to `packages/backend/src/tasks/prompts/[subjectName]/concepts/`
-2. Create a new file for your concept's prompts
-3. Follow this structure and use available parameters:
-
-```typescript
-export const prompt = `
-You are a tutor helping students understand [your concept].
-Create questions that help students learn and practice [concept skills].
-Use clear, age-appropriate language and provide enough context.
-
-Available parameters that will be injected:
-- {{age}} - Student's age
-- {{difficulty}} - Task difficulty (easy, medium, hard)
-- {{language}} - Language name (e.g., "English", "German")
-- {{subject_name}} - Full subject name
-- {{concept_name}} - Full concept name
-
-Create questions with these guidelines based on difficulty ({{difficulty}}):
-
-For easy:
-- Simple guidelines for easy level
-- Adapt complexity for age {{age}}
-- Keep concepts straightforward
-
-For medium:
-- Guidelines for medium level
-- Age-appropriate complexity
-- Combine multiple elements
-
-For hard:
-- Guidelines for hard level
-- Complex scenarios for age {{age}}
-- Multiple rules or steps
-
-Always:
-1. Present questions in {{language}}
-2. Provide clear instructions
-3. Include 4 possible answers
-4. Add appropriate explanations
-`;
-```
-
 ### 2. Frontend Changes
 
 #### a. Update Subject Configuration (`packages/frontend/src/components/Subject/types.ts`)
@@ -131,12 +143,7 @@ export const subjects: Record<SubjectId, SubjectConfig> = {
    - Keep names descriptive and consistent
    - Follow existing patterns in math and logic subjects
 
-2. Prompt Design:
-   - Make prompts clear and age-appropriate
-   - Include various difficulty levels
-   - Ensure educational value
-
-3. Code Organization:
+2. Code Organization:
    - Keep related files together
    - Follow existing patterns from math and logic
    - Maintain clean separation of concerns
@@ -145,26 +152,13 @@ export const subjects: Record<SubjectId, SubjectConfig> = {
 
 Before submitting:
 - [ ] Concept implementation complete
-- [ ] Prompt templates added
+- [ ] Prompt templates added and follow guidelines
 - [ ] UI components updated
 - [ ] Prompts reviewed for quality
 - [ ] UI tested in all viewports
-
-## Common Pitfalls
-
-1. Avoid:
-   - Overly complex prompts
-   - Inconsistent difficulty scaling
-   - Unclear instructions
-   - Duplicate concept logic
-
-2. Remember to:
-   - Consider edge cases
-   - Maintain consistent style
-   - Update all relevant documentation
 
 ## Need Help?
 
 1. Review existing concepts in math and logic for examples
 2. Consult the development team
-3. Update this documentation with learnings 
+3. Update this documentation with learnings

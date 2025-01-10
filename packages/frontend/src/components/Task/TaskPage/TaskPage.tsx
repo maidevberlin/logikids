@@ -16,12 +16,16 @@ import type { TaskPageProps } from './types'
 // Import background patterns
 import mathPattern from '../../../assets/math.webp'
 import logicPattern from '../../../assets/logic.webp'
+import musicPattern from '../../../assets/music.webp'
+import defaultPattern from '../../../assets/default.webp'
 import { TaskRequest } from '../../../api/logikids'
 import { SubjectId } from '../../Subject'
 
 const patterns = {
   math: mathPattern,
-  logic: logicPattern
+  logic: logicPattern,
+  music: musicPattern,
+  physics: defaultPattern // Fallback to default pattern until physics pattern is available
 } as const
 
 const taskDefaults: TaskRequest = {
@@ -150,8 +154,7 @@ export default function TaskPage({}: TaskPageProps) {
   return (
     <Page navigation={navigation}>
       <div className={cn(
-        styles.container,
-        styles.subjects[taskParams.subject]
+        styles.container
       )}>
         <div 
           className={styles.pattern} 

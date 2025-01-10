@@ -1,4 +1,4 @@
-export const SUBJECT_VALUES = ['math', 'logic'] as const
+export const SUBJECT_VALUES = ['math', 'logic', 'music', 'physics'] as const
 
 export type SubjectId = typeof SUBJECT_VALUES[number]
 
@@ -27,7 +27,24 @@ export const subjects: Record<SubjectId, SubjectConfig> = {
       'patterns',
       'conditional',
       'sorting',
-      'sequences'
+      'sequences',
+      'analogical',
+      'deductive'
+    ]
+  },
+  music: {
+    id: 'music',
+    concepts: [
+      'rhythm',
+      'melody'
+    ]
+  },
+  physics: {
+    id: 'physics',
+    concepts: [
+      'mechanics',
+      'waves',
+      'matter'
     ]
   }
 }; 

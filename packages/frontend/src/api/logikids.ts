@@ -12,7 +12,7 @@ export class LogikidsApiError extends Error {
 }
 // Request schema and type
 export const taskRequestSchema = z.object({
-  subject: z.enum([subjects.math.id, subjects.logic.id]),
+  subject: z.enum([subjects.math.id, subjects.logic.id, subjects.music.id]),
   concept: z.string(), // We'll refine this with getConceptSchema
   taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
   age: z.number().min(5).max(18),

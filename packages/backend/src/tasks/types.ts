@@ -12,7 +12,7 @@ export type Difficulty = typeof DIFFICULTIES[number];
 
 // Request schema and type
 export const taskRequestSchema = z.object({
-  subject: z.enum([SUBJECTS.math.id, SUBJECTS.logic.id]),
+  subject: z.enum(['math', 'logic', 'music', 'physics'] as const),
   concept: z.string(), // We'll refine this with getConceptSchema
   taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
   age: z.number().min(5).max(18),
@@ -30,3 +30,4 @@ export interface TaskGenerationParams {
   language: string;
   taskType?: string;
 }
+

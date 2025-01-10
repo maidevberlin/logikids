@@ -19,7 +19,24 @@ export const SUBJECTS = {
       'patterns',
       'conditional',
       'sorting',
-      'sequences'
+      'sequences',
+      'analogical',
+      'deductive'
+    ]
+  },
+  music: {
+    id: 'music',
+    concepts: [
+      'rhythm',
+      'melody'
+    ]
+  },
+  physics: {
+    id: 'physics',
+    concepts: [
+      'mechanics',
+      'waves',
+      'matter'
     ]
   }
 } as const;
@@ -28,7 +45,9 @@ export const SUBJECTS = {
 export type SubjectId = keyof typeof SUBJECTS;
 export type MathConceptId = typeof SUBJECTS.math.concepts[number];
 export type LogicConceptId = typeof SUBJECTS.logic.concepts[number];
-export type ConceptId = MathConceptId | LogicConceptId;
+export type MusicConceptId = typeof SUBJECTS.music.concepts[number];
+export type PhysicsConceptId = typeof SUBJECTS.physics.concepts[number];
+export type ConceptId = MathConceptId | LogicConceptId | MusicConceptId | PhysicsConceptId;
 
 // Helper type to get concepts for a specific subject
 export type SubjectConcepts<S extends SubjectId> = typeof SUBJECTS[S]['concepts'][number];
@@ -53,6 +72,8 @@ export interface Subject<C extends ConceptId = ConceptId> {
 export type SubjectsMap = {
   math: Subject<MathConceptId>;
   logic: Subject<LogicConceptId>;
+  music: Subject<MusicConceptId>;
+  physics: Subject<PhysicsConceptId>;
 };
 
 // Validation schemas

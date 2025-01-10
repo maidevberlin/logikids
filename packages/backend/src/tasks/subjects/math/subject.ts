@@ -1,6 +1,5 @@
-
 import { mathConcepts } from './concepts';
-import { basePrompt } from '../../prompts/math/prompt';
+import { basePrompt } from '../../prompts/math/math.prompt';
 import { MathConceptId, Subject, SUBJECTS } from '../types';
 
 export const mathSubject: Subject<MathConceptId> = {

@@ -55,7 +55,9 @@
   },
   "subject": {
     "math": "Mathematik",
-    "logic": "Logik"
+    "logic": "Logik",
+    "music": "Musik",
+    "physics": "Physik"
   },
   "difficulty": {
     "easy": "Leicht",
@@ -76,7 +78,18 @@
       "patterns": "Mustererkennung",
       "conditional": "Wenn-Dann Logik",
       "sorting": "Sortieren & Gruppieren",
-      "sequences": "Logische Folgen"
+      "sequences": "Logische Folgen",
+      "analogical": "Analoges Denken",
+      "deductive": "Deduktives Denken"
+    },
+    "music": {
+      "rhythm": "Rhythmuserkennung",
+      "melody": "Melodiemuster"
+    },
+    "physics": {
+      "mechanics": "Mechanik",
+      "waves": "Wellen",
+      "matter": "Materie"
     }
   },
   "common": {
