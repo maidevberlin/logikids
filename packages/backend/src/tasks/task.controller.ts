@@ -19,7 +19,9 @@ export class TaskController extends BaseController {
     if (types.length === 0) {
       throw new Error('No task types available');
     }
-    return types[Math.floor(Math.random() * types.length)].id;
+    const selectedType = types[Math.floor(Math.random() * types.length)].id;
+    
+    return selectedType;
   }
 
   private getRandomConcept(subject: string): string {
@@ -27,7 +29,8 @@ export class TaskController extends BaseController {
     if (!subjectInstance) {
       throw new Error('Invalid subject');
     }
-    return subjectInstance.getRandomConcept().id;
+    const concept = subjectInstance.getRandomConcept().id;
+    return concept;
   }
 
   public async getTask(req: Request, res: Response): Promise<void> {
@@ -51,14 +54,17 @@ export class TaskController extends BaseController {
       // Handle random concept selection
       if (basicValidation.concept === 'random') {
         basicValidation.concept = this.getRandomConcept(basicValidation.subject);
-      } else if (!subject.getConcept(basicValidation.concept)) {
-        throw new Error('Invalid concept for the selected subject');
+      } else {
+        const conceptExists = subject.getConcept(basicValidation.concept);
+        if (!conceptExists) {
+          throw new Error('Invalid concept for the selected subject');
+        }
       }
 
       const validatedQuery: TaskRequest = basicValidation;
-
       const language = this.getPreferredLanguage(req);
       const task = await this.taskService.generateTask(validatedQuery, language);
+      
       res.json(task);
     } catch (error) {
       if (error instanceof Error) {

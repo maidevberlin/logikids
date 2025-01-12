@@ -66,15 +66,18 @@ export class TaskService {
       throw new Error('Failed to parse AI response as JSON');
     }
 
-    // Validate the response using the task type's validator
-    if (!selectedTaskType.validateResponse(parsedResponse)) {
-      throw new Error('Generated task does not match the expected format');
-    }
-
-    // Add the type field to the response
-    return {
+    // Add the type field before validation
+    const responseWithType = {
       ...parsedResponse,
       type: selectedTaskType.id
     };
+
+    // Validate the response using the task type's validator
+    const isValid = selectedTaskType.validateResponse(responseWithType);
+    if (!isValid) {
+      throw new Error('Generated task does not match the expected format');
+    }
+
+    return responseWithType;
   }
 } 
