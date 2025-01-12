@@ -98,8 +98,8 @@ export const matchingType = new MatchingType();
 ## Key Components
 
 ### Registries
-- `registry.ts` - Singleton registry for subjects
-- `typeRegistry.ts` - Singleton registry for task types
+- `subjects/registry.ts` - Singleton registry for subjects
+- `types/registry.ts` - Singleton registry for task types
 - Both use automatic registration through imports
 
 ### Base Classes
