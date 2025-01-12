@@ -3,6 +3,7 @@ import { ResponsiveContainer, RadialBarChart, RadialBar } from 'recharts'
 import { cn } from '../../../utils/cn'
 import { GaugeMeterProps, HintUsageBarProps, PerformanceStatsProps } from './types'
 import { styles } from './styles'
+import { useTranslation } from 'react-i18next'
 
 const GaugeMeter = ({ value }: GaugeMeterProps) => {
   const data = [{ value: 100 }]
@@ -90,11 +91,13 @@ const HintUsageBar = ({ value }: HintUsageBarProps) => {
 }
 
 export function PerformanceStats({ successRate, averageHints }: PerformanceStatsProps) {
+  const { t } = useTranslation()
+  
   return (
     <div className={styles.base}>
       <div className={cn(styles.card.base, styles.card.success)}>
         <Text size="lg" className={cn(styles.title.base, styles.title.success)}>
-          Success Rate
+          {t('stats.successRate')}
         </Text>
         <GaugeMeter value={successRate} />
         <Text size="lg" className={styles.value}>
@@ -104,7 +107,7 @@ export function PerformanceStats({ successRate, averageHints }: PerformanceStats
 
       <div className={cn(styles.card.base, styles.card.hints)}>
         <Text size="lg" className={cn(styles.title.base, styles.title.hints)}>
-          Average Hints
+          {t('stats.averageHints')}
         </Text>
         <HintUsageBar value={averageHints} />
         <Text size="lg" className={styles.value}>

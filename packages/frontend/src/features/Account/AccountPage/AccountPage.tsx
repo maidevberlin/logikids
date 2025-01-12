@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
+import { UserCircleIcon } from '@heroicons/react/24/outline'
 import { Heading } from '../../base/Typography/Heading'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { SettingsForm } from '../SettingsForm'
@@ -22,6 +23,7 @@ export default function AccountPage({}: AccountPageProps) {
         <Container maxWidth="md">
           <div className={cn(styles.card)}>
             <Heading level={1} className={styles.title}>
+              <UserCircleIcon className={styles.icon} />
               {t('account.title')}
             </Heading>
 

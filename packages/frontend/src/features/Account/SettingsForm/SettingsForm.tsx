@@ -4,8 +4,8 @@ import { useSettings } from '../Settings/useSettings'
 import { styles } from './styles'
 
 const languages = [
-  { value: 'en', label: 'English' },
-  { value: 'de', label: 'Deutsch' }
+  { value: 'en', label: '🇬🇧 English' },
+  { value: 'de', label: '🇩🇪 Deutsch' }
 ]
 
 export function SettingsForm() {

@@ -12,18 +12,20 @@ export const styles = {
   `,
   button: {
     base: `
-      relative w-full cursor-pointer rounded-lg bg-white text-left
-      focus:outline-none focus:ring-2 focus:ring-offset-2
+      relative w-full cursor-pointer rounded-md bg-white text-left
+      border border-gray-300
+      focus:outline-none focus:ring-2 focus:ring-offset-0
       flex items-center justify-between
+      px-3 py-2
     `,
     sizes: {
-      sm: 'px-2 py-1.5 text-sm',
-      md: 'px-3 py-2 text-base',
-      lg: 'px-4 py-3 text-lg'
+      sm: 'text-sm',
+      md: 'text-base',
+      lg: 'text-lg'
     },
     variants: {
       default: `
-        border-gray-300 hover:border-gray-400 
+        hover:border-gray-400 
         focus:border-primary-500 focus:ring-primary-500
       `,
       error: `
@@ -34,7 +36,7 @@ export const styles = {
     }
   },
   value: `
-    flex-1 min-w-0
+    flex-1 min-w-0 text-gray-900
   `,
   icon: `
     h-5 w-5 text-gray-400 ml-2 flex-shrink-0
@@ -42,8 +44,9 @@ export const styles = {
   options: {
     container: `
       absolute z-10 mt-1 max-h-60 w-full overflow-auto 
-      rounded-lg bg-white py-1 shadow-lg 
+      rounded-md bg-white py-1 shadow-lg 
       ring-1 ring-black ring-opacity-5 focus:outline-none
+      border border-gray-200
     `,
     option: {
       base: `

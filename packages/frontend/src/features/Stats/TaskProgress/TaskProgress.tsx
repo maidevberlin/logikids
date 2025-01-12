@@ -2,17 +2,22 @@ import { cn } from '../../../utils/cn'
 import { TASK_LEVELS, TaskProgressProps } from './types'
 import { styles } from './styles'
 import { Text } from '../../base/Typography'
+import { useTranslation } from 'react-i18next'
 
 export function TaskProgress({ value }: TaskProgressProps) {
-  const currentLevel = TASK_LEVELS.findIndex(level => value < level.threshold) 
+  const { t } = useTranslation()
+  const currentLevelIndex = TASK_LEVELS.findIndex(level => value < level.threshold)
+  const currentLevel = currentLevelIndex === -1 ? TASK_LEVELS.length : currentLevelIndex
   const previousThreshold = currentLevel > 0 ? TASK_LEVELS[currentLevel - 1].threshold : 0
-  const nextThreshold = currentLevel >= 0 ? TASK_LEVELS[currentLevel].threshold : TASK_LEVELS[0].threshold
+  const nextThreshold = currentLevel >= TASK_LEVELS.length 
+    ? TASK_LEVELS[TASK_LEVELS.length - 1].threshold 
+    : TASK_LEVELS[currentLevel].threshold
   const progress = ((value - previousThreshold) / (nextThreshold - previousThreshold)) * 100
 
   return (
     <div className={styles.base}>
       <Text size="lg" className={styles.title}>
-        Total Tasks
+        {t('stats.totalTasks')}
       </Text>
       <div className={styles.content}>
         <div className={styles.header}>
@@ -27,7 +32,7 @@ export function TaskProgress({ value }: TaskProgressProps) {
           <div 
             className={cn(
               styles.bar.fill,
-              TASK_LEVELS[currentLevel >= 0 ? currentLevel : 0].colorClass
+              TASK_LEVELS[Math.min(currentLevel, TASK_LEVELS.length - 1)].colorClass
             )}
             style={{ width: `${progress}%` }}
           />
