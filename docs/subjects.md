@@ -18,40 +18,67 @@ All subjects are defined in single TypeScript files under `packages/backend/src/
 2. Implement your subject class extending `BaseSubject`:
 
 ```typescript
-import { BaseSubject } from '../base';
-import { Concept } from '../types';
+import { BaseSubject, Concept } from './base';
 
-export class ChemistrySubject extends BaseSubject {
-  readonly id = 'chemistry';
-  readonly name = 'Chemistry';
-  readonly description = 'Learn about atoms, molecules, and chemical reactions';
+class ChemistrySubject extends BaseSubject {
+  public readonly id = 'chemistry';
+  public readonly name = 'Chemistry';
+  public readonly description = 'Learn about atoms, molecules, and chemical reactions';
   
-  readonly basePromptTemplate = `
-    You are a chemistry teacher helping elementary school students.
-    Create age-appropriate tasks that are engaging and educational.
-    
-    Requirements:
-    - Use simple language suitable for the student's age
-    - Include visual elements when helpful
-    - Ensure safety warnings where applicable
-    - Make real-world connections
-    
-    Final verification:
-    - Content is age-appropriate
-    - No dangerous experiments
-    - Clear instructions
-    - Educational value
-  `;
+  public readonly basePromptTemplate = `
+## CRITICAL REQUIREMENTS
+1. CONTENT APPROPRIATENESS
+   A. Language Requirements
+      - ALL content MUST be in {{language}}
+      - Use clear, simple explanations
+      - Avoid complex terminology unless necessary
+      - Break down complex concepts into digestible parts
 
-  readonly concepts: Record<string, Concept> = {
+   B. Age Requirements ({{age}} years)
+      - Adjust complexity based on age
+      - Use age-appropriate examples
+      - Focus on observable phenomena
+      - Include visual elements when possible
+
+   C. Difficulty Level ({{difficulty}})
+      - Adapt complexity appropriately
+      - Scale conceptual depth based on difficulty
+      - Maintain engagement while challenging
+
+## Your Role
+You are an expert chemistry teacher, developing tasks for students of age {{age}}. 
+Your goal is to make chemistry concepts accessible and engaging through practical examples.
+
+## Concept to focus on when creating the task
+{{concept_template}}
+
+## Task Requirements
+{{task_type_template}}
+
+## Final Verification Checklist
+1. Age-appropriate language and concepts ✓
+2. Clear connection to real-world applications ✓
+3. Scientifically accurate but simplified appropriately ✓
+4. Engaging and interactive elements included ✓
+5. Safety considerations addressed ✓
+6. Complexity matches difficulty level ✓`;
+
+  public readonly concepts: Record<string, Concept> = {
     atoms: {
       id: 'atoms',
       name: 'Atoms and Elements',
       description: 'Learn about the building blocks of matter',
       promptTemplate: `
-        Create a task about atoms and elements.
-        Focus on: ${this.basePromptTemplate}
-      `
+Create a task about atoms and elements that helps students understand:
+- What atoms are and why they matter
+- How atoms combine to form elements
+- Where we find atoms in everyday life
+
+Key focus areas:
+- Visual representations of atoms
+- Real-world examples
+- Safe and engaging demonstrations
+- Age-appropriate analogies`
     },
     // Add more concepts here
   };
@@ -61,10 +88,13 @@ export class ChemistrySubject extends BaseSubject {
 export const chemistrySubject = new ChemistrySubject();
 ```
 
-3. Add your subject to `subjects/index.ts`:
+3. Export your subject in `subjects/index.ts`:
 ```typescript
+// ... existing exports
 export { chemistrySubject } from './chemistry';
 ```
+
+The subject will be automatically registered by the `SubjectRegistry` when exported.
 
 ### Frontend Changes
 

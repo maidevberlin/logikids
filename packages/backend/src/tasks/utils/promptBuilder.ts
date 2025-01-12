@@ -1,6 +1,6 @@
 import { TaskGenerationParams } from '../types';
-import { Subject, ConceptId } from '../subjects/types';
-import { TaskType } from '../taskTypes/types';
+import { Subject, Concept } from '../subjects/base';
+import { BaseTaskType } from '../types/base';
 import { TemplateProcessor } from './template';
 
 const LANGUAGE_NAMES: Record<string, string> = {
@@ -11,10 +11,10 @@ const LANGUAGE_NAMES: Record<string, string> = {
 /**
  * Builds prompts by combining subject, concept, and task type templates
  */
-export class PromptBuilder<C extends ConceptId = ConceptId> {
+export class PromptBuilder {
   constructor(
-    private subject: Subject<C>,
-    private taskType: TaskType
+    private subject: Subject,
+    private taskType: BaseTaskType
   ) {}
 
   /**
@@ -28,7 +28,7 @@ export class PromptBuilder<C extends ConceptId = ConceptId> {
    * Build the final prompt by combining templates and replacing variables
    */
   buildPrompt(params: TaskGenerationParams): string {
-    const concept = this.subject.concepts[params.concept as C];
+    const concept = this.subject.concepts[params.concept];
     if (!concept) {
       throw new Error(`Concept ${params.concept} not found in subject ${this.subject.id}`);
     }
