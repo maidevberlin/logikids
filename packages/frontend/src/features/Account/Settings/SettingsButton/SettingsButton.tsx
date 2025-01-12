@@ -1,4 +1,4 @@
-import { Cog6ToothIcon } from '@heroicons/react/24/outline'
+import { UserCircleIcon } from '@heroicons/react/24/outline'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { cn } from '../../../../utils/cn'
@@ -17,7 +17,7 @@ export function SettingsButton({ onClick, className }: SettingsButtonProps) {
       className={cn(styles.base, className)}
       aria-label={t('account.title')}
     >
-      <Cog6ToothIcon className={styles.icon} />
+      <UserCircleIcon className={styles.icon} />
     </button>
   )
 } 

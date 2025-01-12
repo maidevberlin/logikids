@@ -111,7 +111,7 @@ export function PerformanceStats({ successRate, averageHints }: PerformanceStats
         </Text>
         <HintUsageBar value={averageHints} />
         <Text size="lg" className={styles.value}>
-          {averageHints.toFixed(1)} hints
+          {averageHints.toFixed(1)} {t('stats.hints')}
         </Text>
       </div>
     </div>

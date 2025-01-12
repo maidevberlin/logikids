@@ -25,7 +25,7 @@ export function TaskProgress({ value }: TaskProgressProps) {
             Level {currentLevel + 1}
           </Text>
           <Text size="lg" className={styles.count}>
-            {value} / {nextThreshold} tasks
+            {value} / {nextThreshold} {t('stats.tasks')}
           </Text>
         </div>
         <div className={styles.bar.base}>
