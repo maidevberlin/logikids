@@ -14,7 +14,7 @@ export function SubjectSelect({ value, onChange, disabled, className }: SubjectS
     return (
       <div className={cn(styles.base, className)}>
         <div className={styles.button}>
-          <span>{t(`subject.${value}`)}</span>
+          <span>{t(`subjects.${value}.label`)}</span>
           <ChevronDownIcon className={styles.icon} />
         </div>
       </div>
@@ -27,7 +27,7 @@ export function SubjectSelect({ value, onChange, disabled, className }: SubjectS
         className={styles.button}
         disabled={disabled}
       >
-        <span>{t(`subject.${value}`)}</span>
+        <span>{t(`subjects.${value}.label`)}</span>
         <ChevronDownIcon className={styles.icon} />
       </Menu.Button>
       <Menu.Items className={styles.menu}>
@@ -41,7 +41,7 @@ export function SubjectSelect({ value, onChange, disabled, className }: SubjectS
                 )}
                 onClick={() => onChange(subject.id)}
               >
-                {t(`subject.${subject.id}`)}
+                {t(`subjects.${subject.id}.label`)}
               </button>
             )}
           </Menu.Item>

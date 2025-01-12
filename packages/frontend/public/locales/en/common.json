@@ -53,30 +53,32 @@
     "tryAgain": "Try Again",
     "backToHome": "Back to Home"
   },
-  "subject": {
-    "math": "Mathematics",
-    "logic": "Logic"
+  "subjects": {
+    "random": "Random",
+    "math": {
+      "label": "Mathematics",
+      "concepts": {
+        "arithmetic": "Basic Arithmetic",
+        "mental_math": "Mental Math",
+        "word_problems": "Word Problems",
+        "fractions": "Fractions & Decimals",
+        "geometry": "Geometry",
+        "measurement": "Measurement & Units"
+      }
+    },
+    "logic": {
+      "label": "Logic",
+      "concepts": {
+        "patterns": "Pattern Recognition",
+        "conditional": "If-Then Logic",
+        "sorting": "Sorting & Grouping"
+      }
+    }
   },
   "difficulty": {
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
-  },
-  "concepts": {
-    "random": "Random",
-    "math": {
-      "arithmetic": "Basic Arithmetic",
-      "mental_math": "Mental Math",
-      "word_problems": "Word Problems",
-      "fractions": "Fractions & Decimals",
-      "geometry": "Geometry",
-      "measurement": "Measurement & Units"
-    },
-    "logic": {
-      "patterns": "Pattern Recognition",
-      "conditional": "If-Then Logic",
-      "sorting": "Sorting & Grouping"
-    }
   },
   "common": {
     "loading": "Loading..."

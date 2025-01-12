@@ -5,17 +5,17 @@ This guide explains how to add new subjects and concepts to the LogiKids platfor
 ## Frontend Changes
 
 1. Add translations:
-   - Open `public/locales/de/common.json`
+   - Open `public/locales/de/common.json` and `public/locales/en/common.json`
    - Add translations for your subject and concepts:
    ```json
    {
-     "subject": {
-       "newSubject": "Subject Name in German"
-     },
-     "concepts": {
+     "subjects": {
        "newSubject": {
-         "concept1": "Concept 1 in German",
-         "concept2": "Concept 2 in German"
+         "label": "Subject Name in German",
+         "concepts": {
+           "concept1": "Concept 1 in German",
+           "concept2": "Concept 2 in German"
+         }
        }
      }
    }
@@ -28,9 +28,9 @@ This guide explains how to add new subjects and concepts to the LogiKids platfor
    ```typescript
    import newSubjectBg from '../../../assets/newSubject.webp';
    
-   const patterns = {
-     // ... existing patterns
-     newSubject: newSubjectPattern
+   const backgrounds = {
+     // ... existing backgrounds
+     newSubject: newSubjectBg
    } as const;
    ```
 

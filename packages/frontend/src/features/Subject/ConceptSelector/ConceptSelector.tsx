@@ -8,54 +8,44 @@ import { useSubjects } from '../useSubjects';
 
 export function ConceptSelector({ subject, value, onChange, className }: ConceptSelectorProps) {
   const { t } = useTranslation();
-  const { data: subjects, isLoading } = useSubjects();
+  const { data: subjects } = useSubjects();
+  const subjectConfig = subjects?.find(s => s.id === subject);
 
-  if (isLoading || !subjects) {
-    return (
-      <div className={cn(styles.base, className)}>
-        <div className={styles.button}>
-          <span>{t(`concepts.${subject}.${value}`)}</span>
-          <ChevronDownIcon className="w-3 h-3" />
-        </div>
-      </div>
-    );
-  }
-
-  const currentSubject = subjects.find(s => s.id === subject);
-  if (!currentSubject) return null;
+  if (!subjectConfig) return null;
 
   const concepts = [
-    {
-      id: 'random',
-      translationKey: 'concepts.random'
-    },
-    ...currentSubject.concepts.map(concept => ({
-      id: concept.id,
-      translationKey: `concepts.${subject}.${concept.id}`
-    }))
+    { value: 'random' as const },
+    ...subjectConfig.concepts.map(concept => ({ value: concept.id }))
   ];
 
-  const selectedConcept = concepts.find(c => c.id === value);
-  if (!selectedConcept) return null;
+  const selectedConcept = concepts.find(c => c.value === value);
 
   return (
     <Menu as="div" className={cn(styles.base, className)}>
       <Menu.Button className={styles.button}>
-        <span>{t(selectedConcept.translationKey)}</span>
-        <ChevronDownIcon className="w-3 h-3" />
+        <span>
+          {selectedConcept && (selectedConcept.value === 'random' 
+            ? t('subjects.random') 
+            : t(`subjects.${subject}.concepts.${selectedConcept.value}`)
+          )}
+        </span>
+        <ChevronDownIcon className={styles.icon} />
       </Menu.Button>
       <Menu.Items className={styles.menu}>
         {concepts.map((concept) => (
-          <Menu.Item key={concept.id}>
+          <Menu.Item key={concept.value}>
             {({ active }) => (
               <button
                 className={cn(
                   styles.item.base,
                   active && styles.item.active
                 )}
-                onClick={() => onChange(concept.id)}
+                onClick={() => onChange(concept.value)}
               >
-                {t(concept.translationKey)}
+                {concept.value === 'random' 
+                  ? t('subjects.random') 
+                  : t(`subjects.${subject}.concepts.${concept.value}`)
+                }
               </button>
             )}
           </Menu.Item>

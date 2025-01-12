@@ -53,44 +53,50 @@
     "tryAgain": "Erneut versuchen",
     "backToHome": "Zurück zur Startseite"
   },
-  "subject": {
-    "math": "Mathematik",
-    "logic": "Logik",
-    "music": "Musik",
-    "physics": "Physik"
+  "subjects": {
+    "random": "Zufällig",
+    "math": {
+      "label": "Mathematik",
+      "concepts": {
+        "arithmetic": "Grundrechenarten",
+        "mental_math": "Kopfrechnen",
+        "word_problems": "Textaufgaben",
+        "fractions": "Brüche & Dezimalzahlen",
+        "geometry": "Geometrie",
+        "measurement": "Maße & Einheiten"
+      }
+    },
+    "logic": {
+      "label": "Logik",
+      "concepts": {
+        "patterns": "Mustererkennung",
+        "conditional": "Wenn-Dann Logik",
+        "sorting": "Sortieren & Gruppieren",
+        "sequences": "Logische Folgen",
+        "analogical": "Analoges Denken",
+        "deductive": "Deduktives Denken"
+      }
+    },
+    "music": {
+      "label": "Musik",
+      "concepts": {
+        "rhythm": "Rhythmuserkennung",
+        "melody": "Melodiemuster"
+      }
+    },
+    "physics": {
+      "label": "Physik",
+      "concepts": {
+        "mechanics": "Mechanik",
+        "waves": "Wellen",
+        "matter": "Materie"
+      }
+    }
   },
   "difficulty": {
     "easy": "Leicht",
     "medium": "Mittel",
     "hard": "Schwer"
-  },
-  "concepts": {
-    "random": "Zufällig",
-    "math": {
-      "arithmetic": "Grundrechenarten",
-      "mental_math": "Kopfrechnen",
-      "word_problems": "Textaufgaben",
-      "fractions": "Brüche & Dezimalzahlen",
-      "geometry": "Geometrie",
-      "measurement": "Maße & Einheiten"
-    },
-    "logic": {
-      "patterns": "Mustererkennung",
-      "conditional": "Wenn-Dann Logik",
-      "sorting": "Sortieren & Gruppieren",
-      "sequences": "Logische Folgen",
-      "analogical": "Analoges Denken",
-      "deductive": "Deduktives Denken"
-    },
-    "music": {
-      "rhythm": "Rhythmuserkennung",
-      "melody": "Melodiemuster"
-    },
-    "physics": {
-      "mechanics": "Mechanik",
-      "waves": "Wellen",
-      "matter": "Materie"
-    }
   },
   "common": {
     "loading": "Lädt..."
