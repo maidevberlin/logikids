@@ -1,4 +1,43 @@
-export const prompt = `
+import { z } from 'zod';
+import { BaseTaskType, TaskResponse } from './base';
+
+interface MultipleChoiceOption {
+  text: string;
+  isCorrect: boolean;
+  explanation?: string;
+}
+
+interface MultipleChoiceResponse extends TaskResponse {
+  options: MultipleChoiceOption[];
+}
+
+const multipleChoiceSchema = z.object({
+  type: z.literal('multiple_choice'),
+  title: z.string().min(1),
+  task: z.string().min(1),
+  hints: z.array(z.string().min(1)).length(4),
+  options: z.array(z.object({
+    text: z.string().min(1),
+    isCorrect: z.boolean(),
+    explanation: z.string().min(1).optional()
+  }))
+  .length(4)
+  .refine(
+    options => options.filter(opt => opt.isCorrect).length === 1,
+    'Exactly one option must be correct'
+  )
+  .refine(
+    options => options.every(opt => !opt.isCorrect || opt.explanation),
+    'Correct option must have an explanation'
+  )
+});
+
+export class MultipleChoiceType extends BaseTaskType<MultipleChoiceResponse> {
+  readonly id = 'multiple_choice';
+  readonly name = 'Multiple Choice';
+  readonly description = 'A task with exactly 4 options where one is correct';
+  readonly responseSchema = multipleChoiceSchema;
+  readonly promptTemplate = `
 ## TASK STRUCTURE
   A task has this structure:
   {
@@ -76,4 +115,8 @@ export const prompt = `
 - If the task generation leads to an incorrect or illogical correct option, **fix the issue and regenerate the options.**
 - Ensure no conflicting statements exist between the correct option and its explanation.
 - The final response should always be internally consistent.
-`;
+  `;
+}
+
+// Export singleton instance
+export const multipleChoiceType = new MultipleChoiceType(); 

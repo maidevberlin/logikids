@@ -1,4 +1,32 @@
-export const prompt = `
+import { z } from 'zod';
+import { BaseTaskType, TaskResponse } from './base';
+
+interface YesNoSolution {
+  answer: boolean;
+  explanation: string;
+}
+
+interface YesNoResponse extends TaskResponse {
+  solution: YesNoSolution;
+}
+
+const yesNoSchema = z.object({
+  type: z.literal('yes_no'),
+  title: z.string().min(1),
+  task: z.string().min(1),
+  hints: z.array(z.string().min(1)).length(4),
+  solution: z.object({
+    answer: z.boolean(),
+    explanation: z.string().min(1)
+  })
+});
+
+export class YesNoType extends BaseTaskType<YesNoResponse> {
+  readonly id = 'yes_no';
+  readonly name = 'Yes/No';
+  readonly description = 'A task that can be answered with yes or no';
+  readonly responseSchema = yesNoSchema;
+  readonly promptTemplate = `
 ## Task Creation Guidelines for Yes/No Questions
 Age: {{age}} | Difficulty: {{difficulty}}
 
@@ -36,4 +64,8 @@ Age: {{age}} | Difficulty: {{difficulty}}
     "Major step",
     "Almost complete"
   ]
-}`; 
+}`;
+}
+
+// Export singleton instance
+export const yesNoType = new YesNoType(); 

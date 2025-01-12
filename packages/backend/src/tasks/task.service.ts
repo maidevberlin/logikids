@@ -1,40 +1,36 @@
-import { TaskRequest,TaskGenerationParams} from './types';
-import { Subject,  subjects, SUBJECTS } from './subjects';
-import { TaskResponse } from './taskTypes/types';
+import { TaskRequest, TaskGenerationParams } from './types';
+import { TaskResponse, BaseTaskType } from './types/base';
 import { AIClient } from '../common/ai/base';
-import { TaskTypeRegistry } from './utils/registry';
 import { PromptBuilder } from './utils/promptBuilder';
+import { registry as subjectRegistry } from './subjects/registry';
+import { registry as taskTypeRegistry } from './types/registry';
+import { BaseSubject } from './subjects/base';
 
 export class TaskService {
-  private readonly registry: TaskTypeRegistry;
-
-  constructor(private readonly aiClient: AIClient) {
-    this.registry = TaskTypeRegistry.getInstance();
-  }
-
-  private getRandomConcept(subject: keyof typeof SUBJECTS): string {
-    const concepts = SUBJECTS[subject].concepts;
-    return concepts[Math.floor(Math.random() * concepts.length)];
-  }
+  constructor(private readonly aiClient: AIClient) {}
 
   public async generateTask(request: TaskRequest, language: string): Promise<TaskResponse> {
-    const { subject, concept: requestedConcept, taskType } = request;
+    const { subject: subjectId, concept: requestedConcept, taskType } = request;
     
     // Get the subject
-    const subjectData = subjects[subject];
-    if (!subjectData) {
-      throw new Error(`Subject ${subject} not found`);
+    const subject = subjectRegistry.get(subjectId);
+    if (!subject) {
+      throw new Error(`Subject ${subjectId} not found`);
     }
 
     // Handle random concept selection
     const concept = requestedConcept === 'random' 
-      ? this.getRandomConcept(subject)
-      : requestedConcept;
+      ? subject.getRandomConcept()
+      : subject.getConcept(requestedConcept);
+
+    if (!concept) {
+      throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
+    }
 
     // Get the task type (either specified or random)
     const selectedTaskType = taskType 
-      ? this.registry.get(taskType) 
-      : this.registry.getRandomTaskType();
+      ? taskTypeRegistry.get(taskType) 
+      : taskTypeRegistry.getAll()[Math.floor(Math.random() * taskTypeRegistry.getAll().length)];
 
     if (!selectedTaskType) {
       throw new Error(`Task type ${taskType} not found`);
@@ -42,14 +38,14 @@ export class TaskService {
 
     // Create prompt builder with subject and task type
     const promptBuilder = new PromptBuilder(
-      subjectData as Subject,
-      selectedTaskType
+      subject as BaseSubject,
+      selectedTaskType as BaseTaskType
     );
 
     // Build the prompt with all parameters
     const params: TaskGenerationParams = {
-      subject,
-      concept,
+      subject: subjectId,
+      concept: concept.id,
       age: request.age,
       difficulty: request.difficulty,
       language,

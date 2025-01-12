@@ -1,1 +1,0 @@
-export { yesNoType } from './type'; 

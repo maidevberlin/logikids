@@ -1,18 +1,11 @@
-import { SubjectsMap } from './types';
-import { mathSubject } from './math/subject';
-import { logicSubject } from './logic/subject';
-import { musicSubject } from './music/subject';
-import { physicsSubject } from './physics/subject';
+// This file will export all subjects
+// Example:
+// export { mathSubject } from './math';
+// export { logicSubject } from './logic';
+// etc.
 
-export const subjects: SubjectsMap = {
-  math: mathSubject,
-  logic: logicSubject,
-  music: musicSubject,
-  physics: physicsSubject
-} as const;
-
-export * from './types';
-export * from './math';
-export * from './logic';
-export * from './music';
-export * from './physics';
+export * from './base';
+export { mathSubject } from './math';
+export { logicSubject } from './logic';
+export { musicSubject } from './music';
+export { physicsSubject } from './physics';

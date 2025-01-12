@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { SUBJECTS, SubjectId } from './subjects/types';
-import { TASK_TYPES } from './taskTypes/types';
+import { registry as subjectRegistry } from './subjects/registry';
+import { registry as taskTypeRegistry } from './types/registry';
 
 // Difficulty Levels
 export const DIFFICULTIES = [
@@ -12,9 +12,15 @@ export type Difficulty = typeof DIFFICULTIES[number];
 
 // Request schema and type
 export const taskRequestSchema = z.object({
-  subject: z.enum(['math', 'logic', 'music', 'physics'] as const),
+  subject: z.string().refine(
+    val => subjectRegistry.get(val) !== undefined,
+    'Invalid subject'
+  ),
   concept: z.string(), // We'll refine this with getConceptSchema
-  taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
+  taskType: z.string().optional().refine(
+    val => !val || taskTypeRegistry.get(val) !== undefined,
+    'Invalid task type'
+  ),
   age: z.number().min(5).max(18),
   difficulty: z.enum(DIFFICULTIES)
 });
@@ -23,7 +29,7 @@ export type TaskRequest = z.infer<typeof taskRequestSchema>;
 
 // Parameters for task generation
 export interface TaskGenerationParams {
-  subject: SubjectId;
+  subject: string;
   concept: string;
   age: number;
   difficulty: Difficulty;

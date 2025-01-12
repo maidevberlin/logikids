@@ -1,1 +1,0 @@
-export { multipleChoiceType } from './type'; 
