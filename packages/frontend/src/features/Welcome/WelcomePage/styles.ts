@@ -1,32 +1,55 @@
 export const styles = {
   container: `
-    flex flex-col items-center justify-center min-h-screen
-    p-4 bg-gradient-to-b from-blue-50 to-blue-100
+    flex flex-col items-center justify-start min-h-screen
+    pt-16 p-8 bg-gradient-to-br from-blue-50 via-white to-blue-100
   `,
-  card: `
-    max-w-screen-md mx-auto
-    bg-white p-8 rounded-xl shadow-xl w-full
-    transform transition-all duration-300 hover:scale-102
+  content: `
+    flex flex-col items-center
   `,
-  logo: `
-    w-400 h-400 mb-4
-    transform transition-all duration-500
-    hover:scale-105
-  `,
-  button: {
+  logo: {
+    wrapper: `
+      w-48 h-48 mb-8
+      transform transition-all duration-500
+      hover:scale-105 hover:rotate-3
+      animate-float
+    `,
+    image: `
+      w-full h-full object-contain
+    `
+  },
+  text: {
+    wrapper: `
+      text-center space-y-4 mb-8
+    `,
+    title: `
+      text-5xl font-bold bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent
+    `,
+    subtitle: `
+      text-gray-600 text-xl max-w-lg mx-auto leading-relaxed
+    `
+  },
+  buttons: {
+    wrapper: `
+      flex flex-col space-y-4 w-full max-w-sm
+    `,
+    group: `
+      flex space-x-4
+    `,
     primary: `
-      inline-flex items-center justify-center px-6 py-3
-      text-base font-medium rounded-md
-      text-white bg-primary-600
+      w-full inline-flex items-center justify-center px-8 py-4
+      text-lg font-semibold rounded-xl
+      text-white bg-gradient-to-r from-blue-600 to-blue-700
       transform transition-all duration-200
-      hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500
+      hover:translate-y-[-2px] hover:shadow-lg
+      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
     `,
     secondary: `
-      flex-1 inline-flex items-center justify-center px-4 py-2
-      text-sm font-medium rounded-md
-      text-primary-600 bg-white border-2 border-primary-600
+      flex-1 inline-flex items-center justify-center px-6 py-3
+      text-sm font-medium rounded-xl
+      text-blue-700 bg-white/90 backdrop-blur-sm border border-blue-200
       transform transition-all duration-200
-      hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500
+      hover:bg-blue-50 hover:border-blue-300
+      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
     `
   }
 } as const
