@@ -7,8 +7,8 @@ import { RouterProvider } from 'react-router-dom'
 import './i18n/config'
 import './index.css'
 import { router } from './routes'
-import { ErrorBoundary } from './components/base/Error/ErrorBoundary'
-import { LoadingState } from './components/base/Loader/LoadingState'
+import { ErrorBoundary } from './features/base/Error/ErrorBoundary'
+import { LoadingState } from './features/base/Loader/LoadingState'
 
 const rootElement = document.getElementById('root')
 

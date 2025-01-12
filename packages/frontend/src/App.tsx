@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import { Providers } from './components/Providers'
+import { Providers } from './features/Providers'
 
 export default function App() {
   return (

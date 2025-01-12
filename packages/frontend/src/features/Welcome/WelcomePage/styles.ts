@@ -9,7 +9,7 @@ export const styles = {
     transform transition-all duration-300 hover:scale-102
   `,
   logo: `
-    w-64 h-40 mb-4
+    w-400 h-400 mb-4
     transform transition-all duration-500
     hover:scale-105
   `,

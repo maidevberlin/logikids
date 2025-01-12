@@ -2,11 +2,11 @@ import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
 
-// Lazy load route components
-const Welcome = lazy(() => import('../components/Welcome/WelcomePage'))
-const TaskPage = lazy(() => import('../components/Task/TaskPage'))
-const AccountPage = lazy(() => import('../components/Account/AccountPage'))
-const StatsPage = lazy(() => import('../components/Stats/StatsPage'))
+// Lazy load route features
+const Welcome = lazy(() => import('../features/Welcome/WelcomePage'))
+const TaskPage = lazy(() => import('../features/Task/TaskPage'))
+const AccountPage = lazy(() => import('../features/Account/AccountPage'))
+const StatsPage = lazy(() => import('../features/Stats/StatsPage'))
 
 export const router = createBrowserRouter([
   {

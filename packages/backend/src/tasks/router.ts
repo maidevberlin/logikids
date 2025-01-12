@@ -12,6 +12,10 @@ export async function createTaskRouter(): Promise<Router> {
     taskController.getTask(req, res).catch(next)
   );
 
+  router.get('/subjects', (req, res, next) =>
+    taskController.getSubjects(req, res).catch(next)
+  );
+
   router.use(errorHandler);
 
   return router;

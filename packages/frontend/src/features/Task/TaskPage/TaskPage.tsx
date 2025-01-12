@@ -14,18 +14,17 @@ import { styles } from './styles'
 import type { TaskPageProps } from './types'
 
 // Import background patterns
-import mathPattern from '../../../assets/math.webp'
-import logicPattern from '../../../assets/logic.webp'
-import musicPattern from '../../../assets/music.webp'
-import defaultPattern from '../../../assets/default.webp'
+import mathBg from '../../../assets/math.webp'
+import logicBg from '../../../assets/logic.webp'
+import musicBg from '../../../assets/music.webp'
+import defaultBg from '../../../assets/default.webp'
 import { TaskRequest } from '../../../api/logikids'
-import { SubjectId } from '../../Subject'
 
-const patterns = {
-  math: mathPattern,
-  logic: logicPattern,
-  music: musicPattern,
-  physics: defaultPattern // Fallback to default pattern until physics pattern is available
+const backgrounds = {
+  math: mathBg,
+  logic: logicBg,
+  music: musicBg,
+  physics: defaultBg // Fallback to default pattern until physics pattern is available
 } as const
 
 const taskDefaults: TaskRequest = {
@@ -45,7 +44,7 @@ export default function TaskPage({}: TaskPageProps) {
   // Memoize task parameters
   const taskParams = useMemo(() => ({
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
-    subject: (searchParams.get('subject') ?? taskDefaults.subject) as SubjectId,
+    subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
     concept: (searchParams.get('concept') ?? taskDefaults.concept),
     age: settings.age
   }), [searchParams, settings.age])
@@ -88,7 +87,7 @@ export default function TaskPage({}: TaskPageProps) {
     })
   }, [setSearchParams])
 
-  const handleSubjectChange = useCallback((newSubject: SubjectId) => {
+  const handleSubjectChange = useCallback((newSubject: string) => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
       newParams.set('subject', newSubject)
@@ -158,7 +157,7 @@ export default function TaskPage({}: TaskPageProps) {
       )}>
         <div 
           className={styles.pattern} 
-          style={{ backgroundImage: `url(${patterns[taskParams.subject]})` }} 
+          style={{ backgroundImage: `url(${backgrounds[taskParams.subject as keyof typeof backgrounds]})` }} 
         />
         <div className={cn(
           containerStyles.base,

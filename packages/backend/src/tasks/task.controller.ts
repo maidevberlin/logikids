@@ -14,6 +14,29 @@ export class TaskController extends BaseController {
     this.taskService = new TaskService(aiClient);
   }
 
+  public async getSubjects(_req: Request, res: Response): Promise<void> {
+    try {
+      const subjects = subjectRegistry.getAll().map(subject => ({
+        id: subject.id,
+        name: subject.name,
+        description: subject.description,
+        concepts: Object.values(subject.concepts).map(concept => ({
+          id: concept.id,
+          name: concept.name,
+          description: concept.description
+        }))
+      }));
+      
+      res.json(subjects);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unexpected error occurred' });
+      }
+    }
+  }
+
   private getRandomTaskType(): string {
     const types = taskTypeRegistry.getAll();
     if (types.length === 0) {
