@@ -9,7 +9,7 @@ Our component architecture follows a domain-driven design approach, organizing c
 Components and their related logic are organized into domains, with each domain having its own directory:
 
 ```
-components/
+src/features/
 ├── Account/             # Domain for account-related components
 │   ├── LanguageSettings/
 │   ├── PersonalInfo/
