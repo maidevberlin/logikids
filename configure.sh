@@ -37,8 +37,8 @@ validate_openai_key() {
         echo "❌ API key cannot be empty"
         return 1
     fi
-    if [[ ! "$key" =~ ^sk-[A-Za-z0-9]{32,}$ ]]; then
-        echo "❌ Invalid API key format. It should start with 'sk-' followed by at least 32 characters"
+    if [[ ! "$key" =~ ^sk-[A-Za-z0-9_.-]{32,}$ ]]; then
+        echo "❌ Invalid API key format. It should start with 'sk-' followed by letters, numbers, underscores, dots, or hyphens"
         return 1
     fi
     return 0
