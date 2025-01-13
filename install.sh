@@ -54,6 +54,10 @@ else
     git pull
 fi
 
+# Run the configuration script
+echo "🔧 Running configuration setup..."
+./configure.sh
+
 # Start the application in production mode
 echo "🚀 Starting the application in production mode..."
 docker-compose up -d frontend-prod backend-prod
