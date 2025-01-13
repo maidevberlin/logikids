@@ -65,4 +65,11 @@ docker-compose up -d frontend-prod backend-prod
 echo "✅ Installation complete!"
 echo "🌐 Frontend is available at http://localhost:5174"
 echo "🔌 Backend is available at http://localhost:5176"
-echo "Note: Please log out and log back in for docker group changes to take effect." 
+echo "Note: Please log out and log back in for docker group changes to take effect."
+
+# Ask if user wants to set up Nginx with SSL
+read -p "Would you like to set up Nginx with SSL support? (y/N) " setup_nginx
+if [[ $setup_nginx =~ ^[Yy]$ ]]; then
+    echo "🔒 Setting up Nginx with SSL..."
+    sudo ./setup-nginx.sh
+fi 
