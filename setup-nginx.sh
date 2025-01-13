@@ -18,8 +18,21 @@ if ! command -v nginx &> /dev/null || ! command -v certbot &> /dev/null; then
     apt-get install -y nginx certbot python3-certbot-nginx apache2-utils
 fi
 
-# Prompt for domain name
-read -p "Enter your domain name (e.g., example.com): " DOMAIN_NAME
+# Check for existing domain configuration
+DOMAIN_CONFIG="/etc/nginx/.domain_name"
+if [ -f "$DOMAIN_CONFIG" ]; then
+    DOMAIN_NAME=$(cat "$DOMAIN_CONFIG")
+    echo "📝 Using existing domain: $DOMAIN_NAME"
+    read -p "Would you like to use a different domain? (y/N) " change_domain
+    if [[ $change_domain =~ ^[Yy]$ ]]; then
+        read -p "Enter your domain name (e.g., example.com): " DOMAIN_NAME
+        echo "$DOMAIN_NAME" > "$DOMAIN_CONFIG"
+    fi
+else
+    # Prompt for domain name
+    read -p "Enter your domain name (e.g., example.com): " DOMAIN_NAME
+    echo "$DOMAIN_NAME" > "$DOMAIN_CONFIG"
+fi
 
 # Check if certificate already exists
 if [ -d "/etc/letsencrypt/live/$DOMAIN_NAME" ]; then
@@ -34,13 +47,13 @@ fi
 if [ ! -f "/etc/nginx/.htpasswd" ]; then
     echo "🔐 Setting up password protection..."
     read -p "Enter username for HTTP authentication: " AUTH_USER
-    htpasswd -c /etc/nginx/.htpasswd $AUTH_USER
+    /usr/bin/htpasswd -c /etc/nginx/.htpasswd $AUTH_USER
 else
     echo "🔐 Password protection already configured"
     read -p "Would you like to add/update a user? (y/N) " update_auth
     if [[ $update_auth =~ ^[Yy]$ ]]; then
         read -p "Enter username for HTTP authentication: " AUTH_USER
-        htpasswd /etc/nginx/.htpasswd $AUTH_USER
+        /usr/bin/htpasswd /etc/nginx/.htpasswd $AUTH_USER
     fi
 fi
 
