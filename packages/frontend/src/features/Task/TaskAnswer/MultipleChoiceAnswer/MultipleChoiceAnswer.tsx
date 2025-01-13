@@ -1,11 +1,9 @@
 import { Interactive } from '../../../base/Animations'
 import { Card } from '../../../base/Card'
-import { MultipleChoiceAnswerProps, MultipleChoiceVariant } from './types'
+import { SOFT_VARIANTS, SELECTED_VARIANTS } from '../../../base/types'
+import { MultipleChoiceAnswerProps } from './types'
 import { styles } from './styles'
 import { cn } from '../../../../utils/cn'
-
-const colorVariants: MultipleChoiceVariant[] = ['softBlue', 'softOrange', 'softPurple', 'softTeal']
-const selectedVariants: MultipleChoiceVariant[] = ['selectedBlue', 'selectedOrange', 'selectedPurple', 'selectedTeal']
 
 export function MultipleChoiceAnswer({
   options,
@@ -37,8 +35,8 @@ export function MultipleChoiceAnswer({
           <Card
             variant={
               selectedAnswer === index
-                ? selectedVariants[index % selectedVariants.length]
-                : colorVariants[index % colorVariants.length]
+                ? SELECTED_VARIANTS[index % SELECTED_VARIANTS.length]
+                : SOFT_VARIANTS[index % SOFT_VARIANTS.length]
             }
           >
             <div 

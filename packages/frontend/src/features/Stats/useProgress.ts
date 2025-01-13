@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { UserProgress, StatUpdate } from './types'
 import * as progressService from './progressService'
-import { SubjectId } from '../Subject/types'
 import { Difficulty } from '../Task/types'
 
 export function useProgress() {
@@ -22,17 +21,17 @@ export function useProgress() {
   }, [])
 
   // Get success rate for a subject/difficulty
-  const getSuccessRate = useCallback((subject: SubjectId, difficulty: Difficulty): number => {
+  const getSuccessRate = useCallback((subject: string, difficulty: Difficulty): number => {
     return progressService.getSuccessRate(progress, subject, difficulty)
   }, [progress])
 
   // Get average hints used for a subject/difficulty
-  const getAverageHints = useCallback((subject: SubjectId, difficulty: Difficulty): number => {
+  const getAverageHints = useCallback((subject: string, difficulty: Difficulty): number => {
     return progressService.getAverageHints(progress, subject, difficulty)
   }, [progress])
 
   // Get total tasks completed for a subject/difficulty
-  const getTotalTasks = useCallback((subject: SubjectId, difficulty: Difficulty): number => {
+  const getTotalTasks = useCallback((subject: string, difficulty: Difficulty): number => {
     const stats = progressService.getStats(progress, subject, difficulty)
     return stats.correct + stats.wrong
   }, [progress])

@@ -1,4 +1,3 @@
-import { SubjectId } from "../Subject";
 
 // Task types
 export const TASK_TYPES = {
@@ -14,8 +13,6 @@ export const DIFFICULTIES = [
   'hard'
 ] as const;
 export type Difficulty = typeof DIFFICULTIES[number];
-
-export type Age = number
 
 export interface BaseTask {
   title: string
@@ -46,6 +43,6 @@ export type Task = MultipleChoiceTask | YesNoTask
 // Default values
 export const TASK_DEFAULTS = {
   difficulty: 'medium' as Difficulty,
-  subject: 'math' as SubjectId,
-  age: 10 as Age,
+  subject: 'math',
+  age: 10,
 } as const

@@ -1,8 +1,6 @@
-import { Age } from '../../Task/types'
-
 export interface Settings {
   /** User's age */
-  age: Age
+  age: number
   /** User's name */
   name: string
   /** User's preferred language */

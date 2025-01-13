@@ -7,7 +7,6 @@ import {
 } from './types'
 import { Difficulty } from '../Task/types'
 import { Task } from '../Task/types'
-import { SubjectId } from '../Subject'
 
 const STORAGE_KEY = 'logikids_progress'
 
@@ -36,7 +35,7 @@ const createEmptyProgress = (): UserProgress => ({
 })
 
 // Ensure subject stats exist
-const ensureSubjectStats = (progress: UserProgress, subject: SubjectId): DifficultyStats => {
+const ensureSubjectStats = (progress: UserProgress, subject: string): DifficultyStats => {
   if (!progress.stats[subject]) {
     progress.stats[subject] = createEmptySubjectStats()
   }
@@ -44,7 +43,7 @@ const ensureSubjectStats = (progress: UserProgress, subject: SubjectId): Difficu
 }
 
 // Ensure difficulty stats exist
-const ensureDifficultyStats = (progress: UserProgress, subject: SubjectId, difficulty: Difficulty): TaskStats => {
+const ensureDifficultyStats = (progress: UserProgress, subject: string, difficulty: Difficulty): TaskStats => {
   const subjectStats = ensureSubjectStats(progress, subject)
   if (!subjectStats[difficulty]) {
     subjectStats[difficulty] = createEmptyTaskStats()
@@ -124,7 +123,7 @@ export const updateStats = (
 // Get stats for a specific subject and difficulty
 export const getStats = (
   progress: UserProgress,
-  subject: SubjectId,
+  subject: string,
   difficulty: Difficulty
 ): TaskStats => {
   return ensureDifficultyStats(progress, subject, difficulty)
@@ -133,7 +132,7 @@ export const getStats = (
 // Calculate success rate for a specific subject and difficulty
 export const getSuccessRate = (
   progress: UserProgress,
-  subject: SubjectId,
+  subject: string,
   difficulty: Difficulty
 ): number => {
   const stats = getStats(progress, subject, difficulty)
@@ -144,7 +143,7 @@ export const getSuccessRate = (
 // Calculate average hints used per task
 export const getAverageHints = (
   progress: UserProgress,
-  subject: SubjectId,
+  subject: string,
   difficulty: Difficulty
 ): number => {
   const stats = getStats(progress, subject, difficulty)
