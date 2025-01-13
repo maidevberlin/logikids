@@ -11,12 +11,10 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Install Nginx and Certbot if not already installed
-if ! command -v nginx &> /dev/null || ! command -v certbot &> /dev/null; then
-    echo "📦 Installing Nginx and Certbot..."
-    apt-get update
-    apt-get install -y nginx certbot python3-certbot-nginx apache2-utils
-fi
+# Install required packages if not already installed
+echo "📦 Installing required packages..."
+apt-get update
+apt-get install -y nginx certbot python3-certbot-nginx apache2-utils
 
 # Check for existing domain configuration
 DOMAIN_CONFIG="/etc/nginx/.domain_name"
@@ -47,13 +45,13 @@ fi
 if [ ! -f "/etc/nginx/.htpasswd" ]; then
     echo "🔐 Setting up password protection..."
     read -p "Enter username for HTTP authentication: " AUTH_USER
-    /usr/bin/htpasswd -c /etc/nginx/.htpasswd $AUTH_USER
+    htpasswd -c /etc/nginx/.htpasswd $AUTH_USER
 else
     echo "🔐 Password protection already configured"
     read -p "Would you like to add/update a user? (y/N) " update_auth
     if [[ $update_auth =~ ^[Yy]$ ]]; then
         read -p "Enter username for HTTP authentication: " AUTH_USER
-        /usr/bin/htpasswd /etc/nginx/.htpasswd $AUTH_USER
+        htpasswd /etc/nginx/.htpasswd $AUTH_USER
     fi
 fi
 
