@@ -69,6 +69,11 @@ export default defineConfig({
           });
         }
       }
+    },
+    // Handle client-side routing in development
+    middlewareMode: false,
+    fs: {
+      strict: true,
     }
   },
   preview: {

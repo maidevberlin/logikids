@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import App from '../App'
 
 // Lazy load route features
@@ -8,7 +8,7 @@ const TaskPage = lazy(() => import('../features/Task/TaskPage'))
 const AccountPage = lazy(() => import('../features/Account/AccountPage'))
 const StatsPage = lazy(() => import('../features/Stats/StatsPage'))
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: '/',
     element: <App />,
