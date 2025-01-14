@@ -71,7 +71,25 @@
       "concepts": {
         "patterns": "Pattern Recognition",
         "conditional": "If-Then Logic",
-        "sorting": "Sorting & Grouping"
+        "sorting": "Sorting & Grouping",
+        "sequences": "Logical Sequences",
+        "analogical": "Analogical Thinking",
+        "deductive": "Deductive Reasoning"
+      }
+    },
+    "music": {
+      "label": "Music",
+      "concepts": {
+        "rhythm": "Rhythm Recognition",
+        "melody": "Melody Patterns"
+      }
+    },
+    "physics": {
+      "label": "Physics",
+      "concepts": {
+        "mechanics": "Mechanics",
+        "waves": "Waves",
+        "matter": "Matter"
       }
     },
     "german": {

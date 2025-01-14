@@ -38,11 +38,8 @@ This guide explains how to add new subjects and concepts to the LogiKids platfor
    ```
    Important: 
    - Make sure to add the translations to BOTH files, or the subject/concepts will appear untranslated in one of the languages!
-   - Translation files are cached by the browser. They will be automatically refreshed when a new version is released.
-   - The cache breaker uses the version from `package.json`. When you release a new version:
-     1. Update the version in `package.json`
-     2. Build and deploy the application
-     3. Users will automatically get fresh translations
+   - Translation files are cached by the browser and automatically refreshed when their content changes.
+   - The cache breaker uses an MD5 hash of all translation files, so users will only download new translations when the content actually changes.
    - During development, you might need to do a hard refresh (Ctrl/Cmd + Shift + R) to see translation changes.
 
 2. Add background image:
