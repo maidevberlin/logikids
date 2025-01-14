@@ -91,14 +91,6 @@
         "waves": "Wellen",
         "matter": "Materie"
       }
-    },
-    "german": {
-      "label": "Deutsch",
-      "concepts": {
-        "parts_of_speech": "Wortarten",
-        "spelling": "Rechtschreibung",
-        "reading_comprehension": "Text verstehen"
-      }
     }
   },
   "difficulty": {

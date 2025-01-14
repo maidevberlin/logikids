@@ -26,6 +26,9 @@ const initialLanguage = storedLanguage || getBrowserLanguage() || 'en'
 // Export for use in other parts of the application
 export const getCurrentLanguage = () => i18n.language
 
+// Cache breaker using content hash - only changes when translations change
+const CACHE_BREAKER = import.meta.env.VITE_TRANSLATIONS_HASH
+
 i18n
   // Load translations using http -> see /public/locales
   .use(Backend)
@@ -42,7 +45,7 @@ i18n
     ns: ['common'],
     // Backend configuration for lazy loading
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json?h=' + CACHE_BREAKER,
     },
     interpolation: {
       escapeValue: false, // React already escapes values

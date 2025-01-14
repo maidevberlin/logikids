@@ -5,9 +5,25 @@ This guide explains how to add new subjects and concepts to the LogiKids platfor
 ## Frontend Changes
 
 1. Add translations:
-   - Open `public/locales/de/common.json` and `public/locales/en/common.json`
-   - Add translations for your subject and concepts:
+   - You MUST add translations to BOTH language files:
+     - `public/locales/de/common.json` (German translations)
+     - `public/locales/en/common.json` (English translations)
+   - Add translations for your subject and concepts in BOTH files:
    ```json
+   // English translations (common.json)
+   {
+     "subjects": {
+       "newSubject": {
+         "label": "Subject Name in English",
+         "concepts": {
+           "concept1": "Concept 1 in English",
+           "concept2": "Concept 2 in English"
+         }
+       }
+     }
+   }
+
+   // German translations (common.json)
    {
      "subjects": {
        "newSubject": {
@@ -20,6 +36,14 @@ This guide explains how to add new subjects and concepts to the LogiKids platfor
      }
    }
    ```
+   Important: 
+   - Make sure to add the translations to BOTH files, or the subject/concepts will appear untranslated in one of the languages!
+   - Translation files are cached by the browser. They will be automatically refreshed when a new version is released.
+   - The cache breaker uses the version from `package.json`. When you release a new version:
+     1. Update the version in `package.json`
+     2. Build and deploy the application
+     3. Users will automatically get fresh translations
+   - During development, you might need to do a hard refresh (Ctrl/Cmd + Shift + R) to see translation changes.
 
 2. Add background image:
    - Create a WebP format background image for your subject
