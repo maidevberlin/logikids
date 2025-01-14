@@ -34,4 +34,11 @@ This guide explains how to add new subjects and concepts to the LogiKids platfor
    } as const;
    ```
 
-Note: If a background image is not available for a subject, it will fallback to the default background image (`defaultBg`).
+Note: If a background image is not available for a subject, you should explicitly set it to use the default background:
+```typescript
+const backgrounds = {
+  // ... existing backgrounds
+  newSubject: defaultBg // Fallback to default pattern until subject pattern is available
+} as const;
+```
+This ensures the application won't try to load a non-existent image and will use the default background pattern instead.

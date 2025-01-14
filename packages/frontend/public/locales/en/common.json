@@ -73,6 +73,14 @@
         "conditional": "If-Then Logic",
         "sorting": "Sorting & Grouping"
       }
+    },
+    "german": {
+      "label": "German",
+      "concepts": {
+        "parts_of_speech": "Parts of Speech",
+        "spelling": "Spelling",
+        "reading_comprehension": "Reading Comprehension"
+      }
     }
   },
   "difficulty": {

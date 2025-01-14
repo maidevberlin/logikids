@@ -24,7 +24,8 @@ const backgrounds = {
   math: mathBg,
   logic: logicBg,
   music: musicBg,
-  physics: defaultBg // Fallback to default pattern until physics pattern is available
+  physics: defaultBg, // Fallback to default pattern until physics pattern is available
+  german: defaultBg // Fallback to default pattern until german pattern is available
 } as const
 
 const taskDefaults: TaskRequest = {

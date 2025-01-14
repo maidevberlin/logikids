@@ -9,3 +9,4 @@ export { mathSubject } from './math';
 export { logicSubject } from './logic';
 export { musicSubject } from './music';
 export { physicsSubject } from './physics';
+export { germanSubject } from './german';
