@@ -12,6 +12,7 @@ import { styles as containerStyles } from '../../base/Layout/Container/styles'
 import { Page } from '../../base/Layout'
 import { styles } from './styles'
 import type { TaskPageProps } from './types'
+import { useLastTask } from '../useLastTask'
 
 // Import background patterns
 import mathBg from '../../../assets/math.webp'
@@ -41,7 +42,8 @@ export default function TaskPage({}: TaskPageProps) {
   const { t } = useTranslation()
   const { updateStats } = useProgress()
   const [hintsUsed, setHintsUsed] = useState(0)
-  
+  const { storeLastTask } = useLastTask(taskDefaults)
+
   // Memoize task parameters
   const taskParams = useMemo(() => ({
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
@@ -49,6 +51,11 @@ export default function TaskPage({}: TaskPageProps) {
     concept: (searchParams.get('concept') ?? taskDefaults.concept),
     age: settings.age
   }), [searchParams, settings.age])
+
+  // Store subject and concept when they change
+  useEffect(() => {
+    storeLastTask(taskParams.subject, taskParams.concept)
+  }, [taskParams.subject, taskParams.concept])
   
   const { 
     task, 
