@@ -34,9 +34,9 @@ docker compose up frontend-dev
 docker compose up backend-dev
 ```
 
-- Frontend dev: http://localhost:5173
+- Frontend dev: http://localhost:5153
 - Backend dev: http://localhost:5175
-- Frontend prod: http://localhost:5174
+- Frontend prod: http://localhost:5154
 - Backend prod: http://localhost:5176
 
 ### Testing

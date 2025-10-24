@@ -93,18 +93,18 @@ An innovative educational platform designed to help children aged 8-16 develop l
    # Start only backend
    docker compose up backend-dev
    ```
-   - Frontend will be available at: http://localhost:5173
+   - Frontend will be available at: http://localhost:5153
    - Backend API will be available at: http://localhost:5175
 
 2. **Production Mode**
    ```bash
    # Build and start production services
    docker compose up frontend-prod backend-prod --build
-   
+
    # Start without rebuilding
    docker compose up frontend-prod backend-prod
    ```
-   - Frontend will be available at: http://localhost:5174
+   - Frontend will be available at: http://localhost:5154
    - Backend API will be available at: http://localhost:5176
 
 3. **Docker Commands**

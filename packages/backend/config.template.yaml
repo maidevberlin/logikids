@@ -3,9 +3,8 @@
 server:
   port: 3000
 ai:
-  text:
-    # Available providers: 'ollama' or 'openai'
-    provider: ollama
+  # Available providers: 'ollama', 'openai', or 'anthropic'
+  provider: ollama
 
     # Ollama Configuration (required if provider is 'ollama')
     ollama:
@@ -18,10 +17,28 @@ ai:
     # OpenAI Configuration (required if provider is 'openai')
     openai:
       apiKey: your-api-key-here
-      model: gpt-3.5-turbo
+      model: gpt-5
       temperature: 0.7
       maxTokens: 2000
       topP: 0.9
+    # Available Models (2025):
+    # - gpt-5: Most advanced, best for complex educational content (Released Aug 2025)
+    # - gpt-5-mini: Fast and affordable, recommended for most use cases
+    # - gpt-5-nano: Fastest and most affordable reasoning model
+    # - gpt-4.1: Improved instruction-following, cost-effective alternative (Released Apr 2025)
+    # - gpt-4.1-mini: Good balance of performance and cost
+    # - gpt-4.1-nano: Most affordable option
+
+    # Anthropic Configuration (required if provider is 'anthropic')
+    anthropic:
+      apiKey: your-anthropic-api-key-here
+      model: claude-3-5-sonnet-20241022
+      maxTokens: 4096
+      temperature: 0.7
+    # Available Models:
+    # - claude-3-5-sonnet-20241022: Best balance of intelligence and speed (Recommended)
+    # - claude-3-5-haiku-20241022: Fastest model, great for simple tasks
+    # - claude-3-opus-20240229: Most capable, slower but highest quality
 
   image:
     # Available providers: 'ollama' or 'openai'

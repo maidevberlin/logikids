@@ -4,7 +4,7 @@ services:
       context: ./packages/frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "5173:80"
+      - "5153:80"
     volumes:
       - ./packages/frontend:/app
     environment:
@@ -17,7 +17,7 @@ services:
       context: ./packages/frontend
       dockerfile: Dockerfile.prod
     ports:
-      - "5174:80"
+      - "5154:80"
     environment:
       - NODE_ENV=production
     networks:

@@ -8,13 +8,13 @@ export interface GenerateOptions {
 export interface GenerateResponse {
   response: string;
   context?: unknown;
-  provider: 'ollama' | 'openai';
+  provider: 'ollama' | 'openai' | 'anthropic';
   model: string;
 }
 
 export abstract class AIClient {
   constructor(
-    public readonly provider: 'ollama' | 'openai',
+    public readonly provider: 'ollama' | 'openai' | 'anthropic',
     public readonly model: string
   ) {}
 
