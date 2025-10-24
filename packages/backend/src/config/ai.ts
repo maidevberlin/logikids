@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export type AIProvider = 'ollama' | 'openai';
+export type AIProvider = 'ollama' | 'openai' | 'anthropic';
 
 export interface OllamaConfig {
   host: string;
@@ -12,10 +12,18 @@ export interface OpenAIConfig {
   model: string;
 }
 
+export interface AnthropicConfig {
+  apiKey: string;
+  model: string;
+  maxTokens?: number;
+  temperature?: number;
+}
+
 export interface AIConfig {
   provider: AIProvider;
   ollama?: OllamaConfig;
   openai?: OpenAIConfig;
+  anthropic?: AnthropicConfig;
 }
 
 const ollamaSchema = z.object({
@@ -28,10 +36,18 @@ const openaiSchema = z.object({
   model: z.string(),
 });
 
+const anthropicSchema = z.object({
+  apiKey: z.string(),
+  model: z.string(),
+  maxTokens: z.number().optional(),
+  temperature: z.number().optional(),
+});
+
 export const aiConfigSchema = z.object({
-  provider: z.enum(['ollama', 'openai']),
+  provider: z.enum(['ollama', 'openai', 'anthropic']),
   ollama: ollamaSchema.optional(),
   openai: openaiSchema.optional(),
+  anthropic: anthropicSchema.optional(),
 });
 
 // Default configuration

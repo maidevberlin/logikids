@@ -9,5 +9,8 @@
     "dev": "docker compose up frontend-dev backend-dev",
     "prod": "docker compose up frontend-prod backend-prod",
     "build": "docker compose build"
+  },
+  "comments": {
+    "ports": "Frontend dev: 5153, Frontend prod: 5154, Backend dev: 5175, Backend prod: 5176"
   }
 } 
