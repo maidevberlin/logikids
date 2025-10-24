@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import taskRouter from './tasks/router';
 import { errorHandler } from './common/middleware/errorHandler';
+import { cacheCleanupService } from './tasks/cacheCleanup';
 
 // Load configuration
 const configPath = path.join(__dirname, '../config.yaml');
@@ -19,6 +20,22 @@ app.use('/api/task', taskRouter);
 
 // Error handling
 app.use(errorHandler);
+
+// Start cache cleanup job
+cacheCleanupService.start();
+
+// Cleanup on shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, cleaning up...');
+  cacheCleanupService.stop();
+  process.exit(0);
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received, cleaning up...');
+  cacheCleanupService.stop();
+  process.exit(0);
+});
 
 // Start server if not imported as module
 if (import.meta.url === `file://${process.argv[1]}`) {

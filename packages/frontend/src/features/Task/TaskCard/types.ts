@@ -13,4 +13,9 @@ export interface TaskCardProps {
   onNextTask: () => void
   onDifficultyChange: (difficulty: Difficulty) => void
   onHintUsed: () => void
+  hints: string[]
+  requestHint: () => void
+  hintLoading: boolean
+  hintError: string | null
+  canRequestHint: boolean
 }

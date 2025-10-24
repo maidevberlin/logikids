@@ -15,7 +15,7 @@ const multipleChoiceSchema = z.object({
   type: z.literal('multiple_choice'),
   title: z.string().min(1),
   task: z.string().min(1),
-  hints: z.array(z.string().min(1)).length(4),
+  hints: z.array(z.string().min(1)).length(4).optional(),
   options: z.array(z.object({
     text: z.string().min(1),
     isCorrect: z.boolean(),

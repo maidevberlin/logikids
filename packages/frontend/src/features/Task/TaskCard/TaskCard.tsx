@@ -20,6 +20,11 @@ function TaskCardComponent({
   onNextTask,
   onDifficultyChange,
   onHintUsed,
+  hints,
+  requestHint,
+  hintLoading,
+  hintError,
+  canRequestHint
 }: TaskCardProps) {
 
   if (error) {
@@ -49,7 +54,7 @@ function TaskCardComponent({
               options: [],
               title: '',
               task: '',
-              hints: []
+              taskId: ''
             }}
             selectedAnswer={null}
             isLoading={true}
@@ -58,6 +63,11 @@ function TaskCardComponent({
             onAnswerSubmit={() => {}}
             onNextTask={() => {}}
             onHintUsed={() => {}}
+            hints={[]}
+            requestHint={() => {}}
+            hintLoading={false}
+            hintError={null}
+            canRequestHint={false}
           />
         </div>
       </Card>
@@ -89,6 +99,11 @@ function TaskCardComponent({
             onAnswerSubmit={onAnswerSubmit}
             onNextTask={onNextTask}
             onHintUsed={onHintUsed}
+            hints={hints}
+            requestHint={requestHint}
+            hintLoading={hintLoading}
+            hintError={hintError}
+            canRequestHint={canRequestHint}
           />
         </div>
       </Card>

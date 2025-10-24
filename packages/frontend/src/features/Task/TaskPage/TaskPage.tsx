@@ -57,15 +57,20 @@ export default function TaskPage({}: TaskPageProps) {
     storeLastTask(taskParams.subject, taskParams.concept)
   }, [taskParams.subject, taskParams.concept])
   
-  const { 
-    task, 
+  const {
+    task,
     isLoading,
     error,
     selectedAnswer,
     isCorrect,
     checkAnswer,
     selectAnswer,
-    nextTask
+    nextTask,
+    hints,
+    requestHint,
+    hintLoading,
+    hintError,
+    canRequestHint
   } = useTask(taskParams)
 
   // Reset answer and hints when task parameters change
@@ -133,10 +138,20 @@ export default function TaskPage({}: TaskPageProps) {
     onNextTask: nextTask,
     onDifficultyChange: handleDifficultyChange,
     onHintUsed: handleHintUsed,
+    hints,
+    requestHint,
+    hintLoading,
+    hintError,
+    canRequestHint,
   }), [
     isLoading,
     task,
     selectedAnswer,
+    hints,
+    requestHint,
+    hintLoading,
+    hintError,
+    canRequestHint,
     taskParams.difficulty,
     taskParams.subject,
     error,

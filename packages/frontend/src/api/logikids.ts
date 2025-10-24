@@ -22,6 +22,13 @@ export const taskRequestSchema = z.object({
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;
 
+// Hint response type
+export interface HintResponse {
+  hint: string;
+  hintNumber: number;
+  totalHintsAvailable: number;
+}
+
 export const logikids = {
   getSubjects: (signal?: AbortSignal): ApiResponse<Subject[]> => {
     return api.get<void, Subject[]>('/task/subjects', {
@@ -63,6 +70,33 @@ export const logikids = {
         throw error;
       }
       throw new LogikidsApiError(error.message || 'Failed to fetch task');
+    });
+  },
+
+  getHint: (taskId: string, signal?: AbortSignal): ApiResponse<HintResponse> => {
+    return api.post<void, HintResponse>(`/task/${taskId}/hint`, undefined, {
+      signal,
+      headers: {
+        'Accept-Language': getCurrentLanguage()
+      }
+    })
+    .then(response => {
+      if (!response) {
+        throw new LogikidsApiError('No response received from server');
+      }
+      return response;
+    })
+    .catch((error) => {
+      if (error.response?.status === 404) {
+        throw new LogikidsApiError('Task not found or expired');
+      }
+      if (error.response?.status === 429) {
+        throw new LogikidsApiError('All hints have been used');
+      }
+      if (error instanceof LogikidsApiError) {
+        throw error;
+      }
+      throw new LogikidsApiError(error.message || 'Failed to fetch hint');
     });
   }
 }; 

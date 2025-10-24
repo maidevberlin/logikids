@@ -17,6 +17,10 @@ interface HintSectionProps {
   hints: string[]
   hasWrongAnswer?: boolean
   onHintUsed?: () => void
+  requestHint?: () => void
+  hintLoading?: boolean
+  hintError?: string | null
+  canRequestHint?: boolean
 }
 
 const HINT_ICONS = [
@@ -26,16 +30,19 @@ const HINT_ICONS = [
   { icon: CheckCircleIcon }
 ]
 
-export function HintSection({ 
-  hints, 
+export function HintSection({
+  hints,
   hasWrongAnswer = false,
-  onHintUsed 
+  onHintUsed,
+  requestHint,
+  hintLoading = false,
+  hintError = null,
+  canRequestHint = true
 }: HintSectionProps) {
-  const [visibleHints, setVisibleHints] = useState(0)
   const [shouldGlowHint, setShouldGlowHint] = useState(false)
   const [wrongAnswerCount, setWrongAnswerCount] = useState(0)
-  const hasMoreHints = visibleHints < hints.length
-  const hasHints = hints.length > 0
+  const hasMoreHints = canRequestHint
+  const hasHints = hints.length > 0 || hasMoreHints
 
   // Track wrong answers
   useEffect(() => {
@@ -46,20 +53,20 @@ export function HintSection({
 
   // Auto-show hint after wrong answer
   useEffect(() => {
-    if (wrongAnswerCount > 0 && hasMoreHints) {
+    if (wrongAnswerCount > 0 && hasMoreHints && requestHint) {
       // Start glowing immediately when wrong answer is given
       setShouldGlowHint(true)
-      
-      // Show hint automatically after a short delay
+
+      // Request hint automatically after a short delay
       const showHintTimer = setTimeout(() => {
-        setVisibleHints(prev => prev + 1)
+        requestHint()
         setShouldGlowHint(false)
         onHintUsed?.()
       }, HINT_TIMING.delay)
 
       return () => clearTimeout(showHintTimer)
     }
-  }, [wrongAnswerCount, hasMoreHints, onHintUsed])
+  }, [wrongAnswerCount, hasMoreHints, onHintUsed, requestHint])
 
   // Start glowing after period of inactivity
   useEffect(() => {
@@ -76,10 +83,18 @@ export function HintSection({
     return null
   }
 
+  const handleRequestHint = () => {
+    if (requestHint) {
+      requestHint()
+      setShouldGlowHint(false)
+      onHintUsed?.()
+    }
+  }
+
   return (
     <div className={styles.base}>
-      <FadeInOut show={visibleHints > 0} className={styles.list}>
-        {hints.slice(0, visibleHints).map((hint, index) => {
+      <FadeInOut show={hints.length > 0} className={styles.list}>
+        {hints.map((hint, index) => {
           const { icon: IconComponent } = HINT_ICONS[index] || HINT_ICONS[0]
           const variant = ((index % 4) + 1) as 1 | 2 | 3 | 4
           return (
@@ -99,18 +114,25 @@ export function HintSection({
           )
         })}
       </FadeInOut>
-      
+
+      {hintError && (
+        <div className="text-red-500 text-sm text-center mb-2">
+          {hintError}
+        </div>
+      )}
+
       <div className="flex justify-center">
         <HintButton
-          onClick={() => {
-            setVisibleHints(prev => prev + 1)
-            setShouldGlowHint(false)
-            onHintUsed?.()
-          }}
-          disabled={!hasMoreHints}
+          onClick={handleRequestHint}
+          disabled={!hasMoreHints || hintLoading}
           shouldGlow={shouldGlowHint && hasMoreHints}
-          isFirstHint={visibleHints === 0}
+          isFirstHint={hints.length === 0}
         />
+        {hintLoading && (
+          <div className="ml-2 text-sm text-gray-500 flex items-center">
+            Loading hint...
+          </div>
+        )}
       </div>
     </div>
   )

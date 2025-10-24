@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import i18n from '../../i18n/config';
 import { logikids } from '../../api/logikids';
@@ -10,6 +10,8 @@ import { TaskRequest } from '../../api/logikids';
 export const useTask = (params: TaskRequest) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [hints, setHints] = useState<string[]>([]);
+  const [hintError, setHintError] = useState<string | null>(null);
   const resetTimeoutRef = useRef<number>();
 
   const {
@@ -26,6 +28,32 @@ export const useTask = (params: TaskRequest) => {
     refetchOnReconnect: false,
     staleTime: Infinity,
   });
+
+  // Hint mutation
+  const hintMutation = useMutation({
+    mutationFn: () => {
+      if (!task?.taskId) {
+        throw new Error('No task ID available');
+      }
+      return logikids.getHint(task.taskId);
+    },
+    onSuccess: (data) => {
+      setHints(prev => [...prev, data.hint]);
+      setHintError(null);
+    },
+    onError: (error) => {
+      console.error('Failed to fetch hint:', error);
+      setHintError(error instanceof Error ? error.message : 'Failed to fetch hint');
+    }
+  });
+
+  // Reset hints when task changes
+  useEffect(() => {
+    if (task) {
+      setHints([]);
+      setHintError(null);
+    }
+  }, [task?.taskId]);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -103,6 +131,12 @@ export const useTask = (params: TaskRequest) => {
     }
   }, [task]);
 
+  const requestHint = useCallback(() => {
+    if (hints.length < 4 && !hintMutation.isPending) {
+      hintMutation.mutate();
+    }
+  }, [hints.length, hintMutation]);
+
   return {
     task,
     isLoading: isLoading || isFetching,
@@ -112,6 +146,11 @@ export const useTask = (params: TaskRequest) => {
     explanation: getExplanation(),
     checkAnswer,
     selectAnswer,
-    nextTask
+    nextTask,
+    hints,
+    requestHint,
+    hintLoading: hintMutation.isPending,
+    hintError,
+    canRequestHint: hints.length < 4 && !hintMutation.isPending
   };
 }; 

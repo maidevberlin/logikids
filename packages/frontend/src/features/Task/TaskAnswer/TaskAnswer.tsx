@@ -26,6 +26,11 @@ function TaskAnswerComponent<T extends Task>({
   onAnswerSubmit,
   onNextTask,
   onHintUsed,
+  hints,
+  requestHint,
+  hintLoading,
+  hintError,
+  canRequestHint,
 }: TaskAnswerProps<T>) {
   const { t } = useTranslation()
   const [showFeedback, setShowFeedback] = useState(false)
@@ -164,9 +169,13 @@ function TaskAnswerComponent<T extends Task>({
           <div className={styles.hintRow}>
             <div className={styles.spacer} />
             <HintSection
-              hints={task.hints}
+              hints={hints}
               hasWrongAnswer={isCorrect === false}
               onHintUsed={onHintUsed}
+              requestHint={requestHint}
+              hintLoading={hintLoading}
+              hintError={hintError}
+              canRequestHint={canRequestHint}
             />
             <div className={styles.skipContainer}>
               <SkipLink onClick={onNextTask} />

@@ -14,7 +14,7 @@ const yesNoSchema = z.object({
   type: z.literal('yes_no'),
   title: z.string().min(1),
   task: z.string().min(1),
-  hints: z.array(z.string().min(1)).length(4),
+  hints: z.array(z.string().min(1)).length(4).optional(),
   solution: z.object({
     answer: z.boolean(),
     explanation: z.string().min(1)

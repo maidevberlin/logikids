@@ -4,7 +4,8 @@ export interface TaskResponse {
   type: string;
   title: string;
   task: string;
-  hints: string[];
+  hints?: string[];
+  taskId?: string;
 }
 
 export const TASK_TYPES = {

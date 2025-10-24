@@ -15,9 +15,10 @@ export const DIFFICULTIES = [
 export type Difficulty = typeof DIFFICULTIES[number];
 
 export interface BaseTask {
+  taskId: string
   title: string
   task: string
-  hints: string[]
+  hints?: string[]
   type: TaskType
 }
 
