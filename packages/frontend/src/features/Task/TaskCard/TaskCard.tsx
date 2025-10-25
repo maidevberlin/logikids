@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { Card } from '../../base/Card'
 import { ErrorDisplay } from '../../base/Error/ErrorDisplay'
 import { Heading } from '../../base/Typography/Heading'
+import { MarkdownRenderer } from '../../../components/MarkdownRenderer'
 import { cn } from '../../../utils/cn'
 import { TaskAnswer } from '../TaskAnswer'
 import { TaskCardProps } from './types'
@@ -85,9 +86,12 @@ function TaskCardComponent({
               onChange={onDifficultyChange}
             />
           </div>
-          <div 
+          <MarkdownRenderer
+            content={task.task}
             className={styles.task}
-            dangerouslySetInnerHTML={{ __html: task.task }} 
+            enableMath={true}
+            enableMermaid={true}
+            enableCode={true}
           />
           
           <TaskAnswer
