@@ -11,13 +11,15 @@ interface HintButtonProps {
   disabled: boolean
   shouldGlow: boolean
   isFirstHint: boolean
+  isLoading?: boolean
 }
 
-export function HintButton({ 
-  onClick, 
+export function HintButton({
+  onClick,
   disabled,
   shouldGlow,
-  isFirstHint
+  isFirstHint,
+  isLoading = false
 }: HintButtonProps): ReactElement {
   const { t } = useTranslation()
   const [isShaking] = useShake()
@@ -34,13 +36,19 @@ export function HintButton({
         isGlowing && styles.glow
       )}
     >
-      <LightBulbIcon className={cn(
-        styles.icon,
-        shouldGlow && styles.glow
-      )} />
-      <span>
-        {isFirstHint ? t('task.getHint') : t('task.getAnotherHint')}
-      </span>
+      {isLoading ? (
+        <div className="animate-spin rounded-full border-2 border-amber-500 border-t-transparent w-5 h-5" />
+      ) : (
+        <>
+          <LightBulbIcon className={cn(
+            styles.icon,
+            shouldGlow && styles.glow
+          )} />
+          <span>
+            {isFirstHint ? t('task.getHint') : t('task.getAnotherHint')}
+          </span>
+        </>
+      )}
     </button>
   )
 } 

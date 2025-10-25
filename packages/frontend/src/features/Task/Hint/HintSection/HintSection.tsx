@@ -127,12 +127,8 @@ export function HintSection({
           disabled={!hasMoreHints || hintLoading}
           shouldGlow={shouldGlowHint && hasMoreHints}
           isFirstHint={hints.length === 0}
+          isLoading={hintLoading}
         />
-        {hintLoading && (
-          <div className="ml-2 text-sm text-gray-500 flex items-center">
-            Loading hint...
-          </div>
-        )}
       </div>
     </div>
   )
