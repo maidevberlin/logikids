@@ -1,7 +1,7 @@
 import {TaskRequest, TaskGenerationParams} from './types';
 import {TaskResponse, BaseTaskResponse} from './types';
 import {AIClient} from '../common/ai/base';
-import {PromptBuilder} from './utils/promptBuilder';
+import {PromptBuilder} from './prompt.builder';
 import {PromptLoader} from './loader';
 import {taskTypeRegistry} from './types/registry';
 import {v4 as uuidv4} from 'uuid';
@@ -84,11 +84,11 @@ export class TaskService {
         const aiDuration = Date.now() - aiStartTime;
         console.log(`[TaskService] Structured response received in ${aiDuration}ms`);
 
-        // Generate taskId and add metadata to response
+        // Generate taskId and add to response
+        // Note: type is already correctly set in validatedResponse by the schema
         const taskId = uuidv4();
         const responseWithType = {
             ...validatedResponse,
-            type: selectedTaskType.id,
             taskId
         } as TaskResponse;
         console.log('[TaskService] Task ID generated:', taskId);
