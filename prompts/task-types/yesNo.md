@@ -4,6 +4,11 @@ name: Yes/No
 description: A task that can be answered with yes or no
 ---
 
+## FORMATTING INSTRUCTIONS
+- Use Markdown formatting for all text
+- For math formulas, use LaTeX syntax: $x^2$ for inline, $$\frac{a}{b}$$ for block equations
+- For tables, use Markdown table syntax: | Col1 | Col2 |
+
 ## TASK CREATION GUIDELINES
 
 ### CREATE TASK TITLE AND DESCRIPTION
@@ -11,7 +16,7 @@ description: A task that can be answered with yes or no
    - Create a question that can ONLY be answered with Yes or No
    - Include ALL necessary information for solving
    - Use simple, age-appropriate language
-   - Format in HTML for readability
+   - Use Markdown formatting for readability
    - Make the question unambiguous with a clear correct answer
 
 ### CREATE THE SOLUTION
