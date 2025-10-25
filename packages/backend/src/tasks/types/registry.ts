@@ -20,8 +20,7 @@ export class TaskTypeRegistry {
            typeof obj.name === 'string' &&
            typeof obj.description === 'string' &&
            typeof obj.promptTemplate === 'string' &&
-           typeof obj.responseSchema === 'object' &&
-           typeof obj.validateResponse === 'function';
+           typeof obj.jsonSchema === 'object';
   }
 
   public static getInstance(): TaskTypeRegistry {

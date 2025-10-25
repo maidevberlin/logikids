@@ -7,6 +7,7 @@ import { registry as taskTypeRegistry } from './types/registry';
 import { BaseSubject } from './subjects/base';
 import { v4 as uuidv4 } from 'uuid';
 import { taskCache, TaskContext } from './taskCache';
+import { hintSchema } from './schemas.ts';
 
 export class TaskService {
   constructor(private readonly aiClient: AIClient) {}
@@ -61,46 +62,27 @@ export class TaskService {
     };
 
     console.log('[TaskService] Building prompt with params:', params);
-    const finalPrompt = promptBuilder.buildPrompt(params) + '\n\n## CRITICAL: DO NOT GENERATE HINTS\nDo not include the "hints" field in your response. Omit it entirely from the JSON.';
-    console.log('[TaskService] Prompt built (no hints), length:', finalPrompt.length, 'chars');
+    const finalPrompt = promptBuilder.buildPrompt(params);
+    console.log('[TaskService] Prompt built, length:', finalPrompt.length, 'chars');
 
-    // Generate the task using AI
-    console.log('[TaskService] Calling AI client...');
+    // Generate the task using AI with structured output
+    console.log('[TaskService] Calling AI client with structured generation...');
     const aiStartTime = Date.now();
-    const response = await this.aiClient.generate(finalPrompt);
+    const validatedResponse = await this.aiClient.generateStructured(
+      finalPrompt,
+      selectedTaskType.jsonSchema
+    );
     const aiDuration = Date.now() - aiStartTime;
-    console.log(`[TaskService] AI response received in ${aiDuration}ms`);
+    console.log(`[TaskService] Structured response received in ${aiDuration}ms`);
 
-    if (!response?.response) {
-      throw new Error('Failed to generate task: No response from AI');
-    }
-    console.log('[TaskService] Response length:', response.response.length, 'chars');
-
-    // Parse and validate the response
-    console.log('[TaskService] Parsing JSON response...');
-    const parsedResponse = AIClient.extractJSON(response.response);
-    if (!parsedResponse) {
-      console.error('[TaskService] Failed to parse response:', response.response.substring(0, 200));
-      throw new Error('Failed to parse AI response as JSON');
-    }
-    console.log('[TaskService] JSON parsed successfully');
-
-    // Generate taskId and add to response
+    // Generate taskId and add metadata to response
     const taskId = uuidv4();
     const responseWithType = {
-      ...parsedResponse,
+      ...validatedResponse,
       type: selectedTaskType.id,
       taskId
-    };
-
-    // Validate the response using the task type's validator
-    console.log('[TaskService] Validating response...');
-    const isValid = selectedTaskType.validateResponse(responseWithType);
-    if (!isValid) {
-      console.error('[TaskService] Validation failed for response:', responseWithType);
-      throw new Error('Generated task does not match the expected format');
-    }
-    console.log('[TaskService] Validation passed');
+    } as TaskResponse;
+    console.log('[TaskService] Task ID generated:', taskId);
 
     // Store context in cache for hint generation
     const taskContext: TaskContext = {
@@ -167,34 +149,27 @@ export class TaskService {
         difficulty: context.difficulty,
         language: context.language,
         task: context.generatedTask,
-        solution: context.solution
+        solution: context.solution,
+        hintsGenerated: context.hintsGenerated
       },
       hintNumber
     );
 
     console.log('[TaskService] Hint prompt built, length:', hintPrompt.length);
 
-    // Generate hint
+    // Generate hint using structured output
     const aiStartTime = Date.now();
-    const response = await this.aiClient.generate(hintPrompt);
+    const response = await this.aiClient.generateStructured<{ hint: string }>(hintPrompt, hintSchema);
     const aiDuration = Date.now() - aiStartTime;
     console.log(`[TaskService] Hint generated in ${aiDuration}ms`);
 
-    if (!response?.response) {
-      throw new Error('Failed to generate hint: No response from AI');
-    }
-
-    // Parse hint from response
-    const parsedResponse = AIClient.extractJSON(response.response);
-    const hint = parsedResponse?.hint || response.response;
-
     // Store hint in cache
-    context.hintsGenerated.push(hint);
+    context.hintsGenerated.push(response.hint);
     taskCache.set(taskId, context);
     console.log('[TaskService] Hint stored in cache, total hints:', context.hintsGenerated.length);
 
     return {
-      hint,
+      hint: response.hint,
       hintNumber,
       totalHintsAvailable: 4
     };

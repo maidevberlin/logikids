@@ -38,8 +38,7 @@ Focus on creating clear musical examples with step-by-step understanding and pra
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
 2. ✓ No HTML formatting errors
-3. ✓ JSON structure is valid
-4. ✓ Musical examples are clear and appropriate`;
+3. ✓ Musical examples are clear and appropriate`;
 
   public readonly concepts: Record<string, Concept> = {
     rhythm: {

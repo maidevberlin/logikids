@@ -1,70 +1,78 @@
-import { z } from 'zod';
-import { BaseTaskType, TaskResponse } from './base';
+import {BaseTaskType, TaskResponse} from './base';
+import {JSONSchema} from "../../common/ai/base.ts";
 
-interface YesNoSolution {
+export interface YesNoSolution {
   answer: boolean;
   explanation: string;
 }
 
-interface YesNoResponse extends TaskResponse {
+export interface YesNoResponse extends TaskResponse {
+  type: 'yes_no';
   solution: YesNoSolution;
 }
 
-const yesNoSchema = z.object({
-  type: z.literal('yes_no'),
-  title: z.string().min(1),
-  task: z.string().min(1),
-  hints: z.array(z.string().min(1)).length(4).optional(),
-  solution: z.object({
-    answer: z.boolean(),
-    explanation: z.string().min(1)
-  })
-});
+export const yesNoSchema: JSONSchema = {
+    type: 'object',
+    properties: {
+        type: {
+            type: 'string',
+            const: 'yes_no'
+        },
+        title: {
+            type: 'string',
+            minLength: 1
+        },
+        task: {
+            type: 'string',
+            minLength: 1
+        },
+        solution: {
+            type: 'object',
+            properties: {
+                answer: {
+                    type: 'boolean'
+                },
+                explanation: {
+                    type: 'string',
+                    minLength: 1
+                }
+            },
+            required: ['answer', 'explanation'],
+            additionalProperties: false
+        }
+    },
+    required: ['type', 'title', 'task', 'solution'],
+    additionalProperties: false
+};
 
 export class YesNoType extends BaseTaskType<YesNoResponse> {
   readonly id = 'yes_no';
   readonly name = 'Yes/No';
   readonly description = 'A task that can be answered with yes or no';
-  readonly responseSchema = yesNoSchema;
+  readonly jsonSchema = yesNoSchema;
   readonly promptTemplate = `
-## Task Creation Guidelines for Yes/No Questions
-Age: {{age}} | Difficulty: {{difficulty}}
+## TASK CREATION GUIDELINES
 
-1. TASK STRUCTURE
-   - Write a clear, focused question that can be answered with Yes or No
+### CREATE TASK TITLE AND DESCRIPTION
+   - Write a clear, focused, creative title
+   - Create a question that can ONLY be answered with Yes or No
    - Include ALL necessary information for solving
    - Use simple, age-appropriate language
    - Format in HTML for readability
-   - Question should be unambiguous with a clear correct answer
+   - Make the question unambiguous with a clear correct answer
 
-2. SOLUTION STRUCTURE [CRITICAL]
-   - Answer must be strictly true or false
-   - Provide a detailed explanation of why the answer is correct
+### CREATE THE SOLUTION
+   - Set answer to true (for Yes) or false (for No)
+   - Provide a detailed explanation of WHY this answer is correct
    - Include key reasoning points
    - Reference specific details from the question
+   - Make the explanation educational and clear
 
-3. HINTS STRUCTURE
-   - Create 4 progressive hints:
-     1. General approach/starting point
-     2. Key concept to focus on
-     3. Major step in reasoning
-     4. Everything except final answer
-
-## Response Template (JSON)
-{
-  "title": "Clear, descriptive title",
-  "task": "Complete task description in HTML, ending with a clear yes/no question",
-  "solution": {
-    "answer": true,  // or false
-    "explanation": "Detailed explanation of why the answer is correct"
-  },
-  "hints": [
-    "General approach",
-    "Key concept",
-    "Major step",
-    "Almost complete"
-  ]
-}`;
+### ADDITIONAL REQUIREMENTS
+   - The question must have exactly ONE correct answer (true or false)
+   - The explanation should be thorough enough that a student understands the reasoning
+   - Ensure the task is age-appropriate ({{age}} years old) and matches difficulty level ({{difficulty}})
+`;
 }
 
 // Export singleton instance

@@ -25,8 +25,7 @@ Focus on creating clear, engaging story contexts with step-by-step mathematical 
 ## Final Verification Checklist
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
-2. ✓ No HTML formatting errors
-3. ✓ JSON structure is valid`;
+2. ✓ No HTML formatting errors`;
 
   public readonly concepts: Record<string, Concept> = {
     arithmetic: {

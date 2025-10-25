@@ -4,7 +4,7 @@ export interface TaskContext {
   concept: string;
   taskType: string;
   age: number;
-  difficulty: number;
+  difficulty: string;
   language: string;
   generatedTask: string;
   solution: any;

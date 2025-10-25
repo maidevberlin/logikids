@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 export interface TaskResponse {
   type: string;
   title: string;
@@ -15,15 +13,13 @@ export const TASK_TYPES = {
 
 export type TaskTypeId = typeof TASK_TYPES[keyof typeof TASK_TYPES];
 
+// JSON Schema definition (for LLM structured outputs)
+export type JSONSchema = Record<string, unknown>;
+
 export abstract class BaseTaskType<T extends TaskResponse = TaskResponse> {
   abstract readonly id: TaskTypeId;
   abstract readonly name: string;
   abstract readonly description: string;
   abstract readonly promptTemplate: string;
-  abstract readonly responseSchema: z.ZodType<T>;
-
-  validateResponse(response: unknown): response is T {
-    const result = this.responseSchema.safeParse(response);
-    return result.success;
-  }
+  abstract readonly jsonSchema: JSONSchema;
 }

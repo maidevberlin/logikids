@@ -37,8 +37,7 @@ Focus on creating clear scenarios with step-by-step logical deduction and real-w
 ## Final Verification Checklist
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
-2. ✓ No HTML formatting errors
-3. ✓ JSON structure is valid`;
+2. ✓ No HTML formatting errors`;
 
   public readonly concepts: Record<string, Concept> = {
     patterns: {

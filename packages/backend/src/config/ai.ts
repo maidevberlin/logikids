@@ -5,11 +5,17 @@ export type AIProvider = 'ollama' | 'openai' | 'anthropic';
 export interface OllamaConfig {
   host: string;
   model: string;
+  temperature?: number;
+  top_k?: number;
+  top_p?: number;
 }
 
 export interface OpenAIConfig {
   apiKey: string;
   model: string;
+  temperature?: number;
+  maxTokens?: number;
+  topP?: number;
 }
 
 export interface AnthropicConfig {
@@ -29,11 +35,17 @@ export interface AIConfig {
 const ollamaSchema = z.object({
   host: z.string(),
   model: z.string(),
+  temperature: z.number().optional(),
+  top_k: z.number().optional(),
+  top_p: z.number().optional(),
 });
 
 const openaiSchema = z.object({
   apiKey: z.string(),
   model: z.string(),
+  temperature: z.number().optional(),
+  maxTokens: z.number().optional(),
+  topP: z.number().optional(),
 });
 
 const anthropicSchema = z.object({

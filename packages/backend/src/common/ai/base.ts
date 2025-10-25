@@ -12,6 +12,9 @@ export interface GenerateResponse {
   model: string;
 }
 
+// JSON Schema type (standard JSON Schema format)
+export type JSONSchema = Record<string, unknown>;
+
 export abstract class AIClient {
   constructor(
     public readonly provider: 'ollama' | 'openai' | 'anthropic',
@@ -21,18 +24,15 @@ export abstract class AIClient {
   abstract generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse>;
 
   /**
-   * Extracts JSON from a text response if present
-   * @param text The text to extract JSON from
-   * @returns The parsed JSON object or null if no valid JSON found
+   * Generate structured output that conforms to a JSON Schema
+   * @param prompt The prompt to send to the AI
+   * @param schema JSON Schema definition
+   * @param options Optional generation parameters
+   * @returns The validated and parsed response object
    */
-  public static extractJSON(text: string): unknown | null {
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) return null;
-    
-    try {
-      return JSON.parse(jsonMatch[0]);
-    } catch {
-      return null;
-    }
-  }
+  abstract generateStructured<T = unknown>(
+    prompt: string,
+    schema: JSONSchema,
+    options?: GenerateOptions
+  ): Promise<T>;
 } 

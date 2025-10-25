@@ -39,8 +39,7 @@ Focus on creating clear examples with step-by-step learning and practical applic
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
 2. ✓ No HTML formatting errors
-3. ✓ JSON structure is valid
-4. ✓ German grammar and spelling are correct`;
+3. ✓ German grammar and spelling are correct`;
 
   public readonly concepts: Record<string, Concept> = {
     parts_of_speech: {
