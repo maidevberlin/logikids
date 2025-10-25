@@ -131,23 +131,33 @@ Prompts for subjects and task types are stored in markdown files with YAML front
 /prompts/
   subjects/
     {subject-id}/
-      base.md          # Subject metadata + base prompt
+      base.md          # Subject metadata + base prompt + content guidelines
       {concept}.md     # Each concept's prompt
   task-types/
     {task-type}.md     # Task type prompts
+  hints/
+    base.md           # Hint generation prompt
 ```
+
+**Content Format:**
+- All prompts instruct LLM to generate **Markdown** (not HTML)
+- Math formulas: LaTeX syntax with $ (inline) and $$ (block)
+- Code blocks: Fenced code blocks with language: ```python
+- Diagrams: Mermaid syntax in ```mermaid blocks
+- Tables: GitHub Flavored Markdown syntax
+- SVG: Inline <svg> elements for custom graphics
+
+**Subject-Specific Content Guidelines:**
+Each subject's base.md includes guidelines for which content types to use:
+- Math: LaTeX formulas, tables, SVG for geometry
+- Logic: Mermaid diagrams, tables for truth tables
+- Physics: LaTeX formulas, SVG diagrams, tables
+- German/Music: Basic Markdown, tables, emphasis
 
 **Adding a New Concept:**
 1. Create `/prompts/subjects/{subject-id}/{concept-id}.md`
-2. Add YAML frontmatter:
-   ```yaml
-   ---
-   id: concept-id
-   name: Concept Name
-   description: Brief description
-   ---
-   ```
-3. Add prompt template below frontmatter
+2. Add YAML frontmatter with id, name, description
+3. Add Markdown-based prompt template
 4. Changes apply immediately in development (hot-reload)
 5. No code changes needed
 
@@ -184,6 +194,11 @@ Prompts for subjects and task types are stored in markdown files with YAML front
 - React Query for server state (task fetching, caching)
 - React Context for global UI state (in `features/base/`)
 - Local state for component-specific UI
+
+**Markdown Rendering:**
+- MarkdownRenderer component handles all text content
+- Supports LaTeX math (KaTeX), code highlighting, Mermaid diagrams, SVG
+- Replaces all HTML-based rendering (no dangerouslySetInnerHTML)
 
 **Internationalization**:
 - i18next with HTTP backend
@@ -278,6 +293,7 @@ From `.cursorrules`:
 4. **Port conflicts**: Dev services on 5173/5175, prod on 5174/5176
 5. **Bun runtime**: Backend uses Bun, not Node. Use `bun` commands not `npm`
 6. **Task cache expiration**: Task context expires after 30 minutes. Requesting hints for expired tasks returns 404.
+7. **LaTeX syntax**: Math formulas require proper $ and $$ delimiters. Single $ for inline, $$ for block equations.
 
 ## Lazy Hint Generation
 
