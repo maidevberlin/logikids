@@ -10,7 +10,10 @@ description: A task with exactly 4 options where one is correct
    - Write a clear, focused, but creative title
    - Write a complete problem statement using age-appropriate language, concepts, and scenarios
    - Include ALL necessary information for solving the problem
-   - Use HTML formatting to improve readability and structure/highlight important information
+   - Use Markdown formatting to improve readability and structure/highlight important information
+   - For math formulas, use LaTeX syntax: $x^2$ for inline, $$\frac{a}{b}$$ for block equations
+   - For tables, use Markdown table syntax: | Col1 | Col2 |
+   - For code, use fenced code blocks: ```language
 
 ### CREATE THE SOLUTION OPTION
    - Think through the correct answer logically before creating options
