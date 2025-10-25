@@ -32,7 +32,16 @@ Focus on creating clear scenarios with step-by-step logical deduction and real-w
 ## Task Requirements
 {{task_type_template}}
 
+## Content Guidelines
+- Use Markdown formatting for all text
+- Use Mermaid for decision trees and flowcharts: ```mermaid
+- Use Markdown tables for truth tables or logic comparisons
+- Use lists for step-by-step reasoning
+- No math formulas or code blocks needed for logic tasks
+
 ## Final Verification Checklist
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
-2. ✓ No HTML formatting errors
+2. ✓ Markdown is properly formatted
+3. ✓ Mermaid diagrams use correct syntax (if used)
+4. ✓ Tables are properly structured (if used)
