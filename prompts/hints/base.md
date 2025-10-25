@@ -25,4 +25,7 @@ Generate hint #{{hintNumber}} of 4 for a student aged {{age}} working on this {{
 - Difficulty: {{difficulty}}
 - {{progressionGuidance}}
 - Don't reveal the answer directly
-- Return a single helpful hint as plain text
+- Return hint in Markdown format
+- Use LaTeX for math: $x^2$ (inline) or $$\frac{a}{b}$$ (block)
+- Use simple formatting: **bold**, *italic*, lists
+- Keep hints concise and focused
