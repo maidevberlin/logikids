@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { PromptLoader, Subject, Concept } from '../loader';
+import { PromptLoader, Subject, Concept } from './loader.ts';
 
 /**
  * Registry for managing all available subjects

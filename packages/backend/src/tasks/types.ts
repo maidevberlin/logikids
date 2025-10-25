@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { subjectRegistry } from './subjects/registry';
+import { subjectRegistry } from './subject.registry';
 import { taskTypeRegistry } from './types/registry';
 
 // Difficulty Levels
@@ -36,4 +36,7 @@ export interface TaskGenerationParams {
   language: string;
   taskType?: string;
 }
+
+// Re-export task response types for convenience
+export type { TaskResponse, BaseTaskResponse, MultipleChoiceResponse, YesNoResponse } from './types/';
 

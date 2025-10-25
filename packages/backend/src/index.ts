@@ -6,7 +6,7 @@ import path from 'path';
 import taskRouter from './tasks/router';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './tasks/cacheCleanup';
-import { subjectRegistry } from './tasks/subjects/registry';
+import { subjectRegistry } from './tasks/subject.registry';
 import { taskTypeRegistry } from './tasks/types/registry';
 
 // Load configuration

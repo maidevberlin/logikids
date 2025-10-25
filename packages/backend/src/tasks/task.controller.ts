@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { BaseController } from '../common/baseController';
 import { TaskService } from './task.service';
 import { taskRequestSchema, TaskRequest } from './types';
-import { subjectRegistry } from './subjects/registry';
+import { subjectRegistry } from './subject.registry';
 import { taskTypeRegistry } from './types/registry';
 import { AIClient } from '../common/ai/base';
 
