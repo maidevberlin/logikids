@@ -1,6 +1,6 @@
 import { TaskContentProps } from './types'
 import { styles } from './styles'
-import DOMPurify from 'dompurify'
+import { MarkdownRenderer } from '../../../components/MarkdownRenderer'
 
 export function TaskContent({ title, description }: TaskContentProps) {
   return (
@@ -8,9 +8,12 @@ export function TaskContent({ title, description }: TaskContentProps) {
       <h2 className={styles.title}>
         {title}
       </h2>
-      <div 
+      <MarkdownRenderer
+        content={description}
         className={styles.description}
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}
+        enableMath={true}
+        enableMermaid={true}
+        enableCode={true}
       />
     </div>
   )

@@ -1,6 +1,6 @@
 import { FadeInOut } from '../../../base/Animations/FadeInOut'
 import { useTranslation } from 'react-i18next'
-import DOMPurify from 'dompurify'
+import { MarkdownRenderer } from '../../../../components/MarkdownRenderer'
 import { SolutionExplanationProps } from './types'
 import { styles } from './styles'
 
@@ -12,9 +12,12 @@ export function SolutionExplanation({ explanation }: SolutionExplanationProps) {
       <h3 className="text-lg font-medium text-success-800 mb-2">
         {t('task.solutionExplanation')}
       </h3>
-      <div 
+      <MarkdownRenderer
+        content={explanation}
         className={styles.content}
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(explanation) }}
+        enableMath={true}
+        enableMermaid={false}
+        enableCode={false}
       />
     </FadeInOut>
   )
