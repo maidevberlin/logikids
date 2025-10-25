@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import DOMPurify from 'dompurify'
 import { FadeInOut } from '../../../base/Animations/FadeInOut'
 import { HintButton } from '../HintButton'
+import { MarkdownRenderer } from '../../../../components/MarkdownRenderer'
 import { 
   LightBulbIcon, 
   InformationCircleIcon,
@@ -103,12 +103,14 @@ export function HintSection({
                 <div className={styles.item.icon}>
                   <IconComponent className={styles.variants[variant].icon} />
                 </div>
-                <div
-                  className={cn(styles.item.text, styles.variants[variant].text)}
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(hint)
-                  }}
-                />
+                <div className={cn(styles.item.text, styles.variants[variant].text)}>
+                  <MarkdownRenderer
+                    content={hint}
+                    enableMath={true}
+                    enableMermaid={false}
+                    enableCode={false}
+                  />
+                </div>
               </div>
             </div>
           )
