@@ -33,8 +33,16 @@ Focus on creating clear examples with step-by-step learning and practical applic
 ## Task Requirements
 {{task_type_template}}
 
+## Content Guidelines
+- Use Markdown formatting for all text
+- Use **bold** for emphasis on important words
+- Use *italic* for foreign words or book titles
+- Use lists for multiple items or rules
+- Use tables for grammar comparisons
+- No math formulas, code blocks, or diagrams needed
+
 ## Final Verification Checklist
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
-2. ✓ No HTML formatting errors
+2. ✓ Markdown is properly formatted
 3. ✓ German grammar and spelling are correct

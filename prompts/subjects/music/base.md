@@ -32,8 +32,15 @@ Focus on creating clear musical examples with step-by-step understanding and pra
 ## Task Requirements
 {{task_type_template}}
 
+## Content Guidelines
+- Use Markdown formatting for all text
+- Use **bold** for musical terms and concepts
+- Use lists for sequences or scales
+- Use tables for comparing musical elements
+- No math formulas, code blocks, or diagrams needed (unless rhythm notation)
+
 ## Final Verification Checklist
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
-2. ✓ No HTML formatting errors
+2. ✓ Markdown is properly formatted
 3. ✓ Musical examples are clear and appropriate
