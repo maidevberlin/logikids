@@ -2,6 +2,7 @@ import { TaskRequest, TaskGenerationParams } from './types';
 import { TaskResponse } from './types/base';
 import { AIClient } from '../common/ai/base';
 import { PromptBuilder } from './utils/promptBuilder';
+import { PromptLoader } from './loader';
 import { subjectRegistry } from './subjects/registry';
 import { taskTypeRegistry } from './types/registry';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,7 +10,11 @@ import { taskCache, TaskContext } from './taskCache';
 import { hintSchema } from './schemas.ts';
 
 export class TaskService {
-  constructor(private readonly aiClient: AIClient) {}
+  private readonly promptLoader: PromptLoader;
+
+  constructor(private readonly aiClient: AIClient) {
+    this.promptLoader = new PromptLoader();
+  }
 
   public async generateTask(request: TaskRequest, language: string): Promise<TaskResponse> {
     console.log('[TaskService] Starting task generation');
@@ -44,10 +49,15 @@ export class TaskService {
     }
     console.log('[TaskService] Task type loaded:', selectedTaskType.id);
 
-    // Create prompt builder with subject and task type
+    // Load hint prompt
+    const hintPrompt = await this.promptLoader.loadHintPrompt();
+    console.log('[TaskService] Hint prompt loaded:', hintPrompt.id);
+
+    // Create prompt builder with subject, task type, and hint prompt
     const promptBuilder = new PromptBuilder(
       subject,
-      selectedTaskType
+      selectedTaskType,
+      hintPrompt
     );
 
     // Build the prompt with all parameters
@@ -133,10 +143,14 @@ export class TaskService {
       throw new Error(`Task type ${context.taskType} not found`);
     }
 
+    // Load hint prompt template
+    const hintPromptTemplate = await this.promptLoader.loadHintPrompt();
+
     // Build hint prompt
     const promptBuilder = new PromptBuilder(
       subject,
-      taskType
+      taskType,
+      hintPromptTemplate
     );
 
     const hintPrompt = promptBuilder.buildHintPrompt(

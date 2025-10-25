@@ -10,6 +10,7 @@ describe('PromptLoader', () => {
   beforeAll(async () => {
     // Create test prompts directory
     await fs.mkdir(path.join(testPromptsDir, 'subjects', 'test'), { recursive: true });
+    await fs.mkdir(path.join(testPromptsDir, 'hints'), { recursive: true });
 
     // Create test base.md
     await fs.writeFile(
@@ -33,6 +34,18 @@ description: A test concept
 ---
 
 This is the concept prompt template.`
+    );
+
+    // Create test hint prompt
+    await fs.writeFile(
+      path.join(testPromptsDir, 'hints', 'base.md'),
+      `---
+id: hintGeneration
+name: Hint Generation
+description: Template for generating hints
+---
+
+Generate hint #{{hintNumber}} for {{conceptName}}.`
     );
 
     loader = new PromptLoader(testPromptsDir);
@@ -86,5 +99,23 @@ Missing id field`
 
     // Should return same instance from cache
     expect(subject1).toBe(subject2);
+  });
+
+  test('loads hint prompt with valid frontmatter', async () => {
+    const hintPrompt = await loader.loadHintPrompt();
+
+    expect(hintPrompt.id).toBe('hintGeneration');
+    expect(hintPrompt.name).toBe('Hint Generation');
+    expect(hintPrompt.description).toBe('Template for generating hints');
+    expect(hintPrompt.promptTemplate).toContain('{{hintNumber}}');
+    expect(hintPrompt.promptTemplate).toContain('{{conceptName}}');
+  });
+
+  test('caches hint prompt', async () => {
+    const hintPrompt1 = await loader.loadHintPrompt();
+    const hintPrompt2 = await loader.loadHintPrompt();
+
+    // Should return same instance from cache
+    expect(hintPrompt1).toBe(hintPrompt2);
   });
 });

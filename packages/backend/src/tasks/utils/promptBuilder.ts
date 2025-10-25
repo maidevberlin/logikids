@@ -1,5 +1,5 @@
 import { TaskGenerationParams } from '../types';
-import { Subject } from '../loader';
+import { Subject, HintPrompt } from '../loader';
 import { TaskTypeWithSchema } from '../types/registry';
 import { TemplateProcessor } from './template';
 
@@ -14,7 +14,8 @@ const LANGUAGE_NAMES: Record<string, string> = {
 export class PromptBuilder {
   constructor(
     private subject: Subject,
-    private taskType: TaskTypeWithSchema
+    private taskType: TaskTypeWithSchema,
+    private hintPrompt?: HintPrompt
   ) {}
 
   /**
@@ -83,35 +84,38 @@ export class PromptBuilder {
     },
     hintNumber: number
   ): string {
+    // If no hint prompt is provided, use fallback template
+    if (!this.hintPrompt) {
+      throw new Error('Hint prompt template not loaded. Please initialize PromptBuilder with a hint prompt.');
+    }
+
     const languageName = this.formatLanguage(context.language);
     const concept = this.subject.concepts.get(context.concept);
 
     // Build previous hints section if any exist
-    const previousHintsSection = context.hintsGenerated.length > 0
+    const previousHints = context.hintsGenerated.length > 0
       ? `\n## Previously Given Hints\n${context.hintsGenerated.map((hint, idx) => `**Hint ${idx + 1}:** ${hint}`).join('\n\n')}\n`
       : '';
 
-    return `## Context
-You previously generated this task:
+    // Build progression guidance
+    const progressionGuidance = context.hintsGenerated.length > 0
+      ? 'IMPORTANT: Build on the previous hints above. Don\'t repeat information already given. Provide the NEXT level of detail.'
+      : 'Provide a gentle starting point without giving away the answer.';
 
-**Task:** ${context.task}
+    // Prepare variables for template
+    const variables = {
+      task: context.task,
+      solution: JSON.stringify(context.solution, null, 2),
+      previousHints,
+      hintNumber: hintNumber.toString(),
+      age: context.age.toString(),
+      conceptName: concept?.name || context.concept,
+      language: languageName,
+      difficulty: context.difficulty,
+      progressionGuidance,
+    };
 
-**Solution:** ${JSON.stringify(context.solution, null, 2)}
-${previousHintsSection}
-## Your Role
-Generate hint #${hintNumber} of 4 for a student aged ${context.age} working on this ${concept?.name || context.concept} problem.
-
-## Hint Guidelines
-- Hint 1: General approach/starting point (don't give away key insights)
-- Hint 2: Key concept to focus on (builds on hint 1)
-- Hint 3: Major step in reasoning (builds on hints 1 & 2, almost complete guidance)
-- Hint 4: Everything except the final answer (builds on all previous hints)
-
-## Requirements
-- Language: ${languageName}
-- Difficulty: ${context.difficulty}
-- ${context.hintsGenerated.length > 0 ? `IMPORTANT: Build on the previous hints above. Don't repeat information already given. Provide the NEXT level of detail.` : 'Provide a gentle starting point without giving away the answer.'}
-- Don't reveal the answer directly
-- Return a single helpful hint as plain text`;
+    // Use template processor to replace variables
+    return TemplateProcessor.replace(this.hintPrompt.promptTemplate, variables);
   }
 } 

@@ -34,6 +34,17 @@ export const taskTypeFrontmatterSchema = z.object({
 
 export type TaskTypeFrontmatter = z.infer<typeof taskTypeFrontmatterSchema>;
 
+/**
+ * Schema for hint prompt frontmatter metadata
+ */
+export const hintPromptFrontmatterSchema = z.object({
+  id: z.string().min(1, 'Hint prompt id is required'),
+  name: z.string().min(1, 'Hint prompt name is required'),
+  description: z.string().min(1, 'Hint prompt description is required'),
+});
+
+export type HintPromptFrontmatter = z.infer<typeof hintPromptFrontmatterSchema>;
+
 export const hintSchema: JSONSchema = {
   type: 'object',
   properties: {

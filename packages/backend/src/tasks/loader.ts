@@ -6,9 +6,11 @@ import {
   conceptFrontmatterSchema,
   subjectFrontmatterSchema,
   taskTypeFrontmatterSchema,
+  hintPromptFrontmatterSchema,
   ConceptFrontmatter,
   SubjectFrontmatter,
   TaskTypeFrontmatter,
+  HintPromptFrontmatter,
 } from './schemas';
 
 export interface Concept {
@@ -33,6 +35,13 @@ export interface TaskType {
   promptTemplate: string;
 }
 
+export interface HintPrompt {
+  id: string;
+  name: string;
+  description: string;
+  promptTemplate: string;
+}
+
 interface LoadedPrompt<T = any> {
   metadata: T;
   content: string;
@@ -41,6 +50,7 @@ interface LoadedPrompt<T = any> {
 export class PromptLoader {
   private subjectCache = new Map<string, Subject>();
   private taskTypeCache = new Map<string, TaskType>();
+  private hintPromptCache: HintPrompt | null = null;
   private watcher: FSWatcher | null = null;
   private promptsDir: string;
 
@@ -125,6 +135,34 @@ export class PromptLoader {
     this.taskTypeCache.set(taskTypeId, taskType);
 
     return taskType;
+  }
+
+  /**
+   * Load hint prompt from markdown file
+   */
+  async loadHintPrompt(): Promise<HintPrompt> {
+    // Check cache first
+    if (this.hintPromptCache) {
+      return this.hintPromptCache;
+    }
+
+    const hintPromptPath = path.join(this.promptsDir, 'hints', 'base.md');
+    const hintPromptData = await this.parsePromptFile<HintPromptFrontmatter>(
+      hintPromptPath,
+      hintPromptFrontmatterSchema
+    );
+
+    const hintPrompt: HintPrompt = {
+      id: hintPromptData.metadata.id,
+      name: hintPromptData.metadata.name,
+      description: hintPromptData.metadata.description,
+      promptTemplate: hintPromptData.content,
+    };
+
+    // Cache the hint prompt
+    this.hintPromptCache = hintPrompt;
+
+    return hintPrompt;
   }
 
   /**
@@ -216,7 +254,7 @@ export class PromptLoader {
    * Invalidate cache for a specific file path
    */
   private invalidateCache(filePath: string): void {
-    // Determine if it's a subject or task type file
+    // Determine if it's a subject, task type, or hint file
     if (filePath.includes('/subjects/')) {
       // Extract subject id from path
       const match = filePath.match(/\/subjects\/([^/]+)\//);
@@ -233,6 +271,10 @@ export class PromptLoader {
         this.taskTypeCache.delete(taskTypeId);
         console.log(`[PromptLoader] Cache invalidated for task type: ${taskTypeId}`);
       }
+    } else if (filePath.includes('/hints/')) {
+      // Invalidate hint prompt cache
+      this.hintPromptCache = null;
+      console.log(`[PromptLoader] Cache invalidated for hint prompt`);
     }
   }
 }
