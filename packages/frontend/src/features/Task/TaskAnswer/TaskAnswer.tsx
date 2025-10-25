@@ -6,6 +6,7 @@ import { TaskAnswerProps, TaskAnswerType } from './types'
 import { Task, MultipleChoiceTask, YesNoTask } from '../types'
 import { FadeInOut, Sequence, Pulse } from '../../base/Animations'
 import { Feedback } from '../Feedback'
+import { MarkdownRenderer } from '../../../components/MarkdownRenderer'
 import { TaskOption } from '../TaskCard/TaskOption/TaskOption'
 import { useTranslation } from 'react-i18next'
 import { TIMING } from '../constants'
@@ -112,14 +113,31 @@ function TaskAnswerComponent<T extends Task>({
 
       <div className={styles.feedback}>
         <FadeInOut show={showFeedback}>
-          <Feedback 
-            message={isCorrect 
-              ? `${t('feedback.correct')}${getExplanation() ? `\n\n${getExplanation()}` : ''}`
-              : t('feedback.incorrect')
-            }
-            variant={isCorrect ? 'success' : 'error'}
-            showIcon
-          />
+          {isCorrect ? (
+            <div>
+              <Feedback
+                message={t('feedback.correct')}
+                variant="success"
+                showIcon
+              />
+              {getExplanation() && (
+                <div className="mt-2 p-3 bg-green-50 rounded-lg">
+                  <MarkdownRenderer
+                    content={getExplanation()}
+                    enableMath={true}
+                    enableMermaid={false}
+                    enableCode={false}
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            <Feedback
+              message={t('feedback.incorrect')}
+              variant="error"
+              showIcon
+            />
+          )}
         </FadeInOut>
       </div>
       
