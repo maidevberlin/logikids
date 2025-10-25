@@ -95,10 +95,13 @@ packages/
 **Key Components**:
 
 1. **Task Generation System** (`packages/backend/src/tasks/`)
-   - `subjects/registry.ts` - SubjectRegistry loads subjects from `/prompts/subjects/`
+   - `subject.registry.ts` - SubjectRegistry loads subjects from `/prompts/subjects/`
    - `types/registry.ts` - TaskTypeRegistry loads task types from `/prompts/task-types/`
    - `loader.ts` - PromptLoader parses markdown files with YAML frontmatter (using gray-matter)
+   - `prompt.builder.ts` - Builds prompts by combining subject, concept, and task type templates
    - `schemas.ts` - Zod schemas for frontmatter validation
+   - `task.service.ts` - Core task generation service
+   - `task.controller.ts` - Task generation HTTP controller
    - `taskCache.ts` - In-memory cache for task context (30-min TTL)
    - `hint.controller.ts` - On-demand hint generation endpoint
    - `cacheCleanup.ts` - Periodic cache cleanup service
