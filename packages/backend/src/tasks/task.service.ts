@@ -1,10 +1,9 @@
 import { TaskRequest, TaskGenerationParams } from './types';
-import { TaskResponse, BaseTaskType } from './types/base';
+import { TaskResponse } from './types/base';
 import { AIClient } from '../common/ai/base';
 import { PromptBuilder } from './utils/promptBuilder';
-import { registry as subjectRegistry } from './subjects/registry';
-import { registry as taskTypeRegistry } from './types/registry';
-import { BaseSubject } from './subjects/base';
+import { subjectRegistry } from './subjects/registry';
+import { taskTypeRegistry } from './types/registry';
 import { v4 as uuidv4 } from 'uuid';
 import { taskCache, TaskContext } from './taskCache';
 import { hintSchema } from './schemas.ts';
@@ -25,10 +24,10 @@ export class TaskService {
     }
     console.log('[TaskService] Subject loaded:', subjectId);
 
-    // Handle random concept selection
+    // Handle random concept selection using registry methods
     const concept = requestedConcept === 'random'
-      ? subject.getRandomConcept()
-      : subject.getConcept(requestedConcept);
+      ? subjectRegistry.getRandomConcept(subjectId)
+      : subjectRegistry.getConcept(subjectId, requestedConcept);
 
     if (!concept) {
       throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
@@ -47,8 +46,8 @@ export class TaskService {
 
     // Create prompt builder with subject and task type
     const promptBuilder = new PromptBuilder(
-      subject as BaseSubject,
-      selectedTaskType as BaseTaskType
+      subject,
+      selectedTaskType
     );
 
     // Build the prompt with all parameters
@@ -136,8 +135,8 @@ export class TaskService {
 
     // Build hint prompt
     const promptBuilder = new PromptBuilder(
-      subject as BaseSubject,
-      taskType as BaseTaskType
+      subject,
+      taskType
     );
 
     const hintPrompt = promptBuilder.buildHintPrompt(

@@ -95,14 +95,14 @@ packages/
 **Key Components**:
 
 1. **Task Generation System** (`packages/backend/src/tasks/`)
-   - `subjects/` - Subject definitions (math, logic, music, physics)
-   - `types/` - Task type definitions (multiple choice, yes/no)
-   - `subjects/base.ts` - BaseSubject class that all subjects extend
-   - `types/base.ts` - BaseTaskType class with Zod validation
+   - `subjects/registry.ts` - SubjectRegistry loads subjects from `/prompts/subjects/`
+   - `types/registry.ts` - TaskTypeRegistry loads task types from `/prompts/task-types/`
+   - `loader.ts` - PromptLoader parses markdown files with YAML frontmatter (using gray-matter)
+   - `schemas.ts` - Zod schemas for frontmatter validation
    - `taskCache.ts` - In-memory cache for task context (30-min TTL)
    - `hint.controller.ts` - On-demand hint generation endpoint
    - `cacheCleanup.ts` - Periodic cache cleanup service
-   - Both use singleton registries for automatic registration
+   - Registries auto-discover and load prompts on server startup
    - **Lazy Hint Generation**: Initial task generation excludes hints for 70-80% faster response. Hints generated on-demand when requested.
 
 2. **AI Integration** (`packages/backend/src/common/ai/`)
@@ -118,6 +118,53 @@ packages/
    - **Task Response**: Includes `taskId` (required), `hints` field is optional (only in legacy responses)
 
 **Configuration**: Backend requires `packages/backend/config.yaml` (copy from `config.template.yaml`) with AI provider settings.
+
+### Prompt Management
+
+Prompts for subjects and task types are stored in markdown files with YAML frontmatter, separated from code for easier editing:
+
+**Structure:**
+```
+/prompts/
+  subjects/
+    {subject-id}/
+      base.md          # Subject metadata + base prompt
+      {concept}.md     # Each concept's prompt
+  task-types/
+    {task-type}.md     # Task type prompts
+```
+
+**Adding a New Concept:**
+1. Create `/prompts/subjects/{subject-id}/{concept-id}.md`
+2. Add YAML frontmatter:
+   ```yaml
+   ---
+   id: concept-id
+   name: Concept Name
+   description: Brief description
+   ---
+   ```
+3. Add prompt template below frontmatter
+4. Changes apply immediately in development (hot-reload)
+5. No code changes needed
+
+**Editing Prompts:**
+- Edit markdown files directly in `/prompts/` directory
+- No code changes or TypeScript knowledge required
+- Changes apply immediately in development (hot-reload via chokidar)
+- Production requires server restart
+
+**Hot-Reload Limitation:**
+- Hot-reload uses chokidar to watch for file changes
+- On macOS with Docker volumes, file system events may not propagate reliably from host to container
+- If hot-reload doesn't work, restart the backend container: `docker compose restart backend-dev`
+- This is a known limitation of Docker Desktop on macOS
+
+**Validation:**
+- Frontmatter validated on startup with Zod schemas
+- Server fails fast if any prompt is invalid
+- Clear error messages show exactly what's wrong
+- Required fields: `id`, `name`, `description`
 
 ### Frontend Architecture
 
@@ -147,13 +194,21 @@ packages/
 
 ### Adding a New Subject
 
-**Backend** (`packages/backend/src/tasks/subjects/`):
+**Backend** (`prompts/subjects/`):
 
-1. Create `newSubject.ts` extending `BaseSubject`
-2. Define subject metadata (id, name, description, basePromptTemplate)
-3. Define concepts with prompt templates
-4. Export singleton instance
-5. Add export to `subjects/index.ts`
+1. Create directory: `prompts/subjects/new-subject/`
+2. Create `base.md` with frontmatter and base prompt:
+   ```markdown
+   ---
+   id: new-subject
+   name: New Subject
+   description: Description of the subject
+   ---
+
+   Base prompt template with {{placeholders}}
+   ```
+3. Create concept files: `prompts/subjects/new-subject/concept-name.md`
+4. Server auto-discovers new subjects on startup (no code changes needed)
 
 **Frontend**:
 
@@ -175,13 +230,21 @@ See `packages/backend/docs/tasks.md` and `packages/frontend/docs/tasks.md` for d
 
 ### Adding a New Task Type
 
-**Backend** (`packages/backend/src/tasks/types/`):
+**Backend**:
 
-1. Create `newType.ts` extending `BaseTaskType`
-2. Define Zod response schema
-3. Define prompt template for AI generation
-4. Export singleton instance
-5. Add export to `types/index.ts`
+1. Create prompt file: `prompts/task-types/new-type.md`
+   ```markdown
+   ---
+   id: newType
+   name: New Type
+   description: Description of task type
+   ---
+
+   Task creation instructions and prompt template
+   ```
+2. Add JSON schema to `packages/backend/src/tasks/types/newType.ts`
+3. Register schema in `TaskTypeRegistry` schemas map
+4. Server auto-discovers task type on startup
 
 See `packages/backend/docs/tasks.md` for detailed examples.
 

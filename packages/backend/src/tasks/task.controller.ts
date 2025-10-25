@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import { BaseController } from '../common/baseController';
 import { TaskService } from './task.service';
 import { taskRequestSchema, TaskRequest } from './types';
-import { registry as subjectRegistry } from './subjects/registry';
-import { registry as taskTypeRegistry } from './types/registry';
+import { subjectRegistry } from './subjects/registry';
+import { taskTypeRegistry } from './types/registry';
 import { AIClient } from '../common/ai/base';
 
 export class TaskController extends BaseController {
@@ -20,13 +20,13 @@ export class TaskController extends BaseController {
         id: subject.id,
         name: subject.name,
         description: subject.description,
-        concepts: Object.values(subject.concepts).map(concept => ({
+        concepts: Array.from(subject.concepts.values()).map(concept => ({
           id: concept.id,
           name: concept.name,
           description: concept.description
         }))
       }));
-      
+
       res.json(subjects);
     } catch (error) {
       if (error instanceof Error) {
@@ -48,12 +48,11 @@ export class TaskController extends BaseController {
   }
 
   private getRandomConcept(subject: string): string {
-    const subjectInstance = subjectRegistry.get(subject);
-    if (!subjectInstance) {
-      throw new Error('Invalid subject');
+    const concept = subjectRegistry.getRandomConcept(subject);
+    if (!concept) {
+      throw new Error('Invalid subject or no concepts available');
     }
-    const concept = subjectInstance.getRandomConcept().id;
-    return concept;
+    return concept.id;
   }
 
   public async getTask(req: Request, res: Response): Promise<void> {
@@ -78,7 +77,7 @@ export class TaskController extends BaseController {
       if (basicValidation.concept === 'random') {
         basicValidation.concept = this.getRandomConcept(basicValidation.subject);
       } else {
-        const conceptExists = subject.getConcept(basicValidation.concept);
+        const conceptExists = subjectRegistry.getConcept(basicValidation.subject, basicValidation.concept);
         if (!conceptExists) {
           throw new Error('Invalid concept for the selected subject');
         }

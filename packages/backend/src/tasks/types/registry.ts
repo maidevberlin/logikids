@@ -1,42 +1,106 @@
-import { BaseTaskType } from './base';
-import * as taskTypes from './index';
+import * as fs from 'fs/promises';
+import * as path from 'path';
+import { PromptLoader, TaskType } from '../loader';
+import { multipleChoiceSchema } from './multipleChoice';
+import { yesNoSchema } from './yesNo';
+import { JSONSchema } from '../../common/ai/base';
 
+/**
+ * Extended TaskType with JSON schema for validation
+ */
+export interface TaskTypeWithSchema extends TaskType {
+  jsonSchema: JSONSchema;
+}
+
+/**
+ * Registry for managing all available task types
+ */
 export class TaskTypeRegistry {
-  private static instance: TaskTypeRegistry;
-  private taskTypes: Map<string, BaseTaskType> = new Map();
+  private taskTypes = new Map<string, TaskTypeWithSchema>();
+  private loader: PromptLoader;
+  private initialized = false;
 
-  private constructor() {
-    Object.values(taskTypes).forEach(taskType => {
-      if (this.isTaskType(taskType)) {
-        this.taskTypes.set(taskType.id, taskType);
-      }
-    });
+  // Map of task type IDs to their JSON schemas
+  private readonly schemas: Record<string, JSONSchema> = {
+    multipleChoice: multipleChoiceSchema,
+    yesNo: yesNoSchema,
+  };
+
+  constructor(loader?: PromptLoader) {
+    this.loader = loader || new PromptLoader();
   }
 
-  private isTaskType(obj: any): obj is BaseTaskType {
-    return obj &&
-           obj instanceof BaseTaskType &&
-           typeof obj.id === 'string' &&
-           typeof obj.name === 'string' &&
-           typeof obj.description === 'string' &&
-           typeof obj.promptTemplate === 'string' &&
-           typeof obj.jsonSchema === 'object';
-  }
-
-  public static getInstance(): TaskTypeRegistry {
-    if (!TaskTypeRegistry.instance) {
-      TaskTypeRegistry.instance = new TaskTypeRegistry();
+  /**
+   * Initialize registry by loading all task types from /prompts/task-types/
+   */
+  async initialize(): Promise<void> {
+    if (this.initialized) {
+      console.log('[TaskTypeRegistry] Already initialized');
+      return;
     }
-    return TaskTypeRegistry.instance;
+
+    const promptsDir = path.join(process.cwd(), 'prompts');
+    const taskTypesDir = path.join(promptsDir, 'task-types');
+
+    try {
+      // Get all task type markdown files
+      const taskTypeFiles = await fs.readdir(taskTypesDir);
+      const taskTypeIds = taskTypeFiles
+        .filter((file) => file.endsWith('.md'))
+        .map((file) => file.replace('.md', ''));
+
+      console.log(`[TaskTypeRegistry] Loading ${taskTypeIds.length} task types...`);
+
+      // Load each task type
+      for (const taskTypeId of taskTypeIds) {
+        try {
+          const taskType = await this.loader.loadTaskType(taskTypeId);
+
+          // Get the JSON schema for this task type
+          const jsonSchema = this.schemas[taskTypeId];
+          if (!jsonSchema) {
+            throw new Error(`No JSON schema found for task type: ${taskTypeId}`);
+          }
+
+          const taskTypeWithSchema: TaskTypeWithSchema = {
+            ...taskType,
+            jsonSchema,
+          };
+
+          this.taskTypes.set(taskType.id, taskTypeWithSchema);
+          console.log(`[TaskTypeRegistry] Loaded task type: ${taskType.id}`);
+        } catch (error: any) {
+          console.error(`[TaskTypeRegistry] Failed to load task type ${taskTypeId}:`, error.message);
+          throw error; // Fail fast on invalid prompts
+        }
+      }
+
+      this.initialized = true;
+      console.log(`[TaskTypeRegistry] Initialization complete: ${this.taskTypes.size} task types loaded`);
+
+      // Enable hot-reload in development
+      if (process.env.NODE_ENV !== 'production') {
+        this.loader.enableHotReload();
+      }
+    } catch (error: any) {
+      throw new Error(`Failed to initialize TaskTypeRegistry: ${error.message}`);
+    }
   }
 
-  public get(id: string): BaseTaskType | undefined {
+  /**
+   * Get a task type by its ID
+   */
+  get(id: string): TaskTypeWithSchema | undefined {
     return this.taskTypes.get(id);
   }
 
-  public getAll(): BaseTaskType[] {
+  /**
+   * Get all registered task types
+   */
+  getAll(): TaskTypeWithSchema[] {
     return Array.from(this.taskTypes.values());
   }
 }
 
-export const registry = TaskTypeRegistry.getInstance(); 
+// Export singleton instance
+export const taskTypeRegistry = new TaskTypeRegistry(); 

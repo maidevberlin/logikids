@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { registry as subjectRegistry } from './subjects/registry';
-import { registry as taskTypeRegistry } from './types/registry';
+import { subjectRegistry } from './subjects/registry';
+import { taskTypeRegistry } from './types/registry';
 
 // Difficulty Levels
 export const DIFFICULTIES = [

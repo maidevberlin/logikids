@@ -1,6 +1,6 @@
 import { TaskGenerationParams } from '../types';
-import { Subject } from '../subjects/base';
-import { BaseTaskType } from '../types/base';
+import { Subject } from '../loader';
+import { TaskTypeWithSchema } from '../types/registry';
 import { TemplateProcessor } from './template';
 
 const LANGUAGE_NAMES: Record<string, string> = {
@@ -14,7 +14,7 @@ const LANGUAGE_NAMES: Record<string, string> = {
 export class PromptBuilder {
   constructor(
     private subject: Subject,
-    private taskType: BaseTaskType
+    private taskType: TaskTypeWithSchema
   ) {}
 
   /**
@@ -28,7 +28,7 @@ export class PromptBuilder {
    * Build the final prompt by combining templates and replacing variables
    */
   buildPrompt(params: TaskGenerationParams): string {
-    const concept = this.subject.concepts[params.concept];
+    const concept = this.subject.concepts.get(params.concept);
     if (!concept) {
       throw new Error(`Concept ${params.concept} not found in subject ${this.subject.id}`);
     }
@@ -84,7 +84,7 @@ export class PromptBuilder {
     hintNumber: number
   ): string {
     const languageName = this.formatLanguage(context.language);
-    const concept = this.subject.concepts[context.concept];
+    const concept = this.subject.concepts.get(context.concept);
 
     // Build previous hints section if any exist
     const previousHintsSection = context.hintsGenerated.length > 0

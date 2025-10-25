@@ -31,6 +31,7 @@ services:
       - "5175:3000"
     volumes:
       - ./packages/backend:/app
+      - ./prompts:/app/prompts
     environment:
       - NODE_ENV=development
     networks:
@@ -42,6 +43,8 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - "5176:3000"
+    volumes:
+      - ./prompts:/app/prompts
     networks:
       - app-network
 
@@ -51,6 +54,7 @@ services:
       dockerfile: Dockerfile.test
     volumes:
       - ./packages/backend:/app
+      - ./prompts:/app/prompts
     environment:
       - NODE_ENV=test
     networks:

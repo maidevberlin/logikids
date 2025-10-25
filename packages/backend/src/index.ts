@@ -6,10 +6,22 @@ import path from 'path';
 import taskRouter from './tasks/router';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './tasks/cacheCleanup';
+import { subjectRegistry } from './tasks/subjects/registry';
+import { taskTypeRegistry } from './tasks/types/registry';
 
 // Load configuration
 const configPath = path.join(__dirname, '../config.yaml');
 const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, any>;
+
+// Initialize registries before starting server
+async function initializeRegistries() {
+  console.log('Initializing registries...');
+  await Promise.all([
+    subjectRegistry.initialize(),
+    taskTypeRegistry.initialize(),
+  ]);
+  console.log('Registries initialized successfully');
+}
 
 const app = express();
 app.use(cors());
@@ -40,6 +52,10 @@ process.on('SIGINT', () => {
 // Start server if not imported as module
 if (import.meta.url === `file://${process.argv[1]}`) {
   const port = config.server?.port || 3000;
+
+  // Initialize registries before starting server
+  await initializeRegistries();
+
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
   });
