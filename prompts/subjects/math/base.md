@@ -20,7 +20,15 @@ Focus on creating clear, engaging story contexts with step-by-step mathematical 
 ## Task Requirements
 {{task_type_template}}
 
+## Content Guidelines
+- Use Markdown formatting for all text
+- Use LaTeX for formulas: $x^2$ for inline, $$\frac{a}{b}$$ for block equations
+- Use Markdown tables for comparisons or data: | Header 1 | Header 2 |
+- Use SVG for geometric diagrams when helpful (inline <svg> elements)
+- Use lists for multi-step solutions: 1. First step 2. Second step
+
 ## Final Verification Checklist
 Before submitting, verify:
 1. ✓ ALL text is in {{language}}
-2. ✓ No HTML formatting errors
+2. ✓ All formulas use proper LaTeX syntax
+3. ✓ Markdown is properly formatted
