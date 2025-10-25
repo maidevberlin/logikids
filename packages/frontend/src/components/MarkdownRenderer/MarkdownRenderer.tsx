@@ -21,7 +21,7 @@ interface MarkdownRendererProps {
 mermaid.initialize({
   startOnLoad: false,
   theme: 'default',
-  securityLevel: 'loose',
+  securityLevel: 'strict',
 })
 
 function MarkdownRendererComponent({
