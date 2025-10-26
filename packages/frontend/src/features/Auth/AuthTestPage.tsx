@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { useAuth } from './hooks/useAuth'
+import { ExportImport } from './components/ExportImport'
+import { QRPairing } from './components/QRPairing'
+import { RecoveryKit } from './components/RecoveryKit'
 
 /**
  * Test page for zero-knowledge encryption system
@@ -26,6 +29,7 @@ export function AuthTestPage() {
   const [name, setName] = useState('')
   const [age, setAge] = useState(12)
   const [testProgress, setTestProgress] = useState('')
+  const [activeTab, setActiveTab] = useState<'data' | 'export' | 'qr' | 'recovery'>('data')
 
   const handleCreateAccount = async () => {
     try {
@@ -158,54 +162,114 @@ export function AuthTestPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-white shadow rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Account Info</h2>
-          <div className="space-y-2 mb-6">
-            <p><strong>User ID:</strong> <code className="bg-gray-100 px-2 py-1 rounded text-sm">{userId}</code></p>
-            <p><strong>Status:</strong> <span className="text-green-600 font-semibold">Authenticated</span></p>
+        <div className="bg-white shadow rounded-lg overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-6 text-white">
+            <h2 className="text-2xl font-semibold mb-2">🔐 Secure Account</h2>
+            <p className="text-sm opacity-90">User ID: <code className="bg-white/20 px-2 py-1 rounded">{userId?.slice(0, 8)}...</code></p>
           </div>
 
-          <h3 className="text-lg font-semibold mb-3">Decrypted User Data</h3>
-          <pre className="bg-gray-100 p-4 rounded overflow-auto text-sm mb-6">
-            {JSON.stringify(getUserData(), null, 2)}
-          </pre>
-
-          <div className="space-y-2">
+          {/* Tabs */}
+          <div className="flex border-b">
             <button
-              onClick={handleSync}
-              className="w-full bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600"
+              onClick={() => setActiveTab('data')}
+              className={`flex-1 px-4 py-3 font-medium ${
+                activeTab === 'data'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              Sync with Server
+              📊 Data & Sync
             </button>
             <button
-              onClick={handleAddTestProgress}
-              className="w-full bg-green-500 text-white rounded px-4 py-2 hover:bg-green-600"
+              onClick={() => setActiveTab('export')}
+              className={`flex-1 px-4 py-3 font-medium ${
+                activeTab === 'export'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              Add Test Progress & Sync
+              💾 Export/Import
             </button>
             <button
-              onClick={handleLogout}
-              className="w-full bg-gray-500 text-white rounded px-4 py-2 hover:bg-gray-600"
+              onClick={() => setActiveTab('qr')}
+              className={`flex-1 px-4 py-3 font-medium ${
+                activeTab === 'qr'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              Logout (Keep Server Data)
+              📱 QR Pairing
             </button>
             <button
-              onClick={handleDeleteAccount}
-              className="w-full bg-red-500 text-white rounded px-4 py-2 hover:bg-red-600"
+              onClick={() => setActiveTab('recovery')}
+              className={`flex-1 px-4 py-3 font-medium ${
+                activeTab === 'recovery'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              Delete Account (GDPR)
+              🛟 Recovery Kit
             </button>
           </div>
 
-          <div className="mt-6 text-sm text-gray-600">
-            <p className="font-semibold mb-2">Privacy Guarantees:</p>
-            <ul className="list-disc list-inside space-y-1">
-              <li>All data encrypted client-side before upload</li>
-              <li>Server stores encrypted blobs only</li>
-              <li>Server cannot decrypt your data</li>
-              <li>Encryption key never leaves your device</li>
-              <li>Even admins cannot read your data</li>
-            </ul>
+          {/* Tab Content */}
+          <div className="p-6">
+            {activeTab === 'data' && (
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Decrypted User Data</h3>
+                  <pre className="bg-gray-100 p-4 rounded overflow-auto text-sm">
+                    {JSON.stringify(getUserData(), null, 2)}
+                  </pre>
+                </div>
+
+                <div className="space-y-2">
+                  <button
+                    onClick={handleSync}
+                    className="w-full bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600"
+                  >
+                    🔄 Sync with Server
+                  </button>
+                  <button
+                    onClick={handleAddTestProgress}
+                    className="w-full bg-green-500 text-white rounded px-4 py-2 hover:bg-green-600"
+                  >
+                    ➕ Add Test Progress & Sync
+                  </button>
+                </div>
+
+                <div className="border-t pt-4 space-y-2">
+                  <button
+                    onClick={handleLogout}
+                    className="w-full bg-gray-500 text-white rounded px-4 py-2 hover:bg-gray-600"
+                  >
+                    🚪 Logout (Keep Server Data)
+                  </button>
+                  <button
+                    onClick={handleDeleteAccount}
+                    className="w-full bg-red-500 text-white rounded px-4 py-2 hover:bg-red-600"
+                  >
+                    🗑️ Delete Account (GDPR)
+                  </button>
+                </div>
+
+                <div className="text-sm text-gray-600 bg-blue-50 border border-blue-200 rounded p-4">
+                  <p className="font-semibold mb-2">🛡️ Privacy Guarantees:</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>All data encrypted client-side before upload</li>
+                    <li>Server stores encrypted blobs only</li>
+                    <li>Server cannot decrypt your data</li>
+                    <li>Encryption key never leaves your device</li>
+                    <li>Even admins cannot read your data</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'export' && <ExportImport />}
+            {activeTab === 'qr' && <QRPairing />}
+            {activeTab === 'recovery' && <RecoveryKit />}
           </div>
         </div>
       )}
