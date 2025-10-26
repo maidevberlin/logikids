@@ -3,6 +3,31 @@ const KEY_LENGTH = 256
 const IV_LENGTH = 12 // 96 bits recommended for AES-GCM
 
 /**
+ * Convert Uint8Array to base64 string without stack overflow
+ */
+function arrayToBase64(bytes: Uint8Array): string {
+  let binary = ''
+  const len = bytes.byteLength
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i])
+  }
+  return btoa(binary)
+}
+
+/**
+ * Convert base64 string to Uint8Array
+ */
+function base64ToArray(base64: string): Uint8Array {
+  const binary = atob(base64)
+  const len = binary.length
+  const bytes = new Uint8Array(len)
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binary.charCodeAt(i)
+  }
+  return bytes
+}
+
+/**
  * Generate a new AES-256-GCM encryption key
  */
 export async function generateKey(): Promise<CryptoKey> {
@@ -37,7 +62,7 @@ export async function encrypt(key: CryptoKey, data: any): Promise<string> {
   combined.set(new Uint8Array(encryptedData), iv.length)
 
   // Convert to base64
-  return btoa(String.fromCharCode(...combined))
+  return arrayToBase64(combined)
 }
 
 /**
@@ -45,7 +70,7 @@ export async function encrypt(key: CryptoKey, data: any): Promise<string> {
  */
 export async function decrypt(key: CryptoKey, encryptedString: string): Promise<any> {
   // Decode base64
-  const combined = Uint8Array.from(atob(encryptedString), c => c.charCodeAt(0))
+  const combined = base64ToArray(encryptedString)
 
   // Extract IV and encrypted data
   const iv = combined.slice(0, IV_LENGTH)
