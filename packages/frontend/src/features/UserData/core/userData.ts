@@ -5,6 +5,24 @@ import { generateKey, encrypt, decrypt } from './crypto'
 const STORAGE_KEY = 'logikids_data'
 
 /**
+ * Remove old localStorage keys from previous implementation
+ */
+function cleanupLegacyStorage(): void {
+  const legacyKeys = [
+    'logikids_progress',
+    'logikids_user_profile',
+    'logikids_last_task'
+  ]
+
+  legacyKeys.forEach(key => {
+    if (localStorage.getItem(key)) {
+      console.log(`Cleaning up legacy storage key: ${key}`)
+      localStorage.removeItem(key)
+    }
+  })
+}
+
+/**
  * Initialize user data (called once on app start)
  */
 export async function initialize(): Promise<UserData> {
@@ -14,7 +32,8 @@ export async function initialize(): Promise<UserData> {
     const existingData = localStorage.getItem(STORAGE_KEY)
 
     if (existingUserId && existingData) {
-      // Already initialized
+      // Already initialized - clean up old keys if they exist
+      cleanupLegacyStorage()
       return await getData()
     }
 
@@ -31,6 +50,9 @@ export async function initialize(): Promise<UserData> {
     // Store it encrypted
     const encrypted = await encrypt(key, defaultData)
     localStorage.setItem(STORAGE_KEY, encrypted)
+
+    // Clean up any legacy storage
+    cleanupLegacyStorage()
 
     return defaultData
   } catch (error) {

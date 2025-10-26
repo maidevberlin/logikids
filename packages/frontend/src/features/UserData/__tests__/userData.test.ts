@@ -40,6 +40,44 @@ describe('UserData operations', () => {
       expect(stored).toBeDefined()
       expect(stored).not.toContain('userId') // Should be encrypted
     })
+
+    it('should clean up legacy localStorage keys on first initialization', async () => {
+      // Add legacy keys
+      localStorage.setItem('logikids_progress', '{"math": {"easy": {"correct": 5}}}')
+      localStorage.setItem('logikids_user_profile', '{"name": "OldUser"}')
+      localStorage.setItem('logikids_last_task', '{"subject": "math"}')
+
+      // Verify they exist
+      expect(localStorage.getItem('logikids_progress')).toBeDefined()
+      expect(localStorage.getItem('logikids_user_profile')).toBeDefined()
+      expect(localStorage.getItem('logikids_last_task')).toBeDefined()
+
+      // Initialize (first time)
+      await initialize()
+
+      // Verify legacy keys are removed
+      expect(localStorage.getItem('logikids_progress')).toBeNull()
+      expect(localStorage.getItem('logikids_user_profile')).toBeNull()
+      expect(localStorage.getItem('logikids_last_task')).toBeNull()
+    })
+
+    it('should clean up legacy localStorage keys on subsequent initializations', async () => {
+      // First initialization
+      await initialize()
+
+      // Add legacy keys (simulating old data lingering)
+      localStorage.setItem('logikids_progress', '{"math": {"easy": {"correct": 5}}}')
+      localStorage.setItem('logikids_user_profile', '{"name": "OldUser"}')
+      localStorage.setItem('logikids_last_task', '{"subject": "math"}')
+
+      // Initialize again (existing user)
+      await initialize()
+
+      // Verify legacy keys are removed
+      expect(localStorage.getItem('logikids_progress')).toBeNull()
+      expect(localStorage.getItem('logikids_user_profile')).toBeNull()
+      expect(localStorage.getItem('logikids_last_task')).toBeNull()
+    })
   })
 
   describe('getData', () => {
