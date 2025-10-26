@@ -9,7 +9,7 @@
  */
 
 export interface EncryptedPayload {
-  encryptedData: string // Base64-encoded ciphertext
+  encryptedBlob: string // Base64-encoded ciphertext
   iv: string // Base64-encoded initialization vector (12 bytes)
   timestamp: number // Unix timestamp in milliseconds
   checksum: string // SHA-256 hash (hex string)
@@ -61,14 +61,14 @@ class CryptoService {
     )
 
     // Convert to base64
-    const encryptedData = this.arrayBufferToBase64(ciphertextBuffer)
+    const encryptedBlob = this.arrayBufferToBase64(ciphertextBuffer)
     const ivBase64 = this.arrayBufferToBase64(iv)
 
     // Calculate checksum
     const checksum = await this.calculateChecksum(new Uint8Array(ciphertextBuffer))
 
     return {
-      encryptedData,
+      encryptedBlob,
       iv: ivBase64,
       timestamp: Date.now(),
       checksum,
@@ -80,7 +80,7 @@ class CryptoService {
    */
   async decrypt(key: CryptoKey, payload: EncryptedPayload): Promise<any> {
     // Verify checksum
-    const ciphertextBuffer = this.base64ToArrayBuffer(payload.encryptedData)
+    const ciphertextBuffer = this.base64ToArrayBuffer(payload.encryptedBlob)
     const calculatedChecksum = await this.calculateChecksum(new Uint8Array(ciphertextBuffer))
 
     if (calculatedChecksum !== payload.checksum) {
