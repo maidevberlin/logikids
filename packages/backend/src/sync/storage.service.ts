@@ -1,32 +1,19 @@
-import { promises as fs } from 'fs'
-import path from 'path'
+import { pool } from './db'
 import { SyncRecord, SyncPayload } from './sync.schema'
 
 /**
- * File-based storage for encrypted user data
- * Each user gets a JSON file: data/sync/{userId}.json
+ * PostgreSQL-based storage for encrypted user data
+ * Each user gets a row: user_sync_data table
  *
- * SECURITY NOTE: Files contain encrypted data only.
+ * SECURITY NOTE: Database contains encrypted data only.
  * Server cannot decrypt without user's encryption key.
  */
 export class StorageService {
-  private readonly storageDir: string
-
-  constructor(storageDir = path.join(process.cwd(), 'data', 'sync')) {
-    this.storageDir = storageDir
-  }
-
   /**
-   * Initialize storage directory
+   * Initialize storage (no-op for PostgreSQL, kept for interface compatibility)
    */
   async init(): Promise<void> {
-    try {
-      await fs.mkdir(this.storageDir, { recursive: true })
-      console.log(`[StorageService] Initialized storage at: ${this.storageDir}`)
-    } catch (error) {
-      console.error('[StorageService] Failed to initialize storage:', error)
-      throw new Error('Storage initialization failed')
-    }
+    console.log('[StorageService] Using PostgreSQL storage')
   }
 
   /**
@@ -46,37 +33,65 @@ export class StorageService {
       // New record, use now as createdAt
     }
 
-    const record: SyncRecord = {
-      userId,
-      ...payload,
-      createdAt,
-      lastAccessed: now,
-      blobSize: Buffer.from(payload.encryptedBlob, 'base64').length,
-    }
+    const blobSize = Buffer.from(payload.encryptedBlob, 'base64').length
 
-    const filePath = this.getFilePath(userId)
-    await fs.writeFile(filePath, JSON.stringify(record, null, 2), 'utf-8')
+    // Upsert query (INSERT or UPDATE if exists)
+    const query = `
+      INSERT INTO user_sync_data (
+        user_id, encrypted_blob, iv, timestamp, checksum,
+        created_at, last_accessed, blob_size
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      ON CONFLICT (user_id) DO UPDATE SET
+        encrypted_blob = EXCLUDED.encrypted_blob,
+        iv = EXCLUDED.iv,
+        timestamp = EXCLUDED.timestamp,
+        checksum = EXCLUDED.checksum,
+        last_accessed = EXCLUDED.last_accessed,
+        blob_size = EXCLUDED.blob_size
+    `
+
+    const values = [
+      userId,
+      payload.encryptedBlob,
+      payload.iv,
+      payload.timestamp,
+      payload.checksum,
+      createdAt,
+      now,
+      blobSize,
+    ]
+
+    await pool.query(query, values)
   }
 
   /**
    * Retrieve encrypted user data
    */
   async get(userId: string): Promise<SyncRecord | null> {
-    try {
-      const filePath = this.getFilePath(userId)
-      const content = await fs.readFile(filePath, 'utf-8')
-      const record = JSON.parse(content) as SyncRecord
+    // Fetch record
+    const selectQuery = 'SELECT * FROM user_sync_data WHERE user_id = $1'
+    const result = await pool.query(selectQuery, [userId])
 
-      // Update last accessed
-      record.lastAccessed = new Date()
-      await fs.writeFile(filePath, JSON.stringify(record, null, 2), 'utf-8')
+    if (result.rows.length === 0) {
+      return null // User not found
+    }
 
-      return record
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-        return null // User not found
-      }
-      throw error
+    const row = result.rows[0]
+
+    // Update last accessed timestamp
+    const updateQuery = 'UPDATE user_sync_data SET last_accessed = NOW() WHERE user_id = $1'
+    await pool.query(updateQuery, [userId])
+
+    // Map database row to SyncRecord
+    return {
+      userId: row.user_id,
+      encryptedBlob: row.encrypted_blob,
+      iv: row.iv,
+      timestamp: row.timestamp,
+      checksum: row.checksum,
+      createdAt: row.created_at,
+      lastAccessed: row.last_accessed,
+      blobSize: row.blob_size,
     }
   }
 
@@ -84,38 +99,26 @@ export class StorageService {
    * Delete user data (GDPR right to erasure)
    */
   async delete(userId: string): Promise<void> {
-    try {
-      const filePath = this.getFilePath(userId)
-      await fs.unlink(filePath)
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-        // Already deleted, ignore
-        return
-      }
-      throw error
-    }
+    const query = 'DELETE FROM user_sync_data WHERE user_id = $1'
+    await pool.query(query, [userId])
   }
 
   /**
    * Check if user exists
    */
   async exists(userId: string): Promise<boolean> {
-    const record = await this.get(userId)
-    return record !== null
+    const query = 'SELECT 1 FROM user_sync_data WHERE user_id = $1 LIMIT 1'
+    const result = await pool.query(query, [userId])
+    return result.rows.length > 0
   }
 
   /**
    * Get all user IDs (for cleanup tasks)
    */
   async getAllUserIds(): Promise<string[]> {
-    try {
-      const files = await fs.readdir(this.storageDir)
-      return files
-        .filter(f => f.endsWith('.json'))
-        .map(f => f.replace('.json', ''))
-    } catch {
-      return []
-    }
+    const query = 'SELECT user_id FROM user_sync_data'
+    const result = await pool.query(query)
+    return result.rows.map(row => row.user_id)
   }
 
   /**
@@ -123,24 +126,11 @@ export class StorageService {
    * Deletes accounts not accessed in specified days
    */
   async deleteInactive(inactiveDays: number): Promise<number> {
-    const userIds = await this.getAllUserIds()
-    const cutoffDate = new Date()
-    cutoffDate.setDate(cutoffDate.getDate() - inactiveDays)
-
-    let deletedCount = 0
-
-    for (const userId of userIds) {
-      const record = await this.get(userId)
-      if (record && record.lastAccessed < cutoffDate) {
-        await this.delete(userId)
-        deletedCount++
-      }
-    }
-
-    return deletedCount
-  }
-
-  private getFilePath(userId: string): string {
-    return path.join(this.storageDir, `${userId}.json`)
+    const query = `
+      DELETE FROM user_sync_data
+      WHERE last_accessed < NOW() - INTERVAL '1 day' * $1
+    `
+    const result = await pool.query(query, [inactiveDays])
+    return result.rowCount || 0
   }
 }

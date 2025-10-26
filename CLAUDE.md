@@ -11,6 +11,7 @@ Logikids is an AI-powered educational platform that helps children aged 8-16 dev
 - **Runtime**: Bun (backend), Node.js compatible
 - **Frontend**: React 18 + TypeScript, TailwindCSS, React Query, React Router, Vite
 - **Backend**: Express + TypeScript running on Bun
+- **Database**: PostgreSQL 16 Alpine (encrypted user data storage)
 - **Testing**: Jest, React Testing Library, Supertest
 - **Validation**: Zod schemas throughout
 - **Deployment**: Docker Compose with separate dev/prod containers
@@ -64,6 +65,22 @@ docker compose exec frontend-dev npm install <package>
 docker compose exec frontend-dev npm run <script>
 ```
 
+### Database Commands
+
+```bash
+# Access PostgreSQL
+docker compose exec postgres psql -U logikids -d logikids
+
+# View sync data
+docker compose exec postgres psql -U logikids -d logikids -c "SELECT user_id, blob_size, last_accessed FROM user_sync_data;"
+
+# Backup database
+docker exec logikids-postgres pg_dump -U logikids logikids > backup-$(date +%Y%m%d).sql
+
+# Restore database
+cat backup.sql | docker exec -i logikids-postgres psql -U logikids logikids
+```
+
 ### Rebuilding & Cleanup
 
 ```bash
@@ -113,14 +130,35 @@ packages/
    - Configured via `packages/backend/config.yaml`
    - Text and image generation support
 
-3. **API Routes**
-   - `GET /api/task` - Generate a task (without hints) with query params: subject, concept, taskType, age, difficulty
-   - `POST /api/task/:taskId/hint` - Generate a single hint on-demand for the specified task
-   - `GET /api/task/subjects` - List all available subjects and concepts
-   - Accept-Language header determines response language
-   - **Task Response**: Includes `taskId` (required), `hints` field is optional (only in legacy responses)
+3. **User Data Sync** (`packages/backend/src/sync/`)
+   - `db.ts` - PostgreSQL connection pool and initialization
+   - `storage.service.ts` - Storage layer with PostgreSQL backend
+   - `sync.service.ts` - Business logic for encrypted data sync
+   - `sync.controller.ts` - HTTP endpoints (PUT, GET, POST verify, DELETE)
+   - `sync.schema.ts` - Zod validation schemas
+   - `router.ts` - Express router configuration
+   - `migrations/001_init.sql` - Database schema initialization
+   - Zero-knowledge architecture: Server stores only encrypted blobs
+   - Rate limiting: 100 requests per user per hour
+   - GDPR compliance: Right to erasure, automatic cleanup of inactive accounts
 
-**Configuration**: Backend requires `packages/backend/config.yaml` (copy from `config.template.yaml`) with AI provider settings.
+4. **API Routes**
+   - **Task Generation:**
+     - `GET /api/task` - Generate a task (without hints) with query params: subject, concept, taskType, age, difficulty
+     - `POST /api/task/:taskId/hint` - Generate a single hint on-demand for the specified task
+     - `GET /api/task/subjects` - List all available subjects and concepts
+     - Accept-Language header determines response language
+     - **Task Response**: Includes `taskId` (required), `hints` field is optional (only in legacy responses)
+   - **User Data Sync:**
+     - `PUT /api/sync/:userId` - Upload encrypted user data
+     - `GET /api/sync/:userId` - Download encrypted user data
+     - `POST /api/sync/:userId/verify` - Check if user exists
+     - `DELETE /api/sync/:userId` - Delete user data (GDPR right to erasure)
+
+**Configuration**:
+- Backend requires `packages/backend/config.yaml` (copy from `config.template.yaml`) with AI provider settings
+- PostgreSQL connection via `DATABASE_URL` environment variable (configured in docker-compose.yml)
+- Default PostgreSQL credentials: user `logikids`, password from `POSTGRES_PASSWORD` env var
 
 ### Prompt Management
 
@@ -294,6 +332,8 @@ From `.cursorrules`:
 5. **Bun runtime**: Backend uses Bun, not Node. Use `bun` commands not `npm`
 6. **Task cache expiration**: Task context expires after 30 minutes. Requesting hints for expired tasks returns 404.
 7. **LaTeX syntax**: Math formulas require proper $ and $$ delimiters. Single $ for inline, $$ for block equations.
+8. **PostgreSQL data persistence**: User sync data persists in Docker volume `postgres-data`. Use `docker compose down -v` to remove volumes and reset database.
+9. **Database initialization**: PostgreSQL schema auto-creates on first startup via `/docker-entrypoint-initdb.d` volume mount. Delete volume to re-run migrations.
 
 ## Lazy Hint Generation
 

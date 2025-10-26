@@ -34,6 +34,10 @@ services:
       - ./prompts:/app/prompts
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - app-network
 
@@ -45,6 +49,12 @@ services:
       - "5176:3000"
     volumes:
       - ./prompts:/app/prompts
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - app-network
 
@@ -59,6 +69,29 @@ services:
       - NODE_ENV=test
     networks:
       - app-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: logikids-postgres
+    environment:
+      POSTGRES_DB: logikids
+      POSTGRES_USER: logikids
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-development}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./packages/backend/src/sync/migrations:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U logikids"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
 
 networks:
   app-network:

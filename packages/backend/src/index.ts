@@ -9,19 +9,21 @@ import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './tasks/cacheCleanup';
 import { subjectRegistry } from './tasks/subject.registry';
 import { taskTypeRegistry } from './tasks/types/registry';
+import { initializeDatabase, closeDatabase } from './sync/db';
 
 // Load configuration
 const configPath = path.join(__dirname, '../config.yaml');
 const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, any>;
 
-// Initialize registries before starting server
+// Initialize registries and database before starting server
 async function initializeRegistries() {
-  console.log('Initializing registries...');
+  console.log('Initializing registries and database...');
   await Promise.all([
     subjectRegistry.initialize(),
     taskTypeRegistry.initialize(),
+    initializeDatabase(),
   ]);
-  console.log('Registries initialized successfully');
+  console.log('All registries and database initialized');
 }
 
 const app = express();
@@ -38,16 +40,18 @@ app.use(errorHandler);
 // Start cache cleanup job
 cacheCleanupService.start();
 
-// Cleanup on shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, cleaning up...');
+// Graceful shutdown
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM received, shutting down gracefully...');
   cacheCleanupService.stop();
+  await closeDatabase();
   process.exit(0);
 });
 
-process.on('SIGINT', () => {
-  console.log('SIGINT received, cleaning up...');
+process.on('SIGINT', async () => {
+  console.log('SIGINT received, shutting down gracefully...');
   cacheCleanupService.stop();
+  await closeDatabase();
   process.exit(0);
 });
 
