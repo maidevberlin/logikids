@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '../api/queryClient'
 import { ErrorBoundary } from './base/Error/ErrorBoundary'
-import { UserDataProvider } from './Auth/context/UserDataContext'
+import { UserDataProvider } from './UserData'
 
 interface ProvidersProps {
   children: ReactNode
