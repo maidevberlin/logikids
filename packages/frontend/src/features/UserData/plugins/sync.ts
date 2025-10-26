@@ -36,9 +36,9 @@ export async function upload(data: UserData): Promise<void> {
     const iv = encryptedBytes.slice(0, 12)
     const ivBase64 = btoa(String.fromCharCode(...iv))
 
-    // Calculate checksum of the ciphertext (without IV)
+    // Calculate checksum of the entire encrypted blob (IV + ciphertext)
     const ciphertext = encryptedBytes.slice(12)
-    const checksum = await calculateChecksum(ciphertext)
+    const checksum = await calculateChecksum(encryptedBytes)
 
     const payload = {
       encryptedBlob: btoa(String.fromCharCode(...ciphertext)),
@@ -85,19 +85,20 @@ export async function download(): Promise<UserData | null> {
 
     const payload = await response.json()
 
-    // Verify checksum
+    // Reconstruct full encrypted blob (IV + ciphertext) for checksum verification
+    const iv = Uint8Array.from(atob(payload.iv), c => c.charCodeAt(0))
     const ciphertext = Uint8Array.from(atob(payload.encryptedBlob), c => c.charCodeAt(0))
-    const calculatedChecksum = await calculateChecksum(ciphertext)
+    const combined = new Uint8Array(iv.length + ciphertext.length)
+    combined.set(iv, 0)
+    combined.set(ciphertext, iv.length)
+
+    // Verify checksum of the entire encrypted blob (IV + ciphertext)
+    const calculatedChecksum = await calculateChecksum(combined)
 
     if (calculatedChecksum !== payload.checksum) {
       throw new Error('Data integrity check failed - checksum mismatch')
     }
 
-    // Reconstruct full encrypted blob (IV + ciphertext)
-    const iv = Uint8Array.from(atob(payload.iv), c => c.charCodeAt(0))
-    const combined = new Uint8Array(iv.length + ciphertext.length)
-    combined.set(iv, 0)
-    combined.set(ciphertext, iv.length)
     const encryptedBlob = btoa(String.fromCharCode(...combined))
 
     const key = await loadKey()
