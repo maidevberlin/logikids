@@ -45,10 +45,15 @@ export function useSettings() {
     setSettings(prev => ({ ...prev, language }))
   }
 
+  const updateGender = (gender: Settings['gender']) => {
+    setSettings(prev => ({ ...prev, gender }))
+  }
+
   return {
     settings,
     updateAge,
     updateName,
-    updateLanguage
+    updateLanguage,
+    updateGender
   }
 } 

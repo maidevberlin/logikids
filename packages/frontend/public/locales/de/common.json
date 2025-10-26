@@ -47,7 +47,17 @@
     "nameLabel": "Wie heißt du?",
     "namePlaceholder": "Gib deinen Namen ein...",
     "ageLabel": "Wie alt bist du?",
-    "languageLabel": "Wähle deine Sprache"
+    "languageLabel": "Wähle deine Sprache",
+    "gender": {
+      "label": "Geschlecht (optional)",
+      "notSpecified": "Keine Angabe",
+      "options": {
+        "male": "Männlich",
+        "female": "Weiblich",
+        "non-binary": "Nicht-binär",
+        "prefer-not-to-say": "Keine Angabe"
+      }
+    }
   },
   "error": {
     "tryAgain": "Erneut versuchen",

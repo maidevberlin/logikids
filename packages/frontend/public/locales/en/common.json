@@ -47,7 +47,17 @@
     "nameLabel": "What's your name?",
     "namePlaceholder": "Type your name here...",
     "ageLabel": "How old are you?",
-    "languageLabel": "Choose your language"
+    "languageLabel": "Choose your language",
+    "gender": {
+      "label": "Gender (optional)",
+      "notSpecified": "Not specified",
+      "options": {
+        "male": "Male",
+        "female": "Female",
+        "non-binary": "Non-binary",
+        "prefer-not-to-say": "Prefer not to say"
+      }
+    }
   },
   "error": {
     "tryAgain": "Try Again",

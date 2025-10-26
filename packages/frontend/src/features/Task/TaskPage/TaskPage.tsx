@@ -49,8 +49,9 @@ export default function TaskPage({}: TaskPageProps) {
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
     subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
     concept: (searchParams.get('concept') ?? taskDefaults.concept),
-    age: settings.age
-  }), [searchParams, settings.age])
+    age: settings.age,
+    gender: settings.gender
+  }), [searchParams, settings.age, settings.gender])
 
   // Store subject and concept when they change
   useEffect(() => {

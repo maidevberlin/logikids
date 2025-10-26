@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Input, NumberInput, FormField, Select } from '../../base/Form'
 import { useSettings } from '../Settings/useSettings'
 import { styles } from './styles'
+import { GENDERS } from '../../../api/logikids'
 
 const languages = [
   { value: 'en', label: '🇬🇧 English' },
@@ -10,7 +11,12 @@ const languages = [
 
 export function SettingsForm() {
   const { t, i18n } = useTranslation()
-  const { settings, updateName, updateAge, updateLanguage } = useSettings()
+  const { settings, updateName, updateAge, updateLanguage, updateGender } = useSettings()
+
+  const genderOptions = [
+    { value: '', label: t('settings.gender.notSpecified') },
+    ...GENDERS.map(g => ({ value: g, label: t(`settings.gender.options.${g}`) }))
+  ]
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang)
@@ -42,6 +48,15 @@ export function SettingsForm() {
           value={settings.language}
           options={languages}
           onChange={handleLanguageChange}
+          className={styles.input}
+        />
+      </FormField>
+
+      <FormField label={t('settings.gender.label')}>
+        <Select
+          value={settings.gender || ''}
+          options={genderOptions}
+          onChange={(value) => updateGender(value || undefined)}
           className={styles.input}
         />
       </FormField>
