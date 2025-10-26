@@ -33,8 +33,14 @@ export async function storeKey(key: CryptoKey): Promise<void> {
     const store = transaction.objectStore(STORE_NAME)
     const request = store.put(key, KEY_ID)
 
-    request.onerror = () => reject(request.error)
-    request.onsuccess = () => resolve()
+    request.onerror = () => {
+      db.close()
+      reject(request.error || new Error('Failed to store key'))
+    }
+    request.onsuccess = () => {
+      db.close()
+      resolve()
+    }
   })
 }
 
@@ -48,8 +54,14 @@ export async function loadKey(): Promise<CryptoKey | null> {
     const store = transaction.objectStore(STORE_NAME)
     const request = store.get(KEY_ID)
 
-    request.onerror = () => reject(request.error)
-    request.onsuccess = () => resolve(request.result || null)
+    request.onerror = () => {
+      db.close()
+      reject(request.error || new Error('Failed to load key'))
+    }
+    request.onsuccess = () => {
+      db.close()
+      resolve(request.result || null)
+    }
   })
 }
 
@@ -63,8 +75,14 @@ export async function storeUserId(userId: string): Promise<void> {
     const store = transaction.objectStore(STORE_NAME)
     const request = store.put(userId, USER_ID_KEY)
 
-    request.onerror = () => reject(request.error)
-    request.onsuccess = () => resolve()
+    request.onerror = () => {
+      db.close()
+      reject(request.error || new Error('Failed to store userId'))
+    }
+    request.onsuccess = () => {
+      db.close()
+      resolve()
+    }
   })
 }
 
@@ -78,8 +96,14 @@ export async function getUserId(): Promise<string | null> {
     const store = transaction.objectStore(STORE_NAME)
     const request = store.get(USER_ID_KEY)
 
-    request.onerror = () => reject(request.error)
-    request.onsuccess = () => resolve(request.result || null)
+    request.onerror = () => {
+      db.close()
+      reject(request.error || new Error('Failed to load userId'))
+    }
+    request.onsuccess = () => {
+      db.close()
+      resolve(request.result || null)
+    }
   })
 }
 
@@ -89,7 +113,10 @@ export async function getUserId(): Promise<string | null> {
 export async function clearStorage(): Promise<void> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.deleteDatabase(DB_NAME)
-    request.onerror = () => reject(request.error)
+    request.onerror = () => reject(request.error || new Error('Failed to clear storage'))
     request.onsuccess = () => resolve()
+    request.onblocked = () => {
+      reject(new Error('Database deletion blocked - close all tabs using this database'))
+    }
   })
 }
