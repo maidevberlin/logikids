@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useTask } from '../useTask'
-import { useUserData } from '../../Auth/context/UserDataContext'
+import { useUserData } from '../../UserData'
 import { useProgress } from '../../Stats/useProgress'
 import { TaskCard } from '..'
 import { useSearchParams } from 'react-router-dom'
@@ -32,13 +32,13 @@ const backgrounds = {
 const taskDefaults: TaskRequest = {
   difficulty: 'medium',
   subject: 'math',
-  age: 10,
+  grade: 5,
   concept: 'random'
 }
 
 export default function TaskPage({}: TaskPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
-  const { settings } = useUserData()
+  const { data } = useUserData()
   const { t } = useTranslation()
   const { updateStats } = useProgress()
   const [hintsUsed, setHintsUsed] = useState(0)
@@ -49,9 +49,9 @@ export default function TaskPage({}: TaskPageProps) {
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
     subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
     concept: (searchParams.get('concept') ?? taskDefaults.concept),
-    age: settings.age,
-    gender: settings.gender
-  }), [searchParams, settings.age, settings.gender])
+    grade: data?.settings.grade ?? taskDefaults.grade,
+    gender: data?.settings.gender
+  }), [searchParams, data?.settings.grade, data?.settings.gender])
 
   // Store subject and concept when they change
   useEffect(() => {

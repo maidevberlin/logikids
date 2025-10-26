@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { jsPDF } from 'jspdf'
-import { cryptoService } from '../services/crypto.service'
-import { storageService } from '../services/storage.service'
+import { useUserData } from '../../UserData'
 
 /**
  * Component for generating and downloading recovery kit PDF
  * Recovery kit contains QR code and backup code for account recovery
  */
 export function RecoveryKit() {
+  const { generateQR } = useUserData()
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
@@ -47,12 +47,11 @@ export function RecoveryKit() {
   }
 
   /**
-   * Format userId and key as backup code
+   * Format QR payload as backup code
    * Format: XXXX-XXXX-XXXX-XXXX-...
    */
-  const formatBackupCode = (userId: string, keyBase64: string): string => {
-    const combined = `${userId}:${keyBase64}`
-    const base64 = btoa(combined)
+  const formatBackupCode = (qrData: string): string => {
+    const base64 = btoa(qrData)
 
     // Split into groups of 4 characters
     const groups = []
@@ -72,21 +71,15 @@ export function RecoveryKit() {
     setSuccess(false)
 
     try {
-      // Get credentials
-      const userId = await storageService.getUserId()
-      const key = await storageService.getKey()
+      // Generate QR payload
+      const payload = await generateQR()
+      const qrData = JSON.stringify(payload)
 
-      if (!userId || !key) {
-        throw new Error('Not authenticated')
-      }
-
-      // Generate QR data
-      const qrData = await cryptoService.generateQRString(key, userId)
+      // Generate QR code image
       const qrImage = await generateQRImage(qrData)
 
-      // Export key for backup code
-      const exported = await cryptoService.exportKeyForQR(key, userId)
-      const backupCode = formatBackupCode(userId, exported.key)
+      // Format backup code
+      const backupCode = formatBackupCode(qrData)
 
       // Create PDF
       const pdf = new jsPDF()
@@ -130,7 +123,7 @@ export function RecoveryKit() {
       pdf.setFontSize(10)
       pdf.setFont('helvetica', 'normal')
       y += 10
-      pdf.text(`User ID: ${userId}`, 20, y)
+      pdf.text(`User ID: ${payload.userId}`, 20, y)
 
       // Instructions
       y += 15

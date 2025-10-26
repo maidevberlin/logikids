@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
-import { useUserData } from '../../Auth/context/UserDataContext'
+import { useUserData } from '../../UserData'
 import { useProgress } from '../useProgress'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { Heading } from '../../base/Typography/Heading'
@@ -14,8 +14,8 @@ import type { StatsPageProps } from './types'
 
 export default function StatsPage({}: StatsPageProps) {
   const { t } = useTranslation()
-  const { settings } = useUserData()
-  const { 
+  const { data } = useUserData()
+  const {
     getTotalTasksOverall,
     getOverallSuccessRate,
     getOverallAverageHints
@@ -40,12 +40,12 @@ export default function StatsPage({}: StatsPageProps) {
               </Heading>
 
               <div className={styles.content}>
-                {settings.name && (
+                {data?.settings.name && (
                   <Text className={styles.greeting}>
-                    {t('stats.greeting', { name: settings.name })}
+                    {t('stats.greeting', { name: data.settings.name })}
                   </Text>
                 )}
-                
+
                 <div className={styles.emptyState}>
                   <Text className={styles.secondaryText}>
                     {t('stats.noTasksYet')}
@@ -69,17 +69,17 @@ export default function StatsPage({}: StatsPageProps) {
             </Heading>
 
             <div className={styles.content}>
-              {settings.name && (
+              {data?.settings.name && (
                 <Text className={styles.greeting}>
-                  {t('stats.greeting', { name: settings.name })}
+                  {t('stats.greeting', { name: data.settings.name })}
                 </Text>
               )}
 
               <TaskProgress value={totalTasks} />
-              
-              <PerformanceStats 
-                successRate={overallSuccessRate} 
-                averageHints={overallAverageHints} 
+
+              <PerformanceStats
+                successRate={overallSuccessRate}
+                averageHints={overallAverageHints}
               />
             </div>
           </div>

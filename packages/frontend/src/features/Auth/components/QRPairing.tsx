@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
-import { cryptoService } from '../services/crypto.service'
-import { storageService } from '../services/storage.service'
+import { useUserData } from '../../UserData'
 
 /**
  * Component for displaying QR code for device pairing
  * Shows QR code containing userId + encryption key for scanning on new devices
  */
 export function QRPairing() {
+  const { generateQR: generateQRData } = useUserData()
   const [qrData, setQrData] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -21,15 +21,11 @@ export function QRPairing() {
     setError(null)
 
     try {
-      const userId = await storageService.getUserId()
-      const key = await storageService.getKey()
+      // Generate QR payload
+      const payload = await generateQRData()
 
-      if (!userId || !key) {
-        throw new Error('Not authenticated')
-      }
-
-      // Generate QR data
-      const qrString = await cryptoService.generateQRString(key, userId)
+      // Convert to JSON string for QR code
+      const qrString = JSON.stringify(payload)
       setQrData(qrString)
       setShowQR(true)
     } catch (err) {

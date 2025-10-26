@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useState, useEffect } from 'react'
 import logoSrc from '../../../assets/logikids.webp'
-import { useUserData } from '../../Auth/context/UserDataContext'
+import { useUserData } from '../../UserData'
 import { styles } from './styles'
 import { Page } from '../../base/Layout'
 import { cn } from '../../../utils'
@@ -11,32 +11,32 @@ import type { WelcomePageProps } from './types'
 
 export default function WelcomePage({}: WelcomePageProps) {
   const { t } = useTranslation()
-  const { settings, isAuthenticated, isLoading, createAccount } = useUserData()
+  const { data, isLoading, updateSettings } = useUserData()
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [onboardingName, setOnboardingName] = useState('')
   const [onboardingAge, setOnboardingAge] = useState(12)
   const [isCreating, setIsCreating] = useState(false)
 
-  // Show onboarding if user has no name and is not authenticated
+  // Show onboarding if user has no name
   useEffect(() => {
-    if (!isLoading && !settings.name && !isAuthenticated) {
+    if (!isLoading && !data?.settings.name) {
       const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding')
       if (!hasSeenOnboarding) {
         setShowOnboarding(true)
       }
     }
-  }, [isLoading, settings.name, isAuthenticated])
+  }, [isLoading, data?.settings.name])
 
   const handleCreateAccount = async () => {
     if (!onboardingName) return
 
     setIsCreating(true)
     try {
-      await createAccount(onboardingName, onboardingAge, settings.language)
+      await updateSettings({ name: onboardingName, age: onboardingAge })
       setShowOnboarding(false)
       localStorage.setItem('hasSeenOnboarding', 'true')
     } catch (error) {
-      console.error('Failed to create account:', error)
+      console.error('Failed to update settings:', error)
     } finally {
       setIsCreating(false)
     }
@@ -66,12 +66,12 @@ export default function WelcomePage({}: WelcomePageProps) {
 
           <div className={styles.text.wrapper}>
             <h1 className={styles.text.title}>
-              {settings.name
-                ? t('welcome.personalizedTitle', { name: settings.name })
+              {data?.settings.name
+                ? t('welcome.personalizedTitle', { name: data.settings.name })
                 : t('welcome.title')}
             </h1>
             <p className={styles.text.subtitle}>
-              {settings.name
+              {data?.settings.name
                 ? t('welcome.personalizedSubtitle')
                 : t('welcome.subtitle')}
             </p>
@@ -156,10 +156,10 @@ export default function WelcomePage({}: WelcomePageProps) {
                 to="/account"
                 className={styles.buttons.secondary}
               >
-                {settings.name ? t('account.title') : t('welcome.setupAccount')}
+                {data?.settings.name ? t('account.title') : t('welcome.setupAccount')}
               </Link>
 
-              {settings.name && (
+              {data?.settings.name && (
                 <Link
                   to="/stats"
                   className={styles.buttons.secondary}

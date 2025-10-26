@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Select } from '../Form'
-import { useUserData } from '../../Auth/context/UserDataContext'
+import { useUserData } from '../../UserData'
 import { LanguageSwitcherProps } from './types'
 
 const languages = [
@@ -10,16 +10,18 @@ const languages = [
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n } = useTranslation()
-  const { settings, updateLanguage } = useUserData()
+  const { data, updateSettings } = useUserData()
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang)
-    updateLanguage(lang)
+    updateSettings({ language: lang })
   }
+
+  if (!data) return null
 
   return (
     <Select
-      value={settings.language}
+      value={data.settings.language}
       options={languages}
       onChange={handleLanguageChange}
       className={className}

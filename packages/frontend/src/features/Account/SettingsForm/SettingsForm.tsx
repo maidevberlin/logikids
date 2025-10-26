@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Input, NumberInput, FormField, Select } from '../../base/Form'
-import { useUserData } from '../../Auth/context/UserDataContext'
+import { useUserData } from '../../UserData'
 import { styles } from './styles'
 import { GENDERS } from '../../../api/logikids'
 
@@ -11,7 +11,7 @@ const languages = [
 
 export function SettingsForm() {
   const { t, i18n } = useTranslation()
-  const { settings, updateName, updateAge, updateLanguage, updateGender } = useUserData()
+  const { data, updateSettings } = useUserData()
 
   const genderOptions = [
     { value: '', label: t('settings.gender.notSpecified') },
@@ -20,15 +20,17 @@ export function SettingsForm() {
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang)
-    updateLanguage(lang)
+    updateSettings({ language: lang })
   }
+
+  if (!data) return null
 
   return (
     <div className={styles.base}>
       <FormField label={t('settings.nameLabel')}>
         <Input
-          value={settings.name}
-          onChange={updateName}
+          value={data.settings.name}
+          onChange={(name) => updateSettings({ name })}
           placeholder={t('settings.namePlaceholder')}
           className={styles.input}
         />
@@ -36,8 +38,8 @@ export function SettingsForm() {
 
       <FormField label={t('settings.ageLabel')}>
         <NumberInput
-          value={settings.age}
-          onChange={updateAge}
+          value={data.settings.age}
+          onChange={(age) => updateSettings({ age })}
           min={6}
           max={20}
         />
@@ -45,7 +47,7 @@ export function SettingsForm() {
 
       <FormField label={t('settings.languageLabel')}>
         <Select
-          value={settings.language}
+          value={data.settings.language}
           options={languages}
           onChange={handleLanguageChange}
           className={styles.input}
@@ -54,9 +56,9 @@ export function SettingsForm() {
 
       <FormField label={t('settings.gender.label')}>
         <Select
-          value={settings.gender || ''}
+          value={data.settings.gender || ''}
           options={genderOptions}
-          onChange={(value) => updateGender(value || undefined)}
+          onChange={(value) => updateSettings({ gender: value || undefined })}
           className={styles.input}
         />
       </FormField>

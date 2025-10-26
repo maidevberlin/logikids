@@ -12,11 +12,11 @@ import { Container } from '../../base/Layout/Container'
 import { cn } from '../../../utils/cn'
 import { styles } from './styles'
 import type { AccountPageProps } from './types'
-import { useUserData } from '../../Auth/context/UserDataContext'
+import { useUserData } from '../../UserData'
 
 export default function AccountPage({}: AccountPageProps) {
   const { t } = useTranslation()
-  const { isAuthenticated } = useUserData()
+  const { data } = useUserData()
   const [activeSecurityTab, setActiveSecurityTab] = useState<'export' | 'qr' | 'recovery'>('export')
 
   const navigation = useMemo(() => (
@@ -40,7 +40,7 @@ export default function AccountPage({}: AccountPageProps) {
           </div>
 
           {/* Security & Backup Card */}
-          {isAuthenticated && (
+          {data && (
             <div className={cn(styles.card, 'mt-6')}>
               <Heading level={2} className={styles.title}>
                 <ShieldCheckIcon className={styles.icon} />

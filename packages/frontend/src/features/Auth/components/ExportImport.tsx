@@ -1,12 +1,11 @@
 import { useState, useRef } from 'react'
-import { useUserData } from '../context/UserDataContext'
-import { useAuth } from '../hooks/useAuth'
+import { useUserData } from '../../UserData'
 
 /**
  * Component for exporting and importing user data (GDPR data portability)
  */
 export function ExportImport() {
-  const { getUserData, updateUserData } = useAuth()
+  const { exportData, importData } = useUserData()
   const [status, setStatus] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -14,15 +13,14 @@ export function ExportImport() {
   /**
    * Export user data as JSON file
    */
-  const handleExport = () => {
+  const handleExport = async () => {
     try {
       setStatus('Exporting data...')
       setError(null)
 
-      const data = getUserData()
+      const json = await exportData()
 
       // Create JSON blob
-      const json = JSON.stringify(data, null, 2)
       const blob = new Blob([json], { type: 'application/json' })
 
       // Create download link
@@ -56,50 +54,11 @@ export function ExportImport() {
 
       // Read file
       const text = await file.text()
+
+      // Use the new importData function which handles validation and merging
+      await importData(text)
+
       const imported = JSON.parse(text)
-
-      // Validate basic structure
-      if (!imported.version || !imported.settings || !imported.progress) {
-        throw new Error('Invalid export file format')
-      }
-
-      // Get current data
-      const current = getUserData()
-
-      // Merge progress (additive - never lose progress)
-      const mergedProgress: Record<string, any> = { ...current.progress }
-
-      for (const [subject, difficultyData] of Object.entries(imported.progress)) {
-        if (!mergedProgress[subject]) {
-          mergedProgress[subject] = difficultyData
-        } else {
-          // Merge each difficulty level
-          for (const [difficulty, stats] of Object.entries(difficultyData as Record<string, any>)) {
-            if (!mergedProgress[subject][difficulty]) {
-              mergedProgress[subject][difficulty] = stats
-            } else {
-              // Add up the stats
-              mergedProgress[subject][difficulty] = {
-                correct: (mergedProgress[subject][difficulty].correct || 0) + (stats.correct || 0),
-                wrong: (mergedProgress[subject][difficulty].wrong || 0) + (stats.wrong || 0),
-                hintsUsed: (mergedProgress[subject][difficulty].hintsUsed || 0) + (stats.hintsUsed || 0),
-              }
-            }
-          }
-        }
-      }
-
-      // Use imported settings
-      const merged = {
-        version: 1,
-        settings: imported.settings,
-        progress: mergedProgress,
-        timestamp: Date.now(),
-      }
-
-      // Update and sync
-      await updateUserData(merged)
-
       setStatus(`Import complete! Merged ${Object.keys(imported.progress || {}).length} subjects.`)
       setTimeout(() => setStatus(null), 5000)
 
