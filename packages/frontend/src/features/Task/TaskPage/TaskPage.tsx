@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useTask } from '../useTask'
-import { useUserData } from '../../UserData'
+import { useUserData, setData } from '../../UserData'
 import { useProgress } from '../../Stats/useProgress'
 import { TaskCard } from '..'
 import { useSearchParams } from 'react-router-dom'
@@ -12,7 +12,6 @@ import { styles as containerStyles } from '../../base/Layout/Container/styles'
 import { Page } from '../../base/Layout'
 import { styles } from './styles'
 import type { TaskPageProps } from './types'
-import { useLastTask } from '../useLastTask'
 
 // Import background patterns
 import mathBg from '../../../assets/math.webp'
@@ -42,7 +41,6 @@ export default function TaskPage({}: TaskPageProps) {
   const { t } = useTranslation()
   const { updateStats } = useProgress()
   const [hintsUsed, setHintsUsed] = useState(0)
-  const { storeLastTask } = useLastTask(taskDefaults)
 
   // Memoize task parameters
   const taskParams = useMemo(() => ({
@@ -55,8 +53,10 @@ export default function TaskPage({}: TaskPageProps) {
 
   // Store subject and concept when they change
   useEffect(() => {
-    storeLastTask(taskParams.subject, taskParams.concept)
-  }, [taskParams.subject, taskParams.concept])
+    if (data) {
+      setData({ lastTask: { subject: taskParams.subject, concept: taskParams.concept } })
+    }
+  }, [taskParams.subject, taskParams.concept, data])
   
   const {
     task,

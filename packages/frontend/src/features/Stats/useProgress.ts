@@ -2,23 +2,37 @@ import { useCallback, useEffect, useState } from 'react'
 import { UserProgress, StatUpdate } from './types'
 import * as progressService from './progressService'
 import { Difficulty } from '../Task/types'
+import { useUserData } from '../UserData'
 
 export function useProgress() {
-  const [progress, setProgress] = useState<UserProgress>(progressService.loadProgress)
+  const { data, updateProgress: updateUserDataProgress } = useUserData()
+  const [progress, setProgress] = useState<UserProgress>({
+    stats: data?.progress || {},
+    lastUpdated: Date.now()
+  })
 
-  // Save progress whenever it changes
+  // Sync with UserData when it changes
   useEffect(() => {
+    if (data?.progress) {
+      setProgress({
+        stats: data.progress,
+        lastUpdated: Date.now()
+      })
+    }
+  }, [data?.progress])
+
+  // Update stats for a task
+  const updateStats = useCallback(async (update: StatUpdate) => {
+    const updated = progressService.updateStats(progress, update)
+    setProgress(updated)
+
+    // Persist to UserData
     try {
-      progressService.saveProgress(progress)
+      await updateUserDataProgress(updated.stats)
     } catch (error) {
       console.error('Failed to save progress:', error)
     }
-  }, [progress])
-
-  // Update stats for a task
-  const updateStats = useCallback((update: StatUpdate) => {
-    setProgress(current => progressService.updateStats(current, update))
-  }, [])
+  }, [progress, updateUserDataProgress])
 
   // Get success rate for a subject/difficulty
   const getSuccessRate = useCallback((subject: string, difficulty: Difficulty): number => {
