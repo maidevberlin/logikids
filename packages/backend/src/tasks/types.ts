@@ -10,6 +10,15 @@ export const DIFFICULTIES = [
 ] as const;
 export type Difficulty = typeof DIFFICULTIES[number];
 
+// Gender options
+export const GENDERS = [
+  'male',
+  'female',
+  'non-binary',
+  'prefer-not-to-say'
+] as const;
+export type Gender = typeof GENDERS[number];
+
 // Request schema and type
 export const taskRequestSchema = z.object({
   subject: z.string().refine(
@@ -22,7 +31,8 @@ export const taskRequestSchema = z.object({
     'Invalid task type'
   ),
   age: z.number().min(5).max(18),
-  difficulty: z.enum(DIFFICULTIES)
+  difficulty: z.enum(DIFFICULTIES),
+  gender: z.enum(GENDERS).optional()
 });
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;
@@ -35,6 +45,7 @@ export interface TaskGenerationParams {
   difficulty: Difficulty;
   language: string;
   taskType?: string;
+  gender?: Gender;
 }
 
 // Re-export task response types for convenience

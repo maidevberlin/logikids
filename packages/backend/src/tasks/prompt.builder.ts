@@ -2,6 +2,7 @@ import { TaskGenerationParams } from './types.ts';
 import { Subject, HintPrompt } from './loader.ts';
 import { TaskTypeWithSchema } from './types/registry.ts';
 import { TemplateProcessor } from './template.ts';
+import { VariationLoader } from './variation.loader.ts';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
@@ -15,6 +16,7 @@ export class PromptBuilder {
   constructor(
     private subject: Subject,
     private taskType: TaskTypeWithSchema,
+    private variationLoader: VariationLoader,
     private hintPrompt?: HintPrompt
   ) {}
 
@@ -23,6 +25,19 @@ export class PromptBuilder {
    */
   private formatLanguage(code: string): string {
     return LANGUAGE_NAMES[code] || code;
+  }
+
+  /**
+   * Get language style based on age
+   */
+  private getLanguageStyle(age: number): string {
+    if (age <= 10) {
+      return "Use very simple, playful language with short sentences. Keep it fun and encouraging.";
+    } else if (age <= 13) {
+      return "Use casual but structured language. Explain concepts clearly without being condescending.";
+    } else {
+      return "Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.";
+    }
   }
 
   /**
@@ -43,9 +58,24 @@ export class PromptBuilder {
       subject_name: this.subject.name,
     };
 
+    // Add variation variables (always set, empty if not applicable)
+    const variationVariables: Record<string, any> = {
+      scenario: this.variationLoader.getScenario(params.age),
+      language_style: params.age ? this.getLanguageStyle(params.age) : '',
+      student_context: params.gender ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
+      enrichment_instruction: '',
+    };
+
+    // Add enrichment (30-50% chance)
+    const enrichment = this.variationLoader.getRandomEnrichment();
+    if (enrichment) {
+      variationVariables.enrichment_instruction = enrichment.value;
+    }
+
     // Process sub-templates first
     const processedVariables = {
       ...baseVariables,
+      ...variationVariables,
       concept_template: TemplateProcessor.replace(concept.promptTemplate, baseVariables),
       task_type_template: TemplateProcessor.replace(this.taskType.promptTemplate, baseVariables)
     };
@@ -59,7 +89,8 @@ export class PromptBuilder {
       console.log('Subject:', this.subject.id);
       console.log('Concept:', params.concept);
       console.log('Task Type:', this.taskType.id);
-      console.log('\nVariables:', JSON.stringify(processedVariables, null, 2));
+      console.log('\nVariation Variables:', JSON.stringify(variationVariables, null, 2));
+      console.log('\nAll Variables:', JSON.stringify(processedVariables, null, 2));
       console.log('\nFinal Prompt:\n', finalPrompt);
       console.log('==============================\n');
     }

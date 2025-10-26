@@ -4,6 +4,17 @@ name: Math
 description: Mathematical concepts and problem solving
 ---
 
+## SCENARIO CONTEXT
+Set this task in the following context: **{{scenario}}**
+
+Use this scenario creatively to frame the mathematical problem. Make it engaging and relevant to the context.
+
+{{enrichment_instruction}}
+
+{{language_style}}
+
+{{student_context}}
+
 ## CONTENT APPROPRIATENESS (CRITICAL)
    A. Language Requirements: ALL content (task, options, explanations, and hints) MUST be in "{{language}}".
    B. Age Requirements: The Task must be appropriate for age {{age}}.

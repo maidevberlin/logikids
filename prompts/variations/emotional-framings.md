@@ -1,0 +1,13 @@
+---
+framings:
+  - "You'll feel proud when you solve this challenge"
+  - "This puzzle will spark your curiosity"
+  - "Help someone by figuring this out"
+  - "Discover something surprising in this problem"
+  - "Use your creativity to find the solution"
+  - "Show what you've learned by solving this"
+  - "This is a fun brain teaser to enjoy"
+  - "You can make a difference by solving this"
+  - "Explore an interesting question"
+  - "Challenge yourself with this problem"
+---

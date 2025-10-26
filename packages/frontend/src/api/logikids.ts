@@ -11,13 +11,18 @@ export class LogikidsApiError extends Error {
   }
 }
 
+// Gender options
+export const GENDERS = ['male', 'female', 'non-binary', 'prefer-not-to-say'] as const;
+export type Gender = typeof GENDERS[number];
+
 // Request schema and type
 export const taskRequestSchema = z.object({
   subject: z.string(),
   concept: z.string(),
   taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
   age: z.number().min(5).max(18),
-  difficulty: z.enum(DIFFICULTIES)
+  difficulty: z.enum(DIFFICULTIES),
+  gender: z.enum(GENDERS).optional()
 });
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;

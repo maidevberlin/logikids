@@ -1,0 +1,13 @@
+---
+contexts:
+  - "This happened last week"
+  - "This is happening right now"
+  - "This will happen next month"
+  - "This could happen in the future"
+  - "This happened long ago in history"
+  - "This happens every day"
+  - "This might happen tomorrow"
+  - "This used to happen regularly"
+  - "This is being planned for later"
+  - "This would happen if certain conditions were met"
+---

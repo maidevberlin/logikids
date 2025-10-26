@@ -1,0 +1,13 @@
+---
+prompts:
+  - "After solving, explain why your answer makes sense"
+  - "What would change if one of the numbers was different?"
+  - "Can you think of another way to solve this?"
+  - "How would you explain your thinking to someone younger?"
+  - "What was the most challenging part of this problem?"
+  - "How can you check if your answer is correct?"
+  - "What pattern do you notice in this problem?"
+  - "Why did you choose this method to solve it?"
+  - "What similar problems have you solved before?"
+  - "How would you create a harder version of this problem?"
+---

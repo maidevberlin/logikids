@@ -1,0 +1,13 @@
+---
+framings:
+  - "The answer is given - figure out what the question could have been"
+  - "Some information is hidden - deduce what it must be"
+  - "The solution is provided - explain how to get there"
+  - "Only the result is shown - reverse engineer the process"
+  - "The final step is given - work backwards to find the starting point"
+  - "Multiple clues are provided - piece together the complete picture"
+  - "The ending is known - determine what must have happened"
+  - "Evidence is presented - draw the logical conclusion"
+  - "The outcome is revealed - trace back the steps"
+  - "A pattern's result is shown - discover the rule that creates it"
+---

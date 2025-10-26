@@ -1,0 +1,13 @@
+---
+dynamics:
+  - "The student works on this problem alone"
+  - "Two friends are working together to solve this"
+  - "Three students are competing to find the answer first"
+  - "The student is helping a younger sibling understand"
+  - "A student is explaining their solution to a teacher"
+  - "A group of classmates are debating different approaches"
+  - "The student discovers someone made a mistake and needs to correct it"
+  - "Two teams are racing to solve the problem"
+  - "The student is teaching their method to a friend"
+  - "A student is verifying another student's work"
+---

@@ -108,5 +108,28 @@
   },
   "common": {
     "loading": "Lädt..."
+  },
+  "profile": {
+    "prompt": {
+      "title": "Hilf uns, dein Lernerlebnis zu personalisieren!",
+      "description": "Erzähl uns ein bisschen über dich, damit wir Aufgaben erstellen können, die perfekt für dich sind.",
+      "age": {
+        "label": "Wie alt bist du?",
+        "placeholder": "Gib dein Alter ein",
+        "hint": "Alter 8-16"
+      },
+      "gender": {
+        "label": "Wie identifizierst du dich? (optional)",
+        "hint": "Dies hilft uns, personalisiertere Inhalte für dich zu erstellen.",
+        "options": {
+          "male": "Männlich",
+          "female": "Weiblich",
+          "non-binary": "Nicht-binär",
+          "prefer-not-to-say": "Keine Angabe"
+        }
+      },
+      "skip": "Überspringen",
+      "save": "Los geht's!"
+    }
   }
 } 

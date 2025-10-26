@@ -1,0 +1,13 @@
+---
+framings:
+  - "Present this as a letter from a friend asking for help"
+  - "Format this as a news article reporting on the situation"
+  - "Write this as a recipe with numbered steps"
+  - "Present as a game scoreboard with statistics"
+  - "Frame this as a diary entry describing the problem"
+  - "Format as a text message conversation"
+  - "Present as a set of instructions or manual"
+  - "Frame as a detective's case notes"
+  - "Write as a story with a beginning, middle, and end"
+  - "Present as a scientist's lab report"
+---

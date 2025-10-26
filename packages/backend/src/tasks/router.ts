@@ -10,6 +10,7 @@ export async function createTaskRouter(): Promise<Router> {
   const aiClient = await createAIClient();
   const taskController = new TaskController(aiClient);
   const taskService = new TaskService(aiClient);
+  await taskService.initialize(); // Load variations
   const hintController = new HintController(taskService);
 
   router.get('/', (req, res, next) =>

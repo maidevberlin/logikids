@@ -1,0 +1,13 @@
+---
+connections:
+  - "This skill helps when shopping and calculating total costs"
+  - "This type of thinking is used by architects and engineers"
+  - "Chefs use this math when adjusting recipes"
+  - "This is how scientists analyze their experiments"
+  - "Game developers use this logic when programming"
+  - "This helps when planning how to save money"
+  - "Athletes use this thinking to track their performance"
+  - "This is useful for planning travel routes and schedules"
+  - "Artists apply this when working with proportions and scales"
+  - "This skill is essential for comparing prices and finding deals"
+---

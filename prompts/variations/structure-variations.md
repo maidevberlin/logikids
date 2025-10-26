@@ -1,0 +1,13 @@
+---
+structures:
+  - "Break this down into multiple clear steps"
+  - "Compare two different approaches to solve this"
+  - "Make an estimate first, then calculate the exact answer"
+  - "Identify what information is needed and what can be ignored"
+  - "Find multiple solutions or answers to this problem"
+  - "Start with a simpler version, then tackle the full problem"
+  - "Look for patterns that make this easier to solve"
+  - "Use a table or chart to organize the information"
+  - "Draw a picture or diagram to visualize the problem"
+  - "Check your work by solving it a different way"
+---

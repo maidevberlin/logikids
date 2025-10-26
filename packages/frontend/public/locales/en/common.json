@@ -108,5 +108,28 @@
   },
   "common": {
     "loading": "Loading..."
+  },
+  "profile": {
+    "prompt": {
+      "title": "Help us personalize your experience!",
+      "description": "Tell us a bit about yourself so we can create tasks that are just right for you.",
+      "age": {
+        "label": "How old are you?",
+        "placeholder": "Enter your age",
+        "hint": "Ages 8-16"
+      },
+      "gender": {
+        "label": "How do you identify? (optional)",
+        "hint": "This helps us create more personalized content for you.",
+        "options": {
+          "male": "Male",
+          "female": "Female",
+          "non-binary": "Non-binary",
+          "prefer-not-to-say": "Prefer not to say"
+        }
+      },
+      "skip": "Skip for now",
+      "save": "Let's Go!"
+    }
   }
 } 

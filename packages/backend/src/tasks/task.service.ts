@@ -8,12 +8,24 @@ import {v4 as uuidv4} from 'uuid';
 import {taskCache, TaskContext} from './taskCache';
 import {hintSchema} from './schemas.ts';
 import {subjectRegistry} from "./subject.registry.ts";
+import {VariationLoader} from './variation.loader';
 
 export class TaskService {
     private readonly promptLoader: PromptLoader;
+    private readonly variationLoader: VariationLoader;
 
     constructor(private readonly aiClient: AIClient) {
         this.promptLoader = new PromptLoader();
+        this.variationLoader = new VariationLoader();
+    }
+
+    /**
+     * Initialize the task service (load variations)
+     */
+    async initialize(): Promise<void> {
+        console.log('[TaskService] Initializing...');
+        await this.variationLoader.loadAll();
+        console.log('[TaskService] Initialization complete');
     }
 
     public async generateTask(request: TaskRequest, language: string): Promise<TaskResponse> {
@@ -53,10 +65,11 @@ export class TaskService {
         const hintPrompt = await this.promptLoader.loadHintPrompt();
         console.log('[TaskService] Hint prompt loaded:', hintPrompt.id);
 
-        // Create prompt builder with subject, task type, and hint prompt
+        // Create prompt builder with subject, task type, variation loader, and hint prompt
         const promptBuilder = new PromptBuilder(
             subject,
             selectedTaskType,
+            this.variationLoader,
             hintPrompt
         );
 
@@ -67,7 +80,8 @@ export class TaskService {
             age: request.age,
             difficulty: request.difficulty,
             language,
-            taskType: selectedTaskType.id
+            taskType: selectedTaskType.id,
+            gender: request.gender
         };
 
         console.log('[TaskService] Building prompt with params:', params);
@@ -150,6 +164,7 @@ export class TaskService {
         const promptBuilder = new PromptBuilder(
             subject,
             taskType,
+            this.variationLoader,
             hintPromptTemplate
         );
 
