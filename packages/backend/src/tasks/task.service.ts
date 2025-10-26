@@ -42,9 +42,17 @@ export class TaskService {
         console.log('[TaskService] Subject loaded:', subjectId);
 
         // Handle random concept selection using registry methods
-        const concept = requestedConcept === 'random'
-            ? subjectRegistry.getRandomConcept(subjectId)
-            : subjectRegistry.getConcept(subjectId, requestedConcept);
+        // Try enriched concept first (curriculum + custom), fallback to legacy
+        let enrichedConcept = requestedConcept === 'random'
+            ? null // Handle random separately below
+            : subjectRegistry.getEnrichedConcept(subjectId, requestedConcept);
+
+        // Fallback to legacy concept if enriched not found
+        const concept = enrichedConcept
+            ? { id: enrichedConcept.id, name: enrichedConcept.name }
+            : (requestedConcept === 'random'
+                ? subjectRegistry.getRandomConcept(subjectId)
+                : subjectRegistry.getConcept(subjectId, requestedConcept));
 
         if (!concept) {
             throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
@@ -61,15 +69,29 @@ export class TaskService {
         }
         console.log('[TaskService] Task type loaded:', selectedTaskType.id);
 
+        // Load base prompt
+        const basePrompt = await this.promptLoader.loadBasePrompt();
+        console.log('[TaskService] Base prompt loaded');
+
         // Load hint prompt
         const hintPrompt = await this.promptLoader.loadHintPrompt();
         console.log('[TaskService] Hint prompt loaded:', hintPrompt.id);
 
-        // Create prompt builder with subject, task type, variation loader, and hint prompt
+        // Get enriched concept with full metadata (if not already loaded above)
+        if (!enrichedConcept) {
+            enrichedConcept = subjectRegistry.getEnrichedConcept(subjectId, concept.id);
+            if (!enrichedConcept) {
+                throw new Error(`Enriched concept ${concept.id} not found in subject ${subjectId}`);
+            }
+        }
+        console.log('[TaskService] Enriched concept loaded:', enrichedConcept.id);
+
+        // Create prompt builder with subject, task type, variation loader, and base prompt
         const promptBuilder = new PromptBuilder(
             subject,
             selectedTaskType,
             this.variationLoader,
+            basePrompt,
             hintPrompt
         );
 
@@ -85,7 +107,7 @@ export class TaskService {
         };
 
         console.log('[TaskService] Building prompt with params:', params);
-        const finalPrompt = promptBuilder.buildPrompt(params);
+        const finalPrompt = promptBuilder.buildPrompt(params, enrichedConcept);
         console.log('[TaskService] Prompt built, length:', finalPrompt.length, 'chars');
 
         // Generate the task using AI with structured output
@@ -157,7 +179,8 @@ export class TaskService {
             throw new Error(`Task type ${context.taskType} not found`);
         }
 
-        // Load hint prompt template
+        // Load base prompt and hint prompt template
+        const basePrompt = await this.promptLoader.loadBasePrompt();
         const hintPromptTemplate = await this.promptLoader.loadHintPrompt();
 
         // Build hint prompt
@@ -165,6 +188,7 @@ export class TaskService {
             subject,
             taskType,
             this.variationLoader,
+            basePrompt,
             hintPromptTemplate
         );
 

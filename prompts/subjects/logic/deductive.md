@@ -1,14 +1,19 @@
 ---
 id: deductive
-name: Deductive Reasoning
-description: Drawing logical conclusions from given premises
+name: Logical Deduction
+description: Using given information to reach logical conclusions
+grade: 4
+ages: [9, 10, 11, 12, 13, 14, 15, 16]
+focus: Deductive reasoning and inference
+difficulty: hard
+learning_objectives:
+  - Draw logical conclusions from given facts
+  - Identify necessary vs sufficient conditions
+  - Eliminate impossible options systematically
+  - Build chains of logical reasoning
+prerequisites: [patterns, sequences]
+example_tasks:
+  - "If A > B and B > C, what can we say about A and C?"
+  - "All cats are animals. Fluffy is a cat. What can we conclude?"
+real_world_context: Detective work, scientific experiments, troubleshooting
 ---
-
-Focus on creating a deductive reasoning problem that:
-- Uses clear premises to reach logical conclusions
-- Is appropriate for age {{age}} students
-- Uses familiar scenarios and examples
-- Builds step-by-step reasoning skills
-- Encourages methodical thinking
-- Uses age-appropriate complexity
-- Ensures valid logical connections

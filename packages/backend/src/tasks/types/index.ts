@@ -5,6 +5,10 @@ export type { MultipleChoiceResponse, MultipleChoiceOption } from './multipleCho
 export { yesNoSchema } from './yesNo';
 export type { YesNoResponse, YesNoSolution } from './yesNo';
 
+// Import types for local use
+import type { MultipleChoiceResponse } from './multipleChoice';
+import type { YesNoResponse } from './yesNo';
+
 // Base task response types (without taskId)
 export type BaseTaskResponse = MultipleChoiceResponse | YesNoResponse;
 

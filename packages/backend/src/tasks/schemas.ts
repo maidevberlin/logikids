@@ -8,9 +8,28 @@ export const conceptFrontmatterSchema = z.object({
   id: z.string().min(1, 'Concept id is required'),
   name: z.string().min(1, 'Concept name is required'),
   description: z.string().min(1, 'Concept description is required'),
+  // New required fields
+  grade: z.number().int().min(1).max(13),
+  ages: z.array(z.number().int().min(6).max(18)),
+  focus: z.string(),
+  difficulty: z.enum(['easy', 'medium', 'hard']),
+  learning_objectives: z.array(z.string()).min(1),
+  // Optional fields
+  prerequisites: z.array(z.string()).optional(),
+  example_tasks: z.array(z.string()).optional(),
+  real_world_context: z.string().optional(),
 });
 
 export type ConceptFrontmatter = z.infer<typeof conceptFrontmatterSchema>;
+
+/**
+ * Enriched concept with source tracking
+ */
+export interface EnrichedConcept extends ConceptFrontmatter {
+  prompt: string;
+  source: 'curriculum' | 'custom';
+  sourceDirectory: string;
+}
 
 /**
  * Schema for subject base.md frontmatter metadata

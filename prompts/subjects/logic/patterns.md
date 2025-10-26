@@ -2,13 +2,18 @@
 id: patterns
 name: Pattern Recognition
 description: Finding and understanding patterns in logical sequences
+grade: 3
+ages: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+focus: Visual and logical patterns
+difficulty: medium
+learning_objectives:
+  - Identify repeating patterns in sequences
+  - Predict next elements in a pattern
+  - Understand rule-based progressions
+  - Develop systematic observation skills
+prerequisites: []
+example_tasks:
+  - "Complete the pattern: 2, 4, 6, 8, __"
+  - "What comes next: ○, □, ○, □, __"
+real_world_context: Music rhythms, wallpaper designs, calendars
 ---
-
-Focus on creating a pattern recognition problem that:
-- Uses clear, visual patterns when possible
-- Is appropriate for age {{age}} students
-- Has a logical sequence or progression
-- Builds pattern recognition skills
-- Uses age-appropriate complexity
-- Can be solved through careful observation
-- Encourages systematic thinking

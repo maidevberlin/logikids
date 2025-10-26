@@ -5,11 +5,19 @@ import { useTranslation } from 'react-i18next';
 import { ConceptSelectorProps } from './types';
 import { styles } from './styles';
 import { useSubjects } from '../useSubjects';
+import { useUserData } from '../../UserData';
 
 export function ConceptSelector({ subject, value, onChange, className }: ConceptSelectorProps) {
   const { t } = useTranslation();
-  const { data: subjects } = useSubjects();
-  const subjectConfig = subjects?.find(s => s.id === subject);
+  const { data: userData } = useUserData();
+
+  const { data: subjectsResponse } = useSubjects({
+    grade: userData?.settings.grade ?? 5,
+    age: userData?.settings.age ?? 10,
+    difficulty: undefined // Optional - can be added later if needed
+  });
+
+  const subjectConfig = subjectsResponse?.subjects.find(s => s.id === subject);
 
   if (!subjectConfig) return null;
 
@@ -24,8 +32,8 @@ export function ConceptSelector({ subject, value, onChange, className }: Concept
     <Menu as="div" className={cn(styles.base, className)}>
       <Menu.Button className={styles.button}>
         <span>
-          {selectedConcept && (selectedConcept.value === 'random' 
-            ? t('subjects.random') 
+          {selectedConcept && (selectedConcept.value === 'random'
+            ? t('subjects.random')
             : t(`subjects.${subject}.concepts.${selectedConcept.value}`)
           )}
         </span>
@@ -42,8 +50,8 @@ export function ConceptSelector({ subject, value, onChange, className }: Concept
                 )}
                 onClick={() => onChange(concept.value)}
               >
-                {concept.value === 'random' 
-                  ? t('subjects.random') 
+                {concept.value === 'random'
+                  ? t('subjects.random')
                   : t(`subjects.${subject}.concepts.${concept.value}`)
                 }
               </button>

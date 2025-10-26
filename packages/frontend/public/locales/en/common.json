@@ -5,7 +5,22 @@
     "subtitle": "Start your journey into the exciting world of mathematics and logical thinking!",
     "personalizedSubtitle": "Ready to continue your learning adventure?",
     "startButton": "Start Learning",
-    "setupAccount": "Setup Your Account"
+    "setupAccount": "Setup Your Account",
+    "onboarding": {
+      "title": "Create a Secure Account",
+      "description": "Create an account to save your progress securely across devices. Your data is encrypted and private.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter your name",
+      "ageLabel": "Age",
+      "ageHint": "Ages 6-18",
+      "gradeLabel": "Grade",
+      "gradeValue": "Grade {{grade}}",
+      "gradeDescription": "Your current school grade",
+      "gradeMismatchWarning": "You entered age {{age}} and grade {{grade}}, but grade {{expectedGrade}} would be more typical for this age. Continue anyway?",
+      "skip": "Skip",
+      "create": "Create Account",
+      "creating": "Creating..."
+    }
   },
   "account": {
     "title": "My Account",
@@ -47,6 +62,7 @@
     "nameLabel": "What's your name?",
     "namePlaceholder": "Type your name here...",
     "ageLabel": "How old are you?",
+    "gradeLabel": "What grade are you in?",
     "languageLabel": "Choose your language",
     "gender": {
       "label": "Gender (optional)",

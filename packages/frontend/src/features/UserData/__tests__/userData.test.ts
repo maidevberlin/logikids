@@ -103,7 +103,7 @@ describe('UserData operations', () => {
     it('should merge updates with existing data', async () => {
       await initialize()
 
-      await setData({ settings: { name: 'Alice', age: 12, language: 'en', gender: 'female' } })
+      await setData({ settings: { name: 'Alice', age: 12, grade: 6, language: 'en', gender: 'female' } })
       const data = await getData()
 
       expect(data.settings.name).toBe('Alice')
@@ -129,7 +129,7 @@ describe('UserData operations', () => {
       const handler = () => { eventFired = true }
       window.addEventListener('data-changed', handler)
 
-      await setData({ settings: { name: 'Charlie', age: 10, language: 'en', gender: 'male' } })
+      await setData({ settings: { name: 'Charlie', age: 10, grade: 4, language: 'en', gender: 'male' } })
 
       expect(eventFired).toBe(true)
       window.removeEventListener('data-changed', handler)

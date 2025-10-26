@@ -14,20 +14,68 @@ export class TaskController extends BaseController {
     this.taskService = new TaskService(aiClient);
   }
 
-  public async getSubjects(_req: Request, res: Response): Promise<void> {
+  public async getSubjects(req: Request, res: Response): Promise<void> {
     try {
-      const subjects = subjectRegistry.getAll().map(subject => ({
-        id: subject.id,
-        name: subject.name,
-        description: subject.description,
-        concepts: Array.from(subject.concepts.values()).map(concept => ({
-          id: concept.id,
-          name: concept.name,
-          description: concept.description
-        }))
-      }));
+      // Parse and validate query parameters for grade filtering
+      const grade = req.query.grade ? parseInt(req.query.grade as string, 10) : undefined;
+      const difficulty = req.query.difficulty as 'easy' | 'medium' | 'hard' | undefined;
 
-      res.json(subjects);
+      // Validate grade if provided
+      if (grade !== undefined && (isNaN(grade) || grade < 1 || grade > 13)) {
+        res.status(400).json({ error: 'Invalid grade parameter. Must be between 1 and 13.' });
+        return;
+      }
+
+      // Validate difficulty if provided
+      if (difficulty && !['easy', 'medium', 'hard'].includes(difficulty)) {
+        res.status(400).json({ error: 'Invalid difficulty parameter. Must be easy, medium, or hard.' });
+        return;
+      }
+
+      const subjects = subjectRegistry.getAll().map(subject => {
+        // Get enriched concepts with filtering if grade/difficulty provided
+        const enrichedConcepts = grade !== undefined
+          ? subjectRegistry.getConcepts(subject.id, { grade, difficulty })
+          : [];
+
+        // If grade filtering is active, only return enriched concepts
+        if (grade !== undefined) {
+          return {
+            id: subject.id,
+            name: subject.name,
+            description: subject.description,
+            concepts: enrichedConcepts.map(concept => ({
+              id: concept.id,
+              name: concept.name,
+              description: concept.description,
+              grade: concept.grade,
+              difficulty: concept.difficulty,
+              source: concept.source,
+              focus: concept.focus,
+              learning_objectives: concept.learning_objectives
+            }))
+          };
+        }
+
+        // Otherwise return legacy format (all concepts)
+        return {
+          id: subject.id,
+          name: subject.name,
+          description: subject.description,
+          concepts: Array.from(subject.concepts.values()).map(concept => ({
+            id: concept.id,
+            name: concept.name,
+            description: concept.description
+          }))
+        };
+      });
+
+      // Filter out subjects with no concepts if grade filtering is active
+      const filteredSubjects = grade !== undefined
+        ? subjects.filter(s => s.concepts.length > 0)
+        : subjects;
+
+      res.json({ subjects: filteredSubjects });
     } catch (error) {
       if (error instanceof Error) {
         res.status(400).json({ error: error.message });
@@ -77,7 +125,9 @@ export class TaskController extends BaseController {
       if (basicValidation.concept === 'random') {
         basicValidation.concept = this.getRandomConcept(basicValidation.subject);
       } else {
-        const conceptExists = subjectRegistry.getConcept(basicValidation.subject, basicValidation.concept);
+        // Check enriched concepts first (curriculum + custom), fallback to legacy
+        const conceptExists = subjectRegistry.getEnrichedConcept(basicValidation.subject, basicValidation.concept)
+          || subjectRegistry.getConcept(basicValidation.subject, basicValidation.concept);
         if (!conceptExists) {
           throw new Error('Invalid concept for the selected subject');
         }

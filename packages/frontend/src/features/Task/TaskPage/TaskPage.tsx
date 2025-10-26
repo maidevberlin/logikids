@@ -31,6 +31,7 @@ const backgrounds = {
 const taskDefaults: TaskRequest = {
   difficulty: 'medium',
   subject: 'math',
+  age: 10,
   grade: 5,
   concept: 'random'
 }
@@ -47,9 +48,10 @@ export default function TaskPage({}: TaskPageProps) {
     difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
     subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
     concept: (searchParams.get('concept') ?? taskDefaults.concept),
+    age: data?.settings.age ?? taskDefaults.age,
     grade: data?.settings.grade ?? taskDefaults.grade,
-    gender: data?.settings.gender
-  }), [searchParams, data?.settings.grade, data?.settings.gender])
+    gender: data?.settings.gender as 'male' | 'female' | 'non-binary' | 'prefer-not-to-say' | undefined
+  }), [searchParams, data?.settings.age, data?.settings.grade, data?.settings.gender])
 
   // Store subject and concept when they change
   useEffect(() => {

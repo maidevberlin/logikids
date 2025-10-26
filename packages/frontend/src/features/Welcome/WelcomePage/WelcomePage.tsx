@@ -14,7 +14,8 @@ export default function WelcomePage({}: WelcomePageProps) {
   const { data, isLoading, updateSettings } = useUserData()
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [onboardingName, setOnboardingName] = useState('')
-  const [onboardingGrade, setOnboardingGrade] = useState(6)
+  const [onboardingAge, setOnboardingAge] = useState(10)
+  const [onboardingGrade, setOnboardingGrade] = useState(5)
   const [isCreating, setIsCreating] = useState(false)
 
   // Show onboarding if user has no name
@@ -29,6 +30,21 @@ export default function WelcomePage({}: WelcomePageProps) {
 
   const handleCreateAccount = async () => {
     if (!onboardingName) return
+
+    // Check for age/grade mismatch
+    const expectedGrade = onboardingAge - 5
+    const gradeDifference = Math.abs(onboardingGrade - expectedGrade)
+
+    if (gradeDifference > 2) {
+      const confirmed = window.confirm(
+        t('welcome.onboarding.gradeMismatchWarning', {
+          age: onboardingAge,
+          grade: onboardingGrade,
+          expectedGrade
+        })
+      )
+      if (!confirmed) return
+    }
 
     setIsCreating(true)
     try {
@@ -93,7 +109,7 @@ export default function WelcomePage({}: WelcomePageProps) {
                 <div className="space-y-3">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t('account.settings.name', { defaultValue: 'Name' })}
+                      {t('welcome.onboarding.nameLabel', { defaultValue: 'Name' })}
                     </label>
                     <input
                       type="text"
@@ -107,17 +123,41 @@ export default function WelcomePage({}: WelcomePageProps) {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t('account.settings.grade', { defaultValue: 'Grade' })}
+                      {t('welcome.onboarding.ageLabel', { defaultValue: 'Age' })}
                     </label>
                     <input
                       type="number"
+                      value={onboardingAge}
+                      onChange={(e) => setOnboardingAge(parseInt(e.target.value) || 10)}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      min="6"
+                      max="18"
+                      disabled={isCreating}
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      {t('welcome.onboarding.ageHint', { defaultValue: 'Ages 6-18' })}
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      {t('welcome.onboarding.gradeLabel', { defaultValue: 'Grade' })}
+                    </label>
+                    <select
                       value={onboardingGrade}
                       onChange={(e) => setOnboardingGrade(parseInt(e.target.value))}
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      min="1"
-                      max="13"
                       disabled={isCreating}
-                    />
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((grade) => (
+                        <option key={grade} value={grade}>
+                          {t('welcome.onboarding.gradeValue', { grade, defaultValue: `Grade ${grade}` })}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {t('welcome.onboarding.gradeDescription', { defaultValue: 'Your current school grade' })}
+                    </p>
                   </div>
                 </div>
 

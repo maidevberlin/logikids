@@ -1,13 +1,14 @@
 export interface Concept {
   id: string;
   name: string;
-  description: string;
+  grade: number;
+  difficulty: string;
+  source: 'curriculum' | 'custom';
 }
 
 export interface Subject {
   id: string;
   name: string;
-  description: string;
   concepts: Concept[];
 }
 

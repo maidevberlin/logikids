@@ -13,16 +13,17 @@ export async function createTaskRouter(): Promise<Router> {
   await taskService.initialize(); // Load variations
   const hintController = new HintController(taskService);
 
-  router.get('/', (req, res, next) =>
-    taskController.getTask(req, res).catch(next)
-  );
-
+  // More specific routes must come before generic routes
   router.get('/subjects', (req, res, next) =>
     taskController.getSubjects(req, res).catch(next)
   );
 
   router.post('/:taskId/hint', (req, res, next) =>
     hintController.getHint(req, res).catch(next)
+  );
+
+  router.get('/', (req, res, next) =>
+    taskController.getTask(req, res).catch(next)
   );
 
   router.use(errorHandler);

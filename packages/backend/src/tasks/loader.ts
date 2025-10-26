@@ -11,6 +11,7 @@ import {
   SubjectFrontmatter,
   TaskTypeFrontmatter,
   HintPromptFrontmatter,
+  EnrichedConcept,
 } from './schemas';
 
 export interface Concept {
@@ -53,9 +54,32 @@ export class PromptLoader {
   private hintPromptCache: HintPrompt | null = null;
   private watcher: FSWatcher | null = null;
   private promptsDir: string;
+  private curriculumsDir: string;
+  private basePromptCache: string | null = null;
 
   constructor(promptsDir: string = path.join(process.cwd(), 'prompts')) {
     this.promptsDir = promptsDir;
+    this.curriculumsDir = path.join(process.cwd(), 'curriculums');
+  }
+
+  /**
+   * Load base prompt (shared across all subjects)
+   */
+  async loadBasePrompt(): Promise<string> {
+    // Check cache first
+    if (this.basePromptCache) {
+      return this.basePromptCache;
+    }
+
+    const basePath = path.join(this.promptsDir, 'base-prompt.md');
+    try {
+      const fileContent = await fs.readFile(basePath, 'utf-8');
+      const parsed = matter(fileContent);
+      this.basePromptCache = parsed.content.trim();
+      return this.basePromptCache;
+    } catch (error: any) {
+      throw new Error(`Error loading base prompt from ${basePath}: ${error.message}`);
+    }
   }
 
   /**
@@ -166,15 +190,140 @@ export class PromptLoader {
   }
 
   /**
+   * Load all concepts for a subject from both curriculum and custom directories
+   */
+  async loadConcepts(subjectId: string): Promise<EnrichedConcept[]> {
+    const concepts: EnrichedConcept[] = [];
+
+    // Load curriculum concepts
+    const curriculumPath = path.join(this.curriculumsDir, subjectId);
+    const curriculumConcepts = await this.loadConceptsFromDirectory(
+      curriculumPath,
+      'curriculum'
+    );
+    concepts.push(...curriculumConcepts);
+
+    // Load custom concepts
+    const customPath = path.join(this.promptsDir, 'subjects', subjectId);
+    const customConcepts = await this.loadConceptsFromDirectory(
+      customPath,
+      'custom',
+      ['base.md'] // exclude base.md
+    );
+    concepts.push(...customConcepts);
+
+    // Handle duplicates by appending "(Custom)" to custom version
+    return this.deduplicateConcepts(concepts);
+  }
+
+  /**
+   * Load concepts from a specific directory
+   */
+  private async loadConceptsFromDirectory(
+    dirPath: string,
+    source: 'curriculum' | 'custom',
+    excludeFiles: string[] = []
+  ): Promise<EnrichedConcept[]> {
+    const concepts: EnrichedConcept[] = [];
+
+    try {
+      const files = await fs.readdir(dirPath);
+
+      for (const file of files) {
+        if (!file.endsWith('.md')) continue;
+        if (excludeFiles.includes(file)) continue;
+
+        const filePath = path.join(dirPath, file);
+        const stat = await fs.stat(filePath);
+
+        if (!stat.isFile()) continue;
+
+        try {
+          const fileContent = await fs.readFile(filePath, 'utf-8');
+          const parsed = matter(fileContent);
+
+          const result = conceptFrontmatterSchema.safeParse(parsed.data);
+          if (!result.success) {
+            console.warn(`Invalid concept frontmatter in ${filePath}: ${result.error.message}`);
+            continue;
+          }
+
+          concepts.push({
+            ...result.data,
+            prompt: parsed.content.trim(),
+            source,
+            sourceDirectory: dirPath,
+          });
+        } catch (error) {
+          console.warn(`Error loading concept from ${filePath}:`, error);
+        }
+      }
+    } catch (error) {
+      // Directory doesn't exist or can't be read - that's okay
+      // Return empty array
+    }
+
+    return concepts;
+  }
+
+  /**
+   * Handle duplicate concept names by appending "(Custom)" to custom versions
+   */
+  private deduplicateConcepts(concepts: EnrichedConcept[]): EnrichedConcept[] {
+    const nameMap = new Map<string, EnrichedConcept[]>();
+
+    // Group concepts by name
+    for (const concept of concepts) {
+      const existing = nameMap.get(concept.name) || [];
+      existing.push(concept);
+      nameMap.set(concept.name, existing);
+    }
+
+    // Handle duplicates
+    const deduplicated: EnrichedConcept[] = [];
+
+    for (const [name, group] of nameMap.entries()) {
+      if (group.length === 1) {
+        deduplicated.push(group[0]);
+      } else {
+        // Multiple concepts with same name
+        const curriculum = group.filter(c => c.source === 'curriculum');
+        const custom = group.filter(c => c.source === 'custom');
+
+        // Add curriculum versions as-is
+        deduplicated.push(...curriculum);
+
+        // Add custom versions with "(Custom)" suffix
+        for (const concept of custom) {
+          deduplicated.push({
+            ...concept,
+            name: `${concept.name} (Custom)`,
+            id: `${concept.id}-custom`,
+          });
+        }
+      }
+    }
+
+    return deduplicated;
+  }
+
+  /**
    * Enable hot-reload for development
    */
   enableHotReload(): void {
     if (this.watcher) return; // Already enabled
 
-    this.watcher = chokidar.watch(`${this.promptsDir}/**/*.md`, {
-      ignoreInitial: true,
-      persistent: true,
-    });
+    // Watch both prompts and curriculums directories
+    this.watcher = chokidar.watch(
+      [
+        `${this.promptsDir}/**/*.md`,
+        `${this.curriculumsDir}/**/*.md`
+      ],
+      {
+        ignoreInitial: true,
+        persistent: true,
+      }
+    );
 
     this.watcher.on('change', (filePath) => {
       console.log(`[PromptLoader] Prompt updated: ${filePath}`);
@@ -191,7 +340,7 @@ export class PromptLoader {
       this.invalidateCache(filePath);
     });
 
-    console.log('[PromptLoader] Hot-reload enabled');
+    console.log('[PromptLoader] Hot-reload enabled for prompts and curriculums');
   }
 
   /**
@@ -254,6 +403,13 @@ export class PromptLoader {
    * Invalidate cache for a specific file path
    */
   private invalidateCache(filePath: string): void {
+    // Check if it's the base prompt
+    if (filePath.includes('base-prompt.md')) {
+      this.basePromptCache = null;
+      console.log(`[PromptLoader] Cache invalidated for base prompt`);
+      return;
+    }
+
     // Determine if it's a subject, task type, or hint file
     if (filePath.includes('/subjects/')) {
       // Extract subject id from path
@@ -262,6 +418,14 @@ export class PromptLoader {
         const subjectId = match[1];
         this.subjectCache.delete(subjectId);
         console.log(`[PromptLoader] Cache invalidated for subject: ${subjectId}`);
+      }
+    } else if (filePath.includes('/curriculums/')) {
+      // Extract subject id from curriculum path
+      const match = filePath.match(/\/curriculums\/([^/]+)\//);
+      if (match) {
+        const subjectId = match[1];
+        this.subjectCache.delete(subjectId);
+        console.log(`[PromptLoader] Cache invalidated for curriculum subject: ${subjectId}`);
       }
     } else if (filePath.includes('/task-types/')) {
       // Extract task type id from filename

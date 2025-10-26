@@ -2,7 +2,6 @@ import { z } from 'zod';
 import { api, ApiResponse } from './api';
 import { DIFFICULTIES, Task, TASK_TYPES } from '../features/Task/types';
 import { getCurrentLanguage } from '../i18n/config';
-import { Subject } from '../features/Subject/types';
 
 export class LogikidsApiError extends Error {
   constructor(message: string) {
@@ -20,12 +19,39 @@ export const taskRequestSchema = z.object({
   subject: z.string(),
   concept: z.string(),
   taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
+  age: z.number().min(6).max(18),
   grade: z.number().min(1).max(13),
   difficulty: z.enum(DIFFICULTIES),
   gender: z.enum(GENDERS).optional()
 });
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;
+
+// Subjects endpoint params
+export interface SubjectsParams {
+  grade: number;
+  age: number;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
+// Subject/concept response types
+export interface ConceptInfo {
+  id: string;
+  name: string;
+  grade: number;
+  difficulty: string;
+  source: 'curriculum' | 'custom';
+}
+
+export interface SubjectInfo {
+  id: string;
+  name: string;
+  concepts: ConceptInfo[];
+}
+
+export interface SubjectsResponse {
+  subjects: SubjectInfo[];
+}
 
 // Hint response type
 export interface HintResponse {
@@ -35,8 +61,9 @@ export interface HintResponse {
 }
 
 export const logikids = {
-  getSubjects: (signal?: AbortSignal): ApiResponse<Subject[]> => {
-    return api.get<void, Subject[]>('/task/subjects', {
+  getSubjects: (params: SubjectsParams, signal?: AbortSignal): ApiResponse<SubjectsResponse> => {
+    return api.get<SubjectsParams, SubjectsResponse>('/task/subjects', {
+      params,
       signal,
       headers: {
         'Accept-Language': getCurrentLanguage()

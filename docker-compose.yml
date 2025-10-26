@@ -32,6 +32,8 @@ services:
     volumes:
       - ./packages/backend:/app
       - ./prompts:/app/prompts
+      - ./curriculums:/app/curriculums
+      - ./scripts:/app/scripts
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids

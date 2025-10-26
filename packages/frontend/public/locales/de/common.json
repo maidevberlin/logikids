@@ -5,7 +5,22 @@
     "subtitle": "Starte deine Reise in die spannende Welt der Mathematik und des logischen Denkens!",
     "personalizedSubtitle": "Bereit, dein Lernabenteuer fortzusetzen?",
     "startButton": "Jetzt Lernen",
-    "setupAccount": "Konto einrichten"
+    "setupAccount": "Konto einrichten",
+    "onboarding": {
+      "title": "Sicheres Konto erstellen",
+      "description": "Erstelle ein Konto, um deinen Fortschritt sicher auf allen Geräten zu speichern. Deine Daten sind verschlüsselt und privat.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Gib deinen Namen ein",
+      "ageLabel": "Alter",
+      "ageHint": "Alter 6-18",
+      "gradeLabel": "Klasse",
+      "gradeValue": "Klasse {{grade}}",
+      "gradeDescription": "Deine aktuelle Schulklasse",
+      "gradeMismatchWarning": "Du hast Alter {{age}} und Klasse {{grade}} eingegeben, aber Klasse {{expectedGrade}} wäre typischer für dieses Alter. Trotzdem fortfahren?",
+      "skip": "Überspringen",
+      "create": "Konto erstellen",
+      "creating": "Erstelle..."
+    }
   },
   "account": {
     "title": "Mein Konto",
@@ -47,6 +62,7 @@
     "nameLabel": "Wie heißt du?",
     "namePlaceholder": "Gib deinen Namen ein...",
     "ageLabel": "Wie alt bist du?",
+    "gradeLabel": "In welcher Klasse bist du?",
     "languageLabel": "Wähle deine Sprache",
     "gender": {
       "label": "Geschlecht (optional)",

@@ -1,13 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { logikids } from '../../api/logikids';
-import { Subject } from './types';
+import { logikids, SubjectsParams, SubjectsResponse } from '../../api/logikids';
 
-export const SUBJECTS_QUERY_KEY = ['subjects'] as const;
-
-export function useSubjects() {
-  return useQuery<Subject[]>({
-    queryKey: SUBJECTS_QUERY_KEY,
-    queryFn: ({ signal }) => logikids.getSubjects(signal),
+export function useSubjects(params: SubjectsParams) {
+  return useQuery<SubjectsResponse>({
+    queryKey: ['subjects', params.grade, params.age, params.difficulty],
+    queryFn: ({ signal }) => logikids.getSubjects(params, signal),
     staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
+    enabled: !!params.grade && !!params.age,
   });
 } 

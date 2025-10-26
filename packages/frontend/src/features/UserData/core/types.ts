@@ -1,5 +1,6 @@
 export interface UserSettings {
   name: string
+  age: number
   grade: number
   language: string
   gender: string
@@ -20,6 +21,7 @@ export interface UserData {
 
 export const DEFAULT_SETTINGS: UserSettings = {
   name: '',
+  age: 10,
   grade: 5,
   language: 'en',
   gender: 'neutral'

@@ -2,13 +2,20 @@
 id: rhythm
 name: Rhythm Recognition
 description: Understanding and identifying different rhythmic patterns in music
+grade: 3
+ages: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+focus: Rhythmic pattern recognition and timing
+difficulty: medium
+learning_objectives:
+  - Recognize simple rhythmic patterns and beats
+  - Understand the concept of timing in music
+  - Identify different note durations and rests
+  - Develop sense of musical pulse
+  - Build pattern recognition in time
+prerequisites: []
+example_tasks:
+  - "Which rhythm pattern has more beats: quarter-quarter or half note?"
+  - "Identify the repeating rhythm in this musical pattern"
+  - "Clap the rhythm pattern: long-short-short-long"
+real_world_context: Dancing to music, playing instruments, recognizing songs by rhythm, drumming
 ---
-
-Focus on creating a rhythm recognition problem that:
-- Uses simple rhythmic patterns and beats
-- Is appropriate for age {{age}} students
-- Uses familiar musical examples
-- Builds pattern recognition in time
-- Encourages understanding of timing
-- Uses age-appropriate complexity
-- Ensures cultural diversity in music examples
