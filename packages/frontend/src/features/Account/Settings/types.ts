@@ -1,8 +1,8 @@
 import { Gender } from '../../../api/logikids'
 
 export interface Settings {
-  /** User's age */
-  age: number
+  /** User's grade (1-13) */
+  grade: number
   /** User's name */
   name: string
   /** User's preferred language */
@@ -12,7 +12,7 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-  age: 12,
+  grade: 6,
   name: '',
   language: 'en',
   gender: undefined

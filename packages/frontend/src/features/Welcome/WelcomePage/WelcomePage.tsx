@@ -14,7 +14,7 @@ export default function WelcomePage({}: WelcomePageProps) {
   const { data, isLoading, updateSettings } = useUserData()
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [onboardingName, setOnboardingName] = useState('')
-  const [onboardingAge, setOnboardingAge] = useState(12)
+  const [onboardingGrade, setOnboardingGrade] = useState(6)
   const [isCreating, setIsCreating] = useState(false)
 
   // Show onboarding if user has no name
@@ -32,7 +32,7 @@ export default function WelcomePage({}: WelcomePageProps) {
 
     setIsCreating(true)
     try {
-      await updateSettings({ name: onboardingName, age: onboardingAge })
+      await updateSettings({ name: onboardingName, grade: onboardingGrade })
       setShowOnboarding(false)
       localStorage.setItem('hasSeenOnboarding', 'true')
     } catch (error) {
@@ -107,15 +107,15 @@ export default function WelcomePage({}: WelcomePageProps) {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t('account.settings.age', { defaultValue: 'Age' })}
+                      {t('account.settings.grade', { defaultValue: 'Grade' })}
                     </label>
                     <input
                       type="number"
-                      value={onboardingAge}
-                      onChange={(e) => setOnboardingAge(parseInt(e.target.value))}
+                      value={onboardingGrade}
+                      onChange={(e) => setOnboardingGrade(parseInt(e.target.value))}
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      min="8"
-                      max="16"
+                      min="1"
+                      max="13"
                       disabled={isCreating}
                     />
                   </div>

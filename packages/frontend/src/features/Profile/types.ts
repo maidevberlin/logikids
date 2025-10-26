@@ -1,19 +1,20 @@
 export type Gender = 'male' | 'female' | 'non-binary' | 'prefer-not-to-say';
 
 export interface UserProfile {
-  age: number;              // Age when entered (e.g., 10)
-  ageEnteredAt: string;     // ISO date when user provided age
+  grade: number;              // Grade when entered (e.g., 5)
+  gradeEnteredAt: string;     // ISO date when user provided grade
   gender: Gender | null;
 }
 
 /**
- * Calculate current age based on when it was entered
+ * Calculate current grade based on when it was entered
+ * Note: This assumes typical school year progression (one grade per year)
  */
-export function getCurrentAge(profile: UserProfile): number {
-  const enteredDate = new Date(profile.ageEnteredAt);
+export function getCurrentGrade(profile: UserProfile): number {
+  const enteredDate = new Date(profile.gradeEnteredAt);
   const now = new Date();
   const yearsElapsed = Math.floor(
     (now.getTime() - enteredDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
   );
-  return profile.age + yearsElapsed;
+  return Math.min(13, profile.grade + yearsElapsed);
 }

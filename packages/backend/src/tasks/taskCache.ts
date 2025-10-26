@@ -3,7 +3,7 @@ export interface TaskContext {
   subject: string;
   concept: string;
   taskType: string;
-  age: number;
+  grade: number;
   difficulty: string;
   language: string;
   generatedTask: string;

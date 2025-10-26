@@ -30,7 +30,7 @@ export const taskRequestSchema = z.object({
     val => !val || taskTypeRegistry.get(val) !== undefined,
     'Invalid task type'
   ),
-  age: z.number().min(5).max(18),
+  grade: z.number().min(1).max(13),
   difficulty: z.enum(DIFFICULTIES),
   gender: z.enum(GENDERS).optional()
 });
@@ -41,7 +41,7 @@ export type TaskRequest = z.infer<typeof taskRequestSchema>;
 export interface TaskGenerationParams {
   subject: string;
   concept: string;
-  age: number;
+  grade: number;
   difficulty: Difficulty;
   language: string;
   taskType?: string;

@@ -1,33 +1,33 @@
 ---
 scenarios:
   - context: "birthday party celebration"
-    minAge: 8
-    maxAge: 16
+    minGrade: 2
+    maxGrade: 11
   - context: "space station mission"
-    minAge: 10
-    maxAge: 16
+    minGrade: 4
+    maxGrade: 11
   - context: "farmer's market shopping"
-    minAge: 8
-    maxAge: 14
+    minGrade: 2
+    maxGrade: 8
   - context: "soccer tournament"
-    minAge: 8
-    maxAge: 16
+    minGrade: 2
+    maxGrade: 11
   - context: "school science fair"
-    minAge: 9
-    maxAge: 16
+    minGrade: 3
+    maxGrade: 11
   - context: "baking cookies at home"
-    minAge: 8
-    maxAge: 12
+    minGrade: 2
+    maxGrade: 6
   - context: "video game design project"
-    minAge: 10
-    maxAge: 16
+    minGrade: 4
+    maxGrade: 11
   - context: "treasure hunt adventure"
-    minAge: 8
-    maxAge: 13
+    minGrade: 2
+    maxGrade: 7
   - context: "running a lemonade stand"
-    minAge: 8
-    maxAge: 12
+    minGrade: 2
+    maxGrade: 6
   - context: "planning a camping trip"
-    minAge: 9
-    maxAge: 16
+    minGrade: 3
+    maxGrade: 11
 ---

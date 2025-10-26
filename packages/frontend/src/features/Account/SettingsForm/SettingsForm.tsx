@@ -36,12 +36,12 @@ export function SettingsForm() {
         />
       </FormField>
 
-      <FormField label={t('settings.ageLabel')}>
+      <FormField label={t('settings.gradeLabel')}>
         <NumberInput
-          value={data.settings.age}
-          onChange={(age) => updateSettings({ age })}
-          min={6}
-          max={20}
+          value={data.settings.grade}
+          onChange={(grade) => updateSettings({ grade })}
+          min={1}
+          max={13}
         />
       </FormField>
 

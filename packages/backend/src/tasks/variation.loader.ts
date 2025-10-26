@@ -88,16 +88,16 @@ export class VariationLoader {
   }
 
   /**
-   * Get a random scenario, optionally filtered by age
+   * Get a random scenario, optionally filtered by grade
    */
-  getScenario(age?: number): string {
+  getScenario(grade?: number): string {
     if (this.scenarios.length === 0) {
       return 'a typical everyday situation';
     }
 
-    // Filter by age if provided
-    const eligible = age
-      ? this.scenarios.filter(s => age >= s.minAge && age <= s.maxAge)
+    // Filter by grade if provided
+    const eligible = grade
+      ? this.scenarios.filter(s => grade >= s.minGrade && grade <= s.maxGrade)
       : this.scenarios;
 
     if (eligible.length === 0) {

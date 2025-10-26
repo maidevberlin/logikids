@@ -28,12 +28,12 @@ export class PromptBuilder {
   }
 
   /**
-   * Get language style based on age
+   * Get language style based on grade
    */
-  private getLanguageStyle(age: number): string {
-    if (age <= 10) {
+  private getLanguageStyle(grade: number): string {
+    if (grade <= 4) {
       return "Use very simple, playful language with short sentences. Keep it fun and encouraging.";
-    } else if (age <= 13) {
+    } else if (grade <= 8) {
       return "Use casual but structured language. Explain concepts clearly without being condescending.";
     } else {
       return "Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.";
@@ -51,7 +51,7 @@ export class PromptBuilder {
 
     // Prepare base variables
     const baseVariables = {
-      age: params.age,
+      grade: params.grade,
       difficulty: params.difficulty,
       language: this.formatLanguage(params.language),
       concept_name: concept.name,
@@ -60,8 +60,8 @@ export class PromptBuilder {
 
     // Add variation variables (always set, empty if not applicable)
     const variationVariables: Record<string, any> = {
-      scenario: this.variationLoader.getScenario(params.age),
-      language_style: params.age ? this.getLanguageStyle(params.age) : '',
+      scenario: this.variationLoader.getScenario(params.grade),
+      language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
       student_context: params.gender ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
       enrichment_instruction: '',
     };
@@ -106,7 +106,7 @@ export class PromptBuilder {
       subject: string;
       concept: string;
       taskType: string;
-      age: number;
+      grade: number;
       difficulty: string;
       language: string;
       task: string;
@@ -139,7 +139,7 @@ export class PromptBuilder {
       solution: JSON.stringify(context.solution, null, 2),
       previousHints,
       hintNumber: hintNumber.toString(),
-      age: context.age.toString(),
+      grade: context.grade.toString(),
       conceptName: concept?.name || context.concept,
       language: languageName,
       difficulty: context.difficulty,

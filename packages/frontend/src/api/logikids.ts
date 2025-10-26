@@ -20,7 +20,7 @@ export const taskRequestSchema = z.object({
   subject: z.string(),
   concept: z.string(),
   taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
-  age: z.number().min(5).max(18),
+  grade: z.number().min(1).max(13),
   difficulty: z.enum(DIFFICULTIES),
   gender: z.enum(GENDERS).optional()
 });

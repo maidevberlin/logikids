@@ -3,20 +3,20 @@ import { useTranslation } from 'react-i18next';
 import { Gender } from '../types';
 
 interface ProfilePromptProps {
-  onSave: (age: number, gender: Gender | null) => void;
+  onSave: (grade: number, gender: Gender | null) => void;
   onSkip: () => void;
 }
 
 export function ProfilePrompt({ onSave, onSkip }: ProfilePromptProps) {
   const { t } = useTranslation();
-  const [age, setAge] = useState<string>('');
+  const [grade, setGrade] = useState<string>('');
   const [gender, setGender] = useState<Gender | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const ageNum = parseInt(age, 10);
-    if (ageNum >= 8 && ageNum <= 16) {
-      onSave(ageNum, gender);
+    const gradeNum = parseInt(grade, 10);
+    if (gradeNum >= 1 && gradeNum <= 13) {
+      onSave(gradeNum, gender);
     }
   };
 
@@ -24,7 +24,7 @@ export function ProfilePrompt({ onSave, onSkip }: ProfilePromptProps) {
     onSkip();
   };
 
-  const isValid = age && parseInt(age, 10) >= 8 && parseInt(age, 10) <= 16;
+  const isValid = grade && parseInt(grade, 10) >= 1 && parseInt(grade, 10) <= 13;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -38,26 +38,26 @@ export function ProfilePrompt({ onSave, onSkip }: ProfilePromptProps) {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Age Input */}
+          {/* Grade Input */}
           <div>
             <label
-              htmlFor="age"
+              htmlFor="grade"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              {t('profile.prompt.age.label')}
+              {t('profile.prompt.grade.label')}
             </label>
             <input
-              id="age"
+              id="grade"
               type="number"
-              min="8"
-              max="16"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
+              min="1"
+              max="13"
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-              placeholder={t('profile.prompt.age.placeholder')}
+              placeholder={t('profile.prompt.grade.placeholder')}
             />
             <p className="text-xs text-gray-500 mt-1">
-              {t('profile.prompt.age.hint')}
+              {t('profile.prompt.grade.hint')}
             </p>
           </div>
 

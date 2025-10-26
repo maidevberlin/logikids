@@ -4,8 +4,8 @@
 
 export interface Scenario {
   context: string;
-  minAge: number;
-  maxAge: number;
+  minGrade: number;
+  maxGrade: number;
 }
 
 export type EnrichmentType =

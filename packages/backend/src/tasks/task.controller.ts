@@ -59,7 +59,7 @@ export class TaskController extends BaseController {
     try {
       const query = {
         ...req.query,
-        age: req.query.age ? parseInt(req.query.age as string, 10) : undefined,
+        grade: req.query.grade ? parseInt(req.query.grade as string, 10) : undefined,
         taskType: req.query.taskType || this.getRandomTaskType()
       };
 
