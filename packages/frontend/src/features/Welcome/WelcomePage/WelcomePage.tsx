@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react'
 import logoSrc from '../../../assets/logikids.webp'
-import { useSettings } from '../../Account/Settings/useSettings'
+import { useUserData } from '../../Auth/context/UserDataContext'
 import { styles } from './styles'
 import { Page } from '../../base/Layout'
 import { cn } from '../../../utils'
@@ -10,7 +11,41 @@ import type { WelcomePageProps } from './types'
 
 export default function WelcomePage({}: WelcomePageProps) {
   const { t } = useTranslation()
-  const { settings } = useSettings()
+  const { settings, isAuthenticated, isLoading, createAccount } = useUserData()
+  const [showOnboarding, setShowOnboarding] = useState(false)
+  const [onboardingName, setOnboardingName] = useState('')
+  const [onboardingAge, setOnboardingAge] = useState(12)
+  const [isCreating, setIsCreating] = useState(false)
+
+  // Show onboarding if user has no name and is not authenticated
+  useEffect(() => {
+    if (!isLoading && !settings.name && !isAuthenticated) {
+      const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding')
+      if (!hasSeenOnboarding) {
+        setShowOnboarding(true)
+      }
+    }
+  }, [isLoading, settings.name, isAuthenticated])
+
+  const handleCreateAccount = async () => {
+    if (!onboardingName) return
+
+    setIsCreating(true)
+    try {
+      await createAccount(onboardingName, onboardingAge, settings.language)
+      setShowOnboarding(false)
+      localStorage.setItem('hasSeenOnboarding', 'true')
+    } catch (error) {
+      console.error('Failed to create account:', error)
+    } finally {
+      setIsCreating(false)
+    }
+  }
+
+  const handleSkipOnboarding = () => {
+    setShowOnboarding(false)
+    localStorage.setItem('hasSeenOnboarding', 'true')
+  }
 
   return (
     <Page navigation={null} background="gradient">
@@ -22,25 +57,91 @@ export default function WelcomePage({}: WelcomePageProps) {
         )}>
           {/* Logo with animation */}
           <div className={styles.logo.wrapper}>
-            <img 
-              src={logoSrc} 
-              alt="LogiKids Logo" 
+            <img
+              src={logoSrc}
+              alt="LogiKids Logo"
               className={styles.logo.image}
             />
           </div>
 
           <div className={styles.text.wrapper}>
             <h1 className={styles.text.title}>
-              {settings.name 
+              {settings.name
                 ? t('welcome.personalizedTitle', { name: settings.name })
                 : t('welcome.title')}
             </h1>
             <p className={styles.text.subtitle}>
-              {settings.name 
+              {settings.name
                 ? t('welcome.personalizedSubtitle')
                 : t('welcome.subtitle')}
             </p>
           </div>
+
+          {/* Onboarding Modal */}
+          {showOnboarding && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  {t('welcome.onboarding.title', { defaultValue: 'Create a Secure Account' })}
+                </h2>
+                <p className="text-sm text-gray-600">
+                  {t('welcome.onboarding.description', {
+                    defaultValue: 'Create an account to save your progress securely across devices. Your data is encrypted and private.'
+                  })}
+                </p>
+
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      {t('account.settings.name', { defaultValue: 'Name' })}
+                    </label>
+                    <input
+                      type="text"
+                      value={onboardingName}
+                      onChange={(e) => setOnboardingName(e.target.value)}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder={t('welcome.onboarding.namePlaceholder', { defaultValue: 'Enter your name' })}
+                      disabled={isCreating}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      {t('account.settings.age', { defaultValue: 'Age' })}
+                    </label>
+                    <input
+                      type="number"
+                      value={onboardingAge}
+                      onChange={(e) => setOnboardingAge(parseInt(e.target.value))}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      min="8"
+                      max="16"
+                      disabled={isCreating}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-2">
+                  <button
+                    onClick={handleSkipOnboarding}
+                    disabled={isCreating}
+                    className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                  >
+                    {t('welcome.onboarding.skip', { defaultValue: 'Skip' })}
+                  </button>
+                  <button
+                    onClick={handleCreateAccount}
+                    disabled={!onboardingName || isCreating}
+                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isCreating
+                      ? t('welcome.onboarding.creating', { defaultValue: 'Creating...' })
+                      : t('welcome.onboarding.create', { defaultValue: 'Create Account' })}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className={styles.buttons.wrapper}>
             <Link

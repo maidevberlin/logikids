@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useTask } from '../useTask'
-import { useSettings } from '../../Account/Settings/useSettings'
+import { useUserData } from '../../Auth/context/UserDataContext'
 import { useProgress } from '../../Stats/useProgress'
 import { TaskCard } from '..'
 import { useSearchParams } from 'react-router-dom'
@@ -38,7 +38,7 @@ const taskDefaults: TaskRequest = {
 
 export default function TaskPage({}: TaskPageProps) {
   const [searchParams, setSearchParams] = useSearchParams()
-  const { settings } = useSettings()
+  const { settings } = useUserData()
   const { t } = useTranslation()
   const { updateStats } = useProgress()
   const [hintsUsed, setHintsUsed] = useState(0)

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
-import { useSettings } from '../../Account/Settings/useSettings'
+import { useUserData } from '../../Auth/context/UserDataContext'
 import { useProgress } from '../useProgress'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
 import { Heading } from '../../base/Typography/Heading'
@@ -14,7 +14,7 @@ import type { StatsPageProps } from './types'
 
 export default function StatsPage({}: StatsPageProps) {
   const { t } = useTranslation()
-  const { settings } = useSettings()
+  const { settings } = useUserData()
   const { 
     getTotalTasksOverall,
     getOverallSuccessRate,

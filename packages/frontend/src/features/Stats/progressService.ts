@@ -51,28 +51,68 @@ const ensureDifficultyStats = (progress: UserProgress, subject: string, difficul
   return subjectStats[difficulty]
 }
 
-// Load progress from storage
+/**
+ * Load progress from storage
+ *
+ * NOTE: This function should not be called directly from components.
+ * Use useUserData() hook instead to get progress data.
+ * This is kept for backward compatibility with existing code.
+ */
 export const loadProgress = (): UserProgress => {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    if (!stored) {
-      return createEmptyProgress()
+    // Try to load from encrypted user data first
+    const userData = localStorage.getItem('logikids_data')
+    if (userData) {
+      const parsed = JSON.parse(userData)
+      if (parsed.progress && Object.keys(parsed.progress).length > 0) {
+        return {
+          version: 1,
+          stats: parsed.progress,
+          lastUpdated: parsed.timestamp || Date.now()
+        }
+      }
     }
 
-    const parsed = JSON.parse(stored)
-    const validated = UserProgressSchema.parse(parsed)
-    return validated
+    // Fallback to old storage key for migration
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      const parsed = JSON.parse(stored)
+      const validated = UserProgressSchema.parse(parsed)
+      return validated
+    }
+
+    return createEmptyProgress()
   } catch (error) {
     console.error('Failed to load progress:', error)
     return createEmptyProgress()
   }
 }
 
-// Save progress to storage
+/**
+ * Save progress to storage
+ *
+ * NOTE: This function should not be called directly from components.
+ * Use useUserData().updateProgress() instead to ensure proper encryption and sync.
+ * This is kept for backward compatibility with existing code.
+ */
 export const saveProgress = (progress: UserProgress): void => {
   try {
     const validated = UserProgressSchema.parse(progress)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(validated))
+
+    // Update encrypted user data if exists
+    const userData = localStorage.getItem('logikids_data')
+    if (userData) {
+      const parsed = JSON.parse(userData)
+      parsed.progress = validated.stats
+      parsed.timestamp = Date.now()
+      localStorage.setItem('logikids_data', JSON.stringify(parsed))
+
+      // Trigger sync event
+      window.dispatchEvent(new CustomEvent('data-synced', { detail: parsed }))
+    } else {
+      // Fallback to old storage for non-authenticated users
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(validated))
+    }
   } catch (error) {
     console.error('Failed to save progress:', error)
     throw new Error('Failed to save progress')

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Input, NumberInput, FormField, Select } from '../../base/Form'
-import { useSettings } from '../Settings/useSettings'
+import { useUserData } from '../../Auth/context/UserDataContext'
 import { styles } from './styles'
 import { GENDERS } from '../../../api/logikids'
 
@@ -11,7 +11,7 @@ const languages = [
 
 export function SettingsForm() {
   const { t, i18n } = useTranslation()
-  const { settings, updateName, updateAge, updateLanguage, updateGender } = useSettings()
+  const { settings, updateName, updateAge, updateLanguage, updateGender } = useUserData()
 
   const genderOptions = [
     { value: '', label: t('settings.gender.notSpecified') },

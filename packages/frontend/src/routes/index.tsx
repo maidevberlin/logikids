@@ -7,7 +7,6 @@ const Welcome = lazy(() => import('../features/Welcome/WelcomePage'))
 const TaskPage = lazy(() => import('../features/Task/TaskPage'))
 const AccountPage = lazy(() => import('../features/Account/AccountPage'))
 const StatsPage = lazy(() => import('../features/Stats/StatsPage'))
-const AuthTestPage = lazy(() => import('../features/Auth/AuthTestPage').then(m => ({ default: m.AuthTestPage })))
 
 export const router = createHashRouter([
   {
@@ -34,10 +33,6 @@ export const router = createHashRouter([
       {
         path: 'stats',
         element: <StatsPage />
-      },
-      {
-        path: 'auth-test',
-        element: <AuthTestPage />
       }
     ],
   }

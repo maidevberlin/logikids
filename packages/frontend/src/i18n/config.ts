@@ -8,14 +8,23 @@ const getBrowserLanguage = () => {
 }
 
 // Get language from settings if available
-const STORAGE_KEY = 'logikids_settings'
 let storedLanguage = null
 
 try {
-  const storedSettings = localStorage.getItem(STORAGE_KEY)
-  storedLanguage = storedSettings 
-    ? JSON.parse(storedSettings).language 
-    : null
+  // Try to get from encrypted user data first
+  const userData = localStorage.getItem('logikids_data')
+  if (userData) {
+    const parsed = JSON.parse(userData)
+    storedLanguage = parsed.settings?.language || null
+  }
+
+  // Fallback to old settings key for migration
+  if (!storedLanguage) {
+    const oldSettings = localStorage.getItem('logikids_settings')
+    if (oldSettings) {
+      storedLanguage = JSON.parse(oldSettings).language
+    }
+  }
 } catch (error) {
   console.warn('Could not access localStorage:', error)
 }
