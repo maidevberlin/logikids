@@ -1,0 +1,10 @@
+{
+  "userId": "550e8400-e29b-41d4-a716-446655440000",
+  "encryptedBlob": "dGVzdGRhdGE=",
+  "iv": "MTIzNDU2Nzg5MDEy",
+  "timestamp": 1234567890,
+  "checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "createdAt": "2025-10-26T00:28:17.619Z",
+  "lastAccessed": "2025-10-26T00:28:22.909Z",
+  "blobSize": 8
+}

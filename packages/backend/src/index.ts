@@ -4,6 +4,7 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 import taskRouter from './tasks/router';
+import { createSyncRouter } from './sync/router';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './tasks/cacheCleanup';
 import { subjectRegistry } from './tasks/subject.registry';
@@ -29,6 +30,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/task', taskRouter);
+app.use('/api/sync', createSyncRouter());
 
 // Error handling
 app.use(errorHandler);
