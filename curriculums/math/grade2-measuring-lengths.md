@@ -12,7 +12,7 @@ learning_objectives:
   - 'Know millimeter, centimeter, meter'
   - Measure with ruler and measuring tape
   - Estimate and compare lengths
-  - Convert: 1 m = 100 cm
+  - 'Convert: 1 m = 100 cm'
 prerequisites:
   - grade-1-lengths
 ---

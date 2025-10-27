@@ -11,6 +11,6 @@ difficulty: medium
 learning_objectives:
   - Milliliter and liter
   - Measure and estimate
-  - Convert: 1 l = 1000 ml
+  - 'Convert: 1 l = 1000 ml'
 prerequisites: []
 ---

@@ -12,7 +12,7 @@ learning_objectives:
   - Recognize proportionality (more → more)
   - Apply rule of three
   - Graphical representation (line through origin)
-  - Assignment rule: y = m × x
+  - 'Assignment rule: y = m × x'
   - Determine constant of proportionality
 prerequisites:
   - linear-equations

@@ -9,8 +9,8 @@ ages:
 focus: Measurement
 difficulty: medium
 learning_objectives:
-  - Cuboid: V = a × b × c
-  - Cube: V = a³
+  - 'Cuboid: V = a × b × c'
+  - 'Cube: V = a³'
   - Surface area of cuboid and cube
   - Volume units
 prerequisites:
