@@ -1,0 +1,1363 @@
+subject: Chemistry
+country: Germany
+source: KMK Bildungsstandards 2024 (Secondary I), KMK 2020 (Secondary II)
+scope: Federal standards for grades 7-13 (Secondary I and II)
+
+grades:
+  - grade: 7
+    ages: [12, 13]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    milestone: "Introduction to Chemistry"
+    note: "First year of chemistry instruction. Focus on basic chemical concepts, experiments, and safety."
+    typical_weekly_hours: 2
+    concepts:
+      - name: Introduction to Chemistry and Laboratory Safety
+        focus: Foundation
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Understand what chemistry studies (substances and their transformations)
+          - Learn basic laboratory safety rules
+          - Identify common laboratory equipment
+          - Conduct first simple experiments safely
+          - Understand the difference between observation and interpretation
+        difficulty: easy
+        prerequisites: []
+        real_world_context: Safe handling of household chemicals, understanding product labels
+        
+      - name: Properties of Matter - Macroscopic Level
+        focus: Substance Properties
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Observe and describe substance properties (color, odor, state of matter)
+          - Distinguish between pure substances and mixtures
+          - Understand physical properties vs chemical properties
+          - Measure temperature, mass, and volume
+        difficulty: easy
+        prerequisites: [Introduction to Chemistry and Laboratory Safety]
+        key_concepts:
+          - Pure substance vs mixture
+          - Physical properties (melting point, boiling point, density)
+          - States of matter (solid, liquid, gas)
+        
+      - name: Separation of Mixtures
+        focus: Laboratory Techniques
+        competency_area: Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Separate mixtures using different methods
+          - Perform filtration, evaporation, and distillation
+          - Choose appropriate separation method based on properties
+          - Explain separation methods based on substance properties
+        difficulty: medium
+        prerequisites: [Properties of Matter - Macroscopic Level]
+        methods:
+          - Filtration
+          - Evaporation
+          - Distillation
+          - Magnetic separation
+        real_world_context: Water purification, salt extraction, recycling
+        
+      - name: Chemical Reactions - Introduction
+        focus: Chemical Change
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Recognize signs of chemical reactions (color change, gas formation, heat)
+          - Distinguish between physical and chemical changes
+          - Understand that new substances are formed in chemical reactions
+          - Observe energy changes in reactions
+        difficulty: medium
+        prerequisites: [Properties of Matter - Macroscopic Level]
+        key_concepts:
+          - Indicators of chemical reactions
+          - Reactants and products
+          - Physical vs chemical change
+          - Energy release or absorption
+        
+      - name: Elements and Compounds
+        focus: Classification of Substances
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Distinguish between elements and compounds
+          - Understand that elements cannot be broken down
+          - Know examples of common elements
+          - Recognize that compounds have different properties than their elements
+        difficulty: medium
+        prerequisites: [Chemical Reactions - Introduction]
+        examples:
+          - Elements (oxygen, hydrogen, carbon, iron, copper)
+          - Compounds (water, salt, sugar)
+        
+      - name: The Particle Model - Introduction
+        focus: Submicroscopic Level
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Understand that matter consists of particles
+          - Explain states of matter using particle model
+          - Use particle model to explain diffusion
+          - Distinguish between macroscopic observation and submicroscopic explanation
+        difficulty: medium
+        prerequisites: [Properties of Matter - Macroscopic Level]
+        key_concepts:
+          - Particles are in constant motion
+          - Particle arrangement in solids, liquids, gases
+          - Particle spacing and movement
+        real_world_context: Smell spreading, dissolving sugar, evaporation
+        
+      - name: Experimental Skills - Planning and Conducting
+        focus: Practical Skills
+        competency_area: Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Formulate simple research questions
+          - Plan simple experiments with guidance
+          - Conduct experiments following instructions
+          - Record observations systematically
+          - Draw conclusions from experimental results
+        difficulty: medium
+        prerequisites: [Introduction to Chemistry and Laboratory Safety]
+        skills:
+          - Observing carefully
+          - Recording data
+          - Following procedures
+          - Safety awareness
+        
+      - name: Communication - Using Chemical Language
+        focus: Scientific Communication
+        competency_area: Kommunikationskompetenz
+        learning_objectives:
+          - Use scientific vocabulary correctly
+          - Distinguish between everyday and scientific language
+          - Describe experiments and observations clearly
+          - Create simple experimental protocols
+        difficulty: easy
+        prerequisites: []
+        note: "Focus on clear description and use of technical terms"
+
+  - grade: 8
+    ages: [13, 14]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    note: "Building on Grade 7 foundations. Introduction to atomic structure and chemical bonding."
+    typical_weekly_hours: 2
+    concepts:
+      - name: Atomic Structure - Dalton's Model
+        focus: Submicroscopic Level
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand that elements consist of atoms
+          - Know that atoms are the smallest units of elements
+          - Distinguish between atoms of different elements
+          - Recognize atoms as indivisible in chemical reactions (Dalton's view)
+        difficulty: medium
+        prerequisites: [grade_7.particle_model_introduction, grade_7.elements_and_compounds]
+        key_concepts:
+          - Atoms as building blocks
+          - Different atoms for different elements
+          - Atoms remain unchanged in chemical reactions
+        
+      - name: Atomic Structure - Differentiated Model
+        focus: Submicroscopic Level
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Know the basic structure of atoms (nucleus, electron shell)
+          - Understand protons, neutrons, and electrons
+          - Relate atomic number to element identity
+          - Use the periodic table to find atomic information
+        difficulty: hard
+        prerequisites: [Atomic Structure - Dalton's Model]
+        key_concepts:
+          - Nucleus (protons, neutrons)
+          - Electron shell
+          - Atomic number
+          - Mass number
+        
+      - name: The Periodic Table
+        focus: Organization System
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand the periodic table as an ordering system
+          - Locate elements by atomic number
+          - Recognize groups and periods
+          - Understand that elements in groups have similar properties
+        difficulty: medium
+        prerequisites: [Atomic Structure - Differentiated Model]
+        key_concepts:
+          - Groups (vertical columns)
+          - Periods (horizontal rows)
+          - Metals and non-metals
+          - Element symbols
+        
+      - name: Chemical Bonding - Ionic Bonding
+        focus: Submicroscopic Level
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand ion formation (cations and anions)
+          - Explain ionic bonding as electrostatic attraction
+          - Relate ionic bonding to properties of salts
+          - Write simple ionic formulas
+        difficulty: hard
+        prerequisites: [Atomic Structure - Differentiated Model]
+        key_concepts:
+          - Ion formation (electron transfer)
+          - Cations (positive ions)
+          - Anions (negative ions)
+          - Ionic lattice
+        examples:
+          - Sodium chloride (NaCl)
+          - Magnesium oxide (MgO)
+        
+      - name: Chemical Bonding - Covalent Bonding
+        focus: Submicroscopic Level
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand electron sharing in covalent bonds
+          - Distinguish between ionic and covalent bonding
+          - Know that covalent bonds form molecules
+          - Represent simple molecules with structural formulas
+        difficulty: hard
+        prerequisites: [Chemical Bonding - Ionic Bonding]
+        key_concepts:
+          - Electron pair sharing
+          - Molecules
+          - Single bonds
+          - Structural formulas
+        examples:
+          - Water (H₂O)
+          - Oxygen (O₂)
+          - Methane (CH₄)
+        
+      - name: Chemical Reactions - Particle Level
+        focus: Submicroscopic Explanation
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Explain chemical reactions as rearrangement of atoms
+          - Understand that atoms are conserved in reactions
+          - Relate bond breaking and forming to energy changes
+          - Use particle diagrams to represent reactions
+        difficulty: hard
+        prerequisites: [grade_7.chemical_reactions_introduction, Chemical Bonding - Covalent Bonding]
+        key_concepts:
+          - Bond breaking (requires energy)
+          - Bond forming (releases energy)
+          - Atom conservation
+          - Rearrangement of atoms
+        
+      - name: Chemical Equations - Introduction
+        focus: Chemical Language
+        competency_area: Sachkompetenz, Kommunikationskompetenz
+        learning_objectives:
+          - Write word equations for simple reactions
+          - Understand the arrow as "reacts to form"
+          - Identify reactants and products in equations
+          - Recognize that equations represent reactions
+        difficulty: medium
+        prerequisites: [grade_7.chemical_reactions_introduction]
+        key_concepts:
+          - Reactants → Products
+          - Word equations
+          - Chemical names
+        examples:
+          - "Hydrogen + Oxygen → Water"
+          - "Iron + Sulfur → Iron sulfide"
+        
+      - name: Oxidation and Combustion
+        focus: Chemical Reactions
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand oxidation as reaction with oxygen
+          - Recognize combustion as rapid oxidation
+          - Know conditions necessary for combustion
+          - Identify oxidation in everyday life
+        difficulty: medium
+        prerequisites: [grade_7.chemical_reactions_introduction]
+        key_concepts:
+          - Oxidation (addition of oxygen)
+          - Combustion triangle (fuel, oxygen, heat)
+          - Oxides as products
+        real_world_context: Fire safety, rusting, respiration
+        
+      - name: Acids and Bases - Introduction
+        focus: Important Substance Classes
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Recognize properties of acids and bases
+          - Use indicators to identify acids and bases
+          - Understand pH scale basics
+          - Know examples of common acids and bases
+        difficulty: medium
+        prerequisites: [Properties of Matter - Macroscopic Level]
+        key_concepts:
+          - Acidic properties (sour, corrosive)
+          - Basic properties (bitter, slippery)
+          - pH scale (0-14)
+          - Neutralization
+        examples:
+          - Acids (citric acid, hydrochloric acid, sulfuric acid)
+          - Bases (sodium hydroxide, ammonia)
+        real_world_context: Vinegar, cleaning products, stomach acid
+        
+      - name: Models in Chemistry
+        focus: Nature of Science
+        competency_area: Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Understand models as tools for explanation
+          - Distinguish between reality and models
+          - Recognize limitations of models
+          - Use different atomic models appropriately
+        difficulty: medium
+        prerequisites: [Atomic Structure - Differentiated Model]
+        key_concepts:
+          - Models help explain observations
+          - Models have limitations
+          - Models can be refined
+        examples:
+          - Particle model
+          - Atomic models (Dalton, shell model)
+
+  - grade: 9
+    ages: [14, 15]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    note: "Deepening chemical understanding. Quantitative chemistry and organic chemistry introduction."
+    typical_weekly_hours: 2
+    concepts:
+      - name: Chemical Formulas and Equations - Quantitative
+        focus: Chemical Language
+        competency_area: Sachkompetenz, Kommunikationskompetenz
+        learning_objectives:
+          - Write chemical formulas using element symbols
+          - Balance chemical equations
+          - Understand stoichiometric coefficients
+          - Calculate molar masses
+        difficulty: hard
+        prerequisites: [grade_8.chemical_equations_introduction, grade_8.the_periodic_table]
+        key_concepts:
+          - Chemical formulas (molecular, empirical)
+          - Balanced equations
+          - Law of conservation of mass
+          - Molar mass
+        
+      - name: The Mole Concept
+        focus: Quantitative Chemistry
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand the mole as amount of substance
+          - Use Avogadro's constant
+          - Calculate amounts of substance
+          - Convert between mass, moles, and number of particles
+        difficulty: hard
+        prerequisites: [Chemical Formulas and Equations - Quantitative]
+        key_concepts:
+          - Mole (unit: mol)
+          - Avogadro's constant (6.02 × 10²³)
+          - n = m/M (amount = mass/molar mass)
+        
+      - name: Stoichiometry - Calculations
+        focus: Quantitative Chemistry
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Perform stoichiometric calculations
+          - Calculate reactant and product amounts
+          - Determine limiting reactants
+          - Calculate yields
+        difficulty: hard
+        prerequisites: [The Mole Concept]
+        applications:
+          - Predicting product amounts
+          - Determining required reactant amounts
+          - Industrial chemistry calculations
+        
+      - name: Energy in Chemical Reactions
+        focus: Thermochemistry
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Distinguish between exothermic and endothermic reactions
+          - Measure temperature changes in reactions
+          - Understand energy diagrams
+          - Recognize energy as conserved in reactions
+        difficulty: medium
+        prerequisites: [grade_7.chemical_reactions_introduction]
+        key_concepts:
+          - Exothermic reactions (release energy)
+          - Endothermic reactions (absorb energy)
+          - Activation energy
+          - Energy diagrams
+        real_world_context: Hand warmers, instant cold packs, cooking
+        
+      - name: Reaction Rates and Catalysts
+        focus: Chemical Kinetics
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Understand factors affecting reaction rates
+          - Investigate effects of temperature, concentration, surface area
+          - Explain catalyst function
+          - Design experiments to test reaction rate factors
+        difficulty: medium
+        prerequisites: [Energy in Chemical Reactions]
+        factors:
+          - Temperature
+          - Concentration
+          - Surface area
+          - Catalysts
+        real_world_context: Food preservation, catalytic converters, enzymes
+        
+      - name: Acids and Bases - Brønsted Theory
+        focus: Proton Transfer
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Define acids as proton donors
+          - Define bases as proton acceptors
+          - Identify conjugate acid-base pairs
+          - Write proton transfer equations
+        difficulty: hard
+        prerequisites: [grade_8.acids_and_bases_introduction]
+        key_concepts:
+          - Proton (H⁺) transfer
+          - Acid-base pairs
+          - Amphoteric substances
+        
+      - name: Neutralization Reactions
+        focus: Acid-Base Chemistry
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Understand neutralization as acid-base reaction
+          - Perform titration experiments
+          - Calculate concentrations using titration data
+          - Recognize salt formation in neutralization
+        difficulty: medium
+        prerequisites: [Acids and Bases - Brønsted Theory]
+        key_concepts:
+          - Acid + Base → Salt + Water
+          - Titration
+          - Equivalence point
+        real_world_context: Antacids, water treatment, agriculture
+        
+      - name: Redox Reactions - Basics
+        focus: Electron Transfer
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand redox as electron transfer
+          - Define oxidation as electron loss
+          - Define reduction as electron gain
+          - Identify oxidizing and reducing agents
+        difficulty: hard
+        prerequisites: [grade_8.oxidation_and_combustion]
+        key_concepts:
+          - Oxidation (electron loss)
+          - Reduction (electron gain)
+          - Redox couples
+          - "OIL RIG (Oxidation Is Loss, Reduction Is Gain)"
+        
+      - name: Electrochemistry - Galvanic Cells
+        focus: Redox Applications
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Understand voltage generation in galvanic cells
+          - Explain battery function using redox theory
+          - Build simple galvanic cells
+          - Identify anode and cathode
+        difficulty: hard
+        prerequisites: [Redox Reactions - Basics]
+        real_world_context: Batteries, fuel cells, corrosion prevention
+        
+      - name: Organic Chemistry - Hydrocarbons
+        focus: Introduction to Organic Chemistry
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand carbon's bonding capability
+          - Know alkane structure and naming
+          - Distinguish between saturated and unsaturated hydrocarbons
+          - Recognize isomers
+        difficulty: medium
+        prerequisites: [grade_8.chemical_bonding_covalent]
+        key_concepts:
+          - Carbon chains
+          - Alkanes, alkenes, alkynes
+          - Structural formulas
+          - Isomers
+        examples:
+          - Methane, ethane, propane
+          - Ethene, ethyne
+        
+      - name: Scientific Investigation Skills
+        focus: Experimental Design
+        competency_area: Erkenntnisgewinnungskompetenz
+        learning_objectives:
+          - Design controlled experiments independently
+          - Formulate testable hypotheses
+          - Identify and control variables
+          - Analyze experimental uncertainty
+          - Evaluate reliability of results
+        difficulty: hard
+        prerequisites: [grade_7.experimental_skills_planning_conducting]
+        skills:
+          - Independent variables
+          - Dependent variables
+          - Control variables
+          - Replication
+          - Measurement uncertainty
+
+  - grade: 10
+    ages: [15, 16]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    milestone: "End of Secondary Level I (Mittlerer Schulabschluss)"
+    note: "Completion of basic chemistry education. Preparation for upper secondary or vocational training."
+    typical_weekly_hours: 2
+    concepts:
+      - name: Equilibrium Reactions
+        focus: Reversible Reactions
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand reversible reactions
+          - Recognize dynamic equilibrium
+          - Apply Le Chatelier's principle qualitatively
+          - Identify factors affecting equilibrium position
+        difficulty: hard
+        prerequisites: [grade_9.reaction_rates_and_catalysts]
+        key_concepts:
+          - Dynamic equilibrium
+          - Forward and reverse reactions
+          - Le Chatelier's principle
+          - Equilibrium shift
+        real_world_context: Haber process, carbonated drinks, hemoglobin
+        
+      - name: Organic Chemistry - Functional Groups
+        focus: Organic Compounds
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Identify functional groups (alcohols, carboxylic acids, esters)
+          - Understand how functional groups determine properties
+          - Name simple organic compounds
+          - Recognize functional groups in everyday substances
+        difficulty: medium
+        prerequisites: [grade_9.organic_chemistry_hydrocarbons]
+        functional_groups:
+          - Alcohols (-OH)
+          - Carboxylic acids (-COOH)
+          - Esters (-COO-)
+          - Aldehydes, ketones
+        examples:
+          - Ethanol (alcohol)
+          - Acetic acid (carboxylic acid)
+          - Ethyl acetate (ester)
+        
+      - name: Polymers and Plastics
+        focus: Macromolecules
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand polymerization processes
+          - Distinguish between addition and condensation polymerization
+          - Know properties of common plastics
+          - Evaluate environmental impact of plastics
+        difficulty: medium
+        prerequisites: [Organic Chemistry - Functional Groups]
+        key_concepts:
+          - Monomers and polymers
+          - Polymerization
+          - Thermoplastics vs thermosets
+          - Recycling
+        real_world_context: Plastic production, recycling, environmental issues
+        
+      - name: Biochemistry - Carbohydrates, Proteins, Fats
+        focus: Biomolecules
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Know structure and function of main biomolecules
+          - Understand digestion as chemical breakdown
+          - Recognize importance in nutrition
+          - Test for presence of biomolecules
+        difficulty: medium
+        prerequisites: [Organic Chemistry - Functional Groups]
+        biomolecules:
+          - Carbohydrates (sugars, starch)
+          - Proteins (amino acids)
+          - Fats (lipids)
+        real_world_context: Nutrition, food chemistry, metabolism
+        
+      - name: Environmental Chemistry - Atmosphere
+        focus: Chemistry and Environment
+        competency_area: Sachkompetenz, Bewertungskompetenz
+        learning_objectives:
+          - Understand atmospheric composition
+          - Know causes and effects of air pollution
+          - Explain greenhouse effect and climate change
+          - Evaluate solutions to environmental problems
+        difficulty: medium
+        prerequisites: []
+        topics:
+          - Greenhouse gases (CO₂, methane)
+          - Ozone layer
+          - Acid rain
+          - Smog
+        real_world_context: Climate change, air quality, environmental policy
+        
+      - name: Environmental Chemistry - Water
+        focus: Chemistry and Environment
+        competency_area: Sachkompetenz, Bewertungskompetenz
+        learning_objectives:
+          - Understand water treatment processes
+          - Know causes of water pollution
+          - Test water quality
+          - Evaluate water use and conservation
+        difficulty: medium
+        prerequisites: []
+        topics:
+          - Water purification
+          - pH and water quality
+          - Eutrophication
+          - Hard vs soft water
+        real_world_context: Drinking water, wastewater treatment, water conservation
+        
+      - name: Metals and Metal Extraction
+        focus: Applied Chemistry
+        competency_area: Sachkompetenz
+        learning_objectives:
+          - Understand metal extraction from ores
+          - Know reduction processes
+          - Recognize importance of recycling
+          - Relate reactivity to extraction method
+        difficulty: medium
+        prerequisites: [grade_9.redox_reactions_basics]
+        processes:
+          - Reduction of metal oxides
+          - Electrolysis
+          - Recycling
+        real_world_context: Iron production, aluminum extraction, metal recycling
+        
+      - name: Chemistry and Society
+        focus: Social Context
+        competency_area: Bewertungskompetenz
+        learning_objectives:
+          - Evaluate benefits and risks of chemical technologies
+          - Make informed decisions about chemical issues
+          - Understand chemistry's role in society
+          - Analyze media reports about chemistry critically
+        difficulty: medium
+        prerequisites: []
+        topics:
+          - Chemical industry
+          - Sustainability
+          - Risk assessment
+          - Ethical considerations
+        
+      - name: Comprehensive Evaluation and Argumentation
+        focus: Assessment Competence
+        competency_area: Bewertungskompetenz
+        learning_objectives:
+          - Develop evaluation criteria for chemical issues
+          - Make evidence-based decisions
+          - Consider multiple perspectives
+          - Reflect on consequences of decisions
+        difficulty: hard
+        prerequisites: []
+        skills:
+          - Criteria development
+          - Weighing evidence
+          - Perspective-taking
+          - Reflection
+
+  - grade: 11
+    ages: [16, 17]
+    school_types: [Gymnasium, Gesamtschule]
+    milestone: "Start of Secondary Level II (Oberstufe)"
+    note: "Beginning of advanced chemistry. Students can choose between basic (grundlegend) and advanced (erhöht) level."
+    level_options: [grundlegend, erhöht]
+    typical_weekly_hours:
+      grundlegend: 2-3
+      erhöht: 4-5
+    concepts:
+      - name: Atomic Structure - Orbital Model
+        focus: Advanced Atomic Theory
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Understand the orbital model of the atom
+          - Know s, p, d orbitals
+          - Apply electron configuration rules
+          - Relate electron configuration to periodic table
+        difficulty: hard
+        prerequisites: [grade_8.atomic_structure_differentiated_model]
+        key_concepts:
+          - Quantum numbers
+          - Orbital shapes
+          - Electron configuration
+          - Aufbau principle, Pauli principle, Hund's rule
+        level_differences:
+          erhöht: "Detailed treatment of multi-electron atoms and exceptions in periodic table"
+        
+      - name: Chemical Bonding - Advanced Models
+        focus: Bonding Theories
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Understand electronegativity and bond polarity
+          - Apply VSEPR theory to predict molecular geometry
+          - Explain intermolecular forces
+          - Relate structure to properties
+        difficulty: hard
+        prerequisites: [grade_8.chemical_bonding_covalent, Atomic Structure - Orbital Model]
+        key_concepts:
+          - Electronegativity
+          - Bond polarity
+          - VSEPR theory
+          - Intermolecular forces (dipole-dipole, H-bonds, van der Waals)
+        level_differences:
+          erhöht: "Hybridization, resonance structures, detailed molecular orbital theory"
+        
+      - name: Thermodynamics - Enthalpy
+        focus: Energy in Reactions
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Define enthalpy and enthalpy change
+          - Calculate reaction enthalpies using Hess's law
+          - Use bond energies to estimate enthalpy changes
+          - Interpret energy diagrams
+        difficulty: hard
+        prerequisites: [grade_9.energy_in_chemical_reactions]
+        key_concepts:
+          - Enthalpy (H)
+          - Enthalpy of reaction (ΔH)
+          - Exothermic (ΔH < 0)
+          - Endothermic (ΔH > 0)
+          - Hess's law
+        
+      - name: Thermodynamics - Entropy and Free Energy
+        focus: Spontaneity
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Understand entropy as measure of disorder
+          - Apply Gibbs free energy to predict spontaneity
+          - Relate ΔG, ΔH, and ΔS
+          - Predict reaction spontaneity
+        difficulty: hard
+        prerequisites: [Thermodynamics - Enthalpy]
+        key_concepts:
+          - Entropy (S)
+          - Gibbs free energy (G)
+          - ΔG = ΔH - TΔS
+          - Spontaneity (ΔG < 0)
+        level_differences:
+          erhöht: "Quantitative entropy calculations, relationship between entropy and probability"
+        
+      - name: Chemical Kinetics - Reaction Rates
+        focus: Reaction Speed
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        level: both
+        learning_objectives:
+          - Measure and calculate reaction rates
+          - Understand collision theory
+          - Explain activation energy
+          - Investigate factors affecting rates experimentally
+        difficulty: hard
+        prerequisites: [grade_9.reaction_rates_and_catalysts]
+        key_concepts:
+          - Reaction rate
+          - Collision theory
+          - Activation energy
+          - Temperature dependence
+        level_differences:
+          erhöht: "Arrhenius equation, reaction mechanisms, elementary steps"
+        
+      - name: Chemical Equilibrium - Quantitative
+        focus: Equilibrium Systems
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Calculate equilibrium constants (Kc, Kp)
+          - Apply ICE tables to equilibrium problems
+          - Predict equilibrium shifts quantitatively
+          - Relate Kc to reaction extent
+        difficulty: hard
+        prerequisites: [grade_10.equilibrium_reactions]
+        key_concepts:
+          - Equilibrium constant (K)
+          - Le Chatelier's principle (quantitative)
+          - Reaction quotient (Q)
+          - ICE tables
+        level_differences:
+          erhöht: "Heterogeneous equilibria, relationship between Kc and Kp"
+        
+      - name: Acid-Base Equilibria
+        focus: Proton Transfer Equilibria
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Calculate pH of strong acids and bases
+          - Understand Ka and Kb
+          - Calculate pH of weak acids and bases
+          - Understand buffer systems
+        difficulty: hard
+        prerequisites: [grade_9.acids_and_bases_bronsted_theory]
+        key_concepts:
+          - Acid dissociation constant (Ka)
+          - Base dissociation constant (Kb)
+          - pKa and pKb
+          - pH calculations
+          - Buffer solutions
+        level_differences:
+          erhöht: "Polyprotic acids, buffer capacity, titration curves with calculations"
+        
+      - name: Electrochemistry - Galvanic Cells and Potentials
+        focus: Redox and Electricity
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        level: both
+        learning_objectives:
+          - Understand standard electrode potentials
+          - Calculate cell potentials
+          - Predict redox reaction direction
+          - Design galvanic cells
+        difficulty: hard
+        prerequisites: [grade_9.electrochemistry_galvanic_cells]
+        key_concepts:
+          - Standard electrode potential (E°)
+          - Cell potential (E°cell)
+          - Electrochemical series
+          - Spontaneity and E°cell
+        level_differences:
+          erhöht: "Nernst equation, concentration cells, relationship between ΔG and E°"
+        
+      - name: Electrochemistry - Electrolysis
+        focus: Redox Applications
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Explain electrolysis process
+          - Predict electrolysis products
+          - Calculate amounts using Faraday's laws
+          - Compare galvanic cells and electrolytic cells
+        difficulty: hard
+        prerequisites: [Electrochemistry - Galvanic Cells and Potentials]
+        key_concepts:
+          - Electrolytic cell
+          - Faraday's laws
+          - Industrial electrolysis
+        real_world_context: Electroplating, chlor-alkali process, aluminum production
+
+  - grade: 12
+    ages: [17, 18]
+    school_types: [Gymnasium, Gesamtschule]
+    note: "Advanced organic chemistry and analytical methods."
+    level_options: [grundlegend, erhöht]
+    typical_weekly_hours:
+      grundlegend: 2-3
+      erhöht: 4-5
+    concepts:
+      - name: Organic Chemistry - Nomenclature and Isomerism
+        focus: Structural Analysis
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Apply IUPAC nomenclature systematically
+          - Identify and draw isomers
+          - Distinguish types of isomerism
+          - Relate structure to properties
+        difficulty: hard
+        prerequisites: [grade_10.organic_chemistry_functional_groups]
+        key_concepts:
+          - IUPAC naming
+          - Structural isomers
+          - Stereoisomers
+          - Geometric isomers (cis-trans)
+        level_differences:
+          erhöht: "Optical isomers, chirality, R/S nomenclature"
+        
+      - name: Organic Reaction Mechanisms - Substitution
+        focus: Reaction Types
+        competency_area: Sachkompetenz
+        level: erhöht
+        learning_objectives:
+          - Understand nucleophilic substitution mechanisms
+          - Distinguish between SN1 and SN2 mechanisms
+          - Predict substitution products
+          - Use curved arrow notation
+        difficulty: very_hard
+        prerequisites: [grade_11.chemical_bonding_advanced_models]
+        key_concepts:
+          - Nucleophile and electrophile
+          - SN1 mechanism
+          - SN2 mechanism
+          - Leaving groups
+        
+      - name: Organic Reaction Mechanisms - Addition
+        focus: Reaction Types
+        competency_area: Sachkompetenz
+        level: erhöht
+        learning_objectives:
+          - Understand electrophilic addition to alkenes
+          - Explain Markovnikov's rule
+          - Predict addition products
+          - Use mechanisms to explain regioselectivity
+        difficulty: very_hard
+        prerequisites: [Organic Reaction Mechanisms - Substitution]
+        key_concepts:
+          - Electrophilic addition
+          - Markovnikov's rule
+          - Carbocation intermediates
+        
+      - name: Organic Reaction Mechanisms - Radical Reactions
+        focus: Reaction Types
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Understand radical chain reactions
+          - Explain halogenation of alkanes
+          - Identify initiation, propagation, termination steps
+        difficulty: hard
+        prerequisites: [grade_9.organic_chemistry_hydrocarbons]
+        key_concepts:
+          - Free radicals
+          - Chain reaction mechanism
+          - Initiation, propagation, termination
+        level_differences:
+          grundlegend: "Basic understanding of radical reactions"
+          erhöht: "Detailed mechanism steps, radical stability"
+        
+      - name: Organic Synthesis - Esters
+        focus: Synthesis
+        competency_area: Sachkompetenz, Erkenntnisgewinnungskompetenz
+        level: both
+        learning_objectives:
+          - Perform esterification reactions
+          - Understand acid-catalyzed esterification
+          - Perform hydrolysis of esters
+          - Calculate yields
+        difficulty: medium
+        prerequisites: [grade_10.organic_chemistry_functional_groups]
+        key_concepts:
+          - Esterification (Fischer esterification)
+          - Ester hydrolysis
+          - Equilibrium in esterification
+        real_world_context: Fragrances, flavors, fats and oils
+        level_differences:
+          erhöht: "Detailed mechanism of esterification"
+        
+      - name: Polymers - Advanced
+        focus: Macromolecules
+        competency_area: Sachkompetenz
+        level: both
+        learning_objectives:
+          - Understand polymerization mechanisms in detail
+          - Synthesize polymers in laboratory
+          - Analyze polymer properties
+          - Evaluate polymer applications and recycling
+        difficulty: medium
+        prerequisites: [grade_10.polymers_and_plastics]
+        key_concepts:
+          - Addition polymerization
+          - Condensation polymerization
+          - Polymer properties
+        real_world_context: Plastics industry, materials science
+        level_differences:
+          erhöht: "Detailed mechanisms, copolymers, polymer structure-property relationships"
+        
+      - name: Analytical Chemistry - Titrations
+        focus: Quantitative Analysis
+        competency_area: Erkenntnisgewinnungskompetenz
+        level: both
+        learning_objectives:
+          - Perform acid-base titrations accurately
+          - Interpret titration curves
+          - Determine equivalence points
+          - Calculate concentrations from titration data
+        difficulty: medium
+        prerequisites: [grade_9.neutralization_reactions, grade_11.acid_base_equilibria]
+        techniques:
+          - Acid-base titration
+          - Indicator selection
+          - Titration curve analysis
+        level_differences:
+          grundlegend: "Titration with equivalence point"
+          erhöht: "Titration curves, redox titrations"
+        
+      - name: Analytical Chemistry - Instrumental Methods
+        focus: Instrumental Analysis
+        competency_area: Erkenntnisgewinnungskompetenz
+        level: erhöht
+        learning_objectives:
+          - Understand principles of instrumental analysis
+          - Use spectroscopic methods
+          - Interpret analytical data
+          - Choose appropriate analytical method
+        difficulty: very_hard
+        prerequisites: [Analytical Chemistry - Titrations]
+        methods:
+          - UV-Vis spectroscopy
+          - pH measurement (potentiometry)
+          - Conductometry
+          - Photometry
+        real_world_context: Quality control, environmental monitoring
+        
+      - name: Structure Determination
+        focus: Analytical Skills
+        competency_area: Erkenntnisgewinnungskompetenz
+        level: erhöht
+        learning_objectives:
+          - Determine molecular structures from analytical data
+          - Use multiple techniques for structure elucidation
+          - Interpret spectroscopic data
+          - Confirm identity of organic compounds
+        difficulty: very_hard
+        prerequisites: [Analytical Chemistry - Instrumental Methods, Organic Chemistry - Nomenclature and Isomerism]
+        skills:
+          - Data interpretation
+          - Structural reasoning
+          - Integration of multiple data sources
+
+  - grade: 13
+    ages: [18, 19]
+    school_types: [Gymnasium, Gesamtschule]
+    milestone: "Abitur (University Entrance Qualification)"
+    note: "Final year of chemistry. Integration and application of all previous knowledge. Preparation for Abitur examination."
+    level_options: [grundlegend, erhöht]
+    typical_weekly_hours:
+      grundlegend: 2-3
+      erhöht: 4-5
+    concepts:
+      - name: Chemistry and Society - Technology
+        focus: Applied Chemistry
+        competency_area: Sachkompetenz, Bewertungskompetenz
+        level: both
+        learning_objectives:
+          - Understand modern materials and their applications
+          - Evaluate chemical technologies
+          - Analyze technical synthesis processes
+          - Assess environmental and economic impacts
+        difficulty: hard
+        prerequisites: []
+        topics:
+          - Modern materials (nanomaterials, smart materials)
+          - Raw material extraction and processing
+          - Technical synthesis processes
+        real_world_context: Materials science, chemical industry, sustainability
+        level_differences:
+          erhöht: "Nanomaterials in depth, detailed technical process"
+        
+      - name: Energy Storage and Alternative Fuels
+        focus: Energy Chemistry
+        competency_area: Sachkompetenz, Bewertungskompetenz
+        level: both
+        learning_objectives:
+          - Evaluate battery technologies
+          - Understand fuel cells
+          - Assess alternative energy carriers
+          - Compare energy storage methods
+        difficulty: medium
+        prerequisites: [grade_11.electrochemistry_galvanic_cells_and_potentials]
+        technologies:
+          - Lithium-ion batteries
+          - Fuel cells (hydrogen)
+          - Biofuels
+          - Solar fuels
+        real_world_context: Electric vehicles, renewable energy, climate change
+        level_differences:
+          erhöht: "Energy storage systems in depth, material cycles"
+        
+      - name: Biochemistry - Metabolism
+        focus: Biological Chemistry
+        competency_area: Sachkompetenz
+        level: grundlegend
+        learning_objectives:
+          - Understand basic metabolic pathways
+          - Know structure and function of enzymes
+          - Relate chemistry to biological processes
+          - Understand energy metabolism
+        difficulty: medium
+        prerequisites: [grade_10.biochemistry_carbohydrates_proteins_fats]
+        topics:
+          - Cellular respiration
+          - Photosynthesis
+          - Enzyme kinetics
+          - ATP as energy carrier
+        
+      - name: Chemistry in Everyday Life
+        focus: Applied Chemistry
+        competency_area: Sachkompetenz, Bewertungskompetenz
+        level: both
+        learning_objectives:
+          - Analyze chemical products in daily life
+          - Understand food chemistry
+          - Evaluate pharmaceuticals
+          - Make informed consumer decisions
+        difficulty: easy
+        prerequisites: []
+        applications:
+          - Food additives
+          - Cleaning products
+          - Cosmetics
+          - Pharmaceuticals
+        
+      - name: Green Chemistry and Sustainability
+        focus: Sustainable Chemistry
+        competency_area: Bewertungskompetenz
+        level: both
+        learning_objectives:
+          - Apply principles of green chemistry
+          - Evaluate atom economy and yield
+          - Assess environmental impact of reactions
+          - Design sustainable processes
+        difficulty: medium
+        prerequisites: []
+        principles:
+          - Waste prevention
+          - Atom economy
+          - Less hazardous synthesis
+          - Renewable feedstocks
+          - Catalysis
+        
+      - name: Recycling and Material Cycles
+        focus: Circular Economy
+        competency_area: Bewertungskompetenz
+        level: both
+        learning_objectives:
+          - Understand recycling processes
+          - Evaluate material life cycles
+          - Assess economic and environmental aspects
+          - Propose improvements to sustainability
+        difficulty: medium
+        prerequisites: []
+        topics:
+          - Plastic recycling
+          - Metal recovery
+          - E-waste
+          - Circular economy
+        real_world_context: Waste management, resource conservation
+        level_differences:
+          erhöht: "Material flow analysis, life cycle assessment"
+        
+      - name: Research Project and Scientific Writing
+        focus: Scientific Practice
+        competency_area: Erkenntnisgewinnungskompetenz, Kommunikationskompetenz
+        level: both
+        learning_objectives:
+          - Design and conduct independent research
+          - Analyze complex data sets
+          - Write scientific reports
+          - Present findings effectively
+          - Evaluate scientific literature
+        difficulty: very_hard
+        prerequisites: [all previous experimental competencies]
+        skills:
+          - Research design
+          - Data analysis
+          - Scientific writing
+          - Peer review
+          - Presentation skills
+        
+      - name: Comprehensive Problem Solving
+        focus: Integration
+        competency_area: All competencies
+        level: both
+        learning_objectives:
+          - Integrate knowledge from all areas of chemistry
+          - Solve complex multi-step problems
+          - Apply chemistry to novel situations
+          - Demonstrate deep understanding
+        difficulty: very_hard
+        prerequisites: [comprehensive foundation from grades 7-12]
+        note: "Preparation for Abitur examination"
+        
+      - name: Scientific Evaluation and Ethics
+        focus: Assessment and Ethics
+        competency_area: Bewertungskompetenz
+        level: both
+        learning_objectives:
+          - Evaluate chemical technologies critically
+          - Consider ethical implications of chemistry
+          - Assess risk-benefit ratios
+          - Make evidence-based judgments
+          - Reflect on societal impact of chemistry
+        difficulty: hard
+        prerequisites: []
+        topics:
+          - Scientific ethics
+          - Risk assessment
+          - Technology evaluation
+          - Sustainability considerations
+          - Social responsibility of scientists
+        
+      - name: Preparation for University and Careers
+        focus: Future Orientation
+        competency_area: All competencies
+        level: both
+        learning_objectives:
+          - Understand chemistry career paths
+          - Know university chemistry expectations
+          - Develop scientific literacy for citizenship
+          - Connect chemistry to other STEM fields
+        difficulty: medium
+        prerequisites: []
+        career_paths:
+          - Chemical research
+          - Chemical industry
+          - Pharmaceuticals
+          - Materials science
+          - Environmental chemistry
+          - Teaching
+          - Medicine and healthcare
+
+competency_areas:
+  Sachkompetenz:
+    description: "Knowledge of scientific concepts, theories, and principles; ability to apply them to explain phenomena"
+    levels:
+      - Macroscopic level (observable properties and changes)
+      - Submicroscopic level (atoms, molecules, ions)
+      - Representational level (symbols, formulas, equations)
+  
+  Erkenntnisgewinnungskompetenz:
+    description: "Knowledge of scientific methods and inquiry; ability to design experiments, gather data, and draw conclusions"
+    key_aspects:
+      - Formulating questions and hypotheses
+      - Planning and conducting experiments
+      - Using models
+      - Analyzing data
+      - Reflecting on scientific processes
+  
+  Kommunikationskompetenz:
+    description: "Ability to access, process, and communicate chemical information using appropriate language and representations"
+    key_aspects:
+      - Using technical language correctly
+      - Distinguishing everyday and scientific language
+      - Creating representations (diagrams, equations)
+      - Presenting information
+      - Engaging in scientific discourse
+  
+  Bewertungskompetenz:
+    description: "Ability to evaluate chemical issues from multiple perspectives and make informed decisions"
+    key_aspects:
+      - Developing evaluation criteria
+      - Considering multiple perspectives
+      - Making evidence-based decisions
+      - Assessing consequences
+      - Reflecting on ethical dimensions
+
+basis_concepts:
+  structure_and_properties:
+    description: "Relationship between structure of matter and its properties"
+    aspects:
+      - Substance properties
+      - Classification of substances
+      - Atomic structure
+      - Chemical bonding
+      - Intermolecular forces
+  
+  chemical_reaction:
+    description: "Chemical reactions as transformations involving energy and structural changes"
+    aspects:
+      - Characteristics of reactions
+      - Factors affecting reactions
+      - Reversibility
+      - Donor-acceptor processes (acid-base, redox)
+  
+  energy:
+    description: "Energy in chemical systems and transformations"
+    aspects:
+      - Energy forms and conversions
+      - Exothermic and endothermic reactions
+      - Activation energy
+      - Catalysis
+
+assessment_levels:
+  I_Reproduktion:
+    description: "Recall and reproduce knowledge in familiar contexts"
+    weight_secondary_1: "lower than level II"
+    weight_secondary_2: "balanced with level III"
+  
+  II_Zusammenhänge:
+    description: "Apply knowledge to new but similar contexts, make connections"
+    weight_secondary_1: "primary focus"
+    weight_secondary_2: "primary focus"
+  
+  III_Reflexion:
+    description: "Solve complex problems, evaluate, generalize, and reflect on processes"
+    weight_secondary_1: "lower than level I"
+    weight_secondary_2: "balanced with level I"
+
+teaching_principles:
+  competence_orientation:
+    description: "Focus on developing competencies through engaging with content"
+    note: "All four competency areas are interconnected"
+  
+  context_orientation:
+    description: "Learning in meaningful, real-world contexts"
+    note: "Connects to current issues and career perspectives"
+  
+  cumulative_learning:
+    description: "Systematic building of knowledge and skills"
+    note: "Secondary II builds on Secondary I foundation"
+  
+  experimentation:
+    description: "Central role of experimental work"
+    note: "Theory-experiment interplay; safety awareness essential"
+  
+  model_thinking:
+    description: "Use of models to explain submicroscopic level"
+    note: "Understand models as tools with limitations"
+  
+  mathematization:
+    description: "Appropriate use of mathematics in chemistry"
+    note: "Includes stoichiometry and quantitative relationships"
+  
+  digitalization:
+    description: "Integration of digital tools and media"
+    applications:
+      - Digital data collection
+      - Simulations
+      - Modeling
+      - Critical evaluation of digital sources
+
+cross_cutting_themes:
+  education_for_sustainable_development:
+    topics:
+      - Sustainable resource use
+      - Alternative energy carriers
+      - Recycling and circular economy
+      - Environmental impact assessment
+  
+  media_literacy:
+    topics:
+      - Critical evaluation of information
+      - Digital research skills
+      - Source citation
+      - Recognizing misinformation
+  
+  political_education:
+    topics:
+      - Societal relevance of chemistry
+      - Technology assessment
+      - Responsibility and participation
+      - Science policy
+  
+  career_orientation:
+    topics:
+      - Chemistry careers and industry
+      - Science and technology pathways
+      - Nature of scientific work
+  
+  language_education:
+    topics:
+      - Technical vocabulary
+      - Everyday vs. scientific language
+      - Chemical notation
+      - Scientific communication
+
+notes:
+  important:
+    - "This curriculum is based exclusively on KMK Bildungsstandards"
+    - "Individual states may add specific content or emphases"
+    - "Standards define expected average competency levels"
+    - "Instruction must accommodate student diversity"
+  
+  progression:
+    - "Secondary II builds systematically on Secondary I"
+    - "Consistent competency model across all grades"
+    - "Increasing sophistication in concepts and methods"
+  
+  levels_in_upper_secondary:
+    grundlegend: "Scientific propaedeutic education with fundamental knowledge"
+    erhöht: "In-depth scientific propaedeutic education with more extensive knowledge and higher mathematical demands"
+  
+  exam_formats:
+    written:
+      - "Material-based tasks"
+      - "Practical tasks"
+    oral:
+      - "Structured presentations"
+      - "Examination discussions"
