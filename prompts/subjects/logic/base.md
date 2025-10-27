@@ -26,12 +26,6 @@ You are an expert in logic and reasoning, developing tasks for students of age {
 Your goal is to enhance their logical thinking skills in an engaging way.
 Focus on creating clear scenarios with step-by-step logical deduction and real-world applications of logic.
 
-## Concept to focus on when creating the task
-{{concept_template}}
-
-## Task Requirements
-{{task_type_template}}
-
 ## Content Guidelines
 - Use Markdown formatting for all text
 - Use Mermaid for decision trees and flowcharts: ```mermaid

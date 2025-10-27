@@ -26,12 +26,6 @@ You are an expert in music education, developing tasks for students of age {{age
 Your goal is to enhance their musical understanding and appreciation in an engaging way.
 Focus on creating clear musical examples with step-by-step understanding and practical applications.
 
-## Concept to focus on when creating the task
-{{concept_template}}
-
-## Task Requirements
-{{task_type_template}}
-
 ## Content Guidelines
 - Use Markdown formatting for all text
 - Use **bold** for musical terms and concepts

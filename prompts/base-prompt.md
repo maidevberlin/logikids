@@ -38,10 +38,6 @@ Use Markdown formatting for all text content. Supported elements:
 
 ---
 
-# Template Composition
-
-The following sections compose the complete prompt by including sub-templates:
-
 {{variations_template}}
 
 {{subject_base_template}}
