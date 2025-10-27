@@ -20,7 +20,8 @@
   },
   "scripts": {
     "dev": "bun --watch src/index.ts",
-    "start": "bun src/index.ts"
+    "start": "bun src/index.ts",
+    "validate:prompts": "bun src/cli/validate-prompts.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
