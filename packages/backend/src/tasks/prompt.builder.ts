@@ -4,8 +4,6 @@ import { TaskTypeWithSchema } from './types/registry.ts';
 import { TemplateProcessor } from './template.ts';
 import { VariationLoader } from './variation.loader.ts';
 import { EnrichedConcept } from './schemas.ts';
-import * as fs from 'fs';
-import * as path from 'path';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
@@ -21,6 +19,7 @@ export class PromptBuilder {
     private taskType: TaskTypeWithSchema,
     private variationLoader: VariationLoader,
     private basePrompt: string,
+    private variationsTemplate: string,
     private hintPrompt?: HintPrompt
   ) {}
 
@@ -41,19 +40,6 @@ export class PromptBuilder {
       return "Use casual but structured language. Explain concepts clearly without being condescending.";
     } else {
       return "Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.";
-    }
-  }
-
-  /**
-   * Load a template file from prompts directory
-   */
-  private loadTemplate(relativePath: string): string {
-    const fullPath = path.join(process.cwd(), 'prompts', relativePath);
-
-    try {
-      return fs.readFileSync(fullPath, 'utf-8');
-    } catch (error) {
-      throw new Error(`Failed to load template: ${relativePath}\n${error}`);
     }
   }
 
@@ -95,19 +81,23 @@ export class PromptBuilder {
       concept_focus: enrichedConcept.focus,
       grade: params.grade,
       age: params.grade * 6,
+      learning_objectives: enrichedConcept.learning_objectives?.join('\n- ') || '',
+      prerequisites: enrichedConcept.prerequisites?.join(', ') || '',
+      example_tasks: enrichedConcept.example_tasks?.join('\n- ') || '',
+      real_world_context: enrichedConcept.real_world_context || '',
     };
 
     // Task type variables (for task-types/{type}.md)
     const taskTypeVariables: Record<string, string | number> = {
       difficulty: params.difficulty,
       task_type_name: this.taskType.name,
+      age: params.grade * 6,
     };
 
     // === STEP 2: Load and process sub-templates with scoped variables ===
 
-    // Load variations.md
-    const variationsRaw = this.loadTemplate('variations.md');
-    const variationsProcessed = TemplateProcessor.replaceScoped(variationsRaw, variationVariables);
+    // Process variations template (already loaded via constructor)
+    const variationsProcessed = TemplateProcessor.replaceScoped(this.variationsTemplate, variationVariables);
 
     // Subject base already loaded (this.subject.basePromptTemplate)
     const subjectBaseProcessed = TemplateProcessor.replaceScoped(
@@ -127,49 +117,13 @@ export class PromptBuilder {
       taskTypeVariables
     );
 
-    // === STEP 3: Build concept metadata section ===
-
-    const metadataSections: string[] = [];
-
-    // Learning objectives
-    metadataSections.push('## Learning Objectives');
-    for (const objective of enrichedConcept.learning_objectives) {
-      metadataSections.push(`- ${objective}`);
-    }
-    metadataSections.push('');
-
-    // Prerequisites (if any)
-    if (enrichedConcept.prerequisites && enrichedConcept.prerequisites.length > 0) {
-      metadataSections.push('## Prerequisites');
-      metadataSections.push(`Students should already understand: ${enrichedConcept.prerequisites.join(', ')}`);
-      metadataSections.push('');
-    }
-
-    // Example tasks (if any)
-    if (enrichedConcept.example_tasks && enrichedConcept.example_tasks.length > 0) {
-      metadataSections.push('## Example Tasks for this Concept');
-      for (const example of enrichedConcept.example_tasks) {
-        metadataSections.push(`- ${example}`);
-      }
-      metadataSections.push('');
-    }
-
-    // Real-world context (if any)
-    if (enrichedConcept.real_world_context) {
-      metadataSections.push('## Real-World Context');
-      metadataSections.push(enrichedConcept.real_world_context);
-      metadataSections.push('');
-    }
-
-    const conceptMetadata = metadataSections.join('\n');
-
-    // === STEP 4: Compose master template with processed sub-templates ===
+    // === STEP 3: Compose master template with processed sub-templates ===
 
     // Prepare composition variables (template includes)
     const compositionVariables: Record<string, string> = {
       variations_template: variationsProcessed,
       subject_base_template: subjectBaseProcessed,
-      concept_template: conceptProcessed + '\n\n' + conceptMetadata,
+      concept_template: conceptProcessed,
       task_type_template: taskTypeProcessed,
       grade: String(params.grade),
       language: this.formatLanguage(params.language),
