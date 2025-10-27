@@ -4,6 +4,8 @@ import { TaskTypeWithSchema } from './types/registry.ts';
 import { TemplateProcessor } from './template.ts';
 import { VariationLoader } from './variation.loader.ts';
 import { EnrichedConcept } from './schemas.ts';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
@@ -43,27 +45,26 @@ export class PromptBuilder {
   }
 
   /**
-   * Build the final prompt by combining templates and replacing variables
-   * Now accepts full EnrichedConcept object with all metadata
+   * Load a template file from prompts directory
+   */
+  private loadTemplate(relativePath: string): string {
+    const fullPath = path.join(process.cwd(), 'prompts', relativePath);
+
+    try {
+      return fs.readFileSync(fullPath, 'utf-8');
+    } catch (error) {
+      throw new Error(`Failed to load template: ${relativePath}\n${error}`);
+    }
+  }
+
+  /**
+   * Build the final prompt by combining templates with scoped variable replacement
    */
   buildPrompt(params: TaskGenerationParams, enrichedConcept: EnrichedConcept): string {
-    // Enriched concept is already provided with all metadata
-    // No need to look it up in legacy concepts map
+    // === STEP 1: Prepare all scoped variables ===
 
-    // Prepare base variables with concept metadata
-    const baseVariables = {
-      age: params.grade * 6, // Approximate age from grade (will be replaced with actual age if available)
-      grade: params.grade,
-      difficulty: params.difficulty,
-      language: this.formatLanguage(params.language),
-      concept_name: enrichedConcept.name,
-      concept_focus: enrichedConcept.focus,
-      concept_difficulty: enrichedConcept.difficulty,
-      subject_name: this.subject.name,
-    };
-
-    // Add variation variables (always set, empty if not applicable)
-    const variationVariables: Record<string, any> = {
+    // Variation variables (for variations.md)
+    const variationVariables: Record<string, string> = {
       scenario: this.variationLoader.getScenario(params.grade),
       language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
       student_context: params.gender ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
@@ -76,7 +77,58 @@ export class PromptBuilder {
       variationVariables.enrichment_instruction = enrichment.value;
     }
 
-    // Build concept metadata section
+    // Subject variables (for subjects/{subject}/base.md)
+    const subjectVariables: Record<string, string | number> = {
+      age: params.grade * 6,
+      grade: params.grade,
+      difficulty: params.difficulty,
+      language: this.formatLanguage(params.language),
+      concept_name: enrichedConcept.name,
+      concept_focus: enrichedConcept.focus,
+      concept_difficulty: enrichedConcept.difficulty,
+      subject_name: this.subject.name,
+    };
+
+    // Concept variables (for concept-specific prompts)
+    const conceptVariables: Record<string, string | number> = {
+      concept_name: enrichedConcept.name,
+      concept_focus: enrichedConcept.focus,
+      grade: params.grade,
+      age: params.grade * 6,
+    };
+
+    // Task type variables (for task-types/{type}.md)
+    const taskTypeVariables: Record<string, string | number> = {
+      difficulty: params.difficulty,
+      task_type_name: this.taskType.name,
+    };
+
+    // === STEP 2: Load and process sub-templates with scoped variables ===
+
+    // Load variations.md
+    const variationsRaw = this.loadTemplate('variations.md');
+    const variationsProcessed = TemplateProcessor.replaceScoped(variationsRaw, variationVariables);
+
+    // Subject base already loaded (this.subject.basePromptTemplate)
+    const subjectBaseProcessed = TemplateProcessor.replaceScoped(
+      this.subject.basePromptTemplate,
+      subjectVariables
+    );
+
+    // Concept prompt already loaded (enrichedConcept.prompt)
+    const conceptProcessed = TemplateProcessor.replaceScoped(
+      enrichedConcept.prompt,
+      conceptVariables
+    );
+
+    // Task type already loaded (this.taskType.promptTemplate)
+    const taskTypeProcessed = TemplateProcessor.replaceScoped(
+      this.taskType.promptTemplate,
+      taskTypeVariables
+    );
+
+    // === STEP 3: Build concept metadata section ===
+
     const metadataSections: string[] = [];
 
     // Learning objectives
@@ -111,88 +163,35 @@ export class PromptBuilder {
 
     const conceptMetadata = metadataSections.join('\n');
 
-    // Process sub-templates first
-    const processedVariables = {
-      ...baseVariables,
-      ...variationVariables,
-      concept_metadata: conceptMetadata,
-      concept_template: TemplateProcessor.replace(enrichedConcept.prompt, baseVariables),
-      task_type_template: TemplateProcessor.replace(this.taskType.promptTemplate, baseVariables)
+    // === STEP 4: Compose master template with processed sub-templates ===
+
+    // Prepare composition variables (template includes)
+    const compositionVariables: Record<string, string> = {
+      variations_template: variationsProcessed,
+      subject_base_template: subjectBaseProcessed,
+      concept_template: conceptProcessed + '\n\n' + conceptMetadata,
+      task_type_template: taskTypeProcessed,
+      grade: String(params.grade),
+      language: this.formatLanguage(params.language),
     };
 
-    // Build the final prompt from base prompt + subject template
-    const sections: string[] = [];
+    // Load and process base prompt template
+    const finalPrompt = TemplateProcessor.replace(this.basePrompt, compositionVariables);
 
-    // 1. Base role and guidelines
-    sections.push('# Role and Guidelines');
-    sections.push(TemplateProcessor.replace(this.basePrompt, baseVariables));
-    sections.push('');
+    // === STEP 5: Validate no placeholders remain ===
 
-    // 2. Subject context
-    sections.push('# Subject Context');
-    sections.push(`**Subject:** ${this.subject.name}`);
-    sections.push(TemplateProcessor.replace(this.subject.basePromptTemplate, baseVariables));
-    sections.push('');
+    TemplateProcessor.validateNoPlaceholders(finalPrompt, 'PromptBuilder.buildPrompt');
 
-    // 3. Concept details with full metadata
-    sections.push('# Concept Details');
-    sections.push(`**Concept:** ${enrichedConcept.name}`);
-    sections.push(`**Focus:** ${enrichedConcept.focus}`);
-    sections.push(`**Grade Level:** ${enrichedConcept.grade} (Ages: ${enrichedConcept.ages.join(', ')})`);
-    sections.push(`**Difficulty:** ${enrichedConcept.difficulty}`);
-    sections.push('');
-    sections.push(conceptMetadata);
-
-    // 4. Concept-specific instructions
-    sections.push('# Concept-Specific Instructions');
-    sections.push(TemplateProcessor.replace(enrichedConcept.prompt, baseVariables));
-    sections.push('');
-
-    // 5. Task type instructions
-    sections.push('# Task Type');
-    sections.push(TemplateProcessor.replace(this.taskType.promptTemplate, baseVariables));
-    sections.push('');
-
-    // 6. Variations (if any)
-    if (variationVariables.scenario || variationVariables.enrichment_instruction) {
-      sections.push('# Personalization');
-      if (variationVariables.scenario) {
-        sections.push(`**Scenario Context:** ${variationVariables.scenario}`);
-      }
-      if (variationVariables.enrichment_instruction) {
-        sections.push(`**Enrichment:** ${variationVariables.enrichment_instruction}`);
-      }
-      sections.push('');
-    }
-
-    // 7. Final instruction
-    sections.push('# Your Task');
-    sections.push(`Generate a ${params.difficulty} ${this.taskType.name} task for this concept.`);
-    sections.push(`The task must be in ${this.formatLanguage(params.language)} and appropriate for grade ${params.grade} students.`);
-    sections.push(`Follow the learning objectives and use the provided context to create an engaging, educational task.`);
-
-    const finalPrompt = sections.join('\n');
+    // === STEP 6: Debug logging ===
 
     if(process.env.NODE_ENV === 'development') {
-      // Debug logging
       console.log('\n=== PROMPT GENERATION DEBUG ===');
       console.log('Subject:', this.subject.id);
       console.log('Concept:', params.concept);
       console.log('Task Type:', this.taskType.id);
-      console.log('Concept Metadata:', {
-        name: enrichedConcept.name,
-        grade: enrichedConcept.grade,
-        ages: enrichedConcept.ages,
-        focus: enrichedConcept.focus,
-        difficulty: enrichedConcept.difficulty,
-        learning_objectives: enrichedConcept.learning_objectives,
-        prerequisites: enrichedConcept.prerequisites,
-        example_tasks: enrichedConcept.example_tasks,
-        real_world_context: enrichedConcept.real_world_context,
-        source: enrichedConcept.source
-      });
-      console.log('\nVariation Variables:', JSON.stringify(variationVariables, null, 2));
-      console.log('\nFinal Prompt:\n', finalPrompt);
+      console.log('Variation Variables:', JSON.stringify(variationVariables, null, 2));
+      console.log('\n=== COMPOSED PROMPT ===');
+      console.log(finalPrompt);
       console.log('==============================\n');
     }
 
