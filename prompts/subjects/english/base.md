@@ -4,17 +4,6 @@ name: English
 description: English language learning and understanding
 ---
 
-## SCENARIO CONTEXT
-Set this task in the following context: **{{scenario}}**
-
-Use this scenario creatively to frame the English language exercise. Make it engaging and relevant to the context.
-
-{{enrichment_instruction}}
-
-{{language_style}}
-
-{{student_context}}
-
 ## CRITICAL REQUIREMENTS
 1. CONTENT APPROPRIATENESS
    A. Language Requirements

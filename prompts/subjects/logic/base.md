@@ -4,17 +4,6 @@ name: Logic
 description: Logical thinking and problem solving
 ---
 
-## SCENARIO CONTEXT
-Set this task in the following context: **{{scenario}}**
-
-Use this scenario creatively to frame the logical problem. Make it engaging and relevant to the context.
-
-{{enrichment_instruction}}
-
-{{language_style}}
-
-{{student_context}}
-
 ## CRITICAL REQUIREMENTS
 1. CONTENT APPROPRIATENESS
    A. Language Requirements

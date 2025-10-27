@@ -1,0 +1,808 @@
+subject: Mathematics
+country: Germany
+source: KMK Bildungsstandards 2022 (Secondary I), 2012 (Secondary II)
+scope: Federal standards for grades 7-13
+note: "Based on educational standards for ESA (grades 7-9), MSA (grades 7-10), and General University Entrance Qualification (grades 11-13)"
+
+process_competencies:
+  - name: Mathematical argumentation
+    description: Developing independent arguments, justifications, and proofs
+    
+  - name: Mathematical communication
+    description: Extracting and presenting information in oral and written form
+    
+  - name: Mathematical problem solving
+    description: Recognizing, formulating, and solving mathematical problems
+    
+  - name: Mathematical modeling
+    description: Translating between real situations and mathematical models
+    
+  - name: Mathematical representation
+    description: Creating, using, and changing mathematical representations
+    
+  - name: Working with mathematical objects
+    description: Competent handling of numbers, quantities, symbols, terms, equations, and functions
+    
+  - name: Working mathematically with media
+    description: Using analog and digital media and mathematical tools
+
+grades:
+  - grade: 7
+    ages: [12, 13]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    target_qualification: ESA/MSA
+    typical_weekly_hours: 4
+    concepts:
+      - name: Rational Numbers - Number System Extension
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Use meaningful concepts of rational numbers (natural, integer, and fractional numbers)
+          - Describe the necessity of number system extensions from ℕ to ℤ and ℚ
+          - Explain different concepts of fractions
+        difficulty: medium
+        prerequisites: [Basic arithmetic with natural numbers, Fraction basics]
+        real_world_context: Temperatures below zero, debts, altitude specifications
+        
+      - name: Operations with Rational Numbers
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Calculate with natural, integer, and rational numbers
+          - Use arithmetic laws (commutative, associative, distributive law)
+          - Explain the meaning of arithmetic operations
+          - Use estimation for control
+        difficulty: medium
+        prerequisites: [Rational Numbers - Number System Extension]
+        
+      - name: Percentage Calculation
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Use percentage calculation with conceptual understanding (e.g., percentage strips)
+          - Calculate percentage value, percentage rate, and base value
+          - Apply in real-world situations
+        difficulty: medium
+        prerequisites: [Fractions, Decimals]
+        real_world_context: Discounts, price increases, statistics
+        
+      - name: Proportional Relationships
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Distinguish proportional relationships in real situations
+          - Represent proportional relationships (table, graph, term)
+          - Solve problems using rule of three
+        difficulty: medium
+        prerequisites: [Fractions, Rational numbers]
+        real_world_context: Converting recipes, speed, price calculations
+        
+      - name: Inversely Proportional Relationships
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Distinguish inversely proportional relationships in real situations
+          - Represent inversely proportional relationships
+          - Solve problems using rule of three
+        difficulty: medium
+        prerequisites: [Proportional Relationships]
+        real_world_context: Working time and workforce, speed and time
+        
+      - name: Creating and Transforming Terms
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Create simple terms to describe relationships
+          - Transform terms
+          - Interpret terms in context
+          - Use variables appropriately
+        difficulty: medium
+        prerequisites: [Arithmetic laws]
+        
+      - name: Geometric Basics - Angles
+        focus: Space and Shape
+        competency_area: Core Idea Space and Shape
+        learning_objectives:
+          - Name and describe different types of angles
+          - Measure and draw angles
+          - Calculate angles at intersecting lines
+        difficulty: easy
+        prerequisites: []
+        
+      - name: Triangles - Construction and Properties
+        focus: Space and Shape
+        competency_area: Core Idea Space and Shape
+        learning_objectives:
+          - Classify triangles by sides and angles
+          - Construct triangles with compass and protractor
+          - Recognize and describe properties of triangles
+        difficulty: medium
+        prerequisites: [Geometric Basics - Angles]
+        
+      - name: Data Collection and Representation
+        focus: Data and Chance
+        competency_area: Core Idea Data and Chance
+        learning_objectives:
+          - Plan simple surveys
+          - Systematically collect data
+          - Graphically represent data (bar chart, column chart, pie chart)
+          - Create and interpret diagrams
+        difficulty: easy
+        prerequisites: []
+        real_world_context: Surveys, weather statistics, sports data
+        
+      - name: Statistical Measures
+        focus: Data and Chance
+        competency_area: Core Idea Data and Chance
+        learning_objectives:
+          - Determine and interpret minimum, maximum
+          - Calculate arithmetic mean and median
+          - Determine the range
+        difficulty: medium
+        prerequisites: [Data Collection and Representation]
+
+  - grade: 8
+    ages: [13, 14]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    target_qualification: ESA/MSA
+    typical_weekly_hours: 4
+    concepts:
+      - name: Powers and Roots - Basics
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Explain powers and their meaning
+          - Calculate simple powers
+          - Explain square and cube roots
+          - Calculate simple roots
+        difficulty: medium
+        prerequisites: [Multiplication, Rational numbers]
+        real_world_context: Area calculation, volume calculation
+        
+      - name: Interest Calculation
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Use interest calculation appropriately
+          - Use percentage calculation for growth processes
+          - Calculate interest, capital, interest rate
+        difficulty: medium
+        prerequisites: [Percentage Calculation]
+        real_world_context: Savings account, loan, investment
+        
+      - name: Linear Functions - Basics
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Recognize linear functions in everyday situations
+          - Represent linear functions (verbally, tabular, graphically, algebraically)
+          - Switch between forms of representation
+          - Interpret slope in context
+        difficulty: medium
+        prerequisites: [Coordinate system, Proportional relationships]
+        real_world_context: Mobile phone plans, taxi costs, water level
+        
+      - name: Solving Linear Equations
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Solve simple linear equations numerically (trial and error)
+          - Solve linear equations algebraically (transformation)
+          - Solve linear equations graphically
+          - Compare different solution methods
+        difficulty: medium
+        prerequisites: [Transforming terms, Linear functions]
+        
+      - name: Quadrilaterals - Properties and Calculation
+        focus: Space and Shape
+        competency_area: Core Idea Space and Shape
+        learning_objectives:
+          - Analyze and classify quadrilaterals
+          - Recognize and describe properties of quadrilaterals
+          - Calculate area and perimeter of quadrilaterals
+        difficulty: medium
+        prerequisites: [Triangles, Area calculation]
+        
+      - name: Area and Perimeter - Triangle and Quadrilateral
+        focus: Quantities and Measurement
+        competency_area: Core Idea Quantities and Measurement
+        learning_objectives:
+          - Determine area of rectangle, parallelogram, triangle
+          - Determine perimeter of these figures
+          - Apply formulas appropriately
+        difficulty: medium
+        prerequisites: [Quadrilaterals, Triangles]
+        real_world_context: Room design, garden planning
+        
+      - name: Circle Calculations
+        focus: Quantities and Measurement
+        competency_area: Core Idea Quantities and Measurement
+        learning_objectives:
+          - Determine area and circumference of circles
+          - Apply formulas A = π·r² and C = 2·π·r
+          - Calculate composite figures with circles
+        difficulty: medium
+        prerequisites: [Area and Perimeter]
+        real_world_context: Pizza size, sports fields, CDs
+        
+      - name: Coordinate System and Transformations
+        focus: Space and Shape
+        competency_area: Core Idea Space and Shape
+        learning_objectives:
+          - Represent figures in Cartesian coordinate system
+          - Perform translations, rotations, and reflections
+          - Use digital mathematical tools for transformations
+        difficulty: medium
+        prerequisites: [Geometric basics]
+        
+      - name: Probabilities - Simple Experiments
+        focus: Data and Chance
+        competency_area: Core Idea Data and Chance
+        learning_objectives:
+          - Describe random phenomena from everyday life
+          - Use relative frequencies as estimates
+          - Determine probabilities in simple random experiments
+        difficulty: medium
+        prerequisites: [Fractions, Percentage calculation]
+        real_world_context: Dice, coin toss, wheel of fortune
+
+  - grade: 9
+    ages: [14, 15]
+    school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
+    target_qualification: ESA/MSA
+    typical_weekly_hours: 4
+    concepts:
+      - name: Real Numbers (MSA only)
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Use meaningful concepts of real numbers
+          - Describe necessity of extension from ℚ to ℝ
+          - Understand completeness of the number line
+        difficulty: hard
+        prerequisites: [Rational numbers, Roots]
+        school_type_specific: MSA
+        
+      - name: Pythagorean Theorem
+        focus: Space and Shape
+        competency_area: Core Idea Space and Shape
+        learning_objectives:
+          - Apply the Pythagorean theorem
+          - Calculate lengths in plane figures
+          - Solve real-world problems with Pythagorean theorem
+        difficulty: medium
+        prerequisites: [Square roots, Triangles]
+        real_world_context: Ladder length, diagonals, distances
+        
+      - name: Similarity
+        focus: Space and Shape
+        competency_area: Core Idea Space and Shape
+        learning_objectives:
+          - Recognize similar figures
+          - Use similarity relationships in calculations
+          - Apply theorems about similar triangles
+        difficulty: medium
+        prerequisites: [Proportional relationships, Geometric figures]
+        real_world_context: Scales, enlargements, shadows
+        
+      - name: Trigonometry (MSA only)
+        focus: Quantities and Measurement
+        competency_area: Core Idea Quantities and Measurement
+        learning_objectives:
+          - Calculate lengths using sine, cosine, tangent
+          - Calculate angles using trigonometric relationships
+          - Apply trigonometry in real situations
+        difficulty: hard
+        prerequisites: [Pythagorean theorem, Similarity]
+        school_type_specific: MSA
+        real_world_context: Slopes, height measurement, navigation
+        
+      - name: Prisms and Cylinders
+        focus: Quantities and Measurement
+        competency_area: Core Idea Quantities and Measurement
+        learning_objectives:
+          - Determine volume and surface area of prisms
+          - Determine volume and surface area of cylinders
+          - Create nets and oblique views
+        difficulty: medium
+        prerequisites: [Area calculation, Circle calculations]
+        real_world_context: Packaging, cans, buildings
+        
+      - name: Pyramids and Cones (MSA only)
+        focus: Quantities and Measurement
+        competency_area: Core Idea Quantities and Measurement
+        learning_objectives:
+          - Determine volume and surface area of pyramids
+          - Determine volume and surface area of cones
+          - Calculate composite solids
+        difficulty: hard
+        prerequisites: [Prisms and Cylinders]
+        school_type_specific: MSA
+        real_world_context: Pointed roofs, funnels
+        
+      - name: Quadratic Functions (MSA only)
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Recognize quadratic functions
+          - Determine characteristic features (vertex, zeros)
+          - Represent parabolas in coordinate system
+          - Apply quadratic functions in real situations
+        difficulty: hard
+        prerequisites: [Linear functions, Powers]
+        school_type_specific: MSA
+        real_world_context: Projectile trajectories, braking distances
+        
+      - name: Quadratic Equations (MSA only)
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Solve quadratic equations numerically, algebraically, and graphically
+          - Investigate solvability and solution variety
+          - Compare solution methods (quadratic formula, completing the square)
+        difficulty: hard
+        prerequisites: [Quadratic functions, Transforming terms]
+        school_type_specific: MSA
+        
+      - name: Systems of Linear Equations (MSA only)
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Solve systems of linear equations algebraically (substitution, elimination)
+          - Solve systems of linear equations graphically
+          - Investigate solvability
+        difficulty: hard
+        prerequisites: [Linear equations, Linear functions]
+        school_type_specific: MSA
+        
+      - name: Tree Diagrams and Path Rules
+        focus: Data and Chance
+        competency_area: Core Idea Data and Chance
+        learning_objectives:
+          - Investigate situations using tree diagrams
+          - Apply path rules
+          - Calculate probabilities in multi-stage experiments
+        difficulty: medium
+        prerequisites: [Probabilities - Simple experiments]
+        real_world_context: Drawing without replacement, combined events
+
+  - grade: 10
+    ages: [15, 16]
+    school_types: [Gymnasium, Realschule, Gesamtschule]
+    target_qualification: MSA
+    typical_weekly_hours: 4
+    note: "Grade 10 is MSA graduation year for Realschule/Gesamtschule, transition to upper secondary for Gymnasium"
+    concepts:
+      - name: Exponential Functions
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Recognize exponential functions of the form f(x) = a·bˣ
+          - Describe exponential growth and decay
+          - Apply exponential functions to problems
+          - Use digital mathematical tools
+        difficulty: hard
+        prerequisites: [Powers, Functional relationships]
+        real_world_context: Compound interest, bacterial growth, radioactive decay
+        
+      - name: Sine Function for Periodic Processes
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Use sine function f(x) = a·sin(b·x)
+          - Describe periodic processes
+          - Use digital mathematical tools for representation
+        difficulty: hard
+        prerequisites: [Trigonometry, Functions]
+        real_world_context: Oscillations, tides, seasons
+        
+      - name: Sphere - Volume and Surface Area
+        focus: Quantities and Measurement
+        competency_area: Core Idea Quantities and Measurement
+        learning_objectives:
+          - Determine volume and surface area of spheres
+          - Apply formulas V = 4/3·π·r³ and A = 4·π·r²
+          - Calculate composite solids with spheres
+        difficulty: medium
+        prerequisites: [Circle calculations, Solid geometry]
+        real_world_context: Balls, planets, bubbles
+        
+      - name: Combinatorics - Counting Principles
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Apply systematic counting principles in concrete situations
+          - Continue number sequences using variables
+          - Distinguish permutations and combinations
+        difficulty: medium
+        prerequisites: [Multiplication, Systematic thinking]
+        real_world_context: Possibilities of arrangements, lottery
+        
+      - name: Conditional Probability and Independence
+        focus: Data and Chance
+        competency_area: Core Idea Data and Chance
+        learning_objectives:
+          - Investigate situations using tree diagrams and two-way tables
+          - Solve problems in context of conditional probabilities
+          - Examine stochastic independence
+        difficulty: hard
+        prerequisites: [Tree diagrams, Probabilities]
+        real_world_context: Medical tests, quality control
+        
+      - name: Boxplots and Quartiles
+        focus: Data and Chance
+        competency_area: Core Idea Data and Chance
+        learning_objectives:
+          - Determine and interpret quartiles
+          - Create and interpret boxplots
+          - Compare data sets using boxplots
+          - Use digital mathematical tools
+        difficulty: medium
+        prerequisites: [Statistical measures, Median]
+        real_world_context: Comparing test results, salary distributions
+        
+      - name: Algorithms - Implementation
+        focus: Number and Operation
+        competency_area: Core Idea Number and Operation
+        learning_objectives:
+          - Implement an algorithmic procedure with digital tools
+          - Understand iterative processes (e.g., Heron's method)
+          - Apply interval nesting
+        difficulty: hard
+        prerequisites: [Square roots, Digital tools]
+        
+      - name: Growth Processes - Modeling
+        focus: Structures and Functional Relationships
+        competency_area: Core Idea Functional Relationships
+        learning_objectives:
+          - Use percentage calculation for growth processes
+          - Model compound interest
+          - Use digital tools for calculations
+        difficulty: medium
+        prerequisites: [Interest calculation, Exponential functions]
+        real_world_context: Savings, investments, population growth
+
+  - grade: 11
+    ages: [16, 17]
+    school_types: [Gymnasium]
+    target_qualification: Abitur (General University Entrance Qualification)
+    typical_weekly_hours: 3-5
+    note: "Introduction phase (Einführungsphase) of upper secondary school"
+    concepts:
+      - name: Functions - Advanced Analysis
+        focus: Functional Relationships
+        competency_area: Core Idea L4 - Functional Relationships
+        learning_objectives:
+          - Use function classes from lower secondary for quantifiable relationships
+          - Use compositions and combinations of functions
+          - Analyze, interpret, and compare different functional relationships
+        difficulty: hard
+        prerequisites: [All function types from grades 7-10]
+        
+      - name: Introduction to Derivatives
+        focus: Measuring
+        competency_area: Core Idea L2 - Measuring
+        learning_objectives:
+          - Determine secant and tangent slopes on function graphs
+          - Calculate and interpret rates of change
+          - Understand derivative as local rate of change
+        difficulty: hard
+        prerequisites: [Linear functions, Slopes]
+        real_world_context: Speed, acceleration, marginal costs
+        
+      - name: Vectors - Basics
+        focus: Space and Shape
+        competency_area: Core Idea L3 - Space and Shape
+        learning_objectives:
+          - Perform elementary operations with geometric vectors
+          - Investigate vectors for collinearity
+          - Interpret scalar product geometrically
+        difficulty: hard
+        prerequisites: [Coordinate system, Pythagorean theorem]
+        
+      - name: Coordinate Geometry of Lines
+        focus: Space and Shape
+        competency_area: Core Idea L3 - Space and Shape
+        learning_objectives:
+          - Coordinatize geometric situations in plane and space
+          - Describe lines analytically
+          - Investigate positional relationships of lines
+        difficulty: hard
+        prerequisites: [Vectors - Basics, Linear equations]
+        
+      - name: Solving Systems of Equations Algorithmically
+        focus: Algorithm and Number
+        competency_area: Core Idea L1 - Algorithm and Number
+        learning_objectives:
+          - Select suitable methods for solving equations and systems
+          - Explain and apply algorithmic solution method for linear systems
+        difficulty: medium
+        prerequisites: [Systems of linear equations from grade 9]
+        
+      - name: Statistical Planning and Evaluation
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Plan statistical surveys considering sample selection
+          - Determine and interpret measures of location and spread
+          - Create and interpret histograms
+        difficulty: medium
+        prerequisites: [Statistics from grades 7-10]
+        real_world_context: Surveys, study design
+        
+      - name: Binomial Distribution - Introduction
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Use random variables and probability distributions
+          - Understand binomial distribution basics
+          - Use simulations for stochastic investigations
+        difficulty: hard
+        prerequisites: [Tree diagrams, Combinatorics]
+        real_world_context: Quality control, medical tests
+
+  - grade: 12
+    ages: [17, 18]
+    school_types: [Gymnasium]
+    target_qualification: Abitur
+    typical_weekly_hours: 3-5
+    note: "Qualification phase year 1 (Qualifikationsphase 1)"
+    concepts:
+      - name: Differential Calculus - Systematic Development
+        focus: Functional Relationships
+        competency_area: Core Idea L4 - Functional Relationships
+        learning_objectives:
+          - Interpret derivative as local rate of change
+          - Describe rates of change functionally (derivative function)
+          - Derive functions from lower secondary, using factor and sum rule
+          - Apply product rule for differentiation
+          - Use derivative to determine monotonicity and extrema
+        difficulty: hard
+        prerequisites: [Introduction to Derivatives, All function types]
+        real_world_context: Optimization problems, extreme values in economics
+        
+      - name: Chain Rule and Advanced Differentiation (Enhanced level)
+        focus: Functional Relationships
+        competency_area: Core Idea L4 - Functional Relationships
+        learning_objectives:
+          - Interpret derivative through approximation by linear functions
+          - Use chain rule for differentiation
+          - Use ln function as antiderivative of 1/x and as inverse of e function
+        difficulty: very_hard
+        prerequisites: [Differential Calculus - Systematic Development]
+        school_type_specific: Enhanced level (erhöhtes Anforderungsniveau)
+        
+      - name: Integral Calculus - Introduction
+        focus: Measuring and Functional Relationships
+        competency_area: Core Idea L2 - Measuring, L4 - Functional Relationships
+        learning_objectives:
+          - Interpret definite integral, especially as (re)constructed quantity
+          - Justify fundamental theorem geometrically-intuitively
+          - Integrate functions using antiderivatives
+          - Determine areas bounded by function graphs
+          - Calculate quantities from rates of change and initial value
+        difficulty: hard
+        prerequisites: [Differential Calculus, Area calculation]
+        real_world_context: Distance from velocity, water volume from flow rate
+        
+      - name: Volumes of Solids of Revolution (Enhanced level)
+        focus: Measuring
+        competency_area: Core Idea L2 - Measuring
+        learning_objectives:
+          - Determine volume of solids created by rotation around abscissa axis
+          - Apply integration for volume calculation
+        difficulty: very_hard
+        prerequisites: [Integral Calculus, Solid geometry]
+        school_type_specific: Enhanced level
+        
+      - name: Analytical Geometry - Lines and Planes (Alternative A2)
+        focus: Space and Shape
+        competency_area: Core Idea L3 - Space and Shape
+        learning_objectives:
+          - Apply vectors when working with straight or planar bounded geometric objects
+          - Describe lines and planes analytically
+          - Investigate positional relationships of lines and planes
+        difficulty: hard
+        prerequisites: [Coordinate Geometry of Lines, Vectors]
+        
+      - name: Distances in Space (Enhanced level, Alternative A2)
+        focus: Measuring and Space
+        competency_area: Core Idea L2 - Measuring, L3 - Space and Shape
+        learning_objectives:
+          - Determine distances between points, lines, and planes
+          - Determine lengths and angles in space using scalar product
+        difficulty: very_hard
+        prerequisites: [Analytical Geometry - Lines and Planes, Scalar product]
+        school_type_specific: Enhanced level, Alternative A2
+        
+      - name: Binomial Distribution - Applications
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Use binomial distribution and its characteristics
+          - Determine expected value and standard deviation
+          - Apply simulations for stochastic situations
+        difficulty: hard
+        prerequisites: [Binomial Distribution - Introduction]
+        real_world_context: Quality testing, biological experiments
+        
+      - name: Conditional Probability - Advanced
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Investigate situations using tree diagrams and two-way tables
+          - Solve problems in context of conditional probabilities
+          - Examine multi-stage random experiments for stochastic independence
+        difficulty: hard
+        prerequisites: [Binomial Distribution, Conditional probability from grade 10]
+        real_world_context: Bayes' theorem applications, diagnostic tests
+
+  - grade: 13
+    ages: [18, 19]
+    school_types: [Gymnasium]
+    target_qualification: Abitur
+    typical_weekly_hours: 3-5
+    note: "Qualification phase year 2 (Qualifikationsphase 2) and final exams"
+    concepts:
+      - name: Limit Values and Continuity
+        focus: Algorithm and Number
+        competency_area: Core Idea L1 - Algorithm and Number
+        learning_objectives:
+          - Use limits based on propaedeutic limit concept
+          - Apply especially in determining derivatives and integrals
+          - Understand continuity of functions
+        difficulty: hard
+        prerequisites: [Differential and Integral Calculus]
+        
+      - name: Analysis - Comprehensive Applications
+        focus: Functional Relationships
+        competency_area: Core Idea L4 - Functional Relationships
+        learning_objectives:
+          - Develop derivative graph from function graph and vice versa
+          - Apply analysis methods to optimization problems
+          - Model real situations with functions
+          - Examine functions comprehensively (zeros, extrema, inflection points)
+        difficulty: hard
+        prerequisites: [Differential Calculus, Integral Calculus]
+        real_world_context: Economic optimization, physical problems
+        
+      - name: Matrix Algebra (Alternative A1)
+        focus: Algorithm and Number
+        competency_area: Core Idea L1 - Algorithm and Number
+        learning_objectives:
+          - Describe simple situations with tuples or matrices
+          - Describe mathematical processes using matrices with matrix multiplication
+          - Use inverse matrices
+        difficulty: hard
+        prerequisites: [Systems of equations, Vector algebra]
+        school_type_specific: Alternative A1
+        real_world_context: Transition processes, networks, population models
+        
+      - name: Matrix Powers and Limit Matrices (Enhanced level, Alternative A1)
+        focus: Algorithm and Number
+        competency_area: Core Idea L1 - Algorithm and Number
+        learning_objectives:
+          - Use powers of matrices in multi-stage processes
+          - Interpret limit matrices and fixed vectors
+        difficulty: very_hard
+        prerequisites: [Matrix Algebra]
+        school_type_specific: Enhanced level, Alternative A1
+        
+      - name: Inferential Statistics - Introduction
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Draw conclusions about population from samples in simple cases
+          - Understand confidence intervals
+          - Plan exemplary statistical surveys and evaluate them
+        difficulty: hard
+        prerequisites: [Binomial Distribution, Statistical measures]
+        real_world_context: Opinion polls, medical studies
+        
+      - name: Normal Distribution (Enhanced level)
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Distinguish discrete and continuous random variables exemplarily
+          - Use "bell curve" as basic concept of normally distributed random variables
+          - Investigate stochastic situations leading to approximately normal distributions
+        difficulty: very_hard
+        prerequisites: [Binomial Distribution, Continuous functions]
+        school_type_specific: Enhanced level
+        real_world_context: Measurement errors, natural distributions
+        
+      - name: Parameter Estimation (Enhanced level, Alternative B1)
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Justify statements about unknown probability for binomially distributed random variables
+          - Assess uncertainty and accuracy of these statements
+        difficulty: very_hard
+        prerequisites: [Inferential Statistics, Binomial distribution]
+        school_type_specific: Enhanced level, Alternative B1
+        real_world_context: Confidence intervals, survey accuracy
+        
+      - name: Hypothesis Testing (Enhanced level, Alternative B2)
+        focus: Data and Chance
+        competency_area: Core Idea L5 - Data and Chance
+        learning_objectives:
+          - Interpret hypothesis tests
+          - Justify uncertainty and accuracy of results
+          - Understand Type I and Type II errors
+        difficulty: very_hard
+        prerequisites: [Inferential Statistics, Binomial distribution]
+        school_type_specific: Enhanced level, Alternative B2
+        real_world_context: Clinical trials, A/B testing
+        
+      - name: Comprehensive Mathematical Modeling
+        focus: All Competency Areas
+        competency_area: All Core Ideas
+        learning_objectives:
+          - Model complex real situations mathematically
+          - Combine methods from all mathematical areas
+          - Critically evaluate model assumptions and results
+          - Present and justify mathematical solutions
+        difficulty: very_hard
+        prerequisites: [All topics from grades 11-13]
+        real_world_context: Complex projects combining analysis, geometry, and stochastics
+
+digital_tools:
+  secondary_i:
+    - Scientific calculators
+    - Geometry software
+    - Spreadsheet programs
+    - Stochastics tools
+    - Computer algebra systems
+    - Learning assessment apps
+    - Explanation videos
+    - Practice programs
+    
+  secondary_ii:
+    - Computer algebra systems (CAS)
+    - Dynamic geometry software
+    - Graphing calculators
+    - Statistical software
+    - Programming environments
+    - Visualization tools
+    note: "Digital tools support discovery of mathematical relationships, understanding through multiple representations, reduction of routine procedures, and individual learning preferences"
+
+performance_levels:
+  - level: Basic Level (Grundlegendes Anforderungsniveau)
+    weekly_hours: 3
+    description: "Provides basic mathematical knowledge, exam focus on requirement level II"
+    requirement_emphasis: "Levels I and II more emphasized"
+    
+  - level: Enhanced Level (Erhöhtes Anforderungsniveau)
+    weekly_hours: "4+"
+    description: "Greater scope of content, increased complexity, depth, precision, and formalization"
+    requirement_emphasis: "Levels II and III more emphasized"
+
+requirement_levels:
+  - level: I
+    name: Reproduce
+    description: "Reproduction and direct application of basic concepts, theorems, and procedures"
+    
+  - level: II
+    name: Make Connections
+    description: "Independent selection, arrangement, and processing of known facts"
+    
+  - level: III
+    name: Generalize and Reflect
+    description: "Processing complex or unknown facts, own problem formulations and solutions"
+
+implementation_notes:
+  competency_orientation: "Standards focus on central subject competencies acquired through active engagement with mathematical content"
+  networking: "Attention to interconnection of mathematical content and with other subjects; real-world and pure mathematical tasks equally important"
+  individualization: "Student heterogeneity must be considered; goal is for all students to achieve standards through appropriate strategies"
+  spiral_curriculum: "Mathematics developed spirally along essential core ideas; builds on primary level, continuously deepened in upper secondary"
+
+legal_basis:
+  - document: "Bildungsstandards im Fach Mathematik für den Ersten Schulabschluss (ESA) und Mittleren Schulabschluss (MSA)"
+    decision_date: "2004-10-15 and 2003-12-04"
+    current_version: "2022-06-23"
+    
+  - document: "Bildungsstandards im Fach Mathematik für die Allgemeine Hochschulreife"
+    decision_date: "2012-10-18"
+    
+  validity: "Binding normative reference points for state-specific curricular specifications and orientation of instruction"
+  status_year: 2025

@@ -4,17 +4,6 @@ name: Physics
 description: Learn about the fundamental laws that govern our universe
 ---
 
-## SCENARIO CONTEXT
-Set this task in the following context: **{{scenario}}**
-
-Use this scenario creatively to frame the physics problem. Make it engaging and relevant to the context.
-
-{{enrichment_instruction}}
-
-{{language_style}}
-
-{{student_context}}
-
 ## CRITICAL REQUIREMENTS
 1. CONTENT APPROPRIATENESS
    A. Language Requirements
