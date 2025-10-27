@@ -73,6 +73,10 @@ export class TaskService {
         const basePrompt = await this.promptLoader.loadBasePrompt();
         console.log('[TaskService] Base prompt loaded');
 
+        // Load variations template
+        const variationsTemplate = await this.promptLoader.loadVariationsTemplate();
+        console.log('[TaskService] Variations template loaded');
+
         // Load hint prompt
         const hintPrompt = await this.promptLoader.loadHintPrompt();
         console.log('[TaskService] Hint prompt loaded:', hintPrompt.id);
@@ -86,12 +90,13 @@ export class TaskService {
         }
         console.log('[TaskService] Enriched concept loaded:', enrichedConcept.id);
 
-        // Create prompt builder with subject, task type, variation loader, and base prompt
+        // Create prompt builder with subject, task type, variation loader, base prompt, and variations template
         const promptBuilder = new PromptBuilder(
             subject,
             selectedTaskType,
             this.variationLoader,
             basePrompt,
+            variationsTemplate,
             hintPrompt
         );
 
@@ -179,8 +184,9 @@ export class TaskService {
             throw new Error(`Task type ${context.taskType} not found`);
         }
 
-        // Load base prompt and hint prompt template
+        // Load base prompt, variations template, and hint prompt template
         const basePrompt = await this.promptLoader.loadBasePrompt();
+        const variationsTemplate = await this.promptLoader.loadVariationsTemplate();
         const hintPromptTemplate = await this.promptLoader.loadHintPrompt();
 
         // Build hint prompt
@@ -189,6 +195,7 @@ export class TaskService {
             taskType,
             this.variationLoader,
             basePrompt,
+            variationsTemplate,
             hintPromptTemplate
         );
 

@@ -315,7 +315,6 @@ grades:
     ages: [14, 15]
     school_types: [Gymnasium, Realschule, Gesamtschule, Hauptschule]
     note: "Deepening chemical understanding. Quantitative chemistry and organic chemistry introduction."
-    typical_weekly_hours: 2
     concepts:
       - name: Chemical Formulas and Equations - Quantitative
         focus: Chemical Language
@@ -657,10 +656,6 @@ grades:
     school_types: [Gymnasium, Gesamtschule]
     milestone: "Start of Secondary Level II (Oberstufe)"
     note: "Beginning of advanced chemistry. Students can choose between basic (grundlegend) and advanced (erhöht) level."
-    level_options: [grundlegend, erhöht]
-    typical_weekly_hours:
-      grundlegend: 2-3
-      erhöht: 4-5
     concepts:
       - name: Atomic Structure - Orbital Model
         focus: Advanced Atomic Theory

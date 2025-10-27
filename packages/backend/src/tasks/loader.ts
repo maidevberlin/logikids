@@ -56,6 +56,7 @@ export class PromptLoader {
   private promptsDir: string;
   private curriculumsDir: string;
   private basePromptCache: string | null = null;
+  private variationsTemplateCache: string | null = null;
 
   constructor(promptsDir: string = path.join(process.cwd(), 'prompts')) {
     this.promptsDir = promptsDir;
@@ -79,6 +80,26 @@ export class PromptLoader {
       return this.basePromptCache;
     } catch (error: any) {
       throw new Error(`Error loading base prompt from ${basePath}: ${error.message}`);
+    }
+  }
+
+  /**
+   * Load variations template (shared across all subjects)
+   */
+  async loadVariationsTemplate(): Promise<string> {
+    // Check cache first
+    if (this.variationsTemplateCache) {
+      return this.variationsTemplateCache;
+    }
+
+    const variationsPath = path.join(this.promptsDir, 'variations.md');
+    try {
+      const fileContent = await fs.readFile(variationsPath, 'utf-8');
+      const parsed = matter(fileContent);
+      this.variationsTemplateCache = parsed.content.trim();
+      return this.variationsTemplateCache;
+    } catch (error: any) {
+      throw new Error(`Error loading variations template from ${variationsPath}: ${error.message}`);
     }
   }
 
@@ -407,6 +428,13 @@ export class PromptLoader {
     if (filePath.includes('base-prompt.md')) {
       this.basePromptCache = null;
       console.log(`[PromptLoader] Cache invalidated for base prompt`);
+      return;
+    }
+
+    // Check if it's the variations template
+    if (filePath.includes('variations.md')) {
+      this.variationsTemplateCache = null;
+      console.log(`[PromptLoader] Cache invalidated for variations template`);
       return;
     }
 
