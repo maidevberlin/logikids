@@ -44,27 +44,37 @@ export class PromptBuilder {
   }
 
   /**
-   * Build the final prompt by combining templates with scoped variable replacement
+   * Build the final prompt by combining templates with flat variable replacement
    */
   buildPrompt(params: TaskGenerationParams): string {
-    // === STEP 1: Prepare all scoped variables ===
+    // === STEP 1: Compose Template Hierarchy ===
+    // Insert raw sub-templates into base template structure
 
-    // Variation variables (for variations.md)
-    const variationVariables: Record<string, string> = {
+    const compositionVariables = {
+      variations_template: this.variationsTemplate,
+      subject_base_template: this.subject.basePromptTemplate,
+      concept_template: params.concept.prompt,
+      task_type_template: this.taskType.promptTemplate,
+    };
+
+    const composedTemplate = TemplateProcessor.replace(
+      this.basePrompt,
+      compositionVariables
+    );
+
+    // === STEP 2: Build Flat Variable Object ===
+    // Create single object with ALL variables (duplicates OK - same values)
+
+    const enrichment = this.variationLoader.getRandomEnrichment();
+
+    const allVariables: Record<string, string | number> = {
+      // Variation variables
       scenario: this.variationLoader.getScenario(params.grade),
       language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
       student_context: params.gender ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
-      enrichment_instruction: '',
-    };
+      enrichment_instruction: enrichment?.value || '',
 
-    // Add enrichment (30-50% chance)
-    const enrichment = this.variationLoader.getRandomEnrichment();
-    if (enrichment) {
-      variationVariables.enrichment_instruction = enrichment.value;
-    }
-
-    // Subject variables (for subjects/{subject}/base.md)
-    const subjectVariables: Record<string, string | number> = {
+      // Subject/Concept/TaskType variables (duplicates OK - same values)
       age: params.grade * 6,
       grade: params.grade,
       difficulty: params.difficulty,
@@ -73,79 +83,30 @@ export class PromptBuilder {
       concept_focus: params.concept.focus,
       concept_difficulty: params.concept.difficulty,
       subject_name: this.subject.name,
-    };
-
-    // Concept variables (for concept-specific prompts)
-    const conceptVariables: Record<string, string | number> = {
-      concept_name: params.concept.name,
-      concept_focus: params.concept.focus,
-      grade: params.grade,
-      age: params.grade + 6,
+      task_type_name: this.taskType.name,
       learning_objectives: params.concept.learning_objectives?.join('\n- ') || '',
       prerequisites: params.concept.prerequisites?.join(', ') || '',
       example_tasks: params.concept.example_tasks?.join('\n- ') || '',
       real_world_context: params.concept.real_world_context || '',
     };
 
-    // Task type variables (for task-types/{type}.md)
-    const taskTypeVariables: Record<string, string | number> = {
-      difficulty: params.difficulty,
-      task_type_name: this.taskType.name,
-      age: params.grade * 6,
-    };
+    // === STEP 3: Single Replacement Pass ===
+    // Replace all placeholders in composed template
 
-    // === STEP 2: Load and process sub-templates with scoped variables ===
+    const finalPrompt = TemplateProcessor.replace(composedTemplate, allVariables);
 
-    // Process variations template (already loaded via constructor)
-    const variationsProcessed = TemplateProcessor.replaceScoped(this.variationsTemplate, variationVariables);
-
-    // Subject base already loaded (this.subject.basePromptTemplate)
-    const subjectBaseProcessed = TemplateProcessor.replaceScoped(
-      this.subject.basePromptTemplate,
-      subjectVariables
-    );
-
-    // Concept prompt already loaded (params.concept.prompt)
-    const conceptProcessed = TemplateProcessor.replaceScoped(
-      params.concept.prompt,
-      conceptVariables
-    );
-
-    // Task type already loaded (this.taskType.promptTemplate)
-    const taskTypeProcessed = TemplateProcessor.replaceScoped(
-      this.taskType.promptTemplate,
-      taskTypeVariables
-    );
-
-    // === STEP 3: Compose master template with processed sub-templates ===
-
-    // Prepare composition variables (template includes)
-    const compositionVariables: Record<string, string> = {
-      variations_template: variationsProcessed,
-      subject_base_template: subjectBaseProcessed,
-      concept_template: conceptProcessed,
-      task_type_template: taskTypeProcessed,
-      grade: String(params.grade),
-      age: String(params.grade * 6),
-      difficulty: params.difficulty,
-      language: this.formatLanguage(params.language),
-    };
-
-    // Load and process base prompt template
-    const finalPrompt = TemplateProcessor.replace(this.basePrompt, compositionVariables);
-
-    // === STEP 5: Validate no placeholders remain ===
+    // === STEP 4: Validate no placeholders remain ===
 
     TemplateProcessor.validateNoPlaceholders(finalPrompt, 'PromptBuilder.buildPrompt');
 
-    // === STEP 6: Debug logging ===
+    // === STEP 5: Debug logging ===
 
     if(process.env.NODE_ENV === 'development') {
       console.log('\n=== PROMPT GENERATION DEBUG ===');
       console.log('Subject:', this.subject.id);
       console.log('Concept:', params.concept.id);
       console.log('Task Type:', this.taskType.id);
-      console.log('Variation Variables:', JSON.stringify(variationVariables, null, 2));
+      console.log('All Variables:', JSON.stringify(allVariables, null, 2));
       console.log('\n=== COMPOSED PROMPT ===');
       console.log(finalPrompt);
       console.log('==============================\n');
