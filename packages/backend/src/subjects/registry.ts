@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { PromptLoader, Subject, Concept } from './loader.ts';
-import { Concept } from './schemas';
+import { PromptLoader, Subject } from '../prompts/loader';
+import { Concept } from '../prompts/schemas';
 
 /**
  * Registry for managing all available subjects
@@ -17,7 +17,7 @@ export class SubjectRegistry {
   }
 
   /**
-   * Initialize registry by loading all subjects from /prompts/subjects/
+   * Initialize registry by loading all subjects from packages/content/subjects/
    */
   async initialize(): Promise<void> {
     if (this.initialized) {
@@ -25,8 +25,8 @@ export class SubjectRegistry {
       return;
     }
 
-    const promptsDir = path.join(process.cwd(), 'prompts');
-    const subjectsDir = path.join(promptsDir, 'subjects');
+    const contentDir = path.join(process.cwd(), '..', 'content');
+    const subjectsDir = path.join(contentDir, 'subjects');
 
     try {
       // Get all subject directories
@@ -61,7 +61,7 @@ export class SubjectRegistry {
       this.initialized = true;
       console.log(`[SubjectRegistry] Initialization complete: ${this.subjects.size} subjects loaded`);
 
-      // Enable hot-reload in development (watches both prompts and curriculums directories)
+      // Enable hot-reload in development (watches both backend prompts and content directories)
       if (process.env.NODE_ENV !== 'production') {
         this.loader.enableHotReload();
       }

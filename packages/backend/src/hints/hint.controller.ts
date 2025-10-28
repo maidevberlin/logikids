@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { TaskService } from './task.service';
+import { HintService } from './hint.service';
 
 export class HintController {
-  constructor(private readonly taskService: TaskService) {}
+  constructor(private readonly hintService: HintService) {}
 
   async getHint(req: Request, res: Response): Promise<void> {
     try {
@@ -13,7 +13,7 @@ export class HintController {
         return;
       }
 
-      const result = await this.taskService.generateHint(taskId);
+      const result = await this.hintService.generateHint(taskId);
 
       res.json(result);
     } catch (error) {

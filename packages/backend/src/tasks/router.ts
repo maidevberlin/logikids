@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import { createAIClient } from '../common/ai/factory';
 import { TaskController } from './task.controller';
-import { HintController } from './hint.controller';
+import { HintController } from '../hints/hint.controller';
 import { errorHandler } from '../common/middleware/errorHandler';
 import { TaskService } from './task.service';
+import { HintService } from '../hints/hint.service';
 
 export async function createTaskRouter(): Promise<Router> {
   const router = Router();
@@ -11,7 +12,9 @@ export async function createTaskRouter(): Promise<Router> {
   const taskController = new TaskController(aiClient);
   const taskService = new TaskService(aiClient);
   await taskService.initialize(); // Load variations
-  const hintController = new HintController(taskService);
+  const hintService = new HintService(aiClient);
+  await hintService.initialize(); // Load variations
+  const hintController = new HintController(hintService);
 
   // More specific routes must come before generic routes
   router.get('/subjects', (req, res, next) =>

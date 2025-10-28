@@ -1,9 +1,9 @@
-import { TaskGenerationParams } from './types.ts';
-import { Subject, HintPrompt } from './loader.ts';
-import { TaskTypeWithSchema } from './types/registry.ts';
-import { TemplateProcessor } from './template.ts';
-import { VariationLoader } from './variation.loader.ts';
-import { Concept } from './schemas.ts';
+import { TaskGenerationParams } from '../tasks/types';
+import { Subject, HintPrompt } from './loader';
+import { TaskTypeWithSchema } from '../tasks/types/registry';
+import { TemplateProcessor } from './template';
+import { VariationLoader } from '../variations/loader';
+import { Concept } from './schemas';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',

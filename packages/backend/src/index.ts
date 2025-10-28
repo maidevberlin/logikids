@@ -6,8 +6,8 @@ import path from 'path';
 import taskRouter from './tasks/router';
 import { createSyncRouter } from './sync/router';
 import { errorHandler } from './common/middleware/errorHandler';
-import { cacheCleanupService } from './tasks/cacheCleanup';
-import { subjectRegistry } from './tasks/subject.registry';
+import { cacheCleanupService } from './cache/cacheCleanup';
+import { subjectRegistry } from './subjects/registry';
 import { taskTypeRegistry } from './tasks/types/registry';
 import { initializeDatabase, closeDatabase } from './sync/db';
 

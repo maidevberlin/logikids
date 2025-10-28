@@ -5,9 +5,9 @@
  * Uses production code paths to ensure consistency
  */
 
-import { subjectRegistry } from '../tasks/subject.registry';
+import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
-import { PromptLoader } from '../tasks/loader';
+import { PromptLoader } from '../prompts/loader';
 
 async function validatePrompts() {
   console.log('🔍 Validating prompt templates...\n');

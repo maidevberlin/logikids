@@ -1,14 +1,13 @@
 import {TaskRequest, TaskGenerationParams} from './types';
 import {TaskResponse, BaseTaskResponse} from './types';
 import {AIClient} from '../common/ai/base';
-import {PromptBuilder} from './prompt.builder';
-import {PromptLoader} from './loader';
+import {PromptBuilder} from '../prompts/builder';
+import {PromptLoader} from '../prompts/loader';
 import {taskTypeRegistry} from './types/registry';
 import {v4 as uuidv4} from 'uuid';
-import {taskCache, TaskContext} from './taskCache';
-import {hintSchema} from './schemas.ts';
-import {subjectRegistry} from "./subject.registry.ts";
-import {VariationLoader} from './variation.loader';
+import {taskCache, TaskContext} from '../cache/taskCache';
+import {subjectRegistry} from '../subjects/registry';
+import {VariationLoader} from '../variations/loader';
 
 export class TaskService {
     private readonly promptLoader: PromptLoader;
@@ -135,85 +134,5 @@ export class TaskService {
         console.log('[TaskService] Task context stored in cache');
 
         return responseWithType;
-    }
-
-    public async generateHint(taskId: string): Promise<{
-        hint: string;
-        hintNumber: number;
-        totalHintsAvailable: number;
-    }> {
-        console.log('[TaskService] Generating hint for task:', taskId);
-
-        // Get task context from cache
-        const context = taskCache.get(taskId);
-        if (!context) {
-            throw new Error('Task not found or expired');
-        }
-
-        // Check if all hints have been used
-        const hintNumber = context.hintsGenerated.length + 1;
-        if (hintNumber > 4) {
-            throw new Error('All hints have been used');
-        }
-
-        // Get subject and task type for prompt building
-        const subject = subjectRegistry.get(context.subject);
-        if (!subject) {
-            throw new Error(`Subject ${context.subject} not found`);
-        }
-
-        const taskType = taskTypeRegistry.get(context.taskType);
-        if (!taskType) {
-            throw new Error(`Task type ${context.taskType} not found`);
-        }
-
-        // Load base prompt, variations template, and hint prompt template
-        const basePrompt = await this.promptLoader.loadBasePrompt();
-        const variationsTemplate = await this.promptLoader.loadVariationsTemplate();
-        const hintPromptTemplate = await this.promptLoader.loadHintPrompt();
-
-        // Build hint prompt
-        const promptBuilder = new PromptBuilder(
-            subject,
-            taskType,
-            this.variationLoader,
-            basePrompt,
-            variationsTemplate,
-            hintPromptTemplate
-        );
-
-        const hintPrompt = promptBuilder.buildHintPrompt(
-            {
-                subject: context.subject,
-                concept: context.concept,
-                taskType: context.taskType,
-                grade: context.grade,
-                difficulty: context.difficulty,
-                language: context.language,
-                task: context.generatedTask,
-                solution: context.solution,
-                hintsGenerated: context.hintsGenerated
-            },
-            hintNumber
-        );
-
-        console.log('[TaskService] Hint prompt built, length:', hintPrompt.length);
-
-        // Generate hint using structured output
-        const aiStartTime = Date.now();
-        const response = await this.aiClient.generateStructured<{ hint: string }>(hintPrompt, hintSchema);
-        const aiDuration = Date.now() - aiStartTime;
-        console.log(`[TaskService] Hint generated in ${aiDuration}ms`);
-
-        // Store hint in cache
-        context.hintsGenerated.push(response.hint);
-        taskCache.set(taskId, context);
-        console.log('[TaskService] Hint stored in cache, total hints:', context.hintsGenerated.length);
-
-        return {
-            hint: response.hint,
-            hintNumber,
-            totalHintsAvailable: 4
-        };
     }
 } 

@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { subjectRegistry } from './subject.registry';
+import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from './types/registry';
-import { Concept } from './schemas.ts';
+import { Concept } from '../prompts/schemas';
 
 // Difficulty Levels
 export const DIFFICULTIES = [

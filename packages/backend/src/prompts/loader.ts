@@ -47,13 +47,18 @@ export class PromptLoader {
   private hintPromptCache: HintPrompt | null = null;
   private watcher: FSWatcher | null = null;
   private promptsDir: string;
+  private contentDir: string;
   private curriculumsDir: string;
   private basePromptCache: string | null = null;
   private variationsTemplateCache: string | null = null;
 
-  constructor(promptsDir: string = path.join(process.cwd(), 'prompts')) {
+  constructor(
+    promptsDir: string = path.join(process.cwd(), 'prompts'),
+    contentDir: string = path.join(process.cwd(), '..', 'content')
+  ) {
     this.promptsDir = promptsDir;
-    this.curriculumsDir = path.join(process.cwd(), 'curriculums');
+    this.contentDir = contentDir;
+    this.curriculumsDir = path.join(contentDir, 'curriculums');
   }
 
   /**
@@ -105,7 +110,7 @@ export class PromptLoader {
       return this.subjectCache.get(subjectId)!;
     }
 
-    const subjectDir = path.join(this.promptsDir, 'subjects', subjectId);
+    const subjectDir = path.join(this.contentDir, 'subjects', subjectId);
 
     // Load base.md
     const basePath = path.join(subjectDir, 'base.md');
@@ -204,25 +209,25 @@ export class PromptLoader {
   }
 
   /**
-   * Load all concepts for a subject from both curriculum and custom directories
+   * Load all concepts for a subject from both official (curriculum) and custom directories
    */
   async loadConcepts(subjectId: string): Promise<Concept[]> {
     const concepts: Concept[] = [];
+    const subjectDir = path.join(this.contentDir, 'subjects', subjectId);
 
-    // Load curriculum concepts
-    const curriculumPath = path.join(this.curriculumsDir, subjectId);
-    const curriculumConcepts = await this.loadConceptsFromDirectory(
-      curriculumPath,
+    // Load official (curriculum) concepts from subjects/{subject}/official/
+    const officialPath = path.join(subjectDir, 'official');
+    const officialConcepts = await this.loadConceptsFromDirectory(
+      officialPath,
       'curriculum'
     );
-    concepts.push(...curriculumConcepts);
+    concepts.push(...officialConcepts);
 
-    // Load custom concepts
-    const customPath = path.join(this.promptsDir, 'subjects', subjectId);
+    // Load custom concepts from subjects/{subject}/custom/
+    const customPath = path.join(subjectDir, 'custom');
     const customConcepts = await this.loadConceptsFromDirectory(
       customPath,
-      'custom',
-      ['base.md'] // exclude base.md
+      'custom'
     );
     concepts.push(...customConcepts);
 
@@ -327,11 +332,11 @@ export class PromptLoader {
   enableHotReload(): void {
     if (this.watcher) return; // Already enabled
 
-    // Watch both prompts and curriculums directories
+    // Watch both prompts (backend) and content (subjects) directories
     this.watcher = chokidar.watch(
       [
         `${this.promptsDir}/**/*.md`,
-        `${this.curriculumsDir}/**/*.md`
+        `${this.contentDir}/**/*.md`
       ],
       {
         ignoreInitial: true,
@@ -354,7 +359,7 @@ export class PromptLoader {
       this.invalidateCache(filePath);
     });
 
-    console.log('[PromptLoader] Hot-reload enabled for prompts and curriculums');
+    console.log('[PromptLoader] Hot-reload enabled for prompts and content');
   }
 
   /**
@@ -439,14 +444,6 @@ export class PromptLoader {
         const subjectId = match[1];
         this.subjectCache.delete(subjectId);
         console.log(`[PromptLoader] Cache invalidated for subject: ${subjectId}`);
-      }
-    } else if (filePath.includes('/curriculums/')) {
-      // Extract subject id from curriculum path
-      const match = filePath.match(/\/curriculums\/([^/]+)\//);
-      if (match) {
-        const subjectId = match[1];
-        this.subjectCache.delete(subjectId);
-        console.log(`[PromptLoader] Cache invalidated for curriculum subject: ${subjectId}`);
       }
     } else if (filePath.includes('/task-types/')) {
       // Extract task type id from filename

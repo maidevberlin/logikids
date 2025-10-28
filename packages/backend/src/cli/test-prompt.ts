@@ -5,11 +5,11 @@
  * Uses production code paths to ensure consistency
  */
 
-import { subjectRegistry } from '../tasks/subject.registry';
+import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
-import { PromptBuilder } from '../tasks/prompt.builder';
-import { VariationLoader } from '../tasks/variation.loader';
-import { PromptLoader } from '../tasks/loader';
+import { PromptBuilder } from '../prompts/builder';
+import { VariationLoader } from '../variations/loader';
+import { PromptLoader } from '../prompts/loader';
 import {Difficulty, Gender, TaskGenerationParams} from '../tasks/types';
 
 async function testPrompt() {

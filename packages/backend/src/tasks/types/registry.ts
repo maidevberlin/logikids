@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { PromptLoader, TaskType } from '../loader';
+import { PromptLoader, TaskType } from '../../prompts/loader';
 import { multipleChoiceSchema } from './multipleChoice';
 import { yesNoSchema } from './yesNo';
 import { JSONSchema } from '../../common/ai/base';
@@ -31,7 +31,7 @@ export class TaskTypeRegistry {
   }
 
   /**
-   * Initialize registry by loading all task types from /prompts/task-types/
+   * Initialize registry by loading all task types from packages/backend/prompts/task-types/
    */
   async initialize(): Promise<void> {
     if (this.initialized) {
