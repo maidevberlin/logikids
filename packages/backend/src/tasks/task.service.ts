@@ -41,18 +41,10 @@ export class TaskService {
         }
         console.log('[TaskService] Subject loaded:', subjectId);
 
-        // Handle random concept selection using registry methods
-        // Try enriched concept first (curriculum + custom), fallback to legacy
-        let enrichedConcept = requestedConcept === 'random'
-            ? null // Handle random separately below
+        // Load concept (or random)
+        const concept = requestedConcept === 'random'
+            ? subjectRegistry.getRandomEnrichedConcept(subjectId)
             : subjectRegistry.getEnrichedConcept(subjectId, requestedConcept);
-
-        // Fallback to legacy concept if enriched not found
-        const concept = enrichedConcept
-            ? { id: enrichedConcept.id, name: enrichedConcept.name }
-            : (requestedConcept === 'random'
-                ? subjectRegistry.getRandomConcept(subjectId)
-                : subjectRegistry.getConcept(subjectId, requestedConcept));
 
         if (!concept) {
             throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
@@ -81,15 +73,6 @@ export class TaskService {
         const hintPrompt = await this.promptLoader.loadHintPrompt();
         console.log('[TaskService] Hint prompt loaded:', hintPrompt.id);
 
-        // Get enriched concept with full metadata (if not already loaded above)
-        if (!enrichedConcept) {
-            enrichedConcept = subjectRegistry.getEnrichedConcept(subjectId, concept.id);
-            if (!enrichedConcept) {
-                throw new Error(`Enriched concept ${concept.id} not found in subject ${subjectId}`);
-            }
-        }
-        console.log('[TaskService] Enriched concept loaded:', enrichedConcept.id);
-
         // Create prompt builder with subject, task type, variation loader, base prompt, and variations template
         const promptBuilder = new PromptBuilder(
             subject,
@@ -103,7 +86,7 @@ export class TaskService {
         // Build the prompt with all parameters
         const params: TaskGenerationParams = {
             subject: subjectId,
-            concept: concept.id,
+            concept,
             grade: request.grade,
             difficulty: request.difficulty,
             language,
@@ -112,7 +95,7 @@ export class TaskService {
         };
 
         console.log('[TaskService] Building prompt with params:', params);
-        const finalPrompt = promptBuilder.buildPrompt(params, enrichedConcept);
+        const finalPrompt = promptBuilder.buildPrompt(params);
         console.log('[TaskService] Prompt built, length:', finalPrompt.length, 'chars');
 
         // Generate the task using AI with structured output

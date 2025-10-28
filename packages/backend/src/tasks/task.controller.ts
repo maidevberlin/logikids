@@ -96,7 +96,7 @@ export class TaskController extends BaseController {
   }
 
   private getRandomConcept(subject: string): string {
-    const concept = subjectRegistry.getRandomConcept(subject);
+    const concept = subjectRegistry.getRandomEnrichedConcept(subject);
     if (!concept) {
       throw new Error('Invalid subject or no concepts available');
     }

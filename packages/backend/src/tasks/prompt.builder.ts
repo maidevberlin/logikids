@@ -3,7 +3,7 @@ import { Subject, HintPrompt, Concept } from './loader.ts';
 import { TaskTypeWithSchema } from './types/registry.ts';
 import { TemplateProcessor } from './template.ts';
 import { VariationLoader } from './variation.loader.ts';
-import { EnrichedConcept } from './schemas.ts';
+import { Concept } from './schemas.ts';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
@@ -46,7 +46,7 @@ export class PromptBuilder {
   /**
    * Build the final prompt by combining templates with scoped variable replacement
    */
-  buildPrompt(params: TaskGenerationParams, enrichedConcept: EnrichedConcept): string {
+  buildPrompt(params: TaskGenerationParams): string {
     // === STEP 1: Prepare all scoped variables ===
 
     // Variation variables (for variations.md)
@@ -69,22 +69,22 @@ export class PromptBuilder {
       grade: params.grade,
       difficulty: params.difficulty,
       language: this.formatLanguage(params.language),
-      concept_name: enrichedConcept.name,
-      concept_focus: enrichedConcept.focus,
-      concept_difficulty: enrichedConcept.difficulty,
+      concept_name: params.concept.name,
+      concept_focus: params.concept.focus,
+      concept_difficulty: params.concept.difficulty,
       subject_name: this.subject.name,
     };
 
     // Concept variables (for concept-specific prompts)
     const conceptVariables: Record<string, string | number> = {
-      concept_name: enrichedConcept.name,
-      concept_focus: enrichedConcept.focus,
+      concept_name: params.concept.name,
+      concept_focus: params.concept.focus,
       grade: params.grade,
-      age: params.grade * 6,
-      learning_objectives: enrichedConcept.learning_objectives?.join('\n- ') || '',
-      prerequisites: enrichedConcept.prerequisites?.join(', ') || '',
-      example_tasks: enrichedConcept.example_tasks?.join('\n- ') || '',
-      real_world_context: enrichedConcept.real_world_context || '',
+      age: params.grade + 6,
+      learning_objectives: params.concept.learning_objectives?.join('\n- ') || '',
+      prerequisites: params.concept.prerequisites?.join(', ') || '',
+      example_tasks: params.concept.example_tasks?.join('\n- ') || '',
+      real_world_context: params.concept.real_world_context || '',
     };
 
     // Task type variables (for task-types/{type}.md)
@@ -105,9 +105,9 @@ export class PromptBuilder {
       subjectVariables
     );
 
-    // Concept prompt already loaded (enrichedConcept.prompt)
+    // Concept prompt already loaded (params.concept.prompt)
     const conceptProcessed = TemplateProcessor.replaceScoped(
-      enrichedConcept.prompt,
+      params.concept.prompt,
       conceptVariables
     );
 
@@ -126,6 +126,8 @@ export class PromptBuilder {
       concept_template: conceptProcessed,
       task_type_template: taskTypeProcessed,
       grade: String(params.grade),
+      age: String(params.grade * 6),
+      difficulty: params.difficulty,
       language: this.formatLanguage(params.language),
     };
 
@@ -141,7 +143,7 @@ export class PromptBuilder {
     if(process.env.NODE_ENV === 'development') {
       console.log('\n=== PROMPT GENERATION DEBUG ===');
       console.log('Subject:', this.subject.id);
-      console.log('Concept:', params.concept);
+      console.log('Concept:', params.concept.id);
       console.log('Task Type:', this.taskType.id);
       console.log('Variation Variables:', JSON.stringify(variationVariables, null, 2));
       console.log('\n=== COMPOSED PROMPT ===');

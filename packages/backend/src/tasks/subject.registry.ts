@@ -1,14 +1,14 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { PromptLoader, Subject, Concept } from './loader.ts';
-import { EnrichedConcept } from './schemas';
+import { Concept } from './schemas';
 
 /**
  * Registry for managing all available subjects
  */
 export class SubjectRegistry {
   private subjects = new Map<string, Subject>();
-  private concepts = new Map<string, Map<string, EnrichedConcept>>(); // subjectId -> conceptId -> EnrichedConcept
+  private concepts = new Map<string, Map<string, Concept>>(); // subjectId -> conceptId -> EnrichedConcept
   private loader: PromptLoader;
   private initialized = false;
 
@@ -45,7 +45,7 @@ export class SubjectRegistry {
 
           // Load enriched concepts from both curriculum and custom directories
           const enrichedConcepts = await this.loader.loadConcepts(subjectId);
-          const conceptMap = new Map<string, EnrichedConcept>();
+          const conceptMap = new Map<string, Concept>();
           for (const concept of enrichedConcepts) {
             conceptMap.set(concept.id, concept);
           }
@@ -93,7 +93,7 @@ export class SubjectRegistry {
       grade?: number;
       difficulty?: 'easy' | 'medium' | 'hard';
     }
-  ): EnrichedConcept[] {
+  ): Concept[] {
     const conceptMap = this.concepts.get(subjectId);
     if (!conceptMap) return [];
 
@@ -115,14 +115,28 @@ export class SubjectRegistry {
   /**
    * Get a single enriched concept by ID
    */
-  getEnrichedConcept(subjectId: string, conceptId: string): EnrichedConcept | undefined {
+  getEnrichedConcept(subjectId: string, conceptId: string): Concept | undefined {
     const conceptMap = this.concepts.get(subjectId);
     if (!conceptMap) return undefined;
     return conceptMap.get(conceptId);
   }
 
   /**
-   * Get a random concept from a subject
+   * Get a random enriched concept from a subject
+   */
+  getRandomEnrichedConcept(subjectId: string): Concept | undefined {
+    const conceptMap = this.concepts.get(subjectId);
+    if (!conceptMap || conceptMap.size === 0) {
+      return undefined;
+    }
+
+    const conceptIds = Array.from(conceptMap.keys());
+    const randomId = conceptIds[Math.floor(Math.random() * conceptIds.length)];
+    return conceptMap.get(randomId);
+  }
+
+  /**
+   * Get a random concept from a subject (legacy interface)
    */
   getRandomConcept(subjectId: string): Concept | undefined {
     const subject = this.subjects.get(subjectId);

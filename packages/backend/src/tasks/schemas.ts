@@ -25,7 +25,7 @@ export type ConceptFrontmatter = z.infer<typeof conceptFrontmatterSchema>;
 /**
  * Enriched concept with source tracking
  */
-export interface EnrichedConcept extends ConceptFrontmatter {
+export interface Concept extends ConceptFrontmatter {
   prompt: string;
   source: 'curriculum' | 'custom';
   sourceDirectory: string;

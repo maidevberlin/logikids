@@ -11,7 +11,7 @@ import {
   SubjectFrontmatter,
   TaskTypeFrontmatter,
   HintPromptFrontmatter,
-  EnrichedConcept,
+  Concept,
 } from './schemas';
 
 export interface Concept {
@@ -213,8 +213,8 @@ export class PromptLoader {
   /**
    * Load all concepts for a subject from both curriculum and custom directories
    */
-  async loadConcepts(subjectId: string): Promise<EnrichedConcept[]> {
-    const concepts: EnrichedConcept[] = [];
+  async loadConcepts(subjectId: string): Promise<Concept[]> {
+    const concepts: Concept[] = [];
 
     // Load curriculum concepts
     const curriculumPath = path.join(this.curriculumsDir, subjectId);
@@ -244,8 +244,8 @@ export class PromptLoader {
     dirPath: string,
     source: 'curriculum' | 'custom',
     excludeFiles: string[] = []
-  ): Promise<EnrichedConcept[]> {
-    const concepts: EnrichedConcept[] = [];
+  ): Promise<Concept[]> {
+    const concepts: Concept[] = [];
 
     try {
       const files = await fs.readdir(dirPath);
@@ -290,8 +290,8 @@ export class PromptLoader {
   /**
    * Handle duplicate concept names by appending "(Custom)" to custom versions
    */
-  private deduplicateConcepts(concepts: EnrichedConcept[]): EnrichedConcept[] {
-    const nameMap = new Map<string, EnrichedConcept[]>();
+  private deduplicateConcepts(concepts: Concept[]): Concept[] {
+    const nameMap = new Map<string, Concept[]>();
 
     // Group concepts by name
     for (const concept of concepts) {
@@ -301,7 +301,7 @@ export class PromptLoader {
     }
 
     // Handle duplicates
-    const deduplicated: EnrichedConcept[] = [];
+    const deduplicated: Concept[] = [];
 
     for (const [name, group] of nameMap.entries()) {
       if (group.length === 1) {

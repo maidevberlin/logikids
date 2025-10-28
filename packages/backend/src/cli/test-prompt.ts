@@ -10,7 +10,7 @@ import { taskTypeRegistry } from '../tasks/types/registry';
 import { PromptBuilder } from '../tasks/prompt.builder';
 import { VariationLoader } from '../tasks/variation.loader';
 import { PromptLoader } from '../tasks/loader';
-import { TaskGenerationParams } from '../tasks/types';
+import {Difficulty, Gender, TaskGenerationParams} from '../tasks/types';
 
 async function testPrompt() {
   // Parse CLI arguments
@@ -24,9 +24,9 @@ async function testPrompt() {
   const concept = getArg('concept', 'patterns');
   const taskType = getArg('taskType', 'multipleChoice');
   const grade = parseInt(getArg('grade', '5'));
-  const difficulty = getArg('difficulty', 'medium');
+  const difficulty = getArg('difficulty', 'medium') as Difficulty;
   const language = getArg('language', 'en');
-  const gender = getArg('gender', '');
+  const gender = getArg('gender', '') as Gender;
   const output = getArg('output', '');
   const verbose = args.includes('--verbose');
 

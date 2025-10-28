@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { subjectRegistry } from './subject.registry';
 import { taskTypeRegistry } from './types/registry';
+import { Concept } from './schemas.ts';
 
 // Difficulty Levels
 export const DIFFICULTIES = [
@@ -25,7 +26,7 @@ export const taskRequestSchema = z.object({
     val => subjectRegistry.get(val) !== undefined,
     'Invalid subject'
   ),
-  concept: z.string(), // We'll refine this with getConceptSchema
+  concept: z.string(),
   taskType: z.string().optional().refine(
     val => !val || taskTypeRegistry.get(val) !== undefined,
     'Invalid task type'
@@ -40,7 +41,7 @@ export type TaskRequest = z.infer<typeof taskRequestSchema>;
 // Parameters for task generation
 export interface TaskGenerationParams {
   subject: string;
-  concept: string;
+  concept: Concept;
   grade: number;
   difficulty: Difficulty;
   language: string;
