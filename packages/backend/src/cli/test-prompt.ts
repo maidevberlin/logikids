@@ -87,7 +87,7 @@ async function testPrompt() {
     // Build prompt
     const params: TaskGenerationParams = {
       subject,
-      concept,
+      concept: enrichedConcept,
       taskType,
       grade,
       difficulty,
@@ -95,7 +95,7 @@ async function testPrompt() {
       gender: gender || undefined,
     };
 
-    const prompt = promptBuilder.buildPrompt(params, enrichedConcept);
+    const prompt = promptBuilder.buildPrompt(params);
 
     // Output result
     console.log('\n' + '='.repeat(80));
