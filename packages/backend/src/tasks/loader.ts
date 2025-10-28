@@ -14,13 +14,6 @@ import {
   Concept,
 } from './schemas';
 
-export interface Concept {
-  id: string;
-  name: string;
-  description: string;
-  promptTemplate: string;
-}
-
 export interface Subject {
   id: string;
   name: string;
@@ -133,10 +126,10 @@ export class PromptLoader {
       );
 
       concepts.set(conceptPrompt.metadata.id, {
-        id: conceptPrompt.metadata.id,
-        name: conceptPrompt.metadata.name,
-        description: conceptPrompt.metadata.description,
-        promptTemplate: conceptPrompt.content,
+        ...conceptPrompt.metadata,
+        prompt: conceptPrompt.content,
+        source: 'custom' as const,
+        sourceDirectory: subjectDir,
       });
     }
 
