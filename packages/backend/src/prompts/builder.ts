@@ -84,7 +84,7 @@ export class PromptBuilder {
       concept_difficulty: params.concept.difficulty,
       subject_name: this.subject.name,
       task_type_name: this.taskType.name,
-      learning_objectives: params.concept.learning_objectives?.join('\n- ') || '',
+      learning_objectives: params.concept.learning_objectives ? ('- ' + params.concept.learning_objectives.join('\n- ')) : '',
       prerequisites: params.concept.prerequisites?.join(', ') || '',
       example_tasks: params.concept.example_tasks?.join('\n- ') || '',
       real_world_context: params.concept.real_world_context || '',
