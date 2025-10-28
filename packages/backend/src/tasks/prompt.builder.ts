@@ -1,5 +1,5 @@
 import { TaskGenerationParams } from './types.ts';
-import { Subject, HintPrompt, Concept } from './loader.ts';
+import { Subject, HintPrompt } from './loader.ts';
 import { TaskTypeWithSchema } from './types/registry.ts';
 import { TemplateProcessor } from './template.ts';
 import { VariationLoader } from './variation.loader.ts';
