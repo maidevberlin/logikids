@@ -1,31 +1,17 @@
 import {TaskRequest, TaskGenerationParams} from './types';
 import {TaskResponse, BaseTaskResponse} from './types';
 import {AIClient} from '../common/ai/base';
-import {PromptBuilder} from '../prompts/builder';
-import {PromptLoader} from '../prompts/loader';
 import {taskTypeRegistry} from './types/registry';
 import {v4 as uuidv4} from 'uuid';
 import {taskCache, TaskContext} from '../cache/taskCache';
 import {subjectRegistry} from '../subjects/registry';
-import {VariationLoader} from '../variations/loader';
+import {PromptService} from '../prompts/prompt.service';
 
 export class TaskService {
-    private readonly promptLoader: PromptLoader;
-    private readonly variationLoader: VariationLoader;
-
-    constructor(private readonly aiClient: AIClient) {
-        this.promptLoader = new PromptLoader();
-        this.variationLoader = new VariationLoader();
-    }
-
-    /**
-     * Initialize the task service (load variations)
-     */
-    async initialize(): Promise<void> {
-        console.log('[TaskService] Initializing...');
-        await this.variationLoader.loadAll();
-        console.log('[TaskService] Initialization complete');
-    }
+    constructor(
+        private readonly aiClient: AIClient,
+        private readonly promptService: PromptService
+    ) {}
 
     public async generateTask(request: TaskRequest, language: string): Promise<TaskResponse> {
         console.log('[TaskService] Starting task generation');
@@ -60,42 +46,20 @@ export class TaskService {
         }
         console.log('[TaskService] Task type loaded:', selectedTaskType.id);
 
-        // Load base prompt
-        const basePrompt = await this.promptLoader.loadBasePrompt();
-        console.log('[TaskService] Base prompt loaded');
+        // Calculate age from grade (grade + 6: grade 2 = ~8yo, grade 13 = ~19yo)
+        const age = request.grade + 6;
 
-        // Load variations template
-        const variationsTemplate = await this.promptLoader.loadVariationsTemplate();
-        console.log('[TaskService] Variations template loaded');
-
-        // Load hint prompt
-        const hintPrompt = await this.promptLoader.loadHintPrompt();
-        console.log('[TaskService] Hint prompt loaded:', hintPrompt.id);
-
-        // Create prompt builder with subject, task type, variation loader, base prompt, and variations template
-        const promptBuilder = new PromptBuilder(
+        // Build prompt using PromptService
+        const finalPrompt = await this.promptService.buildPrompt({
             subject,
-            selectedTaskType,
-            this.variationLoader,
-            basePrompt,
-            variationsTemplate,
-            hintPrompt
-        );
-
-        // Build the prompt with all parameters
-        const params: TaskGenerationParams = {
-            subject: subjectId,
+            taskType: selectedTaskType,
             concept,
+            age,
             grade: request.grade,
             difficulty: request.difficulty,
             language,
-            taskType: selectedTaskType.id,
             gender: request.gender
-        };
-
-        console.log('[TaskService] Building prompt with params:', params);
-        const finalPrompt = promptBuilder.buildPrompt(params);
-        console.log('[TaskService] Prompt built, length:', finalPrompt.length, 'chars');
+        });
 
         // Generate the task using AI with structured output
         console.log('[TaskService] Calling AI client with structured generation...');
