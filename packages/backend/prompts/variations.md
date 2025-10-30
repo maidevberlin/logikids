@@ -4,13 +4,9 @@ name: Variation Instructions
 description: Common personalization and context variations for all subjects
 ---
 
-## SCENARIO CONTEXT
-Set this task in the following context: **{{scenario}}**
+## Task Creation Guidelines
 
-Use this scenario creatively to frame the problem. Make it engaging and relevant to the context.
+Apply these guidelines when creating the task:
 
-{{enrichment_instruction}}
-
-{{language_style}}
-
-{{student_context}}
+- **Scenario Context**: Frame this task in the context of **{{scenario}}**. Use this scenario creatively to make the problem engaging and relevant.
+- **Language Style**: {{language_style}}{{enrichment_formatted}}{{student_context_formatted}}

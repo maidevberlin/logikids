@@ -30,16 +30,33 @@ async function testPrompt() {
   const output = getArg('output', '');
   const verbose = args.includes('--verbose');
 
-  console.log('🧪 Testing prompt generation...\n');
-  console.log('Parameters:');
-  console.log(`  Subject: ${subject}`);
-  console.log(`  Concept: ${concept}`);
-  console.log(`  Task Type: ${taskType}`);
-  console.log(`  Grade: ${grade}`);
-  console.log(`  Difficulty: ${difficulty}`);
-  console.log(`  Language: ${language}`);
-  if (gender) console.log(`  Gender: ${gender}`);
-  console.log('');
+  // Suppress all debug logs unless verbose
+  if (!verbose) {
+    process.env.NODE_ENV = 'production';
+    // Suppress console.log from registries
+    const originalLog = console.log;
+    console.log = (...args: any[]) => {
+      const msg = args.join(' ');
+      // Only suppress registry/loader logs
+      if (msg.startsWith('[') || msg.includes('Loaded variations:') || msg.includes('Hot-reload') || msg.match(/^\s*- (Scenarios|Problem|Character|Temporal|Metacognitive|Mystery|Real-World|Emotional|Structure)/)) {
+        return;
+      }
+      originalLog(...args);
+    };
+  }
+
+  if (verbose) {
+    console.log('🧪 Testing prompt generation...\n');
+    console.log('Parameters:');
+    console.log(`  Subject: ${subject}`);
+    console.log(`  Concept: ${concept}`);
+    console.log(`  Task Type: ${taskType}`);
+    console.log(`  Grade: ${grade}`);
+    console.log(`  Difficulty: ${difficulty}`);
+    console.log(`  Language: ${language}`);
+    if (gender) console.log(`  Gender: ${gender}`);
+    console.log('');
+  }
 
   try {
     // Initialize registries
@@ -73,6 +90,7 @@ async function testPrompt() {
 
     // Create variation loader
     const variationLoader = new VariationLoader();
+    await variationLoader.loadAll();
 
     // Create prompt builder
     if (verbose) console.log('Building prompt...');
@@ -98,22 +116,27 @@ async function testPrompt() {
     const prompt = promptBuilder.buildPrompt(params);
 
     // Output result
-    console.log('\n' + '='.repeat(80));
-    console.log('GENERATED PROMPT');
-    console.log('='.repeat(80) + '\n');
-    console.log(prompt);
-    console.log('\n' + '='.repeat(80));
-    console.log(`Prompt length: ${prompt.length} characters`);
-    console.log('='.repeat(80) + '\n');
+    if (verbose) {
+      console.log('\n' + '='.repeat(80));
+      console.log('GENERATED PROMPT');
+      console.log('='.repeat(80) + '\n');
+      console.log(prompt);
+      console.log('\n' + '='.repeat(80));
+      console.log(`Prompt length: ${prompt.length} characters`);
+      console.log('='.repeat(80) + '\n');
+    } else {
+      // Clean output: just the prompt
+      console.log(prompt);
+    }
 
     // Save to file if requested
     if (output) {
       const fs = require('fs');
       fs.writeFileSync(output, prompt);
-      console.log(`✅ Prompt saved to: ${output}`);
+      if (verbose) console.log(`✅ Prompt saved to: ${output}`);
     }
 
-    console.log('✅ Prompt generation successful!');
+    if (verbose) console.log('✅ Prompt generation successful!');
     process.exit(0);
 
   } catch (error) {

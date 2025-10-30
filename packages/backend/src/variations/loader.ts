@@ -1,21 +1,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import matter from 'gray-matter';
-import { Scenario, Enrichment, EnrichmentType } from './variation.types';
+import { AgeFilteredItem, Enrichment, EnrichmentType } from './types';
 
 /**
  * Loads and manages task variation data from markdown files
  */
 export class VariationLoader {
-  private scenarios: Scenario[] = [];
-  private framings: string[] = [];
-  private dynamics: string[] = [];
-  private temporalContexts: string[] = [];
-  private metacognitivePrompts: string[] = [];
-  private mysteryFramings: string[] = [];
-  private realWorldConnections: string[] = [];
-  private emotionalFramings: string[] = [];
-  private structureVariations: string[] = [];
+  private scenarios: AgeFilteredItem[] = [];
+  private framings: AgeFilteredItem[] = [];
+  private dynamics: AgeFilteredItem[] = [];
+  private temporalContexts: AgeFilteredItem[] = [];
+  private metacognitivePrompts: AgeFilteredItem[] = [];
+  private mysteryFramings: AgeFilteredItem[] = [];
+  private realWorldConnections: AgeFilteredItem[] = [];
+  private emotionalFramings: AgeFilteredItem[] = [];
+  private structureVariations: AgeFilteredItem[] = [];
 
   private readonly variationsDir: string;
 
@@ -31,15 +31,15 @@ export class VariationLoader {
 
     try {
       // Load each variation file
-      this.scenarios = await this.loadScenarios();
-      this.framings = await this.loadSimpleList('problem-framings.md', 'framings');
-      this.dynamics = await this.loadSimpleList('character-dynamics.md', 'dynamics');
-      this.temporalContexts = await this.loadSimpleList('temporal-contexts.md', 'contexts');
-      this.metacognitivePrompts = await this.loadSimpleList('metacognitive-prompts.md', 'prompts');
-      this.mysteryFramings = await this.loadSimpleList('mystery-framings.md', 'framings');
-      this.realWorldConnections = await this.loadSimpleList('real-world-connections.md', 'connections');
-      this.emotionalFramings = await this.loadSimpleList('emotional-framings.md', 'framings');
-      this.structureVariations = await this.loadSimpleList('structure-variations.md', 'structures');
+      this.scenarios = await this.loadAgeFilteredList('scenarios.md', 'scenarios');
+      this.framings = await this.loadAgeFilteredList('problem-framings.md', 'framings');
+      this.dynamics = await this.loadAgeFilteredList('character-dynamics.md', 'dynamics');
+      this.temporalContexts = await this.loadAgeFilteredList('temporal-contexts.md', 'contexts');
+      this.metacognitivePrompts = await this.loadAgeFilteredList('metacognitive-prompts.md', 'prompts');
+      this.mysteryFramings = await this.loadAgeFilteredList('mystery-framings.md', 'framings');
+      this.realWorldConnections = await this.loadAgeFilteredList('real-world-connections.md', 'connections');
+      this.emotionalFramings = await this.loadAgeFilteredList('emotional-framings.md', 'framings');
+      this.structureVariations = await this.loadAgeFilteredList('structure-variations.md', 'structures');
 
       console.log('[VariationLoader] Loaded variations:');
       console.log(`  - Scenarios: ${this.scenarios.length}`);
@@ -58,24 +58,9 @@ export class VariationLoader {
   }
 
   /**
-   * Load scenarios with age filtering
+   * Load age-filtered list (unified loader for all variation types)
    */
-  private async loadScenarios(): Promise<Scenario[]> {
-    const filePath = path.join(this.variationsDir, 'scenarios.md');
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data } = matter(fileContent);
-
-    if (!data.scenarios || !Array.isArray(data.scenarios)) {
-      throw new Error('Invalid scenarios.md format: missing scenarios array');
-    }
-
-    return data.scenarios;
-  }
-
-  /**
-   * Load a simple list variation (framings, dynamics, etc.)
-   */
-  private async loadSimpleList(filename: string, key: string): Promise<string[]> {
+  private async loadAgeFilteredList(filename: string, key: string): Promise<AgeFilteredItem[]> {
     const filePath = path.join(this.variationsDir, filename);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
@@ -84,66 +69,105 @@ export class VariationLoader {
       throw new Error(`Invalid ${filename} format: missing ${key} array`);
     }
 
-    return data[key];
+    // Validate each item has age property
+    const items: AgeFilteredItem[] = data[key].map((item: any, index: number) => {
+      if (!item.age || !Array.isArray(item.age) || item.age.length !== 2) {
+        throw new Error(`Invalid ${filename}: item ${index} missing age array [min, max]`);
+      }
+      return item as AgeFilteredItem;
+    });
+
+    return items;
   }
 
   /**
-   * Get a random scenario, optionally filtered by grade
+   * Get a random scenario, filtered by age
    */
-  getScenario(grade?: number): string {
+  getScenario(age?: number): string {
     if (this.scenarios.length === 0) {
       return 'a typical everyday situation';
     }
 
-    // Filter by grade if provided
-    const eligible = grade
-      ? this.scenarios.filter(s => grade >= s.minGrade && grade <= s.maxGrade)
+    // Filter by age if provided
+    const eligible = age
+      ? this.scenarios.filter(s => age >= s.age[0] && age <= s.age[1])
       : this.scenarios;
 
     if (eligible.length === 0) {
       // Fallback to all scenarios if no match
-      return this.scenarios[Math.floor(Math.random() * this.scenarios.length)].context;
+      const fallback = this.scenarios[Math.floor(Math.random() * this.scenarios.length)];
+      return fallback.context || fallback.text || 'a typical everyday situation';
     }
 
-    return eligible[Math.floor(Math.random() * eligible.length)].context;
+    const selected = eligible[Math.floor(Math.random() * eligible.length)];
+    return selected.context || selected.text || 'a typical everyday situation';
   }
 
   /**
-   * Get a random enrichment (30-50% chance)
+   * Get a random enrichment (for backward compatibility)
    */
-  getRandomEnrichment(): Enrichment | null {
-    // 40% chance of enrichment
-    if (Math.random() > 0.4) {
-      return null;
+  getRandomEnrichment(age?: number): Enrichment | null {
+    const enrichments = this.getRandomEnrichments(age);
+    return enrichments.length > 0 ? enrichments[0] : null;
+  }
+
+  /**
+   * Get 2-3 random enrichments (75% chance of any enrichments), filtered by age
+   */
+  getRandomEnrichments(age?: number): Enrichment[] {
+    // 75% chance of having enrichments
+    if (Math.random() > 0.75) {
+      return [];
     }
 
-    // Pick random dimension
-    const dimensions: { type: EnrichmentType; values: string[] }[] = [
-      { type: 'framing', values: this.framings },
-      { type: 'character', values: this.dynamics },
-      { type: 'temporal', values: this.temporalContexts },
-      { type: 'metacognitive', values: this.metacognitivePrompts },
-      { type: 'mystery', values: this.mysteryFramings },
-      { type: 'realWorld', values: this.realWorldConnections },
-      { type: 'emotional', values: this.emotionalFramings },
-      { type: 'structure', values: this.structureVariations },
+    // Helper function to filter items by age
+    const filterByAge = (items: AgeFilteredItem[]): AgeFilteredItem[] => {
+      if (!age) return items;
+      return items.filter(item => age >= item.age[0] && age <= item.age[1]);
+    };
+
+    // Build list of all available dimensions with age filtering
+    const dimensions: { type: EnrichmentType; values: AgeFilteredItem[] }[] = [
+      { type: 'framing', values: filterByAge(this.framings) },
+      { type: 'character', values: filterByAge(this.dynamics) },
+      { type: 'temporal', values: filterByAge(this.temporalContexts) },
+      { type: 'metacognitive', values: filterByAge(this.metacognitivePrompts) },
+      { type: 'mystery', values: filterByAge(this.mysteryFramings) },
+      { type: 'realWorld', values: filterByAge(this.realWorldConnections) },
+      { type: 'emotional', values: filterByAge(this.emotionalFramings) },
+      { type: 'structure', values: filterByAge(this.structureVariations) },
     ];
 
     // Filter out empty dimensions
     const available = dimensions.filter(d => d.values.length > 0);
 
     if (available.length === 0) {
-      return null;
+      return [];
     }
 
-    // Pick random dimension and random value
-    const chosen = available[Math.floor(Math.random() * available.length)];
-    const value = chosen.values[Math.floor(Math.random() * chosen.values.length)];
+    // Pick 2-3 random enrichments from different dimensions
+    const count = Math.floor(Math.random() * 2) + 2; // 2 or 3
+    const enrichments: Enrichment[] = [];
+    const usedDimensions = new Set<EnrichmentType>();
 
-    return {
-      type: chosen.type,
-      value,
-    };
+    // Shuffle available dimensions
+    const shuffled = [...available].sort(() => Math.random() - 0.5);
+
+    for (const dimension of shuffled) {
+      if (enrichments.length >= count) break;
+      if (usedDimensions.has(dimension.type)) continue;
+
+      const selected = dimension.values[Math.floor(Math.random() * dimension.values.length)];
+      const value = selected.text || selected.context || '';
+
+      enrichments.push({
+        type: dimension.type,
+        value,
+      });
+      usedDimensions.add(dimension.type);
+    }
+
+    return enrichments;
   }
 
   /**

@@ -65,17 +65,41 @@ export class PromptBuilder {
     // === STEP 2: Build Flat Variable Object ===
     // Create single object with ALL variables (duplicates OK - same values)
 
-    const enrichment = this.variationLoader.getRandomEnrichment();
+    // Calculate age for filtering variations (grade + 6: grade 2 = ~8yo, grade 13 = ~19yo)
+    const age = params.grade + 6;
+
+    const enrichments = this.variationLoader.getRandomEnrichments(age);
+    const enrichment = enrichments.length > 0 ? enrichments[0] : null;
+
+    // Format multiple enrichments as bullet points
+    const enrichmentLabels: Record<string, string> = {
+      framing: 'Creative Framing',
+      character: 'Character Perspective',
+      temporal: 'Time Context',
+      metacognitive: 'Thinking Challenge',
+      mystery: 'Mystery Element',
+      realWorld: 'Real-World Connection',
+      emotional: 'Emotional Angle',
+      structure: 'Structure Variation',
+    };
+
+    const enrichmentsFormatted = enrichments
+      .map(e => `\n- **${enrichmentLabels[e.type]}**: ${e.value}`)
+      .join('');
 
     const allVariables: Record<string, string | number> = {
-      // Variation variables
-      scenario: this.variationLoader.getScenario(params.grade),
+      // Variation variables (all age-filtered now!)
+      scenario: this.variationLoader.getScenario(age),
       language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
       student_context: params.gender ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
       enrichment_instruction: enrichment?.value || '',
 
+      // Formatted versions for clean bullet list integration
+      enrichment_formatted: enrichmentsFormatted,
+      student_context_formatted: params.gender ? `\n- **Student Context**: The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
+
       // Subject/Concept/TaskType variables (duplicates OK - same values)
-      age: params.grade * 6,
+      age,
       grade: params.grade,
       difficulty: params.difficulty,
       language: this.formatLanguage(params.language),

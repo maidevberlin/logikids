@@ -8,6 +8,15 @@ export interface Scenario {
   maxGrade: number;
 }
 
+/**
+ * Unified age-filtered item (used for scenarios and all enrichments)
+ */
+export interface AgeFilteredItem {
+  text?: string;      // For enrichments (text content)
+  context?: string;   // For scenarios (context string)
+  age: [number, number];  // [minAge, maxAge]
+}
+
 export type EnrichmentType =
   | 'framing'
   | 'character'
@@ -27,13 +36,14 @@ export interface Enrichment {
  * Raw variation data loaded from YAML files
  */
 export interface VariationData {
-  scenarios?: Scenario[];
-  framings?: string[];
-  dynamics?: string[];
-  contexts?: string[];
-  prompts?: string[];
-  connections?: string[];
-  structures?: string[];
+  scenarios?: AgeFilteredItem[];
+  framings?: AgeFilteredItem[];
+  dynamics?: AgeFilteredItem[];
+  contexts?: AgeFilteredItem[];
+  prompts?: AgeFilteredItem[];
+  connections?: AgeFilteredItem[];
+  framings_emotional?: AgeFilteredItem[];  // For emotional-framings.md
+  structures?: AgeFilteredItem[];
 }
 
 /**

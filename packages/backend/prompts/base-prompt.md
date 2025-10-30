@@ -14,6 +14,8 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 - **Target**: Age {{age}}, Grade {{grade}}, Difficulty {{difficulty}}
 - **Format**: Markdown only
 
+{{variations_template}}
+
 ## Available Formatting
 
 - LaTeX: `$x^2$` (inline), `$$\frac{a}{b}$$` (block)
@@ -39,5 +41,3 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 {{example_tasks}}
 
 {{concept_template}}
-
-{{variations_template}}
