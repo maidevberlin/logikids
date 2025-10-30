@@ -122,7 +122,8 @@ export class TaskController extends BaseController {
       }
 
       // Handle random concept selection
-      if (basicValidation.concept === 'random') {
+      if (!basicValidation.concept) {
+          // todo: add grade and age to the the function and use it to filter when choosing
         basicValidation.concept = this.getRandomConcept(basicValidation.subject);
       } else {
         // Check enriched concepts first (curriculum + custom), fallback to legacy

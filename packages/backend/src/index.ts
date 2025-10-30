@@ -10,6 +10,10 @@ import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
 import { taskTypeRegistry } from './tasks/types/registry';
 import { initializeDatabase, closeDatabase } from './sync/db';
+import Mustache from 'mustache';
+
+// Configure Mustache: disable HTML escaping since we generate plain text/markdown
+Mustache.escape = (text) => text;
 
 // Load configuration
 const configPath = path.join(__dirname, '../config.yaml');

@@ -14,7 +14,7 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 - **Target**: Age {{age}}, Grade {{grade}}, Difficulty {{difficulty}}
 - **Format**: Markdown only
 
-{{variations_template}}
+<%variations_template%>
 
 ## Available Formatting
 
@@ -25,10 +25,10 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 
 ---
 
-{{subject_base_template}}
+<%subject_base_template%>
 
 # Task creation
-{{task_type_template}}
+<%task_type_template%>
 
 # Task content
 ## Learning objectives
@@ -40,4 +40,4 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 ## Example Tasks
 {{example_tasks}}
 
-{{concept_template}}
+<%concept_template%>

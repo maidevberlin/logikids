@@ -5,12 +5,16 @@
  * Uses production code paths to ensure consistency
  */
 
+import Mustache from 'mustache';
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
 import { PromptBuilder } from '../prompts/builder';
 import { VariationLoader } from '../variations/loader';
 import { PromptLoader } from '../prompts/loader';
 import {Difficulty, Gender, TaskGenerationParams} from '../tasks/types';
+
+// Configure Mustache: disable HTML escaping since we generate plain text/markdown
+Mustache.escape = (text) => text;
 
 async function testPrompt() {
   // Parse CLI arguments

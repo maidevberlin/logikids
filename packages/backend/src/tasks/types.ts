@@ -26,7 +26,7 @@ export const taskRequestSchema = z.object({
     val => subjectRegistry.get(val) !== undefined,
     'Invalid subject'
   ),
-  concept: z.string(),
+  concept: z.string().optional(),
   taskType: z.string().optional().refine(
     val => !val || taskTypeRegistry.get(val) !== undefined,
     'Invalid task type'
