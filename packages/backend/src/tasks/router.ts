@@ -10,7 +10,6 @@ import { PromptService } from '../prompts/prompt.service';
 export async function createTaskRouter(): Promise<Router> {
   const router = Router();
   const aiClient = await createAIClient();
-  const taskController = new TaskController(aiClient);
 
   // Create and initialize PromptService
   const promptService = new PromptService();
@@ -18,6 +17,8 @@ export async function createTaskRouter(): Promise<Router> {
 
   // Pass promptService to TaskService
   const taskService = new TaskService(aiClient, promptService);
+
+  const taskController = new TaskController(aiClient, taskService);
 
   const hintService = new HintService(aiClient);
   await hintService.initialize(); // Load variations

@@ -9,9 +9,12 @@ import { AIClient } from '../common/ai/base';
 export class TaskController extends BaseController {
   private readonly taskService: TaskService;
 
-  constructor(aiClient: AIClient) {
+  constructor(
+    aiClient: AIClient,
+    taskService: TaskService
+  ) {
     super(aiClient);
-    this.taskService = new TaskService(aiClient);
+    this.taskService = taskService;
   }
 
   public async getSubjects(req: Request, res: Response): Promise<void> {
