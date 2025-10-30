@@ -22,26 +22,26 @@ export function ConceptSelector({ subject, value, onChange, className }: Concept
   if (!subjectConfig) return null;
 
   const concepts = [
-    { value: 'random' as const },
+    { value: undefined as const },
     ...subjectConfig.concepts.map(concept => ({ value: concept.id }))
   ];
 
-  const selectedConcept = concepts.find(c => c.value === value);
+  const selectedConcept = concepts.find(c => c.value === value) || concepts[0];
 
   return (
     <Menu as="div" className={cn(styles.base, className)}>
       <Menu.Button className={styles.button}>
         <span>
-          {selectedConcept && (selectedConcept.value === 'random'
+          {selectedConcept.value === undefined
             ? t('subjects.random')
             : t(`subjects.${subject}.concepts.${selectedConcept.value}`)
-          )}
+          }
         </span>
         <ChevronDownIcon className={styles.icon} />
       </Menu.Button>
       <Menu.Items className={styles.menu}>
-        {concepts.map((concept) => (
-          <Menu.Item key={concept.value}>
+        {concepts.map((concept, index) => (
+          <Menu.Item key={concept.value ?? `random-${index}`}>
             {({ active }) => (
               <button
                 className={cn(
@@ -50,7 +50,7 @@ export function ConceptSelector({ subject, value, onChange, className }: Concept
                 )}
                 onClick={() => onChange(concept.value)}
               >
-                {concept.value === 'random'
+                {concept.value === undefined
                   ? t('subjects.random')
                   : t(`subjects.${subject}.concepts.${concept.value}`)
                 }

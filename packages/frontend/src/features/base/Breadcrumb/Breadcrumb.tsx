@@ -41,7 +41,7 @@ export function Breadcrumb({
             </li>
           </>
         )}
-        {concept && onConceptChange && subject && (
+        {onConceptChange && subject && (
           <>
             <li>
               <ChevronRightIcon className={styles.separator} />

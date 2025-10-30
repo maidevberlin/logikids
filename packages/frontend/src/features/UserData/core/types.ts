@@ -8,7 +8,7 @@ export interface UserSettings {
 
 export interface LastTask {
   subject: string
-  concept: string
+  concept?: string
 }
 
 export interface UserData {

@@ -17,7 +17,7 @@ export type Gender = typeof GENDERS[number];
 // Request schema and type
 export const taskRequestSchema = z.object({
   subject: z.string(),
-  concept: z.string(),
+  concept: z.string().optional(),
   taskType: z.enum([TASK_TYPES.multiple_choice, TASK_TYPES.yes_no]).optional(),
   age: z.number().min(6).max(18),
   grade: z.number().min(1).max(13),

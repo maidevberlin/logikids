@@ -33,7 +33,6 @@ const taskDefaults: TaskRequest = {
   subject: 'math',
   age: 10,
   grade: 5,
-  concept: 'random'
 }
 
 export default function TaskPage({}: TaskPageProps) {
@@ -44,14 +43,18 @@ export default function TaskPage({}: TaskPageProps) {
   const [hintsUsed, setHintsUsed] = useState(0)
 
   // Memoize task parameters
-  const taskParams = useMemo(() => ({
-    difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
-    subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
-    concept: (searchParams.get('concept') ?? taskDefaults.concept),
-    age: data?.settings.age ?? taskDefaults.age,
-    grade: data?.settings.grade ?? taskDefaults.grade,
-    gender: data?.settings.gender as 'male' | 'female' | 'non-binary' | 'prefer-not-to-say' | undefined
-  }), [searchParams, data?.settings.age, data?.settings.grade, data?.settings.gender])
+  const taskParams = useMemo(() => {
+    const conceptParam = searchParams.get('concept');
+    return {
+      difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
+      subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
+      // Only include concept if it exists and is not 'random'
+      concept: (conceptParam && conceptParam !== 'random') ? conceptParam : undefined,
+      age: data?.settings.age ?? taskDefaults.age,
+      grade: data?.settings.grade ?? taskDefaults.grade,
+      gender: data?.settings.gender as 'male' | 'female' | 'non-binary' | 'prefer-not-to-say' | undefined
+    };
+  }, [searchParams, data?.settings.age, data?.settings.grade, data?.settings.gender])
 
   // Store subject and concept when they change
   useEffect(() => {
@@ -108,17 +111,22 @@ export default function TaskPage({}: TaskPageProps) {
       const newParams = new URLSearchParams(prev)
       newParams.set('subject', newSubject)
       // Reset concept when subject changes
-      newParams.set('concept', 'random')
+      newParams.delete('concept')
       return newParams
     })
   }, [setSearchParams])
 
-  const handleConceptChange = useCallback((newConcept: string) => {
+  const handleConceptChange = useCallback((newConcept: string | undefined) => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev)
-      // Ensure both subject and concept are set
+      // Ensure subject is set
       newParams.set('subject', taskParams.subject)
-      newParams.set('concept', newConcept)
+      // Only set concept if it's defined, otherwise remove it
+      if (newConcept) {
+        newParams.set('concept', newConcept)
+      } else {
+        newParams.delete('concept')
+      }
       return newParams
     })
   }, [setSearchParams, taskParams.subject])
