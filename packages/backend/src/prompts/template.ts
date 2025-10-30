@@ -10,7 +10,7 @@ export class TemplateProcessor {
     return Object.entries(variables).reduce(
       (result, [key, value]) => result.replace(
         new RegExp(`{{${key}}}`, 'g'),
-        String(value)
+        () => String(value) // Use replacer function to prevent $ special chars
       ),
       template
     );

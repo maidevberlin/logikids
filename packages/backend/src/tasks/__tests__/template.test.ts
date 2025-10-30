@@ -1,5 +1,5 @@
 import { describe, it, expect } from "bun:test";
-import { TemplateProcessor } from "../template";
+import { TemplateProcessor } from "../../prompts/template";
 
 describe("TemplateProcessor", () => {
   describe("replace", () => {
@@ -31,6 +31,28 @@ describe("TemplateProcessor", () => {
       const template = "{{name}} {{age}}";
       const result = TemplateProcessor.replace(template, { name: "Alice" });
       expect(result).toBe("Alice {{age}}");
+    });
+
+    it("should handle $ special characters in replacement values", () => {
+      // Test $` which causes "insert preceding content"
+      const template = "Header\n{{content}}\nFooter";
+      const result = TemplateProcessor.replace(template, {
+        content: "LaTeX: `$x^2 + 5x - 3 = 0$`"
+      });
+      expect(result).toBe("Header\nLaTeX: `$x^2 + 5x - 3 = 0$`\nFooter");
+    });
+
+    it("should handle other $ special sequences in replacement values", () => {
+      const template = "Test {{value}}";
+      // Test various $ special sequences
+      const result1 = TemplateProcessor.replace(template, { value: "Price: $100" });
+      expect(result1).toBe("Test Price: $100");
+
+      const result2 = TemplateProcessor.replace(template, { value: "$& means matched" });
+      expect(result2).toBe("Test $& means matched");
+
+      const result3 = TemplateProcessor.replace(template, { value: "$' is after" });
+      expect(result3).toBe("Test $' is after");
     });
   });
 
