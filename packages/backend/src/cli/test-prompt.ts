@@ -8,9 +8,7 @@
 import Mustache from 'mustache';
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
-import { PromptBuilder } from '../prompts/builder';
-import { VariationLoader } from '../variations/loader';
-import { PromptLoader } from '../prompts/loader';
+import { PromptService } from '../prompts/prompt.service';
 import {Difficulty, Gender, TaskGenerationParams} from '../tasks/types';
 
 // Configure Mustache: disable HTML escaping since we generate plain text/markdown
@@ -87,37 +85,26 @@ async function testPrompt() {
       throw new Error(`Concept not found: ${concept} in subject ${subject}`);
     }
 
-    // Load base prompt and variations template
-    const loader = new PromptLoader();
-    const basePrompt = await loader.loadBasePrompt();
-    const variationsTemplate = await loader.loadVariationsTemplate();
+    // Create and initialize PromptService
+    if (verbose) console.log('Initializing PromptService...');
+    const promptService = new PromptService();
+    await promptService.initialize();
 
-    // Create variation loader
-    const variationLoader = new VariationLoader();
-    await variationLoader.loadAll();
+    // Calculate age from grade
+    const age = grade + 6;
 
-    // Create prompt builder
+    // Build prompt using PromptService
     if (verbose) console.log('Building prompt...');
-    const promptBuilder = new PromptBuilder(
-      subjectObj,
-      taskTypeObj,
-      variationLoader,
-      basePrompt,
-      variationsTemplate
-    );
-
-    // Build prompt
-    const params: TaskGenerationParams = {
-      subject,
+    const prompt = await promptService.buildPrompt({
+      subject: subjectObj,
+      taskType: taskTypeObj,
       concept: enrichedConcept,
-      taskType,
+      age,
       grade,
       difficulty,
       language,
-      gender: gender || undefined,
-    };
-
-    const prompt = promptBuilder.buildPrompt(params);
+      gender: gender || undefined
+    });
 
     // Output result
     if (verbose) {
