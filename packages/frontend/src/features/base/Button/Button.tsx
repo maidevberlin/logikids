@@ -80,7 +80,7 @@ export function Button({
       {isLoading ? (
         <div className={cn(
           'animate-spin rounded-full border-2',
-          variant === 'outline' ? 'border-gray-600 border-t-transparent' : 'border-white border-t-transparent',
+          variant === 'outline-solid' ? 'border-gray-600 border-t-transparent' : 'border-white border-t-transparent',
           styles.iconElementSizes[size]
         )} />
       ) : (

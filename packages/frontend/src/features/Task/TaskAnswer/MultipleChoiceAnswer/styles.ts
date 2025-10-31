@@ -17,7 +17,7 @@ export const styles = {
     `,
     selected: `
       prose prose-invert max-w-none text-left text-white
-      [&_*]:text-white
+      **:text-white
     `
   },
   loading: {

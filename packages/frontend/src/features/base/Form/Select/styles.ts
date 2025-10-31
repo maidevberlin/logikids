@@ -14,7 +14,7 @@ export const styles = {
     base: `
       relative w-full cursor-pointer rounded-md bg-white text-left
       border border-gray-300
-      focus:outline-none focus:ring-2 focus:ring-offset-0
+      focus:outline-hidden focus:ring-2 focus:ring-offset-0
       flex items-center justify-between
       px-3 py-2
     `,
@@ -39,13 +39,13 @@ export const styles = {
     flex-1 min-w-0 text-gray-900
   `,
   icon: `
-    h-5 w-5 text-gray-400 ml-2 flex-shrink-0
+    h-5 w-5 text-gray-400 ml-2 shrink-0
   `,
   options: {
     container: `
       absolute z-10 mt-1 max-h-60 w-full overflow-auto 
       rounded-md bg-white py-1 shadow-lg 
-      ring-1 ring-black ring-opacity-5 focus:outline-none
+      ring-1 ring-black ring-opacity-5 focus:outline-hidden
       border border-gray-200
     `,
     option: {

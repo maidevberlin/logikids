@@ -15,7 +15,7 @@ export const styles = {
       flex gap-3 items-start
     `,
     icon: `
-      flex-shrink-0 w-5 h-5
+      shrink-0 w-5 h-5
       relative top-0.5
     `,
     text: `

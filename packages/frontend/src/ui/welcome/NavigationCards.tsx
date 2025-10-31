@@ -31,7 +31,7 @@ export function NavigationCards() {
 
       {/* Progress Card */}
       <Link to="/stats" className="block">
-        <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl">
+        <Card className="p-6 bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl">
           <div className="flex flex-col items-center text-center space-y-3">
             <div className="bg-blue-100 p-4 rounded-full">
               <TrendingUp className="w-8 h-8 text-blue-600" />
@@ -50,7 +50,7 @@ export function NavigationCards() {
 
       {/* Profile Card */}
       <Link to="/account" className="block">
-        <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl">
+        <Card className="p-6 bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl">
           <div className="flex flex-col items-center text-center space-y-3">
             <div className="bg-purple-100 p-4 rounded-full">
               <User className="w-8 h-8 text-purple-600" />

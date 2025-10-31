@@ -109,7 +109,7 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                         className={`flex flex-col items-center gap-3 p-6 rounded-2xl transition-all duration-200 ${
                           gender === option.value
                             ? 'bg-blue-50 shadow-md'
-                            : 'bg-white shadow-sm hover:shadow-md'
+                            : 'bg-white shadow-xs hover:shadow-md'
                         }`}
                       >
                         <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl ${
@@ -192,7 +192,7 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                     className={`flex items-center justify-center h-20 rounded-2xl text-2xl font-bold transition-all duration-200 ${
                       grade === gradeOption
                         ? 'bg-blue-50 text-blue-600 shadow-md'
-                        : 'bg-white text-gray-700 shadow-sm hover:shadow-md'
+                        : 'bg-white text-gray-700 shadow-xs hover:shadow-md'
                     }`}
                   >
                     {gradeOption}

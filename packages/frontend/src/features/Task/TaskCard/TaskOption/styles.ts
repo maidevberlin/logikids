@@ -8,7 +8,7 @@ export const variants: Record<TaskOptionVariant, string> = {
 }
 
 export const option = {
-  base: 'flex items-center justify-center gap-3 px-8 py-4 rounded-lg font-medium transition-colors duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed shadow-sm text-lg',
+  base: 'flex items-center justify-center gap-3 px-8 py-4 rounded-lg font-medium transition-colors duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed shadow-xs text-lg',
   content: 'text-inherit',
   icon: 'w-7 h-7',
 } as const 

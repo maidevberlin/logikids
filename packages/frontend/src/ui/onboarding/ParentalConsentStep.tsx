@@ -32,7 +32,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </h2>
 
           <div className="flex items-start space-x-3">
-            <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+            <Info className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.aiContent', {
                 defaultValue: 'AI-generated educational content tailored to your child\'s age and grade'
@@ -41,7 +41,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
 
           <div className="flex items-start space-x-3">
-            <Lock className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+            <Lock className="w-5 h-5 text-green-600 mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.clientFirst', {
                 defaultValue: 'All data is stored securely on your device. Optional encrypted backups to server only if you enable it.'
@@ -50,7 +50,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
 
           <div className="flex items-start space-x-3">
-            <Shield className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+            <Shield className="w-5 h-5 text-purple-600 mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.compliance', {
                 defaultValue: 'We comply with GDPR and AI Act regulations'
@@ -59,7 +59,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
 
           <div className="flex items-start space-x-3">
-            <Eye className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
+            <Eye className="w-5 h-5 text-yellow-600 mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.ageAppropriate', {
                 defaultValue: 'Age-appropriate content only'
@@ -68,7 +68,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
 
           <div className="flex items-start space-x-3">
-            <UserX className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+            <UserX className="w-5 h-5 text-red-600 mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.noSharing', {
                 defaultValue: 'No data sharing with third parties'
@@ -77,7 +77,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
 
           <div className="flex items-start space-x-3">
-            <Shield className="w-5 h-5 text-indigo-600 mt-0.5 flex-shrink-0" />
+            <Shield className="w-5 h-5 text-indigo-600 mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.dataRights', {
                 defaultValue: 'Right to access and delete data at any time'

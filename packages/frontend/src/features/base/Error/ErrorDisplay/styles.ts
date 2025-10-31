@@ -31,7 +31,7 @@ export const styles = {
   },
   standalone: {
     base: `
-      min-h-screen flex items-center justify-center p-4 bg-gradient-to-b
+      min-h-screen flex items-center justify-center p-4 bg-linear-to-b
     `,
     gradients: {
       error: 'from-error-50 to-error-100',

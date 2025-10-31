@@ -8,8 +8,8 @@ Logikids is an AI-powered educational platform that helps children aged 8-16 dev
 
 ## Tech Stack
 
-- **Runtime**: Bun (backend), Node.js compatible
-- **Frontend**: React 18 + TypeScript, TailwindCSS, React Query, React Router, Vite
+- **Runtime**: Bun (both frontend and backend)
+- **Frontend**: React 18 + TypeScript, Tailwind CSS v4, React Query, React Router, Vite
 - **Backend**: Express + TypeScript running on Bun
 - **Database**: PostgreSQL 16 Alpine (encrypted user data storage)
 - **Testing**: Jest, React Testing Library, Supertest
@@ -47,13 +47,15 @@ docker compose up backend-dev
 docker compose run backend-test
 
 # Frontend tests (inside running container)
-docker compose exec frontend-dev npm test
+docker compose exec frontend-dev bun test
 
-# Single test run
+# Single test run (backend)
 docker compose exec backend-dev bun test
 ```
 
 ### Running Commands in Containers
+
+**Important**: Both frontend and backend use Bun as the runtime.
 
 ```bash
 # Backend commands
@@ -61,8 +63,8 @@ docker compose exec backend-dev bun install <package>
 docker compose exec backend-dev bun run <script>
 
 # Frontend commands
-docker compose exec frontend-dev npm install <package>
-docker compose exec frontend-dev npm run <script>
+docker compose exec frontend-dev bun install <package>
+docker compose exec frontend-dev bun run <script>
 ```
 
 ### Database Commands

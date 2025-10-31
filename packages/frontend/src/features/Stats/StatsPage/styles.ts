@@ -6,7 +6,7 @@ export const styles = {
   card: `
     bg-white
     rounded-lg
-    shadow-sm
+    shadow-xs
     p-6
     md:p-8
   `,

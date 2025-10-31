@@ -8,7 +8,7 @@ export const styles = {
     shadow-lg
   `,
   shadow: `
-    shadow-sm
+    shadow-xs
   `,
   interactive: `
     cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02]

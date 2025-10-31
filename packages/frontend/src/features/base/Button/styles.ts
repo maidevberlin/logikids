@@ -3,7 +3,7 @@ export const styles = {
   base: `
     rounded-lg font-medium transition-all duration-200
     inline-flex items-center justify-center
-    focus:outline-none focus:ring-2 focus:ring-offset-2
+    focus:outline-hidden focus:ring-2 focus:ring-offset-2
   `,
 
   // Button Sizes

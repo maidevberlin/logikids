@@ -8,7 +8,7 @@ export const styles = {
   `,
   icon: {
     base: `
-      h-5 w-5 flex-shrink-0
+      h-5 w-5 shrink-0
       relative top-0.5
     `,
     success: `

@@ -7,7 +7,7 @@ export const styles = {
       rounded-md
       text-gray-900
       placeholder:text-gray-500
-      focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+      focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-transparent
     `,
     error: `
       border-error-300

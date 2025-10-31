@@ -12,7 +12,7 @@ export const SELECTED_VARIANTS: SelectedVariant[] = ['selectedBlue', 'selectedOr
 
 // Combined variant type for all possible variants
 export type BaseVariant = CoreVariant | SoftVariant | SelectedVariant
-export type BaseColorVariant = BaseVariant | 'outline'
+export type BaseColorVariant = BaseVariant | 'outline-solid'
 
 export interface BaseStyleProps {
   className?: string

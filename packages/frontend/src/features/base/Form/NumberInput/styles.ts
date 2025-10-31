@@ -10,7 +10,7 @@ export const styles = {
       flex items-center justify-center w-12 
       border border-gray-300 bg-white 
       hover:bg-gray-50 
-      focus:outline-none focus:ring-2 
+      focus:outline-hidden focus:ring-2 
       focus:ring-primary-500 focus:z-10
     `,
     left: `
@@ -30,7 +30,7 @@ export const styles = {
     base: `
       w-16 border-y border-x-0 p-2 
       text-center text-lg 
-      focus:outline-none focus:ring-2 focus:z-10
+      focus:outline-hidden focus:ring-2 focus:z-10
       border-gray-300 focus:ring-primary-500
     `,
     error: `
