@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import taskRouter from './tasks/router';
 import { createSyncRouter } from './sync/router';
+import inviteRouter from './invites/router';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
@@ -37,6 +38,7 @@ app.use(express.json());
 // Routes
 app.use('/api/task', taskRouter);
 app.use('/api/sync', createSyncRouter());
+app.use('/api/invite', inviteRouter);
 
 // Error handling
 app.use(errorHandler);

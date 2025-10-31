@@ -3,15 +3,52 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Card } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { Shield, Lock, Eye, UserX, Info } from 'lucide-react'
 
 export interface ParentalConsentStepProps {
-  onConsent: () => void
+  onConsent: (inviteCode: string) => void
 }
 
 export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
   const { t } = useTranslation()
   const [consented, setConsented] = useState(false)
+  const [inviteCode, setInviteCode] = useState('')
+  const [isValidating, setIsValidating] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleContinue = async () => {
+    if (!consented || !inviteCode.trim()) {
+      return
+    }
+
+    setIsValidating(true)
+    setError(null)
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5175'
+      // Use /check endpoint to validate WITHOUT deleting the code
+      const response = await fetch(`${apiUrl}/api/invite/check`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: inviteCode.trim() })
+      })
+
+      const result = await response.json()
+
+      if (result.valid) {
+        // Pass the code to parent - it will be deleted after account creation
+        onConsent(inviteCode.trim())
+      } else {
+        setError(result.reason || 'Invalid invite code')
+      }
+    } catch (err) {
+      setError('Failed to validate invite code. Please try again.')
+      console.error('Invite validation error:', err)
+    } finally {
+      setIsValidating(false)
+    }
+  }
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -107,19 +144,47 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
         </div>
 
-        <div className="bg-primary/10 rounded-xl p-4 mb-6">
-          <div className="flex items-center space-x-2">
+        <div className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
+          <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <Shield className="w-5 h-5 text-blue-600" />
+            {t('onboarding.parentalConsent.inviteTitle', { defaultValue: 'Invite Code Required' })}
+          </h3>
+          <p className="text-sm text-gray-700 mb-4">
+            {t('onboarding.parentalConsent.inviteExplained', {
+              defaultValue: 'LogiKids is currently in closed beta. Please enter the invite code you received to continue.'
+            })}
+          </p>
+          <Input
+            placeholder={t('onboarding.parentalConsent.invitePlaceholder', { defaultValue: 'Enter invite code (e.g., ABCD-1234)' })}
+            value={inviteCode}
+            onChange={(e) => {
+              setInviteCode(e.target.value.toUpperCase())
+              setError(null)
+            }}
+            className="font-mono text-center tracking-wider"
+            maxLength={9}
+          />
+          {error && (
+            <p className="text-sm text-red-600 mt-2">
+              ❌ {error}
+            </p>
+          )}
+        </div>
+
+        <div className="bg-primary/10 rounded-xl p-4 mb-6 space-y-3">
+          <div className="flex items-start space-x-2">
             <Checkbox
               id="consent"
               checked={consented}
               onCheckedChange={(checked) => setConsented(checked === true)}
+              className="mt-0.5"
             />
             <label
               htmlFor="consent"
-              className="text-sm font-medium text-gray-900 cursor-pointer"
+              className="text-sm font-medium text-gray-900 cursor-pointer leading-relaxed"
             >
               {t('onboarding.parentalConsent.consentCheckbox', {
-                defaultValue: 'I am a parent/guardian and have read the above information'
+                defaultValue: 'I am a parent/guardian and confirm that I have read and understood the above information. I understand that this app uses AI to generate educational content and I agree to provide appropriate parental supervision during use.'
               })}
             </label>
           </div>
@@ -144,11 +209,14 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
 
           <Button
-            onClick={onConsent}
-            disabled={!consented}
+            onClick={handleContinue}
+            disabled={!consented || !inviteCode.trim() || isValidating}
             size="lg"
           >
-            {t('onboarding.parentalConsent.continue', { defaultValue: 'Continue' })}
+            {isValidating
+              ? t('onboarding.parentalConsent.validating', { defaultValue: 'Validating...' })
+              : t('onboarding.parentalConsent.continue', { defaultValue: 'Continue' })
+            }
           </Button>
         </div>
       </Card>

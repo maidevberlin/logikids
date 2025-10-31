@@ -12,8 +12,10 @@ export default function OnboardingPage() {
   const { i18n } = useTranslation()
   const { updateSettings } = useUserData()
   const [step, setStep] = useState<'consent' | 'info'>('consent')
+  const [inviteCode, setInviteCode] = useState<string | null>(null)
 
-  const handleConsent = () => {
+  const handleConsent = (code: string) => {
+    setInviteCode(code)
     setStep('info')
   }
 
@@ -26,6 +28,22 @@ export default function OnboardingPage() {
         language: i18n.language, // Save current language from i18n
         ...(info.gender && { gender: info.gender })
       })
+
+      // Now delete the invite code after successful account creation
+      if (inviteCode) {
+        try {
+          const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5175'
+          await fetch(`${apiUrl}/api/invite/validate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: inviteCode })
+          })
+        } catch (err) {
+          console.warn('Failed to delete invite code:', err)
+          // Don't block user if this fails
+        }
+      }
+
       localStorage.setItem('hasSeenOnboarding', 'true')
       navigate('/')
     } catch (error) {

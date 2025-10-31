@@ -1,0 +1,67 @@
+#!/bin/bash
+# Invite Code Manager - Wrapper Script
+# Usage: ./invite <command> [args]
+
+set -e
+
+COMMAND="$1"
+shift || true
+
+case "$COMMAND" in
+  list|l)
+    docker compose exec backend-dev bun run src/cli/invite-codes.ts list
+    ;;
+
+  create|c)
+    NOTE="$*"
+    if [ -z "$NOTE" ]; then
+      docker compose exec backend-dev bun run src/cli/invite-codes.ts create
+    else
+      docker compose exec backend-dev bun run src/cli/invite-codes.ts create "$NOTE"
+    fi
+    ;;
+
+  remove|rm)
+    CODE="$1"
+    if [ -z "$CODE" ]; then
+      echo "❌ Error: Please provide a code to remove"
+      echo "Usage: ./invite remove <code>"
+      exit 1
+    fi
+    docker compose exec backend-dev bun run src/cli/invite-codes.ts remove "$CODE"
+    ;;
+
+  clear)
+    docker compose exec backend-dev bun run src/cli/invite-codes.ts clear
+    ;;
+
+  help|h|"")
+    cat << EOF
+
+📨 Invite Code Manager
+
+Usage:
+  ./invite list                    - List all invite codes (alias: l)
+  ./invite create [note]           - Create new invite code (alias: c)
+  ./invite remove <code>           - Remove invite code (alias: rm)
+  ./invite clear                   - Delete ALL invite codes (with confirmation)
+
+Examples:
+  ./invite list
+  ./invite create "For Maria's family"
+  ./invite c "Test user"
+  ./invite remove ABCD-1234
+  ./invite rm ABCD-1234
+  ./invite clear
+
+Note: Used codes are automatically deleted after successful validation.
+
+EOF
+    ;;
+
+  *)
+    echo "❌ Unknown command: $COMMAND"
+    echo "Run './invite help' for usage information"
+    exit 1
+    ;;
+esac

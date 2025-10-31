@@ -133,6 +133,33 @@ docker compose run backend-test
 docker compose run frontend-dev npm test
 ```
 
+### Invite Code Management (Beta Access)
+
+LogiKids is currently in closed beta with invite-only access. Use the `./invite` script to manage codes:
+
+```bash
+# List all active invite codes
+./invite list
+
+# Create new invite code with optional note
+./invite create "For Maria's family"
+
+# Remove specific invite code
+./invite remove ABCD-1234
+
+# Delete all invite codes (with confirmation)
+./invite clear
+
+# Show help
+./invite help
+```
+
+**Notes:**
+- Codes expire after 7 days if unused
+- Codes are automatically deleted after successful use
+- Each code can only be used once
+- Codes use format: XXXX-XXXX (e.g., AB3D-KL89)
+
 ## 📁 Project Structure
 
 ```
