@@ -38,7 +38,7 @@ export function NumberInput({ value, onChange, min, max, label, className = '' }
           <ChevronLeft className="h-8 w-8" />
         </Button>
 
-        <div className="flex h-28 w-28 items-center justify-center rounded-3xl bg-blue-600 text-5xl font-bold text-white shadow-lg">
+        <div className="flex h-28 w-28 items-center justify-center rounded-3xl bg-primary text-5xl font-bold text-white shadow-lg">
           {value}
         </div>
 

@@ -32,7 +32,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </h2>
 
           <div className="flex items-start space-x-3">
-            <Info className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+            <Info className="w-5 h-5 text-primary mt-0.5 shrink-0" />
             <p className="text-gray-700">
               {t('onboarding.parentalConsent.aiContent', {
                 defaultValue: 'AI-generated educational content tailored to your child\'s age and grade'
@@ -86,7 +86,7 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
         </div>
 
-        <div className="bg-blue-50 rounded-xl p-4 mb-6">
+        <div className="bg-primary/10 rounded-xl p-4 mb-6">
           <div className="flex items-center space-x-2">
             <Checkbox
               id="consent"
@@ -108,14 +108,14 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           <div className="text-sm space-x-4">
             <a
               href="#"
-              className="text-blue-600 hover:underline"
+              className="text-primary hover:underline"
               onClick={(e) => e.preventDefault()}
             >
               {t('onboarding.parentalConsent.privacyPolicy', { defaultValue: 'Privacy Policy' })}
             </a>
             <a
               href="#"
-              className="text-blue-600 hover:underline"
+              className="text-primary hover:underline"
               onClick={(e) => e.preventDefault()}
             >
               {t('onboarding.parentalConsent.terms', { defaultValue: 'Terms of Service' })}

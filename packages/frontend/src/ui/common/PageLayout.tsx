@@ -31,7 +31,7 @@ export function PageLayout({
             <Button
               onClick={() => navigate('/')}
               size="lg"
-              className="h-16 px-8 text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-200 rounded-2xl"
+              className="h-16 px-8 text-lg font-bold bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-200 rounded-2xl"
             >
               <Home className="w-6 h-6 mr-2" />
               Home

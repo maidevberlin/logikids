@@ -63,9 +63,9 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
         <div className="space-y-8">
           {/* Progress indicator */}
           <div className="flex justify-center gap-2 mb-6">
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'name-gender' ? 'bg-blue-600' : 'bg-gray-300'}`} />
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'age' ? 'bg-blue-600' : 'bg-gray-300'}`} />
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'grade' ? 'bg-blue-600' : 'bg-gray-300'}`} />
+            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'name-gender' ? 'bg-primary' : 'bg-gray-300'}`} />
+            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'age' ? 'bg-primary' : 'bg-gray-300'}`} />
+            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'grade' ? 'bg-primary' : 'bg-gray-300'}`} />
           </div>
 
           {/* Step 1: Name + Gender */}
@@ -108,16 +108,16 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                         onClick={() => setGender(option.value)}
                         className={`flex flex-col items-center gap-3 p-6 rounded-2xl transition-all duration-200 ${
                           gender === option.value
-                            ? 'bg-blue-50 shadow-md'
+                            ? 'bg-primary/10 shadow-md'
                             : 'bg-white shadow-xs hover:shadow-md'
                         }`}
                       >
                         <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl ${
-                          gender === option.value ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'
+                          gender === option.value ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600'
                         }`}>
                           {option.symbol}
                         </div>
-                        <span className={`text-base font-medium ${gender === option.value ? 'text-blue-600' : 'text-gray-700'}`}>
+                        <span className={`text-base font-medium ${gender === option.value ? 'text-primary' : 'text-gray-700'}`}>
                           {option.label}
                         </span>
                       </button>
@@ -129,7 +129,6 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
               <Button
                 onClick={handleNameGenderNext}
                 disabled={!name.trim()}
-                className="w-full h-16 text-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-200 rounded-2xl"
                 size="lg"
               >
                 Continue <ChevronRight className="ml-2 w-6 h-6" />
@@ -165,7 +164,7 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                 </Button>
                 <Button
                   onClick={handleAgeNext}
-                  className="flex-1 h-16 text-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-200 rounded-2xl"
+                  size="lg"
                 >
                   Continue <ChevronRight className="ml-2 w-6 h-6" />
                 </Button>
@@ -191,7 +190,7 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                     onClick={() => setGrade(gradeOption)}
                     className={`flex items-center justify-center h-20 rounded-2xl text-2xl font-bold transition-all duration-200 ${
                       grade === gradeOption
-                        ? 'bg-blue-50 text-blue-600 shadow-md'
+                        ? 'bg-primary/10 text-primary shadow-md'
                         : 'bg-white text-gray-700 shadow-xs hover:shadow-md'
                     }`}
                   >
@@ -210,7 +209,7 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                 </Button>
                 <Button
                   onClick={handleGradeComplete}
-                  className="flex-1 h-16 text-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-200 rounded-2xl"
+                  size="lg"
                 >
                   {t('onboarding.studentInfo.create')}
                 </Button>

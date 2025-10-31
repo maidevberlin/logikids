@@ -111,8 +111,8 @@ export default function AccountPage() {
         {/* Profile Settings */}
         <Card className="p-8 bg-white shadow-md rounded-2xl">
           <div className="flex items-center space-x-3 mb-6">
-            <div className="bg-blue-100 p-3 rounded-full">
-              <User className="w-6 h-6 text-blue-600" />
+            <div className="bg-primary/10 p-3 rounded-full">
+              <User className="w-6 h-6 text-primary" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900">
               {t('account.profileSettings', { defaultValue: 'Profile Settings' })}

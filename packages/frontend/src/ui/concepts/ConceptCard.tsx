@@ -60,7 +60,7 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
             </div>
           )}
 
-          <div className="flex items-center text-blue-600 font-medium mt-auto pt-2">
+          <div className="flex items-center text-primary font-medium mt-auto pt-2">
             Start learning
             <ArrowRight className="w-4 h-4 ml-1" />
           </div>
