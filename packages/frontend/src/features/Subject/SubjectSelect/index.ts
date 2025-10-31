@@ -1,1 +1,0 @@
-export { SubjectSelect } from './SubjectSelect'

@@ -78,10 +78,10 @@ async function testPrompt() {
       throw new Error(`Task type not found: ${taskType}`);
     }
 
-    // Get enriched concept
+    // Get concept
     if (verbose) console.log('Loading concept...');
-    const enrichedConcept = subjectRegistry.getEnrichedConcept(subject, concept);
-    if (!enrichedConcept) {
+    const selectedConcept = subjectRegistry.getConcept(subject, concept);
+    if (!selectedConcept) {
       throw new Error(`Concept not found: ${concept} in subject ${subject}`);
     }
 

@@ -1,7 +1,7 @@
 export { TaskCard } from './TaskCard'
 export { DifficultySelect } from './DifficultySelect'
 export { TaskContent } from './TaskContent'
-export { ConceptSelector } from '../Subject/ConceptSelector'
+// export { ConceptSelector } from '../Subject/ConceptSelector' // Removed - Subject folder deleted
 export { TaskAnswer } from './TaskAnswer'
 export { useTask } from './useTask'
 export { useTaskAnswer } from './useTaskAnswer'

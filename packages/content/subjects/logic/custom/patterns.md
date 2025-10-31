@@ -3,7 +3,9 @@ id: patterns
 name: Pattern Recognition
 description: Finding and understanding patterns in logical sequences
 grade: 3
-ages: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+ages:
+  - 8
+  - 16
 focus: Visual and logical patterns
 difficulty: medium
 learning_objectives:
@@ -13,7 +15,8 @@ learning_objectives:
   - Develop systematic observation skills
 prerequisites: []
 example_tasks:
-  - "Complete the pattern: 2, 4, 6, 8, __"
-  - "What comes next: ○, □, ○, □, __"
-real_world_context: Music rhythms, wallpaper designs, calendars
+  - 'Complete the pattern: 2, 4, 6, 8, __'
+  - 'What comes next: ○, □, ○, □, __'
+real_world_context: 'Music rhythms, wallpaper designs, calendars'
 ---
+

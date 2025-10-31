@@ -144,11 +144,11 @@ packages/
 
 4. **API Routes**
    - **Task Generation:**
-     - `GET /api/task` - Generate a task (without hints) with query params: subject, concept, taskType, age, difficulty
+     - `GET /api/task` - Generate a task (without hints) with query params: `subject`, `concept` (optional), `taskType` (optional), `grade`, `age`, `difficulty`, `language`, `gender` (optional)
      - `POST /api/task/:taskId/hint` - Generate a single hint on-demand for the specified task
-     - `GET /api/task/subjects` - List all available subjects and concepts
-     - Accept-Language header determines response language
-     - **Task Response**: Includes `taskId` (required), `hints` field is optional (only in legacy responses)
+     - `GET /api/task/subjects` - List all available subjects and concepts with optional `grade` and `difficulty` filters
+     - **Client-driven architecture**: Frontend sends all user context (age, grade, language, difficulty) as query parameters
+     - **Task Response**: Includes `taskId` (required), hints are generated on-demand and NOT included in initial response
    - **User Data Sync:**
      - `PUT /api/sync/:userId` - Upload encrypted user data
      - `GET /api/sync/:userId` - Download encrypted user data
@@ -166,11 +166,13 @@ Prompts for subjects and task types are stored in markdown files with YAML front
 
 **Structure:**
 ```
-/prompts/
+packages/content/
   subjects/
     {subject-id}/
-      base.md          # Subject metadata + base prompt + content guidelines
-      {concept}.md     # Each concept's prompt
+      base.md                    # Subject metadata + base prompt + content guidelines
+      official/{concept}.md      # Curriculum-aligned concepts
+      custom/{concept}.md        # Custom/supplementary concepts
+packages/backend/prompts/
   task-types/
     {task-type}.md     # Task type prompts
   hints/
@@ -193,8 +195,17 @@ Each subject's base.md includes guidelines for which content types to use:
 - German/Music: Basic Markdown, tables, emphasis
 
 **Adding a New Concept:**
-1. Create `/prompts/subjects/{subject-id}/{concept-id}.md`
-2. Add YAML frontmatter with id, name, description
+1. Create `packages/content/subjects/{subject-id}/official/{concept-id}.md` or `custom/{concept-id}.md`
+2. Add YAML frontmatter with required fields:
+   - `id` (string) - Unique identifier for the concept
+   - `name` (string) - Display name
+   - `description` (string) - Brief description
+   - `grade` (number 1-13) - Target grade level
+   - `ages` (array [min, max]) - Age range, e.g., `[8, 16]`
+   - `difficulty` (string) - One of: `easy`, `medium`, `hard`
+   - `focus` (string) - Learning focus area
+   - `learning_objectives` (array of strings) - What students will learn
+   - Optional: `prerequisites`, `example_tasks`, `real_world_context`
 3. Add Markdown-based prompt template
 4. Changes apply immediately in development (hot-reload)
 5. No code changes needed
@@ -215,7 +226,8 @@ Each subject's base.md includes guidelines for which content types to use:
 - Frontmatter validated on startup with Zod schemas
 - Server fails fast if any prompt is invalid
 - Clear error messages show exactly what's wrong
-- Required fields: `id`, `name`, `description`
+- Required fields for concepts: `id`, `name`, `description`, `grade`, `ages`, `difficulty`, `focus`, `learning_objectives`
+- Ages must be a 2-element array `[min, max]` where min ≤ max
 
 ### Frontend Architecture
 
@@ -250,9 +262,9 @@ Each subject's base.md includes guidelines for which content types to use:
 
 ### Adding a New Subject
 
-**Backend** (`prompts/subjects/`):
+**Backend** (`packages/content/subjects/`):
 
-1. Create directory: `prompts/subjects/new-subject/`
+1. Create directory: `packages/content/subjects/new-subject/`
 2. Create `base.md` with frontmatter and base prompt:
    ```markdown
    ---
@@ -263,8 +275,9 @@ Each subject's base.md includes guidelines for which content types to use:
 
    Base prompt template with {{placeholders}}
    ```
-3. Create concept files: `prompts/subjects/new-subject/concept-name.md`
-4. Server auto-discovers new subjects on startup (no code changes needed)
+3. Create subdirectories: `official/` and/or `custom/`
+4. Create concept files: `official/concept-name.md` or `custom/concept-name.md` with full frontmatter (see Adding a New Concept section)
+5. Server auto-discovers new subjects on startup (no code changes needed)
 
 **Frontend**:
 
@@ -377,3 +390,64 @@ TaskContext {
 - Better UX: Task available immediately, hints during thinking time
 
 **Design Doc:** See `docs/plans/2025-10-25-lazy-hint-generation-design.md` for full architecture
+
+## UI Design System (Updated 2025-10-31)
+
+**Design Philosophy:** Modern, minimalistic design using shadcn/ui components with no gradients and consistent styling.
+
+### Component Architecture Rules
+
+**IMPORTANT: Follow these rules for all frontend development:**
+
+1. **No Gradients**: Use solid colors only. Never use `bg-gradient-to-*` classes.
+2. **No Custom CSS Files**: Delete all `.css` and `styles.ts` files. Use Tailwind classes exclusively.
+3. **Build from shadcn/ui**: Import components from `@/components/ui/` (Card, Button, Badge, etc.)
+4. **No Inline Styles**: Exception only for CSS variables (e.g., subject accent colors)
+5. **Component Location**: All new components go in `src/ui/` organized by feature
+
+### Design Tokens
+
+**Colors:**
+- Subject accents defined in `tailwind.config.js` under `colors.subjects`
+- Math: `#3b82f6` (blue-500)
+- Logic: `#a855f7` (purple-500)
+- Physics: `#10b981` (emerald-500)
+- German: `#ef4444` (red-500)
+- Music: `#ec4899` (pink-500)
+
+**Shadows:** Use `shadow-sm`, `shadow-md`, `shadow-lg` - NO borders on primary cards
+
+**Border Radius:**
+- Buttons/Cards: `rounded-2xl` (16px)
+- Inputs: `rounded-xl` (12px)
+
+**Spacing:**
+- Card padding: `p-8`
+- Grid gaps: `gap-6`
+- Container max-width: `max-w-6xl`
+
+**Transitions:** Purposeful only - `transition-all duration-200` or `duration-300`
+
+### Component Structure
+
+```
+src/ui/
+  ├── common/          # PageLayout, Breadcrumb, NumberInput
+  ├── subjects/        # SubjectCard, SubjectsPage
+  ├── concepts/        # ConceptCard, ConceptsPage
+  ├── tasks/           # TaskCard, HintSection (TODO: migrate from features/)
+  ├── welcome/         # WelcomePage, NavigationCards
+  ├── account/         # AccountPage
+  └── onboarding/      # OnboardingPage, StudentInfoStep
+```
+
+**Legacy Code:** `src/features/` contains old components still being migrated. Prefer `src/ui/` for all new work.
+
+### Migration Status
+
+- ✅ Core layout components (PageLayout, navigation)
+- ✅ Subject/Concept selection
+- ✅ Welcome and onboarding flows
+- ⏳ Task components (still in `src/features/Task/` - needs migration)
+
+**See Full Design:** `docs/plans/2025-10-31-ui-redesign.md`

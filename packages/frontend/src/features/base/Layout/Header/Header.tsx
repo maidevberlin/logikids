@@ -1,10 +1,10 @@
-import { SettingsButton } from '../../../Account/Settings/SettingsButton'
+// import { SettingsButton } from '../../../Account/Settings/SettingsButton' // Removed - Account folder deleted
 import { StatsButton } from '../../../Stats/StatsButton'
 import { TaskButton } from '../../../Task/TaskCard/TaskButton'
 import { HeaderProps } from './types'
 import { styles } from './styles'
 
-export function Header({ 
+export function Header({
   navigation
 }: HeaderProps) {
   return (
@@ -16,7 +16,7 @@ export function Header({
         <div className={styles.right}>
           <TaskButton className={styles.button} />
           <StatsButton className={styles.button} />
-          <SettingsButton className={styles.button} />
+          {/* <SettingsButton className={styles.button} /> */}
         </div>
       </div>
     </header>

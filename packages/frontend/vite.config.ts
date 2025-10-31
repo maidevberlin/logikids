@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
+import path from 'path'
 import { readFileSync, readdirSync } from 'fs'
 import { createHash } from 'crypto'
 
@@ -39,6 +40,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@": path.resolve(__dirname, "./src")
     }
   },
   server: {
@@ -48,9 +50,9 @@ export default defineConfig({
       usePolling: true,
       ignored: ['**/node_modules/**', '**/.git/**', '**/vite.config.ts']
     },
-    proxy: {  
+    proxy: {
       '/api': {
-        target: 'http://localhost:5175',
+        target: 'http://backend-dev:3000',
         changeOrigin: true,
         secure: false,
         ws: true,

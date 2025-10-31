@@ -2,10 +2,15 @@ import { lazy } from 'react'
 import { createHashRouter } from 'react-router-dom'
 import App from '../App'
 
-// Lazy load route features
-const Welcome = lazy(() => import('../features/Welcome/WelcomePage'))
+// Lazy load new UI pages
+const WelcomePage = lazy(() => import('../ui/welcome'))
+const OnboardingPage = lazy(() => import('../ui/onboarding'))
+const SubjectsPage = lazy(() => import('../ui/subjects'))
+const ConceptsPage = lazy(() => import('../ui/concepts'))
+const AccountPage = lazy(() => import('../ui/account'))
+
+// Lazy load existing features
 const TaskPage = lazy(() => import('../features/Task/TaskPage'))
-const AccountPage = lazy(() => import('../features/Account/AccountPage'))
 const StatsPage = lazy(() => import('../features/Stats/StatsPage'))
 
 export const router = createHashRouter([
@@ -15,16 +20,33 @@ export const router = createHashRouter([
     children: [
       {
         index: true,
-        element: <Welcome />,
+        element: <WelcomePage />,
       },
       {
-        path: 'tasks',
+        path: 'onboarding',
+        element: <OnboardingPage />
+      },
+      {
+        path: 'subjects',
         children: [
           {
             index: true,
-            element: <TaskPage />,
+            element: <SubjectsPage />,
+          },
+          {
+            path: ':subject',
+            children: [
+              {
+                index: true,
+                element: <ConceptsPage />,
+              },
+              {
+                path: ':concept/tasks',
+                element: <TaskPage />
+              }
+            ]
           }
-        ],
+        ]
       },
       {
         path: 'account',

@@ -1,24 +1,70 @@
 const DB_NAME = 'logikids_secure_storage'
-const DB_VERSION = 1
+const DB_VERSION = 2 // Incremented to force schema upgrade
 const STORE_NAME = 'keys'
 const KEY_ID = 'encryption_key'
 const USER_ID_KEY = 'user_id'
 
 /**
- * Opens IndexedDB connection
+ * Opens IndexedDB connection with error recovery
  */
 async function openDB(): Promise<IDBDatabase> {
+  try {
+    return await openDBInternal()
+  } catch (error) {
+    // If opening fails, try to delete and recreate
+    console.warn('IndexedDB open failed, attempting to recreate database:', error)
+    try {
+      await deleteDB()
+      return await openDBInternal()
+    } catch (retryError) {
+      console.error('Failed to recreate database:', retryError)
+      throw retryError
+    }
+  }
+}
+
+/**
+ * Delete the database
+ */
+async function deleteDB(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.deleteDatabase(DB_NAME)
+    request.onerror = () => reject(request.error)
+    request.onsuccess = () => resolve()
+    request.onblocked = () => {
+      console.warn('Database deletion blocked - will proceed anyway')
+      resolve() // Resolve anyway
+    }
+  })
+}
+
+/**
+ * Internal DB open logic
+ */
+async function openDBInternal(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION)
 
     request.onerror = () => reject(request.error)
-    request.onsuccess = () => resolve(request.result)
+    request.onsuccess = () => {
+      const db = request.result
+      // Verify store exists
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.close()
+        reject(new Error(`Store ${STORE_NAME} not found - database needs upgrade`))
+        return
+      }
+      resolve(db)
+    }
 
     request.onupgradeneeded = (event) => {
       const db = (event.target as IDBOpenDBRequest).result
-      if (!db.objectStoreNames.contains(STORE_NAME)) {
-        db.createObjectStore(STORE_NAME)
+      // Delete old store if it exists (clean slate)
+      if (db.objectStoreNames.contains(STORE_NAME)) {
+        db.deleteObjectStore(STORE_NAME)
       }
+      // Create fresh store
+      db.createObjectStore(STORE_NAME)
     }
   })
 }

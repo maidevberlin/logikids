@@ -13,11 +13,11 @@ export class TaskService {
         private readonly promptService: PromptService
     ) {}
 
-    public async generateTask(request: TaskRequest, language: string): Promise<TaskResponse> {
+    public async generateTask(request: TaskRequest): Promise<TaskResponse> {
         console.log('[TaskService] Starting task generation');
         console.log('[TaskService] Request:', request);
 
-        const {subject: subjectId, concept: requestedConcept, taskType} = request;
+        const {subject: subjectId, concept: requestedConcept, taskType, grade, age, difficulty, language} = request;
 
         // Get the subject
         const subject = subjectRegistry.get(subjectId);
@@ -26,28 +26,40 @@ export class TaskService {
         }
         console.log('[TaskService] Subject loaded:', subjectId);
 
-        // Load concept (or random)
-        const concept = requestedConcept === 'random'
-            ? subjectRegistry.getRandomEnrichedConcept(subjectId)
-            : subjectRegistry.getEnrichedConcept(subjectId, requestedConcept);
-
-        if (!concept) {
-            throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
+        // Load concept (random if not specified)
+        let concept: any;
+        if (!requestedConcept) {
+            // Random selection with grade/age filtering
+            concept = subjectRegistry.getRandomConcept(subjectId, { grade, age, difficulty });
+            if (!concept) {
+                throw new Error(`No concepts found for subject ${subjectId} with grade ${grade}, age ${age}, difficulty ${difficulty}`);
+            }
+            console.log('[TaskService] Random concept selected:', concept.id);
+        } else {
+            // Get specific concept
+            concept = subjectRegistry.getConcept(subjectId, requestedConcept);
+            if (!concept) {
+                throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
+            }
+            console.log('[TaskService] Concept loaded:', concept.id);
         }
-        console.log('[TaskService] Concept loaded:', concept.id);
 
-        // Get the task type (either specified or random)
-        const selectedTaskType = taskType
-            ? taskTypeRegistry.get(taskType)
-            : taskTypeRegistry.getAll()[Math.floor(Math.random() * taskTypeRegistry.getAll().length)];
-
-        if (!selectedTaskType) {
-            throw new Error(`Task type ${taskType} not found`);
+        // Get the task type (random if not specified)
+        let selectedTaskType;
+        if (!taskType) {
+            const allTypes = taskTypeRegistry.getAll();
+            if (allTypes.length === 0) {
+                throw new Error('No task types available');
+            }
+            selectedTaskType = allTypes[Math.floor(Math.random() * allTypes.length)];
+            console.log('[TaskService] Random task type selected:', selectedTaskType.id);
+        } else {
+            selectedTaskType = taskTypeRegistry.get(taskType);
+            if (!selectedTaskType) {
+                throw new Error(`Task type ${taskType} not found`);
+            }
+            console.log('[TaskService] Task type loaded:', selectedTaskType.id);
         }
-        console.log('[TaskService] Task type loaded:', selectedTaskType.id);
-
-        // Calculate age from grade (grade + 6: grade 2 = ~8yo, grade 13 = ~19yo)
-        const age = request.grade + 6;
 
         // Build prompt using PromptService
         const finalPrompt = await this.promptService.buildPrompt({

@@ -8,7 +8,7 @@ import { Concept } from '../prompts/schemas';
  */
 export class SubjectRegistry {
   private subjects = new Map<string, Subject>();
-  private concepts = new Map<string, Map<string, Concept>>(); // subjectId -> conceptId -> EnrichedConcept
+  private concepts = new Map<string, Map<string, Concept>>(); // subjectId -> conceptId -> Concept
   private loader: PromptLoader;
   private initialized = false;
 
@@ -43,15 +43,15 @@ export class SubjectRegistry {
           const subject = await this.loader.loadSubject(subjectId);
           this.subjects.set(subject.id, subject);
 
-          // Load enriched concepts from both curriculum and custom directories
-          const enrichedConcepts = await this.loader.loadConcepts(subjectId);
+          // Load concepts from both official and custom directories
+          const concepts = await this.loader.loadConcepts(subjectId);
           const conceptMap = new Map<string, Concept>();
-          for (const concept of enrichedConcepts) {
+          for (const concept of concepts) {
             conceptMap.set(concept.id, concept);
           }
           this.concepts.set(subjectId, conceptMap);
 
-          console.log(`[SubjectRegistry] Loaded subject: ${subject.id} (${subject.concepts.size} legacy concepts, ${enrichedConcepts.length} enriched concepts)`);
+          console.log(`[SubjectRegistry] Loaded subject: ${subject.id} (${concepts.length} concepts)`);
         } catch (error: any) {
           console.error(`[SubjectRegistry] Failed to load subject ${subjectId}:`, error.message);
           throw error; // Fail fast on invalid prompts
@@ -85,12 +85,13 @@ export class SubjectRegistry {
   }
 
   /**
-   * Get all enriched concepts for a subject, optionally filtered by grade and difficulty
+   * Get all concepts for a subject, optionally filtered by grade, age, and difficulty
    */
   getConcepts(
     subjectId: string,
     options?: {
       grade?: number;
+      age?: number;
       difficulty?: 'easy' | 'medium' | 'hard';
     }
   ): Concept[] {
@@ -104,6 +105,14 @@ export class SubjectRegistry {
       concepts = concepts.filter(c => c.grade === options.grade);
     }
 
+    // Filter by age (check if age is within [min, max] range)
+    if (options?.age !== undefined) {
+      concepts = concepts.filter(c => {
+        const [minAge, maxAge] = c.ages;
+        return options.age! >= minAge && options.age! <= maxAge;
+      });
+    }
+
     // Filter by difficulty
     if (options?.difficulty) {
       concepts = concepts.filter(c => c.difficulty === options.difficulty);
@@ -113,48 +122,50 @@ export class SubjectRegistry {
   }
 
   /**
-   * Get a single enriched concept by ID
+   * Get a single concept by ID
    */
-  getEnrichedConcept(subjectId: string, conceptId: string): Concept | undefined {
+  getConcept(subjectId: string, conceptId: string): Concept | undefined {
     const conceptMap = this.concepts.get(subjectId);
     if (!conceptMap) return undefined;
     return conceptMap.get(conceptId);
   }
 
   /**
-   * Get a random enriched concept from a subject
+   * Get a random concept from a subject, optionally filtered by grade, age, and difficulty
+   * If grade filter returns no results, falls back to age filter
    */
-  getRandomEnrichedConcept(subjectId: string): Concept | undefined {
+  getRandomConcept(
+    subjectId: string,
+    options?: {
+      grade?: number;
+      age?: number;
+      difficulty?: 'easy' | 'medium' | 'hard';
+    }
+  ): Concept | undefined {
     const conceptMap = this.concepts.get(subjectId);
     if (!conceptMap || conceptMap.size === 0) {
       return undefined;
     }
 
-    const conceptIds = Array.from(conceptMap.keys());
-    const randomId = conceptIds[Math.floor(Math.random() * conceptIds.length)];
-    return conceptMap.get(randomId);
-  }
+    // Try grade filter first
+    let filteredConcepts = this.getConcepts(subjectId, options);
 
-  /**
-   * Get a random concept from a subject (legacy interface)
-   */
-  getRandomConcept(subjectId: string): Concept | undefined {
-    const subject = this.subjects.get(subjectId);
-    if (!subject || subject.concepts.size === 0) {
+    // If no results with grade, try with age only
+    if (filteredConcepts.length === 0 && options?.grade !== undefined && options?.age !== undefined) {
+      filteredConcepts = this.getConcepts(subjectId, {
+        age: options.age,
+        difficulty: options.difficulty
+      });
+    }
+
+    // If still no results, return undefined
+    if (filteredConcepts.length === 0) {
       return undefined;
     }
 
-    const conceptIds = Array.from(subject.concepts.keys());
-    const randomId = conceptIds[Math.floor(Math.random() * conceptIds.length)];
-    return subject.concepts.get(randomId);
-  }
-
-  /**
-   * Get a specific concept from a subject (legacy interface)
-   */
-  getConcept(subjectId: string, conceptId: string): Concept | undefined {
-    const subject = this.subjects.get(subjectId);
-    return subject?.concepts.get(conceptId);
+    // Pick random from filtered results
+    const randomIndex = Math.floor(Math.random() * filteredConcepts.length);
+    return filteredConcepts[randomIndex];
   }
 }
 

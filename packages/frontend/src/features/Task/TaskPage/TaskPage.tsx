@@ -3,7 +3,7 @@ import { useTask } from '../useTask'
 import { useUserData, setData } from '../../UserData'
 import { useProgress } from '../../Stats/useProgress'
 import { TaskCard } from '..'
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Difficulty, Task } from '../types'
 import { Breadcrumb } from '../../base/Breadcrumb/Breadcrumb'
@@ -12,6 +12,7 @@ import { styles as containerStyles } from '../../base/Layout/Container/styles'
 import { Page } from '../../base/Layout'
 import { styles } from './styles'
 import type { TaskPageProps } from './types'
+import { getCurrentLanguage } from '../../../i18n/config'
 
 // Import background patterns
 import mathBg from '../../../assets/math.webp'
@@ -33,10 +34,13 @@ const taskDefaults: TaskRequest = {
   subject: 'math',
   age: 10,
   grade: 5,
+  language: 'en',
 }
 
 export default function TaskPage({}: TaskPageProps) {
+  const { subject, concept } = useParams<{ subject: string; concept: string }>()
   const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
   const { data } = useUserData()
   const { t } = useTranslation()
   const { updateStats } = useProgress()
@@ -44,17 +48,17 @@ export default function TaskPage({}: TaskPageProps) {
 
   // Memoize task parameters
   const taskParams = useMemo(() => {
-    const conceptParam = searchParams.get('concept');
     return {
       difficulty: (searchParams.get('difficulty') ?? taskDefaults.difficulty) as Difficulty,
-      subject: (searchParams.get('subject') ?? taskDefaults.subject) as string,
+      subject: subject ?? taskDefaults.subject,
       // Only include concept if it exists and is not 'random'
-      concept: (conceptParam && conceptParam !== 'random') ? conceptParam : undefined,
+      concept: (concept && concept !== 'random') ? concept : undefined,
       age: data?.settings.age ?? taskDefaults.age,
       grade: data?.settings.grade ?? taskDefaults.grade,
+      language: getCurrentLanguage(),
       gender: data?.settings.gender as 'male' | 'female' | 'non-binary' | 'prefer-not-to-say' | undefined
     };
-  }, [searchParams, data?.settings.age, data?.settings.grade, data?.settings.gender])
+  }, [subject, concept, searchParams, data?.settings.age, data?.settings.grade, data?.settings.gender])
 
   // Store subject and concept when they change
   useEffect(() => {
@@ -107,29 +111,17 @@ export default function TaskPage({}: TaskPageProps) {
   }, [setSearchParams])
 
   const handleSubjectChange = useCallback((newSubject: string) => {
-    setSearchParams(prev => {
-      const newParams = new URLSearchParams(prev)
-      newParams.set('subject', newSubject)
-      // Reset concept when subject changes
-      newParams.delete('concept')
-      return newParams
-    })
-  }, [setSearchParams])
+    // Navigate to subjects page when subject changes
+    navigate(`/subjects/${newSubject}`)
+  }, [navigate])
 
   const handleConceptChange = useCallback((newConcept: string | undefined) => {
-    setSearchParams(prev => {
-      const newParams = new URLSearchParams(prev)
-      // Ensure subject is set
-      newParams.set('subject', taskParams.subject)
-      // Only set concept if it's defined, otherwise remove it
-      if (newConcept) {
-        newParams.set('concept', newConcept)
-      } else {
-        newParams.delete('concept')
-      }
-      return newParams
-    })
-  }, [setSearchParams, taskParams.subject])
+    if (newConcept && taskParams.subject) {
+      // Navigate to new concept within same subject
+      const params = new URLSearchParams(searchParams)
+      navigate(`/subjects/${taskParams.subject}/${newConcept}/tasks?${params.toString()}`)
+    }
+  }, [navigate, taskParams.subject, searchParams])
 
   const handleHintUsed = useCallback(() => {
     setHintsUsed(prev => prev + 1)

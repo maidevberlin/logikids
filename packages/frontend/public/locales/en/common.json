@@ -6,9 +6,40 @@
     "personalizedSubtitle": "Ready to continue your learning adventure?",
     "startButton": "Start Learning",
     "setupAccount": "Setup Your Account",
-    "onboarding": {
-      "title": "Create a Secure Account",
-      "description": "Create an account to save your progress securely across devices. Your data is encrypted and private.",
+    "navigation": {
+      "startLearning": {
+        "title": "Start Learning",
+        "description": "Choose a subject and begin your learning journey"
+      },
+      "progress": {
+        "title": "Your Progress",
+        "description": "See how you're doing and track your achievements"
+      },
+      "profile": {
+        "title": "Profile",
+        "description": "Manage your account and settings"
+      }
+    }
+  },
+  "onboarding": {
+    "parentalConsent": {
+      "title": "Welcome to LogiKids",
+      "intro": "LogiKids uses AI to generate personalized learning tasks for your child.",
+      "keyPointsTitle": "Key Points",
+      "aiContent": "AI-generated educational content tailored to your child's age and grade",
+      "clientFirst": "All data is stored securely on your device. Optional encrypted backups to server only if you enable it.",
+      "compliance": "We comply with GDPR and AI Act regulations",
+      "ageAppropriate": "Age-appropriate content only",
+      "noSharing": "No data sharing with third parties",
+      "dataRights": "Right to access and delete data at any time",
+      "consentCheckbox": "I am a parent/guardian and have read the above information",
+      "privacyPolicy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "continue": "Continue"
+    },
+    "studentInfo": {
+      "title": "Let's set up your profile! 🎉",
+      "subtitle": "Tell us a bit about yourself to get started",
       "nameLabel": "Name",
       "namePlaceholder": "Enter your name",
       "ageLabel": "Age",
@@ -16,16 +47,24 @@
       "gradeLabel": "Grade",
       "gradeValue": "Grade {{grade}}",
       "gradeDescription": "Your current school grade",
-      "gradeMismatchWarning": "You entered age {{age}} and grade {{grade}}, but grade {{expectedGrade}} would be more typical for this age. Continue anyway?",
-      "skip": "Skip",
-      "create": "Create Account",
-      "creating": "Creating..."
+      "genderHint": "This helps us personalize content (optional)",
+      "gradeMismatchWarning": "Please confirm: You entered age {{age}} and grade {{grade}}. Most {{age}}-year-olds are in grade {{expectedGrade}}. Continue anyway?",
+      "creating": "Creating...",
+      "create": "Create Account"
     }
   },
   "account": {
     "title": "My Account",
+    "subtitle": "Manage your profile and preferences",
+    "profileSettings": "Profile Settings",
+    "dataManagement": "Data Management",
+    "dataInfo": "Your data is stored securely on your device. You can export or delete it at any time.",
     "saveButton": "Save Changes",
+    "saving": "Saving...",
     "saved": "Changes saved successfully!",
+    "exportData": "Export My Data",
+    "deleteData": "Delete All Data",
+    "deleteConfirm": "Are you sure you want to delete all your data? This cannot be undone.",
     "backToHome": "Back to Home"
   },
   "stats": {
@@ -80,6 +119,10 @@
     "backToHome": "Back to Home"
   },
   "subjects": {
+    "title": "Subjects",
+    "pageTitle": "Choose Your Subject",
+    "pageDescription": "Select a subject to start learning",
+    "error": "Failed to load subjects. Please try again.",
     "random": "Random",
     "math": {
       "label": "Mathematics",
@@ -126,6 +169,13 @@
         "reading_comprehension": "Reading Comprehension"
       }
     }
+  },
+  "concepts": {
+    "subjectNotFound": "Subject not found",
+    "noConcepts": "No concepts available for this subject.",
+    "noConceptsForGrade": "No concepts available for your grade. Try \"Show Advanced Concepts\".",
+    "showAdvanced": "Show Advanced Concepts",
+    "hideAdvanced": "Show Grade-Appropriate Only"
   },
   "difficulty": {
     "easy": "Easy",

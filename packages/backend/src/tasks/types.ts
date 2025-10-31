@@ -32,7 +32,9 @@ export const taskRequestSchema = z.object({
     'Invalid task type'
   ),
   grade: z.number().min(1).max(13),
+  age: z.number().min(6).max(20),
   difficulty: z.enum(DIFFICULTIES),
+  language: z.string().min(2).max(5), // e.g., "en", "de", "en-US"
   gender: z.enum(GENDERS).optional()
 });
 

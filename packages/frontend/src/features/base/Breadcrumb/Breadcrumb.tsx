@@ -1,6 +1,6 @@
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/24/solid'
-import { SubjectSelect } from '../../Subject/SubjectSelect'
-import { ConceptSelector } from '../../Subject/ConceptSelector'
+// import { SubjectSelect } from '../../Subject/SubjectSelect' // Removed - Subject folder deleted
+// import { ConceptSelector } from '../../Subject/ConceptSelector' // Removed - Subject folder deleted
 import { Link } from 'react-router-dom'
 import { cn } from '../../../utils/cn'
 import { BreadcrumbProps } from './types'
@@ -28,31 +28,24 @@ export function Breadcrumb({
         <li>
           <span className={styles.current}>{currentPage}</span>
         </li>
-        {subject && onSubjectChange && (
+        {/* Subject/Concept selectors removed - old Subject folder deleted */}
+        {subject && (
           <>
             <li>
               <ChevronRightIcon className={styles.separator} />
             </li>
             <li>
-              <SubjectSelect
-                value={subject}
-                onChange={onSubjectChange}
-              />
+              <span className={styles.current}>{subject}</span>
             </li>
           </>
         )}
-        {onConceptChange && subject && (
+        {concept && (
           <>
             <li>
               <ChevronRightIcon className={styles.separator} />
             </li>
             <li>
-              <ConceptSelector
-                subject={subject}
-                value={concept}
-                onChange={onConceptChange}
-                className={styles.select}
-              />
+              <span className={styles.current}>{concept}</span>
             </li>
           </>
         )}

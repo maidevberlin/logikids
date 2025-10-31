@@ -6,26 +6,65 @@
     "personalizedSubtitle": "Bereit, dein Lernabenteuer fortzusetzen?",
     "startButton": "Jetzt Lernen",
     "setupAccount": "Konto einrichten",
-    "onboarding": {
-      "title": "Sicheres Konto erstellen",
-      "description": "Erstelle ein Konto, um deinen Fortschritt sicher auf allen Geräten zu speichern. Deine Daten sind verschlüsselt und privat.",
-      "nameLabel": "Name",
-      "namePlaceholder": "Gib deinen Namen ein",
-      "ageLabel": "Alter",
+    "navigation": {
+      "startLearning": {
+        "title": "Lernen starten",
+        "description": "Wähle ein Fach und beginne deine Lernreise"
+      },
+      "progress": {
+        "title": "Dein Fortschritt",
+        "description": "Sieh wie es dir geht und verfolge deine Erfolge"
+      },
+      "profile": {
+        "title": "Profil",
+        "description": "Verwalte dein Konto und Einstellungen"
+      }
+    }
+  },
+  "onboarding": {
+    "parentalConsent": {
+      "title": "Willkommen bei LogiKids",
+      "intro": "LogiKids nutzt KI, um personalisierte Lernaufgaben für dein Kind zu erstellen.",
+      "keyPointsTitle": "Wichtige Punkte",
+      "aiContent": "KI-generierte Bildungsinhalte, angepasst an Alter und Klasse deines Kindes",
+      "clientFirst": "Alle Daten werden sicher auf deinem Gerät gespeichert. Optionale verschlüsselte Backups auf Server nur wenn du es aktivierst.",
+      "compliance": "Wir entsprechen DSGVO und KI-Verordnung",
+      "ageAppropriate": "Nur altersgerechte Inhalte",
+      "noSharing": "Keine Datenweitergabe an Dritte",
+      "dataRights": "Recht auf Zugang und Löschung von Daten jederzeit",
+      "consentCheckbox": "Ich bin ein Elternteil/Erziehungsberechtigter und habe die obigen Informationen gelesen",
+      "privacyPolicy": "Datenschutzerklärung",
+      "terms": "Nutzungsbedingungen",
+      "continue": "Weiter"
+    },
+    "studentInfo": {
+      "title": "Lass uns dein Profil einrichten! 🎉",
+      "subtitle": "Erzähl uns ein bisschen über dich, um loszulegen",
+      "nameLabel": "Wie heißt du?",
+      "namePlaceholder": "Dein Name",
+      "ageLabel": "Wie alt bist du?",
       "ageHint": "Alter 6-18",
-      "gradeLabel": "Klasse",
+      "gradeLabel": "In welche Klasse gehst du?",
       "gradeValue": "Klasse {{grade}}",
-      "gradeDescription": "Deine aktuelle Schulklasse",
-      "gradeMismatchWarning": "Du hast Alter {{age}} und Klasse {{grade}} eingegeben, aber Klasse {{expectedGrade}} wäre typischer für dieses Alter. Trotzdem fortfahren?",
-      "skip": "Überspringen",
-      "create": "Konto erstellen",
-      "creating": "Erstelle..."
+      "gradeDescription": "Deine Schulklasse",
+      "genderHint": "Das hilft uns, tolle Aufgaben für dich zu erstellen",
+      "gradeMismatchWarning": "Bitte bestätigen: Du hast Alter {{age}} und Klasse {{grade}} eingegeben. Die meisten {{age}}-Jährigen sind in Klasse {{expectedGrade}}. Trotzdem fortfahren?",
+      "creating": "Erstelle...",
+      "create": "Los geht's!"
     }
   },
   "account": {
     "title": "Mein Konto",
+    "subtitle": "Verwalte dein Profil und Einstellungen",
+    "profileSettings": "Profil-Einstellungen",
+    "dataManagement": "Datenverwaltung",
+    "dataInfo": "Deine Daten werden sicher auf deinem Gerät gespeichert. Du kannst sie jederzeit exportieren oder löschen.",
     "saveButton": "Änderungen speichern",
+    "saving": "Speichere...",
     "saved": "Änderungen erfolgreich gespeichert!",
+    "exportData": "Meine Daten exportieren",
+    "deleteData": "Alle Daten löschen",
+    "deleteConfirm": "Bist du sicher, dass du alle deine Daten löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
     "backToHome": "Zurück zur Startseite"
   },
   "stats": {
@@ -70,8 +109,8 @@
       "options": {
         "male": "Männlich",
         "female": "Weiblich",
-        "non-binary": "Nicht-binär",
-        "prefer-not-to-say": "Keine Angabe"
+        "non-binary": "Divers",
+        "prefer-not-to-say": "Geheim"
       }
     }
   },
@@ -80,6 +119,10 @@
     "backToHome": "Zurück zur Startseite"
   },
   "subjects": {
+    "title": "Fächer",
+    "pageTitle": "Wähle dein Fach",
+    "pageDescription": "Wähle ein Fach um mit dem Lernen zu beginnen",
+    "error": "Fächer konnten nicht geladen werden. Bitte versuche es erneut.",
     "random": "Zufällig",
     "math": {
       "label": "Mathematik",
@@ -126,6 +169,13 @@
         "reading_comprehension": "Text verstehen"
       }
     }
+  },
+  "concepts": {
+    "subjectNotFound": "Fach nicht gefunden",
+    "noConcepts": "Keine Konzepte für dieses Fach verfügbar.",
+    "noConceptsForGrade": "Keine Konzepte für deine Klasse verfügbar. Versuche \"Erweiterte Konzepte anzeigen\".",
+    "showAdvanced": "Erweiterte Konzepte anzeigen",
+    "hideAdvanced": "Nur klassenstufengerechte anzeigen"
   },
   "difficulty": {
     "easy": "Leicht",

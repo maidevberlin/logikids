@@ -7,7 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
+        // shadcn theme colors (mapped to CSS variables)
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)',
+        },
+        popover: {
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)',
+        },
         primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
           50: '#f0f9ff',
           100: '#e0f2fe',
           200: '#bae6fd',
@@ -20,7 +33,17 @@ export default {
           900: '#0c4a6e',
           950: '#172554',
         },
+        // Subject-specific accent colors
+        subjects: {
+          math: '#3b82f6',      // blue-500
+          logic: '#a855f7',     // purple-500
+          physics: '#10b981',   // emerald-500
+          german: '#ef4444',    // red-500
+          music: '#ec4899',     // pink-500
+        },
         secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
           50: '#f0fdfa',
           100: '#ccfbf1',
           200: '#99f6e4',
@@ -32,6 +55,28 @@ export default {
           800: '#115e59',
           900: '#134e4a',
           950: '#042f2e',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
+        },
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
+        chart: {
+          1: 'var(--chart-1)',
+          2: 'var(--chart-2)',
+          3: 'var(--chart-3)',
+          4: 'var(--chart-4)',
+          5: 'var(--chart-5)',
         },
         success: {
           50: '#f0fdf4',
@@ -80,11 +125,11 @@ export default {
       borderRadius: {
         none: '0',
         xs: '0.125rem',
-        sm: '0.25rem',
+        sm: 'var(--radius-sm)',
         DEFAULT: '0.375rem',
-        md: '0.375rem',
-        lg: '0.5rem',
-        xl: '0.75rem',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
         full: '9999px',
       },
       animation: {

@@ -10,7 +10,10 @@ export const conceptFrontmatterSchema = z.object({
   description: z.string().min(1, 'Concept description is required'),
   // New required fields
   grade: z.number().int().min(1).max(13),
-  ages: z.array(z.number().int().min(6).max(18)),
+  ages: z.tuple([z.number().int().min(6).max(18), z.number().int().min(6).max(18)])
+    .refine(([min, max]) => min <= max, {
+      message: 'ages[0] (min) must be <= ages[1] (max)'
+    }),
   focus: z.string(),
   difficulty: z.enum(['easy', 'medium', 'hard']),
   learning_objectives: z.array(z.string()).min(1),
@@ -23,7 +26,7 @@ export const conceptFrontmatterSchema = z.object({
 export type ConceptFrontmatter = z.infer<typeof conceptFrontmatterSchema>;
 
 /**
- * Enriched concept with source tracking
+ * Concept with source tracking
  */
 export interface Concept extends ConceptFrontmatter {
   prompt: string;

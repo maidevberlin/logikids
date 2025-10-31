@@ -22,6 +22,7 @@ export const taskRequestSchema = z.object({
   age: z.number().min(6).max(18),
   grade: z.number().min(1).max(13),
   difficulty: z.enum(DIFFICULTIES),
+  language: z.string().min(2).max(5), // e.g., "en", "de"
   gender: z.enum(GENDERS).optional()
 });
 
@@ -64,10 +65,7 @@ export const logikids = {
   getSubjects: (params: SubjectsParams, signal?: AbortSignal): ApiResponse<SubjectsResponse> => {
     return api.get<SubjectsParams, SubjectsResponse>('/task/subjects', {
       params,
-      signal,
-      headers: {
-        'Accept-Language': getCurrentLanguage()
-      }
+      signal
     })
     .then(response => {
       if (!response) {
@@ -82,11 +80,8 @@ export const logikids = {
 
   getTask: (params: TaskRequest, signal?: AbortSignal): ApiResponse<Task> => {
     return api.get<TaskRequest, Task>('/task', {
-      params, 
-      signal,
-      headers: {
-        'Accept-Language': getCurrentLanguage()
-      }
+      params,
+      signal
     })
     .then(response => {
       if (!response) {
@@ -107,10 +102,7 @@ export const logikids = {
 
   getHint: (taskId: string, signal?: AbortSignal): ApiResponse<HintResponse> => {
     return api.post<void, HintResponse>(`/task/${taskId}/hint`, undefined, {
-      signal,
-      headers: {
-        'Accept-Language': getCurrentLanguage()
-      }
+      signal
     })
     .then(response => {
       if (!response) {
