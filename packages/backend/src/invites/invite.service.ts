@@ -1,43 +1,15 @@
-import { Database } from 'bun:sqlite'
-import { mkdirSync } from 'fs'
-import { dirname } from 'path'
-
-const DB_PATH = './data/invite-codes.db'
+import { pool } from '../sync/db'
 
 export interface InviteCode {
   code: string
   created_at: number
   expires_at: number
-  used_at: number | null
   note: string | null
 }
 
 export class InviteService {
-  private db: Database
-
   constructor() {
-    // Ensure data directory exists
-    const dbDir = dirname(DB_PATH)
-    try {
-      mkdirSync(dbDir, { recursive: true })
-    } catch (err) {
-      // Directory might already exist, ignore error
-    }
-
-    this.db = new Database(DB_PATH)
-    this.initDB()
-  }
-
-  private initDB(): void {
-    this.db.run(`
-      CREATE TABLE IF NOT EXISTS invite_codes (
-        code TEXT PRIMARY KEY,
-        created_at INTEGER NOT NULL,
-        expires_at INTEGER NOT NULL,
-        used_at INTEGER,
-        note TEXT
-      )
-    `)
+    // PostgreSQL pool is initialized in sync/db.ts
   }
 
   /**
@@ -46,27 +18,37 @@ export class InviteService {
   async validateAndUse(code: string): Promise<{ valid: boolean; reason?: string }> {
     const normalizedCode = code.toUpperCase().trim()
 
-    const invite = this.db
-      .query('SELECT * FROM invite_codes WHERE code = ?')
-      .get(normalizedCode) as InviteCode | null
+    const client = await pool.connect()
+    try {
+      // Check if code exists and is valid
+      const result = await client.query<InviteCode>(
+        'SELECT code, created_at, expires_at, note FROM invite_codes WHERE code = $1',
+        [normalizedCode]
+      )
 
-    if (!invite) {
-      return { valid: false, reason: 'Code not found' }
+      if (result.rows.length === 0) {
+        return { valid: false, reason: 'Code not found' }
+      }
+
+      // PostgreSQL BIGINT comes back as string, convert to number
+      const invite = {
+        ...result.rows[0],
+        created_at: Number(result.rows[0].created_at),
+        expires_at: Number(result.rows[0].expires_at)
+      }
+      const now = Date.now()
+
+      if (invite.expires_at < now) {
+        return { valid: false, reason: 'Code expired' }
+      }
+
+      // Delete code immediately after successful validation (no data trash)
+      await client.query('DELETE FROM invite_codes WHERE code = $1', [normalizedCode])
+
+      return { valid: true }
+    } finally {
+      client.release()
     }
-
-    if (invite.used_at !== null) {
-      return { valid: false, reason: 'Code already used' }
-    }
-
-    const now = Date.now()
-    if (invite.expires_at < now) {
-      return { valid: false, reason: 'Code expired' }
-    }
-
-    // Delete code immediately after successful validation (no data trash)
-    this.db.run('DELETE FROM invite_codes WHERE code = ?', [normalizedCode])
-
-    return { valid: true }
   }
 
   /**
@@ -75,27 +57,27 @@ export class InviteService {
   async check(code: string): Promise<{ valid: boolean; reason?: string }> {
     const normalizedCode = code.toUpperCase().trim()
 
-    const invite = this.db
-      .query('SELECT * FROM invite_codes WHERE code = ?')
-      .get(normalizedCode) as InviteCode | null
+    const result = await pool.query<InviteCode>(
+      'SELECT code, created_at, expires_at, note FROM invite_codes WHERE code = $1',
+      [normalizedCode]
+    )
 
-    if (!invite) {
+    if (result.rows.length === 0) {
       return { valid: false, reason: 'Code not found' }
     }
 
-    if (invite.used_at !== null) {
-      return { valid: false, reason: 'Code already used' }
+    // PostgreSQL BIGINT comes back as string, convert to number
+    const invite = {
+      ...result.rows[0],
+      created_at: Number(result.rows[0].created_at),
+      expires_at: Number(result.rows[0].expires_at)
     }
-
     const now = Date.now()
+
     if (invite.expires_at < now) {
       return { valid: false, reason: 'Code expired' }
     }
 
     return { valid: true }
-  }
-
-  close(): void {
-    this.db.close()
   }
 }

@@ -57,7 +57,9 @@
       "genderHint": "This helps us personalize content (optional)",
       "gradeMismatchWarning": "Please confirm: You entered age {{age}} and grade {{grade}}. Most {{age}}-year-olds are in grade {{expectedGrade}}. Continue anyway?",
       "creating": "Creating...",
-      "create": "Create Account"
+      "create": "Create Account",
+      "showAllGrades": "Show all grades",
+      "showRecommended": "Show recommended grades"
     }
   },
   "account": {
@@ -190,7 +192,9 @@
     "hard": "Hard"
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "continue": "Continue",
+    "back": "Back"
   },
   "profile": {
     "prompt": {

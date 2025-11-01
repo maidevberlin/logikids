@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Shield, Lock, Eye, UserX, Info } from 'lucide-react'
+import { Shield, Lock, Eye, Info } from 'lucide-react'
+import { OnboardingActions } from './OnboardingActions'
 
 export interface ParentalConsentStepProps {
   onConsent: (inviteCode: string) => void
@@ -190,35 +190,34 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
         </div>
 
-        <div className="flex justify-between items-center">
-          <div className="text-sm space-x-4">
-            <a
-              href="#"
-              className="text-primary hover:underline"
-              onClick={(e) => e.preventDefault()}
-            >
-              {t('onboarding.parentalConsent.privacyPolicy', { defaultValue: 'Privacy Policy' })}
-            </a>
-            <a
-              href="#"
-              className="text-primary hover:underline"
-              onClick={(e) => e.preventDefault()}
-            >
-              {t('onboarding.parentalConsent.terms', { defaultValue: 'Terms of Service' })}
-            </a>
-          </div>
-
-          <Button
-            onClick={handleContinue}
-            disabled={!consented || !inviteCode.trim() || isValidating}
-            size="lg"
-          >
-            {isValidating
+        <OnboardingActions
+          onContinue={handleContinue}
+          continueLabel={
+            isValidating
               ? t('onboarding.parentalConsent.validating', { defaultValue: 'Validating...' })
               : t('onboarding.parentalConsent.continue', { defaultValue: 'Continue' })
-            }
-          </Button>
-        </div>
+          }
+          continueDisabled={!consented || !inviteCode.trim() || isValidating}
+          continueIcon={!isValidating}
+          footer={
+            <div className="text-sm text-center space-x-4">
+              <a
+                href="#"
+                className="text-primary hover:underline"
+                onClick={(e) => e.preventDefault()}
+              >
+                {t('onboarding.parentalConsent.privacyPolicy', { defaultValue: 'Privacy Policy' })}
+              </a>
+              <a
+                href="#"
+                className="text-primary hover:underline"
+                onClick={(e) => e.preventDefault()}
+              >
+                {t('onboarding.parentalConsent.terms', { defaultValue: 'Terms of Service' })}
+              </a>
+            </div>
+          }
+        />
       </Card>
     </div>
   )

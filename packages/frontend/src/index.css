@@ -200,6 +200,10 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 
 /* Removed global component styles - now using shadcn/ui components with Tailwind classes */

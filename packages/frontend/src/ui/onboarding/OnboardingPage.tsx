@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/ui/common'
@@ -6,13 +6,21 @@ import { ParentalConsentStep } from './ParentalConsentStep'
 import { StudentInfoStep } from './StudentInfoStep'
 import { StudentInfo } from './types'
 import { useUserData } from '@/features/UserData'
+import { LoadingState } from '@/features/base/Loader/LoadingState'
 
 export default function OnboardingPage() {
   const navigate = useNavigate()
   const { i18n } = useTranslation()
-  const { updateSettings } = useUserData()
+  const { data, isLoading, updateSettings } = useUserData()
   const [step, setStep] = useState<'consent' | 'info'>('consent')
   const [inviteCode, setInviteCode] = useState<string | null>(null)
+
+  // Redirect to dashboard if user already has completed onboarding
+  useEffect(() => {
+    if (!isLoading && data?.settings?.name && data?.settings?.age && data?.settings?.grade) {
+      navigate('/', { replace: true })
+    }
+  }, [isLoading, data, navigate])
 
   const handleConsent = (code: string) => {
     setInviteCode(code)
@@ -50,6 +58,11 @@ export default function OnboardingPage() {
       console.error('Failed to update settings:', error)
       // TODO: Show error toast/message
     }
+  }
+
+  // Show loading state while checking if user has completed onboarding
+  if (isLoading) {
+    return <LoadingState />
   }
 
   return (

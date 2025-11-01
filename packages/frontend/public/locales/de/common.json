@@ -57,7 +57,9 @@
       "genderHint": "Das hilft uns, tolle Aufgaben für dich zu erstellen",
       "gradeMismatchWarning": "Bitte bestätigen: Du hast Alter {{age}} und Klasse {{grade}} eingegeben. Die meisten {{age}}-Jährigen sind in Klasse {{expectedGrade}}. Trotzdem fortfahren?",
       "creating": "Erstelle...",
-      "create": "Los geht's!"
+      "create": "Los geht's!",
+      "showAllGrades": "Alle Klassen anzeigen",
+      "showRecommended": "Empfohlene Klassen anzeigen"
     }
   },
   "account": {
@@ -190,7 +192,9 @@
     "hard": "Schwer"
   },
   "common": {
-    "loading": "Lädt..."
+    "loading": "Lädt...",
+    "continue": "Weiter",
+    "back": "Zurück"
   },
   "profile": {
     "prompt": {

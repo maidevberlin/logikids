@@ -9,9 +9,9 @@ const OnboardingPage = lazy(() => import('../ui/onboarding'))
 const SubjectsPage = lazy(() => import('../ui/subjects'))
 const ConceptsPage = lazy(() => import('../ui/concepts'))
 const AccountPage = lazy(() => import('../ui/account'))
+const TaskPage = lazy(() => import('../ui/tasks'))
 
 // Lazy load existing features
-const TaskPage = lazy(() => import('../features/Task/TaskPage'))
 const StatsPage = lazy(() => import('../features/Stats/StatsPage'))
 
 export const router = createHashRouter(
