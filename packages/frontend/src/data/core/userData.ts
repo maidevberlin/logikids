@@ -24,8 +24,9 @@ function cleanupLegacyStorage(): void {
 
 /**
  * Initialize user data (called once on app start)
+ * Returns null if no data exists (brand new user)
  */
-export async function initialize(): Promise<UserData> {
+export async function initialize(): Promise<UserData | null> {
   try {
     // Check if we already have data
     const existingUserId = await getUserId()
@@ -37,7 +38,21 @@ export async function initialize(): Promise<UserData> {
       return await getData()
     }
 
-    // First time: generate key and userId
+    // No data exists - return null for brand new users
+    // Data will be created later after invite code validation
+    return null
+  } catch (error) {
+    console.error('Failed to initialize user data:', error)
+    throw error
+  }
+}
+
+/**
+ * Create a new user (called after invite code validation)
+ */
+export async function createNewUser(): Promise<UserData> {
+  try {
+    // Generate key and userId
     const key = await generateKey()
     const userId = crypto.randomUUID()
 
@@ -54,22 +69,26 @@ export async function initialize(): Promise<UserData> {
     // Clean up any legacy storage
     cleanupLegacyStorage()
 
+    // Dispatch event for React reactivity
+    window.dispatchEvent(new Event('data-changed'))
+
     return defaultData
   } catch (error) {
-    console.error('Failed to initialize user data:', error)
+    console.error('Failed to create new user:', error)
     throw error
   }
 }
 
 /**
  * Get current user data (decrypted)
+ * Returns null if no data exists
  */
-export async function getData(): Promise<UserData> {
+export async function getData(): Promise<UserData | null> {
   try {
     const encrypted = localStorage.getItem(STORAGE_KEY)
     if (!encrypted) {
-      // No data exists, initialize
-      return await initialize()
+      // No data exists
+      return null
     }
 
     const key = await loadKey()
@@ -80,29 +99,23 @@ export async function getData(): Promise<UserData> {
     const data = await decrypt(key, encrypted)
     return data
   } catch (error) {
-    console.error('Failed to load user data, resetting:', error)
-
-    // Data corrupted, create fresh
-    const userId = await getUserId() || crypto.randomUUID()
-    const defaultData = createDefaultUserData(userId)
-
-    // Try to save it
-    try {
-      await setData(defaultData)
-    } catch {
-      // If save also fails, just return default
-    }
-
-    return defaultData
+    console.error('Failed to load user data:', error)
+    // Return null instead of creating new data
+    return null
   }
 }
 
 /**
  * Update user data (merges with existing)
+ * Throws error if no user data exists
  */
 export async function setData(updates: Partial<UserData>): Promise<void> {
   try {
     const current = await getData()
+    if (!current) {
+      throw new Error('Cannot update data: no user exists. Call createNewUser() first.')
+    }
+
     const merged: UserData = {
       ...current,
       ...updates,
@@ -130,6 +143,9 @@ export async function setData(updates: Partial<UserData>): Promise<void> {
  */
 export async function updateSettings(settings: Partial<UserSettings>): Promise<void> {
   const current = await getData()
+  if (!current) {
+    throw new Error('Cannot update settings: no user exists')
+  }
   await setData({
     settings: {
       ...current.settings,
@@ -143,6 +159,9 @@ export async function updateSettings(settings: Partial<UserSettings>): Promise<v
  */
 export async function updateProgress(progress: Record<string, any>): Promise<void> {
   const current = await getData()
+  if (!current) {
+    throw new Error('Cannot update progress: no user exists')
+  }
   await setData({
     progress: deepMerge(current.progress, progress)
   })

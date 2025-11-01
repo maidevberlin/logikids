@@ -198,7 +198,13 @@
       "cancel": "Abbrechen",
       "invalidBackupFormat": "Ungültiges Backup-Code-Format",
       "corruptedBackupCode": "Backup-Code scheint beschädigt oder unvollständig zu sein",
-      "invalidBackupCode": "Ungültiger Backup-Code"
+      "invalidBackupCode": "Ungültiger Backup-Code",
+      "enterCode": "Bitte gib einen Backup-Code ein",
+      "importFailed": "Import fehlgeschlagen",
+      "manualCodeDescription": "Füge deinen Backup-Code aus dem Wiederherstellungs-Kit ein",
+      "backupCode": "Backup-Code",
+      "importing": "Importiere...",
+      "import": "Importieren"
     }
   },
   "footer": {

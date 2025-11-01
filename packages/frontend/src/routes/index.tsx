@@ -5,18 +5,24 @@ import { ProtectedRoute } from './ProtectedRoute'
 
 // Lazy load UI pages
 const WelcomePage = lazy(() => import('@/app/welcome'))
+const WelcomeChoicePage = lazy(() => import('@/app/welcome-choice'))
 const OnboardingPage = lazy(() => import('@/app/onboarding'))
 const SubjectsPage = lazy(() => import('@/app/subjects'))
 const ConceptsPage = lazy(() => import('@/app/concepts'))
 const AccountPage = lazy(() => import('@/app/account'))
 const TaskPage = lazy(() => import('@/app/tasks'))
 const StatsPage = lazy(() => import('@/app/stats'))
+const PrivacyPage = lazy(() => import('@/app/legal/PrivacyPage'))
+const ImpressumPage = lazy(() => import('@/app/legal/ImpressumPage'))
 
 export const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      {/* Public route */}
+      {/* Public routes */}
+      <Route path="welcome-choice" element={<WelcomeChoicePage />} />
       <Route path="onboarding" element={<OnboardingPage />} />
+      <Route path="privacy" element={<PrivacyPage />} />
+      <Route path="impressum" element={<ImpressumPage />} />
 
       {/* All protected routes */}
       <Route element={<ProtectedRoute />}>

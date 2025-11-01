@@ -1,53 +1,24 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Card } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Shield, Lock, Eye, Info } from 'lucide-react'
 import { OnboardingActions } from './OnboardingActions'
 
 export interface ParentalConsentStepProps {
-  onConsent: (inviteCode: string) => void
+  onConsent: () => void
 }
 
 export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
   const { t } = useTranslation()
   const [consented, setConsented] = useState(false)
-  const [inviteCode, setInviteCode] = useState('')
-  const [isValidating, setIsValidating] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
-  const handleContinue = async () => {
-    if (!consented || !inviteCode.trim()) {
+  const handleContinue = () => {
+    if (!consented) {
       return
     }
-
-    setIsValidating(true)
-    setError(null)
-
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5175'
-      // Use /check endpoint to validate WITHOUT deleting the code
-      const response = await fetch(`${apiUrl}/api/invite/check`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: inviteCode.trim() })
-      })
-
-      const result = await response.json()
-
-      if (result.valid) {
-        // Pass the code to parent - it will be deleted after account creation
-        onConsent(inviteCode.trim())
-      } else {
-        setError(result.reason || 'Invalid invite code')
-      }
-    } catch (err) {
-      setError('Failed to validate invite code. Please try again.')
-      console.error('Invite validation error:', err)
-    } finally {
-      setIsValidating(false)
-    }
+    onConsent()
   }
 
   return (
@@ -144,33 +115,6 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
           </div>
         </div>
 
-        <div className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
-          <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-            <Shield className="w-5 h-5 text-blue-600" />
-            {t('onboarding.parentalConsent.inviteTitle', { defaultValue: 'Invite Code Required' })}
-          </h3>
-          <p className="text-sm text-gray-700 mb-4">
-            {t('onboarding.parentalConsent.inviteExplained', {
-              defaultValue: 'LogiKids is currently in closed beta. Please enter the invite code you received to continue.'
-            })}
-          </p>
-          <Input
-            placeholder={t('onboarding.parentalConsent.invitePlaceholder', { defaultValue: 'Enter invite code (e.g., ABCD-1234)' })}
-            value={inviteCode}
-            onChange={(e) => {
-              setInviteCode(e.target.value.toUpperCase())
-              setError(null)
-            }}
-            className="font-mono text-center tracking-wider"
-            maxLength={9}
-          />
-          {error && (
-            <p className="text-sm text-red-600 mt-2">
-              ❌ {error}
-            </p>
-          )}
-        </div>
-
         <div className="bg-primary/10 rounded-xl p-4 mb-6 space-y-3">
           <div className="flex items-start space-x-2">
             <Checkbox
@@ -192,29 +136,23 @@ export function ParentalConsentStep({ onConsent }: ParentalConsentStepProps) {
 
         <OnboardingActions
           onContinue={handleContinue}
-          continueLabel={
-            isValidating
-              ? t('onboarding.parentalConsent.validating', { defaultValue: 'Validating...' })
-              : t('onboarding.parentalConsent.continue', { defaultValue: 'Continue' })
-          }
-          continueDisabled={!consented || !inviteCode.trim() || isValidating}
-          continueIcon={!isValidating}
+          continueLabel={t('onboarding.parentalConsent.continue', { defaultValue: 'Continue' })}
+          continueDisabled={!consented}
+          continueIcon={true}
           footer={
             <div className="text-sm text-center space-x-4">
-              <a
-                href="#"
+              <Link
+                to="/privacy"
                 className="text-primary hover:underline"
-                onClick={(e) => e.preventDefault()}
               >
                 {t('onboarding.parentalConsent.privacyPolicy', { defaultValue: 'Privacy Policy' })}
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/impressum"
                 className="text-primary hover:underline"
-                onClick={(e) => e.preventDefault()}
               >
-                {t('onboarding.parentalConsent.terms', { defaultValue: 'Terms of Service' })}
-              </a>
+                {t('footer.impressum', { defaultValue: 'Legal Notice' })}
+              </Link>
             </div>
           }
         />

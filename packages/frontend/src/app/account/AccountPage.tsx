@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PageLayout, NumberInput, GenderSelector, GradeSelector, LanguageSelector } from '@/app/common'
 import { useUserData } from '@/app/account'
+import { RecoveryKit } from './RecoveryKit'
+import { QRDisplay } from './QRDisplay'
+import { ExportData } from './ExportData'
 import { Card } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
-import { User, Download, Trash2 } from 'lucide-react'
+import { User, Trash2, Database } from 'lucide-react'
 
 export default function AccountPage() {
   const { t, i18n } = useTranslation('profile')
-  const { data, updateSettings, exportData } = useUserData()
+  const { data, updateSettings } = useUserData()
 
   const [name, setName] = useState('')
   const [age, setAge] = useState(10)
@@ -20,6 +23,7 @@ export default function AccountPage() {
   const [syncEnabled, setSyncEnabled] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState('')
+  const [isEditingName, setIsEditingName] = useState(false)
 
   // Format last sync timestamp
   const formatLastSync = (timestamp?: number) => {
@@ -87,20 +91,6 @@ export default function AccountPage() {
     }
   }
 
-  const handleExport = async () => {
-    try {
-      const json = await exportData()
-      const blob = new Blob([json], { type: 'application/json' })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `logikids-data-${Date.now()}.json`
-      a.click()
-      URL.revokeObjectURL(url)
-    } catch (error) {
-      console.error('Failed to export data:', error)
-    }
-  }
 
   const handleSyncToggle = async (checked: boolean) => {
     setSyncEnabled(checked)
@@ -125,6 +115,9 @@ export default function AccountPage() {
   return (
     <PageLayout
       showBack
+      showHome
+      showStats
+      showAccount
     >
       <div className="max-w-2xl mx-auto space-y-6">
         <div>
@@ -153,14 +146,29 @@ export default function AccountPage() {
               <Label className="block text-xl font-semibold text-gray-700 text-center">
                 {t('settings.nameLabel', { defaultValue: "What's your name?" })}
               </Label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
-                required
-                className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-gray-400 transition-colors"
-              />
+              {isEditingName ? (
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onBlur={() => setIsEditingName(false)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      setIsEditingName(false)
+                    }
+                  }}
+                  placeholder={t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
+                  autoFocus
+                  className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-gray-400 transition-colors"
+                />
+              ) : (
+                <div
+                  onClick={() => setIsEditingName(true)}
+                  className="w-full bg-transparent text-4xl text-center py-4 cursor-pointer transition-colors hover:opacity-70"
+                >
+                  {name || <span className="text-gray-400">{t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}</span>}
+                </div>
+              )}
             </div>
 
             {/* Divider */}
@@ -243,9 +251,14 @@ export default function AccountPage() {
 
         {/* Data Management */}
         <Card className="p-8 bg-white shadow-md rounded-2xl">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {t('account.dataManagement', { defaultValue: 'Data Management' })}
-          </h2>
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <Database className="w-6 h-6 text-primary" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              {t('account.dataManagement', { defaultValue: 'Data Management' })}
+            </h2>
+          </div>
 
           <div className="space-y-4">
             <p className="text-sm text-gray-600 mb-4">
@@ -253,6 +266,11 @@ export default function AccountPage() {
                 defaultValue: 'Your data is stored securely on your device. You can export or delete it at any time.'
               })}
             </p>
+
+            {/* Export Data - Always available */}
+            <ExportData />
+
+            <div className="border-t border-gray-200 pt-4" />
 
             {/* Cloud Backup Toggle */}
             <div className="flex items-center justify-between p-4 border border-gray-200 rounded-xl">
@@ -276,14 +294,18 @@ export default function AccountPage() {
               />
             </div>
 
-            <Button
-              onClick={handleExport}
-              variant="outline"
-              className="w-full justify-start"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              {t('account.exportData', { defaultValue: 'Export My Data' })}
-            </Button>
+            {/* Recovery Kit & QR Code - Only show when cloud backup is enabled */}
+            {syncEnabled && (
+              <>
+                <RecoveryKit />
+
+                <div className="border-t border-gray-200 pt-4">
+                  <QRDisplay />
+                </div>
+              </>
+            )}
+
+            <div className="border-t border-gray-200 pt-4" />
 
             <Button
               onClick={handleDelete}

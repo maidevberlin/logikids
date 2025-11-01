@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Header } from './Header'
+import { Footer } from './Footer'
 import { cn } from '@/lib/utils'
 
 export interface PageLayoutProps {
@@ -10,6 +11,8 @@ export interface PageLayoutProps {
   showBack?: boolean
   /** Show home button in header */
   showHome?: boolean
+  /** Show stats icon in header */
+  showStats?: boolean
   /** Show account icon in header */
   showAccount?: boolean
   /** Custom content to display in the center of the header */
@@ -25,18 +28,20 @@ export function PageLayout({
   showHeader = true,
   showBack = false,
   showHome = false,
+  showStats = false,
   showAccount = false,
   headerCenter,
   headerRight,
   className
 }: PageLayoutProps) {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen flex flex-col">
       {/* Unified Header */}
       {showHeader && (
         <Header
           showBack={showBack}
           showHome={showHome}
+          showStats={showStats}
           showAccount={showAccount}
           centerContent={headerCenter}
           rightContent={headerRight}
@@ -44,11 +49,14 @@ export function PageLayout({
       )}
 
       {/* Page Content */}
-      <div className="p-8">
+      <div className="p-8 flex-1">
         <div className={cn('max-w-6xl mx-auto', className)}>
           {children}
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }

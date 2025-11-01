@@ -8,7 +8,11 @@
     "saveButton": "Änderungen speichern",
     "saving": "Speichere...",
     "saved": "Änderungen erfolgreich gespeichert!",
-    "exportData": "Meine Daten exportieren",
+    "exportData": {
+      "downloadButton": "Daten exportieren (JSON)",
+      "exporting": "Exportiere...",
+      "description": "Lade alle deine Daten als JSON-Datei herunter. Du kannst diese für Backups oder zum Übertragen deiner Daten verwenden."
+    },
     "deleteData": "Alle Daten löschen",
     "deleteConfirm": "Bist du sicher, dass du alle deine Daten löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
     "backToHome": "Zurück zur Startseite",

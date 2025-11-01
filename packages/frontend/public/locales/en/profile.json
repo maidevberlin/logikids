@@ -8,7 +8,11 @@
     "saveButton": "Save Changes",
     "saving": "Saving...",
     "saved": "Changes saved successfully!",
-    "exportData": "Export My Data",
+    "exportData": {
+      "downloadButton": "Export Data (JSON)",
+      "exporting": "Exporting...",
+      "description": "Download all your data as a JSON file. You can use this for backups or to transfer your data."
+    },
     "deleteData": "Delete All Data",
     "deleteConfirm": "Are you sure you want to delete all your data? This cannot be undone.",
     "backToHome": "Back to Home",

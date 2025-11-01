@@ -43,6 +43,15 @@ export async function importQRData(payload: QRPayload): Promise<void> {
   await storeKey(key)
   await storeUserId(payload.userId)
 
-  // Sync data from server
-  await sync()
+  // Sync data from server - this will download encrypted data and restore it locally
+  try {
+    await sync()
+  } catch (error) {
+    console.error('Sync after import failed:', error)
+    // If sync fails, at least we have the key/userId stored
+    // User can try syncing again later
+  }
+
+  // Trigger data refresh event so UI updates
+  window.dispatchEvent(new Event('data-changed'))
 }

@@ -21,7 +21,7 @@ export default function StatsPage() {
 
   if (totalTasks === 0) {
     return (
-      <PageLayout showBack showHome showAccount>
+      <PageLayout showBack showHome showStats showAccount>
         <div className="max-w-4xl mx-auto">
           <Card className="p-12 bg-white shadow-md rounded-2xl text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -46,7 +46,7 @@ export default function StatsPage() {
   }
 
   return (
-    <PageLayout showBack showHome showAccount>
+    <PageLayout showBack showHome showStats showAccount>
       <div className="max-w-4xl mx-auto space-y-6">
         <Card className="p-12 bg-white shadow-md rounded-2xl">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">

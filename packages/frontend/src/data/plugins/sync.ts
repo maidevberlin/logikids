@@ -122,6 +122,23 @@ export async function sync(): Promise<void> {
     const local = await getData()
     const remote = await download()
 
+    // If no local data (e.g., fresh import), just restore from remote
+    if (!local) {
+      if (remote) {
+        // Import case: we have remote data but no local data yet
+        // Write directly to localStorage since setData requires existing data
+        const key = await loadKey()
+        if (!key) throw new Error('Encryption key not found')
+
+        const encrypted = await encrypt(key, { ...remote, lastSyncTimestamp: Date.now() })
+        localStorage.setItem('logikids_data', encrypted)
+
+        // Dispatch event for React reactivity
+        window.dispatchEvent(new Event('data-changed'))
+      }
+      return
+    }
+
     if (!remote) {
       // No remote data, upload local
       await upload(local)

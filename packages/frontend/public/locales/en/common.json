@@ -198,7 +198,13 @@
       "cancel": "Cancel",
       "invalidBackupFormat": "Invalid backup code format",
       "corruptedBackupCode": "Backup code appears to be corrupted or incomplete",
-      "invalidBackupCode": "Invalid backup code"
+      "invalidBackupCode": "Invalid backup code",
+      "enterCode": "Please enter a backup code",
+      "importFailed": "Import failed",
+      "manualCodeDescription": "Paste your backup code from the recovery kit",
+      "backupCode": "Backup Code",
+      "importing": "Importing...",
+      "import": "Import"
     }
   },
   "footer": {
