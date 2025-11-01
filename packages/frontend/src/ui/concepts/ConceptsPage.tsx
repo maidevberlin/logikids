@@ -60,7 +60,7 @@ export default function ConceptsPage() {
 
   if (!subjectId) {
     return (
-      <PageLayout>
+      <PageLayout showBack showAccount>
         <div className="text-center py-12">
           <p className="text-red-600">Invalid subject</p>
         </div>
@@ -78,7 +78,8 @@ export default function ConceptsPage() {
 
   return (
     <PageLayout
-      showHomeButton
+      showBack
+      showAccount
     >
       <div className="max-w-7xl mx-auto">
         {isLoading ? (

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useRandomGreeting } from './greetings'
 
 export interface GreetingHeaderProps {
@@ -5,15 +6,16 @@ export interface GreetingHeaderProps {
 }
 
 export function GreetingHeader({ name }: GreetingHeaderProps) {
+  const { t } = useTranslation()
   const greeting = useRandomGreeting()
 
   return (
     <div className="text-center mb-12">
       <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-        {greeting.split(' ')[0]} {greeting.split(' ')[1]}, {name}!
+        {greeting}, {name}!
       </h1>
       <p className="text-xl text-gray-600">
-        What would you like to do today?
+        {t('welcome.todayPrompt')}
       </p>
     </div>
   )

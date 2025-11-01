@@ -1,62 +1,53 @@
 import { ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, Home } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Breadcrumb, BreadcrumbItem } from './Breadcrumb'
+import { Header } from './Header'
 import { cn } from '@/lib/utils'
 
 export interface PageLayoutProps {
   children: ReactNode
-  breadcrumb?: BreadcrumbItem[]
+  /** Show the header (default: true) */
+  showHeader?: boolean
+  /** Show back button in header */
   showBack?: boolean
-  showHomeButton?: boolean
+  /** Show home button in header */
+  showHome?: boolean
+  /** Show account icon in header */
+  showAccount?: boolean
+  /** Custom content to display in the center of the header */
+  headerCenter?: ReactNode
+  /** Additional custom actions on the right of the header */
+  headerRight?: ReactNode
+  /** Custom className for the content container */
   className?: string
 }
 
 export function PageLayout({
   children,
-  breadcrumb,
+  showHeader = true,
   showBack = false,
-  showHomeButton = false,
+  showHome = false,
+  showAccount = false,
+  headerCenter,
+  headerRight,
   className
 }: PageLayoutProps) {
-  const navigate = useNavigate()
-
   return (
-    <div className="bg-gray-50 min-h-screen p-8">
-      <div className={cn('max-w-6xl mx-auto', className)}>
-        {/* Kid-friendly big home button */}
-        {showHomeButton && (
-          <div className="mb-8 flex justify-center">
-            <Button
-              onClick={() => navigate('/')}
-              size="lg"
-              className="h-16 px-8 text-lg font-bold bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-200 rounded-2xl"
-            >
-              <Home className="w-6 h-6 mr-2" />
-              Home
-            </Button>
-          </div>
-        )}
+    <div className="bg-gray-50 min-h-screen">
+      {/* Unified Header */}
+      {showHeader && (
+        <Header
+          showBack={showBack}
+          showHome={showHome}
+          showAccount={showAccount}
+          centerContent={headerCenter}
+          rightContent={headerRight}
+        />
+      )}
 
-        {/* Traditional breadcrumbs and back button for non-kid pages */}
-        {(breadcrumb || showBack) && !showHomeButton && (
-          <div className="mb-8">
-            {showBack && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate(-1)}
-                className="mb-2 rounded-xl"
-              >
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                Back
-              </Button>
-            )}
-            {breadcrumb && <Breadcrumb items={breadcrumb} />}
-          </div>
-        )}
-        {children}
+      {/* Page Content */}
+      <div className="p-8">
+        <div className={cn('max-w-6xl mx-auto', className)}>
+          {children}
+        </div>
       </div>
     </div>
   )

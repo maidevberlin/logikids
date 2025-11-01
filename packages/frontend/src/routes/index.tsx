@@ -3,16 +3,14 @@ import { createHashRouter, createRoutesFromElements, Route } from 'react-router-
 import App from '../App'
 import { ProtectedRoute } from './ProtectedRoute'
 
-// Lazy load new UI pages
+// Lazy load UI pages
 const WelcomePage = lazy(() => import('../ui/welcome'))
 const OnboardingPage = lazy(() => import('../ui/onboarding'))
 const SubjectsPage = lazy(() => import('../ui/subjects'))
 const ConceptsPage = lazy(() => import('../ui/concepts'))
 const AccountPage = lazy(() => import('../ui/account'))
 const TaskPage = lazy(() => import('../ui/tasks'))
-
-// Lazy load existing features
-const StatsPage = lazy(() => import('../features/Stats/StatsPage'))
+const StatsPage = lazy(() => import('../ui/stats'))
 
 export const router = createHashRouter(
   createRoutesFromElements(

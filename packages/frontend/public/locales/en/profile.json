@@ -1,0 +1,33 @@
+{
+  "account": {
+    "title": "My Account",
+    "subtitle": "Manage your profile and preferences",
+    "profileSettings": "Profile Settings",
+    "dataManagement": "Data Management",
+    "dataInfo": "Your data is stored securely on your device. You can export or delete it at any time.",
+    "saveButton": "Save Changes",
+    "saving": "Saving...",
+    "saved": "Changes saved successfully!",
+    "exportData": "Export My Data",
+    "deleteData": "Delete All Data",
+    "deleteConfirm": "Are you sure you want to delete all your data? This cannot be undone.",
+    "backToHome": "Back to Home"
+  },
+  "settings": {
+    "title": "Settings",
+    "nameLabel": "What's your name?",
+    "namePlaceholder": "Type your name here...",
+    "ageLabel": "How old are you?",
+    "gradeLabel": "What grade are you in?",
+    "languageLabel": "Choose your language",
+    "gender": {
+      "label": "Gender (optional)",
+      "options": {
+        "male": "Male",
+        "female": "Female",
+        "non-binary": "Non-binary",
+        "prefer-not-to-say": "Prefer not to say"
+      }
+    }
+  }
+}

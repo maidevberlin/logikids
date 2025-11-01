@@ -1,22 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { PageLayout } from '@/ui/common'
+import { PageLayout, NumberInput, GenderSelector, GradeSelector, LanguageSelector } from '@/ui/common'
 import { useUserData } from '@/features/UserData'
 import { Card } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { User, Languages, Download, Trash2 } from 'lucide-react'
+import { User, Download, Trash2 } from 'lucide-react'
 
 export default function AccountPage() {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation('profile')
   const { data, updateSettings, exportData } = useUserData()
 
   const [name, setName] = useState('')
@@ -93,9 +85,6 @@ export default function AccountPage() {
 
   return (
     <PageLayout
-      breadcrumb={[
-        { label: t('account.title', { defaultValue: 'My Account' }), path: '/account' }
-      ]}
       showBack
     >
       <div className="max-w-2xl mx-auto space-y-6">
@@ -119,108 +108,79 @@ export default function AccountPage() {
             </h2>
           </div>
 
-          <form onSubmit={handleSave} className="space-y-4">
-            <div>
-              <Label htmlFor="name">
+          <form onSubmit={handleSave} className="space-y-8">
+            {/* Name Section */}
+            <div className="space-y-4">
+              <Label className="block text-xl font-semibold text-gray-700 text-center">
                 {t('settings.nameLabel', { defaultValue: "What's your name?" })}
               </Label>
-              <Input
-                id="name"
+              <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
                 required
-                className="mt-1"
+                className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-gray-400 transition-colors"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="age">
-                  {t('settings.ageLabel', { defaultValue: 'How old are you?' })}
-                </Label>
-                <Input
-                  id="age"
-                  type="number"
-                  value={age}
-                  onChange={(e) => setAge(parseInt(e.target.value) || 10)}
-                  min="6"
-                  max="18"
-                  required
-                  className="mt-1"
-                />
-              </div>
+            {/* Divider */}
+            <div className="border-t border-gray-200" />
 
-              <div>
-                <Label htmlFor="grade">
-                  {t('settings.gradeLabel', { defaultValue: 'What grade are you in?' })}
-                </Label>
-                <Select
-                  value={grade.toString()}
-                  onValueChange={(value) => setGrade(parseInt(value))}
-                >
-                  <SelectTrigger className="mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((g) => (
-                      <SelectItem key={g} value={g.toString()}>
-                        {t('onboarding.studentInfo.gradeValue', { grade: g, defaultValue: `Grade ${g}` })}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+            {/* Age Section */}
+            <div className="space-y-4">
+              <Label className="block text-xl font-semibold text-gray-700 text-center">
+                {t('settings.ageLabel', { defaultValue: 'How old are you?' })}
+              </Label>
+              <NumberInput
+                value={age}
+                onChange={setAge}
+                min={6}
+                max={18}
+              />
             </div>
 
-            <div>
-              <Label htmlFor="gender">
+            {/* Divider */}
+            <div className="border-t border-gray-200" />
+
+            {/* Grade Section */}
+            <div className="space-y-4">
+              <Label className="block text-xl font-semibold text-gray-700 text-center">
+                {t('settings.gradeLabel', { defaultValue: 'What grade are you in?' })}
+              </Label>
+              <GradeSelector
+                value={grade}
+                onChange={setGrade}
+                age={age}
+              />
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-gray-200" />
+
+            {/* Gender Section */}
+            <div className="space-y-4">
+              <Label className="block text-xl font-semibold text-gray-700 text-center">
                 {t('settings.gender.label', { defaultValue: 'Gender (optional)' })}
               </Label>
-              <Select
+              <GenderSelector
                 value={gender}
-                onValueChange={(value) => setGender(value)}
-              >
-                <SelectTrigger className="mt-1">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="male">
-                    {t('settings.gender.options.male', { defaultValue: 'Male' })}
-                  </SelectItem>
-                  <SelectItem value="female">
-                    {t('settings.gender.options.female', { defaultValue: 'Female' })}
-                  </SelectItem>
-                  <SelectItem value="non-binary">
-                    {t('settings.gender.options.non-binary', { defaultValue: 'Non-binary' })}
-                  </SelectItem>
-                  <SelectItem value="prefer-not-to-say">
-                    {t('settings.gender.options.prefer-not-to-say', { defaultValue: 'Prefer not to say' })}
-                  </SelectItem>
-                </SelectContent>
-              </Select>
+                onChange={setGender}
+              />
             </div>
 
-            <div>
-              <Label htmlFor="language">
-                <div className="flex items-center space-x-2">
-                  <Languages className="w-4 h-4" />
-                  <span>{t('settings.languageLabel', { defaultValue: 'Choose your language' })}</span>
-                </div>
+            {/* Divider */}
+            <div className="border-t border-gray-200" />
+
+            {/* Language Section */}
+            <div className="space-y-4">
+              <Label className="block text-xl font-semibold text-gray-700 text-center">
+                {t('settings.languageLabel', { defaultValue: 'Choose your language' })}
               </Label>
-              <Select
+              <LanguageSelector
                 value={language}
-                onValueChange={(value) => setLanguage(value)}
-              >
-                <SelectTrigger className="mt-1">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="de">Deutsch</SelectItem>
-                </SelectContent>
-              </Select>
+                onChange={setLanguage}
+              />
             </div>
 
             {saveMessage && (

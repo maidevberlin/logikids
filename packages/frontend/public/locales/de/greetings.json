@@ -1,0 +1,58 @@
+{
+  "morning": [
+    "Guten Morgen",
+    "Hey",
+    "Schön, dich zu sehen",
+    "Bereit für den Tag",
+    "Lass uns heute was Tolles schaffen",
+    "Willkommen zurück",
+    "Zeit für was Cooles",
+    "Du schaffst das",
+    "Auf geht's",
+    "Bereit fürs Abenteuer",
+    "Schön, dass du da bist",
+    "Los geht's"
+  ],
+  "afternoon": [
+    "Hey",
+    "Guten Tag",
+    "Willkommen zurück",
+    "Schön, dich zu sehen",
+    "Weiter geht's",
+    "Bereit für mehr",
+    "Du machst das super",
+    "Zeit für was Spannendes",
+    "Lass uns das zusammen schaffen",
+    "Perfektes Timing",
+    "Bereit zum Lernen",
+    "Tauchen wir ein"
+  ],
+  "evening": [
+    "Guten Abend",
+    "Hey",
+    "Immer noch dabei",
+    "Willkommen zurück",
+    "Tolle Ausdauer",
+    "Weiter geht's",
+    "Du bist heute echt gut drauf",
+    "Bereit für mehr",
+    "Zeit dich herauszufordern",
+    "Sieht gut aus",
+    "Lass uns weitermachen",
+    "Beeindruckende Leistung"
+  ],
+  "night": [
+    "Hey Nachteule",
+    "Immer noch hier",
+    "Beeindruckende Ausdauer",
+    "Willkommen zurück",
+    "Du bist unaufhaltbar",
+    "Spätlerner",
+    "Gut fokussiert",
+    "Lass uns stark abschließen",
+    "Noch eine Runde",
+    "Du hast Power",
+    "Bereit zum Denken",
+    "Los geht's"
+  ]
+}

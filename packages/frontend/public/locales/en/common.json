@@ -4,6 +4,7 @@
     "personalizedTitle": "Welcome back, {{name}}!",
     "subtitle": "Start your journey into the exciting world of mathematics and logical thinking!",
     "personalizedSubtitle": "Ready to continue your learning adventure?",
+    "todayPrompt": "What would you like to do today?",
     "startButton": "Start Learning",
     "setupAccount": "Setup Your Account",
     "navigation": {
@@ -62,32 +63,6 @@
       "showRecommended": "Show recommended grades"
     }
   },
-  "account": {
-    "title": "My Account",
-    "subtitle": "Manage your profile and preferences",
-    "profileSettings": "Profile Settings",
-    "dataManagement": "Data Management",
-    "dataInfo": "Your data is stored securely on your device. You can export or delete it at any time.",
-    "saveButton": "Save Changes",
-    "saving": "Saving...",
-    "saved": "Changes saved successfully!",
-    "exportData": "Export My Data",
-    "deleteData": "Delete All Data",
-    "deleteConfirm": "Are you sure you want to delete all your data? This cannot be undone.",
-    "backToHome": "Back to Home"
-  },
-  "stats": {
-    "title": "Statistics",
-    "greeting": "Hi {{name}}, here are your learning statistics!",
-    "noTasksYet": "You haven't completed any tasks yet. Start solving tasks to see your progress!",
-    "totalTasks": "Total Tasks",
-    "successRate": "Success Rate",
-    "averageHints": "Avg. Hints",
-    "bySubject": "Progress by Subject",
-    "tasks": "Tasks",
-    "success": "Success",
-    "hints": "Hints"
-  },
   "task": {
     "title": "Task",
     "difficulty": "Difficulty",
@@ -104,24 +79,6 @@
   "feedback": {
     "correct": "Correct!",
     "incorrect": "Not quite right. Try again!"
-  },
-  "settings": {
-    "title": "Settings",
-    "nameLabel": "What's your name?",
-    "namePlaceholder": "Type your name here...",
-    "ageLabel": "How old are you?",
-    "gradeLabel": "What grade are you in?",
-    "languageLabel": "Choose your language",
-    "gender": {
-      "label": "Gender (optional)",
-      "notSpecified": "Not specified",
-      "options": {
-        "male": "Male",
-        "female": "Female",
-        "non-binary": "Non-binary",
-        "prefer-not-to-say": "Prefer not to say"
-      }
-    }
   },
   "error": {
     "tryAgain": "Try Again",
@@ -195,86 +152,5 @@
     "loading": "Loading...",
     "continue": "Continue",
     "back": "Back"
-  },
-  "profile": {
-    "prompt": {
-      "title": "Help us personalize your experience!",
-      "description": "Tell us a bit about yourself so we can create tasks that are just right for you.",
-      "age": {
-        "label": "How old are you?",
-        "placeholder": "Enter your age",
-        "hint": "Ages 8-16"
-      },
-      "gender": {
-        "label": "How do you identify? (optional)",
-        "hint": "This helps us create more personalized content for you.",
-        "options": {
-          "male": "Male",
-          "female": "Female",
-          "non-binary": "Non-binary",
-          "prefer-not-to-say": "Prefer not to say"
-        }
-      },
-      "skip": "Skip for now",
-      "save": "Let's Go!"
-    }
-  },
-  "greetings": {
-    "morning": [
-      "Good morning",
-      "Rise and shine",
-      "Ready to learn?",
-      "Morning, learner",
-      "Start your day bright",
-      "Good morning, thinker",
-      "Ready for today's challenges?",
-      "A new day to learn",
-      "Morning! Let's begin",
-      "Time to wake up your brain",
-      "Fresh start, fresh mind",
-      "Good morning! What will you discover today?"
-    ],
-    "afternoon": [
-      "Good afternoon",
-      "Time to learn",
-      "Let's solve puzzles",
-      "Ready for challenges?",
-      "Afternoon adventure",
-      "Keep up the great work",
-      "Let's think together",
-      "Afternoon brain time",
-      "Ready to explore?",
-      "Time for some thinking",
-      "Let's challenge ourselves",
-      "Good afternoon! Ready to grow?"
-    ],
-    "evening": [
-      "Good evening",
-      "Evening learner",
-      "Ready for challenges?",
-      "Let's think",
-      "Evening brain time",
-      "Time to reflect and learn",
-      "Evening exploration",
-      "Ready for tonight's puzzles?",
-      "Good evening, thinker",
-      "Let's finish strong",
-      "Evening learning session",
-      "Ready to wind down with learning?"
-    ],
-    "night": [
-      "Good night",
-      "Night owl",
-      "Still learning?",
-      "Midnight thinker",
-      "Night study session",
-      "Late night learning",
-      "Burning the midnight oil",
-      "Good night, scholar",
-      "Ready for a night challenge?",
-      "Night time, brain time",
-      "Late learner",
-      "One more puzzle before bed?"
-    ]
   }
 } 

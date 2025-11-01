@@ -51,7 +51,7 @@ i18n
     debug: import.meta.env.DEV,
     // Namespace
     defaultNS: 'common',
-    ns: ['common'],
+    ns: ['common', 'greetings', 'profile', 'stats'],
     // Backend configuration for lazy loading
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json?h=' + CACHE_BREAKER,

@@ -12,11 +12,11 @@ export function getTimeOfDay(): TimeOfDay {
 }
 
 export function useRandomGreeting(timeOfDay?: TimeOfDay): string {
-  const { t } = useTranslation()
+  const { t } = useTranslation('greetings')
   const time = timeOfDay || getTimeOfDay()
 
   // Get the array of greetings for this time period
-  const greetings = t(`greetings.${time}`, { returnObjects: true }) as string[]
+  const greetings = t(time, { returnObjects: true }) as string[]
 
   // Return random greeting
   return greetings[Math.floor(Math.random() * greetings.length)]

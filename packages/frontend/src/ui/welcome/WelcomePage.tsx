@@ -11,7 +11,7 @@ export default function WelcomePage() {
   // No need for additional checks or redirects here
 
   return (
-    <PageLayout>
+    <PageLayout showHeader={false}>
       <div className="min-h-screen flex flex-col items-center justify-center py-12">
         {/* Logo */}
         <div className="mb-12">

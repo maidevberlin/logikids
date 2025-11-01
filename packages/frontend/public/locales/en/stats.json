@@ -1,0 +1,12 @@
+{
+  "title": "Statistics",
+  "greeting": "Hi {{name}}, here are your learning statistics!",
+  "noTasksYet": "You haven't completed any tasks yet. Start solving tasks to see your progress!",
+  "totalTasks": "Total Tasks",
+  "successRate": "Success Rate",
+  "averageHints": "Avg. Hints",
+  "bySubject": "Progress by Subject",
+  "tasks": "Tasks",
+  "success": "Success",
+  "hints": "Hints"
+}

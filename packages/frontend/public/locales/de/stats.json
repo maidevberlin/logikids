@@ -1,0 +1,12 @@
+{
+  "title": "Statistiken",
+  "greeting": "Hallo {{name}}, hier sind deine Lernstatistiken!",
+  "noTasksYet": "Du hast noch keine Aufgaben gelöst. Beginne mit dem Lösen von Aufgaben, um deinen Fortschritt zu sehen!",
+  "totalTasks": "Aufgaben Gesamt",
+  "successRate": "Erfolgsquote",
+  "averageHints": "Ø Hinweise",
+  "bySubject": "Fortschritt nach Fach",
+  "tasks": "Aufgaben",
+  "success": "Erfolg",
+  "hints": "Hinweise"
+}

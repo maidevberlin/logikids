@@ -1,3 +1,7 @@
 export { Breadcrumb, type BreadcrumbProps, type BreadcrumbItem } from './Breadcrumb'
 export { PageLayout, type PageLayoutProps } from './PageLayout'
+export { Header } from './Header'
 export { NumberInput } from './NumberInput'
+export { GenderSelector } from './GenderSelector'
+export { GradeSelector } from './GradeSelector'
+export { LanguageSelector } from './LanguageSelector'

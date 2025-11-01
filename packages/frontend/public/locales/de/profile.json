@@ -1,0 +1,33 @@
+{
+  "account": {
+    "title": "Mein Konto",
+    "subtitle": "Verwalte dein Profil und Einstellungen",
+    "profileSettings": "Profil-Einstellungen",
+    "dataManagement": "Datenverwaltung",
+    "dataInfo": "Deine Daten werden sicher auf deinem Gerät gespeichert. Du kannst sie jederzeit exportieren oder löschen.",
+    "saveButton": "Änderungen speichern",
+    "saving": "Speichere...",
+    "saved": "Änderungen erfolgreich gespeichert!",
+    "exportData": "Meine Daten exportieren",
+    "deleteData": "Alle Daten löschen",
+    "deleteConfirm": "Bist du sicher, dass du alle deine Daten löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "nameLabel": "Wie heißt du?",
+    "namePlaceholder": "Gib deinen Namen ein...",
+    "ageLabel": "Wie alt bist du?",
+    "gradeLabel": "In welcher Klasse bist du?",
+    "languageLabel": "Wähle deine Sprache",
+    "gender": {
+      "label": "Geschlecht (optional)",
+      "options": {
+        "male": "Männlich",
+        "female": "Weiblich",
+        "non-binary": "Divers",
+        "prefer-not-to-say": "Geheim"
+      }
+    }
+  }
+}

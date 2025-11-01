@@ -6,6 +6,7 @@ import { useProgress } from '@/features/Stats/useProgress'
 import { getCurrentLanguage } from '@/i18n/config'
 import { TaskRequest } from '@/api/logikids'
 import { Difficulty } from '@/features/Task/types'
+import { PageLayout } from '@/ui/common'
 import { TaskPageHeader } from './TaskPageHeader'
 import { TaskCard } from './TaskCard'
 
@@ -152,10 +153,10 @@ export default function TaskPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <>
       {/* Background pattern */}
       <div
-        className="fixed inset-0 opacity-10 pointer-events-none"
+        className="fixed inset-0 opacity-10 pointer-events-none z-0"
         style={{
           backgroundImage: `url(${
             backgrounds[taskParams.subject as keyof typeof backgrounds]
@@ -165,10 +166,10 @@ export default function TaskPage() {
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 p-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Header with dropdowns */}
+      <PageLayout
+        showBack
+        showAccount
+        headerCenter={
           <TaskPageHeader
             subject={taskParams.subject}
             concept={taskParams.concept}
@@ -177,7 +178,9 @@ export default function TaskPage() {
             onConceptChange={handleConceptChange}
             onDifficultyChange={handleDifficultyChange}
           />
-
+        }
+      >
+        <div className="max-w-4xl mx-auto relative z-10">
           {/* Task Card */}
           <TaskCard
             task={task ?? null}
@@ -196,7 +199,7 @@ export default function TaskPage() {
             onHintUsed={handleHintUsed}
           />
         </div>
-      </div>
-    </div>
+      </PageLayout>
+    </>
   )
 }

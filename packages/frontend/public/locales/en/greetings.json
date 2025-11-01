@@ -1,0 +1,58 @@
+{
+  "morning": [
+    "Good morning",
+    "Hey there",
+    "Great to see you",
+    "Ready to start the day",
+    "Let's make today amazing",
+    "Welcome back",
+    "Time to learn something cool",
+    "You've got this",
+    "Let's do this",
+    "Ready for an adventure",
+    "Nice to see you again",
+    "Let's get started"
+  ],
+  "afternoon": [
+    "Hey",
+    "Good afternoon",
+    "Welcome back",
+    "Great to see you",
+    "Let's keep the momentum going",
+    "Ready for more",
+    "You're doing great",
+    "Time for something fun",
+    "Let's tackle this together",
+    "Nice timing",
+    "Ready to learn",
+    "Let's dive in"
+  ],
+  "evening": [
+    "Good evening",
+    "Hey there",
+    "Still going strong",
+    "Welcome back",
+    "Great dedication",
+    "Let's keep learning",
+    "You're on fire today",
+    "Ready for more",
+    "Time to challenge yourself",
+    "Looking sharp",
+    "Let's make progress",
+    "Impressive effort"
+  ],
+  "night": [
+    "Hey night owl",
+    "Still here",
+    "Impressive dedication",
+    "Welcome back",
+    "You're unstoppable",
+    "Late night learner",
+    "Looking focused",
+    "Let's finish strong",
+    "One more round",
+    "You've got energy",
+    "Ready to think",
+    "Let's go"
+  ]
+}

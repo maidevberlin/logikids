@@ -4,6 +4,7 @@
     "personalizedTitle": "Willkommen zurück, {{name}}!",
     "subtitle": "Starte deine Reise in die spannende Welt der Mathematik und des logischen Denkens!",
     "personalizedSubtitle": "Bereit, dein Lernabenteuer fortzusetzen?",
+    "todayPrompt": "Was möchtest du heute machen?",
     "startButton": "Jetzt Lernen",
     "setupAccount": "Konto einrichten",
     "navigation": {
@@ -62,32 +63,6 @@
       "showRecommended": "Empfohlene Klassen anzeigen"
     }
   },
-  "account": {
-    "title": "Mein Konto",
-    "subtitle": "Verwalte dein Profil und Einstellungen",
-    "profileSettings": "Profil-Einstellungen",
-    "dataManagement": "Datenverwaltung",
-    "dataInfo": "Deine Daten werden sicher auf deinem Gerät gespeichert. Du kannst sie jederzeit exportieren oder löschen.",
-    "saveButton": "Änderungen speichern",
-    "saving": "Speichere...",
-    "saved": "Änderungen erfolgreich gespeichert!",
-    "exportData": "Meine Daten exportieren",
-    "deleteData": "Alle Daten löschen",
-    "deleteConfirm": "Bist du sicher, dass du alle deine Daten löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
-    "backToHome": "Zurück zur Startseite"
-  },
-  "stats": {
-    "title": "Statistiken",
-    "greeting": "Hallo {{name}}, hier sind deine Lernstatistiken!",
-    "noTasksYet": "Du hast noch keine Aufgaben gelöst. Beginne mit dem Lösen von Aufgaben, um deinen Fortschritt zu sehen!",
-    "totalTasks": "Aufgaben Gesamt",
-    "successRate": "Erfolgsquote",
-    "averageHints": "Ø Hinweise",
-    "bySubject": "Fortschritt nach Fach",
-    "tasks": "Aufgaben",
-    "success": "Erfolg",
-    "hints": "Hinweise"
-  },
   "task": {
     "title": "Aufgabe",
     "difficulty": "Schwierigkeit",
@@ -104,24 +79,6 @@
   "feedback": {
     "correct": "Richtig!",
     "incorrect": "Nicht ganz richtig. Versuche es nochmal!"
-  },
-  "settings": {
-    "title": "Einstellungen",
-    "nameLabel": "Wie heißt du?",
-    "namePlaceholder": "Gib deinen Namen ein...",
-    "ageLabel": "Wie alt bist du?",
-    "gradeLabel": "In welcher Klasse bist du?",
-    "languageLabel": "Wähle deine Sprache",
-    "gender": {
-      "label": "Geschlecht (optional)",
-      "notSpecified": "Keine Angabe",
-      "options": {
-        "male": "Männlich",
-        "female": "Weiblich",
-        "non-binary": "Divers",
-        "prefer-not-to-say": "Geheim"
-      }
-    }
   },
   "error": {
     "tryAgain": "Erneut versuchen",
@@ -195,86 +152,5 @@
     "loading": "Lädt...",
     "continue": "Weiter",
     "back": "Zurück"
-  },
-  "profile": {
-    "prompt": {
-      "title": "Hilf uns, dein Lernerlebnis zu personalisieren!",
-      "description": "Erzähl uns ein bisschen über dich, damit wir Aufgaben erstellen können, die perfekt für dich sind.",
-      "age": {
-        "label": "Wie alt bist du?",
-        "placeholder": "Gib dein Alter ein",
-        "hint": "Alter 8-16"
-      },
-      "gender": {
-        "label": "Wie identifizierst du dich? (optional)",
-        "hint": "Dies hilft uns, personalisiertere Inhalte für dich zu erstellen.",
-        "options": {
-          "male": "Männlich",
-          "female": "Weiblich",
-          "non-binary": "Nicht-binär",
-          "prefer-not-to-say": "Keine Angabe"
-        }
-      },
-      "skip": "Überspringen",
-      "save": "Los geht's!"
-    }
-  },
-  "greetings": {
-    "morning": [
-      "Guten Morgen",
-      "Auf geht's",
-      "Bereit zu lernen?",
-      "Morgen, Lerner",
-      "Starte deinen Tag hell",
-      "Guten Morgen, Denker",
-      "Bereit für die heutigen Herausforderungen?",
-      "Ein neuer Tag zum Lernen",
-      "Morgen! Lass uns beginnen",
-      "Zeit, dein Gehirn aufzuwecken",
-      "Frischer Start, frischer Geist",
-      "Guten Morgen! Was wirst du heute entdecken?"
-    ],
-    "afternoon": [
-      "Guten Tag",
-      "Zeit zu lernen",
-      "Lass uns Rätsel lösen",
-      "Bereit für Herausforderungen?",
-      "Nachmittags-Abenteuer",
-      "Weiter so",
-      "Lass uns zusammen denken",
-      "Nachmittags-Gehirnzeit",
-      "Bereit zu entdecken?",
-      "Zeit zum Nachdenken",
-      "Lass uns herausfordern",
-      "Guten Tag! Bereit zu wachsen?"
-    ],
-    "evening": [
-      "Guten Abend",
-      "Abend-Lerner",
-      "Bereit für Herausforderungen?",
-      "Lass uns denken",
-      "Abend-Gehirnzeit",
-      "Zeit zum Nachdenken und Lernen",
-      "Abend-Erkundung",
-      "Bereit für die heutigen Rätsel?",
-      "Guten Abend, Denker",
-      "Lass uns stark beenden",
-      "Abend-Lernsession",
-      "Bereit zum Entspannen mit Lernen?"
-    ],
-    "night": [
-      "Gute Nacht",
-      "Nachteule",
-      "Lernst du noch?",
-      "Mitternachts-Denker",
-      "Nacht-Lernsession",
-      "Spät am Abend lernen",
-      "Die Nacht durchmachen",
-      "Gute Nacht, Gelehrter",
-      "Bereit für eine Nacht-Herausforderung?",
-      "Nachtzeit, Gehirnzeit",
-      "Später Lerner",
-      "Noch ein Rätsel vor dem Schlafengehen?"
-    ]
   }
 } 
