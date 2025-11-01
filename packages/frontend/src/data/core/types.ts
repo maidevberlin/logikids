@@ -26,7 +26,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
   age: 10,
   grade: 5,
   language: 'en',
-  gender: 'neutral',
+  gender: 'non-binary',
   syncEnabled: false
 }
 

@@ -111,6 +111,7 @@ export default function TaskPage() {
         hintsUsed,
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     task,
     selectedAnswer,
@@ -118,7 +119,8 @@ export default function TaskPage() {
     taskParams.subject,
     taskParams.difficulty,
     hintsUsed,
-    updateStats,
+    // NOTE: updateStats intentionally omitted to prevent infinite loop
+    // The callback uses the latest values via closure
   ])
 
   // Handlers

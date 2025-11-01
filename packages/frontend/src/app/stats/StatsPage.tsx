@@ -25,18 +25,18 @@ export default function StatsPage() {
         <div className="max-w-4xl mx-auto">
           <Card className="p-12 bg-white shadow-md rounded-2xl text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {t('stats.title', { defaultValue: 'Your Progress' })}
+              {t('title', { defaultValue: 'Your Progress' })}
             </h1>
 
             {data?.settings.name && (
               <p className="text-xl text-gray-600 mb-8">
-                {t('stats.greeting', { name: data.settings.name })}
+                {t('greeting', { name: data.settings.name })}
               </p>
             )}
 
             <div className="py-12">
               <p className="text-lg text-gray-500">
-                {t('stats.noTasksYet', { defaultValue: 'No tasks completed yet. Start learning to see your progress!' })}
+                {t('noTasksYet', { defaultValue: 'No tasks completed yet. Start learning to see your progress!' })}
               </p>
             </div>
           </Card>
@@ -50,12 +50,12 @@ export default function StatsPage() {
       <div className="max-w-4xl mx-auto space-y-6">
         <Card className="p-12 bg-white shadow-md rounded-2xl">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">
-            {t('stats.title', { defaultValue: 'Your Progress' })}
+            {t('title', { defaultValue: 'Your Progress' })}
           </h1>
 
           {data?.settings.name && (
             <p className="text-xl text-gray-600 mb-8 text-center">
-              {t('stats.greeting', { name: data.settings.name })}
+              {t('greeting', { name: data.settings.name })}
             </p>
           )}
 
