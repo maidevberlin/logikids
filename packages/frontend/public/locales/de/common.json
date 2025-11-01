@@ -164,5 +164,154 @@
     "loading": "Lädt...",
     "continue": "Weiter",
     "back": "Zurück"
+  },
+  "welcomeChoice": {
+    "title": "Willkommen bei Logikids",
+    "subtitle": "Wähle, wie du starten möchtest",
+    "newAccount": {
+      "title": "Ich habe einen Einladungscode",
+      "description": "Starte neu mit einem neuen Konto",
+      "inviteLabel": "Einladungscode",
+      "invitePlaceholder": "Gib deinen Einladungscode ein",
+      "validating": "Überprüfe...",
+      "continue": "Weiter",
+      "invalidCode": "Ungültiger Einladungscode",
+      "validationError": "Einladungscode konnte nicht überprüft werden"
+    },
+    "import": {
+      "title": "Bestehendes Konto importieren",
+      "description": "Stelle dein Konto aus dem Wiederherstellungs-Kit wieder her",
+      "uploadPDF": "Wiederherstellungs-Kit PDF hochladen",
+      "uploadPDFDescription": "Wähle deine Wiederherstellungs-Kit PDF-Datei, um dein Konto wiederherzustellen",
+      "scanQR": "QR-Code mit Kamera scannen",
+      "scanQRDescription": "Richte deine Kamera auf den QR-Code aus deinem Wiederherstellungs-Kit",
+      "manualCode": "Backup-Code manuell eingeben",
+      "invalidFileType": "Bitte wähle eine PDF-Datei",
+      "pdfParseError": "PDF-Datei konnte nicht gelesen werden",
+      "noBackupCodeFound": "Backup-Code konnte in PDF nicht gefunden werden",
+      "processingPDF": "Verarbeite PDF...",
+      "clickToUpload": "Klicke, um PDF-Datei hochzuladen",
+      "pdfHint": "Wähle dein Logikids Wiederherstellungs-Kit PDF",
+      "invalidQR": "Ungültiger QR-Code",
+      "cameraError": "Kamera kann nicht zugegriffen werden",
+      "initializingCamera": "Initialisiere Kamera...",
+      "cancel": "Abbrechen",
+      "invalidBackupFormat": "Ungültiges Backup-Code-Format",
+      "corruptedBackupCode": "Backup-Code scheint beschädigt oder unvollständig zu sein",
+      "invalidBackupCode": "Ungültiger Backup-Code"
+    }
+  },
+  "footer": {
+    "allRightsReserved": "Alle Rechte vorbehalten.",
+    "privacyPolicy": "Datenschutzerklärung",
+    "impressum": "Impressum"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "intro": {
+        "title": "Einleitung",
+        "paragraph1": "Bei Logikids nehmen wir Ihre Privatsphäre ernst. Diese Datenschutzerklärung erklärt, wie wir mit Daten in unserer Bildungsplattform umgehen.",
+        "paragraph2": "Unser Grundprinzip: Ihre Daten bleiben auf Ihrem Gerät. Punkt."
+      },
+      "dataCollection": {
+        "title": "Datenspeicherung: Lokal-First als Standard",
+        "description": "Logikids ist mit Datenschutz als Fundament gebaut:",
+        "localOnly": {
+          "title": "Keine Daten verlassen Ihr Gerät (Standard)",
+          "description": "Standardmäßig werden ALLE Daten Ihres Kindes - Name, Alter, Lernfortschritt, Präferenzen und Kontoinformationen - NUR auf Ihrem Gerät gespeichert. Nichts wird an unsere Server oder Dritte gesendet. Die App funktioniert komplett offline."
+        },
+        "noTracking": {
+          "title": "Keine Analytik oder Tracking",
+          "description": "Wir verwenden keine Analytik, Tracking-Cookies oder Tracking-Dienste von Drittanbietern. Wir sammeln keine Verhaltensdaten, IP-Adressen oder Browsing-Muster. Niemals."
+        },
+        "encrypted": {
+          "title": "Optionales Cloud-Backup (Standardmäßig deaktiviert)",
+          "description": "Sie können OPTIONAL ein Cloud-Backup in den Einstellungen aktivieren, um Ihre Daten über Geräte hinweg zu synchronisieren. Dies ist standardmäßig DEAKTIVIERT. Wenn Sie es aktivieren, werden alle Daten auf Ihrem Gerät verschlüsselt, bevor sie an unsere Server gesendet werden. Wir speichern nur verschlüsselte Blobs, die ohne Ihren Verschlüsselungsschlüssel bedeutungslos sind."
+        }
+      },
+      "encryption": {
+        "title": "Wie optionales Cloud-Backup funktioniert",
+        "paragraph1": "Wenn Sie Cloud-Backup explizit in den Einstellungen aktivieren, werden alle Daten auf Ihrem Gerät mit starker Verschlüsselung verschlüsselt, bevor sie übertragen werden. Ihr Verschlüsselungsschlüssel verlässt niemals Ihr Gerät und wird niemals an unsere Server gesendet.",
+        "paragraph2": "Dieser Zero-Knowledge-Ansatz bedeutet, dass selbst bei einer Kompromittierung unserer Server Ihre Daten sicher bleiben würden, da sie mit Schlüsseln verschlüsselt sind, die nur Sie besitzen. Wir können Ihre Daten nicht lesen, darauf zugreifen oder sie entschlüsseln."
+      },
+      "aiUsage": {
+        "title": "KI-generierte Inhalte (Keine persönlichen Daten gesendet)",
+        "paragraph1": "Logikids verwendet KI (entweder lokal gehostetes Ollama oder OpenAI), um personalisierte Lernaufgaben für Ihr Kind zu generieren. Bei der Generierung von Aufgaben senden wir NUR den notwendigen Kontext (Fach, Schwierigkeitsgrad, Altersbereich) an den KI-Anbieter.",
+        "paragraph2": "Keine persönlichen Informationen über Ihr Kind werden jemals an den KI-Anbieter gesendet. Wir senden keine Namen, spezifischen Altersangaben oder identifizierende Informationen. Die Aufgabengenerierung ist komplett zustandslos und anonym."
+      },
+      "gdprRights": {
+        "title": "Ihre DSGVO-Rechte",
+        "description": "Gemäß DSGVO haben Sie folgende Rechte:",
+        "access": {
+          "title": "Recht auf Zugang",
+          "description": "Alle Ihre Daten befinden sich bereits auf Ihrem Gerät. Sie können sie jederzeit als Wiederherstellungs-Kit (PDF mit QR-Code) über die Kontoeinstellungen exportieren."
+        },
+        "export": {
+          "title": "Recht auf Export",
+          "description": "Sie können Ihre Daten als Wiederherstellungs-Kit exportieren, um sie auf ein anderes Gerät zu importieren oder als Offline-Backup zu behalten."
+        },
+        "deletion": {
+          "title": "Recht auf Löschung",
+          "description": "Sie können Ihre lokalen Daten jederzeit über die Kontoeinstellungen löschen. Wenn Sie Cloud-Backup aktiviert haben, können Sie auch die Löschung des verschlüsselten Backups von unseren Servern anfordern."
+        },
+        "portability": {
+          "title": "Datenübertragbarkeit",
+          "description": "Ihre Daten sind vollständig portabel über das Wiederherstellungs-Kit und ermöglichen es Ihnen, sie zwischen Geräten zu übertragen oder Offline-Backups zu behalten. Keine Anbieter-Bindung."
+        }
+      },
+      "dataRetention": {
+        "title": "Datenspeicherung",
+        "description": "Ihre Daten bleiben auf Ihrem Gerät, solange Sie die App installiert haben. Wenn Sie optionales Cloud-Backup aktiviert haben, werden verschlüsselte Backups auf unseren Servern aufbewahrt, bis Sie explizit die Löschung anfordern. Wir verfolgen keine Aktivitäten und implementieren keine automatischen Löschrichtlinien. Sie haben die volle Kontrolle und können Ihre Daten jederzeit löschen."
+      },
+      "thirdParty": {
+        "title": "Weitergabe von Daten an Dritte",
+        "description": "Wir geben, verkaufen oder übertragen Ihre persönlichen Daten niemals an Dritte. Punkt. Ihre Daten bleiben auf Ihrem Gerät. Der einzige externe Dienst, den wir verwenden, ist der KI-Anbieter für die Aufgabengenerierung, und wir senden nur anonyme, nicht-identifizierende Kontextdaten (Fach, Schwierigkeitsgrad, Altersbereich - niemals Namen oder persönliche Informationen)."
+      },
+      "changes": {
+        "title": "Änderungen dieser Richtlinie",
+        "description": "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite mit einem aktualisierten Revisionsdatum veröffentlicht. Die fortgesetzte Nutzung von Logikids nach Änderungen stellt die Zustimmung zur aktualisierten Richtlinie dar."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "description": "Wenn Sie Fragen zu dieser Datenschutzerklärung oder Ihren Daten haben, kontaktieren Sie uns bitte über die im Impressum angegebenen Informationen."
+      }
+    },
+    "impressum": {
+      "title": "Impressum",
+      "provider": {
+        "title": "Dienstanbieter",
+        "name": "Name/Firma",
+        "address": "Adresse",
+        "city": "Stadt, Postleitzahl",
+        "country": "Land"
+      },
+      "contact": {
+        "title": "Kontaktinformationen",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "optional": "optional"
+      },
+      "responsible": {
+        "title": "Verantwortlich für den Inhalt",
+        "description": "Verantwortlich für den Inhalt dieser Website gemäß § 55 Abs. 2 RStV:"
+      },
+      "disclaimer": {
+        "title": "Haftungsausschluss",
+        "content": {
+          "title": "Haftung für Inhalte",
+          "description": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen."
+        },
+        "links": {
+          "title": "Haftung für Links",
+          "description": "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich."
+        }
+      },
+      "euDispute": {
+        "title": "EU-Streitschlichtung",
+        "paragraph1": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit.",
+        "paragraph2": "Die Plattform finden Sie unter:"
+      }
+    }
   }
 } 

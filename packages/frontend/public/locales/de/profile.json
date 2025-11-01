@@ -20,7 +20,51 @@
     "hoursAgo": "vor {{count}} Stunde",
     "hoursAgo_other": "vor {{count}} Stunden",
     "daysAgo": "vor {{count}} Tag",
-    "daysAgo_other": "vor {{count}} Tagen"
+    "daysAgo_other": "vor {{count}} Tagen",
+    "recoveryKit": {
+      "downloadButton": "Wiederherstellungs-Kit herunterladen (PDF)",
+      "generating": "Erstelle PDF...",
+      "whatsIncluded": "Enthalten: QR-Code, Backup-Code, Benutzer-ID und Wiederherstellungsanleitung",
+      "securityNote": "Bewahre dieses PDF an einem sicheren Ort auf - es enthält deine Zugangsdaten",
+      "pdf": {
+        "title": "Logikids Wiederherstellungs-Kit",
+        "subtitle": "Bewahre dieses Dokument auf, um dein Konto wiederherzustellen",
+        "qrLabel": "Scanne diesen QR-Code, um dein Konto wiederherzustellen",
+        "backupCodeTitle": "Backup-Code",
+        "userIdLabel": "Benutzer-ID:",
+        "instructionsTitle": "So verwendest du dieses Wiederherstellungs-Kit:",
+        "instruction1": "1. Bewahre dieses Dokument an einem sicheren Ort auf",
+        "instruction2": "2. Um dein Konto wiederherzustellen, scanne den QR-Code oder gib den Backup-Code ein",
+        "instruction3": "3. Deine Kontodaten sind verschlüsselt - dieses Wiederherstellungs-Kit wird benötigt, um sie zu entschlüsseln",
+        "instruction4": "4. Jeder, der dieses Wiederherstellungs-Kit hat, kann auf dein Konto zugreifen",
+        "securityWarningTitle": "Sicherheitshinweis:",
+        "securityWarning1": "Dieses Wiederherstellungs-Kit enthält deinen Verschlüsselungsschlüssel. Bewahre es sicher und privat auf.",
+        "securityWarning2": "Teile es niemals oder lade es in Cloud-Dienste hoch.",
+        "footer": "Erstellt von Logikids"
+      }
+    },
+    "qrDisplay": {
+      "showButton": "QR-Code für Gerätekopplung anzeigen",
+      "hideButton": "QR-Code verbergen",
+      "scanInstruction": "Scanne diesen Code auf einem anderen Gerät, um dein Konto zu synchronisieren",
+      "securityWarning": "Dieser QR-Code enthält deine Zugangsdaten. Scanne ihn nur auf Geräten, denen du vertraust."
+    },
+    "import": {
+      "backupCodeLabel": "Backup-Code",
+      "backupCodePlaceholder": "Gib deinen Backup-Code ein (XXXX-XXXX-XXXX-...)",
+      "backupCodeHint": "Füge den Backup-Code aus deinem Wiederherstellungs-Kit PDF ein",
+      "importButton": "Kontodaten importieren",
+      "importing": "Importiere...",
+      "importSuccess": "Import erfolgreich! Lade neu...",
+      "enterCodeError": "Bitte gib einen Backup-Code ein",
+      "invalidCodeError": "Ungültiger Backup-Code. Bitte überprüfe ihn und versuche es erneut.",
+      "importFailed": "Import fehlgeschlagen",
+      "conflictTitle": "Vorhandene Daten überschreiben?",
+      "conflictMessage": "Dieses Gerät hat bereits Kontodaten. Der Import ersetzt alle vorhandenen Daten mit dem importierten Konto.",
+      "conflictWarning": "Stelle sicher, dass du dein aktuelles Wiederherstellungs-Kit heruntergeladen hast, wenn du diese Daten behalten möchtest.",
+      "conflictCancel": "Abbrechen",
+      "conflictConfirm": "Ja, Daten überschreiben"
+    }
   },
   "settings": {
     "title": "Einstellungen",
