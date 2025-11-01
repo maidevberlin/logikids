@@ -1,0 +1,288 @@
+{
+  "concepts": {
+    "grade1-conversation-rules": {
+      "name": "Gesprächsregeln",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade1-first-children-s-books": {
+      "name": "Erste Kinderbücher",
+      "description": "Texte und Medien"
+    },
+    "grade1-first-language-observations": {
+      "name": "Erste Sprachbeobachtungen",
+      "description": "Sprache untersuchen"
+    },
+    "grade1-first-reading": {
+      "name": "Erstes Lesen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade1-first-writing": {
+      "name": "Erstes Schreiben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade1-letter-and-sound-learning": {
+      "name": "Buchstaben und Laute lernen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade1-listening-comprehension": {
+      "name": "Hörverstehen",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade1-rhymes-and-poems": {
+      "name": "Reime und Gedichte",
+      "description": "Texte und Medien"
+    },
+    "grade1-sound-based-spelling": {
+      "name": "Lautgetreues Schreiben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade1-speaking-in-complete-sentences": {
+      "name": "In ganzen Sätzen sprechen",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade2-capital-letters-nouns-introduction": {
+      "name": "Großschreibung - Nomen (Einführung)",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-capital-letters-sentence-start": {
+      "name": "Großschreibung - Satzanfang",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-describing": {
+      "name": "Beschreiben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-expanding-reading-skills": {
+      "name": "Lesefähigkeiten erweitern",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-fairy-tales": {
+      "name": "Märchen",
+      "description": "Texte und Medien"
+    },
+    "grade2-giving-presentations": {
+      "name": "Präsentieren",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade2-nouns-verbs-adjectives": {
+      "name": "Nomen, Verben, Adjektive",
+      "description": "Sprache untersuchen"
+    },
+    "grade2-poems-and-recitation": {
+      "name": "Gedichte und Vortrag",
+      "description": "Texte und Medien"
+    },
+    "grade2-reading-children-s-books": {
+      "name": "Kinderbücher lesen",
+      "description": "Texte und Medien"
+    },
+    "grade2-reading-comprehension": {
+      "name": "Leseverstehen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-retelling-stories": {
+      "name": "Geschichten nacherzählen",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade2-sentence-structure": {
+      "name": "Satzbau",
+      "description": "Sprache untersuchen"
+    },
+    "grade2-spelling-strategies-derive": {
+      "name": "Rechtschreibstrategien - Ableiten",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-spelling-strategies-elongate": {
+      "name": "Rechtschreibstrategien - Verlängern",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-spelling-strategies-syllables": {
+      "name": "Rechtschreibstrategien - Silben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade2-writing-short-stories": {
+      "name": "Kleine Geschichten schreiben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-active-listening": {
+      "name": "Aktives Zuhören",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade3-ballads-introduction": {
+      "name": "Balladen (Einführung)",
+      "description": "Texte und Medien"
+    },
+    "grade3-cases-nominative-and-accusative": {
+      "name": "Fälle - Nominativ und Akkusativ",
+      "description": "Sprache untersuchen"
+    },
+    "grade3-discussion-techniques": {
+      "name": "Gesprächstechniken",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade3-expressive-reading-aloud": {
+      "name": "Ausdrucksvoll vorlesen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-fables": {
+      "name": "Fabeln",
+      "description": "Texte und Medien"
+    },
+    "grade3-fluent-silent-reading": {
+      "name": "Flüssiges leises Lesen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-informational-texts": {
+      "name": "Sachtexte",
+      "description": "Texte und Medien"
+    },
+    "grade3-legends-and-myths": {
+      "name": "Sagen und Mythen",
+      "description": "Texte und Medien"
+    },
+    "grade3-letter-writing": {
+      "name": "Briefe schreiben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-process-description": {
+      "name": "Vorgangsbeschreibung",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-punctuation-comma-in-lists": {
+      "name": "Zeichensetzung - Komma bei Aufzählungen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-reading-strategies": {
+      "name": "Lesestrategien",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-reading-youth-books": {
+      "name": "Jugendbücher lesen",
+      "description": "Texte und Medien"
+    },
+    "grade3-report": {
+      "name": "Bericht",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-sentence-parts": {
+      "name": "Satzglieder",
+      "description": "Sprache untersuchen"
+    },
+    "grade3-short-presentation": {
+      "name": "Kurzvortrag",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade3-spelling-s-sounds": {
+      "name": "Rechtschreibung - S-Laute",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-spelling-word-families": {
+      "name": "Rechtschreibung - Wortfamilien",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-story-with-climax": {
+      "name": "Erzählung mit Höhepunkt",
+      "description": "Lesen und Schreiben"
+    },
+    "grade3-tenses-present-and-past": {
+      "name": "Zeitformen - Gegenwart und Vergangenheit",
+      "description": "Sprache untersuchen"
+    },
+    "grade3-using-dictionary": {
+      "name": "Wörterbuch benutzen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-active-and-passive-voice-introduction": {
+      "name": "Aktiv und Passiv (Einführung)",
+      "description": "Sprache untersuchen"
+    },
+    "grade4-all-four-cases": {
+      "name": "Alle vier Fälle",
+      "description": "Sprache untersuchen"
+    },
+    "grade4-all-tenses": {
+      "name": "Alle Zeitformen",
+      "description": "Sprache untersuchen"
+    },
+    "grade4-argumentation": {
+      "name": "Argumentation",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-comics-and-graphic-novels": {
+      "name": "Comics und Graphic Novels",
+      "description": "Texte und Medien"
+    },
+    "grade4-conducting-interviews": {
+      "name": "Interviews führen",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade4-creative-writing": {
+      "name": "Kreatives Schreiben",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-media-use-and-critique": {
+      "name": "Mediennutzung und -kritik",
+      "description": "Texte und Medien"
+    },
+    "grade4-poetry-analysis-introduction": {
+      "name": "Gedichtanalyse (Einführung)",
+      "description": "Texte und Medien"
+    },
+    "grade4-presentation-with-media": {
+      "name": "Präsentation mit Medien",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade4-punctuation-direct-speech": {
+      "name": "Zeichensetzung - Direkte Rede",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-reading-different-text-types": {
+      "name": "Verschiedene Textsorten lesen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-reading-digital-texts": {
+      "name": "Digitale Texte lesen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-sentence-types": {
+      "name": "Satzarten",
+      "description": "Sprache untersuchen"
+    },
+    "grade4-short-stories": {
+      "name": "Kurzgeschichten",
+      "description": "Texte und Medien"
+    },
+    "grade4-spelling-compound-words": {
+      "name": "Rechtschreibung - Zusammengesetzte Wörter",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-spelling-same-sounding-words": {
+      "name": "Rechtschreibung - Gleich klingende Wörter",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-summary": {
+      "name": "Zusammenfassung",
+      "description": "Lesen und Schreiben"
+    },
+    "grade4-theater-and-role-play": {
+      "name": "Theater und Rollenspiel",
+      "description": "Sprechen und Zuhören"
+    },
+    "grade4-youth-literature": {
+      "name": "Jugendliteratur",
+      "description": "Texte und Medien"
+    },
+    "parts_of_speech": {
+      "name": "Wortarten",
+      "description": "Wortarten verstehen und identifizieren"
+    },
+    "reading_comprehension": {
+      "name": "Text verstehen",
+      "description": "Leseverstehen und Textverständnis"
+    },
+    "spelling": {
+      "name": "Rechtschreibung",
+      "description": "Deutsche Rechtschreibung und Orthografie"
+    }
+  }
+}

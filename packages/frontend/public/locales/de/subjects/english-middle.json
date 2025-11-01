@@ -1,0 +1,108 @@
+{
+  "concepts": {
+    "grade5-audiovisual-understanding": {
+      "name": "Audiovisuelles Verstehen",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade5-digital-tools-basic-use": {
+      "name": "Digitale Werkzeuge - Grundlegende Nutzung",
+      "description": "Medien- und Digitalkompetenz"
+    },
+    "grade5-grammar-present-tenses": {
+      "name": "Grammatik - Gegenwartsformen",
+      "description": "Sprachliche Mittel"
+    },
+    "grade5-grammar-simple-past": {
+      "name": "Grammatik - Einfache Vergangenheit",
+      "description": "Sprachliche Mittel"
+    },
+    "grade5-intercultural-competence-countries-and-cultures": {
+      "name": "Interkulturelle Kompetenz - Länder und Kulturen",
+      "description": "Interkulturelle Kompetenz"
+    },
+    "grade5-learning-strategies-vocabulary-and-grammar": {
+      "name": "Lernstrategien - Wortschatz und Grammatik",
+      "description": "Sprachlernkompetenz"
+    },
+    "grade5-listening-main-ideas-and-details": {
+      "name": "Hören - Hauptideen und Details",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade5-mediation-both-directions": {
+      "name": "Sprachmittlung - In beide Richtungen",
+      "description": "Sprachmittlung"
+    },
+    "grade5-reading-various-text-types": {
+      "name": "Lesen - Verschiedene Textarten",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade5-speaking-oral-interaction": {
+      "name": "Sprechen - Mündliche Interaktion",
+      "description": "Produktive Fertigkeiten - Interaktion"
+    },
+    "grade5-speaking-oral-production": {
+      "name": "Sprechen - Mündliche Produktion",
+      "description": "Produktive Fertigkeiten - Produktion"
+    },
+    "grade5-vocabulary-topic-fields": {
+      "name": "Wortschatz - Themenfelder",
+      "description": "Sprachliche Mittel"
+    },
+    "grade5-writing-written-interaction": {
+      "name": "Schreiben - Schriftliche Interaktion",
+      "description": "Produktive Fertigkeiten - Interaktion"
+    },
+    "grade5-writing-written-production": {
+      "name": "Schreiben - Schriftliche Produktion",
+      "description": "Produktive Fertigkeiten - Produktion"
+    },
+    "grade6-grammar-past-perfect-and-future": {
+      "name": "Grammatik - Perfekt und Zukunft",
+      "description": "Sprachliche Mittel"
+    },
+    "grade6-grammar-sentence-structures": {
+      "name": "Grammatik - Satzstrukturen",
+      "description": "Sprachliche Mittel"
+    },
+    "grade6-intercultural-competence-cultural-comparison": {
+      "name": "Interkulturelle Kompetenz - Kulturvergleich",
+      "description": "Interkulturelle Kompetenz"
+    },
+    "grade6-learning-strategies-autonomy": {
+      "name": "Lernstrategien - Autonomie",
+      "description": "Sprachlernkompetenz"
+    },
+    "grade6-listening-longer-texts": {
+      "name": "Hören - Längere Texte",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade6-media-competence-creating-content": {
+      "name": "Medienkompetenz - Inhalte erstellen",
+      "description": "Medien- und Digitalkompetenz"
+    },
+    "grade6-reading-structured-texts": {
+      "name": "Lesen - Strukturierte Texte",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade6-speaking-coherent-presentations": {
+      "name": "Sprechen - Zusammenhängende Präsentationen",
+      "description": "Produktive Fertigkeiten - Produktion"
+    },
+    "grade6-speaking-spontaneous-conversation": {
+      "name": "Sprechen - Spontane Konversation",
+      "description": "Produktive Fertigkeiten - Interaktion"
+    },
+    "grade6-vocabulary-extended-themes": {
+      "name": "Wortschatz - Erweiterte Themen",
+      "description": "Sprachliche Mittel"
+    },
+    "grade6-writing-connected-texts": {
+      "name": "Schreiben - Zusammenhängende Texte",
+      "description": "Produktive Fertigkeiten - Produktion"
+    },
+    "grade6-writing-personal-correspondence": {
+      "name": "Schreiben - Persönliche Korrespondenz",
+      "description": "Produktive Fertigkeiten - Interaktion"
+    }
+  }
+}

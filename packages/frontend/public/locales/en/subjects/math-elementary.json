@@ -1,0 +1,248 @@
+{
+  "concepts": {
+    "grade1-addition-up-to-10": {
+      "name": "Addition up to 10",
+      "description": "Number range up to 10"
+    },
+    "grade1-calculation-up-to-20": {
+      "name": "Calculation up to 20",
+      "description": "Number range up to 20"
+    },
+    "grade1-collecting-data": {
+      "name": "Collecting Data",
+      "description": "Data and probability"
+    },
+    "grade1-comparing-and-ordering-numbers": {
+      "name": "Comparing and Ordering Numbers",
+      "description": "Number range up to 20"
+    },
+    "grade1-geometric-solids": {
+      "name": "Geometric Solids",
+      "description": "Space and shape"
+    },
+    "grade1-introduction-to-chance": {
+      "name": "Introduction to Chance",
+      "description": "Data and probability"
+    },
+    "grade1-lengths": {
+      "name": "Lengths",
+      "description": "Measurement"
+    },
+    "grade1-money-values": {
+      "name": "Money Values",
+      "description": "Measurement"
+    },
+    "grade1-number-concept-development": {
+      "name": "Number Concept Development",
+      "description": "Number range up to 20"
+    },
+    "grade1-plane-figures": {
+      "name": "Plane Figures",
+      "description": "Space and shape"
+    },
+    "grade1-recognizing-patterns": {
+      "name": "Recognizing Patterns",
+      "description": "Patterns and structures"
+    },
+    "grade1-spatial-relations": {
+      "name": "Spatial Relations",
+      "description": "Space and shape"
+    },
+    "grade1-subtraction-up-to-10": {
+      "name": "Subtraction up to 10",
+      "description": "Number range up to 10"
+    },
+    "grade1-time": {
+      "name": "Time",
+      "description": "Measurement"
+    },
+    "grade2-addition-and-subtraction-up-to-100": {
+      "name": "Addition and Subtraction up to 100",
+      "description": "Numbers and operations"
+    },
+    "grade2-deepening-geometric-solids": {
+      "name": "Deepening Geometric Solids",
+      "description": "Space and shape"
+    },
+    "grade2-expanding-money-values": {
+      "name": "Expanding Money Values",
+      "description": "Measurement"
+    },
+    "grade2-introduction-to-division": {
+      "name": "Introduction to Division",
+      "description": "Numbers and operations"
+    },
+    "grade2-introduction-to-multiplication": {
+      "name": "Introduction to Multiplication",
+      "description": "Numbers and operations"
+    },
+    "grade2-measuring-lengths": {
+      "name": "Measuring Lengths",
+      "description": "Measurement"
+    },
+    "grade2-number-range-up-to-100": {
+      "name": "Number Range up to 100",
+      "description": "Numbers and operations"
+    },
+    "grade2-number-sequences-and-patterns": {
+      "name": "Number Sequences and Patterns",
+      "description": "Patterns and structures"
+    },
+    "grade2-probabilities": {
+      "name": "Probabilities",
+      "description": "Data and probability"
+    },
+    "grade2-representing-data": {
+      "name": "Representing Data",
+      "description": "Data and probability"
+    },
+    "grade2-symmetry": {
+      "name": "Symmetry",
+      "description": "Space and shape"
+    },
+    "grade2-time-spans": {
+      "name": "Time Spans",
+      "description": "Measurement"
+    },
+    "grade3-addition-and-subtraction-up-to-1000": {
+      "name": "Addition and Subtraction up to 1000",
+      "description": "Numbers and operations"
+    },
+    "grade3-area": {
+      "name": "Area",
+      "description": "Space and shape"
+    },
+    "grade3-automating-times-tables": {
+      "name": "Automating Times Tables",
+      "description": "Numbers and operations"
+    },
+    "grade3-collecting-and-representing-data": {
+      "name": "Collecting and Representing Data",
+      "description": "Data and probability"
+    },
+    "grade3-combinatorics": {
+      "name": "Combinatorics",
+      "description": "Data and probability"
+    },
+    "grade3-deepening-symmetry": {
+      "name": "Deepening Symmetry",
+      "description": "Space and shape"
+    },
+    "grade3-division-with-remainder": {
+      "name": "Division with Remainder",
+      "description": "Numbers and operations"
+    },
+    "grade3-geometric-figures": {
+      "name": "Geometric Figures",
+      "description": "Space and shape"
+    },
+    "grade3-laws-of-arithmetic": {
+      "name": "Laws of Arithmetic",
+      "description": "Patterns and structures"
+    },
+    "grade3-lengths": {
+      "name": "Lengths",
+      "description": "Measurement"
+    },
+    "grade3-mass": {
+      "name": "Mass",
+      "description": "Measurement"
+    },
+    "grade3-multiplication-with-large-numbers": {
+      "name": "Multiplication with Large Numbers",
+      "description": "Numbers and operations"
+    },
+    "grade3-number-range-up-to-1000": {
+      "name": "Number Range up to 1000",
+      "description": "Numbers and operations"
+    },
+    "grade3-number-sequences": {
+      "name": "Number Sequences",
+      "description": "Patterns and structures"
+    },
+    "grade3-probability": {
+      "name": "Probability",
+      "description": "Data and probability"
+    },
+    "grade3-time-spans-extended": {
+      "name": "Time Spans Extended",
+      "description": "Measurement"
+    },
+    "grade3-volume-measures": {
+      "name": "Volume Measures",
+      "description": "Measurement"
+    },
+    "grade3-written-addition": {
+      "name": "Written Addition",
+      "description": "Numbers and operations"
+    },
+    "grade3-written-subtraction": {
+      "name": "Written Subtraction",
+      "description": "Numbers and operations"
+    },
+    "grade4-all-measurement-areas": {
+      "name": "All Measurement Areas",
+      "description": "Measurement"
+    },
+    "grade4-area-and-perimeter": {
+      "name": "Area and Perimeter",
+      "description": "Measurement"
+    },
+    "grade4-divisibility": {
+      "name": "Divisibility",
+      "description": "Numbers and operations"
+    },
+    "grade4-functional-relationships": {
+      "name": "Functional Relationships",
+      "description": "Patterns and structures"
+    },
+    "grade4-geometric-constructions": {
+      "name": "Geometric Constructions",
+      "description": "Space and shape"
+    },
+    "grade4-geometric-transformations": {
+      "name": "Geometric Transformations",
+      "description": "Space and shape"
+    },
+    "grade4-interpreting-data": {
+      "name": "Interpreting Data",
+      "description": "Data and probability"
+    },
+    "grade4-introduction-to-fractions": {
+      "name": "Introduction to Fractions",
+      "description": "Numbers and operations"
+    },
+    "grade4-large-numbers": {
+      "name": "Large Numbers",
+      "description": "Numbers and operations"
+    },
+    "grade4-mean": {
+      "name": "Mean",
+      "description": "Data and probability"
+    },
+    "grade4-probability-concepts": {
+      "name": "Probability Concepts",
+      "description": "Data and probability"
+    },
+    "grade4-solids-and-nets": {
+      "name": "Solids and Nets",
+      "description": "Space and shape"
+    },
+    "grade4-terms-and-equations": {
+      "name": "Terms and Equations",
+      "description": "Patterns and structures"
+    },
+    "grade4-volume": {
+      "name": "Volume",
+      "description": "Measurement"
+    },
+    "grade4-written-division": {
+      "name": "Written Division",
+      "description": "Numbers and operations"
+    },
+    "grade4-written-multiplication": {
+      "name": "Written Multiplication",
+      "description": "Numbers and operations"
+    }
+  }
+}

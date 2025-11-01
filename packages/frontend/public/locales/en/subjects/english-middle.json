@@ -1,0 +1,108 @@
+{
+  "concepts": {
+    "grade5-audiovisual-understanding": {
+      "name": "Audiovisual Understanding",
+      "description": "Receptive Skills"
+    },
+    "grade5-digital-tools-basic-use": {
+      "name": "Digital Tools - Basic Use",
+      "description": "Media and Digital Competence"
+    },
+    "grade5-grammar-present-tenses": {
+      "name": "Grammar - Present Tenses",
+      "description": "Language Means"
+    },
+    "grade5-grammar-simple-past": {
+      "name": "Grammar - Simple Past",
+      "description": "Language Means"
+    },
+    "grade5-intercultural-competence-countries-and-cultures": {
+      "name": "Intercultural Competence - Countries and Cultures",
+      "description": "Intercultural Competence"
+    },
+    "grade5-learning-strategies-vocabulary-and-grammar": {
+      "name": "Learning Strategies - Vocabulary and Grammar",
+      "description": "Language Learning Competence"
+    },
+    "grade5-listening-main-ideas-and-details": {
+      "name": "Listening - Main Ideas and Details",
+      "description": "Receptive Skills"
+    },
+    "grade5-mediation-both-directions": {
+      "name": "Mediation - Both Directions",
+      "description": "Mediation"
+    },
+    "grade5-reading-various-text-types": {
+      "name": "Reading - Various Text Types",
+      "description": "Receptive Skills"
+    },
+    "grade5-speaking-oral-interaction": {
+      "name": "Speaking - Oral Interaction",
+      "description": "Productive Skills - Interaction"
+    },
+    "grade5-speaking-oral-production": {
+      "name": "Speaking - Oral Production",
+      "description": "Productive Skills - Production"
+    },
+    "grade5-vocabulary-topic-fields": {
+      "name": "Vocabulary - Topic Fields",
+      "description": "Language Means"
+    },
+    "grade5-writing-written-interaction": {
+      "name": "Writing - Written Interaction",
+      "description": "Productive Skills - Interaction"
+    },
+    "grade5-writing-written-production": {
+      "name": "Writing - Written Production",
+      "description": "Productive Skills - Production"
+    },
+    "grade6-grammar-past-perfect-and-future": {
+      "name": "Grammar - Past Perfect and Future",
+      "description": "Language Means"
+    },
+    "grade6-grammar-sentence-structures": {
+      "name": "Grammar - Sentence Structures",
+      "description": "Language Means"
+    },
+    "grade6-intercultural-competence-cultural-comparison": {
+      "name": "Intercultural Competence - Cultural Comparison",
+      "description": "Intercultural Competence"
+    },
+    "grade6-learning-strategies-autonomy": {
+      "name": "Learning Strategies - Autonomy",
+      "description": "Language Learning Competence"
+    },
+    "grade6-listening-longer-texts": {
+      "name": "Listening - Longer Texts",
+      "description": "Receptive Skills"
+    },
+    "grade6-media-competence-creating-content": {
+      "name": "Media Competence - Creating Content",
+      "description": "Media and Digital Competence"
+    },
+    "grade6-reading-structured-texts": {
+      "name": "Reading - Structured Texts",
+      "description": "Receptive Skills"
+    },
+    "grade6-speaking-coherent-presentations": {
+      "name": "Speaking - Coherent Presentations",
+      "description": "Productive Skills - Production"
+    },
+    "grade6-speaking-spontaneous-conversation": {
+      "name": "Speaking - Spontaneous Conversation",
+      "description": "Productive Skills - Interaction"
+    },
+    "grade6-vocabulary-extended-themes": {
+      "name": "Vocabulary - Extended Themes",
+      "description": "Language Means"
+    },
+    "grade6-writing-connected-texts": {
+      "name": "Writing - Connected Texts",
+      "description": "Productive Skills - Production"
+    },
+    "grade6-writing-personal-correspondence": {
+      "name": "Writing - Personal Correspondence",
+      "description": "Productive Skills - Interaction"
+    }
+  }
+}

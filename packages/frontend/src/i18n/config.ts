@@ -47,11 +47,23 @@ i18n
     // Use stored language or fallback to English
     lng: initialLanguage,
     fallbackLng: 'en',
-    // Debug mode in development
-    debug: import.meta.env.DEV,
+    // Debug mode disabled to reduce console noise
+    debug: false,
     // Namespace
     defaultNS: 'common',
-    ns: ['common', 'greetings', 'profile', 'stats'],
+    ns: [
+      'common',
+      'greetings',
+      'profile',
+      'stats',
+      'subjects/math-elementary',
+      'subjects/math-middle',
+      'subjects/german-elementary',
+      'subjects/german-middle',
+      'subjects/english-elementary',
+      'subjects/english-middle',
+      'subjects/logic'
+    ],
     // Backend configuration for lazy loading
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json?h=' + CACHE_BREAKER,

@@ -4,13 +4,13 @@ import App from '../App'
 import { ProtectedRoute } from './ProtectedRoute'
 
 // Lazy load UI pages
-const WelcomePage = lazy(() => import('../ui/welcome'))
-const OnboardingPage = lazy(() => import('../ui/onboarding'))
-const SubjectsPage = lazy(() => import('../ui/subjects'))
-const ConceptsPage = lazy(() => import('../ui/concepts'))
-const AccountPage = lazy(() => import('../ui/account'))
-const TaskPage = lazy(() => import('../ui/tasks'))
-const StatsPage = lazy(() => import('../ui/stats'))
+const WelcomePage = lazy(() => import('@/app/welcome'))
+const OnboardingPage = lazy(() => import('@/app/onboarding'))
+const SubjectsPage = lazy(() => import('@/app/subjects'))
+const ConceptsPage = lazy(() => import('@/app/concepts'))
+const AccountPage = lazy(() => import('@/app/account'))
+const TaskPage = lazy(() => import('@/app/tasks'))
+const StatsPage = lazy(() => import('@/app/stats'))
 
 export const router = createHashRouter(
   createRoutesFromElements(

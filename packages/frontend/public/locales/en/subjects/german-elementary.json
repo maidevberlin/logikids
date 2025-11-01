@@ -1,0 +1,288 @@
+{
+  "concepts": {
+    "grade1-conversation-rules": {
+      "name": "Conversation Rules",
+      "description": "Speaking and Listening"
+    },
+    "grade1-first-children-s-books": {
+      "name": "First Children's Books",
+      "description": "Texts and Media"
+    },
+    "grade1-first-language-observations": {
+      "name": "First Language Observations",
+      "description": "Language Reflection"
+    },
+    "grade1-first-reading": {
+      "name": "First Reading",
+      "description": "Reading and Writing"
+    },
+    "grade1-first-writing": {
+      "name": "First Writing",
+      "description": "Reading and Writing"
+    },
+    "grade1-letter-and-sound-learning": {
+      "name": "Letter and Sound Learning",
+      "description": "Reading and Writing"
+    },
+    "grade1-listening-comprehension": {
+      "name": "Listening Comprehension",
+      "description": "Speaking and Listening"
+    },
+    "grade1-rhymes-and-poems": {
+      "name": "Rhymes and Poems",
+      "description": "Texts and Media"
+    },
+    "grade1-sound-based-spelling": {
+      "name": "Sound-Based Spelling",
+      "description": "Reading and Writing"
+    },
+    "grade1-speaking-in-complete-sentences": {
+      "name": "Speaking in Complete Sentences",
+      "description": "Speaking and Listening"
+    },
+    "grade2-capital-letters-nouns-introduction": {
+      "name": "Capital Letters - Nouns (Introduction)",
+      "description": "Reading and Writing"
+    },
+    "grade2-capital-letters-sentence-start": {
+      "name": "Capital Letters - Sentence Start",
+      "description": "Reading and Writing"
+    },
+    "grade2-describing": {
+      "name": "Describing",
+      "description": "Reading and Writing"
+    },
+    "grade2-expanding-reading-skills": {
+      "name": "Expanding Reading Skills",
+      "description": "Reading and Writing"
+    },
+    "grade2-fairy-tales": {
+      "name": "Fairy Tales",
+      "description": "Texts and Media"
+    },
+    "grade2-giving-presentations": {
+      "name": "Giving Presentations",
+      "description": "Speaking and Listening"
+    },
+    "grade2-nouns-verbs-adjectives": {
+      "name": "'Nouns, Verbs, Adjectives'",
+      "description": "Language Reflection"
+    },
+    "grade2-poems-and-recitation": {
+      "name": "Poems and Recitation",
+      "description": "Texts and Media"
+    },
+    "grade2-reading-children-s-books": {
+      "name": "Reading Children's Books",
+      "description": "Texts and Media"
+    },
+    "grade2-reading-comprehension": {
+      "name": "Reading Comprehension",
+      "description": "Reading and Writing"
+    },
+    "grade2-retelling-stories": {
+      "name": "Retelling Stories",
+      "description": "Speaking and Listening"
+    },
+    "grade2-sentence-structure": {
+      "name": "Sentence Structure",
+      "description": "Language Reflection"
+    },
+    "grade2-spelling-strategies-derive": {
+      "name": "Spelling Strategies - Derive",
+      "description": "Reading and Writing"
+    },
+    "grade2-spelling-strategies-elongate": {
+      "name": "Spelling Strategies - Elongate",
+      "description": "Reading and Writing"
+    },
+    "grade2-spelling-strategies-syllables": {
+      "name": "Spelling Strategies - Syllables",
+      "description": "Reading and Writing"
+    },
+    "grade2-writing-short-stories": {
+      "name": "Writing Short Stories",
+      "description": "Reading and Writing"
+    },
+    "grade3-active-listening": {
+      "name": "Active Listening",
+      "description": "Speaking and Listening"
+    },
+    "grade3-ballads-introduction": {
+      "name": "Ballads (Introduction)",
+      "description": "Texts and Media"
+    },
+    "grade3-cases-nominative-and-accusative": {
+      "name": "Cases - Nominative and Accusative",
+      "description": "Language Reflection"
+    },
+    "grade3-discussion-techniques": {
+      "name": "Discussion Techniques",
+      "description": "Speaking and Listening"
+    },
+    "grade3-expressive-reading-aloud": {
+      "name": "Expressive Reading Aloud",
+      "description": "Reading and Writing"
+    },
+    "grade3-fables": {
+      "name": "Fables",
+      "description": "Texts and Media"
+    },
+    "grade3-fluent-silent-reading": {
+      "name": "Fluent Silent Reading",
+      "description": "Reading and Writing"
+    },
+    "grade3-informational-texts": {
+      "name": "Informational Texts",
+      "description": "Texts and Media"
+    },
+    "grade3-legends-and-myths": {
+      "name": "Legends and Myths",
+      "description": "Texts and Media"
+    },
+    "grade3-letter-writing": {
+      "name": "Letter Writing",
+      "description": "Reading and Writing"
+    },
+    "grade3-process-description": {
+      "name": "Process Description",
+      "description": "Reading and Writing"
+    },
+    "grade3-punctuation-comma-in-lists": {
+      "name": "Punctuation - Comma in Lists",
+      "description": "Reading and Writing"
+    },
+    "grade3-reading-strategies": {
+      "name": "Reading Strategies",
+      "description": "Reading and Writing"
+    },
+    "grade3-reading-youth-books": {
+      "name": "Reading Youth Books",
+      "description": "Texts and Media"
+    },
+    "grade3-report": {
+      "name": "Report",
+      "description": "Reading and Writing"
+    },
+    "grade3-sentence-parts": {
+      "name": "Sentence Parts",
+      "description": "Language Reflection"
+    },
+    "grade3-short-presentation": {
+      "name": "Short Presentation",
+      "description": "Speaking and Listening"
+    },
+    "grade3-spelling-s-sounds": {
+      "name": "Spelling - S-Sounds",
+      "description": "Reading and Writing"
+    },
+    "grade3-spelling-word-families": {
+      "name": "Spelling - Word Families",
+      "description": "Reading and Writing"
+    },
+    "grade3-story-with-climax": {
+      "name": "Story with Climax",
+      "description": "Reading and Writing"
+    },
+    "grade3-tenses-present-and-past": {
+      "name": "Tenses - Present and Past",
+      "description": "Language Reflection"
+    },
+    "grade3-using-dictionary": {
+      "name": "Using Dictionary",
+      "description": "Reading and Writing"
+    },
+    "grade4-active-and-passive-voice-introduction": {
+      "name": "Active and Passive Voice (Introduction)",
+      "description": "Language Reflection"
+    },
+    "grade4-all-four-cases": {
+      "name": "All Four Cases",
+      "description": "Language Reflection"
+    },
+    "grade4-all-tenses": {
+      "name": "All Tenses",
+      "description": "Language Reflection"
+    },
+    "grade4-argumentation": {
+      "name": "Argumentation",
+      "description": "Reading and Writing"
+    },
+    "grade4-comics-and-graphic-novels": {
+      "name": "Comics and Graphic Novels",
+      "description": "Texts and Media"
+    },
+    "grade4-conducting-interviews": {
+      "name": "Conducting Interviews",
+      "description": "Speaking and Listening"
+    },
+    "grade4-creative-writing": {
+      "name": "Creative Writing",
+      "description": "Reading and Writing"
+    },
+    "grade4-media-use-and-critique": {
+      "name": "Media Use and Critique",
+      "description": "Texts and Media"
+    },
+    "grade4-poetry-analysis-introduction": {
+      "name": "Poetry Analysis (Introduction)",
+      "description": "Texts and Media"
+    },
+    "grade4-presentation-with-media": {
+      "name": "Presentation with Media",
+      "description": "Speaking and Listening"
+    },
+    "grade4-punctuation-direct-speech": {
+      "name": "Punctuation - Direct Speech",
+      "description": "Reading and Writing"
+    },
+    "grade4-reading-different-text-types": {
+      "name": "Reading Different Text Types",
+      "description": "Reading and Writing"
+    },
+    "grade4-reading-digital-texts": {
+      "name": "Reading Digital Texts",
+      "description": "Reading and Writing"
+    },
+    "grade4-sentence-types": {
+      "name": "Sentence Types",
+      "description": "Language Reflection"
+    },
+    "grade4-short-stories": {
+      "name": "Short Stories",
+      "description": "Texts and Media"
+    },
+    "grade4-spelling-compound-words": {
+      "name": "Spelling - Compound Words",
+      "description": "Reading and Writing"
+    },
+    "grade4-spelling-same-sounding-words": {
+      "name": "Spelling - Same Sounding Words",
+      "description": "Reading and Writing"
+    },
+    "grade4-summary": {
+      "name": "Summary",
+      "description": "Reading and Writing"
+    },
+    "grade4-theater-and-role-play": {
+      "name": "Theater and Role Play",
+      "description": "Speaking and Listening"
+    },
+    "grade4-youth-literature": {
+      "name": "Youth Literature",
+      "description": "Texts and Media"
+    },
+    "parts_of_speech": {
+      "name": "Parts of Speech",
+      "description": "Understanding and identifying different parts of speech in German"
+    },
+    "reading_comprehension": {
+      "name": "Text verstehen",
+      "description": "Reading comprehension and text understanding"
+    },
+    "spelling": {
+      "name": "Spelling",
+      "description": "German spelling and orthography"
+    }
+  }
+}

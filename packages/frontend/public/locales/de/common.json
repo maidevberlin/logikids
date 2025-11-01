@@ -66,6 +66,7 @@
   "task": {
     "title": "Aufgabe",
     "difficulty": "Schwierigkeit",
+    "randomConcept": "Zufällig",
     "getHint": "Hinweis anzeigen",
     "getAnotherHint": "Weiteren Hinweis anzeigen",
     "skip": "Aufgabe überspringen",
@@ -89,9 +90,11 @@
     "pageTitle": "Wähle dein Fach",
     "pageDescription": "Wähle ein Fach um mit dem Lernen zu beginnen",
     "error": "Fächer konnten nicht geladen werden. Bitte versuche es erneut.",
+    "availableFromGrade": "Verfügbar ab Klasse {{grade}}",
     "random": "Zufällig",
     "math": {
       "label": "Mathematik",
+      "description": "Mathematische Konzepte und Problemlösung",
       "concepts": {
         "arithmetic": "Grundrechenarten",
         "mental_math": "Kopfrechnen",
@@ -103,6 +106,7 @@
     },
     "logic": {
       "label": "Logik",
+      "description": "Logisches Denken und Problemlösung",
       "concepts": {
         "patterns": "Mustererkennung",
         "conditional": "Wenn-Dann Logik",
@@ -114,6 +118,7 @@
     },
     "music": {
       "label": "Musik",
+      "description": "Musikalische Konzepte und Verständnis",
       "concepts": {
         "rhythm": "Rhythmuserkennung",
         "melody": "Melodiemuster"
@@ -121,6 +126,7 @@
     },
     "physics": {
       "label": "Physik",
+      "description": "Lerne die grundlegenden Gesetze kennen, die unser Universum regieren",
       "concepts": {
         "mechanics": "Mechanik",
         "waves": "Wellen",
@@ -129,11 +135,17 @@
     },
     "german": {
       "label": "Deutsch",
+      "description": "Deutsch lernen und verstehen",
       "concepts": {
         "parts_of_speech": "Wortarten",
         "spelling": "Rechtschreibung",
         "reading_comprehension": "Text verstehen"
       }
+    },
+    "english": {
+      "label": "Englisch",
+      "description": "Englisch lernen und verstehen",
+      "concepts": {}
     }
   },
   "concepts": {

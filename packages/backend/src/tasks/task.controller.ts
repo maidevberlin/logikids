@@ -35,17 +35,21 @@ export class TaskController extends BaseController {
       }
 
       const subjects = subjectRegistry.getAll().map(subject => {
-        // Get concepts with filtering if grade/difficulty provided
-        const filteredConcepts = grade !== undefined
-          ? subjectRegistry.getConcepts(subject.id, { grade, difficulty })
-          : [];
+        const metadata = subjectRegistry.getConceptMetadata(subject.id);
 
         // If grade filtering is active, return filtered concepts with full details
         if (grade !== undefined) {
+          const filteredConcepts = subjectRegistry.getConcepts(subject.id, { grade, difficulty });
+
           return {
             id: subject.id,
             name: subject.name,
             description: subject.description,
+            conceptCount: metadata.conceptCount,
+            minGrade: metadata.minGrade,
+            maxGrade: metadata.maxGrade,
+            minAge: metadata.minAge,
+            maxAge: metadata.maxAge,
             concepts: filteredConcepts.map(concept => ({
               id: concept.id,
               name: concept.name,
@@ -59,22 +63,22 @@ export class TaskController extends BaseController {
           };
         }
 
-        // Otherwise return all concepts (basic format for backward compatibility)
+        // Otherwise return just metadata (for subjects page)
         return {
           id: subject.id,
           name: subject.name,
           description: subject.description,
-          concepts: Array.from(subject.concepts.values()).map(concept => ({
-            id: concept.id,
-            name: concept.name,
-            description: concept.description
-          }))
+          conceptCount: metadata.conceptCount,
+          minGrade: metadata.minGrade,
+          maxGrade: metadata.maxGrade,
+          minAge: metadata.minAge,
+          maxAge: metadata.maxAge,
         };
       });
 
       // Filter out subjects with no concepts if grade filtering is active
       const filteredSubjects = grade !== undefined
-        ? subjects.filter(s => s.concepts.length > 0)
+        ? subjects.filter(s => s.concepts && s.concepts.length > 0)
         : subjects;
 
       res.json({ subjects: filteredSubjects });

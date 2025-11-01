@@ -6,16 +6,17 @@ description: A task with exactly 4 options where one is correct
 
 Create a multiple choice task with a question and 4 answer options where exactly one is correct.
 
+**CRITICAL**: Randomize the position of the correct answer. Do NOT always put it first. The correct answer should appear in different positions (1st, 2nd, 3rd, or 4th) with equal probability. Avoid any position bias.
+
 ## Quality Guidelines
 
-**Correct Answer:**
-- Provide a detailed explanation showing WHY this answer is correct
-- Use clear reasoning that helps the student learn
+**Options (all 4):**
+- Create exactly 4 options total
+- One correct option with a detailed explanation showing WHY it's correct
+- Three plausible but incorrect options (no explanations needed)
+- Make incorrect options believable and challenging
 
-**Incorrect Options:**
-- Create three plausible but wrong answers
-- Make them believable and challenging
-- Do NOT provide explanations for incorrect options
-
-**Presentation:**
-- Shuffle all options randomly (vary the position of the correct answer)
+**Randomization:**
+- SHUFFLE the options array before returning
+- The correct answer must NOT always be first
+- Vary the position randomly across different tasks

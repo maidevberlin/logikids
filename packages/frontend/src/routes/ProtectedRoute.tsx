@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useUserData } from '@/features/UserData'
-import { LoadingState } from '@/features/base/Loader/LoadingState'
+import { useUserData } from '@/app/account'
+import { LoadingState } from '@/app/common'
 
 /**
  * ProtectedRoute - Layout route that ensures user has completed onboarding

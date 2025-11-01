@@ -167,6 +167,34 @@ export class SubjectRegistry {
     const randomIndex = Math.floor(Math.random() * filteredConcepts.length);
     return filteredConcepts[randomIndex];
   }
+
+  /**
+   * Get metadata about a subject's concepts (min/max grade, min/max age, concept count)
+   */
+  getConceptMetadata(subjectId: string): {
+    conceptCount: number;
+    minGrade?: number;
+    maxGrade?: number;
+    minAge?: number;
+    maxAge?: number;
+  } {
+    const conceptMap = this.concepts.get(subjectId);
+    if (!conceptMap || conceptMap.size === 0) {
+      return { conceptCount: 0 };
+    }
+
+    const concepts = Array.from(conceptMap.values());
+    const grades = concepts.map(c => c.grade).filter(g => g !== undefined);
+    const ages = concepts.flatMap(c => c.ages);
+
+    return {
+      conceptCount: concepts.length,
+      minGrade: grades.length > 0 ? Math.min(...grades) : undefined,
+      maxGrade: grades.length > 0 ? Math.max(...grades) : undefined,
+      minAge: ages.length > 0 ? Math.min(...ages) : undefined,
+      maxAge: ages.length > 0 ? Math.max(...ages) : undefined,
+    };
+  }
 }
 
 // Export singleton instance

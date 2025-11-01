@@ -1,0 +1,196 @@
+{
+  "concepts": {
+    "grade5-angles": {
+      "name": "Winkel",
+      "description": "Größen und Messen"
+    },
+    "grade5-area-and-perimeter": {
+      "name": "Fläche und Umfang",
+      "description": "Größen und Messen"
+    },
+    "grade5-calculating-with-measurements": {
+      "name": "Rechnen mit Größen",
+      "description": "Zahlen und Operationen"
+    },
+    "grade5-circles": {
+      "name": "Kreise",
+      "description": "Raum und Form"
+    },
+    "grade5-collecting-and-representing-data": {
+      "name": "Daten sammeln und darstellen",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade5-combinatorics": {
+      "name": "Kombinatorik",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade5-coordinate-system": {
+      "name": "Koordinatensystem",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade5-deepening-angles": {
+      "name": "Vertiefung Winkel",
+      "description": "Raum und Form"
+    },
+    "grade5-deepening-basic-operations": {
+      "name": "Vertiefung Grundrechenarten",
+      "description": "Zahlen und Operationen"
+    },
+    "grade5-divisibility": {
+      "name": "Teilbarkeit",
+      "description": "Zahlen und Operationen"
+    },
+    "grade5-geometric-basic-concepts": {
+      "name": "Geometrische Grundbegriffe",
+      "description": "Raum und Form"
+    },
+    "grade5-introduction-to-decimals": {
+      "name": "Einführung in Dezimalzahlen",
+      "description": "Zahlen und Operationen"
+    },
+    "grade5-large-natural-numbers": {
+      "name": "Große natürliche Zahlen",
+      "description": "Zahlen und Operationen"
+    },
+    "grade5-quadrilaterals": {
+      "name": "Vierecke",
+      "description": "Raum und Form"
+    },
+    "grade5-random-experiments": {
+      "name": "Zufallsexperimente",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade5-scale": {
+      "name": "Maßstab",
+      "description": "Größen und Messen"
+    },
+    "grade5-simple-equations": {
+      "name": "Einfache Gleichungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade5-solids": {
+      "name": "Körper",
+      "description": "Raum und Form"
+    },
+    "grade5-statistical-measures": {
+      "name": "Statistische Kenngrößen",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade5-symmetry": {
+      "name": "Symmetrie",
+      "description": "Raum und Form"
+    },
+    "grade5-terms": {
+      "name": "Terme",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade5-triangles": {
+      "name": "Dreiecke",
+      "description": "Raum und Form"
+    },
+    "grade5-understanding-fractions": {
+      "name": "Brüche verstehen",
+      "description": "Zahlen und Operationen"
+    },
+    "grade5-volume-and-surface-area": {
+      "name": "Volumen und Oberfläche",
+      "description": "Größen und Messen"
+    },
+    "grade6-angle-calculations": {
+      "name": "Winkelberechnungen",
+      "description": "Größen und Messen"
+    },
+    "grade6-area-of-composite-figures": {
+      "name": "Fläche zusammengesetzter Figuren",
+      "description": "Größen und Messen"
+    },
+    "grade6-classifying-quadrilaterals": {
+      "name": "Vierecke klassifizieren",
+      "description": "Raum und Form"
+    },
+    "grade6-decimals-all-operations": {
+      "name": "Dezimalzahlen - Alle Rechenarten",
+      "description": "Zahlen und Operationen"
+    },
+    "grade6-deepening-probability": {
+      "name": "Vertiefung Wahrscheinlichkeit",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade6-deepening-triangles": {
+      "name": "Vertiefung Dreiecke",
+      "description": "Raum und Form"
+    },
+    "grade6-deepening-volume-and-surface-area": {
+      "name": "Vertiefung Volumen und Oberfläche",
+      "description": "Größen und Messen"
+    },
+    "grade6-expanding-coordinate-system": {
+      "name": "Erweiterung Koordinatensystem",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade6-fraction-addition-and-subtraction": {
+      "name": "Bruchrechnung Addition und Subtraktion",
+      "description": "Zahlen und Operationen"
+    },
+    "grade6-fraction-division": {
+      "name": "Bruchrechnung Division",
+      "description": "Zahlen und Operationen"
+    },
+    "grade6-fraction-multiplication": {
+      "name": "Bruchrechnung Multiplikation",
+      "description": "Zahlen und Operationen"
+    },
+    "grade6-geometric-mappings": {
+      "name": "Geometrische Abbildungen",
+      "description": "Raum und Form"
+    },
+    "grade6-introduction-to-integers": {
+      "name": "Einführung in ganze Zahlen",
+      "description": "Zahlen und Operationen"
+    },
+    "grade6-introduction-to-percentages": {
+      "name": "Einführung in Prozentrechnung",
+      "description": "Zahlen und Operationen"
+    },
+    "grade6-inverse-proportional-relationships": {
+      "name": "Umgekehrt proportionale Zuordnungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade6-investigating-solids": {
+      "name": "Körper untersuchen",
+      "description": "Raum und Form"
+    },
+    "grade6-linear-equations": {
+      "name": "Lineare Gleichungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade6-percent-and-interest-calculation": {
+      "name": "Prozent- und Zinsrechnung",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade6-proportional-relationships": {
+      "name": "Proportionale Zuordnungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade6-relative-frequency": {
+      "name": "Relative Häufigkeit",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade6-representing-and-interpreting-data": {
+      "name": "Daten darstellen und interpretieren",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade6-simulation": {
+      "name": "Simulation",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "grade6-transforming-terms": {
+      "name": "Terme umformen",
+      "description": "Strukturen und Funktionen"
+    },
+    "grade6-two-way-table": {
+      "name": "Vierfeldertafel",
+      "description": "Daten und Wahrscheinlichkeit"
+    }
+  }
+}

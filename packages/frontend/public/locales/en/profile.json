@@ -11,7 +11,16 @@
     "exportData": "Export My Data",
     "deleteData": "Delete All Data",
     "deleteConfirm": "Are you sure you want to delete all your data? This cannot be undone.",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "lastSynced": "Last synced: {{time}}",
+    "neverSynced": "Never",
+    "justNow": "Just now",
+    "minutesAgo": "{{count}} minute ago",
+    "minutesAgo_other": "{{count}} minutes ago",
+    "hoursAgo": "{{count}} hour ago",
+    "hoursAgo_other": "{{count}} hours ago",
+    "daysAgo": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago"
   },
   "settings": {
     "title": "Settings",
@@ -20,6 +29,8 @@
     "ageLabel": "How old are you?",
     "gradeLabel": "What grade are you in?",
     "languageLabel": "Choose your language",
+    "syncLabel": "Cloud Backup",
+    "syncDescription": "Automatically backup your data to the cloud",
     "gender": {
       "label": "Gender (optional)",
       "options": {

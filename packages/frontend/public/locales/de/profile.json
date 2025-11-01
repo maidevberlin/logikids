@@ -11,7 +11,16 @@
     "exportData": "Meine Daten exportieren",
     "deleteData": "Alle Daten löschen",
     "deleteConfirm": "Bist du sicher, dass du alle deine Daten löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
-    "backToHome": "Zurück zur Startseite"
+    "backToHome": "Zurück zur Startseite",
+    "lastSynced": "Zuletzt synchronisiert: {{time}}",
+    "neverSynced": "Nie",
+    "justNow": "Gerade eben",
+    "minutesAgo": "vor {{count}} Minute",
+    "minutesAgo_other": "vor {{count}} Minuten",
+    "hoursAgo": "vor {{count}} Stunde",
+    "hoursAgo_other": "vor {{count}} Stunden",
+    "daysAgo": "vor {{count}} Tag",
+    "daysAgo_other": "vor {{count}} Tagen"
   },
   "settings": {
     "title": "Einstellungen",
@@ -20,6 +29,8 @@
     "ageLabel": "Wie alt bist du?",
     "gradeLabel": "In welcher Klasse bist du?",
     "languageLabel": "Wähle deine Sprache",
+    "syncLabel": "Cloud-Backup",
+    "syncDescription": "Sichere deine Daten automatisch in der Cloud",
     "gender": {
       "label": "Geschlecht (optional)",
       "options": {

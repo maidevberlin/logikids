@@ -66,6 +66,7 @@
   "task": {
     "title": "Task",
     "difficulty": "Difficulty",
+    "randomConcept": "Random",
     "getHint": "Show Hint",
     "getAnotherHint": "Show Another Hint",
     "skip": "Skip Task",
@@ -89,9 +90,11 @@
     "pageTitle": "Choose Your Subject",
     "pageDescription": "Select a subject to start learning",
     "error": "Failed to load subjects. Please try again.",
+    "availableFromGrade": "Available from grade {{grade}}",
     "random": "Random",
     "math": {
       "label": "Mathematics",
+      "description": "Mathematical concepts and problem-solving",
       "concepts": {
         "arithmetic": "Basic Arithmetic",
         "mental_math": "Mental Math",
@@ -103,6 +106,7 @@
     },
     "logic": {
       "label": "Logic",
+      "description": "Logical thinking and problem solving",
       "concepts": {
         "patterns": "Pattern Recognition",
         "conditional": "If-Then Logic",
@@ -114,6 +118,7 @@
     },
     "music": {
       "label": "Music",
+      "description": "Musical concepts and understanding",
       "concepts": {
         "rhythm": "Rhythm Recognition",
         "melody": "Melody Patterns"
@@ -121,6 +126,7 @@
     },
     "physics": {
       "label": "Physics",
+      "description": "Learn about the fundamental laws that govern our universe",
       "concepts": {
         "mechanics": "Mechanics",
         "waves": "Waves",
@@ -129,11 +135,17 @@
     },
     "german": {
       "label": "German",
+      "description": "German language learning and understanding",
       "concepts": {
         "parts_of_speech": "Parts of Speech",
         "spelling": "Spelling",
         "reading_comprehension": "Reading Comprehension"
       }
+    },
+    "english": {
+      "label": "English",
+      "description": "English language learning and understanding",
+      "concepts": {}
     }
   },
   "concepts": {
