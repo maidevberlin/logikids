@@ -1,12 +1,11 @@
-import { useMemo } from 'react'
-import { getRandomGreeting } from './greetings'
+import { useRandomGreeting } from './greetings'
 
 export interface GreetingHeaderProps {
   name: string
 }
 
 export function GreetingHeader({ name }: GreetingHeaderProps) {
-  const greeting = useMemo(() => getRandomGreeting(), [])
+  const greeting = useRandomGreeting()
 
   return (
     <div className="text-center mb-12">

@@ -1,45 +1,6 @@
-// TODO: Generate 50 variations per time period using subagent
-// These are placeholder greetings - will be replaced with generated content
+import { useTranslation } from 'react-i18next'
 
-export interface TimeBasedGreetings {
-  morning: string[]   // 5AM-12PM
-  afternoon: string[] // 12PM-6PM
-  evening: string[]   // 6PM-9PM
-  night: string[]     // 9PM-5AM
-}
-
-export const greetings: TimeBasedGreetings = {
-  morning: [
-    'Good morning! ☀️',
-    'Rise and shine! 🌅',
-    'Ready to learn? 🌞',
-    'Morning, learner! 🌤️',
-    'Start your day bright! ⭐',
-  ],
-  afternoon: [
-    'Good afternoon! 🌤️',
-    'Time to learn! 📚',
-    'Let\'s solve puzzles! 🧩',
-    'Ready for challenges? 🎯',
-    'Afternoon adventure! 🚀',
-  ],
-  evening: [
-    'Good evening! 🌆',
-    'Evening learner! 🌇',
-    'Ready for challenges? 🌠',
-    'Let\'s think! 🌃',
-    'Evening brain time! 🧠',
-  ],
-  night: [
-    'Good night! 🌙',
-    'Night owl! 🦉',
-    'Still learning? ⭐',
-    'Midnight thinker! 🌟',
-    'Night study session! 🌛',
-  ],
-}
-
-export type TimeOfDay = keyof TimeBasedGreetings
+export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night'
 
 export function getTimeOfDay(): TimeOfDay {
   const hour = new Date().getHours()
@@ -50,8 +11,13 @@ export function getTimeOfDay(): TimeOfDay {
   return 'night'
 }
 
-export function getRandomGreeting(timeOfDay?: TimeOfDay): string {
+export function useRandomGreeting(timeOfDay?: TimeOfDay): string {
+  const { t } = useTranslation()
   const time = timeOfDay || getTimeOfDay()
-  const greetingList = greetings[time]
-  return greetingList[Math.floor(Math.random() * greetingList.length)]
+
+  // Get the array of greetings for this time period
+  const greetings = t(`greetings.${time}`, { returnObjects: true }) as string[]
+
+  // Return random greeting
+  return greetings[Math.floor(Math.random() * greetings.length)]
 }

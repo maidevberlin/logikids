@@ -218,5 +218,63 @@
       "skip": "Skip for now",
       "save": "Let's Go!"
     }
+  },
+  "greetings": {
+    "morning": [
+      "Good morning",
+      "Rise and shine",
+      "Ready to learn?",
+      "Morning, learner",
+      "Start your day bright",
+      "Good morning, thinker",
+      "Ready for today's challenges?",
+      "A new day to learn",
+      "Morning! Let's begin",
+      "Time to wake up your brain",
+      "Fresh start, fresh mind",
+      "Good morning! What will you discover today?"
+    ],
+    "afternoon": [
+      "Good afternoon",
+      "Time to learn",
+      "Let's solve puzzles",
+      "Ready for challenges?",
+      "Afternoon adventure",
+      "Keep up the great work",
+      "Let's think together",
+      "Afternoon brain time",
+      "Ready to explore?",
+      "Time for some thinking",
+      "Let's challenge ourselves",
+      "Good afternoon! Ready to grow?"
+    ],
+    "evening": [
+      "Good evening",
+      "Evening learner",
+      "Ready for challenges?",
+      "Let's think",
+      "Evening brain time",
+      "Time to reflect and learn",
+      "Evening exploration",
+      "Ready for tonight's puzzles?",
+      "Good evening, thinker",
+      "Let's finish strong",
+      "Evening learning session",
+      "Ready to wind down with learning?"
+    ],
+    "night": [
+      "Good night",
+      "Night owl",
+      "Still learning?",
+      "Midnight thinker",
+      "Night study session",
+      "Late night learning",
+      "Burning the midnight oil",
+      "Good night, scholar",
+      "Ready for a night challenge?",
+      "Night time, brain time",
+      "Late learner",
+      "One more puzzle before bed?"
+    ]
   }
 } 

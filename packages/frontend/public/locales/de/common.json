@@ -218,5 +218,63 @@
       "skip": "Überspringen",
       "save": "Los geht's!"
     }
+  },
+  "greetings": {
+    "morning": [
+      "Guten Morgen",
+      "Auf geht's",
+      "Bereit zu lernen?",
+      "Morgen, Lerner",
+      "Starte deinen Tag hell",
+      "Guten Morgen, Denker",
+      "Bereit für die heutigen Herausforderungen?",
+      "Ein neuer Tag zum Lernen",
+      "Morgen! Lass uns beginnen",
+      "Zeit, dein Gehirn aufzuwecken",
+      "Frischer Start, frischer Geist",
+      "Guten Morgen! Was wirst du heute entdecken?"
+    ],
+    "afternoon": [
+      "Guten Tag",
+      "Zeit zu lernen",
+      "Lass uns Rätsel lösen",
+      "Bereit für Herausforderungen?",
+      "Nachmittags-Abenteuer",
+      "Weiter so",
+      "Lass uns zusammen denken",
+      "Nachmittags-Gehirnzeit",
+      "Bereit zu entdecken?",
+      "Zeit zum Nachdenken",
+      "Lass uns herausfordern",
+      "Guten Tag! Bereit zu wachsen?"
+    ],
+    "evening": [
+      "Guten Abend",
+      "Abend-Lerner",
+      "Bereit für Herausforderungen?",
+      "Lass uns denken",
+      "Abend-Gehirnzeit",
+      "Zeit zum Nachdenken und Lernen",
+      "Abend-Erkundung",
+      "Bereit für die heutigen Rätsel?",
+      "Guten Abend, Denker",
+      "Lass uns stark beenden",
+      "Abend-Lernsession",
+      "Bereit zum Entspannen mit Lernen?"
+    ],
+    "night": [
+      "Gute Nacht",
+      "Nachteule",
+      "Lernst du noch?",
+      "Mitternachts-Denker",
+      "Nacht-Lernsession",
+      "Spät am Abend lernen",
+      "Die Nacht durchmachen",
+      "Gute Nacht, Gelehrter",
+      "Bereit für eine Nacht-Herausforderung?",
+      "Nachtzeit, Gehirnzeit",
+      "Später Lerner",
+      "Noch ein Rätsel vor dem Schlafengehen?"
+    ]
   }
 } 
