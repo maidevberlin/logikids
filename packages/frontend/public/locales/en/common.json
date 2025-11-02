@@ -146,6 +146,11 @@
       "label": "English",
       "description": "English language learning and understanding",
       "concepts": {}
+    },
+    "surpriseMe": {
+      "title": "Surprise Me!",
+      "description": "Jump into a random learning adventure",
+      "emoji": "🎲"
     }
   },
   "concepts": {
@@ -153,7 +158,14 @@
     "noConcepts": "No concepts available for this subject.",
     "noConceptsForGrade": "No concepts available for your grade. Try \"Show Advanced Concepts\".",
     "showAdvanced": "Show Advanced Concepts",
-    "hideAdvanced": "Show Grade-Appropriate Only"
+    "hideAdvanced": "Show Grade-Appropriate Only",
+    "startLearning": "Start learning",
+    "advanced": "Advanced",
+    "surpriseMe": {
+      "title": "Surprise Me!",
+      "description": "Try a random concept",
+      "emoji": "✨"
+    }
   },
   "difficulty": {
     "easy": "Easy",
@@ -320,4 +332,4 @@
       }
     }
   }
-} 
+}

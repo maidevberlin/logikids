@@ -17,3 +17,12 @@ Teaching German language and literature - grammar, vocabulary, reading comprehen
 - Lists for vocabulary, grammar rules
 
 **Avoid:** LaTeX, code blocks, Mermaid
+
+## Task Variation
+
+**IMPORTANT**: Ensure content diversity across tasks:
+- Use different vocabulary and word choices
+- Vary sentence structures and grammatical examples
+- Change the specific content (topics, characters, situations)
+- Avoid repetitive example sentences
+- Ensure fresh, engaging content each time

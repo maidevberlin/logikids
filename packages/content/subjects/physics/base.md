@@ -17,3 +17,12 @@ Teaching physics - how the natural world works through observation, experimentat
 - Lists for calculations, procedures
 
 **Important:** Use proper physics notation, units, and ensure scientific accuracy
+
+## Task Variation
+
+**IMPORTANT**: Ensure diversity across task generations:
+- Use different numerical values and measurement ranges
+- Vary the physical scenarios (falling objects, circuits, motion types)
+- Change the specific quantities being calculated
+- Ensure **different answers** each time
+- Use varied units appropriate to the concept

@@ -11,8 +11,8 @@ export interface PageLayoutProps {
   showBack?: boolean
   /** Show home button in header */
   showHome?: boolean
-  /** Show stats icon in header */
-  showStats?: boolean
+  /** Show game stats (level + achievements) in header */
+  showGameStats?: boolean
   /** Show account icon in header */
   showAccount?: boolean
   /** Custom content to display in the center of the header */
@@ -28,7 +28,7 @@ export function PageLayout({
   showHeader = true,
   showBack = false,
   showHome = false,
-  showStats = false,
+  showGameStats = false,
   showAccount = false,
   headerCenter,
   headerRight,
@@ -41,7 +41,7 @@ export function PageLayout({
         <Header
           showBack={showBack}
           showHome={showHome}
-          showStats={showStats}
+          showGameStats={showGameStats}
           showAccount={showAccount}
           centerContent={headerCenter}
           rightContent={headerRight}

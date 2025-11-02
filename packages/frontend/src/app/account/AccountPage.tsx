@@ -116,7 +116,7 @@ export default function AccountPage() {
     <PageLayout
       showBack
       showHome
-      showStats
+      showGameStats
       showAccount
     >
       <div className="max-w-2xl mx-auto space-y-6">

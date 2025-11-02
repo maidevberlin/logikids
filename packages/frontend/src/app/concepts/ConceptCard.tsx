@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ArrowRight } from 'lucide-react'
 import { Concept } from './types'
 import { getSubjectNamespace } from '@/i18n/subjectNamespace'
 
@@ -38,22 +37,17 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
             </h3>
             {isAdvanced && (
               <Badge className="ml-2 bg-orange-100 text-orange-800 rounded-lg">
-                Advanced
+                {t('concepts.advanced')}
               </Badge>
             )}
             {concept.difficulty && (
               <Badge className={`ml-2 rounded-lg ${difficultyColors[concept.difficulty]}`}>
-                {concept.difficulty.charAt(0).toUpperCase() + concept.difficulty.slice(1)}
+                {t(`difficulty.${concept.difficulty}`)}
               </Badge>
             )}
           </div>
 
           <p className="text-gray-600 mb-4 flex-1">{description}</p>
-
-          <div className="flex items-center text-primary font-medium mt-auto pt-2">
-            Start learning
-            <ArrowRight className="w-4 h-4 ml-1" />
-          </div>
         </CardContent>
       </Card>
     </Link>

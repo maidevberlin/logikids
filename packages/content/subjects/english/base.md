@@ -20,3 +20,12 @@ Teaching English language skills through practical, engaging tasks.
 - IPA notation for pronunciation
 
 **Avoid:** LaTeX, Mermaid, code blocks
+
+## Task Variation
+
+**IMPORTANT**: Ensure content diversity across tasks:
+- Use different vocabulary and word choices
+- Vary sentence structures and grammatical examples
+- Change the specific content (topics, characters, situations)
+- Avoid repetitive example sentences
+- Ensure fresh, engaging content each time

@@ -39,11 +39,46 @@ focus: Main learning area
 learning_objectives:
   - Objective 1
   - Objective 2
-prerequisites: []
-example_tasks: []
+prerequisites: []           # Optional: concept IDs required before this
+example_tasks:              # Required: 3+ concrete example problems
+  - "Example problem 1"
+  - "Example problem 2"
+  - "Example problem 3"
+real_world_context: "Brief description of real-world applications"  # Required
 ---
-Optional concept-specific prompt...
+
+# Concept Name Tasks
+
+Brief introduction explaining what types of tasks to create.
+
+**CRITICAL: Include 5-8+ distinct variations** to prevent repetitive task generation:
+
+**Vary the problem structure:**
+- Structure variation 1 with specific example
+- Structure variation 2 with specific example
+- Structure variation 3 with specific example
+...
+
+**Vary the content/context:**
+- Context 1 (e.g., specific scenario)
+- Context 2 (e.g., different scenario)
+...
+
+**Vary the complexity:**
+- For younger ages ({{age}} < X): simpler scenarios
+- For older ages ({{age}} >= X): more complex scenarios
+...
+
+Use appropriate formatting per subject (LaTeX for math/physics, tables, SVG diagrams, etc.)
 ```
+
+**Why variations are critical:**
+Without detailed variation instructions in the content section, the AI will generate repetitive tasks with identical problem structures. The content section teaches the AI *how* to create diverse problems, not just *what* concept to cover. Each concept should specify:
+- Different problem types/structures
+- Different contexts and scenarios
+- Number ranges appropriate for age/difficulty
+- Various question formats
+- Real-world applications
 
 ### 2. Frontend Translations
 

@@ -23,7 +23,7 @@ export default function StatsPage() {
 
   if (totalTasks === 0) {
     return (
-      <PageLayout showBack showHome showStats showAccount>
+      <PageLayout showBack showHome showGameStats showAccount>
         <div className="max-w-6xl mx-auto">
           <Card className="p-12 bg-white shadow-md rounded-2xl text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -48,7 +48,7 @@ export default function StatsPage() {
   }
 
   return (
-    <PageLayout showBack showHome showStats showAccount>
+    <PageLayout showBack showHome showGameStats showAccount>
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center">

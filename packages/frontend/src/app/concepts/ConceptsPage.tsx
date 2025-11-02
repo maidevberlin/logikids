@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
+import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { ConceptCard } from './ConceptCard'
 import { Concept } from './types'
 import { useUserData } from '@/app/account'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react'
 
 interface SubjectWithConcepts {
   id: string
@@ -33,6 +34,7 @@ async function fetchConcepts(grade?: number): Promise<SubjectWithConcepts[]> {
 export default function ConceptsPage() {
   const { subject: subjectId } = useParams<{ subject: string }>()
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { data: userData } = useUserData()
   const [showAll, setShowAll] = useState(false)
 
@@ -76,6 +78,21 @@ export default function ConceptsPage() {
   // Determine which concepts are advanced (not in grade-filtered list)
   const gradeFilteredIds = new Set(gradeFilteredConcepts.map(c => c.id))
 
+  const handleSurpriseMe = () => {
+    if (filteredConcepts.length === 0) return
+
+    // Pick a random concept from the filtered list
+    const randomConcept = filteredConcepts[Math.floor(Math.random() * filteredConcepts.length)]
+
+    // Navigate to tasks for that concept
+    navigate(`/subjects/${subjectId}/${randomConcept.id}/tasks`)
+  }
+
+  // Get subject theme
+  const theme = getSubjectTheme(subjectId || '')
+  const SubjectIcon = theme.icon
+  const colors = theme.colors
+
   return (
     <PageLayout
       showBack
@@ -88,14 +105,31 @@ export default function ConceptsPage() {
             <Skeleton className="h-6 w-96 mb-8" />
           </>
         ) : subject ? (
-          <>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {subject.name}
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              {subject.description}
-            </p>
-          </>
+          <div className="flex items-start justify-between mb-8">
+            <div className="flex items-start gap-6 flex-1">
+              <div className={`${colors.bg} ${colors.hover} transition-colors duration-300 p-6 rounded-2xl shadow-md`}>
+                <SubjectIcon className="w-12 h-12 text-white" />
+              </div>
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                  {t(`subjects.${subjectId}.label`, { defaultValue: subject.name })}
+                </h1>
+                <p className="text-xl text-gray-600">
+                  {t(`subjects.${subjectId}.description`, { defaultValue: subject.description })}
+                </p>
+              </div>
+            </div>
+            {filteredConcepts.length > 0 && (
+              <Button
+                onClick={handleSurpriseMe}
+                size="lg"
+                className={`ml-6 ${colors.bg} ${colors.hover} text-white gap-2 shadow-md hover:shadow-lg transition-all duration-300 rounded-2xl`}
+              >
+                <Sparkles className="w-5 h-5" />
+                {t('concepts.surpriseMe.title', { defaultValue: 'Surprise Me!' })}
+              </Button>
+            )}
+          </div>
         ) : (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
             <p className="text-red-600">

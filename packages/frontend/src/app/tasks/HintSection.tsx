@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -36,26 +36,25 @@ export function HintSection({
   canRequestHint = true,
 }: HintSectionProps) {
   const { t } = useTranslation()
-  const [wrongAnswerCount, setWrongAnswerCount] = useState(0)
   const hasMoreHints = canRequestHint
+  const hintRequestedRef = useRef(false)
 
-  // Track wrong answers
+  // Auto-show hint after wrong answer (only once per wrong answer)
   useEffect(() => {
-    if (hasWrongAnswer) {
-      setWrongAnswerCount((prev) => prev + 1)
-    }
-  }, [hasWrongAnswer])
-
-  // Auto-show hint after wrong answer
-  useEffect(() => {
-    if (wrongAnswerCount > 0 && hasMoreHints && requestHint) {
+    if (hasWrongAnswer && hasMoreHints && requestHint && !hintRequestedRef.current) {
+      hintRequestedRef.current = true
       const timer = setTimeout(() => {
         requestHint()
         onHintUsed?.()
       }, 1500)
       return () => clearTimeout(timer)
     }
-  }, [wrongAnswerCount, hasMoreHints, onHintUsed, requestHint])
+
+    // Reset the flag when answer is cleared
+    if (!hasWrongAnswer) {
+      hintRequestedRef.current = false
+    }
+  }, [hasWrongAnswer, hasMoreHints, onHintUsed, requestHint])
 
 
 

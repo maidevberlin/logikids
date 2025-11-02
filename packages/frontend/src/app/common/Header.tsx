@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, Home, User, BarChart3 } from 'lucide-react'
+import { ChevronLeft, Home, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { HeaderGameStats } from './HeaderGameStats'
 
 interface HeaderProps {
   /** Show back button on the left */
@@ -10,8 +11,8 @@ interface HeaderProps {
   showHome?: boolean
   /** Custom content to display in the center of the header */
   centerContent?: ReactNode
-  /** Show stats icon on the right */
-  showStats?: boolean
+  /** Show game stats (level + achievements) on the right */
+  showGameStats?: boolean
   /** Show account icon on the right */
   showAccount?: boolean
   /** Additional custom actions on the right */
@@ -22,7 +23,7 @@ export function Header({
   showBack = false,
   showHome = false,
   centerContent,
-  showStats = false,
+  showGameStats = false,
   showAccount = false,
   rightContent,
 }: HeaderProps) {
@@ -66,16 +67,7 @@ export function Header({
           {/* Right: Actions */}
           <div className="flex items-center gap-2 min-w-[100px] justify-end">
             {rightContent}
-            {showStats && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate('/stats')}
-                className="rounded-full w-10 h-10 p-0 hover:bg-gray-100"
-              >
-                <BarChart3 className="w-5 h-5" />
-              </Button>
-            )}
+            {showGameStats && <HeaderGameStats />}
             {showAccount && (
               <Button
                 variant="ghost"

@@ -146,6 +146,11 @@
       "label": "Englisch",
       "description": "Englisch lernen und verstehen",
       "concepts": {}
+    },
+    "surpriseMe": {
+      "title": "Überrasch mich!",
+      "description": "Spring in ein zufälliges Lernabenteuer",
+      "emoji": "🎲"
     }
   },
   "concepts": {
@@ -153,7 +158,14 @@
     "noConcepts": "Keine Konzepte für dieses Fach verfügbar.",
     "noConceptsForGrade": "Keine Konzepte für deine Klasse verfügbar. Versuche \"Erweiterte Konzepte anzeigen\".",
     "showAdvanced": "Erweiterte Konzepte anzeigen",
-    "hideAdvanced": "Nur klassenstufengerechte anzeigen"
+    "hideAdvanced": "Nur klassenstufengerechte anzeigen",
+    "startLearning": "Aufgaben lösen",
+    "advanced": "Fortgeschritten",
+    "surpriseMe": {
+      "title": "Überrasch mich!",
+      "description": "Probiere ein zufälliges Konzept",
+      "emoji": "✨"
+    }
   },
   "difficulty": {
     "easy": "Leicht",
@@ -320,4 +332,4 @@
       }
     }
   }
-} 
+}

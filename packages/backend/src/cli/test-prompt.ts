@@ -98,7 +98,7 @@ async function testPrompt() {
     const prompt = await promptService.buildPrompt({
       subject: subjectObj,
       taskType: taskTypeObj,
-      concept: enrichedConcept,
+      concept: selectedConcept,
       age,
       grade,
       difficulty,

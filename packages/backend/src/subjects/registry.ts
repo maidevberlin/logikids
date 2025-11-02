@@ -118,6 +118,19 @@ export class SubjectRegistry {
       concepts = concepts.filter(c => c.difficulty === options.difficulty);
     }
 
+    // Sort by difficulty (easy -> medium -> hard), then by name
+    const difficultyOrder = { easy: 1, medium: 2, hard: 3 };
+    concepts.sort((a, b) => {
+      const diffA = difficultyOrder[a.difficulty];
+      const diffB = difficultyOrder[b.difficulty];
+
+      if (diffA !== diffB) {
+        return diffA - diffB;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
+
     return concepts;
   }
 
