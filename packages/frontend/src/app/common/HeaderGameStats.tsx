@@ -51,7 +51,7 @@ export function HeaderGameStats() {
     >
       {/* Compact Level Badge */}
       <div className="relative flex items-center gap-2">
-        <div className={`w-9 h-9 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-sm shadow-md group-hover:scale-110 transition-transform`}>
+        <div className={`w-8 h-8 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-xs shadow-md group-hover:scale-110 transition-transform`}>
           {level}
         </div>
 
