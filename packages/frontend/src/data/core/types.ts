@@ -1,3 +1,5 @@
+import { GameStats } from '@/app/stats/gameTypes'
+
 export interface UserSettings {
   name: string
   age: number
@@ -16,6 +18,7 @@ export interface UserData {
   userId: string
   settings: UserSettings
   progress: Record<string, any>
+  gameStats?: GameStats  // Optional for backward compatibility
   lastTask: LastTask
   timestamp: number
   lastSyncTimestamp?: number
