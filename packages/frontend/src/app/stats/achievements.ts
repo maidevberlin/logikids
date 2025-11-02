@@ -11,6 +11,17 @@ export interface Achievement {
   getProgress: (gameStats: GameStats, progress: UserProgress) => { current: number; total: number }
 }
 
+/**
+ * Helper function to calculate total tasks completed
+ */
+function getTotalTasks(progress: UserProgress): number {
+  return Object.values(progress.stats).reduce((sum, subject) => {
+    return sum + Object.values(subject).reduce((s, stats) => {
+      return s + stats.correct + stats.wrong
+    }, 0)
+  }, 0)
+}
+
 export const ACHIEVEMENTS: Achievement[] = [
   // Tier 1 - Beginner
   {
@@ -19,20 +30,9 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: 'Complete 5 tasks',
     icon: '🌟',
     tier: 1,
-    checkUnlocked: (_, progress) => {
-      const total = Object.values(progress.stats).reduce((sum, subject) => {
-        return sum + Object.values(subject).reduce((s, stats) => {
-          return s + stats.correct + stats.wrong
-        }, 0)
-      }, 0)
-      return total >= 5
-    },
+    checkUnlocked: (_, progress) => getTotalTasks(progress) >= 5,
     getProgress: (_, progress) => {
-      const total = Object.values(progress.stats).reduce((sum, subject) => {
-        return sum + Object.values(subject).reduce((s, stats) => {
-          return s + stats.correct + stats.wrong
-        }, 0)
-      }, 0)
+      const total = getTotalTasks(progress)
       return { current: Math.min(total, 5), total: 5 }
     }
   },
@@ -79,7 +79,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 'speedDemon',
     name: 'Speed Demon',
-    description: '5 consecutive tasks without hints',
+    description: '5 tasks without hints this week',
     icon: '⚡',
     tier: 3,
     checkUnlocked: (gameStats) => gameStats.weekly.noHintTasks >= 5,
@@ -96,13 +96,14 @@ export const ACHIEVEMENTS: Achievement[] = [
     tier: 3,
     checkUnlocked: (gameStats) => {
       const subjects = Object.keys(gameStats.subjectMastery)
-      if (subjects.length < 5) return false  // Assuming 5 subjects minimum
+      // Require 3+ stars in at least 3 different subjects (more flexible than hardcoded 5)
+      if (subjects.length < 3) return false
       return subjects.every(s => (gameStats.subjectMastery[s]?.stars ?? 0) >= 3)
     },
     getProgress: (gameStats) => {
       const subjects = Object.keys(gameStats.subjectMastery)
       const with3Plus = subjects.filter(s => (gameStats.subjectMastery[s]?.stars ?? 0) >= 3).length
-      return { current: with3Plus, total: 5 }
+      return { current: with3Plus, total: 3 }
     }
   },
 
@@ -114,20 +115,11 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: '🎓',
     tier: 4,
     checkUnlocked: (_, progress) => {
-      const totalTasks = Object.values(progress.stats).reduce((sum, subject) => {
-        return sum + Object.values(subject).reduce((s, stats) => {
-          return s + stats.correct + stats.wrong
-        }, 0)
-      }, 0)
       // Level 10 is at threshold 100 (from TASK_LEVELS)
-      return totalTasks >= 100
+      return getTotalTasks(progress) >= 100
     },
     getProgress: (_, progress) => {
-      const totalTasks = Object.values(progress.stats).reduce((sum, subject) => {
-        return sum + Object.values(subject).reduce((s, stats) => {
-          return s + stats.correct + stats.wrong
-        }, 0)
-      }, 0)
+      const totalTasks = getTotalTasks(progress)
       return { current: Math.min(totalTasks, 100), total: 100 }
     }
   },
