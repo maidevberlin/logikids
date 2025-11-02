@@ -15,6 +15,7 @@ interface MarkdownRendererProps {
   enableMermaid?: boolean
   enableCode?: boolean
   className?: string
+  noParagraphMargin?: boolean
 }
 
 // Initialize Mermaid
@@ -30,6 +31,7 @@ function MarkdownRendererComponent({
   enableMermaid = true,
   enableCode = true,
   className = '',
+  noParagraphMargin = false,
 }: MarkdownRendererProps) {
   const mermaidRef = useRef<HTMLDivElement>(null)
 
@@ -59,7 +61,7 @@ function MarkdownRendererComponent({
   }, [content, enableMermaid])
 
   return (
-    <div ref={mermaidRef} className={`markdown-content ${className}`}>
+    <div ref={mermaidRef} className={`markdown-content ${noParagraphMargin ? '[&_p]:!mb-0' : ''} ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
         rehypePlugins={[...(enableMath ? [rehypeKatex as any] : []), rehypeRaw as any]}

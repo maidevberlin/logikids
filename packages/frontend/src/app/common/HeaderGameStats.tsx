@@ -51,19 +51,17 @@ export function HeaderGameStats() {
     >
       {/* Compact Level Badge */}
       <div className="relative flex items-center gap-2">
-        <div className={`w-8 h-8 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-xs shadow-md group-hover:scale-110 transition-transform`}>
+        <div className={`w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}>
           {level}
         </div>
 
-        {/* Progress bar next to badge */}
-        <div className="flex flex-col gap-1">
-          <div className="w-24 h-2.5 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className={`h-full ${getLevelColor(level)} transition-all duration-300`}
-              style={{ width: `${Math.min(progressPercent, 100)}%` }}
-            />
-          </div>
-          <span className="text-[10px] text-gray-500">
+        {/* Progress bar with text inside */}
+        <div className="relative w-24 h-5 bg-gray-200 rounded-full overflow-hidden">
+          <div
+            className={`h-full ${getLevelColor(level)} transition-all duration-300`}
+            style={{ width: `${Math.min(progressPercent, 100)}%` }}
+          />
+          <span className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold text-gray-700">
             {progressInLevel}/{tasksForLevel}
           </span>
         </div>
