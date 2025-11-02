@@ -15,7 +15,9 @@ interface InviteCode {
   code: string
   created_at: number
   expires_at: number
-  note: string | null
+  note: string | null,
+  used_by: string | null,
+  used_at: number | null,
 }
 
 // Generate random invite code (8 chars, alphanumeric, easy to type)
@@ -47,20 +49,23 @@ async function createCode(note?: string): Promise<InviteCode> {
     code,
     created_at: now,
     expires_at: expiresAt,
-    note: note || null
+    note: note || null,
+    used_at: null,
+    used_by: null,
   }
 }
 
 // List all invite codes
 async function listCodes(): Promise<InviteCode[]> {
   const result = await pool.query<InviteCode>(
-    'SELECT code, created_at, expires_at, note FROM invite_codes ORDER BY created_at DESC'
+    'SELECT code, created_at, expires_at, used_by, used_at, note FROM invite_codes ORDER BY created_at DESC'
   )
   // PostgreSQL BIGINT comes back as string, convert to number
   return result.rows.map(row => ({
     ...row,
     created_at: Number(row.created_at),
-    expires_at: Number(row.expires_at)
+    expires_at: Number(row.expires_at),
+    used_at: row.used_at ? Number(row.used_at) : null,
   }))
 }
 
@@ -102,18 +107,23 @@ async function main() {
       }
 
       console.log('\n📋 Invite Codes:\n')
-      console.log('Code          | Created           | Expires           | Status     | Note')
-      console.log('─'.repeat(85))
+      console.log('Code          | Created           | Expires           | Used By                              | Used At           | Status     | Note')
+      console.log('─'.repeat(140))
 
       for (const code of codes) {
         const now = Date.now()
         const isExpired = code.expires_at < now
+        const isUsed = code.used_at !== null
 
         let status = '✅ Valid'
-        if (isExpired) status = '❌ Expired'
+        if (isUsed) status = '✔️  Used'
+        else if (isExpired) status = '❌ Expired'
+
+        const usedBy = code.used_by ? code.used_by.substring(0, 36) : '-'
+        const usedAt = code.used_at ? formatDate(code.used_at) : '-'
 
         console.log(
-          `${code.code.padEnd(13)} | ${formatDate(code.created_at).padEnd(17)} | ${formatDate(code.expires_at).padEnd(17)} | ${status.padEnd(10)} | ${code.note || '-'}`
+            `${code.code.padEnd(13)} | ${formatDate(code.created_at).padEnd(17)} | ${formatDate(code.expires_at).padEnd(17)} | ${usedBy.padEnd(36)} | ${usedAt.padEnd(17)} | ${status.padEnd(10)} | ${code.note || '-'}`
         )
       }
 
