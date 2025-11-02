@@ -46,20 +46,40 @@ validate_openai_key() {
     return 0
 }
 
+# Function to validate Anthropic API key
+validate_anthropic_key() {
+    local key=$1
+    local has_existing=$2
+
+    # If empty input and no existing key
+    if [[ -z "$key" && "$has_existing" != "true" ]]; then
+        echo "❌ API key cannot be empty"
+        return 1
+    fi
+
+    # If not empty, validate format
+    if [[ ! -z "$key" && ! "$key" =~ ^sk-ant-[A-Za-z0-9_.-]{32,}$ ]]; then
+        echo "❌ Invalid API key format. It should start with 'sk-ant-' followed by letters, numbers, underscores, dots, or hyphens"
+        return 1
+    fi
+
+    return 0
+}
+
 # Get AI provider
 while true; do
     echo -e "\n📊 Choose your AI provider:"
-    echo "1) OpenAI (Recommended for best results)"
-    echo "2) Ollama (Open source, runs locally)"
+    echo "1) OpenAI (GPT-5 and GPT-4.1 models)"
+    echo "2) Anthropic (Claude 4 models, excellent reasoning)"
     read -p "Enter your choice (1 or 2): " choice
-    
+
     case $choice in
         1)
             PROVIDER="openai"
             break
             ;;
         2)
-            PROVIDER="ollama"
+            PROVIDER="anthropic"
             break
             ;;
         *)
@@ -99,27 +119,27 @@ if [[ "$PROVIDER" == "openai" ]]; then
     # Get OpenAI model
     while true; do
         echo -e "\n🤖 Choose OpenAI Model:"
-        echo "1) gpt-4o (Recommended - Best overall performance, latest features)"
-        echo "2) gpt-4o-mini (Fast and affordable, great for most tasks)"
-        echo "3) gpt-4-turbo (Previous generation, still very capable)"
-        echo "4) gpt-3.5-turbo (Legacy model, not recommended for new projects)"
+        echo "1) gpt-5 (Recommended - Best overall performance, state-of-the-art)"
+        echo "2) gpt-4.5 (Research preview, excellent for complex tasks)"
+        echo "3) gpt-4.1 (Improved instruction following, great for educational content)"
+        echo "4) gpt-4.1-mini (Fast and affordable, good balance)"
         read -p "Enter your choice (1-4): " choice
-        
+
         case $choice in
             1)
-                MODEL="gpt-4o"
+                MODEL="gpt-5"
                 break
                 ;;
             2)
-                MODEL="gpt-4o-mini"
+                MODEL="gpt-4.5"
                 break
                 ;;
             3)
-                MODEL="gpt-4-turbo"
+                MODEL="gpt-4.1"
                 break
                 ;;
             4)
-                MODEL="gpt-3.5-turbo"
+                MODEL="gpt-4.1-mini"
                 break
                 ;;
             *)
@@ -127,57 +147,61 @@ if [[ "$PROVIDER" == "openai" ]]; then
                 ;;
         esac
     done
-else
-    echo -e "\n🐳 Ollama Configuration"
-    echo "----------------------"
-    
-    # Get Ollama model
+elif [[ "$PROVIDER" == "anthropic" ]]; then
+    echo -e "\n🤖 Anthropic Configuration"
+    echo "------------------------"
+
+    # Check for existing API key
+    EXISTING_KEY=$(get_existing_api_key) || true
+    HAS_EXISTING=false
+    if [[ ! -z "$EXISTING_KEY" ]]; then
+        HAS_EXISTING=true
+        echo "Existing API key found. Press Enter to keep the existing key, or enter a new one."
+        echo "Current key: ${EXISTING_KEY:0:7}...${EXISTING_KEY: -4}"
+    else
+        echo "You'll need an Anthropic API key. You can get one at: https://console.anthropic.com/settings/keys"
+    fi
+
+    # Get API key
     while true; do
-        echo -e "\n🤖 Choose Ollama Model:"
-        echo -e "\n💪 High Performance Models (Requires powerful hardware):"
-        echo "1) mixtral-8x7b (Recommended - Best overall performance and reasoning)"
-        echo "2) llama3-70b (Excellent for educational content, needs >50GB RAM)"
-        echo "3) qwen2.5-72b (Great for complex reasoning, needs >50GB RAM)"
-        
-        echo -e "\n💻 Standard Models (Recommended for most users):"
-        echo "4) llama3-8b (Good balance of performance and resource usage)"
-        echo "5) qwen2.5-7b (Efficient for educational tasks)"
-        echo "6) gemma2-7b (Reliable for structured content)"
-        echo "7) phi4-14b (Specialized in mathematical reasoning)"
-        
-        read -p "Enter your choice (1-7): " choice
-        
+        read -p "Enter your Anthropic API key (or press Enter to keep existing): " API_KEY
+        if [[ -z "$API_KEY" && "$HAS_EXISTING" == "true" ]]; then
+            API_KEY="$EXISTING_KEY"
+            echo "Using existing API key."
+            break
+        elif validate_anthropic_key "$API_KEY" "$HAS_EXISTING"; then
+            break
+        fi
+    done
+
+    # Get Anthropic model
+    while true; do
+        echo -e "\n🤖 Choose Anthropic Model:"
+        echo "1) claude-sonnet-4.5 (Recommended - Best coding model, frontier performance)"
+        echo "2) claude-haiku-4.5 (Fast and affordable, near-frontier quality)"
+        echo "3) claude-opus-4.1 (Excellent for agentic tasks and complex reasoning)"
+        echo "4) claude-sonnet-4 (Everyday model, well-balanced)"
+        read -p "Enter your choice (1-4): " choice
+
         case $choice in
             1)
-                MODEL="mixtral:8x7b"
+                MODEL="claude-sonnet-4.5"
                 break
                 ;;
             2)
-                MODEL="llama3:70b"
+                MODEL="claude-haiku-4.5"
                 break
                 ;;
             3)
-                MODEL="qwen2.5:72b"
+                MODEL="claude-opus-4.1"
                 break
                 ;;
             4)
-                MODEL="llama3:8b"
-                break
-                ;;
-            5)
-                MODEL="qwen2.5:7b"
-                break
-                ;;
-            6)
-                MODEL="gemma2:7b"
-                break
-                ;;
-            7)
-                MODEL="phi4:14b"
+                MODEL="claude-sonnet-4"
                 break
                 ;;
             *)
-                echo "❌ Invalid choice. Please enter a number between 1 and 7."
+                echo "❌ Invalid choice. Please enter a number between 1 and 4."
                 ;;
         esac
     done
@@ -196,32 +220,29 @@ ai:
   openai:
     apiKey: ${API_KEY}
     model: ${MODEL}
-    # Available models:
-    # - gpt-4o: Best overall performance, latest features
-    # - gpt-4o-mini: Fast and affordable, great for most tasks
-    # - gpt-4-turbo: Previous generation, still very capable
-    # - gpt-3.5-turbo: Legacy model, not recommended for new projects
+    # Available models (2025):
+    # - gpt-5: Best overall performance, state-of-the-art (Released Aug 2025)
+    # - gpt-4.5: Research preview, excellent for complex tasks
+    # - gpt-4.1: Improved instruction following, great for educational content
+    # - gpt-4.1-mini: Fast and affordable, good balance
 EOL
-else
+elif [[ "$PROVIDER" == "anthropic" ]]; then
     cat > "$CONFIG_FILE" << EOL
 server:
   port: 3000
 
 ai:
-  provider: ollama
-  ollama:
-    host: http://host.docker.internal:11434
+  provider: anthropic
+  anthropic:
+    apiKey: ${API_KEY}
     model: ${MODEL}
-    # High Performance Models (Requires powerful hardware):
-    # - mixtral-8x7b: Best overall performance and reasoning capabilities
-    # - llama3-70b: Excellent for educational content (needs >50GB RAM)
-    # - qwen2.5-72b: Great for complex reasoning (needs >50GB RAM)
-    #
-    # Standard Models (Recommended for most users):
-    # - llama3-8b: Good balance of performance and resource usage
-    # - qwen2.5-7b: Efficient for educational tasks
-    # - gemma2-7b: Reliable for structured content
-    # - phi4-14b: Specialized in mathematical reasoning
+    maxTokens: 4096
+    temperature: 0.7
+    # Available models (2025):
+    # - claude-sonnet-4.5: Best coding model, frontier performance (Recommended)
+    # - claude-haiku-4.5: Fast and affordable, near-frontier quality
+    # - claude-opus-4.1: Excellent for agentic tasks and complex reasoning
+    # - claude-sonnet-4: Everyday model, well-balanced
 EOL
 fi
 

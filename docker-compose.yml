@@ -91,6 +91,19 @@ services:
     networks:
       - app-network
 
+  adminer:
+    image: adminer:latest
+    container_name: logikids-adminer
+    ports:
+      - "8080:5480"
+    environment:
+      - ADMINER_DEFAULT_SERVER=postgres
+      - ADMINER_DESIGN=nette
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
 volumes:
   postgres-data:
 
