@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Achievement } from './achievements'
 import { GameStats } from './gameTypes'
 import { UserProgress } from './types'
+import { AchievementDetailDialog } from './AchievementDetailDialog'
 
 interface AchievementBadgeProps {
   achievement: Achievement
@@ -15,20 +17,23 @@ export function AchievementBadge({
   progress
 }: AchievementBadgeProps) {
   const { t } = useTranslation('stats')
+  const [showDialog, setShowDialog] = useState(false)
   const isUnlocked = gameStats.achievements[achievement.id]?.unlocked || false
   const progressData = achievement.getProgress(gameStats, progress)
   const progressPercent = (progressData.current / progressData.total) * 100
 
   return (
-    <div
-      className={`
-        relative p-6 rounded-2xl border-2 transition-all duration-200
-        ${isUnlocked
-          ? 'bg-white border-gray-200 shadow-md hover:shadow-lg hover:scale-105'
-          : 'bg-gray-50 border-gray-200 opacity-60 hover:opacity-80'
-        }
-      `}
-    >
+    <>
+      <div
+        onClick={() => setShowDialog(true)}
+        className={`
+          relative p-6 rounded-2xl border-2 transition-all duration-200 cursor-pointer
+          ${isUnlocked
+            ? 'bg-white border-gray-200 shadow-md hover:shadow-lg hover:scale-105'
+            : 'bg-gray-50 border-gray-200 opacity-60 hover:opacity-80'
+          }
+        `}
+      >
       {/* Icon */}
       <div className={`text-5xl mb-3 text-center ${isUnlocked ? '' : 'grayscale'}`}>
         {achievement.icon}
@@ -66,5 +71,14 @@ export function AchievementBadge({
         </div>
       )}
     </div>
+
+      <AchievementDetailDialog
+        achievement={achievement}
+        gameStats={gameStats}
+        progress={progress}
+        open={showDialog}
+        onClose={() => setShowDialog(false)}
+      />
+    </>
   )
 }

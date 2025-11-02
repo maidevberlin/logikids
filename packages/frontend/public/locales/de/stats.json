@@ -34,40 +34,64 @@
     "progress": "{{current}} / {{total}}",
     "firstSteps": {
       "name": "Erste Schritte",
-      "description": "5 Aufgaben abschließen"
+      "description": "5 Aufgaben abschließen",
+      "calculationDetails": "Schließe mindestens 5 Aufgaben über alle Fächer und Schwierigkeiten hinweg ab. Fortschritt: {{totalTasks}} / 5 Aufgaben."
     },
     "dedicated": {
       "name": "Engagiert",
-      "description": "3-Tage-Serie aufrechterhalten"
+      "description": "3-Tage-Serie aufrechterhalten",
+      "calculationDetails": "Schließe mindestens eine Aufgabe pro Tag für 3 aufeinanderfolgende Tage ab. Deine aktuelle Serie: {{currentStreak}} Tage. Beste: {{bestStreak}} Tage."
     },
     "weekWarrior": {
       "name": "Wochen-Krieger",
-      "description": "7-Tage-Serie aufrechterhalten"
+      "description": "7-Tage-Serie aufrechterhalten",
+      "calculationDetails": "Schließe mindestens eine Aufgabe pro Tag für 7 aufeinanderfolgende Tage ab. Deine aktuelle Serie: {{currentStreak}} Tage. Beste: {{bestStreak}} Tage."
     },
     "sharpshooter": {
       "name": "Scharfschütze",
-      "description": "10 Aufgaben mit 100% Genauigkeit abschließen"
+      "description": "10 Aufgaben mit 100% Genauigkeit abschließen",
+      "calculationDetails": "Schließe 10 Aufgaben hintereinander mit perfekten Ergebnissen ab (keine falschen Antworten). Aktuelle Serie: {{currentPerfect}}. Beste: {{bestPerfect}}."
     },
     "speedDemon": {
       "name": "Geschwindigkeitsdämon",
-      "description": "5 Aufgaben ohne Hinweise diese Woche"
+      "description": "5 Aufgaben ohne Hinweise diese Woche",
+      "calculationDetails": "Schließe 5 Aufgaben ohne Hinweise innerhalb derselben Woche ab. Diese Woche: {{noHintThisWeek}} / 5 Aufgaben."
     },
     "polymath": {
       "name": "Universalgelehrter",
-      "description": "3+ Sterne in allen Fächern"
+      "description": "3+ Sterne in allen Fächern",
+      "calculationDetails": "Erreiche mindestens 3 Sterne in allen verfügbaren Fächern. Jedes Fach benötigt deutliche Übung und hohe Genauigkeit, um 3+ Sterne zu erreichen."
     },
     "scholar": {
       "name": "Gelehrter",
-      "description": "Level 10 erreichen"
+      "description": "Level 10 erreichen",
+      "calculationDetails": "Erreiche Level 10 durch Abschluss von 100 Aufgaben insgesamt. Level 10 wird bei 100 Aufgaben freigeschaltet. Fortschritt: {{totalTasks}} / 100 Aufgaben."
     },
     "master": {
       "name": "Meister",
-      "description": "5 Sterne in einem Fach erreichen"
+      "description": "5 Sterne in einem Fach erreichen",
+      "calculationDetails": "Erreiche 5-Sterne-Meisterschaft in einem beliebigen Fach. Erfordert 100+ Aufgaben mit 90%+ Erfolgsquote in diesem Fach."
     }
   },
   "empty": {
     "noStreak": "Starte heute deine Serie! 🔥",
     "noAchievements": "Löse Aufgaben, um Erfolge freizuschalten!",
     "keepPracticing": "Löse Aufgaben, um deine Fähigkeiten zu verbessern!"
+  },
+  "achievementDetails": {
+    "description": "Beschreibung",
+    "status": "Status",
+    "unlocked": "Freigeschaltet",
+    "progress": "Fortschritt",
+    "calculation": "Berechnung",
+    "currentData": "Aktuelle Daten",
+    "totalTasksCompleted": "Abgeschlossene Aufgaben insgesamt",
+    "currentStreak": "Aktuelle Serie",
+    "bestStreak": "Beste Serie",
+    "days": "Tage",
+    "currentPerfectRun": "Aktuelle perfekte Serie",
+    "bestPerfectRun": "Beste perfekte Serie",
+    "tasksWithoutHintsThisWeek": "Aufgaben ohne Hinweise diese Woche",
+    "tier": "Stufe"
   }
 }

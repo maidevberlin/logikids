@@ -34,40 +34,64 @@
     "progress": "{{current}} / {{total}}",
     "firstSteps": {
       "name": "First Steps",
-      "description": "Complete 5 tasks"
+      "description": "Complete 5 tasks",
+      "calculationDetails": "Complete at least 5 tasks across all subjects and difficulties. Progress: {{totalTasks}} / 5 tasks."
     },
     "dedicated": {
       "name": "Dedicated",
-      "description": "Maintain a 3-day streak"
+      "description": "Maintain a 3-day streak",
+      "calculationDetails": "Complete at least one task per day for 3 consecutive days. Your current streak: {{currentStreak}} days. Best: {{bestStreak}} days."
     },
     "weekWarrior": {
       "name": "Week Warrior",
-      "description": "Maintain a 7-day streak"
+      "description": "Maintain a 7-day streak",
+      "calculationDetails": "Complete at least one task per day for 7 consecutive days. Your current streak: {{currentStreak}} days. Best: {{bestStreak}} days."
     },
     "sharpshooter": {
       "name": "Sharpshooter",
-      "description": "Complete 10 tasks with 100% accuracy"
+      "description": "Complete 10 tasks with 100% accuracy",
+      "calculationDetails": "Complete 10 tasks in a row with perfect scores (no wrong answers). Current run: {{currentPerfect}}. Best: {{bestPerfect}}."
     },
     "speedDemon": {
       "name": "Speed Demon",
-      "description": "5 tasks without hints this week"
+      "description": "5 tasks without hints this week",
+      "calculationDetails": "Complete 5 tasks without using hints within the same week. This week: {{noHintThisWeek}} / 5 tasks."
     },
     "polymath": {
       "name": "Polymath",
-      "description": "Get 3+ stars in all subjects"
+      "description": "Get 3+ stars in all subjects",
+      "calculationDetails": "Achieve at least 3 stars in all available subjects. Each subject needs significant practice and high accuracy to reach 3+ stars."
     },
     "scholar": {
       "name": "Scholar",
-      "description": "Reach level 10"
+      "description": "Reach level 10",
+      "calculationDetails": "Reach level 10 by completing 100 total tasks. Level 10 unlocks at 100 tasks. Progress: {{totalTasks}} / 100 tasks."
     },
     "master": {
       "name": "Master",
-      "description": "Max out (5 stars) in any subject"
+      "description": "Max out (5 stars) in any subject",
+      "calculationDetails": "Achieve 5-star mastery in any subject. Requires 100+ tasks with 90%+ success rate in that subject."
     }
   },
   "empty": {
     "noStreak": "Start your streak today! 🔥",
     "noAchievements": "Complete tasks to unlock achievements!",
     "keepPracticing": "Complete tasks to level up your skills!"
+  },
+  "achievementDetails": {
+    "description": "Description",
+    "status": "Status",
+    "unlocked": "Unlocked",
+    "progress": "Progress",
+    "calculation": "Calculation",
+    "currentData": "Current Data",
+    "totalTasksCompleted": "Total tasks completed",
+    "currentStreak": "Current streak",
+    "bestStreak": "Best streak",
+    "days": "days",
+    "currentPerfectRun": "Current perfect run",
+    "bestPerfectRun": "Best perfect run",
+    "tasksWithoutHintsThisWeek": "Tasks without hints this week",
+    "tier": "Tier"
   }
 }
