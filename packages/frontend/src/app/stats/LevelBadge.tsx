@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 
 const TASK_LEVELS = [
   { threshold: 5, colorClass: 'bg-blue-300' },

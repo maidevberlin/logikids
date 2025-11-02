@@ -11,7 +11,7 @@ const SubjectsPage = lazy(() => import('@/app/subjects'))
 const ConceptsPage = lazy(() => import('@/app/concepts'))
 const AccountPage = lazy(() => import('@/app/account'))
 const TaskPage = lazy(() => import('@/app/tasks'))
-const StatsPage = lazy(() => import('@/app/stats'))
+const StatsPage = lazy(() => import('@/app/stats').then(m => ({ default: m.StatsPage })))
 const PrivacyPage = lazy(() => import('@/app/legal/PrivacyPage'))
 const ImpressumPage = lazy(() => import('@/app/legal/ImpressumPage'))
 
