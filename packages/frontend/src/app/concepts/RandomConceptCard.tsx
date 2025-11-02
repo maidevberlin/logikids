@@ -16,11 +16,8 @@ export function RandomConceptCard({ subject, concepts }: RandomConceptCardProps)
   const handleClick = () => {
     if (concepts.length === 0) return
 
-    // Pick a random concept
-    const randomConcept = concepts[Math.floor(Math.random() * concepts.length)]
-
-    // Navigate to tasks for that concept
-    navigate(`/subjects/${subject}/${randomConcept.id}/tasks`)
+    // Navigate to tasks with random concept (no specific concept selected)
+    navigate(`/subjects/${subject}/tasks`)
   }
 
   if (concepts.length === 0) {

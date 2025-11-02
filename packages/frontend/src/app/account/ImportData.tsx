@@ -62,7 +62,7 @@ export function ImportData() {
     try {
       const data = await getData()
       // Check if there's meaningful progress data
-      return Object.keys(data.progress || {}).length > 0
+      return Object.keys(data?.progress || {}).length > 0
     } catch {
       return false
     }

@@ -1,7 +1,7 @@
 -- Initialize user_sync_data table for encrypted blob storage
 -- This file runs automatically on first PostgreSQL startup via docker-entrypoint-initdb.d
 
-CREATE TABLE user_sync_data (
+CREATE TABLE IF NOT EXISTS user_sync_data (
   user_id UUID PRIMARY KEY,
   encrypted_blob TEXT NOT NULL,           -- Base64 encoded encrypted data
   iv VARCHAR(16) NOT NULL,                -- Initialization vector
@@ -18,7 +18,7 @@ CREATE TABLE user_sync_data (
 );
 
 -- Index for cleanup queries (find inactive accounts)
-CREATE INDEX idx_last_accessed ON user_sync_data(last_accessed);
+CREATE INDEX IF NOT EXISTS idx_last_accessed ON user_sync_data(last_accessed);
 
 -- Log initialization
 DO $$

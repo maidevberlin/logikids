@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { pool } from '../sync/db'
+import { pool } from '../../database/db'
 import crypto from 'crypto'
 
 // JWT secret - in production, use environment variable

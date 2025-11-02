@@ -8,7 +8,7 @@
  *   bun run src/cli/invite-codes.ts remove <code>
  */
 
-import { pool } from '../sync/db'
+import { pool } from '../../database/db'
 import { randomBytes } from 'crypto'
 
 interface InviteCode {

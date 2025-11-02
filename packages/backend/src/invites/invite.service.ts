@@ -1,4 +1,4 @@
-import { pool } from '../sync/db'
+import { pool } from '../../database/db'
 
 export interface InviteCode {
   code: string

@@ -1,16 +1,32 @@
 import { UserData } from '../core/types.ts'
 import { getData, loginWithAccount } from '../core/userData.ts'
-import { storeKey, storeUserId } from '../core/storage.ts'
-import { importKey, encrypt } from '../core/crypto.ts'
+import { storeKey, storeUserId, loadKey } from '../core/storage.ts'
+import { importKey, encrypt, exportKey } from '../core/crypto.ts'
 
 const STORAGE_KEY = 'logikids_data'
 
 /**
  * Export user data as unencrypted JSON string
+ * Includes encryption key so data can be imported on another device
  */
 export async function exportData(): Promise<string> {
   const data = await getData()
-  return JSON.stringify(data, null, 2)
+  const key = await loadKey()
+
+  if (!key) {
+    throw new Error('No encryption key found')
+  }
+
+  // Export key to JWK format
+  const keyJwk = await exportKey(key)
+
+  // Include key in export
+  const exportData = {
+    ...data,
+    encryptionKey: JSON.stringify(keyJwk)
+  }
+
+  return JSON.stringify(exportData, null, 2)
 }
 
 /**

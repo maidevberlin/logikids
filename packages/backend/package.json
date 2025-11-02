@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
+    "migrate": "bun database/migrate.ts",
     "validate:prompts": "bun src/cli/validate-prompts.ts",
     "test:prompt": "bun src/cli/test-prompt.ts"
   },

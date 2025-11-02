@@ -1,12 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import { useUserData } from '@/app/account'
 import { useProgress } from '@/app/stats'
 import { ACHIEVEMENTS } from '@/app/stats/achievements'
 import { TASK_LEVELS } from '@/app/stats/types'
 
 export function HeaderGameStats() {
   const navigate = useNavigate()
-  const { data } = useUserData()
   const { gameStats, progress } = useProgress()
 
   // Calculate level and progress

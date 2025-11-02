@@ -2,12 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/ui/card'
 import { Sparkles } from 'lucide-react'
-import { useUserData } from '@/app/account'
 
 export function RandomCard() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { data: userData } = useUserData()
 
   const handleClick = () => {
     // Get random subject and navigate to it

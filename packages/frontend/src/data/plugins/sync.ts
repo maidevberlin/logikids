@@ -189,11 +189,11 @@ export function enableAutoSync(): void {
   }
 
   blurHandler = () => {
-    getData().then(upload).catch(console.warn)
+    getData().then(data => data && upload(data)).catch(console.warn)
   }
 
   unloadHandler = () => {
-    getData().then(upload).catch(console.warn)
+    getData().then(data => data && upload(data)).catch(console.warn)
   }
 
   window.addEventListener('focus', focusHandler)

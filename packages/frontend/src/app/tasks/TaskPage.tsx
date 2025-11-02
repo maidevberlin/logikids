@@ -10,8 +10,6 @@ import { Difficulty } from './types'
 import { PageLayout } from '@/app/common'
 import { TaskPageHeader } from './TaskPageHeader'
 import { TaskCard } from './TaskCard'
-import { Button } from '@/components/ui/button'
-import { BarChart3 } from 'lucide-react'
 
 // Import background patterns
 import mathBg from '@/assets/math.webp'

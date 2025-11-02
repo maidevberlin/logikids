@@ -14,13 +14,13 @@ Zero-knowledge encrypted user data synchronization using PostgreSQL backend stor
 
 ## Files
 
-- `db.ts` - PostgreSQL connection pool and initialization
 - `storage.service.ts` - Storage layer (PostgreSQL implementation)
 - `sync.service.ts` - Business logic for sync operations
 - `sync.controller.ts` - HTTP endpoints
 - `sync.schema.ts` - Zod validation schemas
 - `router.ts` - Express router configuration
-- `migrations/001_init.sql` - Database schema initialization
+
+**Database Connection**: See `database/` module for database connection and migrations.
 
 ## Database Schema
 
@@ -129,53 +129,7 @@ docker compose up backend-dev
 
 ### Access Database
 
-```bash
-# Interactive psql shell
-docker compose exec postgres psql -U logikids -d logikids
-
-# Run single query
-docker compose exec postgres psql -U logikids -d logikids -c "SELECT COUNT(*) FROM user_sync_data;"
-
-# View all tables
-docker compose exec postgres psql -U logikids -d logikids -c "\dt"
-
-# Describe table structure
-docker compose exec postgres psql -U logikids -d logikids -c "\d user_sync_data"
-```
-
-### Database Management
-
-#### Backup Database
-
-```bash
-# Backup to file
-docker exec logikids-postgres pg_dump -U logikids logikids > backup-$(date +%Y%m%d-%H%M%S).sql
-
-# Backup with compression
-docker exec logikids-postgres pg_dump -U logikids logikids | gzip > backup-$(date +%Y%m%d-%H%M%S).sql.gz
-```
-
-#### Restore Database
-
-```bash
-# Restore from backup
-cat backup.sql | docker exec -i logikids-postgres psql -U logikids logikids
-
-# Restore from compressed backup
-gunzip -c backup.sql.gz | docker exec -i logikids-postgres psql -U logikids logikids
-```
-
-#### Reset Database
-
-```bash
-# Drop all data (DANGEROUS)
-docker compose exec postgres psql -U logikids -d logikids -c "TRUNCATE user_sync_data;"
-
-# Or recreate container (loses all data)
-docker compose down postgres
-docker volume rm logikids_postgres-data
-docker compose up postgres -d
-```
+For database access and management commands, see `database/README.md`.
 
 ### Monitoring
 
@@ -331,103 +285,17 @@ docker compose exec backend-dev bun test sync
 
 ## Troubleshooting
 
-### Connection Issues
+### Connection and Database Issues
 
-```bash
-# Check PostgreSQL is running
-docker compose ps postgres
-
-# View PostgreSQL logs
-docker compose logs postgres
-
-# Test connection from backend
-docker compose exec backend-dev bun run -e "import {pool} from './src/sync/db'; pool.query('SELECT NOW()').then(r => console.log(r.rows[0]))"
-```
-
-### Database Schema Issues
-
-```bash
-# Verify table exists
-docker compose exec postgres psql -U logikids -d logikids -c "\dt"
-
-# Verify schema matches
-docker compose exec postgres psql -U logikids -d logikids -c "\d user_sync_data"
-
-# Recreate schema (DANGER: loses all data)
-docker compose exec postgres psql -U logikids -d logikids -c "DROP TABLE user_sync_data;"
-docker compose restart postgres
-```
-
-### Performance Issues
-
-```bash
-# Check connection pool stats
-# View active connections
-docker compose exec postgres psql -U logikids -d logikids -c "
-  SELECT count(*) as active_connections
-  FROM pg_stat_activity
-  WHERE datname = 'logikids';
-"
-
-# Analyze query performance
-docker compose exec postgres psql -U logikids -d logikids -c "
-  SELECT query, calls, total_exec_time, mean_exec_time
-  FROM pg_stat_statements
-  WHERE query LIKE '%user_sync_data%'
-  ORDER BY total_exec_time DESC;
-"
-```
+For database troubleshooting, see `database/README.md`.
 
 ## Environment Variables
 
-### Required
-
 - `DATABASE_URL`: PostgreSQL connection string
-  - Format: `postgresql://user:password@host:port/database`
-  - Example: `postgresql://logikids:development@postgres:5432/logikids`
-  - Set in `docker-compose.yml` environment section
-
-### Optional
-
-- `POSTGRES_PASSWORD`: Database password (default: `development`)
-  - Set in `.env` file or environment
-  - Used by docker-compose.yml for both postgres and backend services
-
-## Migration Guide
-
-### From File-Based Storage
-
-If migrating from previous file-based storage (`data/sync/` directory):
-
-1. **Backup old data**:
-   ```bash
-   mkdir -p packages/backend/data/archive
-   cp -r packages/backend/data/sync packages/backend/data/archive/sync-backup-$(date +%Y%m%d)
-   ```
-
-2. **Start PostgreSQL**:
-   ```bash
-   docker compose up postgres -d
-   ```
-
-3. **Migrate data** (if needed):
-   - Old data format: `data/sync/{userId}.json`
-   - New data format: PostgreSQL rows
-   - Create migration script if bulk transfer needed
-
-4. **Test new storage**:
-   - Upload test data
-   - Verify retrieval
-   - Test with real client
-
-5. **Remove old data** (after verification):
-   ```bash
-   rm -rf packages/backend/data/sync
-   ```
+  - See `database/README.md` for details
 
 ## References
 
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/16/)
-- [node-postgres (pg) Library](https://node-postgres.com/)
+- [Database Module](../database/README.md) - Database connection, migrations, and utilities
 - [Zero-Knowledge Encryption Design Doc](../../../docs/plans/zero-knowledge-encryption-design.md)
 - [PostgreSQL Implementation Plan](../../../docs/plans/2025-10-26-postgresql-storage-implementation.md)

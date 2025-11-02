@@ -67,12 +67,18 @@ packages/
    - Factory pattern for Ollama/OpenAI
    - Configured via `packages/backend/config.yaml`
 
-3. **Authentication** (`packages/backend/src/auth/`)
+3. **Database** (`packages/backend/database/`)
+   - `db.ts` - PostgreSQL connection pool
+   - `migrate.ts` - Migration runner CLI
+   - `migrations/` - SQL migration files (numbered, idempotent)
+   - Run migrations: `docker compose exec backend-dev bun run migrate`
+
+4. **Authentication** (`packages/backend/src/auth/`)
    - JWT tokens: Access (1 hour) + Refresh (1 year)
    - Invite code system for registration
    - Database tables: `user_accounts`, `invite_codes`, `refresh_tokens`
 
-4. **User Data Sync** (`packages/backend/src/sync/`)
+5. **User Data Sync** (`packages/backend/src/sync/`)
    - Zero-knowledge encrypted blob storage
    - PostgreSQL backend
 

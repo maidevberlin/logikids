@@ -22,6 +22,7 @@ export interface UserData {
   lastTask: LastTask
   timestamp: number
   lastSyncTimestamp?: number
+  encryptionKey?: string  // JWK format, only included during export/import
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {

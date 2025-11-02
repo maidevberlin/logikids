@@ -81,11 +81,8 @@ export default function ConceptsPage() {
   const handleSurpriseMe = () => {
     if (filteredConcepts.length === 0) return
 
-    // Pick a random concept from the filtered list
-    const randomConcept = filteredConcepts[Math.floor(Math.random() * filteredConcepts.length)]
-
-    // Navigate to tasks for that concept
-    navigate(`/subjects/${subjectId}/${randomConcept.id}/tasks`)
+    // Navigate to tasks with random concept (no specific concept selected)
+    navigate(`/subjects/${subjectId}/tasks`)
   }
 
   // Get subject theme

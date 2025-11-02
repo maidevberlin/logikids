@@ -43,7 +43,7 @@ export function QRScanner({ onClose, onSuccess }: QRScannerProps) {
             setError(t('welcomeChoice.import.invalidQR', { defaultValue: 'Invalid QR code' }))
           }
         },
-        (errorMessage) => {
+        (_errorMessage) => {
           // Scanning error (ignore - just means no QR found yet)
         }
       )

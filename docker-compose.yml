@@ -80,7 +80,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-development}
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./packages/backend/src/sync/migrations:/docker-entrypoint-initdb.d:ro
+      - ./packages/backend/database/migrations:/docker-entrypoint-initdb.d:ro
     ports:
       - "5432:5432"
     healthcheck:
