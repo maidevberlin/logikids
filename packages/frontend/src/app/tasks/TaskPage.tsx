@@ -175,6 +175,7 @@ export default function TaskPage() {
 
       <PageLayout
         showHome
+        showGameStats
         showAccount
         headerCenter={
           <TaskPageHeader
@@ -185,17 +186,6 @@ export default function TaskPage() {
             onConceptChange={handleConceptChange}
             onDifficultyChange={handleDifficultyChange}
           />
-        }
-        headerRight={
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate('/stats')}
-            className="rounded-xl hover:bg-gray-100"
-          >
-            <BarChart3 className="w-5 h-5 mr-1" />
-            Stats
-          </Button>
         }
       >
         <div className="max-w-4xl mx-auto relative z-10">

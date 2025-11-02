@@ -84,6 +84,7 @@ export default function SubjectsPage() {
   return (
     <PageLayout
       showHome
+      showGameStats
       showAccount
     >
       <div className="max-w-7xl mx-auto">

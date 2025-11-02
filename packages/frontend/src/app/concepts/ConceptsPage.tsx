@@ -62,7 +62,7 @@ export default function ConceptsPage() {
 
   if (!subjectId) {
     return (
-      <PageLayout showBack showAccount>
+      <PageLayout showBack showGameStats showAccount>
         <div className="text-center py-12">
           <p className="text-red-600">Invalid subject</p>
         </div>
@@ -96,6 +96,7 @@ export default function ConceptsPage() {
   return (
     <PageLayout
       showBack
+      showGameStats
       showAccount
     >
       <div className="max-w-7xl mx-auto">
