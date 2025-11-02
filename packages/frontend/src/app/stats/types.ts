@@ -56,4 +56,13 @@ export type StatUpdate = {
   difficulty: Difficulty
   correct?: boolean
   hintsUsed?: number
-} 
+}
+
+// Level progression thresholds
+export const TASK_LEVELS = [
+  5, 15, 30, 50,           // Levels 1-4 (blue)
+  75, 100, 150, 200,       // Levels 5-8 (indigo)
+  300, 400, 550, 700,      // Levels 9-12 (purple)
+  900, 1100, 1350, 1600,   // Levels 13-16 (violet)
+  2000, 2500, 3000, 4000   // Levels 17-20 (fuchsia)
+] 

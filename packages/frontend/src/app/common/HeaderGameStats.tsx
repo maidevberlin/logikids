@@ -14,11 +14,13 @@ export function HeaderGameStats() {
     return sum + Object.values(subject).reduce((s, stats) => s + stats.correct + stats.wrong, 0)
   }, 0)
 
-  const currentLevel = TASK_LEVELS.findIndex(threshold => totalTasks < threshold)
-  const level = currentLevel === -1 ? TASK_LEVELS.length : currentLevel
+  const currentLevelIndex = TASK_LEVELS.findIndex(threshold => totalTasks < threshold)
+  const level = currentLevelIndex === -1 ? TASK_LEVELS.length : currentLevelIndex + 1
 
   const prevThreshold = level > 1 ? TASK_LEVELS[level - 2] : 0
-  const nextThreshold = TASK_LEVELS[level - 1] || TASK_LEVELS[TASK_LEVELS.length - 1]
+  const nextThreshold = level <= TASK_LEVELS.length
+    ? TASK_LEVELS[level - 1]
+    : TASK_LEVELS[TASK_LEVELS.length - 1]
   const progressInLevel = totalTasks - prevThreshold
   const tasksForLevel = nextThreshold - prevThreshold
   const progressPercent = (progressInLevel / tasksForLevel) * 100
