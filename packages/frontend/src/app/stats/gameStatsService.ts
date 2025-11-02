@@ -1,4 +1,4 @@
-import { GameStats } from './gameTypes'
+import { GameStats, getMonday } from './gameTypes'
 import { ProgressStats } from './types'
 
 /**
@@ -29,9 +29,7 @@ export function calculateSubjectMastery(
   if (totalTasks >= 50 && successRate >= 75) return 4
   if (totalTasks >= 25 && successRate >= 60) return 3
   if (totalTasks >= 10 && successRate >= 40) return 2
-  if (totalTasks < 10 || successRate < 40) return 1
-
-  return 0
+  return 1  // Any tasks completed = 1 star minimum
 }
 
 /**
@@ -178,11 +176,4 @@ export function updatePersonalBest(
       successRate: Math.max(newSuccessRate, gameStats.personalBests.successRate)
     }
   }
-}
-
-function getMonday(date: Date): Date {
-  const d = new Date(date)
-  const day = d.getDay()
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1)
-  return new Date(d.setDate(diff))
 }

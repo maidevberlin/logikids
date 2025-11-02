@@ -60,7 +60,7 @@ export function createDefaultGameStats(): GameStats {
   }
 }
 
-function getMonday(date: Date): Date {
+export function getMonday(date: Date): Date {
   const d = new Date(date)
   const day = d.getDay()
   const diff = d.getDate() - day + (day === 0 ? -6 : 1)
