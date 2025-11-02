@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Achievement } from './achievements'
 import { GameStats } from './gameTypes'
 import { UserProgress } from './types'
@@ -13,6 +14,7 @@ export function AchievementBadge({
   gameStats,
   progress
 }: AchievementBadgeProps) {
+  const { t } = useTranslation('stats')
   const isUnlocked = gameStats.achievements[achievement.id]?.unlocked || false
   const progressData = achievement.getProgress(gameStats, progress)
   const progressPercent = (progressData.current / progressData.total) * 100
@@ -34,12 +36,12 @@ export function AchievementBadge({
 
       {/* Name */}
       <div className={`text-center font-bold mb-1 ${isUnlocked ? 'text-gray-900' : 'text-gray-500'}`}>
-        {achievement.name}
+        {t(`achievements.${achievement.id}.name`, { defaultValue: achievement.name })}
       </div>
 
       {/* Description */}
       <div className={`text-sm text-center mb-3 ${isUnlocked ? 'text-gray-600' : 'text-gray-400'}`}>
-        {achievement.description}
+        {t(`achievements.${achievement.id}.description`, { defaultValue: achievement.description })}
       </div>
 
       {/* Progress bar for locked achievements */}

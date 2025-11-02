@@ -31,7 +31,39 @@
     "title": "Achievements",
     "unlocked": "Unlocked",
     "locked": "Locked",
-    "progress": "{{current}} / {{total}}"
+    "progress": "{{current}} / {{total}}",
+    "firstSteps": {
+      "name": "First Steps",
+      "description": "Complete 5 tasks"
+    },
+    "dedicated": {
+      "name": "Dedicated",
+      "description": "Maintain a 3-day streak"
+    },
+    "weekWarrior": {
+      "name": "Week Warrior",
+      "description": "Maintain a 7-day streak"
+    },
+    "sharpshooter": {
+      "name": "Sharpshooter",
+      "description": "Complete 10 tasks with 100% accuracy"
+    },
+    "speedDemon": {
+      "name": "Speed Demon",
+      "description": "5 tasks without hints this week"
+    },
+    "polymath": {
+      "name": "Polymath",
+      "description": "Get 3+ stars in all subjects"
+    },
+    "scholar": {
+      "name": "Scholar",
+      "description": "Reach level 10"
+    },
+    "master": {
+      "name": "Master",
+      "description": "Max out (5 stars) in any subject"
+    }
   },
   "empty": {
     "noStreak": "Start your streak today! 🔥",

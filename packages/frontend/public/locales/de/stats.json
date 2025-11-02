@@ -31,7 +31,39 @@
     "title": "Erfolge",
     "unlocked": "Freigeschaltet",
     "locked": "Gesperrt",
-    "progress": "{{current}} / {{total}}"
+    "progress": "{{current}} / {{total}}",
+    "firstSteps": {
+      "name": "Erste Schritte",
+      "description": "5 Aufgaben abschließen"
+    },
+    "dedicated": {
+      "name": "Engagiert",
+      "description": "3-Tage-Serie aufrechterhalten"
+    },
+    "weekWarrior": {
+      "name": "Wochen-Krieger",
+      "description": "7-Tage-Serie aufrechterhalten"
+    },
+    "sharpshooter": {
+      "name": "Scharfschütze",
+      "description": "10 Aufgaben mit 100% Genauigkeit abschließen"
+    },
+    "speedDemon": {
+      "name": "Geschwindigkeitsdämon",
+      "description": "5 Aufgaben ohne Hinweise diese Woche"
+    },
+    "polymath": {
+      "name": "Universalgelehrter",
+      "description": "3+ Sterne in allen Fächern"
+    },
+    "scholar": {
+      "name": "Gelehrter",
+      "description": "Level 10 erreichen"
+    },
+    "master": {
+      "name": "Meister",
+      "description": "5 Sterne in einem Fach erreichen"
+    }
   },
   "empty": {
     "noStreak": "Starte heute deine Serie! 🔥",
