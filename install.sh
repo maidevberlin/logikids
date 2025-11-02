@@ -27,16 +27,11 @@ if ! command -v docker &> /dev/null; then
         "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    # Install Docker Engine
+    # Install Docker Engine and Docker Compose plugin
     sudo apt-get update
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-fi
-
-# Install Docker Compose if not already installed
-if ! command -v docker-compose &> /dev/null; then
-    echo "🐋 Installing Docker Compose..."
-    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+else
+    echo "✅ Docker already installed"
 fi
 
 # Add current user to docker group
@@ -60,7 +55,7 @@ echo "🔧 Running configuration setup..."
 
 # Start the application in production mode
 echo "🚀 Starting the application in production mode..."
-docker-compose up -d frontend-prod backend-prod
+docker compose up -d frontend-prod backend-prod
 
 echo "✅ Installation complete!"
 echo "🌐 Frontend is available at http://localhost:5174"
