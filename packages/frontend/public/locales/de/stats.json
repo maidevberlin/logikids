@@ -1,12 +1,41 @@
 {
-  "title": "Statistiken",
-  "greeting": "Hallo {{name}}, hier sind deine Lernstatistiken!",
-  "noTasksYet": "Du hast noch keine Aufgaben gelöst. Beginne mit dem Lösen von Aufgaben, um deinen Fortschritt zu sehen!",
-  "totalTasks": "Aufgaben Gesamt",
+  "title": "Dein Fortschritt",
+  "greeting": "Hallo {{name}}, hier ist dein Spielprofil!",
+  "noTasksYet": "Noch keine Aufgaben abgeschlossen. Starte dein Abenteuer!",
+  "totalTasks": "Gesamte Aufgaben",
+  "tasks": "Aufgaben",
   "successRate": "Erfolgsquote",
   "averageHints": "Ø Hinweise",
   "bySubject": "Fortschritt nach Fach",
-  "tasks": "Aufgaben",
   "success": "Erfolg",
-  "hints": "Hinweise"
+  "hints": "Hinweise",
+  "hero": {
+    "level": "Level {{level}}",
+    "tasksToNext": "{{current}} / {{next}} Aufgaben",
+    "skills": "Fähigkeiten"
+  },
+  "metrics": {
+    "streak": "Serie",
+    "days": "Tage",
+    "bestStreak": "Beste: {{days}}",
+    "perfectRun": "Perfekte Serie",
+    "inARow": "hintereinander",
+    "allTimeBest": "Rekord: {{count}}",
+    "noHints": "Ohne-Hinweise-Meister",
+    "thisWeek": "diese Woche",
+    "accuracy": "Genauigkeit",
+    "personalBest": "Persönliche Bestleistung!",
+    "success": "Erfolg"
+  },
+  "achievements": {
+    "title": "Erfolge",
+    "unlocked": "Freigeschaltet",
+    "locked": "Gesperrt",
+    "progress": "{{current}} / {{total}}"
+  },
+  "empty": {
+    "noStreak": "Starte heute deine Serie! 🔥",
+    "noAchievements": "Löse Aufgaben, um Erfolge freizuschalten!",
+    "keepPracticing": "Löse Aufgaben, um deine Fähigkeiten zu verbessern!"
+  }
 }

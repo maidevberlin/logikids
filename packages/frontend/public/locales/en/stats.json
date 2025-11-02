@@ -1,12 +1,41 @@
 {
-  "title": "Statistics",
-  "greeting": "Hi {{name}}, here are your learning statistics!",
-  "noTasksYet": "You haven't completed any tasks yet. Start solving tasks to see your progress!",
+  "title": "Your Progress",
+  "greeting": "Hi {{name}}, here's your game profile!",
+  "noTasksYet": "No tasks completed yet. Start your adventure!",
   "totalTasks": "Total Tasks",
+  "tasks": "tasks",
   "successRate": "Success Rate",
   "averageHints": "Avg. Hints",
   "bySubject": "Progress by Subject",
-  "tasks": "Tasks",
-  "success": "Success",
-  "hints": "Hints"
+  "success": "success",
+  "hints": "Hints",
+  "hero": {
+    "level": "Level {{level}}",
+    "tasksToNext": "{{current}} / {{next}} tasks",
+    "skills": "Skills"
+  },
+  "metrics": {
+    "streak": "Streak",
+    "days": "days",
+    "bestStreak": "Best: {{days}}",
+    "perfectRun": "Perfect Run",
+    "inARow": "in a row",
+    "allTimeBest": "Record: {{count}}",
+    "noHints": "No-Hint Master",
+    "thisWeek": "this week",
+    "accuracy": "Accuracy",
+    "personalBest": "Personal Best!",
+    "success": "success"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "unlocked": "Unlocked",
+    "locked": "Locked",
+    "progress": "{{current}} / {{total}}"
+  },
+  "empty": {
+    "noStreak": "Start your streak today! 🔥",
+    "noAchievements": "Complete tasks to unlock achievements!",
+    "keepPracticing": "Complete tasks to level up your skills!"
+  }
 }
