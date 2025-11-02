@@ -1,5 +1,9 @@
 import { UserData } from '../core/types.ts'
-import { getData, setData } from '../core/userData.ts'
+import { getData, loginWithAccount } from '../core/userData.ts'
+import { storeKey, storeUserId } from '../core/storage.ts'
+import { importKey, encrypt } from '../core/crypto.ts'
+
+const STORAGE_KEY = 'logikids_data'
 
 /**
  * Export user data as unencrypted JSON string
@@ -12,13 +16,30 @@ export async function exportData(): Promise<string> {
 /**
  * Import user data from JSON string
  * Merges progress additively (never loses data)
+ * Also logs in with the backend using the imported userId
  */
 export async function importData(json: string): Promise<void> {
   const imported: UserData = JSON.parse(json)
+
+  // Import must include encryption key
+  if (!imported.encryptionKey) {
+    throw new Error('Import data missing encryption key')
+  }
+
+  // Import the encryption key
+  const keyJwk = JSON.parse(imported.encryptionKey)
+  const key = await importKey(keyJwk)
+
+  // Store key and userId in IndexedDB
+  await storeKey(key)
+  await storeUserId(imported.userId)
+
   const current = await getData()
 
-  // Merge progress additively
-  const mergedProgress = mergeProgress(current.progress, imported.progress)
+  // Merge progress additively if there's existing data
+  const mergedProgress = current
+    ? mergeProgress(current.progress, imported.progress)
+    : imported.progress
 
   const merged: UserData = {
     ...imported,
@@ -26,7 +47,15 @@ export async function importData(json: string): Promise<void> {
     timestamp: Date.now()
   }
 
-  await setData(merged)
+  // Encrypt and store the data directly
+  const encrypted = await encrypt(key, merged)
+  localStorage.setItem(STORAGE_KEY, encrypted)
+
+  // Login with backend to get JWT tokens
+  await loginWithAccount(imported.userId)
+
+  // Trigger data refresh event so UI updates
+  window.dispatchEvent(new Event('data-changed'))
 }
 
 /**

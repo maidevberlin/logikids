@@ -1,6 +1,7 @@
 import { loadKey, storeKey, storeUserId, getUserId } from '../core/storage.ts'
 import { exportKey, importKey } from '../core/crypto.ts'
 import { sync } from './sync.ts'
+import { loginWithAccount } from '../core/userData.ts'
 
 export interface QRPayload {
   userId: string
@@ -42,6 +43,9 @@ export async function importQRData(payload: QRPayload): Promise<void> {
   // Store key and userId
   await storeKey(key)
   await storeUserId(payload.userId)
+
+  // Login with backend to get JWT tokens
+  await loginWithAccount(payload.userId)
 
   // Sync data from server - this will download encrypted data and restore it locally
   try {

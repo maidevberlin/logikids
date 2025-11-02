@@ -6,6 +6,7 @@ import path from 'path';
 import taskRouter from './tasks/router';
 import { createSyncRouter } from './sync/router';
 import inviteRouter from './invites/router';
+import authRouter from './auth/router';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
@@ -36,6 +37,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.use('/api/auth', authRouter);
 app.use('/api/task', taskRouter);
 app.use('/api/sync', createSyncRouter());
 app.use('/api/invite', inviteRouter);

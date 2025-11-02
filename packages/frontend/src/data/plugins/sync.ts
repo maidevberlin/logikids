@@ -1,6 +1,6 @@
 import { UserData } from '../core/types.ts'
 import { getData, setData } from '../core/userData.ts'
-import { loadKey, getUserId } from '../core/storage.ts'
+import { loadKey, getUserId, getAccessToken } from '../core/storage.ts'
 import { encrypt, decrypt } from '../core/crypto.ts'
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5175'
@@ -47,9 +47,17 @@ export async function upload(data: UserData): Promise<void> {
       checksum
     }
 
+    const accessToken = await getAccessToken()
+    if (!accessToken) {
+      throw new Error('Access token not found')
+    }
+
     const response = await fetch(`${API_BASE}/api/sync/${data.userId}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
       body: JSON.stringify(payload)
     })
 
@@ -72,7 +80,16 @@ export async function download(): Promise<UserData | null> {
       throw new Error('User ID not found')
     }
 
-    const response = await fetch(`${API_BASE}/api/sync/${userId}`)
+    const accessToken = await getAccessToken()
+    if (!accessToken) {
+      throw new Error('Access token not found')
+    }
+
+    const response = await fetch(`${API_BASE}/api/sync/${userId}`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
 
     if (response.status === 404) {
       // User not found on server (first sync)

@@ -1,9 +1,10 @@
 import { UserData, UserSettings, createDefaultUserData } from './types.ts'
-import { loadKey, storeKey, getUserId, storeUserId } from './storage.ts'
+import { loadKey, storeKey, getUserId, storeUserId, storeTokens } from './storage.ts'
 import { generateKey, encrypt, decrypt } from './crypto.ts'
 import { GameStats } from '@/app/stats/gameTypes'
 
 const STORAGE_KEY = 'logikids_data'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5175'
 
 /**
  * Remove old localStorage keys from previous implementation
@@ -49,16 +50,35 @@ export async function initialize(): Promise<UserData | null> {
 }
 
 /**
- * Create a new user (called after invite code validation)
+ * Register a new user with invite code and get JWT token
+ * Called during onboarding after invite code validation
  */
-export async function createNewUser(): Promise<UserData> {
+export async function registerUser(inviteCode: string): Promise<UserData> {
   try {
     // Generate key and userId
     const key = await generateKey()
     const userId = crypto.randomUUID()
 
+    // Register with backend and get JWT token
+    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId, inviteCode }),
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || 'Registration failed')
+    }
+
+    const { accessToken, refreshToken } = await response.json()
+
+    // Store key, userId, and tokens
     await storeKey(key)
     await storeUserId(userId)
+    await storeTokens(accessToken, refreshToken)
 
     // Create default data
     const defaultData = createDefaultUserData(userId)
@@ -75,9 +95,52 @@ export async function createNewUser(): Promise<UserData> {
 
     return defaultData
   } catch (error) {
-    console.error('Failed to create new user:', error)
+    console.error('Failed to register user:', error)
     throw error
   }
+}
+
+/**
+ * Login with existing account (for import/restore flows)
+ * Called when user imports account data that includes userId + encryption key
+ */
+export async function loginWithAccount(userId: string): Promise<void> {
+  try {
+    // Login with backend to get JWT tokens
+    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId }),
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || 'Login failed')
+    }
+
+    const { accessToken, refreshToken } = await response.json()
+
+    // Store tokens
+    await storeTokens(accessToken, refreshToken)
+
+    // User ID and encryption key should already be stored by import flow
+    // Dispatch event for React reactivity
+    window.dispatchEvent(new Event('data-changed'))
+  } catch (error) {
+    console.error('Failed to login with account:', error)
+    throw error
+  }
+}
+
+/**
+ * Create a new user (deprecated - use registerUser instead)
+ * @deprecated Use registerUser with invite code instead
+ */
+export async function createNewUser(): Promise<UserData> {
+  console.warn('createNewUser is deprecated. Use registerUser with invite code instead.')
+  throw new Error('createNewUser is deprecated. Use registerUser with invite code instead.')
 }
 
 /**

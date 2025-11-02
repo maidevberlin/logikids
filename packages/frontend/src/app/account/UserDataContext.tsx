@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 import { UserData, UserSettings } from '@/data/core/types.ts'
-import { initialize, getData, createNewUser as coreCreateNewUser, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress, updateGameStats as coreUpdateGameStats } from '@/data/core/userData.ts'
+import { initialize, getData, registerUser as coreRegisterUser, loginWithAccount as coreLoginWithAccount, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress, updateGameStats as coreUpdateGameStats } from '@/data/core/userData.ts'
 import * as syncPlugin from '@/data/plugins/sync.ts'
 import * as exportPlugin from '@/data/plugins/export.ts'
 import * as qrPlugin from '@/data/plugins/qr.ts'
@@ -12,7 +12,8 @@ export interface UserDataContextValue {
   error: Error | null
 
   // Core operations
-  createNewUser: () => Promise<void>
+  registerUser: (inviteCode: string) => Promise<void>
+  loginWithAccount: (userId: string) => Promise<void>
   updateSettings: (settings: Partial<UserSettings>) => Promise<void>
   updateProgress: (progress: Record<string, any>) => Promise<void>
   updateGameStats: (gameStats: GameStats) => Promise<void>
@@ -73,8 +74,13 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
   }
 
   // Core operations (pass-through to core)
-  const createNewUser = async () => {
-    await coreCreateNewUser()
+  const registerUser = async (inviteCode: string) => {
+    await coreRegisterUser(inviteCode)
+    await refresh()
+  }
+
+  const loginWithAccount = async (userId: string) => {
+    await coreLoginWithAccount(userId)
     await refresh()
   }
 
@@ -121,7 +127,8 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     data,
     isLoading,
     error,
-    createNewUser,
+    registerUser,
+    loginWithAccount,
     updateSettings,
     updateProgress,
     updateGameStats,

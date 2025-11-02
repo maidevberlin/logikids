@@ -15,7 +15,7 @@ import { Footer } from '@/app/common/Footer'
 export default function WelcomeChoicePage() {
   const { t } = useTranslation('common')
   const navigate = useNavigate()
-  const { createNewUser } = useUserData()
+  const { registerUser } = useUserData()
   const [inviteCode, setInviteCode] = useState('')
   const [isValidating, setIsValidating] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -31,29 +31,29 @@ export default function WelcomeChoicePage() {
     setError(null)
 
     try {
-      // Validate invite code with backend
-      const response = await fetch('/api/invite/validate', {
+      // Check invite code validity first (optional - backend will validate too)
+      const checkResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5175'}/api/invite/check`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: inviteCode.trim() })
       })
 
-      const result = await response.json()
+      const checkResult = await checkResponse.json()
 
-      if (!response.ok || !result.valid) {
-        setError(result.error || t('welcomeChoice.newAccount.invalidCode', { defaultValue: 'Invalid invite code' }))
+      if (!checkResponse.ok || !checkResult.valid) {
+        setError(checkResult.reason || t('welcomeChoice.newAccount.invalidCode', { defaultValue: 'Invalid invite code' }))
         setIsValidating(false)
         return
       }
 
-      // Create new user account
-      await createNewUser()
+      // Register user with backend (validates invite + creates account + returns JWT)
+      await registerUser(inviteCode.trim())
 
       // Navigate to onboarding
       navigate('/onboarding')
     } catch (err) {
       console.error('Invite validation error:', err)
-      setError(t('welcomeChoice.newAccount.validationError', { defaultValue: 'Failed to validate invite code' }))
+      setError(err instanceof Error ? err.message : t('welcomeChoice.newAccount.validationError', { defaultValue: 'Failed to validate invite code' }))
       setIsValidating(false)
     }
   }

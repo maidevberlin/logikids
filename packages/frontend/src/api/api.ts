@@ -1,5 +1,6 @@
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import config from '../config';
+import { getAccessToken, getRefreshToken, storeTokens } from '../data/core/storage';
 
 export const api = axios.create({
   baseURL: config.apiBaseUrl,
@@ -8,12 +9,85 @@ export const api = axios.create({
   },
 });
 
-// Generic error handling
+let isRefreshing = false;
+let refreshPromise: Promise<string> | null = null;
+
+/**
+ * Refresh access token using refresh token
+ */
+async function refreshAccessToken(): Promise<string> {
+  // If already refreshing, return the existing promise
+  if (isRefreshing && refreshPromise) {
+    return refreshPromise;
+  }
+
+  isRefreshing = true;
+  refreshPromise = (async () => {
+    try {
+      const refreshToken = await getRefreshToken();
+      if (!refreshToken) {
+        throw new Error('No refresh token available');
+      }
+
+      const response = await axios.post(`${config.apiBaseUrl}/api/auth/refresh`, {
+        refreshToken
+      });
+
+      const { accessToken, refreshToken: newRefreshToken } = response.data;
+      await storeTokens(accessToken, newRefreshToken);
+
+      return accessToken;
+    } finally {
+      isRefreshing = false;
+      refreshPromise = null;
+    }
+  })();
+
+  return refreshPromise;
+}
+
+// Add JWT access token to all requests
+api.interceptors.request.use(
+  async (config) => {
+    const token = await getAccessToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Generic error handling with token refresh
 api.interceptors.response.use(
   (response) => response.data,
-  (error: AxiosError) => {
+  async (error: AxiosError) => {
+    const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
+
+    // If 401 and we haven't retried yet, try to refresh the token
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        const newAccessToken = await refreshAccessToken();
+
+        // Retry the original request with new token
+        if (originalRequest.headers) {
+          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        }
+        return api(originalRequest);
+      } catch (refreshError) {
+        // Refresh failed - redirect to login/welcome page
+        console.error('Token refresh failed:', refreshError);
+        window.location.href = '/welcome-choice';
+        throw new Error('Session expired. Please login again');
+      }
+    }
+
+    // Handle other errors
     if (error.response) {
-      // Handle different HTTP status codes generically
       switch (error.response.status) {
         case 401:
           throw new Error('Authentication required');

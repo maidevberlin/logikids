@@ -3,6 +3,7 @@ import { SyncController } from './sync.controller'
 import { SyncService } from './sync.service'
 import { StorageService } from './storage.service'
 import rateLimit from 'express-rate-limit'
+import { requireAuth, requireOwnUserId } from '../auth/auth.middleware'
 
 /**
  * Create and configure sync router with rate limiting
@@ -36,11 +37,11 @@ export function createSyncRouter(): Router {
   // Apply rate limiting to all sync routes
   router.use(syncRateLimiter)
 
-  // Sync endpoints
-  router.put('/:userId', controller.upload)
-  router.get('/:userId', controller.download)
-  router.post('/:userId/verify', controller.verify)
-  router.delete('/:userId', controller.delete)
+  // Sync endpoints - all require auth and userId verification
+  router.put('/:userId', requireAuth, requireOwnUserId, controller.upload)
+  router.get('/:userId', requireAuth, requireOwnUserId, controller.download)
+  router.post('/:userId/verify', requireAuth, requireOwnUserId, controller.verify)
+  router.delete('/:userId', requireAuth, requireOwnUserId, controller.delete)
 
   return router
 }
