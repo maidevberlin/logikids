@@ -1,6 +1,7 @@
 import { UserData, UserSettings, createDefaultUserData } from './types.ts'
 import { loadKey, storeKey, getUserId, storeUserId } from './storage.ts'
 import { generateKey, encrypt, decrypt } from './crypto.ts'
+import { GameStats } from '@/app/stats/gameTypes'
 
 const STORAGE_KEY = 'logikids_data'
 
@@ -164,6 +165,19 @@ export async function updateProgress(progress: Record<string, any>): Promise<voi
   }
   await setData({
     progress: deepMerge(current.progress, progress)
+  })
+}
+
+/**
+ * Update only gameStats (convenience method)
+ */
+export async function updateGameStats(gameStats: GameStats): Promise<void> {
+  const current = await getData()
+  if (!current) {
+    throw new Error('Cannot update game stats: no user exists')
+  }
+  await setData({
+    gameStats: gameStats
   })
 }
 

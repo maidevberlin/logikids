@@ -1,9 +1,10 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 import { UserData, UserSettings } from '@/data/core/types.ts'
-import { initialize, getData, createNewUser as coreCreateNewUser, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress } from '@/data/core/userData.ts'
+import { initialize, getData, createNewUser as coreCreateNewUser, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress, updateGameStats as coreUpdateGameStats } from '@/data/core/userData.ts'
 import * as syncPlugin from '@/data/plugins/sync.ts'
 import * as exportPlugin from '@/data/plugins/export.ts'
 import * as qrPlugin from '@/data/plugins/qr.ts'
+import { GameStats } from '@/app/stats/gameTypes'
 
 export interface UserDataContextValue {
   data: UserData | null
@@ -14,6 +15,7 @@ export interface UserDataContextValue {
   createNewUser: () => Promise<void>
   updateSettings: (settings: Partial<UserSettings>) => Promise<void>
   updateProgress: (progress: Record<string, any>) => Promise<void>
+  updateGameStats: (gameStats: GameStats) => Promise<void>
   refresh: () => Promise<void>
 
   // Plugin operations
@@ -86,6 +88,11 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     await refresh()
   }
 
+  const updateGameStats = async (gameStats: GameStats) => {
+    await coreUpdateGameStats(gameStats)
+    await refresh()
+  }
+
   // Plugin operations
   const sync = async () => {
     await syncPlugin.sync()
@@ -117,6 +124,7 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     createNewUser,
     updateSettings,
     updateProgress,
+    updateGameStats,
     refresh,
     sync,
     exportData,
