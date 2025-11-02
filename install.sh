@@ -34,6 +34,21 @@ else
     echo "✅ Docker already installed"
 fi
 
+# Remove old standalone docker-compose and install plugin if needed
+if command -v docker-compose &> /dev/null && [ -f /usr/local/bin/docker-compose ]; then
+    echo "🔄 Removing old standalone docker-compose..."
+    sudo rm -f /usr/local/bin/docker-compose
+fi
+
+# Ensure Docker Compose plugin is installed
+if ! docker compose version &> /dev/null; then
+    echo "🐋 Installing Docker Compose plugin..."
+    sudo apt-get update
+    sudo apt-get install -y docker-compose-plugin
+else
+    echo "✅ Docker Compose plugin already installed"
+fi
+
 # Add current user to docker group
 sudo usermod -aG docker $USER
 echo "👤 Added current user to docker group"
