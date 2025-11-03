@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import { UserProgress, StatUpdate } from './types'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { UserProgress, StatUpdate, TASK_LEVELS } from './types'
 import { GameStats, createDefaultGameStats } from './gameTypes'
 import * as progressService from './progressService'
 import * as gameStatsService from './gameStatsService'
@@ -158,6 +158,53 @@ export function useProgress() {
     return totalTasks === 0 ? 0 : totalHints / totalTasks
   }, [progress])
 
+  // Compute total correct tasks (for level calculation)
+  const totalCorrectTasks = useMemo(() => {
+    return Object.values(progress.stats).reduce((sum, subject) => {
+      return sum + Object.values(subject).reduce((s, stats) => s + stats.correct, 0)
+    }, 0)
+  }, [progress.stats])
+
+  // Compute level information
+  const levelInfo = useMemo(() => {
+    const currentLevelIndex = TASK_LEVELS.findIndex(threshold => totalCorrectTasks < threshold)
+    const level = currentLevelIndex === -1 ? TASK_LEVELS.length : currentLevelIndex + 1
+
+    const prevThreshold = level > 1 ? TASK_LEVELS[level - 2] : 0
+    const nextThreshold = level <= TASK_LEVELS.length
+      ? TASK_LEVELS[level - 1]
+      : TASK_LEVELS[TASK_LEVELS.length - 1]
+    const progressInLevel = totalCorrectTasks - prevThreshold
+    const tasksForLevel = nextThreshold - prevThreshold
+    const progressPercent = (progressInLevel / tasksForLevel) * 100
+
+    return {
+      level,
+      totalCorrectTasks,
+      progressInLevel,
+      tasksForLevel,
+      progressPercent,
+      prevThreshold,
+      nextThreshold
+    }
+  }, [totalCorrectTasks])
+
+  // Get level color
+  const getLevelColor = useCallback((lvl: number) => {
+    if (lvl <= 4) return 'bg-blue-500'
+    if (lvl <= 8) return 'bg-indigo-500'
+    if (lvl <= 12) return 'bg-purple-500'
+    if (lvl <= 16) return 'bg-violet-500'
+    return 'bg-fuchsia-500'
+  }, [])
+
+  // Get unlocked achievements
+  const unlockedAchievements = useMemo(() => {
+    return achievementsService.ACHIEVEMENTS.filter(
+      achievement => gameStats.achievements[achievement.id]?.unlocked
+    )
+  }, [gameStats.achievements])
+
   return {
     progress,
     gameStats,
@@ -168,5 +215,10 @@ export function useProgress() {
     getTotalTasksOverall,
     getOverallSuccessRate,
     getOverallAverageHints,
+    // Centralized computed values
+    totalCorrectTasks,
+    levelInfo,
+    getLevelColor,
+    unlockedAchievements,
   }
 } 

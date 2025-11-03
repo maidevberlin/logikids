@@ -1,41 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { useProgress } from '@/app/stats'
-import { ACHIEVEMENTS } from '@/app/stats/achievements'
-import { TASK_LEVELS } from '@/app/stats/types'
 
 export function HeaderGameStats() {
   const navigate = useNavigate()
-  const { gameStats, progress } = useProgress()
+  const { levelInfo, getLevelColor, unlockedAchievements } = useProgress()
 
-  // Calculate level and progress
-  const totalTasks = Object.values(progress.stats).reduce((sum, subject) => {
-    return sum + Object.values(subject).reduce((s, stats) => s + stats.correct + stats.wrong, 0)
-  }, 0)
-
-  const currentLevelIndex = TASK_LEVELS.findIndex(threshold => totalTasks < threshold)
-  const level = currentLevelIndex === -1 ? TASK_LEVELS.length : currentLevelIndex + 1
-
-  const prevThreshold = level > 1 ? TASK_LEVELS[level - 2] : 0
-  const nextThreshold = level <= TASK_LEVELS.length
-    ? TASK_LEVELS[level - 1]
-    : TASK_LEVELS[TASK_LEVELS.length - 1]
-  const progressInLevel = totalTasks - prevThreshold
-  const tasksForLevel = nextThreshold - prevThreshold
-  const progressPercent = (progressInLevel / tasksForLevel) * 100
-
-  // Get level color
-  const getLevelColor = (lvl: number) => {
-    if (lvl <= 4) return 'bg-blue-500'
-    if (lvl <= 8) return 'bg-indigo-500'
-    if (lvl <= 12) return 'bg-purple-500'
-    if (lvl <= 16) return 'bg-violet-500'
-    return 'bg-fuchsia-500'
-  }
-
-  // Get unlocked achievements
-  const unlockedAchievements = ACHIEVEMENTS.filter(
-    achievement => gameStats.achievements[achievement.id]?.unlocked
-  )
+  const { level, progressInLevel, tasksForLevel, progressPercent } = levelInfo
 
   // Get tier 3 and 4 achievements to display (max 3)
   const highlightAchievements = unlockedAchievements

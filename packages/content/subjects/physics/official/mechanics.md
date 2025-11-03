@@ -2,7 +2,7 @@
 id: mechanics
 name: Mechanics
 description: 'Study of motion, forces, and energy in everyday situations'
-grade: 6
+grade: 7
 ages:
   - 11
   - 16

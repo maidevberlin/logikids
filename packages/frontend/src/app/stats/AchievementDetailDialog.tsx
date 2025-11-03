@@ -39,7 +39,7 @@ export function AchievementDetailDialog({
       case 'scholar':
         return {
           totalTasks: Object.values(progress.stats).reduce((sum, subject) => {
-            return sum + Object.values(subject).reduce((s, stats) => s + stats.correct + stats.wrong, 0)
+            return sum + Object.values(subject).reduce((s, stats) => s + stats.correct, 0)
           }, 0)
         }
       case 'dedicated':

@@ -2,7 +2,7 @@
 id: matter
 name: Matter
 description: Discover the properties and behavior of different materials
-grade: 5
+grade: 7
 ages:
   - 10
   - 16

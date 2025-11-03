@@ -12,12 +12,12 @@ export interface Achievement {
 }
 
 /**
- * Helper function to calculate total tasks completed
+ * Helper function to calculate total tasks completed (only correct answers)
  */
 function getTotalTasks(progress: UserProgress): number {
   return Object.values(progress.stats).reduce((sum, subject) => {
     return sum + Object.values(subject).reduce((s, stats) => {
-      return s + stats.correct + stats.wrong
+      return s + stats.correct
     }, 0)
   }, 0)
 }
