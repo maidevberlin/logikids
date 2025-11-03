@@ -16,5 +16,6 @@ docker compose up -d postgres frontend-prod backend-prod
 
 echo "✅ Restart complete!"
 echo "🗄️ PostgreSQL is running on port 5432"
-echo "🌐 Frontend is available at http://localhost:5174"
-echo "🔌 Backend is available at http://localhost:5176" 
+echo "🌐 Frontend is available at http://localhost:5154"
+echo "🔌 Backend is available at http://localhost:5176"
+echo "💡 The frontend automatically proxies /api requests to the backend" 

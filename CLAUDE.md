@@ -25,8 +25,10 @@ Logikids is an AI-powered educational platform for children aged 8-16 that gener
 docker compose up frontend-dev backend-dev
 ```
 
-- Frontend dev: http://localhost:5153
+- Frontend dev: http://localhost:5153 (proxies `/api` to backend-dev)
 - Backend dev: http://localhost:5175
+- Frontend prod: http://localhost:5154 (proxies `/api` to backend-prod)
+- Backend prod: http://localhost:5176
 
 ### Running Commands
 

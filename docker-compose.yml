@@ -9,6 +9,8 @@ services:
       - ./packages/frontend:/app
     environment:
       - NODE_ENV=development
+    depends_on:
+      - backend-dev
     networks:
       - app-network
 
@@ -20,6 +22,8 @@ services:
       - "5154:80"
     environment:
       - NODE_ENV=production
+    depends_on:
+      - backend-prod
     networks:
       - app-network
 
@@ -36,6 +40,7 @@ services:
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
+      - JWT_SECRET=${JWT_SECRET:-logikids-dev-secret-change-in-production}
     depends_on:
       postgres:
         condition: service_healthy
@@ -53,6 +58,7 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
+      - JWT_SECRET=${JWT_SECRET:-logikids-dev-secret-change-in-production}
     depends_on:
       postgres:
         condition: service_healthy

@@ -51,24 +51,23 @@ server {
     ssl_certificate /etc/letsencrypt/live/$DOMAIN_NAME/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/$DOMAIN_NAME/privkey.pem;
 
-    # Frontend
+    # Proxy everything to frontend container (includes static files AND /api proxy)
+    # The frontend container's Nginx handles proxying /api requests to backend
     location / {
         proxy_pass http://localhost:5154;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
         proxy_cache_bypass \$http_upgrade;
-    }
 
-    # Backend
-    location /api/ {
-        proxy_pass http://localhost:5176;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        # Timeouts for long-running requests (AI generation)
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
     }
 }
 
@@ -97,4 +96,5 @@ systemctl restart nginx
 
 echo "✅ Nginx setup complete!"
 echo "🌐 Your application is now available at https://$DOMAIN_NAME"
-echo "🔌 API endpoints are accessible at https://$DOMAIN_NAME/api/" 
+echo "🔌 API endpoints are accessible at https://$DOMAIN_NAME/api/"
+echo "💡 The frontend container's Nginx automatically proxies /api to the backend" 
