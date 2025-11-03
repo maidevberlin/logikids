@@ -177,27 +177,27 @@ elif [[ "$PROVIDER" == "anthropic" ]]; then
     # Get Anthropic model
     while true; do
         echo -e "\n🤖 Choose Anthropic Model:"
-        echo "1) claude-sonnet-4.5 (Recommended - Best coding model, frontier performance)"
-        echo "2) claude-haiku-4.5 (Fast and affordable, near-frontier quality)"
-        echo "3) claude-opus-4.1 (Excellent for agentic tasks and complex reasoning)"
-        echo "4) claude-sonnet-4 (Everyday model, well-balanced)"
+        echo "1) claude-sonnet-4-5-20250929 (Recommended - Best coding model, frontier performance)"
+        echo "2) claude-haiku-4-5-20251001 (Fast and affordable, near-frontier quality)"
+        echo "3) claude-3-5-sonnet-20241022 (Previous generation, still very capable)"
+        echo "4) claude-3-opus-20240229 (Most capable Claude 3 model)"
         read -p "Enter your choice (1-4): " choice
 
         case $choice in
             1)
-                MODEL="claude-sonnet-4.5"
+                MODEL="claude-sonnet-4-5-20250929"
                 break
                 ;;
             2)
-                MODEL="claude-haiku-4.5"
+                MODEL="claude-haiku-4-5-20251001"
                 break
                 ;;
             3)
-                MODEL="claude-opus-4.1"
+                MODEL="claude-3-5-sonnet-20241022"
                 break
                 ;;
             4)
-                MODEL="claude-sonnet-4"
+                MODEL="claude-3-opus-20240229"
                 break
                 ;;
             *)
@@ -239,10 +239,11 @@ ai:
     maxTokens: 4096
     temperature: 0.7
     # Available models (2025):
-    # - claude-sonnet-4.5: Best coding model, frontier performance (Recommended)
-    # - claude-haiku-4.5: Fast and affordable, near-frontier quality
-    # - claude-opus-4.1: Excellent for agentic tasks and complex reasoning
-    # - claude-sonnet-4: Everyday model, well-balanced
+    # - claude-sonnet-4-5-20250929: Best coding model, frontier performance (Alias: claude-sonnet-4-5)
+    # - claude-haiku-4-5-20251001: Fast and affordable, near-frontier quality (Alias: claude-haiku-4-5)
+    # - claude-3-5-sonnet-20241022: Previous generation, still very capable
+    # - claude-3-opus-20240229: Most capable Claude 3 model
+    # Note: Use full versioned names (with dates) for production to maintain consistent behavior
 EOL
 fi
 
