@@ -35,19 +35,14 @@ export async function loadConfig(): Promise<Config> {
   try {
     // Try to read the config file from project root (two levels up from this file)
     const configPath = join(process.cwd(), 'config.yaml');
-    console.log('[Config] Loading config from:', configPath);
-    console.log('[Config] Current working directory:', process.cwd());
-
     const file = Bun.file(configPath);
 
     // Check if file exists and is readable
     if (!(await file.exists())) {
-      console.warn('[Config] No config.yaml found in project root, using default configuration');
+      console.warn('No config.yaml found in project root, using default configuration');
       cachedConfig = defaultConfig;
       return defaultConfig;
     }
-
-    console.log('[Config] config.yaml found, reading...');
 
     // Read and parse the config file
     const content = await file.text();
@@ -55,8 +50,6 @@ export async function loadConfig(): Promise<Config> {
 
     // Validate the config
     const validated = configSchema.parse(parsedConfig);
-
-    console.log('[Config] Provider:', validated.ai.provider);
 
     // Transform to our internal config format
     const config: Config = {
@@ -73,17 +66,6 @@ export async function loadConfig(): Promise<Config> {
     }
     if (config.ai.provider === 'anthropic' && !config.ai.anthropic) {
       throw new Error('Anthropic configuration is required when using Anthropic provider');
-    }
-
-    // Log API key presence (not the key itself)
-    if (config.ai.anthropic?.apiKey) {
-      const key = config.ai.anthropic.apiKey;
-      console.log('[Config] Anthropic API key loaded:', key.substring(0, 10) + '...' + key.substring(key.length - 4));
-      console.log('[Config] Anthropic model:', config.ai.anthropic.model);
-    }
-    if (config.ai.openai?.apiKey) {
-      const key = config.ai.openai.apiKey;
-      console.log('[Config] OpenAI API key loaded:', key.substring(0, 10) + '...' + key.substring(key.length - 4));
     }
 
     // Cache the config

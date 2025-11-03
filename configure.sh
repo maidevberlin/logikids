@@ -248,8 +248,4 @@ EOL
 fi
 
 echo -e "\n✅ Configuration complete! File has been created at: $CONFIG_FILE"
-echo "Please verify the contents of the file:"
-echo "----------------------------------------"
-cat "$CONFIG_FILE"
-echo "----------------------------------------"
-echo "If the configuration looks correct, you can copy it to packages/backend/config.yaml" 
+./restart.sh
