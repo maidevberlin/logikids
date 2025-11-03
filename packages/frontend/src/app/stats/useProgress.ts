@@ -160,10 +160,8 @@ export function useProgress() {
 
   // Compute total correct tasks (for level calculation)
   const totalCorrectTasks = useMemo(() => {
-    return Object.values(progress.stats).reduce((sum, subject) => {
-      return sum + Object.values(subject).reduce((s, stats) => s + stats.correct, 0)
-    }, 0)
-  }, [progress.stats])
+    return achievementsService.getTotalCorrectTasks(progress)
+  }, [progress])
 
   // Compute level information
   const levelInfo = useMemo(() => {

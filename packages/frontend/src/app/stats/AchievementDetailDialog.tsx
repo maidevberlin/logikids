@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { Achievement } from './achievements'
+import { Achievement, getTotalCorrectTasks } from './achievements'
 import { GameStats } from './gameTypes'
 import { UserProgress } from './types'
 
@@ -38,9 +38,7 @@ export function AchievementDetailDialog({
       case 'firstSteps':
       case 'scholar':
         return {
-          totalTasks: Object.values(progress.stats).reduce((sum, subject) => {
-            return sum + Object.values(subject).reduce((s, stats) => s + stats.correct, 0)
-          }, 0)
+          totalTasks: getTotalCorrectTasks(progress)
         }
       case 'dedicated':
       case 'weekWarrior':

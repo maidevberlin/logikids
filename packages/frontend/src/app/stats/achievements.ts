@@ -14,7 +14,7 @@ export interface Achievement {
 /**
  * Helper function to calculate total tasks completed (only correct answers)
  */
-function getTotalTasks(progress: UserProgress): number {
+export function getTotalCorrectTasks(progress: UserProgress): number {
   return Object.values(progress.stats).reduce((sum, subject) => {
     return sum + Object.values(subject).reduce((s, stats) => {
       return s + stats.correct
@@ -30,9 +30,9 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: 'Complete 5 tasks',
     icon: '🌟',
     tier: 1,
-    checkUnlocked: (_, progress) => getTotalTasks(progress) >= 5,
+    checkUnlocked: (_, progress) => getTotalCorrectTasks(progress) >= 5,
     getProgress: (_, progress) => {
-      const total = getTotalTasks(progress)
+      const total = getTotalCorrectTasks(progress)
       return { current: Math.min(total, 5), total: 5 }
     }
   },
@@ -116,10 +116,10 @@ export const ACHIEVEMENTS: Achievement[] = [
     tier: 4,
     checkUnlocked: (_, progress) => {
       // Level 10 is at threshold 100 (from TASK_LEVELS)
-      return getTotalTasks(progress) >= 100
+      return getTotalCorrectTasks(progress) >= 100
     },
     getProgress: (_, progress) => {
-      const totalTasks = getTotalTasks(progress)
+      const totalTasks = getTotalCorrectTasks(progress)
       return { current: Math.min(totalTasks, 100), total: 100 }
     }
   },
