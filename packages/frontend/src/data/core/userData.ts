@@ -4,7 +4,7 @@ import { generateKey, encrypt, decrypt } from './crypto.ts'
 import { GameStats } from '@/app/stats/gameTypes'
 
 const STORAGE_KEY = 'logikids_data'
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5175'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
 
 /**
  * Remove old localStorage keys from previous implementation

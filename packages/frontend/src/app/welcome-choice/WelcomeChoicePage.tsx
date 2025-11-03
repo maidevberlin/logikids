@@ -32,7 +32,7 @@ export default function WelcomeChoicePage() {
 
     try {
       // Check invite code validity first (optional - backend will validate too)
-      const checkResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5175'}/api/invite/check`, {
+      const checkResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || ''}/api/invite/check`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: inviteCode.trim() })

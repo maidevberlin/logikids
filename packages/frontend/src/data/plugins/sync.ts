@@ -3,7 +3,7 @@ import { getData, setData } from '../core/userData.ts'
 import { loadKey, getUserId, getAccessToken } from '../core/storage.ts'
 import { encrypt, decrypt } from '../core/crypto.ts'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5175'
+const API_BASE = import.meta.env.VITE_API_URL || ''
 
 let autoSyncEnabled = false
 let focusHandler: (() => void) | null = null
