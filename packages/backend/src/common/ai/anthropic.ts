@@ -7,9 +7,18 @@ export class AnthropicClient extends AIClient {
 
   constructor(private config: AnthropicConfig) {
     super('anthropic', config.model);
+
+    const key = config.apiKey;
+    console.log('[AnthropicClient] Initializing with API key:', key.substring(0, 10) + '...' + key.substring(key.length - 4));
+    console.log('[AnthropicClient] Model:', config.model);
+    console.log('[AnthropicClient] Max tokens:', config.maxTokens);
+    console.log('[AnthropicClient] Temperature:', config.temperature);
+
     this.client = new Anthropic({
       apiKey: config.apiKey,
     });
+
+    console.log('[AnthropicClient] Client initialized successfully');
   }
 
   async generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse> {
