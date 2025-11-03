@@ -1,11 +1,7 @@
 import { z } from 'zod';
 
-// Get the current URL dynamically, preserving the actual IP if used
-const currentUrl = new URL(window.location.href);
-const defaultApiUrl = `${currentUrl.protocol}//${currentUrl.hostname}:5175`;
-
 const envSchema = z.object({
-  VITE_API_URL: z.string().default(defaultApiUrl),
+  VITE_API_URL: z.string(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 });
 
