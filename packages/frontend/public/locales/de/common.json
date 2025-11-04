@@ -75,7 +75,11 @@
     "nextTask": "Nächste Aufgabe",
     "tryAgain": "Nochmal versuchen",
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "selectSubjectConcept": "Fach und Konzept auswählen",
+    "subjects": "Fächer",
+    "concepts": "Konzepte",
+    "conceptsFor": "Zeige Konzepte für {{subject}}"
   },
   "feedback": {
     "correct": "Richtig!",
@@ -91,6 +95,8 @@
     "pageDescription": "Wähle ein Fach um mit dem Lernen zu beginnen",
     "error": "Fächer konnten nicht geladen werden. Bitte versuche es erneut.",
     "availableFromGrade": "Verfügbar ab Klasse {{grade}}",
+    "grade": "Klasse {{grade}}",
+    "gradeRange": "Klassen {{minGrade}}-{{maxGrade}}",
     "random": "Zufällig",
     "math": {
       "label": "Mathematik",
@@ -161,6 +167,7 @@
     "hideAdvanced": "Nur klassenstufengerechte anzeigen",
     "startLearning": "Aufgaben lösen",
     "advanced": "Fortgeschritten",
+    "gradeLabel": "Klasse {{grade}}",
     "surpriseMe": {
       "title": "Überrasch mich!",
       "description": "Probiere ein zufälliges Konzept",

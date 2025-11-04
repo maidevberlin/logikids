@@ -75,7 +75,11 @@
     "nextTask": "Next Task",
     "tryAgain": "Try Again",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "selectSubjectConcept": "Select subject and concept",
+    "subjects": "Subjects",
+    "concepts": "Concepts",
+    "conceptsFor": "Showing concepts for {{subject}}"
   },
   "feedback": {
     "correct": "Correct!",
@@ -91,6 +95,8 @@
     "pageDescription": "Select a subject to start learning",
     "error": "Failed to load subjects. Please try again.",
     "availableFromGrade": "Available from grade {{grade}}",
+    "grade": "Grade {{grade}}",
+    "gradeRange": "Grades {{minGrade}}-{{maxGrade}}",
     "random": "Random",
     "math": {
       "label": "Mathematics",
@@ -161,6 +167,7 @@
     "hideAdvanced": "Show Grade-Appropriate Only",
     "startLearning": "Start learning",
     "advanced": "Advanced",
+    "gradeLabel": "Grade {{grade}}",
     "surpriseMe": {
       "title": "Surprise Me!",
       "description": "Try a random concept",
