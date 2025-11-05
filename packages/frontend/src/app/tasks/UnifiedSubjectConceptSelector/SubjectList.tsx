@@ -50,9 +50,6 @@ export const SubjectList = memo(function SubjectList({
 
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="text-xs font-semibold text-gray-500 uppercase px-3">
-        {t('task.subjects')}
-      </h3>
       <ScrollArea className="max-h-[60vh] sm:max-h-[70vh]">
         <div className="flex flex-col gap-2" role="listbox" aria-label={t('task.subjects')}>
           {subjects.map((subject) => {

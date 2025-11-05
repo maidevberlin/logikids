@@ -74,9 +74,9 @@ export function UnifiedSubjectConceptSelector({
     setPreviewSubject(subjectId)
   }, [])
 
-  // Handle subject hover in left column (with debounce)
-  const handleSubjectHover = useCallback((subjectId: string) => {
-    setPreviewSubject(subjectId)
+  // Handle subject hover in left column - no-op, only click changes preview
+  const handleSubjectHover = useCallback((_subjectId: string) => {
+    // Do nothing - concepts only change on click
   }, [])
 
   // Handle concept click in right column
