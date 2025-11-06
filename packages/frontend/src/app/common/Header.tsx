@@ -2,6 +2,12 @@ import { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ChevronLeft, Home, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { HeaderGameStats } from './HeaderGameStats'
 
 interface HeaderProps {
@@ -31,32 +37,46 @@ export function Header({
 
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm w-full relative z-10">
-      <div className="px-6 py-4 w-full">
+      <div className="px-6 py-2 w-full">
         <div className="flex items-center justify-between w-full">
           {/* Left: Navigation */}
           <div className="flex items-center min-w-[100px]">
-            {showBack && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate(-1)}
-                className="rounded-xl hover:bg-gray-100"
-              >
-                <ChevronLeft className="w-5 h-5 mr-1" />
-                Back
-              </Button>
-            )}
-            {showHome && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate('/')}
-                className="rounded-xl hover:bg-gray-100"
-              >
-                <Home className="w-5 h-5 mr-1" />
-                Home
-              </Button>
-            )}
+            <TooltipProvider>
+              {showBack && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => navigate(-1)}
+                      className="rounded-xl hover:bg-gray-100"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Back</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+              {showHome && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => navigate('/')}
+                      className="rounded-xl hover:bg-gray-100"
+                    >
+                      <Home className="w-5 h-5" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Home</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+            </TooltipProvider>
           </div>
 
           {/* Center: Custom content or empty */}

@@ -66,6 +66,33 @@ function MarkdownRendererComponent({
         remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
         rehypePlugins={[...(enableMath ? [rehypeKatex as any] : []), rehypeRaw as any]}
         components={{
+          svg({ node, children, ...props }: any) {
+            // Wrap SVGs in a container with white background and controlled width
+            return (
+              <div className="flex justify-center my-4 p-4 bg-white rounded-lg">
+                <svg {...props} className="max-w-md w-1/2 h-auto">
+                  {children}
+                </svg>
+              </div>
+            )
+          },
+          pre({ node, children, ...props }: any) {
+            // Check if pre contains SVG content
+            const childContent = typeof children === 'object' && children?.props?.children
+            const contentStr = String(childContent || children || '')
+
+            if (contentStr.trim().startsWith('<svg')) {
+              return (
+                <div
+                  className="flex justify-center my-4 p-4 bg-white rounded-lg [&_svg]:max-w-md [&_svg]:w-1/2 [&_svg]:h-auto"
+                  dangerouslySetInnerHTML={{ __html: contentStr }}
+                />
+              )
+            }
+
+            // Default pre rendering for code blocks
+            return <pre {...props}>{children}</pre>
+          },
           code({ node, inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || '')
             const language = match ? match[1] : ''
@@ -76,6 +103,17 @@ function MarkdownRendererComponent({
                 <div className="language-mermaid">
                   {String(children).replace(/\n$/, '')}
                 </div>
+              )
+            }
+
+            // Handle SVG - render as actual SVG instead of code
+            if (language === 'svg' || (language === 'html' && String(children).trim().startsWith('<svg'))) {
+              const svgContent = String(children).replace(/\n$/, '')
+              return (
+                <div
+                  className="flex justify-center my-4 p-4 bg-white rounded-lg [&_svg]:max-w-md [&_svg]:w-1/2 [&_svg]:h-auto"
+                  dangerouslySetInnerHTML={{ __html: svgContent }}
+                />
               )
             }
 
