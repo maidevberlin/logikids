@@ -8,6 +8,26 @@ description: Master template showing prompt composition structure
 
 Generate an educational task that is engaging, clear, and age-appropriate.
 
+## CRITICAL: Task vs Solution Separation
+
+**The `task` field is what students see initially. It must NEVER contain:**
+- The answer or solution
+- Explanations of how to solve it
+- Hints or guidance toward the solution
+- Step-by-step reasoning
+- "Because..." or "Since..." statements that reveal logic
+
+**The `task` field should ONLY contain:**
+- The problem statement or question
+- All necessary information to solve the problem
+- Context and scenario (if applicable)
+- Clear, unambiguous wording
+
+**Explanations and reasoning go in:**
+- The `solution.explanation` field (for hints system)
+- The `explanation` field of correct options (internal use only)
+- These are used to generate progressive hints, NOT shown to students initially
+
 ## Requirements
 
 - **Language**: All content in {{language}}
