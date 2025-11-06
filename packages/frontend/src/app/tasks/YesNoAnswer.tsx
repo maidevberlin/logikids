@@ -36,8 +36,8 @@ export function YesNoAnswer({
         onClick={isLocked ? undefined : () => onAnswerSelect(true)}
         className={cn(
           'p-8 transition-all duration-200 border-2 flex flex-col items-center gap-3 min-w-48',
-          isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer hover:border-emerald-400',
-          'data-[selected=true]:border-emerald-500 data-[selected=true]:bg-emerald-50 data-[selected=true]:shadow-lg'
+          isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer hover:border-emerald-400 hover:-rotate-1',
+          'data-[selected=true]:border-emerald-500 data-[selected=true]:bg-emerald-50 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]'
         )}
       >
         <Check className="w-12 h-12 text-emerald-600" />
@@ -52,8 +52,8 @@ export function YesNoAnswer({
         onClick={isLocked ? undefined : () => onAnswerSelect(false)}
         className={cn(
           'p-8 transition-all duration-200 border-2 flex flex-col items-center gap-3 min-w-48',
-          isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer hover:border-red-400',
-          'data-[selected=true]:border-red-500 data-[selected=true]:bg-red-50 data-[selected=true]:shadow-lg'
+          isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer hover:border-red-400 hover:rotate-1',
+          'data-[selected=true]:border-red-500 data-[selected=true]:bg-red-50 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]'
         )}
       >
         <X className="w-12 h-12 text-red-600" />
