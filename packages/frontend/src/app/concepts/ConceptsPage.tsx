@@ -10,7 +10,7 @@ import { useUserData } from '@/app/account'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
-import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react'
+import { ChevronDown, ChevronUp, Sparkles, GraduationCap } from 'lucide-react'
 
 interface ConceptsResponse {
   subject: {
@@ -193,11 +193,13 @@ export default function ConceptsPage() {
         )}
 
         <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'school' | 'fun')} className="w-full">
-          <TabsList className="mb-6">
-            <TabsTrigger value="school">
+          <TabsList className="mb-6 h-14 p-1.5">
+            <TabsTrigger value="school" className="flex items-center gap-2 text-base px-6 h-full data-[state=active]:shadow-md">
+              <GraduationCap className="w-5 h-5" />
               {t('concepts.tabs.school', { defaultValue: 'School' })}
             </TabsTrigger>
-            <TabsTrigger value="fun">
+            <TabsTrigger value="fun" className="flex items-center gap-2 text-base px-6 h-full data-[state=active]:shadow-md">
+              <Sparkles className="w-5 h-5" />
               {t('concepts.tabs.fun', { defaultValue: 'Fun' })}
             </TabsTrigger>
           </TabsList>

@@ -246,6 +246,14 @@
   @apply ml-4;
 }
 
+.markdown-content li > p {
+  @apply mb-0 inline;
+}
+
+.markdown-content li > p:not(:last-child) {
+  @apply mb-2;
+}
+
 .markdown-content code {
   @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
 }
