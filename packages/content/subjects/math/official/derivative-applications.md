@@ -5,7 +5,6 @@ description: Using derivatives to analyze functions and solve optimization and r
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: Critical points, first derivative test, second derivative test, curve sketching, optimization problems, related rates problems, mean value theorem
 difficulty: hard

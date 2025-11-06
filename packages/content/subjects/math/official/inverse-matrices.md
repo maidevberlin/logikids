@@ -2,8 +2,10 @@
 id: inverse-matrices
 name: Inverse Matrices
 description: Finding and applying inverse matrices using various methods
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Matrix inversion using Gaussian elimination, adjugate method, and properties of inverse matrices
 learning_objectives:

@@ -5,7 +5,6 @@ description: Analyzing and graphing quadratic functions including parabolas, ver
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: Parabola properties, standard form, vertex form, factored form, transformations of parabolas, optimization with quadratic functions
 difficulty: medium

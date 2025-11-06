@@ -2,8 +2,10 @@
 id: advanced-combinatorics
 name: Advanced Combinatorics
 description: Binomial theorem, Pascal's triangle, pigeonhole principle, and advanced counting techniques
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Advanced counting methods, binomial expansions, and combinatorial reasoning
 learning_objectives:

@@ -5,7 +5,6 @@ description: Understanding limits of functions and continuity as foundations of 
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: Limit definition and notation, left-hand and right-hand limits, limits at infinity, continuity definition, types of discontinuities, L'Hôpital's rule
 difficulty: hard

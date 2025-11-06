@@ -5,9 +5,7 @@ description: Complete analysis of functions including domain, zeros, extrema, in
 grade: 11
 ages:
   - 16
-  - 17
   - 18
-  - 19
 focus: Domain and range analysis, zeros and y-intercept, symmetry, monotonicity using first derivative, extrema using first and second derivatives, concavity and inflection points, asymptotic behavior
 difficulty: hard
 learning_objectives:

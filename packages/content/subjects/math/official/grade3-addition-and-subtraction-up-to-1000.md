@@ -15,7 +15,7 @@ learning_objectives:
 prerequisites:
   - number-range-up-to-1000
 example_tasks:
-  - 345 + 278 = ?
+  - 18 + 278 = ?
   - 'Estimate: 497 + 312'
 real_world_context: "Shopping with larger amounts of money, calculating distances, planning events with budgets, sports statistics"
 ---

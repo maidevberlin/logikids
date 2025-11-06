@@ -2,8 +2,10 @@
 id: linear-transformations
 name: Linear Transformations
 description: Understanding linear transformations, their matrix representations, and geometric properties
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Linear transformation properties, matrix representations, kernel and image, and geometric transformations
 learning_objectives:

@@ -5,7 +5,6 @@ description: Understanding the concept of functions, domain, range, and function
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Function concept and notation, domain and range, function representations, evaluating functions, functional dependencies
 difficulty: easy

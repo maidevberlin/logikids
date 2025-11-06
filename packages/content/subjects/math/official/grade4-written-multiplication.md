@@ -15,8 +15,8 @@ learning_objectives:
 prerequisites:
   - grade-3-multiplication-large-numbers
 example_tasks:
-  - 234 × 7 = ?
-  - 156 × 23 = ?
+  - 18 × 7 = ?
+  - 18 × 23 = ?
 real_world_context: Written multiplication is essential for calculating costs when buying multiple items, determining areas of rooms, or scaling recipes.
 ---
 

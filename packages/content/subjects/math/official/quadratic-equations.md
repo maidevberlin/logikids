@@ -5,7 +5,6 @@ description: Solving quadratic equations using multiple methods including factor
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: Factoring quadratic expressions, completing the square, p-q formula, abc formula, discriminant and number of solutions, Vieta's formulas
 difficulty: medium

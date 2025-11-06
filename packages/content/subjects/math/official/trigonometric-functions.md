@@ -5,8 +5,6 @@ description: Understanding sine, cosine, and tangent functions with periodic beh
 grade: 10
 ages:
   - 15
-  - 16
-  - 17
   - 18
 focus: Sine, cosine, and tangent functions, amplitude, period, phase shift, unit circle and radian measure, trigonometric identities
 difficulty: hard

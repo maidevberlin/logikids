@@ -5,7 +5,6 @@ description: Understanding and applying the Pythagorean theorem in right triangl
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: Pythagorean theorem a² + b² = c², cathetus theorem, altitude theorem, applications in 2D and 3D, distance formula
 difficulty: medium

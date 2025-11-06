@@ -5,7 +5,6 @@ description: Solving linear equations with one variable using algebraic methods
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Equivalent transformations, solving equations with brackets and fractions, setting up equations from contexts, solution checking
 difficulty: medium

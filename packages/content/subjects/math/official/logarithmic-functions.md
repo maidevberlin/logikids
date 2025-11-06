@@ -5,7 +5,6 @@ description: Understanding logarithms as inverse of exponential functions with a
 grade: 10
 ages:
   - 15
-  - 16
   - 17
 focus: Logarithm definition and notation, logarithm laws, natural logarithm and common logarithm, solving exponential equations, logarithmic scales
 difficulty: medium

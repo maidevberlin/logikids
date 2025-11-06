@@ -2,8 +2,10 @@
 id: sequences-and-series
 name: Sequences and Series
 description: Arithmetic and geometric sequences, convergence, and series summation
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Analyzing patterns in sequences, determining convergence, and calculating series sums
 learning_objectives:

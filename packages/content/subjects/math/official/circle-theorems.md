@@ -5,7 +5,6 @@ description: Understanding angle relationships in circles including Thales' theo
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: Thales' theorem, inscribed angle theorem, central angles and arcs, tangent properties, cyclic quadrilaterals
 difficulty: medium

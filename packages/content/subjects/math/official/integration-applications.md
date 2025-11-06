@@ -6,7 +6,6 @@ grade: 12
 ages:
   - 17
   - 18
-  - 19
 focus: Area between curves, volumes by disk and shell methods, arc length, surface area of revolution, work and force applications, average value of functions
 difficulty: hard
 learning_objectives:

@@ -16,9 +16,9 @@ learning_objectives:
 prerequisites:
   - grade-5-understanding-fractions
 example_tasks:
-  - 20% of 80 = ?
+  - 18% of 80 = ?
   - 15 is what percent of 60?
-  - 30% of ? = 12
+  - 18% of ? = 12
   - 'A shirt costs 40 euros. With 25% discount, what is the new price?'
 real_world_context: Discounts, sales tax/VAT, tips, test scores, election results, statistics, growth rates
 ---

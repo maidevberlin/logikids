@@ -5,7 +5,6 @@ description: Applying sine rule, cosine rule, and area formulas to solve any tri
 grade: 10
 ages:
   - 15
-  - 16
   - 17
 focus: Sine rule, cosine rule, area formula with sine, choosing appropriate rule, ambiguous SSA case
 difficulty: hard

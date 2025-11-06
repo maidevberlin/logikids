@@ -5,7 +5,6 @@ description: Using sine, cosine, and tangent ratios to solve right triangle prob
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: SOH-CAH-TOA definitions, calculating sides using trig ratios, calculating angles using inverse functions, angle of elevation and depression, applications
 difficulty: medium

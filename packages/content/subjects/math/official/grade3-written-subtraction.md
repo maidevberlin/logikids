@@ -15,8 +15,8 @@ learning_objectives:
 prerequisites:
   - addition-and-subtraction-up-to-1000
 example_tasks:
-  - "Calculate 542 - 278 using the written subtraction method. Show all borrowing steps."
-  - "Subtract 365 - 187. Check your answer by adding."
+  - "Calculate 542 - 18 using the written subtraction method. Show all borrowing steps."
+  - "Subtract 365 - 18. Check your answer by adding."
   - "Find the difference between 700 and 456. Explain when you need to borrow from the next place value."
 real_world_context: "Written subtraction helps us calculate change when shopping, find differences in temperatures or heights, or determine remaining items when some are used or sold."
 ---

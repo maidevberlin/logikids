@@ -5,8 +5,6 @@ description: Calculating volumes and surface areas of 3D solids including prisms
 grade: 8
 ages:
   - 13
-  - 14
-  - 15
   - 16
 focus: Prism volume and surface area, cylinder volume and surface area, pyramid and cone geometry, sphere calculations, composite solids
 difficulty: medium

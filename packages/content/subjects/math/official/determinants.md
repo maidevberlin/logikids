@@ -2,8 +2,10 @@
 id: determinants
 name: Determinants
 description: Computing and applying determinants of square matrices
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Determinant calculation methods, properties of determinants, and geometric interpretation
 learning_objectives:

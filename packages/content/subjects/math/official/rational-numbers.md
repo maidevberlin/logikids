@@ -5,7 +5,6 @@ description: Working with fractions, decimals, and negative numbers including al
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Negative numbers, operations with fractions and decimals, sign rules, order of operations, number line, conversions
 difficulty: easy

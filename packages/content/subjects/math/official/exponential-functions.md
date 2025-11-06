@@ -5,7 +5,6 @@ description: Understanding exponential growth and decay with applications to rea
 grade: 10
 ages:
   - 15
-  - 16
   - 17
 focus: Exponential growth and decay, base e and natural exponential function, growth factor and rate, exponential equations, half-life and doubling time
 difficulty: medium

@@ -15,8 +15,8 @@ learning_objectives:
 prerequisites:
   - automating-times-tables
 example_tasks:
-  - 30 × 4 = ?
-  - 23 × 4 = (20 × 4) + (3 × 4)
+  - 18 × 4 = ?
+  - 18 × 4 = (20 × 4) + (3 × 4)
 real_world_context: Used when calculating prices for multiple items in stores, counting objects arranged in groups, or determining total amounts in everyday situations like packaging or seating arrangements.
 ---
 

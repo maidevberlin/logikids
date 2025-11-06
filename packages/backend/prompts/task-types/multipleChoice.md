@@ -13,12 +13,8 @@ Create a multiple choice task with a question and 4 answer options where exactly
 ## Quality Guidelines
 
 **Options (all 4):**
-- Create exactly 4 options total. 
-- One correct option with a detailed explanation showing WHY it's correct
-- Three plausible but incorrect options (no explanations needed)
+- Create exactly 4 options total
+- One correct option - mark with `isCorrect: true`
+- Three plausible but incorrect options - mark with `isCorrect: false`
 - Make incorrect options believable and challenging
 
-**Randomization:**
-- SHUFFLE the options array before returning
-- The correct answer must NOT always be first
-- Vary the position randomly across different tasks

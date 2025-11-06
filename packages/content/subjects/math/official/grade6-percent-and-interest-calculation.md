@@ -15,7 +15,7 @@ learning_objectives:
 prerequisites:
   - introduction-to-percentages
 example_tasks:
-  - 1000€ at 3% interest for 1 year = __ interest
+  - 18€ at 3% interest for 1 year = __ interest
 real_world_context: 'Savings account, loan'
 ---
 

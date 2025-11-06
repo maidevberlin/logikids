@@ -2,8 +2,10 @@
 id: complex-numbers-intro
 name: Introduction to Complex Numbers
 description: Complex number arithmetic, polar form, and basic operations
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Understanding and operating with complex numbers in rectangular and polar forms
 learning_objectives:

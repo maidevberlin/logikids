@@ -2,8 +2,10 @@
 id: differential-equations-intro
 name: Introduction to Differential Equations
 description: First-order differential equations, separation of variables, and basic applications
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Solving basic differential equations and understanding their applications in modeling change
 learning_objectives:

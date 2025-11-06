@@ -5,7 +5,6 @@ description: Understanding and calculating with exponents and square roots inclu
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: Powers with natural and integer exponents, power laws, scientific notation, square roots, irrational numbers
 difficulty: medium

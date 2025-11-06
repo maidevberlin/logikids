@@ -5,7 +5,6 @@ description: Understanding direct and inverse proportionality and solving proble
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Direct proportionality, inverse proportionality, rule of three, proportional reasoning, scale calculations
 difficulty: easy

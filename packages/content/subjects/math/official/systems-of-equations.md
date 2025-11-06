@@ -5,7 +5,6 @@ description: Solving systems of two linear equations with two variables using mu
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: Substitution method, elimination method, graphical solution method, word problems leading to systems, special cases
 difficulty: medium

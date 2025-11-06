@@ -16,8 +16,8 @@ learning_objectives:
 prerequisites:
   - number-range-up-to-100
 example_tasks:
-  - 34 + 28 = ?
-  - 67 - 39 = ?
+  - 18 + 28 = ?
+  - 18 - 18 = ?
   - 'Complete to 100: 73 + __ = 100'
 real_world_context: "Shopping with money up to 100, calculating scores in games, measuring distances, tracking collection sizes"
 ---

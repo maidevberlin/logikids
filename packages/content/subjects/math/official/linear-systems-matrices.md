@@ -2,8 +2,10 @@
 id: linear-systems-matrices
 name: Linear Systems and Matrices
 description: Solving systems of linear equations using matrix methods and Gaussian elimination
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Converting systems to matrix form, row operations, row echelon form, and Gaussian elimination
 learning_objectives:

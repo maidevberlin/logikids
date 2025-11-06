@@ -5,7 +5,6 @@ description: Understanding congruent and similar figures with applications to sc
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: Congruence criteria (SSS, SAS, ASA, AAS), similarity criteria (AA, SAS, SSS), scale factors, proportional reasoning
 difficulty: medium

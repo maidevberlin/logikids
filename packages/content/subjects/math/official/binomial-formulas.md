@@ -5,7 +5,6 @@ description: Understanding and applying the three binomial formulas for efficien
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: First binomial formula, second binomial formula, third binomial formula, factoring using binomial formulas, applications in geometry
 difficulty: medium

@@ -16,7 +16,7 @@ learning_objectives:
 prerequisites:
   - grade-4-laws-of-arithmetic
 example_tasks:
-  - 45 + 23 × 2 = ?
+  - 18 + 23 × 2 = ?
   - '(120 + 80) : 4 = ?'
   - 'Calculate efficiently: 25 × 17 × 4'
 real_world_context: Understanding order of operations and arithmetic laws helps solve complex calculations in science, engineering, and financial planning efficiently.

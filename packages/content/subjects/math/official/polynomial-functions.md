@@ -5,7 +5,6 @@ description: Working with higher-degree polynomial functions including behavior 
 grade: 10
 ages:
   - 15
-  - 16
   - 17
 focus: Polynomial degree and leading coefficient, zeros and factorization, polynomial division, end behavior, multiplicity of zeros, graphing polynomial functions
 difficulty: hard
@@ -21,7 +20,7 @@ prerequisites:
 example_tasks:
   - Find all zeros of f(x) = x³ - 6x² + 11x - 6
   - Determine the end behavior of f(x) = -2x⁴ + 5x² - 3
-  - Perform polynomial division: (x³ + 3x² - 4) ÷ (x - 1)
+  - "Perform polynomial division: (x³ + 3x² - 4) ÷ (x - 1)"
 real_world_context: Volume optimization, engineering curve design, economic modeling, physics applications
 ---
 

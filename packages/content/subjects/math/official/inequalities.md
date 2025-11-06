@@ -5,8 +5,6 @@ description: Solving and interpreting linear inequalities with understanding of 
 grade: 8
 ages:
   - 13
-  - 14
-  - 15
   - 16
 focus: Linear inequalities, solution sets and interval notation, graphical representation on number line, inequality rules, compound inequalities
 difficulty: medium

@@ -2,8 +2,10 @@
 id: counting-principles
 name: Counting Principles
 description: Fundamental counting principle, permutations, and combinations
-grade: 9-10
-ages: 14-16
+grade: 9
+ages:
+  - 14
+  - 16
 difficulty: medium
 focus: Systematic counting methods and understanding when to use different counting techniques
 learning_objectives:

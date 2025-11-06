@@ -2,8 +2,10 @@
 id: matrices-basics
 name: Matrices Basics
 description: Introduction to matrices, matrix operations, and basic properties
-grade: 12-13
-ages: 17-19
+grade: 12
+ages:
+  - 17
+  - 18
 difficulty: hard
 focus: Understanding matrix structure, addition, subtraction, scalar multiplication, and matrix multiplication
 learning_objectives:

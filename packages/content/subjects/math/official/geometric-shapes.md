@@ -5,7 +5,6 @@ description: Understanding properties of 2D shapes including triangles, quadrila
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Triangle types, quadrilateral types, circle properties, perimeter and area formulas, composite figures
 difficulty: easy

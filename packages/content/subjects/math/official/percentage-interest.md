@@ -5,7 +5,6 @@ description: Calculating percentages, percentage changes, and simple and compoun
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Basic percentage calculations, percentage increase and decrease, simple interest, compound interest, value added tax
 difficulty: easy

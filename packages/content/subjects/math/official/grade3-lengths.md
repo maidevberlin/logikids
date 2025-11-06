@@ -16,7 +16,7 @@ prerequisites:
   - grade-2-measuring-lengths
 example_tasks:
   - 3 km = __ m
-  - 45 cm = __ mm
+  - 18 cm = __ mm
 real_world_context: Understanding length measurements helps us measure distances when traveling, estimate heights of buildings, and work on craft projects or construction.
 ---
 

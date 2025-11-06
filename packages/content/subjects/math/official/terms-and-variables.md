@@ -5,7 +5,6 @@ description: Working with algebraic terms including simplification and transform
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: Variables and algebraic notation, like terms and simplification, distributive law, multiplying out brackets, factoring expressions
 difficulty: medium

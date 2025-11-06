@@ -5,7 +5,6 @@ description: Understanding and working with linear functions including slope, y-
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: Slope and y-intercept, slope-intercept form, graphing linear functions, parallel and perpendicular lines, applications and modeling
 difficulty: medium

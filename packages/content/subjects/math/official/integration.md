@@ -6,7 +6,6 @@ grade: 12
 ages:
   - 17
   - 18
-  - 19
 focus: Indefinite integrals, definite integrals and Riemann sums, Fundamental Theorem of Calculus, integration rules, substitution method, integration by parts
 difficulty: hard
 learning_objectives:

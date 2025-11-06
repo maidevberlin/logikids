@@ -5,7 +5,6 @@ description: Analyzing rational functions including asymptotes, discontinuities,
 grade: 10
 ages:
   - 15
-  - 16
   - 17
 focus: Rational function definition, vertical and horizontal asymptotes, zeros and poles, removable discontinuities, end behavior, graphing rational functions
 difficulty: hard

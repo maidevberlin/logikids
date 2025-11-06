@@ -5,9 +5,7 @@ description: Vectors and analytical geometry
 grade: 11
 ages:
   - 16
-  - 17
   - 18
-  - 19
 focus: Vectors and analytical geometry
 difficulty: hard
 learning_objectives:

@@ -5,7 +5,6 @@ description: Understanding rates of change and calculating derivatives using var
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: Derivative definition as limit of difference quotient, differentiation rules, product rule, quotient rule, chain rule, derivatives of elementary functions, higher-order derivatives
 difficulty: hard
