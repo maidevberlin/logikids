@@ -14,6 +14,7 @@ interface MultipleChoiceAnswerProps {
   selectedAnswer: number | null
   onAnswerSelect: (index: number) => void
   isLoading?: boolean
+  isLocked?: boolean
 }
 
 const OPTION_COLORS = [
@@ -28,6 +29,7 @@ export function MultipleChoiceAnswer({
   selectedAnswer,
   onAnswerSelect,
   isLoading = false,
+  isLocked = false,
 }: MultipleChoiceAnswerProps) {
   if (isLoading) {
     return (
@@ -45,9 +47,10 @@ export function MultipleChoiceAnswer({
         <Card
           key={index}
           data-selected={selectedAnswer === index}
-          onClick={() => onAnswerSelect(index)}
+          onClick={isLocked ? undefined : () => onAnswerSelect(index)}
           className={cn(
-            'p-6 cursor-pointer transition-all duration-200 border-2 flex items-center justify-center min-h-24',
+            'p-6 transition-all duration-200 border-2 flex items-center justify-center min-h-24',
+            isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer',
             OPTION_COLORS[index % OPTION_COLORS.length]
           )}
         >

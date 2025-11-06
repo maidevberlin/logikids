@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
@@ -9,26 +9,48 @@ import { Concept } from './types'
 import { useUserData } from '@/app/account'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react'
 
-interface SubjectWithConcepts {
-  id: string
-  name: string
-  description: string
+interface ConceptsResponse {
+  subject: {
+    id: string
+    name: string
+    description: string
+  }
   concepts: Concept[]
+  totalResults: number
 }
 
-async function fetchConcepts(grade?: number): Promise<SubjectWithConcepts[]> {
-  const url = grade
-    ? `/api/task/subjects?grade=${grade}`
-    : '/api/task/subjects'
+async function fetchSubjectConcepts(
+  subjectId: string,
+  options?: {
+    grade?: number
+    source?: 'curriculum' | 'custom'
+    difficulty?: 'easy' | 'medium' | 'hard'
+  }
+): Promise<ConceptsResponse> {
+  const params = new URLSearchParams()
+
+  if (options?.grade !== undefined) {
+    params.append('grade', options.grade.toString())
+  }
+
+  if (options?.source) {
+    params.append('source', options.source)
+  }
+
+  if (options?.difficulty) {
+    params.append('difficulty', options.difficulty)
+  }
+
+  const url = `/api/task/subjects/${subjectId}/concepts${params.toString() ? '?' + params.toString() : ''}`
 
   const response = await fetch(url)
   if (!response.ok) {
     throw new Error('Failed to fetch concepts')
   }
-  const data = await response.json()
-  return data.subjects
+  return response.json()
 }
 
 export default function ConceptsPage() {
@@ -37,28 +59,36 @@ export default function ConceptsPage() {
   const navigate = useNavigate()
   const { data: userData } = useUserData()
   const [showAll, setShowAll] = useState(false)
+  const [activeTab, setActiveTab] = useState<'school' | 'fun'>('school')
 
   const grade = userData?.settings.grade
 
-  // Fetch filtered concepts
-  const { data: filteredSubjects, isLoading: isLoadingFiltered } = useQuery({
-    queryKey: ['concepts', subjectId, grade],
-    queryFn: () => fetchConcepts(grade),
-    enabled: !!grade && !showAll,
+  // Reset showAll when switching tabs
+  useEffect(() => {
+    setShowAll(false)
+  }, [activeTab])
+
+  // Determine current source filter
+  const currentSource = activeTab === 'school' ? 'curriculum' : 'custom'
+
+  // Fetch grade-filtered concepts for current tab
+  const { data: filteredData, isLoading: isLoadingFiltered } = useQuery({
+    queryKey: ['concepts', subjectId, grade, currentSource],
+    queryFn: () => fetchSubjectConcepts(subjectId!, { grade, source: currentSource }),
+    enabled: !!subjectId && !!grade && !showAll,
   })
 
-  // Fetch all concepts (when user clicks "show all" OR when no grade is set)
-  const { data: allSubjects, isLoading: isLoadingAll } = useQuery({
-    queryKey: ['concepts', subjectId, 'all'],
-    queryFn: () => fetchConcepts(),
-    enabled: showAll || !grade,
+  // Fetch all concepts for current tab (when user clicks "show all" OR when no grade is set)
+  const { data: allData, isLoading: isLoadingAll } = useQuery({
+    queryKey: ['concepts', subjectId, 'all', currentSource],
+    queryFn: () => fetchSubjectConcepts(subjectId!, { source: currentSource }),
+    enabled: !!subjectId && (showAll || !grade),
   })
 
-  // Use filtered subjects only when we have a grade and not showing all
-  // Otherwise use all subjects (for users without grade or when showing all)
-  const subjects = (grade && !showAll) ? filteredSubjects : allSubjects
+  // Determine which data to use
+  const data = (grade && !showAll) ? filteredData : allData
   const isLoading = (grade && !showAll) ? isLoadingFiltered : isLoadingAll
-  const subject = subjects?.find((s) => s.id === subjectId)
+  const subject = data?.subject
 
   if (!subjectId) {
     return (
@@ -70,18 +100,44 @@ export default function ConceptsPage() {
     )
   }
 
-  // Get concepts to display (subject is already from the correct source)
-  const filteredConcepts = subject?.concepts || []
-  // Get grade-filtered concepts (to mark which ones are advanced)
-  const gradeFilteredConcepts = filteredSubjects?.find(s => s.id === subjectId)?.concepts || []
+  // Get concepts from current data
+  const concepts = data?.concepts || []
 
-  // Determine which concepts are advanced (not in grade-filtered list)
-  const gradeFilteredIds = new Set(gradeFilteredConcepts.map(c => c.id))
+  // Group concepts by grade for "show all" view
+  const groupedByGrade = useMemo(() => {
+    if (!showAll) return null
+
+    const groups = new Map<number | 'other', Concept[]>()
+
+    concepts.forEach(concept => {
+      const key = concept.grade ?? 'other'
+      if (!groups.has(key)) {
+        groups.set(key, [])
+      }
+      groups.get(key)!.push(concept)
+    })
+
+    // Sort grades ascending
+    const sortedGrades = Array.from(groups.keys()).sort((a, b) => {
+      if (a === 'other') return 1
+      if (b === 'other') return -1
+      return a - b
+    })
+
+    return sortedGrades.map(gradeKey => ({
+      grade: gradeKey,
+      concepts: groups.get(gradeKey)!
+    }))
+  }, [concepts, showAll])
+
+  // Get grade-filtered IDs to mark advanced concepts
+  const gradeFilteredIds = useMemo(() => {
+    if (!filteredData) return new Set<string>()
+    return new Set(filteredData.concepts.map(c => c.id))
+  }, [filteredData])
 
   const handleSurpriseMe = () => {
-    if (filteredConcepts.length === 0) return
-
-    // Navigate to tasks with random concept (no specific concept selected)
+    if (concepts.length === 0) return
     navigate(`/subjects/${subjectId}/tasks`)
   }
 
@@ -97,7 +153,7 @@ export default function ConceptsPage() {
       showAccount
     >
       <div className="max-w-7xl mx-auto">
-        {isLoading ? (
+        {isLoading && !subject ? (
           <>
             <Skeleton className="h-12 w-64 mb-4" />
             <Skeleton className="h-6 w-96 mb-8" />
@@ -117,7 +173,7 @@ export default function ConceptsPage() {
                 </p>
               </div>
             </div>
-            {filteredConcepts.length > 0 && (
+            {concepts.length > 0 && (
               <Button
                 onClick={handleSurpriseMe}
                 size="lg"
@@ -136,53 +192,84 @@ export default function ConceptsPage() {
           </div>
         )}
 
-        {!isLoading && filteredConcepts.length === 0 && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-            <p className="text-yellow-800">
-              {showAll
-                ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
-                : t('concepts.noConceptsForGrade', {
-                    defaultValue: 'No concepts available for your grade. Try "Show Advanced Concepts".'
-                  })}
-            </p>
-          </div>
-        )}
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'school' | 'fun')} className="w-full">
+          <TabsList className="mb-6">
+            <TabsTrigger value="school">
+              {t('concepts.tabs.school', { defaultValue: 'School' })}
+            </TabsTrigger>
+            <TabsTrigger value="fun">
+              {t('concepts.tabs.fun', { defaultValue: 'Fun' })}
+            </TabsTrigger>
+          </TabsList>
 
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Skeleton key={i} className="h-64 rounded-lg" />
-            ))}
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-              {filteredConcepts.map((concept) => (
-                <ConceptCard
-                  key={concept.id}
-                  concept={concept}
-                  subject={subjectId}
-                  isAdvanced={showAll && !gradeFilteredIds.has(concept.id)}
-                />
-              ))}
-            </div>
+          <TabsContent value="school">
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <Skeleton key={i} className="h-64 rounded-lg" />
+                ))}
+              </div>
+            ) : !isLoading && concepts.length === 0 ? (
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <p className="text-yellow-800">
+                  {showAll
+                    ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
+                    : t('concepts.noConceptsForGrade', {
+                        defaultValue: 'No concepts available for your grade. Try "Show All Concepts".'
+                      })}
+                </p>
+              </div>
+            ) : groupedByGrade ? (
+              <>
+                {groupedByGrade.map(({ grade: gradeKey, concepts }) => (
+                  <div key={gradeKey}>
+                    <h2 className={`text-2xl font-semibold text-gray-800 mb-4 ${gradeKey === groupedByGrade[0].grade ? '' : 'mt-8'}`}>
+                      {gradeKey === 'other'
+                        ? t('concepts.gradeGroup.other', { defaultValue: 'Other' })
+                        : t('concepts.gradeGroup.gradeN', { defaultValue: 'Grade {{grade}}', grade: gradeKey })}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                      {concepts.map((concept) => (
+                        <ConceptCard
+                          key={concept.id}
+                          concept={concept}
+                          subject={subjectId}
+                          isAdvanced={false}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                {concepts.map((concept) => (
+                  <ConceptCard
+                    key={concept.id}
+                    concept={concept}
+                    subject={subjectId}
+                    isAdvanced={showAll && !gradeFilteredIds.has(concept.id)}
+                  />
+                ))}
+              </div>
+            )}
 
-            {!showAll && filteredConcepts.length > 0 && (
-              <div className="flex justify-center">
+            {!showAll && concepts.length > 0 && (
+              <div className="flex justify-center mt-6">
                 <Button
                   variant="outline"
                   size="lg"
                   onClick={() => setShowAll(true)}
                   className="gap-2"
                 >
-                  {t('concepts.showAdvanced', { defaultValue: 'Show Advanced Concepts' })}
+                  {t('concepts.showAdvanced', { defaultValue: 'Show All Concepts' })}
                   <ChevronDown className="w-4 h-4" />
                 </Button>
               </div>
             )}
 
             {showAll && (
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-6">
                 <Button
                   variant="outline"
                   size="lg"
@@ -194,8 +281,89 @@ export default function ConceptsPage() {
                 </Button>
               </div>
             )}
-          </>
-        )}
+          </TabsContent>
+
+          <TabsContent value="fun">
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <Skeleton key={i} className="h-64 rounded-lg" />
+                ))}
+              </div>
+            ) : !isLoading && concepts.length === 0 ? (
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <p className="text-yellow-800">
+                  {showAll
+                    ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
+                    : t('concepts.noConceptsForGrade', {
+                        defaultValue: 'No concepts available for your grade. Try "Show All Concepts".'
+                      })}
+                </p>
+              </div>
+            ) : groupedByGrade ? (
+              <>
+                {groupedByGrade.map(({ grade: gradeKey, concepts }) => (
+                  <div key={gradeKey}>
+                    <h2 className={`text-2xl font-semibold text-gray-800 mb-4 ${gradeKey === groupedByGrade[0].grade ? '' : 'mt-8'}`}>
+                      {gradeKey === 'other'
+                        ? t('concepts.gradeGroup.other', { defaultValue: 'Other' })
+                        : t('concepts.gradeGroup.gradeN', { defaultValue: 'Grade {{grade}}', grade: gradeKey })}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                      {concepts.map((concept) => (
+                        <ConceptCard
+                          key={concept.id}
+                          concept={concept}
+                          subject={subjectId}
+                          isAdvanced={false}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                {concepts.map((concept) => (
+                  <ConceptCard
+                    key={concept.id}
+                    concept={concept}
+                    subject={subjectId}
+                    isAdvanced={showAll && !gradeFilteredIds.has(concept.id)}
+                  />
+                ))}
+              </div>
+            )}
+
+            {!showAll && concepts.length > 0 && (
+              <div className="flex justify-center mt-6">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => setShowAll(true)}
+                  className="gap-2"
+                >
+                  {t('concepts.showAdvanced', { defaultValue: 'Show All Concepts' })}
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </div>
+            )}
+
+            {showAll && (
+              <div className="flex justify-center mt-6">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => setShowAll(false)}
+                  className="gap-2"
+                >
+                  {t('concepts.hideAdvanced', { defaultValue: 'Show Grade-Appropriate Only' })}
+                  <ChevronUp className="w-4 h-4" />
+                </Button>
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </div>
     </PageLayout>
   )

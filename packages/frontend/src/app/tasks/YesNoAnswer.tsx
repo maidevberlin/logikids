@@ -8,12 +8,14 @@ interface YesNoAnswerProps {
   selectedAnswer: boolean | null
   onAnswerSelect: (answer: boolean) => void
   isLoading?: boolean
+  isLocked?: boolean
 }
 
 export function YesNoAnswer({
   selectedAnswer,
   onAnswerSelect,
   isLoading = false,
+  isLocked = false,
 }: YesNoAnswerProps) {
   const { t } = useTranslation()
 
@@ -31,10 +33,10 @@ export function YesNoAnswer({
       {/* Yes Option */}
       <Card
         data-selected={selectedAnswer === true}
-        onClick={() => onAnswerSelect(true)}
+        onClick={isLocked ? undefined : () => onAnswerSelect(true)}
         className={cn(
-          'p-8 cursor-pointer transition-all duration-200 border-2 flex flex-col items-center gap-3 min-w-48',
-          'hover:border-emerald-400',
+          'p-8 transition-all duration-200 border-2 flex flex-col items-center gap-3 min-w-48',
+          isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer hover:border-emerald-400',
           'data-[selected=true]:border-emerald-500 data-[selected=true]:bg-emerald-50 data-[selected=true]:shadow-lg'
         )}
       >
@@ -47,10 +49,10 @@ export function YesNoAnswer({
       {/* No Option */}
       <Card
         data-selected={selectedAnswer === false}
-        onClick={() => onAnswerSelect(false)}
+        onClick={isLocked ? undefined : () => onAnswerSelect(false)}
         className={cn(
-          'p-8 cursor-pointer transition-all duration-200 border-2 flex flex-col items-center gap-3 min-w-48',
-          'hover:border-red-400',
+          'p-8 transition-all duration-200 border-2 flex flex-col items-center gap-3 min-w-48',
+          isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer hover:border-red-400',
           'data-[selected=true]:border-red-500 data-[selected=true]:bg-red-50 data-[selected=true]:shadow-lg'
         )}
       >

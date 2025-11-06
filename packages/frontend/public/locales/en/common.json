@@ -162,12 +162,24 @@
   "concepts": {
     "subjectNotFound": "Subject not found",
     "noConcepts": "No concepts available for this subject.",
-    "noConceptsForGrade": "No concepts available for your grade. Try \"Show Advanced Concepts\".",
-    "showAdvanced": "Show Advanced Concepts",
+    "noConceptsForGrade": "No concepts available for your grade. Try \"Show All Concepts\".",
+    "showAdvanced": "Show All Concepts",
     "hideAdvanced": "Show Grade-Appropriate Only",
     "startLearning": "Start learning",
     "advanced": "Advanced",
     "gradeLabel": "Grade {{grade}}",
+    "tabs": {
+      "school": "School",
+      "fun": "Fun"
+    },
+    "search": {
+      "placeholder": "Search concepts...",
+      "noResults": "No concepts found for '{{query}}'"
+    },
+    "gradeGroup": {
+      "gradeN": "Grade {{grade}}",
+      "other": "Other"
+    },
     "surpriseMe": {
       "title": "Surprise Me!",
       "description": "Try a random concept",

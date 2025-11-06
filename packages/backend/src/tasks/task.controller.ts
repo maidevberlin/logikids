@@ -115,4 +115,78 @@ export class TaskController extends BaseController {
       }
     }
   }
+
+  public async getSubjectConcepts(req: Request, res: Response): Promise<void> {
+    try {
+      const { subjectId } = req.params;
+      const grade = req.query.grade ? parseInt(req.query.grade as string, 10) : undefined;
+      const difficulty = req.query.difficulty as 'easy' | 'medium' | 'hard' | undefined;
+      const source = req.query.source as 'curriculum' | 'custom' | undefined;
+
+      // Validate required parameters
+      if (!subjectId) {
+        res.status(400).json({ error: 'Subject ID is required' });
+        return;
+      }
+
+      // Validate grade if provided
+      if (grade !== undefined && (isNaN(grade) || grade < 1 || grade > 13)) {
+        res.status(400).json({ error: 'Invalid grade parameter. Must be between 1 and 13.' });
+        return;
+      }
+
+      // Validate difficulty if provided
+      if (difficulty && !['easy', 'medium', 'hard'].includes(difficulty)) {
+        res.status(400).json({ error: 'Invalid difficulty parameter. Must be easy, medium, or hard.' });
+        return;
+      }
+
+      // Validate source if provided
+      if (source && !['curriculum', 'custom'].includes(source)) {
+        res.status(400).json({ error: 'Invalid source parameter. Must be curriculum or custom.' });
+        return;
+      }
+
+      // Get subject
+      const subject = subjectRegistry.get(subjectId);
+      if (!subject) {
+        res.status(404).json({ error: `Subject ${subjectId} not found` });
+        return;
+      }
+
+      // Get concepts with optional filters
+      let concepts = subjectRegistry.getConcepts(subjectId, { grade, difficulty });
+
+      // Filter by source if specified
+      if (source) {
+        concepts = concepts.filter(c => c.source === source);
+      }
+
+      res.json({
+        subject: {
+          id: subject.id,
+          name: subject.name,
+          description: subject.description
+        },
+        concepts: concepts.map(concept => ({
+          id: concept.id,
+          name: concept.name,
+          description: concept.description,
+          grade: concept.grade,
+          difficulty: concept.difficulty,
+          source: concept.source,
+          focus: concept.focus,
+          learning_objectives: concept.learning_objectives
+        })),
+        totalResults: concepts.length
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An unexpected error occurred' });
+      }
+    }
+  }
+
 } 

@@ -208,6 +208,7 @@ export class SubjectRegistry {
       maxAge: ages.length > 0 ? Math.max(...ages) : undefined,
     };
   }
+
 }
 
 // Export singleton instance

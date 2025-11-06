@@ -13,6 +13,11 @@
       "exporting": "Exporting...",
       "description": "Download all your data as a JSON file. You can use this for backups or to transfer your data."
     },
+    "logout": "Logout",
+    "logoutTitle": "Logout",
+    "logoutDescription": "Are you sure you want to logout? This will clear all your data from this device. If you have cloud backup enabled, your data will be preserved and you can sign in again to restore it.",
+    "confirmLogout": "Logout",
+    "cancel": "Cancel",
     "deleteData": "Delete All Data",
     "deleteConfirm": "Are you sure you want to delete all your data? This cannot be undone.",
     "backToHome": "Back to Home",

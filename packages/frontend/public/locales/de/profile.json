@@ -13,6 +13,11 @@
       "exporting": "Exportiere...",
       "description": "Lade alle deine Daten als JSON-Datei herunter. Du kannst diese für Backups oder zum Übertragen deiner Daten verwenden."
     },
+    "logout": "Abmelden",
+    "logoutTitle": "Abmelden",
+    "logoutDescription": "Bist du sicher, dass du dich abmelden möchtest? Dies löscht alle deine Daten von diesem Gerät. Wenn du Cloud-Backup aktiviert hast, werden deine Daten gespeichert und du kannst dich erneut anmelden, um sie wiederherzustellen.",
+    "confirmLogout": "Abmelden",
+    "cancel": "Abbrechen",
     "deleteData": "Alle Daten löschen",
     "deleteConfirm": "Bist du sicher, dass du alle deine Daten löschen möchtest? Dies kann nicht rückgängig gemacht werden.",
     "backToHome": "Zurück zur Startseite",

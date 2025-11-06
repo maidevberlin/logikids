@@ -162,12 +162,24 @@
   "concepts": {
     "subjectNotFound": "Fach nicht gefunden",
     "noConcepts": "Keine Konzepte für dieses Fach verfügbar.",
-    "noConceptsForGrade": "Keine Konzepte für deine Klasse verfügbar. Versuche \"Erweiterte Konzepte anzeigen\".",
-    "showAdvanced": "Erweiterte Konzepte anzeigen",
+    "noConceptsForGrade": "Keine Konzepte für deine Klasse verfügbar. Versuche \"Alle Konzepte anzeigen\".",
+    "showAdvanced": "Alle Konzepte anzeigen",
     "hideAdvanced": "Nur klassenstufengerechte anzeigen",
     "startLearning": "Aufgaben lösen",
     "advanced": "Fortgeschritten",
     "gradeLabel": "Klasse {{grade}}",
+    "tabs": {
+      "school": "Schule",
+      "fun": "Spaß"
+    },
+    "search": {
+      "placeholder": "Konzepte suchen...",
+      "noResults": "Keine Konzepte gefunden für '{{query}}'"
+    },
+    "gradeGroup": {
+      "gradeN": "Klasse {{grade}}",
+      "other": "Sonstige"
+    },
     "surpriseMe": {
       "title": "Überrasch mich!",
       "description": "Probiere ein zufälliges Konzept",

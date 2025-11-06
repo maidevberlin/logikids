@@ -57,6 +57,11 @@ export async function createTaskRouter(): Promise<Router> {
     taskController.getSubjects(req, res).catch(next)
   );
 
+  // Public route - no auth required (get concepts for a specific subject)
+  router.get('/subjects/:subjectId/concepts', (req, res, next) =>
+    taskController.getSubjectConcepts(req, res).catch(next)
+  );
+
   // Protected route - requires auth + rate limiting (AI cost)
   router.post('/:taskId/hint', requireAuth, hintRateLimiter, (req, res, next) =>
     hintController.getHint(req, res).catch(next)

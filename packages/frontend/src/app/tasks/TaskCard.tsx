@@ -7,6 +7,7 @@ import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
 import { YesNoAnswer } from './YesNoAnswer'
 import { HintSection } from './HintSection'
+import { DifficultySelector } from './DifficultySelector'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
 import { Task, MultipleChoiceTask, YesNoTask } from './types'
 import { cn } from '@/lib/utils'
@@ -26,6 +27,8 @@ interface TaskCardProps {
   hintError: string | null
   canRequestHint: boolean
   onHintUsed: () => void
+  difficulty: 'easy' | 'medium' | 'hard'
+  onDifficultyChange: (difficulty: 'easy' | 'medium' | 'hard') => void
 }
 
 export function TaskCard({
@@ -43,6 +46,8 @@ export function TaskCard({
   hintError,
   canRequestHint,
   onHintUsed,
+  difficulty,
+  onDifficultyChange,
 }: TaskCardProps) {
   const { t } = useTranslation()
   const [showFeedback, setShowFeedback] = useState(false)
@@ -57,7 +62,9 @@ export function TaskCard({
           onAnswerSelect(null)
         }, 200)
       }, 3000)
-      return () => clearTimeout(timer)
+      return () => {
+        clearTimeout(timer)
+      }
     } else if (isCorrect === true) {
       setShowFeedback(true)
     } else {
@@ -118,8 +125,14 @@ export function TaskCard({
 
   return (
     <Card className="p-8 shadow-2xl">
-      {/* Task title */}
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">{task.title}</h2>
+      {/* Header with title and difficulty */}
+      <div className="flex items-start justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">{task.title}</h2>
+        <DifficultySelector
+          difficulty={difficulty}
+          onDifficultyChange={onDifficultyChange}
+        />
+      </div>
 
       {/* Task content */}
       <MarkdownRenderer
@@ -137,6 +150,7 @@ export function TaskCard({
           selectedAnswer={selectedAnswer as number | null}
           onAnswerSelect={(index) => onAnswerSelect(index)}
           isLoading={false}
+          isLocked={isCorrect === true}
         />
       )}
 
@@ -145,6 +159,7 @@ export function TaskCard({
           selectedAnswer={selectedAnswer as boolean | null}
           onAnswerSelect={(answer) => onAnswerSelect(answer)}
           isLoading={false}
+          isLocked={isCorrect === true}
         />
       )}
 

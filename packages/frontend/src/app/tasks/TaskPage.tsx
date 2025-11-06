@@ -97,7 +97,8 @@ export default function TaskPage() {
   useEffect(() => {
     selectAnswer(null)
     setHintsUsed(0)
-  }, [taskParams, selectAnswer])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [taskParams])
 
   // Track progress when answer is checked
   useEffect(() => {
@@ -172,6 +173,7 @@ export default function TaskPage() {
       />
 
       <PageLayout
+        showBack
         showHome
         showGameStats
         showAccount
@@ -179,10 +181,8 @@ export default function TaskPage() {
           <TaskPageHeader
             subject={taskParams.subject}
             concept={taskParams.concept}
-            difficulty={taskParams.difficulty}
             onSubjectChange={handleSubjectChange}
             onConceptChange={handleConceptChange}
-            onDifficultyChange={handleDifficultyChange}
           />
         }
       >
@@ -203,6 +203,8 @@ export default function TaskPage() {
             hintError={hintError}
             canRequestHint={canRequestHint}
             onHintUsed={handleHintUsed}
+            difficulty={taskParams.difficulty}
+            onDifficultyChange={handleDifficultyChange}
           />
         </div>
       </PageLayout>

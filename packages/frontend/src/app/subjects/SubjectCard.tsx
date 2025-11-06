@@ -8,13 +8,25 @@ export interface SubjectCardProps {
   subject: Subject
   disabled?: boolean
   minGrade?: number
+  showGradeRange?: boolean
 }
 
-export function SubjectCard({ subject, disabled = false, minGrade }: SubjectCardProps) {
+export function SubjectCard({ subject, disabled = false, minGrade, showGradeRange = true }: SubjectCardProps) {
   const { t } = useTranslation()
   const theme = getSubjectTheme(subject.id)
   const Icon = theme.icon
   const { bg, hover } = theme.colors
+
+  // Format grade range display
+  const gradeRangeText = subject.minGrade && subject.maxGrade
+    ? subject.minGrade === subject.maxGrade
+      ? t('subjects.grade', { grade: subject.minGrade, defaultValue: `Grade ${subject.minGrade}` })
+      : t('subjects.gradeRange', {
+          minGrade: subject.minGrade,
+          maxGrade: subject.maxGrade,
+          defaultValue: `Grades ${subject.minGrade}-${subject.maxGrade}`
+        })
+    : null
 
   const content = (
     <Card className={`shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl ${
@@ -29,11 +41,16 @@ export function SubjectCard({ subject, disabled = false, minGrade }: SubjectCard
         <h2 className="text-2xl font-bold mb-2">
           {t(`subjects.${subject.id}.label`, { defaultValue: subject.name })}
         </h2>
-        <p className="text-white/90">
+        <p className="text-white/90 mb-3">
           {t(`subjects.${subject.id}.description`, { defaultValue: subject.description })}
         </p>
+        {showGradeRange && gradeRangeText && (
+          <p className="text-white/80 text-sm font-medium">
+            {gradeRangeText}
+          </p>
+        )}
         {disabled && minGrade && (
-          <p className="text-white/80 text-sm mt-4 italic">
+          <p className="text-white/80 text-sm mt-2 italic">
             {t('subjects.availableFromGrade', { grade: minGrade, defaultValue: `Available from grade ${minGrade}` })}
           </p>
         )}

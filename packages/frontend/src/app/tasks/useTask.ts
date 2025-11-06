@@ -1,8 +1,7 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import i18n from '@/i18n/config';
 import { logikids, TaskRequest } from '@/api/logikids';
-import { TIMING } from './constants';
 import { Task, MultipleChoiceTask, YesNoTask, TaskAnswerType } from './types';
 
 export const useTask = (params: TaskRequest) => {
@@ -10,7 +9,6 @@ export const useTask = (params: TaskRequest) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [hints, setHints] = useState<string[]>([]);
   const [hintError, setHintError] = useState<string | null>(null);
-  const resetTimeoutRef = useRef<number>();
 
   const {
     data: task,
@@ -40,7 +38,6 @@ export const useTask = (params: TaskRequest) => {
       setHintError(null);
     },
     onError: (error) => {
-      console.error('Failed to fetch hint:', error);
       setHintError(error instanceof Error ? error.message : 'Failed to fetch hint');
     }
   });
@@ -52,15 +49,6 @@ export const useTask = (params: TaskRequest) => {
       setHintError(null);
     }
   }, [task?.taskId]);
-
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (resetTimeoutRef.current) {
-        window.clearTimeout(resetTimeoutRef.current);
-      }
-    };
-  }, []);
 
   // Refetch task when language changes
   useEffect(() => {
@@ -76,7 +64,7 @@ export const useTask = (params: TaskRequest) => {
 
   const checkAnswer = useCallback(() => {
     if (!task || selectedAnswer === null) return;
-    
+
     let correct: boolean;
     if (task.type === 'multiple_choice') {
       correct = (task as MultipleChoiceTask).options[selectedAnswer as number].isCorrect;
@@ -84,35 +72,19 @@ export const useTask = (params: TaskRequest) => {
       correct = selectedAnswer === (task as YesNoTask).solution.answer;
     }
     setIsCorrect(correct);
-
-    // Clear any existing timeout
-    if (resetTimeoutRef.current) {
-      window.clearTimeout(resetTimeoutRef.current);
-    }
-
-    // Set timeout for auto-reset if answer is wrong
-    if (!correct) {
-      resetTimeoutRef.current = window.setTimeout(() => {
-        setSelectedAnswer(null);
-        setIsCorrect(null);
-      }, TIMING.WRONG_ANSWER_RESET);
-    }
   }, [task, selectedAnswer]);
 
   const selectAnswer = useCallback(<T extends Task>(answer: TaskAnswerType<T> | null) => {
-    // Clear any existing timeout when selecting a new answer
-    if (resetTimeoutRef.current) {
-      window.clearTimeout(resetTimeoutRef.current);
+    // Don't allow changing answer if already correct
+    if (isCorrect === true) {
+      return;
     }
+
     setSelectedAnswer(answer);
     setIsCorrect(null);
-  }, []);
+  }, [isCorrect]);
 
   const nextTask = useCallback(async () => {
-    // Clear any existing timeout when moving to next task
-    if (resetTimeoutRef.current) {
-      window.clearTimeout(resetTimeoutRef.current);
-    }
     setSelectedAnswer(null);
     setIsCorrect(null);
     await refetch();

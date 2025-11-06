@@ -31,23 +31,29 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
         isAdvanced ? 'ring-2 ring-orange-300 bg-orange-50/20' : ''
       }`}>
         <CardContent className="p-8 flex flex-col h-full">
-          <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-bold text-gray-900 flex-1">
-              {name}
-            </h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">
+            {name}
+          </h3>
+
+          <p className="text-gray-600 mb-4 flex-1">{description}</p>
+
+          <div className="flex flex-wrap gap-2">
+            {concept.grade && (
+              <Badge className="bg-blue-100 text-blue-800 rounded-lg pointer-events-none">
+                {t('concepts.gradeLabel', { grade: concept.grade, defaultValue: `Grade ${concept.grade}` })}
+              </Badge>
+            )}
             {isAdvanced && (
-              <Badge className="ml-2 bg-orange-100 text-orange-800 rounded-lg">
+              <Badge className="bg-orange-100 text-orange-800 rounded-lg pointer-events-none">
                 {t('concepts.advanced')}
               </Badge>
             )}
             {concept.difficulty && (
-              <Badge className={`ml-2 rounded-lg ${difficultyColors[concept.difficulty]}`}>
+              <Badge className={`rounded-lg pointer-events-none ${difficultyColors[concept.difficulty]}`}>
                 {t(`difficulty.${concept.difficulty}`)}
               </Badge>
             )}
           </div>
-
-          <p className="text-gray-600 mb-4 flex-1">{description}</p>
         </CardContent>
       </Card>
     </Link>
