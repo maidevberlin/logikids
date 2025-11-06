@@ -79,7 +79,8 @@
     "selectSubjectConcept": "Fach und Konzept auswählen",
     "subjects": "Fächer",
     "concepts": "Konzepte",
-    "conceptsFor": "Zeige Konzepte für {{subject}}"
+    "conceptsFor": "Zeige Konzepte für {{subject}}",
+    "viewAll": "Alle anzeigen"
   },
   "feedback": {
     "correct": "Richtig!",

@@ -79,7 +79,8 @@
     "selectSubjectConcept": "Select subject and concept",
     "subjects": "Subjects",
     "concepts": "Concepts",
-    "conceptsFor": "Showing concepts for {{subject}}"
+    "conceptsFor": "Showing concepts for {{subject}}",
+    "viewAll": "View All"
   },
   "feedback": {
     "correct": "Correct!",
