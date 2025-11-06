@@ -162,6 +162,22 @@ export class TaskController extends BaseController {
         concepts = concepts.filter(c => c.source === source);
       }
 
+      // If no concepts found for the specified grade, fall back to lower grades
+      if (grade !== undefined && concepts.length === 0) {
+        // Get all concepts below the user's grade
+        const allConcepts = subjectRegistry.getConcepts(subjectId, { difficulty });
+        concepts = allConcepts.filter(c => {
+          // Include concepts from lower grades
+          if (c.grade === undefined) return false;
+          return c.grade < grade;
+        });
+
+        // Filter by source if specified
+        if (source) {
+          concepts = concepts.filter(c => c.source === source);
+        }
+      }
+
       res.json({
         subject: {
           id: subject.id,

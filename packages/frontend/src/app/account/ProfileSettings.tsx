@@ -1,10 +1,9 @@
-import { useState, useEffect, FormEvent } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NumberInput, GenderSelector, GradeSelector, LanguageSelector } from '@/app/common'
 import { Card } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { User } from 'lucide-react'
+import { User, Check, Loader2 } from 'lucide-react'
 import type { UserSettings } from '@/data/core/types'
 
 interface ProfileSettingsProps {
@@ -21,8 +20,11 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   const [gender, setGender] = useState('non-binary')
   const [language, setLanguage] = useState('en')
   const [isSaving, setIsSaving] = useState(false)
-  const [saveMessage, setSaveMessage] = useState('')
+  const [showSaved, setShowSaved] = useState(false)
   const [isEditingName, setIsEditingName] = useState(false)
+
+  const saveTimeoutRef = useRef<NodeJS.Timeout>()
+  const savedTimeoutRef = useRef<NodeJS.Timeout>()
 
   // Initialize form with current settings
   useEffect(() => {
@@ -33,47 +35,115 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
     setLanguage(settings.language || 'en')
   }, [settings])
 
-  const handleSave = async (e: FormEvent) => {
-    e.preventDefault()
-    setIsSaving(true)
-    setSaveMessage('')
-
-    try {
-      await onUpdate({
-        name,
-        age,
-        grade,
-        gender,
-        language
-      })
-
-      // Change i18n language
-      if (language !== i18n.language) {
-        await i18n.changeLanguage(language)
-      }
-
-      setSaveMessage(t('account.saved', { defaultValue: 'Changes saved successfully!' }))
-      setTimeout(() => setSaveMessage(''), 3000)
-    } catch (error) {
-      console.error('Failed to save settings:', error)
-      setSaveMessage('Error saving changes')
-    } finally {
-      setIsSaving(false)
+  const autoSave = useCallback(async (updates: Partial<UserSettings>) => {
+    // Clear any pending save
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current)
     }
+    if (savedTimeoutRef.current) {
+      clearTimeout(savedTimeoutRef.current)
+    }
+
+    // Debounce save by 500ms
+    saveTimeoutRef.current = setTimeout(async () => {
+      setIsSaving(true)
+      setShowSaved(false)
+
+      try {
+        await onUpdate(updates)
+
+        // Change i18n language if needed
+        if (updates.language && updates.language !== i18n.language) {
+          await i18n.changeLanguage(updates.language)
+        }
+
+        setShowSaved(true)
+        savedTimeoutRef.current = setTimeout(() => {
+          setShowSaved(false)
+        }, 2000)
+      } catch (error) {
+        console.error('Failed to save settings:', error)
+      } finally {
+        setIsSaving(false)
+      }
+    }, 500)
+  }, [onUpdate, i18n])
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current)
+      if (savedTimeoutRef.current) clearTimeout(savedTimeoutRef.current)
+    }
+  }, [])
+
+  const handleNameChange = (newName: string) => {
+    setName(newName)
+    if (newName.trim()) {
+      autoSave({ name: newName, age, grade, gender, language })
+    }
+  }
+
+  const handleNameBlur = () => {
+    setIsEditingName(false)
+    if (name.trim()) {
+      autoSave({ name, age, grade, gender, language })
+    }
+  }
+
+  const handleAgeChange = (newAge: number) => {
+    setAge(newAge)
+    autoSave({ name, age: newAge, grade, gender, language })
+  }
+
+  const handleGradeChange = (newGrade: number) => {
+    setGrade(newGrade)
+    autoSave({ name, age, grade: newGrade, gender, language })
+  }
+
+  const handleGenderChange = (newGender: string) => {
+    setGender(newGender)
+    autoSave({ name, age, grade, gender: newGender, language })
+  }
+
+  const handleLanguageChange = (newLanguage: string) => {
+    setLanguage(newLanguage)
+    autoSave({ name, age, grade, gender, language: newLanguage })
   }
 
   return (
     <Card className="p-8 bg-white shadow-md rounded-2xl">
-      <div className="flex items-center space-x-3 mb-6">
-        <div className="bg-primary/10 p-3 rounded-full">
-          <User className="w-6 h-6 text-primary" />
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center space-x-3">
+          <div className="bg-primary/10 p-3 rounded-full">
+            <User className="w-6 h-6 text-primary" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">
+            {t('account.profileSettings', { defaultValue: 'Profile Settings' })}
+          </h2>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">
-          {t('account.profileSettings', { defaultValue: 'Profile Settings' })}
-        </h2>
+        {/* Save status indicator */}
+        <div className="flex items-center space-x-2">
+          {isSaving && (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin text-gray-500" />
+              <span className="text-sm text-gray-500">
+                {t('account.saving', { defaultValue: 'Saving...' })}
+              </span>
+            </>
+          )}
+          {showSaved && (
+            <>
+              <Check className="w-4 h-4 text-green-600" />
+              <span className="text-sm text-green-600">
+                {t('account.saved', { defaultValue: 'Saved' })}
+              </span>
+            </>
+          )}
+        </div>
       </div>
 
-      <form onSubmit={handleSave} className="space-y-8">
+      <div className="space-y-8">
         {/* Name Section */}
         <div className="space-y-4">
           <Label className="block text-xl font-semibold text-gray-700 text-center">
@@ -83,11 +153,11 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-              onBlur={() => setIsEditingName(false)}
+              onChange={(e) => handleNameChange(e.target.value)}
+              onBlur={handleNameBlur}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  setIsEditingName(false)
+                  handleNameBlur()
                 }
               }}
               placeholder={t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
@@ -114,7 +184,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           </Label>
           <NumberInput
             value={age}
-            onChange={setAge}
+            onChange={handleAgeChange}
             min={6}
             max={18}
           />
@@ -130,7 +200,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           </Label>
           <GradeSelector
             value={grade}
-            onChange={setGrade}
+            onChange={handleGradeChange}
             age={age}
           />
         </div>
@@ -145,7 +215,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           </Label>
           <GenderSelector
             value={gender}
-            onChange={setGender}
+            onChange={handleGenderChange}
           />
         </div>
 
@@ -159,27 +229,10 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           </Label>
           <LanguageSelector
             value={language}
-            onChange={setLanguage}
+            onChange={handleLanguageChange}
           />
         </div>
-
-        {saveMessage && (
-          <div className={`p-3 rounded-lg ${saveMessage.includes('Error') ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
-            {saveMessage}
-          </div>
-        )}
-
-        <Button
-          type="submit"
-          className="w-full"
-          size="lg"
-          disabled={isSaving || !name.trim()}
-        >
-          {isSaving
-            ? t('account.saving', { defaultValue: 'Saving...' })
-            : t('account.saveButton', { defaultValue: 'Save Changes' })}
-        </Button>
-      </form>
+      </div>
     </Card>
   )
 }

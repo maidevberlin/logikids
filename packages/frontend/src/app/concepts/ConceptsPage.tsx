@@ -10,7 +10,8 @@ import { useUserData } from '@/app/account'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
-import { ChevronDown, ChevronUp, Sparkles, GraduationCap } from 'lucide-react'
+import { Sparkles, GraduationCap } from 'lucide-react'
+import { ShowAllConceptsButton } from './ShowAllConceptsButton'
 
 interface ConceptsResponse {
   subject: {
@@ -130,11 +131,18 @@ export default function ConceptsPage() {
     }))
   }, [concepts, showAll])
 
-  // Get grade-filtered IDs to mark advanced concepts
+  // Get grade-filtered IDs to mark advanced concepts (only concepts ABOVE user's grade)
   const gradeFilteredIds = useMemo(() => {
     if (!filteredData) return new Set<string>()
     return new Set(filteredData.concepts.map(c => c.id))
   }, [filteredData])
+
+  // Helper to determine if a concept is advanced (above user's grade)
+  const isConceptAdvanced = (concept: Concept) => {
+    if (!showAll || !grade) return false
+    if (!concept.grade) return false
+    return concept.grade > grade
+  }
 
   const handleSurpriseMe = () => {
     if (concepts.length === 0) return
@@ -212,15 +220,18 @@ export default function ConceptsPage() {
                 ))}
               </div>
             ) : !isLoading && concepts.length === 0 ? (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <p className="text-yellow-800">
-                  {showAll
-                    ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
-                    : t('concepts.noConceptsForGrade', {
-                        defaultValue: 'No concepts available for your grade. Try "Show All Concepts".'
-                      })}
-                </p>
-              </div>
+              <>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                  <p className="text-yellow-800">
+                    {showAll
+                      ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
+                      : t('concepts.noConceptsForGrade', {
+                          defaultValue: 'No concepts available for your grade. Try "Show All Concepts".'
+                        })}
+                  </p>
+                </div>
+                {!showAll && <ShowAllConceptsButton showAll={showAll} onToggle={() => setShowAll(true)} />}
+              </>
             ) : groupedByGrade ? (
               <>
                 {groupedByGrade.map(({ grade: gradeKey, concepts }) => (
@@ -236,7 +247,7 @@ export default function ConceptsPage() {
                           key={concept.id}
                           concept={concept}
                           subject={subjectId}
-                          isAdvanced={false}
+                          isAdvanced={isConceptAdvanced(concept)}
                         />
                       ))}
                     </div>
@@ -256,33 +267,7 @@ export default function ConceptsPage() {
               </div>
             )}
 
-            {!showAll && concepts.length > 0 && (
-              <div className="flex justify-center mt-6">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => setShowAll(true)}
-                  className="gap-2"
-                >
-                  {t('concepts.showAdvanced', { defaultValue: 'Show All Concepts' })}
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </div>
-            )}
-
-            {showAll && (
-              <div className="flex justify-center mt-6">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => setShowAll(false)}
-                  className="gap-2"
-                >
-                  {t('concepts.hideAdvanced', { defaultValue: 'Show Grade-Appropriate Only' })}
-                  <ChevronUp className="w-4 h-4" />
-                </Button>
-              </div>
-            )}
+            {concepts.length > 0 && <ShowAllConceptsButton showAll={showAll} onToggle={() => setShowAll(!showAll)} />}
           </TabsContent>
 
           <TabsContent value="fun">
@@ -293,15 +278,18 @@ export default function ConceptsPage() {
                 ))}
               </div>
             ) : !isLoading && concepts.length === 0 ? (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <p className="text-yellow-800">
-                  {showAll
-                    ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
-                    : t('concepts.noConceptsForGrade', {
-                        defaultValue: 'No concepts available for your grade. Try "Show All Concepts".'
-                      })}
-                </p>
-              </div>
+              <>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                  <p className="text-yellow-800">
+                    {showAll
+                      ? t('concepts.noConcepts', { defaultValue: 'No concepts available for this subject.' })
+                      : t('concepts.noConceptsForGrade', {
+                          defaultValue: 'No concepts available for your grade. Try "Show All Concepts".'
+                        })}
+                  </p>
+                </div>
+                {!showAll && <ShowAllConceptsButton showAll={showAll} onToggle={() => setShowAll(true)} />}
+              </>
             ) : groupedByGrade ? (
               <>
                 {groupedByGrade.map(({ grade: gradeKey, concepts }) => (
@@ -317,7 +305,7 @@ export default function ConceptsPage() {
                           key={concept.id}
                           concept={concept}
                           subject={subjectId}
-                          isAdvanced={false}
+                          isAdvanced={isConceptAdvanced(concept)}
                         />
                       ))}
                     </div>
@@ -337,33 +325,7 @@ export default function ConceptsPage() {
               </div>
             )}
 
-            {!showAll && concepts.length > 0 && (
-              <div className="flex justify-center mt-6">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => setShowAll(true)}
-                  className="gap-2"
-                >
-                  {t('concepts.showAdvanced', { defaultValue: 'Show All Concepts' })}
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </div>
-            )}
-
-            {showAll && (
-              <div className="flex justify-center mt-6">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => setShowAll(false)}
-                  className="gap-2"
-                >
-                  {t('concepts.hideAdvanced', { defaultValue: 'Show Grade-Appropriate Only' })}
-                  <ChevronUp className="w-4 h-4" />
-                </Button>
-              </div>
-            )}
+            {concepts.length > 0 && <ShowAllConceptsButton showAll={showAll} onToggle={() => setShowAll(!showAll)} />}
           </TabsContent>
         </Tabs>
       </div>

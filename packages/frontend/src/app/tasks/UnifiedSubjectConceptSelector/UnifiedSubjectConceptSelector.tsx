@@ -1,6 +1,5 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 import {
   Popover,
   PopoverContent,
@@ -47,7 +46,6 @@ export function UnifiedSubjectConceptSelector({
   onConceptChange,
 }: UnifiedSubjectConceptSelectorProps) {
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const [previewSubject, setPreviewSubject] = useState(subject)
 

@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import config from '../config';
-import { getAccessToken, getRefreshToken, storeTokens, getUserId } from '../data/core/storage';
+import { getAccessToken, storeTokens, getUserId } from '../data/core/storage';
 
 export const api = axios.create({
   baseURL: config.apiBaseUrl,

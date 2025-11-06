@@ -27,7 +27,7 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
 
   return (
     <Link to={`/subjects/${subject}/${concept.id}/tasks`}>
-      <Card className={`bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer h-full rounded-2xl ${
+      <Card className={`bg-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
         isAdvanced ? 'ring-2 ring-orange-300 bg-orange-50/20' : ''
       }`}>
         <CardContent className="p-8 flex flex-col h-full">

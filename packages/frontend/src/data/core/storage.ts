@@ -4,8 +4,6 @@ const STORE_NAME = 'keys'
 const KEY_ID = 'encryption_key'
 const USER_ID_KEY = 'user_id'
 const ACCESS_TOKEN_KEY = 'access_token'
-const REFRESH_TOKEN_KEY = 'refresh_token'
-const JWT_TOKEN_KEY = 'jwt_token' // Legacy - for backwards compatibility
 
 /**
  * Opens IndexedDB connection with error recovery
@@ -190,76 +188,6 @@ export async function getAccessToken(): Promise<string | null> {
     request.onerror = () => {
       db.close()
       reject(request.error || new Error('Failed to load access token'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve(request.result || null)
-    }
-  })
-}
-
-/**
- * Get refresh token from IndexedDB
- */
-export async function getRefreshToken(): Promise<string | null> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readonly')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.get(REFRESH_TOKEN_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to load refresh token'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve(request.result || null)
-    }
-  })
-}
-
-/**
- * Store JWT token in IndexedDB (legacy - for backwards compatibility)
- * @deprecated Use storeTokens instead
- */
-export async function storeToken(token: string): Promise<void> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readwrite')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.put(token, JWT_TOKEN_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to store token'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve()
-    }
-  })
-}
-
-/**
- * Load JWT token from IndexedDB
- * Returns access token if available, otherwise legacy token
- */
-export async function getToken(): Promise<string | null> {
-  // Try access token first
-  const accessToken = await getAccessToken()
-  if (accessToken) return accessToken
-
-  // Fallback to legacy token
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readonly')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.get(JWT_TOKEN_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to load token'))
     }
     request.onsuccess = () => {
       db.close()

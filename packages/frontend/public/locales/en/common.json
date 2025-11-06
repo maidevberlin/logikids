@@ -7,19 +7,58 @@
     "todayPrompt": "What would you like to do today?",
     "startButton": "Start Learning",
     "setupAccount": "Setup Your Account",
+    "stats": {
+      "streak": "Day Streak",
+      "stars": "Stars",
+      "level": "Level",
+      "achievement": "Achievement",
+      "noAchievement": "Keep going!"
+    },
     "navigation": {
       "startLearning": {
         "title": "Start Learning",
         "description": "Choose a subject and begin your learning journey"
       },
+      "continueWith": "Continue with {{subject}}: {{concept}}",
+      "continueWithSubject": "Continue with {{subject}}",
+      "continue": {
+        "description": "Pick up where you left off"
+      },
+      "browseSubjects": {
+        "title": "Browse Subjects",
+        "description": "Explore all subjects and concepts"
+      },
       "progress": {
         "title": "Your Progress",
         "description": "See how you're doing and track your achievements"
+      },
+      "practiceMode": {
+        "title": "Practice Mode",
+        "description": "Focus on concepts that need improvement"
+      },
+      "dailyChallenge": {
+        "title": "Daily Challenge",
+        "description": "Complete today's special task"
       },
       "profile": {
         "title": "Profile",
         "description": "Manage your account and settings"
       }
+    },
+    "achievements": {
+      "streak3": "3-Day Streak",
+      "streak7": "7-Day Streak",
+      "streak14": "2-Week Streak",
+      "streak30": "30-Day Streak",
+      "perfect5": "5 Perfect Tasks",
+      "perfect10": "10 Perfect Tasks",
+      "perfect20": "20 Perfect Tasks",
+      "noHints5": "5 Tasks Without Hints",
+      "noHints10": "10 Tasks Without Hints",
+      "tasks10": "10 Tasks Completed",
+      "tasks20": "20 Tasks Completed",
+      "tasks50": "50 Tasks Completed",
+      "tasks100": "100 Tasks Completed"
     }
   },
   "onboarding": {

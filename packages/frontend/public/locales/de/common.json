@@ -7,19 +7,58 @@
     "todayPrompt": "Was möchtest du heute machen?",
     "startButton": "Jetzt Lernen",
     "setupAccount": "Konto einrichten",
+    "stats": {
+      "streak": "Tage-Serie",
+      "stars": "Sterne",
+      "level": "Level",
+      "achievement": "Erfolg",
+      "noAchievement": "Weiter so!"
+    },
     "navigation": {
       "startLearning": {
         "title": "Lernen starten",
         "description": "Wähle ein Fach und beginne deine Lernreise"
       },
+      "continueWith": "Weiter mit {{subject}}: {{concept}}",
+      "continueWithSubject": "Weiter mit {{subject}}",
+      "continue": {
+        "description": "Da weitermachen, wo du aufgehört hast"
+      },
+      "browseSubjects": {
+        "title": "Fächer durchstöbern",
+        "description": "Erkunde alle Fächer und Konzepte"
+      },
       "progress": {
         "title": "Dein Fortschritt",
         "description": "Sieh wie es dir geht und verfolge deine Erfolge"
+      },
+      "practiceMode": {
+        "title": "Übungsmodus",
+        "description": "Konzentriere dich auf Konzepte, die Verbesserung brauchen"
+      },
+      "dailyChallenge": {
+        "title": "Tägliche Herausforderung",
+        "description": "Erledige die heutige besondere Aufgabe"
       },
       "profile": {
         "title": "Profil",
         "description": "Verwalte dein Konto und Einstellungen"
       }
+    },
+    "achievements": {
+      "streak3": "3-Tage-Serie",
+      "streak7": "7-Tage-Serie",
+      "streak14": "2-Wochen-Serie",
+      "streak30": "30-Tage-Serie",
+      "perfect5": "5 Perfekte Aufgaben",
+      "perfect10": "10 Perfekte Aufgaben",
+      "perfect20": "20 Perfekte Aufgaben",
+      "noHints5": "5 Aufgaben ohne Hinweise",
+      "noHints10": "10 Aufgaben ohne Hinweise",
+      "tasks10": "10 Aufgaben gelöst",
+      "tasks20": "20 Aufgaben gelöst",
+      "tasks50": "50 Aufgaben gelöst",
+      "tasks100": "100 Aufgaben gelöst"
     }
   },
   "onboarding": {
