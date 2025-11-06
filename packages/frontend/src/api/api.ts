@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import config from '../config';
-import { getAccessToken, getRefreshToken, storeTokens } from '../data/core/storage';
+import { getAccessToken, getRefreshToken, storeTokens, getUserId } from '../data/core/storage';
 
 export const api = axios.create({
   baseURL: config.apiBaseUrl,
@@ -13,7 +13,7 @@ let isRefreshing = false;
 let refreshPromise: Promise<string> | null = null;
 
 /**
- * Refresh access token using refresh token
+ * Refresh access token using userId
  */
 async function refreshAccessToken(): Promise<string> {
   // If already refreshing, return the existing promise
@@ -24,17 +24,20 @@ async function refreshAccessToken(): Promise<string> {
   isRefreshing = true;
   refreshPromise = (async () => {
     try {
-      const refreshToken = await getRefreshToken();
-      if (!refreshToken) {
-        throw new Error('No refresh token available');
+      const userId = await getUserId();
+
+      // Must have userId to renew token
+      if (!userId) {
+        throw new Error('No user credentials available');
       }
 
-      const response = await axios.post(`${config.apiBaseUrl}/api/auth/refresh`, {
-        refreshToken
+      // Renew access token with userId
+      const response = await axios.post(`${config.apiBaseUrl}/auth/refresh`, {
+        userId
       });
 
-      const { accessToken, refreshToken: newRefreshToken } = response.data;
-      await storeTokens(accessToken, newRefreshToken);
+      const { accessToken } = response.data;
+      await storeTokens(accessToken);
 
       return accessToken;
     } finally {

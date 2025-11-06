@@ -157,22 +157,20 @@ export async function getUserId(): Promise<string | null> {
 }
 
 /**
- * Store both access and refresh tokens in IndexedDB
+ * Store access token in IndexedDB
  */
-export async function storeTokens(accessToken: string, refreshToken: string): Promise<void> {
+export async function storeTokens(accessToken: string): Promise<void> {
   const db = await openDB()
   return new Promise((resolve, reject) => {
     const transaction = db.transaction([STORE_NAME], 'readwrite')
     const store = transaction.objectStore(STORE_NAME)
+    const request = store.put(accessToken, ACCESS_TOKEN_KEY)
 
-    store.put(accessToken, ACCESS_TOKEN_KEY)
-    const refreshRequest = store.put(refreshToken, REFRESH_TOKEN_KEY)
-
-    refreshRequest.onerror = () => {
+    request.onerror = () => {
       db.close()
-      reject(refreshRequest.error || new Error('Failed to store tokens'))
+      reject(request.error || new Error('Failed to store access token'))
     }
-    refreshRequest.onsuccess = () => {
+    request.onsuccess = () => {
       db.close()
       resolve()
     }

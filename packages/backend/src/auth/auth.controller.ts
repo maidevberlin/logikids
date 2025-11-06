@@ -37,7 +37,6 @@ export async function register(req: Request, res: Response): Promise<void> {
 
     res.status(201).json({
       accessToken: result.accessToken,
-      refreshToken: result.refreshToken,
       account: result.account
     })
   } catch (error) {
@@ -109,32 +108,39 @@ export async function getAccount(req: Request, res: Response): Promise<void> {
 
 /**
  * POST /api/auth/refresh
- * Refresh access token using refresh token
+ * Refresh access token using userId
  *
- * Body: { refreshToken: string }
- * Returns: { accessToken: string, refreshToken: string }
+ * Body: { userId: string }
+ * Returns: { accessToken: string }
  */
 export async function refresh(req: Request, res: Response): Promise<void> {
   try {
-    const { refreshToken } = req.body
+    const { userId } = req.body
 
-    if (!refreshToken || typeof refreshToken !== 'string') {
-      res.status(400).json({ error: 'Invalid refreshToken format' })
+    // Validate input
+    if (!userId || typeof userId !== 'string') {
+      res.status(400).json({ error: 'userId is required' })
       return
     }
 
-    // Get new access token
-    const tokens = await authService.refreshAccessToken(refreshToken)
+    // Validate userId format (should be UUID)
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+    if (!uuidRegex.test(userId)) {
+      res.status(400).json({ error: 'userId must be a valid UUID' })
+      return
+    }
 
-    res.json(tokens)
+    // Renew access token
+    const result = await authService.renewAccessToken(userId)
+    res.json(result)
   } catch (error) {
     if (error instanceof Error) {
-      if (error.message === 'Invalid refresh token' || error.message === 'Refresh token expired') {
-        res.status(401).json({ error: error.message })
+      if (error.message === 'Account not found') {
+        res.status(404).json({ error: error.message })
         return
       }
-      if (error.message === 'User account not found') {
-        res.status(404).json({ error: error.message })
+      if (error.message === 'Account has been revoked') {
+        res.status(403).json({ error: error.message })
         return
       }
 
@@ -145,31 +151,6 @@ export async function refresh(req: Request, res: Response): Promise<void> {
 
     console.error('Unknown token refresh error:', error)
     res.status(500).json({ error: 'Token refresh failed' })
-  }
-}
-
-/**
- * POST /api/auth/logout
- * Revoke refresh token (logout)
- *
- * Body: { refreshToken: string }
- * Returns: { success: true }
- */
-export async function logout(req: Request, res: Response): Promise<void> {
-  try {
-    const { refreshToken } = req.body
-
-    if (!refreshToken || typeof refreshToken !== 'string') {
-      res.status(400).json({ error: 'Invalid refreshToken format' })
-      return
-    }
-
-    await authService.revokeRefreshToken(refreshToken)
-
-    res.json({ success: true })
-  } catch (error) {
-    console.error('Logout error:', error)
-    res.status(500).json({ error: 'Logout failed' })
   }
 }
 
@@ -202,7 +183,6 @@ export async function login(req: Request, res: Response): Promise<void> {
 
     res.json({
       accessToken: result.accessToken,
-      refreshToken: result.refreshToken,
       account: result.account
     })
   } catch (error) {

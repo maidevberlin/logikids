@@ -1,11 +1,9 @@
 import jwt from 'jsonwebtoken'
 import { pool } from '../../database/db'
-import crypto from 'crypto'
 
 // JWT secret - in production, use environment variable
 const JWT_SECRET = process.env.JWT_SECRET || 'logikids-dev-secret-change-in-production'
 const ACCESS_TOKEN_EXPIRES_IN = '1h' // Short-lived access token
-const REFRESH_TOKEN_EXPIRES_IN = '365d' // Long-lived refresh token (1 year)
 
 export interface JWTPayload {
   userId: string
@@ -21,26 +19,12 @@ export interface UserAccount {
   last_seen: number
 }
 
-export interface RefreshToken {
-  id: number
-  token: string
-  user_id: string
-  expires_at: number
-  created_at: number
-  revoked: boolean
-}
-
-export interface TokenPair {
-  accessToken: string
-  refreshToken: string
-}
-
 export class AuthService {
   /**
    * Register a new user account with invite code
-   * Returns access token and refresh token on success
+   * Returns access token on success
    */
-  async register(userId: string, inviteCode: string): Promise<{ accessToken: string; refreshToken: string; account: UserAccount }> {
+  async register(userId: string, inviteCode: string): Promise<{ accessToken: string; account: UserAccount }> {
     const normalizedCode = inviteCode.toUpperCase().trim()
     const client = await pool.connect()
 
@@ -95,9 +79,8 @@ export class AuthService {
 
       await client.query('COMMIT')
 
-      // Generate access and refresh tokens
+      // Generate access token
       const accessToken = this.generateAccessToken(userId, normalizedCode)
-      const refreshToken = await this.createRefreshToken(userId)
 
       const account: UserAccount = {
         user_id: userId,
@@ -106,7 +89,7 @@ export class AuthService {
         last_seen: now
       }
 
-      return { accessToken, refreshToken, account }
+      return { accessToken, account }
     } catch (error) {
       await client.query('ROLLBACK')
       throw error
@@ -127,30 +110,6 @@ export class AuthService {
     return jwt.sign(payload, JWT_SECRET, {
       expiresIn: ACCESS_TOKEN_EXPIRES_IN
     })
-  }
-
-  /**
-   * Create and store refresh token in database
-   */
-  async createRefreshToken(userId: string): Promise<string> {
-    const token = crypto.randomBytes(64).toString('hex')
-    const expiresAt = Date.now() + 365 * 24 * 60 * 60 * 1000 // 1 year from now
-    const createdAt = Date.now()
-
-    await pool.query(
-      'INSERT INTO refresh_tokens (token, user_id, expires_at, created_at) VALUES ($1, $2, $3, $4)',
-      [token, userId, expiresAt, createdAt]
-    )
-
-    return token
-  }
-
-  /**
-   * Legacy method for backwards compatibility
-   * @deprecated Use generateAccessToken instead
-   */
-  generateToken(userId: string, inviteCode: string): string {
-    return this.generateAccessToken(userId, inviteCode)
   }
 
   /**
@@ -220,62 +179,41 @@ export class AuthService {
   }
 
   /**
-   * Refresh access token using refresh token
-   * Returns new access token
+   * Renew access token for existing userId
+   * Verifies account exists and is not revoked, then issues new access token
    */
-  async refreshAccessToken(refreshToken: string): Promise<TokenPair> {
-    // Validate refresh token exists and is not expired/revoked
-    const result = await pool.query<RefreshToken>(
-      'SELECT * FROM refresh_tokens WHERE token = $1 AND revoked = FALSE',
-      [refreshToken]
+  async renewAccessToken(userId: string): Promise<{ accessToken: string }> {
+    // Check if user account exists
+    const result = await pool.query<UserAccount & { revoked: boolean }>(
+      'SELECT user_id, invite_code, created_at, last_seen, revoked FROM user_accounts WHERE user_id = $1',
+      [userId]
     )
 
     if (result.rows.length === 0) {
-      throw new Error('Invalid refresh token')
+      throw new Error('Account not found')
     }
 
-    const tokenData = {
-      ...result.rows[0],
-      expires_at: Number(result.rows[0].expires_at),
-      created_at: Number(result.rows[0].created_at)
-    }
+    const accountRow = result.rows[0]
 
-    if (tokenData.expires_at < Date.now()) {
-      throw new Error('Refresh token expired')
-    }
-
-    // Get user account to generate new access token
-    const account = await this.getAccount(tokenData.user_id)
-    if (!account) {
-      throw new Error('User account not found')
+    // Check if account is revoked
+    if (accountRow.revoked) {
+      throw new Error('Account has been revoked')
     }
 
     // Generate new access token
-    const accessToken = this.generateAccessToken(account.user_id, account.invite_code)
+    const accessToken = this.generateAccessToken(accountRow.user_id, accountRow.invite_code)
 
-    // Optionally: rotate refresh token (create new one, revoke old one)
-    // For simplicity, we'll reuse the same refresh token
-    return {
-      accessToken,
-      refreshToken // Return the same refresh token
-    }
-  }
+    // Update last_seen
+    await this.updateLastSeen(accountRow.user_id)
 
-  /**
-   * Revoke a refresh token (for logout)
-   */
-  async revokeRefreshToken(refreshToken: string): Promise<void> {
-    await pool.query(
-      'UPDATE refresh_tokens SET revoked = TRUE WHERE token = $1',
-      [refreshToken]
-    )
+    return { accessToken }
   }
 
   /**
    * Login with existing userId (for account import/restore)
    * Verifies account exists and is not revoked, then issues tokens
    */
-  async login(userId: string): Promise<{ accessToken: string; refreshToken: string; account: UserAccount }> {
+  async login(userId: string): Promise<{ accessToken: string; account: UserAccount }> {
     // Check if user account exists
     const result = await pool.query<UserAccount & { revoked: boolean }>(
       'SELECT user_id, invite_code, created_at, last_seen, revoked FROM user_accounts WHERE user_id = $1',
@@ -300,13 +238,12 @@ export class AuthService {
       last_seen: Number(accountRow.last_seen)
     }
 
-    // Generate access and refresh tokens
+    // Generate access token
     const accessToken = this.generateAccessToken(account.user_id, account.invite_code)
-    const refreshToken = await this.createRefreshToken(account.user_id)
 
     // Update last_seen
     await this.updateLastSeen(account.user_id)
 
-    return { accessToken, refreshToken, account }
+    return { accessToken, account }
   }
 }
