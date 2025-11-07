@@ -1,0 +1,144 @@
+{
+  "concepts": {
+    "temperature-heat": {
+      "name": "Temperatur und Wärme",
+      "description": "Temperaturmessung und Teilchenmodell"
+    },
+    "states-of-matter": {
+      "name": "Aggregatzustände",
+      "description": "Fest, flüssig, gasförmig und Phasenübergänge"
+    },
+    "heat-transfer": {
+      "name": "Wärmeübertragung",
+      "description": "Wärmeleitung, Konvektion und Strahlung"
+    },
+    "laws-of-thermodynamics": {
+      "name": "Hauptsätze der Wärmelehre",
+      "description": "Energieerhaltung und Entropie"
+    },
+    "mechanical-oscillations": {
+      "name": "Mechanische Schwingungen",
+      "description": "Harmonische Schwingungen und Resonanz"
+    },
+    "mechanical-waves": {
+      "name": "Mechanische Wellen",
+      "description": "Wellenausbreitung und Interferenz"
+    },
+    "wave-optics": {
+      "name": "Wellenoptik",
+      "description": "Interferenz und Beugung"
+    },
+    "electrical-energy-power": {
+      "name": "Elektrische Energie und Leistung",
+      "description": "Arbeit, Leistung und Wirkungsgrad"
+    },
+    "electric-charge-field": {
+      "name": "Elektrische Ladung und Feld",
+      "description": "Coulombkraft und elektrisches Feld"
+    },
+    "electromagnetism": {
+      "name": "Elektromagnetismus",
+      "description": "Induktion, Motoren und Generatoren"
+    },
+    "kinematics": {
+      "name": "Kinematik",
+      "description": "Bewegung und Geschwindigkeit"
+    },
+    "dynamics": {
+      "name": "Dynamik",
+      "description": "Kraft, Masse und Newtonsche Gesetze"
+    },
+    "energy-forms-transformations": {
+      "name": "Energieformen und Umwandlungen",
+      "description": "Energieerhaltung und Energieumwandlung"
+    },
+    "mechanical-energy": {
+      "name": "Mechanische Energie",
+      "description": "Kinetische und potentielle Energie"
+    },
+    "momentum-collisions": {
+      "name": "Impuls und Stöße",
+      "description": "Impulserhaltung und elastische Stöße"
+    },
+    "circular-motion-gravitation": {
+      "name": "Kreisbewegung und Gravitation",
+      "description": "Zentripetalkraft und Gravitationsgesetz"
+    },
+    "pressure-hydraulics": {
+      "name": "Druck und Hydraulik",
+      "description": "Druckkraft und hydraulische Systeme"
+    },
+    "electronic-circuits": {
+      "name": "Elektronische Schaltungen",
+      "description": "Halbleiter und digitale Schaltungen"
+    },
+    "semiconductors": {
+      "name": "Halbleiter",
+      "description": "Dioden und Transistoren"
+    },
+    "photovoltaics": {
+      "name": "Photovoltaik",
+      "description": "Solarzellen und Solarenergie"
+    },
+    "energy-supply": {
+      "name": "Energieversorgung",
+      "description": "Energiequellen und Nachhaltigkeit"
+    },
+    "atomic-models": {
+      "name": "Atommodelle",
+      "description": "Entwicklung der Atommodelle"
+    },
+    "atomic-physics": {
+      "name": "Atomphysik",
+      "description": "Atomare Struktur und Spektren"
+    },
+    "quantum-atomic-model": {
+      "name": "Quantenmechanisches Atommodell",
+      "description": "Quantenzahlen und Orbitale"
+    },
+    "photons-light-quanta": {
+      "name": "Photonen und Lichtquanten",
+      "description": "Photoelektrischer Effekt"
+    },
+    "matter-waves": {
+      "name": "Materiewellen",
+      "description": "De-Broglie-Wellenlänge"
+    },
+    "uncertainty-principle": {
+      "name": "Unschärferelation",
+      "description": "Heisenbergsche Unschärferelation"
+    },
+    "nuclear-physics": {
+      "name": "Kernphysik",
+      "description": "Atomkern und Kernkräfte"
+    },
+    "radioactivity": {
+      "name": "Radioaktivität",
+      "description": "Radioaktive Zerfälle und Strahlung"
+    },
+    "elementary-particles": {
+      "name": "Elementarteilchen",
+      "description": "Quarks, Leptonen und Austauschteilchen"
+    },
+    "fundamental-interactions": {
+      "name": "Fundamentale Wechselwirkungen",
+      "description": "Vier Grundkräfte der Natur"
+    },
+    "special-relativity": {
+      "name": "Spezielle Relativitätstheorie",
+      "description": "Zeitdilatation und Längenkontraktion"
+    },
+    "general-relativity": {
+      "name": "Allgemeine Relativitätstheorie",
+      "description": "Gravitation und Raumzeitkrümmung"
+    },
+    "astronomical-worldviews": {
+      "name": "Astronomische Weltbilder",
+      "description": "Geozentrisches und heliozentrisches Weltbild"
+    },
+    "cosmology": {
+      "name": "Kosmologie",
+      "description": "Urknall und Entwicklung des Universums"
+    }
+  }
+}

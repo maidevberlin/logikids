@@ -1,0 +1,32 @@
+{
+  "concepts": {
+    "sound-acoustics": {
+      "name": "Schall und Akustik",
+      "description": "Schallquellen, Wellen und Eigenschaften"
+    },
+    "light-propagation": {
+      "name": "Lichtausbreitung",
+      "description": "Lichtstrahlen und Schattenbildung"
+    },
+    "reflection": {
+      "name": "Reflexion",
+      "description": "Spiegelung an ebenen und gekrümmten Flächen"
+    },
+    "refraction": {
+      "name": "Brechung",
+      "description": "Lichtbrechung und Linsen"
+    },
+    "color-spectrum": {
+      "name": "Farben und Spektrum",
+      "description": "Farbzerlegung und Farbwahrnehmung"
+    },
+    "basic-electricity": {
+      "name": "Grundlagen der Elektrizität",
+      "description": "Stromkreise, Spannung und Widerstand"
+    },
+    "magnetism": {
+      "name": "Magnetismus",
+      "description": "Magnete und magnetische Felder"
+    }
+  }
+}
