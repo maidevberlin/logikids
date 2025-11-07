@@ -1,15 +1,12 @@
-import { useQuery, useMutation } from '@tanstack/react-query';
-import { useState, useCallback, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useCallback, useEffect } from 'react';
 import i18n from '@/i18n/config';
 import { logikids, TaskRequest } from '@/api/logikids';
-import { Task, MultipleChoiceTask, YesNoTask, TaskAnswerType } from './types';
+import { Task, MultipleChoiceTask, YesNoTask } from './types';
+import { useTaskAnswer } from './useTaskAnswer';
+import { useHint } from './useHint';
 
 export const useTask = (params: TaskRequest) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<number | boolean | null>(null);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [hints, setHints] = useState<string[]>([]);
-  const [hintError, setHintError] = useState<string | null>(null);
-
   const {
     data: task,
     isLoading,
@@ -25,32 +22,23 @@ export const useTask = (params: TaskRequest) => {
     staleTime: Infinity,
   });
 
-  // Hint mutation
-  const hintMutation = useMutation({
-    mutationFn: () => {
-      if (!task?.taskId) {
-        throw new Error('No task ID available');
-      }
-      return logikids.getHint(task.taskId);
-    },
-    onSuccess: (data) => {
-      setHints(prev => [...prev, data.hint]);
-      setHintError(null);
-    },
-    onError: (error) => {
-      setHintError(error instanceof Error ? error.message : 'Failed to fetch hint');
-    }
-  });
+  // Use the existing useTaskAnswer hook for answer management
+  const {
+    selectedAnswer,
+    isCorrect,
+    handleAnswerSelect: selectAnswer,
+    handleAnswerSubmit: checkAnswer
+  } = useTaskAnswer({ task });
 
-  // Reset all state when task changes
-  useEffect(() => {
-    if (task) {
-      setHints([]);
-      setHintError(null);
-      setSelectedAnswer(null);
-      setIsCorrect(null);
-    }
-  }, [task?.taskId]);
+  // Use the new useHint hook for hint management
+  const {
+    hints,
+    hintsUsed,
+    requestHint,
+    hintLoading,
+    hintError,
+    canRequestHint
+  } = useHint({ taskId: task?.taskId });
 
   // Refetch task when language changes
   useEffect(() => {
@@ -64,31 +52,7 @@ export const useTask = (params: TaskRequest) => {
     };
   }, [refetch]);
 
-  const checkAnswer = useCallback(() => {
-    if (!task || selectedAnswer === null) return;
-
-    let correct: boolean;
-    if (task.type === 'multiple_choice') {
-      correct = (task as MultipleChoiceTask).options[selectedAnswer as number].isCorrect;
-    } else {
-      correct = selectedAnswer === (task as YesNoTask).solution.answer;
-    }
-    setIsCorrect(correct);
-  }, [task, selectedAnswer]);
-
-  const selectAnswer = useCallback(<T extends Task>(answer: TaskAnswerType<T> | null) => {
-    // Don't allow changing answer if already correct
-    if (isCorrect === true) {
-      return;
-    }
-
-    setSelectedAnswer(answer);
-    setIsCorrect(null);
-  }, [isCorrect]);
-
   const nextTask = useCallback(async () => {
-    setSelectedAnswer(null);
-    setIsCorrect(null);
     await refetch();
   }, [refetch]);
 
@@ -103,12 +67,6 @@ export const useTask = (params: TaskRequest) => {
     }
   }, [task]);
 
-  const requestHint = useCallback(() => {
-    if (hints.length < 4 && !hintMutation.isPending) {
-      hintMutation.mutate();
-    }
-  }, [hints.length, hintMutation]);
-
   return {
     task,
     isLoading: isLoading || isFetching,
@@ -120,9 +78,10 @@ export const useTask = (params: TaskRequest) => {
     selectAnswer,
     nextTask,
     hints,
+    hintsUsed,
     requestHint,
-    hintLoading: hintMutation.isPending,
+    hintLoading,
     hintError,
-    canRequestHint: hints.length < 4 && !hintMutation.isPending
+    canRequestHint
   };
 }; 

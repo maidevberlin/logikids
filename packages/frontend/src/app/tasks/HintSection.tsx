@@ -10,7 +10,6 @@ import { cn } from '@/lib/utils'
 interface HintSectionProps {
   hints: string[]
   hasWrongAnswer?: boolean
-  onHintUsed?: () => void
   requestHint?: () => void
   hintLoading?: boolean
   hintError?: string | null
@@ -29,7 +28,6 @@ const HINT_COLORS = [
 export function HintSection({
   hints,
   hasWrongAnswer = false,
-  onHintUsed,
   requestHint,
   hintLoading = false,
   hintError = null,
@@ -45,7 +43,6 @@ export function HintSection({
       hintRequestedRef.current = true
       const timer = setTimeout(() => {
         requestHint()
-        onHintUsed?.()
       }, 1500)
       return () => clearTimeout(timer)
     }
@@ -54,14 +51,13 @@ export function HintSection({
     if (!hasWrongAnswer) {
       hintRequestedRef.current = false
     }
-  }, [hasWrongAnswer, hasMoreHints, onHintUsed, requestHint])
+  }, [hasWrongAnswer, hasMoreHints, requestHint])
 
 
 
   const handleRequestHint = () => {
     if (requestHint) {
       requestHint()
-      onHintUsed?.()
     }
   }
 

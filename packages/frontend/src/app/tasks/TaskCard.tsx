@@ -26,7 +26,6 @@ interface TaskCardProps {
   hintLoading: boolean
   hintError: string | null
   canRequestHint: boolean
-  onHintUsed: () => void
   difficulty: 'easy' | 'medium' | 'hard'
   onDifficultyChange: (difficulty: 'easy' | 'medium' | 'hard') => void
 }
@@ -45,7 +44,6 @@ export function TaskCard({
   hintLoading,
   hintError,
   canRequestHint,
-  onHintUsed,
   difficulty,
   onDifficultyChange,
 }: TaskCardProps) {
@@ -240,7 +238,6 @@ export function TaskCard({
           <HintSection
             hints={hints}
             hasWrongAnswer={isCorrect === false}
-            onHintUsed={onHintUsed}
             requestHint={requestHint}
             hintLoading={hintLoading}
             hintError={hintError}

@@ -56,7 +56,6 @@ export interface TaskAnswerProps<T extends Task = Task> {
   onAnswerSelect: (answer: TaskAnswerType<T> | null) => void
   onAnswerSubmit: () => void
   onNextTask: () => void
-  onHintUsed: () => void
   hints: string[]
   requestHint: () => void
   hintLoading: boolean

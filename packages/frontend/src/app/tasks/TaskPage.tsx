@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useEffect, useState } from 'react'
+import { useCallback, useMemo, useEffect } from 'react'
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import { useTask } from './useTask'
 import { useUserData } from '@/app/account'
@@ -39,7 +39,6 @@ export default function TaskPage() {
   const navigate = useNavigate()
   const { data } = useUserData()
   const { updateStats } = useProgress()
-  const [hintsUsed, setHintsUsed] = useState(0)
 
   // Memoize task parameters
   const taskParams = useMemo(() => {
@@ -87,17 +86,12 @@ export default function TaskPage() {
     selectAnswer,
     nextTask,
     hints,
+    hintsUsed,
     requestHint,
     hintLoading,
     hintError,
     canRequestHint,
   } = useTask(taskParams)
-
-  // Reset hints counter when task parameters change
-  useEffect(() => {
-    setHintsUsed(0)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [taskParams])
 
   // Track progress when answer is checked
   useEffect(() => {
@@ -145,10 +139,6 @@ export default function TaskPage() {
     [navigate, searchParams]
   )
 
-  const handleHintUsed = useCallback(() => {
-    setHintsUsed((prev) => prev + 1)
-  }, [])
-
   return (
     <>
       {/* Background pattern */}
@@ -193,7 +183,6 @@ export default function TaskPage() {
             hintLoading={hintLoading}
             hintError={hintError}
             canRequestHint={canRequestHint}
-            onHintUsed={handleHintUsed}
             difficulty={taskParams.difficulty}
             onDifficultyChange={handleDifficultyChange}
           />

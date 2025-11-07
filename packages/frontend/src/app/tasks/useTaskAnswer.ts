@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Task, MultipleChoiceTask, YesNoTask, TaskAnswerType } from './types'
 
 interface UseTaskAnswerOptions<T extends Task> {
-  task: T
+  task: T | undefined
   validator?: (value: TaskAnswerType<T>) => boolean
 }
 
@@ -10,17 +10,28 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
   const [selectedAnswer, setSelectedAnswer] = useState<TaskAnswerType<T> | null>(null)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
-  const handleAnswerSelect = useCallback((answer: TaskAnswerType<T>) => {
-    if (validator && !validator(answer)) {
+  // Reset state when task changes
+  useEffect(() => {
+    setSelectedAnswer(null)
+    setIsCorrect(null)
+  }, [task?.taskId])
+
+  const handleAnswerSelect = useCallback((answer: TaskAnswerType<T> | null) => {
+    // Don't allow changing answer if already correct
+    if (isCorrect === true) {
+      return
+    }
+
+    if (answer !== null && validator && !validator(answer)) {
       return
     }
 
     setSelectedAnswer(answer)
     setIsCorrect(null)
-  }, [validator])
+  }, [validator, isCorrect])
 
   const handleAnswerSubmit = useCallback(() => {
-    if (!selectedAnswer) return
+    if (!task || selectedAnswer === null) return
 
     let correct: boolean
     if (task.type === 'multiple_choice') {
@@ -30,7 +41,7 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
       const yesNoTask = task as YesNoTask
       correct = selectedAnswer === yesNoTask.solution.answer
     }
-    
+
     setIsCorrect(correct)
   }, [task, selectedAnswer])
 
