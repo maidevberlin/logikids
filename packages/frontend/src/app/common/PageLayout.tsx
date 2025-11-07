@@ -49,7 +49,7 @@ export function PageLayout({
       )}
 
       {/* Page Content */}
-      <div className="p-8 flex-1">
+      <div className="p-4 sm:p-8 flex-1">
         <div className={cn('max-w-6xl mx-auto', className)}>
           {children}
         </div>

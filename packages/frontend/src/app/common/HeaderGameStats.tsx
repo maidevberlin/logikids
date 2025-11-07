@@ -15,10 +15,50 @@ export function HeaderGameStats() {
   return (
     <button
       onClick={() => navigate('/stats')}
-      className="flex items-center gap-3 px-3 py-1.5 rounded-xl hover:bg-gray-100 transition-all duration-200 group"
+      className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-1.5 rounded-xl hover:bg-gray-100 transition-all duration-200 group"
     >
-      {/* Compact Level Badge */}
-      <div className="relative flex items-center gap-2">
+      {/* Mobile: Circular progress around level badge */}
+      <div className="sm:hidden relative w-8 h-8">
+        {/* SVG circular progress */}
+        <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
+          {/* Background circle */}
+          <circle
+            cx="18"
+            cy="18"
+            r="16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-gray-200"
+          />
+          {/* Progress circle */}
+          <circle
+            cx="18"
+            cy="18"
+            r="16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeDasharray={`${progressPercent} ${100 - progressPercent}`}
+            strokeLinecap="round"
+            className={`transition-all duration-300 ${
+              level === 1 ? 'text-blue-500' :
+              level === 2 ? 'text-green-500' :
+              level === 3 ? 'text-yellow-500' :
+              level === 4 ? 'text-orange-500' :
+              level === 5 ? 'text-red-500' :
+              'text-purple-500'
+            }`}
+          />
+        </svg>
+        {/* Level badge in center */}
+        <div className={`absolute inset-0 m-auto w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}>
+          {level}
+        </div>
+      </div>
+
+      {/* Desktop: Horizontal layout with progress bar */}
+      <div className="hidden sm:flex items-center gap-2">
         <div className={`w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}>
           {level}
         </div>
@@ -35,9 +75,9 @@ export function HeaderGameStats() {
         </div>
       </div>
 
-      {/* Achievement Icons */}
+      {/* Achievement Icons - hide on mobile */}
       {highlightAchievements.length > 0 && (
-        <div className="flex gap-1 border-l border-gray-200 pl-2">
+        <div className="hidden sm:flex gap-1 border-l border-gray-200 pl-2">
           {highlightAchievements.map(achievement => (
             <span
               key={achievement.id}

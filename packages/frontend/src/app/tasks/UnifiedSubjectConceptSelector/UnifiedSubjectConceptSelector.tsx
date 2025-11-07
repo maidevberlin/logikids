@@ -116,10 +116,15 @@ export function UnifiedSubjectConceptSelector({
         >
           <span className={subjectBadgeStyles[subject] || subjectBadgeStyles.math}>
             <SubjectIcon className="w-4 h-4" />
-            <span>
+            {/* Desktop: Show full text */}
+            <span className="hidden sm:inline">
               {t(`subjects.${subject}.label`, { defaultValue: currentSubject?.name || subject })}
               {' • '}
               {conceptDisplayName}
+            </span>
+            {/* Mobile: Show only subject name */}
+            <span className="sm:hidden">
+              {t(`subjects.${subject}.label`, { defaultValue: currentSubject?.name || subject })}
             </span>
           </span>
         </Button>

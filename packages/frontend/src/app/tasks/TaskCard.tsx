@@ -75,7 +75,7 @@ export function TaskCard({
   // Error state
   if (error) {
     return (
-      <Card className="p-8 border-red-200 bg-red-50 shadow-2xl">
+      <Card className="p-4 sm:p-8 border-red-200 bg-red-50 shadow-2xl">
         <div className="text-center">
           <h3 className="text-xl font-bold text-red-900 mb-2">
             {t('error.title', { defaultValue: 'Oops!' })}
@@ -92,7 +92,7 @@ export function TaskCard({
   // Loading state
   if (isLoading || !task) {
     return (
-      <Card className="p-8 shadow-2xl">
+      <Card className="p-4 sm:p-8 shadow-2xl">
         <div className="space-y-4">
           <Skeleton className="h-8 w-3/4" />
           <Skeleton className="h-4 w-full" />
@@ -124,10 +124,10 @@ export function TaskCard({
   const explanation = getExplanation()
 
   return (
-    <Card className="p-8 shadow-2xl">
+    <Card className="p-4 sm:p-8 shadow-2xl">
       {/* Header with title and difficulty */}
-      <div className="flex items-start justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">{task.title}</h2>
+      <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{task.title}</h2>
         <DifficultySelector
           difficulty={difficulty}
           onDifficultyChange={onDifficultyChange}
@@ -137,7 +137,7 @@ export function TaskCard({
       {/* Task content */}
       <MarkdownRenderer
         content={task.task}
-        className="prose max-w-none mb-6"
+        className="prose max-w-none mb-4 sm:mb-6"
         enableMath={true}
         enableMermaid={true}
         enableCode={true}
@@ -200,7 +200,7 @@ export function TaskCard({
 
       {/* Action buttons */}
       {!isLoading && (
-        <div className="flex gap-3 justify-center mt-6">
+        <div className="flex gap-3 justify-center mt-4 sm:mt-6">
           {isCorrect === null ? (
             <Button
               onClick={selectedAnswer === null ? undefined : onAnswerSubmit}

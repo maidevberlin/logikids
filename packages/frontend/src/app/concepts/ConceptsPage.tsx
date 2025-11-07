@@ -167,12 +167,12 @@ export default function ConceptsPage() {
             <Skeleton className="h-6 w-96 mb-8" />
           </>
         ) : subject ? (
-          <div className="flex items-start justify-between mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-8 gap-6">
             <div className="flex items-start gap-6 flex-1">
               <div className={`${colors.bg} ${colors.hover} transition-colors duration-300 p-6 rounded-2xl shadow-md`}>
                 <SubjectIcon className="w-12 h-12 text-white" />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">
                   {t(`subjects.${subjectId}.label`, { defaultValue: subject.name })}
                 </h1>
@@ -185,7 +185,7 @@ export default function ConceptsPage() {
               <Button
                 onClick={handleSurpriseMe}
                 size="lg"
-                className={`ml-6 ${colors.bg} ${colors.hover} text-white gap-2 shadow-md hover:shadow-lg transition-all duration-300 rounded-2xl`}
+                className={`${colors.bg} ${colors.hover} text-white gap-2 shadow-md hover:shadow-lg transition-all duration-300 rounded-2xl w-full lg:w-auto lg:ml-6 lg:shrink-0`}
               >
                 <Sparkles className="w-5 h-5" />
                 {t('concepts.surpriseMe.title', { defaultValue: 'Surprise Me!' })}

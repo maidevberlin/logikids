@@ -37,10 +37,10 @@ export function Header({
 
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm w-full relative z-10">
-      <div className="px-6 py-2 w-full">
-        <div className="flex items-center justify-between w-full">
+      <div className="px-3 sm:px-6 py-2 w-full">
+        <div className="flex items-center justify-between w-full gap-2">
           {/* Left: Navigation */}
-          <div className="flex items-center min-w-[100px]">
+          <div className="flex items-center shrink-0">
             <TooltipProvider>
               {showBack && (
                 <Tooltip>
@@ -80,12 +80,12 @@ export function Header({
           </div>
 
           {/* Center: Custom content or empty */}
-          <div className="flex-1 flex items-center justify-center px-4">
+          <div className="flex-1 flex items-center justify-center px-2 min-w-0">
             {centerContent}
           </div>
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-2 min-w-[100px] justify-end">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0 justify-end">
             {rightContent}
             {showGameStats && <HeaderGameStats />}
             {showAccount && (
