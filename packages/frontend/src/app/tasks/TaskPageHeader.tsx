@@ -8,7 +8,7 @@ interface TaskPageHeaderProps {
   subject: string
   concept?: string
   onSubjectChange: (subject: string) => void
-  onConceptChange: (concept: string) => void
+  onConceptChange: (concept: string, subject: string) => void
 }
 
 export function TaskPageHeader({

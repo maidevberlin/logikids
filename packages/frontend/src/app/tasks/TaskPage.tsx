@@ -93,9 +93,8 @@ export default function TaskPage() {
     canRequestHint,
   } = useTask(taskParams)
 
-  // Reset answer and hints when task parameters change
+  // Reset hints counter when task parameters change
   useEffect(() => {
-    selectAnswer(null)
     setHintsUsed(0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [taskParams])
@@ -142,15 +141,15 @@ export default function TaskPage() {
   )
 
   const handleConceptChange = useCallback(
-    (newConcept: string) => {
-      if (newConcept && taskParams.subject) {
+    (newConcept: string, newSubject: string) => {
+      if (newConcept && newSubject) {
         const params = new URLSearchParams(searchParams)
         navigate(
-          `/subjects/${taskParams.subject}/${newConcept}/tasks?${params.toString()}`
+          `/subjects/${newSubject}/${newConcept}/tasks?${params.toString()}`
         )
       }
     },
-    [navigate, taskParams.subject, searchParams]
+    [navigate, searchParams]
   )
 
   const handleHintUsed = useCallback(() => {

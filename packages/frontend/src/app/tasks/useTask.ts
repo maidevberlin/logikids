@@ -42,11 +42,13 @@ export const useTask = (params: TaskRequest) => {
     }
   });
 
-  // Reset hints when task changes
+  // Reset all state when task changes
   useEffect(() => {
     if (task) {
       setHints([]);
       setHintError(null);
+      setSelectedAnswer(null);
+      setIsCorrect(null);
     }
   }, [task?.taskId]);
 
