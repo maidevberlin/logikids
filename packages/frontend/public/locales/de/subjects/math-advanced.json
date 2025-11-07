@@ -1,0 +1,100 @@
+{
+  "concepts": {
+    "curve-sketching": {
+      "name": "Kurvendiskussion",
+      "description": "Strukturen und Funktionen"
+    },
+    "derivative-applications": {
+      "name": "Anwendungen der Ableitung",
+      "description": "Strukturen und Funktionen"
+    },
+    "derivatives": {
+      "name": "Ableitungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "limits-continuity": {
+      "name": "Grenzwerte und Stetigkeit",
+      "description": "Strukturen und Funktionen"
+    },
+    "lines-in-space": {
+      "name": "Geraden im Raum",
+      "description": "Raum und Form"
+    },
+    "normal-distribution": {
+      "name": "Normalverteilung",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "scalar-product": {
+      "name": "Skalarprodukt",
+      "description": "Raum und Form"
+    },
+    "vectors-basics": {
+      "name": "Grundlagen der Vektorrechnung",
+      "description": "Raum und Form"
+    },
+    "advanced-combinatorics": {
+      "name": "Erweiterte Kombinatorik",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "angles-and-distances-3d": {
+      "name": "Winkel und Abstände im Raum",
+      "description": "Raum und Form"
+    },
+    "complex-numbers-intro": {
+      "name": "Einführung in komplexe Zahlen",
+      "description": "Zahlen und Operationen"
+    },
+    "correlation-and-regression": {
+      "name": "Korrelation und Regression",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "cross-product": {
+      "name": "Vektorprodukt",
+      "description": "Raum und Form"
+    },
+    "determinants": {
+      "name": "Determinanten",
+      "description": "Strukturen und Funktionen"
+    },
+    "differential-equations-intro": {
+      "name": "Einführung in Differentialgleichungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "integration": {
+      "name": "Integralrechnung",
+      "description": "Strukturen und Funktionen"
+    },
+    "integration-applications": {
+      "name": "Anwendungen der Integralrechnung",
+      "description": "Strukturen und Funktionen"
+    },
+    "inverse-matrices": {
+      "name": "Inverse Matrizen",
+      "description": "Strukturen und Funktionen"
+    },
+    "linear-systems-matrices": {
+      "name": "Lineare Gleichungssysteme mit Matrizen",
+      "description": "Strukturen und Funktionen"
+    },
+    "linear-transformations": {
+      "name": "Lineare Abbildungen",
+      "description": "Raum und Form"
+    },
+    "matrices-basics": {
+      "name": "Grundlagen der Matrizenrechnung",
+      "description": "Strukturen und Funktionen"
+    },
+    "planes-in-space": {
+      "name": "Ebenen im Raum",
+      "description": "Raum und Form"
+    },
+    "sequences-and-series": {
+      "name": "Folgen und Reihen",
+      "description": "Strukturen und Funktionen"
+    },
+    "statistical-inference": {
+      "name": "Statistische Inferenz",
+      "description": "Daten und Wahrscheinlichkeit"
+    }
+  }
+}
