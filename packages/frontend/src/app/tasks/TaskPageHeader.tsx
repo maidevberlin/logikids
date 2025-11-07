@@ -2,19 +2,17 @@ import { useQuery } from '@tanstack/react-query'
 import { useUserData } from '@/app/account'
 import { logikids, SubjectsResponse } from '@/api/logikids'
 import { Skeleton } from '@/components/ui/skeleton'
-import { UnifiedSubjectConceptSelector } from './UnifiedSubjectConceptSelector'
+import { SubjectConceptSelector } from './SubjectConceptSelector'
 
 interface TaskPageHeaderProps {
   subject: string
   concept?: string
-  onSubjectChange: (subject: string) => void
   onConceptChange: (concept: string, subject: string) => void
 }
 
 export function TaskPageHeader({
   subject,
   concept,
-  onSubjectChange,
   onConceptChange,
 }: TaskPageHeaderProps) {
   const { data: userData } = useUserData()
@@ -39,11 +37,10 @@ export function TaskPageHeader({
   }
 
   return (
-    <UnifiedSubjectConceptSelector
+    <SubjectConceptSelector
       subject={subject}
       concept={concept}
       subjects={subjectsData?.subjects ?? []}
-      onSubjectChange={onSubjectChange}
       onConceptChange={onConceptChange}
     />
   )

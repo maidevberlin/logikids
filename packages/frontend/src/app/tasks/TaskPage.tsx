@@ -133,13 +133,6 @@ export default function TaskPage() {
     [setSearchParams]
   )
 
-  const handleSubjectChange = useCallback(
-    (newSubject: string) => {
-      navigate(`/subjects/${newSubject}`)
-    },
-    [navigate]
-  )
-
   const handleConceptChange = useCallback(
     (newConcept: string, newSubject: string) => {
       if (newConcept && newSubject) {
@@ -180,7 +173,6 @@ export default function TaskPage() {
           <TaskPageHeader
             subject={taskParams.subject}
             concept={taskParams.concept}
-            onSubjectChange={handleSubjectChange}
             onConceptChange={handleConceptChange}
           />
         }

@@ -4,8 +4,7 @@ export interface UnifiedSubjectConceptSelectorProps {
   subject: string
   concept?: string
   subjects: SubjectInfo[]
-  onSubjectChange: (subject: string) => void
-  onConceptChange: (concept: string) => void
+  onConceptChange: (concept: string, subject: string) => void
 }
 
 export interface SubjectListProps {

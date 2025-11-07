@@ -38,11 +38,10 @@ const subjectBadgeStyles: Record<string, string> = {
   music: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-pink-100 text-pink-800 border-0',
 }
 
-export function UnifiedSubjectConceptSelector({
+export function SubjectConceptSelector({
   subject,
   concept,
   subjects,
-  onSubjectChange,
   onConceptChange,
 }: UnifiedSubjectConceptSelectorProps) {
   const { t } = useTranslation()
@@ -81,15 +80,12 @@ export function UnifiedSubjectConceptSelector({
 
   // Handle concept click in right column
   const handleConceptClick = useCallback((conceptId: string) => {
-    // If subject changed, update subject first
-    if (previewSubject !== subject) {
-      onSubjectChange(previewSubject)
-    }
-    // Update concept
-    onConceptChange(conceptId)
+    // Pass both concept and subject (use preview subject if it changed)
+    const targetSubject = previewSubject !== subject ? previewSubject : subject
+    onConceptChange(conceptId, targetSubject)
     // Close popover
     setIsOpen(false)
-  }, [previewSubject, subject, onSubjectChange, onConceptChange])
+  }, [previewSubject, subject, onConceptChange])
 
   const SubjectIcon = subjectIcons[subject] || BookOpen
 

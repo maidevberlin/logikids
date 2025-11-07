@@ -73,12 +73,12 @@ export async function registerUser(inviteCode: string): Promise<UserData> {
       throw new Error(error.error || 'Registration failed')
     }
 
-    const { accessToken, refreshToken } = await response.json()
+    const { accessToken } = await response.json()
 
     // Store key, userId, and tokens
     await storeKey(key)
     await storeUserId(userId)
-    await storeTokens(accessToken, refreshToken)
+    await storeTokens(accessToken)
 
     // Create default data
     const defaultData = createDefaultUserData(userId)
@@ -120,10 +120,10 @@ export async function loginWithAccount(userId: string): Promise<void> {
       throw new Error(error.error || 'Login failed')
     }
 
-    const { accessToken, refreshToken } = await response.json()
+    const { accessToken } = await response.json()
 
     // Store tokens
-    await storeTokens(accessToken, refreshToken)
+    await storeTokens(accessToken)
 
     // User ID and encryption key should already be stored by import flow
     // Dispatch event for React reactivity
