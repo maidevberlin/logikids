@@ -7,36 +7,11 @@ import {
 } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import {
-  Calculator,
-  Brain,
-  Atom,
-  Languages,
-  Music,
-  BookOpen
-} from 'lucide-react'
 import { getSubjectNamespace } from '@/i18n/subjectNamespace'
+import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { SubjectList } from './SubjectList'
 import { ConceptList } from './ConceptList'
 import { UnifiedSubjectConceptSelectorProps } from './types'
-
-const subjectIcons: Record<string, typeof Calculator> = {
-  math: Calculator,
-  logic: Brain,
-  physics: Atom,
-  german: Languages,
-  english: BookOpen,
-  music: Music,
-}
-
-const subjectBadgeStyles: Record<string, string> = {
-  math: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 border-0',
-  logic: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800 border-0',
-  physics: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800 border-0',
-  german: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 border-0',
-  english: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800 border-0',
-  music: 'inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-pink-100 text-pink-800 border-0',
-}
 
 export function SubjectConceptSelector({
   subject,
@@ -87,7 +62,8 @@ export function SubjectConceptSelector({
     setIsOpen(false)
   }, [previewSubject, subject, onConceptChange])
 
-  const SubjectIcon = subjectIcons[subject] || BookOpen
+  const theme = getSubjectTheme(subject)
+  const SubjectIcon = theme.icon
 
   // Get concept display name
   const conceptDisplayName = useMemo(() => {
@@ -110,7 +86,7 @@ export function SubjectConceptSelector({
           className="rounded-xl border-0 shadow-none hover:opacity-80 h-auto"
           aria-label={t('task.selectSubjectConcept')}
         >
-          <span className={subjectBadgeStyles[subject] || subjectBadgeStyles.math}>
+          <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium border-0 ${theme.colors.badge}`}>
             <SubjectIcon className="w-4 h-4" />
             {/* Desktop: Show full text */}
             <span className="hidden sm:inline">

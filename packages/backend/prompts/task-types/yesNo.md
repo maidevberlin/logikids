@@ -8,7 +8,8 @@ Create a yes/no task with a question that has a clear boolean answer.
 
 **Critical**:
 - Generate a balanced mix of questions where the answer is "yes" (true) and questions where the answer is "no" (false). Vary your answers to avoid bias.
-- stick to the output-format
+- The `solution.answer` field MUST be a boolean value: `true` or `false` (NOT a string, NOT text)
+- Stick to the output format
 
 ## Quality Guidelines
 

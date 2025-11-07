@@ -5,7 +5,7 @@ export function HeaderGameStats() {
   const navigate = useNavigate()
   const { levelInfo, getLevelColor, unlockedAchievements } = useProgress()
 
-  const { level, progressInLevel, tasksForLevel, progressPercent } = levelInfo
+  const { level, progressPercent } = levelInfo
 
   // Get tier 3 and 4 achievements to display (max 3)
   const highlightAchievements = unlockedAchievements

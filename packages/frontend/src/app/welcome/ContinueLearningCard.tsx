@@ -5,6 +5,7 @@ import { GraduationCap } from 'lucide-react'
 import { useUserData } from '@/app/account'
 import { useQuery } from '@tanstack/react-query'
 import { logikids, SubjectsResponse } from '@/api/logikids'
+import { getSubjectTheme } from '@/app/common/subjectTheme'
 
 export function ContinueLearningCard() {
   const { t } = useTranslation()
@@ -19,6 +20,10 @@ export function ContinueLearningCard() {
 
   const lastTask = userData?.lastTask
   const hasLastTask = lastTask && lastTask.subject
+
+  // Get subject theme for icon and colors
+  const theme = hasLastTask ? getSubjectTheme(lastTask.subject) : null
+  const SubjectIcon = theme?.icon || GraduationCap
 
   // Find subject and concept names
   let subjectName = ''
@@ -54,12 +59,16 @@ export function ContinueLearningCard() {
     ? t('welcome.navigation.continue.description', { defaultValue: 'Pick up where you left off' })
     : t('welcome.navigation.startLearning.description', { defaultValue: 'Choose a subject and begin your learning journey' })
 
+  // Use subject color if available, otherwise use primary
+  const cardBg = theme ? theme.colors.bg : 'bg-primary'
+  const cardHover = theme ? theme.colors.hover : 'hover:bg-primary/90'
+
   return (
     <Link to={linkTo} className="block md:col-span-3">
-      <Card className="p-8 bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-white hover:scale-[1.02] rounded-2xl">
+      <Card className={`p-8 ${cardBg} ${cardHover} shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-white hover:scale-[1.02] rounded-2xl`}>
         <div className="flex items-center space-x-4">
           <div className="bg-white/20 p-4 rounded-full">
-            <GraduationCap className="w-12 h-12" />
+            <SubjectIcon className="w-12 h-12" />
           </div>
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-2">{title}</h2>
