@@ -17,8 +17,8 @@ export function HeaderGameStats() {
       onClick={() => navigate('/stats')}
       className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-1.5 rounded-xl hover:bg-gray-100 transition-all duration-200 group"
     >
-      {/* Mobile: Circular progress around level badge */}
-      <div className="sm:hidden relative w-8 h-8">
+      {/* Circular progress around level badge (now used for all screen sizes) */}
+      <div className="relative w-8 h-8">
         {/* SVG circular progress */}
         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
           {/* Background circle */}
@@ -57,25 +57,7 @@ export function HeaderGameStats() {
         </div>
       </div>
 
-      {/* Desktop: Horizontal layout with progress bar */}
-      <div className="hidden sm:flex items-center gap-2">
-        <div className={`w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}>
-          {level}
-        </div>
-
-        {/* Progress bar with text inside */}
-        <div className="relative w-24 h-5 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className={`h-full ${getLevelColor(level)} transition-all duration-300`}
-            style={{ width: `${Math.min(progressPercent, 100)}%` }}
-          />
-          <span className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold text-gray-700">
-            {progressInLevel}/{tasksForLevel}
-          </span>
-        </div>
-      </div>
-
-      {/* Achievement Icons - hide on mobile */}
+      {/* Achievement Icons */}
       {highlightAchievements.length > 0 && (
         <div className="hidden sm:flex gap-1 border-l border-gray-200 pl-2">
           {highlightAchievements.map(achievement => (
