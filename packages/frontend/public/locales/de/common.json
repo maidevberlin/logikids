@@ -12,7 +12,10 @@
       "stars": "Sterne",
       "level": "Level",
       "achievement": "Erfolg",
-      "noAchievement": "Weiter so!"
+      "noAchievement": "Weiter so!",
+      "streakTooltip": "Anzahl aufeinanderfolgender Tage, an denen du mindestens eine Aufgabe gelöst hast",
+      "levelTooltip": "Dein durchschnittliches Beherrschungsniveau über alle Fächer, angezeigt in Sternen",
+      "achievementTooltip": "Dein neuester Meilenstein basierend auf Serien, perfekten Durchläufen oder insgesamt gelösten Aufgaben"
     },
     "navigation": {
       "startLearning": {

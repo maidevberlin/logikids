@@ -12,7 +12,10 @@
       "stars": "Stars",
       "level": "Level",
       "achievement": "Achievement",
-      "noAchievement": "Keep going!"
+      "noAchievement": "Keep going!",
+      "streakTooltip": "Number of consecutive days you've completed at least one task",
+      "levelTooltip": "Your average mastery level across all subjects, shown in stars",
+      "achievementTooltip": "Your latest milestone based on streaks, perfect runs, or total tasks completed"
     },
     "navigation": {
       "startLearning": {

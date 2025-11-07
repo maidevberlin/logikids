@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
-import { BookOpen, TrendingUp, Target, Calendar } from 'lucide-react'
+import { BookOpen, Target, Calendar } from 'lucide-react'
 import { ContinueLearningCard } from './ContinueLearningCard'
 
 export function NavigationCards() {
@@ -25,25 +25,6 @@ export function NavigationCards() {
             <p className="text-gray-600">
               {t('welcome.navigation.browseSubjects.description', {
                 defaultValue: 'Explore all subjects and concepts'
-              })}
-            </p>
-          </div>
-        </Card>
-      </Link>
-
-      {/* Progress Card */}
-      <Link to="/stats" className="block">
-        <Card className="p-6 bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
-          <div className="flex flex-col items-center text-center space-y-3 h-full justify-center">
-            <div className="bg-primary/10 p-4 rounded-full">
-              <TrendingUp className="w-8 h-8 text-primary" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900">
-              {t('welcome.navigation.progress.title', { defaultValue: 'Your Progress' })}
-            </h3>
-            <p className="text-gray-600">
-              {t('welcome.navigation.progress.description', {
-                defaultValue: 'See how you\'re doing and track your achievements'
               })}
             </p>
           </div>
