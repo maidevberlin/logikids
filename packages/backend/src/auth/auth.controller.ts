@@ -159,7 +159,7 @@ export async function refresh(req: Request, res: Response): Promise<void> {
  * Login with existing userId (for account import/restore)
  *
  * Body: { userId: string }
- * Returns: { accessToken: string, refreshToken: string, account: UserAccount }
+ * Returns: { accessToken: string, account: UserAccount }
  */
 export async function login(req: Request, res: Response): Promise<void> {
   try {

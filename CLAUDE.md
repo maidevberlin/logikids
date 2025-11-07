@@ -76,9 +76,9 @@ packages/
    - Run migrations: `docker compose exec backend-dev bun run migrate`
 
 4. **Authentication** (`packages/backend/src/auth/`)
-   - JWT tokens: Access (1 hour) + Refresh (1 year)
+   - JWT tokens: Access (1 hour)
    - Invite code system for registration
-   - Database tables: `user_accounts`, `invite_codes`, `refresh_tokens`
+   - Database tables: `user_accounts`, `invite_codes`
 
 5. **User Data Sync** (`packages/backend/src/sync/`)
    - Zero-knowledge encrypted blob storage

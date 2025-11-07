@@ -13,7 +13,6 @@ packages/backend/database/
     ├── 001_init.sql
     ├── 002_invite_codes.sql
     ├── 003_user_accounts.sql
-    ├── 004_refresh_tokens.sql
     └── 005_add_revoked_to_accounts.sql
 ```
 
@@ -123,7 +122,6 @@ This ensures:
 - `user_sync_data` - Encrypted user data blobs
 - `invite_codes` - Invite codes for registration
 - `user_accounts` - User account records
-- `refresh_tokens` - JWT refresh tokens
 
 See individual migration files in `database/migrations/` for detailed schemas.
 
