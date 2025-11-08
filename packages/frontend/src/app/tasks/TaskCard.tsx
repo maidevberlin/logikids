@@ -92,7 +92,7 @@ export function TaskCard({
   // Loading state
   if (isLoading || !task) {
     return (
-      <Card className="p-4 sm:p-8 shadow-2xl">
+      <Card className="p-4 sm:p-8 shadow-2xl bg-card">
         <div className="space-y-4">
           <Skeleton className="h-8 w-3/4" />
           <Skeleton className="h-4 w-full" />
@@ -226,10 +226,10 @@ export function TaskCard({
   const explanation = getExplanation()
 
   return (
-    <Card className="p-4 sm:p-8 shadow-2xl">
+    <Card className="p-4 sm:p-8 shadow-2xl bg-card">
       {/* Header with title and difficulty */}
       <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{task.title}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-card-foreground">{task.title}</h2>
         <DifficultySelector
           difficulty={difficulty}
           onDifficultyChange={onDifficultyChange}
@@ -350,7 +350,7 @@ export function TaskCard({
               onClick={onNextTask}
               variant="ghost"
               size="sm"
-              className="text-gray-500 hover:text-gray-700"
+              className="text-muted-foreground hover:text-foreground"
             >
               <SkipForward className="w-4 h-4 mr-1" />
               {t('task.skip', { defaultValue: 'Skip this task' })}
