@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Achievement } from './achievements'
 import { GameStats } from './gameTypes'
-import { UserProgress } from './types'
+import { ProgressData } from '@/data/progress/types'
 import { AchievementDetailDialog } from './AchievementDetailDialog'
 
 interface AchievementBadgeProps {
   achievement: Achievement
   gameStats: GameStats
-  progress: UserProgress
+  progress: ProgressData
 }
 
 export function AchievementBadge({
@@ -29,8 +29,8 @@ export function AchievementBadge({
         className={`
           relative p-6 rounded-2xl border-2 transition-all duration-200 cursor-pointer
           ${isUnlocked
-            ? 'bg-white border-gray-200 shadow-md hover:shadow-lg hover:scale-105'
-            : 'bg-gray-50 border-gray-200 opacity-60 hover:opacity-80'
+            ? 'bg-card border-border shadow-md hover:shadow-lg hover:scale-105'
+            : 'bg-muted border-border opacity-60 hover:opacity-80'
           }
         `}
       >
@@ -40,25 +40,25 @@ export function AchievementBadge({
       </div>
 
       {/* Name */}
-      <div className={`text-center font-bold mb-1 ${isUnlocked ? 'text-gray-900' : 'text-gray-500'}`}>
+      <div className={`text-center font-bold mb-1 ${isUnlocked ? 'text-foreground' : 'text-muted-foreground'}`}>
         {t(`achievements.${achievement.id}.name`, { defaultValue: achievement.name })}
       </div>
 
       {/* Description */}
-      <div className={`text-sm text-center mb-3 ${isUnlocked ? 'text-gray-600' : 'text-gray-400'}`}>
+      <div className={`text-sm text-center mb-3 ${isUnlocked ? 'text-muted-foreground' : 'text-muted-foreground/60'}`}>
         {t(`achievements.${achievement.id}.description`, { defaultValue: achievement.description })}
       </div>
 
       {/* Progress bar for locked achievements */}
       {!isUnlocked && (
         <div className="mt-4">
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-2 bg-muted rounded-full overflow-hidden">
             <div
               className="h-full bg-blue-400 transition-all duration-300"
               style={{ width: `${Math.min(progressPercent, 100)}%` }}
             />
           </div>
-          <div className="text-xs text-gray-500 text-center mt-1">
+          <div className="text-xs text-muted-foreground text-center mt-1">
             {progressData.current} / {progressData.total}
           </div>
         </div>
