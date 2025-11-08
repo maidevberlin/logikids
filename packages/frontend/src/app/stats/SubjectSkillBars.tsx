@@ -12,27 +12,29 @@ const SUBJECT_COLORS: Record<string, string> = {
 }
 
 interface SubjectSkillBarsProps {
-  gameStats: GameStats
+  gameStats: GameStats | undefined
 }
 
 export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
   const { t } = useTranslation('stats')
 
   // Sort subjects by mastery, then alphabetically
-  const subjects = Object.entries(gameStats.subjectMastery)
-    .sort(([, a], [, b]) => {
-      if (b.stars !== a.stars) return b.stars - a.stars
-      return 0
-    })
-    .slice(0, 5) // Top 5 only
+  const subjects = gameStats
+    ? Object.entries(gameStats.subjectMastery)
+        .sort(([, a], [, b]) => {
+          if (b.stars !== a.stars) return b.stars - a.stars
+          return 0
+        })
+        .slice(0, 5) // Top 5 only
+    : []
 
   if (subjects.length === 0) {
     return (
-      <Card className="p-8 bg-white shadow-md rounded-2xl">
-        <h3 className="text-lg font-medium text-gray-700 mb-4">
+      <Card className="p-8 bg-card shadow-md rounded-2xl">
+        <h3 className="text-lg font-medium text-foreground mb-4">
           {t('hero.skills', { defaultValue: 'Skills' })}
         </h3>
-        <p className="text-gray-500 text-center py-8">
+        <p className="text-muted-foreground text-center py-8">
           {t('empty.keepPracticing', { defaultValue: 'Complete tasks to level up your skills!' })}
         </p>
       </Card>
@@ -40,8 +42,8 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
   }
 
   return (
-    <Card className="p-8 bg-white shadow-md rounded-2xl">
-      <h3 className="text-lg font-medium text-gray-700 mb-6">
+    <Card className="p-8 bg-card shadow-md rounded-2xl">
+      <h3 className="text-lg font-medium text-foreground mb-6">
         {t('hero.skills', { defaultValue: 'Skills' })}
       </h3>
 
@@ -51,7 +53,7 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
 
           return (
             <div key={subject} className="flex items-center gap-4">
-              <div className="w-20 text-sm font-medium text-gray-700 uppercase">
+              <div className="w-20 text-sm font-medium text-foreground uppercase">
                 {t(`subjects.${subject}.label`, { defaultValue: subject })}
               </div>
 
@@ -62,7 +64,7 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
                     className={`h-4 flex-1 rounded transition-all duration-300 ${
                       star <= mastery.stars
                         ? subjectColor
-                        : 'bg-gray-200'
+                        : 'bg-muted'
                     }`}
                     style={{
                       transitionDelay: `${star * 100}ms`
@@ -71,7 +73,7 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
                 ))}
               </div>
 
-              <div className="w-8 text-sm font-bold text-gray-600">
+              <div className="w-8 text-sm font-bold text-muted-foreground">
                 {mastery.stars}/5
               </div>
             </div>
