@@ -6,6 +6,7 @@ import { yesNoSchema } from './yesNo';
 import { fillInBlankSchema } from './fillInBlank';
 import { multiSelectSchema } from './multiSelect';
 import { numberInputSchema } from './numberInput';
+import { orderingSchema } from './ordering';
 import { JSONSchema } from '../../common/ai/base';
 
 /**
@@ -30,6 +31,7 @@ export class TaskTypeRegistry {
     fillInBlank: fillInBlankSchema,
     multiSelect: multiSelectSchema,
     numberInput: numberInputSchema,
+    ordering: orderingSchema,
   };
 
   constructor(loader?: PromptLoader) {

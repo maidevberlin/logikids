@@ -2,7 +2,8 @@
 // Task types
 export const TASK_TYPES = {
   single_choice: 'single_choice',
-  yes_no: 'yes_no'
+  yes_no: 'yes_no',
+  ordering: 'ordering'
 } as const;
 export type TaskType = typeof TASK_TYPES[keyof typeof TASK_TYPES]
 
@@ -39,13 +40,25 @@ export interface YesNoTask extends BaseTask {
   }
 }
 
-export type Task = SingleChoiceTask | YesNoTask
+export interface OrderingTask extends BaseTask {
+  type: 'ordering'
+  items: Array<{
+    id: string
+    content: string
+  }>
+  correctOrder: string[]
+  explanation: string
+}
+
+export type Task = SingleChoiceTask | YesNoTask | OrderingTask
 
 // Task Answer Types
 export type TaskAnswerType<T extends Task> = T extends SingleChoiceTask
   ? number
   : T extends YesNoTask
   ? boolean
+  : T extends OrderingTask
+  ? string[]
   : never
 
 export interface TaskAnswerProps<T extends Task = Task> {
