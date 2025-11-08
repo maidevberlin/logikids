@@ -3,7 +3,10 @@
 export const TASK_TYPES = {
   single_choice: 'single_choice',
   yes_no: 'yes_no',
-  ordering: 'ordering'
+  ordering: 'ordering',
+  fill_in_blank: 'fill_in_blank',
+  number_input: 'number_input',
+  multi_select: 'multi_select',
 } as const;
 export type TaskType = typeof TASK_TYPES[keyof typeof TASK_TYPES]
 
@@ -50,7 +53,39 @@ export interface OrderingTask extends BaseTask {
   explanation: string
 }
 
-export type Task = SingleChoiceTask | YesNoTask | OrderingTask
+export interface FillInBlankTask extends BaseTask {
+  type: 'fill_in_blank'
+  blanks: Array<{
+    id: number
+    acceptedAnswers: string[]
+    caseSensitive: boolean
+  }>
+  explanation: string
+}
+
+export interface NumberInputTask extends BaseTask {
+  type: 'number_input'
+  solution: {
+    value: number
+    unit?: string
+    tolerance: number
+    acceptedUnits?: string[]
+  }
+  explanation: string
+}
+
+export interface MultiSelectTask extends BaseTask {
+  type: 'multi_select'
+  options: Array<{
+    id: number
+    text: string
+    isCorrect: boolean
+  }>
+  expectedCount: number
+  explanation: string
+}
+
+export type Task = SingleChoiceTask | YesNoTask | OrderingTask | FillInBlankTask | NumberInputTask | MultiSelectTask
 
 // Task Answer Types
 export type TaskAnswerType<T extends Task> = T extends SingleChoiceTask
@@ -59,6 +94,12 @@ export type TaskAnswerType<T extends Task> = T extends SingleChoiceTask
   ? boolean
   : T extends OrderingTask
   ? string[]
+  : T extends FillInBlankTask
+  ? string[]
+  : T extends NumberInputTask
+  ? { value: number | null; unit?: string }
+  : T extends MultiSelectTask
+  ? number[]
   : never
 
 export interface TaskAnswerProps<T extends Task = Task> {

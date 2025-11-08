@@ -4,8 +4,8 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
-import { SingleChoiceAnswer } from './SingleChoiceAnswer'
-import { YesNoAnswer } from './YesNoAnswer'
+import { SingleChoiceAnswer } from './answer-types/SingleChoiceAnswer'
+import { YesNoAnswer } from './answer-types/YesNoAnswer'
 import { HintSection } from './HintSection'
 import { DifficultySelector } from './DifficultySelector'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
@@ -16,9 +16,9 @@ interface TaskCardProps {
   task: Task | null
   isLoading: boolean
   error: string | null
-  selectedAnswer: number | boolean | null
+  selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
   isCorrect: boolean | null
-  onAnswerSelect: (answer: number | boolean | null) => void
+  onAnswerSelect: (answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null) => void
   onAnswerSubmit: () => void
   onNextTask: () => void
   hints: string[]
