@@ -4,12 +4,11 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
-import { SingleChoiceAnswer } from './answer-types/SingleChoiceAnswer'
-import { YesNoAnswer } from './answer-types/YesNoAnswer'
+import { answerTypeComponents } from './answer-types'
 import { HintSection } from './HintSection'
 import { DifficultySelector } from './DifficultySelector'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
-import { Task, SingleChoiceTask, YesNoTask } from './types'
+import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
 import { cn } from '@/lib/utils'
 
 interface TaskCardProps {
@@ -109,14 +108,115 @@ export function TaskCard({
   // Get explanation for correct answer
   const getExplanation = () => {
     if (!isCorrect) return ''
-    if (task.type === 'single_choice' && selectedAnswer !== null) {
-      const scTask = task as SingleChoiceTask
-      return scTask.options[selectedAnswer as number]?.explanation || ''
+
+    switch (task.type) {
+      case 'single_choice':
+        if (selectedAnswer !== null) {
+          const scTask = task as SingleChoiceTask
+          return scTask.options[selectedAnswer as number]?.explanation || ''
+        }
+        return ''
+      case 'yes_no':
+        return (task as YesNoTask).solution.explanation
+      case 'number_input':
+        return (task as NumberInputTask).explanation
+      case 'multi_select':
+        return (task as MultiSelectTask).explanation
+      case 'ordering':
+        return (task as OrderingTask).explanation
+      case 'fill_in_blank':
+        return (task as FillInBlankTask).explanation
+      default:
+        return ''
     }
-    if (task.type === 'yes_no') {
-      return (task as YesNoTask).solution.explanation
+  }
+
+  // Render the appropriate answer component based on task type
+  const renderAnswerComponent = () => {
+    // Map props based on task type
+    switch (task.type) {
+      case 'single_choice': {
+        const scTask = task as SingleChoiceTask
+        const AnswerComponent = answerTypeComponents.single_choice
+        return (
+          <AnswerComponent
+            options={scTask.options}
+            selectedAnswer={selectedAnswer as number | null}
+            onAnswerSelect={(index) => onAnswerSelect(index)}
+            isLoading={false}
+            isLocked={isCorrect === true}
+          />
+        )
+      }
+      case 'yes_no': {
+        const AnswerComponent = answerTypeComponents.yes_no
+        return (
+          <AnswerComponent
+            selectedAnswer={selectedAnswer as boolean | null}
+            onAnswerSelect={(answer) => onAnswerSelect(answer)}
+            isLoading={false}
+            isLocked={isCorrect === true}
+          />
+        )
+      }
+      case 'number_input': {
+        const niTask = task as NumberInputTask
+        const AnswerComponent = answerTypeComponents.number_input
+        return (
+          <AnswerComponent
+            acceptedUnits={niTask.solution.acceptedUnits}
+            selectedAnswer={selectedAnswer as { value: number | null; unit?: string } | null}
+            onAnswerSelect={(answer) => onAnswerSelect(answer)}
+            isLoading={false}
+            isLocked={isCorrect === true}
+          />
+        )
+      }
+      case 'multi_select': {
+        const msTask = task as MultiSelectTask
+        const AnswerComponent = answerTypeComponents.multi_select
+        return (
+          <AnswerComponent
+            options={msTask.options}
+            expectedCount={msTask.expectedCount}
+            selectedAnswer={selectedAnswer as number[] | null}
+            onAnswerSelect={(indices) => onAnswerSelect(indices)}
+            isLoading={false}
+            isLocked={isCorrect === true}
+          />
+        )
+      }
+      case 'ordering': {
+        const oTask = task as OrderingTask
+        const AnswerComponent = answerTypeComponents.ordering
+        return (
+          <AnswerComponent
+            items={oTask.items}
+            selectedAnswer={selectedAnswer as string[] | null}
+            onAnswerSelect={(order) => onAnswerSelect(order)}
+            isLoading={false}
+            isLocked={isCorrect === true}
+          />
+        )
+      }
+      case 'fill_in_blank': {
+        const fibTask = task as FillInBlankTask
+        const AnswerComponent = answerTypeComponents.fill_in_blank
+        return (
+          <AnswerComponent
+            task={fibTask.task}
+            blanksCount={fibTask.blanks.length}
+            selectedAnswer={selectedAnswer as string[] | null}
+            onAnswerSelect={(answers) => onAnswerSelect(answers)}
+            isLoading={false}
+            isLocked={isCorrect === true}
+          />
+        )
+      }
+      default:
+        // This should never happen with a properly typed Task union
+        return <div className="text-red-500">Unknown task type</div>
     }
-    return ''
   }
 
   const explanation = getExplanation()
@@ -142,24 +242,7 @@ export function TaskCard({
       />
 
       {/* Answer options */}
-      {task.type === 'single_choice' && (
-        <SingleChoiceAnswer
-          options={(task as SingleChoiceTask).options}
-          selectedAnswer={selectedAnswer as number | null}
-          onAnswerSelect={(index) => onAnswerSelect(index)}
-          isLoading={false}
-          isLocked={isCorrect === true}
-        />
-      )}
-
-      {task.type === 'yes_no' && (
-        <YesNoAnswer
-          selectedAnswer={selectedAnswer as boolean | null}
-          onAnswerSelect={(answer) => onAnswerSelect(answer)}
-          isLoading={false}
-          isLocked={isCorrect === true}
-        />
-      )}
+      {renderAnswerComponent()}
 
       {/* Feedback */}
       {showFeedback && (
