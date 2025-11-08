@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
 import { useUserData } from '@/app/account'
-import { useProgress } from './useProgress'
+import { useProgress } from '@/data/progress/hooks'
 import { LevelBadge } from './LevelBadge'
 import { SubjectSkillBars } from './SubjectSkillBars'
 import { CompetitiveMetrics } from './CompetitiveMetrics'
@@ -14,30 +14,30 @@ export default function StatsPage() {
   const {
     progress,
     gameStats,
-    getTotalTasksOverall,
-    getOverallSuccessRate
+    getOverallStats
   } = useProgress()
 
-  const totalTasks = getTotalTasksOverall()
-  const overallSuccessRate = getOverallSuccessRate()
+  const overallStats = getOverallStats()
+  const totalTasks = overallStats.totalAttempts
+  const overallSuccessRate = overallStats.successRate * 100
 
   if (totalTasks === 0) {
     return (
       <PageLayout showBack showHome showGameStats showAccount>
         <div className="max-w-6xl mx-auto">
-          <Card className="p-12 bg-white shadow-md rounded-2xl text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <Card className="p-12 bg-card shadow-md rounded-2xl text-center">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
               {t('title', { defaultValue: 'Your Progress' })}
             </h1>
 
             {data?.settings.name && (
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-muted-foreground mb-8">
                 {t('greeting', { name: data.settings.name })}
               </p>
             )}
 
             <div className="py-12">
-              <p className="text-lg text-gray-500">
+              <p className="text-lg text-muted-foreground">
                 {t('noTasksYet', { defaultValue: 'No tasks completed yet. Start learning to see your progress!' })}
               </p>
             </div>
@@ -52,11 +52,11 @@ export default function StatsPage() {
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-foreground mb-2">
             {t('title', { defaultValue: 'Your Progress' })}
           </h1>
           {data?.settings.name && (
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-muted-foreground">
               {t('greeting', { name: data.settings.name })}
             </p>
           )}
