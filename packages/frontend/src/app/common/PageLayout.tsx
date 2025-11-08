@@ -35,7 +35,7 @@ export function PageLayout({
   className
 }: PageLayoutProps) {
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
+    <div className="bg-background min-h-screen flex flex-col">
       {/* Unified Header */}
       {showHeader && (
         <Header
