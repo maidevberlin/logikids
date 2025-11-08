@@ -52,9 +52,9 @@ Create a number input task that requires calculating or determining a numeric va
     "value": 27,
     "unit": "cm²",
     "tolerance": 0.1,
-    "acceptedUnits": ["cm²", "cm^2", "sq cm"],
-    "explanation": "Area = width × height = 4.5 cm × 6 cm = 27 cm²"
-  }
+    "acceptedUnits": ["cm²", "cm^2", "sq cm"]
+  },
+  "explanation": "Area = width × height = 4.5 cm × 6 cm = 27 cm²"
 }
 ```
 
@@ -68,9 +68,9 @@ Create a number input task that requires calculating or determining a numeric va
     "value": 60,
     "unit": "km/h",
     "tolerance": 0.1,
-    "acceptedUnits": ["km/h", "km/hr", "kmh"],
-    "explanation": "Average velocity = distance ÷ time = 150 km ÷ 2.5 hours = 60 km/h"
-  }
+    "acceptedUnits": ["km/h", "km/hr", "kmh"]
+  },
+  "explanation": "Average velocity = distance ÷ time = 150 km ÷ 2.5 hours = 60 km/h"
 }
 ```
 
@@ -84,8 +84,8 @@ Create a number input task that requires calculating or determining a numeric va
     "value": 60,
     "unit": "%",
     "tolerance": 0.1,
-    "acceptedUnits": ["%", "percent"],
-    "explanation": "Percentage = (number of girls ÷ total students) × 100 = (15 ÷ 25) × 100 = 60%"
-  }
+    "acceptedUnits": ["%", "percent"]
+  },
+  "explanation": "Percentage = (number of girls ÷ total students) × 100 = (15 ÷ 25) × 100 = 60%"
 }
 ```

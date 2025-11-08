@@ -5,7 +5,6 @@ export interface NumberInputSolution {
   unit?: string;
   tolerance: number;
   acceptedUnits?: string[];
-  explanation: string;
 }
 
 export interface NumberInputResponse {
@@ -13,6 +12,7 @@ export interface NumberInputResponse {
   title: string;
   task: string;
   solution: NumberInputSolution;
+  explanation: string;
 }
 
 export const numberInputSchema: JSONSchema = {
@@ -51,16 +51,16 @@ export const numberInputSchema: JSONSchema = {
             minLength: 1
           },
           minItems: 1
-        },
-        explanation: {
-          type: 'string',
-          minLength: 1
         }
       },
-      required: ['value', 'tolerance', 'explanation'],
+      required: ['value', 'tolerance'],
       additionalProperties: false
+    },
+    explanation: {
+      type: 'string',
+      minLength: 1
     }
   },
-  required: ['type', 'title', 'task', 'solution'],
+  required: ['type', 'title', 'task', 'solution', 'explanation'],
   additionalProperties: false
 };
