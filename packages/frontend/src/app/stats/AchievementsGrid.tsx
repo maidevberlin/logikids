@@ -3,15 +3,19 @@ import { Card } from '@/components/ui/card'
 import { AchievementBadge } from './AchievementBadge'
 import { ACHIEVEMENTS } from './achievements'
 import { GameStats } from './gameTypes'
-import { UserProgress } from './types'
+import { ProgressData } from '@/data/progress/types'
 
 interface AchievementsGridProps {
-  gameStats: GameStats
-  progress: UserProgress
+  gameStats: GameStats | undefined
+  progress: ProgressData
 }
 
 export function AchievementsGrid({ gameStats, progress }: AchievementsGridProps) {
   const { t } = useTranslation('stats')
+
+  if (!gameStats) {
+    return null
+  }
 
   // Sort achievements: unlocked first, then by tier
   const sortedAchievements = [...ACHIEVEMENTS].sort((a, b) => {
@@ -26,8 +30,8 @@ export function AchievementsGrid({ gameStats, progress }: AchievementsGridProps)
   })
 
   return (
-    <Card className="p-8 bg-white shadow-md rounded-2xl">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+    <Card className="p-8 bg-card shadow-md rounded-2xl">
+      <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
         🏅 {t('achievements.title', { defaultValue: 'Achievements' })}
       </h2>
 
