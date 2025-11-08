@@ -14,15 +14,15 @@ export function NavigationCards() {
 
       {/* Browse Subjects Card */}
       <Link to="/subjects" className="block">
-        <Card className="p-6 bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
+        <Card className="p-6 bg-card shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
           <div className="flex flex-col items-center text-center space-y-3 h-full justify-center">
             <div className="bg-primary/10 p-4 rounded-full">
               <BookOpen className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="text-xl font-bold text-foreground">
               {t('welcome.navigation.browseSubjects.title', { defaultValue: 'Browse Subjects' })}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               {t('welcome.navigation.browseSubjects.description', {
                 defaultValue: 'Explore all subjects and concepts'
               })}
@@ -32,16 +32,16 @@ export function NavigationCards() {
       </Link>
 
       {/* Practice Mode Card */}
-      <Link to="/subjects" className="block">
-        <Card className="p-6 bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
+      <Link to="/practice" className="block">
+        <Card className="p-6 bg-card shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
           <div className="flex flex-col items-center text-center space-y-3 h-full justify-center">
             <div className="bg-orange-100 p-4 rounded-full">
               <Target className="w-8 h-8 text-orange-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="text-xl font-bold text-foreground">
               {t('welcome.navigation.practiceMode.title', { defaultValue: 'Practice Mode' })}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               {t('welcome.navigation.practiceMode.description', {
                 defaultValue: 'Focus on concepts that need improvement'
               })}
@@ -52,15 +52,15 @@ export function NavigationCards() {
 
       {/* Daily Challenge Card */}
       <Link to="/subjects" className="block">
-        <Card className="p-6 bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
+        <Card className="p-6 bg-card shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
           <div className="flex flex-col items-center text-center space-y-3 h-full justify-center">
             <div className="bg-purple-100 p-4 rounded-full">
               <Calendar className="w-8 h-8 text-purple-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="text-xl font-bold text-foreground">
               {t('welcome.navigation.dailyChallenge.title', { defaultValue: 'Daily Challenge' })}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               {t('welcome.navigation.dailyChallenge.description', {
                 defaultValue: 'Complete today\'s special task'
               })}
