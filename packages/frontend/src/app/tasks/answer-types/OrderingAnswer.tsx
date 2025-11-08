@@ -153,7 +153,7 @@ export function OrderingAnswer({
   return (
     <div className="my-6 space-y-4">
       <div className="text-sm text-muted-foreground text-center mb-4">
-        {t('task.dragToOrder', { defaultValue: 'Drag items to arrange them in the correct order' })}
+        {t('task.dragToOrder')}
       </div>
 
       <Reorder.Group

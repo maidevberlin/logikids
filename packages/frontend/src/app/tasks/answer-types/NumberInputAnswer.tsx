@@ -45,7 +45,7 @@ export function NumberInputAnswer({
     <div className="flex justify-center my-6">
       <Card className="p-8 space-y-4 min-w-96">
         <div className="text-sm text-muted-foreground text-center">
-          {t('task.enterNumber', { defaultValue: 'Enter your answer' })}
+          {t('task.enterNumber')}
         </div>
 
         <div className="flex gap-3 items-center">
@@ -95,7 +95,7 @@ export function NumberInputAnswer({
 
         {acceptedUnits && acceptedUnits.length > 1 && (
           <div className="text-xs text-muted-foreground text-center">
-            {t('task.selectUnit', { defaultValue: 'Select the appropriate unit' })}
+            {t('task.selectUnit')}
           </div>
         )}
       </Card>

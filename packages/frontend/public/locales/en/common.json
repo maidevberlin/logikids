@@ -122,7 +122,18 @@
     "subjects": "Subjects",
     "concepts": "Concepts",
     "conceptsFor": "Showing concepts for {{subject}}",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "fillInBlanks_one": "Fill in blank #{{count}}",
+    "fillInBlanks_other": "Fill in {{count}} blanks",
+    "enterNumber": "Enter number",
+    "unitOptional": "Unit (optional)",
+    "selectUnit": "Select the appropriate unit",
+    "dragToOrder": "Drag to reorder",
+    "arrowsToOrder": "Use arrow buttons to reorder",
+    "selectCorrectAnswers_one": "Select {{count}} correct answer",
+    "selectCorrectAnswers_other": "Select {{count}} correct answers",
+    "selectedCount": "Selected: {{selected}} / {{total}}",
+    "tooManySelected": "Warning: You selected too many"
   },
   "feedback": {
     "correct": "Correct!",

@@ -122,7 +122,18 @@
     "subjects": "Fächer",
     "concepts": "Konzepte",
     "conceptsFor": "Zeige Konzepte für {{subject}}",
-    "viewAll": "Alle anzeigen"
+    "viewAll": "Alle anzeigen",
+    "fillInBlanks_one": "Fülle Lücke #{{count}} aus",
+    "fillInBlanks_other": "Fülle {{count}} Lücken aus",
+    "enterNumber": "Zahl eingeben",
+    "unitOptional": "Einheit (optional)",
+    "selectUnit": "Wähle die passende Einheit",
+    "dragToOrder": "Ziehen zum Umsortieren",
+    "arrowsToOrder": "Pfeiltasten zum Umsortieren",
+    "selectCorrectAnswers_one": "Wähle {{count}} richtige Antwort",
+    "selectCorrectAnswers_other": "Wähle {{count}} richtige Antworten",
+    "selectedCount": "Ausgewählt: {{selected}} / {{total}}",
+    "tooManySelected": "Warnung: Zu viele ausgewählt"
   },
   "feedback": {
     "correct": "Richtig!",

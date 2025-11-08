@@ -101,10 +101,7 @@ export function FillInBlankAnswer({
   return (
     <div className="my-6 space-y-4">
       <div className="text-sm text-muted-foreground text-center mb-4">
-        {t('task.fillInBlanks', {
-          count: blanksCount,
-          defaultValue: `Fill in ${blanksCount} blank${blanksCount > 1 ? 's' : ''}`
-        })}
+        {t('task.fillInBlanks', { count: blanksCount })}
       </div>
       <div className="text-lg leading-relaxed text-center p-6 bg-slate-50 rounded-2xl">
         {parts}

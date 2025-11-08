@@ -68,10 +68,7 @@ export function MultiSelectAnswer({
       {/* Instructions and Counter */}
       <div className="flex items-center justify-center gap-4 mb-4">
         <div className="text-sm text-muted-foreground">
-          {t('task.selectCorrectAnswers', {
-            count: expectedCount,
-            defaultValue: `Select ${expectedCount} correct answer${expectedCount > 1 ? 's' : ''}`
-          })}
+          {t('task.selectCorrectAnswers', { count: expectedCount })}
         </div>
         <div
           className={cn(
@@ -83,7 +80,7 @@ export function MultiSelectAnswer({
               : 'bg-slate-100 text-slate-700'
           )}
         >
-          {selectedIndices.length} / {expectedCount}
+          {t('task.selectedCount', { selected: selectedIndices.length, total: expectedCount })}
         </div>
       </div>
 
@@ -91,11 +88,7 @@ export function MultiSelectAnswer({
       {isOverSelected && (
         <div className="flex items-center gap-2 justify-center p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
           <AlertCircle className="w-4 h-4" />
-          <span>
-            {t('task.tooManySelected', {
-              defaultValue: 'Too many answers selected. Please deselect some.'
-            })}
-          </span>
+          <span>{t('task.tooManySelected')}</span>
         </div>
       )}
 

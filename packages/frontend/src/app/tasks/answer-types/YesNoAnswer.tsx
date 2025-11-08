@@ -42,7 +42,7 @@ export function YesNoAnswer({
       >
         <Check className="w-12 h-12 text-emerald-600" />
         <span className="text-xl font-semibold text-emerald-700">
-          {t('task.yes', { defaultValue: 'Yes' })}
+          {t('task.yes')}
         </span>
       </Card>
 
@@ -58,7 +58,7 @@ export function YesNoAnswer({
       >
         <X className="w-12 h-12 text-red-600" />
         <span className="text-xl font-semibold text-red-700">
-          {t('task.no', { defaultValue: 'No' })}
+          {t('task.no')}
         </span>
       </Card>
     </div>
