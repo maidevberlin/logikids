@@ -1,17 +1,12 @@
 import { JSONSchema } from "../../common/ai/base";
 
-export interface NumberInputSolution {
-  value: number;
-  unit?: string;
-  tolerance: number;
-  acceptedUnits?: string[];
-}
-
 export interface NumberInputResponse {
   type: 'number_input';
   title: string;
   task: string;
-  solution: NumberInputSolution;
+  answer: number;           // The correct numeric value (required)
+  unit?: string;           // Correct unit (when unitOptions present) OR display unit
+  unitOptions?: string[];  // Optional: if present, student must choose
   explanation: string;
 }
 
@@ -30,37 +25,26 @@ export const numberInputSchema: JSONSchema = {
       type: 'string',
       minLength: 1
     },
-    solution: {
-      type: 'object',
-      properties: {
-        value: {
-          type: 'number'
-        },
-        unit: {
-          type: 'string',
-          minLength: 1
-        },
-        tolerance: {
-          type: 'number',
-          minimum: 0
-        },
-        acceptedUnits: {
-          type: 'array',
-          items: {
-            type: 'string',
-            minLength: 1
-          },
-          minItems: 1
-        }
+    answer: {
+      type: 'number'
+    },
+    unit: {
+      type: 'string',
+      minLength: 1
+    },
+    unitOptions: {
+      type: 'array',
+      items: {
+        type: 'string',
+        minLength: 1
       },
-      required: ['value', 'tolerance'],
-      additionalProperties: false
+      minItems: 1
     },
     explanation: {
       type: 'string',
       minLength: 1
     }
   },
-  required: ['type', 'title', 'task', 'solution', 'explanation'],
+  required: ['type', 'title', 'task', 'answer', 'explanation'],
   additionalProperties: false
 };

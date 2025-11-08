@@ -3,13 +3,13 @@ export type { TaskTypeWithSchema } from './registry';
 export { singleChoiceSchema } from './singleChoice';
 export type { SingleChoiceResponse, SingleChoiceOption } from './singleChoice';
 export { yesNoSchema } from './yesNo';
-export type { YesNoResponse, YesNoSolution } from './yesNo';
+export type { YesNoResponse } from './yesNo';
 export { fillInBlankSchema } from './fillInBlank';
 export type { FillInBlankResponse, FillInBlankItem } from './fillInBlank';
 export { multiSelectSchema } from './multiSelect';
 export type { MultiSelectResponse, MultiSelectOption } from './multiSelect';
 export { numberInputSchema } from './numberInput';
-export type { NumberInputResponse, NumberInputSolution } from './numberInput';
+export type { NumberInputResponse } from './numberInput';
 export { orderingSchema } from './ordering';
 export type { OrderingResponse, OrderingItem } from './ordering';
 

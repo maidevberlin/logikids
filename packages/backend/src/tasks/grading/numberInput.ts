@@ -1,4 +1,4 @@
-import type { NumberInputSolution } from '../types/numberInput';
+import type { NumberInputGradingResult } from './types';
 
 export interface NumberInputAnswer {
   value: number;
@@ -8,38 +8,40 @@ export interface NumberInputAnswer {
 /**
  * Grades a number input answer
  * @param userAnswer - User's answer with value and optional unit
- * @param solution - Expected solution with value, tolerance, and optional unit
- * @returns true if the answer is within tolerance and unit matches (if required), false otherwise
+ * @param solution - Expected solution with answer, unit, and optional unitOptions
+ * @returns NumberInputGradingResult with correct, numberCorrect, and optionally unitCorrect
  */
 export function gradeNumberInput(
   userAnswer: NumberInputAnswer,
-  solution: NumberInputSolution
-): boolean {
-  // Check numeric equality within tolerance
-  const numericDifference = Math.abs(userAnswer.value - solution.value);
-  const isWithinTolerance = numericDifference <= solution.tolerance;
-
-  if (!isWithinTolerance) {
-    return false;
-  }
-
-  // If solution has a unit, validate it
-  if (solution.unit || solution.acceptedUnits) {
-    // User must provide a unit if one is expected
-    if (!userAnswer.unit) {
-      return false;
+  solution: { answer: number; unit?: string; unitOptions?: string[] }
+): NumberInputGradingResult {
+  // Validate solution consistency
+  if (solution.unitOptions && solution.unitOptions.length > 0) {
+    if (!solution.unit) {
+      throw new Error('Invalid solution: unitOptions provided without unit');
     }
-
-    // Check if user's unit matches any accepted unit
-    const acceptedUnits = solution.acceptedUnits || (solution.unit ? [solution.unit] : []);
-    const unitMatches = acceptedUnits.some(
-      acceptedUnit => userAnswer.unit === acceptedUnit
-    );
-
-    if (!unitMatches) {
-      return false;
+    if (!solution.unitOptions.includes(solution.unit)) {
+      throw new Error('Invalid solution: unit must be present in unitOptions array');
     }
   }
 
-  return true;
+  // Check exact numeric match (no tolerance)
+  const numberCorrect = userAnswer.value === solution.answer;
+
+  // If unitOptions is present and has items, validate unit separately
+  if (solution.unitOptions && solution.unitOptions.length > 0) {
+    const unitCorrect = userAnswer.unit === solution.unit;
+    return {
+      correct: numberCorrect && unitCorrect,
+      numberCorrect,
+      unitCorrect
+    };
+  }
+
+  // No unit validation needed
+  return {
+    correct: numberCorrect,
+    numberCorrect,
+    unitCorrect: undefined
+  };
 }

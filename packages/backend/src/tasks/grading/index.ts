@@ -20,5 +20,6 @@ export type {
   NumberInputGradingInput,
   OrderingGradingInput,
   MultiSelectGradingInput,
+  NumberInputGradingResult,
   GradingResult
 } from './types';

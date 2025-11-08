@@ -9,6 +9,7 @@ import { HintSection } from './HintSection'
 import { DifficultySelector } from './DifficultySelector'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
 import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
+import { NumberInputGradingDetails } from './useTaskAnswer'
 import { cn } from '@/lib/utils'
 
 interface TaskCardProps {
@@ -17,6 +18,7 @@ interface TaskCardProps {
   error: string | null
   selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
   isCorrect: boolean | null
+  gradingDetails: NumberInputGradingDetails | null
   onAnswerSelect: (answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null) => void
   onAnswerSubmit: () => void
   onNextTask: () => void
@@ -35,6 +37,7 @@ export function TaskCard({
   error,
   selectedAnswer,
   isCorrect,
+  gradingDetails,
   onAnswerSelect,
   onAnswerSubmit,
   onNextTask,
@@ -117,7 +120,7 @@ export function TaskCard({
         }
         return ''
       case 'yes_no':
-        return (task as YesNoTask).solution.explanation
+        return (task as YesNoTask).explanation
       case 'number_input':
         return (task as NumberInputTask).explanation
       case 'multi_select':
@@ -164,7 +167,8 @@ export function TaskCard({
         const AnswerComponent = answerTypeComponents.number_input
         return (
           <AnswerComponent
-            acceptedUnits={niTask.solution.acceptedUnits}
+            unit={niTask.unit}
+            unitOptions={niTask.unitOptions}
             selectedAnswer={selectedAnswer as { value: number | null; unit?: string } | null}
             onAnswerSelect={(answer) => onAnswerSelect(answer)}
             isLoading={false}
@@ -262,6 +266,19 @@ export function TaskCard({
           >
             {isCorrect
               ? t('feedback.correct', { defaultValue: 'Correct! Well done!' })
+              : gradingDetails
+              ? // Granular feedback for number_input tasks
+                gradingDetails.numberCorrect && gradingDetails.unitCorrect === false
+                ? t('feedback.numberCorrectUnitWrong', {
+                    defaultValue: 'The number is correct, but check the unit'
+                  })
+                : !gradingDetails.numberCorrect && gradingDetails.unitCorrect === true
+                ? t('feedback.unitCorrectNumberWrong', {
+                    defaultValue: 'The unit is correct, but check your calculation'
+                  })
+                : t('feedback.incorrect', {
+                    defaultValue: 'Not quite. Try again!',
+                  })
               : t('feedback.incorrect', {
                   defaultValue: 'Not quite. Try again!',
                 })}

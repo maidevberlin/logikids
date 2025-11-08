@@ -28,6 +28,7 @@ export const useTask = (params: TaskRequest) => {
   const {
     selectedAnswer,
     isCorrect,
+    gradingDetails,
     handleAnswerSelect: selectAnswer,
     handleAnswerSubmit: checkAnswer
   } = useTaskAnswer({ task });
@@ -71,9 +72,12 @@ export const useTask = (params: TaskRequest) => {
     if (task.type === 'single_choice') {
       const correctOption = (task as SingleChoiceTask).options.find(opt => opt.isCorrect);
       return correctOption?.explanation || '';
-    } else {
-      return (task as YesNoTask).solution.explanation;
+    } else if (task.type === 'yes_no') {
+      return (task as YesNoTask).explanation;
+    } else if ('explanation' in task) {
+      return task.explanation;
     }
+    return '';
   }, [task]);
 
   return {
@@ -82,6 +86,7 @@ export const useTask = (params: TaskRequest) => {
     error: error ? (error as Error).message : null,
     selectedAnswer,
     isCorrect,
+    gradingDetails,
     explanation: getExplanation(),
     checkAnswer,
     selectAnswer,

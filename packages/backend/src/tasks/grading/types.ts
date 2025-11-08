@@ -1,5 +1,4 @@
 import type { FillInBlankItem } from '../types/fillInBlank';
-import type { NumberInputSolution } from '../types/numberInput';
 import type { MultiSelectOption } from '../types/multiSelect';
 
 /**
@@ -44,7 +43,11 @@ export interface FillInBlankGradingInput {
  */
 export interface NumberInputGradingInput {
   userAnswer: NumberInputAnswer;
-  solution: NumberInputSolution;
+  solution: {
+    answer: number;
+    unit?: string;
+    unitOptions?: string[];
+  };
 }
 
 /**
@@ -64,8 +67,17 @@ export interface MultiSelectGradingInput {
 }
 
 /**
+ * Result of grading a number input task
+ */
+export interface NumberInputGradingResult {
+  correct: boolean;
+  numberCorrect: boolean;
+  unitCorrect?: boolean;  // undefined when no unit validation needed
+}
+
+/**
  * Result of grading any task type
  */
-export interface GradingResult {
-  isCorrect: boolean;
-}
+export type GradingResult =
+  | { type: 'number_input'; result: NumberInputGradingResult }
+  | { type: 'other'; isCorrect: boolean };

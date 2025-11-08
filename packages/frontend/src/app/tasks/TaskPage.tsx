@@ -1,9 +1,9 @@
-import { useCallback, useMemo, useEffect } from 'react'
+import { useCallback, useMemo, useEffect, useRef } from 'react'
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import { useTask } from './useTask'
 import { useUserData } from '@/app/account'
 import { setData } from '@/data'
-import { useProgress } from '@/app/stats'
+import { useProgress } from '@/data/progress/hooks'
 import { getCurrentLanguage } from '@/i18n/config'
 import { TaskRequest } from '@/api/logikids'
 import { Difficulty } from './types'
@@ -38,7 +38,11 @@ export default function TaskPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const { data } = useUserData()
-  const { updateStats } = useProgress()
+  const { submitTaskAttempt } = useProgress()
+
+  // Track if current task was answered (to detect skips)
+  const taskAnsweredRef = useRef(false)
+  const previousTaskIdRef = useRef<string | null>(null)
 
   // Memoize task parameters
   const taskParams = useMemo(() => {
@@ -82,6 +86,7 @@ export default function TaskPage() {
     error,
     selectedAnswer,
     isCorrect,
+    gradingDetails,
     checkAnswer,
     selectAnswer,
     nextTask,
@@ -91,16 +96,21 @@ export default function TaskPage() {
     hintLoading,
     hintError,
     canRequestHint,
+    startTime,
   } = useTask(taskParams)
 
   // Track progress when answer is checked
   useEffect(() => {
     if (task && selectedAnswer !== null && isCorrect !== null) {
-      updateStats({
+      taskAnsweredRef.current = true
+      submitTaskAttempt({
         subject: taskParams.subject,
+        conceptId: taskParams.concept || 'random',
         difficulty: taskParams.difficulty,
         correct: isCorrect,
         hintsUsed,
+        startTime,
+        skipped: false,
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -109,11 +119,36 @@ export default function TaskPage() {
     selectedAnswer,
     isCorrect,
     taskParams.subject,
+    taskParams.concept,
     taskParams.difficulty,
     hintsUsed,
-    // NOTE: updateStats intentionally omitted to prevent infinite loop
+    startTime,
+    // NOTE: submitTaskAttempt intentionally omitted to prevent infinite loop
     // The callback uses the latest values via closure
   ])
+
+  // Track skips when task changes
+  useEffect(() => {
+    if (!task) return
+
+    // If task changed and previous task wasn't answered, record skip
+    if (previousTaskIdRef.current && previousTaskIdRef.current !== task.taskId && !taskAnsweredRef.current) {
+      submitTaskAttempt({
+        subject: taskParams.subject,
+        conceptId: taskParams.concept || 'random',
+        difficulty: taskParams.difficulty,
+        correct: null,
+        hintsUsed,
+        startTime,
+        skipped: true,
+      })
+    }
+
+    // Update refs for next task
+    previousTaskIdRef.current = task.taskId
+    taskAnsweredRef.current = false
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [task?.taskId])
 
   // Handlers
   const handleDifficultyChange = useCallback(
@@ -175,6 +210,7 @@ export default function TaskPage() {
             error={error}
             selectedAnswer={selectedAnswer}
             isCorrect={isCorrect}
+            gradingDetails={gradingDetails}
             onAnswerSelect={selectAnswer}
             onAnswerSubmit={checkAnswer}
             onNextTask={nextTask}

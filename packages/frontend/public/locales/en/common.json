@@ -137,7 +137,10 @@
   },
   "feedback": {
     "correct": "Correct!",
-    "incorrect": "Not quite right. Try again!"
+    "incorrect": "Not quite right. Try again!",
+    "numberCorrectUnitWrong": "The number is correct, but check the unit",
+    "unitCorrectNumberWrong": "The unit is correct, but check your calculation",
+    "bothWrong": "Not quite right, try again"
   },
   "error": {
     "tryAgain": "Try Again",

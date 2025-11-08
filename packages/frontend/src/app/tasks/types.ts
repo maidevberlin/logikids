@@ -37,10 +37,8 @@ export interface SingleChoiceTask extends BaseTask {
 
 export interface YesNoTask extends BaseTask {
   type: 'yes_no'
-  solution: {
-    answer: boolean
-    explanation: string
-  }
+  answer: boolean
+  explanation: string
 }
 
 export interface OrderingTask extends BaseTask {
@@ -65,12 +63,9 @@ export interface FillInBlankTask extends BaseTask {
 
 export interface NumberInputTask extends BaseTask {
   type: 'number_input'
-  solution: {
-    value: number
-    unit?: string
-    tolerance: number
-    acceptedUnits?: string[]
-  }
+  answer: number           // The correct numeric value (required)
+  unit?: string            // Correct unit (when unitOptions present) OR display unit
+  unitOptions?: string[]   // Optional: if present, student must choose
   explanation: string
 }
 

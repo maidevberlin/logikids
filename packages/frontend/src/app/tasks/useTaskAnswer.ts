@@ -6,14 +6,22 @@ interface UseTaskAnswerOptions<T extends Task> {
   validator?: (value: TaskAnswerType<T>) => boolean
 }
 
+// Grading result for number_input tasks
+export interface NumberInputGradingDetails {
+  numberCorrect: boolean
+  unitCorrect?: boolean  // undefined when no unit validation needed
+}
+
 export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswerOptions<T>) {
   const [selectedAnswer, setSelectedAnswer] = useState<TaskAnswerType<T> | null>(null)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+  const [gradingDetails, setGradingDetails] = useState<NumberInputGradingDetails | null>(null)
 
   // Reset state when task changes
   useEffect(() => {
     setSelectedAnswer(null)
     setIsCorrect(null)
+    setGradingDetails(null)
   }, [task?.taskId])
 
   const handleAnswerSelect = useCallback((answer: TaskAnswerType<T> | null) => {
@@ -28,6 +36,7 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
 
     setSelectedAnswer(answer)
     setIsCorrect(null)
+    setGradingDetails(null)
   }, [validator, isCorrect])
 
   const handleAnswerSubmit = useCallback(() => {
@@ -43,7 +52,7 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
       }
       case 'yes_no': {
         const yesNoTask = task as YesNoTask
-        correct = selectedAnswer === yesNoTask.solution.answer
+        correct = selectedAnswer === yesNoTask.answer
         break
       }
       case 'number_input': {
@@ -51,17 +60,20 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
         const answer = selectedAnswer as { value: number | null; unit?: string }
         if (answer.value === null) {
           correct = false
+          setGradingDetails(null)
         } else {
-          const tolerance = numberInputTask.solution.tolerance
-          const diff = Math.abs(answer.value - numberInputTask.solution.value)
-          const withinTolerance = diff <= tolerance
+          // Exact match only (no tolerance)
+          const numberCorrect = answer.value === numberInputTask.answer
 
-          // Check unit if specified
-          const correctUnit = !numberInputTask.solution.acceptedUnits ||
-            !answer.unit ||
-            numberInputTask.solution.acceptedUnits.includes(answer.unit)
-
-          correct = withinTolerance && correctUnit
+          // Check unit if unitOptions present
+          if (numberInputTask.unitOptions && numberInputTask.unitOptions.length > 0) {
+            const unitCorrect = answer.unit === numberInputTask.unit
+            correct = numberCorrect && unitCorrect
+            setGradingDetails({ numberCorrect, unitCorrect })
+          } else {
+            correct = numberCorrect
+            setGradingDetails({ numberCorrect, unitCorrect: undefined })
+          }
         }
         break
       }
@@ -105,5 +117,5 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
 
   const isValid = selectedAnswer !== null && (!validator || validator(selectedAnswer))
 
-  return { selectedAnswer, isCorrect, handleAnswerSelect, handleAnswerSubmit, isValid }
+  return { selectedAnswer, isCorrect, gradingDetails, handleAnswerSelect, handleAnswerSubmit, isValid }
 } 
