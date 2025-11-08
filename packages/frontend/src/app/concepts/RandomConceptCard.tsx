@@ -27,7 +27,7 @@ export function RandomConceptCard({ subject, concepts }: RandomConceptCardProps)
   return (
     <Card
       onClick={handleClick}
-      className="bg-white shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer h-full rounded-2xl border-2 border-dashed border-orange-300 hover:border-orange-400 hover:bg-orange-50/20"
+      className="bg-card shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer h-full rounded-2xl border-2 border-dashed border-orange-300 hover:border-orange-400 hover:bg-orange-50/20"
     >
       <CardContent className="p-8 flex flex-col h-full relative">
         <div className="absolute top-4 right-4 animate-pulse">
@@ -37,10 +37,10 @@ export function RandomConceptCard({ subject, concepts }: RandomConceptCardProps)
           <div className="text-5xl mb-3 animate-bounce">
             {t('concepts.surpriseMe.emoji', { defaultValue: '✨' })}
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">
+          <h3 className="text-xl font-bold text-card-foreground mb-2">
             {t('concepts.surpriseMe.title', { defaultValue: 'Surprise Me!' })}
           </h3>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             {t('concepts.surpriseMe.description', { defaultValue: 'Try a random concept' })}
           </p>
         </div>
