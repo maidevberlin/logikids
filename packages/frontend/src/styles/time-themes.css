@@ -1,0 +1,77 @@
+/* Default/fallback theme (midday) */
+:root {
+  --color-background: 250 250 252;
+  --color-foreground: 30 30 35;
+  --color-card: 255 255 255;
+  --color-card-foreground: 30 30 35;
+  --color-primary: 59 130 246;
+  --color-primary-foreground: 255 255 255;
+  --color-muted: 241 245 249;
+  --color-muted-foreground: 100 116 139;
+  --color-border: 226 232 240;
+}
+
+/* Morning: Soft, warm awakening (6:00-10:00) */
+body.time-morning {
+  --color-background: 255 248 240;
+  --color-foreground: 76 47 29;
+  --color-card: 255 253 250;
+  --color-card-foreground: 76 47 29;
+  --color-primary: 251 146 60;
+  --color-primary-foreground: 255 255 255;
+  --color-muted: 254 243 232;
+  --color-muted-foreground: 120 83 60;
+  --color-border: 253 230 211;
+}
+
+/* Midday: Bright, clear, focused (10:00-14:00) */
+body.time-midday {
+  --color-background: 250 250 252;
+  --color-foreground: 30 30 35;
+  --color-card: 255 255 255;
+  --color-card-foreground: 30 30 35;
+  --color-primary: 59 130 246;
+  --color-primary-foreground: 255 255 255;
+  --color-muted: 241 245 249;
+  --color-muted-foreground: 100 116 139;
+  --color-border: 226 232 240;
+}
+
+/* Afternoon: Warm, golden, comfortable (14:00-18:00) */
+body.time-afternoon {
+  --color-background: 254 249 235;
+  --color-foreground: 78 53 36;
+  --color-card: 255 253 245;
+  --color-card-foreground: 78 53 36;
+  --color-primary: 245 158 11;
+  --color-primary-foreground: 255 255 255;
+  --color-muted: 254 243 199;
+  --color-muted-foreground: 133 99 69;
+  --color-border: 253 230 161;
+}
+
+/* Evening: Cooling down, relaxing (18:00-22:00) */
+body.time-evening {
+  --color-background: 243 242 250;
+  --color-foreground: 55 65 81;
+  --color-card: 249 248 253;
+  --color-card-foreground: 55 65 81;
+  --color-primary: 139 92 246;
+  --color-primary-foreground: 255 255 255;
+  --color-muted: 237 233 254;
+  --color-muted-foreground: 100 105 135;
+  --color-border: 221 214 254;
+}
+
+/* Night: Dark mode, minimal eye strain (22:00-6:00) */
+body.time-night {
+  --color-background: 15 23 42;
+  --color-foreground: 241 245 249;
+  --color-card: 30 41 59;
+  --color-card-foreground: 241 245 249;
+  --color-primary: 56 189 248;
+  --color-primary-foreground: 15 23 42;
+  --color-muted: 51 65 85;
+  --color-muted-foreground: 148 163 184;
+  --color-border: 71 85 105;
+}
