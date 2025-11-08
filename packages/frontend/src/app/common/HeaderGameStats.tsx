@@ -1,21 +1,54 @@
 import { useNavigate } from 'react-router-dom'
 import { useProgress } from '@/app/stats'
+import { ACHIEVEMENTS } from '@/app/stats/achievements'
+
+// Level thresholds for progress display
+const LEVEL_THRESHOLDS = [0, 5, 15, 30, 50, 75, 100, 150, 200, 300, 400, 550, 700, 900, 1100, 1350, 1600, 2000, 2500, 3000, 4000]
+
+function getLevelFromTasks(totalTasks: number): { level: number; progressPercent: number } {
+  let level = 0
+  for (let i = 0; i < LEVEL_THRESHOLDS.length; i++) {
+    if (totalTasks >= LEVEL_THRESHOLDS[i]) {
+      level = i
+    } else {
+      break
+    }
+  }
+
+  const previousThreshold = level > 0 ? LEVEL_THRESHOLDS[level] : 0
+  const nextThreshold = level < LEVEL_THRESHOLDS.length - 1 ? LEVEL_THRESHOLDS[level + 1] : LEVEL_THRESHOLDS[level]
+  const progressPercent = ((totalTasks - previousThreshold) / (nextThreshold - previousThreshold)) * 100
+
+  return { level: level + 1, progressPercent: Math.min(progressPercent, 100) }
+}
+
+function getLevelColor(level: number): string {
+  if (level === 1) return 'bg-blue-500'
+  if (level === 2) return 'bg-green-500'
+  if (level === 3) return 'bg-yellow-500'
+  if (level === 4) return 'bg-orange-500'
+  if (level === 5) return 'bg-red-500'
+  return 'bg-purple-500'
+}
 
 export function HeaderGameStats() {
   const navigate = useNavigate()
-  const { levelInfo, getLevelColor, unlockedAchievements } = useProgress()
+  const { gameStats, getOverallStats } = useProgress()
 
-  const { level, progressPercent } = levelInfo
+  const overallStats = getOverallStats()
+  const { level, progressPercent } = getLevelFromTasks(overallStats.totalCorrect)
 
   // Get tier 3 and 4 achievements to display (max 3)
-  const highlightAchievements = unlockedAchievements
-    .filter(a => a.tier >= 3)
-    .slice(0, 3)
+  const highlightAchievements = gameStats
+    ? ACHIEVEMENTS
+        .filter((a) => gameStats.achievements[a.id]?.unlocked && a.tier >= 3)
+        .slice(0, 3)
+    : []
 
   return (
     <button
       onClick={() => navigate('/stats')}
-      className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-1.5 rounded-xl hover:bg-gray-100 transition-all duration-200 group"
+      className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-1.5 rounded-xl hover:bg-muted transition-all duration-200 group"
     >
       {/* Circular progress around level badge (now used for all screen sizes) */}
       <div className="relative w-8 h-8">
@@ -29,7 +62,7 @@ export function HeaderGameStats() {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="text-gray-200"
+            className="text-muted"
           />
           {/* Progress circle */}
           <circle
@@ -59,8 +92,8 @@ export function HeaderGameStats() {
 
       {/* Achievement Icons */}
       {highlightAchievements.length > 0 && (
-        <div className="hidden sm:flex gap-1 border-l border-gray-200 pl-2">
-          {highlightAchievements.map(achievement => (
+        <div className="hidden sm:flex gap-1 border-l border-border pl-2">
+          {highlightAchievements.map((achievement) => (
             <span
               key={achievement.id}
               className="text-lg group-hover:scale-125 transition-transform"
@@ -69,9 +102,9 @@ export function HeaderGameStats() {
               {achievement.icon}
             </span>
           ))}
-          {unlockedAchievements.length > 3 && (
-            <span className="text-xs text-gray-500 self-center">
-              +{unlockedAchievements.length - 3}
+          {gameStats && Object.keys(gameStats.achievements).filter(id => gameStats.achievements[id]?.unlocked).length > 3 && (
+            <span className="text-xs text-muted-foreground self-center">
+              +{Object.keys(gameStats.achievements).filter(id => gameStats.achievements[id]?.unlocked).length - 3}
             </span>
           )}
         </div>
