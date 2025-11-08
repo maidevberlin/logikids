@@ -41,7 +41,7 @@ export function LevelBadge({ totalTasks }: LevelBadgeProps) {
   const colorClass = TASK_LEVELS[Math.min(currentLevel, TASK_LEVELS.length - 1)].colorClass
 
   return (
-    <Card className="p-8 bg-white shadow-md rounded-2xl flex flex-col items-center space-y-4">
+    <Card className="p-8 bg-card shadow-md rounded-2xl flex flex-col items-center space-y-4">
       {/* Circular badge with progress ring */}
       <div className="relative w-40 h-40">
         {/* Progress ring */}
@@ -53,7 +53,7 @@ export function LevelBadge({ totalTasks }: LevelBadgeProps) {
             stroke="currentColor"
             strokeWidth="8"
             fill="none"
-            className="text-gray-200"
+            className="text-muted"
           />
           <circle
             cx="80"
@@ -72,7 +72,7 @@ export function LevelBadge({ totalTasks }: LevelBadgeProps) {
         {/* Level number in center */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">
+            <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
               Level
             </div>
             <div className={`text-5xl font-bold ${colorClass.replace('bg-', 'text-')}`}>
@@ -84,7 +84,7 @@ export function LevelBadge({ totalTasks }: LevelBadgeProps) {
 
       {/* XP progress text */}
       <div className="text-center">
-        <div className="text-lg font-medium text-gray-700">
+        <div className="text-lg font-medium text-foreground">
           {totalTasks} / {nextThreshold} {t('tasks', { defaultValue: 'tasks' })}
         </div>
       </div>
