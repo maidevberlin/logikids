@@ -12,33 +12,38 @@ function getTimeOfDay(): TimeOfDay {
   return 'night';
 }
 
+function updateBodyTimeClass(time: TimeOfDay): void {
+  const classes = Array.from(document.body.classList);
+  classes.forEach(className => {
+    if (className.startsWith('time-')) {
+      document.body.classList.remove(className);
+    }
+  });
+  document.body.classList.add(`time-${time}`);
+}
+
 export function useTimeOfDay(): TimeOfDay {
   const [timeOfDay, setTimeOfDay] = useState<TimeOfDay>(getTimeOfDay);
 
   useEffect(() => {
     // Apply initial class
     const currentTime = getTimeOfDay();
-    document.body.className = document.body.className
-      .split(' ')
-      .filter(c => !c.startsWith('time-'))
-      .concat(`time-${currentTime}`)
-      .join(' ');
+    updateBodyTimeClass(currentTime);
 
     // Update every minute
     const interval = setInterval(() => {
       const newTime = getTimeOfDay();
-      if (newTime !== timeOfDay) {
-        setTimeOfDay(newTime);
-        document.body.className = document.body.className
-          .split(' ')
-          .filter(c => !c.startsWith('time-'))
-          .concat(`time-${newTime}`)
-          .join(' ');
-      }
-    }, 60000); // Check every minute
+      setTimeOfDay(prevTime => {
+        if (newTime !== prevTime) {
+          updateBodyTimeClass(newTime);
+          return newTime;
+        }
+        return prevTime;
+      });
+    }, 60000);
 
     return () => clearInterval(interval);
-  }, [timeOfDay]);
+  }, []); // Empty dependency array - run only on mount
 
   return timeOfDay;
 }
