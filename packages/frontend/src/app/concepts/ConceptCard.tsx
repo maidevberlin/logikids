@@ -27,15 +27,15 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
 
   return (
     <Link to={`/subjects/${subject}/${concept.id}/tasks`}>
-      <Card className={`bg-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
+      <Card className={`bg-card shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
         isAdvanced ? 'ring-2 ring-orange-300 bg-orange-50/20' : ''
       }`}>
         <CardContent className="p-8 flex flex-col h-full">
-          <h3 className="text-xl font-bold text-gray-900 mb-3">
+          <h3 className="text-xl font-bold text-card-foreground mb-3">
             {name}
           </h3>
 
-          <p className="text-gray-600 mb-4 flex-1">{description}</p>
+          <p className="text-muted-foreground mb-4 flex-1">{description}</p>
 
           <div className="flex flex-wrap gap-2">
             {concept.grade && (
