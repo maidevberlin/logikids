@@ -11,6 +11,7 @@ export interface SingleChoiceResponse {
   title: string;
   task: string;
   options: SingleChoiceOption[];
+  explanation: string;
 }
 
 export const singleChoiceSchema: JSONSchema = {
@@ -50,8 +51,12 @@ export const singleChoiceSchema: JSONSchema = {
       },
       minItems: 4,
       maxItems: 4
+    },
+    explanation: {
+      type: 'string',
+      minLength: 1
     }
   },
-  required: ['type', 'title', 'task', 'options'],
+  required: ['type', 'title', 'task', 'options', 'explanation'],
   additionalProperties: false
 };
