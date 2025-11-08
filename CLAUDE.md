@@ -141,6 +141,14 @@ packages/backend/prompts/task-types/{type}.md
 - localStorage: encrypted user data
 - Zero-knowledge: server never sees keys or plain text
 
+**Progress Tracking** (`packages/frontend/src/data/progress/`):
+- Concept-level tracking (per-concept stats, not just subject+difficulty)
+- Per-attempt history with timestamps
+- Time tracking (from task load to submission)
+- Auto-prunes data older than 1 year
+- Key files: `types.ts`, `hooks.ts` (useProgress), `aggregation.ts`
+- Practice mode: `packages/frontend/src/features/Practice/` - Smart recommendations based on weak concepts
+
 **Internationalization**:
 - i18next with translations in `public/locales/en/` and `public/locales/de/`
 - Always update BOTH language files
@@ -160,6 +168,139 @@ packages/backend/prompts/task-types/{type}.md
 - Border radius: `rounded-2xl` (cards), `rounded-xl` (inputs)
 - Shadows: `shadow-sm`, `shadow-md`, `shadow-lg`
 - Spacing: `p-8` (cards), `gap-6` (grids)
+
+### Time-Based Theming
+
+**Overview**: The app uses automatic time-based themes that change throughout the day based on local time. There are 5 distinct time modes with unique color palettes designed to match the time of day.
+
+**Time Modes and Ranges**:
+
+| Mode | Time Range | Description | Palette |
+|------|------------|-------------|---------|
+| **Morning** | 6:00-10:00 | Soft, warm awakening | Peach/cream with warm browns |
+| **Midday** | 10:00-14:00 | Bright, clear, focused | White/blue with sharp contrast |
+| **Afternoon** | 14:00-18:00 | Warm, golden, comfortable | Amber/golden with warm tones |
+| **Evening** | 18:00-22:00 | Cooling down, relaxing | Lavender/purple with soft contrast |
+| **Night** | 22:00-6:00 | Dark mode, minimal eye strain | Dark blue-black backgrounds |
+
+**Implementation**:
+- Hook: `packages/frontend/src/hooks/useTimeOfDay.ts`
+- Styles: `packages/frontend/src/styles/time-themes.css`
+- Applied in: `packages/frontend/src/App.tsx`
+- Updates: Every 60 seconds, transitions automatically on hour boundaries
+
+**Using Semantic Tailwind Classes**:
+
+Always use semantic color classes instead of hardcoded colors:
+
+```tsx
+// CORRECT - Uses semantic classes that adapt to time of day
+<div className="bg-card text-card-foreground border border-border">
+  <h1 className="text-foreground">Title</h1>
+  <p className="text-muted-foreground">Description</p>
+</div>
+
+// INCORRECT - Hardcoded colors that won't adapt
+<div className="bg-white text-gray-900 border border-gray-200">
+  <h1 className="text-black">Title</h1>
+  <p className="text-gray-500">Description</p>
+</div>
+```
+
+**Available Semantic Classes**:
+
+| Class | Purpose | When to Use |
+|-------|---------|-------------|
+| `bg-background` | Page/app background | Root containers, main layouts |
+| `bg-card` | Card/panel backgrounds | Content cards, dialogs, panels |
+| `bg-muted` | Subtle backgrounds | Secondary sections, hover states |
+| `bg-primary` | Primary accent color | CTAs, active states, highlights |
+| `text-foreground` | Primary text color | Headlines, body text |
+| `text-card-foreground` | Text on cards | Text inside card components |
+| `text-muted-foreground` | Secondary text | Labels, captions, subtle text |
+| `text-primary-foreground` | Text on primary bg | Text on buttons, badges |
+| `border-border` | Border colors | All borders, dividers |
+
+**Adaptive vs. Fixed Colors**:
+
+**Adaptive** (use semantic classes):
+- All backgrounds (page, card, muted)
+- All foreground text colors
+- All borders
+- Primary accent colors
+
+**Fixed** (keep explicit color classes):
+- Answer option buttons (`bg-green-500`, `bg-red-500`, etc.)
+- Achievement badges and medals
+- Success/error/warning indicators (`bg-green-100`, `text-red-600`, etc.)
+- Subject-specific colors
+- Charts and data visualizations
+
+**Testing Different Time Modes**:
+
+To test different time modes during development, temporarily modify `useTimeOfDay.ts`:
+
+```typescript
+// At the top of the file
+const TEST_TIME_OVERRIDE: TimeOfDay | null = 'night'; // Set to desired mode
+
+function getTimeOfDay(): TimeOfDay {
+  if (TEST_TIME_OVERRIDE) return TEST_TIME_OVERRIDE;
+
+  const hour = new Date().getHours();
+  // ... rest of function
+}
+```
+
+Test values: `'morning'`, `'midday'`, `'afternoon'`, `'evening'`, `'night'`
+
+**IMPORTANT**: Remove `TEST_TIME_OVERRIDE` before committing production code.
+
+**Common Patterns**:
+
+```tsx
+// Page layout
+<div className="min-h-screen bg-background text-foreground">
+  {/* content */}
+</div>
+
+// Card component
+<div className="bg-card text-card-foreground rounded-2xl border border-border p-8">
+  <h2 className="text-foreground">Card Title</h2>
+  <p className="text-muted-foreground">Card description</p>
+</div>
+
+// Button (semantic primary)
+<button className="bg-primary text-primary-foreground rounded-xl px-6 py-3">
+  Submit
+</button>
+
+// Button (fixed color - answer option)
+<button className="bg-green-500 text-white rounded-xl px-6 py-3">
+  Option A
+</button>
+
+// Input field
+<input className="bg-card text-foreground border border-border rounded-xl" />
+
+// Muted section
+<div className="bg-muted text-muted-foreground rounded-xl p-4">
+  Supplementary info
+</div>
+```
+
+**Migration Checklist**:
+
+When refactoring components to use time-based theming:
+
+1. Replace `bg-white` → `bg-background` or `bg-card`
+2. Replace `bg-gray-*` / `bg-slate-*` → `bg-card` or `bg-muted`
+3. Replace `text-black` / `text-gray-900` → `text-foreground`
+4. Replace `text-gray-*` → `text-muted-foreground`
+5. Replace `border-gray-*` → `border-border`
+6. Keep colorful elements (green, red, blue, etc.) unchanged
+7. Test in all 5 time modes for readability
+8. Ensure 4.5:1 contrast ratio for accessibility
 
 ## Important Practices
 
