@@ -7,12 +7,12 @@ import {
 } from '@/components/ui/dialog'
 import { Achievement, getTotalCorrectTasks } from './achievements'
 import { GameStats } from './gameTypes'
-import { UserProgress } from './types'
+import { ProgressData } from '@/data/progress/types'
 
 interface AchievementDetailDialogProps {
   achievement: Achievement | null
   gameStats: GameStats
-  progress: UserProgress
+  progress: ProgressData
   open: boolean
   onClose: () => void
 }
@@ -93,17 +93,17 @@ export function AchievementDetailDialog({
         <div className="space-y-4 mt-4">
           {/* Description */}
           <div>
-            <h4 className="font-semibold text-gray-700 mb-1">
+            <h4 className="font-semibold text-foreground mb-1">
               {t('achievementDetails.description', { defaultValue: 'Description' })}
             </h4>
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               {t(`achievements.${achievement.id}.description`, { defaultValue: achievement.description })}
             </p>
           </div>
 
           {/* Status */}
           <div>
-            <h4 className="font-semibold text-gray-700 mb-1">
+            <h4 className="font-semibold text-foreground mb-1">
               {t('achievementDetails.status', { defaultValue: 'Status' })}
             </h4>
             {isUnlocked ? (
@@ -112,7 +112,7 @@ export function AchievementDetailDialog({
                 <span>
                   {t('achievementDetails.unlocked', { defaultValue: 'Unlocked' })}
                   {unlockedDate && (
-                    <span className="text-gray-500 ml-2">
+                    <span className="text-muted-foreground ml-2">
                       {new Date(unlockedDate).toLocaleDateString()}
                     </span>
                   )}
@@ -120,10 +120,10 @@ export function AchievementDetailDialog({
               </div>
             ) : (
               <div className="space-y-2">
-                <div className="text-gray-600">
+                <div className="text-muted-foreground">
                   {t('achievementDetails.progress', { defaultValue: 'Progress' })}: {progressData.current} / {progressData.total}
                 </div>
-                <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-3 bg-muted rounded-full overflow-hidden">
                   <div
                     className="h-full bg-blue-500 transition-all duration-300"
                     style={{ width: `${(progressData.current / progressData.total) * 100}%` }}
@@ -135,10 +135,10 @@ export function AchievementDetailDialog({
 
           {/* Calculation Details */}
           <div>
-            <h4 className="font-semibold text-gray-700 mb-2">
+            <h4 className="font-semibold text-foreground mb-2">
               {t('achievementDetails.calculation', { defaultValue: 'Calculation' })}
             </h4>
-            <div className="bg-gray-50 rounded-xl p-4 space-y-2 text-sm">
+            <div className="bg-muted rounded-xl p-4 space-y-2 text-sm">
               {t(`achievements.${achievement.id}.calculationDetails`, {
                 defaultValue: 'Details not available',
                 ...detailData
@@ -149,7 +149,7 @@ export function AchievementDetailDialog({
           {/* Current Data */}
           {Object.keys(detailData).length > 0 && (
             <div>
-              <h4 className="font-semibold text-gray-700 mb-2">
+              <h4 className="font-semibold text-foreground mb-2">
                 {t('achievementDetails.currentData', { defaultValue: 'Current Data' })}
               </h4>
               <div className="bg-blue-50 rounded-xl p-4 space-y-2 text-sm">
@@ -195,7 +195,7 @@ export function AchievementDetailDialog({
 
           {/* Tier */}
           <div className="pt-2 border-t">
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-muted-foreground">
               {t('achievementDetails.tier', { defaultValue: 'Tier' })} {achievement.tier}
             </span>
           </div>
