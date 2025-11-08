@@ -1,7 +1,7 @@
 
 // Task types
 export const TASK_TYPES = {
-  multiple_choice: 'multiple_choice',
+  single_choice: 'single_choice',
   yes_no: 'yes_no'
 } as const;
 export type TaskType = typeof TASK_TYPES[keyof typeof TASK_TYPES]
@@ -22,8 +22,8 @@ export interface BaseTask {
   type: TaskType
 }
 
-export interface MultipleChoiceTask extends BaseTask {
-  type: 'multiple_choice'
+export interface SingleChoiceTask extends BaseTask {
+  type: 'single_choice'
   options: Array<{
     text: string
     isCorrect: boolean
@@ -39,10 +39,10 @@ export interface YesNoTask extends BaseTask {
   }
 }
 
-export type Task = MultipleChoiceTask | YesNoTask
+export type Task = SingleChoiceTask | YesNoTask
 
 // Task Answer Types
-export type TaskAnswerType<T extends Task> = T extends MultipleChoiceTask
+export type TaskAnswerType<T extends Task> = T extends SingleChoiceTask
   ? number
   : T extends YesNoTask
   ? boolean

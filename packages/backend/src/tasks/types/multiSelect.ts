@@ -1,24 +1,26 @@
 import { JSONSchema } from "../../common/ai/base";
 
-export interface MultipleChoiceOption {
+export interface MultiSelectOption {
+  id: number;
   text: string;
   isCorrect: boolean;
-  explanation?: string;
 }
 
-export interface MultipleChoiceResponse {
-  type: 'multiple_choice';
+export interface MultiSelectResponse {
+  type: 'multi_select';
   title: string;
   task: string;
-  options: MultipleChoiceOption[];
+  options: MultiSelectOption[];
+  expectedCount: number;
+  explanation: string;
 }
 
-export const multipleChoiceSchema: JSONSchema = {
+export const multiSelectSchema: JSONSchema = {
   type: 'object',
   properties: {
     type: {
       type: 'string',
-      const: 'multiple_choice'
+      const: 'multi_select'
     },
     title: {
       type: 'string',
@@ -33,25 +35,33 @@ export const multipleChoiceSchema: JSONSchema = {
       items: {
         type: 'object',
         properties: {
+          id: {
+            type: 'number'
+          },
           text: {
             type: 'string',
             minLength: 1
           },
           isCorrect: {
             type: 'boolean'
-          },
-          explanation: {
-            type: 'string',
-            minLength: 1
           }
         },
-        required: ['text', 'isCorrect'],
+        required: ['id', 'text', 'isCorrect'],
         additionalProperties: false
       },
-      minItems: 4,
-      maxItems: 4
+      minItems: 5,
+      maxItems: 7
+    },
+    expectedCount: {
+      type: 'number',
+      minimum: 2,
+      maximum: 4
+    },
+    explanation: {
+      type: 'string',
+      minLength: 1
     }
   },
-  required: ['type', 'title', 'task', 'options'],
+  required: ['type', 'title', 'task', 'options', 'expectedCount', 'explanation'],
   additionalProperties: false
 };

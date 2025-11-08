@@ -1,6 +1,6 @@
 ---
-id: multipleChoice
-name: Multiple Choice
+id: singleChoice
+name: Single Choice
 description: A task with exactly 4 options where one is correct
 ---
 

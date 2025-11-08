@@ -4,12 +4,12 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
-import { MultipleChoiceAnswer } from './MultipleChoiceAnswer'
+import { SingleChoiceAnswer } from './SingleChoiceAnswer'
 import { YesNoAnswer } from './YesNoAnswer'
 import { HintSection } from './HintSection'
 import { DifficultySelector } from './DifficultySelector'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
-import { Task, MultipleChoiceTask, YesNoTask } from './types'
+import { Task, SingleChoiceTask, YesNoTask } from './types'
 import { cn } from '@/lib/utils'
 
 interface TaskCardProps {
@@ -109,9 +109,9 @@ export function TaskCard({
   // Get explanation for correct answer
   const getExplanation = () => {
     if (!isCorrect) return ''
-    if (task.type === 'multiple_choice' && selectedAnswer !== null) {
-      const mcTask = task as MultipleChoiceTask
-      return mcTask.options[selectedAnswer as number]?.explanation || ''
+    if (task.type === 'single_choice' && selectedAnswer !== null) {
+      const scTask = task as SingleChoiceTask
+      return scTask.options[selectedAnswer as number]?.explanation || ''
     }
     if (task.type === 'yes_no') {
       return (task as YesNoTask).solution.explanation
@@ -142,9 +142,9 @@ export function TaskCard({
       />
 
       {/* Answer options */}
-      {task.type === 'multiple_choice' && (
-        <MultipleChoiceAnswer
-          options={(task as MultipleChoiceTask).options}
+      {task.type === 'single_choice' && (
+        <SingleChoiceAnswer
+          options={(task as SingleChoiceTask).options}
           selectedAnswer={selectedAnswer as number | null}
           onAnswerSelect={(index) => onAnswerSelect(index)}
           isLoading={false}

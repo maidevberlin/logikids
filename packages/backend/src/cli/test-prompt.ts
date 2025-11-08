@@ -24,7 +24,7 @@ async function testPrompt() {
 
   const subject = getArg('subject', 'logic');
   const concept = getArg('concept', 'patterns');
-  const taskType = getArg('taskType', 'multipleChoice');
+  const taskType = getArg('taskType', 'singleChoice');
   const grade = parseInt(getArg('grade', '5'));
   const difficulty = getArg('difficulty', 'medium') as Difficulty;
   const language = getArg('language', 'en');

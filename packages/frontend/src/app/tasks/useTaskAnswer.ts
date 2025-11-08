@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
-import { Task, MultipleChoiceTask, YesNoTask, TaskAnswerType } from './types'
+import { Task, SingleChoiceTask, YesNoTask, TaskAnswerType } from './types'
 
 interface UseTaskAnswerOptions<T extends Task> {
   task: T | undefined
@@ -34,9 +34,9 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
     if (!task || selectedAnswer === null) return
 
     let correct: boolean
-    if (task.type === 'multiple_choice') {
-      const multipleChoiceTask = task as MultipleChoiceTask
-      correct = multipleChoiceTask.options[selectedAnswer as number].isCorrect
+    if (task.type === 'single_choice') {
+      const singleChoiceTask = task as SingleChoiceTask
+      correct = singleChoiceTask.options[selectedAnswer as number].isCorrect
     } else {
       const yesNoTask = task as YesNoTask
       correct = selectedAnswer === yesNoTask.solution.answer

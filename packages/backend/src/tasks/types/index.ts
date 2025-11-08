@@ -1,16 +1,25 @@
 export { TaskTypeRegistry, taskTypeRegistry } from './registry';
 export type { TaskTypeWithSchema } from './registry';
-export { multipleChoiceSchema } from './multipleChoice';
-export type { MultipleChoiceResponse, MultipleChoiceOption } from './multipleChoice';
+export { singleChoiceSchema } from './singleChoice';
+export type { SingleChoiceResponse, SingleChoiceOption } from './singleChoice';
 export { yesNoSchema } from './yesNo';
 export type { YesNoResponse, YesNoSolution } from './yesNo';
+export { fillInBlankSchema } from './fillInBlank';
+export type { FillInBlankResponse, FillInBlankItem } from './fillInBlank';
+export { multiSelectSchema } from './multiSelect';
+export type { MultiSelectResponse, MultiSelectOption } from './multiSelect';
+export { numberInputSchema } from './numberInput';
+export type { NumberInputResponse, NumberInputSolution } from './numberInput';
 
 // Import types for local use
-import type { MultipleChoiceResponse } from './multipleChoice';
+import type { SingleChoiceResponse } from './singleChoice';
 import type { YesNoResponse } from './yesNo';
+import type { FillInBlankResponse } from './fillInBlank';
+import type { MultiSelectResponse } from './multiSelect';
+import type { NumberInputResponse } from './numberInput';
 
 // Base task response types (without taskId)
-export type BaseTaskResponse = MultipleChoiceResponse | YesNoResponse;
+export type BaseTaskResponse = SingleChoiceResponse | YesNoResponse | FillInBlankResponse | MultiSelectResponse | NumberInputResponse;
 
 // Union type for all possible task responses with taskId
 export type TaskResponse = BaseTaskResponse & {

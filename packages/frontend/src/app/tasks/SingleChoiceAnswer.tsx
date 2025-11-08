@@ -9,7 +9,7 @@ interface Option {
   explanation?: string
 }
 
-interface MultipleChoiceAnswerProps {
+interface SingleChoiceAnswerProps {
   options: Option[]
   selectedAnswer: number | null
   onAnswerSelect: (index: number) => void
@@ -24,13 +24,13 @@ const OPTION_COLORS = [
   'bg-pink-50 border-pink-200 hover:border-pink-400 hover:bg-pink-100 hover:rotate-1 data-[selected=true]:border-pink-500 data-[selected=true]:bg-pink-100 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]',
 ]
 
-export function MultipleChoiceAnswer({
+export function SingleChoiceAnswer({
   options,
   selectedAnswer,
   onAnswerSelect,
   isLoading = false,
   isLocked = false,
-}: MultipleChoiceAnswerProps) {
+}: SingleChoiceAnswerProps) {
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">

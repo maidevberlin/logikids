@@ -1,8 +1,11 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { PromptLoader, TaskType } from '../../prompts/loader';
-import { multipleChoiceSchema } from './multipleChoice';
+import { singleChoiceSchema } from './singleChoice';
 import { yesNoSchema } from './yesNo';
+import { fillInBlankSchema } from './fillInBlank';
+import { multiSelectSchema } from './multiSelect';
+import { numberInputSchema } from './numberInput';
 import { JSONSchema } from '../../common/ai/base';
 
 /**
@@ -22,8 +25,11 @@ export class TaskTypeRegistry {
 
   // Map of task type IDs to their JSON schemas
   private readonly schemas: Record<string, JSONSchema> = {
-    multipleChoice: multipleChoiceSchema,
+    singleChoice: singleChoiceSchema,
     yesNo: yesNoSchema,
+    fillInBlank: fillInBlankSchema,
+    multiSelect: multiSelectSchema,
+    numberInput: numberInputSchema,
   };
 
   constructor(loader?: PromptLoader) {

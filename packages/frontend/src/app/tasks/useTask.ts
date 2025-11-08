@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import i18n from '@/i18n/config';
 import { logikids, TaskRequest } from '@/api/logikids';
-import { Task, MultipleChoiceTask, YesNoTask } from './types';
+import { Task, SingleChoiceTask, YesNoTask } from './types';
 import { useTaskAnswer } from './useTaskAnswer';
 import { useHint } from './useHint';
 
 export const useTask = (params: TaskRequest) => {
+  const [startTime, setStartTime] = useState(Date.now());
+
   const {
     data: task,
     isLoading,
@@ -40,6 +42,13 @@ export const useTask = (params: TaskRequest) => {
     canRequestHint
   } = useHint({ taskId: task?.taskId });
 
+  // Update startTime whenever a new task is fetched
+  useEffect(() => {
+    if (task) {
+      setStartTime(Date.now());
+    }
+  }, [task]);
+
   // Refetch task when language changes
   useEffect(() => {
     const handleLanguageChange = () => {
@@ -59,8 +68,8 @@ export const useTask = (params: TaskRequest) => {
   // Get the explanation for the correct answer
   const getExplanation = useCallback(() => {
     if (!task) return '';
-    if (task.type === 'multiple_choice') {
-      const correctOption = (task as MultipleChoiceTask).options.find(opt => opt.isCorrect);
+    if (task.type === 'single_choice') {
+      const correctOption = (task as SingleChoiceTask).options.find(opt => opt.isCorrect);
       return correctOption?.explanation || '';
     } else {
       return (task as YesNoTask).solution.explanation;
@@ -82,6 +91,7 @@ export const useTask = (params: TaskRequest) => {
     requestHint,
     hintLoading,
     hintError,
-    canRequestHint
+    canRequestHint,
+    startTime
   };
 }; 
