@@ -36,7 +36,7 @@ export function Header({
   const navigate = useNavigate()
 
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm w-full relative z-10">
+    <header className="bg-card border-b border-border shadow-sm w-full relative z-10">
       <div className="px-3 sm:px-6 py-2 w-full">
         <div className="flex items-center justify-between w-full gap-2">
           {/* Left: Navigation */}
@@ -49,7 +49,7 @@ export function Header({
                       variant="ghost"
                       size="sm"
                       onClick={() => navigate(-1)}
-                      className="rounded-xl hover:bg-gray-100"
+                      className="rounded-xl hover:bg-muted"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </Button>
@@ -66,7 +66,7 @@ export function Header({
                       variant="ghost"
                       size="sm"
                       onClick={() => navigate('/')}
-                      className="rounded-xl hover:bg-gray-100"
+                      className="rounded-xl hover:bg-muted"
                     >
                       <Home className="w-5 h-5" />
                     </Button>
@@ -93,7 +93,7 @@ export function Header({
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate('/account')}
-                className="rounded-full w-10 h-10 p-0 hover:bg-gray-100"
+                className="rounded-full w-10 h-10 p-0 hover:bg-muted"
               >
                 <User className="w-5 h-5" />
               </Button>
