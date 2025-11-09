@@ -167,6 +167,7 @@ export function TaskCard({
         const AnswerComponent = answerTypeComponents.number_input
         return (
           <AnswerComponent
+            expectedAnswer={niTask.answer}
             unit={niTask.unit}
             unitOptions={niTask.unitOptions}
             selectedAnswer={selectedAnswer as { value: number | null; unit?: string } | null}

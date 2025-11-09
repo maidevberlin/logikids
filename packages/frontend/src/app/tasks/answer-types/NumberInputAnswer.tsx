@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 
 interface NumberInputAnswerProps {
+  expectedAnswer: number     // The correct answer (for sizing)
   unit?: string              // Display-only unit
   unitOptions?: string[]     // Unit choices (overrides unit prop)
   selectedAnswer: { value: number | null; unit?: string } | null
@@ -13,6 +14,7 @@ interface NumberInputAnswerProps {
 }
 
 export function NumberInputAnswer({
+  expectedAnswer,
   unit,
   unitOptions,
   selectedAnswer,
@@ -21,6 +23,10 @@ export function NumberInputAnswer({
   isLocked = false,
 }: NumberInputAnswerProps) {
   const answer = selectedAnswer || { value: null, unit: unitOptions?.[0] }
+
+  // Calculate width based on expected answer length + 1
+  const expectedLength = String(expectedAnswer).length + 1
+  const inputWidth = `${expectedLength}ch`
 
   const handleIncrement = () => {
     if (isLocked) return
@@ -64,7 +70,7 @@ export function NumberInputAnswer({
 
   return (
     <div className="flex justify-center my-6">
-      <div className="w-full max-w-md space-y-3">
+      <div className="space-y-3">
         {/* Number input with chevrons */}
         <div className="flex items-center gap-2">
           <button
@@ -79,15 +85,16 @@ export function NumberInputAnswer({
             <ChevronLeft className="h-8 w-8" />
           </button>
 
-          <div className="flex-1 flex items-center border-b-2 border-gray-300 focus-within:border-primary transition-colors">
+          <div className="flex items-center border-b-2 border-gray-300 focus-within:border-primary transition-colors">
             <input
               type="text"
               inputMode="decimal"
               value={answer.value !== null ? String(answer.value) : ''}
               onChange={handleInputChange}
               disabled={isLocked}
+              style={{ width: inputWidth }}
               className={cn(
-                "flex-1 bg-transparent border-0 outline-none text-4xl text-center py-4 placeholder:text-gray-400 min-w-0",
+                "bg-transparent border-0 outline-none text-4xl text-center py-4 placeholder:text-gray-400",
                 isLocked && "cursor-not-allowed opacity-75"
               )}
               placeholder="0"
