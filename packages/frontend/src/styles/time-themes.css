@@ -1,77 +1,77 @@
 /* Default/fallback theme (midday) */
 :root {
-  --background: 250 250 252;
-  --foreground: 30 30 35;
-  --card: 255 255 255;
-  --card-foreground: 30 30 35;
-  --primary: 59 130 246;
-  --primary-foreground: 255 255 255;
-  --muted: 241 245 249;
-  --muted-foreground: 80 94 122;
-  --border: 226 232 240;
+  --background: oklch(0.985 0.002 264);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.6 0.22 255);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.965 0.002 264);
+  --muted-foreground: oklch(0.5 0.01 264);
+  --border: oklch(0.92 0.002 264);
 }
 
 /* Morning: Soft, warm awakening (6:00-10:00) */
 body.time-morning {
-  --background: 255 248 240;
-  --foreground: 76 47 29;
-  --card: 255 253 250;
-  --card-foreground: 76 47 29;
-  --primary: 251 146 60;
-  --primary-foreground: 255 255 255;
-  --muted: 254 243 232;
-  --muted-foreground: 120 83 60;
-  --border: 253 230 211;
+  --background: oklch(0.98 0.015 75);
+  --foreground: oklch(0.3 0.05 60);
+  --card: oklch(0.995 0.01 75);
+  --card-foreground: oklch(0.3 0.05 60);
+  --primary: oklch(0.72 0.15 50);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.97 0.02 75);
+  --muted-foreground: oklch(0.48 0.06 60);
+  --border: oklch(0.95 0.025 75);
 }
 
 /* Midday: Bright, clear, focused (10:00-14:00) */
 body.time-midday {
-  --background: 250 250 252;
-  --foreground: 30 30 35;
-  --card: 255 255 255;
-  --card-foreground: 30 30 35;
-  --primary: 59 130 246;
-  --primary-foreground: 255 255 255;
-  --muted: 241 245 249;
-  --muted-foreground: 80 94 122;
-  --border: 226 232 240;
+  --background: oklch(0.985 0.002 264);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.6 0.22 255);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.965 0.002 264);
+  --muted-foreground: oklch(0.5 0.01 264);
+  --border: oklch(0.92 0.002 264);
 }
 
 /* Afternoon: Warm, golden, comfortable (14:00-18:00) */
 body.time-afternoon {
-  --background: 254 249 235;
-  --foreground: 78 53 36;
-  --card: 255 253 245;
-  --card-foreground: 78 53 36;
-  --primary: 245 158 11;
-  --primary-foreground: 255 255 255;
-  --muted: 254 243 199;
-  --muted-foreground: 133 99 69;
-  --border: 253 230 161;
+  --background: oklch(0.98 0.03 85);
+  --foreground: oklch(0.35 0.06 70);
+  --card: oklch(0.995 0.02 85);
+  --card-foreground: oklch(0.35 0.06 70);
+  --primary: oklch(0.75 0.15 80);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.97 0.04 85);
+  --muted-foreground: oklch(0.52 0.07 70);
+  --border: oklch(0.95 0.045 85);
 }
 
 /* Evening: Cooling down, relaxing (18:00-22:00) */
 body.time-evening {
-  --background: 243 242 250;
-  --foreground: 55 65 81;
-  --card: 249 248 253;
-  --card-foreground: 55 65 81;
-  --primary: 139 92 246;
-  --primary-foreground: 255 255 255;
-  --muted: 237 233 254;
-  --muted-foreground: 100 105 135;
-  --border: 221 214 254;
+  --background: oklch(0.96 0.01 290);
+  --foreground: oklch(0.38 0.015 250);
+  --card: oklch(0.98 0.008 290);
+  --card-foreground: oklch(0.38 0.015 250);
+  --primary: oklch(0.65 0.24 285);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.945 0.015 290);
+  --muted-foreground: oklch(0.52 0.02 270);
+  --border: oklch(0.92 0.02 290);
 }
 
 /* Night: Dark mode, minimal eye strain (22:00-6:00) */
 body.time-night {
-  --background: 15 23 42;
-  --foreground: 241 245 249;
-  --card: 30 41 59;
-  --card-foreground: 241 245 249;
-  --primary: 56 189 248;
-  --primary-foreground: 15 23 42;
-  --muted: 51 65 85;
-  --muted-foreground: 148 163 184;
-  --border: 71 85 105;
+  --background: oklch(0.16 0.03 250);
+  --foreground: oklch(0.95 0.005 264);
+  --card: oklch(0.24 0.025 250);
+  --card-foreground: oklch(0.95 0.005 264);
+  --primary: oklch(0.75 0.14 210);
+  --primary-foreground: oklch(0.16 0.03 250);
+  --muted: oklch(0.32 0.02 250);
+  --muted-foreground: oklch(0.68 0.015 250);
+  --border: oklch(0.38 0.02 250);
 }
