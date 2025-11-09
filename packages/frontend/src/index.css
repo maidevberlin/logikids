@@ -2,8 +2,6 @@
 
 @plugin '@tailwindcss/typography';
 
-@import './styles/time-themes.css';
-
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -376,4 +374,5 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
- 
+/* Time-based theming - must be after :root to override defaults */
+@import './styles/time-themes.css';
