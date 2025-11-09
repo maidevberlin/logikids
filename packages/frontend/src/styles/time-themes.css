@@ -1,77 +1,77 @@
 /* Default/fallback theme (midday) */
 :root {
-  --color-background: 250 250 252;
-  --color-foreground: 30 30 35;
-  --color-card: 255 255 255;
-  --color-card-foreground: 30 30 35;
-  --color-primary: 59 130 246;
-  --color-primary-foreground: 255 255 255;
-  --color-muted: 241 245 249;
-  --color-muted-foreground: 80 94 122;
-  --color-border: 226 232 240;
+  --background: 250 250 252;
+  --foreground: 30 30 35;
+  --card: 255 255 255;
+  --card-foreground: 30 30 35;
+  --primary: 59 130 246;
+  --primary-foreground: 255 255 255;
+  --muted: 241 245 249;
+  --muted-foreground: 80 94 122;
+  --border: 226 232 240;
 }
 
 /* Morning: Soft, warm awakening (6:00-10:00) */
 body.time-morning {
-  --color-background: 255 248 240;
-  --color-foreground: 76 47 29;
-  --color-card: 255 253 250;
-  --color-card-foreground: 76 47 29;
-  --color-primary: 251 146 60;
-  --color-primary-foreground: 255 255 255;
-  --color-muted: 254 243 232;
-  --color-muted-foreground: 120 83 60;
-  --color-border: 253 230 211;
+  --background: 255 248 240;
+  --foreground: 76 47 29;
+  --card: 255 253 250;
+  --card-foreground: 76 47 29;
+  --primary: 251 146 60;
+  --primary-foreground: 255 255 255;
+  --muted: 254 243 232;
+  --muted-foreground: 120 83 60;
+  --border: 253 230 211;
 }
 
 /* Midday: Bright, clear, focused (10:00-14:00) */
 body.time-midday {
-  --color-background: 250 250 252;
-  --color-foreground: 30 30 35;
-  --color-card: 255 255 255;
-  --color-card-foreground: 30 30 35;
-  --color-primary: 59 130 246;
-  --color-primary-foreground: 255 255 255;
-  --color-muted: 241 245 249;
-  --color-muted-foreground: 80 94 122;
-  --color-border: 226 232 240;
+  --background: 250 250 252;
+  --foreground: 30 30 35;
+  --card: 255 255 255;
+  --card-foreground: 30 30 35;
+  --primary: 59 130 246;
+  --primary-foreground: 255 255 255;
+  --muted: 241 245 249;
+  --muted-foreground: 80 94 122;
+  --border: 226 232 240;
 }
 
 /* Afternoon: Warm, golden, comfortable (14:00-18:00) */
 body.time-afternoon {
-  --color-background: 254 249 235;
-  --color-foreground: 78 53 36;
-  --color-card: 255 253 245;
-  --color-card-foreground: 78 53 36;
-  --color-primary: 245 158 11;
-  --color-primary-foreground: 255 255 255;
-  --color-muted: 254 243 199;
-  --color-muted-foreground: 133 99 69;
-  --color-border: 253 230 161;
+  --background: 254 249 235;
+  --foreground: 78 53 36;
+  --card: 255 253 245;
+  --card-foreground: 78 53 36;
+  --primary: 245 158 11;
+  --primary-foreground: 255 255 255;
+  --muted: 254 243 199;
+  --muted-foreground: 133 99 69;
+  --border: 253 230 161;
 }
 
 /* Evening: Cooling down, relaxing (18:00-22:00) */
 body.time-evening {
-  --color-background: 243 242 250;
-  --color-foreground: 55 65 81;
-  --color-card: 249 248 253;
-  --color-card-foreground: 55 65 81;
-  --color-primary: 139 92 246;
-  --color-primary-foreground: 255 255 255;
-  --color-muted: 237 233 254;
-  --color-muted-foreground: 100 105 135;
-  --color-border: 221 214 254;
+  --background: 243 242 250;
+  --foreground: 55 65 81;
+  --card: 249 248 253;
+  --card-foreground: 55 65 81;
+  --primary: 139 92 246;
+  --primary-foreground: 255 255 255;
+  --muted: 237 233 254;
+  --muted-foreground: 100 105 135;
+  --border: 221 214 254;
 }
 
 /* Night: Dark mode, minimal eye strain (22:00-6:00) */
 body.time-night {
-  --color-background: 15 23 42;
-  --color-foreground: 241 245 249;
-  --color-card: 30 41 59;
-  --color-card-foreground: 241 245 249;
-  --color-primary: 56 189 248;
-  --color-primary-foreground: 15 23 42;
-  --color-muted: 51 65 85;
-  --color-muted-foreground: 148 163 184;
-  --color-border: 71 85 105;
+  --background: 15 23 42;
+  --foreground: 241 245 249;
+  --card: 30 41 59;
+  --card-foreground: 241 245 249;
+  --primary: 56 189 248;
+  --primary-foreground: 15 23 42;
+  --muted: 51 65 85;
+  --muted-foreground: 148 163 184;
+  --border: 71 85 105;
 }
