@@ -11,10 +11,10 @@ export function GreetingHeader({ name }: GreetingHeaderProps) {
 
   return (
     <div className="text-center mb-12">
-      <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+      <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
         {greeting}, {name}!
       </h1>
-      <p className="text-xl text-gray-600">
+      <p className="text-xl text-muted-foreground">
         {t('welcome.todayPrompt')}
       </p>
     </div>

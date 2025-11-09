@@ -173,10 +173,10 @@ export default function ConceptsPage() {
                 <SubjectIcon className="w-12 h-12 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                <h1 className="text-4xl font-bold text-foreground mb-4">
                   {t(`subjects.${subjectId}.label`, { defaultValue: subject.name })}
                 </h1>
-                <p className="text-xl text-gray-600">
+                <p className="text-xl text-muted-foreground">
                   {t(`subjects.${subjectId}.description`, { defaultValue: subject.description })}
                 </p>
               </div>
@@ -236,7 +236,7 @@ export default function ConceptsPage() {
               <>
                 {groupedByGrade.map(({ grade: gradeKey, concepts }) => (
                   <div key={gradeKey}>
-                    <h2 className={`text-2xl font-semibold text-gray-800 mb-4 ${gradeKey === groupedByGrade[0].grade ? '' : 'mt-8'}`}>
+                    <h2 className={`text-2xl font-semibold text-foreground mb-4 ${gradeKey === groupedByGrade[0].grade ? '' : 'mt-8'}`}>
                       {gradeKey === 'other'
                         ? t('concepts.gradeGroup.other', { defaultValue: 'Other' })
                         : t('concepts.gradeGroup.gradeN', { defaultValue: 'Grade {{grade}}', grade: gradeKey })}
@@ -294,7 +294,7 @@ export default function ConceptsPage() {
               <>
                 {groupedByGrade.map(({ grade: gradeKey, concepts }) => (
                   <div key={gradeKey}>
-                    <h2 className={`text-2xl font-semibold text-gray-800 mb-4 ${gradeKey === groupedByGrade[0].grade ? '' : 'mt-8'}`}>
+                    <h2 className={`text-2xl font-semibold text-foreground mb-4 ${gradeKey === groupedByGrade[0].grade ? '' : 'mt-8'}`}>
                       {gradeKey === 'other'
                         ? t('concepts.gradeGroup.other', { defaultValue: 'Other' })
                         : t('concepts.gradeGroup.gradeN', { defaultValue: 'Grade {{grade}}', grade: gradeKey })}

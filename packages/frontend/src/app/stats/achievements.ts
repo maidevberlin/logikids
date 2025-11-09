@@ -1,5 +1,5 @@
 import { GameStats } from './gameTypes'
-import { UserProgress } from './types'
+import { ProgressData } from '@/data/progress/types'
 
 export interface Achievement {
   id: string
@@ -7,19 +7,21 @@ export interface Achievement {
   description: string
   icon: string
   tier: 1 | 2 | 3 | 4
-  checkUnlocked: (gameStats: GameStats, progress: UserProgress) => boolean
-  getProgress: (gameStats: GameStats, progress: UserProgress) => { current: number; total: number }
+  checkUnlocked: (gameStats: GameStats, progress: ProgressData) => boolean
+  getProgress: (gameStats: GameStats, progress: ProgressData) => { current: number; total: number }
 }
 
 /**
  * Helper function to calculate total tasks completed (only correct answers)
  */
-export function getTotalCorrectTasks(progress: UserProgress): number {
-  return Object.values(progress.stats).reduce((sum, subject) => {
-    return sum + Object.values(subject).reduce((s, stats) => {
-      return s + stats.correct
-    }, 0)
-  }, 0)
+export function getTotalCorrectTasks(progress: ProgressData): number {
+  let total = 0
+  for (const subjectConcepts of Object.values(progress)) {
+    for (const conceptStats of Object.values(subjectConcepts)) {
+      total += conceptStats.aggregate.correct
+    }
+  }
+  return total
 }
 
 export const ACHIEVEMENTS: Achievement[] = [
@@ -144,7 +146,7 @@ export const ACHIEVEMENTS: Achievement[] = [
  */
 export function checkAchievements(
   gameStats: GameStats,
-  progress: UserProgress
+  progress: ProgressData
 ): string[] {
   const newlyUnlocked: string[] = []
 

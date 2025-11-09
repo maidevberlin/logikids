@@ -49,7 +49,7 @@ export function OnboardingActions({
           <button
             type="button"
             onClick={onBack}
-            className="flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-sm"
+            className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
           >
             <ChevronLeft className="w-4 h-4" />
             {t('common.back', { defaultValue: 'Back' })}

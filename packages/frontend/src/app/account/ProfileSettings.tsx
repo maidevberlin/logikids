@@ -118,7 +118,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           <div className="bg-primary/10 p-3 rounded-full">
             <User className="w-6 h-6 text-primary" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-foreground">
             {t('account.profileSettings', { defaultValue: 'Profile Settings' })}
           </h2>
         </div>
@@ -126,8 +126,8 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
         <div className="flex items-center space-x-2">
           {isSaving && (
             <>
-              <Loader2 className="w-4 h-4 animate-spin text-gray-500" />
-              <span className="text-sm text-gray-500">
+              <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">
                 {t('account.saving', { defaultValue: 'Saving...' })}
               </span>
             </>
@@ -146,7 +146,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
       <div className="space-y-8">
         {/* Name Section */}
         <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-gray-700 text-center">
+          <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.nameLabel', { defaultValue: "What's your name?" })}
           </Label>
           {isEditingName ? (
@@ -162,24 +162,24 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
               }}
               placeholder={t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
               autoFocus
-              className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-gray-400 transition-colors"
+              className="w-full bg-transparent border-0 border-b-2 border focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-muted-foreground transition-colors"
             />
           ) : (
             <div
               onClick={() => setIsEditingName(true)}
               className="w-full bg-transparent text-4xl text-center py-4 cursor-pointer transition-colors hover:opacity-70"
             >
-              {name || <span className="text-gray-400">{t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}</span>}
+              {name || <span className="text-muted-foreground">{t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}</span>}
             </div>
           )}
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200" />
+        <div className="border-t" />
 
         {/* Age Section */}
         <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-gray-700 text-center">
+          <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.ageLabel', { defaultValue: 'How old are you?' })}
           </Label>
           <NumberInput
@@ -191,11 +191,11 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200" />
+        <div className="border-t" />
 
         {/* Grade Section */}
         <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-gray-700 text-center">
+          <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.gradeLabel', { defaultValue: 'What grade are you in?' })}
           </Label>
           <GradeSelector
@@ -206,11 +206,11 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200" />
+        <div className="border-t" />
 
         {/* Gender Section */}
         <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-gray-700 text-center">
+          <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.gender.label', { defaultValue: 'Gender (optional)' })}
           </Label>
           <GenderSelector
@@ -220,11 +220,11 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200" />
+        <div className="border-t" />
 
         {/* Language Section */}
         <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-gray-700 text-center">
+          <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.languageLabel', { defaultValue: 'Choose your language' })}
           </Label>
           <LanguageSelector

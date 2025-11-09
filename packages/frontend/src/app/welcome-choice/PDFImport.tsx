@@ -221,7 +221,7 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
           )}
 
           {/* File Upload Area */}
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer"
+          <div className="border-2 border-dashed border rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer"
                onClick={() => fileInputRef.current?.click()}>
             <input
               ref={fileInputRef}
@@ -235,20 +235,20 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
             {isProcessing ? (
               <div className="space-y-2">
                 <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {t('welcomeChoice.import.processingPDF', { defaultValue: 'Processing PDF...' })}
                 </p>
                 {fileName && (
-                  <p className="text-sm text-gray-500">{fileName}</p>
+                  <p className="text-sm text-muted-foreground">{fileName}</p>
                 )}
               </div>
             ) : (
               <div className="space-y-2">
-                <FileText className="w-12 h-12 text-gray-400 mx-auto" />
-                <p className="text-gray-600">
+                <FileText className="w-12 h-12 text-muted-foreground mx-auto" />
+                <p className="text-muted-foreground">
                   {t('welcomeChoice.import.clickToUpload', { defaultValue: 'Click to upload PDF file' })}
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-muted-foreground">
                   {t('welcomeChoice.import.pdfHint', { defaultValue: 'Select your Logikids Recovery Kit PDF' })}
                 </p>
               </div>

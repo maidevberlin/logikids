@@ -235,7 +235,7 @@ export function RecoveryKit() {
         {isGenerating ? t('account.recoveryKit.generating') : t('account.recoveryKit.downloadButton')}
       </Button>
 
-      <div className="text-xs text-gray-500 space-y-1">
+      <div className="text-xs text-muted-foreground space-y-1">
         <p>{t('account.recoveryKit.whatsIncluded')}</p>
         <p>{t('account.recoveryKit.securityNote')}</p>
       </div>

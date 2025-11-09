@@ -15,7 +15,7 @@ export function StatsHeader() {
 
   return (
     <Link to="/stats" className="block">
-      <div className="bg-gradient-to-r from-primary/5 to-purple-50 border border-gray-200 rounded-2xl py-4 px-6 cursor-pointer hover:shadow-md transition-all duration-300 hover:scale-[1.01]">
+      <div className="bg-gradient-to-r from-primary/5 to-purple-50 border rounded-2xl py-4 px-6 cursor-pointer hover:shadow-md transition-all duration-300 hover:scale-[1.01]">
         <TooltipProvider delayDuration={200}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
             {/* Streak */}
@@ -26,8 +26,8 @@ export function StatsHeader() {
                     <Flame className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">{streak}</div>
-                    <div className="text-sm text-gray-600">{t('welcome.stats.streak')}</div>
+                    <div className="text-2xl font-bold text-foreground">{streak}</div>
+                    <div className="text-sm text-muted-foreground">{t('welcome.stats.streak')}</div>
                   </div>
                 </div>
               </TooltipTrigger>
@@ -44,10 +44,10 @@ export function StatsHeader() {
                     <Star className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-foreground">
                       {level > 0 ? `${level} ${t('welcome.stats.stars')}` : '-'}
                     </div>
-                    <div className="text-sm text-gray-600">{t('welcome.stats.level')}</div>
+                    <div className="text-sm text-muted-foreground">{t('welcome.stats.level')}</div>
                   </div>
                 </div>
               </TooltipTrigger>
@@ -64,10 +64,10 @@ export function StatsHeader() {
                     <Sparkles className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-foreground">
                       {achievement ? t(achievement) : t('welcome.stats.noAchievement')}
                     </div>
-                    <div className="text-sm text-gray-600">{t('welcome.stats.achievement')}</div>
+                    <div className="text-sm text-muted-foreground">{t('welcome.stats.achievement')}</div>
                   </div>
                 </div>
               </TooltipTrigger>

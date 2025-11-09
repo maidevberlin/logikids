@@ -1,3 +1,5 @@
+import { SubjectMastery } from '@/data/progress/types'
+
 export interface GameStats {
   version: 1
 
@@ -29,10 +31,7 @@ export interface GameStats {
   }
 
   subjectMastery: {
-    [subject: string]: {
-      stars: number  // 0-5
-      lastCalculated: string  // ISO timestamp
-    }
+    [subject: string]: SubjectMastery
   }
 }
 

@@ -15,7 +15,7 @@ export default function ImpressumPage() {
         <Card className="p-8 shadow-md rounded-2xl">
           <h1 className="text-3xl font-bold mb-6">{t('legal.impressum.title')}</h1>
 
-          <div className="space-y-6 text-gray-700">
+          <div className="space-y-6 text-foreground">
             <section>
               <h2 className="text-xl font-semibold mb-3">{t('legal.impressum.provider.title')}</h2>
               <div className="space-y-1">

@@ -64,10 +64,10 @@ export default function WelcomeChoicePage() {
         <div className="w-full max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-5xl font-bold text-foreground mb-4">
             {t('welcomeChoice.title', { defaultValue: 'Welcome to Logikids' })}
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-muted-foreground">
             {t('welcomeChoice.subtitle', { defaultValue: 'Choose how you want to get started' })}
           </p>
         </div>
@@ -80,10 +80,10 @@ export default function WelcomeChoicePage() {
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FileText className="w-8 h-8 text-blue-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                   {t('welcomeChoice.newAccount.title', { defaultValue: 'I Have an Invite Code' })}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {t('welcomeChoice.newAccount.description', { defaultValue: 'Start fresh with a new account' })}
                 </p>
               </div>
@@ -133,10 +133,10 @@ export default function WelcomeChoicePage() {
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Upload className="w-8 h-8 text-purple-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                   {t('welcomeChoice.import.title', { defaultValue: 'Import Existing Account' })}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {t('welcomeChoice.import.description', { defaultValue: 'Restore from your recovery kit' })}
                 </p>
               </div>

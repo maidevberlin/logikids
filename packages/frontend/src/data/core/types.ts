@@ -1,4 +1,5 @@
 import { GameStats } from '@/app/stats/gameTypes'
+import { ProgressData } from '@/data/progress/types'
 
 export interface UserSettings {
   name: string
@@ -17,7 +18,7 @@ export interface LastTask {
 export interface UserData {
   userId: string
   settings: UserSettings
-  progress: Record<string, any>
+  progress: ProgressData
   gameStats?: GameStats  // Optional for backward compatibility
   lastTask: LastTask
   timestamp: number

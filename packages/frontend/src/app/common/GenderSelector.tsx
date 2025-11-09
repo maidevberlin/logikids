@@ -46,12 +46,12 @@ export function GenderSelector({ value, onChange, className = '' }: GenderSelect
               className={`flex items-center justify-center w-16 h-16 rounded-full transition-all duration-200 ${
                 value === option.value
                   ? 'bg-primary text-white shadow-md scale-110'
-                  : 'bg-gray-200 text-gray-600 hover:bg-gray-300 hover:scale-105'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:scale-105'
               }`}
             >
               <Icon className="w-8 h-8" />
             </div>
-            <span className="text-xs text-gray-700 text-center max-w-[80px]">
+            <span className="text-xs text-foreground text-center max-w-[80px]">
               {option.label}
             </span>
           </button>

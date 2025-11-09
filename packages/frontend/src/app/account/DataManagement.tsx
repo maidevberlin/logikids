@@ -100,13 +100,13 @@ export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }:
           <div className="bg-primary/10 p-3 rounded-full">
             <Database className="w-6 h-6 text-primary" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-foreground">
             {t('account.dataManagement', { defaultValue: 'Data Management' })}
           </h2>
         </div>
 
         <div className="space-y-4">
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             {t('account.dataInfo', {
               defaultValue: 'Your data is stored securely on your device. You can export or delete it at any time.'
             })}
@@ -115,19 +115,19 @@ export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }:
           {/* Export Data - Always available */}
           <ExportData />
 
-          <div className="border-t border-gray-200 pt-4" />
+          <div className="border-t pt-4" />
 
           {/* Cloud Backup Toggle */}
-          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-xl">
+          <div className="flex items-center justify-between p-4 border rounded-xl">
             <div className="flex-1">
-              <Label htmlFor="sync-enabled" className="text-base font-semibold text-gray-900 cursor-pointer block">
+              <Label htmlFor="sync-enabled" className="text-base font-semibold text-foreground cursor-pointer block">
                 {t('settings.syncLabel', { defaultValue: 'Cloud Backup' })}
               </Label>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {t('settings.syncDescription', { defaultValue: 'Automatically backup your data to the cloud' })}
               </p>
               {lastSyncTimestamp && (
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {t('account.lastSynced', { defaultValue: 'Last synced: {{time}}', time: formatLastSync(lastSyncTimestamp) })}
                 </p>
               )}
@@ -144,13 +144,13 @@ export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }:
             <>
               <RecoveryKit />
 
-              <div className="border-t border-gray-200 pt-4">
+              <div className="border-t pt-4">
                 <QRDisplay />
               </div>
             </>
           )}
 
-          <div className="border-t border-gray-200 pt-4" />
+          <div className="border-t pt-4" />
 
           <Button
             onClick={() => setShowLogoutDialog(true)}

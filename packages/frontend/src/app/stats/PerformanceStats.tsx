@@ -26,15 +26,15 @@ export function PerformanceStats({ successRate, averageHints }: PerformanceStats
   return (
     <div className="grid grid-cols-2 gap-6">
       {/* Success Rate */}
-      <Card className="p-6 bg-white shadow-sm rounded-2xl border-0">
+      <Card className="p-6 bg-card shadow-sm rounded-2xl border-0">
         <div className="text-center space-y-4">
-          <h3 className="text-base font-medium text-gray-700">
+          <h3 className="text-base font-medium text-foreground">
             {t('successRate', { defaultValue: 'Success Rate' })}
           </h3>
           <div className={`text-5xl font-bold ${getSuccessRateColor(successRate)}`}>
             {successRate.toFixed(1)}%
           </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-2 bg-muted rounded-full overflow-hidden">
             <div
               className={`h-full transition-all duration-500 ${
                 successRate >= 80 ? 'bg-green-500' :
@@ -49,15 +49,15 @@ export function PerformanceStats({ successRate, averageHints }: PerformanceStats
       </Card>
 
       {/* Average Hints */}
-      <Card className="p-6 bg-white shadow-sm rounded-2xl border-0">
+      <Card className="p-6 bg-card shadow-sm rounded-2xl border-0">
         <div className="text-center space-y-4">
-          <h3 className="text-base font-medium text-gray-700">
+          <h3 className="text-base font-medium text-foreground">
             {t('averageHints', { defaultValue: 'Average Hints Used' })}
           </h3>
           <div className={`text-5xl font-bold ${getHintColor(averageHints)}`}>
             {averageHints.toFixed(1)}
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-muted-foreground">
             {t('outOf4', { defaultValue: 'out of 4 hints' })}
           </div>
         </div>

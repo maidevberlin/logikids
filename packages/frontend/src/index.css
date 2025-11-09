@@ -2,7 +2,8 @@
 
 @plugin '@tailwindcss/typography';
 
-@theme {
+@theme inline {
+  /* Reference the variables directly so they remain reactive */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -215,7 +216,7 @@
 
 /* Markdown Content Styles */
 .markdown-content {
-  @apply text-gray-800;
+  @apply text-foreground;
 }
 
 .markdown-content p {
@@ -223,15 +224,15 @@
 }
 
 .markdown-content h1 {
-  @apply text-2xl font-bold mb-4 mt-6;
+  @apply text-2xl font-bold mb-4 mt-6 text-foreground;
 }
 
 .markdown-content h2 {
-  @apply text-xl font-bold mb-3 mt-5;
+  @apply text-xl font-bold mb-3 mt-5 text-foreground;
 }
 
 .markdown-content h3 {
-  @apply text-lg font-bold mb-2 mt-4;
+  @apply text-lg font-bold mb-2 mt-4 text-foreground;
 }
 
 .markdown-content ul {

@@ -166,10 +166,10 @@ export function ImportData() {
             value={backupCode}
             onChange={(e) => setBackupCode(e.target.value)}
             placeholder={t('account.import.backupCodePlaceholder')}
-            className="w-full h-24 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none font-mono"
+            className="w-full h-24 px-3 py-2 text-sm border border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none font-mono"
             disabled={isImporting}
           />
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-muted-foreground">
             {t('account.import.backupCodeHint')}
           </p>
         </div>
@@ -197,7 +197,7 @@ export function ImportData() {
               <p>
                 {t('account.import.conflictMessage')}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 {t('account.import.conflictWarning')}
               </p>
             </DialogDescription>

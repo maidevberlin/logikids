@@ -8,7 +8,7 @@
   --primary-foreground: oklch(1 0 0);
   --muted: oklch(0.965 0.002 264);
   --muted-foreground: oklch(0.5 0.01 264);
-  --border: oklch(0.92 0.002 264);
+  --border: oklch(0.88 0.005 264);
 }
 
 /* Morning: Soft, warm awakening (6:00-10:00) */
@@ -21,7 +21,7 @@ body.time-morning {
   --primary-foreground: oklch(1 0 0);
   --muted: oklch(0.97 0.02 75);
   --muted-foreground: oklch(0.48 0.06 60);
-  --border: oklch(0.95 0.025 75);
+  --border: oklch(0.90 0.03 75);
 }
 
 /* Midday: Bright, clear, focused (10:00-14:00) */
@@ -34,7 +34,7 @@ body.time-midday {
   --primary-foreground: oklch(1 0 0);
   --muted: oklch(0.965 0.002 264);
   --muted-foreground: oklch(0.5 0.01 264);
-  --border: oklch(0.92 0.002 264);
+  --border: oklch(0.88 0.005 264);
 }
 
 /* Afternoon: Warm, golden, comfortable (14:00-18:00) */
@@ -47,31 +47,31 @@ body.time-afternoon {
   --primary-foreground: oklch(1 0 0);
   --muted: oklch(0.97 0.04 85);
   --muted-foreground: oklch(0.52 0.07 70);
-  --border: oklch(0.95 0.045 85);
+  --border: oklch(0.90 0.05 85);
 }
 
 /* Evening: Cooling down, relaxing (18:00-22:00) */
 body.time-evening {
-  --background: oklch(0.96 0.01 290);
-  --foreground: oklch(0.38 0.015 250);
-  --card: oklch(0.98 0.008 290);
-  --card-foreground: oklch(0.38 0.015 250);
+  --background: oklch(0.92 0.015 285);
+  --foreground: oklch(0.28 0.02 255);
+  --card: oklch(0.95 0.012 285);
+  --card-foreground: oklch(0.28 0.02 255);
   --primary: oklch(0.65 0.24 285);
   --primary-foreground: oklch(1 0 0);
-  --muted: oklch(0.945 0.015 290);
-  --muted-foreground: oklch(0.52 0.02 270);
-  --border: oklch(0.92 0.02 290);
+  --muted: oklch(0.88 0.02 285);
+  --muted-foreground: oklch(0.45 0.025 270);
+  --border: oklch(0.78 0.025 285);
 }
 
 /* Night: Dark mode, minimal eye strain (22:00-6:00) */
 body.time-night {
   --background: oklch(0.16 0.03 250);
-  --foreground: oklch(0.95 0.005 264);
-  --card: oklch(0.24 0.025 250);
-  --card-foreground: oklch(0.95 0.005 264);
+  --foreground: oklch(0.96 0.005 264);
+  --card: oklch(0.22 0.025 250);
+  --card-foreground: oklch(0.96 0.005 264);
   --primary: oklch(0.75 0.14 210);
   --primary-foreground: oklch(0.16 0.03 250);
-  --muted: oklch(0.32 0.02 250);
-  --muted-foreground: oklch(0.68 0.015 250);
-  --border: oklch(0.38 0.02 250);
+  --muted: oklch(0.20 0.02 250);
+  --muted-foreground: oklch(0.72 0.015 250);
+  --border: oklch(0.26 0.015 250);
 }

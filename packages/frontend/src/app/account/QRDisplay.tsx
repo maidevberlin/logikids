@@ -72,7 +72,7 @@ export function QRDisplay() {
       ) : (
         <div className="space-y-4">
           {/* QR Code Display */}
-          <div className="bg-white border-2 border-gray-200 rounded-xl p-6 flex flex-col items-center">
+          <div className="bg-card border-2 rounded-xl p-6 flex flex-col items-center">
             {qrData && (
               <>
                 <QRCodeSVG
@@ -81,7 +81,7 @@ export function QRDisplay() {
                   level="H"
                   includeMargin={true}
                 />
-                <p className="text-xs text-gray-500 mt-3 text-center">
+                <p className="text-xs text-muted-foreground mt-3 text-center">
                   {t('account.qrDisplay.scanInstruction')}
                 </p>
               </>
@@ -90,7 +90,7 @@ export function QRDisplay() {
 
           {/* Security Warning */}
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-foreground">
               {t('account.qrDisplay.securityWarning')}
             </p>
           </div>

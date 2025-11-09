@@ -65,12 +65,12 @@ export default function OnboardingPage() {
           <div className="flex items-center justify-center space-x-2">
             <div
               className={`w-3 h-3 rounded-full ${
-                step === 'consent' ? 'bg-primary' : 'bg-gray-300'
+                step === 'consent' ? 'bg-primary' : 'bg-muted'
               }`}
             />
             <div
               className={`w-3 h-3 rounded-full ${
-                step === 'info' ? 'bg-primary' : 'bg-gray-300'
+                step === 'info' ? 'bg-primary' : 'bg-muted'
               }`}
             />
           </div>

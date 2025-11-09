@@ -60,7 +60,7 @@ export function ExportData() {
         }
       </Button>
 
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-muted-foreground">
         {t('account.exportData.description', {
           defaultValue: 'Download all your data as a JSON file. You can use this for backups or to transfer your data.'
         })}

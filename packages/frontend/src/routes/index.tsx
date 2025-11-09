@@ -12,6 +12,7 @@ const ConceptsPage = lazy(() => import('@/app/concepts'))
 const AccountPage = lazy(() => import('@/app/account'))
 const TaskPage = lazy(() => import('@/app/tasks'))
 const StatsPage = lazy(() => import('@/app/stats').then(m => ({ default: m.StatsPage })))
+const PracticePage = lazy(() => import('@/features/Practice/PracticePage'))
 const PrivacyPage = lazy(() => import('@/app/legal/PrivacyPage'))
 const ImpressumPage = lazy(() => import('@/app/legal/ImpressumPage'))
 
@@ -38,6 +39,7 @@ export const router = createHashRouter(
 
         <Route path="account" element={<AccountPage />} />
         <Route path="stats" element={<StatsPage />} />
+        <Route path="practice" element={<PracticePage />} />
       </Route>
     </Route>
   )

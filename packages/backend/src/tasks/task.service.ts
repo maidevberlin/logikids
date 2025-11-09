@@ -1,4 +1,4 @@
-import {TaskRequest, TaskGenerationParams} from './types';
+import {TaskRequest} from './types';
 import {TaskResponse, BaseTaskResponse} from './types';
 import {AIClient} from '../common/ai/base';
 import {taskTypeRegistry} from './types/registry';

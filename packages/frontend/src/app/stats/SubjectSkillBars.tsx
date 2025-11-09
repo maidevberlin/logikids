@@ -49,7 +49,7 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
 
       <div className="space-y-4">
         {subjects.map(([subject, mastery]) => {
-          const subjectColor = SUBJECT_COLORS[subject] || 'bg-gray-500'
+          const subjectColor = SUBJECT_COLORS[subject] || 'bg-muted-foreground'
 
           return (
             <div key={subject} className="flex items-center gap-4">

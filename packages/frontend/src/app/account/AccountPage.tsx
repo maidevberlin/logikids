@@ -28,10 +28,10 @@ export default function AccountPage() {
     >
       <div className="max-w-2xl mx-auto space-y-6">
         <div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-foreground mb-2">
             {t('account.title', { defaultValue: 'My Account' })}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             {t('account.subtitle', { defaultValue: 'Manage your profile and preferences' })}
           </p>
         </div>

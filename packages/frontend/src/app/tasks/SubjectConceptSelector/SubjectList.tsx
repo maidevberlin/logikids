@@ -21,13 +21,13 @@ export const SubjectList = memo(function SubjectList({
     <div className="flex flex-col gap-2">
       {/* Header with navigation */}
       <div className="flex items-center justify-between px-1 pb-2 border-b">
-        <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
           {t('task.subjects')}
         </h3>
         <Button
           variant="ghost"
           size="sm"
-          className="h-7 px-2 text-xs hover:bg-gray-100"
+          className="h-7 px-2 text-xs hover:bg-muted"
           onClick={() => navigate('/subjects')}
         >
           <Grid2x2 className="w-3.5 h-3.5 mr-1" />
@@ -50,7 +50,7 @@ export const SubjectList = memo(function SubjectList({
             } else if (isPreviewing) {
               stateClasses = `${theme.colors.bgLight} ${theme.colors.hoverLight}`
             } else {
-              stateClasses = 'hover:bg-gray-50'
+              stateClasses = 'hover:bg-muted'
             }
 
             return (

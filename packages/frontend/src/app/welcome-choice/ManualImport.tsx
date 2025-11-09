@@ -113,7 +113,7 @@ export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
               value={backupCode}
               onChange={(e) => setBackupCode(e.target.value)}
               placeholder="XXXX-XXXX-XXXX-XXXX..."
-              className="w-full h-32 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none font-mono"
+              className="w-full h-32 px-3 py-2 text-sm border border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none font-mono"
               disabled={isImporting}
               autoFocus
             />

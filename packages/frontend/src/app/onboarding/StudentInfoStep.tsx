@@ -42,28 +42,28 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Card className="p-8 bg-white shadow-lg rounded-2xl">
+      <Card className="p-8 bg-card shadow-lg rounded-2xl">
         <div className="space-y-8">
           {/* Progress indicator */}
           <div className="flex justify-center gap-2 mb-6">
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'name-gender' ? 'bg-primary' : 'bg-gray-300'}`} />
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'age' ? 'bg-primary' : 'bg-gray-300'}`} />
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'grade' ? 'bg-primary' : 'bg-gray-300'}`} />
+            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'name-gender' ? 'bg-primary' : 'bg-muted'}`} />
+            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'age' ? 'bg-primary' : 'bg-muted'}`} />
+            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'grade' ? 'bg-primary' : 'bg-muted'}`} />
           </div>
 
           {/* Step 1: Name + Gender */}
           {subStep === 'name-gender' && (
             <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
               <div className="text-center">
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-foreground mb-2">
                   {t('onboarding.studentInfo.title')}
                 </h2>
-                <p className="text-gray-600">{t('onboarding.studentInfo.subtitle')}</p>
+                <p className="text-muted-foreground">{t('onboarding.studentInfo.subtitle')}</p>
               </div>
 
               {/* Name Input */}
               <div className="space-y-3">
-                <label className="block text-xl font-semibold text-gray-700 text-center">
+                <label className="block text-xl font-semibold text-foreground text-center">
                   {t('onboarding.studentInfo.nameLabel')}
                 </label>
                 <input
@@ -71,17 +71,17 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={t('onboarding.studentInfo.namePlaceholder')}
-                  className="w-full bg-transparent border-0 border-b-2 border-gray-300 focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-gray-400 transition-colors"
+                  className="w-full bg-transparent border-0 border-b-2 border focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-muted-foreground transition-colors"
                   autoFocus
                 />
               </div>
 
               {/* Gender Selection */}
               <div className="space-y-4">
-                <label className="block text-xl font-semibold text-gray-700 text-center">
+                <label className="block text-xl font-semibold text-foreground text-center">
                   {t('profile:settings.gender.label')}
                 </label>
-                <p className="text-sm text-gray-500 text-center">{t('onboarding.studentInfo.genderHint')}</p>
+                <p className="text-sm text-muted-foreground text-center">{t('onboarding.studentInfo.genderHint')}</p>
                 <GenderSelector
                   value={gender}
                   onChange={setGender}
@@ -100,10 +100,10 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
           {subStep === 'age' && (
             <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
               <div className="text-center">
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-foreground mb-2">
                   {t('onboarding.studentInfo.ageLabel')}
                 </h2>
-                <p className="text-gray-600">{t('onboarding.studentInfo.ageHint')}</p>
+                <p className="text-muted-foreground">{t('onboarding.studentInfo.ageHint')}</p>
               </div>
 
               <NumberInput
@@ -126,10 +126,10 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
           {subStep === 'grade' && (
             <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
               <div className="text-center">
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-foreground mb-2">
                   {t('onboarding.studentInfo.gradeLabel')}
                 </h2>
-                <p className="text-gray-600">{t('onboarding.studentInfo.gradeDescription')}</p>
+                <p className="text-muted-foreground">{t('onboarding.studentInfo.gradeDescription')}</p>
               </div>
 
               <GradeSelector

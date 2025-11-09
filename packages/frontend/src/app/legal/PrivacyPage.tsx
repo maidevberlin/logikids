@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         <Card className="p-8 shadow-md rounded-2xl">
           <h1 className="text-3xl font-bold mb-6">{t('legal.privacy.title')}</h1>
 
-          <div className="space-y-6 text-gray-700">
+          <div className="space-y-6 text-foreground">
             <section>
               <h2 className="text-xl font-semibold mb-3">{t('legal.privacy.intro.title')}</h2>
               <p className="mb-2">{t('legal.privacy.intro.paragraph1')}</p>

@@ -44,7 +44,7 @@ export function GradeSelector({
               className={`flex items-center justify-center h-24 rounded-2xl text-3xl font-bold border transition-all duration-300 ${
                 value === gradeOption
                   ? 'bg-primary text-white border-primary shadow-md scale-105'
-                  : 'bg-white text-gray-900 border-gray-200 shadow-xs hover:shadow-md hover:scale-[1.02]'
+                  : 'bg-card text-foreground shadow-xs hover:shadow-md hover:scale-[1.02]'
               }`}
             >
               {gradeOption}
@@ -59,7 +59,7 @@ export function GradeSelector({
           <button
             type="button"
             onClick={() => setShowAllGrades(!showAllGrades)}
-            className="text-sm text-gray-600 hover:text-gray-900 underline transition-colors"
+            className="text-sm text-muted-foreground hover:text-foreground underline transition-colors"
           >
             {showAllGrades
               ? t('onboarding.studentInfo.showRecommended', { defaultValue: 'Show recommended grades' })

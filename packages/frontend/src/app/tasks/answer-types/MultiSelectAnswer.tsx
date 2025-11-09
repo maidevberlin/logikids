@@ -77,7 +77,7 @@ export function MultiSelectAnswer({
               ? 'bg-red-100 text-red-700'
               : selectedIndices.length === expectedCount
               ? 'bg-green-100 text-green-700'
-              : 'bg-slate-100 text-slate-700'
+              : 'bg-muted text-muted-foreground'
           )}
         >
           {t('task.selectedCount', { selected: selectedIndices.length, total: expectedCount })}

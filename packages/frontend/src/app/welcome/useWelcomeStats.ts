@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { useUserData } from '@/app/account'
-import { calculateSubjectMastery } from '@/app/stats/gameStatsService'
 
 export interface WelcomeStats {
   streak: number
@@ -27,14 +26,15 @@ export function useWelcomeStats(): WelcomeStats {
     const streak = data.gameStats?.streaks?.currentDays || 0
 
     // Calculate average mastery level across all subjects
-    const subjects = Object.keys(data.progress || {})
+    const subjectMastery = data.gameStats?.subjectMastery || {}
+    const subjects = Object.values(subjectMastery)
+
     let totalStars = 0
     let subjectCount = 0
 
-    subjects.forEach(subject => {
-      const mastery = calculateSubjectMastery(subject, data.progress)
-      if (mastery > 0) {
-        totalStars += mastery
+    subjects.forEach(mastery => {
+      if (mastery.stars > 0) {
+        totalStars += mastery.stars
         subjectCount++
       }
     })
@@ -72,11 +72,17 @@ function getLatestAchievement(data: any): string | null {
   if (weekly?.noHintTasks >= 5) return 'welcome.achievements.noHints5'
 
   // Check for total task milestones
-  const totalTasks = Object.values(data.progress || {}).reduce((sum: number, subjectStats: any) => {
-    return sum + Object.values(subjectStats || {}).reduce((subSum: number, diffStats: any) => {
-      return subSum + (diffStats?.correct || 0) + (diffStats?.wrong || 0)
-    }, 0)
-  }, 0)
+  let totalTasks = 0
+  const progress = data.progress || {}
+  for (const subjectConcepts of Object.values(progress)) {
+    if (typeof subjectConcepts === 'object' && subjectConcepts !== null) {
+      for (const conceptStats of Object.values(subjectConcepts)) {
+        if (conceptStats && typeof conceptStats === 'object' && 'aggregate' in conceptStats) {
+          totalTasks += (conceptStats.aggregate as any)?.totalAttempts || 0
+        }
+      }
+    }
+  }
 
   if (totalTasks >= 100) return 'welcome.achievements.tasks100'
   if (totalTasks >= 50) return 'welcome.achievements.tasks50'

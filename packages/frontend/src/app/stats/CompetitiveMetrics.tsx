@@ -3,7 +3,7 @@ import { MetricCard } from './MetricCard'
 import { GameStats } from './gameTypes'
 
 interface CompetitiveMetricsProps {
-  gameStats: GameStats
+  gameStats: GameStats | undefined
   overallSuccessRate: number
 }
 
@@ -12,6 +12,10 @@ export function CompetitiveMetrics({
   overallSuccessRate
 }: CompetitiveMetricsProps) {
   const { t } = useTranslation('stats')
+
+  if (!gameStats) {
+    return null
+  }
 
   const isPersonalBest = overallSuccessRate > 0 &&
     overallSuccessRate >= gameStats.personalBests.successRate
