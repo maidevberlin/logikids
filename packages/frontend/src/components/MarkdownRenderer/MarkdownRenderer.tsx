@@ -35,6 +35,14 @@ function MarkdownRendererComponent({
 }: MarkdownRendererProps) {
   const mermaidRef = useRef<HTMLDivElement>(null)
 
+  // Fix: Normalize LaTeX - convert double backslashes to single within math delimiters
+  // This handles inconsistent escaping from the AI
+  const normalizedContent = content.replace(/(\$+)([^$]+)\1/g, (match, delim, mathContent) => {
+    // Within math delimiters, convert \\ to \ for LaTeX commands
+    const normalized = mathContent.replace(/\\\\(?=\w)/g, '\\');
+    return delim + normalized + delim;
+  });
+
   // Render Mermaid diagrams after component mounts/updates
   useEffect(() => {
     if (enableMermaid && mermaidRef.current) {
@@ -58,13 +66,13 @@ function MarkdownRendererComponent({
       }
       renderMermaid()
     }
-  }, [content, enableMermaid])
+  }, [normalizedContent, enableMermaid])
 
   return (
     <div ref={mermaidRef} className={`markdown-content ${noParagraphMargin ? '[&_p]:!mb-0' : ''} ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
-        rehypePlugins={[...(enableMath ? [rehypeKatex as any] : []), rehypeRaw as any]}
+        rehypePlugins={enableMath ? [rehypeKatex as any] : [rehypeRaw as any]}
         components={{
           svg({ node, children, ...props }: any) {
             // Wrap SVGs in a container with white background and controlled width
@@ -142,19 +150,19 @@ function MarkdownRendererComponent({
           table({ children, ...props }: any) {
             return (
               <div className="overflow-x-auto my-4">
-                <table className="min-w-full divide-y divide-gray-300" {...props}>
+                <table className="min-w-full divide-y divide-border" {...props}>
                   {children}
                 </table>
               </div>
             )
           },
           thead({ children, ...props }: any) {
-            return <thead className="bg-gray-50" {...props}>{children}</thead>
+            return <thead className="bg-muted" {...props}>{children}</thead>
           },
           th({ children, ...props }: any) {
             return (
               <th
-                className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-3 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
                 {...props}
               >
                 {children}
@@ -170,7 +178,7 @@ function MarkdownRendererComponent({
           },
         }}
       >
-        {content}
+        {normalizedContent}
       </ReactMarkdown>
     </div>
   )

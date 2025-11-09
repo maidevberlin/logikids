@@ -39,6 +39,8 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 ## Available Formatting
 
 - LaTeX: `$x^2$` (inline), `$$\frac{a}{b}$$` (block)
+  - Use standard LaTeX syntax: `\cdot`, `\times`, `\frac{}{}`, etc.
+  - The system will handle proper escaping automatically
 - Code blocks: ` ```python `
 - Mermaid diagrams: ` ```mermaid `
 - Tables, **bold**, *italic*, lists, quotes
