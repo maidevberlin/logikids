@@ -1,8 +1,5 @@
-import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 
@@ -23,11 +20,7 @@ export function NumberInputAnswer({
   isLoading = false,
   isLocked = false,
 }: NumberInputAnswerProps) {
-  const [inputValue, setInputValue] = useState('')
-  const [isEditing, setIsEditing] = useState(false)
-
   const answer = selectedAnswer || { value: null, unit: unitOptions?.[0] }
-  const displayValue = answer.value !== null ? answer.value : ''
 
   const handleIncrement = () => {
     if (isLocked) return
@@ -41,38 +34,18 @@ export function NumberInputAnswer({
     onAnswerSelect({ ...answer, value: newValue })
   }
 
-  const handleNumberClick = () => {
-    if (isLocked) return
-    setIsEditing(true)
-    setInputValue(answer.value !== null ? String(answer.value) : '')
-  }
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
-  }
+    const value = e.target.value
 
-  const handleInputBlur = () => {
-    setIsEditing(false)
-
-    // Validate and parse the input
-    const trimmed = inputValue.trim()
-    if (trimmed === '' || trimmed === '-') {
+    // Allow empty or just minus sign
+    if (value === '' || value === '-') {
       onAnswerSelect({ ...answer, value: null })
       return
     }
 
-    const parsed = parseFloat(trimmed)
+    const parsed = parseFloat(value)
     if (!isNaN(parsed)) {
       onAnswerSelect({ ...answer, value: parsed })
-    } else {
-      // Invalid input - reset to current value
-      setInputValue(answer.value !== null ? String(answer.value) : '')
-    }
-  }
-
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.currentTarget.blur()
     }
   }
 
@@ -84,104 +57,80 @@ export function NumberInputAnswer({
   if (isLoading) {
     return (
       <div className="flex justify-center my-6">
-        <Skeleton className="h-64 w-96 rounded-2xl" />
+        <Skeleton className="h-24 w-96" />
       </div>
     )
   }
 
   return (
     <div className="flex justify-center my-6">
-      <Card className="p-8 rounded-2xl shadow-md">
-        <div className="flex flex-col items-center gap-6">
-          {/* Number stepper with editable center */}
-          <div className="flex items-center gap-4">
-            <Button
-              type="button"
-              variant="outline"
-              size="icon"
-              onClick={handleDecrement}
-              disabled={isLocked}
-              className={cn(
-                'h-16 w-16 rounded-full text-2xl border-gray-300 hover:border-gray-400',
-                isLocked && 'cursor-not-allowed opacity-50'
-              )}
-            >
-              <ChevronLeft className="h-8 w-8" />
-            </Button>
-
-            {isEditing ? (
-              <input
-                type="text"
-                inputMode="decimal"
-                value={inputValue}
-                onChange={handleInputChange}
-                onBlur={handleInputBlur}
-                onKeyDown={handleInputKeyDown}
-                autoFocus
-                className="h-28 w-28 rounded-3xl bg-primary text-5xl font-bold text-white text-center shadow-lg outline-none focus:ring-4 focus:ring-primary/50"
-              />
-            ) : (
-              <div
-                onClick={handleNumberClick}
-                className={cn(
-                  'flex h-28 w-28 items-center justify-center rounded-3xl bg-primary text-5xl font-bold text-white shadow-lg',
-                  !isLocked && 'cursor-pointer hover:bg-primary/90 transition-colors'
-                )}
-              >
-                {displayValue}
-              </div>
+      <div className="space-y-3 min-w-96">
+        {/* Number input with chevrons */}
+        <div className="flex items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={handleDecrement}
+            disabled={isLocked}
+            className={cn(
+              "p-2 text-gray-600 hover:text-gray-900 transition-colors",
+              isLocked && "opacity-50 cursor-not-allowed"
             )}
+          >
+            <ChevronLeft className="h-8 w-8" />
+          </button>
 
-            <Button
-              type="button"
-              variant="outline"
-              size="icon"
-              onClick={handleIncrement}
+          <div className="flex-1 flex items-center border-b-2 border-gray-300 focus-within:border-primary transition-colors">
+            <input
+              type="text"
+              inputMode="decimal"
+              value={answer.value !== null ? String(answer.value) : ''}
+              onChange={handleInputChange}
               disabled={isLocked}
               className={cn(
-                'h-16 w-16 rounded-full text-2xl border-gray-300 hover:border-gray-400',
-                isLocked && 'cursor-not-allowed opacity-50'
+                "flex-1 bg-transparent border-0 outline-none text-4xl text-center py-4 placeholder:text-gray-400",
+                isLocked && "cursor-not-allowed opacity-75"
               )}
-            >
-              <ChevronRight className="h-8 w-8" />
-            </Button>
-          </div>
+              placeholder="0"
+            />
 
-          {/* Unit display/selection */}
-          {unitOptions && unitOptions.length > 0 ? (
-            // Mode 3: Unit selection dropdown
-            <div className="w-28">
+            {/* Unit display or selection - seamless on same line */}
+            {unitOptions && unitOptions.length > 0 ? (
               <Select
                 value={answer.unit || unitOptions[0]}
                 onValueChange={handleUnitChange}
                 disabled={isLocked}
               >
-                <SelectTrigger
-                  className={cn(
-                    'h-12 text-lg border-2 rounded-xl',
-                    isLocked && 'cursor-not-allowed opacity-50'
-                  )}
-                >
+                <SelectTrigger className="border-0 text-3xl text-gray-600 px-2 w-auto shadow-none focus:ring-0">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {unitOptions.map((unitOption) => (
-                    <SelectItem key={unitOption} value={unitOption}>
-                      {unitOption}
+                  {unitOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
-            </div>
-          ) : unit ? (
-            // Mode 2: Display-only unit
-            <div className="text-lg font-semibold text-gray-700">
-              {unit}
-            </div>
-          ) : null}
-          {/* Mode 1: No unit - nothing shown */}
+            ) : unit ? (
+              <span className="text-3xl text-gray-600 px-2">
+                {unit}
+              </span>
+            ) : null}
+          </div>
+
+          <button
+            type="button"
+            onClick={handleIncrement}
+            disabled={isLocked}
+            className={cn(
+              "p-2 text-gray-600 hover:text-gray-900 transition-colors",
+              isLocked && "opacity-50 cursor-not-allowed"
+            )}
+          >
+            <ChevronRight className="h-8 w-8" />
+          </button>
         </div>
-      </Card>
+      </div>
     </div>
   )
 }
