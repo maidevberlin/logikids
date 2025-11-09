@@ -64,15 +64,15 @@ export function NumberInputAnswer({
 
   return (
     <div className="flex justify-center my-6">
-      <div className="space-y-3 min-w-96">
+      <div className="w-full max-w-md space-y-3">
         {/* Number input with chevrons */}
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={handleDecrement}
             disabled={isLocked}
             className={cn(
-              "p-2 text-gray-600 hover:text-gray-900 transition-colors",
+              "p-2 text-gray-600 hover:text-gray-900 transition-colors shrink-0",
               isLocked && "opacity-50 cursor-not-allowed"
             )}
           >
@@ -87,7 +87,7 @@ export function NumberInputAnswer({
               onChange={handleInputChange}
               disabled={isLocked}
               className={cn(
-                "flex-1 bg-transparent border-0 outline-none text-4xl text-center py-4 placeholder:text-gray-400",
+                "flex-1 bg-transparent border-0 outline-none text-4xl text-center py-4 placeholder:text-gray-400 min-w-0",
                 isLocked && "cursor-not-allowed opacity-75"
               )}
               placeholder="0"
@@ -100,7 +100,7 @@ export function NumberInputAnswer({
                 onValueChange={handleUnitChange}
                 disabled={isLocked}
               >
-                <SelectTrigger className="border-0 text-3xl text-gray-600 px-2 w-auto shadow-none focus:ring-0">
+                <SelectTrigger className="border-0 text-3xl text-gray-600 px-2 w-auto shadow-none focus:ring-0 shrink-0">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -112,7 +112,7 @@ export function NumberInputAnswer({
                 </SelectContent>
               </Select>
             ) : unit ? (
-              <span className="text-3xl text-gray-600 px-2">
+              <span className="text-3xl text-gray-600 px-2 shrink-0">
                 {unit}
               </span>
             ) : null}
@@ -123,7 +123,7 @@ export function NumberInputAnswer({
             onClick={handleIncrement}
             disabled={isLocked}
             className={cn(
-              "p-2 text-gray-600 hover:text-gray-900 transition-colors",
+              "p-2 text-gray-600 hover:text-gray-900 transition-colors shrink-0",
               isLocked && "opacity-50 cursor-not-allowed"
             )}
           >
