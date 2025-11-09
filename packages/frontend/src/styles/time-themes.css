@@ -7,7 +7,7 @@
   --color-primary: 59 130 246;
   --color-primary-foreground: 255 255 255;
   --color-muted: 241 245 249;
-  --color-muted-foreground: 100 116 139;
+  --color-muted-foreground: 80 94 122;
   --color-border: 226 232 240;
 }
 
@@ -33,7 +33,7 @@ body.time-midday {
   --color-primary: 59 130 246;
   --color-primary-foreground: 255 255 255;
   --color-muted: 241 245 249;
-  --color-muted-foreground: 100 116 139;
+  --color-muted-foreground: 80 94 122;
   --color-border: 226 232 240;
 }
 
