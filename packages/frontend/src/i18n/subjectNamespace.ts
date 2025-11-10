@@ -2,7 +2,7 @@
  * Helper to determine which i18n namespace to use for a subject's concepts
  */
 
-const SPLIT_SUBJECTS = ['math', 'german', 'english'];
+const SPLIT_SUBJECTS = ['math', 'german', 'english', 'physics'];
 
 function getGradeRange(grade: number): 'elementary' | 'middle' | 'high' {
   if (grade >= 1 && grade <= 4) return 'elementary';

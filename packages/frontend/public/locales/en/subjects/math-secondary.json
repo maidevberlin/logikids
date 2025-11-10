@@ -1,0 +1,100 @@
+{
+  "concepts": {
+    "advanced-combinatorics": {
+      "name": "Advanced Combinatorics",
+      "description": "Binomial theorem, Pascal's triangle, pigeonhole principle, and advanced counting techniques"
+    },
+    "angles-and-distances-3d": {
+      "name": "Angles and Distances in 3D",
+      "description": "Vectors and analytical geometry"
+    },
+    "complex-numbers-intro": {
+      "name": "Introduction to Complex Numbers",
+      "description": "Complex number arithmetic, polar form, and basic operations"
+    },
+    "correlation-and-regression": {
+      "name": "Correlation and Regression",
+      "description": "Statistics and probability"
+    },
+    "cross-product": {
+      "name": "Cross Product (Vector Product)",
+      "description": "Vectors and analytical geometry"
+    },
+    "curve-sketching": {
+      "name": "Curve Sketching (Kurvendiskussion)",
+      "description": "Complete analysis of functions including domain, zeros, extrema, inflection points, and asymptotes"
+    },
+    "derivative-applications": {
+      "name": "Applications of Derivatives",
+      "description": "Using derivatives to analyze functions and solve optimization and related rates problems"
+    },
+    "derivatives": {
+      "name": "Derivatives and Differentiation",
+      "description": "Understanding rates of change and calculating derivatives using various rules"
+    },
+    "determinants": {
+      "name": "Determinants",
+      "description": "Computing and applying determinants of square matrices"
+    },
+    "differential-equations-intro": {
+      "name": "Introduction to Differential Equations",
+      "description": "First-order differential equations, separation of variables, and basic applications"
+    },
+    "integration": {
+      "name": "Antiderivatives and Integration",
+      "description": "Understanding integration as the reverse of differentiation and calculating definite and indefinite integrals"
+    },
+    "integration-applications": {
+      "name": "Applications of Integration",
+      "description": "Using integration to calculate areas, volumes, and solve applied problems"
+    },
+    "inverse-matrices": {
+      "name": "Inverse Matrices",
+      "description": "Finding and applying inverse matrices using various methods"
+    },
+    "limits-continuity": {
+      "name": "Limits and Continuity",
+      "description": "Understanding limits of functions and continuity as foundations of calculus"
+    },
+    "linear-systems-matrices": {
+      "name": "Linear Systems and Matrices",
+      "description": "Solving systems of linear equations using matrix methods and Gaussian elimination"
+    },
+    "linear-transformations": {
+      "name": "Linear Transformations",
+      "description": "Understanding linear transformations, their matrix representations, and geometric properties"
+    },
+    "lines-in-space": {
+      "name": "Lines in 3D Space",
+      "description": "Vectors and analytical geometry"
+    },
+    "matrices-basics": {
+      "name": "Matrices Basics",
+      "description": "Introduction to matrices, matrix operations, and basic properties"
+    },
+    "normal-distribution": {
+      "name": "Normal Distribution",
+      "description": "Statistics and probability"
+    },
+    "planes-in-space": {
+      "name": "Planes in 3D Space",
+      "description": "Vectors and analytical geometry"
+    },
+    "scalar-product": {
+      "name": "Scalar Product (Dot Product)",
+      "description": "Vectors and analytical geometry"
+    },
+    "sequences-and-series": {
+      "name": "Sequences and Series",
+      "description": "Arithmetic and geometric sequences, convergence, and series summation"
+    },
+    "statistical-inference": {
+      "name": "Statistical Inference",
+      "description": "Statistics and probability"
+    },
+    "vectors-basics": {
+      "name": "Vector Basics",
+      "description": "Vectors and analytical geometry"
+    }
+  }
+}

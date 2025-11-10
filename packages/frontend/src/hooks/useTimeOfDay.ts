@@ -9,7 +9,9 @@ function getTimeOfDay(): TimeOfDay {
   if (hour >= 10 && hour < 14) return 'midday';
   if (hour >= 14 && hour < 18) return 'afternoon';
   if (hour >= 18 && hour < 22) return 'evening';
-  return 'night';
+  // night mode is broken on many places
+  //return 'night';
+    return 'evening';
 }
 
 function updateBodyTimeClass(time: TimeOfDay): void {

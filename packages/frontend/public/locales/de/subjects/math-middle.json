@@ -1,5 +1,45 @@
 {
   "concepts": {
+    "3d-geometry": {
+      "name": "Räumliche Geometrie",
+      "description": "Raum und Form"
+    },
+    "basic-probability": {
+      "name": "Grundlagen der Wahrscheinlichkeit",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "binomial-formulas": {
+      "name": "Binomische Formeln",
+      "description": "Strukturen und Funktionen"
+    },
+    "circle-theorems": {
+      "name": "Kreissätze",
+      "description": "Raum und Form"
+    },
+    "combinatorics": {
+      "name": "Kombinatorik",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "counting-principles": {
+      "name": "Zählprinzipien",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "descriptive-statistics": {
+      "name": "Beschreibende Statistik",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "exponential-functions": {
+      "name": "Exponentialfunktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "general-triangle-trigonometry": {
+      "name": "Trigonometrie am allgemeinen Dreieck",
+      "description": "Raum und Form"
+    },
+    "geometric-shapes": {
+      "name": "Geometrische Formen",
+      "description": "Raum und Form"
+    },
     "grade5-angles": {
       "name": "Winkel",
       "description": "Größen und Messen"
@@ -191,6 +231,86 @@
     "grade6-two-way-table": {
       "name": "Vierfeldertafel",
       "description": "Daten und Wahrscheinlichkeit"
+    },
+    "inequalities": {
+      "name": "Ungleichungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "introduction-to-functions": {
+      "name": "Einführung in Funktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "linear-equations": {
+      "name": "Lineare Gleichungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "linear-functions": {
+      "name": "Lineare Funktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "logarithmic-functions": {
+      "name": "Logarithmusfunktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "percentage-interest": {
+      "name": "Prozent- und Zinsrechnung",
+      "description": "Zahlen und Operationen"
+    },
+    "polynomial-functions": {
+      "name": "Polynomfunktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "powers-and-roots": {
+      "name": "Potenzen und Wurzeln",
+      "description": "Zahlen und Operationen"
+    },
+    "probability-distributions": {
+      "name": "Wahrscheinlichkeitsverteilungen",
+      "description": "Daten und Wahrscheinlichkeit"
+    },
+    "proportional-relationships": {
+      "name": "Proportionale Zuordnungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "pythagorean-theorem": {
+      "name": "Satz des Pythagoras",
+      "description": "Raum und Form"
+    },
+    "quadratic-equations": {
+      "name": "Quadratische Gleichungen",
+      "description": "Strukturen und Funktionen"
+    },
+    "quadratic-functions": {
+      "name": "Quadratische Funktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "rational-functions": {
+      "name": "Gebrochenrationale Funktionen",
+      "description": "Strukturen und Funktionen"
+    },
+    "rational-numbers": {
+      "name": "Rationale Zahlen",
+      "description": "Zahlen und Operationen"
+    },
+    "right-triangle-trigonometry": {
+      "name": "Trigonometrie am rechtwinkligen Dreieck",
+      "description": "Raum und Form"
+    },
+    "similarity-congruence": {
+      "name": "Ähnlichkeit und Kongruenz",
+      "description": "Raum und Form"
+    },
+    "systems-of-equations": {
+      "name": "Gleichungssysteme",
+      "description": "Strukturen und Funktionen"
+    },
+    "terms-and-variables": {
+      "name": "Terme und Variablen",
+      "description": "Strukturen und Funktionen"
+    },
+    "trigonometric-functions": {
+      "name": "Trigonometrische Funktionen",
+      "description": "Strukturen und Funktionen"
     }
   }
 }

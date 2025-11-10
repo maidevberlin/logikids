@@ -271,18 +271,6 @@
     "grade4-youth-literature": {
       "name": "Jugendliteratur",
       "description": "Texte und Medien"
-    },
-    "parts_of_speech": {
-      "name": "Wortarten",
-      "description": "Wortarten verstehen und identifizieren"
-    },
-    "reading_comprehension": {
-      "name": "Text verstehen",
-      "description": "Leseverstehen und Textverständnis"
-    },
-    "spelling": {
-      "name": "Rechtschreibung",
-      "description": "Deutsche Rechtschreibung und Orthografie"
     }
   }
 }

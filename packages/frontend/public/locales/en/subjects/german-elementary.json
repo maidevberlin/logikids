@@ -271,18 +271,6 @@
     "grade4-youth-literature": {
       "name": "Youth Literature",
       "description": "Texts and Media"
-    },
-    "parts_of_speech": {
-      "name": "Parts of Speech",
-      "description": "Understanding and identifying different parts of speech in German"
-    },
-    "reading_comprehension": {
-      "name": "Text verstehen",
-      "description": "Reading comprehension and text understanding"
-    },
-    "spelling": {
-      "name": "Spelling",
-      "description": "German spelling and orthography"
     }
   }
 }

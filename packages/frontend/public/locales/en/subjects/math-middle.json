@@ -1,5 +1,45 @@
 {
   "concepts": {
+    "3d-geometry": {
+      "name": "3D Geometry - Volumes and Surface Areas",
+      "description": "Calculating volumes and surface areas of 3D solids including prisms, pyramids, cylinders, cones, and spheres"
+    },
+    "basic-probability": {
+      "name": "Basic Probability",
+      "description": "Statistics and probability"
+    },
+    "binomial-formulas": {
+      "name": "Binomial Formulas",
+      "description": "Understanding and applying the three binomial formulas for efficient algebraic manipulation"
+    },
+    "circle-theorems": {
+      "name": "Thales' Theorem and Circle Theorems",
+      "description": "Understanding angle relationships in circles including Thales' theorem and inscribed angles"
+    },
+    "combinatorics": {
+      "name": "Combinatorics",
+      "description": "Statistics and probability"
+    },
+    "counting-principles": {
+      "name": "Counting Principles",
+      "description": "Fundamental counting principle, permutations, and combinations"
+    },
+    "descriptive-statistics": {
+      "name": "Descriptive Statistics",
+      "description": "Statistics and probability"
+    },
+    "exponential-functions": {
+      "name": "Exponential Functions",
+      "description": "Understanding exponential growth and decay with applications to real-world scenarios"
+    },
+    "general-triangle-trigonometry": {
+      "name": "Trigonometry in General Triangles",
+      "description": "Applying sine rule, cosine rule, and area formulas to solve any triangle"
+    },
+    "geometric-shapes": {
+      "name": "Geometric Shapes and Properties",
+      "description": "Understanding properties of 2D shapes including triangles, quadrilaterals, and circles"
+    },
     "grade5-angles": {
       "name": "Angles",
       "description": "Measurement"
@@ -191,6 +231,86 @@
     "grade6-two-way-table": {
       "name": "Two-Way Table",
       "description": "Data and probability"
+    },
+    "inequalities": {
+      "name": "Inequalities",
+      "description": "Solving and interpreting linear inequalities with understanding of solution sets"
+    },
+    "introduction-to-functions": {
+      "name": "Introduction to Functions",
+      "description": "Understanding the concept of functions, domain, range, and function notation"
+    },
+    "linear-equations": {
+      "name": "Linear Equations",
+      "description": "Solving linear equations with one variable using algebraic methods"
+    },
+    "linear-functions": {
+      "name": "Linear Functions",
+      "description": "Understanding and working with linear functions including slope, y-intercept, and graphing"
+    },
+    "logarithmic-functions": {
+      "name": "Logarithmic Functions",
+      "description": "Understanding logarithms as inverse of exponential functions with applications"
+    },
+    "percentage-interest": {
+      "name": "Percentage and Interest Calculations",
+      "description": "Calculating percentages, percentage changes, and simple and compound interest"
+    },
+    "polynomial-functions": {
+      "name": "Polynomial Functions",
+      "description": "Working with higher-degree polynomial functions including behavior analysis"
+    },
+    "powers-and-roots": {
+      "name": "Powers and Roots",
+      "description": "Understanding and calculating with exponents and square roots including scientific notation"
+    },
+    "probability-distributions": {
+      "name": "Probability Distributions",
+      "description": "Statistics and probability"
+    },
+    "proportional-relationships": {
+      "name": "Proportional Relationships",
+      "description": "Understanding direct and inverse proportionality and solving problems using the rule of three"
+    },
+    "pythagorean-theorem": {
+      "name": "Pythagorean Theorem",
+      "description": "Understanding and applying the Pythagorean theorem in right triangles"
+    },
+    "quadratic-equations": {
+      "name": "Quadratic Equations",
+      "description": "Solving quadratic equations using multiple methods including factoring, completing the square, and formulas"
+    },
+    "quadratic-functions": {
+      "name": "Quadratic Functions",
+      "description": "Analyzing and graphing quadratic functions including parabolas, vertex form, and applications"
+    },
+    "rational-functions": {
+      "name": "Rational Functions",
+      "description": "Analyzing rational functions including asymptotes, discontinuities, and behavior"
+    },
+    "rational-numbers": {
+      "name": "Rational Numbers",
+      "description": "Working with fractions, decimals, and negative numbers including all four basic operations"
+    },
+    "right-triangle-trigonometry": {
+      "name": "Trigonometry in Right Triangles",
+      "description": "Using sine, cosine, and tangent ratios to solve right triangle problems"
+    },
+    "similarity-congruence": {
+      "name": "Similarity and Congruence",
+      "description": "Understanding congruent and similar figures with applications to scaling"
+    },
+    "systems-of-equations": {
+      "name": "Linear Systems of Equations",
+      "description": "Solving systems of two linear equations with two variables using multiple methods"
+    },
+    "terms-and-variables": {
+      "name": "Terms and Variables",
+      "description": "Working with algebraic terms including simplification and transformation"
+    },
+    "trigonometric-functions": {
+      "name": "Trigonometric Functions",
+      "description": "Understanding sine, cosine, and tangent functions with periodic behavior"
     }
   }
 }

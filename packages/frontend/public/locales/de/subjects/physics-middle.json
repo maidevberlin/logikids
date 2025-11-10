@@ -1,5 +1,33 @@
 {
   "concepts": {
+    "light-propagation": {
+      "name": "Lichtausbreitung",
+      "description": "Lichtstrahlen und Schattenbildung"
+    },
+    "reflection": {
+      "name": "Reflexion",
+      "description": "Spiegelung an ebenen und gekrümmten Flächen"
+    },
+    "refraction": {
+      "name": "Brechung",
+      "description": "Lichtbrechung und Linsen"
+    },
+    "color-spectrum": {
+      "name": "Farben und Spektrum",
+      "description": "Farbzerlegung und Farbwahrnehmung"
+    },
+    "basic-electricity": {
+      "name": "Grundlagen der Elektrizität",
+      "description": "Stromkreise, Spannung und Widerstand"
+    },
+    "magnetism": {
+      "name": "Magnetismus",
+      "description": "Magnete und magnetische Felder"
+    },
+    "sound-acoustics": {
+      "name": "Schall und Akustik",
+      "description": "Schallquellen, Wellen und Eigenschaften"
+    },
     "temperature-heat": {
       "name": "Temperatur und Wärme",
       "description": "Temperaturmessung und Teilchenmodell"
