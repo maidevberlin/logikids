@@ -37,7 +37,7 @@ function MarkdownRendererComponent({
 
   // Fix: Normalize LaTeX - convert double backslashes to single within math delimiters
   // This handles inconsistent escaping from the AI
-  const normalizedContent = content.replace(/(\$+)([^$]+)\1/g, (match, delim, mathContent) => {
+  const normalizedContent = content.replace(/(\$+)([^$]+)\1/g, (_match, delim, mathContent) => {
     // Within math delimiters, convert \\ to \ for LaTeX commands
     const normalized = mathContent.replace(/\\\\(?=\w)/g, '\\');
     return delim + normalized + delim;
@@ -72,7 +72,10 @@ function MarkdownRendererComponent({
     <div ref={mermaidRef} className={`markdown-content ${noParagraphMargin ? '[&_p]:!mb-0' : ''} ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
-        rehypePlugins={enableMath ? [rehypeKatex as any] : [rehypeRaw as any]}
+        rehypePlugins={[
+          rehypeRaw as any,
+          ...(enableMath ? [rehypeKatex as any] : [])
+        ]}
         components={{
           svg({ node, children, ...props }: any) {
             // Wrap SVGs in a container with white background and controlled width
@@ -174,6 +177,21 @@ function MarkdownRendererComponent({
               <td className="px-3 py-2 whitespace-nowrap text-sm" {...props}>
                 {children}
               </td>
+            )
+          },
+          // Style figure with caption
+          figure({ children, ...props }: any) {
+            return (
+              <figure className="my-6 flex flex-col items-center" {...props}>
+                {children}
+              </figure>
+            )
+          },
+          figcaption({ children, ...props }: any) {
+            return (
+              <figcaption className="text-center text-sm text-muted-foreground mt-2 font-medium" {...props}>
+                {children}
+              </figcaption>
             )
           },
         }}
