@@ -74,14 +74,12 @@ export class TaskService {
         });
 
         // Generate the task using AI with structured output
-        console.log('[TaskService] Calling AI client with structured generation...');
         const aiStartTime = Date.now();
         const validatedResponse = await this.aiClient.generateStructured<BaseTaskResponse>(
             finalPrompt,
             selectedTaskType.jsonSchema
         );
         const aiDuration = Date.now() - aiStartTime;
-        console.log(`[TaskService] Structured response received in ${aiDuration}ms`);
 
         // Generate taskId and add to response
         // Note: type is already correctly set in validatedResponse by the schema
