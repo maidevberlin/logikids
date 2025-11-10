@@ -53,6 +53,7 @@ export interface OrderingTask extends BaseTask {
 
 export interface FillInBlankTask extends BaseTask {
   type: 'fill_in_blank'
+  fillableText: string
   blanks: Array<{
     id: number
     acceptedAnswers: string[]
@@ -96,25 +97,3 @@ export type TaskAnswerType<T extends Task> = T extends SingleChoiceTask
   : T extends MultiSelectTask
   ? number[]
   : never
-
-export interface TaskAnswerProps<T extends Task = Task> {
-  task: T
-  selectedAnswer: TaskAnswerType<T> | null
-  isLoading: boolean
-  isCorrect: boolean | null
-  onAnswerSelect: (answer: TaskAnswerType<T> | null) => void
-  onAnswerSubmit: () => void
-  onNextTask: () => void
-  hints: string[]
-  requestHint: () => void
-  hintLoading: boolean
-  hintError: string | null
-  canRequestHint: boolean
-}
-
-// Default values
-export const TASK_DEFAULTS = {
-  difficulty: 'medium' as Difficulty,
-  subject: 'math',
-  age: 10,
-} as const

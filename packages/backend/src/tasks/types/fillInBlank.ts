@@ -10,6 +10,7 @@ export interface FillInBlankResponse {
   type: 'fill_in_blank';
   title: string;
   task: string;
+  fillableText: string;
   blanks: FillInBlankItem[];
   explanation: string;
 }
@@ -26,6 +27,10 @@ export const fillInBlankSchema: JSONSchema = {
       minLength: 1
     },
     task: {
+      type: 'string',
+      minLength: 1
+    },
+    fillableText: {
       type: 'string',
       minLength: 1
     },
@@ -61,6 +66,6 @@ export const fillInBlankSchema: JSONSchema = {
       minLength: 1
     }
   },
-  required: ['type', 'title', 'task', 'blanks', 'explanation'],
+  required: ['type', 'title', 'task', 'fillableText', 'blanks', 'explanation'],
   additionalProperties: false
 };

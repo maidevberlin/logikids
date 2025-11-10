@@ -209,7 +209,7 @@ export function TaskCard({
         const AnswerComponent = answerTypeComponents.fill_in_blank
         return (
           <AnswerComponent
-            task={fibTask.task}
+            fillableText={fibTask.fillableText}
             blanksCount={fibTask.blanks.length}
             selectedAnswer={selectedAnswer as string[] | null}
             onAnswerSelect={(answers) => onAnswerSelect(answers)}
@@ -245,6 +245,7 @@ export function TaskCard({
         enableMermaid={true}
         enableCode={true}
       />
+
 
       {/* Answer options */}
       {renderAnswerComponent()}
@@ -285,7 +286,7 @@ export function TaskCard({
                 })}
           </p>
           {isCorrect && explanation && (
-            <div className="mt-2 p-3 bg-white rounded-lg">
+            <div className="mt-2 p-3 bg-card border border-border rounded-lg">
               <MarkdownRenderer
                 content={explanation}
                 enableMath={true}

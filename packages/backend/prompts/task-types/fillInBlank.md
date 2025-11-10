@@ -6,45 +6,13 @@ description: Text with 1-3 blanks where students type short answers
 
 Create a fill-in-the-blank task with 1-3 blanks that test key concepts.
 
-**CRITICAL**:
-- Use exactly `{{blank}}` as the placeholder marker in the task text (case-sensitive, with double curly braces)
-- Generate 1-3 blanks per task (not overwhelming for students)
-- Blanks should test KEY CONCEPTS, not trivial words (e.g., articles, conjunctions)
-- The `blanks` array MUST be ordered sequentially (id: 0, 1, 2, etc.) matching the order of `{{blank}}` markers in the task text
-- Each blank MUST have an `acceptedAnswers` array with 2-3 valid variations/synonyms
-- Set `caseSensitive: false` by default; only use `true` for proper nouns, abbreviations, or when case matters
-- The `explanation` field MUST be a string providing clear reasoning and showing the correct answers
+**Structure:**
+- `task`: Context/setup text (NO blanks)
+- `fillableText`: Text with `__BLANK__` markers where students fill answers
+- `blanks`: Array with id (0, 1, 2...), acceptedAnswers (2-3 variations), caseSensitive (usually false)
+- `explanation`: Why the answers are correct
 
-## Quality Guidelines
-
-**Task Text:**
-- Include 1-3 `{{blank}}` markers in natural positions
-- Ensure the text flows naturally with blanks
-- Provide enough context for students to determine the answer
-- Blanks should test understanding, not guessing
-
-**Blanks Array:**
-- Order blanks sequentially (id: 0, 1, 2) matching left-to-right appearance in task text
-- Each blank needs an `id` (number), `acceptedAnswers` (array of strings), and `caseSensitive` (boolean)
-- Include 2-3 acceptable answer variations per blank:
-  - Synonyms (e.g., "big", "large")
-  - Alternative spellings (e.g., "color", "colour")
-  - Common abbreviations (e.g., "USA", "U.S.A.", "United States")
-  - Numeric variations if applicable (e.g., "2.1", "2.2", "2")
-- Use `caseSensitive: true` only when necessary:
-  - Proper nouns (e.g., "Paris", "Einstein")
-  - Abbreviations (e.g., "DNA", "USA")
-  - When case changes meaning (rare)
-- Use `caseSensitive: false` for:
-  - Common nouns
-  - General terminology
-  - Numbers and dates
-
-**Explanation:**
-- Show the complete sentence with all correct answers filled in
-- Explain WHY each answer is correct
-- Reference the key concepts being tested
-- Make it educational and clear
+**Critical:** Write `__BLANK__` literally in fillableText. Example: "The capital is __BLANK__." NOT "The capital is ."
 
 **Examples:**
 
@@ -53,7 +21,8 @@ Good fill-in-the-blank task (Grammar):
 {
   "type": "fill_in_blank",
   "title": "German Articles",
-  "task": "In German, the definite article for a masculine noun is {{blank}}, for a feminine noun is {{blank}}, and for a neuter noun is {{blank}}.",
+  "task": "In German, nouns have genders (masculine, feminine, neuter) and each requires a specific definite article.",
+  "fillableText": "The definite article for a masculine noun is __BLANK__, for a feminine noun is __BLANK__, and for a neuter noun is __BLANK__.",
   "blanks": [
     {
       "id": 0,
@@ -80,7 +49,8 @@ Good fill-in-the-blank task (Math):
 {
   "type": "fill_in_blank",
   "title": "Equation Solution",
-  "task": "If 2x + 5 = 13, then x = {{blank}}.",
+  "task": "Solve the following equation for x.",
+  "fillableText": "If 2x + 5 = 13, then x = __BLANK__.",
   "blanks": [
     {
       "id": 0,
@@ -97,7 +67,8 @@ Good fill-in-the-blank task (Science):
 {
   "type": "fill_in_blank",
   "title": "Photosynthesis",
-  "task": "During photosynthesis, plants convert {{blank}} and water into glucose and {{blank}} using energy from sunlight.",
+  "task": "Photosynthesis is the process by which plants convert light energy into chemical energy stored in glucose.",
+  "fillableText": "During photosynthesis, plants convert __BLANK__ and water into glucose and __BLANK__ using energy from sunlight.",
   "blanks": [
     {
       "id": 0,

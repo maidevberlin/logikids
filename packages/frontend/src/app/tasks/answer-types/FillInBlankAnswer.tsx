@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
 
 interface FillInBlankAnswerProps {
-  task: string
+  fillableText: string
   blanksCount: number
   selectedAnswer: string[] | null
   onAnswerSelect: (answers: string[]) => void
@@ -14,7 +14,7 @@ interface FillInBlankAnswerProps {
 }
 
 export function FillInBlankAnswer({
-  task,
+  fillableText,
   blanksCount,
   selectedAnswer,
   onAnswerSelect,
@@ -40,17 +40,17 @@ export function FillInBlankAnswer({
     }
   }
 
-  // Parse task text and replace {{blank}} markers with inputs
+  // Parse fillableText and replace __blank__ markers with inputs (case-insensitive)
   const parts: (string | JSX.Element)[] = []
   let blankIndex = 0
   let lastIndex = 0
-  const blankRegex = /\{\{blank\}\}/g
+  const blankRegex = /__blank__/gi // Case-insensitive
   let match
 
-  while ((match = blankRegex.exec(task)) !== null) {
+  while ((match = blankRegex.exec(fillableText)) !== null) {
     // Add text before the blank
     if (match.index > lastIndex) {
-      parts.push(task.substring(lastIndex, match.index))
+      parts.push(fillableText.substring(lastIndex, match.index))
     }
 
     const currentBlankIndex = blankIndex
@@ -67,9 +67,11 @@ export function FillInBlankAnswer({
           onKeyDown={(e) => handleKeyDown(currentBlankIndex, e)}
           disabled={isLocked}
           className={cn(
-            'inline-block w-32 h-10 text-center border-2 rounded-xl',
+            'inline-block w-32 h-10 text-center border-0 border-b-2 rounded-none',
+            'bg-muted/50 text-foreground border-border',
+            'transition-colors focus-visible:ring-0 focus-visible:outline-none focus:border-primary',
             isLocked && 'cursor-not-allowed opacity-75',
-            answers[currentBlankIndex] && 'border-blue-400 bg-blue-50'
+            answers[currentBlankIndex] && 'border-primary'
           )}
           placeholder="..."
         />
@@ -81,8 +83,8 @@ export function FillInBlankAnswer({
   }
 
   // Add remaining text after last blank
-  if (lastIndex < task.length) {
-    parts.push(task.substring(lastIndex))
+  if (lastIndex < fillableText.length) {
+    parts.push(fillableText.substring(lastIndex))
   }
 
   if (isLoading) {
@@ -103,7 +105,7 @@ export function FillInBlankAnswer({
       <div className="text-sm text-muted-foreground text-center mb-4">
         {t('task.fillInBlanks', { count: blanksCount })}
       </div>
-      <div className="text-lg leading-relaxed text-center p-6 bg-slate-50 rounded-2xl">
+      <div className="text-lg leading-relaxed text-center p-6 bg-card rounded-2xl border border-border">
         {parts}
       </div>
     </div>
