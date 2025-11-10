@@ -5,8 +5,6 @@ description: 'Different forms of energy and transformations between them'
 grade: 7
 ages:
   - 12
-  - 13
-  - 14
   - 15
 focus: 'Mechanical, thermal, electrical, chemical, nuclear, and radiant energy, energy transformations, energy conservation, efficiency, energy flow diagrams, Sankey diagrams'
 difficulty: easy

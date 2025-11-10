@@ -5,7 +5,6 @@ description: 'Pressure in fluids and gases, hydrostatic pressure, buoyancy, and 
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: 'Pressure definition (p=F/A), hydrostatic pressure, air pressure, barometers, buoyancy force, Archimedes'' principle, hydraulics, Pascal''s principle'
 difficulty: easy
@@ -16,8 +15,8 @@ learning_objectives:
   - Explain hydraulic systems in technology
 prerequisites: []
 example_tasks:
-  - A force of 200 N acts on an area of 0.04 m². Calculate the pressure.
-  - Calculate the pressure at 10 m depth in water (density: 1000 kg/m³).
+  - "A force of 200 N acts on an area of 0.04 m^2. Calculate the pressure."
+  - "Calculate the pressure at 10 m depth in water (density: 1000 kg/m^3)."
   - A 500 g wooden block floats in water. What is the buoyant force acting on it?
 real_world_context: 'Diving and swimming, hydraulic brakes and lifts, ship buoyancy, weather forecasting, syringes, pneumatic tools'
 ---

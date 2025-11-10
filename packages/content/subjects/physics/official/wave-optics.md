@@ -5,7 +5,6 @@ description: 'Wave nature of light - interference, diffraction, and wave-particl
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: 'Huygens'' principle, interference, double-slit experiment, diffraction, diffraction grating, wavelength determination, coherent light, wave-particle duality, light as electromagnetic wave'
 difficulty: hard

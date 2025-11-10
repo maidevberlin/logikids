@@ -5,7 +5,6 @@ description: 'Reflection of light at plane and curved mirrors'
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: 'Law of reflection, plane mirrors, mirror images, curved mirrors (concave and convex), focal point, mirror equation, applications'
 difficulty: easy

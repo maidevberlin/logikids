@@ -5,7 +5,6 @@ description: 'Sound generation, propagation, and properties including pitch, lou
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: 'Sound generation, sound waves, sound propagation, speed of sound, pitch (frequency), loudness (amplitude), timbre, echo, sound absorption and reflection, hearing, noise protection'
 difficulty: easy
@@ -16,7 +15,7 @@ learning_objectives:
   - Apply concepts to hearing and acoustics
 prerequisites: []
 example_tasks:
-  - Calculate how long it takes for sound to travel 1 km in air (speed of sound: 340 m/s).
+  - "Calculate how long it takes for sound to travel 1 km in air (speed of sound: 340 m/s)."
   - Explain why you see lightning before you hear thunder.
   - A sound wave has frequency 440 Hz. What musical note is this (A4)?
 real_world_context: 'Musical instruments, concert halls, noise protection, hearing and ear structure, sonar, ultrasound imaging, sound insulation, loudspeakers, room acoustics'

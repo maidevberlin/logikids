@@ -6,7 +6,6 @@ grade: 12
 ages:
   - 17
   - 18
-  - 19
 focus: 'Photoelectric effect, Einstein''s explanation, work function, photon energy (E = h·f), photon momentum, Compton effect, wave-particle duality, complementarity'
 difficulty: hard
 learning_objectives:

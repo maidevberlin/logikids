@@ -5,7 +5,6 @@ description: 'Phase transitions, particle arrangements in different states, and 
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: 'Solid, liquid, gas states, melting and boiling, phase transitions, latent heat, gas pressure, thermal expansion'
 difficulty: medium

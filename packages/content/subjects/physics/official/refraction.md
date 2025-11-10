@@ -5,7 +5,6 @@ description: 'Refraction of light at boundaries between media, lenses, and optic
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: 'Refraction, Snell''s law, total internal reflection, fiber optics, converging and diverging lenses, focal length, lens equation, real and virtual images, eye structure, vision correction (myopia/hyperopia), magnifying glass, microscope, telescope'
 difficulty: medium

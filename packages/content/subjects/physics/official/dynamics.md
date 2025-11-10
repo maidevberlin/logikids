@@ -5,7 +5,6 @@ description: 'Study of forces and their effects on motion - Newton''s laws, forc
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: 'Newton''s laws, force equilibrium, force addition and resolution, friction, inclined plane, tension forces, weight force vs. mass, Hooke''s law, traffic safety applications'
 difficulty: medium
@@ -17,7 +16,7 @@ learning_objectives:
 prerequisites:
   - kinematics
 example_tasks:
-  - A 1200 kg car accelerates at 2.5 m/s². What net force acts on the car?
+  - "A 1200 kg car accelerates at 2.5 m/s^2. What net force acts on the car?"
   - Two forces of 30 N and 40 N act on an object at right angles. Calculate the resultant force.
   - A 5 kg box rests on a table. Draw a free body diagram showing all forces.
 real_world_context: 'Vehicle safety, construction, sports equipment design, ergonomics, machinery operation'

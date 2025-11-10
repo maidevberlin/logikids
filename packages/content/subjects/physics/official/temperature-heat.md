@@ -5,7 +5,6 @@ description: 'Thermal phenomena, particle model of matter, temperature, heat, an
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: 'Temperature measurement, Celsius and Kelvin scales, particle model, kinetic energy of particles, internal energy, thermal equilibrium, heat capacity, specific heat'
 difficulty: medium

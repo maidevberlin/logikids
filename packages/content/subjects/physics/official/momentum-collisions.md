@@ -5,7 +5,6 @@ description: 'Momentum conservation in collision processes and two-dimensional m
 grade: 10
 ages:
   - 15
-  - 16
   - 17
 focus: 'Momentum, impulse (F·Δt = m·Δv), collisions in one and two dimensions, momentum conservation, Newton''s third law, rocket principle'
 difficulty: hard

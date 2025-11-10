@@ -5,8 +5,6 @@ description: 'Study of motion without considering forces - position, velocity, a
 grade: 7
 ages:
   - 12
-  - 13
-  - 14
   - 15
 focus: 'Linear motion, uniform and accelerated motion, free fall, horizontal projectile motion, two-dimensional motion, motion diagrams, velocity vectors'
 difficulty: medium

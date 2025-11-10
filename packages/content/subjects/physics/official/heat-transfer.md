@@ -5,7 +5,6 @@ description: 'Mechanisms of heat transfer - conduction, convection, radiation - 
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: 'Heat conduction, convection, thermal radiation, thermal insulation, greenhouse effect, climate physics, anthropogenic climate change, energy efficiency'
 difficulty: medium

@@ -5,7 +5,6 @@ description: 'Wave propagation, wave characteristics, transverse and longitudina
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: 'Transverse and longitudinal waves, wavelength, frequency, wave speed, wave equation, superposition, interference (constructive and destructive), standing waves, diffraction, Huygens'' principle, sound waves'
 difficulty: hard

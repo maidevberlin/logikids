@@ -6,7 +6,6 @@ grade: 12
 ages:
   - 17
   - 18
-  - 19
 focus: 'Heisenberg uncertainty principle, position-momentum uncertainty (Δx·Δp ≥ ℏ/2), energy-time uncertainty, measurement problem, Copenhagen interpretation, quantum mechanics fundamentals'
 difficulty: hard
 learning_objectives:
@@ -21,7 +20,7 @@ prerequisites:
 example_tasks:
   - Calculate minimum momentum uncertainty for an electron localized within 1 nm
   - Explain why we cannot precisely know both position and momentum simultaneously
-  - Estimate minimum energy uncertainty for a particle existing for 10⁻⁹ s
+  - "Estimate minimum energy uncertainty for a particle existing for 10⁻^9 s"
 real_world_context: 'Quantum computing limitations, precision measurements, electron microscope resolution limits, quantum cryptography, atomic clocks, scanning tunneling microscopy, fundamental physics experiments'
 ---
 

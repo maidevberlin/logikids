@@ -5,7 +5,6 @@ description: 'Periodic motion, harmonic oscillator, oscillation characteristics,
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: 'Periodic motion, harmonic oscillation, amplitude, period, frequency, phase, spring pendulum, mathematical pendulum, energy in oscillations, damped oscillations, forced oscillations, resonance'
 difficulty: hard

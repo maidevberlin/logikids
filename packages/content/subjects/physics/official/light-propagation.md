@@ -5,7 +5,6 @@ description: 'Basic properties of light - propagation, shadows, and ray model'
 grade: 7
 ages:
   - 12
-  - 13
   - 14
 focus: 'Light sources, light propagation, light rays, shadows (umbra and penumbra), solar and lunar eclipses, pinhole camera, ray diagrams'
 difficulty: easy

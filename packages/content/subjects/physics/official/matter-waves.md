@@ -6,7 +6,6 @@ grade: 12
 ages:
   - 17
   - 18
-  - 19
 focus: 'De Broglie wavelength, matter waves, electron diffraction, double-slit with electrons, wave-particle duality for matter, quantum objects'
 difficulty: hard
 learning_objectives:

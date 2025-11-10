@@ -15,7 +15,7 @@ learning_objectives:
   - Evaluate nuclear technology critically
 prerequisites: []
 example_tasks:
-  - Calculate the energy released when 1 kg of matter is converted completely to energy using E = mc²
+  - "Calculate the energy released when 1 kg of matter is converted completely to energy using E = mc^2"
   - Explain why nuclear fusion in the Sun releases energy while producing more massive products
   - Compare energy released per kilogram in nuclear fission vs chemical combustion (coal, oil)
 real_world_context: 'Nuclear power plants, hydrogen bombs, stellar energy production, nuclear medicine, particle accelerators, future fusion reactors'

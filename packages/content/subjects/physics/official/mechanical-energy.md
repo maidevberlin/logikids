@@ -5,7 +5,6 @@ description: 'Energy transformations in mechanical systems - kinetic, potential,
 grade: 9
 ages:
   - 14
-  - 15
   - 16
 focus: 'Kinetic energy, potential energy, elastic energy, energy conservation, work, power, efficiency, energy transformations'
 difficulty: medium

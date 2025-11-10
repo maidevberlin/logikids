@@ -5,7 +5,6 @@ description: 'Color, dispersion, spectra, and color perception'
 grade: 8
 ages:
   - 13
-  - 14
   - 15
 focus: 'Dispersion, prism, spectrum, rainbow, color mixing, color perception, RGB and CMY, continuous and line spectra, spectroscopy, photon energy and color'
 difficulty: easy

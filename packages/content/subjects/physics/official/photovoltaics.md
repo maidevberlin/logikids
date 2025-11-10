@@ -5,9 +5,6 @@ description: 'Solar cells, photovoltaic systems, and applications'
 grade: 8
 ages:
   - 13
-  - 14
-  - 15
-  - 16
   - 17
 focus: 'Photoelectric effect in semiconductors, solar cell structure, I-V characteristic curve, fill factor, efficiency, series and parallel connection of solar cells, photovoltaic system components (inverter, storage), applications, environmental factors'
 difficulty: medium
@@ -21,7 +18,7 @@ prerequisites:
   - energy-forms-transformations
 example_tasks:
   - Calculate the power output of a solar panel at its maximum power point given its I-V curve
-  - Design a solar system for a household consuming 3500 kWh/year in a location with 1000 kWh/m² annual irradiation
+  - "Design a solar system for a household consuming 3500 kWh/year in a location with 1000 kWh/m^2 annual irradiation"
   - Compare series vs. parallel connection of solar cells and their impact on system voltage and current
 real_world_context: 'Rooftop solar installations, solar farms, off-grid systems, portable solar chargers, solar-powered devices, space satellites, renewable energy transition, energy independence'
 ---

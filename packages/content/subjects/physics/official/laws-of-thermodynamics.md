@@ -5,7 +5,6 @@ description: 'Fundamental laws governing energy transformations, reversibility, 
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: 'First law of thermodynamics, internal energy, work and heat, second law of thermodynamics, entropy, reversible and irreversible processes, heat engines, efficiency limits, Carnot cycle'
 difficulty: hard

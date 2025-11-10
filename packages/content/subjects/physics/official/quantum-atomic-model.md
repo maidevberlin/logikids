@@ -6,7 +6,6 @@ grade: 12
 ages:
   - 17
   - 18
-  - 19
 focus: 'Schrödinger equation (qualitative), wave function, probability density, atomic orbitals, quantum numbers, Pauli principle, electron configuration, periodic table structure'
 difficulty: hard
 learning_objectives:

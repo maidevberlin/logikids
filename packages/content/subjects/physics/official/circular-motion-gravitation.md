@@ -5,7 +5,6 @@ description: 'Circular motion with constant angular velocity, centripetal force,
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: 'Circular motion, angular velocity, centripetal force, centripetal acceleration, Newton''s gravitational law, Kepler''s laws, satellite motion, planetary orbits'
 difficulty: hard
@@ -20,7 +19,7 @@ prerequisites:
   - mechanical-energy
 example_tasks:
   - A car drives through a curve with radius 50 m at 72 km/h. Calculate the required centripetal force for a 1200 kg car.
-  - Calculate the orbital velocity of a satellite orbiting Earth at an altitude of 400 km (Earth radius: 6371 km, Earth mass: 5.97×10²⁴ kg).
+  - "Calculate the orbital velocity of a satellite orbiting Earth at an altitude of 400 km (Earth radius: 6371 km, Earth mass: 5.97×10^24 kg)."
   - A string breaks when tension exceeds 100 N. What is the maximum velocity for a 0.5 kg ball on a 1 m string in horizontal circular motion?
 real_world_context: 'Satellite orbits, GPS systems, planetary motion, curve banking, centrifuges, amusement park rides, washing machines'
 ---

@@ -17,7 +17,7 @@ prerequisites: []
 example_tasks:
   - A spaceship travels at 0.8c. Calculate the time dilation factor and how much time passes on Earth when 1 year passes on the ship
   - A rocket of proper length 100m travels at 0.6c. What length do ground observers measure?
-  - Calculate the energy equivalent of 1 kg of mass using E = mc²
+  - "Calculate the energy equivalent of 1 kg of mass using E = mc^2"
 real_world_context: 'GPS satellite time corrections, particle accelerators, cosmic ray muons reaching Earth, nuclear energy release, relativistic jets from black holes'
 ---
 

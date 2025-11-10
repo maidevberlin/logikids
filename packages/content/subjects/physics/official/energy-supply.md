@@ -5,7 +5,6 @@ description: 'Energy sources, power generation, and sustainable energy systems'
 grade: 11
 ages:
   - 16
-  - 17
   - 18
 focus: 'Fossil fuels, nuclear energy, renewable energy (solar, wind, hydro, biomass), power plants, energy efficiency, energy storage, grid systems, climate impact, sustainability, future energy scenarios'
 difficulty: hard
