@@ -4,6 +4,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Concept } from './types'
 import { getSubjectNamespace } from '@/i18n/subjectNamespace'
+import { useProgress } from '@/data/progress/hooks'
+import { calculateConceptStars } from '@/data/progress/mastery'
+import { StarRating } from '@/components/ui/star-rating'
 
 const difficultyColors: Record<string, string> = {
   easy: 'bg-green-50 text-green-700',
@@ -20,6 +23,11 @@ export interface ConceptCardProps {
 export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) {
   const { t } = useTranslation()
   const namespace = getSubjectNamespace(subject, concept.grade)
+  const { progress } = useProgress()
+
+  // Calculate mastery stars
+  const conceptStats = progress?.[subject]?.[concept.id]
+  const masteryStars = calculateConceptStars(conceptStats)
 
   // Get translated values with fallback to backend data
   const name = t(`${namespace}:concepts.${concept.id}.name`, { defaultValue: concept.name })
@@ -27,9 +35,14 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
 
   return (
     <Link to={`/subjects/${subject}/${concept.id}/tasks`}>
-      <Card className={`bg-card shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
+      <Card className={`relative bg-card shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
         isAdvanced ? 'ring-2 ring-orange-300 bg-orange-50/20' : ''
       }`}>
+        {/* Star rating in top-right corner */}
+        <div className="absolute top-4 right-4">
+          <StarRating stars={masteryStars} size="md" />
+        </div>
+
         <CardContent className="p-8 flex flex-col h-full">
           <h3 className="text-xl font-bold text-card-foreground mb-3">
             {name}
