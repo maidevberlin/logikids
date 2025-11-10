@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 
 interface NumberInputProps {
@@ -11,6 +12,8 @@ interface NumberInputProps {
 }
 
 export function NumberInput({ value, onChange, min, max, label, className = '' }: NumberInputProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
   const handleDecrement = () => {
     if (value > min) {
       onChange(value - 1)
@@ -23,8 +26,30 @@ export function NumberInput({ value, onChange, min, max, label, className = '' }
     }
   }
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+        e.preventDefault()
+        handleIncrement()
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+        e.preventDefault()
+        handleDecrement()
+      }
+    }
+
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener('keydown', handleKeyDown)
+      return () => container.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [value, min, max])
+
   return (
-    <div className={`flex flex-col items-center gap-3 ${className}`}>
+    <div
+      ref={containerRef}
+      tabIndex={0}
+      className={`flex flex-col items-center gap-3 ${className}`}
+    >
       {label && <label className="text-lg font-semibold text-foreground">{label}</label>}
       <div className="flex items-center gap-4">
         <Button

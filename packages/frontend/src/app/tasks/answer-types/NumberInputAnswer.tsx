@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -22,6 +23,7 @@ export function NumberInputAnswer({
   isLoading = false,
   isLocked = false,
 }: NumberInputAnswerProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const answer = selectedAnswer || { value: null, unit: unitOptions?.[0] }
 
   // Calculate width based on expected answer length + 1
@@ -39,6 +41,26 @@ export function NumberInputAnswer({
     const newValue = (answer.value || 0) - 1
     onAnswerSelect({ ...answer, value: newValue })
   }
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isLocked) return
+
+      if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+        e.preventDefault()
+        handleIncrement()
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+        e.preventDefault()
+        handleDecrement()
+      }
+    }
+
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener('keydown', handleKeyDown)
+      return () => container.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [answer.value, isLocked])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -70,7 +92,7 @@ export function NumberInputAnswer({
 
   return (
     <div className="flex justify-center my-6">
-      <div className="space-y-3">
+      <div ref={containerRef} tabIndex={0} className="space-y-3">
         {/* Number input with chevrons */}
         <div className="flex items-center gap-2">
           <button
@@ -85,7 +107,7 @@ export function NumberInputAnswer({
             <ChevronLeft className="h-8 w-8" />
           </button>
 
-          <div className="flex items-center border-b-2 border focus-within:border-primary transition-colors">
+          <div className="flex items-center border-b-2 border-border focus-within:border-primary transition-colors bg-muted/50 px-2">
             <input
               type="text"
               inputMode="decimal"
@@ -94,7 +116,7 @@ export function NumberInputAnswer({
               disabled={isLocked}
               style={{ width: inputWidth }}
               className={cn(
-                "bg-transparent border-0 outline-none text-4xl text-center py-4 placeholder:text-muted-foreground",
+                "bg-transparent border-0 outline-none text-4xl text-center py-4 text-foreground placeholder:text-muted-foreground",
                 isLocked && "cursor-not-allowed opacity-75"
               )}
               placeholder="0"
