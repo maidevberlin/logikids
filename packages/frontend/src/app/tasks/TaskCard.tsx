@@ -286,7 +286,7 @@ export function TaskCard({
                 })}
           </p>
           {isCorrect && explanation && (
-            <div className="mt-2 p-3 bg-card border border-border rounded-lg">
+            <div className="mt-2">
               <MarkdownRenderer
                 content={explanation}
                 enableMath={true}
