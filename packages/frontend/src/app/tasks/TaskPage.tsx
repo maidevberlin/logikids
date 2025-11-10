@@ -178,7 +178,7 @@ export default function TaskPage() {
     <>
       {/* Background pattern */}
       <div
-        className="fixed inset-0 pointer-events-none z-0"
+        className="fixed inset-0 pointer-events-none z-0 task-background"
         style={{
           backgroundImage: `url(${
             backgrounds[taskParams.subject as keyof typeof backgrounds]

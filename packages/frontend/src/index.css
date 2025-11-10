@@ -3,69 +3,23 @@
 @plugin '@tailwindcss/typography';
 
 @theme inline {
-  /* Reference the variables directly so they remain reactive */
+  /* Time-based theme colors - mapped from time-themes.css */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
-  --color-primary-50: #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-200: #bae6fd;
-  --color-primary-300: #7dd3fc;
-  --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-primary-700: #0369a1;
-  --color-primary-800: #075985;
-  --color-primary-900: #0c4a6e;
-  --color-primary-950: #172554;
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-subjects-math: #3b82f6;
-  --color-subjects-logic: #a855f7;
-  --color-subjects-physics: #10b981;
-  --color-subjects-german: #ef4444;
-  --color-subjects-music: #ec4899;
-
-  --color-secondary-50: #f0fdfa;
-  --color-secondary-100: #ccfbf1;
-  --color-secondary-200: #99f6e4;
-  --color-secondary-300: #5eead4;
-  --color-secondary-400: #2dd4bf;
-  --color-secondary-500: #14b8a6;
-  --color-secondary-600: #0d9488;
-  --color-secondary-700: #0f766e;
-  --color-secondary-800: #115e59;
-  --color-secondary-900: #134e4a;
-  --color-secondary-950: #042f2e;
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
+  /* Fixed color scales */
   --color-success-50: #f0fdf4;
   --color-success-100: #dcfce7;
   --color-success-200: #bbf7d0;
@@ -190,8 +144,7 @@
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  Updated to use semantic --border for time-based theming support.
 */
 @layer base {
   *,
@@ -199,7 +152,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--border, currentcolor);
   }
 
   button {
@@ -308,72 +261,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: var(--color-primary-600);
-  --primary-foreground: #ffffff;
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Time-based theme variables are defined in styles/time-themes.css */
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
+/* .dark class removed - using time-based theming instead */
 
 /* Time-based theming - must be after :root to override defaults */
 @import './styles/time-themes.css';

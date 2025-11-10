@@ -19,7 +19,7 @@ export const ConceptList = memo(function ConceptList({
   return (
     <div className="flex flex-col gap-2">
       {/* Header with navigation */}
-      <div className="flex items-center justify-between px-1 pb-2 border-b">
+      <div className="flex items-center justify-between px-1 pb-2 border-b border-border">
         <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
           {t('task.concepts')}
         </h3>

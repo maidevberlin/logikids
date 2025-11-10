@@ -43,6 +43,20 @@ Generate an educational task that is engaging, clear, and age-appropriate.
   - The system will handle proper escaping automatically
 - Code blocks: ` ```python `
 - Mermaid diagrams: ` ```mermaid `
+- SVG diagrams: Inline SVG in `<figure>` tags with `<figcaption>` for the overall diagram caption
+  - Example:
+    ```html
+    <figure>
+    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Diagram elements here -->
+      <!-- Use <text> elements for labeling parts of the diagram (e.g., "Radius = 7 m") -->
+    </svg>
+    <figcaption>Overall diagram title or caption goes here</figcaption>
+    </figure>
+    ```
+  - Use `<text>` elements INSIDE the SVG for labeling diagram elements (arrows, points, lines, etc.)
+  - Use `<figcaption>` BELOW the SVG for the overall diagram title/caption (e.g., "Circular Concert Stage")
+  - Do NOT put the overall caption as a `<text>` element at the bottom of the SVG
 - Tables, **bold**, *italic*, lists, quotes
 
 ---

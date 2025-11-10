@@ -8,18 +8,21 @@ import {
   type LucideIcon
 } from 'lucide-react'
 
+/**
+ * Subject Theme Configuration - SINGLE SOURCE OF TRUTH
+ *
+ * To add a new subject, just add an entry here!
+ */
+
 export interface SubjectTheme {
   icon: LucideIcon
   colors: {
     bg: string
     hover: string
     text: string
-    // Light background variants for list items and badges
     bgLight: string
     hoverLight: string
-    // Badge styles (for compact display)
     badge: string
-    // Active state (for selected items)
     active: string
   }
 }
@@ -99,7 +102,6 @@ export const subjectThemes: Record<string, SubjectTheme> = {
   }
 }
 
-// Default theme for unknown subjects
 export const defaultTheme: SubjectTheme = {
   icon: BookOpen,
   colors: {
@@ -113,9 +115,6 @@ export const defaultTheme: SubjectTheme = {
   }
 }
 
-/**
- * Get theme for a subject, with fallback to default
- */
 export function getSubjectTheme(subjectId: string): SubjectTheme {
   return subjectThemes[subjectId] || defaultTheme
 }

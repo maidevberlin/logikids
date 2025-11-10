@@ -6,9 +6,17 @@
   --card-foreground: oklch(0.145 0 0);
   --primary: oklch(0.6 0.22 255);
   --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.002 264);
+  --secondary-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.97 0.002 264);
+  --accent-foreground: oklch(0.205 0 0);
   --muted: oklch(0.965 0.002 264);
   --muted-foreground: oklch(0.5 0.01 264);
   --border: oklch(0.88 0.005 264);
+  --input: oklch(0.88 0.005 264);
+  --ring: oklch(0.6 0.22 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
 }
 
 /* Morning: Soft, warm awakening (6:00-10:00) */
@@ -19,9 +27,17 @@ body.time-morning {
   --card-foreground: oklch(0.3 0.05 60);
   --primary: oklch(0.72 0.15 50);
   --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.02 75);
+  --secondary-foreground: oklch(0.3 0.05 60);
+  --accent: oklch(0.97 0.02 75);
+  --accent-foreground: oklch(0.3 0.05 60);
   --muted: oklch(0.97 0.02 75);
   --muted-foreground: oklch(0.48 0.06 60);
   --border: oklch(0.90 0.03 75);
+  --input: oklch(0.90 0.03 75);
+  --ring: oklch(0.72 0.15 50);
+  --popover: oklch(0.995 0.01 75);
+  --popover-foreground: oklch(0.3 0.05 60);
 }
 
 /* Midday: Bright, clear, focused (10:00-14:00) */
@@ -32,9 +48,17 @@ body.time-midday {
   --card-foreground: oklch(0.145 0 0);
   --primary: oklch(0.6 0.22 255);
   --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.002 264);
+  --secondary-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.97 0.002 264);
+  --accent-foreground: oklch(0.205 0 0);
   --muted: oklch(0.965 0.002 264);
   --muted-foreground: oklch(0.5 0.01 264);
   --border: oklch(0.88 0.005 264);
+  --input: oklch(0.88 0.005 264);
+  --ring: oklch(0.6 0.22 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
 }
 
 /* Afternoon: Warm, golden, comfortable (14:00-18:00) */
@@ -45,9 +69,17 @@ body.time-afternoon {
   --card-foreground: oklch(0.35 0.06 70);
   --primary: oklch(0.75 0.15 80);
   --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.04 85);
+  --secondary-foreground: oklch(0.35 0.06 70);
+  --accent: oklch(0.97 0.04 85);
+  --accent-foreground: oklch(0.35 0.06 70);
   --muted: oklch(0.97 0.04 85);
   --muted-foreground: oklch(0.52 0.07 70);
   --border: oklch(0.90 0.05 85);
+  --input: oklch(0.90 0.05 85);
+  --ring: oklch(0.75 0.15 80);
+  --popover: oklch(0.995 0.02 85);
+  --popover-foreground: oklch(0.35 0.06 70);
 }
 
 /* Evening: Cooling down, relaxing (18:00-22:00) */
@@ -58,20 +90,51 @@ body.time-evening {
   --card-foreground: oklch(0.28 0.02 255);
   --primary: oklch(0.65 0.24 285);
   --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.88 0.02 285);
+  --secondary-foreground: oklch(0.28 0.02 255);
+  --accent: oklch(0.88 0.02 285);
+  --accent-foreground: oklch(0.28 0.02 255);
   --muted: oklch(0.88 0.02 285);
   --muted-foreground: oklch(0.45 0.025 270);
   --border: oklch(0.78 0.025 285);
+  --input: oklch(0.78 0.025 285);
+  --ring: oklch(0.65 0.24 285);
+  --popover: oklch(0.95 0.012 285);
+  --popover-foreground: oklch(0.28 0.02 255);
 }
 
 /* Night: Dark mode, minimal eye strain (22:00-6:00) */
 body.time-night {
-  --background: oklch(0.16 0.03 250);
-  --foreground: oklch(0.96 0.005 264);
-  --card: oklch(0.22 0.025 250);
-  --card-foreground: oklch(0.96 0.005 264);
+  --background: oklch(0.22 0.025 250);
+  --foreground: oklch(0.92 0.005 264);
+  --card: oklch(0.28 0.025 250);
+  --card-foreground: oklch(0.92 0.005 264);
   --primary: oklch(0.75 0.14 210);
-  --primary-foreground: oklch(0.16 0.03 250);
-  --muted: oklch(0.20 0.02 250);
-  --muted-foreground: oklch(0.72 0.015 250);
-  --border: oklch(0.26 0.015 250);
+  --primary-foreground: oklch(0.22 0.025 250);
+  --secondary: oklch(0.25 0.02 250);
+  --secondary-foreground: oklch(0.92 0.005 264);
+  --accent: oklch(0.35 0.03 250);
+  --accent-foreground: oklch(0.75 0.14 210);
+  --muted: oklch(0.25 0.02 250);
+  --muted-foreground: oklch(0.70 0.015 250);
+  --border: oklch(0.30 0.015 250);
+  --input: oklch(0.30 0.015 250);
+  --ring: oklch(0.75 0.14 210);
+  --popover: oklch(0.28 0.025 250);
+  --popover-foreground: oklch(0.92 0.005 264);
+}
+
+/* Dark overlay for background images in night mode */
+body.time-night .task-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* Fix prose bold/strong text in night mode */
+body.time-night .prose strong,
+body.time-night .markdown-content strong {
+  color: var(--foreground);
 }

@@ -9,7 +9,7 @@ import { SubjectListProps } from './types'
 
 export const SubjectList = memo(function SubjectList({
   subjects,
-  currentSubject,
+  currentSubject: _currentSubject,
   previewSubject,
   onSubjectClick,
   onSubjectHover,
@@ -20,7 +20,7 @@ export const SubjectList = memo(function SubjectList({
   return (
     <div className="flex flex-col gap-2">
       {/* Header with navigation */}
-      <div className="flex items-center justify-between px-1 pb-2 border-b">
+      <div className="flex items-center justify-between px-1 pb-2 border-b border-border">
         <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
           {t('task.subjects')}
         </h3>
@@ -40,15 +40,12 @@ export const SubjectList = memo(function SubjectList({
           {subjects.map((subject) => {
             const theme = getSubjectTheme(subject.id)
             const Icon = theme.icon
-            const isActive = currentSubject === subject.id
-            const isPreviewing = previewSubject === subject.id
+            const isActive = previewSubject === subject.id
 
             // Build dynamic class names based on state
             let stateClasses = ''
             if (isActive) {
               stateClasses = `${theme.colors.active} font-medium`
-            } else if (isPreviewing) {
-              stateClasses = `${theme.colors.bgLight} ${theme.colors.hoverLight}`
             } else {
               stateClasses = 'hover:bg-muted'
             }
