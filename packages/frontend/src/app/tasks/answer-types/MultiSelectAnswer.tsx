@@ -41,7 +41,8 @@ export function MultiSelectAnswer({
 }: MultiSelectAnswerProps) {
   const { t } = useTranslation()
 
-  const selectedIndices = selectedAnswer || []
+  // Defensive check: ensure selectedAnswer is actually an array (handles race condition during task type changes)
+  const selectedIndices = selectedAnswer && Array.isArray(selectedAnswer) ? selectedAnswer : []
 
   const handleToggle = (index: number) => {
     const newSelection = selectedIndices.includes(index)
