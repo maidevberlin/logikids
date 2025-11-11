@@ -2,37 +2,17 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
 import { SubjectCard } from './SubjectCard'
-import { Subject } from './types'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useUserData } from '@/app/account'
+import { logikids, SubjectsResponse, SubjectInfo } from '@/api/logikids'
 
 // School subject ordering (when they typically start in school)
 const SUBJECT_ORDER = ['math', 'german', 'english', 'physics', 'logic', 'music']
 
-async function fetchAllSubjects(): Promise<Subject[]> {
-  const response = await fetch('/api/task/subjects')
-  if (!response.ok) {
-    throw new Error('Failed to fetch subjects')
-  }
-  const data = await response.json()
-  return data.subjects
-}
+// Extended type for internal use
+type SubjectWithDisabled = SubjectInfo & { isDisabledForGrade?: boolean }
 
-async function fetchFilteredSubjects(grade: number, age?: number): Promise<Subject[]> {
-  const params = new URLSearchParams({ grade: grade.toString() })
-  if (age !== undefined) {
-    params.append('age', age.toString())
-  }
-
-  const response = await fetch(`/api/task/subjects?${params}`)
-  if (!response.ok) {
-    throw new Error('Failed to fetch subjects')
-  }
-  const data = await response.json()
-  return data.subjects
-}
-
-function sortSubjects(subjects: Subject[]): Subject[] {
+function sortSubjects(subjects: SubjectWithDisabled[]): SubjectWithDisabled[] {
   return [...subjects].sort((a, b) => {
     const indexA = SUBJECT_ORDER.indexOf(a.id)
     const indexB = SUBJECT_ORDER.indexOf(b.id)
@@ -60,23 +40,23 @@ export default function SubjectsPage() {
   const userAge = userData?.settings.age
 
   // Fetch all subjects with metadata (for subjects with no concepts for user's grade)
-  const { data: allSubjects } = useQuery({
-    queryKey: ['subjects', 'all'],
-    queryFn: fetchAllSubjects,
+  const { data: allSubjects } = useQuery<SubjectsResponse>({
+    queryKey: ['subjects', 'all-unfiltered'],
+    queryFn: ({ signal }) => logikids.getSubjects({}, signal),
   })
 
   // Fetch filtered subjects (concepts available for user's grade/age)
-  const { data: filteredSubjects, isLoading, error } = useQuery({
+  const { data: filteredSubjects, isLoading, error } = useQuery<SubjectsResponse>({
     queryKey: ['subjects', 'filtered', userGrade, userAge],
-    queryFn: () => fetchFilteredSubjects(userGrade!, userAge),
+    queryFn: ({ signal }) => logikids.getSubjects({ grade: userGrade!, age: userAge }, signal),
     enabled: !!userGrade,
   })
 
   // Create a map of filtered subjects for quick lookup
-  const filteredSubjectIds = new Set(filteredSubjects?.map(s => s.id) ?? [])
+  const filteredSubjectIds = new Set(filteredSubjects?.subjects?.map(s => s.id) ?? [])
 
   // Merge: use all subjects but mark as disabled if not in filtered list
-  const subjects = allSubjects?.map(subject => {
+  const subjects = allSubjects?.subjects?.map(subject => {
     const hasConceptsForGrade = filteredSubjectIds.has(subject.id)
     return {
       ...subject,

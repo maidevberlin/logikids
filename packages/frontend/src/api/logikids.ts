@@ -30,6 +30,7 @@ export type TaskRequest = z.infer<typeof taskRequestSchema>;
 // Subjects endpoint params
 export interface SubjectsParams {
   grade?: number;
+  age?: number;
   difficulty?: 'easy' | 'medium' | 'hard';
 }
 

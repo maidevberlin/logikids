@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/ui/card'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
-import { Subject } from './types'
+import { SubjectInfo } from '@/api/logikids'
 
 export interface SubjectCardProps {
-  subject: Subject
+  subject: SubjectInfo & { isDisabledForGrade?: boolean }
   disabled?: boolean
   minGrade?: number
   showGradeRange?: boolean
