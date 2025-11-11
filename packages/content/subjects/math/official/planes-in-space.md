@@ -126,7 +126,7 @@ Calculate the distance from point $P({{px}}, {{py}}, {{pz}})$ to plane:
 $$E: {{a}}x + {{b}}y + {{c}}z = {{d}}$$
 
 **Formula:**
-$$d = \frac{|{{a}} \cdot {{px}} + {{b}} \cdot {{py}} + {{c}} \cdot {{pz}} - {{d}}|}{\sqrt{{{a}}^2 + {{b}}^2 + {{c}}^2}}$$
+$$d = \frac{|{{a}} \cdot {{px}} + {{b}} \cdot {{py}} + {{c}} \cdot {{pz}} - {{d}}|}{\sqrt{ {{a}}^2 + {{b}}^2 + {{c}}^2 }$$
 
 **Simplified:**
 $$d = \frac{|ax_P + by_P + cz_P - d|}{|\vec{n}|}$$
@@ -135,7 +135,7 @@ where $\vec{n} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}$ is the normal vector
 
 **Steps:**
 1. Calculate numerator: $|{{a}} \cdot {{px}} + {{b}} \cdot {{py}} + {{c}} \cdot {{pz}} - {{d}}|$
-2. Calculate denominator: $\sqrt{{{a}}^2 + {{b}}^2 + {{c}}^2}$
+2. Calculate denominator: $\sqrt{ {{a}}^2 + {{b}}^2 + {{c}}^2 }$
 3. Divide to get distance
 
 ### 8. Foot of Perpendicular
@@ -247,7 +247,7 @@ $$E_1: {{a}}x + {{b}}y + {{c}}z = {{d1}}$$
 $$E_2: {{a}}x + {{b}}y + {{c}}z = {{d2}}$$
 
 **Method 1 - Direct formula:**
-$$d = \frac{|d_2 - d_1|}{\sqrt{a^2 + b^2 + c^2}}$$
+$$d = \frac{|d_2 - d_1|}{\sqrt{a^2 + b^2 + c^2}$$
 
 **Method 2 - Point-to-plane:**
 1. Find any point $P$ on plane $E_1$ (e.g., set two coordinates to 0, solve for third)
