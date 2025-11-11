@@ -18,7 +18,7 @@ export default function StatsPage() {
   } = useProgress()
 
   const overallStats = getOverallStats()
-  const totalTasks = overallStats.totalAttempts
+  const totalTasks = overallStats.totalCorrect
   const overallSuccessRate = overallStats.successRate * 100
 
   if (totalTasks === 0) {

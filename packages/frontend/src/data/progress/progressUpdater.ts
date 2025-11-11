@@ -11,6 +11,7 @@ import {
   pruneOldAttempts
 } from './aggregation'
 import { GameStats } from '@/app/stats/gameTypes'
+import { checkAchievements, unlockAchievements } from '@/app/stats/achievements'
 
 export interface TaskSubmissionData {
   subject: string
@@ -122,6 +123,13 @@ function updateGameStats(
 
   // Update personal bests
   updatePersonalBests(stats, progress)
+
+  // Check and unlock achievements
+  const newlyUnlocked = checkAchievements(stats, progress)
+  if (newlyUnlocked.length > 0) {
+    const updatedStats = unlockAchievements(stats, newlyUnlocked)
+    return updatedStats
+  }
 
   return stats
 }
