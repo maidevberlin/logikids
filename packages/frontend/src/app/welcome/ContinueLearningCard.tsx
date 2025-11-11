@@ -37,7 +37,7 @@ export function ContinueLearningCard() {
       if (lastTask.concept && subject.concepts) {
         const concept = subject.concepts.find(c => c.id === lastTask.concept)
         if (concept) {
-          conceptName = concept.name
+          conceptName = t(`subjects/${lastTask.subject}:concepts.${lastTask.concept}.name`, { defaultValue: concept.name })
         }
       }
     }
@@ -53,7 +53,7 @@ export function ContinueLearningCard() {
     ? conceptName
       ? t('welcome.navigation.continueWith', { subject: subjectName, concept: conceptName })
       : t('welcome.navigation.continueWithSubject', { subject: subjectName })
-    : t('welcome.navigation.startLearning')
+    : t('welcome.navigation.startLearning.title')
 
   const description = hasLastTask
     ? t('welcome.navigation.continue.description', { defaultValue: 'Pick up where you left off' })
