@@ -7,7 +7,6 @@ import {
 } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { getSubjectNamespace } from '@/i18n/subjectNamespace'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { SubjectList } from './SubjectList'
 import { ConceptList } from './ConceptList'
@@ -96,8 +95,7 @@ export function SubjectConceptSelector({
     }
     const conceptObj = currentSubject?.concepts?.find((c) => c.id === concept)
     if (!conceptObj) return concept
-    const namespace = getSubjectNamespace(subject, conceptObj.grade)
-    return t(`${namespace}:concepts.${concept}.name`, {
+    return t(`subjects/${subject}:concepts.${concept}.name`, {
       defaultValue: conceptObj.name,
     })
   }, [concept, currentSubject, subject, t])

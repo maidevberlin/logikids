@@ -7,7 +7,6 @@ import { PageLayout } from '@/app/common'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Target, TrendingUp, Clock, Lightbulb, ArrowRight } from 'lucide-react'
-import { getSubjectNamespace } from '@/i18n/subjectNamespace'
 
 interface SubjectWithConcepts {
   id: string
@@ -52,8 +51,7 @@ export default function PracticePage() {
       return formatConceptName(conceptId)
     }
 
-    const namespace = getSubjectNamespace(subjectId, concept.grade)
-    return t(`${namespace}:concepts.${conceptId}.name`, {
+    return t(`subjects/${subjectId}:concepts.${conceptId}.name`, {
       defaultValue: concept.name || formatConceptName(conceptId)
     })
   }

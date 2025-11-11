@@ -1,5 +1,85 @@
 {
   "concepts": {
+    "grade3-cultural-awareness-festivals": {
+      "name": "Kulturelles Bewusstsein - Feste",
+      "description": "Interkulturelle Kompetenz"
+    },
+    "grade3-learning-strategies-memorization": {
+      "name": "Lernstrategien - Merktechniken",
+      "description": "Sprachlernkompetenz"
+    },
+    "grade3-listening-comprehension-basics": {
+      "name": "Hörverstehen - Grundlagen",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade3-reading-word-recognition": {
+      "name": "Lesen - Worterkennung",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade3-speaking-expressing-likes-and-dislikes": {
+      "name": "Sprechen - Vorlieben ausdrücken",
+      "description": "Produktive Fertigkeiten"
+    },
+    "grade3-speaking-greetings-and-introductions": {
+      "name": "Sprechen - Begrüßungen und Vorstellungen",
+      "description": "Produktive Fertigkeiten"
+    },
+    "grade3-vocabulary-all-about-me": {
+      "name": "Wortschatz - Alles über mich",
+      "description": "Sprachliche Mittel"
+    },
+    "grade3-vocabulary-animals": {
+      "name": "Wortschatz - Tiere",
+      "description": "Sprachliche Mittel"
+    },
+    "grade3-vocabulary-school": {
+      "name": "Wortschatz - Schule",
+      "description": "Sprachliche Mittel"
+    },
+    "grade3-writing-copying-from-models": {
+      "name": "Schreiben - Abschreiben von Vorlagen",
+      "description": "Produktive Fertigkeiten"
+    },
+    "grade4-cultural-knowledge-daily-life": {
+      "name": "Kulturelles Wissen - Alltag",
+      "description": "Interkulturelle Kompetenz"
+    },
+    "grade4-expanded-vocabulary-themes": {
+      "name": "Erweiterter Wortschatz - Themen",
+      "description": "Sprachliche Mittel"
+    },
+    "grade4-grammar-implicit-acquisition": {
+      "name": "Grammatik - Impliziter Erwerb",
+      "description": "Sprachliche Mittel"
+    },
+    "grade4-learning-strategies-self-assessment": {
+      "name": "Lernstrategien - Selbsteinschätzung",
+      "description": "Sprachlernkompetenz"
+    },
+    "grade4-listening-comprehension-extended": {
+      "name": "Hörverstehen - Erweitert",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade4-mediation-introduction": {
+      "name": "Sprachmittlung - Einführung",
+      "description": "Sprachmittlung"
+    },
+    "grade4-reading-simple-texts": {
+      "name": "Lesen - Einfache Texte",
+      "description": "Rezeptive Fertigkeiten"
+    },
+    "grade4-speaking-conversations": {
+      "name": "Sprechen - Gespräche",
+      "description": "Produktive Fertigkeiten"
+    },
+    "grade4-speaking-presentations": {
+      "name": "Sprechen - Präsentationen",
+      "description": "Produktive Fertigkeiten"
+    },
+    "grade4-writing-guided-production": {
+      "name": "Schreiben - Geleitetes Schreiben",
+      "description": "Produktive Fertigkeiten"
+    },
     "grade5-audiovisual-understanding": {
       "name": "Audiovisuelles Verstehen",
       "description": "Rezeptive Fertigkeiten"

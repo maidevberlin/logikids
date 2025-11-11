@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { List } from 'lucide-react'
-import { getSubjectNamespace } from '@/i18n/subjectNamespace'
 import { ConceptListProps } from './types'
 
 export const ConceptList = memo(function ConceptList({
@@ -56,7 +55,6 @@ export const ConceptList = memo(function ConceptList({
           {/* Concept list */}
           {concepts.map((concept) => {
             const isActive = currentConcept === concept.id
-            const namespace = getSubjectNamespace(subject, concept.grade)
 
             return (
               <Button
@@ -71,7 +69,7 @@ export const ConceptList = memo(function ConceptList({
                 onClick={() => onConceptClick(concept.id)}
               >
                 <span className="text-sm">
-                  {t(`${namespace}:concepts.${concept.id}.name`, {
+                  {t(`subjects/${subject}:concepts.${concept.id}.name`, {
                     defaultValue: concept.name,
                   })}
                 </span>

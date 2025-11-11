@@ -118,7 +118,8 @@ export function OrderingAnswer({
   const { t } = useTranslation()
 
   // Initialize with current order or default order
-  const orderedItems = selectedAnswer
+  // Defensive check: ensure selectedAnswer is actually an array (handles race condition during task type changes)
+  const orderedItems = selectedAnswer && Array.isArray(selectedAnswer)
     ? selectedAnswer.map(id => items.find(item => item.id === id)!).filter(Boolean)
     : items
 
