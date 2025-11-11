@@ -4,7 +4,7 @@ import { TaskTypeWithSchema } from '../tasks/types/registry';
 import { validateNoPlaceholders } from './helpers.ts';
 import { VariationLoader } from '../variations/loader';
 import { Concept } from './schemas';
-import Mustache from 'mustache';
+import { composeAndReplace, replaceVariables } from './template-replacer';
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
@@ -58,14 +58,6 @@ export class PromptBuilder {
       task_type_template: this.taskType.promptTemplate,
     };
 
-    // Step 1: Compose template hierarchy using <% %> delimiters
-    const composedTemplate = Mustache.render(
-      this.basePrompt,
-      compositionVariables,
-      {},
-      ['<%', '%>'] // Use custom delimiters for template composition
-    );
-
     // === STEP 2: Build Flat Variable Object ===
     // Create single object with ALL variables (duplicates OK - same values)
 
@@ -118,10 +110,16 @@ export class PromptBuilder {
       real_world_context: params.concept.real_world_context || '',
     };
 
-    // === STEP 3: Single Replacement Pass ===
-    // Replace all placeholders in composed template
+    // === STEP 3: Compose templates and replace variables ===
+    // Step 1: Insert sub-templates using <% %> delimiters
+    // Step 2: Replace actual variables using [[ ]] delimiters
+    // {{ }} placeholders (like {{a1}}, {{x1}}) are preserved for LLM
 
-    const finalPrompt = Mustache.render(composedTemplate, allVariables);
+    const finalPrompt = composeAndReplace(
+      this.basePrompt,
+      compositionVariables,
+      allVariables
+    );
 
     // === STEP 4: Validate no placeholders remain ===
 
@@ -191,7 +189,7 @@ export class PromptBuilder {
       progressionGuidance,
     };
 
-    // Use Mustache to replace variables
-    return Mustache.render(this.hintPrompt.promptTemplate, variables);
+    // Replace variables in hint template using [[ ]] delimiters
+    return replaceVariables(this.hintPrompt.promptTemplate, variables, ['[[', ']]']);
   }
 }

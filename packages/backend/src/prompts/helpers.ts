@@ -1,16 +1,18 @@
 /**
  * Template validation utilities
  *
- * We use Mustache directly for template rendering.
- * This file only provides validation helpers.
+ * We use a simple string replacement for template rendering.
+ * This file provides validation helpers.
  */
 
 /**
- * Find all remaining placeholders in a template
+ * Find all remaining placeholders in a template using [[ ]] delimiters
  * Used for validation after composition
+ *
+ * Note: {{ }} placeholders are intentionally preserved for LLM consumption
  */
 export function findRemainingPlaceholders(template: string): string[] {
-  const placeholderPattern = /\{\{([^}]+)\}\}/g;
+  const placeholderPattern = /\[\[([^\]]+)\]\]/g;
   const matches: string[] = [];
   let match;
 
@@ -22,8 +24,11 @@ export function findRemainingPlaceholders(template: string): string[] {
 }
 
 /**
- * Validate that no placeholders remain in final template
+ * Validate that no [[ ]] placeholders remain in final template
  * Throws error with details if any found
+ *
+ * Note: {{ }} placeholders (like {{a1}}, {{x1}}) are intentionally preserved
+ * for the LLM to use as examples in generated tasks
  */
 export function validateNoPlaceholders(template: string, context: string): void {
   const remaining = findRemainingPlaceholders(template);
