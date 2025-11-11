@@ -202,6 +202,7 @@ export default function ConceptsPage() {
   return (
     <PageLayout
       showBack
+      showHome
       showGameStats
       showAccount
     >
