@@ -48,6 +48,19 @@ export function SubjectConceptSelector({
     return targetSubject?.concepts ?? []
   }, [showAllConcepts, allSubjects, filteredSubjects, previewSubject])
 
+  // Auto-expand concepts when filtered list is empty but all list has concepts
+  useEffect(() => {
+    const filteredSubj = filteredSubjects.find((s) => s.id === previewSubject)
+    const allSubj = allSubjects.find((s) => s.id === previewSubject)
+    const filteredCount = filteredSubj?.concepts?.length ?? 0
+    const allCount = allSubj?.concepts?.length ?? 0
+
+    // If no filtered concepts but there are concepts in "all", auto-expand
+    if (filteredCount === 0 && allCount > 0) {
+      setShowAllConcepts(true)
+    }
+  }, [previewSubject, filteredSubjects, allSubjects])
+
   // Calculate if there are more items available
   const hasMoreSubjects = allSubjects.length > filteredSubjects.length
   const hasMoreConcepts = useMemo(() => {

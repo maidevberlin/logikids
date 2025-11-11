@@ -19,19 +19,21 @@ export const ConceptList = memo(function ConceptList({
     <div className="flex flex-col gap-2">
       <ScrollArea className="max-h-[60vh] sm:max-h-[70vh]">
         <div className="flex flex-col gap-2" role="listbox" aria-label={t('task.concepts')}>
-          {/* Random option */}
-          <Button
-            variant="ghost"
-            role="option"
-            aria-selected={!currentConcept || currentConcept === 'random'}
-            className={`
-              justify-start px-3 py-2.5 h-auto rounded-xl
-              ${!currentConcept || currentConcept === 'random' ? 'bg-muted font-medium' : 'hover:bg-muted'}
-            `}
-            onClick={() => onConceptClick('random')}
-          >
-            <span className="text-sm">{t('task.randomConcept')}</span>
-          </Button>
+          {/* Random option - only show if there are actual concepts */}
+          {concepts.length > 0 && (
+            <Button
+              variant="ghost"
+              role="option"
+              aria-selected={!currentConcept || currentConcept === 'random'}
+              className={`
+                justify-start px-3 py-2.5 h-auto rounded-xl
+                ${!currentConcept || currentConcept === 'random' ? 'bg-muted font-medium' : 'hover:bg-muted'}
+              `}
+              onClick={() => onConceptClick('random')}
+            >
+              <span className="text-sm">{t('task.randomConcept')}</span>
+            </Button>
+          )}
 
           {/* Concept list */}
           {concepts.map((concept) => {
