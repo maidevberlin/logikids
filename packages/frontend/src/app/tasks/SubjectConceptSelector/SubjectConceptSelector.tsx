@@ -113,12 +113,20 @@ export function SubjectConceptSelector({
     if (!concept || concept === 'random') {
       return t('task.randomConcept')
     }
-    const conceptObj = currentSubject?.concepts?.find((c) => c.id === concept)
+    // Try to find concept in filtered subjects first
+    let conceptObj = currentSubject?.concepts?.find((c) => c.id === concept)
+
+    // If not found, try in all subjects (for concepts outside grade range)
+    if (!conceptObj) {
+      const allSubj = allSubjects.find((s) => s.id === subject)
+      conceptObj = allSubj?.concepts?.find((c) => c.id === concept)
+    }
+
     if (!conceptObj) return concept
     return t(`subjects/${subject}:concepts.${concept}.name`, {
       defaultValue: conceptObj.name,
     })
-  }, [concept, currentSubject, subject, t])
+  }, [concept, currentSubject, allSubjects, subject, t])
 
   return (
     <Popover open={isOpen} onOpenChange={handleOpenChange}>
