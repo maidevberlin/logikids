@@ -11,6 +11,9 @@ export const ConceptList = memo(function ConceptList({
   concepts,
   currentConcept,
   onConceptClick,
+  showAll,
+  hasMoreConcepts,
+  onToggleShowAll,
 }: ConceptListProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -73,6 +76,16 @@ export const ConceptList = memo(function ConceptList({
               </Button>
             )
           })}
+
+          {/* Toggle link */}
+          {hasMoreConcepts && (
+            <button
+              onClick={onToggleShowAll}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 text-center w-full"
+            >
+              {showAll ? t('task.showRecommended') : t('task.showAllSubjects')}
+            </button>
+          )}
         </div>
       </ScrollArea>
     </div>

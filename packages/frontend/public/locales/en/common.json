@@ -123,6 +123,8 @@
     "concepts": "Concepts",
     "conceptsFor": "Showing concepts for {{subject}}",
     "viewAll": "View All",
+    "showAllSubjects": "Show all →",
+    "showRecommended": "← Show recommended",
     "fillInBlanks_one": "Fill in blank #{{count}}",
     "fillInBlanks_other": "Fill in {{count}} blanks",
     "enterNumber": "Enter number",

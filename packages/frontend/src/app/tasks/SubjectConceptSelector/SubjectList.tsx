@@ -13,6 +13,9 @@ export const SubjectList = memo(function SubjectList({
   previewSubject,
   onSubjectClick,
   onSubjectHover,
+  showAll,
+  hasMoreSubjects,
+  onToggleShowAll,
 }: SubjectListProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -67,6 +70,16 @@ export const SubjectList = memo(function SubjectList({
               </Button>
             )
           })}
+
+          {/* Toggle link */}
+          {hasMoreSubjects && (
+            <button
+              onClick={onToggleShowAll}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 text-center w-full"
+            >
+              {showAll ? t('task.showRecommended') : t('task.showAllSubjects')}
+            </button>
+          )}
         </div>
       </ScrollArea>
     </div>

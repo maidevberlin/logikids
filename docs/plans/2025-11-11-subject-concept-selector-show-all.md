@@ -212,3 +212,21 @@ None - design is complete and validated.
 ## Approval
 
 Design validated with user on 2025-11-11.
+
+## Implementation Notes
+
+**Completed:** 2025-11-11
+
+**Changes from original design:**
+- Tasks 3 and 4 from the implementation plan were combined into a single commit (ed68e7a) that updated both SubjectList and ConceptList components together, rather than in separate commits. This was more efficient as both components required identical changes (adding toggle props and rendering logic).
+
+**Testing notes:**
+- Manual testing was deferred due to Docker environment setup requirements
+- TypeScript compilation verified with no errors after all changes
+- All component interfaces properly updated with new props
+- Translation keys added for both English and German
+
+**Known limitations:**
+- None identified during implementation
+- Feature follows design specification exactly
+- Edge cases (empty lists, no filtering differences) handled as designed
