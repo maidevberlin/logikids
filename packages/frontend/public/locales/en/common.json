@@ -243,6 +243,30 @@
       "emoji": "✨"
     }
   },
+  "practice": {
+    "title": "Practice Mode",
+    "subtitle": "Focus on concepts that need improvement",
+    "empty": {
+      "title": "Great Job!",
+      "description": "You don't have any concepts that need practice right now. Keep up the excellent work!",
+      "button": "Explore More Subjects"
+    },
+    "metrics": {
+      "success": "Success",
+      "avgTime": "Avg Time",
+      "hintsPerTask": "Hints/Task",
+      "attempts": "Attempts"
+    },
+    "suggested": "Suggested:",
+    "browseAll": "Or browse all subjects",
+    "reasons": {
+      "lowSuccessRate": "low success rate",
+      "takingTooLong": "taking too long",
+      "usingManyHints": "using many hints",
+      "buildingMastery": "Building mastery",
+      "needsWork": "Needs work: {{issues}}"
+    }
+  },
   "difficulty": {
     "easy": "Easy",
     "medium": "Medium",

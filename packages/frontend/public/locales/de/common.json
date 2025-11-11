@@ -243,6 +243,30 @@
       "emoji": "✨"
     }
   },
+  "practice": {
+    "title": "Übungsmodus",
+    "subtitle": "Konzentriere dich auf Konzepte, die Verbesserung brauchen",
+    "empty": {
+      "title": "Super gemacht!",
+      "description": "Du hast momentan keine Konzepte, die Übung brauchen. Mach weiter so!",
+      "button": "Weitere Fächer erkunden"
+    },
+    "metrics": {
+      "success": "Erfolg",
+      "avgTime": "Ø Zeit",
+      "hintsPerTask": "Hinweise/Aufgabe",
+      "attempts": "Versuche"
+    },
+    "suggested": "Empfohlen:",
+    "browseAll": "Oder alle Fächer durchstöbern",
+    "reasons": {
+      "lowSuccessRate": "niedrige Erfolgsrate",
+      "takingTooLong": "zu viel Zeit benötigt",
+      "usingManyHints": "viele Hinweise benutzt",
+      "buildingMastery": "Verbesserung in Arbeit",
+      "needsWork": "Übung nötig: {{issues}}"
+    }
+  },
   "difficulty": {
     "easy": "Leicht",
     "medium": "Mittel",

@@ -1,31 +1,100 @@
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { useProgress } from '@/data/progress/hooks'
 import { generatePracticeRecommendations } from './PracticeAlgorithm'
 import { PageLayout } from '@/app/common'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Target, TrendingUp, Clock, Lightbulb, ArrowRight } from 'lucide-react'
+import { getSubjectNamespace } from '@/i18n/subjectNamespace'
+
+interface SubjectWithConcepts {
+  id: string
+  name: string
+  description: string
+  concepts?: Array<{ id: string; name: string; grade?: number }>
+}
+
+async function fetchAllSubjects(): Promise<SubjectWithConcepts[]> {
+  const response = await fetch('/api/task/subjects')
+  if (!response.ok) {
+    throw new Error('Failed to fetch subjects')
+  }
+  const data = await response.json()
+  return data.subjects
+}
 
 export default function PracticePage() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const { progress } = useProgress()
+
+  const { data: subjects = [] } = useQuery({
+    queryKey: ['subjects', 'all'],
+    queryFn: fetchAllSubjects,
+  })
 
   const recommendations = generatePracticeRecommendations(progress, 5)
 
+  // Helper function to get translated subject name
+  const getSubjectName = (subjectId: string) => {
+    const subject = subjects.find(s => s.id === subjectId)
+    return t(`subjects.${subjectId}.label`, { defaultValue: subject?.name || subjectId })
+  }
+
+  // Helper function to get translated concept name
+  const getConceptName = (subjectId: string, conceptId: string) => {
+    const subject = subjects.find(s => s.id === subjectId)
+    const concept = subject?.concepts?.find(c => c.id === conceptId)
+
+    if (!concept) {
+      return formatConceptName(conceptId)
+    }
+
+    const namespace = getSubjectNamespace(subjectId, concept.grade)
+    return t(`${namespace}:concepts.${conceptId}.name`, {
+      defaultValue: concept.name || formatConceptName(conceptId)
+    })
+  }
+
+  // Helper function to translate practice reasons
+  const translateReason = (reason: string) => {
+    if (reason === 'Building mastery') {
+      return t('practice.reasons.buildingMastery')
+    }
+
+    // Parse "Needs work: ..." pattern
+    const needsWorkMatch = reason.match(/^Needs work: (.+)$/)
+    if (needsWorkMatch) {
+      const issuesText = needsWorkMatch[1]
+
+      // Translate individual issues
+      const translatedIssues = issuesText
+        .replace(/low success rate/g, t('practice.reasons.lowSuccessRate'))
+        .replace(/taking too long/g, t('practice.reasons.takingTooLong'))
+        .replace(/using many hints/g, t('practice.reasons.usingManyHints'))
+
+      return t('practice.reasons.needsWork', { issues: translatedIssues })
+    }
+
+    return reason
+  }
+
   if (recommendations.length === 0) {
     return (
-      <PageLayout>
+      <PageLayout showBack showHome showGameStats showAccount>
         <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4">
           <div className="w-full max-w-2xl text-center space-y-6">
             <div className="bg-green-100 p-6 rounded-full w-24 h-24 mx-auto flex items-center justify-center">
               <Target className="w-12 h-12 text-green-600" />
             </div>
-            <h1 className="text-3xl font-bold text-foreground">Great Job!</h1>
+            <h1 className="text-3xl font-bold text-foreground">{t('practice.empty.title')}</h1>
             <p className="text-lg text-muted-foreground">
-              You don't have any concepts that need practice right now. Keep up the excellent work!
+              {t('practice.empty.description')}
             </p>
             <Button onClick={() => navigate('/subjects')} className="mt-4">
-              Explore More Subjects
+              {t('practice.empty.button')}
             </Button>
           </div>
         </div>
@@ -34,7 +103,7 @@ export default function PracticePage() {
   }
 
   return (
-    <PageLayout>
+    <PageLayout showBack showHome showGameStats showAccount>
       <div className="min-h-screen py-12 px-4">
         <div className="w-full max-w-4xl mx-auto space-y-8">
           {/* Header */}
@@ -42,9 +111,9 @@ export default function PracticePage() {
             <div className="bg-orange-100 p-4 rounded-full w-20 h-20 mx-auto flex items-center justify-center">
               <Target className="w-10 h-10 text-orange-600" />
             </div>
-            <h1 className="text-4xl font-bold text-foreground">Practice Mode</h1>
+            <h1 className="text-4xl font-bold text-foreground">{t('practice.title')}</h1>
             <p className="text-lg text-muted-foreground">
-              Focus on concepts that need improvement
+              {t('practice.subtitle')}
             </p>
           </div>
 
@@ -80,35 +149,35 @@ export default function PracticePage() {
                   <div className="flex-1 space-y-3">
                     {/* Title */}
                     <div>
-                      <h3 className="text-xl font-bold text-foreground capitalize">
-                        {rec.subject} - {formatConceptName(rec.conceptId)}
+                      <h3 className="text-xl font-bold text-foreground">
+                        {getSubjectName(rec.subject)} - {getConceptName(rec.subject, rec.conceptId)}
                       </h3>
-                      <p className="text-sm text-muted-foreground mt-1">{rec.reason}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{translateReason(rec.reason)}</p>
                     </div>
 
                     {/* Metrics */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       <MetricBadge
                         icon={<TrendingUp className="w-4 h-4" />}
-                        label="Success"
+                        label={t('practice.metrics.success')}
                         value={`${Math.round(rec.metrics.successRate * 100)}%`}
                         color={rec.metrics.successRate >= 0.7 ? 'green' : 'orange'}
                       />
                       <MetricBadge
                         icon={<Clock className="w-4 h-4" />}
-                        label="Avg Time"
+                        label={t('practice.metrics.avgTime')}
                         value={formatTime(rec.metrics.avgTimeSeconds)}
                         color="blue"
                       />
                       <MetricBadge
                         icon={<Lightbulb className="w-4 h-4" />}
-                        label="Hints/Task"
+                        label={t('practice.metrics.hintsPerTask')}
                         value={rec.metrics.hintRate.toFixed(1)}
                         color={rec.metrics.hintRate < 0.5 ? 'green' : 'orange'}
                       />
                       <MetricBadge
                         icon={<Target className="w-4 h-4" />}
-                        label="Attempts"
+                        label={t('practice.metrics.attempts')}
                         value={rec.metrics.totalAttempts.toString()}
                         color="purple"
                       />
@@ -116,7 +185,7 @@ export default function PracticePage() {
 
                     {/* Difficulty Badge */}
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-muted-foreground">Suggested:</span>
+                      <span className="text-sm text-muted-foreground">{t('practice.suggested')}</span>
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-medium ${
                           rec.suggestedDifficulty === 'easy'
@@ -126,7 +195,7 @@ export default function PracticePage() {
                             : 'bg-red-100 text-red-800'
                         }`}
                       >
-                        {rec.suggestedDifficulty}
+                        {t(`difficulty.${rec.suggestedDifficulty}`)}
                       </span>
                     </div>
                   </div>
@@ -147,7 +216,7 @@ export default function PracticePage() {
               onClick={() => navigate('/subjects')}
               className="text-muted-foreground"
             >
-              Or browse all subjects
+              {t('practice.browseAll')}
             </Button>
           </div>
         </div>

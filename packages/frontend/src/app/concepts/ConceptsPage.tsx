@@ -61,8 +61,36 @@ export default function ConceptsPage() {
   const { data: userData } = useUserData()
   const [showAll, setShowAll] = useState(false)
   const [activeTab, setActiveTab] = useState<'school' | 'fun'>('school')
+  const [initialTabSet, setInitialTabSet] = useState(false)
 
   const grade = userData?.settings.grade
+
+  // Fetch both official and custom concepts to determine default tab
+  const { data: schoolCheck } = useQuery({
+    queryKey: ['concepts-check', subjectId, grade, 'curriculum'],
+    queryFn: () => fetchSubjectConcepts(subjectId!, { grade, source: 'curriculum' }),
+    enabled: !!subjectId && !initialTabSet,
+  })
+
+  const { data: customCheck } = useQuery({
+    queryKey: ['concepts-check', subjectId, grade, 'custom'],
+    queryFn: () => fetchSubjectConcepts(subjectId!, { grade, source: 'custom' }),
+    enabled: !!subjectId && !initialTabSet,
+  })
+
+  // Set initial tab based on which has concepts
+  useEffect(() => {
+    if (!initialTabSet && schoolCheck && customCheck) {
+      const hasSchool = schoolCheck.concepts.length > 0
+      const hasCustom = customCheck.concepts.length > 0
+
+      // If no official concepts but there are custom ones, default to fun tab
+      if (!hasSchool && hasCustom) {
+        setActiveTab('fun')
+      }
+      setInitialTabSet(true)
+    }
+  }, [initialTabSet, schoolCheck, customCheck])
 
   // Reset showAll when switching tabs
   useEffect(() => {
@@ -101,8 +129,25 @@ export default function ConceptsPage() {
     )
   }
 
-  // Get concepts from current data
-  const concepts = data?.concepts || []
+  // Get concepts from current data and sort them
+  const concepts = useMemo(() => {
+    const rawConcepts = data?.concepts || []
+
+    // Sort by grade desc (higher grades first), then by name asc (alphabetical)
+    return [...rawConcepts].sort((a, b) => {
+      // Handle undefined grades - put them last
+      const gradeA = a.grade ?? -1
+      const gradeB = b.grade ?? -1
+
+      // Sort by grade descending
+      if (gradeA !== gradeB) {
+        return gradeB - gradeA
+      }
+
+      // If same grade, sort by name ascending
+      return a.name.localeCompare(b.name)
+    })
+  }, [data?.concepts])
 
   // Group concepts by grade for "show all" view
   const groupedByGrade = useMemo(() => {
@@ -118,16 +163,16 @@ export default function ConceptsPage() {
       groups.get(key)!.push(concept)
     })
 
-    // Sort grades ascending
+    // Sort grades descending (higher grades first)
     const sortedGrades = Array.from(groups.keys()).sort((a, b) => {
       if (a === 'other') return 1
       if (b === 'other') return -1
-      return a - b
+      return b - a  // Changed from a - b to b - a for descending
     })
 
     return sortedGrades.map(gradeKey => ({
       grade: gradeKey,
-      concepts: groups.get(gradeKey)!
+      concepts: groups.get(gradeKey)!.sort((a, b) => a.name.localeCompare(b.name))  // Sort concepts within each grade by name
     }))
   }, [concepts, showAll])
 

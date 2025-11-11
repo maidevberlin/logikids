@@ -18,8 +18,13 @@ async function fetchAllSubjects(): Promise<Subject[]> {
   return data.subjects
 }
 
-async function fetchFilteredSubjects(grade: number): Promise<Subject[]> {
-  const response = await fetch(`/api/task/subjects?grade=${grade}`)
+async function fetchFilteredSubjects(grade: number, age?: number): Promise<Subject[]> {
+  const params = new URLSearchParams({ grade: grade.toString() })
+  if (age !== undefined) {
+    params.append('age', age.toString())
+  }
+
+  const response = await fetch(`/api/task/subjects?${params}`)
   if (!response.ok) {
     throw new Error('Failed to fetch subjects')
   }
@@ -52,6 +57,7 @@ export default function SubjectsPage() {
   const { t } = useTranslation()
   const { data: userData } = useUserData()
   const userGrade = userData?.settings.grade
+  const userAge = userData?.settings.age
 
   // Fetch all subjects with metadata (for subjects with no concepts for user's grade)
   const { data: allSubjects } = useQuery({
@@ -59,10 +65,10 @@ export default function SubjectsPage() {
     queryFn: fetchAllSubjects,
   })
 
-  // Fetch filtered subjects (concepts available for user's grade)
+  // Fetch filtered subjects (concepts available for user's grade/age)
   const { data: filteredSubjects, isLoading, error } = useQuery({
-    queryKey: ['subjects', 'filtered', userGrade],
-    queryFn: () => fetchFilteredSubjects(userGrade!),
+    queryKey: ['subjects', 'filtered', userGrade, userAge],
+    queryFn: () => fetchFilteredSubjects(userGrade!, userAge),
     enabled: !!userGrade,
   })
 

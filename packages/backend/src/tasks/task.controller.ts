@@ -18,13 +18,20 @@ export class TaskController extends BaseController {
 
   public async getSubjects(req: Request, res: Response): Promise<void> {
     try {
-      // Parse and validate query parameters for grade filtering
+      // Parse and validate query parameters for grade and age filtering
       const grade = req.query.grade ? parseInt(req.query.grade as string, 10) : undefined;
+      const age = req.query.age ? parseInt(req.query.age as string, 10) : undefined;
       const difficulty = req.query.difficulty as 'easy' | 'medium' | 'hard' | undefined;
 
       // Validate grade if provided
       if (grade !== undefined && (isNaN(grade) || grade < 1 || grade > 13)) {
         res.status(400).json({ error: 'Invalid grade parameter. Must be between 1 and 13.' });
+        return;
+      }
+
+      // Validate age if provided
+      if (age !== undefined && (isNaN(age) || age < 1 || age > 100)) {
+        res.status(400).json({ error: 'Invalid age parameter. Must be between 1 and 100.' });
         return;
       }
 
@@ -39,7 +46,14 @@ export class TaskController extends BaseController {
 
         // If grade filtering is active, return filtered concepts with full details
         if (grade !== undefined) {
-          const filteredConcepts = subjectRegistry.getConcepts(subject.id, { grade, difficulty });
+          // Try grade-based filtering first
+          let filteredConcepts = subjectRegistry.getConcepts(subject.id, { grade, difficulty });
+
+          // If no results with grade and age is provided, fall back to age-based filtering
+          // This ensures custom concepts with broad age ranges (like logic) are included
+          if (filteredConcepts.length === 0 && age !== undefined) {
+            filteredConcepts = subjectRegistry.getConcepts(subject.id, { age, difficulty });
+          }
 
           return {
             id: subject.id,
