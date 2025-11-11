@@ -77,7 +77,9 @@ export class TaskController extends BaseController {
           };
         }
 
-        // Otherwise return just metadata (for subjects page)
+        // Otherwise return all concepts without filtering
+        const allConcepts = subjectRegistry.getConcepts(subject.id);
+
         return {
           id: subject.id,
           name: subject.name,
@@ -87,6 +89,16 @@ export class TaskController extends BaseController {
           maxGrade: metadata.maxGrade,
           minAge: metadata.minAge,
           maxAge: metadata.maxAge,
+          concepts: allConcepts.map(concept => ({
+            id: concept.id,
+            name: concept.name,
+            description: concept.description,
+            grade: concept.grade,
+            difficulty: concept.difficulty,
+            source: concept.source,
+            focus: concept.focus,
+            learning_objectives: concept.learning_objectives
+          }))
         };
       });
 
