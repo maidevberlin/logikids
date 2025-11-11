@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Concept } from './types'
-import { getSubjectNamespace } from '@/i18n/subjectNamespace'
 import { useProgress } from '@/data/progress/hooks'
 import { calculateConceptStars } from '@/data/progress/mastery'
 import { StarRating } from '@/components/ui/star-rating'
@@ -22,7 +21,6 @@ export interface ConceptCardProps {
 
 export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) {
   const { t } = useTranslation()
-  const namespace = getSubjectNamespace(subject, concept.grade)
   const { progress } = useProgress()
 
   // Calculate mastery stars
@@ -30,8 +28,8 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
   const masteryStars = calculateConceptStars(conceptStats)
 
   // Get translated values with fallback to backend data
-  const name = t(`${namespace}:concepts.${concept.id}.name`, { defaultValue: concept.name })
-  const description = t(`${namespace}:concepts.${concept.id}.description`, { defaultValue: concept.description })
+  const name = t(`subjects/${subject}:concepts.${concept.id}.name`, { defaultValue: concept.name })
+  const description = t(`subjects/${subject}:concepts.${concept.id}.description`, { defaultValue: concept.description })
 
   return (
     <Link to={`/subjects/${subject}/${concept.id}/tasks`}>

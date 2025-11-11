@@ -1,5 +1,249 @@
 {
   "concepts": {
+    "grade1-addition-up-to-10": {
+      "name": "Addition up to 10",
+      "description": "Number range up to 10"
+    },
+    "grade1-calculation-up-to-20": {
+      "name": "Calculation up to 20",
+      "description": "Number range up to 20"
+    },
+    "grade1-collecting-data": {
+      "name": "Collecting Data",
+      "description": "Data and probability"
+    },
+    "grade1-comparing-and-ordering-numbers": {
+      "name": "Comparing and Ordering Numbers",
+      "description": "Number range up to 20"
+    },
+    "grade1-geometric-solids": {
+      "name": "Geometric Solids",
+      "description": "Space and shape"
+    },
+    "grade1-introduction-to-chance": {
+      "name": "Introduction to Chance",
+      "description": "Data and probability"
+    },
+    "grade1-lengths": {
+      "name": "Lengths",
+      "description": "Measurement"
+    },
+    "grade1-money-values": {
+      "name": "Money Values",
+      "description": "Measurement"
+    },
+    "grade1-number-concept-development": {
+      "name": "Number Concept Development",
+      "description": "Number range up to 20"
+    },
+    "grade1-plane-figures": {
+      "name": "Plane Figures",
+      "description": "Space and shape"
+    },
+    "grade1-recognizing-patterns": {
+      "name": "Recognizing Patterns",
+      "description": "Patterns and structures"
+    },
+    "grade1-spatial-relations": {
+      "name": "Spatial Relations",
+      "description": "Space and shape"
+    },
+    "grade1-subtraction-up-to-10": {
+      "name": "Subtraction up to 10",
+      "description": "Number range up to 10"
+    },
+    "grade1-time": {
+      "name": "Time",
+      "description": "Measurement"
+    },
+    "grade2-addition-and-subtraction-up-to-100": {
+      "name": "Addition and Subtraction up to 100",
+      "description": "Numbers and operations"
+    },
+    "grade2-deepening-geometric-solids": {
+      "name": "Deepening Geometric Solids",
+      "description": "Space and shape"
+    },
+    "grade2-expanding-money-values": {
+      "name": "Expanding Money Values",
+      "description": "Measurement"
+    },
+    "grade2-introduction-to-division": {
+      "name": "Introduction to Division",
+      "description": "Numbers and operations"
+    },
+    "grade2-introduction-to-multiplication": {
+      "name": "Introduction to Multiplication",
+      "description": "Numbers and operations"
+    },
+    "grade2-measuring-lengths": {
+      "name": "Measuring Lengths",
+      "description": "Measurement"
+    },
+    "grade2-number-range-up-to-100": {
+      "name": "Number Range up to 100",
+      "description": "Numbers and operations"
+    },
+    "grade2-number-sequences-and-patterns": {
+      "name": "Number Sequences and Patterns",
+      "description": "Patterns and structures"
+    },
+    "grade2-probabilities": {
+      "name": "Probabilities",
+      "description": "Data and probability"
+    },
+    "grade2-representing-data": {
+      "name": "Representing Data",
+      "description": "Data and probability"
+    },
+    "grade2-symmetry": {
+      "name": "Symmetry",
+      "description": "Space and shape"
+    },
+    "grade2-time-spans": {
+      "name": "Time Spans",
+      "description": "Measurement"
+    },
+    "grade3-addition-and-subtraction-up-to-1000": {
+      "name": "Addition and Subtraction up to 1000",
+      "description": "Numbers and operations"
+    },
+    "grade3-area": {
+      "name": "Area",
+      "description": "Space and shape"
+    },
+    "grade3-automating-times-tables": {
+      "name": "Automating Times Tables",
+      "description": "Numbers and operations"
+    },
+    "grade3-collecting-and-representing-data": {
+      "name": "Collecting and Representing Data",
+      "description": "Data and probability"
+    },
+    "grade3-combinatorics": {
+      "name": "Combinatorics",
+      "description": "Data and probability"
+    },
+    "grade3-deepening-symmetry": {
+      "name": "Deepening Symmetry",
+      "description": "Space and shape"
+    },
+    "grade3-division-with-remainder": {
+      "name": "Division with Remainder",
+      "description": "Numbers and operations"
+    },
+    "grade3-geometric-figures": {
+      "name": "Geometric Figures",
+      "description": "Space and shape"
+    },
+    "grade3-laws-of-arithmetic": {
+      "name": "Laws of Arithmetic",
+      "description": "Patterns and structures"
+    },
+    "grade3-lengths": {
+      "name": "Lengths",
+      "description": "Measurement"
+    },
+    "grade3-mass": {
+      "name": "Mass",
+      "description": "Measurement"
+    },
+    "grade3-multiplication-with-large-numbers": {
+      "name": "Multiplication with Large Numbers",
+      "description": "Numbers and operations"
+    },
+    "grade3-number-range-up-to-1000": {
+      "name": "Number Range up to 1000",
+      "description": "Numbers and operations"
+    },
+    "grade3-number-sequences": {
+      "name": "Number Sequences",
+      "description": "Patterns and structures"
+    },
+    "grade3-probability": {
+      "name": "Probability",
+      "description": "Data and probability"
+    },
+    "grade3-time-spans-extended": {
+      "name": "Time Spans Extended",
+      "description": "Measurement"
+    },
+    "grade3-volume-measures": {
+      "name": "Volume Measures",
+      "description": "Measurement"
+    },
+    "grade3-written-addition": {
+      "name": "Written Addition",
+      "description": "Numbers and operations"
+    },
+    "grade3-written-subtraction": {
+      "name": "Written Subtraction",
+      "description": "Numbers and operations"
+    },
+    "grade4-all-measurement-areas": {
+      "name": "All Measurement Areas",
+      "description": "Measurement"
+    },
+    "grade4-area-and-perimeter": {
+      "name": "Area and Perimeter",
+      "description": "Measurement"
+    },
+    "grade4-divisibility": {
+      "name": "Divisibility",
+      "description": "Numbers and operations"
+    },
+    "grade4-functional-relationships": {
+      "name": "Functional Relationships",
+      "description": "Patterns and structures"
+    },
+    "grade4-geometric-constructions": {
+      "name": "Geometric Constructions",
+      "description": "Space and shape"
+    },
+    "grade4-geometric-transformations": {
+      "name": "Geometric Transformations",
+      "description": "Space and shape"
+    },
+    "grade4-interpreting-data": {
+      "name": "Interpreting Data",
+      "description": "Data and probability"
+    },
+    "grade4-introduction-to-fractions": {
+      "name": "Introduction to Fractions",
+      "description": "Numbers and operations"
+    },
+    "grade4-large-numbers": {
+      "name": "Large Numbers",
+      "description": "Numbers and operations"
+    },
+    "grade4-mean": {
+      "name": "Mean",
+      "description": "Data and probability"
+    },
+    "grade4-probability-concepts": {
+      "name": "Probability Concepts",
+      "description": "Data and probability"
+    },
+    "grade4-solids-and-nets": {
+      "name": "Solids and Nets",
+      "description": "Space and shape"
+    },
+    "grade4-terms-and-equations": {
+      "name": "Terms and Equations",
+      "description": "Patterns and structures"
+    },
+    "grade4-volume": {
+      "name": "Volume",
+      "description": "Measurement"
+    },
+    "grade4-written-division": {
+      "name": "Written Division",
+      "description": "Numbers and operations"
+    },
+    "grade4-written-multiplication": {
+      "name": "Written Multiplication",
+      "description": "Numbers and operations"
+    },
     "3d-geometry": {
       "name": "3D Geometry - Volumes and Surface Areas",
       "description": "Calculating volumes and surface areas of 3D solids including prisms, pyramids, cylinders, cones, and spheres"
@@ -311,6 +555,102 @@
     "trigonometric-functions": {
       "name": "Trigonometric Functions",
       "description": "Understanding sine, cosine, and tangent functions with periodic behavior"
+    },
+    "advanced-combinatorics": {
+      "name": "Advanced Combinatorics",
+      "description": "Binomial theorem, Pascal's triangle, pigeonhole principle, and advanced counting techniques"
+    },
+    "angles-and-distances-3d": {
+      "name": "Angles and Distances in 3D",
+      "description": "Vectors and analytical geometry"
+    },
+    "complex-numbers-intro": {
+      "name": "Introduction to Complex Numbers",
+      "description": "Complex number arithmetic, polar form, and basic operations"
+    },
+    "correlation-and-regression": {
+      "name": "Correlation and Regression",
+      "description": "Statistics and probability"
+    },
+    "cross-product": {
+      "name": "Cross Product (Vector Product)",
+      "description": "Vectors and analytical geometry"
+    },
+    "curve-sketching": {
+      "name": "Curve Sketching (Kurvendiskussion)",
+      "description": "Complete analysis of functions including domain, zeros, extrema, inflection points, and asymptotes"
+    },
+    "derivative-applications": {
+      "name": "Applications of Derivatives",
+      "description": "Using derivatives to analyze functions and solve optimization and related rates problems"
+    },
+    "derivatives": {
+      "name": "Derivatives and Differentiation",
+      "description": "Understanding rates of change and calculating derivatives using various rules"
+    },
+    "determinants": {
+      "name": "Determinants",
+      "description": "Computing and applying determinants of square matrices"
+    },
+    "differential-equations-intro": {
+      "name": "Introduction to Differential Equations",
+      "description": "First-order differential equations, separation of variables, and basic applications"
+    },
+    "integration": {
+      "name": "Antiderivatives and Integration",
+      "description": "Understanding integration as the reverse of differentiation and calculating definite and indefinite integrals"
+    },
+    "integration-applications": {
+      "name": "Applications of Integration",
+      "description": "Using integration to calculate areas, volumes, and solve applied problems"
+    },
+    "inverse-matrices": {
+      "name": "Inverse Matrices",
+      "description": "Finding and applying inverse matrices using various methods"
+    },
+    "limits-continuity": {
+      "name": "Limits and Continuity",
+      "description": "Understanding limits of functions and continuity as foundations of calculus"
+    },
+    "linear-systems-matrices": {
+      "name": "Linear Systems and Matrices",
+      "description": "Solving systems of linear equations using matrix methods and Gaussian elimination"
+    },
+    "linear-transformations": {
+      "name": "Linear Transformations",
+      "description": "Understanding linear transformations, their matrix representations, and geometric properties"
+    },
+    "lines-in-space": {
+      "name": "Lines in 3D Space",
+      "description": "Vectors and analytical geometry"
+    },
+    "matrices-basics": {
+      "name": "Matrices Basics",
+      "description": "Introduction to matrices, matrix operations, and basic properties"
+    },
+    "normal-distribution": {
+      "name": "Normal Distribution",
+      "description": "Statistics and probability"
+    },
+    "planes-in-space": {
+      "name": "Planes in 3D Space",
+      "description": "Vectors and analytical geometry"
+    },
+    "scalar-product": {
+      "name": "Scalar Product (Dot Product)",
+      "description": "Vectors and analytical geometry"
+    },
+    "sequences-and-series": {
+      "name": "Sequences and Series",
+      "description": "Arithmetic and geometric sequences, convergence, and series summation"
+    },
+    "statistical-inference": {
+      "name": "Statistical Inference",
+      "description": "Statistics and probability"
+    },
+    "vectors-basics": {
+      "name": "Vector Basics",
+      "description": "Vectors and analytical geometry"
     }
   }
 }

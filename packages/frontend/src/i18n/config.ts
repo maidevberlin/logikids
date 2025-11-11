@@ -56,14 +56,10 @@ i18n
       'greetings',
       'profile',
       'stats',
-      'subjects/math-elementary',
-      'subjects/math-middle',
-      'subjects/german-elementary',
-      'subjects/german-middle',
-      'subjects/english-elementary',
-      'subjects/english-middle',
-      'subjects/physics-elementary',
-      'subjects/physics-middle',
+      'subjects/math',
+      'subjects/german',
+      'subjects/english',
+      'subjects/physics',
       'subjects/logic'
     ],
     // Backend configuration for lazy loading
