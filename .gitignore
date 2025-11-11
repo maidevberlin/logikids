@@ -28,4 +28,7 @@ yarn-error.log*
 *.swp
 *.swo
 *.swn
-.DS_Store 
+.DS_Store
+
+# Git worktrees
+.worktrees/ 
