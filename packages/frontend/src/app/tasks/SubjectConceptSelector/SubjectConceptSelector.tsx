@@ -23,15 +23,17 @@ export function SubjectConceptSelector({
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [previewSubject, setPreviewSubject] = useState(subject)
-  const [showAll, setShowAll] = useState(showAllByDefault)
+  const [showAllSubjects, setShowAllSubjects] = useState(showAllByDefault)
+  const [showAllConcepts, setShowAllConcepts] = useState(showAllByDefault)
 
-  // Reset showAll when subject prop changes
+  // Reset showAll states when subject prop changes
   useEffect(() => {
-    setShowAll(showAllByDefault)
+    setShowAllSubjects(showAllByDefault)
+    setShowAllConcepts(showAllByDefault)
   }, [subject, showAllByDefault])
 
   // Determine which dataset to display
-  const displayedSubjects = showAll ? allSubjects : filteredSubjects
+  const displayedSubjects = showAllSubjects ? allSubjects : filteredSubjects
 
   // Find current subject and its concepts
   const currentSubject = useMemo(
@@ -41,9 +43,10 @@ export function SubjectConceptSelector({
 
   // Get concepts for the preview subject
   const displayedConcepts = useMemo(() => {
-    const targetSubject = displayedSubjects.find((s) => s.id === previewSubject)
+    const sourceSubjects = showAllConcepts ? allSubjects : filteredSubjects
+    const targetSubject = sourceSubjects.find((s) => s.id === previewSubject)
     return targetSubject?.concepts ?? []
-  }, [displayedSubjects, previewSubject])
+  }, [showAllConcepts, allSubjects, filteredSubjects, previewSubject])
 
   // Calculate if there are more items available
   const hasMoreSubjects = allSubjects.length > filteredSubjects.length
@@ -53,9 +56,13 @@ export function SubjectConceptSelector({
     return (allSubj?.concepts?.length ?? 0) > (filteredSubj?.concepts?.length ?? 0)
   }, [filteredSubjects, allSubjects, previewSubject])
 
-  // Toggle handler
-  const handleToggleShowAll = useCallback(() => {
-    setShowAll((prev) => !prev)
+  // Toggle handlers (separate for subjects and concepts)
+  const handleToggleShowAllSubjects = useCallback(() => {
+    setShowAllSubjects((prev) => !prev)
+  }, [])
+
+  const handleToggleShowAllConcepts = useCallback(() => {
+    setShowAllConcepts((prev) => !prev)
   }, [])
 
   // Reset preview when opening
@@ -135,9 +142,9 @@ export function SubjectConceptSelector({
             previewSubject={previewSubject}
             onSubjectClick={handleSubjectClick}
             onSubjectHover={handleSubjectHover}
-            showAll={showAll}
+            showAll={showAllSubjects}
             hasMoreSubjects={hasMoreSubjects}
-            onToggleShowAll={handleToggleShowAll}
+            onToggleShowAll={handleToggleShowAllSubjects}
           />
 
           {/* Divider */}
@@ -149,9 +156,9 @@ export function SubjectConceptSelector({
             concepts={displayedConcepts}
             currentConcept={concept}
             onConceptClick={handleConceptClick}
-            showAll={showAll}
+            showAll={showAllConcepts}
             hasMoreConcepts={hasMoreConcepts}
-            onToggleShowAll={handleToggleShowAll}
+            onToggleShowAll={handleToggleShowAllConcepts}
           />
         </div>
       </PopoverContent>
