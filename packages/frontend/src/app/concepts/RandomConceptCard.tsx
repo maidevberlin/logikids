@@ -17,7 +17,7 @@ export function RandomConceptCard({ subject, concepts }: RandomConceptCardProps)
     if (concepts.length === 0) return
 
     // Navigate to tasks with random concept (no specific concept selected)
-    navigate(`/subjects/${subject}/tasks`)
+    navigate(`/subjects/${subject}/random/tasks`)
   }
 
   if (concepts.length === 0) {

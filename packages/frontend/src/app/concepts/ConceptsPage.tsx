@@ -191,7 +191,7 @@ export default function ConceptsPage() {
 
   const handleSurpriseMe = () => {
     if (concepts.length === 0) return
-    navigate(`/subjects/${subjectId}/tasks`)
+    navigate(`/subjects/${subjectId}/random/tasks`)
   }
 
   // Get subject theme
