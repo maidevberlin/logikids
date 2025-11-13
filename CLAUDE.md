@@ -283,8 +283,12 @@ Production runs on Docker with Nginx reverse proxy and Let's Encrypt SSL.
 - Use `bun run validate:prompts` to check syntax
 
 ### Adding Educational Content
-- Create/edit markdown in `packages/content/subjects/<subject>/official/`
-- Follow existing frontmatter schema
+
+**When creating new concept files, Claude Code will automatically use the `generate-concept` skill.**
+
+This project has a local skill (`.claude/skills/generate-concept/`)
+**Manual checks:**
+- Run `bun run validate:prompts` to check schema compliance
 - Run `bun run check-translations` to ensure i18n coverage
 
 ### Debugging Task Generation
