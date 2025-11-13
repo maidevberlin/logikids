@@ -1,20 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
-
-/**
- * Subject color mappings for progress bar gradients
- * Matches the color scheme from subjectTheme.ts
- */
-const subjectGradients: Record<string, string> = {
-  math: 'from-blue-400 via-blue-500 to-blue-600',
-  logic: 'from-purple-400 via-purple-500 to-purple-600',
-  physics: 'from-emerald-400 via-emerald-500 to-emerald-600',
-  german: 'from-red-400 via-red-500 to-red-600',
-  english: 'from-amber-400 via-amber-500 to-amber-600',
-  music: 'from-pink-400 via-pink-500 to-pink-600',
-}
-
-const defaultGradient = 'from-gray-400 via-gray-500 to-gray-600'
+import { getSubjectProgressGradient } from '@/app/common/subjectTheme'
 
 /**
  * Props for the TaskLoadingProgress component
@@ -24,12 +10,6 @@ export interface TaskLoadingProgressProps {
    * Subject identifier for theming (e.g., 'math', 'physics')
    */
   subject?: string
-
-  /**
-   * Callback invoked when progress reaches 100%
-   * Note: This is called when the animation completes, not when the actual task loads
-   */
-  onComplete?: () => void
 
   /**
    * Additional CSS classes for the container
@@ -52,15 +32,11 @@ export interface TaskLoadingProgressProps {
  *
  * @example
  * ```tsx
- * <TaskLoadingProgress
- *   subject="math"
- *   onComplete={() => console.log('Animation complete')}
- * />
+ * <TaskLoadingProgress subject="math" />
  * ```
  */
 export function TaskLoadingProgress({
   subject,
-  onComplete,
   className
 }: TaskLoadingProgressProps) {
   const [progress, setProgress] = useState(0)
@@ -101,11 +77,6 @@ export function TaskLoadingProgress({
       const estimatedTotalTime = 20 // seconds
       const remainingTime = Math.max(0, Math.ceil(estimatedTotalTime - elapsedSeconds))
       setTimeRemaining(remainingTime)
-
-      // Call onComplete when progress reaches ~99% (implies animation is nearly done)
-      if (newProgress >= 99 && onComplete) {
-        onComplete()
-      }
     }, 200) // Update every 200ms for smooth animation
 
     // Cleanup function
@@ -114,10 +85,10 @@ export function TaskLoadingProgress({
         clearInterval(intervalRef.current)
       }
     }
-  }, [onComplete])
+  }, [])
 
   // Get subject-specific gradient or default
-  const gradient = subject ? (subjectGradients[subject] || defaultGradient) : defaultGradient
+  const gradient = getSubjectProgressGradient(subject || '')
 
   // Format time remaining text
   const timeText = timeRemaining > 0

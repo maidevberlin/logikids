@@ -118,3 +118,15 @@ export const defaultTheme: SubjectTheme = {
 export function getSubjectTheme(subjectId: string): SubjectTheme {
   return subjectThemes[subjectId] || defaultTheme
 }
+
+export function getSubjectProgressGradient(subjectId: string): string {
+  const gradients: Record<string, string> = {
+    math: 'from-blue-400 via-blue-500 to-blue-600',
+    logic: 'from-purple-400 via-purple-500 to-purple-600',
+    physics: 'from-emerald-400 via-emerald-500 to-emerald-600',
+    german: 'from-red-400 via-red-500 to-red-600',
+    english: 'from-amber-400 via-amber-500 to-amber-600',
+    music: 'from-pink-400 via-pink-500 to-pink-600',
+  }
+  return gradients[subjectId] || 'from-gray-400 via-gray-500 to-gray-600'
+}

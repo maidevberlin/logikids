@@ -17,63 +17,43 @@ export function TaskLoadingProgressExample() {
       {/* Math subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">Math (Blue)</h2>
-        <TaskLoadingProgress
-          subject="math"
-          onComplete={() => console.log('Math progress complete')}
-        />
+        <TaskLoadingProgress subject="math" />
       </div>
 
       {/* Physics subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">Physics (Emerald)</h2>
-        <TaskLoadingProgress
-          subject="physics"
-          onComplete={() => console.log('Physics progress complete')}
-        />
+        <TaskLoadingProgress subject="physics" />
       </div>
 
       {/* Logic subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">Logic (Purple)</h2>
-        <TaskLoadingProgress
-          subject="logic"
-          onComplete={() => console.log('Logic progress complete')}
-        />
+        <TaskLoadingProgress subject="logic" />
       </div>
 
       {/* German subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">German (Red)</h2>
-        <TaskLoadingProgress
-          subject="german"
-          onComplete={() => console.log('German progress complete')}
-        />
+        <TaskLoadingProgress subject="german" />
       </div>
 
       {/* English subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">English (Amber)</h2>
-        <TaskLoadingProgress
-          subject="english"
-          onComplete={() => console.log('English progress complete')}
-        />
+        <TaskLoadingProgress subject="english" />
       </div>
 
       {/* Music subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">Music (Pink)</h2>
-        <TaskLoadingProgress
-          subject="music"
-          onComplete={() => console.log('Music progress complete')}
-        />
+        <TaskLoadingProgress subject="music" />
       </div>
 
       {/* Default/Unknown subject */}
       <div className="space-y-2">
         <h2 className="text-lg font-semibold">Default (Gray)</h2>
-        <TaskLoadingProgress
-          onComplete={() => console.log('Default progress complete')}
-        />
+        <TaskLoadingProgress />
       </div>
 
       {/* Technical info */}
