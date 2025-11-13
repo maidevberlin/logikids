@@ -207,13 +207,32 @@ When generating a concept:
    - [ ] Numerical variation principles described (no fixed values)
    - [ ] Aligned with official curriculum
 
-7. **Save, Validate, and Review**
+7. **Save and Validate**
    - Save to `packages/content/subjects/{subject}/official/{id}.md`
    - Run `bun run validate:prompts` to check schema
+
+8. **Add Translations**
+   - List all language directories: `packages/frontend/public/locales/*/subjects/`
+   - Read existing translation structure from any language file to understand format
+   - Add concept entry to **ALL** language files: `packages/frontend/public/locales/*/subjects/{subject}.json`
+   - Entry format (use concept `id` from frontmatter as key):
+     ```json
+     "concepts": {
+       "{id}": {
+         "name": "Concept Name (translated to language)",
+         "description": "Concept description (translated to language)"
+       }
+     }
+     ```
+   - Translate `name` and `description` to the appropriate language for each file (en → English, de → German, etc.)
+   - Preserve existing JSON structure and formatting
+   - Alphabetically sort concept keys within the file
+
+9. **Review and Iterate**
    - **Dispatch review subagent**: Use Task tool to launch review-concept skill
-     - Provide file path to reviewer
+     - Provide concept file path to reviewer
      - Wait for review feedback
-   - **If FAIL**: Fix issues identified by reviewer and re-validate
+   - **If FAIL**: Fix issues identified by reviewer, re-validate, and re-submit for review
    - **Iterate until PASS**: Continue fixing and re-reviewing until approved
    - Only proceed when reviewer says "APPROVED - ready to merge"
 
@@ -238,4 +257,5 @@ A successful concept:
 5. ✅ Describes numerical variation principles (no fixed examples)
 6. ✅ Has clear age/difficulty scaffolding
 7. ✅ Provides variation guidance for all parameters
-8. ✅ Approved by review-concept subagent (no outstanding issues)
+8. ✅ Translations added to all language files with proper translations
+9. ✅ Approved by review-concept subagent (no outstanding issues)

@@ -78,6 +78,12 @@ Check against generate-concept Quality Check (line 200-208):
 - [ ] Evidence of official curriculum standards research (step 2 of generate-concept Process)
 - [ ] Learning objectives aligned with curriculum documents
 
+**Translations:**
+- [ ] Translation files updated in ALL language directories: `packages/frontend/public/locales/*/subjects/{subject}.json`
+- [ ] Each file contains `concepts.{id}` with `name` and `description`
+- [ ] Translations are in the appropriate language (not all English)
+- [ ] Concept keys are alphabetically sorted
+
 ### Step 4: Provide Structured Feedback
 
 Use this format:
