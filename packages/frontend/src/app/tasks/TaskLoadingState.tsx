@@ -107,7 +107,7 @@ export function TaskLoadingState({
         className
       )}
       role="region"
-      aria-label={t('loading.header')}
+      aria-label={t('loading.header', 'Preparing your task...')}
       aria-live="polite"
       aria-busy="true"
     >
@@ -125,13 +125,13 @@ export function TaskLoadingState({
           />
         </div>
         <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-          {t('loading.header')}
+          {t('loading.header', 'Preparing your task...')}
         </h2>
       </div>
 
       {/* Progress bar section */}
       <div className="space-y-2">
-        <TaskLoadingProgress subject={subject} />
+        <TaskLoadingProgress subject={subject} progress={progress} />
       </div>
 
       {/* Divider */}

@@ -12,6 +12,12 @@ export interface TaskLoadingProgressProps {
   subject?: string
 
   /**
+   * Optional controlled progress value (0-100)
+   * If provided, component will not calculate its own progress
+   */
+  progress?: number
+
+  /**
    * Additional CSS classes for the container
    */
   className?: string
@@ -29,22 +35,34 @@ export interface TaskLoadingProgressProps {
  * - Time remaining estimate
  * - Full accessibility support
  * - Responsive design
+ * - Supports controlled progress mode (external progress value)
  *
  * @example
  * ```tsx
+ * // Uncontrolled mode (internal progress calculation)
  * <TaskLoadingProgress subject="math" />
+ *
+ * // Controlled mode (external progress value)
+ * <TaskLoadingProgress subject="math" progress={75} />
  * ```
  */
 export function TaskLoadingProgress({
   subject,
+  progress: externalProgress,
   className
 }: TaskLoadingProgressProps) {
-  const [progress, setProgress] = useState(0)
+  const [internalProgress, setInternalProgress] = useState(0)
   const [timeRemaining, setTimeRemaining] = useState(20)
   const startTimeRef = useRef<number | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Use external progress if provided, otherwise use internal state
+  const progress = externalProgress ?? internalProgress
+
   useEffect(() => {
+    // Only run timer if not controlled by external progress
+    if (externalProgress !== undefined) return
+
     // Record start time
     startTimeRef.current = Date.now()
 
@@ -67,7 +85,7 @@ export function TaskLoadingProgress({
        * - Asymptotically approaches 100%
        */
       const newProgress = 100 * (1 - Math.exp(-elapsed / 7000))
-      setProgress(Math.min(newProgress, 99.5)) // Cap at 99.5% to avoid "stuck at 100%"
+      setInternalProgress(Math.min(newProgress, 99.5)) // Cap at 99.5% to avoid "stuck at 100%"
 
       /**
        * Time remaining estimate
@@ -85,7 +103,7 @@ export function TaskLoadingProgress({
         clearInterval(intervalRef.current)
       }
     }
-  }, [])
+  }, [externalProgress])
 
   // Get subject-specific gradient or default
   const gradient = getSubjectProgressGradient(subject || '')
