@@ -61,6 +61,7 @@ i18n
       'subjects/german',
       'subjects/english',
       'subjects/physics',
+      'subjects/biology',
       'subjects/logic'
     ],
     // Backend configuration for lazy loading
