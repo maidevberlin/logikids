@@ -9,6 +9,12 @@
       "generating": "Generating hints and solutions...",
       "finalizing": "Final touches..."
     },
+    "contentTypes": {
+      "tip": "Tip",
+      "fact": "Did you know?",
+      "preview": "Coming up",
+      "encouragement": "Keep going!"
+    },
     "encouragement": [
       "Every mistake is a chance to learn something new!",
       "You're building important skills with every task you complete!",

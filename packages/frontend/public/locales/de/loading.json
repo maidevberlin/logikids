@@ -9,6 +9,12 @@
       "generating": "Generiere Hinweise und Lösungen...",
       "finalizing": "Letzte Feinheiten..."
     },
+    "contentTypes": {
+      "tip": "Tipp",
+      "fact": "Wusstest du?",
+      "preview": "Gleich geht's los",
+      "encouragement": "Weiter so!"
+    },
     "encouragement": [
       "Jeder Fehler ist eine Chance, etwas Neues zu lernen!",
       "Du entwickelst wichtige Fähigkeiten mit jeder gelösten Aufgabe!",

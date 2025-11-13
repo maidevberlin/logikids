@@ -84,6 +84,22 @@ function getContentColors(type: ContentType): string {
 }
 
 /**
+ * Get border color classes for content type
+ */
+function getBorderColorClass(type: ContentType): string {
+  switch (type) {
+    case 'tip':
+      return 'border-amber-600 dark:border-amber-400'
+    case 'fact':
+      return 'border-purple-600 dark:border-purple-400'
+    case 'preview':
+      return 'border-blue-600 dark:border-blue-400'
+    case 'encouragement':
+      return 'border-pink-600 dark:border-pink-400'
+  }
+}
+
+/**
  * Get label for content type
  */
 function getContentLabel(type: ContentType, t: (key: string) => string): string {
@@ -178,6 +194,12 @@ export function TaskLoadingContent({
 
   // Content rotation effect
   useEffect(() => {
+    // Clear any existing interval first to avoid race conditions
+    if (rotationIntervalRef.current) {
+      clearInterval(rotationIntervalRef.current)
+      rotationIntervalRef.current = null
+    }
+
     if (isPaused || contentQueueRef.current.length === 0) {
       return
     }
@@ -226,6 +248,7 @@ export function TaskLoadingContent({
 
   const Icon = getContentIcon(currentContent.type)
   const colorClass = getContentColors(currentContent.type)
+  const borderColorClass = getBorderColorClass(currentContent.type)
   const label = getContentLabel(currentContent.type, t)
   const contentText = t(currentContent.key)
 
@@ -288,7 +311,7 @@ export function TaskLoadingContent({
           <div
             className={cn(
               'absolute inset-0 rounded-lg border-2 border-dashed',
-              colorClass.replace('text-', 'border-'),
+              borderColorClass,
               'opacity-0 animate-pulse-border pointer-events-none'
             )}
             aria-hidden="true"
@@ -298,17 +321,20 @@ export function TaskLoadingContent({
 
       {/* Rotation indicator (dots) */}
       <div className="flex justify-center gap-1.5" aria-hidden="true">
-        {contentQueueRef.current.slice(0, 5).map((_, index) => (
-          <div
-            key={index}
-            className={cn(
-              'w-1.5 h-1.5 rounded-full transition-all duration-300',
-              index === contentIndexRef.current % 5
-                ? 'bg-gray-600 dark:bg-gray-400 w-4'
-                : 'bg-gray-300 dark:bg-gray-600'
-            )}
-          />
-        ))}
+        {Array.from({ length: Math.min(5, contentQueueRef.current.length) }).map((_, index) => {
+          const isActive = contentIndexRef.current === index
+          return (
+            <div
+              key={index}
+              className={cn(
+                'w-1.5 h-1.5 rounded-full transition-all duration-300',
+                isActive
+                  ? 'bg-gray-600 dark:bg-gray-400 w-4'
+                  : 'bg-gray-300 dark:bg-gray-600'
+              )}
+            />
+          )
+        })}
       </div>
 
       {/* CSS for pulse border animation */}
