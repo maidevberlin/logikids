@@ -56,6 +56,7 @@ i18n
       'greetings',
       'profile',
       'stats',
+      'loading',
       'subjects/math',
       'subjects/german',
       'subjects/english',

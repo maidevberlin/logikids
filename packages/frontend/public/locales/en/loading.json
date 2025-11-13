@@ -1,0 +1,184 @@
+{
+  "loading": {
+    "header": "Preparing your task...",
+    "timeRemaining": "About {{seconds}} seconds remaining...",
+    "almostThere": "Almost there... generating a great question for you!",
+    "stages": {
+      "analyzing": "Analyzing your learning level...",
+      "crafting": "Crafting your question...",
+      "generating": "Generating hints and solutions...",
+      "finalizing": "Final touches..."
+    },
+    "encouragement": [
+      "Every mistake is a chance to learn something new!",
+      "You're building important skills with every task you complete!",
+      "Challenge yourself and grow stronger!",
+      "Learning happens one step at a time!",
+      "Your brain gets stronger with practice!",
+      "Curiosity leads to amazing discoveries!",
+      "Keep going, you're doing great!"
+    ],
+    "tips": {
+      "math": [
+        "Break complex problems into smaller, manageable steps!",
+        "Draw diagrams or pictures to visualize the problem!",
+        "Check your answer by working backwards through the steps!",
+        "Look for patterns in numbers to find clever shortcuts!",
+        "Practice mental math regularly to build number sense!",
+        "Write down what you know before you start solving!",
+        "Don't be afraid to try different approaches!"
+      ],
+      "physics": [
+        "Draw force diagrams to understand how things interact!",
+        "Pay careful attention to units in your calculations!",
+        "Think about real-world examples to understand concepts better!",
+        "Remember: energy is always conserved in closed systems!",
+        "Vector direction matters just as much as its magnitude!",
+        "Think about symmetry to simplify complex problems!",
+        "Experiments help you verify theoretical predictions!"
+      ],
+      "logic": [
+        "Read the problem carefully before jumping to conclusions!",
+        "Draw truth tables to organize your information clearly!",
+        "Look for contradictions to eliminate wrong answers!",
+        "Break complex statements into simpler, smaller parts!",
+        "Consider all possibilities in a systematic way!",
+        "If-then statements are the foundation of logical reasoning!",
+        "Practice recognizing common logical patterns!"
+      ],
+      "music": [
+        "Listen carefully to identify repeating patterns in melodies!",
+        "Practice rhythm by clapping or tapping along to music!",
+        "Understanding scales helps you with composition!",
+        "Count beats carefully to stay in time!",
+        "Musical notation is a language you can learn step by step!",
+        "Sing or hum melodies to internalize pitch relationships!",
+        "Regular practice builds your musical intuition!"
+      ],
+      "german": [
+        "Reading German texts regularly helps build vocabulary naturally!",
+        "Pay attention to noun genders: der, die, and das!",
+        "Practice verb conjugations regularly to build fluency!",
+        "German compound words tell their own interesting stories!",
+        "Listen to German speakers to improve your pronunciation!",
+        "Sentence structure follows patterns you can learn!",
+        "Try to immerse yourself in the language every day!"
+      ],
+      "english": [
+        "Reading diverse texts improves your comprehension skills!",
+        "Use context clues to understand new words!",
+        "Practice writing to reinforce grammar rules!",
+        "Listen to native speakers to learn natural rhythm!",
+        "Learn common idioms and expressions!",
+        "Build your vocabulary by reading regularly!",
+        "Don't be afraid to make mistakes when speaking!"
+      ],
+      "fallback": [
+        "Take your time to fully understand the question!",
+        "Break problems into manageable steps!",
+        "Review your answer carefully before submitting!",
+        "Learn from your mistakes to improve!",
+        "Practice makes perfect!"
+      ]
+    },
+    "facts": {
+      "math": [
+        "The number zero was invented around 500 CE in India!",
+        "The number Pi has been calculated to over 31 trillion digits!",
+        "The Fibonacci sequence appears everywhere in nature!",
+        "Ancient Egyptians used fractions as far back as 1800 BCE!",
+        "A googol is the number 1 followed by 100 zeros!",
+        "There are different sizes of infinity in mathematics!",
+        "The equals sign (=) was invented in 1557 by Robert Recorde!"
+      ],
+      "physics": [
+        "Light travels at 299,792,458 meters per second in a vacuum!",
+        "Sound travels much faster through solids than through air!",
+        "You're slightly taller in the morning because of gravity's effect on your spine!",
+        "Lightning is actually hotter than the surface of the Sun!",
+        "A day on Venus is longer than its entire year!",
+        "Water can boil and freeze at the same time at the triple point!",
+        "Some neutron stars can spin over 600 times per second!"
+      ],
+      "logic": [
+        "Aristotle founded formal logic over 2,400 years ago!",
+        "Computers use binary logic with only 0s and 1s!",
+        "A paradox is a statement that contradicts itself!",
+        "Sudoku puzzles are actually exercises in logical deduction!",
+        "George Boole invented Boolean algebra in 1854!",
+        "Solving logic puzzles improves your critical thinking skills!",
+        "Sherlock Holmes is famous for using deductive reasoning!"
+      ],
+      "music": [
+        "Music activates almost every region of your brain!",
+        "The oldest known musical instrument is over 40,000 years old!",
+        "Mozart composed his first piece of music at just age 5!",
+        "Octaves sound similar because their frequencies double!",
+        "There are over 1,500 different musical instruments worldwide!",
+        "Beethoven composed amazing music even when completely deaf!",
+        "Listening to music can improve your memory and focus!"
+      ],
+      "german": [
+        "German is spoken by over 130 million people worldwide!",
+        "The longest German word officially used has 63 letters!",
+        "German has three grammatical genders for nouns!",
+        "Many English words actually come from German roots!",
+        "All German nouns are always written with a capital letter!",
+        "Austrian and Swiss German have their own unique features!",
+        "Learning German opens doors to rich literature and philosophy!"
+      ],
+      "english": [
+        "English has over 170,000 words currently in active use!",
+        "Shakespeare invented more than 1,700 words we still use today!",
+        "English is an official language in 67 different countries!",
+        "The word 'Go!' is actually a complete sentence!",
+        "English has borrowed words from over 350 different languages!",
+        "'I am' is the shortest complete sentence in English!",
+        "English has more synonyms than most other languages!"
+      ],
+      "fallback": [
+        "Learning new things physically rewires your brain!",
+        "Curiosity is what drives discovery and innovation!",
+        "Every expert was once a complete beginner!",
+        "Your brain never stops learning throughout your life!",
+        "Making connections between ideas helps strengthen memory!"
+      ]
+    },
+    "previews": {
+      "math": [
+        "Get ready to explore fascinating numbers and patterns!",
+        "Mathematics helps us solve real-world problems every day!",
+        "Every equation tells its own unique story!"
+      ],
+      "physics": [
+        "Discover how the universe really works!",
+        "Physics explains everything from tiny atoms to massive galaxies!",
+        "Get ready to explore forces, energy, and motion!"
+      ],
+      "logic": [
+        "Sharpen your reasoning and critical thinking skills!",
+        "Logic helps you solve puzzles and make better decisions!",
+        "Get ready to think through problems step by step!"
+      ],
+      "music": [
+        "Explore the beautiful world of sound and rhythm!",
+        "Music combines mathematics, creativity, and emotion!",
+        "Get ready to discover fascinating musical patterns!"
+      ],
+      "german": [
+        "Master the language of Goethe, Kafka, and Einstein!",
+        "German grammar is logical and follows clear patterns!",
+        "Get ready to expand your linguistic abilities!"
+      ],
+      "english": [
+        "Master the global language of communication!",
+        "English opens doors to opportunities worldwide!",
+        "Get ready to enhance your language skills!"
+      ],
+      "fallback": [
+        "Get ready for an engaging challenge!",
+        "You're about to learn something new today!"
+      ]
+    }
+  }
+}

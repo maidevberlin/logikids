@@ -1,0 +1,184 @@
+{
+  "loading": {
+    "header": "Bereite deine Aufgabe vor...",
+    "timeRemaining": "Noch etwa {{seconds}} Sekunden...",
+    "almostThere": "Fast fertig... eine tolle Frage wird für dich erstellt!",
+    "stages": {
+      "analyzing": "Analysiere dein Lernniveau...",
+      "crafting": "Erstelle deine Frage...",
+      "generating": "Generiere Hinweise und Lösungen...",
+      "finalizing": "Letzte Feinheiten..."
+    },
+    "encouragement": [
+      "Jeder Fehler ist eine Chance, etwas Neues zu lernen!",
+      "Du entwickelst wichtige Fähigkeiten mit jeder gelösten Aufgabe!",
+      "Fordere dich selbst heraus und werde stärker!",
+      "Lernen geschieht Schritt für Schritt!",
+      "Dein Gehirn wird durch Übung immer stärker!",
+      "Neugier führt zu erstaunlichen Entdeckungen!",
+      "Mach weiter so, du machst das großartig!"
+    ],
+    "tips": {
+      "math": [
+        "Zerlege komplexe Probleme in kleinere, überschaubare Schritte!",
+        "Zeichne Diagramme oder Bilder, um das Problem zu visualisieren!",
+        "Überprüfe deine Antwort, indem du die Schritte rückwärts durchgehst!",
+        "Suche nach Mustern in Zahlen, um clevere Abkürzungen zu finden!",
+        "Übe regelmäßig Kopfrechnen, um dein Zahlenverständnis zu verbessern!",
+        "Schreibe auf, was du weißt, bevor du mit dem Lösen beginnst!",
+        "Hab keine Angst, verschiedene Lösungsansätze auszuprobieren!"
+      ],
+      "physics": [
+        "Zeichne Kräftediagramme, um Wechselwirkungen zu verstehen!",
+        "Achte sorgfältig auf die Einheiten in deinen Berechnungen!",
+        "Denke an Alltagsbeispiele, um Konzepte besser zu verstehen!",
+        "Denk dran: Energie wird in geschlossenen Systemen immer erhalten!",
+        "Die Richtung eines Vektors ist genauso wichtig wie sein Betrag!",
+        "Nutze Symmetrie, um komplexe Probleme zu vereinfachen!",
+        "Experimente helfen dir, theoretische Vorhersagen zu überprüfen!"
+      ],
+      "logic": [
+        "Lies die Aufgabe sorgfältig, bevor du voreilige Schlüsse ziehst!",
+        "Erstelle Wahrheitstabellen, um deine Informationen klar zu ordnen!",
+        "Suche nach Widersprüchen, um falsche Antworten auszuschließen!",
+        "Zerlege komplexe Aussagen in einfachere, kleinere Teile!",
+        "Betrachte alle Möglichkeiten systematisch!",
+        "Wenn-Dann-Aussagen sind die Grundlage logischen Denkens!",
+        "Übe, häufige logische Muster zu erkennen!"
+      ],
+      "music": [
+        "Höre aufmerksam zu, um sich wiederholende Muster in Melodien zu erkennen!",
+        "Übe Rhythmus, indem du zur Musik klatschst oder klopfst!",
+        "Das Verstehen von Tonleitern hilft dir beim Komponieren!",
+        "Zähle die Schläge sorgfältig, um im Takt zu bleiben!",
+        "Musiknotation ist eine Sprache, die du Schritt für Schritt lernen kannst!",
+        "Singe oder summe Melodien, um Tonhöhenbeziehungen zu verinnerlichen!",
+        "Regelmäßiges Üben entwickelt deine musikalische Intuition!"
+      ],
+      "german": [
+        "Das regelmäßige Lesen deutscher Texte baut natürlich deinen Wortschatz auf!",
+        "Achte auf die Nomengeschlechter: der, die und das!",
+        "Übe Verbkonjugationen regelmäßig, um fließender zu werden!",
+        "Deutsche zusammengesetzte Wörter erzählen ihre eigenen interessanten Geschichten!",
+        "Höre deutschen Sprechern zu, um deine Aussprache zu verbessern!",
+        "Der Satzbau folgt Mustern, die du lernen kannst!",
+        "Versuche, jeden Tag in die Sprache einzutauchen!"
+      ],
+      "english": [
+        "Das Lesen verschiedener Texte verbessert deine Lesekompetenz!",
+        "Nutze Kontexthinweise, um neue Wörter zu verstehen!",
+        "Übe das Schreiben, um Grammatikregeln zu festigen!",
+        "Höre Muttersprachlern zu, um natürlichen Rhythmus zu lernen!",
+        "Lerne gebräuchliche Redewendungen und Ausdrücke!",
+        "Erweitere deinen Wortschatz durch regelmäßiges Lesen!",
+        "Hab keine Angst, beim Sprechen Fehler zu machen!"
+      ],
+      "fallback": [
+        "Nimm dir Zeit, die Frage vollständig zu verstehen!",
+        "Zerlege Probleme in überschaubare Schritte!",
+        "Überprüfe deine Antwort sorgfältig, bevor du sie absendest!",
+        "Lerne aus deinen Fehlern, um dich zu verbessern!",
+        "Übung macht den Meister!"
+      ]
+    },
+    "facts": {
+      "math": [
+        "Die Zahl Null wurde um 500 n. Chr. in Indien erfunden!",
+        "Die Zahl Pi wurde auf über 31 Billionen Stellen berechnet!",
+        "Die Fibonacci-Folge kommt überall in der Natur vor!",
+        "Die alten Ägypter nutzten bereits 1800 v. Chr. Brüche!",
+        "Ein Googol ist die Zahl 1 gefolgt von 100 Nullen!",
+        "Es gibt verschiedene Größen von Unendlichkeit in der Mathematik!",
+        "Das Gleichheitszeichen (=) wurde 1557 von Robert Recorde erfunden!"
+      ],
+      "physics": [
+        "Licht bewegt sich mit 299.792.458 Metern pro Sekunde im Vakuum!",
+        "Schall breitet sich in Festkörpern viel schneller aus als in Luft!",
+        "Du bist morgens etwas größer wegen der Schwerkraft auf deine Wirbelsäule!",
+        "Blitze sind tatsächlich heißer als die Oberfläche der Sonne!",
+        "Ein Tag auf der Venus ist länger als ihr ganzes Jahr!",
+        "Wasser kann am Tripelpunkt gleichzeitig kochen und gefrieren!",
+        "Einige Neutronensterne können sich über 600 Mal pro Sekunde drehen!"
+      ],
+      "logic": [
+        "Aristoteles begründete die formale Logik vor über 2.400 Jahren!",
+        "Computer nutzen binäre Logik mit nur 0en und 1en!",
+        "Ein Paradoxon ist eine Aussage, die sich selbst widerspricht!",
+        "Sudoku-Rätsel sind eigentlich Übungen in logischer Deduktion!",
+        "George Boole erfand 1854 die Boolesche Algebra!",
+        "Das Lösen von Logikrätseln verbessert dein kritisches Denkvermögen!",
+        "Sherlock Holmes ist berühmt für seine deduktive Schlussfolgerung!"
+      ],
+      "music": [
+        "Musik aktiviert fast jede Region deines Gehirns!",
+        "Das älteste bekannte Musikinstrument ist über 40.000 Jahre alt!",
+        "Mozart komponierte sein erstes Musikstück mit nur 5 Jahren!",
+        "Oktaven klingen ähnlich, weil sich ihre Frequenzen verdoppeln!",
+        "Es gibt weltweit über 1.500 verschiedene Musikinstrumente!",
+        "Beethoven komponierte erstaunliche Musik, obwohl er völlig taub war!",
+        "Musikhören kann dein Gedächtnis und deine Konzentration verbessern!"
+      ],
+      "german": [
+        "Deutsch wird von über 130 Millionen Menschen weltweit gesprochen!",
+        "Das längste offiziell verwendete deutsche Wort hat 63 Buchstaben!",
+        "Deutsch hat drei grammatische Geschlechter für Nomen!",
+        "Viele englische Wörter stammen tatsächlich aus deutschen Wurzeln!",
+        "Alle deutschen Nomen werden immer mit einem Großbuchstaben geschrieben!",
+        "Österreichisches und Schweizer Deutsch haben eigene besondere Merkmale!",
+        "Deutsch zu lernen öffnet Türen zu reicher Literatur und Philosophie!"
+      ],
+      "english": [
+        "Englisch hat über 170.000 Wörter, die derzeit aktiv verwendet werden!",
+        "Shakespeare erfand mehr als 1.700 Wörter, die wir heute noch benutzen!",
+        "Englisch ist Amtssprache in 67 verschiedenen Ländern!",
+        "Das Wort 'Go!' ist tatsächlich ein vollständiger Satz!",
+        "Englisch hat Wörter aus über 350 verschiedenen Sprachen entlehnt!",
+        "'I am' ist der kürzeste vollständige Satz im Englischen!",
+        "Englisch hat mehr Synonyme als die meisten anderen Sprachen!"
+      ],
+      "fallback": [
+        "Das Lernen neuer Dinge verändert physisch dein Gehirn!",
+        "Neugier ist der Motor für Entdeckungen und Innovationen!",
+        "Jeder Experte war einmal ein kompletter Anfänger!",
+        "Dein Gehirn hört nie auf zu lernen, dein ganzes Leben lang!",
+        "Verbindungen zwischen Ideen herzustellen stärkt das Gedächtnis!"
+      ]
+    },
+    "previews": {
+      "math": [
+        "Mach dich bereit, faszinierende Zahlen und Muster zu erkunden!",
+        "Mathematik hilft uns, jeden Tag reale Probleme zu lösen!",
+        "Jede Gleichung erzählt ihre eigene einzigartige Geschichte!"
+      ],
+      "physics": [
+        "Entdecke, wie das Universum wirklich funktioniert!",
+        "Physik erklärt alles von winzigen Atomen bis zu riesigen Galaxien!",
+        "Mach dich bereit, Kräfte, Energie und Bewegung zu erforschen!"
+      ],
+      "logic": [
+        "Schärfe deine Denk- und kritischen Fähigkeiten!",
+        "Logik hilft dir, Rätsel zu lösen und bessere Entscheidungen zu treffen!",
+        "Mach dich bereit, Probleme Schritt für Schritt durchzudenken!"
+      ],
+      "music": [
+        "Erkunde die wunderbare Welt von Klang und Rhythmus!",
+        "Musik vereint Mathematik, Kreativität und Emotion!",
+        "Mach dich bereit, faszinierende musikalische Muster zu entdecken!"
+      ],
+      "german": [
+        "Meistere die Sprache von Goethe, Kafka und Einstein!",
+        "Deutsche Grammatik ist logisch und folgt klaren Mustern!",
+        "Mach dich bereit, deine sprachlichen Fähigkeiten zu erweitern!"
+      ],
+      "english": [
+        "Meistere die globale Sprache der Kommunikation!",
+        "Englisch öffnet Türen zu weltweiten Möglichkeiten!",
+        "Mach dich bereit, deine Sprachkenntnisse zu verbessern!"
+      ],
+      "fallback": [
+        "Mach dich bereit für eine spannende Herausforderung!",
+        "Du wirst heute etwas Neues lernen!"
+      ]
+    }
+  }
+}
