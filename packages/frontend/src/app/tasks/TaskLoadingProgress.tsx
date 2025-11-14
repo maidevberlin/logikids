@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 import { getSubjectProgressGradient } from '@/app/common/subjectTheme'
 
@@ -51,6 +52,7 @@ export function TaskLoadingProgress({
   progress: externalProgress,
   className
 }: TaskLoadingProgressProps) {
+  const { t } = useTranslation('loading')
   const [internalProgress, setInternalProgress] = useState(0)
   const [timeRemaining, setTimeRemaining] = useState(20)
   const startTimeRef = useRef<number | null>(null)
@@ -60,37 +62,37 @@ export function TaskLoadingProgress({
   const progress = externalProgress ?? internalProgress
 
   useEffect(() => {
-    // Only run timer if not controlled by external progress
-    if (externalProgress !== undefined) return
-
     // Record start time
     startTimeRef.current = Date.now()
 
-    // Update progress every 200ms
+    // Update progress and/or time remaining every 200ms
     intervalRef.current = setInterval(() => {
       if (startTimeRef.current === null) return
 
       const elapsed = Date.now() - startTimeRef.current
       const elapsedSeconds = elapsed / 1000
 
-      /**
-       * Non-linear easing function
-       * Formula: progress = 100 * (1 - Math.exp(-elapsed / 7000))
-       *
-       * Characteristics:
-       * - ~30% in first 3 seconds (feels responsive)
-       * - ~63% at 7 seconds
-       * - ~90% at 15 seconds
-       * - ~95% at 20 seconds
-       * - Asymptotically approaches 100%
-       */
-      const newProgress = 100 * (1 - Math.exp(-elapsed / 7000))
-      setInternalProgress(Math.min(newProgress, 99.5)) // Cap at 99.5% to avoid "stuck at 100%"
+      // Only update internal progress if not controlled by external progress
+      if (externalProgress === undefined) {
+        /**
+         * Non-linear easing function
+         * Formula: progress = 100 * (1 - Math.exp(-elapsed / 7000))
+         *
+         * Characteristics:
+         * - ~30% in first 3 seconds (feels responsive)
+         * - ~63% at 7 seconds
+         * - ~90% at 15 seconds
+         * - ~95% at 20 seconds
+         * - Asymptotically approaches 100%
+         */
+        const newProgress = 100 * (1 - Math.exp(-elapsed / 7000))
+        setInternalProgress(Math.min(newProgress, 99.5)) // Cap at 99.5% to avoid "stuck at 100%"
+      }
 
       /**
        * Time remaining estimate
        * Based on typical 20-second load time
-       * Uses the inverse of the easing function to estimate remaining time
+       * Always update regardless of progress mode
        */
       const estimatedTotalTime = 20 // seconds
       const remainingTime = Math.max(0, Math.ceil(estimatedTotalTime - elapsedSeconds))
@@ -108,10 +110,10 @@ export function TaskLoadingProgress({
   // Get subject-specific gradient or default
   const gradient = getSubjectProgressGradient(subject || '')
 
-  // Format time remaining text
+  // Format time remaining text with translation
   const timeText = timeRemaining > 0
-    ? `About ${timeRemaining} second${timeRemaining !== 1 ? 's' : ''} remaining`
-    : 'Almost there...'
+    ? t('timeRemaining', { seconds: timeRemaining })
+    : t('almostThere')
 
   return (
     <div className={cn('w-full space-y-3', className)}>
