@@ -38,16 +38,6 @@ interface ContentItem {
 }
 
 /**
- * Get the stage message key based on current progress
- */
-function getStageMessageKey(progress: number): string {
-  if (progress < 20) return 'stages.analyzing'
-  if (progress < 50) return 'stages.crafting'
-  if (progress < 80) return 'stages.generating'
-  return 'stages.finalizing'
-}
-
-/**
  * Get icon component for content type
  */
 function getContentIcon(type: ContentType) {
@@ -69,7 +59,7 @@ function getContentIcon(type: ContentType) {
  * Get color classes for content type
  * Uses theme-aware primary color for all types to integrate with time themes
  */
-function getContentColors(type: ContentType): string {
+function getContentColors(_type: ContentType): string {
   // Use primary color for all content types to respect time themes
   return 'text-primary'
 }
@@ -128,7 +118,7 @@ function shuffleArray<T>(array: T[]): T[] {
  */
 export function TaskLoadingContent({
   subject,
-  progress,
+  progress: _progress,
   className
 }: TaskLoadingContentProps) {
   const { t } = useTranslation('loading')
@@ -203,9 +193,6 @@ export function TaskLoadingContent({
       }
     }
   }, [isPaused])
-
-  // Get current stage message
-  const stageMessageKey = getStageMessageKey(progress)
 
   // Handle focus/blur to pause rotation for accessibility
   const handleContentFocus = () => {

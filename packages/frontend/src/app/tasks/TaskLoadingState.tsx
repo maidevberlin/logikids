@@ -39,25 +39,25 @@ function getPhaseConfig(progress: number, t: (key: string) => string): PhaseConf
     return {
       icon: Brain,
       animation: 'pulse',
-      label: t('stages.analyzing', 'Analyzing your level...')
+      label: t('stages.analyzing')
     }
   } else if (progress < 50) {
     return {
       icon: Wand2,
       animation: 'rotate',
-      label: t('stages.crafting', 'Crafting your task...')
+      label: t('stages.crafting')
     }
   } else if (progress < 80) {
     return {
       icon: Sparkles,
       animation: 'twinkle',
-      label: t('stages.generating', 'Generating content...')
+      label: t('stages.generating')
     }
   } else {
     return {
       icon: CheckCircle2,
       animation: 'scale',
-      label: t('stages.finalizing', 'Finalizing...')
+      label: t('stages.finalizing')
     }
   }
 }
