@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -11,6 +11,7 @@ import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
 import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
 import { cn } from '@/lib/utils'
+import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
 
 interface TaskCardProps {
   task: Task | null
@@ -54,6 +55,10 @@ export function TaskCard({
   const { t } = useTranslation()
   const [showFeedback, setShowFeedback] = useState(false)
 
+  // Load time calibration
+  const { recordLoadTime } = useTaskLoadingCalibration()
+  const loadStartRef = useRef<number | null>(null)
+
   // Handle feedback visibility
   useEffect(() => {
     if (isCorrect === false) {
@@ -73,6 +78,27 @@ export function TaskCard({
       setShowFeedback(false)
     }
   }, [isCorrect, onAnswerSelect])
+
+  // Track when loading starts
+  useEffect(() => {
+    if (isLoading && !loadStartRef.current) {
+      loadStartRef.current = Date.now()
+    }
+  }, [isLoading])
+
+  // Record when loading completes successfully
+  useEffect(() => {
+    if (!isLoading && task && loadStartRef.current && !error) {
+      const loadTime = Date.now() - loadStartRef.current
+      recordLoadTime(loadTime)
+      loadStartRef.current = null
+    }
+
+    // Cleanup if loading stops without success (error or navigation)
+    if (!isLoading && !task) {
+      loadStartRef.current = null
+    }
+  }, [isLoading, task, error, recordLoadTime])
 
   // Error state
   if (error) {
