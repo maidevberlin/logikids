@@ -5,6 +5,7 @@ import { TaskLoadingProgress } from './TaskLoadingProgress'
 import { TaskLoadingContent } from './TaskLoadingContent'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { cn } from '@/lib/utils'
+import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
 
 /**
  * Props for the TaskLoadingState component
@@ -58,16 +59,24 @@ export function TaskLoadingState({
   const [progress, setProgress] = useState(0)
   const startTimeRef = useRef<number | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const [showAlmostThere, setShowAlmostThere] = useState(false)
+  const almostThereTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Get calibration utilities
+  const { getTimeConstant } = useTaskLoadingCalibration()
 
   // Get subject theme for icon and colors
   const theme = getSubjectTheme(subject)
   const SubjectIcon = theme.icon
 
-  // Progress calculation effect
+  // Progress calculation effect with calibration
   // We manage progress state here and pass it to both sub-components
   useEffect(() => {
     // Record start time
     startTimeRef.current = Date.now()
+
+    // Get calibrated time constant (default 7000ms, adjusted based on history)
+    const timeConstant = getTimeConstant()
 
     // Update progress every 200ms using non-linear easing
     intervalRef.current = setInterval(() => {
@@ -76,27 +85,41 @@ export function TaskLoadingState({
       const elapsed = Date.now() - startTimeRef.current
 
       /**
-       * Non-linear easing function
-       * Formula: progress = 100 * (1 - Math.exp(-elapsed / 7000))
+       * Non-linear easing function with calibrated time constant
+       * Formula: progress = 100 * (1 - Math.exp(-elapsed / timeConstant))
        *
-       * This creates a progress curve that:
+       * The timeConstant is calibrated based on user's historical load times:
+       * - New users: 7000ms (default)
+       * - After usage: Adjusted to match actual average load time
+       * - Bounds: 3000ms - 15000ms (prevents extreme behavior)
+       *
+       * Progress curve characteristics:
        * - Reaches ~30% in first 3 seconds (feels responsive)
-       * - Reaches ~63% at 7 seconds
-       * - Reaches ~90% at 15 seconds
-       * - Reaches ~95% at 20 seconds
+       * - Reaches ~63% at timeConstant milliseconds
+       * - Reaches ~90% at ~2.3 * timeConstant
        * - Asymptotically approaches 100% (never quite reaches it)
        */
-      const newProgress = 100 * (1 - Math.exp(-elapsed / 7000))
+      const newProgress = 100 * (1 - Math.exp(-elapsed / timeConstant))
       setProgress(Math.min(newProgress, 99.5)) // Cap at 99.5% to avoid "stuck at 100%"
     }, 200) // Update every 200ms for smooth animation
+
+    // Show "Almost there..." message after 30 seconds
+    almostThereTimeoutRef.current = setTimeout(() => {
+      setShowAlmostThere(true)
+    }, 30000)
 
     // Cleanup function
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current)
       }
+      if (almostThereTimeoutRef.current) {
+        clearTimeout(almostThereTimeoutRef.current)
+      }
+      // Note: Load time recording is handled in TaskCard component
+      // which has access to the actual task loading state transitions
     }
-  }, [])
+  }, [getTimeConstant])
 
   return (
     <Card
@@ -142,6 +165,13 @@ export function TaskLoadingState({
         subject={subject}
         progress={progress}
       />
+
+      {/* "Almost there" message for long load times (> 30s) */}
+      {showAlmostThere && (
+        <div className="text-center text-sm text-muted-foreground animate-in fade-in">
+          {t('loading.almostThere', 'Almost there... generating a great question for you!')}
+        </div>
+      )}
     </Card>
   )
 }

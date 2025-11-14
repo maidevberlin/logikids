@@ -208,6 +208,7 @@ export default function TaskPage() {
             task={task ?? null}
             isLoading={isLoading}
             error={error}
+            subject={taskParams.subject}
             selectedAnswer={selectedAnswer}
             isCorrect={isCorrect}
             gradingDetails={gradingDetails}

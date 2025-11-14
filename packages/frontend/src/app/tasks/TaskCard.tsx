@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 import { answerTypeComponents } from './answer-types'
 import { HintSection } from './HintSection'
 import { DifficultySelector } from './DifficultySelector'
+import { TaskLoadingState } from './TaskLoadingState'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
 import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
@@ -16,6 +16,7 @@ interface TaskCardProps {
   task: Task | null
   isLoading: boolean
   error: string | null
+  subject: string
   selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
   isCorrect: boolean | null
   gradingDetails: NumberInputGradingDetails | null
@@ -35,6 +36,7 @@ export function TaskCard({
   task,
   isLoading,
   error,
+  subject,
   selectedAnswer,
   isCorrect,
   gradingDetails,
@@ -91,21 +93,7 @@ export function TaskCard({
 
   // Loading state
   if (isLoading || !task) {
-    return (
-      <Card className="p-4 sm:p-8 shadow-2xl bg-card">
-        <div className="space-y-4">
-          <Skeleton className="h-8 w-3/4" />
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-5/6" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-            <Skeleton className="h-24 rounded-2xl" />
-            <Skeleton className="h-24 rounded-2xl" />
-            <Skeleton className="h-24 rounded-2xl" />
-            <Skeleton className="h-24 rounded-2xl" />
-          </div>
-        </div>
-      </Card>
-    )
+    return <TaskLoadingState subject={subject} />
   }
 
   // Get explanation for correct answer
