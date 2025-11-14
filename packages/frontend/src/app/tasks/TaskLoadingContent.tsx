@@ -75,15 +75,6 @@ function getContentColors(type: ContentType): string {
 }
 
 /**
- * Get border color classes for content type
- * Uses theme-aware primary color for all types to integrate with time themes
- */
-function getBorderColorClass(type: ContentType): string {
-  // Use primary color for all content types to respect time themes
-  return 'border-primary'
-}
-
-/**
  * Get label for content type
  */
 function getContentLabel(type: ContentType, t: (key: string) => string): string {
@@ -215,7 +206,6 @@ export function TaskLoadingContent({
 
   // Get current stage message
   const stageMessageKey = getStageMessageKey(progress)
-  const stageMessage = t(stageMessageKey)
 
   // Handle focus/blur to pause rotation for accessibility
   const handleContentFocus = () => {
@@ -232,32 +222,17 @@ export function TaskLoadingContent({
 
   const Icon = getContentIcon(currentContent.type)
   const colorClass = getContentColors(currentContent.type)
-  const borderColorClass = getBorderColorClass(currentContent.type)
   const label = getContentLabel(currentContent.type, t)
   const contentText = t(currentContent.key)
 
   return (
     <div className={cn('w-full space-y-4', className)}>
-      {/* Stage message */}
-      <div
-        className="text-center"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <p className="text-sm font-medium text-muted-foreground">
-          {stageMessage}
-        </p>
-      </div>
-
       {/* Content card */}
       <div
         className={cn(
           'relative min-h-[120px] sm:min-h-[100px]',
-          'rounded-lg border-2 border-dashed border-border',
-          'bg-card',
           'p-6',
           'transition-all duration-300',
-          'shadow-sm hover:shadow-md'
         )}
         onFocus={handleContentFocus}
         onBlur={handleContentBlur}
@@ -270,37 +245,33 @@ export function TaskLoadingContent({
         {/* Animated content */}
         <div
           className={cn(
-            'transition-opacity duration-300 ease-in-out',
+            'transition-opacity duration-300 ease-in-out text-center',
             isVisible ? 'opacity-100' : 'opacity-0'
           )}
           aria-live="polite"
           aria-atomic="true"
         >
           {/* Content type label with icon */}
-          <div className="flex items-center gap-2 mb-3">
-            <Icon className={cn('w-5 h-5', colorClass)} aria-hidden="true" />
-            <span className={cn('text-xs font-semibold uppercase tracking-wide', colorClass)}>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Icon className={cn('w-6 h-6', colorClass)} aria-hidden="true" />
+            <span
+              className={cn('text-2xl font-bold tracking-wide', colorClass)}
+              style={{
+                fontFamily: '"Comic Neue", cursive',
+              }}
+            >
               {label}
             </span>
           </div>
 
           {/* Content text */}
-          <p className="text-sm sm:text-base leading-relaxed text-foreground">
+          <p
+            className="text-base sm:text-lg leading-relaxed text-foreground"
+            style={{ fontFamily: '"Quicksand", sans-serif' }}
+          >
             {contentText}
           </p>
         </div>
-
-        {/* Subtle pulse effect on border (only when not paused) */}
-        {!isPaused && (
-          <div
-            className={cn(
-              'absolute inset-0 rounded-lg border-2 border-dashed',
-              borderColorClass,
-              'opacity-0 animate-pulse-border pointer-events-none'
-            )}
-            aria-hidden="true"
-          />
-        )}
       </div>
 
       {/* Rotation indicator (dots) */}

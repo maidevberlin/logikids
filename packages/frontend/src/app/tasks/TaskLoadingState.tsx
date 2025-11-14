@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
-import { TaskLoadingProgress } from './TaskLoadingProgress'
 import { TaskLoadingContent } from './TaskLoadingContent'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { cn } from '@/lib/utils'
 import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
+import { Brain, Wand2, Sparkles, CheckCircle2 } from 'lucide-react'
 
 /**
  * Props for the TaskLoadingState component
@@ -20,6 +20,46 @@ export interface TaskLoadingStateProps {
    * Additional CSS classes for the container
    */
   className?: string
+}
+
+/**
+ * Phase configuration for loading animation
+ */
+interface PhaseConfig {
+  icon: typeof Brain
+  animation: 'pulse' | 'rotate' | 'twinkle' | 'scale'
+  label: string
+}
+
+/**
+ * Get phase configuration based on progress
+ */
+function getPhaseConfig(progress: number, t: (key: string) => string): PhaseConfig {
+  if (progress < 25) {
+    return {
+      icon: Brain,
+      animation: 'pulse',
+      label: t('stages.analyzing', 'Analyzing your level...')
+    }
+  } else if (progress < 50) {
+    return {
+      icon: Wand2,
+      animation: 'rotate',
+      label: t('stages.crafting', 'Crafting your task...')
+    }
+  } else if (progress < 80) {
+    return {
+      icon: Sparkles,
+      animation: 'twinkle',
+      label: t('stages.generating', 'Generating content...')
+    }
+  } else {
+    return {
+      icon: CheckCircle2,
+      animation: 'scale',
+      label: t('stages.finalizing', 'Finalizing...')
+    }
+  }
 }
 
 /**
@@ -67,7 +107,6 @@ export function TaskLoadingState({
 
   // Get subject theme for icon and colors
   const theme = getSubjectTheme(subject)
-  const SubjectIcon = theme.icon
 
   // Progress calculation effect with calibration
   // We manage progress state here and pass it to both sub-components
@@ -121,57 +160,176 @@ export function TaskLoadingState({
     }
   }, [getTimeConstant])
 
+  // Get current phase configuration
+  const phaseConfig = getPhaseConfig(progress, t)
+  const PhaseIcon = phaseConfig.icon
+
+  // Get animation class based on phase
+  const getAnimationClass = (animation: PhaseConfig['animation']) => {
+    switch (animation) {
+      case 'pulse':
+        return 'animate-pulse-slow'
+      case 'rotate':
+        return 'animate-spin-slow'
+      case 'twinkle':
+        return 'animate-twinkle'
+      case 'scale':
+        return 'animate-scale-pulse'
+    }
+  }
+
   return (
-    <Card
-      className={cn(
-        'w-full max-w-2xl mx-auto',
-        'p-6 sm:p-8',
-        'space-y-6',
-        className
-      )}
-      role="region"
-      aria-label={t('header', 'Preparing your task...')}
-      aria-live="polite"
-      aria-busy="true"
-    >
-      {/* Header with subject icon and title */}
-      <div className="flex items-center gap-3">
+    <div className={cn('w-full', className)}>
+      {/* Thin progress bar at top - Google style */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-50">
         <div
           className={cn(
-            'flex-shrink-0 p-2 rounded-lg',
-            theme.colors.bgLight
+            'h-full transition-all duration-300 ease-out',
+            theme.colors.bg
           )}
-          aria-hidden="true"
+          style={{ width: `${progress}%` }}
         >
-          <SubjectIcon
-            className={cn('w-6 h-6', theme.colors.text)}
-          />
+          {/* Glow effect at the end */}
+          <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-transparent to-white/30" />
         </div>
-        <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-          {t('header', 'Preparing your task...')}
-        </h2>
       </div>
 
-      {/* Progress bar section */}
-      <div className="space-y-2">
-        <TaskLoadingProgress subject={subject} progress={progress} />
-      </div>
+      <Card
+        className={cn(
+          'w-full max-w-2xl mx-auto',
+          'p-6 sm:p-8',
+          'space-y-8',
+        )}
+        role="region"
+        aria-label={t('header', 'Preparing your task...')}
+        aria-live="polite"
+        aria-busy="true"
+      >
+        {/* Large animated icon in center */}
+        <div className="flex flex-col items-center justify-center space-y-4 py-8">
+          <div
+            className={cn(
+              'relative',
+              getAnimationClass(phaseConfig.animation)
+            )}
+          >
+            {/* Icon with subject color */}
+            <PhaseIcon
+              className={cn(
+                'w-24 h-24 sm:w-32 sm:h-32',
+                theme.colors.text
+              )}
+              strokeWidth={1.5}
+            />
 
-      {/* Divider */}
-      <div className="border-t border-border" />
+            {/* Subtle glow effect */}
+            <div
+              className={cn(
+                'absolute inset-0 blur-2xl opacity-30',
+                theme.colors.bg,
+                'rounded-full -z-10'
+              )}
+            />
+          </div>
 
-      {/* Content section with stage message and carousel */}
-      <TaskLoadingContent
-        subject={subject}
-        progress={progress}
-      />
-
-      {/* "Almost there" message for long load times (> 30s) */}
-      {showAlmostThere && (
-        <div className="text-center text-sm text-muted-foreground animate-in fade-in">
-          {t('almostThere', 'Almost there... generating a great question for you!')}
+          {/* Stage message */}
+          <div className="text-center space-y-2">
+            <h2 className="text-xl sm:text-2xl font-semibold text-foreground">
+              {phaseConfig.label}
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              {showAlmostThere
+                ? t('almostThere', 'Almost there... generating a great question for you!')
+                : t('timeRemaining', { seconds: Math.max(0, Math.ceil(20 - (progress / 100) * 20)) })
+              }
+            </p>
+          </div>
         </div>
-      )}
-    </Card>
+
+        {/* Content section with carousel */}
+        <TaskLoadingContent
+          subject={subject}
+          progress={progress}
+          className="-mt-4"
+        />
+      </Card>
+
+      {/* CSS for custom animations */}
+      <style>{`
+        @keyframes pulse-slow {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.7;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes twinkle {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          25% {
+            opacity: 0.5;
+            transform: scale(0.95);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.1);
+          }
+          75% {
+            opacity: 0.6;
+            transform: scale(0.98);
+          }
+        }
+
+        @keyframes scale-pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 2s ease-in-out infinite;
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 3s linear infinite;
+        }
+
+        .animate-twinkle {
+          animation: twinkle 1.5s ease-in-out infinite;
+        }
+
+        .animate-scale-pulse {
+          animation: scale-pulse 1s ease-in-out infinite;
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-pulse-slow,
+          .animate-spin-slow,
+          .animate-twinkle,
+          .animate-scale-pulse {
+            animation: none;
+          }
+        }
+      `}</style>
+    </div>
   )
 }

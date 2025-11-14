@@ -61,11 +61,21 @@ export function TaskLoadingProgress({
   // Use external progress if provided, otherwise use internal state
   const progress = externalProgress ?? internalProgress
 
+  // Initialize start time only once on mount
   useEffect(() => {
-    // Record start time
     startTimeRef.current = Date.now()
+  }, [])
 
-    // Update progress and/or time remaining every 200ms
+  // Track whether we're in controlled mode (external progress provided)
+  const isControlled = externalProgress !== undefined
+  const isControlledRef = useRef(isControlled)
+
+  useEffect(() => {
+    isControlledRef.current = isControlled
+  }, [isControlled])
+
+  // Update progress and/or time remaining every 200ms
+  useEffect(() => {
     intervalRef.current = setInterval(() => {
       if (startTimeRef.current === null) return
 
@@ -73,7 +83,7 @@ export function TaskLoadingProgress({
       const elapsedSeconds = elapsed / 1000
 
       // Only update internal progress if not controlled by external progress
-      if (externalProgress === undefined) {
+      if (!isControlledRef.current) {
         /**
          * Non-linear easing function
          * Formula: progress = 100 * (1 - Math.exp(-elapsed / 7000))
@@ -105,7 +115,7 @@ export function TaskLoadingProgress({
         clearInterval(intervalRef.current)
       }
     }
-  }, [externalProgress])
+  }, [])
 
   // Get subject-specific gradient or default
   const gradient = getSubjectProgressGradient(subject || '')

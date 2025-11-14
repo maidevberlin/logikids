@@ -398,7 +398,7 @@ export function PracticeModeSelector() {
 
 function startPractice(subject: string) {
   // Navigate to practice mode or filter task generation
-  window.location.href = `/subjects/${subject}/tasks?mode=practice`
+  window.location.href = `/subjects/${subject}/random/tasks?mode=practice`
 }
 ```
 

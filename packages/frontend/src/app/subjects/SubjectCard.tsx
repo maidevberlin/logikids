@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/ui/card'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
@@ -11,8 +11,9 @@ export interface SubjectCardProps {
   showGradeRange?: boolean
 }
 
-export function SubjectCard({ subject, disabled = false, minGrade, showGradeRange = true }: SubjectCardProps) {
+export function SubjectCard({ subject, minGrade, showGradeRange = true }: SubjectCardProps) {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const theme = getSubjectTheme(subject.id)
   const Icon = theme.icon
   const { bg, hover } = theme.colors
@@ -28,15 +29,22 @@ export function SubjectCard({ subject, disabled = false, minGrade, showGradeRang
         })
     : null
 
+  const handleClick = () => {
+    if (subject.isDisabledForGrade) {
+      // Navigate with showAll state for out-of-grade subjects
+      navigate(`/subjects/${subject.id}`, { state: { showAll: true } })
+    } else {
+      // Normal navigation
+      navigate(`/subjects/${subject.id}`)
+    }
+  }
+
   const content = (
-    <Card className={`shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl ${
-      disabled
-        ? 'opacity-50 cursor-not-allowed'
-        : 'hover:shadow-lg cursor-pointer hover:scale-[1.02]'
-    }`}>
-      <CardContent className={`h-full p-8 text-white ${bg} ${
-        disabled ? '' : hover
-      } transition-colors duration-300`}>
+    <Card
+      className="shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl hover:shadow-lg cursor-pointer hover:scale-[1.02]"
+      onClick={handleClick}
+    >
+      <CardContent className={`h-full p-8 text-white ${bg} ${hover} transition-colors duration-300`}>
         <Icon className="w-16 h-16 mb-4" />
         <h2 className="text-2xl font-bold mb-2">
           {t(`subjects.${subject.id}.label`, { defaultValue: subject.name })}
@@ -49,7 +57,7 @@ export function SubjectCard({ subject, disabled = false, minGrade, showGradeRang
             {gradeRangeText}
           </p>
         )}
-        {disabled && minGrade && (
+        {subject.isDisabledForGrade && minGrade && (
           <p className="text-white/80 text-sm mt-2 italic">
             {t('subjects.availableFromGrade', { grade: minGrade, defaultValue: `Available from grade ${minGrade}` })}
           </p>
@@ -58,13 +66,5 @@ export function SubjectCard({ subject, disabled = false, minGrade, showGradeRang
     </Card>
   )
 
-  if (disabled) {
-    return content
-  }
-
-  return (
-    <Link to={`/subjects/${subject.id}`}>
-      {content}
-    </Link>
-  )
+  return content
 }

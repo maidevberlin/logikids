@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
@@ -58,8 +58,11 @@ export default function ConceptsPage() {
   const { subject: subjectId } = useParams<{ subject: string }>()
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const location = useLocation()
   const { data: userData } = useUserData()
-  const [showAll, setShowAll] = useState(false)
+
+  // Initialize showAll from location state (e.g., from disabled subject click) or default to false
+  const [showAll, setShowAll] = useState(() => (location.state as { showAll?: boolean })?.showAll ?? false)
   const [activeTab, setActiveTab] = useState<'school' | 'fun'>('school')
   const [initialTabSet, setInitialTabSet] = useState(false)
 
@@ -91,11 +94,6 @@ export default function ConceptsPage() {
       setInitialTabSet(true)
     }
   }, [initialTabSet, schoolCheck, customCheck])
-
-  // Reset showAll when switching tabs
-  useEffect(() => {
-    setShowAll(false)
-  }, [activeTab])
 
   // Determine current source filter
   const currentSource = activeTab === 'school' ? 'curriculum' : 'custom'
