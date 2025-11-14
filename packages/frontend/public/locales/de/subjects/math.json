@@ -1,656 +1,96 @@
 {
   "concepts": {
-    "grade1-addition-up-to-10": {
-      "name": "Addition bis 10",
-      "description": "Zahlenraum bis 10"
+    "grade1-basic-arithmetic-operations": {
+      "name": "Grundrechenarten im Zahlraum bis 20",
+      "description": "Addition und Subtraktion bis 20 beherrschen, einschließlich Zahlzerlegungen, Zehnerübergang und Kopfrechenstrategien"
     },
-    "grade1-calculation-up-to-20": {
-      "name": "Rechnen bis 20",
-      "description": "Zahlenraum bis 20"
+    "grade1-data-and-probability-basics": {
+      "name": "Daten und Wahrscheinlichkeit - Grundlagen",
+      "description": "Daten sammeln und organisieren, Wahrscheinlichkeitssprache verwenden und Zufallsereignisse im Alltag erkunden"
     },
-    "grade1-collecting-data": {
-      "name": "Daten sammeln",
-      "description": "Daten und Wahrscheinlichkeit"
+    "grade1-geometry-and-spatial-awareness": {
+      "name": "Geometrie und räumliche Orientierung",
+      "description": "Formen erkennen, räumliche Beziehungen verstehen und Symmetrie durch praktische Aktivitäten erkunden"
     },
-    "grade1-comparing-and-ordering-numbers": {
-      "name": "Zahlen vergleichen und ordnen",
-      "description": "Zahlenraum bis 20"
-    },
-    "grade1-geometric-solids": {
-      "name": "Geometrische Körper",
-      "description": "Raum und Form"
-    },
-    "grade1-introduction-to-chance": {
-      "name": "Einführung in den Zufall",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade1-lengths": {
-      "name": "Längen",
-      "description": "Größen und Messen"
-    },
-    "grade1-money-values": {
-      "name": "Geldwerte",
-      "description": "Größen und Messen"
+    "grade1-introduction-to-measurement": {
+      "name": "Einführung in das Messen",
+      "description": "Längen vergleichen und messen, Uhrzeit ablesen, Geldwerte verstehen und grundlegende Zeitkonzepte"
     },
     "grade1-number-concept-development": {
       "name": "Zahlbegriffsentwicklung",
-      "description": "Zahlenraum bis 20"
+      "description": "Zahlen von 1 bis 20 verstehen, vorwärts und rückwärts zählen, Zahlen vergleichen und ordnen"
     },
-    "grade1-plane-figures": {
-      "name": "Ebene Figuren",
-      "description": "Raum und Form"
+    "grade2-introduction-to-multiplication-and-division": {
+      "name": "Einführung in Multiplikation und Division",
+      "description": "Multiplikation als wiederholte Addition und Division als Aufteilen und Verteilen verstehen, mit dem kleinen Einmaleins der 2, 5 und 10"
     },
-    "grade1-recognizing-patterns": {
-      "name": "Muster erkennen",
-      "description": "Muster und Strukturen"
+    "grade2-geometry-and-symmetry": {
+      "name": "Geometrie und Symmetrie",
+      "description": "Eigenschaften geometrischer Körper erkunden und symmetrische Figuren mit Spiegelachsen erstellen"
     },
-    "grade1-spatial-relations": {
-      "name": "Räumliche Beziehungen",
-      "description": "Raum und Form"
+    "grade2-measurement-skills": {
+      "name": "Größen und Messen",
+      "description": "Arbeiten mit Längen, Zeit und Geld - messen, umrechnen und mit Standardeinheiten rechnen"
     },
-    "grade1-subtraction-up-to-10": {
-      "name": "Subtraktion bis 10",
-      "description": "Zahlenraum bis 10"
+    "grade2-numbers-and-operations-to-100": {
+      "name": "Zahlen und Operationen bis 100",
+      "description": "Stellenwertsystem verstehen, Addition und Subtraktion, Zahlen vergleichen, ordnen und runden im Zahlenraum bis 100"
     },
-    "grade1-time": {
-      "name": "Zeit",
-      "description": "Größen und Messen"
+    "grade2-patterns-and-data-representation": {
+      "name": "Muster und Daten darstellen",
+      "description": "Zahlenmuster erkennen, Diagramme erstellen und Ereigniswahrscheinlichkeiten vergleichen"
     },
-    "grade2-addition-and-subtraction-up-to-100": {
-      "name": "Addition und Subtraktion bis 100",
-      "description": "Zahlen und Operationen"
-    },
-    "grade2-deepening-geometric-solids": {
-      "name": "Vertiefung geometrische Körper",
-      "description": "Raum und Form"
-    },
-    "grade2-expanding-money-values": {
-      "name": "Geldwerte erweitern",
-      "description": "Größen und Messen"
-    },
-    "grade2-introduction-to-division": {
-      "name": "Einführung in die Division",
-      "description": "Zahlen und Operationen"
-    },
-    "grade2-introduction-to-multiplication": {
-      "name": "Einführung in die Multiplikation",
-      "description": "Zahlen und Operationen"
-    },
-    "grade2-measuring-lengths": {
-      "name": "Längen messen",
-      "description": "Größen und Messen"
-    },
-    "grade2-number-range-up-to-100": {
-      "name": "Zahlenraum bis 100",
-      "description": "Zahlen und Operationen"
-    },
-    "grade2-number-sequences-and-patterns": {
-      "name": "Zahlenfolgen und Muster",
-      "description": "Muster und Strukturen"
-    },
-    "grade2-probabilities": {
-      "name": "Wahrscheinlichkeiten",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade2-representing-data": {
-      "name": "Daten darstellen",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade2-symmetry": {
-      "name": "Symmetrie",
-      "description": "Raum und Form"
-    },
-    "grade2-time-spans": {
-      "name": "Zeitspannen",
-      "description": "Größen und Messen"
-    },
-    "grade3-addition-and-subtraction-up-to-1000": {
-      "name": "Addition und Subtraktion bis 1000",
-      "description": "Zahlen und Operationen"
-    },
-    "grade3-area": {
-      "name": "Fläche",
-      "description": "Raum und Form"
-    },
-    "grade3-automating-times-tables": {
-      "name": "Einmaleins automatisieren",
-      "description": "Zahlen und Operationen"
-    },
-    "grade3-collecting-and-representing-data": {
-      "name": "Daten sammeln und darstellen",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade3-combinatorics": {
-      "name": "Kombinatorik",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade3-deepening-symmetry": {
-      "name": "Symmetrie vertiefen",
-      "description": "Raum und Form"
-    },
-    "grade3-division-with-remainder": {
-      "name": "Division mit Rest",
-      "description": "Zahlen und Operationen"
-    },
-    "grade3-geometric-figures": {
-      "name": "Geometrische Figuren",
-      "description": "Raum und Form"
-    },
-    "grade3-laws-of-arithmetic": {
-      "name": "Rechengesetze",
-      "description": "Muster und Strukturen"
-    },
-    "grade3-lengths": {
-      "name": "Längen",
-      "description": "Größen und Messen"
-    },
-    "grade3-mass": {
-      "name": "Masse",
-      "description": "Größen und Messen"
-    },
-    "grade3-multiplication-with-large-numbers": {
-      "name": "Multiplikation mit großen Zahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade3-number-range-up-to-1000": {
-      "name": "Zahlenraum bis 1000",
-      "description": "Zahlen und Operationen"
-    },
-    "grade3-number-sequences": {
-      "name": "Zahlenfolgen",
-      "description": "Muster und Strukturen"
-    },
-    "grade3-probability": {
-      "name": "Wahrscheinlichkeit",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade3-time-spans-extended": {
-      "name": "Zeitspannen erweitert",
-      "description": "Größen und Messen"
-    },
-    "grade3-volume-measures": {
-      "name": "Volumenmaße",
-      "description": "Größen und Messen"
-    },
-    "grade3-written-addition": {
-      "name": "Schriftliche Addition",
-      "description": "Zahlen und Operationen"
-    },
-    "grade3-written-subtraction": {
-      "name": "Schriftliche Subtraktion",
-      "description": "Zahlen und Operationen"
-    },
-    "grade4-all-measurement-areas": {
+    "grade3-all-measurement-domains": {
       "name": "Alle Größenbereiche",
-      "description": "Größen und Messen"
+      "description": "Einheiten umrechnen und Probleme mit Längen, Massen, Volumen und Zeitspannen lösen"
     },
-    "grade4-area-and-perimeter": {
-      "name": "Fläche und Umfang",
-      "description": "Größen und Messen"
+    "grade3-arithmetic-laws-and-patterns": {
+      "name": "Rechengesetze und Zahlenmuster",
+      "description": "Kommutativ-, Assoziativ- und Distributivgesetz verstehen und anwenden; Zahlenfolgen erkennen und erstellen"
     },
-    "grade4-divisibility": {
-      "name": "Teilbarkeit",
-      "description": "Zahlen und Operationen"
+    "grade3-data-probability-and-combinatorics": {
+      "name": "Daten, Wahrscheinlichkeit und Kombinatorik",
+      "description": "Daten sammeln und in Diagrammen darstellen, Wahrscheinlichkeit durch Experimente erforschen und alle Möglichkeiten systematisch finden"
     },
-    "grade4-functional-relationships": {
-      "name": "Funktionale Beziehungen",
-      "description": "Muster und Strukturen"
+    "grade3-geometry-and-area": {
+      "name": "Geometrie und Flächeninhalt",
+      "description": "Eigenschaften geometrischer Figuren, Symmetrie, Zeichnen mit Werkzeugen und Flächenmessung mit Quadratzentimetern"
     },
-    "grade4-geometric-constructions": {
-      "name": "Geometrische Konstruktionen",
-      "description": "Raum und Form"
+    "grade3-multiplication-and-division-mastery": {
+      "name": "Multiplikation und Division - Vertiefung",
+      "description": "Automatisierung des Einmaleins, Division mit Rest und mehrstellige Multiplikationsstrategien"
     },
-    "grade4-geometric-transformations": {
-      "name": "Geometrische Abbildungen",
-      "description": "Raum und Form"
+    "grade3-numbers-and-operations-to-1000": {
+      "name": "Zahlen und Operationen bis 1000",
+      "description": "Stellenwertsystem, Vergleichen, Ordnen, Runden, Kopf- und halbschriftliche Additions- und Subtraktionsstrategien mit dreistelligen Zahlen"
     },
-    "grade4-interpreting-data": {
-      "name": "Daten interpretieren",
-      "description": "Daten und Wahrscheinlichkeit"
+    "grade3-written-addition-and-subtraction": {
+      "name": "Schriftliche Addition und Subtraktion",
+      "description": "Standardverfahren für mehrstellige Addition und Subtraktion mit Übertrag bzw. Entbündelung"
     },
-    "grade4-introduction-to-fractions": {
-      "name": "Einführung in Brüche",
-      "description": "Zahlen und Operationen"
+    "grade4-advanced-geometry": {
+      "name": "Erweiterte Geometrie",
+      "description": "Geometrische Konstruktionen, Transformationen, Netze und Körper, Flächen- und Umfangsberechnungen mit Werkzeugen"
+    },
+    "grade4-algebraic-thinking": {
+      "name": "Algebraisches Denken",
+      "description": "Terme verstehen, Rechenregeln anwenden, einfache Gleichungen lösen, Variablen nutzen, Teilbarkeit erkennen und funktionale Zusammenhänge beschreiben"
+    },
+    "grade4-data-analysis-and-statistics": {
+      "name": "Datenanalyse und Statistik",
+      "description": "Diagramme analysieren, arithmetisches Mittel berechnen, Datensätze vergleichen und Wahrscheinlichkeitskonzepte verstehen"
+    },
+    "grade4-fractions": {
+      "name": "Brüche",
+      "description": "Brüche als Teile eines Ganzen verstehen, Bruchschreibweise und einfache Brüche vergleichen"
     },
     "grade4-large-numbers": {
       "name": "Große Zahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade4-mean": {
-      "name": "Mittelwert",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade4-probability-concepts": {
-      "name": "Wahrscheinlichkeitsbegriffe",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade4-solids-and-nets": {
-      "name": "Körper und Netze",
-      "description": "Raum und Form"
-    },
-    "grade4-terms-and-equations": {
-      "name": "Terme und Gleichungen",
-      "description": "Muster und Strukturen"
-    },
-    "grade4-volume": {
-      "name": "Volumen",
-      "description": "Größen und Messen"
-    },
-    "grade4-written-division": {
-      "name": "Schriftliche Division",
-      "description": "Zahlen und Operationen"
-    },
-    "grade4-written-multiplication": {
-      "name": "Schriftliche Multiplikation",
-      "description": "Zahlen und Operationen"
-    },
-    "3d-geometry": {
-      "name": "Räumliche Geometrie",
-      "description": "Raum und Form"
-    },
-    "basic-probability": {
-      "name": "Grundlagen der Wahrscheinlichkeit",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "binomial-formulas": {
-      "name": "Binomische Formeln",
-      "description": "Strukturen und Funktionen"
-    },
-    "circle-theorems": {
-      "name": "Kreissätze",
-      "description": "Raum und Form"
-    },
-    "combinatorics": {
-      "name": "Kombinatorik",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "counting-principles": {
-      "name": "Zählprinzipien",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "descriptive-statistics": {
-      "name": "Beschreibende Statistik",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "exponential-functions": {
-      "name": "Exponentialfunktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "general-triangle-trigonometry": {
-      "name": "Trigonometrie am allgemeinen Dreieck",
-      "description": "Raum und Form"
-    },
-    "geometric-shapes": {
-      "name": "Geometrische Formen",
-      "description": "Raum und Form"
-    },
-    "grade5-angles": {
-      "name": "Winkel",
-      "description": "Größen und Messen"
-    },
-    "grade5-area-and-perimeter": {
-      "name": "Fläche und Umfang",
-      "description": "Größen und Messen"
-    },
-    "grade5-calculating-with-measurements": {
-      "name": "Rechnen mit Größen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade5-circles": {
-      "name": "Kreise",
-      "description": "Raum und Form"
-    },
-    "grade5-collecting-and-representing-data": {
-      "name": "Daten sammeln und darstellen",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade5-combinatorics": {
-      "name": "Kombinatorik",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade5-coordinate-system": {
-      "name": "Koordinatensystem",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade5-deepening-angles": {
-      "name": "Vertiefung Winkel",
-      "description": "Raum und Form"
-    },
-    "grade5-deepening-basic-operations": {
-      "name": "Vertiefung Grundrechenarten",
-      "description": "Zahlen und Operationen"
-    },
-    "grade5-divisibility": {
-      "name": "Teilbarkeit",
-      "description": "Zahlen und Operationen"
-    },
-    "grade5-geometric-basic-concepts": {
-      "name": "Geometrische Grundbegriffe",
-      "description": "Raum und Form"
-    },
-    "grade5-introduction-to-decimals": {
-      "name": "Einführung in Dezimalzahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade5-large-natural-numbers": {
-      "name": "Große natürliche Zahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade5-quadrilaterals": {
-      "name": "Vierecke",
-      "description": "Raum und Form"
-    },
-    "grade5-random-experiments": {
-      "name": "Zufallsexperimente",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade5-scale": {
-      "name": "Maßstab",
-      "description": "Größen und Messen"
-    },
-    "grade5-simple-equations": {
-      "name": "Einfache Gleichungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade5-solids": {
-      "name": "Körper",
-      "description": "Raum und Form"
-    },
-    "grade5-statistical-measures": {
-      "name": "Statistische Kenngrößen",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade5-symmetry": {
-      "name": "Symmetrie",
-      "description": "Raum und Form"
-    },
-    "grade5-terms": {
-      "name": "Terme",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade5-triangles": {
-      "name": "Dreiecke",
-      "description": "Raum und Form"
-    },
-    "grade5-understanding-fractions": {
-      "name": "Brüche verstehen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade5-volume-and-surface-area": {
-      "name": "Volumen und Oberfläche",
-      "description": "Größen und Messen"
-    },
-    "grade6-angle-calculations": {
-      "name": "Winkelberechnungen",
-      "description": "Größen und Messen"
-    },
-    "grade6-area-of-composite-figures": {
-      "name": "Fläche zusammengesetzter Figuren",
-      "description": "Größen und Messen"
-    },
-    "grade6-classifying-quadrilaterals": {
-      "name": "Vierecke klassifizieren",
-      "description": "Raum und Form"
-    },
-    "grade6-decimals-all-operations": {
-      "name": "Dezimalzahlen - Alle Rechenarten",
-      "description": "Zahlen und Operationen"
-    },
-    "grade6-deepening-probability": {
-      "name": "Vertiefung Wahrscheinlichkeit",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade6-deepening-triangles": {
-      "name": "Vertiefung Dreiecke",
-      "description": "Raum und Form"
-    },
-    "grade6-deepening-volume-and-surface-area": {
-      "name": "Vertiefung Volumen und Oberfläche",
-      "description": "Größen und Messen"
-    },
-    "grade6-expanding-coordinate-system": {
-      "name": "Erweiterung Koordinatensystem",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade6-fraction-addition-and-subtraction": {
-      "name": "Bruchrechnung Addition und Subtraktion",
-      "description": "Zahlen und Operationen"
-    },
-    "grade6-fraction-division": {
-      "name": "Bruchrechnung Division",
-      "description": "Zahlen und Operationen"
-    },
-    "grade6-fraction-multiplication": {
-      "name": "Bruchrechnung Multiplikation",
-      "description": "Zahlen und Operationen"
-    },
-    "grade6-geometric-mappings": {
-      "name": "Geometrische Abbildungen",
-      "description": "Raum und Form"
-    },
-    "grade6-introduction-to-integers": {
-      "name": "Einführung in ganze Zahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "grade6-introduction-to-percentages": {
-      "name": "Einführung in Prozentrechnung",
-      "description": "Zahlen und Operationen"
-    },
-    "grade6-inverse-proportional-relationships": {
-      "name": "Umgekehrt proportionale Zuordnungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade6-investigating-solids": {
-      "name": "Körper untersuchen",
-      "description": "Raum und Form"
-    },
-    "grade6-linear-equations": {
-      "name": "Lineare Gleichungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade6-percent-and-interest-calculation": {
-      "name": "Prozent- und Zinsrechnung",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade6-proportional-relationships": {
-      "name": "Proportionale Zuordnungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade6-relative-frequency": {
-      "name": "Relative Häufigkeit",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade6-representing-and-interpreting-data": {
-      "name": "Daten darstellen und interpretieren",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade6-simulation": {
-      "name": "Simulation",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "grade6-transforming-terms": {
-      "name": "Terme umformen",
-      "description": "Strukturen und Funktionen"
-    },
-    "grade6-two-way-table": {
-      "name": "Vierfeldertafel",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "inequalities": {
-      "name": "Ungleichungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "introduction-to-functions": {
-      "name": "Einführung in Funktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "linear-equations": {
-      "name": "Lineare Gleichungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "linear-functions": {
-      "name": "Lineare Funktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "logarithmic-functions": {
-      "name": "Logarithmusfunktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "percentage-interest": {
-      "name": "Prozent- und Zinsrechnung",
-      "description": "Zahlen und Operationen"
-    },
-    "polynomial-functions": {
-      "name": "Polynomfunktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "powers-and-roots": {
-      "name": "Potenzen und Wurzeln",
-      "description": "Zahlen und Operationen"
-    },
-    "probability-distributions": {
-      "name": "Wahrscheinlichkeitsverteilungen",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "proportional-relationships": {
-      "name": "Proportionale Zuordnungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "pythagorean-theorem": {
-      "name": "Satz des Pythagoras",
-      "description": "Raum und Form"
-    },
-    "quadratic-equations": {
-      "name": "Quadratische Gleichungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "quadratic-functions": {
-      "name": "Quadratische Funktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "rational-functions": {
-      "name": "Gebrochenrationale Funktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "rational-numbers": {
-      "name": "Rationale Zahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "right-triangle-trigonometry": {
-      "name": "Trigonometrie am rechtwinkligen Dreieck",
-      "description": "Raum und Form"
-    },
-    "similarity-congruence": {
-      "name": "Ähnlichkeit und Kongruenz",
-      "description": "Raum und Form"
-    },
-    "systems-of-equations": {
-      "name": "Gleichungssysteme",
-      "description": "Strukturen und Funktionen"
-    },
-    "terms-and-variables": {
-      "name": "Terme und Variablen",
-      "description": "Strukturen und Funktionen"
-    },
-    "trigonometric-functions": {
-      "name": "Trigonometrische Funktionen",
-      "description": "Strukturen und Funktionen"
-    },
-    "advanced-combinatorics": {
-      "name": "Erweiterte Kombinatorik",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "angles-and-distances-3d": {
-      "name": "Winkel und Abstände im Raum",
-      "description": "Raum und Form"
-    },
-    "complex-numbers-intro": {
-      "name": "Einführung in komplexe Zahlen",
-      "description": "Zahlen und Operationen"
-    },
-    "correlation-and-regression": {
-      "name": "Korrelation und Regression",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "cross-product": {
-      "name": "Vektorprodukt",
-      "description": "Raum und Form"
-    },
-    "curve-sketching": {
-      "name": "Kurvendiskussion",
-      "description": "Strukturen und Funktionen"
-    },
-    "derivative-applications": {
-      "name": "Anwendungen der Ableitung",
-      "description": "Strukturen und Funktionen"
-    },
-    "derivatives": {
-      "name": "Ableitungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "determinants": {
-      "name": "Determinanten",
-      "description": "Strukturen und Funktionen"
-    },
-    "differential-equations-intro": {
-      "name": "Einführung in Differentialgleichungen",
-      "description": "Strukturen und Funktionen"
-    },
-    "integration": {
-      "name": "Integralrechnung",
-      "description": "Strukturen und Funktionen"
-    },
-    "integration-applications": {
-      "name": "Anwendungen der Integralrechnung",
-      "description": "Strukturen und Funktionen"
-    },
-    "inverse-matrices": {
-      "name": "Inverse Matrizen",
-      "description": "Strukturen und Funktionen"
-    },
-    "limits-continuity": {
-      "name": "Grenzwerte und Stetigkeit",
-      "description": "Strukturen und Funktionen"
-    },
-    "linear-systems-matrices": {
-      "name": "Lineare Gleichungssysteme mit Matrizen",
-      "description": "Strukturen und Funktionen"
-    },
-    "linear-transformations": {
-      "name": "Lineare Abbildungen",
-      "description": "Raum und Form"
-    },
-    "lines-in-space": {
-      "name": "Geraden im Raum",
-      "description": "Raum und Form"
-    },
-    "matrices-basics": {
-      "name": "Grundlagen der Matrizenrechnung",
-      "description": "Strukturen und Funktionen"
-    },
-    "normal-distribution": {
-      "name": "Normalverteilung",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "planes-in-space": {
-      "name": "Ebenen im Raum",
-      "description": "Raum und Form"
-    },
-    "scalar-product": {
-      "name": "Skalarprodukt",
-      "description": "Raum und Form"
-    },
-    "sequences-and-series": {
-      "name": "Folgen und Reihen",
-      "description": "Strukturen und Funktionen"
-    },
-    "statistical-inference": {
-      "name": "Statistische Inferenz",
-      "description": "Daten und Wahrscheinlichkeit"
-    },
-    "vectors-basics": {
-      "name": "Grundlagen der Vektorrechnung",
-      "description": "Raum und Form"
+      "description": "Zahlen bis zu einer Million verstehen, Stellenwerte, Runden und Zahlenvergleich"
+    },
+    "grade4-written-multiplication-and-division": {
+      "name": "Schriftliche Multiplikation und Division",
+      "description": "Standardverfahren zum Multiplizieren und Dividieren mehrstelliger Zahlen mit Überschlagsrechnung und Restinterpretation"
     }
   }
 }
