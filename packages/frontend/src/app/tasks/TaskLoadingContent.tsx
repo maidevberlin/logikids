@@ -41,10 +41,10 @@ interface ContentItem {
  * Get the stage message key based on current progress
  */
 function getStageMessageKey(progress: number): string {
-  if (progress < 20) return 'loading.stages.analyzing'
-  if (progress < 50) return 'loading.stages.crafting'
-  if (progress < 80) return 'loading.stages.generating'
-  return 'loading.stages.finalizing'
+  if (progress < 20) return 'stages.analyzing'
+  if (progress < 50) return 'stages.crafting'
+  if (progress < 80) return 'stages.generating'
+  return 'stages.finalizing'
 }
 
 /**
@@ -67,36 +67,20 @@ function getContentIcon(type: ContentType) {
 
 /**
  * Get color classes for content type
+ * Uses theme-aware primary color for all types to integrate with time themes
  */
 function getContentColors(type: ContentType): string {
-  switch (type) {
-    case 'tip':
-      return 'text-amber-600 dark:text-amber-400'
-    case 'fact':
-      return 'text-purple-600 dark:text-purple-400'
-    case 'preview':
-      return 'text-blue-600 dark:text-blue-400'
-    case 'encouragement':
-      return 'text-pink-600 dark:text-pink-400'
-    default:
-      return 'text-gray-600 dark:text-gray-400'
-  }
+  // Use primary color for all content types to respect time themes
+  return 'text-primary'
 }
 
 /**
  * Get border color classes for content type
+ * Uses theme-aware primary color for all types to integrate with time themes
  */
 function getBorderColorClass(type: ContentType): string {
-  switch (type) {
-    case 'tip':
-      return 'border-amber-600 dark:border-amber-400'
-    case 'fact':
-      return 'border-purple-600 dark:border-purple-400'
-    case 'preview':
-      return 'border-blue-600 dark:border-blue-400'
-    case 'encouragement':
-      return 'border-pink-600 dark:border-pink-400'
-  }
+  // Use primary color for all content types to respect time themes
+  return 'border-primary'
 }
 
 /**
@@ -105,13 +89,13 @@ function getBorderColorClass(type: ContentType): string {
 function getContentLabel(type: ContentType, t: (key: string) => string): string {
   switch (type) {
     case 'tip':
-      return t('loading.contentTypes.tip') || 'Tip'
+      return t('contentTypes.tip') || 'Tip'
     case 'fact':
-      return t('loading.contentTypes.fact') || 'Did you know?'
+      return t('contentTypes.fact') || 'Did you know?'
     case 'preview':
-      return t('loading.contentTypes.preview') || 'Coming up'
+      return t('contentTypes.preview') || 'Coming up'
     case 'encouragement':
-      return t('loading.contentTypes.encouragement') || 'Encouragement'
+      return t('contentTypes.encouragement') || 'Encouragement'
     default:
       return 'Info'
   }
@@ -156,7 +140,7 @@ export function TaskLoadingContent({
   progress,
   className
 }: TaskLoadingContentProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('loading')
 
   // State for current content item
   const [currentContent, setCurrentContent] = useState<ContentItem | null>(null)
@@ -269,8 +253,8 @@ export function TaskLoadingContent({
       <div
         className={cn(
           'relative min-h-[120px] sm:min-h-[100px]',
-          'rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-700',
-          'bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800',
+          'rounded-lg border-2 border-dashed border-border',
+          'bg-card',
           'p-6',
           'transition-all duration-300',
           'shadow-sm hover:shadow-md'
@@ -329,8 +313,8 @@ export function TaskLoadingContent({
               className={cn(
                 'w-1.5 h-1.5 rounded-full transition-all duration-300',
                 isActive
-                  ? 'bg-gray-600 dark:bg-gray-400 w-4'
-                  : 'bg-gray-300 dark:bg-gray-600'
+                  ? 'bg-primary w-4'
+                  : 'bg-muted-foreground/40'
               )}
             />
           )

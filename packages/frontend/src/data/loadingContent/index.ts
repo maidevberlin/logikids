@@ -37,24 +37,24 @@ export type { SubjectLoadingContent, LoadingContent, SubjectId } from './types'
  */
 const fallbackContent: SubjectLoadingContent = {
   tips: [
-    'loading.tips.fallback.0', // Take your time to understand the question
-    'loading.tips.fallback.1', // Break problems into manageable steps
-    'loading.tips.fallback.2', // Review your answer before submitting
-    'loading.tips.fallback.3', // Learn from mistakes to improve
-    'loading.tips.fallback.4', // Practice makes perfect
+    'tips.fallback.0', // Take your time to understand the question
+    'tips.fallback.1', // Break problems into manageable steps
+    'tips.fallback.2', // Review your answer before submitting
+    'tips.fallback.3', // Learn from mistakes to improve
+    'tips.fallback.4', // Practice makes perfect
   ],
 
   facts: [
-    'loading.facts.fallback.0', // Learning rewires your brain
-    'loading.facts.fallback.1', // Curiosity drives discovery
-    'loading.facts.fallback.2', // Every expert was once a beginner
-    'loading.facts.fallback.3', // Your brain never stops learning
-    'loading.facts.fallback.4', // Making connections helps memory
+    'facts.fallback.0', // Learning rewires your brain
+    'facts.fallback.1', // Curiosity drives discovery
+    'facts.fallback.2', // Every expert was once a beginner
+    'facts.fallback.3', // Your brain never stops learning
+    'facts.fallback.4', // Making connections helps memory
   ],
 
   previews: [
-    'loading.previews.fallback.0', // Get ready for an engaging challenge
-    'loading.previews.fallback.1', // Learning something new today
+    'previews.fallback.0', // Get ready for an engaging challenge
+    'previews.fallback.1', // Learning something new today
   ],
 }
 

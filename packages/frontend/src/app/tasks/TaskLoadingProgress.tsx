@@ -122,7 +122,7 @@ export function TaskLoadingProgress({
         aria-valuemin={0}
         aria-valuemax={100}
         aria-label="Task generation progress"
-        className="relative w-full h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner"
+        className="relative w-full h-3 bg-muted rounded-full overflow-hidden shadow-inner"
       >
         {/* Progress bar fill with gradient */}
         <div
@@ -144,7 +144,7 @@ export function TaskLoadingProgress({
 
         {/* Percentage label (overlay on progress bar) */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-semibold text-gray-700 drop-shadow-sm">
+          <span className="text-xs font-semibold text-foreground drop-shadow-sm">
             {Math.round(progress)}%
           </span>
         </div>

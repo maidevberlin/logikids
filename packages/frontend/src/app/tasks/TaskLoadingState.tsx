@@ -55,7 +55,7 @@ export function TaskLoadingState({
   subject,
   className
 }: TaskLoadingStateProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('loading')
   const [progress, setProgress] = useState(0)
   const startTimeRef = useRef<number | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
@@ -130,7 +130,7 @@ export function TaskLoadingState({
         className
       )}
       role="region"
-      aria-label={t('loading.header', 'Preparing your task...')}
+      aria-label={t('header', 'Preparing your task...')}
       aria-live="polite"
       aria-busy="true"
     >
@@ -148,7 +148,7 @@ export function TaskLoadingState({
           />
         </div>
         <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-          {t('loading.header', 'Preparing your task...')}
+          {t('header', 'Preparing your task...')}
         </h2>
       </div>
 
@@ -158,7 +158,7 @@ export function TaskLoadingState({
       </div>
 
       {/* Divider */}
-      <div className="border-t border-gray-200 dark:border-gray-700" />
+      <div className="border-t border-border" />
 
       {/* Content section with stage message and carousel */}
       <TaskLoadingContent
@@ -169,7 +169,7 @@ export function TaskLoadingState({
       {/* "Almost there" message for long load times (> 30s) */}
       {showAlmostThere && (
         <div className="text-center text-sm text-muted-foreground animate-in fade-in">
-          {t('loading.almostThere', 'Almost there... generating a great question for you!')}
+          {t('almostThere', 'Almost there... generating a great question for you!')}
         </div>
       )}
     </Card>
