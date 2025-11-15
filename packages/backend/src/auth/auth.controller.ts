@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { AuthService } from './auth.service'
+import { RegisterRequestTyped, LoginRequestTyped, RefreshRequestTyped } from './auth.schema'
 
 const authService = new AuthService()
 
@@ -10,27 +11,9 @@ const authService = new AuthService()
  * Body: { userId: string, inviteCode: string }
  * Returns: { token: string, account: UserAccount }
  */
-export async function register(req: Request, res: Response): Promise<void> {
+export async function register(req: RegisterRequestTyped, res: Response): Promise<void> {
   try {
-    const { userId, inviteCode } = req.body
-
-    // Validate input
-    if (!userId || typeof userId !== 'string') {
-      res.status(400).json({ error: 'Invalid userId format' })
-      return
-    }
-
-    if (!inviteCode || typeof inviteCode !== 'string') {
-      res.status(400).json({ error: 'Invalid inviteCode format' })
-      return
-    }
-
-    // Validate userId format (should be UUID)
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-    if (!uuidRegex.test(userId)) {
-      res.status(400).json({ error: 'userId must be a valid UUID' })
-      return
-    }
+    const { userId, inviteCode } = req.body // Already validated by middleware
 
     // Register user
     const result = await authService.register(userId, inviteCode)
@@ -113,22 +96,9 @@ export async function getAccount(req: Request, res: Response): Promise<void> {
  * Body: { userId: string }
  * Returns: { accessToken: string }
  */
-export async function refresh(req: Request, res: Response): Promise<void> {
+export async function refresh(req: RefreshRequestTyped, res: Response): Promise<void> {
   try {
-    const { userId } = req.body
-
-    // Validate input
-    if (!userId || typeof userId !== 'string') {
-      res.status(400).json({ error: 'userId is required' })
-      return
-    }
-
-    // Validate userId format (should be UUID)
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-    if (!uuidRegex.test(userId)) {
-      res.status(400).json({ error: 'userId must be a valid UUID' })
-      return
-    }
+    const { userId } = req.body // Already validated by middleware
 
     // Renew access token
     const result = await authService.renewAccessToken(userId)
@@ -161,22 +131,9 @@ export async function refresh(req: Request, res: Response): Promise<void> {
  * Body: { userId: string }
  * Returns: { accessToken: string, account: UserAccount }
  */
-export async function login(req: Request, res: Response): Promise<void> {
+export async function login(req: LoginRequestTyped, res: Response): Promise<void> {
   try {
-    const { userId } = req.body
-
-    // Validate input
-    if (!userId || typeof userId !== 'string') {
-      res.status(400).json({ error: 'Invalid userId format' })
-      return
-    }
-
-    // Validate userId format (should be UUID)
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-    if (!uuidRegex.test(userId)) {
-      res.status(400).json({ error: 'userId must be a valid UUID' })
-      return
-    }
+    const { userId } = req.body // Already validated by middleware
 
     // Login user
     const result = await authService.login(userId)
