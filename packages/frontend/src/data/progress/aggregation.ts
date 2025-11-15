@@ -115,6 +115,7 @@ export function pruneOldAttempts(stats: ConceptStats): ConceptStats {
   }
 
   return {
+    ...stats,
     attempts: recentAttempts,
     aggregate: calculateConceptAggregate(recentAttempts)
   }
