@@ -4,6 +4,7 @@ import { TaskService } from './task.service';
 import { taskRequestSchema } from './types';
 import { subjectRegistry } from '../subjects/registry';
 import { AIClient } from '../common/ai/base';
+import { GetSubjectsRequest, GetConceptsRequest } from './task.schema';
 
 export class TaskController extends BaseController {
   private readonly taskService: TaskService;
@@ -16,7 +17,7 @@ export class TaskController extends BaseController {
     this.taskService = taskService;
   }
 
-  public async getSubjects(req: Request, res: Response): Promise<void> {
+  public async getSubjects(req: GetSubjectsRequest, res: Response): Promise<void> {
     try {
       const { grade, age, difficulty } = req.query; // Already validated and coerced by middleware
 
@@ -121,7 +122,7 @@ export class TaskController extends BaseController {
     }
   }
 
-  public async getSubjectConcepts(req: Request, res: Response): Promise<void> {
+  public async getSubjectConcepts(req: GetConceptsRequest, res: Response): Promise<void> {
     try {
       const { subjectId } = req.params; // Already validated by middleware
       const { grade, difficulty, source } = req.query; // Already validated and coerced by middleware

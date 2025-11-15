@@ -9,7 +9,13 @@ import { HintService } from '../hints/hint.service';
 import { PromptService } from '../prompts/prompt.service';
 import { requireAuth } from '../auth/auth.middleware';
 import { validateQuery, validateParams } from '../common/middleware/validation';
-import { getSubjectsQuerySchema, getConceptsQuerySchema, subjectParamSchema } from './task.schema';
+import {
+  getSubjectsQuerySchema,
+  getConceptsQuerySchema,
+  subjectParamSchema,
+  GetSubjectsRequest,
+  GetConceptsRequest
+} from './task.schema';
 
 export async function createTaskRouter(): Promise<Router> {
   const router = Router();
@@ -56,7 +62,7 @@ export async function createTaskRouter(): Promise<Router> {
   // More specific routes must come before generic routes
   // Public route - no auth required (just metadata)
   router.get('/subjects', validateQuery(getSubjectsQuerySchema), (req, res, next) =>
-    taskController.getSubjects(req, res).catch(next)
+    taskController.getSubjects(req as GetSubjectsRequest, res).catch(next)
   );
 
   // Public route - no auth required (get concepts for a specific subject)
@@ -64,7 +70,7 @@ export async function createTaskRouter(): Promise<Router> {
     validateParams(subjectParamSchema),
     validateQuery(getConceptsQuerySchema),
     (req, res, next) =>
-      taskController.getSubjectConcepts(req, res).catch(next)
+      taskController.getSubjectConcepts(req as unknown as GetConceptsRequest, res).catch(next)
   );
 
   // Protected route - requires auth + rate limiting (AI cost)

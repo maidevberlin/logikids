@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { Request } from 'express';
 import { subjectRegistry } from '../subjects/registry';
 
 /**
@@ -39,3 +40,8 @@ export type TaskFilterQuery = z.infer<typeof taskFilterSchema>;
 export type GetSubjectsQuery = z.infer<typeof getSubjectsQuerySchema>;
 export type GetConceptsQuery = z.infer<typeof getConceptsQuerySchema>;
 export type SubjectParam = z.infer<typeof subjectParamSchema>;
+
+// Request types with validated schemas using Express generic parameters
+// Request<Params, ResponseBody, RequestBody, QueryParams>
+export type GetSubjectsRequest = Request<{}, any, any, GetSubjectsQuery>;
+export type GetConceptsRequest = Request<SubjectParam, any, any, GetConceptsQuery>;
