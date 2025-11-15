@@ -7,32 +7,19 @@ import { PageLayout } from '@/app/common'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Target, TrendingUp, Clock, Lightbulb, ArrowRight } from 'lucide-react'
-
-interface SubjectWithConcepts {
-  id: string
-  name: string
-  description: string
-  concepts?: Array<{ id: string; name: string; grade?: number }>
-}
-
-async function fetchAllSubjects(): Promise<SubjectWithConcepts[]> {
-  const response = await fetch('/api/task/subjects')
-  if (!response.ok) {
-    throw new Error('Failed to fetch subjects')
-  }
-  const data = await response.json()
-  return data.subjects
-}
+import { logikids, SubjectsResponse } from '@/api/logikids'
 
 export default function PracticePage() {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const { progress } = useProgress()
 
-  const { data: subjects = [] } = useQuery({
+  const { data: subjectsData } = useQuery<SubjectsResponse>({
     queryKey: ['subjects', 'all'],
-    queryFn: fetchAllSubjects,
+    queryFn: ({ signal }) => logikids.getSubjects({}, signal),
   })
+
+  const subjects = subjectsData?.subjects ?? []
 
   const recommendations = generatePracticeRecommendations(progress, 5)
 
