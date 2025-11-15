@@ -42,6 +42,9 @@ export interface ConceptStats {
 
   /** Cached aggregate stats (recalculated on data load/save) */
   aggregate: ConceptAggregate
+
+  /** Current adaptive difficulty level for this concept (defaults to "medium") */
+  difficulty?: Difficulty
 }
 
 export interface SubjectMastery {
