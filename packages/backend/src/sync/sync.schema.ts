@@ -25,12 +25,3 @@ export const SyncRecordSchema = SyncPayloadSchema.extend({
 })
 
 export type SyncRecord = z.infer<typeof SyncRecordSchema>
-
-/**
- * Schema for user ID parameter validation
- */
-export const UserIdParamSchema = z.object({
-  userId: z.string().uuid(),
-})
-
-export type UserIdParam = z.infer<typeof UserIdParamSchema>

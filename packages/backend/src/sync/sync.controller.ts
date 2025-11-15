@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { SyncService } from './sync.service'
-import { UserIdParamSchema, SyncPayloadSchema } from './sync.schema'
+import { SyncPayloadSchema } from './sync.schema'
 import { ZodError } from 'zod'
 
 /**
@@ -17,8 +17,8 @@ export class SyncController {
    */
   upload = async (req: Request, res: Response): Promise<void> => {
     try {
-      // Validate userId parameter
-      const { userId } = UserIdParamSchema.parse(req.params)
+      // Already validated by middleware
+      const { userId } = req.params
 
       // Validate request body
       const payload = SyncPayloadSchema.parse(req.body)
@@ -45,8 +45,8 @@ export class SyncController {
    */
   download = async (req: Request, res: Response): Promise<void> => {
     try {
-      // Validate userId parameter
-      const { userId } = UserIdParamSchema.parse(req.params)
+      // Already validated by middleware
+      const { userId } = req.params
 
       // Fetch encrypted data
       const payload = await this.syncService.download(userId)
@@ -68,8 +68,8 @@ export class SyncController {
    */
   verify = async (req: Request, res: Response): Promise<void> => {
     try {
-      // Validate userId parameter
-      const { userId } = UserIdParamSchema.parse(req.params)
+      // Already validated by middleware
+      const { userId } = req.params
 
       // Check existence
       const exists = await this.syncService.verify(userId)
@@ -86,8 +86,8 @@ export class SyncController {
    */
   delete = async (req: Request, res: Response): Promise<void> => {
     try {
-      // Validate userId parameter
-      const { userId } = UserIdParamSchema.parse(req.params)
+      // Already validated by middleware
+      const { userId } = req.params
 
       // Delete user data
       await this.syncService.deleteUser(userId)
