@@ -144,3 +144,46 @@ export function generateAttemptId(
   const randomPart = Math.random().toString(36).substring(2, 11)
   return `${subject}-${conceptId}-${timestamp}-${randomPart}`
 }
+
+/**
+ * Calculate difficulty streaks from attempts
+ * Returns current streak of first-try-correct or skipped attempts
+ * Neutral attempts (eventually correct or wrong with hints) are ignored
+ */
+export function calculateDifficultyStreaks(attempts: AttemptData[]): {
+  correctStreak: number
+  incorrectStreak: number
+} {
+  let correctStreak = 0
+  let incorrectStreak = 0
+
+  // Iterate backwards through attempts (most recent first)
+  for (let i = attempts.length - 1; i >= 0; i--) {
+    const attempt = attempts[i]
+
+    // First-try correct: correct answer with zero hints, not skipped
+    const isFirstTryCorrect = attempt.correct && attempt.hintsUsed === 0 && !attempt.skipped
+
+    // Skipped: student gave up on the task
+    const isSkipped = attempt.skipped
+
+    // Eventually correct or wrong with hints: neutral (skip and continue)
+    if (!isFirstTryCorrect && !isSkipped) {
+      // Neutral attempt - skip it and keep looking backwards
+      // eslint-disable-next-line no-continue
+      continue
+    }
+
+    if (isFirstTryCorrect) {
+      // If we already have incorrect streak, stop (different type)
+      if (incorrectStreak > 0) break
+      correctStreak++
+    } else if (isSkipped) {
+      // If we already have correct streak, stop (different type)
+      if (correctStreak > 0) break
+      incorrectStreak++
+    }
+  }
+
+  return { correctStreak, incorrectStreak }
+}

@@ -5,7 +5,8 @@ import {
   calculateStars,
   pruneOldAttempts,
   isDuplicate,
-  generateAttemptId
+  generateAttemptId,
+  calculateDifficultyStreaks
 } from './aggregation'
 import { ConceptStats, AttemptData, Difficulty } from './types'
 
@@ -347,6 +348,76 @@ describe('aggregation', () => {
       expect(id).toContain('physics')
       expect(id).toContain('mechanics')
       expect(id).toContain('1234567890')
+    })
+  })
+
+  describe('calculateDifficultyStreaks', () => {
+    const createStreakAttempt = (overrides: Partial<AttemptData>): AttemptData => ({
+      id: 'test-id',
+      difficulty: 'medium',
+      correct: true,
+      hintsUsed: 0,
+      timeSeconds: 60,
+      timestamp: Date.now(),
+      skipped: false,
+      ...overrides
+    })
+
+    it('returns zero streaks for empty attempts', () => {
+      const result = calculateDifficultyStreaks([])
+      expect(result).toEqual({ correctStreak: 0, incorrectStreak: 0 })
+    })
+
+    it('counts first-try-correct streak', () => {
+      const attempts = [
+        createStreakAttempt({ correct: true, hintsUsed: 0, skipped: false }),
+        createStreakAttempt({ correct: true, hintsUsed: 0, skipped: false }),
+        createStreakAttempt({ correct: true, hintsUsed: 0, skipped: false })
+      ]
+      const result = calculateDifficultyStreaks(attempts)
+      expect(result.correctStreak).toBe(3)
+      expect(result.incorrectStreak).toBe(0)
+    })
+
+    it('counts skip streak', () => {
+      const attempts = [
+        createStreakAttempt({ skipped: true }),
+        createStreakAttempt({ skipped: true })
+      ]
+      const result = calculateDifficultyStreaks(attempts)
+      expect(result.correctStreak).toBe(0)
+      expect(result.incorrectStreak).toBe(2)
+    })
+
+    it('skips neutral attempts (hints used)', () => {
+      const attempts = [
+        createStreakAttempt({ correct: true, hintsUsed: 0 }),
+        createStreakAttempt({ correct: true, hintsUsed: 1 }), // neutral - skip
+        createStreakAttempt({ correct: true, hintsUsed: 0 })
+      ]
+      const result = calculateDifficultyStreaks(attempts)
+      expect(result.correctStreak).toBe(2) // skips the neutral one
+    })
+
+    it('skips neutral attempts (wrong answer)', () => {
+      const attempts = [
+        createStreakAttempt({ correct: true, hintsUsed: 0 }),
+        createStreakAttempt({ correct: false, hintsUsed: 0 }), // neutral - skip
+        createStreakAttempt({ correct: true, hintsUsed: 0 })
+      ]
+      const result = calculateDifficultyStreaks(attempts)
+      expect(result.correctStreak).toBe(2) // skips the neutral one
+    })
+
+    it('processes attempts backwards (most recent first)', () => {
+      const attempts = [
+        createStreakAttempt({ skipped: true, timestamp: 1000 }), // oldest
+        createStreakAttempt({ skipped: true, timestamp: 2000 }),
+        createStreakAttempt({ correct: true, hintsUsed: 0, timestamp: 3000 }) // most recent
+      ]
+      const result = calculateDifficultyStreaks(attempts)
+      expect(result.correctStreak).toBe(1)
+      expect(result.incorrectStreak).toBe(0)
     })
   })
 })
