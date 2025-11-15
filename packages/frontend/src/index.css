@@ -78,6 +78,7 @@
   --animate-pulse-subtle: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-shake: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   --animate-hint-glow: glow 2s ease-in-out infinite;
+  --animate-slide-down: slide-down 0.3s ease-out;
 
   --transition-duration-fast: 100ms;
   --transition-duration: 200ms;
@@ -135,6 +136,14 @@
     50% {
       opacity: 0.6;
       filter: brightness(150%);
+    }
+  }
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
 }
