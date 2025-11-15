@@ -272,7 +272,19 @@
   "difficulty": {
     "easy": "Easy",
     "medium": "Medium",
-    "hard": "Hard"
+    "hard": "Hard",
+    "levelUp": {
+      "medium": "You've leveled up to Medium!",
+      "hard": "You've leveled up to Hard!"
+    },
+    "levelDown": {
+      "medium": "Back to Medium - you've got this!",
+      "easy": "Back to Easy - practice makes perfect!"
+    },
+    "achievement": {
+      "masteringHard": "Mastering hard level! Keep it up!",
+      "practicingEasy": "Keep practicing - you're learning!"
+    }
   },
   "common": {
     "loading": "Loading...",

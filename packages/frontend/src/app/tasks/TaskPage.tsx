@@ -10,6 +10,8 @@ import { Difficulty } from './types'
 import { PageLayout } from '@/app/common'
 import { TaskPageHeader } from './TaskPageHeader'
 import { TaskCard } from './TaskCard'
+import { useDifficultyTracking } from '@/hooks/useDifficultyTracking'
+import { DifficultyBanner } from '@/components/DifficultyBanner'
 
 // Import background patterns
 import mathBg from '@/assets/math.webp'
@@ -40,6 +42,14 @@ export default function TaskPage() {
   const { data } = useUserData()
   const { submitTaskAttempt } = useProgress()
 
+  // Adaptive difficulty tracking
+  const {
+    currentDifficulty,
+    notification,
+    checkAndAdjustDifficulty,
+    dismissNotification
+  } = useDifficultyTracking(subject || 'math', concept || 'random')
+
   // Track if current task was answered (to detect skips)
   const taskAnsweredRef = useRef(false)
   const previousTaskIdRef = useRef<string | null>(null)
@@ -47,8 +57,7 @@ export default function TaskPage() {
   // Memoize task parameters
   const taskParams = useMemo(() => {
     return {
-      difficulty: (searchParams.get('difficulty') ??
-        taskDefaults.difficulty) as Difficulty,
+      difficulty: currentDifficulty,
       subject: subject ?? taskDefaults.subject,
       concept: concept && concept !== 'random' ? concept : undefined,
       age: data?.settings.age ?? taskDefaults.age,
@@ -64,7 +73,7 @@ export default function TaskPage() {
   }, [
     subject,
     concept,
-    searchParams,
+    currentDifficulty,
     data?.settings.age,
     data?.settings.grade,
     data?.settings.gender,
@@ -112,6 +121,8 @@ export default function TaskPage() {
         startTime,
         skipped: false,
       })
+      // Check and adjust difficulty after recording attempt
+      checkAndAdjustDifficulty()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -123,8 +134,8 @@ export default function TaskPage() {
     taskParams.difficulty,
     hintsUsed,
     startTime,
-    // NOTE: submitTaskAttempt intentionally omitted to prevent infinite loop
-    // The callback uses the latest values via closure
+    // NOTE: submitTaskAttempt and checkAndAdjustDifficulty intentionally omitted to prevent infinite loop
+    // The callbacks use the latest values via closure
   ])
 
   // Track skips when task changes
@@ -142,6 +153,8 @@ export default function TaskPage() {
         startTime,
         skipped: true,
       })
+      // Check and adjust difficulty after recording skip
+      checkAndAdjustDifficulty()
     }
 
     // Update refs for next task
@@ -176,6 +189,9 @@ export default function TaskPage() {
 
   return (
     <>
+      {/* Difficulty Notification Banner */}
+      <DifficultyBanner notification={notification} onDismiss={dismissNotification} />
+
       {/* Background pattern */}
       <div
         className="fixed inset-0 pointer-events-none z-0 task-background"

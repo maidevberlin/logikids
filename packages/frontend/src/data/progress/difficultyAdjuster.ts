@@ -1,5 +1,6 @@
 import { ConceptStats, Difficulty } from './types'
 import { calculateDifficultyStreaks } from './aggregation'
+import { t } from 'i18next'
 
 export type DifficultyNotification = {
   type: 'level_up' | 'level_down' | 'achievement'
@@ -22,21 +23,21 @@ export function adjustDifficulty(
       newDifficulty = 'medium'
       notification = {
         type: 'level_up',
-        message: "You've leveled up to Medium!",
+        message: t('difficulty.levelUp.medium'),
         newDifficulty: 'medium'
       }
     } else if (currentDifficulty === 'medium') {
       newDifficulty = 'hard'
       notification = {
         type: 'level_up',
-        message: "You've leveled up to Hard!",
+        message: t('difficulty.levelUp.hard'),
         newDifficulty: 'hard'
       }
     } else {
       // Already at hard
       notification = {
         type: 'achievement',
-        message: "Mastering hard level! Keep it up!",
+        message: t('difficulty.achievement.masteringHard'),
         newDifficulty: 'hard'
       }
     }
@@ -48,21 +49,21 @@ export function adjustDifficulty(
       newDifficulty = 'medium'
       notification = {
         type: 'level_down',
-        message: "Back to Medium - you've got this!",
+        message: t('difficulty.levelDown.medium'),
         newDifficulty: 'medium'
       }
     } else if (currentDifficulty === 'medium') {
       newDifficulty = 'easy'
       notification = {
         type: 'level_down',
-        message: "Back to Easy - practice makes perfect!",
+        message: t('difficulty.levelDown.easy'),
         newDifficulty: 'easy'
       }
     } else {
       // Already at easy
       notification = {
         type: 'achievement',
-        message: "Keep practicing - you're learning!",
+        message: t('difficulty.achievement.practicingEasy'),
         newDifficulty: 'easy'
       }
     }

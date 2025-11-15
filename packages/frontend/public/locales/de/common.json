@@ -272,7 +272,19 @@
   "difficulty": {
     "easy": "Leicht",
     "medium": "Mittel",
-    "hard": "Schwer"
+    "hard": "Schwer",
+    "levelUp": {
+      "medium": "Du hast Mittel erreicht!",
+      "hard": "Du hast Schwer erreicht!"
+    },
+    "levelDown": {
+      "medium": "Zurück zu Mittel - du schaffst das!",
+      "easy": "Zurück zu Leicht - Übung macht den Meister!"
+    },
+    "achievement": {
+      "masteringHard": "Du meisterst das schwere Level!",
+      "practicingEasy": "Weiter üben - du lernst!"
+    }
   },
   "common": {
     "loading": "Lädt...",
