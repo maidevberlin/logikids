@@ -1,16 +1,25 @@
-export interface TaskContext {
-  taskId: string;
-  subject: string;
-  concept: string;
-  taskType: string;
-  grade: number;
-  difficulty: string;
-  language: string;
-  generatedTask: string;
-  solution: any;
-  hintsGenerated: string[];
-  createdAt: number;
-}
+import { z } from 'zod';
+
+/**
+ * Zod schema for task context stored in cache
+ * Replaces manual interface with type-safe schema
+ */
+export const taskContextSchema = z.object({
+  taskId: z.string(),
+  subject: z.string(),
+  concept: z.string(),
+  taskType: z.string(),
+  grade: z.number(),
+  difficulty: z.string(),
+  language: z.string(),
+  generatedTask: z.string(),
+  solution: z.unknown(), // Type depends on task type, kept flexible
+  hintsGenerated: z.array(z.string()),
+  createdAt: z.number()
+});
+
+// Inferred type replaces manual interface
+export type TaskContext = z.infer<typeof taskContextSchema>;
 
 export class TaskCache {
   private cache = new Map<string, TaskContext>();
