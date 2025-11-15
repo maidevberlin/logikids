@@ -18,28 +18,7 @@ export class TaskController extends BaseController {
 
   public async getSubjects(req: Request, res: Response): Promise<void> {
     try {
-      // Parse and validate query parameters for grade and age filtering
-      const grade = req.query.grade ? parseInt(req.query.grade as string, 10) : undefined;
-      const age = req.query.age ? parseInt(req.query.age as string, 10) : undefined;
-      const difficulty = req.query.difficulty as 'easy' | 'medium' | 'hard' | undefined;
-
-      // Validate grade if provided
-      if (grade !== undefined && (isNaN(grade) || grade < 1 || grade > 13)) {
-        res.status(400).json({ error: 'Invalid grade parameter. Must be between 1 and 13.' });
-        return;
-      }
-
-      // Validate age if provided
-      if (age !== undefined && (isNaN(age) || age < 1 || age > 100)) {
-        res.status(400).json({ error: 'Invalid age parameter. Must be between 1 and 100.' });
-        return;
-      }
-
-      // Validate difficulty if provided
-      if (difficulty && !['easy', 'medium', 'hard'].includes(difficulty)) {
-        res.status(400).json({ error: 'Invalid difficulty parameter. Must be easy, medium, or hard.' });
-        return;
-      }
+      const { grade, age, difficulty } = req.query; // Already validated and coerced by middleware
 
       const subjects = subjectRegistry.getAll().map(subject => {
         const metadata = subjectRegistry.getConceptMetadata(subject.id);
@@ -144,34 +123,8 @@ export class TaskController extends BaseController {
 
   public async getSubjectConcepts(req: Request, res: Response): Promise<void> {
     try {
-      const { subjectId } = req.params;
-      const grade = req.query.grade ? parseInt(req.query.grade as string, 10) : undefined;
-      const difficulty = req.query.difficulty as 'easy' | 'medium' | 'hard' | undefined;
-      const source = req.query.source as 'curriculum' | 'custom' | undefined;
-
-      // Validate required parameters
-      if (!subjectId) {
-        res.status(400).json({ error: 'Subject ID is required' });
-        return;
-      }
-
-      // Validate grade if provided
-      if (grade !== undefined && (isNaN(grade) || grade < 1 || grade > 13)) {
-        res.status(400).json({ error: 'Invalid grade parameter. Must be between 1 and 13.' });
-        return;
-      }
-
-      // Validate difficulty if provided
-      if (difficulty && !['easy', 'medium', 'hard'].includes(difficulty)) {
-        res.status(400).json({ error: 'Invalid difficulty parameter. Must be easy, medium, or hard.' });
-        return;
-      }
-
-      // Validate source if provided
-      if (source && !['curriculum', 'custom'].includes(source)) {
-        res.status(400).json({ error: 'Invalid source parameter. Must be curriculum or custom.' });
-        return;
-      }
+      const { subjectId } = req.params; // Already validated by middleware
+      const { grade, difficulty, source } = req.query; // Already validated and coerced by middleware
 
       // Get subject
       const subject = subjectRegistry.get(subjectId);
