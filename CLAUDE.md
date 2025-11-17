@@ -2,313 +2,279 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Overview
 
-Logikids is an AI-powered educational platform that helps children aged 8-16 develop logical thinking and problem-solving skills. The system generates personalized educational tasks across multiple subjects (logic, math, music, physics, English, German) using AI, with adaptive difficulty levels and intelligent hints.
+Logikids is an AI-powered educational platform for children aged 8-16, built as a monorepo with three main packages:
+- **Frontend**: React + TypeScript + Vite application
+- **Backend**: Node.js + Bun + Express API service
+- **Content**: Educational content organized by subject (math, physics, music, logic, etc.)
 
-**Architecture:** Monorepo with three main packages:
-- `packages/frontend/` - React/TypeScript SPA with TailwindCSS
-- `packages/backend/` - Node.js/TypeScript API using Bun runtime
-- `packages/content/` - Educational content definitions (subjects, concepts, task types)
-
-**Key Technologies:**
-- **Runtime:** Bun (backend), Vite (frontend dev)
-- **Database:** PostgreSQL (via Docker)
-- **AI Providers:** OpenAI, Anthropic (Claude), or Ollama
-- **Containerization:** Docker Compose for all services
+The platform uses AI to generate personalized learning tasks based on curriculum-aligned concepts, with support for multiple task types (single choice, multiple select, fill-in-blank, ordering, number input, yes/no).
 
 ## Development Commands
 
-### Starting Services
+### Starting the Development Environment
 
-Development environment (with hot reload):
+All services run via Docker Compose. The system uses PostgreSQL for data persistence.
+
 ```bash
-# Start both frontend and backend
+# Start frontend and backend in development mode
+npm run dev
+# Or explicitly:
 docker compose up frontend-dev backend-dev
 
-# Start individually
-docker compose up frontend-dev  # http://localhost:5153
-docker compose up backend-dev   # http://localhost:5175
+# Start only frontend (port 5153)
+docker compose up frontend-dev
+
+# Start only backend (port 5175)
+docker compose up backend-dev
+
+# View logs
+docker compose logs -f frontend-dev
+docker compose logs -f backend-dev
+
+# Rebuild after dependency changes
+docker compose build frontend-dev
+docker compose build backend-dev
+
+# Stop all services
+docker compose down
 ```
 
-Production mode (local testing):
+### Production Mode
+
 ```bash
-docker compose up frontend-prod backend-prod
-# Frontend: http://localhost:5154
-# Backend API: http://localhost:5176
+# Build and start production services
+npm run prod
+# Or explicitly:
+docker compose up frontend-prod backend-prod --build
 ```
 
-### Database Operations
+Production ports: Frontend (5154), Backend (5176)
+
+### Database Management
 
 ```bash
-# Run migrations
-cd packages/backend
-bun run migrate
+# Run database migrations
+docker compose exec backend-dev bun run migrate
 
 # Access database via Adminer (web UI)
-docker compose up adminer
-# Visit http://localhost:8080
+# Navigate to http://localhost:8080
+
+# Connect to PostgreSQL directly
+docker compose exec postgres psql -U logikids -d logikids
 ```
 
-### Backend Development
+### Testing
 
 ```bash
-cd packages/backend
-
-# Run backend directly (outside Docker)
-bun run dev           # Development with watch mode
-bun run start         # Production mode
-
-# Run tests
+# Run backend tests
 docker compose run backend-test
 
-# Validate prompt templates
-bun run validate:prompts
-
-# Test individual prompts
-bun run test:prompt
+# Run frontend tests
+docker compose run frontend-dev npm test
 ```
 
-### Frontend Development
+### Invite Code Management
+
+The platform uses invite codes for beta access:
 
 ```bash
-cd packages/frontend
+# List all active codes
+./invite list
 
-# Build for production
-bun run build
+# Create new invite code
+./invite create "Optional note about recipient"
 
-# Preview production build
-bun run preview
+# Remove specific code
+./invite remove ABCD-1234
+
+# Delete all codes (with confirmation)
+./invite clear
 ```
 
-### Utility Scripts
+### TypeScript and Build
 
 ```bash
-# Check translation completeness across all content
-bun run check-translations
+# Type check frontend
+docker compose exec frontend-dev npm run build
 
-# Manage invite codes (beta access)
-./invite list                    # List all codes
-./invite create "Note"           # Create new code
-./invite remove ABCD-1234        # Remove code
+# Type check backend
+docker compose exec backend-dev bun run start
 ```
 
-### Logs and Debugging
+### Translation Management
 
 ```bash
-# View logs
-docker compose logs -f backend-dev
-docker compose logs -f frontend-dev
-
-# Rebuild specific service
-docker compose build backend-dev
-docker compose build frontend-dev
-
-# Clean restart
-docker compose down -v
-docker compose up frontend-dev backend-dev
+# Check for missing translations
+npm run check-translations
 ```
 
-## Architecture and Code Organization
-
-### Content-Driven Design
-
-Educational content lives in `packages/content/subjects/`, organized by:
-- **Subjects** (math, physics, logic, music, english, german)
-- **Concepts** (specific topics within subjects, e.g., "planes-in-space", "light-propagation")
-- **Official content** (`official/` subdirectories) contains curriculum-aligned material with metadata (difficulty, grade levels, learning objectives)
-
-Content files are markdown with YAML frontmatter, parsed by the backend to generate contextually appropriate tasks.
+## Architecture
 
 ### Backend Architecture
 
-**Key Directories:**
-- `src/tasks/` - Task generation engine, coordinates AI providers and content
-- `src/prompts/` - AI prompt templates for task generation
-  - `base-prompt.md` - Core instructions for AI
-  - `task-types/` - Prompts for specific task formats (multiple-choice, fill-in-blank, etc.)
-  - `variations.md` - Instructions for generating diverse question styles
-- `src/auth/` - JWT-based authentication
-- `src/invites/` - Invite code management (closed beta)
-- `src/sync/` - Real-time content synchronization using file watchers
-- `src/common/ai/` - AI provider abstractions (OpenAI, Anthropic, Ollama)
-- `src/subjects/` - Subject registry and metadata
-- `src/cache/` - Response caching with cleanup service
-- `database/` - PostgreSQL schema and migrations
+The backend follows a service-oriented architecture with these key components:
 
-**Registry Pattern:** The backend uses registries (`subjectRegistry`, `taskTypeRegistry`) that are initialized at startup by scanning the content directory. When adding new subjects or task types, ensure they're properly registered.
+**Registry System**: Two main registries manage runtime data:
+- `SubjectRegistry` (`src/subjects/registry.ts`): Manages subjects and their concepts loaded from `/content/subjects/`
+- `TaskTypeRegistry` (`src/tasks/types/registry.ts`): Manages available task types and their JSON schemas
 
-**API Design:** RESTful endpoints use Express.js. Task generation happens via `GET /api/task` with query parameters (age, difficulty, subject, concept, language, gender). The endpoint returns a complete task object with question, options, hints, and solution.
+Both registries extend `BaseRegistry` and support hot-reload in development mode.
+
+**Task Generation Flow**:
+1. `TaskController` receives request with subject, concept (optional), task type, grade, age, difficulty
+2. `TaskService` (`src/tasks/task.service.ts`):
+   - Selects concept (random if not specified, filtered by grade/age/difficulty)
+   - Selects task type (random if not specified)
+   - Uses `PromptService` to build AI prompt from templates
+   - Calls AI provider (Ollama/OpenAI/Anthropic) via `AIClient`
+   - Caches result in `TaskCache`
+3. Response includes task data + metadata (subject, concept, task type, difficulty)
+
+**AI Provider Configuration**:
+- Config file: `packages/backend/config.yaml` (copy from `config.template.yaml`)
+- Supports three providers: Ollama (local), OpenAI, Anthropic
+- Provider selection affects both text generation and image generation
+- Factory pattern in `src/common/ai/factory.ts` creates appropriate client
+
+**Authentication & Sync**:
+- JWT-based auth (`src/auth/`)
+- User data sync system (`src/sync/`) for cross-device learning progress
+- Invite-code system for beta access control
+
+**Error Handling**:
+- Structured error hierarchy in `src/common/errors/`
+- Global error handler middleware in `src/common/middleware/errorHandler.ts`
+- Each domain (auth, task, invite, etc.) has specific error types
 
 ### Frontend Architecture
 
-**Key Directories:**
-- `src/app/` - Page components (routes)
-- `src/features/` - Feature-specific logic (authentication, task display, etc.)
-- `src/components/` - Reusable UI components
-- `src/api/` - API client and hooks (React Query)
-- `src/hooks/` - Custom React hooks
-- `src/i18n/` - Internationalization setup (i18next)
-- `src/ui/` - Base UI components (shadcn/ui)
-- `src/routes/` - React Router configuration
+React application using React Router v7 for routing, organized by feature:
 
-**State Management:** React Query for server state, React Context for global UI state. No Redux/Zustand.
+**Key Contexts**:
+- `AuthContext`: JWT authentication state
+- `UserDataContext`: User profile and progress data
+- `DataSyncContext`: Synchronization with backend
+- All contexts wrapped in `Providers.tsx`
 
-**Styling:** TailwindCSS with custom configuration. Uses `cn()` utility from `lib/utils.ts` for conditional class merging.
+**Feature Areas** (in `src/app/`):
+- `tasks/`: Task display, answer input, feedback, difficulty selection
+- `subjects/`: Subject browsing and selection
+- `concepts/`: Concept cards and exploration
+- `stats/`: Learning statistics, achievements, progress tracking
+- `account/`: Profile settings, data export/import, recovery kit (QR codes)
+- `welcome/`: Landing page with personalized greetings
+- `onboarding/`: New user setup flow
 
-**Rendering Special Content:**
-- Math: KaTeX for LaTeX rendering (via `rehype-katex`)
-- Markdown: react-markdown with remark-gfm, remark-math
-- Diagrams: Mermaid for flowcharts/diagrams
-- Code: react-syntax-highlighter
+**Task Answer Types**: Each task type has a corresponding answer component in `src/app/tasks/answer-types/`:
+- `SingleChoiceAnswer.tsx`
+- `MultiSelectAnswer.tsx`
+- `FillInBlankAnswer.tsx`
+- `OrderingAnswer.tsx`
+- `NumberInputAnswer.tsx`
+- `YesNoAnswer.tsx`
 
-### AI Integration
+**Styling**:
+- TailwindCSS v4 with custom configuration
+- Time-of-day theme system (morning/midday/evening/night) applied via `useTimeOfDay` hook
+- Component library based on Radix UI primitives in `src/components/ui/`
 
-The backend supports three AI providers, configured via `packages/backend/config.yaml`:
+**Data Flow**:
+- React Query (`@tanstack/react-query`) for API calls and caching
+- API client in `src/api/api.ts` with typed endpoints
+- Zod schemas for runtime validation
 
-1. **OpenAI** - GPT-4 and newer models
-2. **Anthropic** - Claude models (recommended for educational content)
-3. **Ollama** - Local LLMs (development/privacy)
+### Content Architecture
 
-Provider abstraction in `src/common/ai/` allows swapping providers without changing task generation logic. Each provider implements a common interface for chat completions.
+Educational content is stored in `packages/content/subjects/` with this structure:
 
-### Authentication and Authorization
-
-- **Invite-only access:** Users must have valid invite codes to register
-- **JWT tokens:** Stored client-side, sent via Authorization header
-- **User data:** Minimal PII collected, privacy-first approach
-- **Invite codes:** 7-day expiration, single-use, managed via `./invite` CLI
-
-## Important Patterns and Conventions
-
-### Content File Format
-
-Subject content uses markdown with YAML frontmatter:
-
-```markdown
----
-difficulty: medium
-grade: 8-9
-concepts:
-  - algebra
-  - equations
-learningObjectives:
-  - Solve linear equations
-  - Apply algebraic reasoning
----
-
-# Topic Title
-
-Content explanation...
+```
+subjects/
+├── math/
+│   ├── base.md          # Subject metadata
+│   └── official/        # Official curriculum concepts
+│       ├── addition.md
+│       ├── subtraction.md
+│       └── ...
+├── physics/
+│   ├── base.md
+│   └── official/
+├── music/
+└── ...
 ```
 
-### Task Generation Flow
+Each concept file (e.g., `addition.md`) contains:
+- Frontmatter: `id`, `name`, `grade`, `ages`, `difficulty`, `description`
+- Content: Markdown text explaining the concept
 
-1. Client requests task via `/api/task?subject=math&concept=algebra&difficulty=medium&language=de`
-2. Backend validates parameters, checks cache
-3. Loads relevant content from `packages/content/`
-4. Constructs AI prompt from templates in `prompts/`
-5. Sends to configured AI provider
-6. Parses and validates response
-7. Returns structured task object
-8. Caches result for performance
+The `PromptLoader` (`src/prompts/loader.ts`) reads these files and the `SubjectRegistry` makes them available to the task generation system.
 
-### Adding New Subjects
+## Working with AI Prompts
 
-1. Create directory in `packages/content/subjects/<subject-name>/`
-2. Add `official/` subdirectory with curriculum content
-3. Backend will auto-discover on next startup (via `subjectRegistry`)
-4. Add translations in frontend `src/i18n/`
+Prompts are in `packages/backend/prompts/`:
+- `base-prompt.md`: Core system prompt for task generation
+- `task-types/*.md`: Specific prompts for each task type
+- `variations/*.md`: Variation strategies to prevent repetitive tasks
+- `hints/*.md`: Hint generation prompts
 
-### Adding New Task Types
-
-1. Create prompt template in `packages/backend/prompts/task-types/<type-name>.md`
-2. Register in `src/tasks/types/registry.ts`
-3. Update frontend task renderer to handle new type
-
-### Database Migrations
-
-Migrations are SQL files in `packages/backend/database/migrations/`, numbered sequentially (e.g., `001_initial.sql`). The migrate script runs all pending migrations in order.
-
-## Configuration
-
-### Backend Configuration (`packages/backend/config.yaml`)
-
-Generated by `./configure.sh` during setup. Controls:
-- Server port
-- AI provider selection and API keys
-- Model parameters (temperature, max tokens)
-- Image generation settings
-
-**Never commit this file** - contains secrets.
-
-### Environment Variables (`.env` at root)
-
+To test prompts:
 ```bash
-POSTGRES_PASSWORD=<generated>
-JWT_SECRET=<generated>
+docker compose exec backend-dev bun run test:prompt
+
+# Validate prompt syntax
+docker compose exec backend-dev bun run validate:prompts
 ```
 
-Auto-generated by `./install.sh`. Used by docker-compose.yml.
+## Key Development Patterns
 
-### Frontend Environment
+1. **Registry Pattern**: When adding new subjects or task types, they're auto-discovered by scanning directories during initialization
 
-Uses `.env.development` and `.env.production` for API URLs. Vite loads these automatically.
+2. **Error Handling**: Always throw typed errors from `src/common/errors/` rather than generic errors
 
-## Testing
+3. **Logging**: Use `createLogger(name)` from `src/common/logger.ts` for consistent logging
 
-Backend tests use Jest/Supertest. Run via:
-```bash
-docker compose run backend-test
-```
+4. **Hot Reload**: In development, both registries watch for file changes and reload automatically
 
-Frontend tests should use React Testing Library (infrastructure present in package.json but tests TBD).
+5. **Caching**: Task generation results are cached by `TaskCache` to avoid duplicate AI calls
 
-## Deployment
+6. **Translation**: Use i18next keys in format `namespace:key`. Translations stored in `public/locales/{lang}/{namespace}.json`
 
-See `DEPLOYMENT.md` for complete deployment guide. Key scripts:
-- `./install.sh` - Full installation (Docker, secrets, config, build, start)
-- `./configure.sh` - AI provider setup
-- `./setup-nginx.sh` - SSL and reverse proxy
-- `./update.sh` - Pull latest code and restart
-- `./restart.sh` - Rebuild and restart services
+## Environment Variables
 
-Production runs on Docker with Nginx reverse proxy and Let's Encrypt SSL.
+Required environment variables (set in docker-compose.yml):
 
-## Common Development Tasks
+**Backend**:
+- `DATABASE_URL`: PostgreSQL connection string
+- `JWT_SECRET`: Secret for JWT signing
+- `NODE_ENV`: development | production | test
 
-### Modifying Task Generation
-- Edit prompts in `packages/backend/prompts/`
-- Use `bun run test:prompt` to test changes
-- Use `bun run validate:prompts` to check syntax
+**AI Configuration** (in config.yaml, not env vars):
+- Provider selection (ollama/openai/anthropic)
+- API keys for cloud providers
+- Model selection and parameters
 
-### Adding Educational Content
+## Database Schema
 
-**When creating new concept files, Claude Code will automatically use the `generate-concept` skill.**
+Key tables (see `packages/backend/database/migrations/`):
+- `users`: User accounts and profiles
+- `user_progress`: Learning progress tracking
+- `sync_data`: Cross-device sync metadata
+- `invite_codes`: Beta access codes
+- `task_cache`: Cached AI-generated tasks
 
-This project has a local skill (`.claude/skills/generate-concept/`)
-**Manual checks:**
-- Run `bun run validate:prompts` to check schema compliance
-- Run `bun run check-translations` to ensure i18n coverage
+## Port Reference
 
-### Debugging Task Generation
-- Check `docker compose logs backend-dev` for AI responses
-- Verify content loading in registry initialization logs
-- Test specific concepts with curl: `curl "http://localhost:5175/api/task?subject=math&concept=<concept>&difficulty=easy"`
+- Frontend Dev: 5153
+- Frontend Prod: 5154
+- Backend Dev: 5175
+- Backend Prod: 5176
+- PostgreSQL: 5432
+- Adminer (DB UI): 8080
 
-### Working with the Database
-- Access via Adminer: `docker compose up adminer` → http://localhost:8080
-- Connection: Server=postgres, User=logikids, Password=from `.env`
-- Migrations are idempotent, safe to re-run
+## Notes
 
-## Troubleshooting
-
-**Backend won't start:** Check `config.yaml` exists and has valid AI credentials
-
-**Tasks fail to generate:** Check AI provider API keys, verify content files exist for requested concept
-
-**Frontend can't reach API:** Ensure backend-dev is running, check Vite proxy config in `vite.config.ts`
-
-**Database connection errors:** Verify postgres container is healthy (`docker compose ps`), check `POSTGRES_PASSWORD` in `.env`
-
-**Content not loading:** Check registry initialization logs, verify markdown frontmatter syntax
+- Backend uses Bun runtime for performance (not Node.js)
+- Frontend builds with Vite, not Create React App
+- All content must be curriculum-aligned; use existing concepts as templates
+- When adding task types, you must: (1) create prompt in `prompts/task-types/`, (2) create schema in `src/tasks/types/`, (3) add grading logic in `src/tasks/grading/`, (4) create answer component in frontend
