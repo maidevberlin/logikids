@@ -4,6 +4,9 @@ import { importQRData, QRPayload } from '@/data/plugins/qr'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('ManualImport')
 
 interface ManualImportProps {
   onClose: () => void
@@ -82,7 +85,7 @@ export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
       await importQRData(payload)
       onSuccess()
     } catch (err) {
-      console.error('Manual import error:', err)
+      logger.error('Manual import error', err as Error)
       setError(err instanceof Error ? err.message : t('welcomeChoice.import.importFailed', { defaultValue: 'Import failed' }))
     } finally {
       setIsImporting(false)

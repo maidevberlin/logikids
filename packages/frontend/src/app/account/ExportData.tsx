@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { exportData } from '@/data/plugins/export'
 import { Button } from '@/components/ui/button'
 import { Download } from 'lucide-react'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('ExportData')
 
 /**
  * Component for exporting user data as JSON
@@ -33,7 +36,7 @@ export function ExportData() {
       URL.revokeObjectURL(url)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to export data')
-      console.error('Data export failed:', err)
+      logger.error('Data export failed', err as Error)
     } finally {
       setIsExporting(false)
     }

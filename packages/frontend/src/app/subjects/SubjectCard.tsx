@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/ui/card'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { SubjectInfo } from '@/api/logikids'
+import { formatGradeRange } from '@/lib/formatGrade'
 
 export interface SubjectCardProps {
   subject: SubjectInfo & { isDisabledForGrade?: boolean }
@@ -18,16 +19,7 @@ export function SubjectCard({ subject, minGrade, showGradeRange = true }: Subjec
   const Icon = theme.icon
   const { bg, hover } = theme.colors
 
-  // Format grade range display
-  const gradeRangeText = subject.minGrade && subject.maxGrade
-    ? subject.minGrade === subject.maxGrade
-      ? t('subjects.grade', { grade: subject.minGrade, defaultValue: `Grade ${subject.minGrade}` })
-      : t('subjects.gradeRange', {
-          minGrade: subject.minGrade,
-          maxGrade: subject.maxGrade,
-          defaultValue: `Grades ${subject.minGrade}-${subject.maxGrade}`
-        })
-    : null
+  const gradeRangeText = formatGradeRange(subject.minGrade, subject.maxGrade, t)
 
   const handleClick = () => {
     if (subject.isDisabledForGrade) {

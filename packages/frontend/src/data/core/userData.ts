@@ -2,7 +2,9 @@ import { UserData, UserSettings, createDefaultUserData } from './types.ts'
 import { loadKey, storeKey, getUserId, storeUserId, storeTokens } from './storage.ts'
 import { generateKey, encrypt, decrypt } from './crypto.ts'
 import { GameStats } from '@/app/stats/gameTypes'
+import { createLogger } from '@/lib/logger'
 
+const logger = createLogger('UserData')
 const STORAGE_KEY = 'logikids_data'
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
 
@@ -18,7 +20,7 @@ function cleanupLegacyStorage(): void {
 
   legacyKeys.forEach(key => {
     if (localStorage.getItem(key)) {
-      console.log(`Cleaning up legacy storage key: ${key}`)
+      logger.debug('Cleaning up legacy storage key', { key })
       localStorage.removeItem(key)
     }
   })
@@ -44,7 +46,7 @@ export async function initialize(): Promise<UserData | null> {
     // Data will be created later after invite code validation
     return null
   } catch (error) {
-    console.error('Failed to initialize user data:', error)
+    logger.error('Failed to initialize user data', error as Error)
     throw error
   }
 }
@@ -95,7 +97,7 @@ export async function registerUser(inviteCode: string): Promise<UserData> {
 
     return defaultData
   } catch (error) {
-    console.error('Failed to register user:', error)
+    logger.error('Failed to register user', error as Error)
     throw error
   }
 }
@@ -129,7 +131,7 @@ export async function loginWithAccount(userId: string): Promise<void> {
     // Dispatch event for React reactivity
     window.dispatchEvent(new Event('data-changed'))
   } catch (error) {
-    console.error('Failed to login with account:', error)
+    logger.error('Failed to login with account', error as Error)
     throw error
   }
 }
@@ -139,7 +141,7 @@ export async function loginWithAccount(userId: string): Promise<void> {
  * @deprecated Use registerUser with invite code instead
  */
 export async function createNewUser(): Promise<UserData> {
-  console.warn('createNewUser is deprecated. Use registerUser with invite code instead.')
+  logger.warn('createNewUser is deprecated. Use registerUser with invite code instead.')
   throw new Error('createNewUser is deprecated. Use registerUser with invite code instead.')
 }
 
@@ -163,7 +165,7 @@ export async function getData(): Promise<UserData | null> {
     const data = await decrypt(key, encrypted)
     return data
   } catch (error) {
-    console.error('Failed to load user data:', error)
+    logger.error('Failed to load user data', error as Error)
     // Return null instead of creating new data
     return null
   }
@@ -197,7 +199,7 @@ export async function setData(updates: Partial<UserData>): Promise<void> {
     // Dispatch event for React reactivity
     window.dispatchEvent(new Event('data-changed'))
   } catch (error) {
-    console.error('Failed to save user data:', error)
+    logger.error('Failed to save user data', error as Error)
     throw error
   }
 }

@@ -1,6 +1,10 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import config from '../config';
 import { getAccessToken, storeTokens, getUserId } from '../data/core/storage';
+import { createLogger } from '@/lib/logger';
+import { LogikidsApiError } from './errors';
+
+const logger = createLogger('APIClient');
 
 export const api = axios.create({
   baseURL: config.apiBaseUrl,
@@ -83,9 +87,9 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (refreshError) {
         // Refresh failed - redirect to login/welcome page
-        console.error('Token refresh failed:', refreshError);
+        logger.error('Token refresh failed', refreshError as Error);
         window.location.href = '/welcome-choice';
-        throw new Error('Session expired. Please login again');
+        throw new LogikidsApiError('Session expired. Please login again');
       }
     }
 
@@ -93,27 +97,27 @@ api.interceptors.response.use(
     if (error.response) {
       switch (error.response.status) {
         case 401:
-          throw new Error('Authentication required');
+          throw new LogikidsApiError('Authentication required');
         case 403:
-          throw new Error('You do not have permission to perform this action');
+          throw new LogikidsApiError('You do not have permission to perform this action');
         case 404:
-          throw new Error('Resource not found');
+          throw new LogikidsApiError('Resource not found');
         case 422:
-          throw new Error('Invalid data provided');
+          throw new LogikidsApiError('Invalid data provided');
         case 429:
-          throw new Error('Too many requests. Please try again later');
+          throw new LogikidsApiError('Too many requests. Please try again later');
         case 500:
-          throw new Error('Internal server error. Please try again later');
+          throw new LogikidsApiError('Internal server error. Please try again later');
         default:
-          throw new Error('An unexpected error occurred. Please try again');
+          throw new LogikidsApiError('An unexpected error occurred. Please try again');
       }
     }
 
     if (error.request) {
-      throw new Error('No response received from server. Please check your connection');
+      throw new LogikidsApiError('No response received from server. Please check your connection');
     }
 
-    throw error;
+    throw new LogikidsApiError(error.message || 'An unexpected error occurred');
   }
 );
 

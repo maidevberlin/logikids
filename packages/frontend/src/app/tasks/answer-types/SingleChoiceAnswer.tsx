@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
+import { OPTION_COLORS } from '@/constants/colors'
 
 interface Option {
   text: string
@@ -16,13 +17,6 @@ interface SingleChoiceAnswerProps {
   isLoading?: boolean
   isLocked?: boolean
 }
-
-const OPTION_COLORS = [
-  'bg-blue-50 border-blue-200 hover:border-blue-400 hover:bg-blue-100 hover:-rotate-1 data-[selected=true]:border-blue-500 data-[selected=true]:bg-blue-100 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]',
-  'bg-purple-50 border-purple-200 hover:border-purple-400 hover:bg-purple-100 hover:rotate-1 data-[selected=true]:border-purple-500 data-[selected=true]:bg-purple-100 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]',
-  'bg-emerald-50 border-emerald-200 hover:border-emerald-400 hover:bg-emerald-100 hover:-rotate-1 data-[selected=true]:border-emerald-500 data-[selected=true]:bg-emerald-100 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]',
-  'bg-pink-50 border-pink-200 hover:border-pink-400 hover:bg-pink-100 hover:rotate-1 data-[selected=true]:border-pink-500 data-[selected=true]:bg-pink-100 data-[selected=true]:shadow-lg data-[selected=true]:scale-[1.02]',
-]
 
 export function SingleChoiceAnswer({
   options,

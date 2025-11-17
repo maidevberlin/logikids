@@ -4,9 +4,15 @@ import { createAIClient } from '../common/ai/factory';
 import { TaskController } from './task.controller';
 import { HintController } from '../hints/hint.controller';
 import { errorHandler } from '../common/middleware/errorHandler';
+import { asyncHandler } from '../common/middleware/asyncHandler';
 import { TaskService } from './task.service';
 import { HintService } from '../hints/hint.service';
 import { PromptService } from '../prompts/prompt.service';
+import { PromptLoader } from '../prompts/loader';
+import { VariationLoader } from '../variations/loader';
+import { subjectRegistry } from '../subjects/registry';
+import { taskTypeRegistry } from './types/registry';
+import { taskCache } from '../cache/taskCache';
 import { requireAuth } from '../auth/auth.middleware';
 import { validateQuery, validateParams } from '../common/middleware/validation';
 import {
@@ -21,14 +27,28 @@ export async function createTaskRouter(): Promise<Router> {
   const router = Router();
   const aiClient = await createAIClient();
 
-  // Create and initialize PromptService
-  const promptService = new PromptService();
+  // Note: Registries are initialized in index.ts before router creation
+  // They are singletons, so we just use the already-initialized instances
+
+  // Create loaders
+  const promptLoader = new PromptLoader();
+  const variationLoader = new VariationLoader();
+
+  // Create and initialize PromptService with injected dependencies
+  const promptService = new PromptService(promptLoader, variationLoader);
   await promptService.initialize();
 
-  // Pass promptService to TaskService
-  const taskService = new TaskService(aiClient, promptService);
+  // Create TaskService with all dependencies injected
+  const taskService = new TaskService(
+    aiClient,
+    promptService,
+    subjectRegistry,
+    taskTypeRegistry,
+    taskCache
+  );
 
-  const taskController = new TaskController(aiClient, taskService);
+  // Create TaskController with injected dependencies
+  const taskController = new TaskController(taskService, subjectRegistry);
 
   const hintService = new HintService(aiClient);
   await hintService.initialize(); // Load variations
@@ -61,27 +81,28 @@ export async function createTaskRouter(): Promise<Router> {
 
   // More specific routes must come before generic routes
   // Public route - no auth required (just metadata)
-  router.get('/subjects', validateQuery(getSubjectsQuerySchema), (req, res, next) =>
-    taskController.getSubjects(req as GetSubjectsRequest, res).catch(next)
-  );
+  router.get('/subjects', validateQuery(getSubjectsQuerySchema), asyncHandler((req, res) =>
+    taskController.getSubjects(req as GetSubjectsRequest, res)
+  ));
 
   // Public route - no auth required (get concepts for a specific subject)
   router.get('/subjects/:subjectId/concepts',
     validateParams(subjectParamSchema),
     validateQuery(getConceptsQuerySchema),
-    (req, res, next) =>
-      taskController.getSubjectConcepts(req as unknown as GetConceptsRequest, res).catch(next)
+    asyncHandler((req, res) =>
+      taskController.getSubjectConcepts(req as unknown as GetConceptsRequest, res)
+    )
   );
 
   // Protected route - requires auth + rate limiting (AI cost)
-  router.post('/:taskId/hint', requireAuth, hintRateLimiter, (req, res, next) =>
-    hintController.getHint(req, res).catch(next)
-  );
+  router.post('/:taskId/hint', requireAuth, hintRateLimiter, asyncHandler((req, res) =>
+    hintController.getHint(req, res)
+  ));
 
   // Protected route - requires auth + rate limiting (AI cost)
-  router.get('/', requireAuth, taskRateLimiter, (req, res, next) =>
-    taskController.getTask(req, res).catch(next)
-  );
+  router.get('/', requireAuth, taskRateLimiter, asyncHandler((req, res) =>
+    taskController.getTask(req, res)
+  ));
 
   router.use(errorHandler);
 

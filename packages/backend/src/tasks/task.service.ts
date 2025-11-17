@@ -1,64 +1,76 @@
 import {TaskRequest} from './types';
 import {TaskResponse, BaseTaskResponse} from './types';
 import {AIClient} from '../common/ai/base';
-import {taskTypeRegistry} from './types/registry';
+import {TaskTypeRegistry} from './types/registry';
 import {v4 as uuidv4} from 'uuid';
-import {taskCache, TaskContext} from '../cache/taskCache';
-import {subjectRegistry} from '../subjects/registry';
+import {TaskCache, TaskContext} from '../cache/taskCache';
+import {SubjectRegistry} from '../subjects/registry';
 import {PromptService} from '../prompts/prompt.service';
+import {createLogger} from '../common/logger';
+import {
+  SubjectNotFoundError,
+  NoConceptsFoundError,
+  ConceptNotFoundError,
+  NoTaskTypesError,
+  TaskTypeNotFoundError
+} from '../common/errors';
+
+const logger = createLogger('TaskService');
 
 export class TaskService {
     constructor(
         private readonly aiClient: AIClient,
-        private readonly promptService: PromptService
+        private readonly promptService: PromptService,
+        private readonly subjectRegistry: SubjectRegistry,
+        private readonly taskTypeRegistry: TaskTypeRegistry,
+        private readonly taskCache: TaskCache
     ) {}
 
     public async generateTask(request: TaskRequest): Promise<TaskResponse> {
-        console.log('[TaskService] Starting task generation');
-        console.log('[TaskService] Request:', request);
+        logger.info('Starting task generation', { request });
 
         const {subject: subjectId, concept: requestedConcept, taskType, grade, age, difficulty, language} = request;
 
         // Get the subject
-        const subject = subjectRegistry.get(subjectId);
+        const subject = this.subjectRegistry.get(subjectId);
         if (!subject) {
-            throw new Error(`Subject ${subjectId} not found`);
+            throw new SubjectNotFoundError(subjectId);
         }
-        console.log('[TaskService] Subject loaded:', subjectId);
+        logger.debug('Subject loaded', { subjectId });
 
         // Load concept (random if not specified)
         let concept: any;
         if (!requestedConcept) {
             // Random selection with grade/age filtering
-            concept = subjectRegistry.getRandomConcept(subjectId, { grade, age, difficulty });
+            concept = this.subjectRegistry.getRandomConcept(subjectId, { grade, age, difficulty });
             if (!concept) {
-                throw new Error(`No concepts found for subject ${subjectId} with grade ${grade}, age ${age}, difficulty ${difficulty}`);
+                throw new NoConceptsFoundError({ subject: subjectId, grade, age, difficulty });
             }
-            console.log('[TaskService] Random concept selected:', concept.id);
+            logger.debug('Random concept selected', { conceptId: concept.id });
         } else {
             // Get specific concept
-            concept = subjectRegistry.getConcept(subjectId, requestedConcept);
+            concept = this.subjectRegistry.getConcept(subjectId, requestedConcept);
             if (!concept) {
-                throw new Error(`Concept ${requestedConcept} not found in subject ${subjectId}`);
+                throw new ConceptNotFoundError(requestedConcept, subjectId);
             }
-            console.log('[TaskService] Concept loaded:', concept.id);
+            logger.debug('Concept loaded', { conceptId: concept.id });
         }
 
         // Get the task type (random if not specified)
         let selectedTaskType;
         if (!taskType) {
-            const allTypes = taskTypeRegistry.getAll();
+            const allTypes = this.taskTypeRegistry.getAll();
             if (allTypes.length === 0) {
-                throw new Error('No task types available');
+                throw new NoTaskTypesError();
             }
             selectedTaskType = allTypes[Math.floor(Math.random() * allTypes.length)];
-            console.log('[TaskService] Random task type selected:', selectedTaskType.id);
+            logger.debug('Random task type selected', { taskTypeId: selectedTaskType.id });
         } else {
-            selectedTaskType = taskTypeRegistry.get(taskType);
+            selectedTaskType = this.taskTypeRegistry.get(taskType);
             if (!selectedTaskType) {
-                throw new Error(`Task type ${taskType} not found`);
+                throw new TaskTypeNotFoundError(taskType);
             }
-            console.log('[TaskService] Task type loaded:', selectedTaskType.id);
+            logger.debug('Task type loaded', { taskTypeId: selectedTaskType.id });
         }
 
         // Build prompt using PromptService
@@ -88,7 +100,7 @@ export class TaskService {
             ...validatedResponse,
             taskId
         } as TaskResponse;
-        console.log('[TaskService] Task ID generated:', taskId);
+        logger.debug('Task ID generated', { taskId });
 
         // Store context in cache for hint generation
         const taskContext: TaskContext = {
@@ -104,8 +116,8 @@ export class TaskService {
             hintsGenerated: [],
             createdAt: Date.now()
         };
-        taskCache.set(taskId, taskContext);
-        console.log('[TaskService] Task context stored in cache');
+        this.taskCache.set(taskId, taskContext);
+        logger.debug('Task context stored in cache');
 
         return responseWithType;
     }

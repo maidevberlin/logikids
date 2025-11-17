@@ -2,11 +2,13 @@ import { useCallback } from 'react'
 import { useUserData } from '@/app/account'
 import { ProgressData, ConceptStats, SubjectMastery } from './types'
 import { TaskSubmissionData, addAttempt } from './progressUpdater'
+import { createLogger } from '@/lib/logger'
 
 /**
  * Main hook for progress tracking
  */
 export function useProgress() {
+  const logger = createLogger('useProgress')
   const { data, updateProgress, updateGameStats } = useUserData()
 
   const progress: ProgressData = data?.progress || {}
@@ -18,7 +20,7 @@ export function useProgress() {
   const submitTaskAttempt = useCallback(
     async (submission: TaskSubmissionData) => {
       if (!data) {
-        console.error('[Progress] No user data available')
+        logger.error('No user data available')
         return
       }
 

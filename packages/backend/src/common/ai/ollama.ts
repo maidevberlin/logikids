@@ -1,5 +1,10 @@
 import { OllamaConfig } from '../../config/ai';
 import { AIClient, GenerateOptions, GenerateResponse, JSONSchema } from './base';
+import { createLogger } from '../logger';
+import { AIProviderError } from '../errors';
+import { withErrorHandling } from './errorHandler';
+
+const logger = createLogger('OllamaClient');
 
 export class OllamaClient extends AIClient {
   constructor(private config: OllamaConfig) {
@@ -22,7 +27,7 @@ export class OllamaClient extends AIClient {
       });
 
       if (!response.ok) {
-        throw new Error(`Ollama API error: ${response.statusText}`);
+        throw new AIProviderError('ollama', `Ollama API error: ${response.statusText}`);
       }
 
       const result = await response.json();
@@ -33,8 +38,8 @@ export class OllamaClient extends AIClient {
         model: this.model
       };
     } catch (error) {
-      console.error('Error calling Ollama:', error);
-      throw new Error('Failed to generate completion using Ollama');
+      logger.error('Error calling Ollama', error);
+      throw new AIProviderError('ollama', 'Failed to generate completion using Ollama');
     }
   }
 
@@ -44,57 +49,51 @@ export class OllamaClient extends AIClient {
     options?: GenerateOptions
   ): Promise<T> {
     const config = this.config as OllamaConfig;
-    const startTime = Date.now();
 
-    console.log('[Ollama] Starting structured generation...');
-    console.log('[Ollama] Model:', config.model);
-    console.log('[Ollama] Prompt length:', prompt.length, 'chars');
+    logger.debug('Starting structured generation...', { model: config.model, promptLength: prompt.length });
 
-    try {
-      console.log('[Ollama] Calling Ollama API with JSON format...');
+    return withErrorHandling(
+      async () => {
+        logger.debug('Calling Ollama API with JSON format...');
+        const startTime = Date.now();
 
-      const response = await fetch(`${config.host}/api/generate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: config.model,
-          prompt,
-          stream: false,
-          format: 'json', // Force JSON output
-          options: {
-            temperature: options?.temperature ?? config.temperature,
-            top_k: options?.topK ?? config.top_k,
-            top_p: options?.topP ?? config.top_p,
-          }
-        }),
-      });
+        const response = await fetch(`${config.host}/api/generate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: config.model,
+            prompt,
+            stream: false,
+            format: 'json', // Force JSON output
+            options: {
+              temperature: options?.temperature ?? config.temperature,
+              top_k: options?.topK ?? config.top_k,
+              top_p: options?.topP ?? config.top_p,
+            }
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`Ollama API error: ${response.statusText}`);
-      }
+        if (!response.ok) {
+          throw new AIProviderError('ollama', `Ollama API error: ${response.statusText}`);
+        }
 
-      const result = await response.json();
-      const duration = Date.now() - startTime;
+        const result = await response.json();
+        const duration = Date.now() - startTime;
 
-      console.log(`[Ollama] API call completed in ${duration}ms`);
-      console.log('[Ollama] Response length:', result.response.length, 'chars');
+        logger.info('API call completed', { duration, responseLength: result.response.length });
 
-      // Parse JSON - Ollama doesn't guarantee schema compliance
-      // We trust the schema is correct for now (no runtime validation)
-      const parsed = JSON.parse(result.response);
+        // Parse JSON - Ollama doesn't guarantee schema compliance
+        // We trust the schema is correct for now (no runtime validation)
+        const parsed = JSON.parse(result.response);
 
-      console.log('[Ollama] Successfully parsed JSON response');
+        logger.debug('Successfully parsed JSON response');
 
-      return parsed as T;
-    } catch (error) {
-      const duration = Date.now() - startTime;
-      console.error(`[Ollama] Error after ${duration}ms:`, error instanceof Error ? error.message : 'Unknown error');
-      if (error instanceof Error) {
-        console.error('[Ollama] Error stack:', error.stack);
-      }
-      throw error;
-    }
+        return parsed as T;
+      },
+      'Ollama structured generation',
+      logger
+    );
   }
 } 

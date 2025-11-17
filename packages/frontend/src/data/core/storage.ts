@@ -1,3 +1,6 @@
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('IndexedDBStorage')
 const DB_NAME = 'logikids_secure_storage'
 const DB_VERSION = 2 // Incremented to force schema upgrade
 const STORE_NAME = 'keys'
@@ -13,12 +16,12 @@ async function openDB(): Promise<IDBDatabase> {
     return await openDBInternal()
   } catch (error) {
     // If opening fails, try to delete and recreate
-    console.warn('IndexedDB open failed, attempting to recreate database:', error)
+    logger.warn('IndexedDB open failed, attempting to recreate database', { error })
     try {
       await deleteDB()
       return await openDBInternal()
     } catch (retryError) {
-      console.error('Failed to recreate database:', retryError)
+      logger.error('Failed to recreate database', retryError as Error)
       throw retryError
     }
   }
@@ -33,7 +36,7 @@ async function deleteDB(): Promise<void> {
     request.onerror = () => reject(request.error)
     request.onsuccess = () => resolve()
     request.onblocked = () => {
-      console.warn('Database deletion blocked - will proceed anyway')
+      logger.warn('Database deletion blocked - will proceed anyway')
       resolve() // Resolve anyway
     }
   })
@@ -71,130 +74,73 @@ async function openDBInternal(): Promise<IDBDatabase> {
 }
 
 /**
- * Store encryption key in IndexedDB
+ * Generic helper to wrap IDBRequest in a Promise
  */
-export async function storeKey(key: CryptoKey): Promise<void> {
-  const db = await openDB()
+function wrapRequest<T>(request: IDBRequest<T>, db: IDBDatabase, errorMessage: string): Promise<T> {
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readwrite')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.put(key, KEY_ID)
-
     request.onerror = () => {
       db.close()
-      reject(request.error || new Error('Failed to store key'))
+      reject(request.error || new Error(errorMessage))
     }
     request.onsuccess = () => {
       db.close()
-      resolve()
+      resolve(request.result)
     }
   })
 }
+
+/**
+ * Generic function to store a value in IndexedDB
+ */
+async function storeValue<T>(key: string, value: T): Promise<void> {
+  const db = await openDB()
+  const transaction = db.transaction([STORE_NAME], 'readwrite')
+  const store = transaction.objectStore(STORE_NAME)
+  const request = store.put(value, key)
+  await wrapRequest(request, db, `Failed to store ${key}`)
+}
+
+/**
+ * Generic function to retrieve a value from IndexedDB
+ */
+async function getValue<T>(key: string): Promise<T | null> {
+  const db = await openDB()
+  const transaction = db.transaction([STORE_NAME], 'readonly')
+  const store = transaction.objectStore(STORE_NAME)
+  const request = store.get(key)
+  const result = await wrapRequest(request, db, `Failed to load ${key}`)
+  return result || null
+}
+
+/**
+ * Store encryption key in IndexedDB
+ */
+export const storeKey = (key: CryptoKey): Promise<void> => storeValue(KEY_ID, key)
 
 /**
  * Load encryption key from IndexedDB
  */
-export async function loadKey(): Promise<CryptoKey | null> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readonly')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.get(KEY_ID)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to load key'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve(request.result || null)
-    }
-  })
-}
+export const loadKey = (): Promise<CryptoKey | null> => getValue<CryptoKey>(KEY_ID)
 
 /**
  * Store userId in IndexedDB
  */
-export async function storeUserId(userId: string): Promise<void> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readwrite')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.put(userId, USER_ID_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to store userId'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve()
-    }
-  })
-}
+export const storeUserId = (userId: string): Promise<void> => storeValue(USER_ID_KEY, userId)
 
 /**
  * Load userId from IndexedDB
  */
-export async function getUserId(): Promise<string | null> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readonly')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.get(USER_ID_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to load userId'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve(request.result || null)
-    }
-  })
-}
+export const getUserId = (): Promise<string | null> => getValue<string>(USER_ID_KEY)
 
 /**
  * Store access token in IndexedDB
  */
-export async function storeTokens(accessToken: string): Promise<void> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readwrite')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.put(accessToken, ACCESS_TOKEN_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to store access token'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve()
-    }
-  })
-}
+export const storeTokens = (accessToken: string): Promise<void> => storeValue(ACCESS_TOKEN_KEY, accessToken)
 
 /**
  * Get access token from IndexedDB
  */
-export async function getAccessToken(): Promise<string | null> {
-  const db = await openDB()
-  return new Promise((resolve, reject) => {
-    const transaction = db.transaction([STORE_NAME], 'readonly')
-    const store = transaction.objectStore(STORE_NAME)
-    const request = store.get(ACCESS_TOKEN_KEY)
-
-    request.onerror = () => {
-      db.close()
-      reject(request.error || new Error('Failed to load access token'))
-    }
-    request.onsuccess = () => {
-      db.close()
-      resolve(request.result || null)
-    }
-  })
-}
+export const getAccessToken = (): Promise<string | null> => getValue<string>(ACCESS_TOKEN_KEY)
 
 /**
  * Clear all storage (for testing)

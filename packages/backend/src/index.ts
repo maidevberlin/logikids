@@ -12,6 +12,9 @@ import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
 import { taskTypeRegistry } from './tasks/types/registry';
 import { initializeDatabase, closeDatabase } from '../database/db';
+import { createLogger } from './common/logger';
+
+const logger = createLogger('Server');
 
 // Load configuration
 const configPath = path.join(__dirname, '../config.yaml');
@@ -19,13 +22,13 @@ const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, 
 
 // Initialize registries and database before starting server
 async function initializeRegistries() {
-  console.log('Initializing registries and database...');
+  logger.debug('Initializing registries and database...');
   await Promise.all([
     subjectRegistry.initialize(),
     taskTypeRegistry.initialize(),
     initializeDatabase(),
   ]);
-  console.log('All registries and database initialized');
+  logger.debug('All registries and database initialized');
 }
 
 const app = express();
@@ -46,14 +49,14 @@ cacheCleanupService.start();
 
 // Graceful shutdown
 process.on('SIGTERM', async () => {
-  console.log('SIGTERM received, shutting down gracefully...');
+  logger.debug('SIGTERM received, shutting down gracefully...');
   cacheCleanupService.stop();
   await closeDatabase();
   process.exit(0);
 });
 
 process.on('SIGINT', async () => {
-  console.log('SIGINT received, shutting down gracefully...');
+  logger.debug('SIGINT received, shutting down gracefully...');
   cacheCleanupService.stop();
   await closeDatabase();
   process.exit(0);
@@ -67,7 +70,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   await initializeRegistries();
 
   app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    logger.debug(`Server running on port ${port}`);
   });
 }
 

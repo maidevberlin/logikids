@@ -4,6 +4,9 @@ import { jsPDF } from 'jspdf'
 import { generateQRData } from '@/data/plugins/qr'
 import { Button } from '@/components/ui/button'
 import { Download } from 'lucide-react'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('RecoveryKit')
 
 /**
  * Component for generating and downloading recovery kit PDF
@@ -211,7 +214,7 @@ export function RecoveryKit() {
       pdf.save(`logikids-recovery-kit-${new Date().toISOString().split('T')[0]}.pdf`)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to generate recovery kit')
-      console.error('Recovery kit generation failed:', err)
+      logger.error('Recovery kit generation failed', err as Error)
     } finally {
       setIsGenerating(false)
     }

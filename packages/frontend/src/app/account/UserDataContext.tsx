@@ -1,10 +1,9 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 import { UserData, UserSettings } from '@/data/core/types.ts'
-import { initialize, getData, registerUser as coreRegisterUser, loginWithAccount as coreLoginWithAccount, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress, updateGameStats as coreUpdateGameStats } from '@/data/core/userData.ts'
-import * as syncPlugin from '@/data/plugins/sync.ts'
-import * as exportPlugin from '@/data/plugins/export.ts'
-import * as qrPlugin from '@/data/plugins/qr.ts'
+import { initialize, getData, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress, updateGameStats as coreUpdateGameStats } from '@/data/core/userData.ts'
 import { GameStats } from '@/app/stats/gameTypes'
+import { useAuth } from './AuthContext'
+import { useDataSync } from './DataSyncContext'
 
 export interface UserDataContextValue {
   data: UserData | null
@@ -12,19 +11,10 @@ export interface UserDataContextValue {
   error: Error | null
 
   // Core operations
-  registerUser: (inviteCode: string) => Promise<void>
-  loginWithAccount: (userId: string) => Promise<void>
   updateSettings: (settings: Partial<UserSettings>) => Promise<void>
   updateProgress: (progress: Record<string, any>) => Promise<void>
   updateGameStats: (gameStats: GameStats) => Promise<void>
   refresh: () => Promise<void>
-
-  // Plugin operations
-  sync: () => Promise<void>
-  exportData: () => Promise<string>
-  importData: (json: string) => Promise<void>
-  generateQR: () => Promise<qrPlugin.QRPayload>
-  importQR: (payload: qrPlugin.QRPayload) => Promise<void>
 }
 
 export const UserDataContext = createContext<UserDataContextValue | null>(null)
@@ -34,17 +24,23 @@ interface UserDataProviderProps {
 }
 
 export function UserDataProvider({ children }: UserDataProviderProps) {
+  const auth = useAuth() // Use AuthContext for authentication state
+  const dataSync = useDataSync() // Use DataSyncContext for sync operations
   const [data, setData] = useState<UserData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
-  // Initialize once
+  // Initialize once (depends on auth being ready)
   useEffect(() => {
+    if (auth.authLoading) {
+      return // Wait for auth to initialize first
+    }
+
     initialize()
       .then(d => setData(d))
       .catch(e => setError(e))
       .finally(() => setIsLoading(false))
-  }, [])
+  }, [auth.authLoading])
 
   // Listen for data changes
   useEffect(() => {
@@ -56,12 +52,12 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
   // Enable/disable auto-sync based on user setting
   useEffect(() => {
     if (data?.settings.syncEnabled) {
-      syncPlugin.enableAutoSync()
-      return () => syncPlugin.disableAutoSync()
+      dataSync.enableAutoSync()
+      return () => dataSync.disableAutoSync()
     } else {
-      syncPlugin.disableAutoSync()
+      dataSync.disableAutoSync()
     }
-  }, [data?.settings.syncEnabled])
+  }, [data?.settings.syncEnabled, dataSync])
 
   const refresh = async () => {
     try {
@@ -74,16 +70,6 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
   }
 
   // Core operations (pass-through to core)
-  const registerUser = async (inviteCode: string) => {
-    await coreRegisterUser(inviteCode)
-    await refresh()
-  }
-
-  const loginWithAccount = async (userId: string) => {
-    await coreLoginWithAccount(userId)
-    await refresh()
-  }
-
   const updateSettings = async (settings: Partial<UserSettings>) => {
     await coreUpdateSettings(settings)
     await refresh()
@@ -99,45 +85,14 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     await refresh()
   }
 
-  // Plugin operations
-  const sync = async () => {
-    await syncPlugin.sync()
-    await refresh()
-  }
-
-  const exportData = async () => {
-    return await exportPlugin.exportData()
-  }
-
-  const importData = async (json: string) => {
-    await exportPlugin.importData(json)
-    await refresh()
-  }
-
-  const generateQR = async () => {
-    return await qrPlugin.generateQRData()
-  }
-
-  const importQR = async (payload: qrPlugin.QRPayload) => {
-    await qrPlugin.importQRData(payload)
-    await refresh()
-  }
-
   const value: UserDataContextValue = {
     data,
     isLoading,
     error,
-    registerUser,
-    loginWithAccount,
     updateSettings,
     updateProgress,
     updateGameStats,
-    refresh,
-    sync,
-    exportData,
-    importData,
-    generateQR,
-    importQR
+    refresh
   }
 
   return (

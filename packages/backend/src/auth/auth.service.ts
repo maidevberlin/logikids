@@ -1,5 +1,15 @@
 import jwt from 'jsonwebtoken'
 import { pool } from '../../database/db'
+import {
+  UserExistsError,
+  InviteNotFoundError,
+  InviteExpiredError,
+  InviteAlreadyUsedError,
+  TokenExpiredError,
+  InvalidTokenError,
+  AccountNotFoundError,
+  AccountRevokedError
+} from '../common/errors'
 
 // JWT secret - in production, use environment variable
 const JWT_SECRET = process.env.JWT_SECRET || 'logikids-dev-secret-change-in-production'
@@ -38,7 +48,7 @@ export class AuthService {
       )
 
       if (existingUser.rows.length > 0) {
-        throw new Error('User ID already exists')
+        throw new UserExistsError(userId)
       }
 
       // Validate invite code (must exist, not expired, not used)
@@ -48,7 +58,7 @@ export class AuthService {
       )
 
       if (inviteResult.rows.length === 0) {
-        throw new Error('Invite code not found')
+        throw new InviteNotFoundError()
       }
 
       const invite = {
@@ -57,11 +67,11 @@ export class AuthService {
       }
 
       if (invite.expires_at < Date.now()) {
-        throw new Error('Invite code expired')
+        throw new InviteExpiredError()
       }
 
       if (invite.used_by) {
-        throw new Error('Invite code already used')
+        throw new InviteAlreadyUsedError()
       }
 
       // Mark invite as used
@@ -121,10 +131,10 @@ export class AuthService {
       return decoded
     } catch (error) {
       if (error instanceof jwt.TokenExpiredError) {
-        throw new Error('Token expired')
+        throw new TokenExpiredError()
       }
       if (error instanceof jwt.JsonWebTokenError) {
-        throw new Error('Invalid token')
+        throw new InvalidTokenError()
       }
       throw error
     }
@@ -190,14 +200,14 @@ export class AuthService {
     )
 
     if (result.rows.length === 0) {
-      throw new Error('Account not found')
+      throw new AccountNotFoundError()
     }
 
     const accountRow = result.rows[0]
 
     // Check if account is revoked
     if (accountRow.revoked) {
-      throw new Error('Account has been revoked')
+      throw new AccountRevokedError()
     }
 
     // Generate new access token
@@ -221,14 +231,14 @@ export class AuthService {
     )
 
     if (result.rows.length === 0) {
-      throw new Error('Account not found')
+      throw new AccountNotFoundError()
     }
 
     const accountRow = result.rows[0]
 
     // Check if account is revoked
     if (accountRow.revoked) {
-      throw new Error('Account has been revoked')
+      throw new AccountRevokedError()
     }
 
     const account: UserAccount = {

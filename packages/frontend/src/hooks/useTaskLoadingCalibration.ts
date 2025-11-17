@@ -1,4 +1,5 @@
 import { useCallback, useRef } from 'react'
+import { createLogger } from '@/lib/logger'
 
 /**
  * Storage key for task load time history in localStorage
@@ -106,7 +107,8 @@ function readHistory(): LoadTimeHistory | null {
     return parsed as LoadTimeHistory
   } catch (error) {
     // localStorage may be disabled, full, or corrupted
-    console.warn('Failed to read task load time history:', error)
+    const logger = createLogger('useTaskLoadingCalibration')
+    logger.warn('Failed to read task load time history', { error })
     return null
   }
 }
@@ -121,7 +123,8 @@ function writeHistory(history: LoadTimeHistory): void {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history))
   } catch (error) {
     // localStorage may be disabled or full - this is non-critical
-    console.warn('Failed to write task load time history:', error)
+    const logger = createLogger('useTaskLoadingCalibration')
+    logger.warn('Failed to write task load time history', { error })
   }
 }
 
@@ -196,7 +199,8 @@ export function useTaskLoadingCalibration(): UseTaskLoadingCalibration {
   const recordLoadTime = useCallback((loadTimeMs: number): void => {
     // Validate input
     if (!Number.isFinite(loadTimeMs) || loadTimeMs <= 0) {
-      console.warn('Invalid load time measurement:', loadTimeMs)
+      const logger = createLogger('useTaskLoadingCalibration')
+      logger.warn('Invalid load time measurement', { loadTimeMs })
       return
     }
 

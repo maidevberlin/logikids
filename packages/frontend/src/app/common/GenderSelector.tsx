@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Mars, Venus, ShieldQuestion } from 'lucide-react'
+import { SelectorButton } from '@/components/ui/SelectorButton'
 
 interface GenderOption {
   value: string
@@ -36,25 +37,19 @@ export function GenderSelector({ value, onChange, className = '' }: GenderSelect
       {genderOptions.map((option) => {
         const Icon = option.icon
         return (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => onChange(option.value)}
-            className="flex flex-col items-center gap-2"
-          >
-            <div
-              className={`flex items-center justify-center w-16 h-16 rounded-full transition-all duration-200 ${
-                value === option.value
-                  ? 'bg-primary text-white shadow-md scale-110'
-                  : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:scale-105'
-              }`}
+          <div key={option.value} className="flex flex-col items-center gap-2">
+            <SelectorButton
+              value={option.value}
+              isSelected={value === option.value}
+              onChange={onChange}
+              variant="icon"
             >
               <Icon className="w-8 h-8" />
-            </div>
+            </SelectorButton>
             <span className="text-xs text-foreground text-center max-w-[80px]">
               {option.label}
             </span>
-          </button>
+          </div>
         )
       })}
     </div>

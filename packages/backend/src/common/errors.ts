@@ -1,22 +1,10 @@
-export class ApplicationError extends Error {
-  constructor(
-    message: string,
-    public statusCode: number = 500,
-    public details?: unknown
-  ) {
-    super(message);
-    this.name = this.constructor.name;
-  }
-}
+/**
+ * DEPRECATED: This file is deprecated.
+ * Please import from '../common/errors' instead.
+ *
+ * This file is kept for backward compatibility and re-exports
+ * all error classes from the new errors/ directory structure.
+ */
 
-export class ValidationError extends ApplicationError {
-  constructor(details: unknown) {
-    super('Validation Error', 400, details);
-  }
-}
-
-export class AIGenerationError extends ApplicationError {
-  constructor(message: string) {
-    super(message, 500);
-  }
-} 
+// Re-export all errors from the new structure
+export * from './errors/index'; 

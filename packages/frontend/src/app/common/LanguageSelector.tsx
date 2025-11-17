@@ -1,3 +1,5 @@
+import { SelectorButton } from '@/components/ui/SelectorButton'
+
 interface LanguageOption {
   value: string
   label: string
@@ -19,21 +21,15 @@ export function LanguageSelector({ value, onChange, className = '' }: LanguageSe
   return (
     <div className={`flex justify-center gap-6 ${className}`}>
       {languageOptions.map((option) => (
-        <button
-          key={option.value}
-          type="button"
-          onClick={() => onChange(option.value)}
-          className="flex flex-col items-center gap-2"
-        >
-          <div
-            className={`flex items-center justify-center w-20 h-20 rounded-2xl text-4xl transition-all duration-200 ${
-              value === option.value
-                ? 'bg-primary/10 shadow-md scale-110 ring-2 ring-primary'
-                : 'bg-muted hover:bg-muted/80 hover:scale-105'
-            }`}
+        <div key={option.value} className="flex flex-col items-center gap-2">
+          <SelectorButton
+            value={option.value}
+            isSelected={value === option.value}
+            onChange={onChange}
+            variant="flag"
           >
             {option.flag}
-          </div>
+          </SelectorButton>
           <span
             className={`text-sm font-medium transition-colors ${
               value === option.value ? 'text-primary' : 'text-foreground'
@@ -41,7 +37,7 @@ export function LanguageSelector({ value, onChange, className = '' }: LanguageSe
           >
             {option.label}
           </span>
-        </button>
+        </div>
       ))}
     </div>
   )

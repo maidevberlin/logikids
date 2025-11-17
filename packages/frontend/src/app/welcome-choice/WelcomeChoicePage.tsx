@@ -9,13 +9,16 @@ import { Upload, Camera, FileText, ArrowRight } from 'lucide-react'
 import { PDFImport } from './PDFImport'
 import { QRScanner } from './QRScanner'
 import { ManualImport } from './ManualImport'
-import { useUserData } from '@/app/account'
+import { useAuth } from '@/app/account'
 import { Footer } from '@/app/common/Footer'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('WelcomeChoicePage')
 
 export default function WelcomeChoicePage() {
   const { t } = useTranslation('common')
   const navigate = useNavigate()
-  const { registerUser } = useUserData()
+  const { register } = useAuth()
   const [inviteCode, setInviteCode] = useState('')
   const [isValidating, setIsValidating] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -47,12 +50,12 @@ export default function WelcomeChoicePage() {
       }
 
       // Register user with backend (validates invite + creates account + returns JWT)
-      await registerUser(inviteCode.trim())
+      await register(inviteCode.trim())
 
       // Navigate to onboarding
       navigate('/onboarding')
     } catch (err) {
-      console.error('Invite validation error:', err)
+      logger.error('Invite validation error', err as Error)
       setError(err instanceof Error ? err.message : t('welcomeChoice.newAccount.validationError', { defaultValue: 'Failed to validate invite code' }))
       setIsValidating(false)
     }

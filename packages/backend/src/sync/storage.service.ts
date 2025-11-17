@@ -1,5 +1,8 @@
 import { pool } from '../../database/db'
 import { SyncRecord, SyncPayload } from './sync.schema'
+import { createLogger } from '../common/logger'
+
+const logger = createLogger('StorageService')
 
 /**
  * PostgreSQL-based storage for encrypted user data
@@ -13,7 +16,7 @@ export class StorageService {
    * Initialize storage (no-op for PostgreSQL, kept for interface compatibility)
    */
   async init(): Promise<void> {
-    console.log('[StorageService] Using PostgreSQL storage')
+    logger.info('Using PostgreSQL storage')
   }
 
   /**

@@ -13,10 +13,13 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { Database, LogOut, Trash2 } from 'lucide-react'
-import { clearStorage } from '@/data/core/storage'
+import { useAuth } from './AuthContext'
 import { RecoveryKit } from './RecoveryKit'
 import { QRDisplay } from './QRDisplay'
 import { ExportData } from './ExportData'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('DataManagement')
 
 interface DataManagementProps {
   syncEnabled: boolean
@@ -26,6 +29,7 @@ interface DataManagementProps {
 
 export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }: DataManagementProps) {
   const { t } = useTranslation('profile')
+  const { logout } = useAuth()
   const [showLogoutDialog, setShowLogoutDialog] = useState(false)
   const [localSyncEnabled, setLocalSyncEnabled] = useState(syncEnabled)
 
@@ -59,7 +63,7 @@ export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }:
     try {
       await onSyncToggle(checked)
     } catch (error) {
-      console.error('Failed to update sync setting:', error)
+      logger.error('Failed to update sync setting', error as Error)
       // Revert on error
       setLocalSyncEnabled(!checked)
     }
@@ -67,19 +71,15 @@ export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }:
 
   const handleLogout = async () => {
     try {
-      // Clear IndexedDB (encryption keys, tokens, userId)
-      await clearStorage()
-
-      // Clear localStorage (encrypted user data)
-      localStorage.clear()
+      // Use AuthContext logout which handles all cleanup
+      await logout()
 
       // Close dialog and reload to go back to welcome screen
       setShowLogoutDialog(false)
       window.location.reload()
     } catch (error) {
-      console.error('Failed to logout:', error)
-      // Still proceed with logout even if cleanup fails
-      localStorage.clear()
+      logger.error('Failed to logout', error as Error)
+      // Still proceed with reload even if logout fails
       window.location.reload()
     }
   }

@@ -8,6 +8,9 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import mermaid from 'mermaid'
 import 'katex/dist/katex.min.css'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('MarkdownRenderer')
 
 interface MarkdownRendererProps {
   content: string
@@ -90,7 +93,7 @@ function MarkdownRendererComponent({
               block.classList.remove('language-mermaid')
               block.classList.add('mermaid-rendered')
             } catch (error) {
-              console.error('Mermaid rendering error:', error)
+              logger.error('Mermaid rendering error', error as Error)
               block.innerHTML = `<pre>Error rendering diagram: ${error}</pre>`
             }
           }

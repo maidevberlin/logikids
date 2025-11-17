@@ -2,86 +2,84 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import { PromptLoader, Subject } from '../prompts/loader';
 import { Concept } from '../prompts/schemas';
+import { createLogger, Logger } from '../common/logger';
+import { BaseRegistry } from '../common/registry';
+
+const logger = createLogger('SubjectRegistry');
 
 /**
  * Registry for managing all available subjects
  */
-export class SubjectRegistry {
-  private subjects = new Map<string, Subject>();
+export class SubjectRegistry extends BaseRegistry<Subject> {
   private concepts = new Map<string, Map<string, Concept>>(); // subjectId -> conceptId -> Concept
   private loader: PromptLoader;
-  private initialized = false;
 
   constructor(loader?: PromptLoader) {
+    super();
     this.loader = loader || new PromptLoader();
   }
 
   /**
-   * Initialize registry by loading all subjects from packages/content/subjects/
+   * Get all subject IDs to load
    */
-  async initialize(): Promise<void> {
-    if (this.initialized) {
-      console.log('[SubjectRegistry] Already initialized');
-      return;
-    }
-
+  protected async getItemIds(): Promise<string[]> {
     const contentDir = path.join(process.cwd(), '..', 'content');
     const subjectsDir = path.join(contentDir, 'subjects');
 
-    try {
-      // Get all subject directories
-      const subjectDirs = await fs.readdir(subjectsDir, { withFileTypes: true });
-      const subjectIds = subjectDirs
-        .filter((dirent) => dirent.isDirectory())
-        .map((dirent) => dirent.name);
+    const subjectDirs = await fs.readdir(subjectsDir, { withFileTypes: true });
+    return subjectDirs
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
+  }
 
-      console.log(`[SubjectRegistry] Loading ${subjectIds.length} subjects...`);
+  /**
+   * Load a single subject and its concepts
+   */
+  protected async loadItem(subjectId: string): Promise<Subject> {
+    const subject = await this.loader.loadSubject(subjectId);
 
-      // Load each subject
-      for (const subjectId of subjectIds) {
-        try {
-          const subject = await this.loader.loadSubject(subjectId);
-          this.subjects.set(subject.id, subject);
-
-          // Load concepts from both official and custom directories
-          const concepts = await this.loader.loadConcepts(subjectId);
-          const conceptMap = new Map<string, Concept>();
-          for (const concept of concepts) {
-            conceptMap.set(concept.id, concept);
-          }
-          this.concepts.set(subjectId, conceptMap);
-
-          console.log(`[SubjectRegistry] Loaded subject: ${subject.id} (${concepts.length} concepts)`);
-        } catch (error: any) {
-          console.error(`[SubjectRegistry] Failed to load subject ${subjectId}:`, error.message);
-          throw error; // Fail fast on invalid prompts
-        }
-      }
-
-      this.initialized = true;
-      console.log(`[SubjectRegistry] Initialization complete: ${this.subjects.size} subjects loaded`);
-
-      // Enable hot-reload in development (watches both backend prompts and content directories)
-      if (process.env.NODE_ENV !== 'production') {
-        this.loader.enableHotReload();
-      }
-    } catch (error: any) {
-      throw new Error(`Failed to initialize SubjectRegistry: ${error.message}`);
+    // Load concepts from both official and custom directories
+    const concepts = await this.loader.loadConcepts(subjectId);
+    const conceptMap = new Map<string, Concept>();
+    for (const concept of concepts) {
+      conceptMap.set(concept.id, concept);
     }
+    this.concepts.set(subjectId, conceptMap);
+
+    logger.debug(`[SubjectRegistry] Loaded subject: ${subject.id} (${concepts.length} concepts)`);
+
+    return subject;
   }
 
   /**
-   * Get a subject by its ID
+   * Get the key to use for storing a subject
    */
-  get(id: string): Subject | undefined {
-    return this.subjects.get(id);
+  protected getItemKey(subject: Subject): string {
+    return subject.id;
   }
 
   /**
-   * Get all registered subjects
+   * Get the logger instance
    */
-  getAll(): Subject[] {
-    return Array.from(this.subjects.values());
+  protected getLogger(): Logger {
+    return logger;
+  }
+
+  /**
+   * Get the registry name for logging
+   */
+  protected getRegistryName(): string {
+    return 'SubjectRegistry';
+  }
+
+  /**
+   * Hook called after successful initialization
+   * Enables hot-reload in development mode
+   */
+  protected async afterInitialize(): Promise<void> {
+    if (process.env.NODE_ENV !== 'production') {
+      this.loader.enableHotReload();
+    }
   }
 
   /**

@@ -50,31 +50,6 @@ CREATE TABLE invite_codes (
 
 ## API Endpoints
 
-### POST /api/invite/validate
-Validate and mark invite code as used (one-time operation).
-
-**Request:**
-```json
-{
-  "code": "ABCD-1234"
-}
-```
-
-**Response (success):**
-```json
-{
-  "valid": true
-}
-```
-
-**Response (error):**
-```json
-{
-  "valid": false,
-  "error": "Code already used" | "Code expired" | "Code not found"
-}
-```
-
 ### POST /api/invite/check
 Check if code is valid without marking as used (preview only).
 

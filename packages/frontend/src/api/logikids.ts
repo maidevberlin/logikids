@@ -2,12 +2,8 @@ import { z } from 'zod';
 import { api, ApiResponse } from './api';
 import { DIFFICULTIES, Task, TASK_TYPES } from '@/app/tasks/types';
 
-export class LogikidsApiError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'LogikidsApiError';
-  }
-}
+// Re-export for backward compatibility
+export { LogikidsApiError } from './errors';
 
 // Gender options
 export const GENDERS = ['male', 'female', 'non-binary', 'prefer-not-to-say'] as const;
@@ -74,15 +70,6 @@ export const logikids = {
     return api.get<SubjectsParams | undefined, SubjectsResponse>('/task/subjects', {
       params,
       signal
-    })
-    .then(response => {
-      if (!response) {
-        throw new LogikidsApiError('No response received from server');
-      }
-      return response;
-    })
-    .catch((error) => {
-      throw new LogikidsApiError(error.message || 'Failed to fetch subjects');
     });
   },
 
@@ -90,45 +77,12 @@ export const logikids = {
     return api.get<TaskRequest, Task>('/task', {
       params,
       signal
-    })
-    .then(response => {
-      if (!response) {
-        throw new LogikidsApiError('No response received from server');
-      }
-      return response;
-    })
-    .catch((error) => {
-      if (error.response?.status === 404) {
-        throw new LogikidsApiError('No tasks found for the selected criteria');
-      }
-      if (error instanceof LogikidsApiError) {
-        throw error;
-      }
-      throw new LogikidsApiError(error.message || 'Failed to fetch task');
     });
   },
 
   getHint: (taskId: string, signal?: AbortSignal): ApiResponse<HintResponse> => {
     return api.post<void, HintResponse>(`/task/${taskId}/hint`, undefined, {
       signal
-    })
-    .then(response => {
-      if (!response) {
-        throw new LogikidsApiError('No response received from server');
-      }
-      return response;
-    })
-    .catch((error) => {
-      if (error.response?.status === 404) {
-        throw new LogikidsApiError('Task not found or expired');
-      }
-      if (error.response?.status === 429) {
-        throw new LogikidsApiError('All hints have been used');
-      }
-      if (error instanceof LogikidsApiError) {
-        throw error;
-      }
-      throw new LogikidsApiError(error.message || 'Failed to fetch hint');
     });
   }
 }; 

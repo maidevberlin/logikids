@@ -1,13 +1,12 @@
 import { z } from 'zod';
 
-export interface ServerConfig {
-  port: number;
-}
+export const serverConfigSchema = z.object({
+  port: z.number(),
+});
+
+// Infer type from schema (single source of truth)
+export type ServerConfig = z.infer<typeof serverConfigSchema>;
 
 export const defaultServerConfig: ServerConfig = {
   port: 3000,
 };
-
-export const serverConfigSchema = z.object({
-  port: z.number(),
-});
