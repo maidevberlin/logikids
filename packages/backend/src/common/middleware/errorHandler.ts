@@ -1,9 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
-import { ApplicationError, ValidationError, AIGenerationError } from '../errors';
+import { ApplicationError, ValidationError } from '../errors/index';
 import { ZodError } from 'zod';
+import { createLogger } from '../logger';
+
+const logger = createLogger('ErrorHandler');
 
 interface ErrorResponse {
   error: string;
+  code?: string;
   details?: unknown;
   status: number;
 }
@@ -14,7 +18,7 @@ export function errorHandler(
   res: Response,
   _next: NextFunction
 ): void {
-  console.error('Error:', error);
+  logger.error('Error:', error);
 
   let response: ErrorResponse = {
     error: 'Internal Server Error',
@@ -24,33 +28,26 @@ export function errorHandler(
   if (error instanceof ApplicationError) {
     response = {
       error: error.message,
-      details: error.details,
+      code: error.code,
       status: error.statusCode
     };
+
+    // Special handling for ValidationError which has details
+    if (error instanceof ValidationError) {
+      response.details = error.details;
+    }
   } else if (error instanceof ZodError) {
     response = {
       error: 'Validation Error',
+      code: 'VALIDATION_ERROR',
       details: error.errors,
       status: 400
     };
   }
 
-  // Specific error handling for known error types
-  if (error instanceof ValidationError) {
-    response = {
-      error: 'Validation Error',
-      details: error.details,
-      status: 400
-    };
-  } else if (error instanceof AIGenerationError) {
-    response = {
-      error: error.message,
-      status: 500
-    };
-  }
-
   res.status(response.status).json({
     error: response.error,
+    ...(response.code ? { code: response.code } : {}),
     ...((response.details ? { details: response.details } : {}) as object)
   });
 } 

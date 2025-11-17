@@ -7,6 +7,9 @@ import { StudentInfoStep } from './StudentInfoStep'
 import { StudentInfo } from './types'
 import { useUserData } from '@/app/account'
 import { LoadingState } from '@/app/common'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('OnboardingPage')
 
 export default function OnboardingPage() {
   const navigate = useNavigate()
@@ -47,7 +50,7 @@ export default function OnboardingPage() {
       localStorage.setItem('hasSeenOnboarding', 'true')
       navigate('/')
     } catch (error) {
-      console.error('Failed to update settings:', error)
+      logger.error('Failed to update settings', error as Error)
       // TODO: Show error toast/message
     }
   }

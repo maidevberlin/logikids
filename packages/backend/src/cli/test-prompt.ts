@@ -8,6 +8,8 @@
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
 import { PromptService } from '../prompts/prompt.service';
+import { PromptLoader } from '../prompts/loader';
+import { VariationLoader } from '../variations/loader';
 import {Difficulty, Gender, TaskGenerationParams} from '../tasks/types';
 
 async function testPrompt() {
@@ -81,9 +83,14 @@ async function testPrompt() {
       throw new Error(`Concept not found: ${concept} in subject ${subject}`);
     }
 
+    // Create loaders
+    if (verbose) console.log('Creating loaders...');
+    const promptLoader = new PromptLoader();
+    const variationLoader = new VariationLoader();
+
     // Create and initialize PromptService
     if (verbose) console.log('Initializing PromptService...');
-    const promptService = new PromptService();
+    const promptService = new PromptService(promptLoader, variationLoader);
     await promptService.initialize();
 
     // Calculate age from grade

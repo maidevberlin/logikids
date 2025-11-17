@@ -13,6 +13,10 @@ import {
   HintPromptFrontmatter,
   Concept,
 } from './schemas';
+import { createLogger } from '../common/logger';
+import { PromptTemplateError, ValidationError } from '../common/errors';
+
+const logger = createLogger('PromptLoader');
 
 export interface Subject {
   id: string;
@@ -77,7 +81,7 @@ export class PromptLoader {
       this.basePromptCache = parsed.content.trim();
       return this.basePromptCache;
     } catch (error: any) {
-      throw new Error(`Error loading base prompt from ${basePath}: ${error.message}`);
+      throw new PromptTemplateError(`Error loading base prompt from ${basePath}: ${error.message}`);
     }
   }
 
@@ -97,7 +101,7 @@ export class PromptLoader {
       this.variationsTemplateCache = parsed.content.trim();
       return this.variationsTemplateCache;
     } catch (error: any) {
-      throw new Error(`Error loading variations template from ${variationsPath}: ${error.message}`);
+      throw new PromptTemplateError(`Error loading variations template from ${variationsPath}: ${error.message}`);
     }
   }
 
@@ -263,7 +267,7 @@ export class PromptLoader {
 
           const result = conceptFrontmatterSchema.safeParse(parsed.data);
           if (!result.success) {
-            console.warn(`Invalid concept frontmatter in ${filePath}: ${result.error.message}`);
+            logger.warn(`Invalid concept frontmatter in ${filePath}`, { error: result.error.message });
             continue;
           }
 
@@ -274,7 +278,7 @@ export class PromptLoader {
             sourceDirectory: dirPath,
           });
         } catch (error) {
-          console.warn(`Error loading concept from ${filePath}:`, error);
+          logger.warn(`Error loading concept from ${filePath}`, error);
         }
       }
     } catch (error) {
@@ -345,21 +349,21 @@ export class PromptLoader {
     );
 
     this.watcher.on('change', (filePath) => {
-      console.log(`[PromptLoader] Prompt updated: ${filePath}`);
+      logger.info('Prompt updated', { filePath });
       this.invalidateCache(filePath);
     });
 
     this.watcher.on('add', (filePath) => {
-      console.log(`[PromptLoader] New prompt added: ${filePath}`);
+      logger.info('New prompt added', { filePath });
       this.invalidateCache(filePath);
     });
 
     this.watcher.on('unlink', (filePath) => {
-      console.log(`[PromptLoader] Prompt deleted: ${filePath}`);
+      logger.info('Prompt deleted', { filePath });
       this.invalidateCache(filePath);
     });
 
-    console.log('[PromptLoader] Hot-reload enabled for prompts and content');
+    logger.info('Hot-reload enabled for prompts and content');
   }
 
   /**
@@ -396,11 +400,11 @@ export class PromptLoader {
           `  - ${issue.path.join('.')}: ${issue.message}`
         ).join('\n');
 
-        throw new Error(
+        throw new ValidationError(
           `Error loading prompt: ${filePath}\n${issues}\n\nPlease check the frontmatter format.`
         );
       }
-      throw new Error(`Error reading file ${filePath}: ${error.message}`);
+      throw new PromptTemplateError(`Error reading file ${filePath}: ${error.message}`);
     }
   }
 
@@ -425,14 +429,14 @@ export class PromptLoader {
     // Check if it's the base prompt
     if (filePath.includes('base-prompt.md')) {
       this.basePromptCache = null;
-      console.log(`[PromptLoader] Cache invalidated for base prompt`);
+      logger.debug('Cache invalidated for base prompt');
       return;
     }
 
     // Check if it's the variations template
     if (filePath.includes('variations.md')) {
       this.variationsTemplateCache = null;
-      console.log(`[PromptLoader] Cache invalidated for variations template`);
+      logger.debug('Cache invalidated for variations template');
       return;
     }
 
@@ -443,7 +447,7 @@ export class PromptLoader {
       if (match) {
         const subjectId = match[1];
         this.subjectCache.delete(subjectId);
-        console.log(`[PromptLoader] Cache invalidated for subject: ${subjectId}`);
+        logger.debug('Cache invalidated for subject', { subjectId });
       }
     } else if (filePath.includes('/task-types/')) {
       // Extract task type id from filename
@@ -451,12 +455,12 @@ export class PromptLoader {
       if (match) {
         const taskTypeId = match[1];
         this.taskTypeCache.delete(taskTypeId);
-        console.log(`[PromptLoader] Cache invalidated for task type: ${taskTypeId}`);
+        logger.debug('Cache invalidated for task type', { taskTypeId });
       }
     } else if (filePath.includes('/hints/')) {
       // Invalidate hint prompt cache
       this.hintPromptCache = null;
-      console.log(`[PromptLoader] Cache invalidated for hint prompt`);
+      logger.debug('Cache invalidated for hint prompt');
     }
   }
 }

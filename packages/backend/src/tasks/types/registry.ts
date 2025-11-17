@@ -8,6 +8,11 @@ import { multiSelectSchema } from './multiSelect';
 import { numberInputSchema } from './numberInput';
 import { orderingSchema } from './ordering';
 import { JSONSchema } from '../../common/ai/base';
+import { createLogger, Logger } from '../../common/logger';
+import { NoJsonSchemaError } from '../../common/errors';
+import { BaseRegistry } from '../../common/registry';
+
+const logger = createLogger('TaskTypeRegistry');
 
 /**
  * Extended TaskType with JSON schema for validation
@@ -19,10 +24,8 @@ export interface TaskTypeWithSchema extends TaskType {
 /**
  * Registry for managing all available task types
  */
-export class TaskTypeRegistry {
-  private taskTypes = new Map<string, TaskTypeWithSchema>();
+export class TaskTypeRegistry extends BaseRegistry<TaskTypeWithSchema> {
   private loader: PromptLoader;
-  private initialized = false;
 
   // Map of task type IDs to their JSON schemas
   private readonly schemas: Record<string, JSONSchema> = {
@@ -35,78 +38,70 @@ export class TaskTypeRegistry {
   };
 
   constructor(loader?: PromptLoader) {
+    super();
     this.loader = loader || new PromptLoader();
   }
 
   /**
-   * Initialize registry by loading all task types from packages/backend/prompts/task-types/
+   * Get all task type IDs to load
    */
-  async initialize(): Promise<void> {
-    if (this.initialized) {
-      console.log('[TaskTypeRegistry] Already initialized');
-      return;
-    }
-
+  protected async getItemIds(): Promise<string[]> {
     const promptsDir = path.join(process.cwd(), 'prompts');
     const taskTypesDir = path.join(promptsDir, 'task-types');
 
-    try {
-      // Get all task type markdown files
-      const taskTypeFiles = await fs.readdir(taskTypesDir);
-      const taskTypeIds = taskTypeFiles
-        .filter((file) => file.endsWith('.md'))
-        .map((file) => file.replace('.md', ''));
+    const taskTypeFiles = await fs.readdir(taskTypesDir);
+    return taskTypeFiles
+      .filter((file) => file.endsWith('.md'))
+      .map((file) => file.replace('.md', ''));
+  }
 
-      console.log(`[TaskTypeRegistry] Loading ${taskTypeIds.length} task types...`);
+  /**
+   * Load a single task type
+   */
+  protected async loadItem(taskTypeId: string): Promise<TaskTypeWithSchema> {
+    const taskType = await this.loader.loadTaskType(taskTypeId);
 
-      // Load each task type
-      for (const taskTypeId of taskTypeIds) {
-        try {
-          const taskType = await this.loader.loadTaskType(taskTypeId);
-
-          // Get the JSON schema for this task type
-          const jsonSchema = this.schemas[taskTypeId];
-          if (!jsonSchema) {
-            throw new Error(`No JSON schema found for task type: ${taskTypeId}`);
-          }
-
-          const taskTypeWithSchema: TaskTypeWithSchema = {
-            ...taskType,
-            jsonSchema,
-          };
-
-          this.taskTypes.set(taskType.id, taskTypeWithSchema);
-          console.log(`[TaskTypeRegistry] Loaded task type: ${taskType.id}`);
-        } catch (error: any) {
-          console.error(`[TaskTypeRegistry] Failed to load task type ${taskTypeId}:`, error.message);
-          throw error; // Fail fast on invalid prompts
-        }
-      }
-
-      this.initialized = true;
-      console.log(`[TaskTypeRegistry] Initialization complete: ${this.taskTypes.size} task types loaded`);
-
-      // Enable hot-reload in development
-      if (process.env.NODE_ENV !== 'production') {
-        this.loader.enableHotReload();
-      }
-    } catch (error: any) {
-      throw new Error(`Failed to initialize TaskTypeRegistry: ${error.message}`);
+    // Get the JSON schema for this task type
+    const jsonSchema = this.schemas[taskTypeId];
+    if (!jsonSchema) {
+      throw new NoJsonSchemaError(taskTypeId);
     }
+
+    return {
+      ...taskType,
+      jsonSchema,
+    };
   }
 
   /**
-   * Get a task type by its ID
+   * Get the key to use for storing a task type
    */
-  get(id: string): TaskTypeWithSchema | undefined {
-    return this.taskTypes.get(id);
+  protected getItemKey(taskType: TaskTypeWithSchema): string {
+    return taskType.id;
   }
 
   /**
-   * Get all registered task types
+   * Get the logger instance
    */
-  getAll(): TaskTypeWithSchema[] {
-    return Array.from(this.taskTypes.values());
+  protected getLogger(): Logger {
+    return logger;
+  }
+
+  /**
+   * Get the registry name for logging
+   */
+  protected getRegistryName(): string {
+    return 'TaskTypeRegistry';
+  }
+
+  /**
+   * Hook called after successful initialization
+   * Enables hot-reload in development mode
+   */
+  protected async afterInitialize(): Promise<void> {
+    if (process.env.NODE_ENV !== 'production') {
+      this.loader.enableHotReload();
+    }
   }
 }
 

@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 import { AuthService } from './auth.service'
+import { createLogger } from '../common/logger'
 
-const authService = new AuthService()
+const logger = createLogger('AuthMiddleware')
 
 // Extend Express Request to include userId
 declare global {
@@ -13,62 +14,83 @@ declare global {
   }
 }
 
+// Singleton instance of AuthService shared across all middleware
+const authService = new AuthService()
+
 /**
- * Middleware to require JWT authentication
+ * Creates middleware to require JWT authentication
  * Validates token and adds userId to request
+ *
+ * @param authService - Instance of AuthService for dependency injection
  */
-export async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
-  try {
-    // Extract token from Authorization header
-    const authHeader = req.headers.authorization
+export function createAuthMiddleware(authService: AuthService) {
+  return async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      // Extract token from Authorization header
+      const authHeader = req.headers.authorization
 
-    if (!authHeader) {
-      res.status(401).json({ error: 'No authorization token provided' })
-      return
-    }
-
-    if (!authHeader.startsWith('Bearer ')) {
-      res.status(401).json({ error: 'Invalid authorization format. Use: Bearer <token>' })
-      return
-    }
-
-    const token = authHeader.substring(7) // Remove 'Bearer ' prefix
-
-    // Verify token
-    const payload = authService.verifyToken(token)
-
-    // Validate user still exists
-    const userExists = await authService.validateUser(payload.userId)
-    if (!userExists) {
-      res.status(401).json({ error: 'User account not found' })
-      return
-    }
-
-    // Add userId and inviteCode to request for downstream handlers
-    req.userId = payload.userId
-    req.inviteCode = payload.inviteCode
-
-    // Update last_seen (async, don't wait)
-    authService.updateLastSeen(payload.userId).catch(err => {
-      console.error('Failed to update last_seen:', err)
-    })
-
-    next()
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.message === 'Token expired') {
-        res.status(401).json({ error: 'Token expired. Please login again.' })
+      if (!authHeader) {
+        res.status(401).json({ error: 'No authorization token provided' })
         return
       }
-      if (error.message === 'Invalid token') {
-        res.status(401).json({ error: 'Invalid authentication token' })
+
+      if (!authHeader.startsWith('Bearer ')) {
+        res.status(401).json({ error: 'Invalid authorization format. Use: Bearer <token>' })
         return
       }
-    }
 
-    console.error('Auth middleware error:', error)
-    res.status(500).json({ error: 'Authentication failed' })
+      const token = authHeader.substring(7) // Remove 'Bearer ' prefix
+
+      // Verify token
+      const payload = authService.verifyToken(token)
+
+      // Validate user still exists
+      const userExists = await authService.validateUser(payload.userId)
+      if (!userExists) {
+        res.status(401).json({ error: 'User account not found' })
+        return
+      }
+
+      // Add userId and inviteCode to request for downstream handlers
+      req.userId = payload.userId
+      req.inviteCode = payload.inviteCode
+
+      // Update last_seen (async, don't wait)
+      authService.updateLastSeen(payload.userId).catch(err => {
+        logger.error('Failed to update last_seen:', err)
+      })
+
+      next()
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message === 'Token expired') {
+          res.status(401).json({ error: 'Token expired. Please login again.' })
+          return
+        }
+        if (error.message === 'Invalid token') {
+          res.status(401).json({ error: 'Invalid authentication token' })
+          return
+        }
+      }
+
+      logger.error('Auth middleware error:', error)
+      res.status(500).json({ error: 'Authentication failed' })
+    }
   }
+}
+
+/**
+ * Singleton middleware instance for requiring JWT authentication
+ * Uses shared AuthService instance to ensure consistency across the app
+ */
+export const requireAuth = createAuthMiddleware(authService)
+
+/**
+ * Get the singleton AuthService instance
+ * Allows other modules to access the same service instance used by middleware
+ */
+export function getAuthService(): AuthService {
+  return authService
 }
 
 /**

@@ -2,6 +2,10 @@ import * as fs from 'fs';
 import * as path from 'path';
 import matter from 'gray-matter';
 import { AgeFilteredItem, Enrichment, EnrichmentType } from './types';
+import { createLogger } from '../common/logger';
+import { InvalidFormatError } from '../common/errors';
+
+const logger = createLogger('VariationLoader');
 
 /**
  * Loads and manages task variation data from markdown files
@@ -27,7 +31,7 @@ export class VariationLoader {
    * Load all variation files
    */
   async loadAll(): Promise<void> {
-    console.log('[VariationLoader] Loading variations from:', this.variationsDir);
+    logger.info('Loading variations from', { variationsDir: this.variationsDir });
 
     try {
       // Load each variation file
@@ -41,18 +45,19 @@ export class VariationLoader {
       this.emotionalFramings = await this.loadAgeFilteredList('emotional-framings.md', 'framings');
       this.structureVariations = await this.loadAgeFilteredList('structure-variations.md', 'structures');
 
-      console.log('[VariationLoader] Loaded variations:');
-      console.log(`  - Scenarios: ${this.scenarios.length}`);
-      console.log(`  - Problem Framings: ${this.framings.length}`);
-      console.log(`  - Character Dynamics: ${this.dynamics.length}`);
-      console.log(`  - Temporal Contexts: ${this.temporalContexts.length}`);
-      console.log(`  - Metacognitive Prompts: ${this.metacognitivePrompts.length}`);
-      console.log(`  - Mystery Framings: ${this.mysteryFramings.length}`);
-      console.log(`  - Real-World Connections: ${this.realWorldConnections.length}`);
-      console.log(`  - Emotional Framings: ${this.emotionalFramings.length}`);
-      console.log(`  - Structure Variations: ${this.structureVariations.length}`);
+      logger.info('Loaded variations', {
+        scenarios: this.scenarios.length,
+        problemFramings: this.framings.length,
+        characterDynamics: this.dynamics.length,
+        temporalContexts: this.temporalContexts.length,
+        metacognitivePrompts: this.metacognitivePrompts.length,
+        mysteryFramings: this.mysteryFramings.length,
+        realWorldConnections: this.realWorldConnections.length,
+        emotionalFramings: this.emotionalFramings.length,
+        structureVariations: this.structureVariations.length
+      });
     } catch (error) {
-      console.error('[VariationLoader] Error loading variations:', error);
+      logger.error('Error loading variations', error);
       throw error;
     }
   }
@@ -66,13 +71,13 @@ export class VariationLoader {
     const { data } = matter(fileContent);
 
     if (!data[key] || !Array.isArray(data[key])) {
-      throw new Error(`Invalid ${filename} format: missing ${key} array`);
+      throw new InvalidFormatError(filename, `missing ${key} array`);
     }
 
     // Validate each item has age property
     const items: AgeFilteredItem[] = data[key].map((item: any, index: number) => {
       if (!item.age || !Array.isArray(item.age) || item.age.length !== 2) {
-        throw new Error(`Invalid ${filename}: item ${index} missing age array [min, max]`);
+        throw new InvalidFormatError(filename, `item ${index} missing age array [min, max]`);
       }
       return item as AgeFilteredItem;
     });

@@ -3,6 +3,9 @@ import { PageLayout } from '@/app/common'
 import { useUserData } from '@/app/account'
 import { ProfileSettings } from './ProfileSettings'
 import { DataManagement } from './DataManagement'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('AccountPage')
 
 export default function AccountPage() {
   const { t } = useTranslation('profile')
@@ -12,7 +15,7 @@ export default function AccountPage() {
     try {
       await updateSettings({ syncEnabled: enabled })
     } catch (error) {
-      console.error('Failed to update sync setting:', error)
+      logger.error('Failed to update sync setting', error as Error)
       throw error // Re-throw so DataManagement can handle revert
     }
   }

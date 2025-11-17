@@ -2,7 +2,9 @@ import { UserData } from '../core/types.ts'
 import { getData, setData } from '../core/userData.ts'
 import { loadKey, getUserId, getAccessToken } from '../core/storage.ts'
 import { encrypt, decrypt } from '../core/crypto.ts'
+import { createLogger } from '@/lib/logger'
 
+const logger = createLogger('SyncPlugin')
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 let autoSyncEnabled = false
@@ -65,7 +67,7 @@ export async function upload(data: UserData): Promise<void> {
       throw new Error(`Upload failed: ${response.status}`)
     }
   } catch (error) {
-    console.error('Upload failed:', error)
+    logger.error('Upload failed', error as Error)
     throw error
   }
 }
@@ -126,7 +128,7 @@ export async function download(): Promise<UserData | null> {
     const data = await decrypt(key, encryptedBlob)
     return data
   } catch (error) {
-    console.error('Download failed:', error)
+    logger.error('Download failed', error as Error)
     throw error
   }
 }
@@ -173,7 +175,7 @@ export async function sync(): Promise<void> {
       await setData({ lastSyncTimestamp: Date.now() })
     }
   } catch (error) {
-    console.warn('Sync failed, continuing offline:', error)
+    logger.warn('Sync failed, continuing offline', { error })
     // Don't throw - sync is optional
   }
 }
@@ -185,15 +187,15 @@ export function enableAutoSync(): void {
   if (autoSyncEnabled) return
 
   focusHandler = () => {
-    sync().catch(console.warn)
+    sync().catch(error => logger.warn('Auto-sync on focus failed', { error }))
   }
 
   blurHandler = () => {
-    getData().then(data => data && upload(data)).catch(console.warn)
+    getData().then(data => data && upload(data)).catch(error => logger.warn('Auto-sync on blur failed', { error }))
   }
 
   unloadHandler = () => {
-    getData().then(data => data && upload(data)).catch(console.warn)
+    getData().then(data => data && upload(data)).catch(error => logger.warn('Auto-sync on unload failed', { error }))
   }
 
   window.addEventListener('focus', focusHandler)

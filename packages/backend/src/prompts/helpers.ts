@@ -5,6 +5,8 @@
  * This file provides validation helpers.
  */
 
+import { ValidationError } from '../common/errors';
+
 /**
  * Find all remaining placeholders in a template using [[ ]] delimiters
  * Used for validation after composition
@@ -34,7 +36,7 @@ export function validateNoPlaceholders(template: string, context: string): void 
   const remaining = findRemainingPlaceholders(template);
 
   if (remaining.length > 0) {
-    throw new Error(
+    throw new ValidationError(
       `Template validation failed in ${context}:\n` +
       `Found ${remaining.length} unreplaced placeholder(s): ${remaining.join(', ')}\n` +
       `This usually means a variable is used but not provided in the scope.`

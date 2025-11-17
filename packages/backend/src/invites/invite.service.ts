@@ -15,17 +15,6 @@ export class InviteService {
   }
 
   /**
-   * Validate invite code (no longer deletes - use auth.service.register instead)
-   * @deprecated Use /api/auth/register endpoint instead
-   */
-  async validateAndUse(code: string): Promise<{ valid: boolean; reason?: string }> {
-    // This method is deprecated - registration now happens via auth.service
-    // which properly marks invites as used instead of deleting them
-    console.warn('validateAndUse is deprecated. Use /api/auth/register endpoint instead.')
-    return this.check(code)
-  }
-
-  /**
    * Check if code is valid (without marking as used)
    */
   async check(code: string): Promise<{ valid: boolean; reason?: string }> {

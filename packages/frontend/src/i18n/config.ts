@@ -1,6 +1,9 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('i18nConfig')
 
 // Get browser language
 const getBrowserLanguage = () => {
@@ -26,7 +29,7 @@ try {
     }
   }
 } catch (error) {
-  console.warn('Could not access localStorage:', error)
+  logger.warn('Could not access localStorage', { error })
 }
 
 // Use stored language first, then browser language, then fallback to English

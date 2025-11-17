@@ -1,37 +1,5 @@
 import { z } from 'zod';
 
-export type AIProvider = 'ollama' | 'openai' | 'anthropic';
-
-export interface OllamaConfig {
-  host: string;
-  model: string;
-  temperature?: number;
-  top_k?: number;
-  top_p?: number;
-}
-
-export interface OpenAIConfig {
-  apiKey: string;
-  model: string;
-  temperature?: number;
-  maxTokens?: number;
-  topP?: number;
-}
-
-export interface AnthropicConfig {
-  apiKey: string;
-  model: string;
-  maxTokens?: number;
-  temperature?: number;
-}
-
-export interface AIConfig {
-  provider: AIProvider;
-  ollama?: OllamaConfig;
-  openai?: OpenAIConfig;
-  anthropic?: AnthropicConfig;
-}
-
 const ollamaSchema = z.object({
   host: z.string(),
   model: z.string(),
@@ -60,7 +28,32 @@ export const aiConfigSchema = z.object({
   ollama: ollamaSchema.optional(),
   openai: openaiSchema.optional(),
   anthropic: anthropicSchema.optional(),
-});
+}).refine(
+  (config) => {
+    // Ensure provider-specific config is present when provider is selected
+    if (config.provider === 'ollama' && !config.ollama) {
+      return false;
+    }
+    if (config.provider === 'openai' && !config.openai) {
+      return false;
+    }
+    if (config.provider === 'anthropic' && !config.anthropic) {
+      return false;
+    }
+    return true;
+  },
+  (config) => ({
+    message: `${config.provider.charAt(0).toUpperCase() + config.provider.slice(1)} configuration is required when using ${config.provider.charAt(0).toUpperCase() + config.provider.slice(1)} provider`,
+    path: [config.provider],
+  })
+);
+
+// Infer types from schemas (single source of truth)
+export type OllamaConfig = z.infer<typeof ollamaSchema>;
+export type OpenAIConfig = z.infer<typeof openaiSchema>;
+export type AnthropicConfig = z.infer<typeof anthropicSchema>;
+export type AIConfig = z.infer<typeof aiConfigSchema>;
+export type AIProvider = AIConfig['provider'];
 
 // Default configuration
 export const defaultConfig: AIConfig = {

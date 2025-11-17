@@ -1,5 +1,9 @@
 import { StorageService } from './storage.service'
 import { SyncPayload, SyncPayloadSchema } from './sync.schema'
+import { createLogger } from '../common/logger'
+import { InvalidChecksumError } from '../common/errors'
+
+const logger = createLogger('SyncService')
 
 /**
  * Business logic for encrypted data synchronization
@@ -21,7 +25,7 @@ export class SyncService {
 
     // Validate checksum format (basic sanity check)
     if (!/^[a-f0-9]{64}$/i.test(validated.checksum)) {
-      throw new Error('Invalid checksum format')
+      throw new InvalidChecksumError()
     }
 
     // Store encrypted blob
@@ -69,7 +73,7 @@ export class SyncService {
     const deletedCount = await this.storage.deleteInactive(inactiveDays)
 
     if (deletedCount > 0) {
-      console.log(`[SyncService] Deleted ${deletedCount} inactive accounts`)
+      logger.info('Deleted inactive accounts', { deletedCount })
     }
 
     return deletedCount

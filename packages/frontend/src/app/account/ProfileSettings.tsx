@@ -5,6 +5,9 @@ import { Card } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { User, Check, Loader2 } from 'lucide-react'
 import type { UserSettings } from '@/data/core/types'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('ProfileSettings')
 
 interface ProfileSettingsProps {
   settings: UserSettings
@@ -62,7 +65,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           setShowSaved(false)
         }, 2000)
       } catch (error) {
-        console.error('Failed to save settings:', error)
+        logger.error('Failed to save settings', error as Error)
       } finally {
         setIsSaving(false)
       }

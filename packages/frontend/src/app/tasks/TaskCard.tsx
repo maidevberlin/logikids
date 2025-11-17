@@ -3,14 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
-import { answerTypeComponents } from './answer-types'
-import { HintSection } from './HintSection'
-import { DifficultySelector } from './DifficultySelector'
 import { TaskLoadingState } from './TaskLoadingState'
-import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
-import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
+import { TaskHeader } from './TaskHeader'
+import { TaskAnswerRenderer } from './TaskAnswerRenderer'
+import { TaskFeedback } from './TaskFeedback'
+import { TaskActions } from './TaskActions'
+import { Task } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
-import { cn } from '@/lib/utils'
 import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
 
 interface TaskCardProps {
@@ -122,134 +121,15 @@ export function TaskCard({
     return <TaskLoadingState subject={subject} />
   }
 
-  // Get explanation for correct answer
-  const getExplanation = () => {
-    if (!isCorrect) return ''
-
-    switch (task.type) {
-      case 'single_choice':
-        if (selectedAnswer !== null) {
-          const scTask = task as SingleChoiceTask
-          return scTask.options[selectedAnswer as number]?.explanation || ''
-        }
-        return ''
-      case 'yes_no':
-        return (task as YesNoTask).explanation
-      case 'number_input':
-        return (task as NumberInputTask).explanation
-      case 'multi_select':
-        return (task as MultiSelectTask).explanation
-      case 'ordering':
-        return (task as OrderingTask).explanation
-      case 'fill_in_blank':
-        return (task as FillInBlankTask).explanation
-      default:
-        return ''
-    }
-  }
-
-  // Render the appropriate answer component based on task type
-  const renderAnswerComponent = () => {
-    // Map props based on task type
-    switch (task.type) {
-      case 'single_choice': {
-        const scTask = task as SingleChoiceTask
-        const AnswerComponent = answerTypeComponents.single_choice
-        return (
-          <AnswerComponent
-            options={scTask.options}
-            selectedAnswer={selectedAnswer as number | null}
-            onAnswerSelect={(index) => onAnswerSelect(index)}
-            isLoading={false}
-            isLocked={isCorrect === true}
-          />
-        )
-      }
-      case 'yes_no': {
-        const AnswerComponent = answerTypeComponents.yes_no
-        return (
-          <AnswerComponent
-            selectedAnswer={selectedAnswer as boolean | null}
-            onAnswerSelect={(answer) => onAnswerSelect(answer)}
-            isLoading={false}
-            isLocked={isCorrect === true}
-          />
-        )
-      }
-      case 'number_input': {
-        const niTask = task as NumberInputTask
-        const AnswerComponent = answerTypeComponents.number_input
-        return (
-          <AnswerComponent
-            expectedAnswer={niTask.answer}
-            unit={niTask.unit}
-            unitOptions={niTask.unitOptions}
-            selectedAnswer={selectedAnswer as { value: number | null; unit?: string } | null}
-            onAnswerSelect={(answer) => onAnswerSelect(answer)}
-            isLoading={false}
-            isLocked={isCorrect === true}
-          />
-        )
-      }
-      case 'multi_select': {
-        const msTask = task as MultiSelectTask
-        const AnswerComponent = answerTypeComponents.multi_select
-        return (
-          <AnswerComponent
-            options={msTask.options}
-            expectedCount={msTask.expectedCount}
-            selectedAnswer={selectedAnswer as number[] | null}
-            onAnswerSelect={(indices) => onAnswerSelect(indices)}
-            isLoading={false}
-            isLocked={isCorrect === true}
-          />
-        )
-      }
-      case 'ordering': {
-        const oTask = task as OrderingTask
-        const AnswerComponent = answerTypeComponents.ordering
-        return (
-          <AnswerComponent
-            items={oTask.items}
-            selectedAnswer={selectedAnswer as string[] | null}
-            onAnswerSelect={(order) => onAnswerSelect(order)}
-            isLoading={false}
-            isLocked={isCorrect === true}
-          />
-        )
-      }
-      case 'fill_in_blank': {
-        const fibTask = task as FillInBlankTask
-        const AnswerComponent = answerTypeComponents.fill_in_blank
-        return (
-          <AnswerComponent
-            fillableText={fibTask.fillableText}
-            blanksCount={fibTask.blanks.length}
-            selectedAnswer={selectedAnswer as string[] | null}
-            onAnswerSelect={(answers) => onAnswerSelect(answers)}
-            isLoading={false}
-            isLocked={isCorrect === true}
-          />
-        )
-      }
-      default:
-        // This should never happen with a properly typed Task union
-        return <div className="text-red-500">Unknown task type</div>
-    }
-  }
-
-  const explanation = getExplanation()
 
   return (
     <Card className="p-4 sm:p-8 shadow-2xl bg-card">
       {/* Header with title and difficulty */}
-      <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
-        <h2 className="text-xl sm:text-2xl font-bold text-card-foreground">{task.title}</h2>
-        <DifficultySelector
-          difficulty={difficulty}
-          onDifficultyChange={onDifficultyChange}
-        />
-      </div>
+      <TaskHeader
+        task={task}
+        difficulty={difficulty}
+        onDifficultyChange={onDifficultyChange}
+      />
 
       {/* Task content */}
       <MarkdownRenderer
@@ -260,120 +140,37 @@ export function TaskCard({
         enableCode={true}
       />
 
-
       {/* Answer options */}
-      {renderAnswerComponent()}
+      <TaskAnswerRenderer
+        task={task}
+        selectedAnswer={selectedAnswer}
+        onAnswerSelect={onAnswerSelect}
+        isCorrect={isCorrect}
+      />
 
       {/* Feedback */}
-      {showFeedback && (
-        <div
-          className={cn(
-            'p-4 rounded-xl mb-4 animate-in fade-in slide-in-from-top-2',
-            isCorrect
-              ? 'bg-green-100 border-2 border-green-300'
-              : 'bg-red-100 border-2 border-red-300'
-          )}
-        >
-          <p
-            className={cn(
-              'font-semibold text-center',
-              isCorrect ? 'text-green-900' : 'text-red-900'
-            )}
-          >
-            {isCorrect
-              ? t('feedback.correct', { defaultValue: 'Correct! Well done!' })
-              : gradingDetails
-              ? // Granular feedback for number_input tasks
-                gradingDetails.numberCorrect && gradingDetails.unitCorrect === false
-                ? t('feedback.numberCorrectUnitWrong', {
-                    defaultValue: 'The number is correct, but check the unit'
-                  })
-                : !gradingDetails.numberCorrect && gradingDetails.unitCorrect === true
-                ? t('feedback.unitCorrectNumberWrong', {
-                    defaultValue: 'The unit is correct, but check your calculation'
-                  })
-                : t('feedback.incorrect', {
-                    defaultValue: 'Not quite. Try again!',
-                  })
-              : t('feedback.incorrect', {
-                  defaultValue: 'Not quite. Try again!',
-                })}
-          </p>
-          {isCorrect && explanation && (
-            <div className="mt-2">
-              <MarkdownRenderer
-                content={explanation}
-                enableMath={true}
-                enableMermaid={false}
-                enableCode={false}
-              />
-            </div>
-          )}
-        </div>
-      )}
+      <TaskFeedback
+        showFeedback={showFeedback}
+        isCorrect={isCorrect}
+        gradingDetails={gradingDetails}
+        task={task}
+        selectedAnswer={selectedAnswer}
+      />
 
-      {/* Action buttons */}
-      {!isLoading && (
-        <div className="flex gap-3 justify-center mt-4 sm:mt-6">
-          {isCorrect === null ? (
-            <Button
-              onClick={selectedAnswer === null ? undefined : onAnswerSubmit}
-              size="lg"
-              className={cn(
-                'rounded-xl',
-                selectedAnswer === null
-                  ? 'opacity-60 cursor-not-allowed'
-                  : 'animate-pulse hover:scale-105'
-              )}
-            >
-              <CheckCircle className="w-5 h-5 mr-2" />
-              {t('task.checkAnswer', { defaultValue: 'Check Answer' })}
-            </Button>
-          ) : isCorrect ? (
-            <Button onClick={onNextTask} size="lg" className="rounded-xl bg-green-600 hover:bg-green-700">
-              {t('task.nextTask', { defaultValue: 'Next Task' })}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          ) : (
-            <Button
-              onClick={() => onAnswerSelect(null)}
-              size="lg"
-              variant="outline"
-              className="rounded-xl"
-            >
-              <RotateCcw className="w-5 h-5 mr-2" />
-              {t('task.tryAgain', { defaultValue: 'Try Again' })}
-            </Button>
-          )}
-        </div>
-      )}
-
-      {/* Hints section - only show when not correct */}
-      {!isLoading && isCorrect !== true && (
-        <>
-          <HintSection
-            hints={hints}
-            hasWrongAnswer={isCorrect === false}
-            requestHint={requestHint}
-            hintLoading={hintLoading}
-            hintError={hintError}
-            canRequestHint={canRequestHint}
-          />
-
-          {/* Skip link */}
-          <div className="mt-4 text-center">
-            <Button
-              onClick={onNextTask}
-              variant="ghost"
-              size="sm"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <SkipForward className="w-4 h-4 mr-1" />
-              {t('task.skip', { defaultValue: 'Skip this task' })}
-            </Button>
-          </div>
-        </>
-      )}
+      {/* Action buttons and hints */}
+      <TaskActions
+        isLoading={isLoading}
+        isCorrect={isCorrect}
+        selectedAnswer={selectedAnswer}
+        onAnswerSubmit={onAnswerSubmit}
+        onAnswerSelect={onAnswerSelect}
+        onNextTask={onNextTask}
+        hints={hints}
+        requestHint={requestHint}
+        hintLoading={hintLoading}
+        hintError={hintError}
+        canRequestHint={canRequestHint}
+      />
     </Card>
   )
 }

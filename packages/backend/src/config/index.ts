@@ -3,20 +3,19 @@ import yaml from 'js-yaml';
 import { join } from 'path';
 import { AIConfig, aiConfigSchema, defaultConfig as defaultAIConfig } from './ai';
 import { defaultServerConfig, ServerConfig, serverConfigSchema } from './server';
+import { createLogger } from '../common/logger';
+import { ConfigurationError } from '../common/errors';
 
-export interface Config {
-  ai: AIConfig;
-  server: ServerConfig;
-  // Add other configuration sections here as needed
-}
+const logger = createLogger('Config');
 
 const configSchema = z.object({
   ai: aiConfigSchema,
   server: serverConfigSchema,
-  // Add other configuration sections here as neede
+  // Add other configuration sections here as needed
 });
 
-export type ConfigSchema = z.infer<typeof configSchema>;
+// Infer type from schema (single source of truth)
+export type Config = z.infer<typeof configSchema>;
 
 const defaultConfig: Config = {
   ai: defaultAIConfig,
@@ -39,7 +38,7 @@ export async function loadConfig(): Promise<Config> {
 
     // Check if file exists and is readable
     if (!(await file.exists())) {
-      console.warn('No config.yaml found in project root, using default configuration');
+      logger.warn('No config.yaml found in project root, using default configuration');
       cachedConfig = defaultConfig;
       return defaultConfig;
     }
@@ -48,7 +47,7 @@ export async function loadConfig(): Promise<Config> {
     const content = await file.text();
     const parsedConfig = yaml.load(content) as unknown;
 
-    // Validate the config
+    // Validate the config (includes provider-specific validation via Zod refinement)
     const validated = configSchema.parse(parsedConfig);
 
     // Transform to our internal config format
@@ -57,27 +56,16 @@ export async function loadConfig(): Promise<Config> {
       server: validated.server,
     };
 
-    // Validate the AI provider-specific config is present
-    if (config.ai.provider === 'ollama' && !config.ai.ollama) {
-      throw new Error('Ollama configuration is required when using Ollama provider');
-    }
-    if (config.ai.provider === 'openai' && !config.ai.openai) {
-      throw new Error('OpenAI configuration is required when using OpenAI provider');
-    }
-    if (config.ai.provider === 'anthropic' && !config.ai.anthropic) {
-      throw new Error('Anthropic configuration is required when using Anthropic provider');
-    }
-
     // Cache the config
     cachedConfig = config;
     return config;
   } catch (error) {
     if (error instanceof Error) {
-      console.error('Error loading config:', error.message);
+      logger.error('Error loading config:', error.message);
     } else {
-      console.error('Unknown error loading config');
+      logger.error('Unknown error loading config');
     }
-    console.warn('Using default configuration');
+    logger.warn('Using default configuration');
     
     cachedConfig = defaultConfig;
     return defaultConfig;

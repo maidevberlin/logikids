@@ -2,6 +2,9 @@ import { loadKey, storeKey, storeUserId, getUserId } from '../core/storage.ts'
 import { exportKey, importKey } from '../core/crypto.ts'
 import { sync } from './sync.ts'
 import { loginWithAccount } from '../core/userData.ts'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('QRPlugin')
 
 export interface QRPayload {
   userId: string
@@ -51,7 +54,7 @@ export async function importQRData(payload: QRPayload): Promise<void> {
   try {
     await sync()
   } catch (error) {
-    console.error('Sync after import failed:', error)
+    logger.error('Sync after import failed', error as Error)
     // If sync fails, at least we have the key/userId stored
     // User can try syncing again later
   }

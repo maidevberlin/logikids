@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { SelectorButton } from '@/components/ui/SelectorButton'
 
 interface GradeSelectorProps {
   value: number
@@ -37,18 +38,15 @@ export function GradeSelector({
       <div className="flex justify-center">
         <div className="grid grid-cols-3 gap-4 w-full max-w-lg">
           {gradeOptions.map((gradeOption) => (
-            <button
+            <SelectorButton
               key={gradeOption}
-              type="button"
-              onClick={() => onChange(gradeOption)}
-              className={`flex items-center justify-center h-24 rounded-2xl text-3xl font-bold border transition-all duration-300 ${
-                value === gradeOption
-                  ? 'bg-primary text-white border-primary shadow-md scale-105'
-                  : 'bg-card text-foreground shadow-xs hover:shadow-md hover:scale-[1.02]'
-              }`}
+              value={gradeOption}
+              isSelected={value === gradeOption}
+              onChange={onChange}
+              variant="grid"
             >
               {gradeOption}
-            </button>
+            </SelectorButton>
           ))}
         </div>
       </div>

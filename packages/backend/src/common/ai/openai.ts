@@ -1,6 +1,10 @@
 import { OpenAI } from 'openai';
 import { OpenAIConfig } from '../../config/ai';
 import { AIClient, GenerateOptions, GenerateResponse, JSONSchema } from './base';
+import { createLogger } from '../logger';
+import { withErrorHandling } from './errorHandler';
+
+const logger = createLogger('OpenAIClient');
 
 export class OpenAIClient extends AIClient {
   private client: OpenAI;
@@ -33,7 +37,7 @@ export class OpenAIClient extends AIClient {
         model: completion.model
       };
     } catch (error) {
-      console.error('[OpenAI] Error:', error instanceof Error ? error.message : 'Unknown error');
+      logger.error('Error:', error instanceof Error ? error.message : 'Unknown error');
       throw error;
     }
   }
@@ -44,54 +48,49 @@ export class OpenAIClient extends AIClient {
     options?: GenerateOptions
   ): Promise<T> {
     const config = this.config as OpenAIConfig;
-    const startTime = Date.now();
 
-    console.log('[OpenAI] Starting structured generation...');
-    console.log('[OpenAI] Model:', config.model);
-    console.log('[OpenAI] Prompt length:', prompt.length, 'chars');
+    logger.debug('Starting structured generation...', { model: config.model, promptLength: prompt.length });
 
-    try {
-      console.log('[OpenAI] Calling OpenAI API with structured output...');
-      const completion = await this.client.chat.completions.create({
-        model: config.model,
-        messages: [{ role: 'user', content: prompt }],
-        response_format: {
-          type: 'json_schema',
-          json_schema: {
-            name: 'response',
-            schema: schema,
-            strict: true
-          }
-        },
-        temperature: options?.temperature ?? config.temperature,
-        max_tokens: options?.maxTokens ?? config.maxTokens,
-        top_p: options?.topP ?? config.topP
-      });
+    return withErrorHandling(
+      async () => {
+        logger.debug('Calling OpenAI API with structured output...');
+        const startTime = Date.now();
+        const completion = await this.client.chat.completions.create({
+          model: config.model,
+          messages: [{ role: 'user', content: prompt }],
+          response_format: {
+            type: 'json_schema',
+            json_schema: {
+              name: 'response',
+              schema: schema,
+              strict: true
+            }
+          },
+          temperature: options?.temperature ?? config.temperature,
+          max_tokens: options?.maxTokens ?? config.maxTokens,
+          top_p: options?.topP ?? config.topP
+        });
 
-      const duration = Date.now() - startTime;
-      console.log(`[OpenAI] API call completed in ${duration}ms`);
+        const duration = Date.now() - startTime;
+        logger.info('API call completed', { duration });
 
-      const responseContent = completion.choices[0]?.message?.content;
+        const responseContent = completion.choices[0]?.message?.content;
 
-      if (!responseContent) {
-        throw new Error('OpenAI returned empty response');
-      }
+        if (!responseContent) {
+          throw new Error('OpenAI returned empty response');
+        }
 
-      console.log('[OpenAI] Response length:', responseContent.length, 'chars');
+        logger.debug('Response received', { responseLength: responseContent.length });
 
-      // Parse JSON - OpenAI's structured outputs guarantee schema compliance
-      const parsed = JSON.parse(responseContent);
+        // Parse JSON - OpenAI's structured outputs guarantee schema compliance
+        const parsed = JSON.parse(responseContent);
 
-      console.log('[OpenAI] Successfully parsed structured response');
+        logger.debug('Successfully parsed structured response');
 
-      return parsed as T;
-    } catch (error) {
-      const duration = Date.now() - startTime;
-      console.error(`[OpenAI] Error after ${duration}ms:`, error instanceof Error ? error.message : 'Unknown error');
-      if (error instanceof Error) {
-        console.error('[OpenAI] Error stack:', error.stack);
-      }
-      throw error;
-    }
+        return parsed as T;
+      },
+      'OpenAI structured generation',
+      logger
+    );
   }
 } 

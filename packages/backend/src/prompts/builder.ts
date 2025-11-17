@@ -5,6 +5,10 @@ import { validateNoPlaceholders } from './helpers.ts';
 import { VariationLoader } from '../variations/loader';
 import { Concept } from './schemas';
 import { composeAndReplace, replaceVariables } from './template-replacer';
+import { createLogger } from '../common/logger';
+import { HintPromptNotLoadedError } from '../common/errors';
+
+const logger = createLogger('PromptBuilder');
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
@@ -128,14 +132,13 @@ export class PromptBuilder {
     // === STEP 5: Debug logging ===
 
     if(process.env.NODE_ENV === 'development') {
-      console.log('\n=== PROMPT GENERATION DEBUG ===');
-      console.log('Subject:', this.subject.id);
-      console.log('Concept:', params.concept.id);
-      console.log('Task Type:', this.taskType.id);
-      console.log('All Variables:', JSON.stringify(allVariables, null, 2));
-      console.log('\n=== COMPOSED PROMPT ===');
-      console.log(finalPrompt);
-      console.log('==============================\n');
+      logger.debug('Prompt generation debug', {
+        subject: this.subject.id,
+        concept: params.concept.id,
+        taskType: this.taskType.id,
+        variables: allVariables,
+        prompt: finalPrompt
+      });
     }
 
     return finalPrompt;
@@ -160,7 +163,7 @@ export class PromptBuilder {
   ): string {
     // If no hint prompt is provided, use fallback template
     if (!this.hintPrompt) {
-      throw new Error('Hint prompt template not loaded. Please initialize PromptBuilder with a hint prompt.');
+      throw new HintPromptNotLoadedError();
     }
 
     const languageName = this.formatLanguage(context.language);

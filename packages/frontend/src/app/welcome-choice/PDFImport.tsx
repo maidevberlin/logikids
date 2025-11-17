@@ -5,6 +5,9 @@ import { importQRData, QRPayload } from '@/data/plugins/qr'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Upload, FileText } from 'lucide-react'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('PDFImport')
 
 // Set worker path for PDF.js - use local bundled worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -189,7 +192,7 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
 
       onSuccess()
     } catch (err) {
-      console.error('PDF import error:', err)
+      logger.error('PDF import error', err as Error)
       setError(err instanceof Error ? err.message : t('welcomeChoice.import.pdfParseError', { defaultValue: 'Failed to parse PDF file' }))
     } finally {
       setIsProcessing(false)

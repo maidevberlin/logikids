@@ -5,7 +5,11 @@ import { StorageService } from './storage.service'
 import rateLimit from 'express-rate-limit'
 import { requireAuth, requireOwnUserId } from '../auth/auth.middleware'
 import { validateParams } from '../common/middleware/validation'
+import { asyncHandler } from '../common/middleware/asyncHandler'
 import { userIdParamSchema } from '../auth/auth.schema'
+import { createLogger } from '../common/logger'
+
+const logger = createLogger('SyncRouter')
 
 /**
  * Create and configure sync router with rate limiting
@@ -20,7 +24,7 @@ export function createSyncRouter(): Router {
 
   // Initialize storage directory
   storage.init().catch(error => {
-    console.error('[SyncRouter] Failed to initialize storage:', error)
+    logger.error('Failed to initialize storage', error)
   })
 
   // Rate limiting: 100 requests per userId per hour
@@ -40,10 +44,10 @@ export function createSyncRouter(): Router {
   router.use(syncRateLimiter)
 
   // Sync endpoints - all require auth and userId verification
-  router.put('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, controller.upload)
-  router.get('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, controller.download)
-  router.post('/:userId/verify', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, controller.verify)
-  router.delete('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, controller.delete)
+  router.put('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.upload))
+  router.get('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.download))
+  router.post('/:userId/verify', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.verify))
+  router.delete('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.delete))
 
   return router
 }

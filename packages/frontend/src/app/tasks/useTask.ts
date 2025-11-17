@@ -1,28 +1,22 @@
-import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import i18n from '@/i18n/config';
-import { logikids, TaskRequest } from '@/api/logikids';
-import { Task, SingleChoiceTask, YesNoTask } from './types';
+import { TaskRequest } from '@/api/logikids';
+import { SingleChoiceTask, YesNoTask } from './types';
 import { useTaskAnswer } from './useTaskAnswer';
 import { useHint } from './useHint';
+import { useTaskData } from '@/hooks/useTaskData';
 
 export const useTask = (params: TaskRequest) => {
   const [startTime, setStartTime] = useState(Date.now());
 
+  // Use the dedicated useTaskData hook for data fetching
   const {
     data: task,
     isLoading,
     isFetching,
     error,
     refetch
-  } = useQuery<Task>({
-    queryKey: ['task', params],
-    queryFn: ({ signal }) => logikids.getTask(params, signal),
-    retry: false,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    staleTime: Infinity,
-  });
+  } = useTaskData(params);
 
   // Use the existing useTaskAnswer hook for answer management
   const {

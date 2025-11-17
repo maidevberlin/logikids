@@ -12,6 +12,9 @@ import {
 } from './aggregation'
 import { GameStats } from '@/app/stats/gameTypes'
 import { checkAchievements, unlockAchievements } from '@/app/stats/achievements'
+import { createLogger } from '@/lib/logger'
+
+const logger = createLogger('ProgressUpdater')
 
 export interface TaskSubmissionData {
   subject: string
@@ -73,7 +76,7 @@ export function addAttempt(
 
   // Check for duplicates
   if (isDuplicate(conceptStats, attempt)) {
-    console.warn('[Progress] Duplicate attempt detected, skipping')
+    logger.warn('Duplicate attempt detected, skipping')
     return { progress, gameStats: gameStats || createDefaultGameStats() }
   }
 

@@ -6,6 +6,7 @@ import { Concept } from './types'
 import { useProgress } from '@/data/progress/hooks'
 import { calculateConceptStars } from '@/data/progress/mastery'
 import { StarRating } from '@/components/ui/star-rating'
+import { formatGrade } from '@/lib/formatGrade'
 
 const difficultyColors: Record<string, string> = {
   easy: 'bg-green-50 text-green-700',
@@ -51,7 +52,7 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
           <div className="flex flex-wrap gap-2">
             {concept.grade && (
               <Badge className="bg-blue-100 text-blue-800 rounded-lg pointer-events-none">
-                {t('concepts.gradeLabel', { grade: concept.grade, defaultValue: `Grade ${concept.grade}` })}
+                {formatGrade(concept.grade, t)}
               </Badge>
             )}
             {isAdvanced && (
