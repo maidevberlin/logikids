@@ -16,7 +16,7 @@ export class AuthController {
    * Body: { userId: string, inviteCode: string }
    * Returns: { token: string, account: UserAccount }
    */
-  async register(req: RegisterRequestTyped, res: Response): Promise<void> {
+  register = async (req: RegisterRequestTyped, res: Response): Promise<void> => {
     const { userId, inviteCode } = req.body // Already validated by middleware
 
     // Register user
@@ -34,7 +34,7 @@ export class AuthController {
    *
    * Returns: { valid: true, userId: string }
    */
-  async verify(req: Request, res: Response): Promise<void> {
+  verify = async (req: Request, res: Response): Promise<void> => {
     // If we reach here, auth middleware has validated the token
     res.json({
       valid: true,
@@ -48,7 +48,7 @@ export class AuthController {
    *
    * Returns: UserAccount
    */
-  async getAccount(req: Request, res: Response): Promise<void> {
+  getAccount = async (req: Request, res: Response): Promise<void> => {
     if (!req.userId) {
       res.status(401).json({ error: 'Not authenticated' })
       return
@@ -71,7 +71,7 @@ export class AuthController {
    * Body: { userId: string }
    * Returns: { accessToken: string }
    */
-  async refresh(req: RefreshRequestTyped, res: Response): Promise<void> {
+  refresh = async (req: RefreshRequestTyped, res: Response): Promise<void> => {
     const { userId } = req.body // Already validated by middleware
 
     // Renew access token
@@ -86,7 +86,7 @@ export class AuthController {
    * Body: { userId: string }
    * Returns: { accessToken: string, account: UserAccount }
    */
-  async login(req: LoginRequestTyped, res: Response): Promise<void> {
+  login = async (req: LoginRequestTyped, res: Response): Promise<void> => {
     const { userId } = req.body // Already validated by middleware
 
     // Login user

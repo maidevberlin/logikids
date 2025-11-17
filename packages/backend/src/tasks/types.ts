@@ -52,5 +52,5 @@ export interface TaskGenerationParams {
 }
 
 // Re-export task response types for convenience
-export type { TaskResponse, BaseTaskResponse, MultipleChoiceResponse, YesNoResponse } from './types/';
+export type { TaskResponse, BaseTaskResponse, MultiSelectResponse, YesNoResponse } from './types/';
 
