@@ -51,10 +51,10 @@ export class Logger {
    * Use for potentially harmful situations that don't prevent normal operation.
    *
    * @param message - The log message
-   * @param meta - Optional metadata object to include
+   * @param data - Optional error or metadata to include
    */
-  warn(message: string, meta?: Record<string, unknown>): void {
-    console.warn(`[${this.context}] ${message}`, meta || '')
+  warn(message: string, data?: unknown): void {
+    console.warn(`[${this.context}] ${message}`, data ?? '')
   }
 
   /**
@@ -62,10 +62,10 @@ export class Logger {
    * Use for error events that might still allow the application to continue running.
    *
    * @param message - The log message
-   * @param error - Optional Error object
+   * @param error - Optional error (any type from catch blocks)
    * @param meta - Optional metadata object to include
    */
-  error(message: string, error?: Error, meta?: Record<string, unknown>): void {
+  error(message: string, error?: unknown, meta?: Record<string, unknown>): void {
     console.error(`[${this.context}] ${message}`, { error, ...meta })
   }
 }

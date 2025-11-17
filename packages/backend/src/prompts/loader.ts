@@ -305,7 +305,7 @@ export class PromptLoader {
     // Handle duplicates
     const deduplicated: Concept[] = [];
 
-    for (const [name, group] of nameMap.entries()) {
+    for (const [_name, group] of nameMap.entries()) {
       if (group.length === 1) {
         deduplicated.push(group[0]);
       } else {
