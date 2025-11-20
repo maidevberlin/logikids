@@ -29,9 +29,8 @@ Generate multiple curriculum-aligned educational concept files efficiently using
 | Phase | Goal | Key Actions | Output | Time |
 |-------|------|-------------|--------|------|
 | 1. Research | Authoritative concept list | Ask scope → Spawn research agent → User validates | `docs/[subject]-concepts-list.md` | 5-10m |
-| 2. Generate | Parallel creation | Parse list → Spawn N parallel Task agents | N concept.md files | 5-7m |
-| 2.5. Review Loop | Quality assurance | Spawn review agents → Collect failures → Regenerate → Repeat until 100% pass | All concepts pass | 3-10m |
-| 3. Validate | Production readiness | Count → Schema check → Translations → Spot-check | Validation report | 2-3m |
+| 2. Generate & Review | Create + iterate until pass | Generate parallel → Review 3-5 → If failures, regenerate → Repeat | N concept.md files (all pass) | 5-15m |
+| 3. Validate | Production readiness | Count → Schema check → Spot-check | Validation report | 2-3m |
 | 4. Commit | Git history | Stage → Commit with details → Verify | Commit hash | 1m |
 
 **Total:** 15-30 minutes for 20-30 concepts (vs 60-90 minutes sequential)
@@ -88,131 +87,45 @@ Generate multiple curriculum-aligned educational concept files efficiently using
 
 **Output:** `docs/[subject]-concepts-grade[X-Y]-list.md`
 
-### Phase 2: Parallel Concept Generation
+### Phase 2: Generate and Review Loop
 
-**Goal:** Generate all concept.md files in parallel (WITHOUT review - review comes in Phase 2.5)
+**Goal:** Generate all concepts and iterate until all pass review
 
 **Steps:**
 
 1. **Parse concept list:**
    - Extract: concept ID, titles, grade, scope, learning objectives
-   - Prepare one prompt per concept
 
-2. **Spawn Task agents in parallel:**
+2. **Spawn generation agents in parallel:**
    - Use Task tool (subagent_type='general-purpose', model='haiku')
-   - Create ONE message with multiple Task tool calls (executes concurrently)
-   - For each concept, provide prompt:
+   - ONE message with multiple Task tool calls (executes concurrently)
+   - For each concept:
      ```
-     Use the generate-concept skill to create concept file:
-     - Subject: [subject]
-     - Concept ID: [id]
-     - Title (DE): [german_title]
-     - Title (EN): [english_title]
-     - Grade: [grade]
-     - Curriculum: [curriculum_name]
-     - Scope: [scope_description]
-     - Learning Objectives: [objectives_list]
+     Use the generate-concept skill to create:
+     - Subject: [subject], Concept ID: [id]
+     - Title (DE/EN): [titles]
+     - Grade: [grade], Scope: [scope]
+     - Learning Objectives: [objectives]
 
-     Follow the generate-concept skill instructions exactly.
-     CRITICAL: You CANNOT spawn review agents (no recursion). Just generate the concept file.
+     CRITICAL: You CANNOT spawn review agents. Just generate the file.
      ```
-   - **DO NOT** ask agents to review themselves (they can't spawn sub-agents)
-   - Track which concepts are being generated (use TodoWrite)
 
-3. **Wait for completion:**
-   - All agents run concurrently
-   - Collect results as they complete
-   - Note any immediate failures (file not created, errors reported)
+3. **Wait for generation to complete**
 
-**Expected time:** 5-7 minutes wall-clock for 20-30 concepts
-
-**Output:** All concept.md files created (quality unknown until Phase 2.5)
-
-### Phase 2.5: Review Loop (CRITICAL QUALITY GATE)
-
-**Goal:** Achieve 100% concept pass rate through iterative review and regeneration
-
-**Why this phase exists:** Subagents cannot spawn sub-agents (no recursion), so we orchestrate reviews from the main context.
-
-**Steps:**
-
-1. **Spawn review agents in parallel:**
+4. **Spawn review agents in parallel:**
    - Use Task tool (subagent_type='general-purpose', model='haiku')
-   - Create ONE message with multiple Task tool calls (3-5 reviews per batch)
-   - For each concept to review:
+   - Review 3-5 random concepts first
+   - For each concept:
      ```
      Use the review-concept skill to review:
      packages/content/subjects/[subject]/official/[concept-id].md
-
-     This is a [grade] [subject] concept that was just generated.
-     Follow the review-concept skill instructions to validate schema,
-     CARDINAL RULE compliance, and curriculum alignment.
-     ```
-   - **Batching strategy:**
-     - First iteration: Review 3-5 random samples
-     - If >50% fail: Review ALL concepts (issues are systematic)
-     - If <50% fail: Review remaining concepts in batches
-
-2. **Collect review results:**
-   - Track PASS/FAIL for each concept
-   - Extract specific issues (CARDINAL RULE violations, missing translations, schema errors)
-   - Identify systematic patterns (e.g., all concepts have LaTeX formulas)
-
-3. **Analyze failures:**
-   - **CARDINAL RULE violations** (LaTeX formulas, numerical examples):
-     ```
-     Issue: Lines 35, 120 contain $\frac{3}{4}$ formulas
-     Fix: Regenerate with "CRITICAL: NO LaTeX, NO specific numbers. Describe principles only."
-     ```
-   - **Translation missing:**
-     ```
-     Issue: Concept not in de/subjects/[subject].json
-     Fix: Manually add translation entries (agents can't reliably edit JSON arrays)
-     ```
-   - **Too many problem structures** (>10):
-     ```
-     Issue: 12 structures found, should be 5-10
-     Fix: Regenerate with "CRITICAL: Provide exactly 8 problem structures, consolidated."
-     ```
-   - **Schema errors:**
-     ```
-     Issue: Invalid YAML frontmatter
-     Fix: Regenerate with corrected frontmatter template
      ```
 
-4. **Regenerate failed concepts:**
-   - Create NEW Task agents ONLY for failed concepts
-   - Include specific guidance based on failure analysis
-   - Use same prompt format as Phase 2, with added CRITICAL instructions
-   - Example:
-     ```
-     Use the generate-concept skill to REGENERATE concept file:
-     [... same parameters as Phase 2 ...]
+5. **If any failures found → go back to step 2:**
+   - Regenerate ONLY failed concepts with CRITICAL fixes based on review feedback
+   - Repeat until all concepts pass (max 3 iterations)
 
-     CRITICAL FIXES FOR THIS REGENERATION:
-     - NO LaTeX formulas (like $\frac{a}{b}$), describe in words
-     - NO specific numerical examples (like "2+2=4"), use principles
-     - Exactly 8 problem structures, not 12
-     - Ensure translations are added to BOTH language files
-     ```
-
-5. **Iterate until 100% pass:**
-   - After regeneration completes, spawn review agents for those concepts
-   - Repeat steps 2-4 until ALL concepts pass
-   - **Maximum 3 iterations** - if still failing, manually intervene
-
-6. **Track progress:**
-   - Use TodoWrite to track review status
-   - Update after each iteration: "Review iteration N: X/Y passed"
-
-**Expected iterations:**
-- Iteration 1: 60-80% pass (common issues: CARDINAL RULE, translations)
-- Iteration 2: 90-95% pass (edge cases fixed)
-- Iteration 3: 100% pass (rarely needed if iteration 2 was thorough)
-
-**Expected time:** 3-10 minutes depending on failure rate
-
-**Output:** All concepts validated as production-ready
+**Expected time:** 5-10 minutes for 20-30 concepts
 
 ### Phase 3: Post-Generation Validation
 
