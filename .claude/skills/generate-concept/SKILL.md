@@ -41,6 +41,11 @@ The frontmatter MUST be valid YAML enclosed in `---` delimiters and pass backend
 
 - `prerequisites`: array of concept IDs (kebab-case strings)
 - `real_world_context`: string describing applications
+- `curriculum_research`: object containing curriculum standards metadata
+
+### Schema Enforcement
+
+The schema is **STRICT** - it rejects any unrecognized fields. Only use fields listed above. Translations belong in separate JSON files at `packages/frontend/public/locales/{lang}/subjects/{subject}.json`, not in frontmatter.
 
 ### Frontmatter Template
 
@@ -198,6 +203,7 @@ When generating a concept:
    - Align with curriculum objectives
 
 6. **Quality Check**
+   - [ ] Filename follows `grade{X}-{id}.md` pattern
    - [ ] Frontmatter valid YAML with all required fields
    - [ ] Curriculum standards researched and documented
    - [ ] No SVG/LaTeX code examples
@@ -208,7 +214,7 @@ When generating a concept:
    - [ ] Aligned with official curriculum
 
 7. **Save and Validate**
-   - Save to `packages/content/subjects/{subject}/official/{id}.md`
+   - Save to `packages/content/subjects/{subject}/official/grade{X}-{id}.md`
    - Run `bun run validate:prompts` to check schema
 
 8. **Add Translations**

@@ -64,11 +64,9 @@ Check against generate-concept Quality Check (line 200-208):
 
 **Frontmatter (Part A):**
 - [ ] **FILENAME** follows pattern `grade{X}-{concept-name}.md` where X matches the `grade` field in frontmatter (e.g., `grade5-fractions.md` for grade: 5)
-- [ ] Valid YAML with all required fields (id, name, description, grade, ages, focus, difficulty, learning_objectives)
-- [ ] `id` is kebab-case, no spaces/uppercase/special chars except hyphens
-- [ ] `grade` is integer 1-13
-- [ ] `ages` is exactly 2 integers [min, max], both 6-18, min ≤ max
-- [ ] `difficulty` is exactly one of: easy, medium, hard
+- [ ] Schema validation passes - the schema is STRICT and rejects unrecognized fields
+- [ ] All required fields present (see schema at `packages/backend/src/prompts/schemas.ts`)
+- [ ] No invalid fields (translations belong in separate JSON files, not frontmatter)
 
 **Content (Part B):**
 - [ ] NO code examples (no SVG snippets, no LaTeX formulas, no numerical values to copy)

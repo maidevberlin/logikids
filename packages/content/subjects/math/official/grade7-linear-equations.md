@@ -8,7 +8,6 @@ ages:
   - 13
 focus: Equation solving, variable isolation, word problem translation, solution verification
 difficulty: medium
-curriculum_alignment: German grade 7 (Klasse 7) - Lehrplan Mathematics - Linear equations (Lineare Gleichungen) are core competency under "Terme und Gleichungen" section
 learning_objectives:
   - Solve one-step equations (addition/subtraction, multiplication/division)
   - Solve two-step equations using inverse operations

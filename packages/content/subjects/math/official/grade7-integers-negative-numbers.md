@@ -8,7 +8,6 @@ ages:
   - 13
 focus: Extending the number system to include negatives, operations with integers, real-world applications
 difficulty: medium
-curriculum: Common Core Mathematics Standards (CCSS) Grade 7.NS.A.1, 7.NS.A.2, 7.NS.A.3 (Understanding addition, subtraction, multiplication, and division with integers); International Baccalaureate (IB) Middle Years Programme (MYP) Mathematics (Real numbers and their representations); UK National Curriculum Mathematics Key Stage 3 (Negative numbers and operations on integers)
 learning_objectives:
   - Represent integers on a number line and in coordinate systems
   - Compare and order integers using inequality symbols

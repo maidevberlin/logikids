@@ -8,7 +8,6 @@ ages:
   - 11
 focus: Measurement and calculation (Größen und Messen)
 difficulty: easy
-curriculum_standard: Lehrplan Mathematik Baden-Württemberg, Klasse 5 - Größen und Messen - Flächen und Umfänge von Rechtecken berechnen und vergleichen
 learning_objectives:
   - Calculate perimeter and area of rectangles and squares
   - Convert between different area units (mm², cm², m², km²)

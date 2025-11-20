@@ -123,7 +123,7 @@ Generate multiple curriculum-aligned educational concept files efficiently using
 
 4. **If failures found → resume those agents:**
    - For each failed concept, use Task tool with `resume=[agent_id]`
-   - Provide specific failures from review feedback:
+   - Provide specific fixes from review feedback:
      ```
      The review found these issues:
      [paste exact review feedback]

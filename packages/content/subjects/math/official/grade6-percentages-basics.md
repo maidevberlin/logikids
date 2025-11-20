@@ -6,8 +6,6 @@ grade: 6
 ages: [11, 12]
 focus: Numbers and Operations - Percent as a proportion
 difficulty: easy
-curriculum: Common Core (US), KMK (Germany) - Percentage and Ratio Concepts
-research: NCTM Standards 6.RP.A.1-3, German Lehrplan Mathematik Klasse 6
 learning_objectives:
   - Understand percent as "per hundred" and recognize the percent symbol (%)
   - Convert between common fractions (½, ¼, ¾, etc.) and percentages

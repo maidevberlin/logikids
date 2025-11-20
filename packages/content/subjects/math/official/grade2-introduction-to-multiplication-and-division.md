@@ -18,16 +18,6 @@ learning_objectives:
 prerequisites:
   - grade2-addition-and-subtraction-up-to-100
 real_world_context: Counting legs on animals, arranging items in equal groups, skip counting, sharing snacks fairly among friends, dividing toys into equal groups, buying multiple items of the same price
-translations:
-  de:
-    name: Einführung in Multiplikation und Division
-    description: Multiplikation als wiederholte Addition und Division als Teilen und Gruppieren verstehen, mit Einmaleins für 2, 5 und 10
-  fr:
-    name: Introduction à la Multiplication et la Division
-    description: Comprendre la multiplication comme une addition répétée et la division comme partage et groupement, avec les tables de multiplication pour 2, 5 et 10
-  es:
-    name: Introducción a la Multiplicación y la División
-    description: Comprender la multiplicación como suma repetida y la división como reparto y agrupación, con tablas de multiplicar para 2, 5 y 10
 curriculum_research: |
   Multiplication and division are foundational operations introduced in Grade 2 across major curricula:
 

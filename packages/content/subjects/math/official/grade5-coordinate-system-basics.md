@@ -1,11 +1,7 @@
 ---
 id: coordinate-system-basics
 name: Coordinate System and Spatial Relationships
-name_de: Koordinatensystem und räumliche Beziehungen
-name_en: Coordinate System and Spatial Relationships
 description: Understanding the Cartesian coordinate system (first quadrant), plotting and reading points, describing spatial relationships and positions, identifying geometric relationships, and calculating distances between points
-description_de: Verständnis des kartesischen Koordinatensystems (erstes Quadrant), Plotten und Lesen von Punkten, Beschreibung räumlicher Beziehungen und Positionen, Identifizierung geometrischer Beziehungen und Berechnung von Entfernungen zwischen Punkten
-description_en: Understanding the Cartesian coordinate system (first quadrant), plotting and reading points, describing spatial relationships and positions, identifying geometric relationships, and calculating distances between points
 grade: 5
 ages:
   - 10
