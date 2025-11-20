@@ -187,6 +187,14 @@
     "statistics-interpretation": {
       "name": "Datenauswertung und Statistik",
       "description": "Verständnis von Lagemaßen, Datenanalyse und statistisches Denken mit realen Anwendungen"
+    },
+    "ratios-proportions": {
+      "name": "Verhältnisse und Proportionen",
+      "description": "Verständnis von Verhältnissen und proportionalen Beziehungen, Lösen von Proportionen mit Kreuzweise Multiplikation"
+    },
+    "grade5-introduction-fractions": {
+      "name": "Einführung in Brüche",
+      "description": "Brüche als Teile eines Ganzen verstehen, visuelle Darstellung, Vergleich und Ordnung von Brüchen und Erkennung äquivalenter Brüche"
     }
   }
 }

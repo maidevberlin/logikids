@@ -1,5 +1,5 @@
 ---
-id: grade2-introduction-to-multiplication-and-division
+id: introduction-to-multiplication-and-division
 name: Introduction to Multiplication and Division
 description: Understanding multiplication as repeated addition and division as sharing and grouping, with times tables for 2, 5, and 10
 grade: 2
@@ -18,6 +18,48 @@ learning_objectives:
 prerequisites:
   - grade2-addition-and-subtraction-up-to-100
 real_world_context: Counting legs on animals, arranging items in equal groups, skip counting, sharing snacks fairly among friends, dividing toys into equal groups, buying multiple items of the same price
+translations:
+  de:
+    name: Einführung in Multiplikation und Division
+    description: Multiplikation als wiederholte Addition und Division als Teilen und Gruppieren verstehen, mit Einmaleins für 2, 5 und 10
+  fr:
+    name: Introduction à la Multiplication et la Division
+    description: Comprendre la multiplication comme une addition répétée et la division comme partage et groupement, avec les tables de multiplication pour 2, 5 et 10
+  es:
+    name: Introducción a la Multiplicación y la División
+    description: Comprender la multiplicación como suma repetida y la división como reparto y agrupación, con tablas de multiplicar para 2, 5 y 10
+curriculum_research: |
+  Multiplication and division are foundational operations introduced in Grade 2 across major curricula:
+
+  **US Common Core Standards (CCSS.MATH.2.OA.C.3, CCSS.MATH.2.OA.C.4)**:
+  - Work with equal groups to gain foundations for multiplication
+  - Arrays, area, and repeated addition support multiplication conceptualization
+  - Division introduced as the inverse of multiplication
+  - Early focus on 2, 5, and 10 times tables for fluency building
+
+  **UK National Curriculum (Key Stage 1)**:
+  - Skip counting in 2s, 5s, and 10s as preparation for multiplication
+  - Multiplication through repeated addition and arrays
+  - Division as sharing and grouping
+  - Doubling and halving as related operations
+
+  **Singapore Math Curriculum**:
+  - Strong emphasis on array representations and pictorial methods
+  - Equal groups and repeated addition as concrete foundations
+  - Model-drawing approach to word problems
+  - Division as inverse of multiplication explicitly taught
+
+  **German Curriculum (Lehrplan)**:
+  - "Vervielfachung" (repetitive addition) as foundation for multiplication concept
+  - Division as "Teilung" (sharing) and "Aufteilung" (grouping)
+  - Array models (Punktefeld/Gittermuster) for visual support
+  - Times tables for 2, 5, 10 core for Grade 2
+
+  **Australian Curriculum**:
+  - Equal groups, arrays, and repeated addition models
+  - Division through sharing and grouping contexts
+  - Inverse relationship between multiplication and division
+  - Skip counting strategies essential for times table fluency
 ---
 
 # Introduction to Multiplication and Division Tasks

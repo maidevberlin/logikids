@@ -9,7 +9,7 @@ ages:
 focus: Measurement and quantities
 difficulty: medium
 learning_objectives:
-  - Know standard units for lengths (km, m, cm, mm), mass (t, kg, g), volume (l, ml), and time (seconds to years)
+  - Know standard units for lengths, mass, volume, and time across multiple scale ranges
   - Convert fluently between units within the same measurement domain
   - Measure accurately using appropriate tools and instruments
   - Solve practical problems involving multiple measurement domains
@@ -17,7 +17,7 @@ learning_objectives:
 prerequisites:
   - grade2-measuring-lengths
   - grade2-time-spans
-real_world_context: Everyday situations requiring measurement and unit conversion including cooking, shopping, travel planning, construction projects, and science experiments
+real_world_context: "Everyday situations requiring measurement and unit conversion including cooking, shopping, travel planning, construction projects, and science experiments. Aligned with German curriculum (Rahmenlehrplan) Grade 3 measurement competencies: converting between units in standard domains, solving multi-step measurement problems, and applying measurement knowledge in authentic contexts."
 ---
 
 # All Measurement Domains
@@ -41,24 +41,24 @@ Create diverse problem types across all measurement domains:
 
 ## Measurement Domain Coverage
 
-Ensure variety across all four domains:
+Ensure variety across all four domains with appropriate unit scales:
 
-**Lengths**: kilometer (km), meter (m), centimeter (cm), millimeter (mm)
+**Lengths**: Include conversions across multiple unit scales (very small to very large)
 - Short distances (classroom objects to building dimensions)
 - Medium distances (neighborhood to city scale)
 - Long distances (regional to country scale)
 
-**Mass**: ton (t), kilogram (kg), gram (g)
+**Mass**: Include different weight scales from light to heavy
 - Light objects (everyday items, food portions)
 - Medium weights (people, furniture, animals)
 - Heavy loads (vehicles, construction materials)
 
-**Volume Measures**: liter (l), milliliter (ml)
+**Volume Measures**: Include different volume scales from small to large
 - Small volumes (medicine, spices)
 - Everyday containers (bottles, glasses, pots)
 - Large containers (aquariums, bathtubs, fuel tanks)
 
-**Time**: second, minute, hour, day, week, month, year
+**Time**: Include different time period scales from short to long
 - Short durations (activities, tasks)
 - Medium spans (school day, sleep, travel)
 - Long periods (seasons, projects, age)

@@ -187,6 +187,14 @@
     "proportional-relationships": {
       "name": "Proportional and Inversely Proportional Relationships",
       "description": "Understanding direct proportionality (y=kx) and inverse proportionality (y=k/x), determining the constant of proportionality, applying the rule of three, creating and interpreting proportional graphs"
+    },
+    "ratios-proportions": {
+      "name": "Ratios and Proportions",
+      "description": "Understanding and working with ratios, proportional relationships, and solving proportions using cross multiplication"
+    },
+    "grade5-introduction-fractions": {
+      "name": "Introduction to Fractions",
+      "description": "Understanding fractions as parts of a whole, visual representation, comparing and ordering fractions, and recognizing equivalent fractions"
     }
   }
 }

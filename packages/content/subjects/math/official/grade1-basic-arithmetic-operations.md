@@ -8,6 +8,7 @@ ages:
   - 7
 focus: Numbers and operations
 difficulty: easy
+curriculum: Common Core Mathematics Standards (CCSS) Grade 1.OA.A.1, 1.OA.A.2, 1.OA.B.3, 1.OA.B.4, 1.OA.C.5, 1.OA.C.6, 1.OA.D.7, 1.OA.D.8
 learning_objectives:
   - Apply addition and subtraction facts to 20 fluently and flexibly
   - Understand addition as combining/adding and subtraction as removing/complementing
