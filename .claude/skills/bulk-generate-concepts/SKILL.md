@@ -95,10 +95,12 @@ Generate multiple curriculum-aligned educational concept files efficiently using
 
 1. **Parse concept list:**
    - Extract: concept ID, titles, grade, scope, learning objectives
+   - Track agent IDs for later resume
 
 2. **Spawn generation agents in parallel:**
    - Use Task tool (subagent_type='general-purpose', model='haiku')
    - ONE message with multiple Task tool calls (executes concurrently)
+   - **Save each agent ID** for potential resume
    - For each concept:
      ```
      Use the generate-concept skill to create:
@@ -110,22 +112,28 @@ Generate multiple curriculum-aligned educational concept files efficiently using
      CRITICAL: You CANNOT spawn review agents. Just generate the file.
      ```
 
-3. **Wait for generation to complete**
-
-4. **Spawn review agents in parallel:**
+3. **Spawn review agents in parallel:**
    - Use Task tool (subagent_type='general-purpose', model='haiku')
-   - Review 3-5 random concepts first
+   - Review 3-5 random concepts first (if >50% fail, review all)
    - For each concept:
      ```
      Use the review-concept skill to review:
      packages/content/subjects/[subject]/official/[concept-id].md
      ```
 
-5. **If any failures found → go back to step 2:**
-   - Regenerate ONLY failed concepts with CRITICAL fixes based on review feedback
-   - Repeat until all concepts pass (max 3 iterations)
+4. **If failures found → resume those agents:**
+   - For each failed concept, use Task tool with `resume=[agent_id]`
+   - Provide specific fixes from review feedback:
+     ```
+     The review found these issues:
+     [paste exact review feedback]
 
-**Expected time:** 5-10 minutes for 20-30 concepts
+     Please fix these issues in the concept file.
+     ```
+   - Then go back to step 3 (review fixes)
+   - Repeat until all pass (max 3 iterations)
+
+**Expected time:** 5-15 minutes for 20-30 concepts
 
 ### Phase 3: Post-Generation Validation
 
