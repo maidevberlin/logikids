@@ -5,263 +5,217 @@ description: Use when creating educational concept files or when LLM-generated t
 
 # Generate Educational Concept Files
 
-## When to Use This Skill
+## When to Use
 
-Use this skill when:
-- Creating new concept files for any subject (e.g., math, physics, biology, chemistry, languages, history, music, etc.)
+Use when:
+- Creating new concept files for any subject
 - Converting curriculum requirements into Logikids concept format
 - Ensuring generated concepts pass backend validation
-- Maximizing task variety and creativity in AI-generated content
+- Maximizing task variety and creativity
 
 ## Overview
 
-This skill enforces strict rules for generating concept markdown files that:
-1. ✅ Pass Zod schema validation in the backend
-2. ✅ Avoid example code that leads to copy-paste behavior
-3. ✅ Maximize task variety across multiple dimensions
-4. ✅ Provide clear scaffolding for different ages and difficulty levels
-5. ✅ Are completely phrased in english, so the app can translate it properly
+Create concept markdown files that:
+1. ✅ Pass Zod schema validation
+2. ✅ Avoid example code (prevents copy-paste behavior)
+3. ✅ Maximize task variety
+4. ✅ Provide clear age/difficulty scaffolding
+5. ✅ Stay within 400-800 words (max 1,200)
 
-## PART A: STRICT FRONTMATTER RULES
+## PART A: Frontmatter Schema
 
-The frontmatter MUST be valid YAML enclosed in `---` delimiters and pass backend validation (`packages/backend/src/prompts/schemas.ts:conceptFrontmatterSchema`).
+**Required fields** (from `packages/backend/src/prompts/schemas.ts:conceptFrontmatterSchema`):
+- `id` (string): kebab-case (e.g., `quadratic-functions`)
+- `name` (string): Human-readable title
+- `description` (string): 1-2 sentences, max 200 chars
+- `grade` (integer): 1-13 (German system)
+- `ages` (array): Exactly 2 integers `[min, max]`, both 6-18, min ≤ max
+- `focus` (string): Learning area (e.g., "Algebra and Functions")
+- `difficulty` (enum): `easy`, `medium`, or `hard`
+- `learning_objectives` (array): ≥1 string
 
-### Required Fields (MUST be present)
+**Optional fields:**
+- `prerequisites` (array): concept IDs
+- `real_world_context` (string)
+- `curriculum_research` (object)
 
-- **`id`** (string): kebab-case (e.g., `quadratic-functions`). No spaces, uppercase, or special chars except hyphens.
-- **`name`** (string): Human-readable title (e.g., `"Quadratic Functions"`).
-- **`description`** (string): Concise summary, 1-2 sentences, max 200 chars.
-- **`grade`** (integer): 1-13 (German system). No decimals, strings, or out-of-range values.
-- **`ages`** (tuple): Exactly 2 integers `[min, max]`, both 6-18. Min ≤ max, not single value.
-- **`focus`** (string): Short phrase for learning area (e.g., `"Vectors and analytical geometry"`).
-- **`difficulty`** (enum): EXACTLY one of: `easy`, `medium`, `hard`.
-- **`learning_objectives`** (array): List with ≥1 string.
+**Schema is STRICT** - rejects unrecognized fields. Translations go in `packages/frontend/public/locales/{lang}/subjects/{subject}.json`.
 
-### Optional Fields (MAY be present)
-
-- `prerequisites`: array of concept IDs (kebab-case strings)
-- `real_world_context`: string describing applications
-- `curriculum_research`: object containing curriculum standards metadata
-
-### Schema Enforcement
-
-The schema is **STRICT** - it rejects any unrecognized fields. Only use fields listed above. Translations belong in separate JSON files at `packages/frontend/public/locales/{lang}/subjects/{subject}.json`, not in frontmatter.
-
-### Frontmatter Template
-
-```yaml
----
-id: concept-kebab-case-id
-name: Concept Human Readable Name
-description: Brief one-line description of the concept scope
-grade: 9
-ages:
-  - 14
-  - 16
-focus: Main learning area or topic category
-difficulty: medium
-learning_objectives:
-  - First learning objective
-  - Second learning objective
-  - Third learning objective
-prerequisites:
-  - prerequisite-concept-id
-real_world_context: Real-world applications and contexts
----
-```
-
-## PART B: CREATIVE PROMPT GUIDELINES
+## PART B: Creative Prompt Guidelines
 
 ### CARDINAL RULE: NO EXAMPLE CODE
 
 **ABSOLUTELY FORBIDDEN:**
-- ❌ Example SVG code snippets
+- ❌ Example SVG code
 - ❌ Example LaTeX formulas (except minimal syntax reference)
-- ❌ Complete code blocks that can be copy-pasted
-- ❌ Specific numerical examples that encourage reuse
+- ❌ Complete code blocks
+- ❌ Specific numerical examples
 
-**WHY:** LLMs copy examples literally, reducing creativity and producing identical tasks.
+**WHY:** LLMs copy examples literally, reducing creativity.
 
-### What to Include Instead
-
-**For SVG/Diagrams:** Describe what to show (e.g., "parabola curve with vertex marked, axis of symmetry as dashed line"), NOT code snippets.
-
-**For LaTeX/Math:** Describe when to use formulas (e.g., "inline for variable relationships, block for main equations"), NOT actual formulas like `$$\frac{-b}{2a}$$`.
-
-**For Numerical Values:** Describe variation principles (e.g., "multiple orders of magnitude, diverse scales, randomized"), NOT specific values like "2 kg, 20°C".
+**Instead:** Describe WHAT to create, not HOW.
+- SVG: "Show parabola with vertex marked" (not code)
+- LaTeX: "Use inline for variables, block for equations" (not formulas)
+- Numbers: "Vary magnitude, type, range" (not specific values)
 
 ### Required Variation Dimensions
 
-Every concept MUST specify variation across:
+Specify variation across:
 
-#### 1. Problem Structure (5-10 types)
-Specify different ways to test the concept: direct calculation, reverse calculation (find unknown), comparison between scenarios, optimization, real-world applications, graphical interpretation.
+1. **Problem Structure (7-10 types)**: Direct calculation, reverse calculation, comparison, optimization, real-world application, graphical interpretation, error analysis
+2. **Numerical Values (principles)**: Multiple magnitudes, diverse scales, randomized combinations (NO specific examples)
+3. **Age Scaffolding**:
+   - Younger ({{age}} < 13): Qualitative, simple
+   - Middle (13-15): Quantitative, formulas
+   - Older (≥16): Multi-step, derivations
+4. **Difficulty Scaling**:
+   - Easy: Direct application
+   - Medium: Multi-step reasoning
+   - Hard: Complex, derivations
 
-#### 2. Numerical Values (variation principles)
-Describe how to vary (don't list examples): multiple orders of magnitude, diverse scales (very small to very large), randomized combinations. Focus on PRINCIPLE not specific values.
+**Note:** Context variety handled by backend `prompts/variations/` - don't duplicate.
 
-**Note:** Context variety is handled by the backend variation system (`prompts/variations/`). Do NOT duplicate.
+### Anti-Patterns
 
-#### 3. Age-Based Complexity
-- **Younger** ({{age}} < 13): Qualitative, simple calculations
-- **Middle** ({{age}} 13-15): Quantitative, formulas
-- **Older** ({{age}} >= 16): Multi-step, derivations
+Avoid:
+- Formulaic language ("Calculate X using Y" repeatedly)
+- Copying example numbers from curriculum
+- Over-explaining pedagogy
+- Including code "students need to see"
 
-#### 4. Difficulty Scaling
-- **Easy**: Direct application, given formulas
-- **Medium**: Multi-step, some reasoning
-- **Hard**: Complex problems, derivations
+## PART C: Length & Token Efficiency
 
-### Anti-Patterns to AVOID
+**Every concept loads EVERY task generation.**
 
-#### ❌ Formulaic Language
-Repetitive phrasing like "Calculate X using formula Y" in every task description
+**Word count targets:**
+- **Optimal**: 400-800 words
+- **Maximum**: 1,200 words
 
-#### ❌ Copying Example Numbers
-Reusing specific values from frontmatter examples instead of generating new variations
+**Compression techniques:**
+- Bullet lists, not paragraphs
+- Trust AI intelligence (no over-explaining)
+- Remove meta-commentary
+- Combine related sections
 
-## Rationalization Prevention
-
-This skill enforces discipline across ALL subjects. Common excuses for violating these rules:
-
-| Excuse | Reality |
-|--------|---------|
-| "Just one small example won't hurt" | One example becomes the template LLM copies. Zero examples means zero. |
-| "This formula/term/concept is standard, showing it is fine" | Standard formulas get copied most often. Describe usage, not the formula. |
-| "The numbers are just illustrative" | Illustrative numbers become the only numbers used. Describe ranges instead. |
-| "Students need to see what good [answer/diagram/code] looks like" | That's what the LLM generates. Concept shows WHAT to generate, not HOW. |
-| "Curriculum research takes too long, I'll add it later" | Later never happens. Research is MANDATORY before writing. |
-| "I can't find official curriculum, so I'll use my knowledge" | Ask user for clarification or alternative location. Don't guess. |
-| "This is different because [subject-specific reason]" | Rules apply to ALL subjects equally (sciences, languages, arts, social studies, etc.). |
-| "The variation system doesn't cover [context X]" | If missing, improve variation system. Don't duplicate in concepts. |
-
-**Red Flags - STOP if you catch yourself thinking:**
-- "I'll just include one quick example..."
-- "This specific value is commonly used, so..."
-- "Students won't understand without seeing..."
-- "This formula is too important not to show..."
-- "I can skip research for this simple topic..."
-
-**All of these mean: Step back. Re-read CARDINAL RULE and Process section.**
-
-### Content Structure
-
-A complete concept includes:
-
-1. **Opening Context** - What task generator should create
-2. **Problem Type Variations** - 5-10 distinct structures
-3. **Age Scaffolding** - Clear `{{age}}` differentiation
-4. **Difficulty Scaling** - Explicit `{{difficulty}}` levels
-5. **Format Guidance** - When to use tables/diagrams
-6. **Numerical Variety** - Describe principles, not examples
+**Validator enforces:** `check:concept` auto-checks length (400-800 = pass, 801-1,200 = warning, other = fail).
 
 ## Process
 
-When generating a concept:
+### 1. Interview User
 
-1. **Interview User for Context**
-   - Subject (any curriculum subject: sciences, languages, mathematics, social studies, arts, etc.)
-   - Specific topic within subject
-   - Target grade level
-   - **Country/State** (for curriculum alignment - see authoritative sources in step 2)
+Ask for:
+- Subject
+- Specific topic
+- Target grade
+- **Country/State** (for curriculum alignment)
 
-2. **Research Official Curriculum Standards** (MANDATORY)
-   - Use WebSearch to find official education plan for the location
-   - Search for: `"[country/state] [subject] curriculum [grade level]"`
-   - Examples:
-     - "Germany physics curriculum grade 9"
-     - "North Rhine-Westphalia mathematics standards grade 6"
-     - "UK national curriculum science key stage 3"
-   - Example authoritative sources:
-     - Berlin grades 1-10: https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/klasse-1-10/
-     - Berlin grades 11-13: https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/oberstufe/
-     - Ministry of education websites
-     - Official standards documents
-   - Extract specific learning objectives for the topic
-   - **If no official curriculum found:** STOP and ask user for:
-     - Alternative location/state
-     - Different search terms
-     - Private/alternative curriculum reference
+### 2. Research Official Curriculum (MANDATORY)
 
-3. **Extract Metadata from Curriculum**
-   - **Age range** (from grade level and education system)
-   - **Difficulty level** (from curriculum complexity indicators)
-   - **Curriculum standards** (MANDATORY - specific standards/competencies)
-   - Learning objectives (from official documents)
-   - Prerequisites (from curriculum progression)
+- Use WebSearch: `"[country/state] [subject] curriculum [grade]"`
+- Find official education ministry/board documents
+- Extract: learning objectives, age range, difficulty, standards
+- **If not found:** Ask user for alternative location or source
 
-4. **Create Frontmatter**
-   - Use strict YAML format from Part A
-   - Populate with curriculum-aligned data
-   - Ensure `grade`, `ages`, `difficulty` match research
-   - Include curriculum standards in `real_world_context` or `learning_objectives`
+### 3. Extract Metadata
 
-5. **Write Creative Prompt**
-   - Apply Part B guidelines (describe, don't demonstrate)
-   - Specify variation across 4 dimensions (structure, numbers, age, difficulty)
-   - Include anti-patterns to avoid
-   - Align with curriculum objectives
+From curriculum research:
+- Age range (from grade + education system)
+- Difficulty level
+- Curriculum standards
+- Learning objectives
+- Prerequisites
 
-6. **Quality Check**
-   - [ ] Filename follows `grade{X}-{id}.md` pattern
-   - [ ] Frontmatter valid YAML with all required fields
-   - [ ] Curriculum standards researched and documented
-   - [ ] No SVG/LaTeX code examples
-   - [ ] 5-10 problem structures described
-   - [ ] Clear age scaffolding with `{{age}}`
-   - [ ] Clear difficulty scaling with `{{difficulty}}`
-   - [ ] Numerical variation principles described (no fixed values)
-   - [ ] Aligned with official curriculum
+### 4. Create Frontmatter
 
-7. **Save and Validate**
-   - Save to `packages/content/subjects/{subject}/official/grade{X}-{id}.md`
-   - Run `bun run validate:prompts` to check schema
+- Use strict YAML format (Part A)
+- Populate with curriculum-aligned data
+- Ensure all required fields present
 
-8. **Add Translations**
-   - List all language directories: `packages/frontend/public/locales/*/subjects/`
-   - Read existing translation structure from any language file to understand format
-   - Add concept entry to **ALL** language files: `packages/frontend/public/locales/*/subjects/{subject}.json`
-   - Entry format (use concept `id` from frontmatter as key):
-     ```json
-     "concepts": {
-       "{id}": {
-         "name": "Concept Name (translated to language)",
-         "description": "Concept description (translated to language)"
-       }
-     }
-     ```
-   - Translate `name` and `description` to the appropriate language for each file (en → English, de → German, etc.)
-   - Preserve existing JSON structure and formatting
-   - Alphabetically sort concept keys within the file
+### 5. Write Creative Prompt (DRAFT)
 
-9. **Review and Iterate**
-   - **Dispatch review subagent**: Use Task tool to launch review-concept skill
-     - Provide concept file path to reviewer
-     - Wait for review feedback
-   - **If FAIL**: Fix issues identified by reviewer, re-validate, and re-submit for review
-   - **Iterate until PASS**: Continue fixing and re-reviewing until approved
-   - Only proceed when reviewer says "APPROVED - ready to merge"
+- Apply Part B guidelines (describe, don't demonstrate)
+- Specify 7-10 problem structures
+- Include age/difficulty scaffolding
+- Target 400-800 words
+- Align with curriculum objectives
 
-## Key Reminders
+### 6. **TEST PHASE: Generate Sample Tasks (MANDATORY)**
 
-- **Frontmatter = STRICT** (machine-parsable schema)
-- **Content = CREATIVE** (maximize variety)
-- **Never provide code examples** (describe what to create)
-- **Vary across 4 dimensions** (structure, numbers, age, difficulty)
-- **Context variety** handled by backend variation system (don't duplicate)
-- **Curriculum research** is MANDATORY (not optional)
-- **Think like curriculum designer** (educational progression)
-- **Validate before committing** (backend schema check)
+**Use test-concept skill** to generate 5 real tasks and analyze patterns:
+
+```
+Use Task tool to launch test-concept skill with concept file path
+```
+
+The test-concept skill will:
+- Generate 5 tasks (2 easy, 2 medium, 1 hard)
+- Analyze for repetitive patterns
+- Return PASS/FAIL with specific issues
+
+**If FAIL:**
+1. Review issues identified by test-concept
+2. Refine concept (remove examples, broaden variation, etc.)
+3. Re-run test-concept
+4. Iterate until PASS
+
+**Common fixes:**
+- Repetitive numbers → Remove specific values, describe principles
+- Repetitive scenarios → List 8-10 diverse contexts
+- Code duplication → Remove ALL example code (CARDINAL RULE violation)
+- Limited structures → List 7-10 distinct problem types
+
+### 7. REFACTOR: Compress for Efficiency
+
+After test passes:
+- Check word count: `wc -w filename.md`
+- If >800 words: compress using Part C techniques
+- Target 400-800 words
+- Re-validate still passes tests
+
+### 8. Save and Validate
+
+- Save to `packages/content/subjects/{subject}/official/grade{X}-{id}.md`
+- Run: `docker compose exec backend-dev bun run check:concept {subject}/{concept-name}`
+- Fix any schema/filename issues
+
+### 9. Add Translations
+
+- List languages: `packages/frontend/public/locales/*/subjects/`
+- Add to ALL language files: `packages/frontend/public/locales/*/subjects/{subject}.json`
+- Format:
+  ```json
+  "concepts": {
+    "{id}": {
+      "name": "Translated name",
+      "description": "Translated description"
+    }
+  }
+  ```
+- Alphabetically sort concept keys
+
+### 10. Review and Iterate
+
+- Use Task tool to launch review-concept skill
+- Provide concept file path
+- **If FAIL:** Fix issues, re-validate, re-review
+- Iterate until PASS ("APPROVED - ready to merge")
+
+## Red Flags - Stop If You Think:
+
+- "Just one small example won't hurt" → Zero examples means zero
+- "I'll test later" → Testing is mandatory (step 6)
+- "This is too simple to need testing" → Patterns emerge in simple concepts too
+- "Tests will probably pass" → Actually run them
+- "Concept looks good to me" → Your opinion is subjective, tests are objective
+- "I can skip research for this topic" → Research is MANDATORY
+- "The variation system doesn't cover X" → Improve variation system, don't duplicate
 
 ## Success Criteria
 
 A successful concept:
-1. ✅ Passes `bun run validate:prompts`
-2. ✅ Based on official curriculum standards research
-3. ✅ Contains zero code examples
-4. ✅ Specifies 5-10 problem structures
-5. ✅ Describes numerical variation principles (no fixed examples)
-6. ✅ Has clear age/difficulty scaffolding
-7. ✅ Provides variation guidance for all parameters
-8. ✅ Translations added to all language files with proper translations
-9. ✅ Approved by review-concept subagent (no outstanding issues)
+1. ✅ Passes test-concept (no repetitive patterns in generated tasks)
+2. ✅ Passes check:concept validation (schema, CARDINAL RULE, structure count, word count)
+3. ✅ Based on official curriculum research
+4. ✅ Describes numerical variation principles (no fixed examples)
+5. ✅ Approved by review-concept subagent
+6. ✅ Within 400-800 words (max 1,200)

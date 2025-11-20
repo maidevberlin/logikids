@@ -49,7 +49,12 @@ If you didn't use Read tool to load both files, you are violating this skill. St
 
 **Use Bash tool to run automated checker:**
 ```bash
-cd packages/backend && bun run check:concept ../../packages/content/subjects/{subject}/official/{filename}.md
+docker compose exec backend-dev bun run check:concept {subject}/{concept-name}
+```
+
+Example:
+```bash
+docker compose exec backend-dev bun run check:concept math/grade5-fractions
 ```
 
 This runs comprehensive validation covering schema, filename, CARDINAL RULE, structure count, templates, and translations.
@@ -58,32 +63,21 @@ This runs comprehensive validation covering schema, filename, CARDINAL RULE, str
 
 If you didn't run this command, you are violating this skill. Stop and run it now.
 
-### Step 3: Structured Review
+### Step 3: Review Validation Output
 
-Check against generate-concept Quality Check (line 200-208):
+The `check:concept` command (Step 2) automatically validates:
+- ✅ Schema (frontmatter fields and types)
+- ✅ Filename pattern (grade{X}-{name}.md)
+- ✅ CARDINAL RULE (no code examples - including in problem descriptions)
+- ✅ Problem structure count (5-10 required)
+- ✅ Template variables ({{age}}, {{difficulty}} - these are CORRECT syntax)
+- ✅ Word count (400-800 optimal, max 1,200)
+- ✅ Translations (all languages, proper format)
 
-**Frontmatter (Part A):**
-- [ ] **FILENAME** follows pattern `grade{X}-{concept-name}.md` where X matches the `grade` field in frontmatter (e.g., `grade5-fractions.md` for grade: 5)
-- [ ] Schema validation passes - the schema is STRICT and rejects unrecognized fields
-- [ ] All required fields present (see schema at `packages/backend/src/prompts/schemas.ts`)
-- [ ] No invalid fields (translations belong in separate JSON files, not frontmatter)
-
-**Content (Part B):**
-- [ ] NO code examples (no SVG snippets, no LaTeX formulas, no numerical values to copy)
-- [ ] 5-10 problem structures described (NOT 3, NOT "add more variety")
-- [ ] Age scaffolding with `{{age}}` template variable (this is CORRECT syntax, not a problem)
-- [ ] Difficulty scaling with `{{difficulty}}` template variable
-- [ ] Numerical variation PRINCIPLES described, not specific values
-
-**Curriculum Research (Process):**
-- [ ] Evidence of official curriculum standards research (step 2 of generate-concept Process)
-- [ ] Learning objectives aligned with curriculum documents
-
-**Translations:**
-- [ ] Translation files updated in ALL language directories: `packages/frontend/public/locales/*/subjects/{subject}.json`
-- [ ] Each file contains `concepts.{id}` with `name` and `description`
-- [ ] Translations are in the appropriate language (not all English)
-- [ ] Concept keys are alphabetically sorted
+**Your manual review focuses on:**
+- [ ] Curriculum research documented (not checked by validator)
+- [ ] Numerical variation principles (not specific values)
+- [ ] Content quality and alignment with curriculum
 
 ### Step 4: Provide Structured Feedback
 
@@ -92,48 +86,32 @@ Use this format:
 ```markdown
 ## Review: [PASS / FAIL]
 
-### Schema Validation
-[Output from bun run validate:prompts]
+### Automated Validation
+[Paste check:concept output here]
 
-### Rule Compliance
-
-**Filename Convention:**
-- Actual: [filename]
-- Expected: grade{X}-{concept-name}.md (where X = grade field value)
-- Status: [PASS / FAIL]
-- Fix: [Rename file to match pattern per generate-concept line 211]
-
-**CARDINAL RULE (No Example Code):**
-- Status: [PASS / FAIL]
-- Issues: [Specific violations with line numbers]
-- Fix: [Point to generate-concept lines 70-87]
-
-**Problem Structure Variety:**
-- Count: [X problem structures found]
-- Required: 5-10
-- Status: [PASS / FAIL]
-- Fix: [Add Y more distinct problem structures per generate-concept line 92-93]
+### Manual Review
 
 **Curriculum Research:**
 - Status: [PASS / FAIL]
 - Evidence: [Found / Missing]
-- Fix: [Must complete generate-concept Process step 2, lines 163-179]
+- Fix if needed: [Must research official curriculum - see generate-concept step 2]
 
-**Age Scaffolding:**
+**Numerical Variation:**
 - Status: [PASS / FAIL]
-- Issues: [Specific problems]
+- Issues: [Specific values that should be principles instead]
 
-**Difficulty Scaling:**
+**Content Quality:**
 - Status: [PASS / FAIL]
-- Issues: [Specific problems]
+- Issues: [Specific problems with alignment, clarity, etc.]
 
 ### Recommendation
 [APPROVE / REQUEST CHANGES / REJECT]
 
-### Required Actions
-1. [Specific action with file location/line number]
-2. [Specific action referencing generate-concept rule]
+### Required Actions (if any)
+1. [Specific action with reference to generate-concept rules]
 ```
+
+**Note:** Only include issues NOT caught by automated validation. Don't repeat what the validator already reported.
 
 ### Step 5: Iteration Protocol
 
@@ -170,7 +148,7 @@ Flagging `{{age}}` or `{{difficulty}}` as problems.
 **Fix:** These are REQUIRED syntax for age/difficulty scaffolding. See generate-concept lines 100-108.
 
 ### ❌ Skipping Validation
-Reviewing without running `bun run validate:prompts`.
+Reviewing without running `check:concept`.
 
 **Fix:** Run validation FIRST, every time.
 
@@ -197,6 +175,8 @@ Writing example sections like "Here's how the Problem Variations section should 
 | "Creator is senior/experienced, trust their work" | Review the work, not the person. Authority doesn't bypass validation. |
 | "Time pressure, need to approve quickly" | Broken concepts cost more time debugging. Review thoroughly. |
 | "I remember generate-concept rules" | Skills evolve. Load current version every time. |
+| "Word count is just over 800, close enough" | Length limits are strict. Over 800 = needs compression unless truly complex topic. |
+| "The extra content adds value" | After 800 words, additional content dilutes focus. Compress or reject. |
 
 **Red Flags - STOP if you catch yourself thinking:**
 - "I'll skip validation this once..."
@@ -213,11 +193,11 @@ Writing example sections like "Here's how the Problem Variations section should 
 ## Success Criteria
 
 A successful review:
-1. ✅ Ran `bun run validate:prompts` before providing feedback
+1. ✅ Ran `check:concept` before providing feedback (includes automated word count check)
 2. ✅ Loaded generate-concept skill to check current rules
 3. ✅ Verified filename follows `grade{X}-{concept-name}.md` pattern
 4. ✅ Provided structured feedback with specific line numbers
 5. ✅ Referenced generate-concept rules, not invented requirements
 6. ✅ Clear PASS/FAIL decision, not ambiguous "looks good but..."
 7. ✅ Enforced curriculum research requirement
-8. ✅ Caught CARDINAL RULE violations (example code)
+8. ✅ Caught CARDINAL RULE violations (example code including in problem descriptions)
