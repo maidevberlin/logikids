@@ -165,8 +165,13 @@
         "mental_math": "Kopfrechnen",
         "word_problems": "Textaufgaben",
         "fractions": "Brüche & Dezimalzahlen",
+        "introduction_fractions": "Einführung in Brüche",
+        "decimal_numbers": "Dezimalzahlen",
+        "percentages_basics": "Einführung in Prozentrechnung",
+        "ratios_proportions": "Verhältnisse und Proportionen",
         "geometry": "Geometrie",
-        "measurement": "Maße & Einheiten"
+        "measurement": "Maße & Einheiten",
+        "grade6-percentages-basics": "Einführung in Prozentrechnung"
       }
     },
     "logic": {

@@ -165,8 +165,13 @@
         "mental_math": "Mental Math",
         "word_problems": "Word Problems",
         "fractions": "Fractions & Decimals",
+        "introduction_fractions": "Introduction to Fractions",
+        "percentages_basics": "Introduction to Percentages",
+        "ratios_proportions": "Ratios and Proportions",
+        "decimal_numbers": "Decimal Numbers",
         "geometry": "Geometry",
-        "measurement": "Measurement & Units"
+        "measurement": "Measurement & Units",
+        "grade6-percentages-basics": "Introduction to Percentages"
       }
     },
     "logic": {
