@@ -20,6 +20,10 @@
       "name": "Zahlbegriffsentwicklung",
       "description": "Zahlen von 1 bis 20 verstehen, vorwärts und rückwärts zählen, Zahlen vergleichen und ordnen"
     },
+    "grade1-patterns-and-structures": {
+      "name": "Muster und Strukturen",
+      "description": "Muster mit Formen, Farben und Zahlen erkennen, fortsetzen und erstellen"
+    },
     "grade2-introduction-to-multiplication-and-division": {
       "name": "Einführung in Multiplikation und Division",
       "description": "Multiplikation als wiederholte Addition und Division als Aufteilen und Verteilen verstehen, mit dem kleinen Einmaleins der 2, 5 und 10"
@@ -91,6 +95,98 @@
     "grade4-written-multiplication-and-division": {
       "name": "Schriftliche Multiplikation und Division",
       "description": "Standardverfahren zum Multiplizieren und Dividieren mehrstelliger Zahlen mit Überschlagsrechnung und Restinterpretation"
+    },
+    "data-collection-charts": {
+      "name": "Datenerfassung und Diagramme",
+      "description": "Daten sammeln, organisieren und mit Tabellen, Balkendiagrammen, Piktogrammen und Liniendiagrammen darstellen"
+    },
+    "divisibility-prime-numbers": {
+      "name": "Teilbarkeit und Primzahlen",
+      "description": "Teilbarkeitsregeln verstehen, Primzahlen und zusammengesetzte Zahlen unterscheiden und mit Faktoren arbeiten"
+    },
+    "volume-capacity": {
+      "name": "Volumen und Rauminhalt",
+      "description": "Einführung in dreidimensionale Messung, Volumenberechnung von Quadern, Umrechnung zwischen Volumen- und Hohlmaßeinheiten, praktische Probleme lösen"
+    },
+    "angle-relationships": {
+      "name": "Winkelbeziehungen",
+      "description": "Verständnis von Winkeltypen, komplementären und supplementären Winkeln, Scheitelwinkeln und Winkelbeziehungen durch parallele Linien und Transversalen"
+    },
+    "area-perimeter": {
+      "name": "Flächeninhalt und Umfang",
+      "description": "Umfang und Flächeninhalt von Rechtecken und Quadraten berechnen, Einheiten verstehen, zwischen Flächeneinheiten umrechnen, praktische Probleme lösen"
+    },
+    "geometric-shapes-2d": {
+      "name": "Ebene geometrische Figuren",
+      "description": "Eigenschaften und Klassifizierung grundlegender ebener Figuren wie Dreiecke, Vierecke und Kreise, Symmetrie und geometrische Konstruktionen"
+    },
+    "measurement-units": {
+      "name": "Größen und Maßeinheiten",
+      "description": "Arbeiten mit Standardmaßeinheiten für Länge, Masse, Zeit und Geld einschließlich Umwandlungen und praktischer Anwendungen"
+    },
+    "natural-numbers-operations": {
+      "name": "Natürliche Zahlen und Grundrechenarten",
+      "description": "Einführung in das natürliche Zahlensystem, Stellenwertverständnis bis zur Million und Beherrschung der vier Grundrechenarten mit zunehmend großen Zahlen"
+    },
+    "fraction-operations": {
+      "name": "Bruchrechnung",
+      "description": "Umfassende Brucharbeit einschließlich Erweitern, Kürzen, Umwandeln und alle vier Grundrechenarten mit Brüchen"
+    },
+    "integers-negative-numbers": {
+      "name": "Ganze Zahlen und negative Zahlen",
+      "description": "Erweiterung des Zahlensystems auf negative Zahlen, Verständnis des Betragswerts und Operationen mit positiven und negativen Zahlen"
+    },
+    "rational-numbers": {
+      "name": "Rationale Zahlen",
+      "description": "Verständnis des Zahlensystems der rationalen Zahlen (ℚ), Operationen mit positiven und negativen Brüchen und Dezimalzahlen, flexible Umwandlungen und komplexe Problemlösungen"
+    },
+    "probability-basics": {
+      "name": "Einführung in Wahrscheinlichkeit",
+      "description": "Wahrscheinlichkeit als Maß für Wahrscheinlichkeit verstehen, experimentelle und theoretische Wahrscheinlichkeit erkunden und einfache Wahrscheinlichkeiten berechnen"
+    },
+    "area-complex-shapes": {
+      "name": "Flächenberechnung zusammengesetzter Figuren",
+      "description": "Berechnung von Flächen von Dreiecken, Parallelogrammen, Trapezen und zusammengesetzten Figuren durch Zerlegung und Formelanwendung, Lösung mehrstufiger Aufgaben und Überprüfung von Berechnungen"
+    },
+    "circle-geometry": {
+      "name": "Kreis und Kreisberechnungen",
+      "description": "Kreisterminologie, Umfangsberechnung (U=πd), Flächenberechnung (A=πr²) und Lösen von realen Problemen mit Kreisen"
+    },
+    "congruence-similarity-intro": {
+      "name": "Kongruenz und Ähnlichkeit",
+      "description": "Kongruenzbedingungen (SSS, SAS, ASA, AAS) erkunden, Ähnlichkeitskonzepte verstehen, Skalenfaktoren berechnen und auf Landkarten und Maßstabzeichnungen anwenden"
+    },
+    "triangles-quadrilaterals": {
+      "name": "Dreiecke und Vierecke",
+      "description": "Vertieftes Studium der Eigenschaften von Dreiecken und Vierecken, Klassifizierung nach Winkeln und Seiten, Winkelsummensätze, Kongruenz und Konstruktionstechniken"
+    },
+    "surface-area-volume": {
+      "name": "Oberfläche und Volumen von Körpern",
+      "description": "Umfassendes Verständnis von Oberfläche und Volumen dreidimensionaler Körper wie Prismen und Zylinder, Berechnung mit Formeln, Arbeit mit Netzen und Lösung praktischer Aufgaben"
+    },
+    "linear-equations": {
+      "name": "Lineare Gleichungen",
+      "description": "Lösen linearer Gleichungen mit einer Variablen, einschließlich Einstufiger Gleichungen, zweistufiger Gleichungen, Variablen auf beiden Seiten und Textaufgaben"
+    },
+    "coordinate-system-advanced": {
+      "name": "Koordinatensystem und lineare Funktionen",
+      "description": "Beherrschung des Koordinatensystems in allen vier Quadranten, Graphen linearer Beziehungen, Verständnis von Steigung und y-Achsenabschnitt, Graphen von realen Situationen erstellen, Abstände berechnen"
+    },
+    "inequalities": {
+      "name": "Lineare Ungleichungen",
+      "description": "Verständnis der Ungleichungsnotation, Lösen einfacher Ungleichungen, Darstellung von Lösungsmengen auf Zahlenstrahlen und Arbeit mit Lösungsmengen"
+    },
+    "proportional-relationships": {
+      "name": "Proportionale und antiproportionale Zuordnungen",
+      "description": "Direkte Proportionalität (y=kx) und inverse Proportionalität (y=k/x), Bestimmung der Proportionalitätskonstanten, Anwendung des Dreisatzes, Erstellen und Interpretieren von Graphen"
+    },
+    "terms-algebraic-expressions": {
+      "name": "Terme und algebraische Ausdrücke",
+      "description": "Verständnis von Variablen, Schreiben und Interpretieren von algebraischen Ausdrücken, Vereinfachung von Termen mit dem Distributivgesetz und Auswertung von Ausdrücken mit gegebenen Werten"
+    },
+    "statistics-interpretation": {
+      "name": "Datenauswertung und Statistik",
+      "description": "Verständnis von Lagemaßen, Datenanalyse und statistisches Denken mit realen Anwendungen"
     }
   }
 }
