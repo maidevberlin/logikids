@@ -47,10 +47,12 @@ If you didn't use Read tool to load both files, you are violating this skill. St
 
 ### Step 2: Run Validation (MANDATORY)
 
-**Use Bash tool to run:**
+**Use Bash tool to run automated checker:**
 ```bash
-cd packages/backend && bun run validate:prompts
+cd packages/backend && bun run check:concept ../../packages/content/subjects/{subject}/official/{filename}.md
 ```
+
+This runs comprehensive validation covering schema, filename, CARDINAL RULE, structure count, templates, and translations.
 
 **Include the output in your review.**
 
@@ -61,6 +63,7 @@ If you didn't run this command, you are violating this skill. Stop and run it no
 Check against generate-concept Quality Check (line 200-208):
 
 **Frontmatter (Part A):**
+- [ ] **FILENAME** follows pattern `grade{X}-{concept-name}.md` where X matches the `grade` field in frontmatter (e.g., `grade5-fractions.md` for grade: 5)
 - [ ] Valid YAML with all required fields (id, name, description, grade, ages, focus, difficulty, learning_objectives)
 - [ ] `id` is kebab-case, no spaces/uppercase/special chars except hyphens
 - [ ] `grade` is integer 1-13
@@ -95,6 +98,12 @@ Use this format:
 [Output from bun run validate:prompts]
 
 ### Rule Compliance
+
+**Filename Convention:**
+- Actual: [filename]
+- Expected: grade{X}-{concept-name}.md (where X = grade field value)
+- Status: [PASS / FAIL]
+- Fix: [Rename file to match pattern per generate-concept line 211]
 
 **CARDINAL RULE (No Example Code):**
 - Status: [PASS / FAIL]
@@ -208,8 +217,9 @@ Writing example sections like "Here's how the Problem Variations section should 
 A successful review:
 1. ✅ Ran `bun run validate:prompts` before providing feedback
 2. ✅ Loaded generate-concept skill to check current rules
-3. ✅ Provided structured feedback with specific line numbers
-4. ✅ Referenced generate-concept rules, not invented requirements
-5. ✅ Clear PASS/FAIL decision, not ambiguous "looks good but..."
-6. ✅ Enforced curriculum research requirement
-7. ✅ Caught CARDINAL RULE violations (example code)
+3. ✅ Verified filename follows `grade{X}-{concept-name}.md` pattern
+4. ✅ Provided structured feedback with specific line numbers
+5. ✅ Referenced generate-concept rules, not invented requirements
+6. ✅ Clear PASS/FAIL decision, not ambiguous "looks good but..."
+7. ✅ Enforced curriculum research requirement
+8. ✅ Caught CARDINAL RULE violations (example code)
