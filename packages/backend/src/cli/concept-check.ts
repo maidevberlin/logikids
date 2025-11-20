@@ -106,10 +106,9 @@ function checkContent(content: string): CheckResult {
     { regex: /\$\$/, description: 'LaTeX delimiter ($$) detected' },
     { regex: /\\\[/, description: 'LaTeX delimiter (\\[) detected' },
     { regex: /\\\]/, description: 'LaTeX delimiter (\\]) detected' },
-    // Match actual equations with = or operations with spaces, avoid ranges like "4-6"
-    { regex: /\b\d+\s*[+*/]\s*\d+/, description: 'Numerical example detected' },
-    { regex: /\b\d+\s*=\s*\d+/, description: 'Numerical example detected' },
-    { regex: /"\d+\/\d+/, description: 'Fraction example detected' },
+    // Match actual equations with = or operations (excluding division for fraction notation)
+    { regex: /\b\d+\s*[+*]\s*\d+/, description: 'Numerical example detected' },
+    { regex: /\b\d+\s*=\s*\d+/, description: 'Numerical equation detected' },
   ];
 
   lines.forEach((line, idx) => {
