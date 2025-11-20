@@ -24,7 +24,8 @@
     "migrate": "bun database/migrate.ts",
     "validate:prompts": "bun src/cli/validate-prompts.ts",
     "test:prompt": "bun src/cli/test-prompt.ts",
-    "check:concept": "bun src/cli/concept-check.ts"
+    "check:concept": "bun src/cli/concept-check.ts",
+    "check:subject": "bun src/cli/check-subject-concepts.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
