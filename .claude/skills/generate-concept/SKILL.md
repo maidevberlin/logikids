@@ -61,111 +61,49 @@ From curriculum research:
 - Target 400-800 words (see concept-rules.md § Length Requirements)
 - Align with curriculum objectives
 
-### 6. **TEST PHASE: Generate Sample Tasks (MANDATORY)**
+### 6. Save and Validate (MANDATORY)
 
-**Use test-concept skill** to generate 5 real tasks and analyze patterns:
+**Save concept file:**
+- Save to `packages/content/subjects/{subject}/official/grade{X}-{id}.md`
+- Filename must match pattern (see concept-rules.md § Filename Pattern)
 
+**Run automated validation:**
+```bash
+docker compose exec backend-dev bun run check:concept {subject}/{concept-name}
 ```
-Use Task tool to launch test-concept skill with concept file path
-```
 
-The test-concept skill will:
-- Generate 5 tasks (2 easy, 2 medium, 1 hard)
-- Analyze for repetitive patterns
-- Return PASS/FAIL with specific issues
+Fix any issues reported before proceeding.
 
-**If FAIL:**
-1. Review issues identified by test-concept
-2. Refine concept (remove examples, broaden variation, etc.)
-3. Re-run test-concept
-4. Iterate until PASS
+### 7. Compress for Efficiency
 
-**Common fixes:**
-- Duplicate solutions → Add "each task must have different answer" with examples
-- Repetitive scenarios → List 8-10 diverse contexts
-- Code duplication → Remove ALL example code (CARDINAL RULE violation)
-- Limited structures → List 7-10 distinct problem types
-- Note: Same number appearing repeatedly is FINE as long as solutions differ
-
-### 7. REFACTOR: Compress for Efficiency
-
-After test passes:
+After validation passes:
 - Check word count: `wc -w filename.md`
 - If >800 words: compress using concept-rules.md § Length Requirements techniques
 - Target 400-800 words
-- Re-validate still passes tests
+- Re-run validation after compression
 
-### 8. Save and Validate
-
-- Save to `packages/content/subjects/{subject}/official/grade{X}-{id}.md` (see concept-rules.md § Filename Pattern)
-- Run: `docker compose exec backend-dev bun run check:concept {subject}/{concept-name}`
-- Fix any schema/filename issues
-
-### 9. Add Translations
+### 8. Add Translations
 
 - See concept-rules.md § Translation Requirements for format
 - List languages: `packages/frontend/public/locales/*/subjects/`
 - Add to ALL language files: `packages/frontend/public/locales/*/subjects/{subject}.json`
 - Alphabetically sort concept keys
 
-### 10. Review and Iterate
+### 9. Submit for Review
 
 - Use Task tool to launch review-concept skill
 - Provide concept file path
-- **If FAIL:** Fix issues, re-validate, re-review
+- Review will include automated validation + task generation testing
+- **If FAIL:** Fix issues and re-submit for review
 - Iterate until PASS ("APPROVED - ready to merge")
-
-## Lessons from Testing (Real-World Findings)
-
-### Persistent AI Biases
-- **Favorite numbers**: AI strongly prefers 5, 10, 13, and round numbers (especially 9 for "making 10" strategy)
-- **Teen number bias**: 13 appears in 80%+ of tasks if not explicitly warned against
-- **Duplicate solutions**: Even with explicit examples, AI may generate identical problems with same solutions (~20% rate)
-  - **IMPORTANT**: Reusing numbers is FINE (e.g., 9 in multiple tasks) as long as solutions differ
-  - **PROBLEM**: Same calculation → same answer (e.g., 9+6=15 appearing twice)
-- **Pattern lock-in**: Once AI picks a structure (e.g., "5+5+3"), it tends to reuse it
-
-### What Works
-- ✅ **Explicit objective coverage section** at top of concept (not buried)
-- ✅ **Concrete examples** of good vs bad variation (show actual problems and solutions)
-- ✅ **Problem type rotation instruction** ("Do NOT repeat same structure")
-- ✅ **"Avoid duplicate SOLUTIONS" not "duplicate numbers"** - focus on final answers
-- ✅ **2-3 testing iterations** find most issues (diminishing returns after)
-- ✅ **Version tracking** in frontmatter documents refinement history
-
-### What Doesn't Work
-- ❌ Burying critical instructions deep in long concepts
-- ❌ Assuming warnings prevent all duplicates (AI limitation)
-- ❌ Over-specifying structures (e.g., "rows of 5 or 10" → AI overuses)
-- ❌ Testing more than 3 times (marginal gains, high cost)
-- ❌ Expecting perfect adherence to numerical variation (accept ~13% duplicate rate)
-
-### Acceptable Thresholds
-Based on real testing:
-- **Learning objective coverage**: Aim for 50%+ of objectives (3+/6 is good)
-- **Duplicate solutions**: <20% rate acceptable (backend can filter)
-- **Number repetition**: ACCEPTABLE - it's fine if same number appears in multiple tasks (e.g., 9 in 5/5 tasks is okay)
-  - What matters: solutions must differ (9+4=13, 9-4=5, 9+?=17 all okay)
-- **Problem structures**: 3+ distinct types minimum, 5+ optimal
-
-### When to Stop Iterating
-Stop refining when:
-- Core issue (e.g., poor objective coverage) is solved
-- 2-3 iterations show diminishing returns
-- Remaining issues are AI limitations (not prompt issues)
-- Cost/benefit ratio becomes unfavorable
-- **Accept "good enough"** - perfection is unattainable
 
 ## Red Flags - Stop If You Think:
 
 - "Just one small example won't hurt" → Zero examples means zero
-- "I'll test later" → Testing is mandatory (step 6)
-- "This is too simple to need testing" → Patterns emerge in simple concepts too
-- "Tests will probably pass" → Actually run them
-- "Concept looks good to me" → Your opinion is subjective, tests are objective
+- "I'll skip validation" → Validation is mandatory (step 6)
+- "Concept looks good to me" → Submit for review-concept skill (includes task generation testing)
 - "I can skip research for this topic" → Research is MANDATORY
 - "The variation system doesn't cover X" → Improve variation system, don't duplicate
-- "One more iteration will fix everything" → Accept good enough after 2-3 rounds
 
 ## Success Criteria
 

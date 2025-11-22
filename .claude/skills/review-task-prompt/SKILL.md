@@ -5,12 +5,25 @@ description: Analyze full composed prompts for structural issues and test task g
 
 # Review Task Prompt Architecture
 
+## Prerequisites
+
+**REQUIRED READING:** Load `.claude/docs/task-prompt-rules.md` for complete requirements.
+
+This skill provides the REVIEW PROCESS. The rules document provides REQUIREMENTS.
+
+**Load task-prompt-rules.md NOW using Read tool before proceeding.**
+
+**Additional requirements:**
+- Concept file exists and passes `check:concept` validation
+- Backend is running
+- AI provider is configured
+
 ## Overview
 
-This skill performs a comprehensive review of the entire prompt composition system by:
-1. **Structural Analysis**: Examining the full composed prompt for repetition, missing instructions, and proper hierarchy
-2. **Task Generation Testing**: Using the test-concept skill to validate actual task quality
-3. **Root Cause Tracing**: Identifying which file/level needs changes to fix issues
+This skill performs comprehensive review of prompt composition by:
+1. **Structural Analysis**: Examining hierarchy, repetition, and proper separation of concerns (see task-prompt-rules.md)
+2. **Task Generation Testing**: Validating actual task quality via test-concept skill
+3. **Root Cause Tracing**: Identifying which file/level needs changes
 
 **Use this skill when:**
 - Creating or refining concept files
@@ -18,11 +31,11 @@ This skill performs a comprehensive review of the entire prompt composition syst
 - Validating prompt architecture changes
 - Debugging learning objective coverage issues
 
-## Prerequisites
+## Note on Task Generation Testing
 
-- Concept file exists and passes `check:concept` validation
-- Backend is running
-- AI provider is configured
+**IMPORTANT**: This skill performs task generation testing directly via Bash commands rather than spawning the test-concept skill.
+
+**Why?** Claude Code intentionally blocks recursive agent spawning (subagents cannot spawn other subagents). We execute the task generation logic directly using Bash.
 
 ## Process
 
@@ -47,134 +60,65 @@ Save output to analyze.
 
 ### Step 3: Structural Analysis
 
-Analyze the composed prompt for these issues:
+Analyze the composed prompt using criteria from task-prompt-rules.md § Quality Criteria.
 
-#### A. Learning Objective Instructions
+Run all 4 checks (see task-prompt-rules.md § Validation Process):
 
-**Check 1: Are learning objectives listed?**
-- Search for the objectives in the prompt
-- Should appear in "## Learning objectives" section or similar
+**A1. Learning Objective Instructions**
+- Check if objectives listed
+- Check instruction on HOW to cover them
+- Verify instruction at base/subject level (not concept)
 
-**Check 2: Is there instruction on HOW to use them?**
-- Look for phrases like:
-  - "Rotate through different objectives"
-  - "Target ALL objectives"
-  - "Ensure variety by including"
-  - "Do not focus on only one/two objectives"
+**A2. Repetition Detection**
+- Search for 50+ word blocks repeated across levels
+- Identify common repetitions (numerical variation, structure rotation, etc.)
 
-**Check 3: Where does the instruction appear?**
-- ❌ **BAD**: Only in concept-specific section (repetitive across concepts)
-- ✅ **GOOD**: In base-prompt or subject-level template (applies to all concepts)
+**A3. Instruction Hierarchy**
+- Validate each level contains only appropriate content
+- Check for generic/subject instructions misplaced in concept
 
-**Issue Detection:**
-- ❌ **FAIL**: Objectives listed but no instruction on coverage
-- ⚠️ **WARNING**: Instruction appears in concept (should be at base level)
-- ✅ **PASS**: Clear instruction at base/subject level
+**A4. Token Efficiency**
+- Count words in each section
+- Verify concept 400-800 words (max 1,200)
+- Check total prompt <4,000 words
 
-#### B. Repetition Detection
-
-**Check for repeated instruction blocks between:**
-- Base prompt and concept
-- Subject template and concept
-- Variations template and concept
-
-**Common repetitions to detect:**
-- Numerical variation principles (should be at subject level for math)
-- Problem structure rotation (should be at base level)
-- Language/phrasing variety (should be at variations level)
-
-**Issue Detection:**
-- ❌ **FAIL**: 50+ word blocks repeated between levels
-- ⚠️ **WARNING**: Similar instructions at multiple levels
-- ✅ **PASS**: Each level has distinct, non-overlapping content
-
-#### C. Instruction Hierarchy Check
-
-Validate proper separation of concerns:
-
-**Base Prompt Level** (`base-prompt.md`):
-- Generic task creation rules (all subjects)
-- Format guidelines (LaTeX, SVG, markdown)
-- Task vs solution separation
-- Learning objective rotation (GENERIC instruction)
-
-**Variations Level** (`variations.md`):
-- Scenario context
-- Language style
-- Enrichments (character, temporal, etc.)
-
-**Subject Level** (e.g., `math/base.md`):
-- Subject-specific content types
-- Subject-specific task variation principles
-- Numerical variation (for math)
-
-**Task Type Level** (e.g., `singleChoice.md`):
-- Task type schema
-- Option creation guidelines
-- Distractor quality rules
-
-**Concept Level** (e.g., `grade1-patterns-and-structures.md`):
-- ONLY concept-specific guidance
-- What makes THIS concept unique
-- Specific problem types for THIS concept
-- Common misconceptions for THIS concept
-
-**Issue Detection:**
-- ❌ **FAIL**: Generic instructions at concept level
-- ⚠️ **WARNING**: Subject-specific instructions at concept level
-- ✅ **PASS**: Clear separation of concerns
-
-#### D. Token Efficiency
-
-Measure prompt sections:
-
-```bash
-# Count words in each section
-wc -w base-prompt.md
-wc -w variations.md
-wc -w [subject-base].md
-wc -w [concept-file].md
-```
-
-**Issue Detection:**
-- ❌ **FAIL**: Concept >1200 words (too verbose)
-- ⚠️ **WARNING**: Concept >800 words (consider compression)
-- ✅ **PASS**: Concept 400-800 words (optimal)
+**See task-prompt-rules.md for detailed criteria, examples, and pass/fail thresholds.**
 
 ### Step 4: Task Generation Quality Testing
 
-**CRITICAL: Run the test-concept skill to validate actual task quality.**
+**CRITICAL: Generate real tasks to validate actual task quality.**
 
-Use the Task tool to launch test-concept skill with the concept file path:
+Generate 5 tasks directly using Bash commands (run in parallel):
 
+```bash
+# Generate 5 tasks with varying difficulty
+bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=easy --language={language}
+bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=easy --language={language}
+bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=medium --language={language}
+bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=medium --language={language}
+bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=hard --language={language}
 ```
-Use Task tool with subagent_type='test-concept' to generate 5 tasks and analyze patterns
-```
 
-The test-concept skill will return:
-- Numerical repetition analysis
-- Language variety check
-- Code duplication detection
-- Problem structure variety
-- Learning objective alignment (this validates if the instructions work!)
+**Extract from each task output:**
+- Task title and description
+- Problem type/structure
+- Numbers or patterns used
+- Learning objectives targeted
 
-**Wait for test-concept to complete before proceeding.**
+**Analyze the 5 generated tasks for:**
+- **Numerical repetition**: Same numbers in 3+ tasks (≥40% = FAIL)
+- **Language variety**: Repeated phrases in 2+ tasks (FAIL)
+- **Code duplication**: Identical LaTeX/SVG (CARDINAL RULE violation)
+- **Problem structure variety**: Count unique problem types (need 4-5 for PASS)
+- **Learning objective alignment**: Which objectives tested (need 60-80% coverage)
+
+**Use parallel Bash calls** (5 calls in one message) for efficiency.
 
 ### Step 5: Combined Verdict
 
-Combine structural analysis and task generation results:
+Combine structural analysis and task generation results using criteria from task-prompt-rules.md § Pass/Fail Criteria.
 
-**PASS Criteria:**
-- ✅ Structural issues: 0 FAIL, ≤1 WARNING
-- ✅ Task generation: PASS from test-concept
-
-**REFINE Criteria:**
-- Structural issues: 1-2 FAILs OR 2+ WARNINGs
-- OR Task generation: FAIL from test-concept
-
-**FAIL Criteria:**
-- Structural issues: 3+ FAILs
-- AND Task generation: FAIL with <40% objective coverage
+**See task-prompt-rules.md for complete thresholds (PASS, REFINE, FAIL).**
 
 ### Step 6: Structured Feedback Report
 

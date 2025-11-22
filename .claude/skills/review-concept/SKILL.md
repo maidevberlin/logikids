@@ -98,13 +98,7 @@ docker compose exec backend-dev bun run generate:task --subject={subject} --conc
 docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType=singleChoice --grade={grade} --difficulty=hard --language=en --output=/tmp/task5.json
 ```
 
-**Read all 5 generated task files** and analyze for patterns (see concept-rules.md § Task Generation Quality Tests):
-
-1. **Numerical Repetition**: Same number in 3+ tasks = FAIL
-2. **Language Variety**: Exact phrase (5+ words) in 2+ tasks = FAIL
-3. **Code Duplication**: Identical LaTeX/SVG in 2+ tasks = FAIL (CARDINAL RULE violation)
-4. **Problem Structure Variety**: Same structure in 3+ tasks = FAIL
-5. **Learning Objective Alignment**: Any task not targeting objectives = FAIL
+**Read all 5 generated task files** and analyze for all 5 pattern types defined in concept-rules.md § Task Generation Quality Tests.
 
 **If you didn't generate and analyze tasks, you are violating this skill. Stop and do it now.**
 
@@ -117,7 +111,7 @@ After automated validation and task testing:
 - [ ] Numerical variation principles, not specific values (concept-rules.md § CARDINAL RULE)
 - [ ] Content quality and curriculum alignment
 
-### Step 6: Provide Structured Feedback
+### Step 5: Provide Structured Feedback
 
 Use this format:
 
@@ -183,12 +177,12 @@ Use this format:
 
 **Note:** Include ALL test results. Task generation testing is now mandatory.
 
-### Step 7: Iteration Protocol
+### Step 6: Iteration Protocol
 
 **If PASS (all tests pass):** Approve immediately. Say "APPROVED - ready to merge."
 
 **If FAIL:**
-1. Provide structured feedback (Step 6 format)
+1. Provide structured feedback (Step 5 format)
 2. Reference specific concept-rules.md sections
 3. If task generation failed: trace issues back to specific concept lines
 4. Wait for creator to fix

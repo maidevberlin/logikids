@@ -132,11 +132,10 @@ Examples:
 
 **MANDATORY**: All concepts must be based on official curriculum research.
 
-**Process:**
-1. Use WebSearch: `"[country/state] [subject] curriculum [grade]"`
-2. Find official education ministry/board documents
-3. Extract: learning objectives, age range, difficulty, standards
-4. Document in frontmatter `curriculum_research` field (optional but recommended)
+**Requirements:**
+- Must be based on official education ministry/board documents
+- Must extract: learning objectives, age range, difficulty, standards
+- Should document in frontmatter `curriculum_research` field (optional but recommended)
 
 **Quality gate**: Review process checks for documented curriculum alignment.
 
@@ -231,14 +230,10 @@ Stop refining when:
 
 ### Task Generation Testing
 
-**Command**: `bun run generate:task` (with appropriate parameters)
-
-**Process**:
-1. Generate 5 tasks (2 easy, 2 medium, 1 hard)
-2. Analyze for patterns using criteria above
-3. Return PASS/FAIL with specific issues
-4. If FAIL: refine concept and re-test
-5. Iterate until PASS
+**Requirements**:
+- Generate 5 tasks (2 easy, 2 medium, 1 hard)
+- Analyze for all 5 pattern types listed above
+- Must PASS all tests before approval
 
 ## Translation Requirements
 
