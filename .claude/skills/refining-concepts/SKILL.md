@@ -26,7 +26,7 @@ Educational concept files generate AI tasks for students. This skill provides a 
 
 ## The Issue Tracking System
 
-**Location:** `/Users/maik/Projects/logikids/docs/plans/concept-issues.json`
+**Location:** `.claude/skills/refining-concepts/concept-issues.json` (same directory as this skill)
 
 **Purpose:** Maintains current list of known issues with metadata for auto-pruning stale patterns.
 
@@ -56,8 +56,8 @@ Even when batch testing, complete steps 1-6 for concept A, then start step 1 for
 **BEFORE testing any concept:**
 
 ```bash
-# Read the current issue tracking data
-cat /Users/maik/Projects/logikids/docs/plans/concept-issues.json
+# Read the current issue tracking data (in same directory as this skill)
+cat .claude/skills/refining-concepts/concept-issues.json
 ```
 
 Review active issues (occurrences > 0) to know what to look for.
@@ -185,7 +185,7 @@ Update `/Users/maik/Projects/logikids/docs/plans/math-concepts-testing-plan.md`:
 
 | Task | Command/Action |
 |------|----------------|
-| Load issues | `cat docs/plans/concept-issues.json` |
+| Load issues | `cat .claude/skills/refining-concepts/concept-issues.json` |
 | Test concept | `npm run check-concept path/to/concept.md` |
 | Update issue (seen) | Increment occurrences, update last_seen, reset counter |
 | Update issue (not seen) | Increment total_tests_since_last_seen |
