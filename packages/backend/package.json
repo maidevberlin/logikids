@@ -22,10 +22,11 @@
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
     "migrate": "bun database/migrate.ts",
-    "validate:prompts": "bun src/cli/validate-prompts.ts",
     "test:prompt": "bun src/cli/test-prompt.ts",
-    "check:concept": "bun src/cli/concept-check.ts",
-    "check:subject": "bun src/cli/check-subject-concepts.ts"
+    "generate:task": "bun src/cli/generate-task.ts",
+    "check:concept": "bun src/cli/check-concept.ts",
+    "check:subject": "bun src/cli/check-subject.ts",
+    "check:prompts": "bun src/cli/check-prompts.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",

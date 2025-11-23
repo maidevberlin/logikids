@@ -11,6 +11,8 @@
     "skipLibCheck": true,
     "composite": true,
     "downlevelIteration": true,
-    "allowJs": true
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 } 
