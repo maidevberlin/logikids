@@ -71,37 +71,33 @@ This validates schema, filename, CARDINAL RULE, structure count, templates, word
 
 If you didn't run this command, you are violating this skill. Stop and run it now.
 
-### Step 3: Test Task Generation Quality (MANDATORY)
+### Step 3: RED-GREEN Task Generation Quality Test (MANDATORY)
 
-**Generate 5 real tasks to test for repetitive patterns:**
+**Use Skill tool to run test-concept skill:**
 
-Extract from concept frontmatter:
-- Subject (from file path)
-- Concept ID (from `id` field)
-- Grade (from `grade` field)
-
-Run these commands:
-
-```bash
-# Task 1: Easy
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType=singleChoice --grade={grade} --difficulty=easy --language=en --output=/tmp/task1.json
-
-# Task 2: Easy
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType=singleChoice --grade={grade} --difficulty=easy --language=en --output=/tmp/task2.json
-
-# Task 3: Medium
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType=singleChoice --grade={grade} --difficulty=medium --language=en --output=/tmp/task3.json
-
-# Task 4: Medium
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType=singleChoice --grade={grade} --difficulty=medium --language=en --output=/tmp/task4.json
-
-# Task 5: Hard
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType=singleChoice --grade={grade} --difficulty=hard --language=en --output=/tmp/task5.json
+```
+Skill(test-concept)
 ```
 
-**Read all 5 generated task files** and analyze for all 5 pattern types defined in concept-rules.md § Task Generation Quality Tests.
+**Provide to test-concept skill:**
+- Concept file path: `packages/content/subjects/{subject}/official/{filename}.md`
 
-**If you didn't generate and analyze tasks, you are violating this skill. Stop and do it now.**
+**The test-concept skill will:**
+1. Extract test parameters (subject, concept-id, grade)
+2. Generate 5 RED tasks (frontmatter-only baseline)
+3. Analyze RED tasks for 5 pattern types
+4. Generate 5 GREEN tasks (full concept)
+5. Analyze GREEN tasks for 5 pattern types
+6. Compare RED vs GREEN and provide verdict
+
+**Wait for test-concept skill to complete and return its structured report.**
+
+**Expected verdict:**
+- **PASS**: GREEN ≥ RED+2 (prompt adds significant value)
+- **MARGINAL**: GREEN = RED+1 (prompt adds minimal value)
+- **FAIL**: GREEN ≤ RED (prompt adds no value or is harmful)
+
+**If you didn't use Skill(test-concept), you are violating this skill. Stop and use it now.**
 
 ### Step 4: Manual Review
 
@@ -122,12 +118,19 @@ Use this format:
 ### Automated Validation
 [Paste check:concept output here]
 
-### Task Generation Quality Test
+### RED-GREEN Task Generation Quality Test
 
 **Test Parameters:**
 - Subject: {subject}
 - Concept: {concept-id} (Grade {grade})
-- Tasks Generated: 5 (2 easy, 2 medium, 1 hard)
+- Task Type: singleChoice
+- Language: en
+
+---
+
+#### RED Phase (Frontmatter Only - Baseline)
+
+**Tasks Generated**: 5 (2 easy, 2 medium, 1 hard)
 
 **Pattern Analysis:**
 
@@ -146,12 +149,68 @@ Use this format:
 5. **Learning Objective Alignment**: [PASS / FAIL]
    - [Map tasks to objectives]
 
-**Generated Tasks Summary:**
+**RED Score: X/5 checks passed**
+
+**RED Tasks Summary:**
 - Task 1 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
 - Task 2 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
 - Task 3 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
 - Task 4 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
 - Task 5 (Hard): {first 50 chars}... [Structure: X, Numbers: Y]
+
+---
+
+#### GREEN Phase (Full Concept - With Prompt Content)
+
+**Tasks Generated**: 5 (2 easy, 2 medium, 1 hard)
+
+**Pattern Analysis:**
+
+1. **Numerical Repetition**: [PASS / FAIL]
+   - [Details: which numbers repeated, frequency]
+
+2. **Language Variety**: [PASS / FAIL]
+   - [Details: repeated phrases found]
+
+3. **Code Duplication**: [PASS / FAIL]
+   - [Details: LaTeX/SVG analysis]
+
+4. **Problem Structure Variety**: [PASS / FAIL]
+   - [List structures: e.g., "Identification (3), Comparison (1), Application (1)"]
+
+5. **Learning Objective Alignment**: [PASS / FAIL]
+   - [Map tasks to objectives]
+
+**GREEN Score: Y/5 checks passed**
+
+**GREEN Tasks Summary:**
+- Task 1 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 2 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 3 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 4 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 5 (Hard): {first 50 chars}... [Structure: X, Numbers: Y]
+
+---
+
+#### Improvement Delta
+
+**Score Change**: RED {X}/5 → GREEN {Y}/5 (Δ = {Y-X})
+
+**Checks Improved (FAIL→PASS):**
+- [List which checks improved]
+
+**Checks Regressed (PASS→FAIL):**
+- [List any regressions, or "None"]
+
+**Verdict:**
+- [PASS] GREEN ≥ RED+2 (prompt adds significant value)
+- [MARGINAL] GREEN = RED+1 (prompt adds minimal value)
+- [FAIL] GREEN ≤ RED (prompt adds no value or is harmful)
+
+**Analysis:**
+[Explain what the prompt content contributed or failed to contribute]
+
+---
 
 ### Manual Review
 
@@ -173,10 +232,11 @@ Use this format:
 
 ### Required Actions (if any)
 1. [Specific action with reference to concept-rules.md]
-2. [If task generation failed: trace to concept lines that caused issues]
+2. [If RED-GREEN test failed: explain what prompt content needs to improve]
+3. [If task generation failed: trace to concept lines that caused issues]
 ```
 
-**Note:** Include ALL test results. Task generation testing is now mandatory.
+**Note:** Include ALL test results. RED-GREEN task generation testing is now mandatory.
 
 ### Step 6: Iteration Protocol
 
@@ -250,11 +310,16 @@ Writing example sections like "Here's how the Problem Variations section should 
 | "The extra content adds value" | After 800 words, additional content dilutes focus. Compress or reject. |
 | "Task generation testing is optional" | Testing is MANDATORY. No exceptions. |
 | "5 tasks aren't enough to judge" | Patterns emerge by task 3. 5 is sufficient. |
+| "RED-GREEN is overkill, just test GREEN" | Baseline proves prompt adds value. No baseline = no proof. |
+| "GREEN tasks look good, skip RED comparison" | Must compare. GREEN might be good but not better than frontmatter-only. |
+| "10 tasks cost too much, I'll just do 5" | 2x cost proves 2x value. Worth it. |
 
 **Red Flags - STOP if you catch yourself thinking:**
 - "I'll skip validation this once..."
 - "I'll skip loading files this once..."
 - "I'll skip task generation this once..."
+- "I'll skip RED phase, just test GREEN..."
+- "GREEN looks good, no need to compare to RED..."
 - "Let me write an example of how it should look..."
 - "I'll explain this in detail to help them understand..."
 - "Good enough to approve..."
@@ -263,7 +328,7 @@ Writing example sections like "Here's how the Problem Variations section should 
 - "Trust the creator's expertise..."
 - "Testing takes too long..."
 
-**All of these mean: Go back to Step 1. Load requirements. Run validation. Test tasks.**
+**All of these mean: Go back to Step 1. Load requirements. Run validation. Test RED and GREEN tasks.**
 
 ## Success Criteria
 
@@ -272,10 +337,13 @@ See concept-rules.md § Success Criteria Summary for complete requirements.
 A successful review:
 1. ✅ Loaded concept-rules.md before starting
 2. ✅ Ran `check:concept` automated validation
-3. ✅ Generated and analyzed 5 real tasks for quality patterns
-4. ✅ Verified filename follows `grade{X}-{concept-name}.md` pattern
-5. ✅ Provided structured feedback referencing concept-rules.md sections
-6. ✅ Clear PASS/FAIL decision with no ambiguity
-7. ✅ Enforced curriculum research requirement
-8. ✅ Caught CARDINAL RULE violations in both concept text and generated tasks
-9. ✅ All pattern analysis tests passed or issues clearly documented
+3. ✅ **Generated and analyzed 5 RED tasks (frontmatter-only baseline)**
+4. ✅ **Generated and analyzed 5 GREEN tasks (full concept)**
+5. ✅ **Compared RED vs GREEN scores and documented improvement delta**
+6. ✅ Verified filename follows `grade{X}-{concept-name}.md` pattern
+7. ✅ Provided structured feedback referencing concept-rules.md sections
+8. ✅ Clear PASS/FAIL decision with no ambiguity
+9. ✅ Enforced curriculum research requirement
+10. ✅ Caught CARDINAL RULE violations in both concept text and generated tasks
+11. ✅ All pattern analysis tests passed or issues clearly documented
+12. ✅ **Proved prompt content adds measurable value (GREEN ≥ RED+2)**

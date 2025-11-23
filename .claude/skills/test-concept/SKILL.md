@@ -1,451 +1,527 @@
 ---
 name: test-concept
-description: Use when testing educational concept files for task generation quality - generates real tasks via AI to detect repetitive patterns, validates variety and creativity before approval
+description: Test concept quality using RED-GREEN methodology - generates baseline tasks (frontmatter-only) and improved tasks (full concept) to prove prompt content adds measurable value
 ---
 
-# Test Concept Task Generation Quality
+# RED-GREEN Concept Testing
 
 ## Overview
 
-Generate 5 real tasks using a concept and analyze them for repetitive patterns, insufficient variety, and CARDINAL RULE violations. This skill validates that concept prompts produce high-quality, varied tasks.
+Apply TDD principles to concept validation: establish baseline quality (RED), test with full concept (GREEN), prove improvement.
 
-**Core principle:** A concept that passes schema validation might still produce boring, repetitive tasks. Only real task generation reveals quality.
+**Core principle:** Prompt content must show measurable improvement over frontmatter-only baseline, or it adds no value.
 
 ## When to Use
 
-Use this skill when:
-- Testing new concept files after creation
-- Validating concept changes/refinements
-- Part of concept generation workflow (mandatory step after draft)
-- Investigating why tasks feel repetitive
-- Before merging concept changes
+Use when:
+- Validating new concept files (part of generate-concept workflow)
+- Reviewing concept files (part of review-concept workflow)
+- Debugging repetitive task generation (does prompt help or hurt?)
+- Refining existing concepts (measure impact of changes)
 
 **DO NOT use for:**
-- Schema validation (use check:concept instead)
-- Reviewing frontmatter structure (use review-concept instead)
+- Schema validation (use `check:concept` script)
+- Curriculum research verification (use review-concept)
 
 ## Prerequisites
 
 **REQUIRED:**
-- Use Skill tool: `Skill(understand-execution-context)` - Understand whether you're main agent or subagent
-
-**Before running this skill:**
-- Concept file exists and passes `check:concept` validation
-- Backend is running (`docker compose up backend-dev`)
-- AI provider is configured (check `packages/backend/config.yaml`)
+1. Concept file must exist at valid path
+2. Backend must be running (`docker compose up backend-dev`)
+3. AI provider configured (`packages/backend/config.yaml`)
 
 ## The Quality Gate
 
 ```
-NO CONCEPT APPROVAL WITHOUT PASSING TASK GENERATION TEST
+NO CONCEPT APPROVAL WITHOUT PROVING:
+RED (baseline) → GREEN (with prompt) shows Δ ≥ +2 checks
 ```
 
-Schema validation proves structure. Task generation proves quality.
-
-**If concept produces repetitive tasks:** Refine concept and test again.
+Schema validation proves structure. RED-GREEN proves quality.
 
 ## Process
 
-### Step 1: Identify Test Parameters
+### Step 1: Extract Test Parameters
 
-Extract from concept frontmatter:
+**Read the concept file and extract:**
 - Subject (from file path: `subjects/{subject}/official/`)
 - Concept ID (from frontmatter `id` field)
 - Grade (from frontmatter `grade` field)
+- Learning objectives (from frontmatter `learning_objectives` array)
 
-Ask user for:
-- Task type to test (default: `singleChoice`)
-- Language (default: `en`)
+### Step 2: Create Frontmatter-Only Version
 
-### Step 2: Generate 5 Tasks with AI
-
-**CRITICAL:** Generate real tasks using AI, not just prompts.
-
-Run these commands to generate 5 tasks with varying difficulty:
+**Extract only frontmatter for RED baseline:**
 
 ```bash
-# Task 1: Easy, Age = grade+6
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=easy --language={language} --output=/tmp/task1.json
+# Get line number of second "---" (closing frontmatter tag)
+concept_file_path="{full-path-to-concept.md}"
+closing_line=$(grep -n "^---$" "$concept_file_path" | sed -n 2p | cut -d: -f1)
 
-# Task 2: Easy, Age = grade+6
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=easy --language={language} --output=/tmp/task2.json
-
-# Task 3: Medium, Age = grade+6
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=medium --language={language} --output=/tmp/task3.json
-
-# Task 4: Medium, Age = grade+6
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=medium --language={language} --output=/tmp/task4.json
-
-# Task 5: Hard, Age = grade+6
-docker compose exec backend-dev bun run generate:task --subject={subject} --concept={concept-id} --taskType={taskType} --grade={grade} --difficulty=hard --language={language} --output=/tmp/task5.json
+# Extract frontmatter only
+head -n "$closing_line" "$concept_file_path" > /tmp/concept-frontmatter-only.md
 ```
 
-**If generate:task script doesn't exist:** You'll need to create it or use the backend API directly to generate tasks.
+**Temporarily replace concept file with frontmatter-only version:**
 
-**Expected output:** Each command should produce a JSON file with task data.
+```bash
+# Backup original
+cp "$concept_file_path" "$concept_file_path.backup"
 
-### Step 3: Load Generated Tasks and Concept Metadata
+# Replace with frontmatter-only
+cp /tmp/concept-frontmatter-only.md "$concept_file_path"
+```
 
-Read the concept file to extract:
-- `learning_objectives` array from frontmatter
-- Full concept content for context
+### Step 3: RED Phase - Generate Baseline Tasks
 
-Read all 5 task files:
-- `/tmp/task1.json`
-- `/tmp/task2.json`
-- `/tmp/task3.json`
-- `/tmp/task4.json`
-- `/tmp/task5.json`
+**Generate 5 tasks using frontmatter-only concept:**
 
-Extract from each task:
-- `task` field (what student sees)
-- `title` field
-- Task-specific data (options, answer, etc.)
-- Any LaTeX formulas
-- Any SVG diagrams
+```bash
+subject="{subject}"
+concept_id="{concept-id}"
+grade="{grade}"
 
-### Step 4: Analyze for Patterns
+# Task 1: Easy (RED)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=easy \
+  --language=en \
+  --output=/tmp/red-task1.json
 
-Run these automated checks:
+# Task 2: Easy (RED)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=easy \
+  --language=en \
+  --output=/tmp/red-task2.json
+
+# Task 3: Medium (RED)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=medium \
+  --language=en \
+  --output=/tmp/red-task3.json
+
+# Task 4: Medium (RED)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=medium \
+  --language=en \
+  --output=/tmp/red-task4.json
+
+# Task 5: Hard (RED)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=hard \
+  --language=en \
+  --output=/tmp/red-task5.json
+```
+
+**Read all 5 RED task files** using Read tool.
+
+### Step 4: Analyze RED Tasks
+
+Run these 5 checks on RED tasks:
 
 #### 1. Numerical Repetition Detection
 
-**Check:** Are the same numbers appearing in 3+ tasks?
+**Extract all numbers** from task descriptions (integers, decimals, fractions).
 
-**How to detect:**
-- Extract all numbers from task descriptions (integers, decimals, fractions)
-- Count frequency of each unique number
-- **FAIL** if any number appears in 3+ tasks (40% threshold = too repetitive)
+**Count frequency** of each unique number.
+
+**Verdict:**
+- **FAIL** if any number appears in 3+ tasks (≥60% = too repetitive)
+- **PASS** otherwise
 
 **Example FAIL:**
-- Task 1: "A pizza is cut into 8 slices..."
-- Task 2: "There are 8 apples..."
-- Task 3: "8 students share..."
-- Task 4: "Divide 8 cookies..."
-- → Number "8" appears 4/5 times = FAIL
-
-**Example PASS:**
-- Task 1: "6 slices"
-- Task 2: "8 apples"
-- Task 3: "5 students"
-- Task 4: "12 cookies"
-- Task 5: "4 pieces"
-- → All different = PASS
+- Task 1: "8 slices", Task 2: "8 apples", Task 3: "8 students", Task 4: "8 cookies"
+- Number "8" appears 4/5 times = FAIL
 
 #### 2. Language/Phrasing Repetition
 
-**Check:** Are the same phrases/sentence structures appearing verbatim in multiple tasks?
+**Look for repeated phrases** (5+ consecutive words appearing in multiple tasks).
 
-**How to detect:**
-- Look for repeated phrases (5+ consecutive words)
+**Verdict:**
 - **FAIL** if same phrase appears in 2+ tasks
 - **WARNING** if very similar sentence structures in 3+ tasks
+- **PASS** otherwise
 
 **Example FAIL:**
 - Task 1: "What fraction of the shape is shaded?"
 - Task 2: "What fraction of the shape is shaded?"
-- Task 3: "What fraction of the circle is shaded?"
-- → Exact phrase repeated = FAIL
-
-**Example PASS:**
-- Task 1: "What fraction is shaded?"
-- Task 2: "Which fraction represents the colored part?"
-- Task 3: "Identify the fraction shown"
-- Task 4: "What portion is highlighted?"
-- → Varied phrasing = PASS
+- Exact phrase repeated = FAIL
 
 #### 3. Example Code Duplication (CARDINAL RULE)
 
-**Check:** Is LaTeX/SVG code being copied between tasks?
+**Extract LaTeX** (between $ or $$) and **SVG elements** (viewBox, paths, structure).
 
-**How to detect:**
-- Extract LaTeX formulas (between $ or $$)
-- Extract SVG elements (viewBox, paths, structure)
+**Compare** for identical or near-identical code between tasks.
+
+**Verdict:**
 - **FAIL** if identical or near-identical code in 2+ tasks
-- This indicates concept violated CARDINAL RULE by providing example code
+- **PASS** otherwise
+
+**Why FAIL:** This indicates concept violated CARDINAL RULE by providing example code that AI copied.
 
 **Example FAIL:**
 - Task 1: `$$\frac{2}{5}$$`
 - Task 2: `$$\frac{2}{5}$$`
-- Task 3: `$$\frac{3}{5}$$`
-- → Same fraction structure, likely copied from concept = FAIL
-
-**Example for SVG:**
-- Task 1: `<rect width="100" height="20" x="0" y="0" fill="blue"/>`
-- Task 2: `<rect width="100" height="20" x="0" y="40" fill="red"/>`
-- → Nearly identical structure = FAIL (concept likely had example)
-
-**Example PASS:**
-- Task 1: `$$\frac{2}{5}$$`
-- Task 2: `$$\frac{4}{6}$$`
-- Task 3: Uses words "two-fifths" instead
-- Task 4: Uses diagram, no LaTeX
-- → Varied representations = PASS
+- Same fraction structure = FAIL (likely copied from concept)
 
 #### 4. Problem Structure Variety
 
-**Check:** Are tasks using different problem types/structures?
+**Classify each task** by structure type:
+- Identification (identify fraction from visual)
+- Comparison (which is bigger)
+- Application (real-world scenario)
+- Ordering (arrange from smallest to largest)
+- Equivalent (find equal fractions)
+- Calculation (compute result)
+- Translation (convert between representations)
 
-**How to detect:**
-- Classify each task by structure:
-  - Identification (identify fraction from visual)
-  - Comparison (which is bigger)
-  - Application (real-world scenario)
-  - Ordering (arrange from smallest to largest)
-  - Equivalent (find equal fractions)
-  - etc.
+**Count unique structures** across all 5 tasks.
+
+**Verdict:**
 - **FAIL** if same structure appears in 3+ tasks
-- **WARNING** if only 2-3 different structures across all 5 tasks
+- **WARNING** if only 2-3 different structures total
+- **PASS** if 4+ different structures
 
 **Example FAIL:**
-- Task 1: "What fraction is shaded?" (identification)
-- Task 2: "What fraction is colored?" (identification)
-- Task 3: "Identify the fraction shown" (identification)
-- Task 4: "Which fraction is represented?" (identification)
-- → Same structure 4/5 times = FAIL
-
-**Example PASS:**
-- Task 1: Identification from visual
-- Task 2: Comparison between two fractions
-- Task 3: Real-world application (pizza sharing)
-- Task 4: Equivalent fractions
-- Task 5: Ordering fractions
-- → 5 different structures = PASS
+- Tasks 1-4 all "Identification", Task 5 "Comparison"
+- Only 2 structures, same structure 4/5 times = FAIL
 
 #### 5. Learning Objective Alignment
 
-**Check:** Do generated tasks actually target the learning objectives defined in the concept frontmatter?
+**Map each task** to learning objectives from frontmatter.
 
-**How to detect:**
-- Extract `learning_objectives` array from concept frontmatter
-- For each task, analyze what skill/knowledge it requires to solve
-- Map each task to one or more learning objectives it addresses
-- **FAIL** if any task doesn't clearly target at least one objective
-- **WARNING** if some objectives are never tested across all 5 tasks
+**Check:**
+- Does each task target at least one objective?
+- Are all objectives covered across the 5 tasks?
 
-**Example FAIL:**
+**Verdict:**
+- **FAIL** if any task doesn't target at least one objective
+- **WARNING** if some objectives never tested
+- **PASS** if all tasks target objectives and all objectives covered
 
-Concept has objectives:
-- "Understand fractions as parts of a whole"
-- "Compare fractions with same denominators"
-- "Recognize equivalent fractions"
+### Step 5: Record RED Scores
 
-Generated tasks:
-- Task 1: Identify fraction from visual (targets objective 1) ✓
-- Task 2: Order fractions with same denominator (targets objective 2) ✓
-- Task 3: Add two fractions (targets NOTHING - addition not in objectives) ✗
-- Task 4: Identify fraction from visual (targets objective 1) ✓
-- Task 5: Convert fraction to decimal (targets NOTHING - decimals not in objectives) ✗
+**Calculate RED score:**
+- Count how many checks passed (0-5)
+- Record which specific checks failed
+- Note specific issues (which numbers repeated, which phrases, etc.)
 
-→ 2/5 tasks don't target any learning objective = FAIL
+**RED Score: X/5 checks passed**
 
-**Example WARNING:**
+### Step 6: Restore Full Concept
 
-Concept has objectives:
-- "Understand fractions as parts of a whole"
-- "Compare fractions with same denominators"
-- "Recognize equivalent fractions"
+**Restore original concept file:**
 
-Generated tasks:
-- Task 1: Identify fraction (objective 1) ✓
-- Task 2: Identify fraction (objective 1) ✓
-- Task 3: Compare fractions (objective 2) ✓
-- Task 4: Identify fraction (objective 1) ✓
-- Task 5: Compare fractions (objective 2) ✓
+```bash
+# Restore from backup
+mv "$concept_file_path.backup" "$concept_file_path"
+```
 
-→ All tasks target objectives, but objective 3 (equivalent fractions) is never tested = WARNING
+### Step 7: GREEN Phase - Generate Full Concept Tasks
 
-**Example PASS:**
+**Generate 5 tasks using FULL concept (frontmatter + prompt content):**
 
-Concept has objectives:
-- "Understand fractions as parts of a whole"
-- "Compare fractions with same denominators"
-- "Recognize equivalent fractions"
+```bash
+# Task 1: Easy (GREEN)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=easy \
+  --language=en \
+  --output=/tmp/green-task1.json
 
-Generated tasks:
-- Task 1: Identify fraction from visual (objective 1) ✓
-- Task 2: Compare two fractions (objective 2) ✓
-- Task 3: Find equivalent fraction visually (objective 3) ✓
-- Task 4: Identify fraction from set (objective 1) ✓
-- Task 5: Order fractions (objective 2) ✓
+# Task 2: Easy (GREEN)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=easy \
+  --language=en \
+  --output=/tmp/green-task2.json
 
-→ All tasks target objectives, all objectives covered = PASS
+# Task 3: Medium (GREEN)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=medium \
+  --language=en \
+  --output=/tmp/green-task3.json
 
-### Step 5: Generate Verdict
+# Task 4: Medium (GREEN)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=medium \
+  --language=en \
+  --output=/tmp/green-task4.json
 
-Based on analysis results:
+# Task 5: Hard (GREEN)
+docker compose exec backend-dev bun run generate:task \
+  --subject="$subject" \
+  --concept="$concept_id" \
+  --taskType=singleChoice \
+  --grade="$grade" \
+  --difficulty=hard \
+  --language=en \
+  --output=/tmp/green-task5.json
+```
 
-**PASS:** All checks pass or only minor warnings
-**FAIL:** Any check fails or multiple warnings
+**Read all 5 GREEN task files** using Read tool.
 
-### Step 6: Provide Structured Feedback
+### Step 8: Analyze GREEN Tasks
+
+**Run the same 5 checks** as Step 4 on GREEN tasks.
+
+**Record GREEN score: Y/5 checks passed**
+
+### Step 9: Compare RED vs GREEN
+
+**Calculate improvement delta:**
+- Checks improved: {GREEN score - RED score}
+- Which specific checks went from FAIL→PASS?
+- Any regressions (PASS→FAIL)?
+
+**Verdict criteria:**
+- **PASS**: GREEN ≥ RED+2 (significant improvement, prompt adds clear value)
+- **MARGINAL**: GREEN = RED+1 (minimal improvement, prompt adds some value)
+- **FAIL**: GREEN ≤ RED (no improvement or regression, prompt adds no value or is harmful)
+
+### Step 10: Provide Structured Report
 
 Use this format:
 
 ```markdown
-## Task Generation Test: [PASS / FAIL]
+## RED-GREEN Test Results
 
-### Test Parameters
-- Subject: {subject}
-- Concept: {concept-id} (Grade {grade})
-- Task Type: {taskType}
-- Language: {language}
-- Tasks Generated: 5 (2 easy, 2 medium, 1 hard)
+**Concept:** {subject}/{concept-id} (Grade {grade})
+**Test Date:** {date}
 
-### Generated Tasks Summary
+---
 
-**Task 1 (Easy):**
-Title: {title}
-Task: {first 100 chars of task}...
-Key elements: {numbers used, context, structure type}
+### RED Phase (Frontmatter Only - Baseline)
 
-**Task 2 (Easy):**
-Title: {title}
-Task: {first 100 chars}...
-Key elements: {numbers, context, structure}
+**Tasks Generated:** 5 (2 easy, 2 medium, 1 hard)
 
-**Task 3 (Medium):**
-Title: {title}
-Task: {first 100 chars}...
-Key elements: {numbers, context, structure}
+**Pattern Analysis:**
 
-**Task 4 (Medium):**
-Title: {title}
-Task: {first 100 chars}...
-Key elements: {numbers, context, structure}
+1. **Numerical Repetition**: [PASS / FAIL]
+   - {Details: which numbers repeated, frequency}
 
-**Task 5 (Hard):**
-Title: {title}
-Task: {first 100 chars}...
-Key elements: {numbers, context, structure}
+2. **Language Variety**: [PASS / FAIL]
+   - {Details: repeated phrases found}
 
-### Pattern Analysis Results
+3. **Code Duplication**: [PASS / FAIL]
+   - {Details: LaTeX/SVG analysis}
 
-**1. Numerical Repetition:** [PASS / WARNING / FAIL]
-- {Details: which numbers repeated, how many times}
-- {If FAIL: "Number X appears in Y/5 tasks"}
+4. **Problem Structure Variety**: [PASS / FAIL]
+   - {List structures: "Identification (3), Comparison (1), Application (1)"}
 
-**2. Language Variety:** [PASS / WARNING / FAIL]
-- {Details: repeated phrases found}
-- {If FAIL: "Phrase 'X' appears in Y tasks"}
+5. **Learning Objective Alignment**: [PASS / FAIL]
+   - {Map tasks to objectives}
 
-**3. Code Duplication:** [PASS / FAIL]
-- {Details: LaTeX/SVG analysis}
-- {If FAIL: "Example code copied between tasks - CARDINAL RULE violation"}
+**RED Score: X/5 checks passed**
 
-**4. Problem Structure Variety:** [PASS / WARNING / FAIL]
-- {List structures found: "Identification (3), Comparison (1), Application (1)"}
-- {If FAIL: "Only X unique structures, need 4-5 minimum"}
+**RED Tasks Summary:**
+- Task 1 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 2 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 3 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 4 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 5 (Hard): {first 50 chars}... [Structure: X, Numbers: Y]
 
-**5. Learning Objective Alignment:** [PASS / WARNING / FAIL]
-- {Map each task to objectives it targets}
-- {If FAIL: "Task X doesn't target any learning objective"}
-- {If WARNING: "Objective Y never tested across all tasks"}
+---
 
-### Root Cause Analysis
+### GREEN Phase (Full Concept - With Prompt Content)
 
-{For each FAIL, trace back to likely cause in concept:}
+**Tasks Generated:** 5 (2 easy, 2 medium, 1 hard)
 
-**Issue:** {specific problem found}
-**Likely Cause:** {reference to concept lines that caused this}
-**Example from concept:** {quote the problematic section}
-**Recommended Fix:** {how to improve the concept}
+**Pattern Analysis:**
 
-### Verdict: [APPROVE / REFINE CONCEPT / REJECT]
+1. **Numerical Repetition**: [PASS / FAIL]
+   - {Details}
 
-**If APPROVE:**
-"✅ Concept generates high-quality, varied tasks. Ready for next step."
+2. **Language Variety**: [PASS / FAIL]
+   - {Details}
 
-**If REFINE CONCEPT:**
-"⚠️ Concept needs refinement to improve variety. Address issues above and re-test."
+3. **Code Duplication**: [PASS / FAIL]
+   - {Details}
 
-**If REJECT:**
-"❌ Concept produces severely repetitive tasks. Major revision needed."
+4. **Problem Structure Variety**: [PASS / FAIL]
+   - {List structures}
 
-### Required Actions (if not APPROVE)
+5. **Learning Objective Alignment**: [PASS / FAIL]
+   - {Map tasks to objectives}
 
-1. {Specific change to concept with line numbers}
-2. {Specific change with line numbers}
-3. Re-run test-concept skill to verify improvements
+**GREEN Score: Y/5 checks passed**
+
+**GREEN Tasks Summary:**
+- Task 1 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 2 (Easy): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 3 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 4 (Medium): {first 50 chars}... [Structure: X, Numbers: Y]
+- Task 5 (Hard): {first 50 chars}... [Structure: X, Numbers: Y]
+
+---
+
+### Improvement Delta
+
+**Score Change:** RED {X}/5 → GREEN {Y}/5 (Δ = {Y-X})
+
+**Checks Improved (FAIL→PASS):**
+- {List which checks improved, or "None"}
+
+**Checks Regressed (PASS→FAIL):**
+- {List any regressions, or "None"}
+
+**Overall Verdict:** [PASS / MARGINAL / FAIL]
+
+**Explanation:**
+{Explain what the prompt content contributed or failed to contribute}
+
+---
+
+### Recommendations
+
+**If PASS:**
+"✅ Prompt content adds significant value. Concept ready for next validation step."
+
+**If MARGINAL:**
+"⚠️ Prompt content adds minimal value. Consider strengthening:
+- {Specific recommendations based on which checks didn't improve}
+- {Reference to concept-rules.md sections}"
+
+**If FAIL:**
+"❌ Prompt content adds no value or is harmful. Analysis:
+- {Which checks failed in both RED and GREEN}
+- {Which checks regressed from RED to GREEN}
+- {Likely causes: CARDINAL RULE violation, over-prescription, etc.}
+- Required action: Rewrite prompt content and re-test."
 ```
 
-## Common Issues and Fixes
+## Edge Cases
 
-| Issue Found | Likely Cause in Concept | Fix |
-|-------------|-------------------------|-----|
-| Same numbers in 3+ tasks | Concept includes example values | Remove specific numbers, describe variation principles only |
-| Identical phrases in tasks | Concept uses formulaic language | Show variety in phrasing, not templates |
-| Code duplication | CARDINAL RULE violated - example code in concept | Remove ALL example LaTeX/SVG, describe what to create |
-| Only 2-3 structures | Concept doesn't specify enough problem types | List 7-10 distinct problem structures |
-| Tasks don't target objectives | Concept prompt diverges from stated objectives | Align problem structures with learning objectives OR refine objectives to match concept scope |
-| All tasks feel similar | Concept is too prescriptive/narrow | Broaden guidance, emphasize creativity |
+### Case 1: RED Already Perfect (5/5)
 
-## Iteration Protocol
+If frontmatter alone generates perfect tasks, the concept might be too simple.
 
-**First test FAILS:**
-1. Identify root causes in concept
-2. Recommend specific fixes with line numbers
-3. Wait for creator to revise concept
-4. **Re-run test-concept** from Step 2
-5. Compare new results to previous run
-6. Continue until PASS
+**Decision:** Prompt content still recommended for consistency, but keep it minimal. Focus on age/difficulty scaffolding only.
 
-**Second test still FAILS:**
-- If same issues: Concept needs major revision, not minor tweaks
-- If different issues: Progress made, but more work needed
-- If worse: Revisions went wrong direction, revert and try different approach
+### Case 2: Both RED and GREEN Fail Badly (0-1/5)
 
-**Third+ test FAILS:**
-- Consider if concept is too narrow/specific for variety
-- May need to rethink topic scope or split into multiple concepts
-- Consult with user on whether concept is viable
+If both score very low, the problem is likely in **frontmatter** (poor learning objectives, wrong grade level, unclear description).
 
-## Red Flags - Problems with Testing Process
+**Decision:** Fix frontmatter first, then retry RED-GREEN test.
 
-If you catch yourself thinking:
+### Case 3: GREEN Worse Than RED (Regression)
 
-- "5 tasks aren't enough to judge" → Wrong. Patterns emerge by task 3.
-- "These tasks look fine to me" → Your judgment is subjective. Use automated checks.
-- "The repetition isn't that bad" → 3/5 = 60% repetition = very bad.
-- "Example code is needed for this topic" → Never. Describe, don't demonstrate.
-- "I'll approve with minor issues" → No. Fix first, then approve.
-- "Testing is too slow, skip it" → Testing is mandatory. No exceptions.
-- "Concept is good, tasks are just unlucky" → Run test again. If still fails, concept is the problem.
+If full concept scores LOWER than frontmatter-only, the prompt content is actively harmful.
 
-**All of these mean: Stop. Follow the process. Use objective criteria.**
+**Common causes:**
+- Providing example code (CARDINAL RULE violation) → AI copies instead of creating
+- Too prescriptive → reduces AI creativity
+- Contradicting frontmatter → confuses AI
+
+**Decision:** FAIL immediately. Identify harmful section in prompt, rewrite, re-test.
+
+### Case 4: GREEN = RED (No Change)
+
+Prompt content adds no value.
+
+**Causes:**
+- Prompt just rephrases frontmatter (redundant)
+- Prompt too vague to guide AI
+- Frontmatter already sufficient
+
+**Decision:** FAIL. Either strengthen prompt to add value, or simplify concept to frontmatter-only.
+
+## Cost Consideration
+
+- **Current workflow:** 5 tasks per concept review
+- **RED-GREEN workflow:** 10 tasks per concept (5 RED + 5 GREEN)
+- **Cost:** 2x AI generation cost
+
+**Justification:** Proving value objectively is worth 2x cost. Bad concepts cost more in debugging, user complaints, and refactoring.
+
+## Rationalization Prevention
+
+| Excuse | Reality |
+|--------|---------|
+| "RED-GREEN is overkill, just test GREEN" | Baseline proves value. No baseline = no proof. |
+| "GREEN tasks look good, skip RED comparison" | GREEN might be good but not better than frontmatter-only. |
+| "10 tasks cost too much" | 2x cost proves 2x value. Worth it. |
+| "I'll just run 3 tasks instead of 5" | Patterns need 5 tasks to emerge reliably. |
+| "Both failed, I'll approve anyway" | Both failing means frontmatter needs fixing. |
+| "Only Δ=+1 but it looks better" | Subjective judgment not allowed. Δ≥+2 required. |
+
+**Red Flags - STOP if you catch yourself thinking:**
+- "I'll skip RED phase..."
+- "GREEN looks good, no need to compare..."
+- "The concept is simple, skip testing..."
+- "I trust this creator, skip validation..."
+- "Testing takes too long..."
+
+**All of these mean: Go back to Step 1. Run full RED-GREEN test.**
 
 ## Success Criteria
 
-A successful test:
-
-1. ✅ Generated 5 real tasks via AI
-2. ✅ Ran all 5 automated checks
-3. ✅ Provided objective verdict (not subjective opinion)
-4. ✅ If FAIL: Traced issues to specific concept lines
-5. ✅ If FAIL: Recommended concrete fixes
-6. ✅ Clear next action (approve or refine)
+A successful RED-GREEN test:
+1. ✅ Generated 5 RED tasks (frontmatter-only)
+2. ✅ Analyzed RED tasks for all 5 pattern types
+3. ✅ Recorded RED scores objectively
+4. ✅ Generated 5 GREEN tasks (full concept)
+5. ✅ Analyzed GREEN tasks for all 5 pattern types
+6. ✅ Recorded GREEN scores objectively
+7. ✅ Calculated improvement delta (Δ)
+8. ✅ Applied verdict criteria (PASS/MARGINAL/FAIL)
+9. ✅ Provided structured report with evidence
+10. ✅ Clear recommendations for next steps
 
 ## Important Notes
 
-**This skill tests task generation, not concept structure:**
-- Schema validation: `check:concept` script
-- Frontmatter review: `review-concept` skill
-- Task generation quality: **this skill** (test-concept)
+**This skill tests task generation quality, not:**
+- Schema validation (use `check:concept` script)
+- Frontmatter structure (use `review-concept` skill)
+- Curriculum alignment (use `review-concept` skill)
+- Translations (use `review-concept` skill)
 
 **Real AI generation is required:**
-- Don't just look at prompts
 - Don't simulate what tasks "would" look like
 - Generate actual tasks with actual AI
-- Cost is acceptable (5 tasks × 1 concept = minimal)
+- Cost is acceptable (10 tasks per concept)
 
 **Pattern detection must be objective:**
 - Use frequency thresholds (3/5 = 60% = FAIL)
 - Don't rely on "seems repetitive" gut feeling
 - Count actual occurrences
-- Show evidence in feedback
+- Show evidence in report
 
 **Iteration is expected:**
-- First test often fails
+- First test often shows Δ=0 or Δ=+1
 - Refinement is normal
-- Keep testing until pass
+- Keep testing until Δ≥+2
 - Track improvements between runs

@@ -70,6 +70,10 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 ## Learning objectives
 [[learning_objectives]]
 
+**CRITICAL: Learning Objective Coverage**
+
+When generating tasks, ensure variety by targeting DIFFERENT learning objectives from the list above. In a set of 5 tasks, aim to cover at least 3-4 different objectives (60-80% coverage). Do NOT focus on only one or two objectives repeatedly. Rotate through different objective types to provide comprehensive practice and assessment.
+
 ## Real world context
 [[real_world_context]]
 

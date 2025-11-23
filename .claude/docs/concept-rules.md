@@ -7,9 +7,9 @@ This document defines all rules and requirements for educational concept files i
 Educational concepts are **creative prompts for AI task generation**, not textbooks. They must:
 1. ✅ Pass Zod schema validation
 2. ✅ Avoid example code (CARDINAL RULE)
-3. ✅ Maximize task variety
+3. ✅ Maximize task variety through minimal, principle-based guidance
 4. ✅ Provide clear age/difficulty scaffolding
-5. ✅ Stay within 400-800 words (max 1,200)
+5. ✅ **Stay within 150-250 words** (minimal prompts are optimal)
 
 ## Schema Requirements
 
@@ -104,17 +104,45 @@ Must include conditional guidance based on `{{difficulty}}`:
 
 **Every concept loads on EVERY task generation** - efficiency matters.
 
-**Word count targets:**
-- **Optimal**: 400-800 words
-- **Maximum**: 1,200 words
-- **Over 800**: Warning - compress unless truly complex topic
-- **Over 1,200**: Fail - must compress
+### UPDATED GUIDANCE (2025-11-23): Minimal Prompts Are Optimal
+
+**Empirical finding:** Testing shows that **minimal prompts (150-200 words) produce BETTER quality than detailed prompts (600-800 words).**
+
+**Evidence:** Three-way comparison (docs/task-comparison/) found minimal prompts achieve 110% of detailed prompt quality because:
+- Less specification = more AI creativity
+- Principle-based > procedural instructions
+- Concise focus forces essentials only
+- Avoids "pattern lock-in" from over-specification
+
+**New word count targets:**
+- **Optimal**: 150-250 words (prompt section only, excluding frontmatter)
+- **Acceptable**: 250-400 words for complex topics
+- **Warning**: 400-600 words (likely over-specified)
+- **Fail**: Over 600 words (constrains AI creativity)
+
+**Minimal prompt structure:**
+```markdown
+## Problem Types (use variety)
+[List 7-10 problem structures in 1-2 words each]
+
+## Age/Difficulty Guidelines
+**For {{age}} < 13:** [2-3 concise bullets]
+**For {{age}} >= 13:** [2-3 concise bullets]
+
+**{{difficulty}} == easy:** [1-2 bullets]
+**{{difficulty}} == medium:** [1-2 bullets]
+**{{difficulty}} == hard:** [1-2 bullets]
+
+## Key Principles
+[3-5 core quality principles as bullets]
+```
 
 **Compression techniques:**
-- Bullet lists, not paragraphs
-- Trust AI intelligence (no over-explaining)
-- Remove meta-commentary
-- Combine related sections
+- Use numbered/bulleted lists exclusively
+- 1-2 words per problem structure (e.g., "Error analysis" not "Create tasks where students identify errors")
+- Trust AI to interpret principles creatively
+- Remove ALL examples and elaborations
+- Focus on "what makes good tasks" not "create these specific types"
 
 **Validator**: `check:concept` auto-checks word count.
 
@@ -182,8 +210,11 @@ Concepts must generate high-quality, varied tasks. Testing validates:
 - ❌ Over-explaining pedagogy
 - ❌ Including code "students need to see"
 - ❌ Burying critical instructions deep in text
-- ❌ Over-specifying structures (causes AI lock-in)
+- ❌ **Over-specifying structures (causes AI lock-in)** ← CRITICAL: Detailed prompts reduce creativity
 - ❌ Providing verbose examples instead of principles
+- ❌ Writing prompts over 250 words (unless truly complex topic)
+- ❌ Explaining HOW to create tasks instead of WHAT makes good tasks
+- ❌ Including multiple examples per structure (AI will copy them)
 
 ## Known AI Biases
 
@@ -223,9 +254,9 @@ Stop refining when:
 - ✅ Schema (frontmatter fields and types)
 - ✅ Filename pattern
 - ✅ CARDINAL RULE (no code examples in problem descriptions)
-- ✅ Problem structure count (5-10 required)
+- ✅ Problem structure count (7-10 required)
 - ✅ Template variables (`{{age}}`, `{{difficulty}}`)
-- ✅ Word count (400-800 optimal, max 1,200)
+- ✅ Word count (150-250 optimal, warning at 300+, fail at 400+)
 - ✅ Translations (all languages, proper format)
 
 ### Task Generation Testing
@@ -262,6 +293,6 @@ A valid concept must:
 2. ✅ Pass task generation quality tests (no repetitive patterns)
 3. ✅ Based on official curriculum research
 4. ✅ Describe variation principles (no fixed examples)
-5. ✅ Within 400-800 words (max 1,200)
+5. ✅ **Within 150-250 words (max 400)** - minimal prompts proven optimal
 6. ✅ Include translations in all language files
 7. ✅ Generate varied, creative tasks aligned with learning objectives
