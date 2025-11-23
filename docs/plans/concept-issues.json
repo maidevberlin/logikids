@@ -1,0 +1,66 @@
+{
+  "numerical_repetition_strategic_numbers": {
+    "description": "AI favors 'attractive' numbers (9 for making-10, 5 for doubles, teen numbers like 13)",
+    "category": "numerical_repetition",
+    "last_seen": "2025-11-23",
+    "occurrences": 5,
+    "total_tests_since_last_seen": 2,
+    "fix_template": "Add CRITICAL NUMERICAL VARIATION warning at top, explicitly list problematic numbers to avoid (9, 10, 5, doubles, teens), provide good/bad examples",
+    "examples": [
+      "100% of arithmetic tasks used number 9",
+      "80% of counting tasks used number 13",
+      "80% of tasks used number 50",
+      "80% of percentages tasks used numbers 80 and 60"
+    ]
+  },
+  "poor_objective_coverage": {
+    "description": "Only tests 1-3 of 5-6 stated learning objectives",
+    "category": "objective_coverage",
+    "last_seen": "2025-11-23",
+    "occurrences": 8,
+    "total_tests_since_last_seen": 0,
+    "fix_template": "Add 'Learning Objective Coverage' section at TOP of concept with explicit list of all objectives. Add rotation instruction to cycle through objectives.",
+    "examples": [
+      "Tested only counting, ignored place value, ordering, even/odd, estimation, number line",
+      "Tested only addition, ignored subtraction and word problems",
+      "Only tested addition, ignored subtraction and comparison",
+      "Percentages: tested only 3-4 of 6 objectives, ignored fraction conversion coverage",
+      "Ratios: tested only 3-4 of 7 objectives, missing ratio simplification and equivalence identification",
+      "Integers: tested only 2-3 of 7 objectives, ignored multiplication/division, absolute value, comparison/ordering"
+    ]
+  },
+  "svg_layout_repetition": {
+    "description": "SVG layouts too similar across tasks (same arrangement patterns)",
+    "category": "visual_repetition",
+    "last_seen": "2025-01-23",
+    "occurrences": 1,
+    "total_tests_since_last_seen": 7,
+    "fix_template": "Add explicit SVG variation instruction. Change prescriptive layouts to flexible options (e.g., 'rows of 5 or 10' → 'various sizes and arrangements')",
+    "examples": [
+      "5+5+3 pattern repeated in counting tasks"
+    ]
+  },
+  "visual_pattern_repetition_colors": {
+    "description": "Color/shape patterns repeat (e.g., red-blue-red) even when numerical variation is good",
+    "category": "visual_repetition",
+    "last_seen": "2025-01-23",
+    "occurrences": 1,
+    "total_tests_since_last_seen": 7,
+    "fix_template": "Add CRITICAL VISUAL VARIATION warning for non-numerical contexts. Demand variety in color sequences, shape combinations, pattern structures.",
+    "examples": [
+      "Red-blue-red appeared in 4/5 pattern recognition tasks"
+    ]
+  },
+  "problem_structure_repetition": {
+    "description": "Only uses 1-3 of 5+ available problem structure types",
+    "category": "structural_repetition",
+    "last_seen": "2025-11-23",
+    "occurrences": 2,
+    "total_tests_since_last_seen": 6,
+    "fix_template": "Add 'Problem Type Rotation' instruction with explicit list of structures. Add good/bad examples showing variety expectations.",
+    "examples": [
+      "Only 3 of 5 problem structures used in arithmetic tasks",
+      "Only used word problems and direct calculation"
+    ]
+  }
+}

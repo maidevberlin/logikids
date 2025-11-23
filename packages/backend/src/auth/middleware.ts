@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
-import { AuthService } from './auth.service'
+import { Service } from './service.ts'
 import { createLogger } from '../common/logger'
 
 const logger = createLogger('AuthMiddleware')
 
-// Extend Express Request to include userId
 declare global {
   namespace Express {
     interface Request {
@@ -14,16 +13,9 @@ declare global {
   }
 }
 
-// Singleton instance of AuthService shared across all middleware
-const authService = new AuthService()
+const authService = new Service()
 
-/**
- * Creates middleware to require JWT authentication
- * Validates token and adds userId to request
- *
- * @param authService - Instance of AuthService for dependency injection
- */
-export function createAuthMiddleware(authService: AuthService) {
+export function createAuthMiddleware(authService: Service) {
   return async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       // Extract token from Authorization header
@@ -79,24 +71,12 @@ export function createAuthMiddleware(authService: AuthService) {
   }
 }
 
-/**
- * Singleton middleware instance for requiring JWT authentication
- * Uses shared AuthService instance to ensure consistency across the app
- */
 export const requireAuth = createAuthMiddleware(authService)
 
-/**
- * Get the singleton AuthService instance
- * Allows other modules to access the same service instance used by middleware
- */
-export function getAuthService(): AuthService {
+export function getAuthService(): Service {
   return authService
 }
 
-/**
- * Middleware to verify userId in route params matches authenticated user
- * Must be used AFTER requireAuth middleware
- */
 export function requireOwnUserId(req: Request, res: Response, next: NextFunction): void {
   const routeUserId = req.params.userId
   const authenticatedUserId = req.userId

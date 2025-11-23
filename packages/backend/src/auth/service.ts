@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { injectable } from 'tsyringe';
 import jwt from 'jsonwebtoken'
 import { pool } from '../../database/db'
 import {
@@ -29,7 +31,8 @@ export interface UserAccount {
   last_seen: number
 }
 
-export class AuthService {
+@injectable()
+export class Service {
   /**
    * Register a new user account with invite code
    * Returns access token on success
