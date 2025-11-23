@@ -1,8 +1,18 @@
+import { CostTrackingContext } from './cost-tracker';
+
 export interface GenerateOptions {
   temperature?: number;
   maxTokens?: number;
   topP?: number;
   topK?: number;
+  costTracking?: CostTrackingContext;
+}
+
+export interface UsageInfo {
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens?: number;
+  cost?: number; // Cost in USD
 }
 
 export interface GenerateResponse {
@@ -10,6 +20,12 @@ export interface GenerateResponse {
   context?: unknown;
   provider: 'ollama' | 'openai' | 'anthropic';
   model: string;
+  usage?: UsageInfo;
+}
+
+export interface StructuredGenerateResponse<T> {
+  result: T;
+  usage?: UsageInfo;
 }
 
 // JSON Schema type (standard JSON Schema format)
@@ -28,11 +44,11 @@ export abstract class AIClient {
    * @param prompt The prompt to send to the AI
    * @param schema JSON Schema definition
    * @param options Optional generation parameters
-   * @returns The validated and parsed response object
+   * @returns Object containing the validated response and usage information
    */
   abstract generateStructured<T = unknown>(
     prompt: string,
     schema: JSONSchema,
     options?: GenerateOptions
-  ): Promise<T>;
+  ): Promise<StructuredGenerateResponse<T>>;
 } 

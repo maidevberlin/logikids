@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query';
 import { useState, useCallback, useEffect } from 'react';
-import { logikids } from '@/api/logikids';
+import { trpc } from '@/api/trpc';
 
 interface UseHintOptions {
   taskId?: string;
@@ -17,13 +16,7 @@ export const useHint = ({ taskId, maxHints = 4 }: UseHintOptions) => {
     setHintError(null);
   }, [taskId]);
 
-  const hintMutation = useMutation({
-    mutationFn: () => {
-      if (!taskId) {
-        throw new Error('No task ID available');
-      }
-      return logikids.getHint(taskId);
-    },
+  const hintMutation = trpc.tasks.getHint.useMutation({
     onSuccess: (data) => {
       setHints(prev => [...prev, data.hint]);
       setHintError(null);
@@ -34,10 +27,10 @@ export const useHint = ({ taskId, maxHints = 4 }: UseHintOptions) => {
   });
 
   const requestHint = useCallback(() => {
-    if (hints.length < maxHints && !hintMutation.isPending) {
-      hintMutation.mutate();
+    if (hints.length < maxHints && !hintMutation.isPending && taskId) {
+      hintMutation.mutate({ taskId });
     }
-  }, [hints.length, maxHints, hintMutation]);
+  }, [hints.length, maxHints, hintMutation, taskId]);
 
   return {
     hints,

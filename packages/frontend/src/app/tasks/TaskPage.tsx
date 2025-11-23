@@ -121,6 +121,25 @@ export default function TaskPage() {
         startTime,
         skipped: false,
       })
+
+      // Save task costs if available
+      if (task.usage && data) {
+        const currentCosts = data.costs || []
+        setData({
+          costs: [
+            ...currentCosts,
+            {
+              subject: taskParams.subject,
+              concept: taskParams.concept || 'random',
+              inputTokens: task.usage.inputTokens,
+              outputTokens: task.usage.outputTokens,
+              totalTokens: task.usage.totalTokens,
+              timestamp: Date.now(),
+            },
+          ],
+        })
+      }
+
       // Check and adjust difficulty after recording attempt
       checkAndAdjustDifficulty()
     }

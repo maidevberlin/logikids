@@ -98,17 +98,17 @@ export class HintService {
 
     // Generate hint using structured output
     const aiStartTime = Date.now();
-    const response = await this.aiClient.generateStructured<{ hint: string }>(hintPrompt, hintSchema);
+    const aiResponse = await this.aiClient.generateStructured<{ hint: string }>(hintPrompt, hintSchema);
     const aiDuration = Date.now() - aiStartTime;
-    logger.info('Hint generated', { duration: aiDuration });
+    logger.info('Hint generated', { duration: aiDuration, usage: aiResponse.usage });
 
     // Store hint in cache
-    context.hintsGenerated.push(response.hint);
+    context.hintsGenerated.push(aiResponse.result.hint);
     taskCache.set(taskId, context);
     logger.debug('Hint stored in cache', { totalHints: context.hintsGenerated.length });
 
     return {
-      hint: response.hint,
+      hint: aiResponse.result.hint,
       hintNumber,
       totalHintsAvailable: 4
     };

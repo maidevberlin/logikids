@@ -1,8 +1,9 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { AnthropicConfig } from '../../config/ai';
-import { AIClient, GenerateOptions, GenerateResponse, JSONSchema } from './base';
+import { AIClient, GenerateOptions, GenerateResponse, JSONSchema, StructuredGenerateResponse } from './base';
 import { createLogger } from '../logger';
 import { withErrorHandling } from './errorHandler';
+import { trackCost, calculateCost } from './cost-tracker';
 
 const logger = createLogger('AnthropicClient');
 
@@ -53,6 +54,16 @@ export class AnthropicClient extends AIClient {
 
         logger.debug('Response received', { responseLength: response.length });
 
+        // Track cost if context is provided
+        if (options?.costTracking) {
+          await trackCost(options.costTracking, {
+            inputTokens: message.usage.input_tokens,
+            outputTokens: message.usage.output_tokens,
+            provider: this.provider,
+            model: message.model
+          });
+        }
+
         return {
           response,
           provider: this.provider,
@@ -68,7 +79,7 @@ export class AnthropicClient extends AIClient {
     prompt: string,
     schema: JSONSchema,
     options?: GenerateOptions
-  ): Promise<T> {
+  ): Promise<StructuredGenerateResponse<T>> {
     const config = this.config as AnthropicConfig;
 
     logger.debug('Starting structured generation...', { model: config.model, promptLength: prompt.length });
@@ -118,8 +129,33 @@ export class AnthropicClient extends AIClient {
 
         logger.debug('Successfully received tool use response');
 
+        // Track cost if context is provided
+        if (options?.costTracking) {
+          await trackCost(options.costTracking, {
+            inputTokens: message.usage.input_tokens,
+            outputTokens: message.usage.output_tokens,
+            provider: this.provider,
+            model: message.model
+          });
+        }
+
         // The tool input is validated by Anthropic's API to match our schema
-        return toolUse.input as T;
+        const usageInfo = {
+          inputTokens: message.usage.input_tokens,
+          outputTokens: message.usage.output_tokens,
+          provider: this.provider,
+          model: message.model
+        };
+
+        return {
+          result: toolUse.input as T,
+          usage: {
+            inputTokens: message.usage.input_tokens,
+            outputTokens: message.usage.output_tokens,
+            totalTokens: message.usage.input_tokens + message.usage.output_tokens,
+            cost: calculateCost(usageInfo)
+          }
+        };
       },
       'Anthropic structured generation',
       logger

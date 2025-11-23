@@ -26,8 +26,8 @@ export class TaskService {
         private readonly taskCache: TaskCache
     ) {}
 
-    public async generateTask(request: TaskRequest): Promise<TaskResponse> {
-        logger.info('Starting task generation', { request });
+    public async generateTask(request: TaskRequest, userId?: string): Promise<TaskResponse> {
+        logger.info('Starting task generation', { request, userId });
 
         const {subject: subjectId, concept: requestedConcept, taskType, grade, age, difficulty, language} = request;
 
@@ -87,20 +87,36 @@ export class TaskService {
 
         // Generate the task using AI with structured output
         const aiStartTime = Date.now();
-        const validatedResponse = await this.aiClient.generateStructured<BaseTaskResponse>(
+        const aiResponse = await this.aiClient.generateStructured<BaseTaskResponse>(
             finalPrompt,
-            selectedTaskType.jsonSchema
+            selectedTaskType.jsonSchema,
+            {
+                costTracking: {
+                    userId,
+                    subject: subjectId,
+                    concept: concept.id
+                }
+            }
         );
         const aiDuration = Date.now() - aiStartTime;
 
         // Generate taskId and add to response
-        // Note: type is already correctly set in validatedResponse by the schema
+        // Note: type is already correctly set in aiResponse.result by the schema
         const taskId = uuidv4();
         const responseWithType = {
-            ...validatedResponse,
-            taskId
+            ...aiResponse.result,
+            taskId,
+            // Add usage information if available
+            ...(aiResponse.usage && {
+                usage: {
+                    inputTokens: aiResponse.usage.inputTokens,
+                    outputTokens: aiResponse.usage.outputTokens,
+                    totalTokens: aiResponse.usage.totalTokens,
+                    cost: aiResponse.usage.cost
+                }
+            })
         } as TaskResponse;
-        logger.debug('Task ID generated', { taskId });
+        logger.debug('Task ID generated', { taskId, usage: aiResponse.usage });
 
         // Store context in cache for hint generation
         const taskContext: TaskContext = {

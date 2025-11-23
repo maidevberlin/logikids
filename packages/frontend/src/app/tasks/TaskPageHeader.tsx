@@ -1,7 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { useUserData } from '@/app/account'
-import { logikids, SubjectsResponse } from '@/api/logikids'
+import { trpc } from '@/api/trpc'
 import { Skeleton } from '@/components/ui/skeleton'
 import { SubjectConceptSelector } from './SubjectConceptSelector'
 
@@ -19,24 +18,16 @@ export function TaskPageHeader({
   const { data: userData } = useUserData()
 
   // Fetch filtered subjects (by grade)
-  const { data: filteredSubjects, isLoading: isLoadingFiltered } = useQuery<SubjectsResponse>({
-    queryKey: ['subjects', userData?.settings.grade],
-    queryFn: ({ signal }) =>
-      logikids.getSubjects(
-        {
-          grade: userData?.settings.grade ?? 5,
-        },
-        signal
-      ),
-    enabled: !!userData,
-  })
+  const { data: filteredSubjects, isLoading: isLoadingFiltered } = trpc.subjects.getAll.useQuery(
+    { grade: userData?.settings.grade ?? 5 },
+    { enabled: !!userData }
+  )
 
   // Fetch all subjects (no grade filter)
-  const { data: allSubjects, isLoading: isLoadingAll } = useQuery<SubjectsResponse>({
-    queryKey: ['subjects', 'all'],
-    queryFn: ({ signal }) => logikids.getSubjects({}, signal),
-    enabled: !!userData,
-  })
+  const { data: allSubjects, isLoading: isLoadingAll } = trpc.subjects.getAll.useQuery(
+    {},
+    { enabled: !!userData }
+  )
 
   // Detect if current concept is in filtered list
   const showAllByDefault = useMemo(() => {

@@ -77,7 +77,7 @@ export const useTask = (params: TaskRequest) => {
   return {
     task,
     isLoading: isLoading || isFetching,
-    error: error ? (error as Error).message : null,
+    error: error ? error.message : null,
     selectedAnswer,
     isCorrect,
     gradingDetails,

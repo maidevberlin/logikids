@@ -15,12 +15,23 @@ export interface LastTask {
   concept?: string
 }
 
+export interface TaskCostRecord {
+  subject: string
+  concept: string
+  inputTokens: number
+  outputTokens: number
+  totalTokens?: number
+  cost?: number  // Cost in USD
+  timestamp: number
+}
+
 export interface UserData {
   userId: string
   settings: UserSettings
   progress: ProgressData
   gameStats?: GameStats  // Optional for backward compatibility
   lastTask: LastTask
+  costs?: TaskCostRecord[]  // Optional for backward compatibility
   timestamp: number
   lastSyncTimestamp?: number
   encryptionKey?: string  // JWK format, only included during export/import
@@ -46,6 +57,7 @@ export function createDefaultUserData(userId: string): UserData {
     settings: { ...DEFAULT_SETTINGS },
     progress: {},
     lastTask: { ...DEFAULT_LAST_TASK },
+    costs: [],
     timestamp: Date.now()
   }
 }

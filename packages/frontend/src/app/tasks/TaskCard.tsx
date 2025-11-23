@@ -8,6 +8,7 @@ import { TaskHeader } from './TaskHeader'
 import { TaskAnswerRenderer } from './TaskAnswerRenderer'
 import { TaskFeedback } from './TaskFeedback'
 import { TaskActions } from './TaskActions'
+import { TaskCostDisplay } from './TaskCostDisplay'
 import { Task } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
 import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
@@ -171,6 +172,9 @@ export function TaskCard({
         hintError={hintError}
         canRequestHint={canRequestHint}
       />
+
+      {/* Cost information */}
+      <TaskCostDisplay usage={task.usage} />
     </Card>
   )
 }

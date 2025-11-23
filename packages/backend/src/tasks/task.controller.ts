@@ -94,7 +94,8 @@ export class TaskController {
     const validatedQuery = taskRequestSchema.parse(query);
 
     // Delegate to service (handles all business logic)
-    const task = await this.taskService.generateTask(validatedQuery);
+    // Pass userId from auth middleware for cost tracking
+    const task = await this.taskService.generateTask(validatedQuery, req.userId);
 
     res.json(task);
   }

@@ -18,12 +18,20 @@ export const DIFFICULTIES = [
 ] as const;
 export type Difficulty = typeof DIFFICULTIES[number];
 
+export interface TaskUsageInfo {
+  inputTokens: number
+  outputTokens: number
+  totalTokens?: number
+  cost?: number  // Cost in USD
+}
+
 export interface BaseTask {
   taskId: string
   title: string
   task: string
   hints?: string[]
   type: TaskType
+  usage?: TaskUsageInfo
 }
 
 export interface SingleChoiceTask extends BaseTask {

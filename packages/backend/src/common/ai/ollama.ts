@@ -1,5 +1,5 @@
 import { OllamaConfig } from '../../config/ai';
-import { AIClient, GenerateOptions, GenerateResponse, JSONSchema } from './base';
+import { AIClient, GenerateOptions, GenerateResponse, JSONSchema, StructuredGenerateResponse } from './base';
 import { createLogger } from '../logger';
 import { AIProviderError } from '../errors';
 import { withErrorHandling } from './errorHandler';
@@ -47,7 +47,7 @@ export class OllamaClient extends AIClient {
     prompt: string,
     schema: JSONSchema,
     options?: GenerateOptions
-  ): Promise<T> {
+  ): Promise<StructuredGenerateResponse<T>> {
     const config = this.config as OllamaConfig;
 
     logger.debug('Starting structured generation...', { model: config.model, promptLength: prompt.length });
@@ -90,7 +90,11 @@ export class OllamaClient extends AIClient {
 
         logger.debug('Successfully parsed JSON response');
 
-        return parsed as T;
+        // Ollama doesn't provide usage information
+        return {
+          result: parsed as T,
+          usage: undefined
+        };
       },
       'Ollama structured generation',
       logger
