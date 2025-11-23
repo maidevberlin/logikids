@@ -67,7 +67,7 @@ Review active issues (occurrences > 0) to know what to look for.
 Use existing test-concept skill:
 
 ```bash
-npm run check-concept packages/content/subjects/math/official/[concept-name].md
+bun run check-concept packages/content/subjects/math/official/[concept-name].md
 ```
 
 Or invoke `Skill(test-concept)` for detailed analysis.
@@ -186,7 +186,7 @@ Update `/Users/maik/Projects/logikids/docs/plans/math-concepts-testing-plan.md`:
 | Task | Command/Action |
 |------|----------------|
 | Load issues | `cat .claude/skills/refining-concepts/concept-issues.json` |
-| Test concept | `npm run check-concept path/to/concept.md` |
+| Test concept | `bun run check-concept path/to/concept.md` |
 | Update issue (seen) | Increment occurrences, update last_seen, reset counter |
 | Update issue (not seen) | Increment total_tests_since_last_seen |
 | Prune stale issue | Remove if total_tests_since_last_seen >= 10 |
