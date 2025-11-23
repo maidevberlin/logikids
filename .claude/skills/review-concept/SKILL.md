@@ -21,9 +21,10 @@ Use when:
 
 ## Prerequisites
 
-**REQUIRED READING:**
-1. `.claude/docs/concept-rules.md` - Complete requirements (LOAD FIRST)
-2. `packages/backend/src/prompts/schemas.ts:conceptFrontmatterSchema` - Schema source
+**REQUIRED:**
+1. Use Skill tool: `Skill(understand-execution-context)` - Understand whether you're main agent or subagent
+2. Load `.claude/docs/concept-rules.md` - Complete requirements
+3. Load `packages/backend/src/prompts/schemas.ts:conceptFrontmatterSchema` - Schema source
 
 This skill provides the REVIEW PROCESS. The rules document provides REQUIREMENTS.
 

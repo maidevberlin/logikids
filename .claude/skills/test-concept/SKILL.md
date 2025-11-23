@@ -26,6 +26,9 @@ Use this skill when:
 
 ## Prerequisites
 
+**REQUIRED:**
+- Use Skill tool: `Skill(understand-execution-context)` - Understand whether you're main agent or subagent
+
 **Before running this skill:**
 - Concept file exists and passes `check:concept` validation
 - Backend is running (`docker compose up backend-dev`)

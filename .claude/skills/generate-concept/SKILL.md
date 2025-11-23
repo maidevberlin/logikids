@@ -15,11 +15,11 @@ Use when:
 
 ## Prerequisites
 
-**REQUIRED READING:** Load `.claude/docs/concept-rules.md` for complete requirements.
+**REQUIRED:**
+1. Use Skill tool: `Skill(understand-execution-context)` - Understand whether you're main agent or subagent
+2. Load `.claude/docs/concept-rules.md` - Complete concept requirements
 
 This skill provides the PROCESS for creating concepts. The rules document provides REQUIREMENTS.
-
-**Load concept-rules.md NOW using Read tool before proceeding.**
 
 ## Process
 
@@ -91,11 +91,12 @@ After validation passes:
 
 ### 9. Submit for Review
 
-- Use Task tool to launch review-concept skill
-- Provide concept file path
+- Next step: review-concept skill needs to review the file at [path]
 - Review will include automated validation + task generation testing
 - **If FAIL:** Fix issues and re-submit for review
 - Iterate until PASS ("APPROVED - ready to merge")
+
+(See subagent-execution.md for how to execute this based on your context)
 
 ## Red Flags - Stop If You Think:
 

@@ -37,11 +37,20 @@ Generate multiple curriculum-aligned educational concept files efficiently using
 
 ## Prerequisites
 
+**REQUIRED:**
+- Use Skill tool: `Skill(understand-execution-context)` - Understand whether you're main agent or subagent
+
+**Execution context:**
+- This skill REQUIRES Task tool (main agent only)
+- Subagents: Report to user that this skill needs main session, suggest they run it directly
+
+**Project requirements:**
 - Subject directory exists in `packages/content/subjects/`
-- **REQUIRED SKILLS:**
-  - generate-concept (creates concept files)
-  - review-concept (validates concept files)
 - User has specified: subject, grade range, curriculum standard
+
+**Workflow uses:**
+- generate-concept (creates concept files)
+- review-concept (validates concept files)
 
 ## The Process
 
@@ -98,7 +107,6 @@ Generate multiple curriculum-aligned educational concept files efficiently using
    - Track agent IDs for later resume
 
 2. **Spawn generation agents in parallel:**
-   - Use Task tool (subagent_type='general-purpose', model='haiku')
    - ONE message with multiple Task tool calls (executes concurrently)
    - **Save each agent ID** for potential resume
    - For each concept:
@@ -108,12 +116,9 @@ Generate multiple curriculum-aligned educational concept files efficiently using
      - Title (DE/EN): [titles]
      - Grade: [grade], Scope: [scope]
      - Learning Objectives: [objectives]
-
-     CRITICAL: You CANNOT spawn review agents. Just generate the file.
      ```
 
 3. **Spawn review agents in parallel:**
-   - Use Task tool (subagent_type='general-purpose', model='haiku')
    - Review 3-5 random concepts first (if >50% fail, review all)
    - For each concept:
      ```

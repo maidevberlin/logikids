@@ -7,11 +7,11 @@ description: Analyze full composed prompts for structural issues and test task g
 
 ## Prerequisites
 
-**REQUIRED READING:** Load `.claude/docs/task-prompt-rules.md` for complete requirements.
+**REQUIRED:**
+1. Use Skill tool: `Skill(understand-execution-context)` - Understand whether you're main agent or subagent
+2. Load `.claude/docs/task-prompt-rules.md` - Complete requirements
 
 This skill provides the REVIEW PROCESS. The rules document provides REQUIREMENTS.
-
-**Load task-prompt-rules.md NOW using Read tool before proceeding.**
 
 **Additional requirements:**
 - Concept file exists and passes `check:concept` validation
@@ -30,12 +30,6 @@ This skill performs comprehensive review of prompt composition by:
 - Investigating why tasks have repetitive patterns
 - Validating prompt architecture changes
 - Debugging learning objective coverage issues
-
-## Note on Task Generation Testing
-
-**IMPORTANT**: This skill performs task generation testing directly via Bash commands rather than spawning the test-concept skill.
-
-**Why?** Claude Code intentionally blocks recursive agent spawning (subagents cannot spawn other subagents). We execute the task generation logic directly using Bash.
 
 ## Process
 
