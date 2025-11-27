@@ -172,6 +172,10 @@
       "name": "Größen und Maßeinheiten",
       "description": "Arbeiten mit Standardmaßeinheiten für Länge, Masse, Zeit und Geld einschließlich Umwandlungen und praktischer Anwendungen"
     },
+    "multiplication-tables": {
+      "name": "Einmaleins (2-10)",
+      "description": "Das kleine Einmaleins von 2×2 bis 10×10 beherrschen und in verschiedenen Kontexten anwenden"
+    },
     "natural-numbers-operations": {
       "name": "Natürliche Zahlen und Grundrechenarten",
       "description": "Einführung in das natürliche Zahlensystem, Stellenwertverständnis bis zur Million und Beherrschung der vier Grundrechenarten mit zunehmend großen Zahlen"
