@@ -3,7 +3,13 @@
  * Preserves unknown placeholders like {{a1}}, {{x1}} for LLM consumption.
  */
 
+import Handlebars from 'handlebars';
+import { registerHandlebarsHelpers } from './handlebars-helpers';
+
 export type TemplateVariables = Record<string, string | number>;
+
+// Register helpers once at module load
+registerHandlebarsHelpers();
 
 /**
  * Replace variables in template using specified delimiters.
@@ -30,6 +36,30 @@ export function replaceVariables(
   }
 
   return result;
+}
+
+/**
+ * Compile a Handlebars template with the given data.
+ * This allows for conditional logic and loops in templates.
+ * Handlebars uses {{ }} syntax, but we need to preserve {{ }} for LLM placeholders.
+ *
+ * Solution: Use Handlebars only for concept templates (before composition),
+ * so LLM placeholders in task type templates remain untouched.
+ *
+ * @param template - Handlebars template string
+ * @param data - Variables to pass to template
+ * @returns Compiled template
+ */
+export function compileHandlebars(
+  template: string,
+  data: TemplateVariables
+): string {
+  const compiledTemplate = Handlebars.compile(template, {
+    noEscape: true, // Don't HTML-escape, we're generating markdown
+    strict: false,  // Don't throw on missing variables
+  });
+
+  return compiledTemplate(data);
 }
 
 /**

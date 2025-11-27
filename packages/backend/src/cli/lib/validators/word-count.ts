@@ -1,5 +1,9 @@
 /**
  * Word count validator - checks prompt content length
+ *
+ * UPDATED 2025-11-24: Prompt content is now OPTIONAL. Guidelines moved to frontmatter.
+ * Empty prompt content is perfectly valid (and preferred for most concepts).
+ * If prompt content exists, it should be minimal (for fine-tuning only).
  */
 
 import type { CheckResult } from '../types';
@@ -9,42 +13,39 @@ export function checkWordCount(content: string): CheckResult {
   const words = content.trim().split(/\s+/).filter(word => word.length > 0);
   const wordCount = words.length;
 
-  // Optimal range: 400-800 words
-  if (wordCount >= 400 && wordCount <= 800) {
+  // Empty content is valid (guidelines now in frontmatter)
+  if (wordCount === 0) {
     return {
       status: 'pass',
       issues: [],
     };
   }
 
-  // Warning zone: 800-1200 words (acceptable but not optimal)
-  if (wordCount > 800 && wordCount <= 1200) {
+  // Minimal content for fine-tuning (1-100 words) is optimal
+  if (wordCount <= 100) {
+    return {
+      status: 'pass',
+      issues: [],
+    };
+  }
+
+  // Warning zone: 100-200 words (may be over-specified)
+  if (wordCount <= 200) {
     return {
       status: 'warning',
       issues: [{
-        message: `Content has ${wordCount} words (optimal range: 400-800, max: 1200)`,
-        fix: 'Consider condensing content to 400-800 words for optimal clarity',
+        message: `Prompt content has ${wordCount} words (optimal: 0-100 for fine-tuning only)`,
+        fix: 'Consider moving guidelines to frontmatter fields. Prompt content should only contain edge-case fine-tuning.',
       }],
     };
   }
 
-  // Fail: less than 400 or more than 1200
-  if (wordCount < 400) {
-    return {
-      status: 'fail',
-      issues: [{
-        message: `Content has ${wordCount} words (minimum required: 400)`,
-        fix: `Add ${400 - wordCount} more words to provide sufficient detail`,
-      }],
-    };
-  }
-
-  // wordCount > 1200
+  // Fail: over 200 words (guidelines should be in frontmatter)
   return {
     status: 'fail',
     issues: [{
-      message: `Content has ${wordCount} words (maximum allowed: 1200)`,
-      fix: `Remove ${wordCount - 1200} words to keep content focused and concise`,
+      message: `Prompt content has ${wordCount} words (maximum: 200)`,
+      fix: 'Move problem types, age guidelines, and difficulty guidelines to frontmatter fields. Prompt content should only contain minimal fine-tuning notes.',
     }],
   };
 }

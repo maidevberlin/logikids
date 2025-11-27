@@ -67,17 +67,19 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 <%task_type_template%>
 
 # Task content
-## Learning objectives
-[[learning_objectives]]
 
-**CRITICAL: Learning Objective Coverage**
+## This Task's Focus
+**Learning Objective:** [[selected_objective]]
+**Problem Type:** [[selected_problem_type]]
 
-When generating tasks, ensure variety by targeting DIFFERENT learning objectives from the list above. In a set of 5 tasks, aim to cover at least 3-4 different objectives (60-80% coverage). Do NOT focus on only one or two objectives repeatedly. Rotate through different objective types to provide comprehensive practice and assessment.
+## Guidelines for This Student
+**Age-appropriate approach (age [[age]]):**
+[[age_guidelines]]
 
-## Real world context
+**Difficulty level ([[difficulty]]):**
+[[difficulty_guidelines]]
+
+## Context
 [[real_world_context]]
-
-## Example Tasks
-[[example_tasks]]
 
 <%concept_template%>

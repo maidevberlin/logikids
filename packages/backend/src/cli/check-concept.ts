@@ -50,8 +50,9 @@ Checks:
   • Schema validation (frontmatter fields and types)
   • Filename convention (grade{X}-{name}.md)
   • CARDINAL RULE (no code examples)
-  • Problem structure variety (5-10 structures)
+  • Problem structure variety (7-10 structures)
   • Template variables ({{age}}, {{difficulty}})
+  • Word count (150-250 optimal, 300+ warning, 400+ fail)
   • Translation completeness (all languages)
 `);
     process.exit(0);
@@ -96,7 +97,7 @@ Checks:
 
     const filenameResult = checkFilename(filename, frontmatter.grade);
     const contentResult = checkContent(content);
-    const structureResult = checkStructure(content);
+    const structureResult = checkStructure(frontmatter);
     const templateResult = checkTemplates(content);
     const wordCountResult = checkWordCount(content);
     const translationResult = checkTranslations(frontmatter.id, subject);

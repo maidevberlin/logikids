@@ -4,7 +4,7 @@ import { TaskTypeWithSchema } from '../tasks/types/registry';
 import { validateNoPlaceholders } from './helpers.ts';
 import { VariationLoader } from '../variations/loader';
 import { Concept } from './schemas';
-import { composeAndReplace, replaceVariables } from './template-replacer';
+import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer';
 import { createLogger } from '../common/logger';
 import { HintPromptNotLoadedError } from '../common/errors';
 
@@ -14,6 +14,22 @@ const LANGUAGE_NAMES: Record<string, string> = {
   'en': 'English',
   'de': 'German'
 };
+
+/**
+ * Randomly select one item from an array
+ */
+function randomChoice<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+/**
+ * Resolve age guidelines by finding the highest threshold <= student age
+ */
+function resolveAgeGuidelines(guidelines: Record<number, string[]>, age: number): string[] {
+  const keys = Object.keys(guidelines).map(Number).sort((a, b) => b - a);
+  const key = keys.find(k => k <= age) ?? keys[keys.length - 1];
+  return guidelines[key] ?? [];
+}
 
 /**
  * Builds prompts by combining subject, concept, and task type templates
@@ -52,21 +68,46 @@ export class PromptBuilder {
    * Build the final prompt by combining templates with flat variable replacement
    */
   buildPrompt(params: TaskGenerationParams): string {
+    // === STEP 0: Prepare variables for Handlebars (needed for concept template) ===
+    // Calculate age for filtering variations (grade + 6: grade 2 = ~8yo, grade 13 = ~19yo)
+    const age = params.grade + 6;
+
+    // Select one learning objective and problem type randomly
+    const selectedObjective = randomChoice(params.concept.learning_objectives);
+    const selectedProblemType = randomChoice(params.concept.problem_types);
+
+    // Resolve guidelines for this student
+    const ageGuidelines = resolveAgeGuidelines(params.concept.age_guidelines, age);
+    const difficultyGuidelines = params.concept.difficulty_guidelines[params.difficulty];
+
+    // Variables needed for Handlebars conditionals in concept templates
+    const handlebarsVariables = {
+      age,
+      grade: params.grade,
+      difficulty: params.difficulty,
+      concept_name: params.concept.name,
+      concept_focus: params.concept.focus,
+    };
+
+    // === STEP 0.5: Compile concept template with Handlebars ===
+    // This evaluates conditionals like {{#if (lt age 8)}}...{{/if}}
+    const compiledConceptTemplate = compileHandlebars(
+      params.concept.prompt,
+      handlebarsVariables
+    );
+
     // === STEP 1: Compose Template Hierarchy ===
     // Insert raw sub-templates into base template structure
 
     const compositionVariables = {
       variations_template: this.variationsTemplate,
       subject_base_template: this.subject.basePromptTemplate,
-      concept_template: params.concept.prompt,
+      concept_template: compiledConceptTemplate, // Use compiled version
       task_type_template: this.taskType.promptTemplate,
     };
 
     // === STEP 2: Build Flat Variable Object ===
     // Create single object with ALL variables (duplicates OK - same values)
-
-    // Calculate age for filtering variations (grade + 6: grade 2 = ~8yo, grade 13 = ~19yo)
-    const age = params.grade + 6;
 
     const enrichments = this.variationLoader.getRandomEnrichments(age);
     const enrichment = enrichments.length > 0 ? enrichments[0] : null;
@@ -108,9 +149,11 @@ export class PromptBuilder {
       concept_difficulty: params.concept.difficulty,
       subject_name: this.subject.name,
       task_type_name: this.taskType.name,
-      learning_objectives: params.concept.learning_objectives ? ('- ' + params.concept.learning_objectives.join('\n- ')) : '',
+      selected_objective: selectedObjective,
+      selected_problem_type: selectedProblemType,
+      age_guidelines: ageGuidelines.map(g => `- ${g}`).join('\n'),
+      difficulty_guidelines: difficultyGuidelines.map(g => `- ${g}`).join('\n'),
       prerequisites: params.concept.prerequisites?.join(', ') || '',
-      example_tasks: params.concept.example_tasks?.join('\n- ') || '',
       real_world_context: params.concept.real_world_context || '',
     };
 

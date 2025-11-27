@@ -1,32 +1,13 @@
 /**
- * Template validator - checks for required template variables
+ * Template validator - DEPRECATED
+ * Template variables are no longer required in prompt content
+ * (age/difficulty guidelines moved to frontmatter)
  */
 
-import type { CheckResult, CheckIssue } from '../types';
+import type { CheckResult } from '../types';
 
-export function checkTemplates(content: string): CheckResult {
-  const hasAge = /\{\{age\}\}/.test(content);
-  const hasDifficulty = /\{\{difficulty\}\}/.test(content);
-  const issues: CheckIssue[] = [];
-
-  if (!hasAge) {
-    issues.push({
-      message: 'Template variable {{age}} not found in content',
-      fix: 'Add age-based scaffolding using {{age}} template variable',
-      reference: 'generate-concept SKILL.md lines 100-108',
-    });
-  }
-
-  if (!hasDifficulty) {
-    issues.push({
-      message: 'Template variable {{difficulty}} not found in content',
-      fix: 'Add difficulty scaling using {{difficulty}} template variable',
-      reference: 'generate-concept SKILL.md lines 100-108',
-    });
-  }
-
-  return {
-    status: issues.length > 0 ? 'warning' : 'pass',
-    issues,
-  };
+export function checkTemplates(_content: string): CheckResult {
+  // No longer validating {{age}} or {{difficulty}} in prompt content
+  // These are now handled via frontmatter fields
+  return { status: 'pass', issues: [] };
 }
