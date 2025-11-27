@@ -27,6 +27,7 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 | Educational content | `packages/content/subjects/` |
 | Concept file format | See any `packages/content/subjects/*/official/*.md` |
 | Concept rules | `.claude/docs/concept-rules.md` |
+| Task generation | `.claude/docs/task-generation.md` |
 | AI prompts | `packages/backend/prompts/` |
 | Prompt builder | `packages/backend/src/prompts/` |
 | Backend config | `packages/backend/config.yaml` |
