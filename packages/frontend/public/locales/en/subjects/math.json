@@ -172,6 +172,10 @@
       "name": "Quantities and Units of Measurement",
       "description": "Working with standard measurement units for length, mass, time, and money including conversions and practical applications"
     },
+    "multiplication-tables": {
+      "name": "Multiplication Tables (2-10)",
+      "description": "Master multiplication facts from 2×2 to 10×10 and apply them in various contexts"
+    },
     "natural-numbers-operations": {
       "name": "Natural Numbers and Basic Operations",
       "description": "Introduction to the natural number system, place value understanding up to millions, and mastery of the four basic arithmetic operations with increasingly large numbers"
