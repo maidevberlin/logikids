@@ -235,6 +235,18 @@ The `id` field must match the filename (without `.md`).
 
 ---
 
+## Language
+
+**All concept content must be written in English.**
+
+This includes: `name`, `description`, `learning_objectives`, `problem_types`, `age_guidelines`, `difficulty_guidelines`, `real_world_context`, `anti_patterns`, and any prompt body content.
+
+**Why:** Concepts are base templates processed by the AI. The AI translates to the student's language during task generation. Non-English concepts cause inconsistent translations and prompt confusion.
+
+**Translations for UI:** Come from `packages/frontend/public/locales/{lang}/subjects/{subject}.json`, not from the concept file.
+
+---
+
 ## Common Rationalizations
 
 | Thought | Reality |

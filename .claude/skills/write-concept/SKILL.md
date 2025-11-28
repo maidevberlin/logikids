@@ -12,7 +12,8 @@ description: Use when creating or improving educational concept files - includes
 - Ask user if anything is unclear
 
 ### 2. Research (new concepts only)
-- WebSearch: `"[country] [subject] curriculum [grade]"`
+- **Skip if curriculum info provided** (e.g., from bulk-generate-concepts)
+- Otherwise: WebSearch `"[country] [subject] curriculum [grade]"`
 - Find official curriculum documents
 - Extract: concept scope, learning objectives, age expectations, difficulty progression
 
