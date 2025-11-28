@@ -47,15 +47,19 @@ Format: `grade{X}-{concept-name}` (must match filename without `.md`)
 
 ### name
 
-**Impact:** Displayed to students when selecting concepts. Inserted into prompts as `[[concept_name]]`.
+**Impact:** Inserted into prompts as `[[concept_name]]`. Internal reference for concept identification.
 
-Keep it clear and descriptive.
+**Student-facing text:** The UI displays the translated name from `packages/frontend/public/locales/{lang}/subjects/{subject}.json` under `concepts.{id}.name`.
+
+**Sync requirement:** If you change this field, update the translation files to match.
 
 ### description
 
-**Impact:** Shown in concept selection UI. Helps students understand what they'll practice.
+**Impact:** Internal reference only. NOT used in task generation.
 
-One sentence summarizing the concept scope.
+**Student-facing text:** The UI displays the translated description from `packages/frontend/public/locales/{lang}/subjects/{subject}.json` under `concepts.{id}.description`.
+
+**Sync requirement:** If you change this field, update the translation files to match.
 
 ### grade
 
@@ -88,12 +92,13 @@ The UI always sends its own difficulty parameter for task generation—this fiel
 
 One of: `easy`, `medium`, `hard`
 
-### learning_objectives
+### learning_objectives (3-7 items)
 
 **Impact:** ONE objective is randomly selected per task and inserted as `[[selected_objective]]`.
 **Critical**: Since one objective is chosen randomly with equal probability, a broad range is essential. Students will only encounter each objective proportionally—if 5 objectives exist, each appears in ~20% of tasks. Omitting objectives means students never practice those skills.
 
 **Requirements:**
+- 3-7 objectives per concept (fewer = repetitive, more = sparse coverage)
 - Research official curriculum documents for your region
 - Specific and measurable
 - Cover the FULL scope of the concept, not just popular areas
@@ -148,6 +153,24 @@ Each ID must reference an existing concept. The validation script checks this an
 **Impact:** Inserted as `[[real_world_context]]`. Helps AI generate relatable scenarios.
 
 Cover diverse situations where students encounter this concept—not just one narrow example.
+
+### anti_patterns (optional, 1-3 items)
+
+**Impact:** Inserted as `[[anti_patterns]]`. Tells the AI what to AVOID when generating tasks.
+
+**Purpose:** Prevent common generation mistakes specific to this concept. More effective than adding constraints in the prompt body.
+
+**When to use:**
+- **Initial creation:** Only include obvious, critical anti-patterns
+- **Refinement:** Preferred over prompt body for fixing recurring issues
+
+**Requirements:**
+- 1-3 items maximum (too many dilutes focus)
+- Each item under 80 characters
+- Specific and actionable (not vague warnings)
+
+**Bad:** "Don't make it too hard" (vague, not actionable)
+**Good:** "Avoid fractions with denominators larger than 12" (specific constraint)
 
 ### version / version_notes
 

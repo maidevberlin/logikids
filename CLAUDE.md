@@ -55,3 +55,8 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 - Backend uses Bun runtime (not Node.js)
 - All content must be curriculum-aligned
 - JWT auth with invite-code beta access
+
+# Critical Rules for success
+
+- You MUST use the jetbrains-coding skill
+- You MUST understand what to do. If anything is unclear, you MUST ask clarifying questions.

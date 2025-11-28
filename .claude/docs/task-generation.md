@@ -112,8 +112,11 @@ difficultyGuidelines = concept.difficulty_guidelines[difficulty];
 | `[[age_guidelines]]` | Concept | Resolved age guidelines (bullet list) |
 | `[[difficulty_guidelines]]` | Concept | Difficulty guidelines (bullet list) |
 | `[[real_world_context]]` | Concept | Context for scenarios |
+| `[[anti_patterns]]` | Concept | Things AI should avoid (bullet list) |
 | `[[scenario]]` | Variations | Age-filtered scenario context |
 | `[[language_style]]` | Calculated | Grade-based language style |
+| `[[enrichment_formatted]]` | Variations | Creative enrichments (formatted bullets) |
+| `[[student_context_formatted]]` | Request | Student gender context (if provided) |
 
 ### 5. AI Generation
 
@@ -176,6 +179,7 @@ Each variation item has an age range for filtering.
 | `age_guidelines` | Resolved by age → `[[age_guidelines]]` |
 | `difficulty_guidelines` | Indexed by difficulty → `[[difficulty_guidelines]]` |
 | `real_world_context` | Inserted as `[[real_world_context]]` |
+| `anti_patterns` | Inserted as `[[anti_patterns]]` (optional) |
 | `prerequisites` | Informational (UI navigation) |
 | `prompt` (body) | Compiled with Handlebars, inserted as `<%concept_template%>` |
 
