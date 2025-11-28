@@ -1,5 +1,5 @@
 /**
- * Structure validator - checks problem_types, age_guidelines, and difficulty_guidelines
+ * Structure validator - checks learning_objectives, problem_types, age_guidelines, and difficulty_guidelines
  */
 
 import type { CheckResult, CheckIssue } from '../types';
@@ -37,6 +37,29 @@ export function checkStructure(frontmatter: any): CheckResult {
       fix: 'Consider consolidating similar problem types',
       reference: 'concept-rules.md - Schema Requirements',
     });
+  }
+
+  // Check learning_objectives
+  const learningObjectives = frontmatter.learning_objectives;
+
+  if (learningObjectives && Array.isArray(learningObjectives)) {
+    const objectiveCount = learningObjectives.length;
+
+    if (objectiveCount < 3) {
+      issues.push({
+        message: `Found ${objectiveCount} learning objectives, required 3-7`,
+        fix: `Add ${3 - objectiveCount} more learning objectives`,
+        reference: 'concept-rules.md - learning_objectives',
+      });
+    }
+
+    if (objectiveCount > 7) {
+      issues.push({
+        message: `Found ${objectiveCount} learning objectives, recommended maximum is 7`,
+        fix: 'Consider consolidating similar objectives',
+        reference: 'concept-rules.md - learning_objectives',
+      });
+    }
   }
 
   // Check age_guidelines
@@ -81,6 +104,29 @@ export function checkStructure(frontmatter: any): CheckResult {
           reference: 'concept-rules.md - difficulty_guidelines',
         });
       }
+    }
+  }
+
+  // Check real_world_context
+  const realWorldContext = frontmatter.real_world_context;
+
+  if (realWorldContext && Array.isArray(realWorldContext)) {
+    const contextCount = realWorldContext.length;
+
+    if (contextCount < 3) {
+      issues.push({
+        message: `Found ${contextCount} real_world_context items, required 3-5`,
+        fix: `Add ${3 - contextCount} more real-world context examples`,
+        reference: 'concept-rules.md - real_world_context',
+      });
+    }
+
+    if (contextCount > 5) {
+      issues.push({
+        message: `Found ${contextCount} real_world_context items, maximum is 5`,
+        fix: 'Reduce to 5 most relevant real-world contexts',
+        reference: 'concept-rules.md - real_world_context',
+      });
     }
   }
 

@@ -3,7 +3,7 @@
 ## Important
 
 - Before reading or writing code, use the `jetbrains-coding` skill.
-- Before working on concepts, read `.claude/docs/concept-rules.md`.
+- Before working on concepts, use the `write-concept` skill.
 
 ## Overview
 
@@ -59,4 +59,10 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 # Critical Rules for success
 
 - You MUST use the jetbrains-coding skill
+
+The user is always in a rush. You have to be the slow, thorough thinking part.
+These rules help you to perform much better. So use them to increase your value.
+
 - You MUST understand what to do. If anything is unclear, you MUST ask clarifying questions.
+- Don't react to pressure. Pressure produces errors, errors cost more time. Keep a clear head. Tackle one problem at a time.
+- If there are many issues at a time: put them on a todo list, and slowly work on them one by one. never work on 2 issues at the same time.

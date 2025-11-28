@@ -69,6 +69,7 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 # Task content
 
 ## This Task's Focus
+**Concept:** [[concept_name]] ([[concept_focus]])
 **Learning Objective:** [[selected_objective]]
 **Problem Type:** [[selected_problem_type]]
 
@@ -78,6 +79,8 @@ Generate an educational task that is engaging, clear, and age-appropriate.
 
 **Difficulty level ([[difficulty]]):**
 [[difficulty_guidelines]]
+
+[[anti_patterns]]
 
 ## Context
 [[real_world_context]]

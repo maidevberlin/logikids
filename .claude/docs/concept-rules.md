@@ -148,11 +148,15 @@ One of: `easy`, `medium`, `hard`
 
 Each ID must reference an existing concept. The validation script checks this and fails if any prerequisite does not exist. To find existing concepts, check `packages/content/subjects/{subject}/official/` and `custom/`.
 
-### real_world_context
+### real_world_context (3-5 items)
 
 **Impact:** Inserted as `[[real_world_context]]`. Helps AI generate relatable scenarios.
 
-Cover diverse situations where students encounter this concept—not just one narrow example.
+**Requirements:**
+- 3-5 items, each describing a distinct real-world application
+- Cover diverse situations where students encounter this concept
+- Each item should be a complete sentence or phrase
+- Focus on applications relevant to the target age group
 
 ### anti_patterns (optional, 1-3 items)
 
@@ -228,3 +232,14 @@ If you bias toward popular topics, students rarely practice other areas. A well-
 `grade{X}-{concept-name}.md` in `packages/content/subjects/{subject}/official/`
 
 The `id` field must match the filename (without `.md`).
+
+---
+
+## Common Rationalizations
+
+| Thought | Reality |
+|---------|---------|
+| "I fixed the main issue (max 3 bullets), that's the important part" | The threshold count rule (1-2 year span = single threshold) is equally important. Read ALL rules for a field, not just the first one. |
+| "The validator shows a WARNING, I'll focus on the FAIL first" | Fix ALL issues in one pass. WARNINGs become problems later. The validator output tells you everything needed to fix in one iteration. |
+| "I checked and the prerequisites exist, so they're fine" | Verify HOW the system checks existence. Don't assume your mental model matches the implementation. |
+| "Let me present my findings first before making changes" | "Review and fix" means do both. Present the summary AFTER fixing. Asking for approval on obvious fixes wastes time. |

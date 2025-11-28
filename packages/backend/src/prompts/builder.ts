@@ -69,8 +69,7 @@ export class PromptBuilder {
    */
   buildPrompt(params: TaskGenerationParams): string {
     // === STEP 0: Prepare variables for Handlebars (needed for concept template) ===
-    // Calculate age for filtering variations (grade + 6: grade 2 = ~8yo, grade 13 = ~19yo)
-    const age = params.grade + 6;
+    const age = params.age;
 
     // Select one learning objective and problem type randomly
     const selectedObjective = randomChoice(params.concept.learning_objectives);
@@ -154,7 +153,12 @@ export class PromptBuilder {
       age_guidelines: ageGuidelines.map(g => `- ${g}`).join('\n'),
       difficulty_guidelines: difficultyGuidelines.map(g => `- ${g}`).join('\n'),
       prerequisites: params.concept.prerequisites?.join(', ') || '',
-      real_world_context: params.concept.real_world_context || '',
+      real_world_context: Array.isArray(params.concept.real_world_context)
+        ? params.concept.real_world_context.map(c => `- ${c}`).join('\n')
+        : params.concept.real_world_context || '',
+      anti_patterns: params.concept.anti_patterns?.length
+        ? `**Avoid:**\n${params.concept.anti_patterns.map(p => `- ${p}`).join('\n')}`
+        : '',
     };
 
     // === STEP 3: Compose templates and replace variables ===

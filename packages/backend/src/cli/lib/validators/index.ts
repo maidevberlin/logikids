@@ -9,4 +9,5 @@ export { checkStructure } from './structure';
 export { checkTemplates } from './templates';
 export { checkTranslations } from './translations';
 export { checkWordCount } from './word-count';
+export { checkPrerequisites } from './prerequisites';
 export { validatePrompts } from './prompts';

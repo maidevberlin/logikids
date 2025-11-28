@@ -24,6 +24,7 @@ description: Use when creating or improving educational concept files - includes
 - Location: `packages/content/subjects/{subject}/official/{id}.md`
 - Follow concept-rules.md for all field requirements
 - **Always update:** `version` (increment) and `version_notes` (describe changes)
+- **Prerequisites:** Check `packages/content/subjects/{subject}/official/` for existing concept IDs
 
 ### 5. Update translations
 - Update ALL files: `packages/frontend/public/locales/*/subjects/{subject}.json`
@@ -33,12 +34,6 @@ description: Use when creating or improving educational concept files - includes
 ```bash
 docker compose exec backend-dev bun run check:concept {subject}/{concept-id}
 ```
-
-### 7. Test (optional)
-```bash
-docker compose exec backend-dev bun run test:prompt --subject={subject} --concept={concept-id} --grade={grade} --difficulty={difficulty}
-```
-Run 2-3 times, verify variety.
 
 ## Red Flags
 

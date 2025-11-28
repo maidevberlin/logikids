@@ -22,6 +22,7 @@ import {
   checkTemplates,
   checkTranslations,
   checkWordCount,
+  checkPrerequisites,
 } from './lib/validators';
 import {
   colors,
@@ -100,6 +101,7 @@ Checks:
     const structureResult = checkStructure(frontmatter);
     const templateResult = checkTemplates(content);
     const wordCountResult = checkWordCount(content);
+    const prerequisitesResult = checkPrerequisites(frontmatter);
     const translationResult = checkTranslations(frontmatter.id, subject);
 
     // Print all results
@@ -109,6 +111,7 @@ Checks:
     printSection('PROBLEM STRUCTURE VARIETY', structureResult);
     printSection('TEMPLATE VARIABLES', templateResult);
     printSection('WORD COUNT', wordCountResult);
+    printSection('PREREQUISITES', prerequisitesResult);
     printSection('TRANSLATIONS', translationResult);
 
     // Count failures and warnings
@@ -118,6 +121,7 @@ Checks:
       structureResult,
       templateResult,
       wordCountResult,
+      prerequisitesResult,
       translationResult,
     ];
 
