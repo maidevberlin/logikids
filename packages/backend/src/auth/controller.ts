@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
 import { AuthService } from './service.ts';
 import type { UserAccount as ServiceUserAccount } from './service.ts';
+import { AccountNotFoundError } from '../common/errors';
 import type {
   RegisterInput,
   LoginInput,
@@ -59,7 +60,7 @@ export class AuthController {
     const account = await this.authService.getAccount(userId);
 
     if (!account) {
-      throw new Error('Account not found');
+      throw new AccountNotFoundError();
     }
 
     return this.mapAccount(account);

@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { injectable } from 'tsyringe';
 import { Concept as ConceptEntity } from '../prompts/schemas';
 import { subjectRegistry } from '../subjects/registry';
+import { SubjectNotFoundError } from '../common/errors';
 import type { ConceptFilters, Concept } from './types';
 
 @injectable()
@@ -11,7 +12,7 @@ export class ConceptsService {
 
     const subjectData = subjectRegistry.get(subject);
     if (!subjectData) {
-      throw new Error(`Subject ${subject} not found`);
+      throw new SubjectNotFoundError(subject);
     }
 
     const concepts = this.filterConcepts(subject, { grade, difficulty, source });

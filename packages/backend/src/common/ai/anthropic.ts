@@ -4,6 +4,7 @@ import { AIClient, GenerateOptions, GenerateResponse, JSONSchema, StructuredGene
 import { createLogger } from '../logger';
 import { withErrorHandling } from './errorHandler';
 import { trackCost, calculateCost } from './cost-tracker';
+import { EmptyAIResponseError, NoToolUseError } from '../errors';
 
 const logger = createLogger('AnthropicClient');
 
@@ -49,7 +50,7 @@ export class AnthropicClient extends AIClient {
         const response = message.content[0]?.type === 'text' ? message.content[0].text : '';
 
         if (!response) {
-          throw new Error('Anthropic returned empty response');
+          throw new EmptyAIResponseError('Anthropic');
         }
 
         logger.debug('Response received', { responseLength: response.length });
@@ -124,7 +125,7 @@ export class AnthropicClient extends AIClient {
         );
 
         if (!toolUse) {
-          throw new Error('Anthropic did not return a tool use response');
+          throw new NoToolUseError('Anthropic');
         }
 
         logger.debug('Successfully received tool use response');

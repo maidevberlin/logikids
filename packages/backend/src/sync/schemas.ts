@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { SyncPayloadSchema } from './sync.schema';
+import { SyncPayloadSchema } from './schema.ts';
 
 export const uploadInputSchema = z.object({
   userId: z.string().uuid('userId must be a valid UUID'),

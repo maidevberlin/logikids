@@ -1,4 +1,5 @@
 import { Pool } from 'pg'
+import { DatabaseConnectionError } from '../src/common/errors'
 
 /**
  * PostgreSQL connection pool for user sync data storage
@@ -33,7 +34,7 @@ export async function initializeDatabase(): Promise<void> {
     }
   } catch (error) {
     console.error('[Database] Connection failed:', error)
-    throw new Error('Failed to connect to PostgreSQL database')
+    throw new DatabaseConnectionError()
   }
 }
 

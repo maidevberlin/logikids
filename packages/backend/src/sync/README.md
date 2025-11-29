@@ -17,7 +17,7 @@ Zero-knowledge encrypted user data synchronization using PostgreSQL backend stor
 - `storage.service.ts` - Storage layer (PostgreSQL implementation)
 - `sync.service.ts` - Business logic for sync operations
 - `sync.controller.ts` - HTTP endpoints
-- `sync.schema.ts` - Zod validation schemas
+- `schema.ts` - Zod validation schemas
 - `router.ts` - Express router configuration
 
 **Database Connection**: See `database/` module for database connection and migrations.

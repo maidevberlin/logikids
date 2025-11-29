@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
 import { TRPCError } from '@trpc/server';
 import { SyncService } from './service';
-import type { SyncPayload } from './sync.schema';
+import type { SyncPayload } from './schema.ts';
 
 @injectable()
 export class SyncController {
