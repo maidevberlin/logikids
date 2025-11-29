@@ -3,6 +3,11 @@
 /**
  * Generate a complete task using AI
  * Used for testing concept quality by generating real tasks
+ *
+ * Usage:
+ *   bun run generate:task                            # Show usage
+ *   bun run generate:task math/grade5-fractions      # Generate task for concept
+ *   bun run generate:task math/grade5-fractions --difficulty=hard
  */
 
 import { subjectRegistry } from '../subjects/registry';
@@ -16,23 +21,73 @@ import { createAIClient } from '../common/ai/factory';
 import { Difficulty, Gender, TaskRequest } from '../tasks/types';
 import fs from 'fs';
 
+// ANSI colors
+const colors = {
+  reset: '\x1b[0m',
+  cyan: '\x1b[36m',
+};
+
+function printUsage() {
+  console.log(`
+${colors.cyan}🤖 Generate Task CLI${colors.reset}
+
+Generate a complete task using AI.
+
+${colors.cyan}Usage:${colors.reset}
+  bun run generate:task <subject>/<concept>   Generate task for a concept
+
+${colors.cyan}Options:${colors.reset}
+  --taskType=<type>      Task type (default: singleChoice)
+  --grade=<n>            Grade level (default: from concept)
+  --difficulty=<level>   easy, medium, hard (default: medium)
+  --language=<lang>      Language code (default: en)
+  --gender=<g>           male, female (optional)
+  --output=<file>        Save task to file
+  --verbose              Show debug info
+
+${colors.cyan}Examples:${colors.reset}
+  bun run generate:task math/grade5-fractions
+  bun run generate:task math/grade1-basic-arithmetic-operations --difficulty=easy
+  bun run generate:task math/grade5-fractions --taskType=multipleSelect --verbose
+`);
+}
+
 async function generateTask() {
   // Parse CLI arguments
   const args = process.argv.slice(2);
+
+  // No arguments - show usage
+  if (args.length === 0 || args[0].startsWith('--')) {
+    printUsage();
+    process.exit(0);
+  }
+
+  // First positional arg is subject/concept
+  const input = args[0];
+  if (!input.includes('/')) {
+    console.error('❌ Error: Invalid format. Use subject/concept (e.g., math/grade5-fractions)\n');
+    printUsage();
+    process.exit(1);
+  }
+
+  const [subject, concept] = input.split('/');
+
+  // Parse optional flags
   const getArg = (name: string, defaultValue: string): string => {
     const arg = args.find(a => a.startsWith(`--${name}=`));
     return arg ? arg.split('=')[1] : defaultValue;
   };
 
-  const subject = getArg('subject', 'logic');
-  const concept = getArg('concept', '');
   const taskType = getArg('taskType', 'singleChoice');
-  const grade = parseInt(getArg('grade', '5'));
+  const gradeArg = getArg('grade', '');
   const difficulty = getArg('difficulty', 'medium') as Difficulty;
   const language = getArg('language', 'en');
   const gender = getArg('gender', '') as Gender;
   const output = getArg('output', '');
   const verbose = args.includes('--verbose');
+
+  // Grade will be determined after loading concept if not specified
+  let grade = gradeArg ? parseInt(gradeArg) : 0;
 
   // Suppress all debug logs unless verbose
   if (!verbose) {
@@ -52,9 +107,9 @@ async function generateTask() {
     console.log('🤖 Generating task with AI...\n');
     console.log('Parameters:');
     console.log(`  Subject: ${subject}`);
-    if (concept) console.log(`  Concept: ${concept}`);
+    console.log(`  Concept: ${concept}`);
     console.log(`  Task Type: ${taskType}`);
-    console.log(`  Grade: ${grade}`);
+    console.log(`  Grade: ${gradeArg || '(from concept)'}`);
     console.log(`  Difficulty: ${difficulty}`);
     console.log(`  Language: ${language}`);
     if (gender) console.log(`  Gender: ${gender}`);
@@ -94,13 +149,23 @@ async function generateTask() {
       taskCache
     );
 
+    // Get concept and use its grade if not specified
+    const selectedConcept = subjectRegistry.getConcept(subject, concept);
+    if (!selectedConcept) {
+      throw new Error(`Concept not found: ${concept} in subject ${subject}`);
+    }
+
+    if (!grade) {
+      grade = selectedConcept.grade;
+    }
+
     // Calculate age from grade
     const age = grade + 6;
 
     // Build task request
     const request: TaskRequest = {
       subject,
-      concept: concept || undefined,
+      concept,
       taskType,
       grade,
       age,

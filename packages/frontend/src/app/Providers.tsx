@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClient } from '../api/queryClient.ts'
+import { ReactNode, useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { trpc, trpcClient } from '../api/trpc'
 import { ErrorBoundary } from '../ui/common/ErrorBoundary'
 import { AuthProvider } from './account/AuthContext'
 import { DataSyncProvider } from './account/DataSyncContext'
@@ -11,17 +11,21 @@ interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
+  const [queryClient] = useState(() => new QueryClient())
+
   return (
     <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <DataSyncProvider>
-            <UserDataProvider>
-              {children}
-            </UserDataProvider>
-          </DataSyncProvider>
-        </AuthProvider>
-      </QueryClientProvider>
+      <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <DataSyncProvider>
+              <UserDataProvider>
+                {children}
+              </UserDataProvider>
+            </DataSyncProvider>
+          </AuthProvider>
+        </QueryClientProvider>
+      </trpc.Provider>
     </ErrorBoundary>
   )
 } 

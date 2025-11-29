@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Card } from '@/components/ui/card'
 import { GraduationCap } from 'lucide-react'
 import { useUserData } from '@/app/account'
-import { useQuery } from '@tanstack/react-query'
-import { logikids, SubjectsResponse } from '@/api/logikids'
+import { trpc } from '@/api/trpc'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 
 export function ContinueLearningCard() {
@@ -12,9 +11,7 @@ export function ContinueLearningCard() {
   const { data: userData } = useUserData()
 
   // Fetch subjects to get display names
-  const { data: subjectsData } = useQuery<SubjectsResponse>({
-    queryKey: ['subjects'],
-    queryFn: ({ signal }) => logikids.getSubjects(undefined, signal),
+  const { data: subjectsData } = trpc.subjects.getAll.useQuery({}, {
     staleTime: 5 * 60 * 1000 // 5 minutes
   })
 

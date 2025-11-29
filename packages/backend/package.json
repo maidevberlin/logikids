@@ -22,11 +22,11 @@
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
     "migrate": "bun database/migrate.ts",
-    "test:prompt": "bun src/cli/test-prompt.ts",
+    "generate:prompt": "bun src/cli/generate-prompt.ts",
     "generate:task": "bun src/cli/generate-task.ts",
-    "check:concept": "bun src/cli/check-concept.ts",
-    "check:subject": "bun src/cli/check-subject.ts",
-    "check:prompts": "bun src/cli/check-prompts.ts"
+    "check:concepts": "bun src/cli/check-concepts.ts",
+    "check:prompts": "bun src/cli/check-prompts.ts",
+    "check:translations": "bun src/cli/check-translations.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
@@ -39,6 +39,7 @@
     "express": "^4.18.2",
     "express-rate-limit": "^8.1.0",
     "gray-matter": "^4.0.3",
+    "handlebars": "^4.7.8",
     "install": "^0.13.0",
     "js-yaml": "^4.1.0",
     "jsonwebtoken": "^9.0.2",

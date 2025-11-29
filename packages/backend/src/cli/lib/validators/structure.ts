@@ -62,35 +62,6 @@ export function checkStructure(frontmatter: any): CheckResult {
     }
   }
 
-  // Check age_guidelines
-  const ages = frontmatter.ages;
-  const ageGuidelines = frontmatter.age_guidelines;
-
-  if (ages && ageGuidelines && typeof ageGuidelines === 'object') {
-    const ageSpan = ages[1] - ages[0];
-    const thresholdCount = Object.keys(ageGuidelines).length;
-
-    // Rule: 1-2 year span → single threshold only
-    if (ageSpan <= 2 && thresholdCount > 1) {
-      issues.push({
-        message: `Age span is ${ageSpan} years but has ${thresholdCount} age_guidelines thresholds`,
-        fix: 'For 1-2 year spans, use single threshold (minimum age only)',
-        reference: 'concept-rules.md - age_guidelines',
-      });
-    }
-
-    // Rule: max 3 bullets per threshold
-    for (const [age, guidelines] of Object.entries(ageGuidelines)) {
-      if (Array.isArray(guidelines) && guidelines.length > 3) {
-        issues.push({
-          message: `age_guidelines[${age}] has ${guidelines.length} items (max 3)`,
-          fix: 'Reduce to 3 most important guidelines',
-          reference: 'concept-rules.md - age_guidelines',
-        });
-      }
-    }
-  }
-
   // Check difficulty_guidelines
   const difficultyGuidelines = frontmatter.difficulty_guidelines;
 

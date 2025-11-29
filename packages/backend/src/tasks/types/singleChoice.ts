@@ -3,7 +3,6 @@ import { JSONSchema } from "../../common/ai/base";
 export interface SingleChoiceOption {
   text: string;
   isCorrect: boolean;
-  explanation?: string;
 }
 
 export interface SingleChoiceResponse {
@@ -40,10 +39,6 @@ export const singleChoiceSchema: JSONSchema = {
           },
           isCorrect: {
             type: 'boolean'
-          },
-          explanation: {
-            type: 'string',
-            minLength: 1
           }
         },
         required: ['text', 'isCorrect'],

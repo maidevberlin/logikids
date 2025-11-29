@@ -21,11 +21,7 @@ export function TaskFeedback({ showFeedback, isCorrect, gradingDetails, task, se
 
     switch (task.type) {
       case 'single_choice':
-        if (selectedAnswer !== null) {
-          const scTask = task as SingleChoiceTask
-          return scTask.options[selectedAnswer as number]?.explanation || ''
-        }
-        return ''
+        return (task as SingleChoiceTask).explanation
       case 'yes_no':
         return (task as YesNoTask).explanation
       case 'number_input':

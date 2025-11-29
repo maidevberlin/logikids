@@ -38,7 +38,6 @@ HTTP Request → TaskController → TaskService → PromptBuilder → AI Client 
 
 **Filtering:**
 - By grade (exact match, fallback to lower grades)
-- By age range (student age within concept's `[min, max]`)
 - By difficulty
 
 **Files:** `src/subjects/registry.ts`, `src/prompts/loader.ts`
@@ -78,16 +77,6 @@ selectedProblemType = randomChoice(concept.problem_types);
 
 Each objective/type has equal probability. With 5 objectives, each appears in ~20% of tasks.
 
-#### Age Guidelines Resolution
-
-System finds highest threshold ≤ student age:
-
-```typescript
-// concept.age_guidelines = { 9: [...], 11: [...] }
-// student age = 10
-// → Uses threshold 9 (highest ≤ 10)
-```
-
 #### Difficulty Guidelines
 
 Direct index lookup:
@@ -109,7 +98,6 @@ difficultyGuidelines = concept.difficulty_guidelines[difficulty];
 | `[[concept_focus]]` | Concept | Thematic focus |
 | `[[selected_objective]]` | Concept | Random learning objective |
 | `[[selected_problem_type]]` | Concept | Random problem type |
-| `[[age_guidelines]]` | Concept | Resolved age guidelines (bullet list) |
 | `[[difficulty_guidelines]]` | Concept | Difficulty guidelines (bullet list) |
 | `[[real_world_context]]` | Concept | Context for scenarios |
 | `[[anti_patterns]]` | Concept | Things AI should avoid (bullet list) |
@@ -171,12 +159,10 @@ Each variation item has an age range for filtering.
 | `id` | Concept selection |
 | `name` | Displayed, inserted as `[[concept_name]]` |
 | `grade` | Filtering by student grade |
-| `ages` | Filtering by student age |
 | `focus` | Inserted as `[[concept_focus]]` |
 | `difficulty` | UI display only (not used in generation) |
 | `learning_objectives` | ONE randomly selected → `[[selected_objective]]` |
 | `problem_types` | ONE randomly selected → `[[selected_problem_type]]` |
-| `age_guidelines` | Resolved by age → `[[age_guidelines]]` |
 | `difficulty_guidelines` | Indexed by difficulty → `[[difficulty_guidelines]]` |
 | `real_world_context` | Inserted as `[[real_world_context]]` |
 | `anti_patterns` | Inserted as `[[anti_patterns]]` (optional) |

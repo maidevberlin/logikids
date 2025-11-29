@@ -13,7 +13,7 @@ import { VariationLoader } from '../variations/loader';
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from './types/registry';
 import { taskCache } from '../cache/taskCache';
-import { requireAuth } from '../auth/auth.middleware';
+import { requireAuth } from '../auth/middleware.ts';
 import { validateQuery, validateParams } from '../common/middleware/validation';
 import {
   getSubjectsQuerySchema,

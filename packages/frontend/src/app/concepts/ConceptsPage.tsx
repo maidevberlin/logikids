@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
@@ -11,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Sparkles, GraduationCap } from 'lucide-react'
+import { trpc } from '@/api/trpc'
 
 interface ConceptsResponse {
   subject: {
@@ -20,37 +20,6 @@ interface ConceptsResponse {
   }
   concepts: Concept[]
   totalResults: number
-}
-
-async function fetchSubjectConcepts(
-  subjectId: string,
-  options?: {
-    grade?: number
-    source?: 'curriculum' | 'custom'
-    difficulty?: 'easy' | 'medium' | 'hard'
-  }
-): Promise<ConceptsResponse> {
-  const params = new URLSearchParams()
-
-  if (options?.grade !== undefined) {
-    params.append('grade', options.grade.toString())
-  }
-
-  if (options?.source) {
-    params.append('source', options.source)
-  }
-
-  if (options?.difficulty) {
-    params.append('difficulty', options.difficulty)
-  }
-
-  const url = `/api/task/subjects/${subjectId}/concepts${params.toString() ? '?' + params.toString() : ''}`
-
-  const response = await fetch(url)
-  if (!response.ok) {
-    throw new Error('Failed to fetch concepts')
-  }
-  return response.json()
 }
 
 export default function ConceptsPage() {
@@ -68,17 +37,15 @@ export default function ConceptsPage() {
   const grade = userData?.settings.grade
 
   // Fetch both official and custom concepts to determine default tab
-  const { data: schoolCheck } = useQuery({
-    queryKey: ['concepts-check', subjectId, grade, 'curriculum'],
-    queryFn: () => fetchSubjectConcepts(subjectId!, { grade, source: 'curriculum' }),
-    enabled: !!subjectId && !initialTabSet,
-  })
+  const { data: schoolCheck } = trpc.concepts.get.useQuery(
+    { subject: subjectId!, grade, source: 'curriculum' },
+    { enabled: !!subjectId && !initialTabSet }
+  )
 
-  const { data: customCheck } = useQuery({
-    queryKey: ['concepts-check', subjectId, grade, 'custom'],
-    queryFn: () => fetchSubjectConcepts(subjectId!, { grade, source: 'custom' }),
-    enabled: !!subjectId && !initialTabSet,
-  })
+  const { data: customCheck } = trpc.concepts.get.useQuery(
+    { subject: subjectId!, grade, source: 'custom' },
+    { enabled: !!subjectId && !initialTabSet }
+  )
 
   // Set initial tab based on which has concepts
   useEffect(() => {
@@ -98,18 +65,16 @@ export default function ConceptsPage() {
   const currentSource = activeTab === 'school' ? 'curriculum' : 'custom'
 
   // Fetch grade-filtered concepts for current tab
-  const { data: filteredData, isLoading: isLoadingFiltered } = useQuery({
-    queryKey: ['concepts', subjectId, grade, currentSource],
-    queryFn: () => fetchSubjectConcepts(subjectId!, { grade, source: currentSource }),
-    enabled: !!subjectId && !!grade && !showAll,
-  })
+  const { data: filteredData, isLoading: isLoadingFiltered } = trpc.concepts.get.useQuery(
+    { subject: subjectId!, grade, source: currentSource },
+    { enabled: !!subjectId && !!grade && !showAll }
+  )
 
   // Fetch all concepts for current tab (when user clicks "show all" OR when no grade is set)
-  const { data: allData, isLoading: isLoadingAll } = useQuery({
-    queryKey: ['concepts', subjectId, 'all', currentSource],
-    queryFn: () => fetchSubjectConcepts(subjectId!, { source: currentSource }),
-    enabled: !!subjectId && (showAll || !grade),
-  })
+  const { data: allData, isLoading: isLoadingAll } = trpc.concepts.get.useQuery(
+    { subject: subjectId!, source: currentSource },
+    { enabled: !!subjectId && (showAll || !grade) }
+  )
 
   // Determine which data to use
   const data = (grade && !showAll) ? filteredData : allData

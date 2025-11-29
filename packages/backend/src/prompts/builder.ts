@@ -23,15 +23,6 @@ function randomChoice<T>(arr: T[]): T {
 }
 
 /**
- * Resolve age guidelines by finding the highest threshold <= student age
- */
-function resolveAgeGuidelines(guidelines: Record<number, string[]>, age: number): string[] {
-  const keys = Object.keys(guidelines).map(Number).sort((a, b) => b - a);
-  const key = keys.find(k => k <= age) ?? keys[keys.length - 1];
-  return guidelines[key] ?? [];
-}
-
-/**
  * Builds prompts by combining subject, concept, and task type templates
  */
 export class PromptBuilder {
@@ -76,7 +67,6 @@ export class PromptBuilder {
     const selectedProblemType = randomChoice(params.concept.problem_types);
 
     // Resolve guidelines for this student
-    const ageGuidelines = resolveAgeGuidelines(params.concept.age_guidelines, age);
     const difficultyGuidelines = params.concept.difficulty_guidelines[params.difficulty];
 
     // Variables needed for Handlebars conditionals in concept templates
@@ -150,14 +140,13 @@ export class PromptBuilder {
       task_type_name: this.taskType.name,
       selected_objective: selectedObjective,
       selected_problem_type: selectedProblemType,
-      age_guidelines: ageGuidelines.map(g => `- ${g}`).join('\n'),
       difficulty_guidelines: difficultyGuidelines.map(g => `- ${g}`).join('\n'),
       prerequisites: params.concept.prerequisites?.join(', ') || '',
       real_world_context: Array.isArray(params.concept.real_world_context)
         ? params.concept.real_world_context.map(c => `- ${c}`).join('\n')
         : params.concept.real_world_context || '',
       anti_patterns: params.concept.anti_patterns?.length
-        ? `**Avoid:**\n${params.concept.anti_patterns.map(p => `- ${p}`).join('\n')}`
+        ? params.concept.anti_patterns.map(p => `- ${p}`).join('\n')
         : '',
     };
 

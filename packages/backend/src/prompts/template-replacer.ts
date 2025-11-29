@@ -32,7 +32,9 @@ export function replaceVariables(
   for (const [key, value] of Object.entries(data)) {
     const placeholder = `${open}${key}${close}`;
     const replacement = String(value);
-    result = result.replaceAll(placeholder, replacement);
+    // Use function replacement to avoid special $ character interpretation
+    // (e.g., $` means "insert text before match" in string replacements)
+    result = result.replaceAll(placeholder, () => replacement);
   }
 
   return result;

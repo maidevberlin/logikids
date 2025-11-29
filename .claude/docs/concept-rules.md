@@ -11,11 +11,8 @@ Concept File → PromptBuilder → AI Prompt → Generated Task
 ```
 
 1. **Random selection**: System picks ONE `learning_objective` and ONE `problem_type` per task
-2. **Age resolution**: System finds highest `age_guidelines` threshold ≤ student age
-3. **Difficulty lookup**: System uses the matching `difficulty_guidelines` level
-4. **Prompt assembly**: Selected values are inserted into the AI prompt as bullet lists
-
-**Age parameter**: Student age is sent by the frontend (not calculated). Backend validates that age aligns with grade (±2 years).
+2. **Difficulty lookup**: System uses the matching `difficulty_guidelines` level
+3. **Prompt assembly**: Selected values are inserted into the AI prompt as bullet lists
 
 **Critical insight**: Since objectives and problem types are selected randomly, the concept must cover ALL aspects of the topic comprehensively. Biasing toward popular niches means students miss other important areas.
 
@@ -26,10 +23,10 @@ For full technical details, see `.claude/docs/task-generation.md`.
 **A concept must pass the check script:**
 
 ```
-docker compose exec backend-dev bun run check:concept {subject}/{concept-name}
+docker compose exec backend-dev bun run check:concepts {subject}/{concept-name}
 ```
 
-Or locally: `bun run check:concept {subject}/{concept-name}` in `packages/backend/`
+Or locally: `bun run check:concepts {subject}/{concept-name}` in `packages/backend/`
 
 ## Schema
 
@@ -70,14 +67,6 @@ Format: `grade{X}-{concept-name}` (must match filename without `.md`)
 
 Must match the curriculum grade level for this content.
 
-### ages
-
-**Impact:** Access control. Students outside this range cannot see the concept.
-
-- **First number**: Minimum age for this concept
-- **Second number**: Maximum age (where review/practice is still useful)
-- **Wider is better**: Allows older students to practice fundamentals
-
 ### focus
 
 **Impact:** Inserted into prompts as `[[concept_focus]]`. Provides thematic context to the AI.
@@ -117,18 +106,6 @@ One of: `easy`, `medium`, `hard`
 **Bad:** "Easy addition", "Hard addition" (difficulty, not structure)
 **Good:** "Missing addend", "Sum verification", "Chain calculation" (distinct structures)
 
-### age_guidelines
-
-**Impact:** System finds highest threshold ≤ student age, then inserts those guidelines as `[[age_guidelines]]` (bullet list).
-
-**Resolution:** Keys are age thresholds. System selects guidelines from the highest threshold ≤ student age.
-
-**Threshold rules:**
-- **1-2 year span:** Single threshold only (minimum age)
-- **3+ year span:** Multiple thresholds where pedagogically meaningful
-
-**Verbosity limit:** Max 3 bullet points per threshold. These go directly into AI prompts.
-
 ### difficulty_guidelines
 
 **Impact:** Indexed by difficulty level (easy/medium/hard), inserted as `[[difficulty_guidelines]]` (bullet list).
@@ -158,20 +135,24 @@ Each ID must reference an existing concept. The validation script checks this an
 - Each item should be a complete sentence or phrase
 - Focus on applications relevant to the target age group
 
-### anti_patterns (optional, 1-3 items)
+### anti_patterns (required, 3-5 items)
 
 **Impact:** Inserted as `[[anti_patterns]]`. Tells the AI what to AVOID when generating tasks.
 
-**Purpose:** Prevent common generation mistakes specific to this concept. More effective than adding constraints in the prompt body.
-
-**When to use:**
-- **Initial creation:** Only include obvious, critical anti-patterns
-- **Refinement:** Preferred over prompt body for fixing recurring issues
+**Purpose:** Prevent common generation mistakes specific to this concept. Critical for task quality - concepts without anti_patterns often generate tasks with predictable errors.
 
 **Requirements:**
-- 1-3 items maximum (too many dilutes focus)
+- 3-5 items required
 - Each item under 80 characters
 - Specific and actionable (not vague warnings)
+- Cover common mistakes the AI makes for this concept type
+
+**Types of anti-patterns to include:**
+- **Scope errors:** "Avoid numbers larger than 20" (grade-inappropriate difficulty)
+- **Format errors:** "Don't use decimal notation" (concept-inappropriate representation)
+- **Ambiguity errors:** "Avoid word problems with multiple valid interpretations"
+- **Pedagogy errors:** "Don't combine addition and subtraction in the same problem"
+- **Context errors:** "Avoid scenarios unfamiliar to 7-year-olds"
 
 **Bad:** "Don't make it too hard" (vague, not actionable)
 **Good:** "Avoid fractions with denominators larger than 12" (specific constraint)
@@ -239,7 +220,7 @@ The `id` field must match the filename (without `.md`).
 
 **All concept content must be written in English.**
 
-This includes: `name`, `description`, `learning_objectives`, `problem_types`, `age_guidelines`, `difficulty_guidelines`, `real_world_context`, `anti_patterns`, and any prompt body content.
+This includes: `name`, `description`, `learning_objectives`, `problem_types`, `difficulty_guidelines`, `real_world_context`, `anti_patterns`, and any prompt body content.
 
 **Why:** Concepts are base templates processed by the AI. The AI translates to the student's language during task generation. Non-English concepts cause inconsistent translations and prompt confusion.
 
@@ -251,7 +232,6 @@ This includes: `name`, `description`, `learning_objectives`, `problem_types`, `a
 
 | Thought | Reality |
 |---------|---------|
-| "I fixed the main issue (max 3 bullets), that's the important part" | The threshold count rule (1-2 year span = single threshold) is equally important. Read ALL rules for a field, not just the first one. |
 | "The validator shows a WARNING, I'll focus on the FAIL first" | Fix ALL issues in one pass. WARNINGs become problems later. The validator output tells you everything needed to fix in one iteration. |
 | "I checked and the prerequisites exist, so they're fine" | Verify HOW the system checks existence. Don't assume your mental model matches the implementation. |
 | "Let me present my findings first before making changes" | "Review and fix" means do both. Present the summary AFTER fixing. Asking for approval on obvious fixes wastes time. |

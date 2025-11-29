@@ -39,8 +39,8 @@ export interface SingleChoiceTask extends BaseTask {
   options: Array<{
     text: string
     isCorrect: boolean
-    explanation?: string
   }>
+  explanation: string
 }
 
 export interface YesNoTask extends BaseTask {

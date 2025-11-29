@@ -50,6 +50,18 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 | New concept | Add `.md` file in `packages/content/subjects/{subject}/official/` |
 | New task type | (1) prompt in `prompts/task-types/`, (2) schema in `src/tasks/types/`, (3) grading in `src/tasks/grading/`, (4) answer component in frontend |
 
+## CLI Scripts
+
+All scripts: no args = usage, `subject/concept` = single, `subject` = all in subject, `--all` = everything.
+
+- `check:concepts` - Validate concept files
+- `check:translations` - Check translation completeness
+- `check:prompts` - Validate prompt templates (no args, full system check)
+- `generate:prompt` - Generate AI prompt without calling LLM
+- `generate:task` - Generate task using AI
+
+Run via docker: `docker compose exec backend-dev bun run <script>`
+
 ## Notes
 
 - Backend uses Bun runtime (not Node.js)

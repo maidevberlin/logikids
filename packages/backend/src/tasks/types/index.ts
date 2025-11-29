@@ -21,10 +21,18 @@ import type { MultiSelectResponse } from './multiSelect';
 import type { NumberInputResponse } from './numberInput';
 import type { OrderingResponse } from './ordering';
 
+// Usage information from AI providers
+export interface TaskUsageInfo {
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens?: number;
+}
+
 // Base task response types (without taskId)
 export type BaseTaskResponse = SingleChoiceResponse | YesNoResponse | FillInBlankResponse | MultiSelectResponse | NumberInputResponse | OrderingResponse;
 
-// Union type for all possible task responses with taskId
+// Union type for all possible task responses with taskId and optional usage info
 export type TaskResponse = BaseTaskResponse & {
   taskId: string;
+  usage?: TaskUsageInfo;
 };

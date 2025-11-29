@@ -11,21 +11,14 @@ export class TaskController {
   ) {}
 
   public async getSubjects(req: GetSubjectsRequest, res: Response): Promise<void> {
-    const { grade, age, difficulty } = req.query; // Already validated and coerced by middleware
+    const { grade, difficulty } = req.query; // Already validated and coerced by middleware
 
     const subjects = this.subjectRegistry.getAll().map(subject => {
       const metadata = this.subjectRegistry.getConceptMetadata(subject.id);
 
       // If grade filtering is active, return filtered concepts with full details
       if (grade !== undefined) {
-        // Try grade-based filtering first
-        let filteredConcepts = this.subjectRegistry.getConcepts(subject.id, { grade, difficulty });
-
-        // If no results with grade and age is provided, fall back to age-based filtering
-        // This ensures custom concepts with broad age ranges (like logic) are included
-        if (filteredConcepts.length === 0 && age !== undefined) {
-          filteredConcepts = this.subjectRegistry.getConcepts(subject.id, { age, difficulty });
-        }
+        const filteredConcepts = this.subjectRegistry.getConcepts(subject.id, { grade, difficulty });
 
         return {
           id: subject.id,
@@ -34,8 +27,6 @@ export class TaskController {
           conceptCount: metadata.conceptCount,
           minGrade: metadata.minGrade,
           maxGrade: metadata.maxGrade,
-          minAge: metadata.minAge,
-          maxAge: metadata.maxAge,
           concepts: filteredConcepts.map(concept => ({
             id: concept.id,
             name: concept.name,
@@ -59,8 +50,6 @@ export class TaskController {
         conceptCount: metadata.conceptCount,
         minGrade: metadata.minGrade,
         maxGrade: metadata.maxGrade,
-        minAge: metadata.minAge,
-        maxAge: metadata.maxAge,
         concepts: allConcepts.map(concept => ({
           id: concept.id,
           name: concept.name,

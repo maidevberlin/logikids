@@ -1,23 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@tanstack/react-query'
 import { useProgress } from '@/data/progress/hooks'
 import { generatePracticeRecommendations } from './PracticeAlgorithm'
 import { PageLayout } from '@/app/common'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Target, TrendingUp, Clock, Lightbulb, ArrowRight } from 'lucide-react'
-import { logikids, SubjectsResponse } from '@/api/logikids'
+import { trpc } from '@/api/trpc'
 
 export default function PracticePage() {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const { progress } = useProgress()
 
-  const { data: subjectsData } = useQuery<SubjectsResponse>({
-    queryKey: ['subjects', 'all'],
-    queryFn: ({ signal }) => logikids.getSubjects({}, signal),
-  })
+  const { data: subjectsData } = trpc.subjects.getAll.useQuery({})
 
   const subjects = subjectsData?.subjects ?? []
 

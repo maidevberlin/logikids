@@ -1,22 +1,29 @@
-import { Router } from 'express'
-import { AuthController } from './auth.controller'
-import { requireAuth, getAuthService } from './auth.middleware'
-import { validateBody } from '../common/middleware/validation'
-import { asyncHandler } from '../common/middleware/asyncHandler'
-import { registerSchema, loginSchema, refreshSchema } from './auth.schema'
+import 'reflect-metadata';
+import { container } from 'tsyringe';
+import { router, publicProcedure, protectedProcedure } from '../trpc';
+import { registerSchema, loginSchema, refreshSchema } from './schemas';
+import { AuthController } from './controller';
 
-const router = Router()
+const getController = () => container.resolve(AuthController);
 
-// Create controller with shared AuthService instance
-const authController = new AuthController(getAuthService())
+export const authRouter = router({
+  register: publicProcedure.input(registerSchema).mutation(async ({ input }) => {
+    return getController().register(input);
+  }),
 
-// Public routes
-router.post('/register', validateBody(registerSchema), asyncHandler(authController.register)) // Register new account with invite code
-router.post('/login', validateBody(loginSchema), asyncHandler(authController.login)) // Login with existing userId (account import/restore)
-router.post('/refresh', validateBody(refreshSchema), asyncHandler(authController.refresh)) // Refresh access token using userId
+  login: publicProcedure.input(loginSchema).mutation(async ({ input }) => {
+    return getController().login(input);
+  }),
 
-// Protected routes - require valid JWT
-router.get('/verify', requireAuth, asyncHandler(authController.verify))
-router.get('/account', requireAuth, asyncHandler(authController.getAccount))
+  refresh: publicProcedure.input(refreshSchema).mutation(async ({ input }) => {
+    return getController().refresh(input);
+  }),
 
-export default router
+  verify: protectedProcedure.query(async ({ ctx }) => {
+    return getController().verify(ctx.userId);
+  }),
+
+  getAccount: protectedProcedure.query(async ({ ctx }) => {
+    return getController().getAccount(ctx.userId);
+  }),
+});

@@ -1,10 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
 import { SubjectCard } from './SubjectCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useUserData } from '@/app/account'
-import { logikids, SubjectsResponse, SubjectInfo } from '@/api/logikids'
+import { trpc } from '@/api/trpc'
+import { SubjectInfo } from '@/api/logikids'
 
 // School subject ordering (when they typically start in school)
 const SUBJECT_ORDER = ['math', 'german', 'english', 'physics', 'logic', 'music']
@@ -40,17 +40,13 @@ export default function SubjectsPage() {
   const userAge = userData?.settings.age
 
   // Fetch all subjects with metadata (for subjects with no concepts for user's grade)
-  const { data: allSubjects } = useQuery<SubjectsResponse>({
-    queryKey: ['subjects', 'all-unfiltered'],
-    queryFn: ({ signal }) => logikids.getSubjects({}, signal),
-  })
+  const { data: allSubjects } = trpc.subjects.getAll.useQuery({})
 
   // Fetch filtered subjects (concepts available for user's grade/age)
-  const { data: filteredSubjects, isLoading, error } = useQuery<SubjectsResponse>({
-    queryKey: ['subjects', 'filtered', userGrade, userAge],
-    queryFn: ({ signal }) => logikids.getSubjects({ grade: userGrade!, age: userAge }, signal),
-    enabled: !!userGrade,
-  })
+  const { data: filteredSubjects, isLoading, error } = trpc.subjects.getAll.useQuery(
+    { grade: userGrade!, age: userAge },
+    { enabled: !!userGrade }
+  )
 
   // Create a map of filtered subjects for quick lookup
   const filteredSubjectIds = new Set(filteredSubjects?.subjects?.map(s => s.id) ?? [])

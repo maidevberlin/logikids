@@ -83,13 +83,12 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
   }
 
   /**
-   * Get all concepts for a subject, optionally filtered by grade, age, and difficulty
+   * Get all concepts for a subject, optionally filtered by grade and difficulty
    */
   getConcepts(
     subjectId: string,
     options?: {
       grade?: number;
-      age?: number;
       difficulty?: 'easy' | 'medium' | 'hard';
     }
   ): Concept[] {
@@ -101,14 +100,6 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
     // Filter by grade
     if (options?.grade !== undefined) {
       concepts = concepts.filter(c => c.grade === options.grade);
-    }
-
-    // Filter by age (check if age is within [min, max] range)
-    if (options?.age !== undefined) {
-      concepts = concepts.filter(c => {
-        const [minAge, maxAge] = c.ages;
-        return options.age! >= minAge && options.age! <= maxAge;
-      });
     }
 
     // Filter by difficulty
@@ -142,14 +133,12 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
   }
 
   /**
-   * Get a random concept from a subject, optionally filtered by grade, age, and difficulty
-   * If grade filter returns no results, falls back to age filter
+   * Get a random concept from a subject, optionally filtered by grade and difficulty
    */
   getRandomConcept(
     subjectId: string,
     options?: {
       grade?: number;
-      age?: number;
       difficulty?: 'easy' | 'medium' | 'hard';
     }
   ): Concept | undefined {
@@ -158,18 +147,8 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
       return undefined;
     }
 
-    // Try grade filter first
-    let filteredConcepts = this.getConcepts(subjectId, options);
+    const filteredConcepts = this.getConcepts(subjectId, options);
 
-    // If no results with grade, try with age only
-    if (filteredConcepts.length === 0 && options?.grade !== undefined && options?.age !== undefined) {
-      filteredConcepts = this.getConcepts(subjectId, {
-        age: options.age,
-        difficulty: options.difficulty
-      });
-    }
-
-    // If still no results, return undefined
     if (filteredConcepts.length === 0) {
       return undefined;
     }
@@ -180,14 +159,12 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
   }
 
   /**
-   * Get metadata about a subject's concepts (min/max grade, min/max age, concept count)
+   * Get metadata about a subject's concepts (min/max grade, concept count)
    */
   getConceptMetadata(subjectId: string): {
     conceptCount: number;
     minGrade?: number;
     maxGrade?: number;
-    minAge?: number;
-    maxAge?: number;
   } {
     const conceptMap = this.concepts.get(subjectId);
     if (!conceptMap || conceptMap.size === 0) {
@@ -196,14 +173,11 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
 
     const concepts = Array.from(conceptMap.values());
     const grades = concepts.map(c => c.grade).filter(g => g !== undefined);
-    const ages = concepts.flatMap(c => c.ages);
 
     return {
       conceptCount: concepts.length,
       minGrade: grades.length > 0 ? Math.min(...grades) : undefined,
       maxGrade: grades.length > 0 ? Math.max(...grades) : undefined,
-      minAge: ages.length > 0 ? Math.min(...ages) : undefined,
-      maxAge: ages.length > 0 ? Math.max(...ages) : undefined,
     };
   }
 

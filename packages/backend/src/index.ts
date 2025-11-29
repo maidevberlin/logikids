@@ -3,10 +3,9 @@ import cors from 'cors';
 import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
-import taskRouter from './tasks/router';
-import { createSyncRouter } from './sync/router';
-import inviteRouter from './invites/router';
-import authRouter from './auth/router';
+import * as trpcExpress from '@trpc/server/adapters/express';
+import { appRouter } from './routers';
+import { createContext } from './trpc';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
@@ -23,11 +22,7 @@ const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, 
 // Initialize registries and database before starting server
 async function initializeRegistries() {
   logger.debug('Initializing registries and database...');
-  await Promise.all([
-    subjectRegistry.initialize(),
-    taskTypeRegistry.initialize(),
-    initializeDatabase(),
-  ]);
+  await Promise.all([subjectRegistry.initialize(), taskTypeRegistry.initialize(), initializeDatabase()]);
   logger.debug('All registries and database initialized');
 }
 
@@ -35,13 +30,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/api/auth', authRouter);
-app.use('/api/task', taskRouter);
-app.use('/api/sync', createSyncRouter());
-app.use('/api/invite', inviteRouter);
+// Mount tRPC handler
+app.use(
+  '/api',
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  })
+);
 
-// Error handling
+// Error handling (for non-tRPC routes if any)
 app.use(errorHandler);
 
 // Start cache cleanup job
@@ -75,3 +73,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export default app;
+export type { AppRouter } from './routers';

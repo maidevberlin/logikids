@@ -93,17 +93,16 @@ export class ConceptNotFoundError extends ApplicationError {
  *
  * @example
  * ```typescript
- * const concept = getRandomConcept(subjectId, { grade, age, difficulty });
+ * const concept = getRandomConcept(subjectId, { grade, difficulty });
  * if (!concept) {
- *   throw new NoConceptsFoundError({ subject: subjectId, grade, age, difficulty });
+ *   throw new NoConceptsFoundError({ subject: subjectId, grade, difficulty });
  * }
  * ```
  */
 export class NoConceptsFoundError extends ApplicationError {
-  constructor(criteria: { subject: string; grade?: number; age?: number; difficulty?: string }) {
+  constructor(criteria: { subject: string; grade?: number; difficulty?: string }) {
     const parts: string[] = [`subject ${criteria.subject}`];
     if (criteria.grade !== undefined) parts.push(`grade ${criteria.grade}`);
-    if (criteria.age !== undefined) parts.push(`age ${criteria.age}`);
     if (criteria.difficulty) parts.push(`difficulty ${criteria.difficulty}`);
 
     super(

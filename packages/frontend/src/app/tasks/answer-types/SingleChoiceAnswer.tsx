@@ -7,7 +7,6 @@ import { OPTION_COLORS } from '@/constants/colors'
 interface Option {
   text: string
   isCorrect: boolean
-  explanation?: string
 }
 
 interface SingleChoiceAnswerProps {

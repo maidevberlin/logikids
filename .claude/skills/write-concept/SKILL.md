@@ -15,7 +15,7 @@ description: Use when creating or improving educational concept files - includes
 - **Skip if curriculum info provided** (e.g., from bulk-generate-concepts)
 - Otherwise: WebSearch `"[country] [subject] curriculum [grade]"`
 - Find official curriculum documents
-- Extract: concept scope, learning objectives, age expectations, difficulty progression
+- Extract: concept scope, learning objectives, difficulty progression
 
 ### 3. Read rules
 - `.claude/docs/concept-rules.md`
@@ -33,7 +33,7 @@ description: Use when creating or improving educational concept files - includes
 
 ### 6. Validate
 ```bash
-docker compose exec backend-dev bun run check:concept {subject}/{concept-id}
+docker compose exec backend-dev bun run check:concepts {subject}/{concept-id}
 ```
 
 ## Red Flags

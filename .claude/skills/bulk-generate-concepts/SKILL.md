@@ -37,7 +37,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
 4. **Verify files exist** - Check that concept files were actually created. Agents may report success without writing files.
 
-5. **Validate** - Run `docker compose exec backend-dev bun run check:concept {subject}/{id}` for each. If failures, resume agents with fixes.
+5. **Validate** - Run `docker compose exec backend-dev bun run check:concepts {subject}/{id}` for each. If failures, resume agents with fixes.
 
 6. **Commit** - Stage all concept files + translations, commit with summary.
 

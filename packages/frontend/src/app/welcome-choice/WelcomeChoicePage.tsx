@@ -12,6 +12,7 @@ import { ManualImport } from './ManualImport'
 import { useAuth } from '@/app/account'
 import { Footer } from '@/app/common/Footer'
 import { createLogger } from '@/lib/logger'
+import { trpc } from '@/api/trpc'
 
 const logger = createLogger('WelcomeChoicePage')
 
@@ -26,6 +27,8 @@ export default function WelcomeChoicePage() {
   const [showQRScanner, setShowQRScanner] = useState(false)
   const [showManualImport, setShowManualImport] = useState(false)
 
+  const checkInviteMutation = trpc.invites.check.useMutation()
+
   const handleInviteSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!inviteCode.trim()) return
@@ -35,15 +38,9 @@ export default function WelcomeChoicePage() {
 
     try {
       // Check invite code validity first (optional - backend will validate too)
-      const checkResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || ''}/api/invite/check`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: inviteCode.trim() })
-      })
+      const checkResult = await checkInviteMutation.mutateAsync({ code: inviteCode.trim() })
 
-      const checkResult = await checkResponse.json()
-
-      if (!checkResponse.ok || !checkResult.valid) {
+      if (!checkResult.valid) {
         setError(checkResult.reason || t('welcomeChoice.newAccount.invalidCode', { defaultValue: 'Invalid invite code' }))
         setIsValidating(false)
         return

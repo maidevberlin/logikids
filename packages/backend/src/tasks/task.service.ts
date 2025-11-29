@@ -41,10 +41,10 @@ export class TaskService {
         // Load concept (random if not specified)
         let concept: any;
         if (!requestedConcept) {
-            // Random selection with grade/age filtering
-            concept = this.subjectRegistry.getRandomConcept(subjectId, { grade, age, difficulty });
+            // Random selection with grade filtering
+            concept = this.subjectRegistry.getRandomConcept(subjectId, { grade, difficulty });
             if (!concept) {
-                throw new NoConceptsFoundError({ subject: subjectId, grade, age, difficulty });
+                throw new NoConceptsFoundError({ subject: subjectId, grade, difficulty });
             }
             logger.debug('Random concept selected', { conceptId: concept.id });
         } else {

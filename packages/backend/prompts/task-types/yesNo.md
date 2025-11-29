@@ -4,23 +4,32 @@ name: Yes/No
 description: A task that can be answered with yes or no
 ---
 
-Create a yes/no task with a question that has a clear boolean answer.
+Create a yes/no task with a clear boolean answer.
 
-**Critical**:
-- Generate a balanced mix of questions where the answer is "yes" (true) and questions where the answer is "no" (false). Vary your answers to avoid bias.
-- The `answer` field MUST be a boolean value: `true` or `false`
-- Stick to the output format
+**CRITICAL**: Vary answers - generate balanced mix of true/false. The `answer` field MUST be boolean.
 
-## Quality Guidelines
+**Explanation**: Explain why the answer is yes/no with clear reasoning.
 
-**Question:**
-- Must have exactly one unambiguous correct answer (yes or no)
-- Include all necessary information for solving
-- Create questions where BOTH yes and no are equally likely to be correct
+## Example
 
-**Explanation:**
-- Provide detailed reasoning for the correct answer
-- Include key reasoning points
-- Reference specific details from the question
-- Make it educational and clear
-- Explain why the answer is yes OR why it is no
+```json
+{
+  "type": "yes_no",
+  "title": "Prime Numbers",
+  "task": "Is 17 a prime number?",
+  "answer": true,
+  "explanation": "Yes, 17 is prime. It is only divisible by 1 and itself. Checking: 17 ÷ 2, 3, 4... none divide evenly."
+}
+```
+
+## Output Format
+
+```json
+{
+  "type": "yes_no",
+  "title": "string",
+  "task": "string (markdown supported)",
+  "answer": boolean,
+  "explanation": "string (required, markdown supported)"
+}
+```

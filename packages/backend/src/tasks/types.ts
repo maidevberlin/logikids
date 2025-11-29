@@ -36,7 +36,11 @@ export const taskRequestSchema = z.object({
   difficulty: z.enum(DIFFICULTIES),
   language: z.string().min(2).max(5), // e.g., "en", "de", "en-US"
   gender: z.enum(GENDERS).optional()
-});
+}).refine(
+  // Age and grade must be roughly aligned (age should be grade + 5 to grade + 8)
+  data => data.age >= data.grade + 5 && data.age <= data.grade + 8,
+  { message: 'Age and grade are not aligned. Expected age to be roughly grade + 6 (±2 years).' }
+);
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;
 
@@ -45,6 +49,7 @@ export interface TaskGenerationParams {
   subject: string;
   concept: Concept;
   grade: number;
+  age: number;
   difficulty: Difficulty;
   language: string;
   taskType?: string;

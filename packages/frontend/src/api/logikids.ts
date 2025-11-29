@@ -49,8 +49,6 @@ export interface SubjectInfo {
   conceptCount: number;
   minGrade?: number;
   maxGrade?: number;
-  minAge?: number;
-  maxAge?: number;
   concepts?: ConceptInfo[]; // Only present when grade filtering is active
 }
 

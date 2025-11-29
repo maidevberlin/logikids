@@ -63,6 +63,7 @@ export class PromptService {
     const finalPrompt = promptBuilder.buildPrompt({
       subject: params.subject.id,
       concept: params.concept,
+      age: params.age,
       grade: params.grade,
       difficulty: params.difficulty,
       language: params.language,
