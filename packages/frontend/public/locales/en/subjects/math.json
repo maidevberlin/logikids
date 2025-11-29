@@ -48,6 +48,10 @@
       "description": "Properties and classification of basic 2D shapes including triangles, quadrilaterals, and circles, symmetry and geometric constructions",
       "name": "Two-Dimensional Geometric Shapes"
     },
+    "grade1-addition-subtraction-to-20": {
+      "description": "Adding and subtracting numbers within 20, including crossing the ten, fact families, and mental calculation strategies",
+      "name": "Addition and Subtraction to 20"
+    },
     "grade1-basic-arithmetic-operations": {
       "description": "Master addition and subtraction within 20, including number bonds, crossing ten, and mental calculation strategies",
       "name": "Basic Arithmetic Operations (0-20)"
@@ -61,44 +65,108 @@
       "name": "Geometry and Spatial Awareness"
     },
     "grade1-introduction-to-measurement": {
-      "description": "Comparing and measuring lengths, telling time, understanding money values, and basic time concepts",
+      "description": "Comparing lengths, using non-standard units, and understanding basic time concepts",
       "name": "Introduction to Measurement"
+    },
+    "grade1-money": {
+      "description": "Recognizing coins and bills, counting money, and solving simple purchase problems",
+      "name": "Money"
     },
     "grade1-number-concept-development": {
       "description": "Understanding numbers 1-20, counting forwards and backwards, comparing and ordering numbers",
       "name": "Number Concept Development"
     },
+    "grade1-number-sense-to-20": {
+      "description": "Counting, reading, writing, comparing, and ordering numbers from 0 to 20; understanding quantity and number relationships",
+      "name": "Number Sense to 20"
+    },
+    "grade1-patterns-and-data": {
+      "description": "Recognizing, continuing, and creating patterns; collecting and representing simple data",
+      "name": "Patterns and Data"
+    },
     "grade1-patterns-and-structures": {
       "description": "Identifying, continuing, and creating patterns with shapes, colors, and numbers",
       "name": "Patterns and Structures"
     },
+    "grade1-plane-shapes": {
+      "description": "Identifying, naming, and describing basic 2D shapes",
+      "name": "Plane Shapes"
+    },
+    "grade1-solid-shapes": {
+      "description": "Identifying and naming 3D shapes (cube, sphere, cylinder, cone, cuboid) and relating them to real-world objects",
+      "name": "Solid Shapes"
+    },
+    "grade1-spatial-orientation": {
+      "description": "Understanding and using position words to describe locations and follow directions",
+      "name": "Spatial Orientation"
+    },
+    "grade2-addition-subtraction-to-100": {
+      "description": "Adding and subtracting numbers within 100 using mental strategies, with and without regrouping, and solving multi-step word problems",
+      "name": "Addition and Subtraction to 100"
+    },
     "grade2-geometry-and-symmetry": {
-      "description": "Exploring geometric solid properties and creating symmetrical figures with mirror lines",
+      "description": "Deepening understanding of 2D and 3D shapes, identifying and creating symmetric figures, and working with lines of symmetry",
       "name": "Geometry and Symmetry"
+    },
+    "grade2-introduction-to-chance": {
+      "description": "Understanding certain, possible, and impossible events through simple experiments",
+      "name": "Introduction to Chance"
+    },
+    "grade2-introduction-to-division": {
+      "description": "Understanding division through sharing and grouping strategies, connecting to multiplication, and building foundational division facts",
+      "name": "Introduction to Division"
+    },
+    "grade2-introduction-to-multiplication": {
+      "description": "Understanding multiplication as repeated addition, arrays, equal groups, and foundational times tables (2, 5, 10)",
+      "name": "Introduction to Multiplication"
     },
     "grade2-introduction-to-multiplication-and-division": {
       "description": "Understanding multiplication as repeated addition and division as sharing and grouping, with times tables for 2, 5, and 10",
       "name": "Introduction to Multiplication and Division"
     },
     "grade2-measurement-skills": {
-      "description": "Working with lengths, time, and money - measuring, converting, and calculating with standard units",
+      "description": "Measuring length, understanding time, and comparing measurements",
       "name": "Measurement Skills"
     },
     "grade2-numbers-and-operations-to-100": {
       "description": "Understanding place value, addition, subtraction, comparing, ordering, and rounding numbers within the range 0-100",
       "name": "Numbers and Operations to 100"
     },
+    "grade2-numbers-to-100": {
+      "description": "Understanding place value with tens and ones, reading, writing, comparing numbers to 100, using hundred chart and number line",
+      "name": "Numbers to 100"
+    },
     "grade2-patterns-and-data-representation": {
-      "description": "Recognize number patterns, create charts, and compare event probabilities",
+      "description": "Number sequences; data collection; tally charts; simple bar graphs; interpreting data",
       "name": "Patterns and Data Representation"
+    },
+    "grade3-advanced-geometry": {
+      "description": "Exploring pyramids, cones, and cylinders; understanding nets of 3D shapes; deepened symmetry work",
+      "name": "Advanced Geometry"
     },
     "grade3-all-measurement-domains": {
       "description": "Working with lengths, mass, volume, time, converting units, and solving complex measurement problems",
       "name": "All Measurement Domains"
     },
+    "grade3-area": {
+      "description": "Covering with unit squares; comparing areas; area as measurement",
+      "name": "Introduction to Area"
+    },
+    "grade3-arithmetic-laws": {
+      "description": "Understanding and applying commutative, associative, and distributive properties to make calculations more efficient",
+      "name": "Arithmetic Laws and Properties"
+    },
+    "grade3-time-and-duration": {
+      "description": "Reading clocks, calculating time spans, understanding calendar relationships, and working with units of time",
+      "name": "Time and Duration"
+    },
     "grade3-arithmetic-laws-and-patterns": {
       "description": "Understanding and applying commutative, associative, and distributive properties; recognizing and creating number sequences",
       "name": "Arithmetic Laws and Patterns"
+    },
+    "grade3-data-and-combinatorics": {
+      "description": "Collecting, organizing, and interpreting data; systematic counting and simple combinations",
+      "name": "Data and Combinatorics"
     },
     "grade3-data-probability-and-combinatorics": {
       "description": "Collect data, create diagrams, investigate probability through experiments, and find all combinations systematically",
@@ -112,9 +180,13 @@
       "description": "Automatic recall of multiplication facts, division with remainders, and multi-digit multiplication strategies",
       "name": "Multiplication and Division Mastery"
     },
+    "grade3-multiplication-division-strategies": {
+      "description": "Half-written methods for multiplication, multiplying by 10 and 100, and division with remainder",
+      "name": "Multiplication and Division Strategies"
+    },
     "grade3-multiplication-tables": {
-      "description": "Master multiplication facts from 2×2 to 10×10 and apply them in various contexts",
-      "name": "Multiplication Tables (2-10)"
+      "description": "Mastering all times tables 1-10 with automatic recall and understanding inverse operations (division facts)",
+      "name": "Multiplication Tables"
     },
     "grade3-numbers-and-operations-to-1000": {
       "description": "Place value, comparing, ordering, rounding, mental addition and subtraction strategies with three-digit numbers",
@@ -331,6 +403,14 @@
     "volume-capacity": {
       "description": "Introduction to three-dimensional measurement, calculating volume of cuboids, converting between volume and capacity units, solving practical problems",
       "name": "Volume and Capacity"
+    },
+    "grade3-numbers-to-1000": {
+      "description": "Understanding place value with hundreds, tens, and ones; reading, writing, comparing, and ordering numbers; rounding; recognizing number patterns",
+      "name": "Numbers to 1000"
+    },
+    "grade3-measurement-mass-volume": {
+      "description": "Understanding and working with grams, kilograms, milliliters, and liters through measuring, comparing, and converting",
+      "name": "Measurement - Mass and Volume"
     }
   }
 }

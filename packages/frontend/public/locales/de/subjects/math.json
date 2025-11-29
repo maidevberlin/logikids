@@ -48,6 +48,10 @@
       "description": "Eigenschaften und Klassifizierung grundlegender ebener Figuren wie Dreiecke, Vierecke und Kreise, Symmetrie und geometrische Konstruktionen",
       "name": "Ebene geometrische Figuren"
     },
+    "grade1-addition-subtraction-to-20": {
+      "description": "Addition und Subtraktion im Zahlenraum bis 20, einschließlich Zehnerübergang, Aufgabenfamilien und Kopfrechenstrategien",
+      "name": "Addition und Subtraktion bis 20"
+    },
     "grade1-basic-arithmetic-operations": {
       "description": "Addition und Subtraktion bis 20 beherrschen, einschließlich Zahlzerlegungen, Zehnerübergang und Kopfrechenstrategien",
       "name": "Grundrechenarten im Zahlraum bis 20"
@@ -61,44 +65,108 @@
       "name": "Geometrie und räumliche Orientierung"
     },
     "grade1-introduction-to-measurement": {
-      "description": "Längen vergleichen und messen, Uhrzeit ablesen, Geldwerte verstehen und grundlegende Zeitkonzepte",
+      "description": "Längen vergleichen, nicht-standardisierte Einheiten verwenden und grundlegende Zeitkonzepte verstehen",
       "name": "Einführung in das Messen"
+    },
+    "grade1-money": {
+      "description": "Münzen und Scheine erkennen, Geld zählen und einfache Einkaufsaufgaben lösen",
+      "name": "Geld"
     },
     "grade1-number-concept-development": {
       "description": "Zahlen von 1 bis 20 verstehen, vorwärts und rückwärts zählen, Zahlen vergleichen und ordnen",
       "name": "Zahlbegriffsentwicklung"
     },
+    "grade1-number-sense-to-20": {
+      "description": "Zählen, Lesen, Schreiben, Vergleichen und Ordnen von Zahlen von 0 bis 20; Mengenverständnis und Zahlbeziehungen",
+      "name": "Zahlensinn bis 20"
+    },
     "grade1-patterns-and-structures": {
       "description": "Muster mit Formen, Farben und Zahlen erkennen, fortsetzen und erstellen",
       "name": "Muster und Strukturen"
     },
+    "grade1-patterns-and-data": {
+      "description": "Muster erkennen, fortsetzen und erstellen; einfache Daten sammeln und darstellen",
+      "name": "Muster und Daten"
+    },
+    "grade1-plane-shapes": {
+      "description": "Grundlegende ebene Figuren identifizieren, benennen und beschreiben",
+      "name": "Ebene Figuren"
+    },
+    "grade1-solid-shapes": {
+      "description": "Geometrische Körper (Würfel, Kugel, Zylinder, Kegel, Quader) identifizieren, benennen und mit realen Objekten in Verbindung bringen",
+      "name": "Geometrische Körper"
+    },
+    "grade1-spatial-orientation": {
+      "description": "Positionswörter verstehen und verwenden, um Orte zu beschreiben und Anweisungen zu folgen",
+      "name": "Räumliche Orientierung"
+    },
+    "grade2-addition-subtraction-to-100": {
+      "description": "Addition und Subtraktion im Zahlenraum bis 100 mit Kopfrechenstrategien, mit und ohne Zehnerübergang, und Lösen mehrstufiger Textaufgaben",
+      "name": "Addition und Subtraktion bis 100"
+    },
     "grade2-geometry-and-symmetry": {
-      "description": "Eigenschaften geometrischer Körper erkunden und symmetrische Figuren mit Spiegelachsen erstellen",
+      "description": "Vertiefung von ebenen und räumlichen Figuren, Erkennen und Erstellen symmetrischer Figuren und Arbeiten mit Symmetrieachsen",
       "name": "Geometrie und Symmetrie"
+    },
+    "grade2-introduction-to-chance": {
+      "description": "Sichere, mögliche und unmögliche Ereignisse durch einfache Experimente verstehen",
+      "name": "Einführung in Zufall und Wahrscheinlichkeit"
+    },
+    "grade2-introduction-to-division": {
+      "description": "Division durch Aufteilen und Verteilen verstehen, Verbindung zur Multiplikation herstellen und grundlegende Divisionsaufgaben lösen",
+      "name": "Einführung in die Division"
+    },
+    "grade2-introduction-to-multiplication": {
+      "description": "Multiplikation als wiederholte Addition, Anordnungen, gleiche Gruppen und grundlegendes Einmaleins (2, 5, 10) verstehen",
+      "name": "Einführung in die Multiplikation"
     },
     "grade2-introduction-to-multiplication-and-division": {
       "description": "Multiplikation als wiederholte Addition und Division als Aufteilen und Verteilen verstehen, mit dem kleinen Einmaleins der 2, 5 und 10",
       "name": "Einführung in Multiplikation und Division"
     },
     "grade2-measurement-skills": {
-      "description": "Arbeiten mit Längen, Zeit und Geld - messen, umrechnen und mit Standardeinheiten rechnen",
+      "description": "Längen messen, Zeit verstehen und Messungen vergleichen",
       "name": "Größen und Messen"
     },
     "grade2-numbers-and-operations-to-100": {
       "description": "Stellenwertsystem verstehen, Addition und Subtraktion, Zahlen vergleichen, ordnen und runden im Zahlenraum bis 100",
       "name": "Zahlen und Operationen bis 100"
     },
+    "grade2-numbers-to-100": {
+      "description": "Stellenwerte mit Zehnern und Einern verstehen, Zahlen bis 100 lesen und schreiben, vergleichen, Hundertertafel und Zahlenstrahl nutzen",
+      "name": "Zahlen bis 100"
+    },
     "grade2-patterns-and-data-representation": {
-      "description": "Zahlenmuster erkennen, Diagramme erstellen und Ereigniswahrscheinlichkeiten vergleichen",
+      "description": "Zahlenfolgen; Daten sammeln; Strichlisten; einfache Balkendiagramme; Daten interpretieren",
       "name": "Muster und Daten darstellen"
+    },
+    "grade3-advanced-geometry": {
+      "description": "Pyramiden, Kegel und Zylinder erkunden; Netze von 3D-Körpern verstehen; vertiefte Symmetriearbeit",
+      "name": "Erweiterte Geometrie"
     },
     "grade3-all-measurement-domains": {
       "description": "Einheiten umrechnen und Probleme mit Längen, Massen, Volumen und Zeitspannen lösen",
       "name": "Alle Größenbereiche"
     },
+    "grade3-area": {
+      "description": "Mit Einheitsquadraten bedecken; Flächen vergleichen; Fläche als Messgröße",
+      "name": "Einführung in den Flächeninhalt"
+    },
+    "grade3-arithmetic-laws": {
+      "description": "Kommutativ-, Assoziativ- und Distributivgesetz verstehen und anwenden, um Berechnungen effizienter zu gestalten",
+      "name": "Rechengesetze und Eigenschaften"
+    },
+    "grade3-time-and-duration": {
+      "description": "Uhrzeiten ablesen, Zeitspannen berechnen, Kalender verwenden und mit Zeiteinheiten arbeiten",
+      "name": "Zeit und Zeitspannen"
+    },
     "grade3-arithmetic-laws-and-patterns": {
       "description": "Kommutativ-, Assoziativ- und Distributivgesetz verstehen und anwenden; Zahlenfolgen erkennen und erstellen",
       "name": "Rechengesetze und Zahlenmuster"
+    },
+    "grade3-data-and-combinatorics": {
+      "description": "Daten sammeln, organisieren und interpretieren; systematisches Zählen und einfache Kombinationen",
+      "name": "Daten und Kombinatorik"
     },
     "grade3-data-probability-and-combinatorics": {
       "description": "Daten sammeln und in Diagrammen darstellen, Wahrscheinlichkeit durch Experimente erforschen und alle Möglichkeiten systematisch finden",
@@ -112,9 +180,13 @@
       "description": "Automatisierung des Einmaleins, Division mit Rest und mehrstellige Multiplikationsstrategien",
       "name": "Multiplikation und Division - Vertiefung"
     },
+    "grade3-multiplication-division-strategies": {
+      "description": "Halbschriftliche Verfahren für Multiplikation, Multiplikation mit 10 und 100, Division mit Rest",
+      "name": "Multiplikations- und Divisionsstrategien"
+    },
     "grade3-multiplication-tables": {
-      "description": "Das kleine Einmaleins von 2×2 bis 10×10 beherrschen und in verschiedenen Kontexten anwenden",
-      "name": "Einmaleins (2-10)"
+      "description": "Beherrschung des kleinen Einmaleins (1-10) mit automatischem Abruf und Verständnis der Umkehroperationen (Divisionsaufgaben)",
+      "name": "Einmaleins"
     },
     "grade3-numbers-and-operations-to-1000": {
       "description": "Stellenwertsystem, Vergleichen, Ordnen, Runden, Kopf- und halbschriftliche Additions- und Subtraktionsstrategien mit dreistelligen Zahlen",
@@ -331,6 +403,14 @@
     "volume-capacity": {
       "description": "Einführung in dreidimensionale Messung, Volumenberechnung von Quadern, Umrechnung zwischen Volumen- und Hohlmaßeinheiten, praktische Probleme lösen",
       "name": "Volumen und Rauminhalt"
+    },
+    "grade3-numbers-to-1000": {
+      "description": "Stellenwertsystem mit Hundertern, Zehnern und Einern verstehen; Zahlen lesen, schreiben, vergleichen und ordnen; Runden; Zahlenmuster erkennen",
+      "name": "Zahlen bis 1000"
+    },
+    "grade3-measurement-mass-volume": {
+      "description": "Gramm, Kilogramm, Milliliter und Liter verstehen und anwenden durch Messen, Vergleichen und Umrechnen",
+      "name": "Größen: Masse und Volumen"
     }
   }
 }
