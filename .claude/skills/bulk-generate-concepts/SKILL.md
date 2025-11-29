@@ -37,7 +37,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
 4. **Verify files exist** - Check that concept files were actually created. Agents may report success without writing files.
 
-5. **Validate** - Run `docker compose exec backend-dev bun run check:concepts {subject}/{id}` for each. If failures, resume agents with fixes.
+5. **Validate** - Use `docker compose exec backend-dev bun run check:concepts` to efficiently check the generated concepts. If failures, resume agents with fixes.
 
 6. **Commit** - Stage all concept files + translations, commit with summary.
 
@@ -48,3 +48,12 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 - Max 8-10 concepts per grade (consolidate if curriculum suggests more)
 - Subagents read write-concept skill themselves - don't duplicate rules
 - Research happens ONCE in parent, not per-agent (saves tokens)
+
+## Common Rationalizations
+
+| Thought | Reality |
+|---------|---------|
+| "The PDF isn't readable, I'll use a different state's curriculum instead" | WRONG. Ask the user which curriculum to use. Different states have different standards, terminology, and grade-level expectations. Never substitute without explicit approval. |
+| "German curricula are similar enough across states" | WRONG. While KMK provides national standards, state implementations differ significantly. The user chose a specific curriculum for a reason. |
+| "I'll research what I can find and ask later" | WRONG. Clarify the curriculum source BEFORE researching. Wasted research on the wrong curriculum wastes tokens and time. |
+| "This curriculum has better web content, so I'll use it" | WRONG. Accessibility doesn't equal correctness. If the target curriculum is hard to access, ask the user for alternative sources or approval to use a substitute. |

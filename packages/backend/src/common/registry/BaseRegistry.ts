@@ -32,8 +32,9 @@ export abstract class BaseRegistry<T, TId = string> {
           const key = this.getItemKey(item);
           this.items.set(key, item);
           logger.debug(`[${this.getRegistryName()}] Loaded item: ${key}`);
-        } catch (error: any) {
-          logger.error(`[${this.getRegistryName()}] Failed to load item ${id}:`, error.message);
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          logger.error(`[${this.getRegistryName()}] Failed to load item ${id}:`, message);
           throw error; // Fail fast on invalid items
         }
       }
@@ -43,8 +44,9 @@ export abstract class BaseRegistry<T, TId = string> {
 
       // Call post-initialization hook
       await this.afterInitialize();
-    } catch (error: any) {
-      throw new RegistryInitializationError(this.getRegistryName(), error.message);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      throw new RegistryInitializationError(this.getRegistryName(), message);
     }
   }
 
