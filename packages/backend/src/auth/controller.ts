@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
-import { Service } from './service.ts';
+import { AuthService } from './service.ts';
 import type { UserAccount as ServiceUserAccount } from './service.ts';
 import type {
   RegisterInput,
@@ -15,7 +15,7 @@ import type {
 
 @injectable()
 export class AuthController {
-  constructor(@inject(Service) private authService: Service) {}
+  constructor(@inject(AuthService) private authService: AuthService) {}
 
   private mapAccount(serviceAccount: ServiceUserAccount): UserAccount {
     return {

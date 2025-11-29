@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { Service } from './service.ts'
+import { AuthService } from './service.ts'
 import { createLogger } from '../common/logger'
 
 const logger = createLogger('AuthMiddleware')
@@ -13,9 +13,9 @@ declare global {
   }
 }
 
-const authService = new Service()
+const authService = new AuthService()
 
-export function createAuthMiddleware(authService: Service) {
+export function createAuthMiddleware(authService: AuthService) {
   return async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       // Extract token from Authorization header
@@ -73,7 +73,7 @@ export function createAuthMiddleware(authService: Service) {
 
 export const requireAuth = createAuthMiddleware(authService)
 
-export function getAuthService(): Service {
+export function getAuthService(): AuthService {
   return authService
 }
 

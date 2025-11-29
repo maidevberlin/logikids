@@ -32,7 +32,7 @@ export interface UserAccount {
 }
 
 @injectable()
-export class Service {
+export class AuthService {
   /**
    * Register a new user account with invite code
    * Returns access token on success
