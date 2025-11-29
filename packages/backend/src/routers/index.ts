@@ -1,10 +1,10 @@
 import { router } from '../trpc';
 import { authRouter } from '../auth/router';
-import { subjectsRouter } from './subjects';
+import { subjectsRouter } from '../subjects/router';
 import { conceptsRouter } from '../concepts/router';
-import { tasksRouter } from './tasks';
-import { syncRouter } from './sync';
-import { invitesRouter } from './invites';
+import { tasksRouter } from '../tasks/router';
+import { syncRouter } from '../sync/router';
+import { invitesRouter } from '../invites/router';
 
 /**
  * Main application router

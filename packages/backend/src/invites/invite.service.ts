@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { injectable } from 'tsyringe';
 import { pool } from '../../database/db'
 
 export interface InviteCode {
@@ -9,10 +11,8 @@ export interface InviteCode {
   used_at: number | null
 }
 
+@injectable()
 export class InviteService {
-  constructor() {
-    // PostgreSQL pool is initialized in sync/db.ts
-  }
 
   /**
    * Check if code is valid (without marking as used)

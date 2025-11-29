@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
 import yaml from 'js-yaml';
@@ -11,6 +12,7 @@ import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
 import { taskTypeRegistry } from './tasks/types/registry';
 import { initializeDatabase, closeDatabase } from '../database/db';
+import { initializeContainer } from './container';
 import { createLogger } from './common/logger';
 
 const logger = createLogger('Server');
@@ -19,11 +21,12 @@ const logger = createLogger('Server');
 const configPath = path.join(__dirname, '../config.yaml');
 const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, any>;
 
-// Initialize registries and database before starting server
-async function initializeRegistries() {
-  logger.debug('Initializing registries and database...');
+// Initialize registries, database, and DI container before starting server
+async function initializeServices() {
+  logger.debug('Initializing registries, database, and DI container...');
   await Promise.all([subjectRegistry.initialize(), taskTypeRegistry.initialize(), initializeDatabase()]);
-  logger.debug('All registries and database initialized');
+  await initializeContainer();
+  logger.debug('All services initialized');
 }
 
 const app = express();
@@ -64,8 +67,8 @@ process.on('SIGINT', async () => {
 if (import.meta.url === `file://${process.argv[1]}`) {
   const port = config.server?.port || 3000;
 
-  // Initialize registries before starting server
-  await initializeRegistries();
+  // Initialize all services before starting server
+  await initializeServices();
 
   app.listen(port, () => {
     logger.debug(`Server running on port ${port}`);

@@ -1,53 +1,25 @@
-import { Router } from 'express'
-import { SyncController } from './sync.controller'
-import { SyncService } from './sync.service'
-import { StorageService } from './storage.service'
-import rateLimit from 'express-rate-limit'
-import { requireAuth, requireOwnUserId } from '../auth/middleware.ts'
-import { validateParams } from '../common/middleware/validation'
-import { asyncHandler } from '../common/middleware/asyncHandler'
-import { userIdParamSchema } from '../auth/auth.schema'
-import { createLogger } from '../common/logger'
+import 'reflect-metadata';
+import { container } from 'tsyringe';
+import { router, protectedProcedure } from '../trpc';
+import { uploadInputSchema, downloadInputSchema, verifyInputSchema, deleteInputSchema } from './schemas';
+import { SyncController } from './controller';
 
-const logger = createLogger('SyncRouter')
+const getController = () => container.resolve(SyncController);
 
-/**
- * Create and configure sync router with rate limiting
- */
-export function createSyncRouter(): Router {
-  const router = Router()
+export const syncRouter = router({
+  upload: protectedProcedure.input(uploadInputSchema).mutation(async ({ input, ctx }) => {
+    return getController().upload(input.userId, input.payload, ctx.userId);
+  }),
 
-  // Initialize services
-  const storage = new StorageService()
-  const service = new SyncService(storage)
-  const controller = new SyncController(service)
+  download: protectedProcedure.input(downloadInputSchema).query(async ({ input, ctx }) => {
+    return getController().download(input.userId, ctx.userId);
+  }),
 
-  // Initialize storage directory
-  storage.init().catch(error => {
-    logger.error('Failed to initialize storage', error)
-  })
+  verify: protectedProcedure.input(verifyInputSchema).query(async ({ input, ctx }) => {
+    return getController().verify(input.userId, ctx.userId);
+  }),
 
-  // Rate limiting: 100 requests per userId per hour
-  const syncRateLimiter = rateLimit({
-    windowMs: 60 * 60 * 1000, // 1 hour
-    max: 100,
-    keyGenerator: (req) => req.params.userId || 'unknown',
-    message: {
-      error: 'Too many sync requests. Please try again later.',
-    },
-    standardHeaders: true,
-    legacyHeaders: false,
-    skip: () => process.env.NODE_ENV === 'test', // Skip in tests
-  })
-
-  // Apply rate limiting to all sync routes
-  router.use(syncRateLimiter)
-
-  // Sync endpoints - all require auth and userId verification
-  router.put('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.upload))
-  router.get('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.download))
-  router.post('/:userId/verify', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.verify))
-  router.delete('/:userId', requireAuth, validateParams(userIdParamSchema), requireOwnUserId, asyncHandler(controller.delete))
-
-  return router
-}
+  delete: protectedProcedure.input(deleteInputSchema).mutation(async ({ input, ctx }) => {
+    return getController().delete(input.userId, ctx.userId);
+  }),
+});

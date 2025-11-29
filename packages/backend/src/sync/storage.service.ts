@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { injectable } from 'tsyringe';
 import { pool } from '../../database/db'
 import { SyncRecord, SyncPayload } from './sync.schema'
 import { createLogger } from '../common/logger'
@@ -11,6 +13,7 @@ const logger = createLogger('StorageService')
  * SECURITY NOTE: Database contains encrypted data only.
  * Server cannot decrypt without user's encryption key.
  */
+@injectable()
 export class StorageService {
   /**
    * Initialize storage (no-op for PostgreSQL, kept for interface compatibility)

@@ -1,11 +1,13 @@
-import { Router } from 'express'
-import { checkInviteCode } from './invite.controller'
-import { validateBody } from '../common/middleware/validation'
-import { asyncHandler } from '../common/middleware/asyncHandler'
-import { validateInviteSchema } from './invite.schema'
+import 'reflect-metadata';
+import { container } from 'tsyringe';
+import { router, publicProcedure } from '../trpc';
+import { checkInviteInputSchema } from './schemas';
+import { InvitesController } from './controller';
 
-const router = Router()
+const getController = () => container.resolve(InvitesController);
 
-router.post('/check', validateBody(validateInviteSchema), asyncHandler(checkInviteCode))
-
-export default router
+export const invitesRouter = router({
+  check: publicProcedure.input(checkInviteInputSchema).mutation(async ({ input }) => {
+    return getController().check(input.code);
+  }),
+});

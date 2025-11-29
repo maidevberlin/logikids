@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { injectable, inject } from 'tsyringe';
 import { StorageService } from './storage.service'
 import { SyncPayload, SyncPayloadSchema } from './sync.schema'
 import { createLogger } from '../common/logger'
@@ -13,8 +15,9 @@ const logger = createLogger('SyncService')
  * attempt to decrypt user data. All encryption/decryption happens
  * client-side using keys that never leave the user's devices.
  */
+@injectable()
 export class SyncService {
-  constructor(private readonly storage: StorageService) {}
+  constructor(@inject(StorageService) private readonly storage: StorageService) {}
 
   /**
    * Upload encrypted user data
