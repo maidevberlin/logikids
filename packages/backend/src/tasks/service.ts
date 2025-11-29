@@ -5,7 +5,7 @@ import {TaskTypeRegistry} from './types/registry';
 import {v4 as uuidv4} from 'uuid';
 import {TaskCache, TaskContext} from '../cache/taskCache';
 import {SubjectRegistry} from '../subjects/registry';
-import {PromptService} from '../prompts/prompt.service';
+import {PromptService} from '../prompts/service';
 import {createLogger} from '../common/logger';
 import {
   SubjectNotFoundError,

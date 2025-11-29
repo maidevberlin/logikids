@@ -12,7 +12,7 @@
 
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
-import { PromptService } from '../prompts/prompt.service';
+import { PromptService } from '../prompts/service';
 import { PromptLoader } from '../prompts/loader';
 import { VariationLoader } from '../variations/loader';
 import {Difficulty, Gender, TaskGenerationParams} from '../tasks/types';

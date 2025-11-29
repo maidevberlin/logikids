@@ -89,6 +89,16 @@ EDIT → FILE COMPLETE → CHECK PROBLEMS → FIX → (repeat until 0 problems)
 | `get_debugger_breakpoints` | List all breakpoints |
 | `toggle_debugger_breakpoint` | Add/remove breakpoint |
 
+## Renaming Files
+
+When renaming files (e.g., `task.service.ts` → `service.ts`):
+
+1. **Check if IDE has file rename:** Some JetBrains MCP versions expose file rename that updates imports automatically
+2. **If not available:** Use `git mv` for rename, then update imports with `replace_text_in_file` using `replaceAll: true`
+3. **After renaming:** ALWAYS run type-check to catch missed imports
+
+**Key insight:** `rename_refactoring` is for SYMBOLS (classes, functions, variables), not files. For file renames, you need to update import paths separately.
+
 ## Common Mistakes
 
 | Mistake | Fix |
@@ -97,6 +107,7 @@ EDIT → FILE COMPLETE → CHECK PROBLEMS → FIX → (repeat until 0 problems)
 | Manual rename + search/replace | Use `rename_refactoring` - updates imports, references |
 | Not checking for problems | Call `get_file_problems` after completing a file |
 | Ignoring IDE warnings | Fix ALL problems before moving on |
+| Using git mv then manually updating imports one by one | Use `replace_text_in_file` with `replaceAll: true` to batch update |
 
 ## projectPath Parameter
 

@@ -12,10 +12,10 @@
 
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
-import { PromptService } from '../prompts/prompt.service';
+import { PromptService } from '../prompts/service';
 import { PromptLoader } from '../prompts/loader';
 import { VariationLoader } from '../variations/loader';
-import { TaskService } from '../tasks/task.service';
+import { TaskService } from '../tasks/service';
 import { TaskCache } from '../cache/taskCache';
 import { createAIClient } from '../common/ai/factory';
 import { Difficulty, Gender, TaskRequest } from '../tasks/types';
@@ -184,10 +184,10 @@ async function generateTask() {
       console.log('GENERATED TASK');
       console.log('='.repeat(80) + '\n');
       console.log('Task ID:', taskResponse.taskId);
-      console.log('Subject:', taskResponse.subject);
-      console.log('Concept:', taskResponse.concept);
-      console.log('Task Type:', taskResponse.taskType);
-      console.log('Difficulty:', taskResponse.difficulty);
+      console.log('Subject:', subject);
+      console.log('Concept:', concept);
+      console.log('Task Type:', taskType);
+      console.log('Difficulty:', difficulty);
       console.log('\nTask Data:');
       console.log(JSON.stringify(taskResponse.task, null, 2));
       console.log('\n' + '='.repeat(80));

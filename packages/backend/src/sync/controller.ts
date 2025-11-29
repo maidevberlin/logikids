@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
 import { TRPCError } from '@trpc/server';
-import { SyncService } from './sync.service';
+import { SyncService } from './service';
 import type { SyncPayload } from './sync.schema';
 
 @injectable()

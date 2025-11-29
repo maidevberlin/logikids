@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
-import { InviteService } from './invite.service';
+import { InviteService } from './service';
 
 @injectable()
 export class InvitesController {
