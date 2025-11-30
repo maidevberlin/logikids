@@ -16,8 +16,8 @@ services:
 
   frontend-prod:
     build:
-      context: ./packages/frontend
-      dockerfile: Dockerfile.prod
+      context: .
+      dockerfile: packages/frontend/Dockerfile.prod
     ports:
       - "5154:80"
     environment:
