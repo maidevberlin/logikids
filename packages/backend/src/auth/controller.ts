@@ -1,17 +1,17 @@
 import 'reflect-metadata';
-import { injectable, inject } from 'tsyringe';
-import { AuthService } from './service.ts';
-import type { UserAccount as ServiceUserAccount } from './service.ts';
-import { AccountNotFoundError } from '../common/errors';
+import {inject, injectable} from 'tsyringe';
+import type {UserAccount as ServiceUserAccount} from './service.ts';
+import {AuthService} from './service.ts';
+import {AccountNotFoundError} from '../common/errors';
 import type {
-  RegisterInput,
-  LoginInput,
-  RefreshInput,
-  RegisterResponse,
-  LoginResponse,
-  RefreshResponse,
-  VerifyResponse,
-  UserAccount,
+    LoginInput,
+    LoginResponse,
+    RefreshInput,
+    RefreshResponse,
+    RegisterInput,
+    RegisterResponse,
+    UserAccount,
+    VerifyResponse,
 } from './types';
 
 @injectable()
@@ -45,8 +45,7 @@ export class AuthController {
   }
 
   async refresh(input: RefreshInput): Promise<RefreshResponse> {
-    const result = await this.authService.renewAccessToken(input.userId);
-    return result;
+      return await this.authService.renewAccessToken(input.userId);
   }
 
   async verify(userId: string): Promise<VerifyResponse> {

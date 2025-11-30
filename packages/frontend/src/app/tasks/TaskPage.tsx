@@ -11,7 +11,7 @@ import { PageLayout } from '@/app/common'
 import { TaskPageHeader } from './TaskPageHeader'
 import { TaskCard } from './TaskCard'
 import { useDifficultyTracking } from '@/hooks/useDifficultyTracking'
-import { DifficultyBanner } from '@/components/DifficultyBanner'
+import { DifficultyBanner } from '@/app/common/DifficultyBanner.tsx'
 
 // Import background patterns
 import mathBg from '@/assets/math.webp'
@@ -35,7 +35,7 @@ const taskDefaults: TaskRequest = {
   language: 'en',
 }
 
-export default function TaskPage() {
+export function TaskPage() {
   const { subject, concept } = useParams<{ subject: string; concept: string }>()
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()

@@ -1,5 +1,4 @@
-export { default } from './WelcomePage'
-export { default as WelcomePage } from './WelcomePage'
+export { WelcomePage } from './WelcomePage'
 export { GreetingHeader } from './GreetingHeader'
 export { NavigationCards } from './NavigationCards'
 export { getTimeOfDay, useRandomGreeting, type TimeOfDay } from './greetings'

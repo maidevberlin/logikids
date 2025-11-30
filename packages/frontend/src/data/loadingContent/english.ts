@@ -8,7 +8,7 @@ export const englishContent: SubjectLoadingContent = {
   tips: [
     'tips.english.0', // Reading diverse texts improves comprehension
     'tips.english.1', // Context clues help you understand new words
-    'tips.english.2', // Practice writing to reinforce grammar rules
+    'tips.english.2', // practice writing to reinforce grammar rules
     'tips.english.3', // Listen to native speakers for natural rhythm
     'tips.english.4', // Learn common idioms and expressions
     'tips.english.5', // Build vocabulary by reading regularly

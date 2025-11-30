@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@/app/common/ui/dialog'
 import { Achievement, getTotalCorrectTasks } from './achievements'
 import { GameStats } from './gameTypes'
 import { ProgressData } from '@/data/progress/types'

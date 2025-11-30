@@ -1,5 +1,5 @@
 import { PromptLoader } from './loader';
-import { VariationLoader } from '../variations/loader';
+import { VariationLoader } from './variations/loader';
 import { PromptBuilder } from './builder';
 import { PromptBuildingParams } from './types';
 import { createLogger } from '../common/logger';

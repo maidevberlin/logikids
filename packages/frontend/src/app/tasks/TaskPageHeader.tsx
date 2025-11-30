@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useUserData } from '@/app/account'
 import { trpc } from '@/api/trpc'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 import { SubjectConceptSelector } from './SubjectConceptSelector'
 
 interface TaskPageHeaderProps {

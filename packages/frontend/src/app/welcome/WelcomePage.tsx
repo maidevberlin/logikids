@@ -4,7 +4,7 @@ import { StatsHeader } from './StatsHeader'
 import { NavigationCards } from './NavigationCards'
 import { useUserData } from '@/app/account'
 
-export default function WelcomePage() {
+export function WelcomePage() {
   const { data } = useUserData()
 
   // ProtectedRoute ensures data.settings.name exists

@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@/app/common/ui/select'
 
 const difficultyBadgeStyles: Record<string, string> = {
   easy: 'inline-flex px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 border-0',

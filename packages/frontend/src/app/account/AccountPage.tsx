@@ -7,7 +7,7 @@ import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('AccountPage')
 
-export default function AccountPage() {
+export function AccountPage() {
   const { t } = useTranslation('profile')
   const { data, updateSettings } = useUserData()
 

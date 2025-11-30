@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useProgress } from '@/app/stats'
+import { useProgress } from '@/data/progress/hooks'
 import { ACHIEVEMENTS } from '@/app/stats/achievements'
 
 // Level thresholds for progress display

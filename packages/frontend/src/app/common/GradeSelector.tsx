@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { SelectorButton } from '@/components/ui/SelectorButton'
+import { SelectorButton } from '@/app/common/ui/SelectorButton'
 
 interface GradeSelectorProps {
   value: number

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/components/ui/button'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { Button } from '@/app/common/ui/button'
+import { ScrollArea } from '@/app/common/ui/scroll-area'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { SubjectListProps } from './types'
 
@@ -27,7 +27,7 @@ export const SubjectList = memo(function SubjectList({
             const isActive = previewSubject === subject.id
 
             // Build dynamic class names based on state
-            let stateClasses = ''
+            let stateClasses;
             if (isActive) {
               stateClasses = `${theme.colors.active} font-medium`
             } else {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { TaskLoadingContent } from './TaskLoadingContent'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { cn } from '@/lib/utils'

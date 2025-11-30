@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { AchievementBadge } from './AchievementBadge'
 import { ACHIEVEMENTS } from './achievements'
 import { GameStats } from './gameTypes'

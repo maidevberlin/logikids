@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 
-export default function PrivacyPage() {
+export function PrivacyPage() {
   const { t } = useTranslation()
 
   return (

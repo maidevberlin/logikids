@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { importQRData, parseBackupCode } from '@/data/plugins/qr'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Button } from '@/app/common/ui/button'
+import { Label } from '@/app/common/ui/label'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/app/common/ui/dialog'
 import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('ManualImport')

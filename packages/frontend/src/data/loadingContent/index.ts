@@ -19,7 +19,7 @@
  * ```
  */
 
-import { SubjectLoadingContent, LoadingContent, SubjectId } from './types'
+import { SubjectLoadingContent, LoadingContent } from './types'
 import { mathContent } from './math'
 import { physicsContent } from './physics'
 import { logicContent } from './logic'
@@ -41,7 +41,7 @@ const fallbackContent: SubjectLoadingContent = {
     'tips.fallback.1', // Break problems into manageable steps
     'tips.fallback.2', // Review your answer before submitting
     'tips.fallback.3', // Learn from mistakes to improve
-    'tips.fallback.4', // Practice makes perfect
+    'tips.fallback.4', // practice makes perfect
   ],
 
   facts: [
@@ -109,36 +109,4 @@ export function getLoadingContent(subject: string): SubjectLoadingContent {
  */
 export function getEncouragement(): string[] {
   return encouragement
-}
-
-/**
- * Get all available subject IDs.
- *
- * @returns Array of supported subject identifiers
- *
- * @example
- * ```typescript
- * const subjects = getAvailableSubjects()
- * console.log(subjects) // ['math', 'physics', 'logic', 'music', 'german', 'english']
- * ```
- */
-export function getAvailableSubjects(): SubjectId[] {
-  return ['math', 'physics', 'logic', 'music', 'german', 'english']
-}
-
-/**
- * Check if a subject has dedicated loading content.
- *
- * @param subject - Subject identifier to check
- * @returns true if subject has dedicated content, false if it would use fallback
- *
- * @example
- * ```typescript
- * hasSubjectContent('math') // true
- * hasSubjectContent('unknown') // false
- * ```
- */
-export function hasSubjectContent(subject: string): boolean {
-  const subjectIds: string[] = ['math', 'physics', 'logic', 'music', 'german', 'english']
-  return subjectIds.includes(subject)
 }

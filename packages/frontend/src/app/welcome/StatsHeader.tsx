@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@/app/common/ui/tooltip'
 
 export function StatsHeader() {
   const { t } = useTranslation()

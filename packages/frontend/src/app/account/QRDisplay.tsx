@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { QRCodeSVG } from 'qrcode.react'
 import { generateQRData } from '@/data/plugins/qr'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/common/ui/button'
 import { Eye, EyeOff } from 'lucide-react'
 
 /**
@@ -20,7 +20,7 @@ export function QRDisplay() {
    */
   useEffect(() => {
     if (showQR && !qrData) {
-      generateQR()
+      void generateQR()
     }
   }, [showQR])
 

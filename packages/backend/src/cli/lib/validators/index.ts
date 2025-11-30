@@ -11,3 +11,4 @@ export { checkTranslations } from './translations';
 export { checkWordCount } from './word-count';
 export { checkPrerequisites } from './prerequisites';
 export { validatePrompts } from './prompts';
+export { parseAndValidateConcept, type ParsedConcept, type ParseConceptResult } from './parse-concept';

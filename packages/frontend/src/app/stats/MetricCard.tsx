@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 
 interface MetricCardProps {
   icon: string

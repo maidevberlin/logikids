@@ -41,7 +41,7 @@ export const getCurrentLanguage = () => i18n.language
 // Cache breaker using content hash - only changes when translations change
 const CACHE_BREAKER = import.meta.env.VITE_TRANSLATIONS_HASH
 
-i18n
+void i18n
   // Load translations using http -> see /public/locales
   .use(Backend)
   // Pass the i18n instance to react-i18next
@@ -76,4 +76,4 @@ i18n
     },
   })
 
-export default i18n 
+export { i18n }

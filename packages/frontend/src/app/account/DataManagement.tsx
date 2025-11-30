@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-import { Switch } from '@/components/ui/switch'
+import { Card } from '@/app/common/ui/card'
+import { Label } from '@/app/common/ui/label'
+import { Button } from '@/app/common/ui/button'
+import { Switch } from '@/app/common/ui/switch'
 import {
   Dialog,
   DialogContent,
@@ -11,12 +11,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@/app/common/ui/dialog'
 import { Database, LogOut, Trash2 } from 'lucide-react'
 import { useAuth } from './AuthContext'
 import { RecoveryKit } from './RecoveryKit'
 import { QRDisplay } from './QRDisplay'
 import { ExportData } from './ExportData'
+import { ImportData } from './ImportData'
 import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('DataManagement')
@@ -114,6 +115,9 @@ export function DataManagement({ syncEnabled, lastSyncTimestamp, onSyncToggle }:
 
           {/* Export Data - Always available */}
           <ExportData />
+
+          {/* Import Data - Restore from backup */}
+          <ImportData />
 
           <div className="border-t pt-4" />
 

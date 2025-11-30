@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { GraduationCap } from 'lucide-react'
 import { useUserData } from '@/app/account'
 import { trpc } from '@/api/trpc'

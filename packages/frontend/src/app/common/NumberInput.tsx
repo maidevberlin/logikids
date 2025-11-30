@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/common/ui/button'
 
 interface NumberInputProps {
   value: number

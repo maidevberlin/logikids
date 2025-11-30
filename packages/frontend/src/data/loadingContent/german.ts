@@ -8,7 +8,7 @@ export const germanContent: SubjectLoadingContent = {
   tips: [
     'tips.german.0', // Reading German texts helps build vocabulary
     'tips.german.1', // Pay attention to noun genders: der, die, das
-    'tips.german.2', // Practice verb conjugations regularly
+    'tips.german.2', // practice verb conjugations regularly
     'tips.german.3', // German compound words tell their own stories
     'tips.german.4', // Listen to German to improve pronunciation
     'tips.german.5', // Sentence structure follows patterns you can learn

@@ -1,18 +1,14 @@
+import {AttemptData, Difficulty, ProgressData} from './types'
 import {
-  AttemptData,
-  Difficulty,
-  ProgressData
-} from './types'
-import {
-  calculateConceptAggregate,
-  calculateSubjectMastery,
-  isDuplicate,
-  generateAttemptId,
-  pruneOldAttempts
+    calculateConceptAggregate,
+    calculateSubjectMastery,
+    generateAttemptId,
+    isDuplicate,
+    pruneOldAttempts
 } from './aggregation'
-import { GameStats } from '@/app/stats/gameTypes'
-import { checkAchievements, unlockAchievements } from '@/app/stats/achievements'
-import { createLogger } from '@/lib/logger'
+import {GameStats} from '@/app/stats/gameTypes'
+import {checkAchievements, unlockAchievements} from '@/app/stats/achievements'
+import {createLogger} from '@/lib/logger'
 
 const logger = createLogger('ProgressUpdater')
 
@@ -130,8 +126,7 @@ function updateGameStats(
   // Check and unlock achievements
   const newlyUnlocked = checkAchievements(stats, progress)
   if (newlyUnlocked.length > 0) {
-    const updatedStats = unlockAchievements(stats, newlyUnlocked)
-    return updatedStats
+      return unlockAchievements(stats, newlyUnlocked)
   }
 
   return stats

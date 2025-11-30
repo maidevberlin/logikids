@@ -21,13 +21,6 @@ export const taskRequestSchema = z.object({
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>;
 
-// Subjects endpoint params
-export interface SubjectsParams {
-  grade?: number;
-  age?: number;
-  difficulty?: 'easy' | 'medium' | 'hard';
-}
-
 // Subject/concept response types
 export interface ConceptInfo {
   id: string;

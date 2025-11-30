@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { GameStats } from './gameTypes'
 
 const SUBJECT_COLORS: Record<string, string> = {

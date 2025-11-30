@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button } from '@/components/ui/button'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { Button } from '@/app/common/ui/button'
+import { ScrollArea } from '@/app/common/ui/scroll-area'
 import { ConceptListProps } from './types'
 
 export const ConceptList = memo(function ConceptList({

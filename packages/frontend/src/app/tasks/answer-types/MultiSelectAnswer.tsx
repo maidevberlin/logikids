@@ -1,11 +1,11 @@
-import { Card } from '@/components/ui/card'
-import { Checkbox } from '@/components/ui/checkbox'
-import { MarkdownRenderer } from '@/components/MarkdownRenderer'
+import { Card } from '@/app/common/ui/card'
+import { Checkbox } from '@/app/common/ui/checkbox'
+import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { cn } from '@/lib/utils'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
 import { AlertCircle } from 'lucide-react'
-import { OPTION_COLORS } from '@/constants/colors'
+import { OPTION_COLORS } from '@/app/common/colors.ts'
 
 interface MultiSelectOption {
   id: number

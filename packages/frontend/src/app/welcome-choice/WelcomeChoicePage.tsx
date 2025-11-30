@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
+import { Card } from '@/app/common/ui/card'
+import { Button } from '@/app/common/ui/button'
+import { Label } from '@/app/common/ui/label'
+import { Input } from '@/app/common/ui/input'
 import { Upload, Camera, FileText, ArrowRight } from 'lucide-react'
 import { PDFImport } from './PDFImport'
 import { QRScanner } from './QRScanner'
@@ -16,7 +16,7 @@ import { trpc } from '@/api/trpc'
 
 const logger = createLogger('WelcomeChoicePage')
 
-export default function WelcomeChoicePage() {
+export function WelcomeChoicePage() {
   const { t } = useTranslation('common')
   const navigate = useNavigate()
   const { register } = useAuth()

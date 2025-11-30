@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Html5Qrcode } from 'html5-qrcode'
 import { importQRData, QRPayload } from '@/data/plugins/qr'
-import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Button } from '@/app/common/ui/button'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/app/common/ui/dialog'
 import { Camera, X } from 'lucide-react'
 
 interface QRScannerProps {
@@ -67,10 +67,10 @@ export function QRScanner({ onClose, onSuccess }: QRScannerProps) {
   }
 
   useEffect(() => {
-    startScanner()
+    void startScanner()
 
     return () => {
-      stopScanner()
+      void stopScanner()
     }
   }, [])
 

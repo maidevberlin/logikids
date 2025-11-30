@@ -1,18 +1,16 @@
 import 'reflect-metadata';
-import { injectable } from 'tsyringe';
+import {injectable} from 'tsyringe';
 import jwt from 'jsonwebtoken'
-import { pool } from '../../database/db'
+import {pool} from '../../database/db'
 import {
-  UserExistsError,
-  InviteNotFoundError,
-  InviteExpiredError,
-  InviteAlreadyUsedError,
-  TokenExpiredError,
-  InvalidTokenError,
-  AccountNotFoundError,
-  AccountRevokedError
+    AccountNotFoundError,
+    AccountRevokedError,
+    InviteAlreadyUsedError,
+    InviteExpiredError,
+    InviteNotFoundError,
+    UserExistsError
 } from '../common/errors'
-import { env } from '../config/env'
+import {env} from '../config/env'
 
 const JWT_SECRET = env.JWT_SECRET
 const ACCESS_TOKEN_EXPIRES_IN = '1h' // Short-lived access token
@@ -123,41 +121,6 @@ export class AuthService {
     return jwt.sign(payload, JWT_SECRET, {
       expiresIn: ACCESS_TOKEN_EXPIRES_IN
     })
-  }
-
-  /**
-   * Verify JWT token and return payload
-   */
-  verifyToken(token: string): JWTPayload {
-    try {
-      const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload
-      return decoded
-    } catch (error) {
-      if (error instanceof jwt.TokenExpiredError) {
-        throw new TokenExpiredError()
-      }
-      if (error instanceof jwt.JsonWebTokenError) {
-        throw new InvalidTokenError()
-      }
-      throw error
-    }
-  }
-
-  /**
-   * Validate that user account exists and is not revoked
-   */
-  async validateUser(userId: string): Promise<boolean> {
-    const result = await pool.query(
-      'SELECT user_id, revoked FROM user_accounts WHERE user_id = $1',
-      [userId]
-    )
-
-    if (result.rows.length === 0) {
-      return false
-    }
-
-    // Check if account is revoked
-    return !result.rows[0].revoked
   }
 
   /**

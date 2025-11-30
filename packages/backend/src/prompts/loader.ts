@@ -370,16 +370,6 @@ export class PromptLoader {
   }
 
   /**
-   * Disable hot-reload and cleanup
-   */
-  destroy(): void {
-    if (this.watcher) {
-      this.watcher.close();
-      this.watcher = null;
-    }
-  }
-
-  /**
    * Parse markdown file with frontmatter and validate
    */
   private async parsePromptFile<T>(

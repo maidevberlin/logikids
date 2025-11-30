@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { BookOpen, Target, Calendar } from 'lucide-react'
 import { ContinueLearningCard } from './ContinueLearningCard'
 
@@ -31,7 +31,7 @@ export function NavigationCards() {
         </Card>
       </Link>
 
-      {/* Practice Mode Card */}
+      {/* practice Mode Card */}
       <Link to="/practice" className="block">
         <Card className="p-6 bg-card shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer hover:scale-[1.02] rounded-2xl h-full">
           <div className="flex flex-col items-center text-center space-y-3 h-full justify-center">
@@ -39,7 +39,7 @@ export function NavigationCards() {
               <Target className="w-8 h-8 text-orange-600" />
             </div>
             <h3 className="text-xl font-bold text-foreground">
-              {t('welcome.navigation.practiceMode.title', { defaultValue: 'Practice Mode' })}
+              {t('welcome.navigation.practiceMode.title', { defaultValue: 'practice Mode' })}
             </h3>
             <p className="text-muted-foreground">
               {t('welcome.navigation.practiceMode.description', {

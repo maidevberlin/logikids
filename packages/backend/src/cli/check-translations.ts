@@ -36,6 +36,41 @@ interface CheckResult {
 
 const LANGUAGES = ['de', 'en'];
 
+type MissingTranslation = { conceptId: string; language: string; field?: string };
+
+/**
+ * Check translations for a single concept across all languages
+ */
+function checkConceptTranslationsForLanguages(
+  conceptId: string,
+  translations: Record<string, TranslationData | null>
+): MissingTranslation[] {
+  const missing: MissingTranslation[] = [];
+
+  for (const lang of LANGUAGES) {
+    const langData = translations[lang];
+
+    if (!langData) {
+      missing.push({ conceptId, language: lang, field: 'file' });
+      continue;
+    }
+
+    const concept = langData.concepts?.[conceptId];
+    if (!concept) {
+      missing.push({ conceptId, language: lang });
+    } else {
+      if (!concept.name) {
+        missing.push({ conceptId, language: lang, field: 'name' });
+      }
+      if (!concept.description) {
+        missing.push({ conceptId, language: lang, field: 'description' });
+      }
+    }
+  }
+
+  return missing;
+}
+
 /**
  * Get path to locales directory
  */
@@ -130,26 +165,7 @@ function checkSubjectTranslations(subject: string): CheckResult {
 
   // Check 1: All concepts have translations
   for (const conceptId of conceptIds) {
-    for (const lang of LANGUAGES) {
-      const langData = translations[lang];
-
-      if (!langData) {
-        result.missingTranslations.push({ conceptId, language: lang, field: 'file' });
-        continue;
-      }
-
-      const concept = langData.concepts?.[conceptId];
-      if (!concept) {
-        result.missingTranslations.push({ conceptId, language: lang });
-      } else {
-        if (!concept.name) {
-          result.missingTranslations.push({ conceptId, language: lang, field: 'name' });
-        }
-        if (!concept.description) {
-          result.missingTranslations.push({ conceptId, language: lang, field: 'description' });
-        }
-      }
-    }
+    result.missingTranslations.push(...checkConceptTranslationsForLanguages(conceptId, translations));
   }
 
   // Check 2: Find orphaned translations (keys that don't match any concept)
@@ -212,26 +228,13 @@ function checkSingleConcept(conceptPath: string): CheckResult {
       process.exit(1);
     }
 
+    // Load translations for all languages
+    const translations: Record<string, TranslationData | null> = {};
     for (const lang of LANGUAGES) {
-      const langData = loadTranslations(subject, lang);
-
-      if (!langData) {
-        result.missingTranslations.push({ conceptId, language: lang, field: 'file' });
-        continue;
-      }
-
-      const concept = langData.concepts?.[conceptId];
-      if (!concept) {
-        result.missingTranslations.push({ conceptId, language: lang });
-      } else {
-        if (!concept.name) {
-          result.missingTranslations.push({ conceptId, language: lang, field: 'name' });
-        }
-        if (!concept.description) {
-          result.missingTranslations.push({ conceptId, language: lang, field: 'description' });
-        }
-      }
+      translations[lang] = loadTranslations(subject, lang);
     }
+
+    result.missingTranslations.push(...checkConceptTranslationsForLanguages(conceptId, translations));
   } catch (error) {
     console.error(`${colors.red}${symbols.fail} Error: ${error}${colors.reset}`);
     process.exit(1);
@@ -416,4 +419,4 @@ async function main() {
   process.exit(passed ? 0 : 1);
 }
 
-main();
+void main();

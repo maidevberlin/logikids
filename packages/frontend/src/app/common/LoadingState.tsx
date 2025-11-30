@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 
 export interface LoadingStateProps {
   message?: string

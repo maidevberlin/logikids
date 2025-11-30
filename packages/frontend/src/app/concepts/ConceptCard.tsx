@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/app/common/ui/card'
+import { Badge } from '@/app/common/ui/badge'
 import { Concept } from './types'
 import { useProgress } from '@/data/progress/hooks'
 import { calculateConceptStars } from '@/data/progress/mastery'
-import { StarRating } from '@/components/ui/star-rating'
+import { StarRating } from '@/app/common/ui/star-rating'
 import { formatGrade } from '@/lib/formatGrade'
 
 const difficultyColors: Record<string, string> = {

@@ -10,7 +10,7 @@ export const mathContent: SubjectLoadingContent = {
     'tips.math.1', // Draw diagrams to visualize the problem
     'tips.math.2', // Check your answer by working backwards
     'tips.math.3', // Look for patterns to find shortcuts
-    'tips.math.4', // Practice mental math to build number sense
+    'tips.math.4', // practice mental math to build number sense
     'tips.math.5', // Write down what you know before solving
     'tips.math.6', // Don't be afraid to try different approaches
   ],

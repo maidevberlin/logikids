@@ -1,7 +1,7 @@
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { cn } from '@/lib/utils'
 import { Check, X } from 'lucide-react'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
 
 interface YesNoAnswerProps {

@@ -6,23 +6,13 @@ import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { ConceptsTabContent } from './ConceptsTabContent'
 import { Concept } from './types'
 import { useUserData } from '@/app/account'
-import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { Button } from '@/app/common/ui/button'
+import { Skeleton } from '@/app/common/ui/skeleton'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/common/ui/tabs'
 import { Sparkles, GraduationCap } from 'lucide-react'
 import { trpc } from '@/api/trpc'
 
-interface ConceptsResponse {
-  subject: {
-    id: string
-    name: string
-    description: string
-  }
-  concepts: Concept[]
-  totalResults: number
-}
-
-export default function ConceptsPage() {
+export function ConceptsPage() {
   const { subject: subjectId } = useParams<{ subject: string }>()
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -35,6 +25,9 @@ export default function ConceptsPage() {
   const [initialTabSet, setInitialTabSet] = useState(false)
 
   const grade = userData?.settings.grade
+
+  // Fetch subjects to get subject info
+  const { data: subjectsData } = trpc.subjects.getAll.useQuery({})
 
   // Fetch both official and custom concepts to determine default tab
   const { data: schoolCheck } = trpc.concepts.get.useQuery(
@@ -79,7 +72,7 @@ export default function ConceptsPage() {
   // Determine which data to use
   const data = (grade && !showAll) ? filteredData : allData
   const isLoading = (grade && !showAll) ? isLoadingFiltered : isLoadingAll
-  const subject = data?.subject
+  const subject = subjectsData?.subjects.find(s => s.id === subjectId)
 
   if (!subjectId) {
     return (

@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NumberInput, GenderSelector, GradeSelector, LanguageSelector } from '@/app/common'
-import { Card } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
+import { Card } from '@/app/common/ui/card'
+import { Label } from '@/app/common/ui/label'
 import { User, Check, Loader2 } from 'lucide-react'
 import type { UserSettings } from '@/data/core/types'
 import { createLogger } from '@/lib/logger'
@@ -83,7 +83,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   const handleNameChange = (newName: string) => {
     setName(newName)
     if (newName.trim()) {
-      autoSave({ name: newName, age, grade, gender, language })
+      void autoSave({ name: newName, age, grade, gender, language })
     }
   }
 
@@ -110,7 +110,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   }
 
   const handleLanguageChange = (newLanguage: string) => {
-    setLanguage(newLanguage)
+    setLanguage(newLanguage);
     autoSave({ name, age, grade, gender, language: newLanguage })
   }
 

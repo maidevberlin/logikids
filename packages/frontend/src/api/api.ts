@@ -1,5 +1,5 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
-import config from '../config';
+import { config } from '../config';
 import { getAccessToken, storeTokens, getUserId } from '../data/core/storage';
 import { createLogger } from '@/lib/logger';
 import { LogikidsApiError } from './errors';

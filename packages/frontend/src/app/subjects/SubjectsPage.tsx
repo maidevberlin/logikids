@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common'
 import { SubjectCard } from './SubjectCard'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 import { useUserData } from '@/app/account'
 import { trpc } from '@/api/trpc'
 import { SubjectInfo } from '@/api/logikids'
@@ -33,7 +33,7 @@ function sortSubjects(subjects: SubjectWithDisabled[]): SubjectWithDisabled[] {
   })
 }
 
-export default function SubjectsPage() {
+export function SubjectsPage() {
   const { t } = useTranslation()
   const { data: userData } = useUserData()
   const userGrade = userData?.settings.grade

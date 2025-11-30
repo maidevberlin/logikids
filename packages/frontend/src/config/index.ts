@@ -25,11 +25,9 @@ const apiBaseUrl = env.VITE_API_URL
   ? `${env.VITE_API_URL}/api`
   : '/api';
 
-const config: Config = {
+export const config: Config = {
   apiBaseUrl,
   isDevelopment: env.NODE_ENV === 'development',
   isProduction: env.NODE_ENV === 'production',
   isTest: env.NODE_ENV === 'test',
 };
-
-export default config;

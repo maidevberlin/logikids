@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { MarkdownRenderer } from '@/components/MarkdownRenderer'
-import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
+import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { Task } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
 import { cn } from '@/lib/utils'
 
@@ -9,39 +9,14 @@ interface TaskFeedbackProps {
   isCorrect: boolean | null
   gradingDetails: NumberInputGradingDetails | null
   task: Task
-  selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
 }
 
-export function TaskFeedback({ showFeedback, isCorrect, gradingDetails, task, selectedAnswer }: TaskFeedbackProps) {
+export function TaskFeedback({ showFeedback, isCorrect, gradingDetails, task }: TaskFeedbackProps) {
   const { t } = useTranslation()
-
-  // Get explanation for correct answer
-  const getExplanation = () => {
-    if (!isCorrect) return ''
-
-    switch (task.type) {
-      case 'single_choice':
-        return (task as SingleChoiceTask).explanation
-      case 'yes_no':
-        return (task as YesNoTask).explanation
-      case 'number_input':
-        return (task as NumberInputTask).explanation
-      case 'multi_select':
-        return (task as MultiSelectTask).explanation
-      case 'ordering':
-        return (task as OrderingTask).explanation
-      case 'fill_in_blank':
-        return (task as FillInBlankTask).explanation
-      default:
-        return ''
-    }
-  }
 
   if (!showFeedback) {
     return null
   }
-
-  const explanation = getExplanation()
 
   return (
     <div
@@ -77,10 +52,10 @@ export function TaskFeedback({ showFeedback, isCorrect, gradingDetails, task, se
               defaultValue: 'Not quite. Try again!',
             })}
       </p>
-      {isCorrect && explanation && (
+      {isCorrect && task.explanation && (
         <div className="mt-2">
           <MarkdownRenderer
-            content={explanation}
+            content={task.explanation}
             enableMath={true}
             enableMermaid={false}
             enableCode={false}

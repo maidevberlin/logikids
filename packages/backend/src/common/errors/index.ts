@@ -38,8 +38,6 @@ export {
   AccountRevokedError,
   InvalidCredentialsError,
   UnauthorizedError,
-  TokenExpiredError,
-  InvalidTokenError,
   ForbiddenError
 } from './auth';
 

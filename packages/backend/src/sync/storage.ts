@@ -119,15 +119,6 @@ export class StorageService {
   }
 
   /**
-   * Get all user IDs (for cleanup tasks)
-   */
-  async getAllUserIds(): Promise<string[]> {
-    const query = 'SELECT user_id FROM user_sync_data'
-    const result = await pool.query(query)
-    return result.rows.map(row => row.user_id)
-  }
-
-  /**
    * Delete inactive accounts (GDPR compliance)
    * Deletes accounts not accessed in specified days
    */

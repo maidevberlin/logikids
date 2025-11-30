@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { trpc, trpcClient } from '../api/trpc'
-import { ErrorBoundary } from '../ui/common/ErrorBoundary'
+import { ErrorBoundary } from './common/ErrorBoundary.tsx'
 import { AuthProvider } from './account/AuthContext'
 import { DataSyncProvider } from './account/DataSyncContext'
 import { UserDataProvider } from './account/UserDataContext'

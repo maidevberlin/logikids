@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
 import { ConceptCard } from './ConceptCard'
 import { ShowAllConceptsButton } from './ShowAllConceptsButton'

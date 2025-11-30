@@ -11,7 +11,7 @@ import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('OnboardingPage')
 
-export default function OnboardingPage() {
+export function OnboardingPage() {
   const navigate = useNavigate()
   const { i18n } = useTranslation()
   const { data, isLoading, updateSettings } = useUserData()

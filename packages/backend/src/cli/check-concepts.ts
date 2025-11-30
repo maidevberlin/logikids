@@ -12,9 +12,8 @@
  *   bun run check:concepts --all                        # All subjects
  */
 
-import { readdirSync, readFileSync, existsSync } from 'fs';
+import { readdirSync, existsSync } from 'fs';
 import { basename, join } from 'path';
-import matter from 'gray-matter';
 import {
   resolveConceptPath,
   resolveSubjectPath,
@@ -22,7 +21,6 @@ import {
   getSubjectsBasePath,
 } from './lib/paths';
 import {
-  checkSchema,
   checkFilename,
   checkContent,
   checkStructure,
@@ -30,6 +28,7 @@ import {
   checkTranslations,
   checkWordCount,
   checkPrerequisites,
+  parseAndValidateConcept,
 } from './lib/validators';
 import {
   colors,
@@ -79,33 +78,27 @@ function checkSingleConcept(input: string): number {
   console.log(`\n${colors.cyan}${symbols.info} Checking concept: ${input}${colors.reset}\n`);
 
   try {
-    // Parse file
-    const fileContent = readFileSync(filePath, 'utf-8');
-    const { data: frontmatter, content } = matter(fileContent);
+    // Parse and validate
+    const parseResult = parseAndValidateConcept(filePath);
 
-    // Run all checks
-    const schemaResult = checkSchema(frontmatter);
-
-    // Only run other checks if schema is valid
-    if (schemaResult.status === 'fail') {
-      printSection('SCHEMA VALIDATION', schemaResult);
+    if (!parseResult.success) {
+      printSection('SCHEMA VALIDATION', parseResult.schemaResult);
       printFinalResult(filename, 1, 0);
       return 1;
     }
 
-    // Use validated frontmatter data for type-safe access
-    const validatedFrontmatter = schemaResult.data!;
+    const { frontmatter, content } = parseResult.parsed;
 
-    const filenameResult = checkFilename(filename, validatedFrontmatter.grade);
+    const filenameResult = checkFilename(filename, frontmatter.grade);
     const contentResult = checkContent(content);
-    const structureResult = checkStructure(validatedFrontmatter);
+    const structureResult = checkStructure(frontmatter);
     const templateResult = checkTemplates(content);
     const wordCountResult = checkWordCount(content);
-    const prerequisitesResult = checkPrerequisites(validatedFrontmatter);
-    const translationResult = checkTranslations(validatedFrontmatter.id, subject);
+    const prerequisitesResult = checkPrerequisites(frontmatter);
+    const translationResult = checkTranslations(frontmatter.id, subject);
 
     // Print all results
-    printSection('SCHEMA VALIDATION', schemaResult);
+    printSection('SCHEMA VALIDATION', parseResult.parsed.schemaResult);
     printSection('FILENAME CONVENTION', filenameResult);
     printSection('CARDINAL RULE - No Example Code', contentResult);
     printSection('PROBLEM STRUCTURE VARIETY', structureResult);
@@ -152,35 +145,29 @@ function checkConceptBatch(conceptPath: string, subject: string): ConceptCheckRe
   }
 
   try {
-    // Parse file
-    const fileContent = readFileSync(conceptPath, 'utf-8');
-    const { data: frontmatter, content } = matter(fileContent);
+    // Parse and validate
+    const parseResult = parseAndValidateConcept(conceptPath);
 
-    // Run all checks
-    const schemaResult = checkSchema(frontmatter);
-
-    // If schema fails, count as critical failure
-    if (schemaResult.status === 'fail') {
+    if (!parseResult.success) {
       return {
         filename,
         subject,
         passed: false,
-        issues: schemaResult.issues.length,
+        issues: parseResult.schemaResult.issues.length,
         warnings: 0,
       };
     }
 
-    // Use validated frontmatter data for type-safe access
-    const validatedFrontmatter = schemaResult.data!;
+    const { frontmatter, content } = parseResult.parsed;
 
     // Run remaining checks
     const results = [
-      checkFilename(filename, validatedFrontmatter.grade),
+      checkFilename(filename, frontmatter.grade),
       checkContent(content),
-      checkStructure(validatedFrontmatter),
+      checkStructure(frontmatter),
       checkTemplates(content),
       checkWordCount(content),
-      checkTranslations(validatedFrontmatter.id, subject),
+      checkTranslations(frontmatter.id, subject),
     ];
 
     const criticalFailures = results.filter(r => r.status === 'fail').length;
@@ -381,4 +368,4 @@ async function main() {
   process.exit(failed > 0 ? 1 : 0);
 }
 
-main();
+void main();

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { importQRData, QRPayload } from '@/data/plugins/qr'
+import { importQRData, parseBackupCode, QRPayload } from '@/data/plugins/qr'
 import { getData } from '@/data/core/userData'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
+import { Button } from '@/app/common/ui/button'
+import { Label } from '@/app/common/ui/label'
 import { Upload, AlertTriangle } from 'lucide-react'
 import {
   Dialog,
@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@/app/common/ui/dialog'
 
 /**
  * Component for importing account data from QR code or backup code
@@ -26,34 +26,6 @@ export function ImportData() {
   const [success, setSuccess] = useState(false)
   const [showConflictDialog, setShowConflictDialog] = useState(false)
   const [pendingImport, setPendingImport] = useState<QRPayload | null>(null)
-
-  /**
-   * Parse backup code to QRPayload
-   * Format: XXXX-XXXX-XXXX-... (base64 encoded userId:keyJson)
-   */
-  const parseBackupCode = (code: string): QRPayload => {
-    // Remove dashes and whitespace
-    const base64 = code.replace(/[-\s]/g, '')
-
-    // Decode base64
-    const decoded = atob(base64)
-
-    // Split userId and key
-    const [userId, keyJson] = decoded.split(':', 2)
-
-    if (!userId || !keyJson) {
-      throw new Error('Invalid backup code format')
-    }
-
-    // Parse to ensure it's valid JSON
-    JSON.parse(keyJson)
-
-    return {
-      userId,
-      key: keyJson,
-      timestamp: Date.now()
-    }
-  }
 
   /**
    * Check if device has existing data

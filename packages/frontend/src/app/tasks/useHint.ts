@@ -22,7 +22,7 @@ export const useHint = ({ taskId, maxHints = 4 }: UseHintOptions) => {
       setHintError(null);
     },
     onError: (error) => {
-      setHintError(error instanceof Error ? error.message : 'Failed to fetch hint');
+      setHintError(error.message);
     }
   });
 

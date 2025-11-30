@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 import { NumberInput, GenderSelector, GradeSelector } from '@/app/common'
 import { StudentInfo } from './types'
 import { OnboardingActions } from './OnboardingActions'

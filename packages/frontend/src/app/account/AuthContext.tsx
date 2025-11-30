@@ -32,14 +32,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Initialize authentication state on mount
   useEffect(() => {
-    initializeAuth()
+    void initializeAuth()
   }, [])
 
   // Listen for authentication changes
   useEffect(() => {
     const handleAuthChange = () => {
       logger.debug('Auth change detected, reinitializing')
-      initializeAuth()
+      void initializeAuth()
     }
 
     window.addEventListener('data-changed', handleAuthChange)

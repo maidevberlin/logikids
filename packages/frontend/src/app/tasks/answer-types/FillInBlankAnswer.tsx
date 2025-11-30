@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/input'
+import { Input } from '@/app/common/ui/input'
 import { cn } from '@/lib/utils'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
 

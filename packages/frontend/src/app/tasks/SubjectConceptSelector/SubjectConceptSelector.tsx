@@ -4,9 +4,9 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
+} from '@/app/common/ui/popover'
+import { Button } from '@/app/common/ui/button'
+import { Separator } from '@/app/common/ui/separator'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { SubjectList } from './SubjectList'
 import { ConceptList } from './ConceptList'

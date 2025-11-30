@@ -7,7 +7,7 @@ import { SubjectLoadingContent } from './types'
 export const musicContent: SubjectLoadingContent = {
   tips: [
     'tips.music.0', // Listen carefully to identify patterns in melodies
-    'tips.music.1', // Practice rhythm by clapping or tapping along
+    'tips.music.1', // practice rhythm by clapping or tapping along
     'tips.music.2', // Understanding scales helps with composition
     'tips.music.3', // Count beats to stay in time
     'tips.music.4', // Musical notation is a language you can learn

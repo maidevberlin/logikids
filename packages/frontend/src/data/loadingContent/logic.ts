@@ -12,7 +12,7 @@ export const logicContent: SubjectLoadingContent = {
     'tips.logic.3', // Break complex statements into simpler parts
     'tips.logic.4', // Consider all possibilities systematically
     'tips.logic.5', // If-then statements are the foundation of reasoning
-    'tips.logic.6', // Practice recognizing logical patterns
+    'tips.logic.6', // practice recognizing logical patterns
   ],
 
   facts: [

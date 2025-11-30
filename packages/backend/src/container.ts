@@ -1,16 +1,16 @@
 import 'reflect-metadata';
-import { container } from 'tsyringe';
-import { createAIClient } from './common/ai/factory';
-import { AIClient } from './common/ai/base';
-import { PromptService } from './prompts/service';
-import { PromptLoader } from './prompts/loader';
-import { VariationLoader } from './variations/loader';
-import { TaskService } from './tasks/service';
-import { HintService } from './hints/service';
-import { subjectRegistry, SubjectRegistry } from './subjects/registry';
-import { taskTypeRegistry, TaskTypeRegistry } from './tasks/types/registry';
-import { taskCache, TaskCache } from './cache/taskCache';
-import { createLogger } from './common/logger';
+import {container} from 'tsyringe';
+import {createAIClient} from './common/ai/factory';
+import {AIClient} from './common/ai/base';
+import {PromptService} from './prompts/service';
+import {PromptLoader} from './prompts/loader';
+import {VariationLoader} from './prompts/variations/loader';
+import {TaskService} from './tasks/service';
+import {HintService} from './hints/service';
+import {subjectRegistry, SubjectRegistry} from './subjects/registry';
+import {taskTypeRegistry, TaskTypeRegistry} from './tasks/types/registry';
+import {taskCache, TaskCache} from './cache/taskCache';
+import {createLogger} from './common/logger';
 
 const logger = createLogger('Container');
 
@@ -60,9 +60,8 @@ export async function initializeContainer(): Promise<void> {
   // Register HintService with factory
   container.register<HintService>(HintService, {
     useFactory: (c) => {
-      const service = new HintService(c.resolve<AIClient>(AI_CLIENT));
-      // Note: initialize() is called separately since it's async
-      return service;
+        // Note: initialize() is called separately since it's async
+      return new HintService(c.resolve<AIClient>(AI_CLIENT));
     },
   });
 

@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ChevronLeft, Home, User } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/common/ui/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@/app/common/ui/tooltip'
 import { HeaderGameStats } from './HeaderGameStats'
 
 interface HeaderProps {

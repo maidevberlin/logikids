@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import i18n from '@/i18n/config';
+import { i18n } from '@/i18n/config';
 import { TaskRequest } from '@/api/logikids';
-import { SingleChoiceTask, YesNoTask } from './types';
 import { useTaskAnswer } from './useTaskAnswer';
 import { useHint } from './useHint';
 import { useTaskData } from '@/hooks/useTaskData';
@@ -60,20 +59,6 @@ export const useTask = (params: TaskRequest) => {
     await refetch();
   }, [refetch]);
 
-  // Get the explanation for the correct answer
-  const getExplanation = useCallback(() => {
-    if (!task) return '';
-    if (task.type === 'single_choice') {
-      const correctOption = (task as SingleChoiceTask).options.find(opt => opt.isCorrect);
-      return correctOption?.explanation || '';
-    } else if (task.type === 'yes_no') {
-      return (task as YesNoTask).explanation;
-    } else if ('explanation' in task) {
-      return task.explanation;
-    }
-    return '';
-  }, [task]);
-
   return {
     task,
     isLoading: isLoading || isFetching,
@@ -81,7 +66,6 @@ export const useTask = (params: TaskRequest) => {
     selectedAnswer,
     isCorrect,
     gradingDetails,
-    explanation: getExplanation(),
     checkAnswer,
     selectAnswer,
     nextTask,

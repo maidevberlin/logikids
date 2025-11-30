@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Mars, Venus, ShieldQuestion } from 'lucide-react'
-import { SelectorButton } from '@/components/ui/SelectorButton'
+import { SelectorButton } from '@/app/common/ui/SelectorButton'
 
 interface GenderOption {
   value: string

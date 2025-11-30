@@ -6,9 +6,9 @@ import { LevelBadge } from './LevelBadge'
 import { SubjectSkillBars } from './SubjectSkillBars'
 import { CompetitiveMetrics } from './CompetitiveMetrics'
 import { AchievementsGrid } from './AchievementsGrid'
-import { Card } from '@/components/ui/card'
+import { Card } from '@/app/common/ui/card'
 
-export default function StatsPage() {
+export function StatsPage() {
   const { t } = useTranslation('stats')
   const { data } = useUserData()
   const {

@@ -103,40 +103,6 @@ export class UnauthorizedError extends ApplicationError {
 }
 
 /**
- * Thrown when a JWT token has expired
- *
- * @example
- * ```typescript
- * if (decoded.exp < Date.now() / 1000) {
- *   throw new TokenExpiredError();
- * }
- * ```
- */
-export class TokenExpiredError extends ApplicationError {
-  constructor(message: string = 'Token expired') {
-    super(message, 401, 'TOKEN_EXPIRED');
-  }
-}
-
-/**
- * Thrown when a JWT token is malformed or invalid
- *
- * @example
- * ```typescript
- * try {
- *   jwt.verify(token, secret);
- * } catch (err) {
- *   throw new InvalidTokenError();
- * }
- * ```
- */
-export class InvalidTokenError extends ApplicationError {
-  constructor(message: string = 'Invalid token') {
-    super(message, 401, 'INVALID_TOKEN');
-  }
-}
-
-/**
  * Thrown when a user attempts to access another user's data
  *
  * @example

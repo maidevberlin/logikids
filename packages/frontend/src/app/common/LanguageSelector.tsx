@@ -1,4 +1,4 @@
-import { SelectorButton } from '@/components/ui/SelectorButton'
+import { SelectorButton } from '@/app/common/ui/SelectorButton'
 
 interface LanguageOption {
   value: string

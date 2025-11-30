@@ -57,10 +57,8 @@ export const aiConfigSchema = z.object({
     if (config.provider === 'openai' && !config.openai) {
       return false;
     }
-    if (config.provider === 'anthropic' && !config.anthropic) {
-      return false;
-    }
-    return true;
+    return !(config.provider === 'anthropic' && !config.anthropic);
+
   },
   (config) => ({
     message: `${config.provider.charAt(0).toUpperCase() + config.provider.slice(1)} configuration is required when using ${config.provider.charAt(0).toUpperCase() + config.provider.slice(1)} provider`,
@@ -73,7 +71,6 @@ export type OllamaConfig = z.infer<typeof ollamaSchema>;
 export type OpenAIConfig = z.infer<typeof openaiSchema>;
 export type AnthropicConfig = z.infer<typeof anthropicSchema>;
 export type AIConfig = z.infer<typeof aiConfigSchema>;
-export type AIProvider = AIConfig['provider'];
 
 // Default configuration
 export const defaultConfig: AIConfig = {

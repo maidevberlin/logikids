@@ -12,20 +12,12 @@
 
 import { subjectRegistry } from '../subjects/registry';
 import { taskTypeRegistry } from '../tasks/types/registry';
-import { PromptService } from '../prompts/service';
-import { PromptLoader } from '../prompts/loader';
-import { VariationLoader } from '../variations/loader';
 import { TaskService } from '../tasks/service';
 import { TaskCache } from '../cache/taskCache';
 import { createAIClient } from '../common/ai/factory';
-import { Difficulty, Gender, TaskRequest } from '../tasks/types';
+import { TaskRequest } from '../tasks/types';
 import fs from 'fs';
-
-// ANSI colors
-const colors = {
-  reset: '\x1b[0m',
-  cyan: '\x1b[36m',
-};
+import { colors, parseCliArgs, suppressLogsUnlessVerbose, initializeServices, printParameters } from './lib';
 
 function printUsage() {
   console.log(`
@@ -53,84 +45,23 @@ ${colors.cyan}Examples:${colors.reset}
 }
 
 async function generateTask() {
-  // Parse CLI arguments
-  const args = process.argv.slice(2);
-
-  // No arguments - show usage
-  if (args.length === 0 || args[0].startsWith('--')) {
-    printUsage();
+  const parsed = parseCliArgs(process.argv.slice(2), printUsage);
+  if (!parsed) {
     process.exit(0);
   }
 
-  // First positional arg is subject/concept
-  const input = args[0];
-  if (!input.includes('/')) {
-    console.error('❌ Error: Invalid format. Use subject/concept (e.g., math/grade5-fractions)\n');
-    printUsage();
-    process.exit(1);
-  }
+  const { subject, concept, taskType, grade: gradeOverride, difficulty, language, gender, output, verbose } = parsed;
 
-  const [subject, concept] = input.split('/');
-
-  // Parse optional flags
-  const getArg = (name: string, defaultValue: string): string => {
-    const arg = args.find(a => a.startsWith(`--${name}=`));
-    return arg ? arg.split('=')[1] : defaultValue;
-  };
-
-  const taskType = getArg('taskType', 'singleChoice');
-  const gradeArg = getArg('grade', '');
-  const difficulty = getArg('difficulty', 'medium') as Difficulty;
-  const language = getArg('language', 'en');
-  const gender = getArg('gender', '') as Gender;
-  const output = getArg('output', '');
-  const verbose = args.includes('--verbose');
-
-  // Grade will be determined after loading concept if not specified
-  let grade = gradeArg ? parseInt(gradeArg) : 0;
-
-  // Suppress all debug logs unless verbose
-  if (!verbose) {
-    process.env.NODE_ENV = 'production';
-    const originalLog = console.log;
-    console.log = (...args: unknown[]) => {
-      const msg = args.join(' ');
-      // Only suppress registry/loader logs
-      if (msg.startsWith('[') || msg.includes('Loaded variations:') || msg.includes('Hot-reload')) {
-        return;
-      }
-      originalLog(...args);
-    };
-  }
+  suppressLogsUnlessVerbose(verbose);
 
   if (verbose) {
     console.log('🤖 Generating task with AI...\n');
-    console.log('Parameters:');
-    console.log(`  Subject: ${subject}`);
-    console.log(`  Concept: ${concept}`);
-    console.log(`  Task Type: ${taskType}`);
-    console.log(`  Grade: ${gradeArg || '(from concept)'}`);
-    console.log(`  Difficulty: ${difficulty}`);
-    console.log(`  Language: ${language}`);
-    if (gender) console.log(`  Gender: ${gender}`);
-    console.log('');
+    printParameters(parsed);
   }
 
   try {
-    // Initialize registries
-    if (verbose) console.log('Initializing registries...');
-    await subjectRegistry.initialize();
-    await taskTypeRegistry.initialize();
-
-    // Create loaders
-    if (verbose) console.log('Creating loaders...');
-    const promptLoader = new PromptLoader();
-    const variationLoader = new VariationLoader();
-
-    // Create and initialize PromptService
-    if (verbose) console.log('Initializing PromptService...');
-    const promptService = new PromptService(promptLoader, variationLoader);
-    await promptService.initialize();
+    const services = await initializeServices(subject, concept, taskType, gradeOverride, verbose);
+    const { promptService, grade, age } = services;
 
     // Create AI client
     if (verbose) console.log('Creating AI client...');
@@ -149,19 +80,6 @@ async function generateTask() {
       taskCache
     );
 
-    // Get concept and use its grade if not specified
-    const selectedConcept = subjectRegistry.getConcept(subject, concept);
-    if (!selectedConcept) {
-      throw new Error(`Concept not found: ${concept} in subject ${subject}`);
-    }
-
-    if (!grade) {
-      grade = selectedConcept.grade;
-    }
-
-    // Calculate age from grade
-    const age = grade + 6;
-
     // Build task request
     const request: TaskRequest = {
       subject,
@@ -171,7 +89,7 @@ async function generateTask() {
       age,
       difficulty,
       language,
-      gender: gender || undefined
+      gender,
     };
 
     // Generate task
@@ -213,4 +131,4 @@ async function generateTask() {
 }
 
 // Run generation
-generateTask();
+void generateTask();

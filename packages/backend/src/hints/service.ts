@@ -5,7 +5,7 @@ import { taskTypeRegistry } from '../tasks/types/registry';
 import { taskCache } from '../cache/taskCache';
 import { hintSchema } from '../prompts/schemas';
 import { subjectRegistry } from '../subjects/registry';
-import { VariationLoader } from '../variations/loader';
+import { VariationLoader } from '../prompts/variations/loader';
 import { createLogger } from '../common/logger';
 import {
   TaskNotFoundError,

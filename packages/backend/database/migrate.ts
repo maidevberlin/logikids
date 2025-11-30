@@ -138,4 +138,4 @@ async function runMigrations(): Promise<void> {
 }
 
 // Run migrations
-runMigrations();
+void runMigrations();

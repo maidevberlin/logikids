@@ -276,4 +276,5 @@
 /* .dark class removed - using time-based theming instead */
 
 /* Time-based theming - must be after :root to override defaults */
+/*noinspection CssInvalidImport*/
 @import './styles/time-themes.css';

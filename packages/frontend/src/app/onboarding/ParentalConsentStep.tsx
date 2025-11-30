@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Card } from '@/components/ui/card'
+import { Checkbox } from '@/app/common/ui/checkbox'
+import { Card } from '@/app/common/ui/card'
 import { Shield, Lock, Eye, Info } from 'lucide-react'
 import { OnboardingActions } from './OnboardingActions'
 

@@ -137,15 +137,6 @@ export async function loginWithAccount(userId: string): Promise<void> {
 }
 
 /**
- * Create a new user (deprecated - use registerUser instead)
- * @deprecated Use registerUser with invite code instead
- */
-export async function createNewUser(): Promise<UserData> {
-  logger.warn('createNewUser is deprecated. Use registerUser with invite code instead.')
-  throw new Error('createNewUser is deprecated. Use registerUser with invite code instead.')
-}
-
-/**
  * Get current user data (decrypted)
  * Returns null if no data exists
  */

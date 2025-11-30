@@ -1,5 +1,4 @@
-import TaskPage from './TaskPage'
-export default TaskPage
+export { TaskPage } from './TaskPage'
 export { TaskCard } from './TaskCard'
 export { TaskPageHeader } from './TaskPageHeader'
 export { HintSection } from './HintSection'
@@ -7,5 +6,4 @@ export { useTask } from './useTask'
 export { useTaskAnswer } from './useTaskAnswer'
 export { useHint } from './useHint'
 export * from './types'
-export * from './constants'
 export * from './answer-types'

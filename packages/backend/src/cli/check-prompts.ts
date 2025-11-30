@@ -184,4 +184,4 @@ async function main() {
   process.exit(failed > 0 ? 1 : 0);
 }
 
-main();
+void main();
