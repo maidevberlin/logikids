@@ -428,6 +428,18 @@
       "description": "Understanding and working with grams, kilograms, milliliters, and liters through measuring, comparing, and converting",
       "name": "Measurement - Mass and Volume"
     },
+    "grade3-perimeter": {
+      "description": "Calculating the perimeter of shapes by adding side lengths; working with rectangles, squares, triangles, and polygons",
+      "name": "Perimeter"
+    },
+    "grade3-length-measurement": {
+      "description": "Measuring with mm, cm, m, km; unit conversions; estimation and comparison of lengths",
+      "name": "Length Measurement"
+    },
+    "grade3-money-advanced": {
+      "description": "Working with amounts up to 1000 Euro, using decimal notation, handling 100€, 200€, and 500€ bills, solving multi-step shopping problems, and budget planning",
+      "name": "Advanced Money Skills"
+    },
     "grade4-numbers-to-million": {
       "description": "Understanding place value with six digits; reading, writing, comparing, and ordering numbers; rounding to thousands and beyond; recognizing patterns in large numbers",
       "name": "Numbers to 1,000,000"

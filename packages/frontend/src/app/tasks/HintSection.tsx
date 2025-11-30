@@ -18,11 +18,19 @@ interface HintSectionProps {
 
 const HINT_ICONS = [Lightbulb, Info, CircleDot, CheckCircle]
 
+// Hint colors are distinct from answer option colors (blue, purple, emerald, pink, orange, teal, indigo)
 const HINT_COLORS = [
-  'border-blue-200 bg-blue-50 text-blue-900',
-  'border-purple-200 bg-purple-50 text-purple-900',
-  'border-emerald-200 bg-emerald-50 text-emerald-900',
   'border-amber-200 bg-amber-50 text-amber-900',
+  'border-cyan-200 bg-cyan-50 text-cyan-900',
+  'border-rose-200 bg-rose-50 text-rose-900',
+  'border-lime-200 bg-lime-50 text-lime-900',
+]
+
+const HINT_BUTTON_COLORS = [
+  'bg-amber-50 border-amber-300 text-amber-700 hover:bg-amber-100 hover:border-amber-400',
+  'bg-cyan-50 border-cyan-300 text-cyan-700 hover:bg-cyan-100 hover:border-cyan-400',
+  'bg-rose-50 border-rose-300 text-rose-700 hover:bg-rose-100 hover:border-rose-400',
+  'bg-lime-50 border-lime-300 text-lime-700 hover:bg-lime-100 hover:border-lime-400',
 ]
 
 export function HintSection({
@@ -110,7 +118,15 @@ export function HintSection({
       {/* Request hint button */}
       {hasMoreHints && !hintLoading && (
         <div className="flex justify-center">
-          <Button onClick={handleRequestHint} variant="outline" size="lg" className="rounded-xl">
+          <Button
+            onClick={handleRequestHint}
+            variant="outline"
+            size="lg"
+            className={cn(
+              'rounded-xl border-2 hover:scale-105 hover:-rotate-1 transition-all duration-200 shadow-sm hover:shadow-md',
+              HINT_BUTTON_COLORS[nextHintIndex % HINT_BUTTON_COLORS.length]
+            )}
+          >
             <Lightbulb className="w-5 h-5 mr-2" />
             {hints.length === 0
               ? t('task.getHint', { defaultValue: 'Get a Hint' })

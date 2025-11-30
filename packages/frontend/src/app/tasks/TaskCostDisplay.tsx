@@ -56,15 +56,10 @@ export function TaskCostDisplay({ taskUsage, hintUsage }: TaskCostDisplayProps) 
 
       {/* Cost pill */}
       {totalCost > 0 && (
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-[11px]">
-          <span className="font-medium tabular-nums text-amber-800 dark:text-amber-200">
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-800 dark:bg-amber-200 text-[11px]">
+          <span className="font-medium tabular-nums text-amber-100 dark:text-amber-800">
             {formatCost(totalCost)}
           </span>
-          {hasHintUsage && (
-            <span className="text-[9px] text-amber-800/70 dark:text-amber-300 font-medium">
-              +hints
-            </span>
-          )}
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { Input } from '@/app/common/ui/input'
+import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
@@ -50,9 +51,20 @@ export function FillInBlankAnswer({
   let match
 
   while ((match = blankRegex.exec(fillableText)) !== null) {
-    // Add text before the blank
+    // Add text before the blank (rendered through MarkdownRenderer for LaTeX support)
     if (match.index > lastIndex) {
-      parts.push(fillableText.substring(lastIndex, match.index))
+      const textPart = fillableText.substring(lastIndex, match.index)
+      parts.push(
+        <MarkdownRenderer
+          key={`text-${lastIndex}`}
+          content={textPart}
+          enableMath={true}
+          enableMermaid={false}
+          enableCode={false}
+          noParagraphMargin={true}
+          className="inline"
+        />
+      )
     }
 
     const currentBlankIndex = blankIndex
@@ -84,9 +96,20 @@ export function FillInBlankAnswer({
     blankIndex++
   }
 
-  // Add remaining text after last blank
+  // Add remaining text after last blank (rendered through MarkdownRenderer for LaTeX support)
   if (lastIndex < fillableText.length) {
-    parts.push(fillableText.substring(lastIndex))
+    const textPart = fillableText.substring(lastIndex)
+    parts.push(
+      <MarkdownRenderer
+        key={`text-${lastIndex}`}
+        content={textPart}
+        enableMath={true}
+        enableMermaid={false}
+        enableCode={false}
+        noParagraphMargin={true}
+        className="inline"
+      />
+    )
   }
 
   if (isLoading) {

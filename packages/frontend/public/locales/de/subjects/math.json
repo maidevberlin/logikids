@@ -428,6 +428,18 @@
       "description": "Gramm, Kilogramm, Milliliter und Liter verstehen und anwenden durch Messen, Vergleichen und Umrechnen",
       "name": "Größen: Masse und Volumen"
     },
+    "grade3-perimeter": {
+      "description": "Umfang von Figuren durch Addieren der Seitenlängen berechnen; mit Rechtecken, Quadraten, Dreiecken und Vielecken arbeiten",
+      "name": "Umfang"
+    },
+    "grade3-length-measurement": {
+      "description": "Messen mit mm, cm, m, km; Einheiten umrechnen; Längen schätzen und vergleichen",
+      "name": "Längenmessung"
+    },
+    "grade3-money-advanced": {
+      "description": "Mit Beträgen bis 1000 Euro rechnen, Kommaschreibweise verwenden, mit 100€-, 200€- und 500€-Scheinen arbeiten, mehrstufige Einkaufsaufgaben lösen und Budgetplanung durchführen",
+      "name": "Geld - Erweiterte Fähigkeiten"
+    },
     "grade4-numbers-to-million": {
       "description": "Stellenwertsystem mit sechs Stellen verstehen; Zahlen lesen, schreiben, vergleichen und ordnen; Runden auf Tausender und darüber hinaus; Zahlenmuster in großen Zahlen erkennen",
       "name": "Zahlen bis 1.000.000"
