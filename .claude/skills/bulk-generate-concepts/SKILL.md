@@ -30,6 +30,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
    1. Read `.claude/docs/concept-rules.md` first
    2. Use write-concept skill
    3. Reference `docs/{subject}-curriculum-research.md` for curriculum context
+   4. **SKIP RESEARCH**: All content is provided!
 
    Scope: {one-sentence scope description}
    ```
