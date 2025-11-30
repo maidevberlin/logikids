@@ -236,21 +236,49 @@
       "description": "Standard algorithms for multiplying and dividing multi-digit numbers with estimation and remainder interpretation",
       "name": "Written Multiplication and Division"
     },
+    "grade5-angles": {
+      "description": "Understanding angle types, measuring angles with a protractor, estimating angles, and recognizing angle relationships",
+      "name": "Angles and Measurement"
+    },
     "grade5-area-perimeter": {
       "description": "Calculating perimeter and area of rectangles and squares, understanding units, converting between area units, solving practical problems",
       "name": "Area and Perimeter"
+    },
+    "grade5-arithmetic-operations": {
+      "description": "Written methods for all four operations, order of operations, estimation and verification",
+      "name": "Arithmetic Operations"
     },
     "grade5-coordinate-system-basics": {
       "description": "Understanding the Cartesian coordinate system (first quadrant), plotting and reading points, describing spatial relationships and positions, identifying geometric relationships, and calculating distances between points",
       "name": "Coordinate System and Spatial Relationships"
     },
+    "grade5-area-perimeter-advanced": {
+      "description": "Calculate area and perimeter of rectangles, squares, triangles, and composite shapes",
+      "name": "Area and Perimeter - Advanced"
+    },
     "grade5-data-collection-charts": {
       "description": "Collecting, organizing, and representing data using tables, bar charts, pictographs, and line graphs",
       "name": "Data Collection and Charts"
     },
+    "grade5-decimals": {
+      "description": "Understanding decimal place value, converting between fractions and decimals, performing operations with decimals, and rounding",
+      "name": "Decimals"
+    },
+    "grade5-natural-numbers-large": {
+      "description": "Understanding natural numbers beyond 1 million, place value to billions, Roman numerals, and comparing different number systems",
+      "name": "Large Natural Numbers"
+    },
     "grade5-divisibility-prime-numbers": {
-      "description": "Understanding divisibility rules, distinguishing prime and composite numbers, and working with factors",
+      "description": "Applying divisibility rules for 2, 3, 5, 9, and 10, identifying prime and composite numbers, performing prime factorization using factor trees, and determining GCD and LCM of numbers",
       "name": "Divisibility and Prime Numbers"
+    },
+    "grade5-geometry-basics": {
+      "description": "Points, lines, rays, segments, parallel and perpendicular lines, and basic geometric notation",
+      "name": "Basic Geometric Elements"
+    },
+    "grade5-negative-numbers": {
+      "description": "Introduction to integers, number line representation, comparing and ordering integers, and real-world contexts",
+      "name": "Negative Numbers"
     },
     "grade5-geometric-shapes-2d": {
       "description": "Properties and classification of basic 2D shapes including triangles, quadrilaterals, and circles, symmetry and geometric constructions",
@@ -260,9 +288,13 @@
       "description": "Understanding fractions as parts of a whole, visual representation, comparing and ordering fractions, and recognizing equivalent fractions",
       "name": "Introduction to Fractions"
     },
-    "grade5-measurement-units": {
-      "description": "Working with standard measurement units for length, mass, time, and money including conversions and practical applications",
-      "name": "Quantities and Units of Measurement"
+    "grade5-units-measurement": {
+      "description": "Advanced metric unit conversions, calculations with mixed units, and choosing appropriate measurement units for different contexts",
+      "name": "Units and Measurement"
+    },
+    "grade5-volume": {
+      "description": "Calculate volume using formulas, convert between cubic units, and relate volume to capacity",
+      "name": "Volume of Cuboids and Cubes"
     },
     "grade5-natural-numbers-operations": {
       "description": "Introduction to the natural number system, place value understanding up to millions, and mastery of the four basic arithmetic operations with increasingly large numbers",
@@ -483,6 +515,10 @@
     "grade4-combinatorics": {
       "description": "Finding all possibilities systematically using tree diagrams, organized lists, and tables to solve combination and arrangement problems",
       "name": "Combinatorics and Systematic Counting"
+    },
+    "grade5-fractions-operations": {
+      "description": "Adding and subtracting fractions with same and different denominators, multiplying fractions by whole numbers, and simplifying fractions to lowest terms",
+      "name": "Operations with Fractions"
     }
   }
 }

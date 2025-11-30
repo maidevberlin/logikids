@@ -236,21 +236,49 @@
       "description": "Standardverfahren zum Multiplizieren und Dividieren mehrstelliger Zahlen mit Überschlagsrechnung und Restinterpretation",
       "name": "Schriftliche Multiplikation und Division"
     },
+    "grade5-angles": {
+      "description": "Winkelarten verstehen, Winkel mit dem Geodreieck messen, Winkel schätzen und Winkelbeziehungen erkennen",
+      "name": "Winkel und Winkelmessung"
+    },
     "grade5-area-perimeter": {
       "description": "Umfang und Flächeninhalt von Rechtecken und Quadraten berechnen, Einheiten verstehen, zwischen Flächeneinheiten umrechnen, praktische Probleme lösen",
       "name": "Flächeninhalt und Umfang"
+    },
+    "grade5-arithmetic-operations": {
+      "description": "Schriftliche Verfahren für alle vier Grundrechenarten, Rechenreihenfolge, Überschlagsrechnung und Ergebnisüberprüfung",
+      "name": "Grundrechenarten"
     },
     "grade5-coordinate-system-basics": {
       "description": "Verständnis des kartesischen Koordinatensystems (erstes Quadrant), Plotten und Lesen von Punkten, Beschreibung räumlicher Beziehungen und Positionen, Identifizierung geometrischer Beziehungen und Berechnung von Entfernungen zwischen Punkten",
       "name": "Koordinatensystem und räumliche Beziehungen"
     },
+    "grade5-area-perimeter-advanced": {
+      "description": "Flächeninhalt und Umfang von Rechtecken, Quadraten, Dreiecken und zusammengesetzten Figuren berechnen",
+      "name": "Flächeninhalt und Umfang - Erweitert"
+    },
     "grade5-data-collection-charts": {
       "description": "Daten sammeln, organisieren und mit Tabellen, Balkendiagrammen, Piktogrammen und Liniendiagrammen darstellen",
       "name": "Datenerfassung und Diagramme"
     },
+    "grade5-decimals": {
+      "description": "Dezimalstellenwerte verstehen, zwischen Brüchen und Dezimalzahlen umwandeln, Operationen mit Dezimalzahlen durchführen und runden",
+      "name": "Dezimalzahlen"
+    },
+    "grade5-natural-numbers-large": {
+      "description": "Natürliche Zahlen über 1 Million verstehen, Stellenwertsystem bis zu Milliarden, Römische Zahlen und Vergleich verschiedener Zahlensysteme",
+      "name": "Große natürliche Zahlen"
+    },
     "grade5-divisibility-prime-numbers": {
-      "description": "Teilbarkeitsregeln verstehen, Primzahlen und zusammengesetzte Zahlen unterscheiden und mit Faktoren arbeiten",
+      "description": "Anwendung von Teilbarkeitsregeln für 2, 3, 5, 9 und 10, Identifizierung von Primzahlen und zusammengesetzten Zahlen, Primfaktorzerlegung mit Faktorbaum und Bestimmung von ggT und kgV von Zahlen",
       "name": "Teilbarkeit und Primzahlen"
+    },
+    "grade5-geometry-basics": {
+      "description": "Punkte, Geraden, Halbgeraden, Strecken, parallele und senkrechte Linien, und grundlegende geometrische Notation",
+      "name": "Geometrische Grundelemente"
+    },
+    "grade5-negative-numbers": {
+      "description": "Einführung in ganze Zahlen, Zahlendarstellung auf dem Zahlenstrahl, Vergleich und Ordnung von ganzen Zahlen und reale Kontexte",
+      "name": "Negative Zahlen"
     },
     "grade5-geometric-shapes-2d": {
       "description": "Eigenschaften und Klassifizierung grundlegender ebener Figuren wie Dreiecke, Vierecke und Kreise, Symmetrie und geometrische Konstruktionen",
@@ -260,9 +288,13 @@
       "description": "Brüche als Teile eines Ganzen verstehen, visuelle Darstellung, Vergleich und Ordnung von Brüchen und Erkennung äquivalenter Brüche",
       "name": "Einführung in Brüche"
     },
-    "grade5-measurement-units": {
-      "description": "Arbeiten mit Standardmaßeinheiten für Länge, Masse, Zeit und Geld einschließlich Umwandlungen und praktischer Anwendungen",
-      "name": "Größen und Maßeinheiten"
+    "grade5-units-measurement": {
+      "description": "Fortgeschrittene metrische Einheitenumwandlungen, Berechnungen mit gemischten Einheiten und Auswahl geeigneter Maßeinheiten für verschiedene Kontexte",
+      "name": "Einheiten und Maße"
+    },
+    "grade5-volume": {
+      "description": "Volumenberechnung mit Formeln, Umrechnung zwischen Kubikeinheiten und Beziehung zwischen Volumen und Hohlmaß",
+      "name": "Volumen von Quadern und Würfeln"
     },
     "grade5-natural-numbers-operations": {
       "description": "Einführung in das natürliche Zahlensystem, Stellenwertverständnis bis zur Million und Beherrschung der vier Grundrechenarten mit zunehmend großen Zahlen",
@@ -483,6 +515,10 @@
     "grade4-combinatorics": {
       "description": "Alle Möglichkeiten systematisch finden mit Baumdiagrammen, strukturierten Listen und Tabellen, um Kombinations- und Anordnungsprobleme zu lösen",
       "name": "Kombinatorik und systematisches Zählen"
+    },
+    "grade5-fractions-operations": {
+      "description": "Brüche mit gleichen und unterschiedlichen Nennern addieren und subtrahieren, Brüche mit ganzen Zahlen multiplizieren und Brüche vollständig kürzen",
+      "name": "Rechnen mit Brüchen"
     }
   }
 }
