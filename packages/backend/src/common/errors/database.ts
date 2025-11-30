@@ -13,7 +13,7 @@ import { ApplicationError } from './base';
  * ```
  */
 export class DatabaseConnectionError extends ApplicationError {
-  constructor(public readonly cause?: unknown) {
-    super('Failed to connect to PostgreSQL database', 500, 'DATABASE_CONNECTION_ERROR');
+  constructor(cause?: unknown) {
+    super('Failed to connect to PostgreSQL database', 500, 'DATABASE_CONNECTION_ERROR', cause);
   }
 }

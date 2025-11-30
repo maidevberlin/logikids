@@ -30,8 +30,8 @@ export class EmptyAIResponseError extends ApplicationError {
  * ```
  */
 export class AIProviderError extends ApplicationError {
-  constructor(provider: string, details: string, public readonly cause?: unknown) {
-    super(`${provider} API error: ${details}`, 500, 'AI_PROVIDER_ERROR');
+  constructor(provider: string, details: string, cause?: unknown) {
+    super(`${provider} API error: ${details}`, 500, 'AI_PROVIDER_ERROR', cause);
   }
 }
 
@@ -48,8 +48,8 @@ export class AIProviderError extends ApplicationError {
  * ```
  */
 export class AIGenerationError extends ApplicationError {
-  constructor(message: string, public readonly cause?: unknown) {
-    super(message, 500, 'AI_GENERATION_ERROR');
+  constructor(message: string, cause?: unknown) {
+    super(message, 500, 'AI_GENERATION_ERROR', cause);
   }
 }
 

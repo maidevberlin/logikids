@@ -11,8 +11,8 @@ import { ApplicationError } from './base';
  * ```
  */
 export class PromptTemplateError extends ApplicationError {
-  constructor(message: string, public readonly cause?: unknown) {
-    super(message, 500, 'PROMPT_TEMPLATE_ERROR');
+  constructor(message: string, cause?: unknown) {
+    super(message, 500, 'PROMPT_TEMPLATE_ERROR', cause);
   }
 }
 

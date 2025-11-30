@@ -13,7 +13,7 @@
  */
 
 import { readdirSync, readFileSync, existsSync } from 'fs';
-import { basename, resolve } from 'path';
+import { resolve } from 'path';
 import matter from 'gray-matter';
 import { getSubjectsBasePath, resolveSubjectPath, resolveConceptPath, extractSubjectFromPath } from './lib/paths';
 import {

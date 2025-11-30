@@ -1,8 +1,8 @@
-import { UserData } from '../core/types.ts'
-import { getData, setData } from '../core/userData.ts'
-import { loadKey, getUserId, getAccessToken } from '../core/storage.ts'
-import { encrypt, decrypt } from '../core/crypto.ts'
-import { createLogger } from '@/lib/logger'
+import {UserData} from '../core/types.ts'
+import {getData, setData} from '../core/userData.ts'
+import {getAccessToken, getUserId, loadKey} from '../core/storage.ts'
+import {decrypt, encrypt} from '../core/crypto.ts'
+import {createLogger} from '@/lib/logger'
 
 const logger = createLogger('SyncPlugin')
 const API_BASE = import.meta.env.VITE_API_URL || ''
@@ -16,7 +16,7 @@ let unloadHandler: (() => void) | null = null
  * Calculate SHA-256 checksum
  */
 async function calculateChecksum(data: Uint8Array): Promise<string> {
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', (data.buffer as ArrayBuffer).slice(data.byteOffset, data.byteOffset + data.byteLength))
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 }
@@ -125,8 +125,7 @@ export async function download(): Promise<UserData | null> {
       throw new Error('Encryption key not found')
     }
 
-    const data = await decrypt(key, encryptedBlob)
-    return data
+    return await decrypt(key, encryptedBlob)
   } catch (error) {
     logger.error('Download failed', error as Error)
     throw error

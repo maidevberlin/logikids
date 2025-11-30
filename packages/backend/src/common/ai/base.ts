@@ -33,7 +33,7 @@ export interface StructuredGenerateResponse<T> {
 export type JSONSchema = Record<string, unknown>;
 
 export abstract class AIClient {
-  constructor(
+  protected constructor(
     public readonly provider: 'ollama' | 'openai' | 'anthropic',
     public readonly model: string
   ) {}

@@ -11,7 +11,7 @@
  */
 
 import { readdir, readFile } from 'fs/promises';
-import { join, basename } from 'path';
+import { join } from 'path';
 import { pool } from './db';
 
 const MIGRATIONS_DIR = join(import.meta.dir, 'migrations');

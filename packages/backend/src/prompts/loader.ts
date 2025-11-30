@@ -51,9 +51,8 @@ export class PromptLoader {
   private taskTypeCache = new Map<string, TaskType>();
   private hintPromptCache: HintPrompt | null = null;
   private watcher: FSWatcher | null = null;
-  private promptsDir: string;
-  private contentDir: string;
-  private curriculumsDir: string;
+  private readonly promptsDir: string;
+  private readonly contentDir: string;
   private basePromptCache: string | null = null;
   private variationsTemplateCache: string | null = null;
 
@@ -63,7 +62,6 @@ export class PromptLoader {
   ) {
     this.promptsDir = promptsDir;
     this.contentDir = contentDir;
-    this.curriculumsDir = path.join(contentDir, 'curriculums');
   }
 
   /**

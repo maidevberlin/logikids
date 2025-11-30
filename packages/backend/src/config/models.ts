@@ -1,1 +1,0 @@
-export const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://host.docker.internal:11434'; 

@@ -1,10 +1,9 @@
 import { z } from 'zod';
 import yaml from 'js-yaml';
 import { join } from 'path';
-import { AIConfig, aiConfigSchema, defaultConfig as defaultAIConfig } from './ai';
-import { defaultServerConfig, ServerConfig, serverConfigSchema } from './server';
+import { aiConfigSchema, defaultConfig as defaultAIConfig } from './ai';
+import { defaultServerConfig, serverConfigSchema } from './server';
 import { createLogger } from '../common/logger';
-import { ConfigurationError } from '../common/errors';
 
 const logger = createLogger('Config');
 

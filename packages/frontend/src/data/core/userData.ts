@@ -1,8 +1,8 @@
-import { UserData, UserSettings, createDefaultUserData } from './types.ts'
-import { loadKey, storeKey, getUserId, storeUserId, storeTokens } from './storage.ts'
-import { generateKey, encrypt, decrypt } from './crypto.ts'
-import { GameStats } from '@/app/stats/gameTypes'
-import { createLogger } from '@/lib/logger'
+import {createDefaultUserData, UserData, UserSettings} from './types.ts'
+import {getUserId, loadKey, storeKey, storeTokens, storeUserId} from './storage.ts'
+import {decrypt, encrypt, generateKey} from './crypto.ts'
+import {GameStats} from '@/app/stats/gameTypes'
+import {createLogger} from '@/lib/logger'
 
 const logger = createLogger('UserData')
 const STORAGE_KEY = 'logikids_data'
@@ -152,9 +152,8 @@ export async function getData(): Promise<UserData | null> {
     if (!key) {
       throw new Error('Encryption key not found')
     }
-
-    const data = await decrypt(key, encrypted)
-    return data
+  
+    return await decrypt(key, encrypted)
   } catch (error) {
     logger.error('Failed to load user data', error as Error)
     // Return null instead of creating new data

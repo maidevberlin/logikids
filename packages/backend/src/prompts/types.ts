@@ -1,4 +1,4 @@
-import { Subject, HintPrompt } from './loader';
+import { Subject } from './loader';
 import { TaskTypeWithSchema } from '../tasks/types/registry';
 import { Concept } from './schemas';
 import { Difficulty, Gender } from '../tasks/types';

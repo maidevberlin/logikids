@@ -86,5 +86,3 @@ if (isProduction) {
     process.exit(1);
   }
 }
-
-export type Env = typeof env;

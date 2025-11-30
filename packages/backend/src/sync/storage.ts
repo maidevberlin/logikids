@@ -2,9 +2,6 @@ import 'reflect-metadata';
 import { injectable } from 'tsyringe';
 import { pool } from '../../database/db'
 import { SyncRecord, SyncPayload } from './schema.ts'
-import { createLogger } from '../common/logger'
-
-const logger = createLogger('StorageService')
 
 /**
  * PostgreSQL-based storage for encrypted user data
@@ -15,13 +12,6 @@ const logger = createLogger('StorageService')
  */
 @injectable()
 export class StorageService {
-  /**
-   * Initialize storage (no-op for PostgreSQL, kept for interface compatibility)
-   */
-  async init(): Promise<void> {
-    logger.info('Using PostgreSQL storage')
-  }
-
   /**
    * Store or update encrypted user data
    */

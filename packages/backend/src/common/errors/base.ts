@@ -14,12 +14,13 @@
  * ```
  */
 export abstract class ApplicationError extends Error {
-  constructor(
+  protected constructor(
     message: string,
     public readonly statusCode: number,
-    public readonly code?: string
+    public readonly code?: string,
+    cause?: unknown
   ) {
-    super(message);
+    super(message, cause !== undefined ? { cause } : undefined);
     this.name = this.constructor.name;
     Error.captureStackTrace(this, this.constructor);
   }

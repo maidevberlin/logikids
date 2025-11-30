@@ -4,7 +4,7 @@
  */
 
 import Handlebars from 'handlebars';
-import { registerHandlebarsHelpers } from './handlebars-helpers';
+import {registerHandlebarsHelpers} from './handlebars-helpers';
 
 export type TemplateVariables = Record<string, string | number>;
 
@@ -83,7 +83,5 @@ export function composeAndReplace(
   const composed = replaceVariables(baseTemplate, compositionData, ['<%', '%>']);
 
   // Step 2: Replace variables using [[ ]]
-  const final = replaceVariables(composed, variableData, ['[[', ']]']);
-
-  return final;
+    return replaceVariables(composed, variableData, ['[[', ']]']);
 }

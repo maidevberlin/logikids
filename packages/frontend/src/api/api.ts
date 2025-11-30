@@ -1,5 +1,5 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { config } from '../config';
+import { config } from '@/config';
 import { getAccessToken, storeTokens, getUserId } from '../data/core/storage';
 import { createLogger } from '@/lib/logger';
 import { LogikidsApiError } from './errors';
@@ -120,6 +120,3 @@ api.interceptors.response.use(
     throw new LogikidsApiError(error.message || 'An unexpected error occurred');
   }
 );
-
-// Export types for better type safety across the app
-export type ApiResponse<T> = Promise<T>; 

@@ -13,8 +13,8 @@ import { ApplicationError } from './base';
  * ```
  */
 export class RegistryInitializationError extends ApplicationError {
-  constructor(registryName: string, public readonly cause?: unknown) {
-    super(`Failed to initialize ${registryName}`, 500, 'REGISTRY_INITIALIZATION_ERROR');
+  constructor(registryName: string, cause?: unknown) {
+    super(`Failed to initialize ${registryName}`, 500, 'REGISTRY_INITIALIZATION_ERROR', cause);
   }
 }
 

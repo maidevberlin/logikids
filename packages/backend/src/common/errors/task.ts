@@ -13,8 +13,8 @@ import { ApplicationError } from './base';
  * ```
  */
 export class TaskGenerationError extends ApplicationError {
-  constructor(message: string, public readonly cause?: unknown) {
-    super(message, 500, 'TASK_GENERATION_FAILED');
+  constructor(message: string, cause?: unknown) {
+    super(message, 500, 'TASK_GENERATION_FAILED', cause);
   }
 }
 
