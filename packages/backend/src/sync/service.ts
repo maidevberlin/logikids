@@ -1,5 +1,5 @@
-import 'reflect-metadata';
-import { injectable, inject } from 'tsyringe';
+import 'reflect-metadata'
+import { injectable, inject } from 'tsyringe'
 import { StorageService } from './storage'
 import { SyncPayload, SyncPayloadSchema } from './schema'
 import { createLogger } from '../common/logger'

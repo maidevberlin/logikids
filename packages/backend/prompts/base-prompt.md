@@ -8,12 +8,12 @@ description: Master template showing prompt composition structure
 
 Generate an educational task for this student:
 
-| | |
-|---|---|
-| **Student** | Age [[age]], Grade [[grade]] |
-| **Subject** | [[subject_name]] |
-| **Concept** | [[concept_name]] ([[concept_focus]]) |
-| **Language** | [[language]] |
+|              |                                      |
+| ------------ | ------------------------------------ |
+| **Student**  | Age [[age]], Grade [[grade]]         |
+| **Subject**  | [[subject_name]]                     |
+| **Concept**  | [[concept_name]] ([[concept_focus]]) |
+| **Language** | [[language]]                         |
 
 ---
 
@@ -61,5 +61,5 @@ The `explanation` field contains the solution reasoning (shown after correct ans
 <%subject_base_template%>
 
 - LaTeX: `$x^2$` (inline), `$$\frac{a}{b}$$` (block)
-- Tables, **bold**, *italic*, lists
+- Tables, **bold**, _italic_, lists
 - SVG in `<figure>` tags with `<figcaption>`

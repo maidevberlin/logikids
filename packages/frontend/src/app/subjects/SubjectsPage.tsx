@@ -43,39 +43,37 @@ export function SubjectsPage() {
   const { data: allSubjects } = trpc.subjects.getAll.useQuery({})
 
   // Fetch filtered subjects (concepts available for user's grade/age)
-  const { data: filteredSubjects, isLoading, error } = trpc.subjects.getAll.useQuery(
-    { grade: userGrade!, age: userAge },
-    { enabled: !!userGrade }
-  )
+  const {
+    data: filteredSubjects,
+    isLoading,
+    error,
+  } = trpc.subjects.getAll.useQuery({ grade: userGrade!, age: userAge }, { enabled: !!userGrade })
 
   // Create a map of filtered subjects for quick lookup
-  const filteredSubjectIds = new Set(filteredSubjects?.subjects?.map(s => s.id) ?? [])
+  const filteredSubjectIds = new Set(filteredSubjects?.subjects?.map((s) => s.id) ?? [])
 
   // Merge: use all subjects but mark as disabled if not in filtered list
-  const subjects = allSubjects?.subjects?.map(subject => {
-    const hasConceptsForGrade = filteredSubjectIds.has(subject.id)
-    return {
-      ...subject,
-      // Subject is disabled if it has no concepts for the user's grade
-      isDisabledForGrade: !hasConceptsForGrade && subject.conceptCount > 0,
-    }
-  }) ?? []
+  const subjects =
+    allSubjects?.subjects?.map((subject) => {
+      const hasConceptsForGrade = filteredSubjectIds.has(subject.id)
+      return {
+        ...subject,
+        // Subject is disabled if it has no concepts for the user's grade
+        isDisabledForGrade: !hasConceptsForGrade && subject.conceptCount > 0,
+      }
+    }) ?? []
 
   const sortedSubjects = sortSubjects(subjects)
 
   return (
-    <PageLayout
-      showHome
-      showGameStats
-      showAccount
-    >
+    <PageLayout showHome showGameStats showAccount>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-foreground mb-4">
           {t('subjects.pageTitle', { defaultValue: 'Choose Your Subject' })}
         </h1>
         <p className="text-xl text-muted-foreground mb-8">
           {t('subjects.pageDescription', {
-            defaultValue: 'Select a subject to start learning'
+            defaultValue: 'Select a subject to start learning',
           })}
         </p>
 

@@ -1,4 +1,3 @@
-
 // Task types
 export const TASK_TYPES = {
   single_choice: 'single_choice',
@@ -7,22 +6,18 @@ export const TASK_TYPES = {
   fill_in_blank: 'fill_in_blank',
   number_input: 'number_input',
   multi_select: 'multi_select',
-} as const;
-export type TaskType = typeof TASK_TYPES[keyof typeof TASK_TYPES]
+} as const
+export type TaskType = (typeof TASK_TYPES)[keyof typeof TASK_TYPES]
 
 // Difficulty Levels
-export const DIFFICULTIES = [
-  'easy',
-  'medium',
-  'hard'
-] as const;
-export type Difficulty = typeof DIFFICULTIES[number];
+export const DIFFICULTIES = ['easy', 'medium', 'hard'] as const
+export type Difficulty = (typeof DIFFICULTIES)[number]
 
 export interface TaskUsageInfo {
   inputTokens: number
   outputTokens: number
   totalTokens?: number
-  cost?: number  // Cost in USD
+  cost?: number // Cost in USD
 }
 
 export interface BaseTask {
@@ -72,9 +67,9 @@ export interface FillInBlankTask extends BaseTask {
 
 export interface NumberInputTask extends BaseTask {
   type: 'number_input'
-  answer: number           // The correct numeric value (required)
-  unit?: string            // Correct unit (when unitOptions present) OR display unit
-  unitOptions?: string[]   // Optional: if present, student must choose
+  answer: number // The correct numeric value (required)
+  unit?: string // Correct unit (when unitOptions present) OR display unit
+  unitOptions?: string[] // Optional: if present, student must choose
   explanation: string
 }
 
@@ -89,19 +84,25 @@ export interface MultiSelectTask extends BaseTask {
   explanation: string
 }
 
-export type Task = SingleChoiceTask | YesNoTask | OrderingTask | FillInBlankTask | NumberInputTask | MultiSelectTask
+export type Task =
+  | SingleChoiceTask
+  | YesNoTask
+  | OrderingTask
+  | FillInBlankTask
+  | NumberInputTask
+  | MultiSelectTask
 
 // Task Answer Types
 export type TaskAnswerType<T extends Task> = T extends SingleChoiceTask
   ? number
   : T extends YesNoTask
-  ? boolean
-  : T extends OrderingTask
-  ? string[]
-  : T extends FillInBlankTask
-  ? string[]
-  : T extends NumberInputTask
-  ? { value: number | null; unit?: string }
-  : T extends MultiSelectTask
-  ? number[]
-  : never
+    ? boolean
+    : T extends OrderingTask
+      ? string[]
+      : T extends FillInBlankTask
+        ? string[]
+        : T extends NumberInputTask
+          ? { value: number | null; unit?: string }
+          : T extends MultiSelectTask
+            ? number[]
+            : never

@@ -190,10 +190,7 @@ export function useTaskLoadingCalibration(): UseTaskLoadingCalibration {
     // to reasonable bounds to prevent extreme behavior
     const calibratedConstant = Math.round(average)
 
-    return Math.max(
-      MIN_TIME_CONSTANT,
-      Math.min(MAX_TIME_CONSTANT, calibratedConstant)
-    )
+    return Math.max(MIN_TIME_CONSTANT, Math.min(MAX_TIME_CONSTANT, calibratedConstant))
   }, [])
 
   const recordLoadTime = useCallback((loadTimeMs: number): void => {
@@ -233,21 +230,24 @@ export function useTaskLoadingCalibration(): UseTaskLoadingCalibration {
     return now
   }, [])
 
-  const completeMeasurement = useCallback((startTime: number): void => {
-    const endTime = Date.now()
-    const elapsed = endTime - startTime
+  const completeMeasurement = useCallback(
+    (startTime: number): void => {
+      const endTime = Date.now()
+      const elapsed = endTime - startTime
 
-    // Only record if we have a valid measurement
-    if (elapsed > 0 && Number.isFinite(elapsed)) {
-      recordLoadTime(elapsed)
-    }
-  }, [recordLoadTime])
+      // Only record if we have a valid measurement
+      if (elapsed > 0 && Number.isFinite(elapsed)) {
+        recordLoadTime(elapsed)
+      }
+    },
+    [recordLoadTime]
+  )
 
   return {
     getTimeConstant,
     recordLoadTime,
     getAverageLoadTime,
     startMeasurement,
-    completeMeasurement
+    completeMeasurement,
   }
 }

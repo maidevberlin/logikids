@@ -38,39 +38,42 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
     setLanguage(settings.language || 'en')
   }, [settings])
 
-  const autoSave = useCallback(async (updates: Partial<UserSettings>) => {
-    // Clear any pending save
-    if (saveTimeoutRef.current) {
-      clearTimeout(saveTimeoutRef.current)
-    }
-    if (savedTimeoutRef.current) {
-      clearTimeout(savedTimeoutRef.current)
-    }
-
-    // Debounce save by 500ms
-    saveTimeoutRef.current = setTimeout(async () => {
-      setIsSaving(true)
-      setShowSaved(false)
-
-      try {
-        await onUpdate(updates)
-
-        // Change i18n language if needed
-        if (updates.language && updates.language !== i18n.language) {
-          await i18n.changeLanguage(updates.language)
-        }
-
-        setShowSaved(true)
-        savedTimeoutRef.current = setTimeout(() => {
-          setShowSaved(false)
-        }, 2000)
-      } catch (error) {
-        logger.error('Failed to save settings', error as Error)
-      } finally {
-        setIsSaving(false)
+  const autoSave = useCallback(
+    async (updates: Partial<UserSettings>) => {
+      // Clear any pending save
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current)
       }
-    }, 500)
-  }, [onUpdate, i18n])
+      if (savedTimeoutRef.current) {
+        clearTimeout(savedTimeoutRef.current)
+      }
+
+      // Debounce save by 500ms
+      saveTimeoutRef.current = setTimeout(async () => {
+        setIsSaving(true)
+        setShowSaved(false)
+
+        try {
+          await onUpdate(updates)
+
+          // Change i18n language if needed
+          if (updates.language && updates.language !== i18n.language) {
+            await i18n.changeLanguage(updates.language)
+          }
+
+          setShowSaved(true)
+          savedTimeoutRef.current = setTimeout(() => {
+            setShowSaved(false)
+          }, 2000)
+        } catch (error) {
+          logger.error('Failed to save settings', error as Error)
+        } finally {
+          setIsSaving(false)
+        }
+      }, 500)
+    },
+    [onUpdate, i18n]
+  )
 
   // Cleanup timeouts on unmount
   useEffect(() => {
@@ -110,7 +113,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   }
 
   const handleLanguageChange = (newLanguage: string) => {
-    setLanguage(newLanguage);
+    setLanguage(newLanguage)
     autoSave({ name, age, grade, gender, language: newLanguage })
   }
 
@@ -163,7 +166,9 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
                   handleNameBlur()
                 }
               }}
-              placeholder={t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
+              placeholder={t('settings.namePlaceholder', {
+                defaultValue: 'Type your name here...',
+              })}
               autoFocus
               className="w-full bg-transparent border-0 border-b-2 border focus:border-primary outline-none text-4xl text-center py-4 placeholder:text-muted-foreground transition-colors"
             />
@@ -172,7 +177,11 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
               onClick={() => setIsEditingName(true)}
               className="w-full bg-transparent text-4xl text-center py-4 cursor-pointer transition-colors hover:opacity-70"
             >
-              {name || <span className="text-muted-foreground">{t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}</span>}
+              {name || (
+                <span className="text-muted-foreground">
+                  {t('settings.namePlaceholder', { defaultValue: 'Type your name here...' })}
+                </span>
+              )}
             </div>
           )}
         </div>
@@ -185,12 +194,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.ageLabel', { defaultValue: 'How old are you?' })}
           </Label>
-          <NumberInput
-            value={age}
-            onChange={handleAgeChange}
-            min={6}
-            max={18}
-          />
+          <NumberInput value={age} onChange={handleAgeChange} min={6} max={18} />
         </div>
 
         {/* Divider */}
@@ -201,11 +205,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.gradeLabel', { defaultValue: 'What grade are you in?' })}
           </Label>
-          <GradeSelector
-            value={grade}
-            onChange={handleGradeChange}
-            age={age}
-          />
+          <GradeSelector value={grade} onChange={handleGradeChange} age={age} />
         </div>
 
         {/* Divider */}
@@ -216,10 +216,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.gender.label', { defaultValue: 'Gender (optional)' })}
           </Label>
-          <GenderSelector
-            value={gender}
-            onChange={handleGenderChange}
-          />
+          <GenderSelector value={gender} onChange={handleGenderChange} />
         </div>
 
         {/* Divider */}
@@ -230,10 +227,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.languageLabel', { defaultValue: 'Choose your language' })}
           </Label>
-          <LanguageSelector
-            value={language}
-            onChange={handleLanguageChange}
-          />
+          <LanguageSelector value={language} onChange={handleLanguageChange} />
         </div>
       </div>
     </Card>

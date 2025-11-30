@@ -11,6 +11,7 @@ Teaching physics - how the natural world works through observation, experimentat
 ## Content Types
 
 **Use:**
+
 - LaTeX for equations: `$F = ma$`, `$E = mc^2$`
 - SVG diagrams for force diagrams, circuits, ray diagrams, graphs, waves
 - Tables for data, measurements, unit conversions, property comparisons
@@ -21,6 +22,7 @@ Teaching physics - how the natural world works through observation, experimentat
 ## Task Variation
 
 **IMPORTANT**: Ensure diversity across task generations:
+
 - Use different numerical values and measurement ranges
 - Vary the physical scenarios (falling objects, circuits, motion types)
 - Change the specific quantities being calculated

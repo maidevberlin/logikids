@@ -30,22 +30,24 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
 
   // Get translated values with fallback to backend data
   const name = t(`subjects/${subject}:concepts.${concept.id}.name`, { defaultValue: concept.name })
-  const description = t(`subjects/${subject}:concepts.${concept.id}.description`, { defaultValue: concept.description })
+  const description = t(`subjects/${subject}:concepts.${concept.id}.description`, {
+    defaultValue: concept.description,
+  })
 
   return (
     <Link to={`/subjects/${subject}/${concept.id}/tasks`}>
-      <Card className={`relative bg-card shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
-        isAdvanced ? 'ring-2 ring-orange-300 bg-orange-50/20' : ''
-      }`}>
+      <Card
+        className={`relative bg-card shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer h-full rounded-2xl hover:-translate-y-1 ${
+          isAdvanced ? 'ring-2 ring-orange-300 bg-orange-50/20' : ''
+        }`}
+      >
         {/* Star rating in top-right corner */}
         <div className="absolute top-4 right-4">
           <StarRating stars={masteryStars} size="md" />
         </div>
 
         <CardContent className="p-8 flex flex-col h-full">
-          <h3 className="text-xl font-bold text-card-foreground mb-3">
-            {name}
-          </h3>
+          <h3 className="text-xl font-bold text-card-foreground mb-3">{name}</h3>
 
           <p className="text-muted-foreground mb-4 flex-1">{description}</p>
 
@@ -61,7 +63,9 @@ export function ConceptCard({ concept, subject, isAdvanced }: ConceptCardProps) 
               </Badge>
             )}
             {concept.difficulty && (
-              <Badge className={`rounded-lg pointer-events-none ${difficultyColors[concept.difficulty]}`}>
+              <Badge
+                className={`rounded-lg pointer-events-none ${difficultyColors[concept.difficulty]}`}
+              >
                 {t(`difficulty.${concept.difficulty}`)}
               </Badge>
             )}

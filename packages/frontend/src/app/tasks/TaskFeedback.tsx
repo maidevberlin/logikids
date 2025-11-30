@@ -22,35 +22,28 @@ export function TaskFeedback({ showFeedback, isCorrect, gradingDetails, task }: 
     <div
       className={cn(
         'p-4 rounded-xl mb-4 animate-in fade-in slide-in-from-top-2',
-        isCorrect
-          ? 'bg-green-100 border-2 border-green-300'
-          : 'bg-red-100 border-2 border-red-300'
+        isCorrect ? 'bg-green-100 border-2 border-green-300' : 'bg-red-100 border-2 border-red-300'
       )}
     >
-      <p
-        className={cn(
-          'font-semibold text-center',
-          isCorrect ? 'text-green-900' : 'text-red-900'
-        )}
-      >
+      <p className={cn('font-semibold text-center', isCorrect ? 'text-green-900' : 'text-red-900')}>
         {isCorrect
           ? t('feedback.correct', { defaultValue: 'Correct! Well done!' })
           : gradingDetails
-          ? // Granular feedback for number_input tasks
-            gradingDetails.numberCorrect && gradingDetails.unitCorrect === false
-            ? t('feedback.numberCorrectUnitWrong', {
-                defaultValue: 'The number is correct, but check the unit'
-              })
-            : !gradingDetails.numberCorrect && gradingDetails.unitCorrect === true
-            ? t('feedback.unitCorrectNumberWrong', {
-                defaultValue: 'The unit is correct, but check your calculation'
-              })
+            ? // Granular feedback for number_input tasks
+              gradingDetails.numberCorrect && gradingDetails.unitCorrect === false
+              ? t('feedback.numberCorrectUnitWrong', {
+                  defaultValue: 'The number is correct, but check the unit',
+                })
+              : !gradingDetails.numberCorrect && gradingDetails.unitCorrect === true
+                ? t('feedback.unitCorrectNumberWrong', {
+                    defaultValue: 'The unit is correct, but check your calculation',
+                  })
+                : t('feedback.incorrect', {
+                    defaultValue: 'Not quite. Try again!',
+                  })
             : t('feedback.incorrect', {
                 defaultValue: 'Not quite. Try again!',
-              })
-          : t('feedback.incorrect', {
-              defaultValue: 'Not quite. Try again!',
-            })}
+              })}
       </p>
       {isCorrect && task.explanation && (
         <div className="mt-2">

@@ -3,21 +3,21 @@
  * Called AFTER schema validation, so frontmatter is known to be valid ConceptFrontmatter
  */
 
-import type { CheckResult, CheckIssue } from '../types';
-import type { ConceptFrontmatter } from '../../../prompts/concept-schema';
+import type { CheckResult, CheckIssue } from '../types'
+import type { ConceptFrontmatter } from '../../../prompts/concept-schema'
 
 export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
-  const issues: CheckIssue[] = [];
+  const issues: CheckIssue[] = []
 
   // Check problem_types count
-  const count = frontmatter.problem_types.length;
+  const count = frontmatter.problem_types.length
 
   if (count < 5) {
     issues.push({
       message: `Found ${count} problem types, required 5-10`,
       fix: `Add ${5 - count} more problem type descriptions`,
       reference: 'concept-rules.md - Schema Requirements',
-    });
+    })
   }
 
   if (count > 10) {
@@ -25,18 +25,18 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
       message: `Found ${count} problem types, recommended maximum is 10`,
       fix: 'Consider consolidating similar problem types',
       reference: 'concept-rules.md - Schema Requirements',
-    });
+    })
   }
 
   // Check learning_objectives count
-  const objectiveCount = frontmatter.learning_objectives.length;
+  const objectiveCount = frontmatter.learning_objectives.length
 
   if (objectiveCount < 3) {
     issues.push({
       message: `Found ${objectiveCount} learning objectives, required 3-7`,
       fix: `Add ${3 - objectiveCount} more learning objectives`,
       reference: 'concept-rules.md - learning_objectives',
-    });
+    })
   }
 
   if (objectiveCount > 7) {
@@ -44,7 +44,7 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
       message: `Found ${objectiveCount} learning objectives, recommended maximum is 7`,
       fix: 'Consider consolidating similar objectives',
       reference: 'concept-rules.md - learning_objectives',
-    });
+    })
   }
 
   // Check difficulty_guidelines - max 3 bullets per difficulty level
@@ -54,19 +54,19 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
         message: `difficulty_guidelines[${level}] has ${guidelines.length} items (max 3)`,
         fix: 'Reduce to 3 most important guidelines',
         reference: 'concept-rules.md - difficulty_guidelines',
-      });
+      })
     }
   }
 
   // Check real_world_context count
-  const contextCount = frontmatter.real_world_context.length;
+  const contextCount = frontmatter.real_world_context.length
 
   if (contextCount < 3) {
     issues.push({
       message: `Found ${contextCount} real_world_context items, required 3-5`,
       fix: `Add ${3 - contextCount} more real-world context examples`,
       reference: 'concept-rules.md - real_world_context',
-    });
+    })
   }
 
   if (contextCount > 5) {
@@ -74,13 +74,13 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
       message: `Found ${contextCount} real_world_context items, maximum is 5`,
       fix: 'Reduce to 5 most relevant real-world contexts',
       reference: 'concept-rules.md - real_world_context',
-    });
+    })
   }
 
   if (issues.length === 0) {
-    return { status: 'pass', issues: [] };
+    return { status: 'pass', issues: [] }
   }
 
   // Determine severity: problem_types issues are warnings, age_guidelines issues are warnings
-  return { status: 'warning', issues };
+  return { status: 'warning', issues }
 }

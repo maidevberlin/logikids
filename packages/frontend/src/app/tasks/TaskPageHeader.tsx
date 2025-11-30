@@ -10,11 +10,7 @@ interface TaskPageHeaderProps {
   onConceptChange: (concept: string, subject: string) => void
 }
 
-export function TaskPageHeader({
-  subject,
-  concept,
-  onConceptChange,
-}: TaskPageHeaderProps) {
+export function TaskPageHeader({ subject, concept, onConceptChange }: TaskPageHeaderProps) {
   const { data: userData } = useUserData()
 
   // Fetch filtered subjects (by grade)

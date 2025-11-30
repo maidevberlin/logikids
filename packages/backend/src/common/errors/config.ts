@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when required configuration is missing or invalid
@@ -12,7 +12,7 @@ import { ApplicationError } from './base';
  */
 export class ConfigurationError extends ApplicationError {
   constructor(message: string) {
-    super(message, 500, 'CONFIGURATION_ERROR');
+    super(message, 500, 'CONFIGURATION_ERROR')
   }
 }
 
@@ -28,6 +28,6 @@ export class ConfigurationError extends ApplicationError {
  */
 export class UnsupportedProviderError extends ApplicationError {
   constructor(provider: string) {
-    super(`Unsupported AI provider: ${provider}`, 500, 'UNSUPPORTED_PROVIDER');
+    super(`Unsupported AI provider: ${provider}`, 500, 'UNSUPPORTED_PROVIDER')
   }
 }

@@ -38,6 +38,7 @@ src/
 ## Development Setup
 
 1. Copy `config.yaml.example` to `config.yaml` and fill in your configuration values:
+
    ```bash
    cp config.yaml.example config.yaml
    ```
@@ -45,16 +46,19 @@ src/
 2. The application can be run in different environments using Docker:
 
    Development:
+
    ```bash
    docker compose up backend-dev
    ```
 
    Production:
+
    ```bash
    docker compose up backend
    ```
 
    Tests:
+
    ```bash
    docker compose up backend-test
    ```
@@ -62,6 +66,7 @@ src/
 ## API Endpoints
 
 ### Tasks
+
 - `GET /api/task` - Generate a task based on:
   - age (6-21)
   - difficulty (easy/medium/hard)
@@ -101,6 +106,7 @@ docker compose up backend-test
 ## Docker Support
 
 The project includes three Dockerfile variants:
+
 - `Dockerfile.dev` - For development with hot-reload
 - `Dockerfile.prod` - For production deployment
 - `Dockerfile.test` - For running tests

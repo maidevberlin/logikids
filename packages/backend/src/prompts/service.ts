@@ -1,10 +1,10 @@
-import { PromptLoader } from './loader';
-import { VariationLoader } from './variations/loader';
-import { PromptBuilder } from './builder';
-import { PromptBuildingParams } from './types';
-import { createLogger } from '../common/logger';
+import { PromptLoader } from './loader'
+import { VariationLoader } from './variations/loader'
+import { PromptBuilder } from './builder'
+import { PromptBuildingParams } from './types'
+import { createLogger } from '../common/logger'
 
-const logger = createLogger('PromptService');
+const logger = createLogger('PromptService')
 
 /**
  * Service responsible for building prompts for task generation
@@ -20,9 +20,9 @@ export class PromptService {
    * Initialize the service by loading all variations
    */
   async initialize(): Promise<void> {
-    logger.info('Initializing...');
-    await this.variationLoader.loadAll();
-    logger.info('Initialization complete');
+    logger.info('Initializing...')
+    await this.variationLoader.loadAll()
+    logger.info('Initialization complete')
   }
 
   /**
@@ -34,20 +34,20 @@ export class PromptService {
     logger.debug('Building prompt', {
       subjectId: params.subject.id,
       conceptId: params.concept.id,
-      taskTypeId: params.taskType.id
-    });
+      taskTypeId: params.taskType.id,
+    })
 
     // Load base prompt
-    const basePrompt = await this.promptLoader.loadBasePrompt();
-    logger.debug('Base prompt loaded');
+    const basePrompt = await this.promptLoader.loadBasePrompt()
+    logger.debug('Base prompt loaded')
 
     // Load variations template
-    const variationsTemplate = await this.promptLoader.loadVariationsTemplate();
-    logger.debug('Variations template loaded');
+    const variationsTemplate = await this.promptLoader.loadVariationsTemplate()
+    logger.debug('Variations template loaded')
 
     // Load hint prompt
-    const hintPrompt = await this.promptLoader.loadHintPrompt();
-    logger.debug('Hint prompt loaded', { hintPromptId: hintPrompt.id });
+    const hintPrompt = await this.promptLoader.loadHintPrompt()
+    logger.debug('Hint prompt loaded', { hintPromptId: hintPrompt.id })
 
     // Create prompt builder
     const promptBuilder = new PromptBuilder(
@@ -57,7 +57,7 @@ export class PromptService {
       basePrompt,
       variationsTemplate,
       hintPrompt
-    );
+    )
 
     // Build the final prompt
     const finalPrompt = promptBuilder.buildPrompt({
@@ -68,11 +68,11 @@ export class PromptService {
       difficulty: params.difficulty,
       language: params.language,
       taskType: params.taskType.id,
-      gender: params.gender
-    });
+      gender: params.gender,
+    })
 
-    logger.debug('Prompt built', { promptLength: finalPrompt.length });
+    logger.debug('Prompt built', { promptLength: finalPrompt.length })
 
-    return finalPrompt;
+    return finalPrompt
   }
 }

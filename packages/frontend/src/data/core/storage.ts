@@ -135,7 +135,8 @@ export const getUserId = (): Promise<string | null> => getValue<string>(USER_ID_
 /**
  * Store access token in IndexedDB
  */
-export const storeTokens = (accessToken: string): Promise<void> => storeValue(ACCESS_TOKEN_KEY, accessToken)
+export const storeTokens = (accessToken: string): Promise<void> =>
+  storeValue(ACCESS_TOKEN_KEY, accessToken)
 
 /**
  * Get access token from IndexedDB

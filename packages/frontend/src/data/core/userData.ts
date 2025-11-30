@@ -1,8 +1,8 @@
-import {createDefaultUserData, UserData, UserSettings} from './types.ts'
-import {getUserId, loadKey, storeKey, storeTokens, storeUserId} from './storage.ts'
-import {decrypt, encrypt, generateKey} from './crypto.ts'
-import {GameStats} from '@/app/stats/gameTypes'
-import {createLogger} from '@/lib/logger'
+import { createDefaultUserData, UserData, UserSettings } from './types.ts'
+import { getUserId, loadKey, storeKey, storeTokens, storeUserId } from './storage.ts'
+import { decrypt, encrypt, generateKey } from './crypto.ts'
+import { GameStats } from '@/app/stats/gameTypes'
+import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('UserData')
 const STORAGE_KEY = 'logikids_data'
@@ -12,13 +12,9 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
  * Remove old localStorage keys from previous implementation
  */
 function cleanupLegacyStorage(): void {
-  const legacyKeys = [
-    'logikids_progress',
-    'logikids_user_profile',
-    'logikids_last_task'
-  ]
+  const legacyKeys = ['logikids_progress', 'logikids_user_profile', 'logikids_last_task']
 
-  legacyKeys.forEach(key => {
+  legacyKeys.forEach((key) => {
     if (localStorage.getItem(key)) {
       logger.debug('Cleaning up legacy storage key', { key })
       localStorage.removeItem(key)
@@ -152,7 +148,7 @@ export async function getData(): Promise<UserData | null> {
     if (!key) {
       throw new Error('Encryption key not found')
     }
-  
+
     return await decrypt(key, encrypted)
   } catch (error) {
     logger.error('Failed to load user data', error as Error)
@@ -175,7 +171,7 @@ export async function setData(updates: Partial<UserData>): Promise<void> {
     const merged: UserData = {
       ...current,
       ...updates,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     }
 
     const key = await loadKey()
@@ -205,8 +201,8 @@ export async function updateSettings(settings: Partial<UserSettings>): Promise<v
   await setData({
     settings: {
       ...current.settings,
-      ...settings
-    }
+      ...settings,
+    },
   })
 }
 
@@ -219,7 +215,7 @@ export async function updateProgress(progress: Record<string, any>): Promise<voi
     throw new Error('Cannot update progress: no user exists')
   }
   await setData({
-    progress: deepMerge(current.progress, progress)
+    progress: deepMerge(current.progress, progress),
   })
 }
 
@@ -232,7 +228,7 @@ export async function updateGameStats(gameStats: GameStats): Promise<void> {
     throw new Error('Cannot update game stats: no user exists')
   }
   await setData({
-    gameStats: gameStats
+    gameStats: gameStats,
   })
 }
 

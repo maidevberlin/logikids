@@ -7,6 +7,7 @@ description: A task requiring numeric input with optional unit display or select
 Create a number input task requiring a numeric answer.
 
 **CRITICAL**:
+
 - `answer` MUST be a number (not string)
 - Exact match validation (no tolerance)
 - Prefer whole numbers (UI has step=1 buttons)
@@ -20,6 +21,7 @@ Create a number input task requiring a numeric answer.
 ## Examples
 
 **No unit:**
+
 ```json
 {
   "type": "number_input",
@@ -31,6 +33,7 @@ Create a number input task requiring a numeric answer.
 ```
 
 **Display-only unit:**
+
 ```json
 {
   "type": "number_input",
@@ -43,6 +46,7 @@ Create a number input task requiring a numeric answer.
 ```
 
 **Unit selection:**
+
 ```json
 {
   "type": "number_input",

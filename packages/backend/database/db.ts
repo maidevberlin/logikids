@@ -9,9 +9,9 @@ import { DatabaseConnectionError } from '../src/common/errors'
  */
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  max: 10,                    // Maximum 10 connections in pool
-  idleTimeoutMillis: 30000,   // Close idle connections after 30 seconds
-  connectionTimeoutMillis: 5000,  // Fail fast if can't connect in 5 seconds
+  max: 10, // Maximum 10 connections in pool
+  idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
+  connectionTimeoutMillis: 5000, // Fail fast if can't connect in 5 seconds
 })
 
 // Log pool errors

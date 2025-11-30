@@ -65,7 +65,7 @@ void i18n
       'subjects/english',
       'subjects/physics',
       'subjects/biology',
-      'subjects/logic'
+      'subjects/logic',
     ],
     // Backend configuration for lazy loading
     backend: {

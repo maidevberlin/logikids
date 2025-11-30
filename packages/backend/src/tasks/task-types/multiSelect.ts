@@ -1,18 +1,18 @@
-import { JSONSchema } from "../../common/ai/base";
+import { JSONSchema } from '../../common/ai/base'
 
 export interface MultiSelectOption {
-  id: number;
-  text: string;
-  isCorrect: boolean;
+  id: number
+  text: string
+  isCorrect: boolean
 }
 
 export interface MultiSelectResponse {
-  type: 'multi_select';
-  title: string;
-  task: string;
-  options: MultiSelectOption[];
-  expectedCount: number;
-  explanation: string;
+  type: 'multi_select'
+  title: string
+  task: string
+  options: MultiSelectOption[]
+  expectedCount: number
+  explanation: string
 }
 
 export const multiSelectSchema: JSONSchema = {
@@ -20,15 +20,15 @@ export const multiSelectSchema: JSONSchema = {
   properties: {
     type: {
       type: 'string',
-      const: 'multi_select'
+      const: 'multi_select',
     },
     title: {
       type: 'string',
-      minLength: 1
+      minLength: 1,
     },
     task: {
       type: 'string',
-      minLength: 1
+      minLength: 1,
     },
     options: {
       type: 'array',
@@ -36,32 +36,32 @@ export const multiSelectSchema: JSONSchema = {
         type: 'object',
         properties: {
           id: {
-            type: 'number'
+            type: 'number',
           },
           text: {
             type: 'string',
-            minLength: 1
+            minLength: 1,
           },
           isCorrect: {
-            type: 'boolean'
-          }
+            type: 'boolean',
+          },
         },
         required: ['id', 'text', 'isCorrect'],
-        additionalProperties: false
+        additionalProperties: false,
       },
       minItems: 5,
-      maxItems: 7
+      maxItems: 7,
     },
     expectedCount: {
       type: 'number',
       minimum: 2,
-      maximum: 4
+      maximum: 4,
     },
     explanation: {
       type: 'string',
-      minLength: 1
-    }
+      minLength: 1,
+    },
   },
   required: ['type', 'title', 'task', 'options', 'expectedCount', 'explanation'],
-  additionalProperties: false
-};
+  additionalProperties: false,
+}

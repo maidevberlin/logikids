@@ -13,16 +13,10 @@ export function Footer() {
             © {currentYear} Logikids. {t('footer.allRightsReserved')}
           </div>
           <div className="flex gap-6">
-            <Link
-              to="/privacy"
-              className="hover:text-foreground transition-colors"
-            >
+            <Link to="/privacy" className="hover:text-foreground transition-colors">
               {t('footer.privacyPolicy')}
             </Link>
-            <Link
-              to="/impressum"
-              className="hover:text-foreground transition-colors"
-            >
+            <Link to="/impressum" className="hover:text-foreground transition-colors">
               {t('footer.impressum')}
             </Link>
           </div>

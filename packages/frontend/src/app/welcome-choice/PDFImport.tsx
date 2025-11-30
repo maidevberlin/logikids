@@ -3,7 +3,13 @@ import { useTranslation } from 'react-i18next'
 import * as pdfjsLib from 'pdfjs-dist'
 import { importQRData, parseBackupCode } from '@/data/plugins/qr'
 import { Button } from '@/app/common/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/app/common/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/app/common/ui/dialog'
 import { Upload, FileText } from 'lucide-react'
 import { createLogger } from '@/lib/logger'
 
@@ -46,9 +52,11 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
     }
 
     if (startIndex === -1) {
-      throw new Error(t('welcomeChoice.import.noBackupCodeFound', {
-        defaultValue: 'Could not find backup code in PDF. Please try manual entry instead.'
-      }))
+      throw new Error(
+        t('welcomeChoice.import.noBackupCodeFound', {
+          defaultValue: 'Could not find backup code in PDF. Please try manual entry instead.',
+        })
+      )
     }
 
     // Extract text after the marker
@@ -77,9 +85,11 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
 
     // Validate it's proper base64
     if (backupCode.length < 50) {
-      throw new Error(t('welcomeChoice.import.noBackupCodeFound', {
-        defaultValue: 'Could not find backup code in PDF. Please try manual entry instead.'
-      }))
+      throw new Error(
+        t('welcomeChoice.import.noBackupCodeFound', {
+          defaultValue: 'Could not find backup code in PDF. Please try manual entry instead.',
+        })
+      )
     }
 
     // Only keep valid base64 characters
@@ -94,9 +104,11 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
     try {
       atob(backupCode)
     } catch (e) {
-      throw new Error(t('welcomeChoice.import.corruptedBackupCode', {
-        defaultValue: 'Backup code appears to be corrupted or incomplete'
-      }))
+      throw new Error(
+        t('welcomeChoice.import.corruptedBackupCode', {
+          defaultValue: 'Backup code appears to be corrupted or incomplete',
+        })
+      )
     }
 
     return backupCode
@@ -107,7 +119,9 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
     if (!file) return
 
     if (!file.type.includes('pdf')) {
-      setError(t('welcomeChoice.import.invalidFileType', { defaultValue: 'Please select a PDF file' }))
+      setError(
+        t('welcomeChoice.import.invalidFileType', { defaultValue: 'Please select a PDF file' })
+      )
       return
     }
 
@@ -125,9 +139,7 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
       for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i)
         const textContent = await page.getTextContent()
-        const pageText = textContent.items
-          .map((item) => 'str' in item ? item.str : '')
-          .join('\n')
+        const pageText = textContent.items.map((item) => ('str' in item ? item.str : '')).join('\n')
         fullText += pageText + '\n'
       }
 
@@ -141,7 +153,11 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
       onSuccess()
     } catch (err) {
       logger.error('PDF import error', err as Error)
-      setError(err instanceof Error ? err.message : t('welcomeChoice.import.pdfParseError', { defaultValue: 'Failed to parse PDF file' }))
+      setError(
+        err instanceof Error
+          ? err.message
+          : t('welcomeChoice.import.pdfParseError', { defaultValue: 'Failed to parse PDF file' })
+      )
     } finally {
       setIsProcessing(false)
       // Clear file input
@@ -160,20 +176,20 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
             {t('welcomeChoice.import.uploadPDF', { defaultValue: 'Upload Recovery Kit PDF' })}
           </DialogTitle>
           <DialogDescription>
-            {t('welcomeChoice.import.uploadPDFDescription', { defaultValue: 'Select your recovery kit PDF file to restore your account' })}
+            {t('welcomeChoice.import.uploadPDFDescription', {
+              defaultValue: 'Select your recovery kit PDF file to restore your account',
+            })}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
-          {error && (
-            <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-              {error}
-            </div>
-          )}
+          {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
           {/* File Upload Area */}
-          <div className="border-2 border-dashed border rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer"
-               onClick={() => fileInputRef.current?.click()}>
+          <div
+            className="border-2 border-dashed border rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer"
+            onClick={() => fileInputRef.current?.click()}
+          >
             <input
               ref={fileInputRef}
               type="file"
@@ -189,18 +205,20 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
                 <p className="text-muted-foreground">
                   {t('welcomeChoice.import.processingPDF', { defaultValue: 'Processing PDF...' })}
                 </p>
-                {fileName && (
-                  <p className="text-sm text-muted-foreground">{fileName}</p>
-                )}
+                {fileName && <p className="text-sm text-muted-foreground">{fileName}</p>}
               </div>
             ) : (
               <div className="space-y-2">
                 <FileText className="w-12 h-12 text-muted-foreground mx-auto" />
                 <p className="text-muted-foreground">
-                  {t('welcomeChoice.import.clickToUpload', { defaultValue: 'Click to upload PDF file' })}
+                  {t('welcomeChoice.import.clickToUpload', {
+                    defaultValue: 'Click to upload PDF file',
+                  })}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {t('welcomeChoice.import.pdfHint', { defaultValue: 'Select your Logikids Recovery Kit PDF' })}
+                  {t('welcomeChoice.import.pdfHint', {
+                    defaultValue: 'Select your Logikids Recovery Kit PDF',
+                  })}
                 </p>
               </div>
             )}

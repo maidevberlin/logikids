@@ -12,12 +12,7 @@ export function ShowAllConceptsButton({ showAll, onToggle }: ShowAllConceptsButt
 
   return (
     <div className="flex justify-center mt-6">
-      <Button
-        variant="outline"
-        size="lg"
-        onClick={onToggle}
-        className="gap-2"
-      >
+      <Button variant="outline" size="lg" onClick={onToggle} className="gap-2">
         {showAll
           ? t('concepts.hideAdvanced', { defaultValue: 'Show Grade-Appropriate Only' })
           : t('concepts.showAdvanced', { defaultValue: 'Show All Concepts' })}

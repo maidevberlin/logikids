@@ -11,9 +11,9 @@ Teaching logical thinking and reasoning - pattern recognition, deduction, and st
 ## Content Types
 
 **Use:**
+
 - Mermaid diagrams for decision trees, flowcharts
 - Tables for truth tables, comparison matrices
 - Lists for rules, steps, logical chains
 
 **Avoid:** LaTeX (unless mathematical logic), code blocks
-

@@ -25,21 +25,23 @@ Generate variations that are:
 ## Format Requirements
 
 ### For Scenarios (with age ranges):
+
 ```yaml
 ---
 scenarios:
-  - context: "description of the scenario"
+  - context: 'description of the scenario'
     minAge: 8
     maxAge: 16
 ---
 ```
 
 ### For Other Dimensions (simple strings):
+
 ```yaml
 ---
 [dimension_key]:
-  - "First variation example"
-  - "Second variation example"
+  - 'First variation example'
+  - 'Second variation example'
 ---
 ```
 

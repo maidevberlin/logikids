@@ -44,11 +44,7 @@ export function ExportData() {
 
   return (
     <div className="space-y-2">
-      {error && (
-        <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-          {error}
-        </div>
-      )}
+      {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
       <Button
         onClick={handleExport}
@@ -59,13 +55,13 @@ export function ExportData() {
         <Download className="w-4 h-4 mr-2" />
         {isExporting
           ? t('account.exportData.exporting', { defaultValue: 'Exporting...' })
-          : t('account.exportData.downloadButton', { defaultValue: 'Export Data (JSON)' })
-        }
+          : t('account.exportData.downloadButton', { defaultValue: 'Export Data (JSON)' })}
       </Button>
 
       <p className="text-xs text-muted-foreground">
         {t('account.exportData.description', {
-          defaultValue: 'Download all your data as a JSON file. You can use this for backups or to transfer your data.'
+          defaultValue:
+            'Download all your data as a JSON file. You can use this for backups or to transfer your data.',
         })}
       </p>
     </div>

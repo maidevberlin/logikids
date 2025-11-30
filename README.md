@@ -25,6 +25,7 @@ An innovative educational platform designed to help children aged 8-16 develop l
 ## 🚀 Tech Stack
 
 ### Frontend
+
 - React with TypeScript
 - TailwindCSS for styling
 - TanStack Query for data fetching
@@ -35,6 +36,7 @@ An innovative educational platform designed to help children aged 8-16 develop l
 - Vite for development and building
 
 ### Backend
+
 - Bun runtime with TypeScript
 - Express API with tRPC
 - PostgreSQL database
@@ -43,19 +45,21 @@ An innovative educational platform designed to help children aged 8-16 develop l
 ## 🛠 Installation
 
 1. **Clone the Repository**
+
    ```bash
    git clone https://github.com/maidev/logikids.git
    cd logikids
    ```
 
 2. **Configure AI Settings**
+
    ```bash
    # Navigate to backend package
    cd packages/backend
-   
+
    # Copy configuration template
    cp config.yaml.example config.yaml
-   
+
    # Edit config.yaml with your preferred settings
    # - Choose AI provider (ollama/openai)
    # - Set API keys if using OpenAI
@@ -63,13 +67,14 @@ An innovative educational platform designed to help children aged 8-16 develop l
    ```
 
 3. **Setup Ollama (if using Ollama as AI provider)**
+
    ```bash
    # Install Ollama following instructions at: https://ollama.ai
-   
+
    # Install required models
    ollama pull llama2
    ollama pull llama2-vision
-   
+
    # Verify Ollama is running
    curl http://localhost:11434/api/tags
    ```
@@ -77,26 +82,30 @@ An innovative educational platform designed to help children aged 8-16 develop l
 ## 🛠 Development Setup
 
 ### Prerequisites
+
 - Docker and Docker Compose
 - Ollama (for AI features)
 
 ### Development Commands
 
 1. **Start Development Environment**
+
    ```bash
    # Start all services in development mode (this will build the images if they don't exist)
    docker compose up frontend-dev backend-dev
-   
+
    # Start only frontend
    docker compose up frontend-dev
-   
+
    # Start only backend
    docker compose up backend-dev
    ```
+
    - Frontend will be available at: http://localhost:5153
    - Backend API will be available at: http://localhost:5175
 
 2. **Production Mode**
+
    ```bash
    # Build and start production services
    docker compose up frontend-prod backend-prod --build
@@ -104,27 +113,30 @@ An innovative educational platform designed to help children aged 8-16 develop l
    # Start without rebuilding
    docker compose up frontend-prod backend-prod
    ```
+
    - Frontend will be available at: http://localhost:5154
    - Backend API will be available at: http://localhost:5176
 
 3. **Docker Commands**
+
    ```bash
    # View logs
    docker compose logs -f frontend-dev
    docker compose logs -f backend-dev
-   
+
    # Rebuild specific service
    docker compose build frontend-dev
    docker compose build backend-dev
-   
+
    # Stop all services
    docker compose down
-   
+
    # Remove all containers and volumes
    docker compose down -v
    ```
 
 ### Testing
+
 ```bash
 # Run backend tests
 docker compose run backend-test
@@ -155,6 +167,7 @@ LogiKids is currently in closed beta with invite-only access. Use the `./invite`
 ```
 
 **Notes:**
+
 - Codes expire after 7 days if unused
 - Codes are automatically deleted after successful use
 - Each code can only be used once
@@ -185,10 +198,12 @@ logikids/
 This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
 
 You are free to:
+
 - **Share** — copy and redistribute the material
 - **Adapt** — remix, transform, and build upon the material
 
 Under the following terms:
+
 - **Attribution** — You must give appropriate credit
 - **NonCommercial** — You may not use the material for commercial purposes
 
@@ -197,4 +212,5 @@ See [LICENSE](LICENSE) for full details.
 ## 🆘 Support
 
 For questions and support:
+
 1. Open an issue in the repository

@@ -1,16 +1,16 @@
-import 'reflect-metadata';
-import {injectable} from 'tsyringe';
+import 'reflect-metadata'
+import { injectable } from 'tsyringe'
 import jwt from 'jsonwebtoken'
-import {pool} from '../../database/db'
+import { pool } from '../../database/db'
 import {
-    AccountNotFoundError,
-    AccountRevokedError,
-    InviteAlreadyUsedError,
-    InviteExpiredError,
-    InviteNotFoundError,
-    UserExistsError
+  AccountNotFoundError,
+  AccountRevokedError,
+  InviteAlreadyUsedError,
+  InviteExpiredError,
+  InviteNotFoundError,
+  UserExistsError,
 } from '../common/errors'
-import {env} from '../config/env'
+import { env } from '../config/env'
 
 const JWT_SECRET = env.JWT_SECRET
 const ACCESS_TOKEN_EXPIRES_IN = '1h' // Short-lived access token
@@ -35,7 +35,10 @@ export class AuthService {
    * Register a new user account with invite code
    * Returns access token on success
    */
-  async register(userId: string, inviteCode: string): Promise<{ accessToken: string; account: UserAccount }> {
+  async register(
+    userId: string,
+    inviteCode: string
+  ): Promise<{ accessToken: string; account: UserAccount }> {
     const normalizedCode = inviteCode.toUpperCase().trim()
     const client = await pool.connect()
 
@@ -64,7 +67,7 @@ export class AuthService {
 
       const invite = {
         ...inviteResult.rows[0],
-        expires_at: Number(inviteResult.rows[0].expires_at)
+        expires_at: Number(inviteResult.rows[0].expires_at),
       }
 
       if (invite.expires_at < Date.now()) {
@@ -76,10 +79,11 @@ export class AuthService {
       }
 
       // Mark invite as used
-      await client.query(
-        'UPDATE invite_codes SET used_by = $1, used_at = $2 WHERE code = $3',
-        [userId, Date.now(), normalizedCode]
-      )
+      await client.query('UPDATE invite_codes SET used_by = $1, used_at = $2 WHERE code = $3', [
+        userId,
+        Date.now(),
+        normalizedCode,
+      ])
 
       // Create user account
       const now = Date.now()
@@ -97,7 +101,7 @@ export class AuthService {
         user_id: userId,
         invite_code: normalizedCode,
         created_at: now,
-        last_seen: now
+        last_seen: now,
       }
 
       return { accessToken, account }
@@ -115,11 +119,11 @@ export class AuthService {
   generateAccessToken(userId: string, inviteCode: string): string {
     const payload: JWTPayload = {
       userId,
-      inviteCode
+      inviteCode,
     }
 
     return jwt.sign(payload, JWT_SECRET, {
-      expiresIn: ACCESS_TOKEN_EXPIRES_IN
+      expiresIn: ACCESS_TOKEN_EXPIRES_IN,
     })
   }
 
@@ -127,10 +131,10 @@ export class AuthService {
    * Update last_seen timestamp for user
    */
   async updateLastSeen(userId: string): Promise<void> {
-    await pool.query(
-      'UPDATE user_accounts SET last_seen = $1 WHERE user_id = $2',
-      [Date.now(), userId]
-    )
+    await pool.query('UPDATE user_accounts SET last_seen = $1 WHERE user_id = $2', [
+      Date.now(),
+      userId,
+    ])
   }
 
   /**
@@ -150,7 +154,7 @@ export class AuthService {
     return {
       ...result.rows[0],
       created_at: Number(result.rows[0].created_at),
-      last_seen: Number(result.rows[0].last_seen)
+      last_seen: Number(result.rows[0].last_seen),
     }
   }
 
@@ -211,7 +215,7 @@ export class AuthService {
       user_id: accountRow.user_id,
       invite_code: accountRow.invite_code,
       created_at: Number(accountRow.created_at),
-      last_seen: Number(accountRow.last_seen)
+      last_seen: Number(accountRow.last_seen),
     }
 
     // Generate access token

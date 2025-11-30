@@ -35,19 +35,26 @@ export function RecoveryKit() {
       }
 
       // Use qrcode library to draw QR on canvas
-      import('qrcode').then(QRCode => {
-        QRCode.toCanvas(canvas, qrData, {
-          width: size,
-          margin: 2,
-          errorCorrectionLevel: 'H',
-        }, (error) => {
-          if (error) {
-            reject(error)
-          } else {
-            resolve(canvas.toDataURL('image/png'))
-          }
+      import('qrcode')
+        .then((QRCode) => {
+          QRCode.toCanvas(
+            canvas,
+            qrData,
+            {
+              width: size,
+              margin: 2,
+              errorCorrectionLevel: 'H',
+            },
+            (error) => {
+              if (error) {
+                reject(error)
+              } else {
+                resolve(canvas.toDataURL('image/png'))
+              }
+            }
+          )
         })
-      }).catch(reject)
+        .catch(reject)
     })
   }
 
@@ -119,7 +126,9 @@ export function RecoveryKit() {
       // QR Label
       pdf.setFontSize(10)
       pdf.setFont('helvetica', 'normal')
-      pdf.text(t('account.recoveryKit.pdf.qrLabel'), pageWidth / 2, qrBoxY + qrSize + 12, { align: 'center' })
+      pdf.text(t('account.recoveryKit.pdf.qrLabel'), pageWidth / 2, qrBoxY + qrSize + 12, {
+        align: 'center',
+      })
 
       // === BACKUP CODE SECTION ===
       let y = qrBoxY + qrBoxHeight + 15
@@ -143,7 +152,7 @@ export function RecoveryKit() {
 
       // Calculate box height based on number of lines
       const lineHeight = 4.5
-      const codeBoxHeight = (codeChunks.length * lineHeight) + 12
+      const codeBoxHeight = codeChunks.length * lineHeight + 12
 
       // Backup code box with clear boundary
       pdf.setFillColor(255, 255, 255)
@@ -222,11 +231,7 @@ export function RecoveryKit() {
 
   return (
     <div className="space-y-4">
-      {error && (
-        <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-          {error}
-        </div>
-      )}
+      {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
       <Button
         onClick={handleGenerateKit}
@@ -235,7 +240,9 @@ export function RecoveryKit() {
         disabled={isGenerating}
       >
         <Download className="w-4 h-4 mr-2" />
-        {isGenerating ? t('account.recoveryKit.generating') : t('account.recoveryKit.downloadButton')}
+        {isGenerating
+          ? t('account.recoveryKit.generating')
+          : t('account.recoveryKit.downloadButton')}
       </Button>
 
       <div className="text-xs text-muted-foreground space-y-1">

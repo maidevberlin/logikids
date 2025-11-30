@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when AI task generation fails
@@ -14,7 +14,7 @@ import { ApplicationError } from './base';
  */
 export class TaskGenerationError extends ApplicationError {
   constructor(message: string, cause?: unknown) {
-    super(message, 500, 'TASK_GENERATION_FAILED', cause);
+    super(message, 500, 'TASK_GENERATION_FAILED', cause)
   }
 }
 
@@ -31,7 +31,7 @@ export class TaskGenerationError extends ApplicationError {
  */
 export class NoTasksFoundError extends ApplicationError {
   constructor(message: string = 'No tasks found') {
-    super(message, 404, 'NO_TASKS_FOUND');
+    super(message, 404, 'NO_TASKS_FOUND')
   }
 }
 
@@ -47,7 +47,7 @@ export class NoTasksFoundError extends ApplicationError {
  */
 export class InvalidTaskParametersError extends ApplicationError {
   constructor(message: string) {
-    super(message, 400, 'INVALID_PARAMETERS');
+    super(message, 400, 'INVALID_PARAMETERS')
   }
 }
 
@@ -64,7 +64,7 @@ export class InvalidTaskParametersError extends ApplicationError {
  */
 export class SubjectNotFoundError extends ApplicationError {
   constructor(subjectId: string) {
-    super(`Subject ${subjectId} not found`, 404, 'SUBJECT_NOT_FOUND');
+    super(`Subject ${subjectId} not found`, 404, 'SUBJECT_NOT_FOUND')
   }
 }
 
@@ -83,8 +83,8 @@ export class ConceptNotFoundError extends ApplicationError {
   constructor(conceptId: string, subjectId?: string) {
     const message = subjectId
       ? `Concept ${conceptId} not found in subject ${subjectId}`
-      : `Concept ${conceptId} not found`;
-    super(message, 404, 'CONCEPT_NOT_FOUND');
+      : `Concept ${conceptId} not found`
+    super(message, 404, 'CONCEPT_NOT_FOUND')
   }
 }
 
@@ -101,15 +101,11 @@ export class ConceptNotFoundError extends ApplicationError {
  */
 export class NoConceptsFoundError extends ApplicationError {
   constructor(criteria: { subject: string; grade?: number; difficulty?: string }) {
-    const parts: string[] = [`subject ${criteria.subject}`];
-    if (criteria.grade !== undefined) parts.push(`grade ${criteria.grade}`);
-    if (criteria.difficulty) parts.push(`difficulty ${criteria.difficulty}`);
+    const parts: string[] = [`subject ${criteria.subject}`]
+    if (criteria.grade !== undefined) parts.push(`grade ${criteria.grade}`)
+    if (criteria.difficulty) parts.push(`difficulty ${criteria.difficulty}`)
 
-    super(
-      `No concepts found for ${parts.join(', ')}`,
-      404,
-      'NO_CONCEPTS_FOUND'
-    );
+    super(`No concepts found for ${parts.join(', ')}`, 404, 'NO_CONCEPTS_FOUND')
   }
 }
 
@@ -126,7 +122,7 @@ export class NoConceptsFoundError extends ApplicationError {
  */
 export class TaskTypeNotFoundError extends ApplicationError {
   constructor(taskTypeId: string) {
-    super(`Task type ${taskTypeId} not found`, 404, 'TASK_TYPE_NOT_FOUND');
+    super(`Task type ${taskTypeId} not found`, 404, 'TASK_TYPE_NOT_FOUND')
   }
 }
 
@@ -143,7 +139,7 @@ export class TaskTypeNotFoundError extends ApplicationError {
  */
 export class NoTaskTypesError extends ApplicationError {
   constructor(message: string = 'No task types available') {
-    super(message, 500, 'NO_TASK_TYPES');
+    super(message, 500, 'NO_TASK_TYPES')
   }
 }
 
@@ -160,7 +156,7 @@ export class NoTaskTypesError extends ApplicationError {
  */
 export class TaskNotFoundError extends ApplicationError {
   constructor(taskId?: string, message: string = 'Task not found or expired') {
-    super(message, 404, 'TASK_NOT_FOUND');
+    super(message, 404, 'TASK_NOT_FOUND')
   }
 }
 
@@ -176,6 +172,6 @@ export class TaskNotFoundError extends ApplicationError {
  */
 export class AllHintsUsedError extends ApplicationError {
   constructor(message: string = 'All hints have been used') {
-    super(message, 400, 'ALL_HINTS_USED');
+    super(message, 400, 'ALL_HINTS_USED')
   }
 }

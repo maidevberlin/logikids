@@ -1,6 +1,12 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 import { UserData, UserSettings } from '@/data/core/types.ts'
-import { initialize, getData, updateSettings as coreUpdateSettings, updateProgress as coreUpdateProgress, updateGameStats as coreUpdateGameStats } from '@/data/core/userData.ts'
+import {
+  initialize,
+  getData,
+  updateSettings as coreUpdateSettings,
+  updateProgress as coreUpdateProgress,
+  updateGameStats as coreUpdateGameStats,
+} from '@/data/core/userData.ts'
 import { GameStats } from '@/app/stats/gameTypes'
 import { useAuth } from './AuthContext'
 import { useDataSync } from './DataSyncContext'
@@ -37,8 +43,8 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     }
 
     initialize()
-      .then(d => setData(d))
-      .catch(e => setError(e))
+      .then((d) => setData(d))
+      .catch((e) => setError(e))
       .finally(() => setIsLoading(false))
   }, [auth.authLoading])
 
@@ -92,12 +98,8 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     updateSettings,
     updateProgress,
     updateGameStats,
-    refresh
+    refresh,
   }
 
-  return (
-    <UserDataContext.Provider value={value}>
-      {children}
-    </UserDataContext.Provider>
-  )
+  return <UserDataContext.Provider value={value}>{children}</UserDataContext.Provider>
 }

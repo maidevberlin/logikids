@@ -1,28 +1,28 @@
-import { useState, useCallback, useEffect } from 'react';
-import { trpc } from '@/api/trpc';
+import { useState, useCallback, useEffect } from 'react'
+import { trpc } from '@/api/trpc'
 
 interface UseHintOptions {
-  taskId?: string;
-  maxHints?: number;
+  taskId?: string
+  maxHints?: number
 }
 
 export const useHint = ({ taskId, maxHints = 4 }: UseHintOptions) => {
-  const [hints, setHints] = useState<string[]>([]);
-  const [hintError, setHintError] = useState<string | null>(null);
+  const [hints, setHints] = useState<string[]>([])
+  const [hintError, setHintError] = useState<string | null>(null)
 
   // Reset hints when task changes
   useEffect(() => {
-    setHints([]);
-    setHintError(null);
-  }, [taskId]);
+    setHints([])
+    setHintError(null)
+  }, [taskId])
 
-  const hintMutation = trpc.tasks.getHint.useMutation();
+  const hintMutation = trpc.tasks.getHint.useMutation()
 
   const requestHint = useCallback(() => {
     if (hints.length < maxHints && !hintMutation.isPending && taskId) {
-      hintMutation.mutate({ taskId });
+      hintMutation.mutate({ taskId })
     }
-  }, [hints.length, maxHints, hintMutation, taskId]);
+  }, [hints.length, maxHints, hintMutation, taskId])
 
   return {
     hints,
@@ -30,6 +30,6 @@ export const useHint = ({ taskId, maxHints = 4 }: UseHintOptions) => {
     requestHint,
     hintLoading: hintMutation.isPending,
     hintError,
-    canRequestHint: hints.length < maxHints && !hintMutation.isPending
-  };
-};
+    canRequestHint: hints.length < maxHints && !hintMutation.isPending,
+  }
+}

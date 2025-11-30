@@ -44,7 +44,7 @@ export function OnboardingPage() {
         age: info.age,
         grade: info.grade,
         language: i18n.language, // Save current language from i18n
-        ...(info.gender && { gender: info.gender })
+        ...(info.gender && { gender: info.gender }),
       })
 
       localStorage.setItem('hasSeenOnboarding', 'true')
@@ -67,14 +67,10 @@ export function OnboardingPage() {
         <div className="max-w-md mx-auto mb-8">
           <div className="flex items-center justify-center space-x-2">
             <div
-              className={`w-3 h-3 rounded-full ${
-                step === 'consent' ? 'bg-primary' : 'bg-muted'
-              }`}
+              className={`w-3 h-3 rounded-full ${step === 'consent' ? 'bg-primary' : 'bg-muted'}`}
             />
             <div
-              className={`w-3 h-3 rounded-full ${
-                step === 'info' ? 'bg-primary' : 'bg-muted'
-              }`}
+              className={`w-3 h-3 rounded-full ${step === 'info' ? 'bg-primary' : 'bg-muted'}`}
             />
           </div>
         </div>

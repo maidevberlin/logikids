@@ -3,7 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { Html5Qrcode } from 'html5-qrcode'
 import { importQRData, QRPayload } from '@/data/plugins/qr'
 import { Button } from '@/app/common/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/app/common/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/app/common/ui/dialog'
 import { Camera, X } from 'lucide-react'
 
 interface QRScannerProps {
@@ -30,7 +36,7 @@ export function QRScanner({ onClose, onSuccess }: QRScannerProps) {
         { facingMode: 'environment' }, // Use back camera
         {
           fps: 10,
-          qrbox: { width: 250, height: 250 }
+          qrbox: { width: 250, height: 250 },
         },
         async (decodedText) => {
           // QR code scanned successfully
@@ -88,25 +94,30 @@ export function QRScanner({ onClose, onSuccess }: QRScannerProps) {
             {t('welcomeChoice.import.scanQR', { defaultValue: 'Scan QR Code' })}
           </DialogTitle>
           <DialogDescription>
-            {t('welcomeChoice.import.scanQRDescription', { defaultValue: 'Point your camera at the QR code from your recovery kit' })}
+            {t('welcomeChoice.import.scanQRDescription', {
+              defaultValue: 'Point your camera at the QR code from your recovery kit',
+            })}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
-          {error && (
-            <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-              {error}
-            </div>
-          )}
+          {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
           {/* QR Scanner Container */}
-          <div className="relative bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '1' }}>
+          <div
+            className="relative bg-black rounded-lg overflow-hidden"
+            style={{ aspectRatio: '1' }}
+          >
             <div id="qr-reader" ref={containerRef} className="w-full" />
             {!isScanning && !error && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-center">
                   <Camera className="w-12 h-12 mx-auto mb-2" />
-                  <p>{t('welcomeChoice.import.initializingCamera', { defaultValue: 'Initializing camera...' })}</p>
+                  <p>
+                    {t('welcomeChoice.import.initializingCamera', {
+                      defaultValue: 'Initializing camera...',
+                    })}
+                  </p>
                 </div>
               </div>
             )}

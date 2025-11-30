@@ -1,10 +1,6 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/app/common/ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@/app/common/ui/popover'
 import { Button } from '@/app/common/ui/button'
 import { Separator } from '@/app/common/ui/separator'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
@@ -79,12 +75,15 @@ export function SubjectConceptSelector({
   }, [])
 
   // Reset preview when opening
-  const handleOpenChange = useCallback((open: boolean) => {
-    setIsOpen(open)
-    if (open) {
-      setPreviewSubject(subject)
-    }
-  }, [subject])
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      setIsOpen(open)
+      if (open) {
+        setPreviewSubject(subject)
+      }
+    },
+    [subject]
+  )
 
   // Handle subject click in left column
   const handleSubjectClick = useCallback((subjectId: string) => {
@@ -97,13 +96,16 @@ export function SubjectConceptSelector({
   }, [])
 
   // Handle concept click in right column
-  const handleConceptClick = useCallback((conceptId: string) => {
-    // Pass both concept and subject (use preview subject if it changed)
-    const targetSubject = previewSubject !== subject ? previewSubject : subject
-    onConceptChange(conceptId, targetSubject)
-    // Close popover
-    setIsOpen(false)
-  }, [previewSubject, subject, onConceptChange])
+  const handleConceptClick = useCallback(
+    (conceptId: string) => {
+      // Pass both concept and subject (use preview subject if it changed)
+      const targetSubject = previewSubject !== subject ? previewSubject : subject
+      onConceptChange(conceptId, targetSubject)
+      // Close popover
+      setIsOpen(false)
+    },
+    [previewSubject, subject, onConceptChange]
+  )
 
   const theme = getSubjectTheme(subject)
   const SubjectIcon = theme.icon
@@ -136,7 +138,9 @@ export function SubjectConceptSelector({
           className="rounded-xl border-0 shadow-none hover:opacity-80 h-auto"
           aria-label={t('task.selectSubjectConcept')}
         >
-          <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium border-0 ${theme.colors.badge}`}>
+          <span
+            className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium border-0 ${theme.colors.badge}`}
+          >
             <SubjectIcon className="w-4 h-4" />
             {/* Desktop: Show full text */}
             <span className="hidden sm:inline">
@@ -169,7 +173,10 @@ export function SubjectConceptSelector({
           />
 
           {/* Divider */}
-          <Separator orientation="vertical" className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2" />
+          <Separator
+            orientation="vertical"
+            className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
+          />
 
           {/* Right column: Concepts */}
           <ConceptList

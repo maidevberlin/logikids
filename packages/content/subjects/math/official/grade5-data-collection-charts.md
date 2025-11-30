@@ -57,4 +57,3 @@ version_notes: >-
   age_guidelines to single threshold (1-2 year span), reduced all guideline
   bullets to max 3 per level
 ---
-

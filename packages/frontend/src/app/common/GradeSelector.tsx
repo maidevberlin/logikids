@@ -15,7 +15,7 @@ export function GradeSelector({
   onChange,
   age,
   showAllGrades: initialShowAll = false,
-  className = ''
+  className = '',
 }: GradeSelectorProps) {
   const { t } = useTranslation()
   const [showAllGrades, setShowAllGrades] = useState(initialShowAll)
@@ -60,7 +60,9 @@ export function GradeSelector({
             className="text-sm text-muted-foreground hover:text-foreground underline transition-colors"
           >
             {showAllGrades
-              ? t('onboarding.studentInfo.showRecommended', { defaultValue: 'Show recommended grades' })
+              ? t('onboarding.studentInfo.showRecommended', {
+                  defaultValue: 'Show recommended grades',
+                })
               : t('onboarding.studentInfo.showAllGrades', { defaultValue: 'Show all grades' })}
           </button>
         </div>

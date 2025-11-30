@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when input validation fails
@@ -12,7 +12,7 @@ import { ApplicationError } from './base';
  */
 export class ValidationError extends ApplicationError {
   constructor(public readonly details: string) {
-    super('Validation Error', 400, 'VALIDATION_ERROR');
+    super('Validation Error', 400, 'VALIDATION_ERROR')
   }
 }
 
@@ -28,7 +28,7 @@ export class ValidationError extends ApplicationError {
  */
 export class MissingFieldError extends ApplicationError {
   constructor(fieldName: string) {
-    super(`${fieldName} is required`, 400, 'MISSING_FIELD');
+    super(`${fieldName} is required`, 400, 'MISSING_FIELD')
   }
 }
 
@@ -44,7 +44,7 @@ export class MissingFieldError extends ApplicationError {
  */
 export class InvalidFormatError extends ApplicationError {
   constructor(fileName: string, reason: string) {
-    super(`Invalid ${fileName} format: ${reason}`, 400, 'INVALID_FORMAT');
+    super(`Invalid ${fileName} format: ${reason}`, 400, 'INVALID_FORMAT')
   }
 }
 
@@ -60,6 +60,6 @@ export class InvalidFormatError extends ApplicationError {
  */
 export class InvalidSolutionError extends ApplicationError {
   constructor(reason: string) {
-    super(`Invalid solution: ${reason}`, 400, 'INVALID_SOLUTION');
+    super(`Invalid solution: ${reason}`, 400, 'INVALID_SOLUTION')
   }
 }

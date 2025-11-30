@@ -19,7 +19,7 @@ export function useWelcomeStats(): WelcomeStats {
       return {
         streak: 0,
         level: 0,
-        achievement: null
+        achievement: null,
       }
     }
 
@@ -33,7 +33,7 @@ export function useWelcomeStats(): WelcomeStats {
     let totalStars = 0
     let subjectCount = 0
 
-    subjects.forEach(mastery => {
+    subjects.forEach((mastery) => {
       if (mastery.stars > 0) {
         totalStars += mastery.stars
         subjectCount++

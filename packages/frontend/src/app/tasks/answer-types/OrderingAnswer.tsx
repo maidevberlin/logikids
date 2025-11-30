@@ -59,7 +59,9 @@ function OrderingItemCard({
             onPointerDown={(e) => !isLocked && dragControls.start(e)}
             className={cn(
               'flex items-center justify-center w-8 h-8 rounded-lg',
-              isLocked ? 'text-muted-foreground/50' : 'text-muted-foreground hover:bg-slate-100 cursor-grab active:cursor-grabbing'
+              isLocked
+                ? 'text-muted-foreground/50'
+                : 'text-muted-foreground hover:bg-slate-100 cursor-grab active:cursor-grabbing'
             )}
           >
             <GripVertical className="w-5 h-5" />
@@ -119,26 +121,27 @@ export function OrderingAnswer({
 
   // Initialize with current order or default order
   // Defensive check: ensure selectedAnswer is actually an array (handles race condition during task type changes)
-  const orderedItems = selectedAnswer && Array.isArray(selectedAnswer)
-    ? selectedAnswer.map(id => items.find(item => item.id === id)!).filter(Boolean)
-    : items
+  const orderedItems =
+    selectedAnswer && Array.isArray(selectedAnswer)
+      ? selectedAnswer.map((id) => items.find((item) => item.id === id)!).filter(Boolean)
+      : items
 
   const handleReorder = (newOrder: OrderingItem[]) => {
-    onAnswerSelect(newOrder.map(item => item.id))
+    onAnswerSelect(newOrder.map((item) => item.id))
   }
 
   const handleMoveUp = (index: number) => {
     if (index === 0) return
     const newOrder = [...orderedItems]
     ;[newOrder[index - 1], newOrder[index]] = [newOrder[index], newOrder[index - 1]]
-    onAnswerSelect(newOrder.map(item => item.id))
+    onAnswerSelect(newOrder.map((item) => item.id))
   }
 
   const handleMoveDown = (index: number) => {
     if (index === orderedItems.length - 1) return
     const newOrder = [...orderedItems]
     ;[newOrder[index], newOrder[index + 1]] = [newOrder[index + 1], newOrder[index]]
-    onAnswerSelect(newOrder.map(item => item.id))
+    onAnswerSelect(newOrder.map((item) => item.id))
   }
 
   if (isLoading) {
@@ -153,16 +156,9 @@ export function OrderingAnswer({
 
   return (
     <div className="my-6 space-y-4">
-      <div className="text-sm text-muted-foreground text-center mb-4">
-        {t('task.dragToOrder')}
-      </div>
+      <div className="text-sm text-muted-foreground text-center mb-4">{t('task.dragToOrder')}</div>
 
-      <Reorder.Group
-        axis="y"
-        values={orderedItems}
-        onReorder={handleReorder}
-        className="space-y-3"
-      >
+      <Reorder.Group axis="y" values={orderedItems} onReorder={handleReorder} className="space-y-3">
         {orderedItems.map((item, index) => (
           <OrderingItemCard
             key={item.id}

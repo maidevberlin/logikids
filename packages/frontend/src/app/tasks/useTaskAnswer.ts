@@ -1,5 +1,14 @@
 import { useState, useCallback, useEffect } from 'react'
-import { Task, SingleChoiceTask, YesNoTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask, TaskAnswerType } from './types'
+import {
+  Task,
+  SingleChoiceTask,
+  YesNoTask,
+  NumberInputTask,
+  MultiSelectTask,
+  OrderingTask,
+  FillInBlankTask,
+  TaskAnswerType,
+} from './types'
 
 interface UseTaskAnswerOptions<T extends Task> {
   task: T | undefined
@@ -9,7 +18,7 @@ interface UseTaskAnswerOptions<T extends Task> {
 // Grading result for number_input tasks
 export interface NumberInputGradingDetails {
   numberCorrect: boolean
-  unitCorrect?: boolean  // undefined when no unit validation needed
+  unitCorrect?: boolean // undefined when no unit validation needed
 }
 
 export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswerOptions<T>) {
@@ -24,20 +33,23 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
     setGradingDetails(null)
   }, [task?.taskId])
 
-  const handleAnswerSelect = useCallback((answer: TaskAnswerType<T> | null) => {
-    // Don't allow changing answer if already correct
-    if (isCorrect === true) {
-      return
-    }
+  const handleAnswerSelect = useCallback(
+    (answer: TaskAnswerType<T> | null) => {
+      // Don't allow changing answer if already correct
+      if (isCorrect === true) {
+        return
+      }
 
-    if (answer !== null && validator && !validator(answer)) {
-      return
-    }
+      if (answer !== null && validator && !validator(answer)) {
+        return
+      }
 
-    setSelectedAnswer(answer)
-    setIsCorrect(null)
-    setGradingDetails(null)
-  }, [validator, isCorrect])
+      setSelectedAnswer(answer)
+      setIsCorrect(null)
+      setGradingDetails(null)
+    },
+    [validator, isCorrect]
+  )
 
   const handleAnswerSubmit = useCallback(() => {
     if (!task || selectedAnswer === null) return
@@ -81,17 +93,19 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
         const multiSelectTask = task as MultiSelectTask
         const selectedIndices = selectedAnswer as number[]
         const correctIndices = multiSelectTask.options
-          .map((opt, idx) => opt.isCorrect ? idx : -1)
-          .filter(idx => idx !== -1)
+          .map((opt, idx) => (opt.isCorrect ? idx : -1))
+          .filter((idx) => idx !== -1)
 
-        correct = selectedIndices.length === correctIndices.length &&
-          selectedIndices.every(idx => correctIndices.includes(idx))
+        correct =
+          selectedIndices.length === correctIndices.length &&
+          selectedIndices.every((idx) => correctIndices.includes(idx))
         break
       }
       case 'ordering': {
         const orderingTask = task as OrderingTask
         const selectedOrder = selectedAnswer as string[]
-        correct = selectedOrder.length === orderingTask.correctOrder.length &&
+        correct =
+          selectedOrder.length === orderingTask.correctOrder.length &&
           selectedOrder.every((id, idx) => id === orderingTask.correctOrder[idx])
         break
       }
@@ -100,7 +114,7 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
         const answers = selectedAnswer as string[]
         correct = fillInBlankTask.blanks.every((blank, idx) => {
           const userAnswer = answers[idx]?.trim() || ''
-          return blank.acceptedAnswers.some(accepted =>
+          return blank.acceptedAnswers.some((accepted) =>
             blank.caseSensitive
               ? userAnswer === accepted
               : userAnswer.toLowerCase() === accepted.toLowerCase()
@@ -117,5 +131,12 @@ export function useTaskAnswer<T extends Task>({ task, validator }: UseTaskAnswer
 
   const isValid = selectedAnswer !== null && (!validator || validator(selectedAnswer))
 
-  return { selectedAnswer, isCorrect, gradingDetails, handleAnswerSelect, handleAnswerSubmit, isValid }
-} 
+  return {
+    selectedAnswer,
+    isCorrect,
+    gradingDetails,
+    handleAnswerSelect,
+    handleAnswerSubmit,
+    isValid,
+  }
+}

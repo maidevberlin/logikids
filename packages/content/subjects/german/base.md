@@ -11,8 +11,9 @@ Teaching German language and literature - grammar, vocabulary, reading comprehen
 ## Content Types
 
 **Use:**
+
 - **Bold** for grammar terms
-- *Italic* for example words, titles
+- _Italic_ for example words, titles
 - Tables for cases, conjugations, declensions
 - Lists for vocabulary, grammar rules
 
@@ -21,6 +22,7 @@ Teaching German language and literature - grammar, vocabulary, reading comprehen
 ## Task Variation
 
 **IMPORTANT**: Ensure content diversity across tasks:
+
 - Use different vocabulary and word choices
 - Vary sentence structures and grammatical examples
 - Change the specific content (topics, characters, situations)

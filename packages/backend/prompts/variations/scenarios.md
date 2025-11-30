@@ -1,230 +1,230 @@
 ---
 scenarios:
   # Home & Family (15)
-  - context: "birthday party celebration"
+  - context: 'birthday party celebration'
     age: [8, 19]
-  - context: "baking cookies at home"
+  - context: 'baking cookies at home'
     age: [8, 12]
-  - context: "planning a family road trip"
+  - context: 'planning a family road trip'
     age: [9, 19]
-  - context: "organizing a garage sale"
+  - context: 'organizing a garage sale'
     age: [9, 16]
-  - context: "cooking dinner for the family"
+  - context: 'cooking dinner for the family'
     age: [8, 19]
-  - context: "decorating your bedroom"
+  - context: 'decorating your bedroom'
     age: [8, 15]
-  - context: "planning a surprise party"
+  - context: 'planning a surprise party'
     age: [9, 19]
-  - context: "setting up a home movie theater"
+  - context: 'setting up a home movie theater'
     age: [9, 17]
-  - context: "creating a family photo album"
+  - context: 'creating a family photo album'
     age: [8, 16]
-  - context: "designing a dream house"
+  - context: 'designing a dream house'
     age: [10, 19]
-  - context: "organizing a family talent show"
+  - context: 'organizing a family talent show'
     age: [8, 17]
-  - context: "planning weekly meal prep"
+  - context: 'planning weekly meal prep'
     age: [10, 19]
-  - context: "building a backyard fort"
+  - context: 'building a backyard fort'
     age: [8, 12]
-  - context: "creating a family time capsule"
+  - context: 'creating a family time capsule'
     age: [9, 18]
-  - context: "hosting a neighborhood barbecue"
+  - context: 'hosting a neighborhood barbecue'
     age: [9, 17]
 
   # School & Learning (15)
-  - context: "school science fair"
+  - context: 'school science fair'
     age: [9, 19]
-  - context: "preparing a class presentation"
+  - context: 'preparing a class presentation'
     age: [9, 19]
-  - context: "designing a history museum exhibit"
+  - context: 'designing a history museum exhibit'
     age: [10, 19]
-  - context: "creating a school newspaper"
+  - context: 'creating a school newspaper'
     age: [10, 19]
-  - context: "organizing a book fair"
+  - context: 'organizing a book fair'
     age: [9, 17]
-  - context: "planning a field trip"
+  - context: 'planning a field trip'
     age: [9, 16]
-  - context: "running for student council"
+  - context: 'running for student council'
     age: [10, 19]
-  - context: "creating a science experiment"
+  - context: 'creating a science experiment'
     age: [9, 19]
-  - context: "designing a classroom library"
+  - context: 'designing a classroom library'
     age: [8, 15]
-  - context: "organizing a spelling bee"
+  - context: 'organizing a spelling bee'
     age: [9, 14]
-  - context: "planning a school fundraiser"
+  - context: 'planning a school fundraiser'
     age: [10, 19]
-  - context: "creating an art gallery exhibit"
+  - context: 'creating an art gallery exhibit'
     age: [9, 19]
-  - context: "designing a school garden"
+  - context: 'designing a school garden'
     age: [9, 18]
-  - context: "building a Rube Goldberg machine"
+  - context: 'building a Rube Goldberg machine'
     age: [10, 19]
-  - context: "organizing a math competition"
+  - context: 'organizing a math competition'
     age: [10, 19]
 
   # Sports & Games (12)
-  - context: "soccer tournament"
+  - context: 'soccer tournament'
     age: [8, 19]
-  - context: "basketball championship game"
+  - context: 'basketball championship game'
     age: [8, 19]
-  - context: "organizing a relay race"
+  - context: 'organizing a relay race'
     age: [8, 18]
-  - context: "planning a swim meet"
+  - context: 'planning a swim meet'
     age: [9, 19]
-  - context: "hosting a board game tournament"
+  - context: 'hosting a board game tournament'
     age: [8, 19]
-  - context: "creating a video game level"
+  - context: 'creating a video game level'
     age: [10, 19]
-  - context: "planning an obstacle course"
+  - context: 'planning an obstacle course'
     age: [8, 16]
-  - context: "organizing a chess competition"
+  - context: 'organizing a chess competition'
     age: [9, 19]
-  - context: "designing a mini-golf course"
+  - context: 'designing a mini-golf course'
     age: [9, 18]
-  - context: "planning a skateboard competition"
+  - context: 'planning a skateboard competition'
     age: [9, 19]
-  - context: "creating a new sports game"
+  - context: 'creating a new sports game'
     age: [9, 18]
-  - context: "organizing an esports tournament"
+  - context: 'organizing an esports tournament'
     age: [10, 19]
 
   # Nature & Outdoors (12)
-  - context: "planning a camping trip"
+  - context: 'planning a camping trip'
     age: [9, 19]
-  - context: "exploring a nature trail"
+  - context: 'exploring a nature trail'
     age: [8, 17]
-  - context: "planting a vegetable garden"
+  - context: 'planting a vegetable garden'
     age: [8, 19]
-  - context: "building a bird feeder"
+  - context: 'building a bird feeder'
     age: [8, 12]
-  - context: "planning a hiking expedition"
+  - context: 'planning a hiking expedition'
     age: [10, 19]
-  - context: "studying tide pools at the beach"
+  - context: 'studying tide pools at the beach'
     age: [9, 18]
-  - context: "creating a butterfly garden"
+  - context: 'creating a butterfly garden'
     age: [8, 15]
-  - context: "organizing a nature photography walk"
+  - context: 'organizing a nature photography walk'
     age: [9, 19]
-  - context: "building a treehouse"
+  - context: 'building a treehouse'
     age: [9, 17]
-  - context: "planning a star-gazing night"
+  - context: 'planning a star-gazing night'
     age: [9, 19]
-  - context: "creating a compost system"
+  - context: 'creating a compost system'
     age: [10, 19]
-  - context: "designing a nature scavenger hunt"
+  - context: 'designing a nature scavenger hunt'
     age: [8, 15]
 
   # Technology & Innovation (10)
-  - context: "space station mission"
+  - context: 'space station mission'
     age: [10, 19]
-  - context: "video game design project"
+  - context: 'video game design project'
     age: [10, 19]
-  - context: "building a robot companion"
+  - context: 'building a robot companion'
     age: [10, 19]
-  - context: "creating a mobile app"
+  - context: 'creating a mobile app'
     age: [11, 19]
-  - context: "designing a smart home system"
+  - context: 'designing a smart home system'
     age: [11, 19]
-  - context: "launching a YouTube channel"
+  - context: 'launching a YouTube channel'
     age: [10, 19]
-  - context: "creating a podcast series"
+  - context: 'creating a podcast series'
     age: [10, 19]
-  - context: "designing a 3D-printed invention"
+  - context: 'designing a 3D-printed invention'
     age: [11, 19]
-  - context: "building a website"
+  - context: 'building a website'
     age: [10, 19]
-  - context: "programming an animation"
+  - context: 'programming an animation'
     age: [10, 19]
 
   # Arts & Creativity (10)
-  - context: "planning a music concert"
+  - context: 'planning a music concert'
     age: [9, 19]
-  - context: "designing a comic book"
+  - context: 'designing a comic book'
     age: [9, 19]
-  - context: "creating a dance performance"
+  - context: 'creating a dance performance'
     age: [8, 19]
-  - context: "directing a school play"
+  - context: 'directing a school play'
     age: [10, 19]
-  - context: "building a model city"
+  - context: 'building a model city'
     age: [9, 18]
-  - context: "designing fashion outfits"
+  - context: 'designing fashion outfits'
     age: [9, 19]
-  - context: "creating a stop-motion movie"
+  - context: 'creating a stop-motion movie'
     age: [10, 19]
-  - context: "planning an art exhibition"
+  - context: 'planning an art exhibition'
     age: [9, 19]
-  - context: "composing a musical piece"
+  - context: 'composing a musical piece'
     age: [10, 19]
-  - context: "crafting handmade gifts"
+  - context: 'crafting handmade gifts'
     age: [8, 16]
 
   # Community & Social (8)
   - context: "farmer's market shopping"
     age: [8, 17]
-  - context: "running a lemonade stand"
+  - context: 'running a lemonade stand'
     age: [8, 12]
-  - context: "organizing a charity drive"
+  - context: 'organizing a charity drive'
     age: [9, 19]
-  - context: "planning a community festival"
+  - context: 'planning a community festival'
     age: [10, 19]
-  - context: "volunteering at an animal shelter"
+  - context: 'volunteering at an animal shelter'
     age: [9, 19]
-  - context: "organizing a neighborhood cleanup"
+  - context: 'organizing a neighborhood cleanup'
     age: [9, 19]
-  - context: "running a pet-sitting business"
+  - context: 'running a pet-sitting business'
     age: [9, 18]
-  - context: "planning a cultural celebration"
+  - context: 'planning a cultural celebration'
     age: [9, 19]
 
   # Adventure & Fantasy (10)
-  - context: "treasure hunt adventure"
+  - context: 'treasure hunt adventure'
     age: [8, 15]
-  - context: "solving a mystery case"
+  - context: 'solving a mystery case'
     age: [9, 19]
-  - context: "exploring an ancient pyramid"
+  - context: 'exploring an ancient pyramid'
     age: [10, 19]
-  - context: "surviving on a desert island"
+  - context: 'surviving on a desert island'
     age: [10, 19]
-  - context: "escaping from a puzzle room"
+  - context: 'escaping from a puzzle room'
     age: [10, 19]
-  - context: "questing in a fantasy kingdom"
+  - context: 'questing in a fantasy kingdom'
     age: [9, 18]
-  - context: "traveling through time"
+  - context: 'traveling through time'
     age: [10, 19]
-  - context: "exploring an underwater city"
+  - context: 'exploring an underwater city'
     age: [9, 19]
-  - context: "discovering a secret laboratory"
+  - context: 'discovering a secret laboratory'
     age: [10, 19]
-  - context: "investigating a haunted mansion"
+  - context: 'investigating a haunted mansion'
     age: [9, 17]
 
   # Hobbies & Collections (6)
-  - context: "building with LEGO bricks"
+  - context: 'building with LEGO bricks'
     age: [8, 18]
-  - context: "collecting trading cards"
+  - context: 'collecting trading cards'
     age: [8, 19]
-  - context: "creating a rock collection"
+  - context: 'creating a rock collection'
     age: [8, 16]
-  - context: "organizing a stamp collection"
+  - context: 'organizing a stamp collection'
     age: [9, 18]
-  - context: "building a model train layout"
+  - context: 'building a model train layout'
     age: [9, 19]
-  - context: "curating a butterfly collection"
+  - context: 'curating a butterfly collection'
     age: [9, 17]
 
   # Business & Entrepreneurship (6)
-  - context: "starting a dog-walking service"
+  - context: 'starting a dog-walking service'
     age: [9, 18]
-  - context: "opening a craft store"
+  - context: 'opening a craft store'
     age: [10, 19]
-  - context: "running a lawn care business"
+  - context: 'running a lawn care business'
     age: [10, 19]
-  - context: "managing a small bakery"
+  - context: 'managing a small bakery'
     age: [10, 19]
-  - context: "creating an online shop"
+  - context: 'creating an online shop'
     age: [11, 19]
-  - context: "planning a tutoring service"
+  - context: 'planning a tutoring service'
     age: [11, 19]
 ---

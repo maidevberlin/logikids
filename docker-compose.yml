@@ -4,7 +4,7 @@ services:
       context: ./packages/frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "5153:80"
+      - '5153:80'
     volumes:
       - ./packages/frontend:/app
     environment:
@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: packages/frontend/Dockerfile.prod
     ports:
-      - "5154:80"
+      - '5154:80'
     environment:
       - NODE_ENV=production
     depends_on:
@@ -32,7 +32,7 @@ services:
       context: ./packages/backend
       dockerfile: Dockerfile.dev
     ports:
-      - "5175:3000"
+      - '5175:3000'
     volumes:
       - ./packages/backend:/app
       - ./packages/content:/content
@@ -55,7 +55,7 @@ services:
       context: ./packages/backend
       dockerfile: Dockerfile.prod
     ports:
-      - "5176:3000"
+      - '5176:3000'
     volumes:
       - ./packages/content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
@@ -95,9 +95,9 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - ./packages/backend/database/migrations:/docker-entrypoint-initdb.d:ro
     ports:
-      - "5432:5432"
+      - '5432:5432'
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U logikids"]
+      test: ['CMD-SHELL', 'pg_isready -U logikids']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -108,7 +108,7 @@ services:
     image: adminer:latest
     container_name: logikids-adminer
     ports:
-      - "8080:5480"
+      - '8080:5480'
     environment:
       - ADMINER_DEFAULT_SERVER=postgres
       - ADMINER_DESIGN=nette

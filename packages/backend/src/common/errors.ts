@@ -7,4 +7,4 @@
  */
 
 // Re-export all errors from the new structure
-export * from './errors/index'; 
+export * from './errors/index'

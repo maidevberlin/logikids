@@ -1,7 +1,7 @@
-import {UserData, getData, setData} from '@/data'
-import {getAccessToken, getUserId, loadKey} from '../core/storage'
-import {decrypt, encrypt} from '../core/crypto'
-import {createLogger} from '@/lib/logger'
+import { UserData, getData, setData } from '@/data'
+import { getAccessToken, getUserId, loadKey } from '../core/storage'
+import { decrypt, encrypt } from '../core/crypto'
+import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('SyncPlugin')
 const API_BASE = import.meta.env.VITE_API_URL || ''
@@ -15,9 +15,12 @@ let unloadHandler: (() => void) | null = null
  * Calculate SHA-256 checksum
  */
 async function calculateChecksum(data: Uint8Array): Promise<string> {
-  const hashBuffer = await crypto.subtle.digest('SHA-256', (data.buffer as ArrayBuffer).slice(data.byteOffset, data.byteOffset + data.byteLength))
+  const hashBuffer = await crypto.subtle.digest(
+    'SHA-256',
+    (data.buffer as ArrayBuffer).slice(data.byteOffset, data.byteOffset + data.byteLength)
+  )
   const hashArray = Array.from(new Uint8Array(hashBuffer))
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('')
 }
 
 /**
@@ -33,7 +36,7 @@ export async function upload(data: UserData): Promise<void> {
     const encrypted = await encrypt(key, data)
 
     // Extract IV from encrypted blob (first 12 bytes)
-    const encryptedBytes = Uint8Array.from(atob(encrypted), c => c.charCodeAt(0))
+    const encryptedBytes = Uint8Array.from(atob(encrypted), (c) => c.charCodeAt(0))
     const iv = encryptedBytes.slice(0, 12)
     const ivBase64 = btoa(String.fromCharCode(...iv))
 
@@ -45,7 +48,7 @@ export async function upload(data: UserData): Promise<void> {
       encryptedBlob: btoa(String.fromCharCode(...ciphertext)),
       iv: ivBase64,
       timestamp: data.timestamp,
-      checksum
+      checksum,
     }
 
     const accessToken = await getAccessToken()
@@ -57,9 +60,9 @@ export async function upload(data: UserData): Promise<void> {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
+        Authorization: `Bearer ${accessToken}`,
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     })
 
     if (!response.ok) {
@@ -88,8 +91,8 @@ export async function download(): Promise<UserData | null> {
 
     const response = await fetch(`${API_BASE}/api/sync/${userId}`, {
       headers: {
-        'Authorization': `Bearer ${accessToken}`
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     })
 
     if (response.status === 404) {
@@ -104,8 +107,8 @@ export async function download(): Promise<UserData | null> {
     const payload = await response.json()
 
     // Reconstruct full encrypted blob (IV + ciphertext) for checksum verification
-    const iv = Uint8Array.from(atob(payload.iv), c => c.charCodeAt(0))
-    const ciphertext = Uint8Array.from(atob(payload.encryptedBlob), c => c.charCodeAt(0))
+    const iv = Uint8Array.from(atob(payload.iv), (c) => c.charCodeAt(0))
+    const ciphertext = Uint8Array.from(atob(payload.encryptedBlob), (c) => c.charCodeAt(0))
     const combined = new Uint8Array(iv.length + ciphertext.length)
     combined.set(iv, 0)
     combined.set(ciphertext, iv.length)
@@ -185,15 +188,19 @@ export function enableAutoSync(): void {
   if (autoSyncEnabled) return
 
   focusHandler = () => {
-    sync().catch(error => logger.warn('Auto-sync on focus failed', { error }))
+    sync().catch((error) => logger.warn('Auto-sync on focus failed', { error }))
   }
 
   blurHandler = () => {
-    getData().then(data => data && upload(data)).catch(error => logger.warn('Auto-sync on blur failed', { error }))
+    getData()
+      .then((data) => data && upload(data))
+      .catch((error) => logger.warn('Auto-sync on blur failed', { error }))
   }
 
   unloadHandler = () => {
-    getData().then(data => data && upload(data)).catch(error => logger.warn('Auto-sync on unload failed', { error }))
+    getData()
+      .then((data) => data && upload(data))
+      .catch((error) => logger.warn('Auto-sync on unload failed', { error }))
   }
 
   window.addEventListener('focus', focusHandler)

@@ -50,11 +50,7 @@ export async function encrypt(key: CryptoKey, data: unknown): Promise<string> {
   const dataBytes = encoder.encode(JSON.stringify(data))
 
   // Encrypt
-  const encryptedData = await crypto.subtle.encrypt(
-    { name: ALGORITHM, iv },
-    key,
-    dataBytes
-  )
+  const encryptedData = await crypto.subtle.encrypt({ name: ALGORITHM, iv }, key, dataBytes)
 
   // Combine IV + encrypted data
   const combined = new Uint8Array(iv.length + encryptedData.byteLength)
@@ -77,11 +73,7 @@ export async function decrypt<T = unknown>(key: CryptoKey, encryptedString: stri
   const encryptedData = combined.slice(IV_LENGTH)
 
   // Decrypt
-  const decryptedData = await crypto.subtle.decrypt(
-    { name: ALGORITHM, iv },
-    key,
-    encryptedData
-  )
+  const decryptedData = await crypto.subtle.decrypt({ name: ALGORITHM, iv }, key, encryptedData)
 
   // Convert bytes to JSON
   const decoder = new TextDecoder()
@@ -101,11 +93,8 @@ export async function exportKey(key: CryptoKey): Promise<JsonWebKey> {
  * Import key from JWK format
  */
 export async function importKey(jwk: JsonWebKey): Promise<CryptoKey> {
-  return crypto.subtle.importKey(
-    'jwk',
-    jwk,
-    { name: ALGORITHM, length: KEY_LENGTH },
-    true,
-    ['encrypt', 'decrypt']
-  )
+  return crypto.subtle.importKey('jwk', jwk, { name: ALGORITHM, length: KEY_LENGTH }, true, [
+    'encrypt',
+    'decrypt',
+  ])
 }

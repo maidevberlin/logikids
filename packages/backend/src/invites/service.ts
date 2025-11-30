@@ -1,5 +1,5 @@
-import 'reflect-metadata';
-import { injectable } from 'tsyringe';
+import 'reflect-metadata'
+import { injectable } from 'tsyringe'
 import { pool } from '../../database/db'
 
 export interface InviteCode {
@@ -13,7 +13,6 @@ export interface InviteCode {
 
 @injectable()
 export class InviteService {
-
   /**
    * Check if code is valid (without marking as used)
    */
@@ -34,7 +33,7 @@ export class InviteService {
       ...result.rows[0],
       created_at: Number(result.rows[0].created_at),
       expires_at: Number(result.rows[0].expires_at),
-      used_at: result.rows[0].used_at ? Number(result.rows[0].used_at) : null
+      used_at: result.rows[0].used_at ? Number(result.rows[0].used_at) : null,
     }
     const now = Date.now()
 

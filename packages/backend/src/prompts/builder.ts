@@ -1,24 +1,24 @@
-import { TaskGenerationParams, BaseTaskResponse } from '../tasks/types';
-import { Subject, HintPrompt } from './loader';
-import { TaskTypeWithSchema } from '../tasks/task-types';
-import { validateNoPlaceholders } from './helpers';
-import { VariationLoader } from './variations/loader';
-import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer';
-import { createLogger } from '../common/logger';
-import { HintPromptNotLoadedError } from '../common/errors';
+import { TaskGenerationParams, BaseTaskResponse } from '../tasks/types'
+import { Subject, HintPrompt } from './loader'
+import { TaskTypeWithSchema } from '../tasks/task-types'
+import { validateNoPlaceholders } from './helpers'
+import { VariationLoader } from './variations/loader'
+import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer'
+import { createLogger } from '../common/logger'
+import { HintPromptNotLoadedError } from '../common/errors'
 
-const logger = createLogger('PromptBuilder');
+const logger = createLogger('PromptBuilder')
 
 const LANGUAGE_NAMES: Record<string, string> = {
-  'en': 'English',
-  'de': 'German'
-};
+  en: 'English',
+  de: 'German',
+}
 
 /**
  * Randomly select one item from an array
  */
 function randomChoice<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)]
 }
 
 /**
@@ -38,7 +38,7 @@ export class PromptBuilder {
    * Format language code to full name (e.g. "de" -> "German")
    */
   private formatLanguage(code: string): string {
-    return LANGUAGE_NAMES[code] || code;
+    return LANGUAGE_NAMES[code] || code
   }
 
   /**
@@ -46,11 +46,11 @@ export class PromptBuilder {
    */
   private getLanguageStyle(grade: number): string {
     if (grade <= 4) {
-      return "Use very simple, playful language with short sentences. Keep it fun and encouraging.";
+      return 'Use very simple, playful language with short sentences. Keep it fun and encouraging.'
     } else if (grade <= 8) {
-      return "Use casual but structured language. Explain concepts clearly without being condescending.";
+      return 'Use casual but structured language. Explain concepts clearly without being condescending.'
     } else {
-      return "Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.";
+      return 'Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.'
     }
   }
 
@@ -59,14 +59,14 @@ export class PromptBuilder {
    */
   buildPrompt(params: TaskGenerationParams): string {
     // === STEP 0: Prepare variables for Handlebars (needed for concept template) ===
-    const age = params.age;
+    const age = params.age
 
     // Select one learning objective and problem type randomly
-    const selectedObjective = randomChoice(params.concept.learning_objectives);
-    const selectedProblemType = randomChoice(params.concept.problem_types);
+    const selectedObjective = randomChoice(params.concept.learning_objectives)
+    const selectedProblemType = randomChoice(params.concept.problem_types)
 
     // Resolve guidelines for this student
-    const difficultyGuidelines = params.concept.difficulty_guidelines[params.difficulty];
+    const difficultyGuidelines = params.concept.difficulty_guidelines[params.difficulty]
 
     // Variables needed for Handlebars conditionals in concept templates
     const handlebarsVariables = {
@@ -75,14 +75,11 @@ export class PromptBuilder {
       difficulty: params.difficulty,
       concept_name: params.concept.name,
       concept_focus: params.concept.focus,
-    };
+    }
 
     // === STEP 0.5: Compile concept template with Handlebars ===
     // This evaluates conditionals like {{#if (lt age 8)}}...{{/if}}
-    const compiledConceptTemplate = compileHandlebars(
-      params.concept.prompt,
-      handlebarsVariables
-    );
+    const compiledConceptTemplate = compileHandlebars(params.concept.prompt, handlebarsVariables)
 
     // === STEP 1: Compose Template Hierarchy ===
     // Insert raw sub-templates into base template structure
@@ -92,13 +89,13 @@ export class PromptBuilder {
       subject_base_template: this.subject.basePromptTemplate,
       concept_template: compiledConceptTemplate, // Use compiled version
       task_type_template: this.taskType.promptTemplate,
-    };
+    }
 
     // === STEP 2: Build Flat Variable Object ===
     // Create single object with ALL variables (duplicates OK - same values)
 
-    const enrichments = this.variationLoader.getRandomEnrichments(age);
-    const enrichment = enrichments.length > 0 ? enrichments[0] : null;
+    const enrichments = this.variationLoader.getRandomEnrichments(age)
+    const enrichment = enrichments.length > 0 ? enrichments[0] : null
 
     // Format multiple enrichments as bullet points
     const enrichmentLabels: Record<string, string> = {
@@ -110,22 +107,26 @@ export class PromptBuilder {
       realWorld: 'Real-World Connection',
       emotional: 'Emotional Angle',
       structure: 'Structure Variation',
-    };
+    }
 
     const enrichmentsFormatted = enrichments
-      .map(e => `\n- **${enrichmentLabels[e.type]}**: ${e.value}`)
-      .join('');
+      .map((e) => `\n- **${enrichmentLabels[e.type]}**: ${e.value}`)
+      .join('')
 
     const allVariables: Record<string, string | number> = {
       // Variation variables (all age-filtered now!)
       scenario: this.variationLoader.getScenario(age),
       language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
-      student_context: params.gender ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
+      student_context: params.gender
+        ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.`
+        : '',
       enrichment_instruction: enrichment?.value || '',
 
       // Formatted versions for clean bullet list integration
       enrichment_formatted: enrichmentsFormatted,
-      student_context_formatted: params.gender ? `\n- **Student Context**: The student identifies as ${params.gender}. Consider this naturally in your task creation.` : '',
+      student_context_formatted: params.gender
+        ? `\n- **Student Context**: The student identifies as ${params.gender}. Consider this naturally in your task creation.`
+        : '',
 
       // Subject/Concept/TaskType variables (duplicates OK - same values)
       age,
@@ -139,44 +140,40 @@ export class PromptBuilder {
       task_type_name: this.taskType.name,
       selected_objective: selectedObjective,
       selected_problem_type: selectedProblemType,
-      difficulty_guidelines: difficultyGuidelines.map(g => `- ${g}`).join('\n'),
+      difficulty_guidelines: difficultyGuidelines.map((g) => `- ${g}`).join('\n'),
       prerequisites: params.concept.prerequisites?.join(', ') || '',
       real_world_context: Array.isArray(params.concept.real_world_context)
-        ? params.concept.real_world_context.map(c => `- ${c}`).join('\n')
+        ? params.concept.real_world_context.map((c) => `- ${c}`).join('\n')
         : params.concept.real_world_context || '',
       anti_patterns: params.concept.anti_patterns?.length
-        ? params.concept.anti_patterns.map(p => `- ${p}`).join('\n')
+        ? params.concept.anti_patterns.map((p) => `- ${p}`).join('\n')
         : '',
-    };
+    }
 
     // === STEP 3: Compose templates and replace variables ===
     // Step 1: Insert sub-templates using <% %> delimiters
     // Step 2: Replace actual variables using [[ ]] delimiters
     // {{ }} placeholders (like {{a1}}, {{x1}}) are preserved for LLM
 
-    const finalPrompt = composeAndReplace(
-      this.basePrompt,
-      compositionVariables,
-      allVariables
-    );
+    const finalPrompt = composeAndReplace(this.basePrompt, compositionVariables, allVariables)
 
     // === STEP 4: Validate no placeholders remain ===
 
-    validateNoPlaceholders(finalPrompt, 'PromptBuilder.buildPrompt');
+    validateNoPlaceholders(finalPrompt, 'PromptBuilder.buildPrompt')
 
     // === STEP 5: Debug logging ===
 
-    if(process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development') {
       logger.debug('Prompt generation debug', {
         subject: this.subject.id,
         concept: params.concept.id,
         taskType: this.taskType.id,
         variables: allVariables,
-        prompt: finalPrompt
-      });
+        prompt: finalPrompt,
+      })
     }
 
-    return finalPrompt;
+    return finalPrompt
   }
 
   /**
@@ -184,34 +181,36 @@ export class PromptBuilder {
    */
   buildHintPrompt(
     context: {
-      subject: string;
-      concept: string;
-      taskType: string;
-      grade: number;
-      difficulty: string;
-      language: string;
-      taskResponse: BaseTaskResponse;
-      hintsGenerated: string[];
+      subject: string
+      concept: string
+      taskType: string
+      grade: number
+      difficulty: string
+      language: string
+      taskResponse: BaseTaskResponse
+      hintsGenerated: string[]
     },
     hintNumber: number
   ): string {
     // If no hint prompt is provided, use fallback template
     if (!this.hintPrompt) {
-      throw new HintPromptNotLoadedError();
+      throw new HintPromptNotLoadedError()
     }
 
-    const languageName = this.formatLanguage(context.language);
-    const concept = this.subject.concepts.get(context.concept);
+    const languageName = this.formatLanguage(context.language)
+    const concept = this.subject.concepts.get(context.concept)
 
     // Build previous hints section if any exist
-    const previousHints = context.hintsGenerated.length > 0
-      ? `\n## Previously Given Hints\n${context.hintsGenerated.map((hint, idx) => `**Hint ${idx + 1}:** ${hint}`).join('\n\n')}\n`
-      : '';
+    const previousHints =
+      context.hintsGenerated.length > 0
+        ? `\n## Previously Given Hints\n${context.hintsGenerated.map((hint, idx) => `**Hint ${idx + 1}:** ${hint}`).join('\n\n')}\n`
+        : ''
 
     // Build progression guidance
-    const progressionGuidance = context.hintsGenerated.length > 0
-      ? 'IMPORTANT: Build on the previous hints above. Don\'t repeat information already given. Provide the NEXT level of detail.'
-      : 'Provide a gentle starting point without giving away the answer.';
+    const progressionGuidance =
+      context.hintsGenerated.length > 0
+        ? "IMPORTANT: Build on the previous hints above. Don't repeat information already given. Provide the NEXT level of detail."
+        : 'Provide a gentle starting point without giving away the answer.'
 
     // Prepare variables for template
     const variables = {
@@ -224,9 +223,9 @@ export class PromptBuilder {
       language: languageName,
       difficulty: context.difficulty,
       progressionGuidance,
-    };
+    }
 
     // Replace variables in hint template using [[ ]] delimiters
-    return replaceVariables(this.hintPrompt.promptTemplate, variables, ['[[', ']]']);
+    return replaceVariables(this.hintPrompt.promptTemplate, variables, ['[[', ']]'])
   }
 }

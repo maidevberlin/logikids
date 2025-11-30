@@ -15,7 +15,7 @@ export function MetricCard({
   value,
   subtitle,
   highlight,
-  colorClass = 'text-blue-600'
+  colorClass = 'text-blue-600',
 }: MetricCardProps) {
   return (
     <Card className="p-6 bg-card shadow-sm rounded-2xl border-0 hover:shadow-md transition-shadow duration-200">
@@ -25,9 +25,7 @@ export function MetricCard({
           <h3 className="text-base font-medium text-foreground">{title}</h3>
         </div>
 
-        <div className={`text-5xl font-bold ${colorClass}`}>
-          {value}
-        </div>
+        <div className={`text-5xl font-bold ${colorClass}`}>{value}</div>
 
         <div className="text-sm text-muted-foreground">{subtitle}</div>
 

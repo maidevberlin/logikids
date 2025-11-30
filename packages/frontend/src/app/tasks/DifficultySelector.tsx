@@ -9,7 +9,8 @@ import {
 
 const difficultyBadgeStyles: Record<string, string> = {
   easy: 'inline-flex px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 border-0',
-  medium: 'inline-flex px-2.5 py-0.5 rounded-full text-sm font-medium bg-amber-100 text-amber-800 border-0',
+  medium:
+    'inline-flex px-2.5 py-0.5 rounded-full text-sm font-medium bg-amber-100 text-amber-800 border-0',
   hard: 'inline-flex px-2.5 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 border-0',
 }
 
@@ -18,10 +19,7 @@ interface DifficultySelectorProps {
   onDifficultyChange: (difficulty: 'easy' | 'medium' | 'hard') => void
 }
 
-export function DifficultySelector({
-  difficulty,
-  onDifficultyChange,
-}: DifficultySelectorProps) {
+export function DifficultySelector({ difficulty, onDifficultyChange }: DifficultySelectorProps) {
   const { t } = useTranslation()
 
   return (

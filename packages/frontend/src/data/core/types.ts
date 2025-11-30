@@ -21,7 +21,7 @@ export interface TaskCostRecord {
   inputTokens: number
   outputTokens: number
   totalTokens?: number
-  cost?: number  // Cost in USD
+  cost?: number // Cost in USD
   timestamp: number
 }
 
@@ -29,12 +29,12 @@ export interface UserData {
   userId: string
   settings: UserSettings
   progress: ProgressData
-  gameStats?: GameStats  // Optional for backward compatibility
+  gameStats?: GameStats // Optional for backward compatibility
   lastTask: LastTask
-  costs?: TaskCostRecord[]  // Optional for backward compatibility
+  costs?: TaskCostRecord[] // Optional for backward compatibility
   timestamp: number
   lastSyncTimestamp?: number
-  encryptionKey?: string  // JWK format, only included during export/import
+  encryptionKey?: string // JWK format, only included during export/import
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {
@@ -43,12 +43,12 @@ export const DEFAULT_SETTINGS: UserSettings = {
   grade: 5,
   language: 'en',
   gender: 'non-binary',
-  syncEnabled: false
+  syncEnabled: false,
 }
 
 export const DEFAULT_LAST_TASK: LastTask = {
   subject: '',
-  concept: ''
+  concept: '',
 }
 
 export function createDefaultUserData(userId: string): UserData {
@@ -58,6 +58,6 @@ export function createDefaultUserData(userId: string): UserData {
     progress: {},
     lastTask: { ...DEFAULT_LAST_TASK },
     costs: [],
-    timestamp: Date.now()
+    timestamp: Date.now(),
   }
 }

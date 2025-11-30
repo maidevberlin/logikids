@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when database connection fails
@@ -14,6 +14,6 @@ import { ApplicationError } from './base';
  */
 export class DatabaseConnectionError extends ApplicationError {
   constructor(cause?: unknown) {
-    super('Failed to connect to PostgreSQL database', 500, 'DATABASE_CONNECTION_ERROR', cause);
+    super('Failed to connect to PostgreSQL database', 500, 'DATABASE_CONNECTION_ERROR', cause)
   }
 }

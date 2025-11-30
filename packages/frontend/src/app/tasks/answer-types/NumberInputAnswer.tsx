@@ -1,13 +1,19 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/app/common/ui/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/app/common/ui/select'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/app/common/ui/skeleton'
 
 interface NumberInputAnswerProps {
-  expectedAnswer: number     // The correct answer (for sizing)
-  unit?: string              // Display-only unit
-  unitOptions?: string[]     // Unit choices (overrides unit prop)
+  expectedAnswer: number // The correct answer (for sizing)
+  unit?: string // Display-only unit
+  unitOptions?: string[] // Unit choices (overrides unit prop)
   selectedAnswer: { value: number | null; unit?: string } | null
   onAnswerSelect: (answer: { value: number | null; unit?: string }) => void
   isLoading?: boolean
@@ -100,8 +106,8 @@ export function NumberInputAnswer({
             onClick={handleDecrement}
             disabled={isLocked}
             className={cn(
-              "p-2 text-muted-foreground hover:text-foreground transition-colors shrink-0",
-              isLocked && "opacity-50 cursor-not-allowed"
+              'p-2 text-muted-foreground hover:text-foreground transition-colors shrink-0',
+              isLocked && 'opacity-50 cursor-not-allowed'
             )}
           >
             <ChevronLeft className="h-8 w-8" />
@@ -116,8 +122,8 @@ export function NumberInputAnswer({
               disabled={isLocked}
               style={{ width: inputWidth }}
               className={cn(
-                "bg-transparent border-0 outline-none text-4xl text-center py-4 text-foreground placeholder:text-muted-foreground",
-                isLocked && "cursor-not-allowed opacity-75"
+                'bg-transparent border-0 outline-none text-4xl text-center py-4 text-foreground placeholder:text-muted-foreground',
+                isLocked && 'cursor-not-allowed opacity-75'
               )}
               placeholder="0"
             />
@@ -141,9 +147,7 @@ export function NumberInputAnswer({
                 </SelectContent>
               </Select>
             ) : unit ? (
-              <span className="text-3xl text-muted-foreground px-2 shrink-0">
-                {unit}
-              </span>
+              <span className="text-3xl text-muted-foreground px-2 shrink-0">{unit}</span>
             ) : null}
           </div>
 
@@ -152,8 +156,8 @@ export function NumberInputAnswer({
             onClick={handleIncrement}
             disabled={isLocked}
             className={cn(
-              "p-2 text-muted-foreground hover:text-foreground transition-colors shrink-0",
-              isLocked && "opacity-50 cursor-not-allowed"
+              'p-2 text-muted-foreground hover:text-foreground transition-colors shrink-0',
+              isLocked && 'opacity-50 cursor-not-allowed'
             )}
           >
             <ChevronRight className="h-8 w-8" />

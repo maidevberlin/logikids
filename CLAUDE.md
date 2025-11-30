@@ -10,6 +10,7 @@
 Logikids is an AI-powered educational platform for children aged 8-16. It generates personalized learning tasks based on curriculum-aligned concepts using AI (Ollama/OpenAI/Anthropic).
 
 **Monorepo structure:**
+
 - **Frontend**: React + TypeScript + Vite
 - **Backend**: Bun + Express API
 - **Content**: Markdown-based educational concepts
@@ -18,23 +19,23 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 
 ## Quick Reference
 
-| What | Where |
-|------|-------|
-| Docker setup | `docker-compose.yml` |
-| Invite codes CLI | `./invite` |
-| Frontend code | `packages/frontend/src/` |
-| Backend code | `packages/backend/src/` |
-| Educational content | `packages/content/subjects/` |
+| What                | Where                                               |
+| ------------------- | --------------------------------------------------- |
+| Docker setup        | `docker-compose.yml`                                |
+| Invite codes CLI    | `./invite`                                          |
+| Frontend code       | `packages/frontend/src/`                            |
+| Backend code        | `packages/backend/src/`                             |
+| Educational content | `packages/content/subjects/`                        |
 | Concept file format | See any `packages/content/subjects/*/official/*.md` |
-| Concept rules | `.claude/docs/concept-rules.md` |
-| Task generation | `.claude/docs/task-generation.md` |
-| AI prompts | `packages/backend/prompts/` |
-| Prompt builder | `packages/backend/src/prompts/` |
-| Backend config | `packages/backend/config.yaml` |
-| Task type schemas | `packages/backend/src/tasks/types/` |
-| Answer components | `packages/frontend/src/app/tasks/answer-types/` |
-| Translations | `packages/frontend/public/locales/{lang}/` |
-| DB migrations | `packages/backend/database/migrations/` |
+| Concept rules       | `.claude/docs/concept-rules.md`                     |
+| Task generation     | `.claude/docs/task-generation.md`                   |
+| AI prompts          | `packages/backend/prompts/`                         |
+| Prompt builder      | `packages/backend/src/prompts/`                     |
+| Backend config      | `packages/backend/config.yaml`                      |
+| Task type schemas   | `packages/backend/src/tasks/types/`                 |
+| Answer components   | `packages/frontend/src/app/tasks/answer-types/`     |
+| Translations        | `packages/frontend/public/locales/{lang}/`          |
+| DB migrations       | `packages/backend/database/migrations/`             |
 
 ## Key Patterns
 
@@ -44,10 +45,10 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 
 ## Adding New Features
 
-| Feature | Steps |
-|---------|-------|
-| New subject | Add `base.md` + concepts in `packages/content/subjects/{name}/` |
-| New concept | Add `.md` file in `packages/content/subjects/{subject}/official/` |
+| Feature       | Steps                                                                                                                                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| New subject   | Add `base.md` + concepts in `packages/content/subjects/{name}/`                                                                              |
+| New concept   | Add `.md` file in `packages/content/subjects/{subject}/official/`                                                                            |
 | New task type | (1) prompt in `prompts/task-types/`, (2) schema in `src/tasks/types/`, (3) grading in `src/tasks/grading/`, (4) answer component in frontend |
 
 ## CLI Scripts

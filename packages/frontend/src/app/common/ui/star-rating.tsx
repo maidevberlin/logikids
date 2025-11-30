@@ -7,7 +7,7 @@ export function StarRating({ stars, size = 'md' }: StarRatingProps) {
   const sizeClasses = {
     sm: 'text-xs',
     md: 'text-base',
-    lg: 'text-xl'
+    lg: 'text-xl',
   }
 
   const clampedStars = Math.max(0, Math.min(5, Math.round(stars)))

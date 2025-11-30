@@ -8,7 +8,7 @@ const SUBJECT_COLORS: Record<string, string> = {
   physics: 'bg-emerald-500',
   german: 'bg-red-500',
   music: 'bg-pink-500',
-  english: 'bg-yellow-500'
+  english: 'bg-yellow-500',
 }
 
 interface SubjectSkillBarsProps {
@@ -62,20 +62,16 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
                   <div
                     key={star}
                     className={`h-4 flex-1 rounded transition-all duration-300 ${
-                      star <= mastery.stars
-                        ? subjectColor
-                        : 'bg-muted'
+                      star <= mastery.stars ? subjectColor : 'bg-muted'
                     }`}
                     style={{
-                      transitionDelay: `${star * 100}ms`
+                      transitionDelay: `${star * 100}ms`,
                     }}
                   />
                 ))}
               </div>
 
-              <div className="w-8 text-sm font-bold text-muted-foreground">
-                {mastery.stars}/5
-              </div>
+              <div className="w-8 text-sm font-bold text-muted-foreground">{mastery.stars}/5</div>
             </div>
           )
         })}

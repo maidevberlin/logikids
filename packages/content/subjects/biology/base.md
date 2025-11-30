@@ -11,6 +11,7 @@ Teaching biology - understanding living organisms, their structures, functions, 
 ## Content Types
 
 **Use:**
+
 - LaTeX for scientific notation and formulas (chemical equations, genetic notation)
 - SVG diagrams for cell structures, organism diagrams, food webs, organ systems, ecological relationships
 - Tables for classification, data analysis, comparison of organisms, experimental results
@@ -21,6 +22,7 @@ Teaching biology - understanding living organisms, their structures, functions, 
 ## Task Variation
 
 **IMPORTANT**: Ensure diversity across task generations:
+
 - Use different organisms and examples from diverse ecosystems
 - Vary the biological processes and scenarios
 - Change the specific structures or functions being examined

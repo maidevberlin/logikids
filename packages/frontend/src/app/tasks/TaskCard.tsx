@@ -18,10 +18,18 @@ interface TaskCardProps {
   isLoading: boolean
   error: string | null
   subject: string
-  selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
+  selectedAnswer:
+    | number
+    | boolean
+    | string[]
+    | number[]
+    | { value: number | null; unit?: string }
+    | null
   isCorrect: boolean | null
   gradingDetails: NumberInputGradingDetails | null
-  onAnswerSelect: (answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null) => void
+  onAnswerSelect: (
+    answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
+  ) => void
   onAnswerSubmit: () => void
   onNextTask: () => void
   hints: string[]
@@ -122,15 +130,10 @@ export function TaskCard({
     return <TaskLoadingState subject={subject} />
   }
 
-
   return (
     <Card className="p-4 sm:p-8 shadow-2xl bg-card">
       {/* Header with title and difficulty */}
-      <TaskHeader
-        task={task}
-        difficulty={difficulty}
-        onDifficultyChange={onDifficultyChange}
-      />
+      <TaskHeader task={task} difficulty={difficulty} onDifficultyChange={onDifficultyChange} />
 
       {/* Task content */}
       <MarkdownRenderer

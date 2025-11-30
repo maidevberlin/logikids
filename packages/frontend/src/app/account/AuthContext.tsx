@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import {
   registerUser as coreRegisterUser,
-  loginWithAccount as coreLoginWithAccount
+  loginWithAccount as coreLoginWithAccount,
 } from '@/data/core/userData.ts'
 import { getUserId } from '@/data/core/storage.ts'
 import { createLogger } from '@/lib/logger'
@@ -123,14 +123,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     authLoading,
     register,
     login,
-    logout
+    logout,
   }
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
 export function useAuth(): AuthContextValue {

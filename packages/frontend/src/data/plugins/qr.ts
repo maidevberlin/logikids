@@ -31,7 +31,7 @@ export async function generateQRData(): Promise<QRPayload> {
   return {
     userId,
     key: JSON.stringify(exportedKey),
-    timestamp: Date.now()
+    timestamp: Date.now(),
   }
 }
 
@@ -74,7 +74,7 @@ export function parseBackupCode(code: string): QRPayload {
   return {
     userId,
     key: keyJson,
-    timestamp: Date.now()
+    timestamp: Date.now(),
   }
 }
 

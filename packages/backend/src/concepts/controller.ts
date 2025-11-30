@@ -1,7 +1,7 @@
-import 'reflect-metadata';
-import { injectable, inject } from 'tsyringe';
-import { ConceptsService } from './service';
-import type { ConceptsInput, ConceptsResponse, ConceptFilters } from './types';
+import 'reflect-metadata'
+import { injectable, inject } from 'tsyringe'
+import { ConceptsService } from './service'
+import type { ConceptsInput, ConceptsResponse, ConceptFilters } from './types'
 
 @injectable()
 export class ConceptsController {
@@ -12,13 +12,13 @@ export class ConceptsController {
       grade: input.grade,
       difficulty: input.difficulty,
       source: input.source,
-    };
+    }
 
-    const concepts = await this.conceptsService.getConcepts(input.subject, filters);
+    const concepts = await this.conceptsService.getConcepts(input.subject, filters)
 
     return {
       concepts,
       total: concepts.length,
-    };
+    }
   }
 }

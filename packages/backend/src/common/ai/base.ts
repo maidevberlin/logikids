@@ -1,36 +1,36 @@
-import { CostTrackingContext } from './cost-tracker';
+import { CostTrackingContext } from './cost-tracker'
 
 export interface GenerateOptions {
-  temperature?: number;
-  maxTokens?: number;
-  topP?: number;
-  topK?: number;
-  costTracking?: CostTrackingContext;
+  temperature?: number
+  maxTokens?: number
+  topP?: number
+  topK?: number
+  costTracking?: CostTrackingContext
 }
 
 export interface UsageInfo {
-  inputTokens: number;
-  outputTokens: number;
-  totalTokens?: number;
-  cost?: number; // Cost in USD
+  inputTokens: number
+  outputTokens: number
+  totalTokens?: number
+  cost?: number // Cost in USD
 }
 
 export interface GenerateResponse {
-  response: string;
+  response: string
   /** Ollama-specific conversation context for multi-turn conversations */
-  context?: number[];
-  provider: 'ollama' | 'openai' | 'anthropic';
-  model: string;
-  usage?: UsageInfo;
+  context?: number[]
+  provider: 'ollama' | 'openai' | 'anthropic'
+  model: string
+  usage?: UsageInfo
 }
 
 export interface StructuredGenerateResponse<T> {
-  result: T;
-  usage?: UsageInfo;
+  result: T
+  usage?: UsageInfo
 }
 
 // JSON Schema type (standard JSON Schema format)
-export type JSONSchema = Record<string, unknown>;
+export type JSONSchema = Record<string, unknown>
 
 export abstract class AIClient {
   protected constructor(
@@ -38,7 +38,7 @@ export abstract class AIClient {
     public readonly model: string
   ) {}
 
-  abstract generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse>;
+  abstract generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse>
 
   /**
    * Generate structured output that conforms to a JSON Schema
@@ -51,5 +51,5 @@ export abstract class AIClient {
     prompt: string,
     schema: JSONSchema,
     options?: GenerateOptions
-  ): Promise<StructuredGenerateResponse<T>>;
-} 
+  ): Promise<StructuredGenerateResponse<T>>
+}

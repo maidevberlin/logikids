@@ -3,7 +3,7 @@
  */
 export class LogikidsApiError extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = 'LogikidsApiError';
+    super(message)
+    this.name = 'LogikidsApiError'
   }
 }

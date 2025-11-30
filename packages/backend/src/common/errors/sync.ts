@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when sync data checksum is in invalid format
@@ -12,6 +12,6 @@ import { ApplicationError } from './base';
  */
 export class InvalidChecksumError extends ApplicationError {
   constructor(message: string = 'Invalid checksum format') {
-    super(message, 400, 'INVALID_CHECKSUM');
+    super(message, 400, 'INVALID_CHECKSUM')
   }
 }

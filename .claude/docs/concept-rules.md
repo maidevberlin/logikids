@@ -87,6 +87,7 @@ One of: `easy`, `medium`, `hard`
 **Critical**: Since one objective is chosen randomly with equal probability, a broad range is essential. Students will only encounter each objective proportionally—if 5 objectives exist, each appears in ~20% of tasks. Omitting objectives means students never practice those skills.
 
 **Requirements:**
+
 - 3-7 objectives per concept (fewer = repetitive, more = sparse coverage)
 - Research official curriculum documents for your region
 - Specific and measurable
@@ -99,6 +100,7 @@ One of: `easy`, `medium`, `hard`
 **Critical**: Each type defines a DIFFERENT task structure. The AI generates tasks matching the selected type. If you have 10 types but 5 are variations of "calculation", those dominate. Ensure genuine variety.
 
 **Requirements:**
+
 - 1-3 words each
 - Distinct structures (not overlapping)
 - Cover ALL ways students encounter this concept
@@ -111,6 +113,7 @@ One of: `easy`, `medium`, `hard`
 **Impact:** Indexed by difficulty level (easy/medium/hard), inserted as `[[difficulty_guidelines]]` (bullet list).
 
 **Requirements:**
+
 - Concrete, scalable criteria (not vague labels like "simple" or "hard")
 - Clear progression from easy → hard
 - Max 3 bullet points per level
@@ -120,6 +123,7 @@ One of: `easy`, `medium`, `hard`
 **Impact:** Informational. The UI will display these as navigation links so students can review foundational concepts.
 
 **Formats:**
+
 - `concept-id` — same subject (matches any concept with that ID)
 - `subject/concept-id` — cross-subject (explicit subject reference)
 
@@ -130,6 +134,7 @@ Each ID must reference an existing concept. The validation script checks this an
 **Impact:** Inserted as `[[real_world_context]]`. Helps AI generate relatable scenarios.
 
 **Requirements:**
+
 - 3-5 items, each describing a distinct real-world application
 - Cover diverse situations where students encounter this concept
 - Each item should be a complete sentence or phrase
@@ -142,12 +147,14 @@ Each ID must reference an existing concept. The validation script checks this an
 **Purpose:** Prevent common generation mistakes specific to this concept. Critical for task quality - concepts without anti_patterns often generate tasks with predictable errors.
 
 **Requirements:**
+
 - 3-5 items required
 - Each item under 80 characters
 - Specific and actionable (not vague warnings)
 - Cover common mistakes the AI makes for this concept type
 
 **Types of anti-patterns to include:**
+
 - **Scope errors:** "Avoid numbers larger than 20" (grade-inappropriate difficulty)
 - **Format errors:** "Don't use decimal notation" (concept-inappropriate representation)
 - **Ambiguity errors:** "Avoid word problems with multiple valid interpretations"
@@ -170,6 +177,7 @@ Increment version when making significant changes. Notes explain what changed.
 Optional markdown body after frontmatter. Leave empty unless fine-tuning is needed.
 
 **When to use:**
+
 - Quality issues with generated tasks
 - Concept-specific constraints the AI misses
 - Clarifications not expressible in frontmatter fields
@@ -195,12 +203,14 @@ Describe WHAT to create, not HOW. The AI should generate novel tasks, not copy e
 **Every concept must cover its FULL curriculum scope.**
 
 Since `learning_objectives` and `problem_types` are randomly selected with equal probability:
+
 - 5 objectives = each has 20% chance per task
 - 10 problem types = each has 10% chance per task
 
 If you bias toward popular topics, students rarely practice other areas. A well-designed concept ensures students encounter ALL aspects through repeated practice.
 
 **Before finalizing a concept:**
+
 1. Review official curriculum standards
 2. List ALL objectives and problem structures
 3. Verify no major area is missing
@@ -230,8 +240,8 @@ This includes: `name`, `description`, `learning_objectives`, `problem_types`, `d
 
 ## Common Rationalizations
 
-| Thought | Reality |
-|---------|---------|
+| Thought                                                       | Reality                                                                                                                               |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | "The validator shows a WARNING, I'll focus on the FAIL first" | Fix ALL issues in one pass. WARNINGs become problems later. The validator output tells you everything needed to fix in one iteration. |
-| "I checked and the prerequisites exist, so they're fine" | Verify HOW the system checks existence. Don't assume your mental model matches the implementation. |
-| "Let me present my findings first before making changes" | "Review and fix" means do both. Present the summary AFTER fixing. Asking for approval on obvious fixes wastes time. |
+| "I checked and the prerequisites exist, so they're fine"      | Verify HOW the system checks existence. Don't assume your mental model matches the implementation.                                    |
+| "Let me present my findings first before making changes"      | "Review and fix" means do both. Present the summary AFTER fixing. Asking for approval on obvious fixes wastes time.                   |

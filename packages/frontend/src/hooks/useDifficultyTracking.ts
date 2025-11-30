@@ -43,8 +43,8 @@ export function useDifficultyTracking(subject: string, conceptId: string) {
               averageTimeSeconds: 0,
               successRate: 0,
               lastAttemptTimestamp: 0,
-              firstAttemptTimestamp: 0
-            }
+              firstAttemptTimestamp: 0,
+            },
           }
         }
         updatedUserData.progress[subject][conceptId].difficulty = newDifficulty
@@ -61,6 +61,6 @@ export function useDifficultyTracking(subject: string, conceptId: string) {
     currentDifficulty,
     notification,
     checkAndAdjustDifficulty,
-    dismissNotification
+    dismissNotification,
   }
 }

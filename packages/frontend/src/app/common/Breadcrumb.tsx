@@ -13,10 +13,7 @@ export interface BreadcrumbProps {
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-4">
-      <Link
-        to="/"
-        className="flex items-center hover:text-foreground transition-colors"
-      >
+      <Link to="/" className="flex items-center hover:text-foreground transition-colors">
         <Home className="w-4 h-4" />
       </Link>
 
@@ -26,10 +23,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
           {index === items.length - 1 ? (
             <span className="font-medium text-foreground">{item.label}</span>
           ) : (
-            <Link
-              to={item.path}
-              className="hover:text-foreground transition-colors"
-            >
+            <Link to={item.path} className="hover:text-foreground transition-colors">
               {item.label}
             </Link>
           )}

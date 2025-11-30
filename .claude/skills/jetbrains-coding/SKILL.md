@@ -23,70 +23,77 @@ EDIT → FILE COMPLETE → CHECK PROBLEMS → FIX → (repeat until 0 problems)
 
 ## Tool Preference
 
-| Instead of... | Use JetBrains Tool |
-|---------------|-------------------|
+| Instead of...           | Use JetBrains Tool                         |
+| ----------------------- | ------------------------------------------ |
 | `grep`, `rg`, Grep tool | `search_in_files_by_text` or `find_usages` |
-| `find`, Glob tool | `find_files_by_name_keyword` |
-| `cat`, Read tool | `get_file_text_by_path` |
-| `sed`, Edit tool | `replace_text_in_file` (targeted) |
-| `tree`, `ls` | `list_directory_tree` |
-| Manual rename + grep | `rename_refactoring` (updates ALL refs) |
-| `git status` | `get_project_vcs_status` |
-| `git log --grep` | `find_commit_by_message` |
+| `find`, Glob tool       | `find_files_by_name_keyword`               |
+| `cat`, Read tool        | `get_file_text_by_path`                    |
+| `sed`, Edit tool        | `replace_text_in_file` (targeted)          |
+| `tree`, `ls`            | `list_directory_tree`                      |
+| Manual rename + grep    | `rename_refactoring` (updates ALL refs)    |
+| `git status`            | `get_project_vcs_status`                   |
+| `git log --grep`        | `find_commit_by_message`                   |
 
 **When to use standard tools:** Non-code files, complex shell pipelines, operations without JetBrains equivalent.
 
 ## Available Tools (Quick Reference)
 
 ### Code Intelligence
-| Tool | Purpose |
-|------|---------|
-| `find_usages` | Find all usages of a symbol across project |
-| `get_symbol_info` | Get docs, type info, declaration location |
-| `rename_refactoring` | Smart rename - updates all references |
-| `get_file_problems` | IDE inspections (errors, warnings) for a file |
-| `get_project_problems` | All problems across entire project |
+
+| Tool                   | Purpose                                       |
+| ---------------------- | --------------------------------------------- |
+| `find_usages`          | Find all usages of a symbol across project    |
+| `get_symbol_info`      | Get docs, type info, declaration location     |
+| `rename_refactoring`   | Smart rename - updates all references         |
+| `get_file_problems`    | IDE inspections (errors, warnings) for a file |
+| `get_project_problems` | All problems across entire project            |
 
 ### File Operations
-| Tool | Purpose |
-|------|---------|
-| `get_file_text_by_path` | Read file content |
-| `replace_text_in_file` | Targeted text replacement |
-| `create_new_file` | Create file with content |
-| `open_file_in_editor` | Open file in IDE |
+
+| Tool                    | Purpose                   |
+| ----------------------- | ------------------------- |
+| `get_file_text_by_path` | Read file content         |
+| `replace_text_in_file`  | Targeted text replacement |
+| `create_new_file`       | Create file with content  |
+| `open_file_in_editor`   | Open file in IDE          |
 
 ### Search
-| Tool | Purpose |
-|------|---------|
-| `search_in_files_by_text` | Text search across project (indexed) |
-| `search_in_files_by_regex` | Regex search across project |
-| `find_files_by_name_keyword` | Find files by name substring |
-| `find_files_by_glob` | Find files by glob pattern |
+
+| Tool                         | Purpose                              |
+| ---------------------------- | ------------------------------------ |
+| `search_in_files_by_text`    | Text search across project (indexed) |
+| `search_in_files_by_regex`   | Regex search across project          |
+| `find_files_by_name_keyword` | Find files by name substring         |
+| `find_files_by_glob`         | Find files by glob pattern           |
 
 ### Navigation
-| Tool | Purpose |
-|------|---------|
-| `list_directory_tree` | Tree view of directory |
+
+| Tool                      | Purpose                     |
+| ------------------------- | --------------------------- |
+| `list_directory_tree`     | Tree view of directory      |
 | `get_all_open_file_paths` | Currently open files in IDE |
 
 ### Execution
-| Tool | Purpose |
-|------|---------|
+
+| Tool                       | Purpose                           |
+| -------------------------- | --------------------------------- |
 | `execute_terminal_command` | Run shell command in IDE terminal |
-| `run_configuration` | Run IDE run configuration |
-| `get_run_configurations` | List available run configs |
+| `run_configuration`        | Run IDE run configuration         |
+| `get_run_configurations`   | List available run configs        |
 
 ### VCS
-| Tool | Purpose |
-|------|---------|
-| `get_project_vcs_status` | Git status via IDE |
+
+| Tool                     | Purpose               |
+| ------------------------ | --------------------- |
+| `get_project_vcs_status` | Git status via IDE    |
 | `find_commit_by_message` | Search commit history |
-| `get_repositories` | List VCS roots |
+| `get_repositories`       | List VCS roots        |
 
 ### Debugging
-| Tool | Purpose |
-|------|---------|
-| `get_debugger_breakpoints` | List all breakpoints |
+
+| Tool                         | Purpose               |
+| ---------------------------- | --------------------- |
+| `get_debugger_breakpoints`   | List all breakpoints  |
 | `toggle_debugger_breakpoint` | Add/remove breakpoint |
 
 ## Renaming Files
@@ -101,17 +108,18 @@ When renaming files (e.g., `task.service.ts` → `service.ts`):
 
 ## Common Mistakes
 
-| Mistake | Fix |
-|---------|-----|
-| Using Grep to find symbol usages | Use `find_usages` - understands code structure |
-| Manual rename + search/replace | Use `rename_refactoring` - updates imports, references |
-| Not checking for problems | Call `get_file_problems` after completing a file |
-| Ignoring IDE warnings | Fix ALL problems before moving on |
+| Mistake                                                | Fix                                                                |
+| ------------------------------------------------------ | ------------------------------------------------------------------ |
+| Using Grep to find symbol usages                       | Use `find_usages` - understands code structure                     |
+| Manual rename + search/replace                         | Use `rename_refactoring` - updates imports, references             |
+| Not checking for problems                              | Call `get_file_problems` after completing a file                   |
+| Ignoring IDE warnings                                  | Fix ALL problems before moving on                                  |
 | Using git mv then manually updating imports one by one | Use `replace_text_in_file` with `replaceAll: true` to batch update |
 
 ## projectPath Parameter
 
 Always pass `projectPath` to JetBrains tools:
+
 ```
 projectPath: "/absolute/path/to/project"
 ```

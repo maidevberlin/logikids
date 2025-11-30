@@ -37,7 +37,7 @@ export function MultiSelectAnswer({
 
   const handleToggle = (index: number) => {
     const newSelection = selectedIndices.includes(index)
-      ? selectedIndices.filter(i => i !== index)
+      ? selectedIndices.filter((i) => i !== index)
       : [...selectedIndices, index]
 
     onAnswerSelect(newSelection)
@@ -68,8 +68,8 @@ export function MultiSelectAnswer({
             isOverSelected
               ? 'bg-red-100 text-red-700'
               : selectedIndices.length === expectedCount
-              ? 'bg-green-100 text-green-700'
-              : 'bg-muted text-muted-foreground'
+                ? 'bg-green-100 text-green-700'
+                : 'bg-muted text-muted-foreground'
           )}
         >
           {t('task.selectedCount', { selected: selectedIndices.length, total: expectedCount })}

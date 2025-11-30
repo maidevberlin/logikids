@@ -3,7 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { importQRData, parseBackupCode } from '@/data/plugins/qr'
 import { Button } from '@/app/common/ui/button'
 import { Label } from '@/app/common/ui/label'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/app/common/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/app/common/ui/dialog'
 import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('ManualImport')
@@ -34,7 +40,11 @@ export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
       onSuccess()
     } catch (err) {
       logger.error('Manual import error', err as Error)
-      setError(err instanceof Error ? err.message : t('welcomeChoice.import.importFailed', { defaultValue: 'Import failed' }))
+      setError(
+        err instanceof Error
+          ? err.message
+          : t('welcomeChoice.import.importFailed', { defaultValue: 'Import failed' })
+      )
     } finally {
       setIsImporting(false)
     }
@@ -44,21 +54,23 @@ export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
     <Dialog open onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>{t('welcomeChoice.import.manualCode', { defaultValue: 'Enter Backup Code' })}</DialogTitle>
+          <DialogTitle>
+            {t('welcomeChoice.import.manualCode', { defaultValue: 'Enter Backup Code' })}
+          </DialogTitle>
           <DialogDescription>
-            {t('welcomeChoice.import.manualCodeDescription', { defaultValue: 'Paste your backup code from the recovery kit' })}
+            {t('welcomeChoice.import.manualCodeDescription', {
+              defaultValue: 'Paste your backup code from the recovery kit',
+            })}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
-          {error && (
-            <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-              {error}
-            </div>
-          )}
+          {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
           <div className="space-y-2">
-            <Label htmlFor="backup-code">{t('welcomeChoice.import.backupCode', { defaultValue: 'Backup Code' })}</Label>
+            <Label htmlFor="backup-code">
+              {t('welcomeChoice.import.backupCode', { defaultValue: 'Backup Code' })}
+            </Label>
             <textarea
               id="backup-code"
               value={backupCode}
@@ -74,8 +86,14 @@ export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
             <Button variant="outline" onClick={onClose} className="flex-1" disabled={isImporting}>
               {t('welcomeChoice.import.cancel', { defaultValue: 'Cancel' })}
             </Button>
-            <Button onClick={handleImport} className="flex-1" disabled={isImporting || !backupCode.trim()}>
-              {isImporting ? t('welcomeChoice.import.importing', { defaultValue: 'Importing...' }) : t('welcomeChoice.import.import', { defaultValue: 'Import' })}
+            <Button
+              onClick={handleImport}
+              className="flex-1"
+              disabled={isImporting || !backupCode.trim()}
+            >
+              {isImporting
+                ? t('welcomeChoice.import.importing', { defaultValue: 'Importing...' })
+                : t('welcomeChoice.import.import', { defaultValue: 'Import' })}
             </Button>
           </div>
         </div>

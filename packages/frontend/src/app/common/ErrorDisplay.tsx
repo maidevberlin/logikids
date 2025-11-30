@@ -5,7 +5,7 @@ import {
   ArrowPathIcon,
   HomeIcon,
   ExclamationTriangleIcon,
-  ShieldExclamationIcon
+  ShieldExclamationIcon,
 } from '@heroicons/react/24/outline'
 import { Alert, AlertDescription, AlertTitle } from '@/app/common/ui/alert.tsx'
 import { Button } from '@/app/common/ui/button.tsx'
@@ -30,10 +30,13 @@ export interface ErrorDisplayProps {
   className?: string
 }
 
-const severityConfig: Record<ErrorSeverity, {
-  icon: typeof FaceFrownIcon
-  variant: 'default' | 'destructive'
-}> = {
+const severityConfig: Record<
+  ErrorSeverity,
+  {
+    icon: typeof FaceFrownIcon
+    variant: 'default' | 'destructive'
+  }
+> = {
   error: {
     icon: FaceFrownIcon,
     variant: 'destructive',
@@ -57,7 +60,7 @@ export function ErrorDisplay({
   severity = 'error',
   showHomeButton = true,
   action,
-  className
+  className,
 }: ErrorDisplayProps) {
   const navigate = useNavigate()
   const { t } = useTranslation()
@@ -71,31 +74,21 @@ export function ErrorDisplay({
         <AlertTitle className="text-lg">{message}</AlertTitle>
         {details && (
           <AlertDescription className="mt-2 text-sm opacity-90">
-            <pre className="whitespace-pre-wrap break-words font-mono text-xs">
-              {details}
-            </pre>
+            <pre className="whitespace-pre-wrap break-words font-mono text-xs">{details}</pre>
           </AlertDescription>
         )}
       </Alert>
 
       <div className="flex flex-col gap-3">
         {onRetry && (
-          <Button
-            onClick={onRetry}
-            disabled={isLoading}
-            className="w-full"
-          >
+          <Button onClick={onRetry} disabled={isLoading} className="w-full">
             <ArrowPathIcon className={`h-5 w-5 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
             {isLoading ? t('common.loading') : t('error.tryAgain')}
           </Button>
         )}
 
         {action && (
-          <Button
-            onClick={action.onClick}
-            disabled={isLoading}
-            className="w-full"
-          >
+          <Button onClick={action.onClick} disabled={isLoading} className="w-full">
             {action.icon && <action.icon className="h-5 w-5 mr-2" />}
             {action.label}
           </Button>
@@ -119,9 +112,7 @@ export function ErrorDisplay({
   if (standalone) {
     return (
       <div className="error-page">
-        <div className="max-w-2xl mx-auto p-8">
-          {content}
-        </div>
+        <div className="max-w-2xl mx-auto p-8">{content}</div>
       </div>
     )
   }

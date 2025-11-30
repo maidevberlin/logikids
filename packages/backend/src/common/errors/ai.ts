@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when AI provider returns an empty or invalid response
@@ -14,8 +14,8 @@ export class EmptyAIResponseError extends ApplicationError {
   constructor(provider?: string) {
     const message = provider
       ? `${provider} returned empty response`
-      : 'AI provider returned empty response';
-    super(message, 500, 'EMPTY_AI_RESPONSE');
+      : 'AI provider returned empty response'
+    super(message, 500, 'EMPTY_AI_RESPONSE')
   }
 }
 
@@ -31,7 +31,7 @@ export class EmptyAIResponseError extends ApplicationError {
  */
 export class AIProviderError extends ApplicationError {
   constructor(provider: string, details: string, cause?: unknown) {
-    super(`${provider} API error: ${details}`, 500, 'AI_PROVIDER_ERROR', cause);
+    super(`${provider} API error: ${details}`, 500, 'AI_PROVIDER_ERROR', cause)
   }
 }
 
@@ -49,7 +49,7 @@ export class AIProviderError extends ApplicationError {
  */
 export class AIGenerationError extends ApplicationError {
   constructor(message: string, cause?: unknown) {
-    super(message, 500, 'AI_GENERATION_ERROR', cause);
+    super(message, 500, 'AI_GENERATION_ERROR', cause)
   }
 }
 
@@ -67,7 +67,7 @@ export class NoToolUseError extends ApplicationError {
   constructor(provider?: string) {
     const message = provider
       ? `${provider} did not return a tool use response`
-      : 'AI did not return a tool use response';
-    super(message, 500, 'NO_TOOL_USE');
+      : 'AI did not return a tool use response'
+    super(message, 500, 'NO_TOOL_USE')
   }
 }

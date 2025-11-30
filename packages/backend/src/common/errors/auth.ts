@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when a user attempts to register with a userId that already exists
@@ -13,10 +13,8 @@ import { ApplicationError } from './base';
  */
 export class UserExistsError extends ApplicationError {
   constructor(userId?: string) {
-    const message = userId
-      ? `User ID already exists: ${userId}`
-      : 'User ID already exists';
-    super(message, 409, 'USER_EXISTS');
+    const message = userId ? `User ID already exists: ${userId}` : 'User ID already exists'
+    super(message, 409, 'USER_EXISTS')
   }
 }
 
@@ -33,7 +31,7 @@ export class UserExistsError extends ApplicationError {
  */
 export class UserNotFoundError extends ApplicationError {
   constructor(message: string = 'User not found') {
-    super(message, 404, 'USER_NOT_FOUND');
+    super(message, 404, 'USER_NOT_FOUND')
   }
 }
 
@@ -50,7 +48,7 @@ export class UserNotFoundError extends ApplicationError {
  */
 export class AccountNotFoundError extends ApplicationError {
   constructor(message: string = 'Account not found') {
-    super(message, 404, 'ACCOUNT_NOT_FOUND');
+    super(message, 404, 'ACCOUNT_NOT_FOUND')
   }
 }
 
@@ -66,7 +64,7 @@ export class AccountNotFoundError extends ApplicationError {
  */
 export class AccountRevokedError extends ApplicationError {
   constructor(message: string = 'Account has been revoked') {
-    super(message, 403, 'ACCOUNT_REVOKED');
+    super(message, 403, 'ACCOUNT_REVOKED')
   }
 }
 
@@ -82,7 +80,7 @@ export class AccountRevokedError extends ApplicationError {
  */
 export class InvalidCredentialsError extends ApplicationError {
   constructor(message: string = 'Invalid credentials') {
-    super(message, 401, 'INVALID_CREDENTIALS');
+    super(message, 401, 'INVALID_CREDENTIALS')
   }
 }
 
@@ -98,7 +96,7 @@ export class InvalidCredentialsError extends ApplicationError {
  */
 export class UnauthorizedError extends ApplicationError {
   constructor(message: string = 'Authentication required') {
-    super(message, 401, 'UNAUTHORIZED');
+    super(message, 401, 'UNAUTHORIZED')
   }
 }
 
@@ -114,6 +112,6 @@ export class UnauthorizedError extends ApplicationError {
  */
 export class ForbiddenError extends ApplicationError {
   constructor(message: string = 'Access denied') {
-    super(message, 403, 'FORBIDDEN');
+    super(message, 403, 'FORBIDDEN')
   }
 }

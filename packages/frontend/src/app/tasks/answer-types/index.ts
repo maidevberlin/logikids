@@ -5,7 +5,14 @@ import { NumberInputAnswer } from './NumberInputAnswer'
 import { OrderingAnswer } from './OrderingAnswer'
 import { MultiSelectAnswer } from './MultiSelectAnswer'
 
-export { YesNoAnswer, SingleChoiceAnswer, FillInBlankAnswer, NumberInputAnswer, OrderingAnswer, MultiSelectAnswer }
+export {
+  YesNoAnswer,
+  SingleChoiceAnswer,
+  FillInBlankAnswer,
+  NumberInputAnswer,
+  OrderingAnswer,
+  MultiSelectAnswer,
+}
 
 // Component registry for dynamic rendering
 export const answerTypeComponents = {

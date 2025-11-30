@@ -14,9 +14,7 @@ export function GreetingHeader({ name }: GreetingHeaderProps) {
       <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
         {greeting}, {name}!
       </h1>
-      <p className="text-xl text-muted-foreground">
-        {t('welcome.todayPrompt')}
-      </p>
+      <p className="text-xl text-muted-foreground">{t('welcome.todayPrompt')}</p>
     </div>
   )
 }

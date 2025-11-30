@@ -1,26 +1,26 @@
 /**
  * Centralized environment configuration with fail-fast validation.
- * 
+ *
  * In production: Required vars MUST be explicitly set or app fails to start.
  * In development: Uses secure defaults for local development.
  */
 
-const isProduction = process.env.NODE_ENV === 'production';
-const isTest = process.env.NODE_ENV === 'test';
+const isProduction = process.env.NODE_ENV === 'production'
+const isTest = process.env.NODE_ENV === 'test'
 
 // Development defaults - ONLY used in non-production
 const DEV_DEFAULTS = {
   JWT_SECRET: 'logikids-dev-secret-do-not-use-in-production',
   POSTGRES_PASSWORD: 'development',
-} as const;
+} as const
 
 function getRequired(name: string, devDefault?: string): string {
-  const value = process.env[name];
-  
+  const value = process.env[name]
+
   if (value) {
-    return value;
+    return value
   }
-  
+
   if (isProduction) {
     console.error(`
 ╔══════════════════════════════════════════════════════════════════╗
@@ -31,19 +31,19 @@ function getRequired(name: string, devDefault?: string): string {
 ║  Run: ./setup.sh                                                 ║
 ║  Or manually set ${name} in your .env file              ║
 ╚══════════════════════════════════════════════════════════════════╝
-`);
-    process.exit(1);
+`)
+    process.exit(1)
   }
-  
+
   if (devDefault !== undefined) {
-    return devDefault;
+    return devDefault
   }
-  
-  throw new Error(`Missing required environment variable: ${name}`);
+
+  throw new Error(`Missing required environment variable: ${name}`)
 }
 
 function getOptional(name: string, defaultValue: string): string {
-  return process.env[name] ?? defaultValue;
+  return process.env[name] ?? defaultValue
 }
 
 /**
@@ -55,19 +55,19 @@ export const env = {
   isProduction,
   isTest,
   isDevelopment: !isProduction && !isTest,
-  
+
   // Authentication
   JWT_SECRET: getRequired('JWT_SECRET', isTest ? 'test-secret' : DEV_DEFAULTS.JWT_SECRET),
-  
+
   // Database
   DATABASE_URL: getOptional(
     'DATABASE_URL',
     `postgresql://logikids:${DEV_DEFAULTS.POSTGRES_PASSWORD}@localhost:5432/logikids`
   ),
-  
+
   // Server
   PORT: parseInt(getOptional('PORT', '3000'), 10),
-} as const;
+} as const
 
 // Validate on import - fail fast
 if (isProduction) {
@@ -82,7 +82,7 @@ if (isProduction) {
 ║  Generate one with:                                              ║
 ║  openssl rand -base64 64 | tr -d "=+/" | cut -c1-64             ║
 ╚══════════════════════════════════════════════════════════════════╝
-`);
-    process.exit(1);
+`)
+    process.exit(1)
   }
 }

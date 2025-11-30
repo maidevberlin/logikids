@@ -9,12 +9,13 @@ interface LevelBadgeProps {
 export function LevelBadge({ totalTasks }: LevelBadgeProps) {
   const { t } = useTranslation('stats')
 
-  const currentLevelIndex = TASK_LEVELS.findIndex(level => totalTasks < level.threshold)
+  const currentLevelIndex = TASK_LEVELS.findIndex((level) => totalTasks < level.threshold)
   const currentLevel = currentLevelIndex === -1 ? TASK_LEVELS.length : currentLevelIndex
   const previousThreshold = currentLevel > 0 ? TASK_LEVELS[currentLevel - 1].threshold : 0
-  const nextThreshold = currentLevel >= TASK_LEVELS.length
-    ? TASK_LEVELS[TASK_LEVELS.length - 1].threshold
-    : TASK_LEVELS[currentLevel].threshold
+  const nextThreshold =
+    currentLevel >= TASK_LEVELS.length
+      ? TASK_LEVELS[TASK_LEVELS.length - 1].threshold
+      : TASK_LEVELS[currentLevel].threshold
   const progress = ((totalTasks - previousThreshold) / (nextThreshold - previousThreshold)) * 100
   const colorClass = TASK_LEVELS[Math.min(currentLevel, TASK_LEVELS.length - 1)].colorClass
 

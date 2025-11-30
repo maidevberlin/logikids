@@ -26,9 +26,8 @@ export function FillInBlankAnswer({
 
   // Initialize answers array if null
   // Defensive check: ensure selectedAnswer is actually an array (handles race condition during task type changes)
-  const answers = selectedAnswer && Array.isArray(selectedAnswer)
-    ? selectedAnswer
-    : Array(blanksCount).fill('')
+  const answers =
+    selectedAnswer && Array.isArray(selectedAnswer) ? selectedAnswer : Array(blanksCount).fill('')
 
   const handleInputChange = (index: number, value: string) => {
     const newAnswers = [...answers]

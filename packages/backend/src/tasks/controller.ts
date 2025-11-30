@@ -1,8 +1,8 @@
-import 'reflect-metadata';
-import { injectable, inject } from 'tsyringe';
-import { TaskService } from './service';
-import { HintService } from '../hints/service';
-import type { TaskRequest, TaskResponse } from './types';
+import 'reflect-metadata'
+import { injectable, inject } from 'tsyringe'
+import { TaskService } from './service'
+import { HintService } from '../hints/service'
+import type { TaskRequest, TaskResponse } from './types'
 
 @injectable()
 export class TasksController {
@@ -12,14 +12,14 @@ export class TasksController {
   ) {}
 
   async getTask(input: TaskRequest, userId: string): Promise<TaskResponse> {
-    return this.taskService.generateTask(input, userId);
+    return this.taskService.generateTask(input, userId)
   }
 
   async getHint(taskId: string): Promise<{
-    hint: string;
-    hintNumber: number;
-    totalHintsAvailable: number;
+    hint: string
+    hintNumber: number
+    totalHintsAvailable: number
   }> {
-    return this.hintService.generateHint(taskId);
+    return this.hintService.generateHint(taskId)
   }
 }

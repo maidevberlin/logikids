@@ -23,7 +23,7 @@ export async function exportData(): Promise<string> {
   // Include key in export
   const exportData = {
     ...data,
-    encryptionKey: JSON.stringify(keyJwk)
+    encryptionKey: JSON.stringify(keyJwk),
   }
 
   return JSON.stringify(exportData, null, 2)
@@ -60,7 +60,7 @@ export async function importData(json: string): Promise<void> {
   const merged: UserData = {
     ...imported,
     progress: mergedProgress,
-    timestamp: Date.now()
+    timestamp: Date.now(),
   }
 
   // Encrypt and store the data directly

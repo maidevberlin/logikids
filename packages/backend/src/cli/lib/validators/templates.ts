@@ -4,10 +4,10 @@
  * (age/difficulty guidelines moved to frontmatter)
  */
 
-import type { CheckResult } from '../types';
+import type { CheckResult } from '../types'
 
 export function checkTemplates(_content: string): CheckResult {
   // No longer validating {{age}} or {{difficulty}} in prompt content
   // These are now handled via frontmatter fields
-  return { status: 'pass', issues: [] };
+  return { status: 'pass', issues: [] }
 }

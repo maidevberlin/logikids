@@ -12,9 +12,7 @@ export function LoadingState({ message }: LoadingStateProps) {
         <Skeleton className="h-12 w-3/4" />
         <Skeleton className="h-12 w-5/6" />
       </div>
-      {message && (
-        <p className="text-sm text-muted-foreground mt-4">{message}</p>
-      )}
+      {message && <p className="text-sm text-muted-foreground mt-4">{message}</p>}
     </div>
   )
 }

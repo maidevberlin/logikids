@@ -6,7 +6,7 @@ export interface GameStats {
   streaks: {
     currentDays: number
     bestDays: number
-    lastActiveDate: string  // ISO date string (UTC)
+    lastActiveDate: string // ISO date string (UTC)
   }
 
   perfectRun: {
@@ -16,7 +16,7 @@ export interface GameStats {
 
   weekly: {
     noHintTasks: number
-    weekStart: string  // ISO date of Monday
+    weekStart: string // ISO date of Monday
   }
 
   personalBests: {
@@ -26,7 +26,7 @@ export interface GameStats {
   achievements: {
     [achievementId: string]: {
       unlocked: boolean
-      date?: string  // ISO timestamp
+      date?: string // ISO timestamp
     }
   }
 

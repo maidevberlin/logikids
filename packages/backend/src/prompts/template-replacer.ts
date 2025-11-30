@@ -3,13 +3,13 @@
  * Preserves unknown placeholders like {{a1}}, {{x1}} for LLM consumption.
  */
 
-import Handlebars from 'handlebars';
-import {registerHandlebarsHelpers} from './handlebars-helpers';
+import Handlebars from 'handlebars'
+import { registerHandlebarsHelpers } from './handlebars-helpers'
 
-export type TemplateVariables = Record<string, string | number>;
+export type TemplateVariables = Record<string, string | number>
 
 // Register helpers once at module load
-registerHandlebarsHelpers();
+registerHandlebarsHelpers()
 
 /**
  * Replace variables in template using specified delimiters.
@@ -25,19 +25,19 @@ export function replaceVariables(
   data: TemplateVariables,
   delimiters: [string, string] = ['{{', '}}']
 ): string {
-  const [open, close] = delimiters;
-  let result = template;
+  const [open, close] = delimiters
+  let result = template
 
   // Replace each known variable
   for (const [key, value] of Object.entries(data)) {
-    const placeholder = `${open}${key}${close}`;
-    const replacement = String(value);
+    const placeholder = `${open}${key}${close}`
+    const replacement = String(value)
     // Use function replacement to avoid special $ character interpretation
     // (e.g., $` means "insert text before match" in string replacements)
-    result = result.replaceAll(placeholder, () => replacement);
+    result = result.replaceAll(placeholder, () => replacement)
   }
 
-  return result;
+  return result
 }
 
 /**
@@ -52,16 +52,13 @@ export function replaceVariables(
  * @param data - Variables to pass to template
  * @returns Compiled template
  */
-export function compileHandlebars(
-  template: string,
-  data: TemplateVariables
-): string {
+export function compileHandlebars(template: string, data: TemplateVariables): string {
   const compiledTemplate = Handlebars.compile(template, {
     noEscape: true, // Don't HTML-escape, we're generating markdown
-    strict: false,  // Don't throw on missing variables
-  });
+    strict: false, // Don't throw on missing variables
+  })
 
-  return compiledTemplate(data);
+  return compiledTemplate(data)
 }
 
 /**
@@ -80,8 +77,8 @@ export function composeAndReplace(
   variableData: TemplateVariables
 ): string {
   // Step 1: Compose templates using <% %>
-  const composed = replaceVariables(baseTemplate, compositionData, ['<%', '%>']);
+  const composed = replaceVariables(baseTemplate, compositionData, ['<%', '%>'])
 
   // Step 2: Replace variables using [[ ]]
-    return replaceVariables(composed, variableData, ['[[', ']]']);
+  return replaceVariables(composed, variableData, ['[[', ']]'])
 }

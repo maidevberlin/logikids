@@ -7,6 +7,7 @@ description: A task with 5-7 options where 2-4 are correct (select all that appl
 Create a multi-select task where students identify ALL correct answers.
 
 **CRITICAL**:
+
 - 5-7 options total, 2-4 correct
 - `expectedCount` MUST match actual correct count
 - Spread correct answers throughout (don't cluster)

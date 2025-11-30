@@ -1,35 +1,41 @@
-import { OpenAI } from 'openai';
-import { OpenAIConfig } from '../../config/ai';
-import { AIClient, GenerateOptions, GenerateResponse, JSONSchema, StructuredGenerateResponse } from './base';
-import { createLogger } from '../logger';
-import { withErrorHandling } from './errorHandler';
-import { trackCost, calculateCost } from './cost-tracker';
+import { OpenAI } from 'openai'
+import { OpenAIConfig } from '../../config/ai'
+import {
+  AIClient,
+  GenerateOptions,
+  GenerateResponse,
+  JSONSchema,
+  StructuredGenerateResponse,
+} from './base'
+import { createLogger } from '../logger'
+import { withErrorHandling } from './errorHandler'
+import { trackCost, calculateCost } from './cost-tracker'
 
-const logger = createLogger('OpenAIClient');
+const logger = createLogger('OpenAIClient')
 
 export class OpenAIClient extends AIClient {
-  private client: OpenAI;
+  private client: OpenAI
 
   constructor(private config: OpenAIConfig) {
-    super('openai', config.model);
+    super('openai', config.model)
     this.client = new OpenAI({
       apiKey: config.apiKey,
-    });
+    })
   }
 
   async generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse> {
-    const config = this.config as OpenAIConfig;
+    const config = this.config as OpenAIConfig
 
     try {
       const completion = await this.client.chat.completions.create({
         model: config.model,
         messages: [{ role: 'user', content: prompt }],
-      });
+      })
 
-      const response = completion.choices[0]?.message?.content;
+      const response = completion.choices[0]?.message?.content
 
       if (!response) {
-        throw new Error('OpenAI returned empty response');
+        throw new Error('OpenAI returned empty response')
       }
 
       // Track cost if context and usage info are provided
@@ -38,18 +44,18 @@ export class OpenAIClient extends AIClient {
           inputTokens: completion.usage.prompt_tokens,
           outputTokens: completion.usage.completion_tokens,
           provider: this.provider,
-          model: completion.model
-        });
+          model: completion.model,
+        })
       }
 
       return {
         response,
         provider: this.provider,
-        model: completion.model
-      };
+        model: completion.model,
+      }
     } catch (error) {
-      logger.error('Error:', error instanceof Error ? error.message : 'Unknown error');
-      throw error;
+      logger.error('Error:', error instanceof Error ? error.message : 'Unknown error')
+      throw error
     }
   }
 
@@ -58,14 +64,17 @@ export class OpenAIClient extends AIClient {
     schema: JSONSchema,
     options?: GenerateOptions
   ): Promise<StructuredGenerateResponse<T>> {
-    const config = this.config as OpenAIConfig;
+    const config = this.config as OpenAIConfig
 
-    logger.debug('Starting structured generation...', { model: config.model, promptLength: prompt.length });
+    logger.debug('Starting structured generation...', {
+      model: config.model,
+      promptLength: prompt.length,
+    })
 
     return withErrorHandling(
       async () => {
-        logger.debug('Calling OpenAI API with structured output...');
-        const startTime = Date.now();
+        logger.debug('Calling OpenAI API with structured output...')
+        const startTime = Date.now()
         const completion = await this.client.chat.completions.create({
           model: config.model,
           messages: [{ role: 'user', content: prompt }],
@@ -74,33 +83,33 @@ export class OpenAIClient extends AIClient {
             json_schema: {
               name: 'response',
               schema: schema,
-              strict: true
-            }
+              strict: true,
+            },
           },
           temperature: options?.temperature ?? config.temperature,
           max_tokens: options?.maxTokens ?? config.maxTokens,
-          top_p: options?.topP ?? config.topP
-        });
+          top_p: options?.topP ?? config.topP,
+        })
 
-        const duration = Date.now() - startTime;
+        const duration = Date.now() - startTime
         logger.info('API call completed', {
           duration,
           inputTokens: completion.usage?.prompt_tokens,
-          outputTokens: completion.usage?.completion_tokens
-        });
+          outputTokens: completion.usage?.completion_tokens,
+        })
 
-        const responseContent = completion.choices[0]?.message?.content;
+        const responseContent = completion.choices[0]?.message?.content
 
         if (!responseContent) {
-          throw new Error('OpenAI returned empty response');
+          throw new Error('OpenAI returned empty response')
         }
 
-        logger.debug('Response received', { responseLength: responseContent.length });
+        logger.debug('Response received', { responseLength: responseContent.length })
 
         // Parse JSON - OpenAI's structured outputs guarantee schema compliance
-        const parsed = JSON.parse(responseContent);
+        const parsed = JSON.parse(responseContent)
 
-        logger.debug('Successfully parsed structured response');
+        logger.debug('Successfully parsed structured response')
 
         // Track cost if context and usage info are provided
         if (options?.costTracking && completion.usage) {
@@ -108,29 +117,31 @@ export class OpenAIClient extends AIClient {
             inputTokens: completion.usage.prompt_tokens,
             outputTokens: completion.usage.completion_tokens,
             provider: this.provider,
-            model: completion.model
-          });
+            model: completion.model,
+          })
         }
 
-        const usageWithCost = completion.usage ? {
-          inputTokens: completion.usage.prompt_tokens,
-          outputTokens: completion.usage.completion_tokens,
-          totalTokens: completion.usage.total_tokens,
-          cost: calculateCost({
-            inputTokens: completion.usage.prompt_tokens,
-            outputTokens: completion.usage.completion_tokens,
-            provider: this.provider,
-            model: completion.model
-          })
-        } : undefined;
+        const usageWithCost = completion.usage
+          ? {
+              inputTokens: completion.usage.prompt_tokens,
+              outputTokens: completion.usage.completion_tokens,
+              totalTokens: completion.usage.total_tokens,
+              cost: calculateCost({
+                inputTokens: completion.usage.prompt_tokens,
+                outputTokens: completion.usage.completion_tokens,
+                provider: this.provider,
+                model: completion.model,
+              }),
+            }
+          : undefined
 
         return {
           result: parsed as T,
-          usage: usageWithCost
-        };
+          usage: usageWithCost,
+        }
       },
       'OpenAI structured generation',
       logger
-    );
+    )
   }
-} 
+}

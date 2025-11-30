@@ -15,9 +15,9 @@ interface InviteCode {
   code: string
   created_at: number
   expires_at: number
-  note: string | null,
-  used_by: string | null,
-  used_at: number | null,
+  note: string | null
+  used_by: string | null
+  used_at: number | null
 }
 
 // Generate random invite code (8 chars, alphanumeric, easy to type)
@@ -38,7 +38,7 @@ function generateCode(): string {
 async function createCode(note?: string): Promise<InviteCode> {
   const code = generateCode()
   const now = Date.now()
-  const expiresAt = now + (7 * 24 * 60 * 60 * 1000) // 7 days
+  const expiresAt = now + 7 * 24 * 60 * 60 * 1000 // 7 days
 
   await pool.query(
     'INSERT INTO invite_codes (code, created_at, expires_at, note) VALUES ($1, $2, $3, $4)',
@@ -61,7 +61,7 @@ async function listCodes(): Promise<InviteCode[]> {
     'SELECT code, created_at, expires_at, used_by, used_at, note FROM invite_codes ORDER BY created_at DESC'
   )
   // PostgreSQL BIGINT comes back as string, convert to number
-  return result.rows.map(row => ({
+  return result.rows.map((row) => ({
     ...row,
     created_at: Number(row.created_at),
     expires_at: Number(row.expires_at),
@@ -88,7 +88,7 @@ function formatDate(timestamp: number): string {
     month: '2-digit',
     day: '2-digit',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   })
 }
 
@@ -107,7 +107,9 @@ async function main() {
       }
 
       console.log('\n📋 Invite Codes:\n')
-      console.log('Code          | Created           | Expires           | Used By                              | Used At           | Status     | Note')
+      console.log(
+        'Code          | Created           | Expires           | Used By                              | Used At           | Status     | Note'
+      )
       console.log('─'.repeat(140))
 
       for (const code of codes) {
@@ -123,7 +125,7 @@ async function main() {
         const usedAt = code.used_at ? formatDate(code.used_at) : '-'
 
         console.log(
-            `${code.code.padEnd(13)} | ${formatDate(code.created_at).padEnd(17)} | ${formatDate(code.expires_at).padEnd(17)} | ${usedBy.padEnd(36)} | ${usedAt.padEnd(17)} | ${status.padEnd(10)} | ${code.note || '-'}`
+          `${code.code.padEnd(13)} | ${formatDate(code.created_at).padEnd(17)} | ${formatDate(code.expires_at).padEnd(17)} | ${usedBy.padEnd(36)} | ${usedAt.padEnd(17)} | ${status.padEnd(10)} | ${code.note || '-'}`
         )
       }
 
@@ -171,7 +173,7 @@ async function main() {
       // Simple synchronous confirmation (Bun supports readline)
       const readline = require('readline').createInterface({
         input: process.stdin,
-        output: process.stdout
+        output: process.stdout,
       })
 
       readline.question('', async (answer: string) => {

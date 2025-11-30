@@ -1,5 +1,5 @@
-import { trpc } from '@/api/trpc';
-import { TaskRequest } from '@/api/logikids';
+import { trpc } from '@/api/trpc'
+import { TaskRequest } from '@/api/logikids'
 
 /**
  * Hook for fetching task data from the API.
@@ -16,5 +16,5 @@ export function useTaskData(params: TaskRequest) {
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     staleTime: Infinity,
-  });
+  })
 }

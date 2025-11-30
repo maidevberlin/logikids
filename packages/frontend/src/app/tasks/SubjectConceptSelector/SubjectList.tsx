@@ -27,7 +27,7 @@ export const SubjectList = memo(function SubjectList({
             const isActive = previewSubject === subject.id
 
             // Build dynamic class names based on state
-            let stateClasses;
+            let stateClasses
             if (isActive) {
               stateClasses = `${theme.colors.active} font-medium`
             } else {

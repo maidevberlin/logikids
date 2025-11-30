@@ -23,6 +23,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
    Get user approval on concept list.
 
 3. **Spawn parallel agents** - One Task tool call per concept:
+
    ```
    Create concept: {subject}/{concept-id} (Grade {grade})
 
@@ -51,9 +52,9 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
 ## Common Rationalizations
 
-| Thought | Reality |
-|---------|---------|
+| Thought                                                                   | Reality                                                                                                                                                                        |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | "The PDF isn't readable, I'll use a different state's curriculum instead" | WRONG. Ask the user which curriculum to use. Different states have different standards, terminology, and grade-level expectations. Never substitute without explicit approval. |
-| "German curricula are similar enough across states" | WRONG. While KMK provides national standards, state implementations differ significantly. The user chose a specific curriculum for a reason. |
-| "I'll research what I can find and ask later" | WRONG. Clarify the curriculum source BEFORE researching. Wasted research on the wrong curriculum wastes tokens and time. |
-| "This curriculum has better web content, so I'll use it" | WRONG. Accessibility doesn't equal correctness. If the target curriculum is hard to access, ask the user for alternative sources or approval to use a substitute. |
+| "German curricula are similar enough across states"                       | WRONG. While KMK provides national standards, state implementations differ significantly. The user chose a specific curriculum for a reason.                                   |
+| "I'll research what I can find and ask later"                             | WRONG. Clarify the curriculum source BEFORE researching. Wasted research on the wrong curriculum wastes tokens and time.                                                       |
+| "This curriculum has better web content, so I'll use it"                  | WRONG. Accessibility doesn't equal correctness. If the target curriculum is hard to access, ask the user for alternative sources or approval to use a substitute.              |

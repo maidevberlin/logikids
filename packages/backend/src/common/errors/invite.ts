@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when an invite code is not found in the database
@@ -13,10 +13,8 @@ import { ApplicationError } from './base';
  */
 export class InviteNotFoundError extends ApplicationError {
   constructor(code?: string) {
-    const message = code
-      ? `Invite code not found: ${code}`
-      : 'Invite code not found';
-    super(message, 404, 'INVITE_NOT_FOUND');
+    const message = code ? `Invite code not found: ${code}` : 'Invite code not found'
+    super(message, 404, 'INVITE_NOT_FOUND')
   }
 }
 
@@ -32,7 +30,7 @@ export class InviteNotFoundError extends ApplicationError {
  */
 export class InvalidInviteError extends ApplicationError {
   constructor(reason: string) {
-    super(`Invalid invite: ${reason}`, 400, 'INVALID_INVITE');
+    super(`Invalid invite: ${reason}`, 400, 'INVALID_INVITE')
   }
 }
 
@@ -48,7 +46,7 @@ export class InvalidInviteError extends ApplicationError {
  */
 export class InviteExpiredError extends ApplicationError {
   constructor(message: string = 'Invite code expired') {
-    super(message, 400, 'INVITE_EXPIRED');
+    super(message, 400, 'INVITE_EXPIRED')
   }
 }
 
@@ -64,6 +62,6 @@ export class InviteExpiredError extends ApplicationError {
  */
 export class InviteAlreadyUsedError extends ApplicationError {
   constructor(message: string = 'Invite code already used') {
-    super(message, 400, 'INVITE_USED');
+    super(message, 400, 'INVITE_USED')
   }
 }

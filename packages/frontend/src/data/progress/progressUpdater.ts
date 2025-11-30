@@ -1,14 +1,14 @@
-import {AttemptData, Difficulty, ProgressData} from './types'
+import { AttemptData, Difficulty, ProgressData } from './types'
 import {
-    calculateConceptAggregate,
-    calculateSubjectMastery,
-    generateAttemptId,
-    isDuplicate,
-    pruneOldAttempts
+  calculateConceptAggregate,
+  calculateSubjectMastery,
+  generateAttemptId,
+  isDuplicate,
+  pruneOldAttempts,
 } from './aggregation'
-import {GameStats} from '@/app/stats/gameTypes'
-import {checkAchievements, unlockAchievements} from '@/app/stats/achievements'
-import {createLogger} from '@/lib/logger'
+import { GameStats } from '@/app/stats/gameTypes'
+import { checkAchievements, unlockAchievements } from '@/app/stats/achievements'
+import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('ProgressUpdater')
 
@@ -16,10 +16,10 @@ export interface TaskSubmissionData {
   subject: string
   conceptId: string
   difficulty: Difficulty
-  correct: boolean | null  // null if skipped
+  correct: boolean | null // null if skipped
   hintsUsed: number
   startTime: number
-  skipped?: boolean  // Optional, defaults to false
+  skipped?: boolean // Optional, defaults to false
 }
 
 /**
@@ -41,7 +41,7 @@ export function addAttempt(
     hintsUsed: submission.hintsUsed,
     timeSeconds,
     timestamp: endTime,
-    skipped: submission.skipped || false
+    skipped: submission.skipped || false,
   }
 
   // Initialize subject if needed
@@ -63,8 +63,8 @@ export function addAttempt(
         averageTimeSeconds: 0,
         successRate: 0,
         lastAttemptTimestamp: 0,
-        firstAttemptTimestamp: 0
-      }
+        firstAttemptTimestamp: 0,
+      },
     }
   }
 
@@ -91,7 +91,7 @@ export function addAttempt(
 
   return {
     progress,
-    gameStats: updatedGameStats
+    gameStats: updatedGameStats,
   }
 }
 
@@ -126,7 +126,7 @@ function updateGameStats(
   // Check and unlock achievements
   const newlyUnlocked = checkAchievements(stats, progress)
   if (newlyUnlocked.length > 0) {
-      return unlockAchievements(stats, newlyUnlocked)
+    return unlockAchievements(stats, newlyUnlocked)
   }
 
   return stats
@@ -174,10 +174,7 @@ function updatePerfectRun(stats: GameStats, attempt: AttemptData): void {
 
   if (attempt.correct) {
     stats.perfectRun.current++
-    stats.perfectRun.allTimeBest = Math.max(
-      stats.perfectRun.allTimeBest,
-      stats.perfectRun.current
-    )
+    stats.perfectRun.allTimeBest = Math.max(stats.perfectRun.allTimeBest, stats.perfectRun.current)
   } else {
     stats.perfectRun.current = 0
   }
@@ -222,10 +219,7 @@ function updatePersonalBests(stats: GameStats, progress: ProgressData): void {
 
   if (totalAttempts > 0) {
     const successRate = totalCorrect / totalAttempts
-    stats.personalBests.successRate = Math.max(
-      stats.personalBests.successRate,
-      successRate
-    )
+    stats.personalBests.successRate = Math.max(stats.personalBests.successRate, successRate)
   }
 }
 
@@ -250,20 +244,20 @@ function createDefaultGameStats(): GameStats {
     streaks: {
       currentDays: 0,
       bestDays: 0,
-      lastActiveDate: ''
+      lastActiveDate: '',
     },
     perfectRun: {
       current: 0,
-      allTimeBest: 0
+      allTimeBest: 0,
     },
     weekly: {
       noHintTasks: 0,
-      weekStart: getMonday(new Date()).toISOString().split('T')[0]
+      weekStart: getMonday(new Date()).toISOString().split('T')[0],
     },
     personalBests: {
-      successRate: 0
+      successRate: 0,
     },
     achievements: {},
-    subjectMastery: {}
+    subjectMastery: {},
   }
 }

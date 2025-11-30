@@ -20,7 +20,9 @@ export function ConceptsPage() {
   const { data: userData } = useUserData()
 
   // Initialize showAll from location state (e.g., from disabled subject click) or default to false
-  const [showAll, setShowAll] = useState(() => (location.state as { showAll?: boolean })?.showAll ?? false)
+  const [showAll, setShowAll] = useState(
+    () => (location.state as { showAll?: boolean })?.showAll ?? false
+  )
   const [activeTab, setActiveTab] = useState<'school' | 'fun'>('school')
   const [initialTabSet, setInitialTabSet] = useState(false)
 
@@ -70,9 +72,9 @@ export function ConceptsPage() {
   )
 
   // Determine which data to use
-  const data = (grade && !showAll) ? filteredData : allData
-  const isLoading = (grade && !showAll) ? isLoadingFiltered : isLoadingAll
-  const subject = subjectsData?.subjects.find(s => s.id === subjectId)
+  const data = grade && !showAll ? filteredData : allData
+  const isLoading = grade && !showAll ? isLoadingFiltered : isLoadingAll
+  const subject = subjectsData?.subjects.find((s) => s.id === subjectId)
 
   if (!subjectId) {
     return (
@@ -110,7 +112,7 @@ export function ConceptsPage() {
 
     const groups = new Map<number | 'other', Concept[]>()
 
-    concepts.forEach(concept => {
+    concepts.forEach((concept) => {
       const key = concept.grade ?? 'other'
       if (!groups.has(key)) {
         groups.set(key, [])
@@ -122,19 +124,19 @@ export function ConceptsPage() {
     const sortedGrades = Array.from(groups.keys()).sort((a, b) => {
       if (a === 'other') return 1
       if (b === 'other') return -1
-      return b - a  // Changed from a - b to b - a for descending
+      return b - a // Changed from a - b to b - a for descending
     })
 
-    return sortedGrades.map(gradeKey => ({
+    return sortedGrades.map((gradeKey) => ({
       grade: gradeKey,
-      concepts: groups.get(gradeKey)!.sort((a, b) => a.name.localeCompare(b.name))  // Sort concepts within each grade by name
+      concepts: groups.get(gradeKey)!.sort((a, b) => a.name.localeCompare(b.name)), // Sort concepts within each grade by name
     }))
   }, [concepts, showAll])
 
   // Get grade-filtered IDs to mark advanced concepts (only concepts ABOVE user's grade)
   const gradeFilteredIds = useMemo(() => {
     if (!filteredData) return new Set<string>()
-    return new Set(filteredData.concepts.map(c => c.id))
+    return new Set(filteredData.concepts.map((c) => c.id))
   }, [filteredData])
 
   // Helper to determine if a concept is advanced (above user's grade)
@@ -155,12 +157,7 @@ export function ConceptsPage() {
   const colors = theme.colors
 
   return (
-    <PageLayout
-      showBack
-      showHome
-      showGameStats
-      showAccount
-    >
+    <PageLayout showBack showHome showGameStats showAccount>
       <div className="max-w-7xl mx-auto">
         {isLoading && !subject ? (
           <>
@@ -170,7 +167,9 @@ export function ConceptsPage() {
         ) : subject ? (
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-8 gap-6">
             <div className="flex items-start gap-6 flex-1">
-              <div className={`${colors.bg} ${colors.hover} transition-colors duration-300 p-6 rounded-2xl shadow-md`}>
+              <div
+                className={`${colors.bg} ${colors.hover} transition-colors duration-300 p-6 rounded-2xl shadow-md`}
+              >
                 <SubjectIcon className="w-12 h-12 text-white" />
               </div>
               <div className="flex-1 min-w-0">
@@ -201,13 +200,23 @@ export function ConceptsPage() {
           </div>
         )}
 
-        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'school' | 'fun')} className="w-full">
+        <Tabs
+          value={activeTab}
+          onValueChange={(value) => setActiveTab(value as 'school' | 'fun')}
+          className="w-full"
+        >
           <TabsList className="mb-6 h-14 p-1.5">
-            <TabsTrigger value="school" className="flex items-center gap-2 text-base px-6 h-full data-[state=active]:shadow-md">
+            <TabsTrigger
+              value="school"
+              className="flex items-center gap-2 text-base px-6 h-full data-[state=active]:shadow-md"
+            >
               <GraduationCap className="w-5 h-5" />
               {t('concepts.tabs.school', { defaultValue: 'School' })}
             </TabsTrigger>
-            <TabsTrigger value="fun" className="flex items-center gap-2 text-base px-6 h-full data-[state=active]:shadow-md">
+            <TabsTrigger
+              value="fun"
+              className="flex items-center gap-2 text-base px-6 h-full data-[state=active]:shadow-md"
+            >
               <Sparkles className="w-5 h-5" />
               {t('concepts.tabs.fun', { defaultValue: 'Fun' })}
             </TabsTrigger>

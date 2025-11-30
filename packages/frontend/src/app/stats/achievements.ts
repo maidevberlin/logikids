@@ -36,7 +36,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     getProgress: (_, progress) => {
       const total = getTotalCorrectTasks(progress)
       return { current: Math.min(total, 5), total: 5 }
-    }
+    },
   },
   {
     id: 'dedicated',
@@ -47,8 +47,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     checkUnlocked: (gameStats) => gameStats.streaks.currentDays >= 3,
     getProgress: (gameStats) => ({
       current: Math.min(gameStats.streaks.currentDays, 3),
-      total: 3
-    })
+      total: 3,
+    }),
   },
 
   // Tier 2 - Intermediate
@@ -61,8 +61,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     checkUnlocked: (gameStats) => gameStats.streaks.currentDays >= 7,
     getProgress: (gameStats) => ({
       current: Math.min(gameStats.streaks.currentDays, 7),
-      total: 7
-    })
+      total: 7,
+    }),
   },
   {
     id: 'sharpshooter',
@@ -73,8 +73,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     checkUnlocked: (gameStats) => gameStats.perfectRun.allTimeBest >= 10,
     getProgress: (gameStats) => ({
       current: Math.min(gameStats.perfectRun.allTimeBest, 10),
-      total: 10
-    })
+      total: 10,
+    }),
   },
 
   // Tier 3 - Advanced
@@ -87,8 +87,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     checkUnlocked: (gameStats) => gameStats.weekly.noHintTasks >= 5,
     getProgress: (gameStats) => ({
       current: Math.min(gameStats.weekly.noHintTasks, 5),
-      total: 5
-    })
+      total: 5,
+    }),
   },
   {
     id: 'polymath',
@@ -100,13 +100,15 @@ export const ACHIEVEMENTS: Achievement[] = [
       const subjects = Object.keys(gameStats.subjectMastery)
       // Require 3+ stars in at least 3 different subjects (more flexible than hardcoded 5)
       if (subjects.length < 3) return false
-      return subjects.every(s => (gameStats.subjectMastery[s]?.stars ?? 0) >= 3)
+      return subjects.every((s) => (gameStats.subjectMastery[s]?.stars ?? 0) >= 3)
     },
     getProgress: (gameStats) => {
       const subjects = Object.keys(gameStats.subjectMastery)
-      const with3Plus = subjects.filter(s => (gameStats.subjectMastery[s]?.stars ?? 0) >= 3).length
+      const with3Plus = subjects.filter(
+        (s) => (gameStats.subjectMastery[s]?.stars ?? 0) >= 3
+      ).length
       return { current: with3Plus, total: 3 }
-    }
+    },
   },
 
   // Tier 4 - Expert
@@ -123,7 +125,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     getProgress: (_, progress) => {
       const totalTasks = getTotalCorrectTasks(progress)
       return { current: Math.min(totalTasks, 100), total: 100 }
-    }
+    },
   },
   {
     id: 'master',
@@ -132,22 +134,19 @@ export const ACHIEVEMENTS: Achievement[] = [
     icon: '👑',
     tier: 4,
     checkUnlocked: (gameStats) => {
-      return Object.values(gameStats.subjectMastery).some(m => m.stars === 5)
+      return Object.values(gameStats.subjectMastery).some((m) => m.stars === 5)
     },
     getProgress: (gameStats) => {
-      const maxStars = Math.max(...Object.values(gameStats.subjectMastery).map(m => m.stars), 0)
+      const maxStars = Math.max(...Object.values(gameStats.subjectMastery).map((m) => m.stars), 0)
       return { current: maxStars, total: 5 }
-    }
-  }
+    },
+  },
 ]
 
 /**
  * Check all achievements and return newly unlocked ones
  */
-export function checkAchievements(
-  gameStats: GameStats,
-  progress: ProgressData
-): string[] {
+export function checkAchievements(gameStats: GameStats, progress: ProgressData): string[] {
   const newlyUnlocked: string[] = []
 
   for (const achievement of ACHIEVEMENTS) {
@@ -165,22 +164,19 @@ export function checkAchievements(
 /**
  * Mark achievements as unlocked
  */
-export function unlockAchievements(
-  gameStats: GameStats,
-  achievementIds: string[]
-): GameStats {
+export function unlockAchievements(gameStats: GameStats, achievementIds: string[]): GameStats {
   const now = new Date().toISOString()
   const updatedAchievements = { ...gameStats.achievements }
 
   for (const id of achievementIds) {
     updatedAchievements[id] = {
       unlocked: true,
-      date: now
+      date: now,
     }
   }
 
   return {
     ...gameStats,
-    achievements: updatedAchievements
+    achievements: updatedAchievements,
   }
 }

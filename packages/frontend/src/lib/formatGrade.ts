@@ -25,14 +25,14 @@ export function formatGradeRange(
   if (minGrade === maxGrade) {
     return t('subjects.grade', {
       grade: minGrade,
-      defaultValue: `Grade ${minGrade}`
+      defaultValue: `Grade ${minGrade}`,
     })
   }
 
   return t('subjects.gradeRange', {
     minGrade,
     maxGrade,
-    defaultValue: `Grades ${minGrade}-${maxGrade}`
+    defaultValue: `Grades ${minGrade}-${maxGrade}`,
   })
 }
 
@@ -49,6 +49,6 @@ export function formatGradeRange(
 export function formatGrade(grade: number, t: TFunction): string {
   return t('concepts.gradeLabel', {
     grade,
-    defaultValue: `Grade ${grade}`
+    defaultValue: `Grade ${grade}`,
   })
 }

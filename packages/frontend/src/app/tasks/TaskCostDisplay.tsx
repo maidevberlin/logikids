@@ -20,9 +20,7 @@ export function TaskCostDisplay({ usage }: TaskCostDisplayProps) {
   return (
     <div className="flex items-center justify-end gap-3 text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
       {usage.cost !== undefined && (
-        <span className="font-mono font-semibold text-foreground/70">
-          {formatCost(usage.cost)}
-        </span>
+        <span className="font-mono font-semibold text-foreground/70">{formatCost(usage.cost)}</span>
       )}
       <span className="flex items-center gap-1">
         <span className="font-mono">↓{usage.inputTokens.toLocaleString()}</span>

@@ -16,14 +16,14 @@ export function calculateConceptStars(conceptStats: ConceptStats | undefined): n
   const recentAttempts = conceptStats.attempts.slice(-100)
 
   // Filter out skipped attempts (correct = null)
-  const scoredAttempts = recentAttempts.filter(a => a.correct !== null)
+  const scoredAttempts = recentAttempts.filter((a) => a.correct !== null)
 
   if (scoredAttempts.length === 0) {
     return 0
   }
 
   // Calculate success rate
-  const correct = scoredAttempts.filter(a => a.correct === true).length
+  const correct = scoredAttempts.filter((a) => a.correct === true).length
   const successRate = correct / scoredAttempts.length
 
   // Map to stars using Encouraging Growth thresholds

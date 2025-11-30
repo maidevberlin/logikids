@@ -8,9 +8,10 @@ export type DifficultyNotification = {
   newDifficulty: Difficulty
 } | null
 
-export function adjustDifficulty(
-  conceptStats: ConceptStats
-): { newDifficulty: Difficulty; notification: DifficultyNotification } {
+export function adjustDifficulty(conceptStats: ConceptStats): {
+  newDifficulty: Difficulty
+  notification: DifficultyNotification
+} {
   const { correctStreak, incorrectStreak } = calculateDifficultyStreaks(conceptStats.attempts)
   const currentDifficulty = conceptStats.difficulty || 'medium'
 
@@ -24,21 +25,21 @@ export function adjustDifficulty(
       notification = {
         type: 'level_up',
         message: t('difficulty.levelUp.medium'),
-        newDifficulty: 'medium'
+        newDifficulty: 'medium',
       }
     } else if (currentDifficulty === 'medium') {
       newDifficulty = 'hard'
       notification = {
         type: 'level_up',
         message: t('difficulty.levelUp.hard'),
-        newDifficulty: 'hard'
+        newDifficulty: 'hard',
       }
     } else {
       // Already at hard
       notification = {
         type: 'achievement',
         message: t('difficulty.achievement.masteringHard'),
-        newDifficulty: 'hard'
+        newDifficulty: 'hard',
       }
     }
   }
@@ -50,21 +51,21 @@ export function adjustDifficulty(
       notification = {
         type: 'level_down',
         message: t('difficulty.levelDown.medium'),
-        newDifficulty: 'medium'
+        newDifficulty: 'medium',
       }
     } else if (currentDifficulty === 'medium') {
       newDifficulty = 'easy'
       notification = {
         type: 'level_down',
         message: t('difficulty.levelDown.easy'),
-        newDifficulty: 'easy'
+        newDifficulty: 'easy',
       }
     } else {
       // Already at easy
       notification = {
         type: 'achievement',
         message: t('difficulty.achievement.practicingEasy'),
-        newDifficulty: 'easy'
+        newDifficulty: 'easy',
       }
     }
   }

@@ -1,4 +1,4 @@
-import { ApplicationError } from './base';
+import { ApplicationError } from './base'
 
 /**
  * Thrown when registry initialization fails
@@ -14,7 +14,7 @@ import { ApplicationError } from './base';
  */
 export class RegistryInitializationError extends ApplicationError {
   constructor(registryName: string, cause?: unknown) {
-    super(`Failed to initialize ${registryName}`, 500, 'REGISTRY_INITIALIZATION_ERROR', cause);
+    super(`Failed to initialize ${registryName}`, 500, 'REGISTRY_INITIALIZATION_ERROR', cause)
   }
 }
 
@@ -30,6 +30,6 @@ export class RegistryInitializationError extends ApplicationError {
  */
 export class NoJsonSchemaError extends ApplicationError {
   constructor(taskTypeId: string) {
-    super(`No JSON schema found for task type: ${taskTypeId}`, 500, 'NO_JSON_SCHEMA');
+    super(`No JSON schema found for task type: ${taskTypeId}`, 500, 'NO_JSON_SCHEMA')
   }
 }

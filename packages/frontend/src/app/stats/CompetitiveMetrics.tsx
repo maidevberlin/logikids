@@ -7,18 +7,15 @@ interface CompetitiveMetricsProps {
   overallSuccessRate: number
 }
 
-export function CompetitiveMetrics({
-  gameStats,
-  overallSuccessRate
-}: CompetitiveMetricsProps) {
+export function CompetitiveMetrics({ gameStats, overallSuccessRate }: CompetitiveMetricsProps) {
   const { t } = useTranslation('stats')
 
   if (!gameStats) {
     return null
   }
 
-  const isPersonalBest = overallSuccessRate > 0 &&
-    overallSuccessRate >= gameStats.personalBests.successRate
+  const isPersonalBest =
+    overallSuccessRate > 0 && overallSuccessRate >= gameStats.personalBests.successRate
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -30,7 +27,7 @@ export function CompetitiveMetrics({
         subtitle={t('metrics.days', { defaultValue: 'days' })}
         highlight={t('metrics.bestStreak', {
           days: gameStats.streaks.bestDays,
-          defaultValue: `Best: ${gameStats.streaks.bestDays}`
+          defaultValue: `Best: ${gameStats.streaks.bestDays}`,
         })}
         colorClass="text-orange-600"
       />
@@ -43,7 +40,7 @@ export function CompetitiveMetrics({
         subtitle={t('metrics.inARow', { defaultValue: 'in a row' })}
         highlight={t('metrics.allTimeBest', {
           count: gameStats.perfectRun.allTimeBest,
-          defaultValue: `Record: ${gameStats.perfectRun.allTimeBest}`
+          defaultValue: `Record: ${gameStats.perfectRun.allTimeBest}`,
         })}
         colorClass="text-yellow-600"
       />
@@ -63,7 +60,9 @@ export function CompetitiveMetrics({
         title={t('metrics.accuracy', { defaultValue: 'Accuracy' })}
         value={`${overallSuccessRate.toFixed(1)}%`}
         subtitle={t('metrics.success', { defaultValue: 'success' })}
-        highlight={isPersonalBest ? t('metrics.personalBest', { defaultValue: 'Personal Best!' }) : undefined}
+        highlight={
+          isPersonalBest ? t('metrics.personalBest', { defaultValue: 'Personal Best!' }) : undefined
+        }
         colorClass="text-green-600"
       />
     </div>

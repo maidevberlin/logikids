@@ -5,7 +5,7 @@
  * This file provides validation helpers.
  */
 
-import { ValidationError } from '../common/errors';
+import { ValidationError } from '../common/errors'
 
 /**
  * Find all remaining placeholders in a template using [[ ]] delimiters
@@ -14,15 +14,15 @@ import { ValidationError } from '../common/errors';
  * Note: {{ }} placeholders are intentionally preserved for LLM consumption
  */
 export function findRemainingPlaceholders(template: string): string[] {
-  const placeholderPattern = /\[\[([^\]]+)\]\]/g;
-  const matches: string[] = [];
-  let match;
+  const placeholderPattern = /\[\[([^\]]+)\]\]/g
+  const matches: string[] = []
+  let match
 
   while ((match = placeholderPattern.exec(template)) !== null) {
-    matches.push(match[1]);
+    matches.push(match[1])
   }
 
-  return matches;
+  return matches
 }
 
 /**
@@ -33,13 +33,13 @@ export function findRemainingPlaceholders(template: string): string[] {
  * for the LLM to use as examples in generated tasks
  */
 export function validateNoPlaceholders(template: string, context: string): void {
-  const remaining = findRemainingPlaceholders(template);
+  const remaining = findRemainingPlaceholders(template)
 
   if (remaining.length > 0) {
     throw new ValidationError(
       `Template validation failed in ${context}:\n` +
-      `Found ${remaining.length} unreplaced placeholder(s): ${remaining.join(', ')}\n` +
-      `This usually means a variable is used but not provided in the scope.`
-    );
+        `Found ${remaining.length} unreplaced placeholder(s): ${remaining.join(', ')}\n` +
+        `This usually means a variable is used but not provided in the scope.`
+    )
   }
 }

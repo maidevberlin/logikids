@@ -2,8 +2,8 @@
  * Path resolution helpers for CLI commands
  */
 
-import { resolve } from 'path';
-import { existsSync } from 'fs';
+import { resolve } from 'path'
+import { existsSync } from 'fs'
 
 /**
  * Convert short format (subject/concept) to full filesystem path
@@ -11,24 +11,26 @@ import { existsSync } from 'fs';
  *   -> "/path/to/packages/content/subjects/math/official/grade5-fractions.md"
  */
 export function resolveConceptPath(input: string): string {
-  const [subject, conceptName] = input.split('/');
+  const [subject, conceptName] = input.split('/')
 
   if (!subject || !conceptName) {
-    throw new Error(`Invalid concept path format: "${input}". Expected format: subject/concept-name`);
+    throw new Error(
+      `Invalid concept path format: "${input}". Expected format: subject/concept-name`
+    )
   }
 
   // Auto-add .md extension if not present
-  const filename = conceptName.endsWith('.md') ? conceptName : `${conceptName}.md`;
+  const filename = conceptName.endsWith('.md') ? conceptName : `${conceptName}.md`
 
   // Auto-detect content path (docker vs local)
   // In docker: /content/subjects (mounted volume)
   // In development: ../../packages/content/subjects (relative)
-  const dockerContentPath = '/content/subjects';
-  const localContentPath = resolve(process.cwd(), '../../packages/content/subjects');
+  const dockerContentPath = '/content/subjects'
+  const localContentPath = resolve(process.cwd(), '../../packages/content/subjects')
 
-  const contentBase = existsSync(dockerContentPath) ? dockerContentPath : localContentPath;
+  const contentBase = existsSync(dockerContentPath) ? dockerContentPath : localContentPath
 
-  return resolve(contentBase, subject, 'official', filename);
+  return resolve(contentBase, subject, 'official', filename)
 }
 
 /**
@@ -38,15 +40,15 @@ export function resolveConceptPath(input: string): string {
  */
 export function resolveSubjectPath(subject: string): string {
   if (!subject) {
-    throw new Error('Subject name is required');
+    throw new Error('Subject name is required')
   }
 
   // Auto-detect content path (docker vs local)
-  const dockerContentPath = '/content/subjects';
-  const localContentPath = resolve(process.cwd(), '../../packages/content/subjects');
-  const contentBase = existsSync(dockerContentPath) ? dockerContentPath : localContentPath;
+  const dockerContentPath = '/content/subjects'
+  const localContentPath = resolve(process.cwd(), '../../packages/content/subjects')
+  const contentBase = existsSync(dockerContentPath) ? dockerContentPath : localContentPath
 
-  return resolve(contentBase, subject, 'official');
+  return resolve(contentBase, subject, 'official')
 }
 
 /**
@@ -55,14 +57,14 @@ export function resolveSubjectPath(subject: string): string {
  *   -> "math"
  */
 export function extractSubjectFromPath(conceptPath: string): string {
-  const parts = conceptPath.split('/');
-  const subjectIdx = parts.indexOf('subjects');
+  const parts = conceptPath.split('/')
+  const subjectIdx = parts.indexOf('subjects')
 
   if (subjectIdx === -1 || subjectIdx + 1 >= parts.length) {
-    throw new Error(`Cannot extract subject from path: ${conceptPath}`);
+    throw new Error(`Cannot extract subject from path: ${conceptPath}`)
   }
 
-  return parts[subjectIdx + 1];
+  return parts[subjectIdx + 1]
 }
 
 /**
@@ -71,7 +73,7 @@ export function extractSubjectFromPath(conceptPath: string): string {
  */
 export function getSubjectsBasePath(): string {
   // Auto-detect content path (docker vs local)
-  const dockerContentPath = '/content/subjects';
-  const localContentPath = resolve(process.cwd(), '../../packages/content/subjects');
-  return existsSync(dockerContentPath) ? dockerContentPath : localContentPath;
+  const dockerContentPath = '/content/subjects'
+  const localContentPath = resolve(process.cwd(), '../../packages/content/subjects')
+  return existsSync(dockerContentPath) ? dockerContentPath : localContentPath
 }

@@ -39,12 +39,10 @@ export function generatePracticeRecommendations(
       // Calculate component scores (0-1 scale, higher = needs more work)
       const accuracyScore = 1 - agg.successRate
       const speedScore = Math.min(agg.averageTimeSeconds / 600, 1) // Normalize to 10min
-      const hintScore = Math.min((agg.totalHintsUsed / agg.totalAttempts) / 2, 1) // Normalize to 2 hints/task
+      const hintScore = Math.min(agg.totalHintsUsed / agg.totalAttempts / 2, 1) // Normalize to 2 hints/task
 
       // Weighted priority score
-      const priority = Math.round(
-        (accuracyScore * 0.4 + speedScore * 0.3 + hintScore * 0.3) * 100
-      )
+      const priority = Math.round((accuracyScore * 0.4 + speedScore * 0.3 + hintScore * 0.3) * 100)
 
       // Only recommend if priority > 30
       if (priority < 30) {
@@ -66,17 +64,15 @@ export function generatePracticeRecommendations(
           successRate: agg.successRate,
           avgTimeSeconds: agg.averageTimeSeconds,
           hintRate: agg.totalHintsUsed / agg.totalAttempts,
-          totalAttempts: agg.totalAttempts
+          totalAttempts: agg.totalAttempts,
         },
-        suggestedDifficulty
+        suggestedDifficulty,
       })
     }
   }
 
   // Sort by priority and return top N
-  return recommendations
-    .sort((a, b) => b.priority - a.priority)
-    .slice(0, maxRecommendations)
+  return recommendations.sort((a, b) => b.priority - a.priority).slice(0, maxRecommendations)
 }
 
 /**

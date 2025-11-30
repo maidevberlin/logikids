@@ -32,7 +32,7 @@ export function PageLayout({
   showAccount = false,
   headerCenter,
   headerRight,
-  className
+  className,
 }: PageLayoutProps) {
   return (
     <div className="bg-background min-h-screen flex flex-col">
@@ -50,9 +50,7 @@ export function PageLayout({
 
       {/* Page Content */}
       <div className="p-4 sm:p-8 flex-1">
-        <div className={cn('max-w-6xl mx-auto', className)}>
-          {children}
-        </div>
+        <div className={cn('max-w-6xl mx-auto', className)}>{children}</div>
       </div>
 
       {/* Footer */}

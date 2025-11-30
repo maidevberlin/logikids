@@ -14,10 +14,10 @@ const __dirname = dirname(__filename)
 const calculateTranslationsHash = () => {
   const localesDir = resolve(__dirname, 'public/locales')
   let content = ''
-  
+
   // Read all translation files and concatenate their content
   const processDir = (dir: string) => {
-    readdirSync(dir, { withFileTypes: true }).forEach(dirent => {
+    readdirSync(dir, { withFileTypes: true }).forEach((dirent) => {
       const fullPath = resolve(dir, dirent.name)
       if (dirent.isDirectory()) {
         processDir(fullPath)
@@ -28,24 +28,21 @@ const calculateTranslationsHash = () => {
   }
 
   processDir(localesDir)
-  
+
   // Create hash from concatenated content
   return createHash('md5').update(content).digest('hex').substring(0, 8)
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react()
-  ],
+  plugins: [tailwindcss(), react()],
   define: {
-    'import.meta.env.VITE_TRANSLATIONS_HASH': JSON.stringify(calculateTranslationsHash())
+    'import.meta.env.VITE_TRANSLATIONS_HASH': JSON.stringify(calculateTranslationsHash()),
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src")
-    }
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   build: {
     chunkSizeWarningLimit: 850, // Vendor chunks are expected to be larger
@@ -99,7 +96,7 @@ export default defineConfig({
     port: 80,
     watch: {
       usePolling: true,
-      ignored: ['**/node_modules/**', '**/.git/**', '**/vite.config.ts']
+      ignored: ['**/node_modules/**', '**/.git/**', '**/vite.config.ts'],
     },
     proxy: {
       '/api': {
@@ -109,28 +106,28 @@ export default defineConfig({
         ws: true,
         configure: (proxy, _options) => {
           proxy.on('error', (err, _req, _res) => {
-            console.log('proxy error', err);
-          });
+            console.log('proxy error', err)
+          })
           proxy.on('proxyReq', (proxyReq, req, _res) => {
-            console.log('Sending Request to the Target:', req.method, req.url);
-            console.log('Target URL:', proxyReq.path);
-            console.log('Headers:', proxyReq.getHeaders());
-          });
+            console.log('Sending Request to the Target:', req.method, req.url)
+            console.log('Target URL:', proxyReq.path)
+            console.log('Headers:', proxyReq.getHeaders())
+          })
           proxy.on('proxyRes', (proxyRes, req, _res) => {
-            console.log('Received Response from the Target:', proxyRes.statusCode, req.url);
-            console.log('Response headers:', proxyRes.headers);
-          });
-        }
-      }
+            console.log('Received Response from the Target:', proxyRes.statusCode, req.url)
+            console.log('Response headers:', proxyRes.headers)
+          })
+        },
+      },
     },
     // Handle client-side routing in development
     middlewareMode: false,
     fs: {
       strict: true,
-    }
+    },
   },
   preview: {
     host: true,
-    port: 80
-  }
-}) 
+    port: 80,
+  },
+})

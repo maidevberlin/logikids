@@ -43,12 +43,8 @@ export function TaskPage() {
   const { submitTaskAttempt } = useProgress()
 
   // Adaptive difficulty tracking
-  const {
-    currentDifficulty,
-    notification,
-    checkAndAdjustDifficulty,
-    dismissNotification
-  } = useDifficultyTracking(subject || 'math', concept || 'random')
+  const { currentDifficulty, notification, checkAndAdjustDifficulty, dismissNotification } =
+    useDifficultyTracking(subject || 'math', concept || 'random')
 
   // Track if current task was answered (to detect skips)
   const taskAnsweredRef = useRef(false)
@@ -162,7 +158,11 @@ export function TaskPage() {
     if (!task) return
 
     // If task changed and previous task wasn't answered, record skip
-    if (previousTaskIdRef.current && previousTaskIdRef.current !== task.taskId && !taskAnsweredRef.current) {
+    if (
+      previousTaskIdRef.current &&
+      previousTaskIdRef.current !== task.taskId &&
+      !taskAnsweredRef.current
+    ) {
       submitTaskAttempt({
         subject: taskParams.subject,
         conceptId: taskParams.concept || 'random',
@@ -198,9 +198,7 @@ export function TaskPage() {
     (newConcept: string, newSubject: string) => {
       if (newConcept && newSubject) {
         const params = new URLSearchParams(searchParams)
-        navigate(
-          `/subjects/${newSubject}/${newConcept}/tasks?${params.toString()}`
-        )
+        navigate(`/subjects/${newSubject}/${newConcept}/tasks?${params.toString()}`)
       }
     },
     [navigate, searchParams]
@@ -215,9 +213,7 @@ export function TaskPage() {
       <div
         className="fixed inset-0 pointer-events-none z-0 task-background"
         style={{
-          backgroundImage: `url(${
-            backgrounds[taskParams.subject as keyof typeof backgrounds]
-          })`,
+          backgroundImage: `url(${backgrounds[taskParams.subject as keyof typeof backgrounds]})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

@@ -39,25 +39,25 @@ function getPhaseConfig(progress: number, t: (key: string) => string): PhaseConf
     return {
       icon: Brain,
       animation: 'pulse',
-      label: t('stages.analyzing')
+      label: t('stages.analyzing'),
     }
   } else if (progress < 50) {
     return {
       icon: Wand2,
       animation: 'rotate',
-      label: t('stages.crafting')
+      label: t('stages.crafting'),
     }
   } else if (progress < 80) {
     return {
       icon: Sparkles,
       animation: 'twinkle',
-      label: t('stages.generating')
+      label: t('stages.generating'),
     }
   } else {
     return {
       icon: CheckCircle2,
       animation: 'scale',
-      label: t('stages.finalizing')
+      label: t('stages.finalizing'),
     }
   }
 }
@@ -91,10 +91,7 @@ function getPhaseConfig(progress: number, t: (key: string) => string): PhaseConf
  * <TaskLoadingState subject="math" />
  * ```
  */
-export function TaskLoadingState({
-  subject,
-  className
-}: TaskLoadingStateProps) {
+export function TaskLoadingState({ subject, className }: TaskLoadingStateProps) {
   const { t } = useTranslation('loading')
   const [progress, setProgress] = useState(0)
   const startTimeRef = useRef<number | null>(null)
@@ -183,10 +180,7 @@ export function TaskLoadingState({
       {/* Thin progress bar at top - Google style */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-50">
         <div
-          className={cn(
-            'h-full transition-all duration-300 ease-out',
-            theme.colors.bg
-          )}
+          className={cn('h-full transition-all duration-300 ease-out', theme.colors.bg)}
           style={{ width: `${progress}%` }}
         >
           {/* Glow effect at the end */}
@@ -195,11 +189,7 @@ export function TaskLoadingState({
       </div>
 
       <Card
-        className={cn(
-          'w-full max-w-2xl mx-auto',
-          'p-6 sm:p-8',
-          'space-y-8',
-        )}
+        className={cn('w-full max-w-2xl mx-auto', 'p-6 sm:p-8', 'space-y-8')}
         role="region"
         aria-label={t('header', 'Preparing your task...')}
         aria-live="polite"
@@ -207,18 +197,10 @@ export function TaskLoadingState({
       >
         {/* Large animated icon in center */}
         <div className="flex flex-col items-center justify-center space-y-4 py-8">
-          <div
-            className={cn(
-              'relative',
-              getAnimationClass(phaseConfig.animation)
-            )}
-          >
+          <div className={cn('relative', getAnimationClass(phaseConfig.animation))}>
             {/* Icon with subject color */}
             <PhaseIcon
-              className={cn(
-                'w-24 h-24 sm:w-32 sm:h-32',
-                theme.colors.text
-              )}
+              className={cn('w-24 h-24 sm:w-32 sm:h-32', theme.colors.text)}
               strokeWidth={1.5}
             />
 
@@ -240,18 +222,15 @@ export function TaskLoadingState({
             <p className="text-sm text-muted-foreground">
               {showAlmostThere
                 ? t('almostThere', 'Almost there... generating a great question for you!')
-                : t('timeRemaining', { seconds: Math.max(0, Math.ceil(20 - (progress / 100) * 20)) })
-              }
+                : t('timeRemaining', {
+                    seconds: Math.max(0, Math.ceil(20 - (progress / 100) * 20)),
+                  })}
             </p>
           </div>
         </div>
 
         {/* Content section with carousel */}
-        <TaskLoadingContent
-          subject={subject}
-          progress={progress}
-          className="-mt-4"
-        />
+        <TaskLoadingContent subject={subject} progress={progress} className="-mt-4" />
       </Card>
 
       {/* CSS for custom animations */}

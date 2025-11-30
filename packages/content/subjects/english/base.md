@@ -13,7 +13,8 @@ Teaching English language skills through practical, engaging tasks.
 ## Content Types
 
 **Use:**
-- *Italic* for vocabulary
+
+- _Italic_ for vocabulary
 - **Bold** for grammar points
 - Tables for conjugations, vocabulary lists, comparisons
 - Blockquotes for example sentences/dialogues
@@ -24,6 +25,7 @@ Teaching English language skills through practical, engaging tasks.
 ## Task Variation
 
 **IMPORTANT**: Ensure content diversity across tasks:
+
 - Use different vocabulary and word choices
 - Vary sentence structures and grammatical examples
 - Change the specific content (topics, characters, situations)

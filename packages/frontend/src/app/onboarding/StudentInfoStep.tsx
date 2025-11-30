@@ -46,9 +46,15 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
         <div className="space-y-8">
           {/* Progress indicator */}
           <div className="flex justify-center gap-2 mb-6">
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'name-gender' ? 'bg-primary' : 'bg-muted'}`} />
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'age' ? 'bg-primary' : 'bg-muted'}`} />
-            <div className={`h-2 w-16 rounded-full transition-colors ${subStep === 'grade' ? 'bg-primary' : 'bg-muted'}`} />
+            <div
+              className={`h-2 w-16 rounded-full transition-colors ${subStep === 'name-gender' ? 'bg-primary' : 'bg-muted'}`}
+            />
+            <div
+              className={`h-2 w-16 rounded-full transition-colors ${subStep === 'age' ? 'bg-primary' : 'bg-muted'}`}
+            />
+            <div
+              className={`h-2 w-16 rounded-full transition-colors ${subStep === 'grade' ? 'bg-primary' : 'bg-muted'}`}
+            />
           </div>
 
           {/* Step 1: Name + Gender */}
@@ -81,11 +87,10 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                 <label className="block text-xl font-semibold text-foreground text-center">
                   {t('profile:settings.gender.label')}
                 </label>
-                <p className="text-sm text-muted-foreground text-center">{t('onboarding.studentInfo.genderHint')}</p>
-                <GenderSelector
-                  value={gender}
-                  onChange={setGender}
-                />
+                <p className="text-sm text-muted-foreground text-center">
+                  {t('onboarding.studentInfo.genderHint')}
+                </p>
+                <GenderSelector value={gender} onChange={setGender} />
               </div>
 
               <OnboardingActions
@@ -106,13 +111,7 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                 <p className="text-muted-foreground">{t('onboarding.studentInfo.ageHint')}</p>
               </div>
 
-              <NumberInput
-                value={age}
-                onChange={setAge}
-                min={6}
-                max={18}
-                className="my-12"
-              />
+              <NumberInput value={age} onChange={setAge} min={6} max={18} className="my-12" />
 
               <OnboardingActions
                 onContinue={handleAgeNext}
@@ -129,14 +128,12 @@ export function StudentInfoStep({ onComplete }: StudentInfoStepProps) {
                 <h2 className="text-3xl font-bold text-foreground mb-2">
                   {t('onboarding.studentInfo.gradeLabel')}
                 </h2>
-                <p className="text-muted-foreground">{t('onboarding.studentInfo.gradeDescription')}</p>
+                <p className="text-muted-foreground">
+                  {t('onboarding.studentInfo.gradeDescription')}
+                </p>
               </div>
 
-              <GradeSelector
-                value={grade}
-                onChange={setGrade}
-                age={age}
-              />
+              <GradeSelector value={grade} onChange={setGrade} age={age} />
 
               <OnboardingActions
                 onContinue={handleGradeComplete}

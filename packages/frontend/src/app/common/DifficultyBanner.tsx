@@ -23,13 +23,13 @@ export function DifficultyBanner({ notification, onDismiss }: DifficultyBannerPr
   const styles = {
     level_up: 'bg-gradient-to-r from-green-500 to-emerald-600 text-white',
     level_down: 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white',
-    achievement: 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900'
+    achievement: 'bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900',
   }
 
   const icons = {
     level_up: '↑',
     level_down: '↓',
-    achievement: '★'
+    achievement: '★',
   }
 
   return (
@@ -48,9 +48,7 @@ export function DifficultyBanner({ notification, onDismiss }: DifficultyBannerPr
         <span className="text-3xl" aria-hidden="true">
           {icons[notification.type]}
         </span>
-        <span className="text-lg font-semibold">
-          {notification.message}
-        </span>
+        <span className="text-lg font-semibold">{notification.message}</span>
       </button>
     </div>
   )

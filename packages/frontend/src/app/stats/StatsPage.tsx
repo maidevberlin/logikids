@@ -11,11 +11,7 @@ import { Card } from '@/app/common/ui/card'
 export function StatsPage() {
   const { t } = useTranslation('stats')
   const { data } = useUserData()
-  const {
-    progress,
-    gameStats,
-    getOverallStats
-  } = useProgress()
+  const { progress, gameStats, getOverallStats } = useProgress()
 
   const overallStats = getOverallStats()
   const totalTasks = overallStats.totalCorrect
@@ -38,7 +34,9 @@ export function StatsPage() {
 
             <div className="py-12">
               <p className="text-lg text-muted-foreground">
-                {t('noTasksYet', { defaultValue: 'No tasks completed yet. Start learning to see your progress!' })}
+                {t('noTasksYet', {
+                  defaultValue: 'No tasks completed yet. Start learning to see your progress!',
+                })}
               </p>
             </div>
           </Card>
@@ -69,10 +67,7 @@ export function StatsPage() {
         </div>
 
         {/* Competitive Metrics */}
-        <CompetitiveMetrics
-          gameStats={gameStats}
-          overallSuccessRate={overallSuccessRate}
-        />
+        <CompetitiveMetrics gameStats={gameStats} overallSuccessRate={overallSuccessRate} />
 
         {/* Achievements */}
         <AchievementsGrid gameStats={gameStats} progress={progress} />

@@ -53,8 +53,6 @@ export function HintSection({
     }
   }, [hasWrongAnswer, hasMoreHints, requestHint])
 
-
-
   const handleRequestHint = () => {
     if (requestHint) {
       requestHint()
@@ -107,19 +105,12 @@ export function HintSection({
       )}
 
       {/* Error message */}
-      {hintError && (
-        <div className="text-red-600 text-sm text-center">{hintError}</div>
-      )}
+      {hintError && <div className="text-red-600 text-sm text-center">{hintError}</div>}
 
       {/* Request hint button */}
       {hasMoreHints && !hintLoading && (
         <div className="flex justify-center">
-          <Button
-            onClick={handleRequestHint}
-            variant="outline"
-            size="lg"
-            className="rounded-xl"
-          >
+          <Button onClick={handleRequestHint} variant="outline" size="lg" className="rounded-xl">
             <Lightbulb className="w-5 h-5 mr-2" />
             {hints.length === 0
               ? t('task.getHint', { defaultValue: 'Get a Hint' })

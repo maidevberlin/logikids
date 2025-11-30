@@ -19,13 +19,11 @@ export function Providers({ children }: ProvidersProps) {
         <QueryClientProvider client={queryClient}>
           <AuthProvider>
             <DataSyncProvider>
-              <UserDataProvider>
-                {children}
-              </UserDataProvider>
+              <UserDataProvider>{children}</UserDataProvider>
             </DataSyncProvider>
           </AuthProvider>
         </QueryClientProvider>
       </trpc.Provider>
     </ErrorBoundary>
   )
-} 
+}

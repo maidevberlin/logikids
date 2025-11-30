@@ -23,12 +23,7 @@ export function AccountPage() {
   if (!data) return null
 
   return (
-    <PageLayout
-      showBack
-      showHome
-      showGameStats
-      showAccount
-    >
+    <PageLayout showBack showHome showGameStats showAccount>
       <div className="max-w-2xl mx-auto space-y-6">
         <div>
           <h1 className="text-4xl font-bold text-foreground mb-2">
@@ -39,10 +34,7 @@ export function AccountPage() {
           </p>
         </div>
 
-        <ProfileSettings
-          settings={data.settings}
-          onUpdate={updateSettings}
-        />
+        <ProfileSettings settings={data.settings} onUpdate={updateSettings} />
 
         <DataManagement
           syncEnabled={data.settings.syncEnabled || false}

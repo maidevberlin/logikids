@@ -29,7 +29,11 @@ export function GenderSelector({ value, onChange, className = '' }: GenderSelect
     { value: 'male', icon: Mars, label: t('settings.gender.options.male') },
     { value: 'female', icon: Venus, label: t('settings.gender.options.female') },
     { value: 'non-binary', icon: NonBinaryIcon, label: t('settings.gender.options.non-binary') },
-    { value: 'prefer-not-to-say', icon: ShieldQuestion, label: t('settings.gender.options.prefer-not-to-say') },
+    {
+      value: 'prefer-not-to-say',
+      icon: ShieldQuestion,
+      label: t('settings.gender.options.prefer-not-to-say'),
+    },
   ]
 
   return (
@@ -46,9 +50,7 @@ export function GenderSelector({ value, onChange, className = '' }: GenderSelect
             >
               <Icon className="w-8 h-8" />
             </SelectorButton>
-            <span className="text-xs text-foreground text-center max-w-[80px]">
-              {option.label}
-            </span>
+            <span className="text-xs text-foreground text-center max-w-[80px]">{option.label}</span>
           </div>
         )
       })}

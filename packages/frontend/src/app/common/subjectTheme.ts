@@ -1,12 +1,4 @@
-import {
-  Calculator,
-  Brain,
-  Atom,
-  Languages,
-  Music,
-  BookOpen,
-  type LucideIcon
-} from 'lucide-react'
+import { Calculator, Brain, Atom, Languages, Music, BookOpen, type LucideIcon } from 'lucide-react'
 
 /**
  * Subject Theme Configuration - SINGLE SOURCE OF TRUTH
@@ -37,8 +29,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       bgLight: 'bg-blue-50',
       hoverLight: 'hover:bg-blue-100',
       badge: 'bg-blue-100 text-blue-800',
-      active: 'bg-blue-100 text-blue-800'
-    }
+      active: 'bg-blue-100 text-blue-800',
+    },
   },
   logic: {
     icon: Brain,
@@ -49,8 +41,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       bgLight: 'bg-purple-50',
       hoverLight: 'hover:bg-purple-100',
       badge: 'bg-purple-100 text-purple-800',
-      active: 'bg-purple-100 text-purple-800'
-    }
+      active: 'bg-purple-100 text-purple-800',
+    },
   },
   physics: {
     icon: Atom,
@@ -61,8 +53,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       bgLight: 'bg-emerald-50',
       hoverLight: 'hover:bg-emerald-100',
       badge: 'bg-emerald-100 text-emerald-800',
-      active: 'bg-emerald-100 text-emerald-800'
-    }
+      active: 'bg-emerald-100 text-emerald-800',
+    },
   },
   german: {
     icon: Languages,
@@ -73,8 +65,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       bgLight: 'bg-red-50',
       hoverLight: 'hover:bg-red-100',
       badge: 'bg-red-100 text-red-800',
-      active: 'bg-red-100 text-red-800'
-    }
+      active: 'bg-red-100 text-red-800',
+    },
   },
   english: {
     icon: BookOpen,
@@ -85,8 +77,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       bgLight: 'bg-amber-50',
       hoverLight: 'hover:bg-amber-100',
       badge: 'bg-amber-100 text-amber-800',
-      active: 'bg-amber-100 text-amber-800'
-    }
+      active: 'bg-amber-100 text-amber-800',
+    },
   },
   music: {
     icon: Music,
@@ -97,9 +89,9 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       bgLight: 'bg-pink-50',
       hoverLight: 'hover:bg-pink-100',
       badge: 'bg-pink-100 text-pink-800',
-      active: 'bg-pink-100 text-pink-800'
-    }
-  }
+      active: 'bg-pink-100 text-pink-800',
+    },
+  },
 }
 
 export const defaultTheme: SubjectTheme = {
@@ -111,8 +103,8 @@ export const defaultTheme: SubjectTheme = {
     bgLight: 'bg-gray-50',
     hoverLight: 'hover:bg-gray-100',
     badge: 'bg-gray-100 text-gray-800',
-    active: 'bg-gray-100 text-gray-800'
-  }
+    active: 'bg-gray-100 text-gray-800',
+  },
 }
 
 export function getSubjectTheme(subjectId: string): SubjectTheme {

@@ -19,6 +19,7 @@ HTTP Request → TaskController → TaskService → PromptBuilder → AI Client 
 `GET /tasks/?subject=math&concept=grade1-...&grade=1&difficulty=easy&language=en`
 
 **Required parameters:**
+
 - `subject` — Subject ID (e.g., `math`)
 - `concept` — Concept ID (e.g., `grade1-basic-arithmetic-operations`)
 - `grade` — Student grade level (1-13)
@@ -33,10 +34,12 @@ HTTP Request → TaskController → TaskService → PromptBuilder → AI Client 
 `SubjectRegistry` loads and caches concepts from `packages/content/subjects/{subject}/`.
 
 **Directories scanned:**
+
 - `official/` — Curriculum-aligned concepts
 - `custom/` — User-created concepts
 
 **Filtering:**
+
 - By grade (exact match, fallback to lower grades)
 - By difficulty
 
@@ -58,11 +61,11 @@ base-prompt.md
 
 #### Delimiter System
 
-| Delimiter | Purpose | Example |
-|-----------|---------|---------|
-| `<% %>` | Template composition | `<%variations_template%>` |
-| `[[ ]]` | Variable replacement | `[[selected_objective]]` |
-| `{{ }}` | Preserved for LLM | `{{a1}}`, `{{x1}}` |
+| Delimiter | Purpose              | Example                   |
+| --------- | -------------------- | ------------------------- |
+| `<% %>`   | Template composition | `<%variations_template%>` |
+| `[[ ]]`   | Variable replacement | `[[selected_objective]]`  |
+| `{{ }}`   | Preserved for LLM    | `{{a1}}`, `{{x1}}`        |
 
 **Files:** `src/prompts/builder.ts`, `src/prompts/template-replacer.ts`
 
@@ -71,8 +74,8 @@ base-prompt.md
 #### Random Selection (per task)
 
 ```typescript
-selectedObjective = randomChoice(concept.learning_objectives);
-selectedProblemType = randomChoice(concept.problem_types);
+selectedObjective = randomChoice(concept.learning_objectives)
+selectedProblemType = randomChoice(concept.problem_types)
 ```
 
 Each objective/type has equal probability. With 5 objectives, each appears in ~20% of tasks.
@@ -82,29 +85,29 @@ Each objective/type has equal probability. With 5 objectives, each appears in ~2
 Direct index lookup:
 
 ```typescript
-difficultyGuidelines = concept.difficulty_guidelines[difficulty];
+difficultyGuidelines = concept.difficulty_guidelines[difficulty]
 // difficulty = "medium" → concept.difficulty_guidelines.medium
 ```
 
 #### All Variables
 
-| Variable | Source | Description |
-|----------|--------|-------------|
-| `[[age]]` | Request | Student age from frontend |
-| `[[grade]]` | Request | Student grade |
-| `[[difficulty]]` | Request | Task difficulty |
-| `[[language]]` | Request | "English" or "German" |
-| `[[concept_name]]` | Concept | Display name |
-| `[[concept_focus]]` | Concept | Thematic focus |
-| `[[selected_objective]]` | Concept | Random learning objective |
-| `[[selected_problem_type]]` | Concept | Random problem type |
-| `[[difficulty_guidelines]]` | Concept | Difficulty guidelines (bullet list) |
-| `[[real_world_context]]` | Concept | Context for scenarios |
-| `[[anti_patterns]]` | Concept | Things AI should avoid (bullet list) |
-| `[[scenario]]` | Variations | Age-filtered scenario context |
-| `[[language_style]]` | Calculated | Grade-based language style |
-| `[[enrichment_formatted]]` | Variations | Creative enrichments (formatted bullets) |
-| `[[student_context_formatted]]` | Request | Student gender context (if provided) |
+| Variable                        | Source     | Description                              |
+| ------------------------------- | ---------- | ---------------------------------------- |
+| `[[age]]`                       | Request    | Student age from frontend                |
+| `[[grade]]`                     | Request    | Student grade                            |
+| `[[difficulty]]`                | Request    | Task difficulty                          |
+| `[[language]]`                  | Request    | "English" or "German"                    |
+| `[[concept_name]]`              | Concept    | Display name                             |
+| `[[concept_focus]]`             | Concept    | Thematic focus                           |
+| `[[selected_objective]]`        | Concept    | Random learning objective                |
+| `[[selected_problem_type]]`     | Concept    | Random problem type                      |
+| `[[difficulty_guidelines]]`     | Concept    | Difficulty guidelines (bullet list)      |
+| `[[real_world_context]]`        | Concept    | Context for scenarios                    |
+| `[[anti_patterns]]`             | Concept    | Things AI should avoid (bullet list)     |
+| `[[scenario]]`                  | Variations | Age-filtered scenario context            |
+| `[[language_style]]`            | Calculated | Grade-based language style               |
+| `[[enrichment_formatted]]`      | Variations | Creative enrichments (formatted bullets) |
+| `[[student_context_formatted]]` | Request    | Student gender context (if provided)     |
 
 ### 5. AI Generation
 
@@ -132,19 +135,19 @@ The assembled prompt is sent to the AI client with a JSON schema for structured 
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `src/tasks/router.ts` | API routes |
-| `src/tasks/task.controller.ts` | Request handling |
-| `src/tasks/task.service.ts` | Business logic |
-| `src/prompts/builder.ts` | Prompt assembly |
-| `src/prompts/loader.ts` | Template loading |
+| File                               | Purpose              |
+| ---------------------------------- | -------------------- |
+| `src/tasks/router.ts`              | API routes           |
+| `src/tasks/task.controller.ts`     | Request handling     |
+| `src/tasks/task.service.ts`        | Business logic       |
+| `src/prompts/builder.ts`           | Prompt assembly      |
+| `src/prompts/loader.ts`            | Template loading     |
 | `src/prompts/template-replacer.ts` | Variable replacement |
-| `src/subjects/registry.ts` | Concept management |
-| `src/variations/loader.ts` | Variation loading |
-| `prompts/base-prompt.md` | Master template |
-| `prompts/variations.md` | Variation template |
-| `prompts/task-types/*.md` | Task type templates |
+| `src/subjects/registry.ts`         | Concept management   |
+| `src/variations/loader.ts`         | Variation loading    |
+| `prompts/base-prompt.md`           | Master template      |
+| `prompts/variations.md`            | Variation template   |
+| `prompts/task-types/*.md`          | Task type templates  |
 
 ## Variations System
 
@@ -154,20 +157,20 @@ Each variation item has an age range for filtering.
 
 ## Concept Impact Summary
 
-| Concept Field | Task Generation Impact |
-|---------------|----------------------|
-| `id` | Concept selection |
-| `name` | Displayed, inserted as `[[concept_name]]` |
-| `grade` | Filtering by student grade |
-| `focus` | Inserted as `[[concept_focus]]` |
-| `difficulty` | UI display only (not used in generation) |
-| `learning_objectives` | ONE randomly selected → `[[selected_objective]]` |
-| `problem_types` | ONE randomly selected → `[[selected_problem_type]]` |
-| `difficulty_guidelines` | Indexed by difficulty → `[[difficulty_guidelines]]` |
-| `real_world_context` | Inserted as `[[real_world_context]]` |
-| `anti_patterns` | Inserted as `[[anti_patterns]]` (optional) |
-| `prerequisites` | Informational (UI navigation) |
-| `prompt` (body) | Compiled with Handlebars, inserted as `<%concept_template%>` |
+| Concept Field           | Task Generation Impact                                       |
+| ----------------------- | ------------------------------------------------------------ |
+| `id`                    | Concept selection                                            |
+| `name`                  | Displayed, inserted as `[[concept_name]]`                    |
+| `grade`                 | Filtering by student grade                                   |
+| `focus`                 | Inserted as `[[concept_focus]]`                              |
+| `difficulty`            | UI display only (not used in generation)                     |
+| `learning_objectives`   | ONE randomly selected → `[[selected_objective]]`             |
+| `problem_types`         | ONE randomly selected → `[[selected_problem_type]]`          |
+| `difficulty_guidelines` | Indexed by difficulty → `[[difficulty_guidelines]]`          |
+| `real_world_context`    | Inserted as `[[real_world_context]]`                         |
+| `anti_patterns`         | Inserted as `[[anti_patterns]]` (optional)                   |
+| `prerequisites`         | Informational (UI navigation)                                |
+| `prompt` (body)         | Compiled with Handlebars, inserted as `<%concept_template%>` |
 
 ## Adding New Task Types
 

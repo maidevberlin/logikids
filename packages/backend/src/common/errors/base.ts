@@ -20,8 +20,8 @@ export abstract class ApplicationError extends Error {
     public readonly code?: string,
     cause?: unknown
   ) {
-    super(message, cause !== undefined ? { cause } : undefined);
-    this.name = this.constructor.name;
-    Error.captureStackTrace(this, this.constructor);
+    super(message, cause !== undefined ? { cause } : undefined)
+    this.name = this.constructor.name
+    Error.captureStackTrace(this, this.constructor)
   }
 }

@@ -1,1 +1,1 @@
-export { BaseRegistry } from './BaseRegistry';
+export { BaseRegistry } from './BaseRegistry'

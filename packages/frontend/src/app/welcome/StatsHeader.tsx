@@ -2,12 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Flame, Star, Sparkles } from 'lucide-react'
 import { useWelcomeStats } from './useWelcomeStats'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/app/common/ui/tooltip'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/app/common/ui/tooltip'
 
 export function StatsHeader() {
   const { t } = useTranslation()
@@ -67,7 +62,9 @@ export function StatsHeader() {
                     <div className="text-2xl font-bold text-foreground">
                       {achievement ? t(achievement) : t('welcome.stats.noAchievement')}
                     </div>
-                    <div className="text-sm text-muted-foreground">{t('welcome.stats.achievement')}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {t('welcome.stats.achievement')}
+                    </div>
                   </div>
                 </div>
               </TooltipTrigger>

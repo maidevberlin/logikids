@@ -1,10 +1,10 @@
-import { router } from './trpc';
-import { authRouter } from './auth/router';
-import { subjectsRouter } from './subjects/router';
-import { conceptsRouter } from './concepts/router';
-import { tasksRouter } from './tasks/router';
-import { syncRouter } from './sync/router';
-import { invitesRouter } from './invites/router';
+import { router } from './trpc'
+import { authRouter } from './auth/router'
+import { subjectsRouter } from './subjects/router'
+import { conceptsRouter } from './concepts/router'
+import { tasksRouter } from './tasks/router'
+import { syncRouter } from './sync/router'
+import { invitesRouter } from './invites/router'
 
 /**
  * Main application router
@@ -21,7 +21,7 @@ export const appRouter = router({
   tasks: tasksRouter,
   sync: syncRouter,
   invites: invitesRouter,
-});
+})
 
 // Export type for use in frontend
-export type AppRouter = typeof appRouter;
+export type AppRouter = typeof appRouter

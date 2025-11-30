@@ -45,6 +45,7 @@ For each new dimension, provide:
 **Description:** Frames problems from different cultural or geographical viewpoints to increase diversity and global awareness.
 
 **Example Values:**
+
 - "Set this problem in a Japanese context with local customs"
 - "Frame this from a Brazilian carnival perspective"
 - "Use examples from Norwegian outdoor traditions"

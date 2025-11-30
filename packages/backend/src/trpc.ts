@@ -1,9 +1,9 @@
-import { initTRPC, TRPCError } from '@trpc/server';
-import { CreateExpressContextOptions } from '@trpc/server/adapters/express';
-import jwt from 'jsonwebtoken';
-import { env } from './config/env';
+import { initTRPC, TRPCError } from '@trpc/server'
+import { CreateExpressContextOptions } from '@trpc/server/adapters/express'
+import jwt from 'jsonwebtoken'
+import { env } from './config/env'
 
-const JWT_SECRET = env.JWT_SECRET;
+const JWT_SECRET = env.JWT_SECRET
 
 /**
  * Create context for each request
@@ -11,14 +11,14 @@ const JWT_SECRET = env.JWT_SECRET;
  */
 export async function createContext({ req, res }: CreateExpressContextOptions) {
   // Extract userId from JWT token if present
-  let userId: string | undefined;
+  let userId: string | undefined
 
-  const authHeader = req.headers.authorization;
+  const authHeader = req.headers.authorization
   if (authHeader?.startsWith('Bearer ')) {
-    const token = authHeader.substring(7);
+    const token = authHeader.substring(7)
     try {
-      const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
-      userId = decoded.userId;
+      const decoded = jwt.verify(token, JWT_SECRET) as { userId: string }
+      userId = decoded.userId
     } catch (error) {
       // Invalid token, userId remains undefined
     }
@@ -28,28 +28,28 @@ export async function createContext({ req, res }: CreateExpressContextOptions) {
     req,
     res,
     userId,
-  };
+  }
 }
 
-export type Context = Awaited<ReturnType<typeof createContext>>;
+export type Context = Awaited<ReturnType<typeof createContext>>
 
 /**
  * Initialize tRPC
  */
-const t = initTRPC.context<Context>().create();
+const t = initTRPC.context<Context>().create()
 
 /**
  * Export reusable router and procedure helpers
  */
-export const router = t.router;
-export const publicProcedure = t.procedure;
+export const router = t.router
+export const publicProcedure = t.procedure
 
 /**
  * Protected procedure - requires authentication
  */
 export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
   if (!ctx.userId) {
-    throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Not authenticated' });
+    throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Not authenticated' })
   }
 
   return next({
@@ -57,5 +57,5 @@ export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
       ...ctx,
       userId: ctx.userId, // Now guaranteed to be defined
     },
-  });
-});
+  })
+})

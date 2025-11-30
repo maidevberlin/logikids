@@ -10,14 +10,20 @@
  *   bun run generate:task math/grade5-fractions --difficulty=hard
  */
 
-import { subjectRegistry } from '../subjects/registry';
-import { taskTypeRegistry } from '../tasks/task-types';
-import { TaskService } from '../tasks/service';
-import { TaskCache } from '../cache/taskCache';
-import { createAIClient } from '../common/ai/factory';
-import { TaskRequest } from '../tasks/types';
-import fs from 'fs';
-import { colors, parseCliArgs, suppressLogsUnlessVerbose, initializeServices, printParameters } from './lib';
+import { subjectRegistry } from '../subjects/registry'
+import { taskTypeRegistry } from '../tasks/task-types'
+import { TaskService } from '../tasks/service'
+import { TaskCache } from '../cache/taskCache'
+import { createAIClient } from '../common/ai/factory'
+import { TaskRequest } from '../tasks/types'
+import fs from 'fs'
+import {
+  colors,
+  parseCliArgs,
+  suppressLogsUnlessVerbose,
+  initializeServices,
+  printParameters,
+} from './lib'
 
 function printUsage() {
   console.log(`
@@ -41,44 +47,54 @@ ${colors.cyan}Examples:${colors.reset}
   bun run generate:task math/grade5-fractions
   bun run generate:task math/grade1-basic-arithmetic-operations --difficulty=easy
   bun run generate:task math/grade5-fractions --taskType=multipleSelect --verbose
-`);
+`)
 }
 
 async function generateTask() {
-  const parsed = parseCliArgs(process.argv.slice(2), printUsage);
+  const parsed = parseCliArgs(process.argv.slice(2), printUsage)
   if (!parsed) {
-    process.exit(0);
+    process.exit(0)
   }
 
-  const { subject, concept, taskType, grade: gradeOverride, difficulty, language, gender, output, verbose } = parsed;
+  const {
+    subject,
+    concept,
+    taskType,
+    grade: gradeOverride,
+    difficulty,
+    language,
+    gender,
+    output,
+    verbose,
+  } = parsed
 
-  suppressLogsUnlessVerbose(verbose);
+  suppressLogsUnlessVerbose(verbose)
 
   if (verbose) {
-    console.log('🤖 Generating task with AI...\n');
-    printParameters(parsed);
+    console.log('🤖 Generating task with AI...\n')
+    printParameters(parsed)
   }
 
   try {
-    const services = await initializeServices(subject, concept, taskType, gradeOverride, verbose);
-    const { promptService, grade, age } = services;
+    const services = await initializeServices(subject, concept, taskType, gradeOverride, verbose)
+    const { promptService, grade, age } = services
 
     // Create AI client
-    if (verbose) console.log('Creating AI client...');
-    const aiClient = await createAIClient();
+    if (verbose) console.log('Creating AI client...')
+    const aiClient = await createAIClient()
 
     // Create task cache (in-memory for CLI)
-    const taskCache = new TaskCache();
+    const taskCache = new TaskCache()
 
     // Create TaskService
-    if (verbose) console.log('Creating TaskService...');
+    if (verbose) console.log('Creating TaskService...')
     const taskService = new TaskService(
       aiClient,
       promptService,
       subjectRegistry,
       taskTypeRegistry,
       taskCache
-    );
+    )
 
     // Build task request
     const request: TaskRequest = {
@@ -90,45 +106,44 @@ async function generateTask() {
       difficulty,
       language,
       gender,
-    };
+    }
 
     // Generate task
-    if (verbose) console.log('Generating task with AI...\n');
-    const taskResponse = await taskService.generateTask(request);
+    if (verbose) console.log('Generating task with AI...\n')
+    const taskResponse = await taskService.generateTask(request)
 
     // Output result
     if (verbose) {
-      console.log('\n' + '='.repeat(80));
-      console.log('GENERATED TASK');
-      console.log('='.repeat(80) + '\n');
-      console.log('Task ID:', taskResponse.taskId);
-      console.log('Subject:', subject);
-      console.log('Concept:', concept);
-      console.log('Task Type:', taskType);
-      console.log('Difficulty:', difficulty);
-      console.log('\nTask Data:');
-      console.log(JSON.stringify(taskResponse.task, null, 2));
-      console.log('\n' + '='.repeat(80));
+      console.log('\n' + '='.repeat(80))
+      console.log('GENERATED TASK')
+      console.log('='.repeat(80) + '\n')
+      console.log('Task ID:', taskResponse.taskId)
+      console.log('Subject:', subject)
+      console.log('Concept:', concept)
+      console.log('Task Type:', taskType)
+      console.log('Difficulty:', difficulty)
+      console.log('\nTask Data:')
+      console.log(JSON.stringify(taskResponse.task, null, 2))
+      console.log('\n' + '='.repeat(80))
     } else {
       // Clean output: just the task as JSON
-      console.log(JSON.stringify(taskResponse, null, 2));
+      console.log(JSON.stringify(taskResponse, null, 2))
     }
 
     // Save to file if requested
     if (output) {
-      fs.writeFileSync(output, JSON.stringify(taskResponse, null, 2));
-      if (verbose) console.log(`✅ Task saved to: ${output}`);
+      fs.writeFileSync(output, JSON.stringify(taskResponse, null, 2))
+      if (verbose) console.log(`✅ Task saved to: ${output}`)
     }
 
-    if (verbose) console.log('✅ Task generation successful!');
-    process.exit(0);
-
+    if (verbose) console.log('✅ Task generation successful!')
+    process.exit(0)
   } catch (error) {
-    console.error('\n❌ Task generation failed:');
-    console.error(error);
-    process.exit(1);
+    console.error('\n❌ Task generation failed:')
+    console.error(error)
+    process.exit(1)
   }
 }
 
 // Run generation
-void generateTask();
+void generateTask()

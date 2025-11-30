@@ -117,11 +117,7 @@ export function ImportData() {
   return (
     <>
       <div className="space-y-4">
-        {error && (
-          <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-            {error}
-          </div>
-        )}
+        {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
         {success && (
           <div className="p-3 rounded-lg bg-green-50 text-green-600 text-sm">
@@ -141,9 +137,7 @@ export function ImportData() {
             className="w-full h-24 px-3 py-2 text-sm border border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none font-mono"
             disabled={isImporting}
           />
-          <p className="text-xs text-muted-foreground">
-            {t('account.import.backupCodeHint')}
-          </p>
+          <p className="text-xs text-muted-foreground">{t('account.import.backupCodeHint')}</p>
         </div>
 
         <Button
@@ -166,20 +160,12 @@ export function ImportData() {
               {t('account.import.conflictTitle')}
             </DialogTitle>
             <DialogDescription className="space-y-2">
-              <p>
-                {t('account.import.conflictMessage')}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {t('account.import.conflictWarning')}
-              </p>
+              <p>{t('account.import.conflictMessage')}</p>
+              <p className="text-sm text-muted-foreground">{t('account.import.conflictWarning')}</p>
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={handleCancelOverride}
-              disabled={isImporting}
-            >
+            <Button variant="outline" onClick={handleCancelOverride} disabled={isImporting}>
               {t('account.import.conflictCancel')}
             </Button>
             <Button

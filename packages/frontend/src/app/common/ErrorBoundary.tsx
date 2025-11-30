@@ -19,7 +19,7 @@ interface ErrorBoundaryState {
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public state: ErrorBoundaryState = {
-    hasError: false
+    hasError: false,
   }
 
   public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
@@ -40,7 +40,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       showErrorDetails = process.env.NODE_ENV === 'development',
       fallbackMessage = 'The application encountered an unexpected error.',
       showHomeButton = true,
-      className
+      className,
     } = this.props
 
     if (this.state.hasError) {

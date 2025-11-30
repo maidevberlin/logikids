@@ -23,4 +23,4 @@ ReactDOM.createRoot(rootElement).render(
       </Suspense>
     </ErrorBoundary>
   </React.StrictMode>
-) 
+)

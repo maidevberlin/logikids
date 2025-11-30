@@ -24,7 +24,7 @@ export function NavigationCards() {
             </h3>
             <p className="text-muted-foreground">
               {t('welcome.navigation.browseSubjects.description', {
-                defaultValue: 'Explore all subjects and concepts'
+                defaultValue: 'Explore all subjects and concepts',
               })}
             </p>
           </div>
@@ -43,7 +43,7 @@ export function NavigationCards() {
             </h3>
             <p className="text-muted-foreground">
               {t('welcome.navigation.practiceMode.description', {
-                defaultValue: 'Focus on concepts that need improvement'
+                defaultValue: 'Focus on concepts that need improvement',
               })}
             </p>
           </div>
@@ -62,7 +62,7 @@ export function NavigationCards() {
             </h3>
             <p className="text-muted-foreground">
               {t('welcome.navigation.dailyChallenge.description', {
-                defaultValue: 'Complete today\'s special task'
+                defaultValue: "Complete today's special task",
               })}
             </p>
           </div>

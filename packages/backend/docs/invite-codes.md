@@ -38,6 +38,7 @@ docker compose exec backend-dev bun run src/cli/invite-codes.ts remove ABCD-1234
 Codes are stored in SQLite database at `packages/backend/data/invite-codes.db`
 
 **Schema:**
+
 ```sql
 CREATE TABLE invite_codes (
   code TEXT PRIMARY KEY,
@@ -51,9 +52,11 @@ CREATE TABLE invite_codes (
 ## API Endpoints
 
 ### POST /api/invite/check
+
 Check if code is valid without marking as used (preview only).
 
 **Request:**
+
 ```json
 {
   "code": "ABCD-1234"
@@ -61,6 +64,7 @@ Check if code is valid without marking as used (preview only).
 ```
 
 **Response:**
+
 ```json
 {
   "valid": true | false,
@@ -91,6 +95,7 @@ docker compose exec -T backend-dev sh -c 'cat > data/invite-codes.db' < backup-i
 ## Future: Transition to Public
 
 When ready to go public, simply:
+
 1. Remove invite code validation from `ParentalConsentStep.tsx`
 2. Remove `/api/invite` routes from backend
 3. Keep the database for historical records

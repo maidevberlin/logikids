@@ -119,14 +119,10 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
     generateQR,
     importQR,
     enableAutoSync,
-    disableAutoSync
+    disableAutoSync,
   }
 
-  return (
-    <DataSyncContext.Provider value={value}>
-      {children}
-    </DataSyncContext.Provider>
-  )
+  return <DataSyncContext.Provider value={value}>{children}</DataSyncContext.Provider>
 }
 
 export function useDataSync(): DataSyncContextValue {

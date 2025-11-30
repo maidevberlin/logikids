@@ -1,10 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/app/common/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/app/common/ui/dialog'
 import { Achievement, getTotalCorrectTasks } from './achievements'
 import { GameStats } from './gameTypes'
 import { ProgressData } from '@/data/progress/types'
@@ -22,7 +17,7 @@ export function AchievementDetailDialog({
   gameStats,
   progress,
   open,
-  onClose
+  onClose,
 }: AchievementDetailDialogProps) {
   const { t } = useTranslation('stats')
 
@@ -38,38 +33,38 @@ export function AchievementDetailDialog({
       case 'firstSteps':
       case 'scholar':
         return {
-          totalTasks: getTotalCorrectTasks(progress)
+          totalTasks: getTotalCorrectTasks(progress),
         }
       case 'dedicated':
       case 'weekWarrior':
         return {
           currentStreak: gameStats.streaks.currentDays,
           bestStreak: gameStats.streaks.bestDays,
-          lastActive: gameStats.streaks.lastActiveDate
+          lastActive: gameStats.streaks.lastActiveDate,
         }
       case 'sharpshooter':
         return {
           currentPerfect: gameStats.perfectRun.current,
-          bestPerfect: gameStats.perfectRun.allTimeBest
+          bestPerfect: gameStats.perfectRun.allTimeBest,
         }
       case 'speedDemon':
         return {
           noHintThisWeek: gameStats.weekly.noHintTasks,
-          weekStart: gameStats.weekly.weekStart
+          weekStart: gameStats.weekly.weekStart,
         }
       case 'polymath':
         return {
           subjects: Object.entries(gameStats.subjectMastery).map(([name, data]) => ({
             name,
-            stars: data.stars
-          }))
+            stars: data.stars,
+          })),
         }
       case 'master':
         return {
           subjects: Object.entries(gameStats.subjectMastery).map(([name, data]) => ({
             name,
-            stars: data.stars
-          }))
+            stars: data.stars,
+          })),
         }
       default:
         return {}
@@ -97,7 +92,9 @@ export function AchievementDetailDialog({
               {t('achievementDetails.description', { defaultValue: 'Description' })}
             </h4>
             <p className="text-muted-foreground">
-              {t(`achievements.${achievement.id}.description`, { defaultValue: achievement.description })}
+              {t(`achievements.${achievement.id}.description`, {
+                defaultValue: achievement.description,
+              })}
             </p>
           </div>
 
@@ -121,7 +118,8 @@ export function AchievementDetailDialog({
             ) : (
               <div className="space-y-2">
                 <div className="text-muted-foreground">
-                  {t('achievementDetails.progress', { defaultValue: 'Progress' })}: {progressData.current} / {progressData.total}
+                  {t('achievementDetails.progress', { defaultValue: 'Progress' })}:{' '}
+                  {progressData.current} / {progressData.total}
                 </div>
                 <div className="h-3 bg-muted rounded-full overflow-hidden">
                   <div
@@ -141,7 +139,7 @@ export function AchievementDetailDialog({
             <div className="bg-muted rounded-xl p-4 space-y-2 text-sm">
               {t(`achievements.${achievement.id}.calculationDetails`, {
                 defaultValue: 'Details not available',
-                ...detailData
+                ...detailData,
               })}
             </div>
           </div>
@@ -155,31 +153,45 @@ export function AchievementDetailDialog({
               <div className="bg-blue-50 rounded-xl p-4 space-y-2 text-sm">
                 {achievement.id === 'firstSteps' || achievement.id === 'scholar' ? (
                   <div>
-                    {t('achievementDetails.totalTasksCompleted', { defaultValue: 'Total tasks completed' })}: {detailData.totalTasks}
+                    {t('achievementDetails.totalTasksCompleted', {
+                      defaultValue: 'Total tasks completed',
+                    })}
+                    : {detailData.totalTasks}
                   </div>
                 ) : achievement.id === 'dedicated' || achievement.id === 'weekWarrior' ? (
                   <>
                     <div>
-                      {t('achievementDetails.currentStreak', { defaultValue: 'Current streak' })}: {detailData.currentStreak} {t('achievementDetails.days', { defaultValue: 'days' })}
+                      {t('achievementDetails.currentStreak', { defaultValue: 'Current streak' })}:{' '}
+                      {detailData.currentStreak}{' '}
+                      {t('achievementDetails.days', { defaultValue: 'days' })}
                     </div>
                     <div>
-                      {t('achievementDetails.bestStreak', { defaultValue: 'Best streak' })}: {detailData.bestStreak} {t('achievementDetails.days', { defaultValue: 'days' })}
+                      {t('achievementDetails.bestStreak', { defaultValue: 'Best streak' })}:{' '}
+                      {detailData.bestStreak}{' '}
+                      {t('achievementDetails.days', { defaultValue: 'days' })}
                     </div>
                   </>
                 ) : achievement.id === 'sharpshooter' ? (
                   <>
                     <div>
-                      {t('achievementDetails.currentPerfectRun', { defaultValue: 'Current perfect run' })}: {detailData.currentPerfect}
+                      {t('achievementDetails.currentPerfectRun', {
+                        defaultValue: 'Current perfect run',
+                      })}
+                      : {detailData.currentPerfect}
                     </div>
                     <div>
-                      {t('achievementDetails.bestPerfectRun', { defaultValue: 'Best perfect run' })}: {detailData.bestPerfect}
+                      {t('achievementDetails.bestPerfectRun', { defaultValue: 'Best perfect run' })}
+                      : {detailData.bestPerfect}
                     </div>
                   </>
                 ) : achievement.id === 'speedDemon' ? (
                   <div>
-                    {t('achievementDetails.tasksWithoutHintsThisWeek', { defaultValue: 'Tasks without hints this week' })}: {detailData.noHintThisWeek}
+                    {t('achievementDetails.tasksWithoutHintsThisWeek', {
+                      defaultValue: 'Tasks without hints this week',
+                    })}
+                    : {detailData.noHintThisWeek}
                   </div>
-                ) : (achievement.id === 'polymath' || achievement.id === 'master') ? (
+                ) : achievement.id === 'polymath' || achievement.id === 'master' ? (
                   <div className="space-y-1">
                     {detailData.subjects?.map(({ name, stars }) => (
                       <div key={name} className="flex justify-between items-center">

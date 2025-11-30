@@ -10,8 +10,14 @@
  *   bun run generate:prompt math/grade5-fractions --difficulty=hard
  */
 
-import fs from 'fs';
-import { colors, parseCliArgs, suppressLogsUnlessVerbose, initializeServices, printParameters } from './lib';
+import fs from 'fs'
+import {
+  colors,
+  parseCliArgs,
+  suppressLogsUnlessVerbose,
+  initializeServices,
+  printParameters,
+} from './lib'
 
 function printUsage() {
   console.log(`
@@ -35,30 +41,47 @@ ${colors.cyan}Examples:${colors.reset}
   bun run generate:prompt math/grade5-fractions
   bun run generate:prompt math/grade1-basic-arithmetic-operations --difficulty=easy
   bun run generate:prompt math/grade5-fractions --taskType=multipleSelect --verbose
-`);
+`)
 }
 
 async function testPrompt() {
-  const parsed = parseCliArgs(process.argv.slice(2), printUsage);
+  const parsed = parseCliArgs(process.argv.slice(2), printUsage)
   if (!parsed) {
-    process.exit(0);
+    process.exit(0)
   }
 
-  const { subject, concept, taskType, grade: gradeOverride, difficulty, language, gender, output, verbose } = parsed;
+  const {
+    subject,
+    concept,
+    taskType,
+    grade: gradeOverride,
+    difficulty,
+    language,
+    gender,
+    output,
+    verbose,
+  } = parsed
 
-  suppressLogsUnlessVerbose(verbose);
+  suppressLogsUnlessVerbose(verbose)
 
   if (verbose) {
-    console.log('🧪 Testing prompt generation...\n');
-    printParameters(parsed);
+    console.log('🧪 Testing prompt generation...\n')
+    printParameters(parsed)
   }
 
   try {
-    const services = await initializeServices(subject, concept, taskType, gradeOverride, verbose);
-    const { promptService, concept: selectedConcept, subject: subjectObj, taskType: taskTypeObj, grade, age } = services;
+    const services = await initializeServices(subject, concept, taskType, gradeOverride, verbose)
+    const {
+      promptService,
+      concept: selectedConcept,
+      subject: subjectObj,
+      taskType: taskTypeObj,
+      grade,
+      age,
+    } = services
 
     // Build prompt using PromptService
-    if (verbose) console.log('Building prompt...');
+    if (verbose) console.log('Building prompt...')
     const prompt = await promptService.buildPrompt({
       subject: subjectObj,
       taskType: taskTypeObj,
@@ -68,37 +91,36 @@ async function testPrompt() {
       difficulty,
       language,
       gender,
-    });
+    })
 
     // Output result
     if (verbose) {
-      console.log('\n' + '='.repeat(80));
-      console.log('GENERATED PROMPT');
-      console.log('='.repeat(80) + '\n');
-      console.log(prompt);
-      console.log('\n' + '='.repeat(80));
-      console.log(`Prompt length: ${prompt.length} characters`);
-      console.log('='.repeat(80) + '\n');
+      console.log('\n' + '='.repeat(80))
+      console.log('GENERATED PROMPT')
+      console.log('='.repeat(80) + '\n')
+      console.log(prompt)
+      console.log('\n' + '='.repeat(80))
+      console.log(`Prompt length: ${prompt.length} characters`)
+      console.log('='.repeat(80) + '\n')
     } else {
       // Clean output: just the prompt
-      console.log(prompt);
+      console.log(prompt)
     }
 
     // Save to file if requested
     if (output) {
-      fs.writeFileSync(output, prompt);
-      if (verbose) console.log(`✅ Prompt saved to: ${output}`);
+      fs.writeFileSync(output, prompt)
+      if (verbose) console.log(`✅ Prompt saved to: ${output}`)
     }
 
-    if (verbose) console.log('✅ Prompt generation successful!');
-    process.exit(0);
-
+    if (verbose) console.log('✅ Prompt generation successful!')
+    process.exit(0)
   } catch (error) {
-    console.error('\n❌ Prompt generation failed:');
-    console.error(error);
-    process.exit(1);
+    console.error('\n❌ Prompt generation failed:')
+    console.error(error)
+    process.exit(1)
   }
 }
 
 // Run test
-void testPrompt();
+void testPrompt()

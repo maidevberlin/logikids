@@ -3,7 +3,10 @@ import { useProgress } from '@/data/progress/hooks'
 import { ACHIEVEMENTS } from '@/app/stats/achievements'
 
 // Level thresholds for progress display
-const LEVEL_THRESHOLDS = [0, 5, 15, 30, 50, 75, 100, 150, 200, 300, 400, 550, 700, 900, 1100, 1350, 1600, 2000, 2500, 3000, 4000]
+const LEVEL_THRESHOLDS = [
+  0, 5, 15, 30, 50, 75, 100, 150, 200, 300, 400, 550, 700, 900, 1100, 1350, 1600, 2000, 2500, 3000,
+  4000,
+]
 
 function getLevelFromTasks(totalTasks: number): { level: number; progressPercent: number } {
   let level = 0
@@ -16,8 +19,10 @@ function getLevelFromTasks(totalTasks: number): { level: number; progressPercent
   }
 
   const previousThreshold = level > 0 ? LEVEL_THRESHOLDS[level] : 0
-  const nextThreshold = level < LEVEL_THRESHOLDS.length - 1 ? LEVEL_THRESHOLDS[level + 1] : LEVEL_THRESHOLDS[level]
-  const progressPercent = ((totalTasks - previousThreshold) / (nextThreshold - previousThreshold)) * 100
+  const nextThreshold =
+    level < LEVEL_THRESHOLDS.length - 1 ? LEVEL_THRESHOLDS[level + 1] : LEVEL_THRESHOLDS[level]
+  const progressPercent =
+    ((totalTasks - previousThreshold) / (nextThreshold - previousThreshold)) * 100
 
   return { level: level + 1, progressPercent: Math.min(progressPercent, 100) }
 }
@@ -40,9 +45,7 @@ export function HeaderGameStats() {
 
   // Get tier 3 and 4 achievements to display (max 3)
   const highlightAchievements = gameStats
-    ? ACHIEVEMENTS
-        .filter((a) => gameStats.achievements[a.id]?.unlocked && a.tier >= 3)
-        .slice(0, 3)
+    ? ACHIEVEMENTS.filter((a) => gameStats.achievements[a.id]?.unlocked && a.tier >= 3).slice(0, 3)
     : []
 
   return (
@@ -75,17 +78,24 @@ export function HeaderGameStats() {
             strokeDasharray={`${progressPercent} ${100 - progressPercent}`}
             strokeLinecap="round"
             className={`transition-all duration-300 ${
-              level === 1 ? 'text-blue-500' :
-              level === 2 ? 'text-green-500' :
-              level === 3 ? 'text-yellow-500' :
-              level === 4 ? 'text-orange-500' :
-              level === 5 ? 'text-red-500' :
-              'text-purple-500'
+              level === 1
+                ? 'text-blue-500'
+                : level === 2
+                  ? 'text-green-500'
+                  : level === 3
+                    ? 'text-yellow-500'
+                    : level === 4
+                      ? 'text-orange-500'
+                      : level === 5
+                        ? 'text-red-500'
+                        : 'text-purple-500'
             }`}
           />
         </svg>
         {/* Level badge in center */}
-        <div className={`absolute inset-0 m-auto w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}>
+        <div
+          className={`absolute inset-0 m-auto w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}
+        >
           {level}
         </div>
       </div>
@@ -102,11 +112,16 @@ export function HeaderGameStats() {
               {achievement.icon}
             </span>
           ))}
-          {gameStats && Object.keys(gameStats.achievements).filter(id => gameStats.achievements[id]?.unlocked).length > 3 && (
-            <span className="text-xs text-muted-foreground self-center">
-              +{Object.keys(gameStats.achievements).filter(id => gameStats.achievements[id]?.unlocked).length - 3}
-            </span>
-          )}
+          {gameStats &&
+            Object.keys(gameStats.achievements).filter((id) => gameStats.achievements[id]?.unlocked)
+              .length > 3 && (
+              <span className="text-xs text-muted-foreground self-center">
+                +
+                {Object.keys(gameStats.achievements).filter(
+                  (id) => gameStats.achievements[id]?.unlocked
+                ).length - 3}
+              </span>
+            )}
         </div>
       )}
     </button>

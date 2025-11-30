@@ -57,11 +57,13 @@ docker compose exec backend-prod bun run migrate
 ### Creating New Migrations
 
 1. Create a new SQL file in `database/migrations/` with the next number:
+
    ```
    database/migrations/006_add_new_feature.sql
    ```
 
 2. Use idempotent SQL:
+
    ```sql
    -- Migration: Add new_table
    -- Description: Description of what this migration does
@@ -83,6 +85,7 @@ docker compose exec backend-prod bun run migrate
 ### Migration Best Practices
 
 1. **Always use IF NOT EXISTS**: Makes migrations idempotent
+
    ```sql
    CREATE TABLE IF NOT EXISTS ...
    CREATE INDEX IF NOT EXISTS ...
@@ -90,6 +93,7 @@ docker compose exec backend-prod bun run migrate
    ```
 
 2. **Add comments**: Include migration metadata
+
    ```sql
    -- Migration: Brief title
    -- Description: What this migration does
@@ -110,6 +114,7 @@ The system uses a **dual approach**:
 2. **Existing databases**: Use `bun run migrate` to apply new migrations
 
 This ensures:
+
 - Fresh installs get the full schema immediately
 - Production deployments can incrementally apply new migrations
 - No migration is ever applied twice (tracked in `schema_migrations`)
@@ -140,6 +145,7 @@ DATABASE_URL=postgresql://logikids:password@postgres:5432/logikids
 ### Before Deployment
 
 1. **Backup database**:
+
    ```bash
    docker exec logikids-postgres pg_dump -U logikids logikids > backup-$(date +%Y%m%d).sql
    ```
@@ -158,6 +164,7 @@ DATABASE_URL=postgresql://logikids:password@postgres:5432/logikids
 ### Rollback Strategy
 
 If a migration fails:
+
 1. Check error message
 2. Fix migration SQL
 3. Migration runner automatically uses transactions, so failed migrations are rolled back

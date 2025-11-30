@@ -8,30 +8,36 @@ description: Use when creating or improving educational concept files - includes
 ## Process
 
 ### 1. Understand
+
 - Clarify: country, subject, grade, concept scope
 - Ask user if anything is unclear
 
 ### 2. Research (new concepts only)
+
 - **Skip if curriculum info provided** (e.g., from bulk-generate-concepts)
 - Otherwise: WebSearch `"[country] [subject] curriculum [grade]"`
 - Find official curriculum documents
 - Extract: concept scope, learning objectives, difficulty progression
 
 ### 3. Read rules
+
 - `.claude/docs/concept-rules.md`
 - `packages/backend/src/prompts/concept-schema.ts`
 
 ### 4. Write/edit concept file
+
 - Location: `packages/content/subjects/{subject}/official/{id}.md`
 - Follow concept-rules.md for all field requirements
 - **Always update:** `version` (increment) and `version_notes` (describe changes)
 - **Prerequisites:** Check `packages/content/subjects/{subject}/official/` for existing concept IDs
 
 ### 5. Update translations
+
 - Update ALL files: `packages/frontend/public/locales/*/subjects/{subject}.json`
 - Key: `concepts.{concept-id}` with `name` and `description`
 
 ### 6. Validate
+
 ```bash
 docker compose exec backend-dev bun run check:concepts {subject}/{concept-id}
 ```

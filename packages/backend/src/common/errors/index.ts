@@ -28,7 +28,7 @@
  */
 
 // Base error class
-export { ApplicationError } from './base';
+export { ApplicationError } from './base'
 
 // Authentication and authorization errors
 export {
@@ -38,16 +38,16 @@ export {
   AccountRevokedError,
   InvalidCredentialsError,
   UnauthorizedError,
-  ForbiddenError
-} from './auth';
+  ForbiddenError,
+} from './auth'
 
 // Invite code errors
 export {
   InviteNotFoundError,
   InvalidInviteError,
   InviteExpiredError,
-  InviteAlreadyUsedError
-} from './invite';
+  InviteAlreadyUsedError,
+} from './invite'
 
 // Task generation and management errors
 export {
@@ -60,36 +60,31 @@ export {
   TaskTypeNotFoundError,
   NoTaskTypesError,
   TaskNotFoundError,
-  AllHintsUsedError
-} from './task';
+  AllHintsUsedError,
+} from './task'
 
 // Sync errors
-export { InvalidChecksumError } from './sync';
+export { InvalidChecksumError } from './sync'
 
 // Configuration errors
-export { ConfigurationError, UnsupportedProviderError } from './config';
+export { ConfigurationError, UnsupportedProviderError } from './config'
 
 // AI provider errors
-export {
-  EmptyAIResponseError,
-  AIProviderError,
-  AIGenerationError,
-  NoToolUseError
-} from './ai';
+export { EmptyAIResponseError, AIProviderError, AIGenerationError, NoToolUseError } from './ai'
 
 // Database errors
-export { DatabaseConnectionError } from './database';
+export { DatabaseConnectionError } from './database'
 
 // Prompt template errors
-export { PromptTemplateError, HintPromptNotLoadedError } from './prompt';
+export { PromptTemplateError, HintPromptNotLoadedError } from './prompt'
 
 // Validation errors
 export {
   ValidationError,
   MissingFieldError,
   InvalidFormatError,
-  InvalidSolutionError
-} from './validation';
+  InvalidSolutionError,
+} from './validation'
 
 // Registry errors
-export { RegistryInitializationError, NoJsonSchemaError } from './registry';
+export { RegistryInitializationError, NoJsonSchemaError } from './registry'

@@ -119,7 +119,7 @@ function shuffleArray<T>(array: T[]): T[] {
 export function TaskLoadingContent({
   subject,
   progress: _progress,
-  className
+  className,
 }: TaskLoadingContentProps) {
   const { t } = useTranslation('loading')
 
@@ -140,10 +140,10 @@ export function TaskLoadingContent({
 
     // Build complete content pool
     const allContent: ContentItem[] = [
-      ...subjectContent.tips.map(key => ({ key, type: 'tip' as ContentType })),
-      ...subjectContent.facts.map(key => ({ key, type: 'fact' as ContentType })),
-      ...subjectContent.previews.map(key => ({ key, type: 'preview' as ContentType })),
-      ...encouragementMessages.map(key => ({ key, type: 'encouragement' as ContentType }))
+      ...subjectContent.tips.map((key) => ({ key, type: 'tip' as ContentType })),
+      ...subjectContent.facts.map((key) => ({ key, type: 'fact' as ContentType })),
+      ...subjectContent.previews.map((key) => ({ key, type: 'preview' as ContentType })),
+      ...encouragementMessages.map((key) => ({ key, type: 'encouragement' as ContentType })),
     ]
 
     // Shuffle to avoid predictable order
@@ -219,7 +219,7 @@ export function TaskLoadingContent({
         className={cn(
           'relative min-h-[120px] sm:min-h-[100px]',
           'p-6',
-          'transition-all duration-300',
+          'transition-all duration-300'
         )}
         onFocus={handleContentFocus}
         onBlur={handleContentBlur}
@@ -270,9 +270,7 @@ export function TaskLoadingContent({
               key={index}
               className={cn(
                 'w-1.5 h-1.5 rounded-full transition-all duration-300',
-                isActive
-                  ? 'bg-primary w-4'
-                  : 'bg-muted-foreground/40'
+                isActive ? 'bg-primary w-4' : 'bg-muted-foreground/40'
               )}
             />
           )

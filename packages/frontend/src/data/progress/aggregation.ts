@@ -17,16 +17,16 @@ export function calculateConceptAggregate(attempts: AttemptData[]): ConceptAggre
       averageTimeSeconds: 0,
       successRate: 0,
       lastAttemptTimestamp: 0,
-      firstAttemptTimestamp: 0
+      firstAttemptTimestamp: 0,
     }
   }
 
-  const correct = attempts.filter(a => a.correct === true).length
-  const wrong = attempts.filter(a => a.correct === false).length
-  const skipped = attempts.filter(a => a.skipped).length
+  const correct = attempts.filter((a) => a.correct === true).length
+  const wrong = attempts.filter((a) => a.correct === false).length
+  const skipped = attempts.filter((a) => a.skipped).length
   const totalTime = attempts.reduce((sum, a) => sum + a.timeSeconds, 0)
   const totalHints = attempts.reduce((sum, a) => sum + a.hintsUsed, 0)
-  const timestamps = attempts.map(a => a.timestamp)
+  const timestamps = attempts.map((a) => a.timestamp)
 
   // Success rate only counts answered tasks (not skipped)
   const answeredTasks = correct + wrong
@@ -42,7 +42,7 @@ export function calculateConceptAggregate(attempts: AttemptData[]): ConceptAggre
     averageTimeSeconds: totalTime / attempts.length,
     successRate,
     lastAttemptTimestamp: Math.max(...timestamps),
-    firstAttemptTimestamp: Math.min(...timestamps)
+    firstAttemptTimestamp: Math.min(...timestamps),
   }
 }
 
@@ -63,7 +63,7 @@ export function calculateSubjectMastery(
       conceptsMastered: 0,
       conceptsInProgress: 0,
       conceptsNeedingHelp: 0,
-      lastCalculated: Date.now()
+      lastCalculated: Date.now(),
     }
   }
 
@@ -73,8 +73,8 @@ export function calculateSubjectMastery(
   const successRate = totalCorrect / totalAttempts
 
   // Classify concepts by performance
-  const mastered = concepts.filter(c => c.aggregate.successRate >= 0.8).length
-  const needingHelp = concepts.filter(c => c.aggregate.successRate < 0.5).length
+  const mastered = concepts.filter((c) => c.aggregate.successRate >= 0.8).length
+  const needingHelp = concepts.filter((c) => c.aggregate.successRate < 0.5).length
   const inProgress = concepts.length - mastered - needingHelp
 
   return {
@@ -85,7 +85,7 @@ export function calculateSubjectMastery(
     conceptsMastered: mastered,
     conceptsInProgress: inProgress,
     conceptsNeedingHelp: needingHelp,
-    lastCalculated: Date.now()
+    lastCalculated: Date.now(),
   }
 }
 
@@ -95,9 +95,9 @@ export function calculateSubjectMastery(
 export function calculateStars(successRate: number): number {
   if (successRate >= 0.95) return 5
   if (successRate >= 0.85) return 4
-  if (successRate >= 0.70) return 3
-  if (successRate >= 0.50) return 2
-  if (successRate >= 0.30) return 1
+  if (successRate >= 0.7) return 3
+  if (successRate >= 0.5) return 2
+  if (successRate >= 0.3) return 1
   return 0
 }
 
@@ -107,7 +107,7 @@ export function calculateStars(successRate: number): number {
  */
 export function pruneOldAttempts(stats: ConceptStats): ConceptStats {
   const cutoff = Date.now() - ONE_YEAR_MS
-  const recentAttempts = stats.attempts.filter(a => a.timestamp >= cutoff)
+  const recentAttempts = stats.attempts.filter((a) => a.timestamp >= cutoff)
 
   // If no change, return original
   if (recentAttempts.length === stats.attempts.length) {
@@ -117,7 +117,7 @@ export function pruneOldAttempts(stats: ConceptStats): ConceptStats {
   return {
     ...stats,
     attempts: recentAttempts,
-    aggregate: calculateConceptAggregate(recentAttempts)
+    aggregate: calculateConceptAggregate(recentAttempts),
   }
 }
 
@@ -125,22 +125,19 @@ export function pruneOldAttempts(stats: ConceptStats): ConceptStats {
  * Check if attempt is duplicate (same timestamp, correct, hints within 5 seconds)
  */
 export function isDuplicate(stats: ConceptStats, attempt: AttemptData): boolean {
-  return stats.attempts.some(a =>
-    a.id === attempt.id ||
-    (Math.abs(a.timestamp - attempt.timestamp) < 5000 && // Within 5 seconds
-     a.correct === attempt.correct &&
-     a.hintsUsed === attempt.hintsUsed)
+  return stats.attempts.some(
+    (a) =>
+      a.id === attempt.id ||
+      (Math.abs(a.timestamp - attempt.timestamp) < 5000 && // Within 5 seconds
+        a.correct === attempt.correct &&
+        a.hintsUsed === attempt.hintsUsed)
   )
 }
 
 /**
  * Generate unique attempt ID
  */
-export function generateAttemptId(
-  subject: string,
-  conceptId: string,
-  timestamp: number
-): string {
+export function generateAttemptId(subject: string, conceptId: string, timestamp: number): string {
   const randomPart = Math.random().toString(36).substring(2, 11)
   return `${subject}-${conceptId}-${timestamp}-${randomPart}`
 }

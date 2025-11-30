@@ -77,7 +77,9 @@ export function useProgress() {
    * Get weak concepts across all subjects (success rate < threshold)
    */
   const getWeakConcepts = useCallback(
-    (threshold = 0.5): Array<{
+    (
+      threshold = 0.5
+    ): Array<{
       subject: string
       conceptId: string
       stats: ConceptStats
@@ -128,7 +130,7 @@ export function useProgress() {
       totalWrong: totalAttempts - totalCorrect,
       successRate: totalAttempts > 0 ? totalCorrect / totalAttempts : 0,
       averageHintsPerTask: totalAttempts > 0 ? totalHints / totalAttempts : 0,
-      averageTimePerTask: totalAttempts > 0 ? totalTime / totalAttempts : 0
+      averageTimePerTask: totalAttempts > 0 ? totalTime / totalAttempts : 0,
     }
   }, [progress])
 
@@ -141,6 +143,6 @@ export function useProgress() {
     getSubjectMastery,
     getAttemptedSubjects,
     getWeakConcepts,
-    getOverallStats
+    getOverallStats,
   }
 }

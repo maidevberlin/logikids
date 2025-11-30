@@ -21,21 +21,21 @@ export function PracticePage() {
 
   // Helper function to get translated subject name
   const getSubjectName = (subjectId: string) => {
-    const subject = subjects.find(s => s.id === subjectId)
+    const subject = subjects.find((s) => s.id === subjectId)
     return t(`subjects.${subjectId}.label`, { defaultValue: subject?.name || subjectId })
   }
 
   // Helper function to get translated concept name
   const getConceptName = (subjectId: string, conceptId: string) => {
-    const subject = subjects.find(s => s.id === subjectId)
-    const concept = subject?.concepts?.find(c => c.id === conceptId)
+    const subject = subjects.find((s) => s.id === subjectId)
+    const concept = subject?.concepts?.find((c) => c.id === conceptId)
 
     if (!concept) {
       return formatConceptName(conceptId)
     }
 
     return t(`subjects/${subjectId}:concepts.${conceptId}.name`, {
-      defaultValue: concept.name || formatConceptName(conceptId)
+      defaultValue: concept.name || formatConceptName(conceptId),
     })
   }
 
@@ -71,9 +71,7 @@ export function PracticePage() {
               <Target className="w-12 h-12 text-green-600" />
             </div>
             <h1 className="text-3xl font-bold text-foreground">{t('practice.empty.title')}</h1>
-            <p className="text-lg text-muted-foreground">
-              {t('practice.empty.description')}
-            </p>
+            <p className="text-lg text-muted-foreground">{t('practice.empty.description')}</p>
             <Button onClick={() => navigate('/subjects')} className="mt-4">
               {t('practice.empty.button')}
             </Button>
@@ -93,9 +91,7 @@ export function PracticePage() {
               <Target className="w-10 h-10 text-orange-600" />
             </div>
             <h1 className="text-4xl font-bold text-foreground">{t('practice.title')}</h1>
-            <p className="text-lg text-muted-foreground">
-              {t('practice.subtitle')}
-            </p>
+            <p className="text-lg text-muted-foreground">{t('practice.subtitle')}</p>
           </div>
 
           {/* Recommendations */}
@@ -118,8 +114,8 @@ export function PracticePage() {
                         rec.priority >= 70
                           ? 'bg-red-500'
                           : rec.priority >= 50
-                          ? 'bg-orange-500'
-                          : 'bg-yellow-500'
+                            ? 'bg-orange-500'
+                            : 'bg-yellow-500'
                       }`}
                     >
                       #{index + 1}
@@ -133,7 +129,9 @@ export function PracticePage() {
                       <h3 className="text-xl font-bold text-foreground">
                         {getSubjectName(rec.subject)} - {getConceptName(rec.subject, rec.conceptId)}
                       </h3>
-                      <p className="text-sm text-muted-foreground mt-1">{translateReason(rec.reason)}</p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {translateReason(rec.reason)}
+                      </p>
                     </div>
 
                     {/* Metrics */}
@@ -166,14 +164,16 @@ export function PracticePage() {
 
                     {/* Difficulty Badge */}
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-muted-foreground">{t('practice.suggested')}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {t('practice.suggested')}
+                      </span>
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-medium ${
                           rec.suggestedDifficulty === 'easy'
                             ? 'bg-green-100 text-green-800'
                             : rec.suggestedDifficulty === 'medium'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-red-100 text-red-800'
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-red-100 text-red-800'
                         }`}
                       >
                         {t(`difficulty.${rec.suggestedDifficulty}`)}
@@ -218,7 +218,7 @@ function MetricBadge({ icon, label, value, color }: MetricBadgeProps) {
     green: 'bg-green-50 text-green-700',
     orange: 'bg-orange-50 text-orange-700',
     blue: 'bg-blue-50 text-blue-700',
-    purple: 'bg-purple-50 text-purple-700'
+    purple: 'bg-purple-50 text-purple-700',
   }
 
   return (
@@ -235,7 +235,7 @@ function MetricBadge({ icon, label, value, color }: MetricBadgeProps) {
 function formatConceptName(conceptId: string): string {
   return conceptId
     .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
 

@@ -33,9 +33,7 @@ export function ProtectedRoute() {
 
   // Check if user has completed onboarding
   const hasCompletedOnboarding =
-    data?.settings?.name &&
-    data?.settings?.age &&
-    data?.settings?.grade
+    data?.settings?.name && data?.settings?.age && data?.settings?.grade
 
   // Redirect to onboarding if started but not completed
   if (!hasCompletedOnboarding) {

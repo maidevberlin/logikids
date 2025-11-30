@@ -1,14 +1,34 @@
 import { answerTypeComponents } from './answer-types'
-import { Task, SingleChoiceTask, NumberInputTask, MultiSelectTask, OrderingTask, FillInBlankTask } from './types'
+import {
+  Task,
+  SingleChoiceTask,
+  NumberInputTask,
+  MultiSelectTask,
+  OrderingTask,
+  FillInBlankTask,
+} from './types'
 
 interface TaskAnswerRendererProps {
   task: Task
-  selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
-  onAnswerSelect: (answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null) => void
+  selectedAnswer:
+    | number
+    | boolean
+    | string[]
+    | number[]
+    | { value: number | null; unit?: string }
+    | null
+  onAnswerSelect: (
+    answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
+  ) => void
   isCorrect: boolean | null
 }
 
-export function TaskAnswerRenderer({ task, selectedAnswer, onAnswerSelect, isCorrect }: TaskAnswerRendererProps) {
+export function TaskAnswerRenderer({
+  task,
+  selectedAnswer,
+  onAnswerSelect,
+  isCorrect,
+}: TaskAnswerRendererProps) {
   // Render the appropriate answer component based on task type
   switch (task.type) {
     case 'single_choice': {

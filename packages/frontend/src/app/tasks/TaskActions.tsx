@@ -7,9 +7,17 @@ import { cn } from '@/lib/utils'
 interface TaskActionsProps {
   isLoading: boolean
   isCorrect: boolean | null
-  selectedAnswer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
+  selectedAnswer:
+    | number
+    | boolean
+    | string[]
+    | number[]
+    | { value: number | null; unit?: string }
+    | null
   onAnswerSubmit: () => void
-  onAnswerSelect: (answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null) => void
+  onAnswerSelect: (
+    answer: number | boolean | string[] | number[] | { value: number | null; unit?: string } | null
+  ) => void
   onNextTask: () => void
   hints: string[]
   requestHint: () => void
@@ -53,7 +61,11 @@ export function TaskActions({
               {t('task.checkAnswer', { defaultValue: 'Check Answer' })}
             </Button>
           ) : isCorrect ? (
-            <Button onClick={onNextTask} size="lg" className="rounded-xl bg-green-600 hover:bg-green-700">
+            <Button
+              onClick={onNextTask}
+              size="lg"
+              className="rounded-xl bg-green-600 hover:bg-green-700"
+            >
               {t('task.nextTask', { defaultValue: 'Next Task' })}
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>

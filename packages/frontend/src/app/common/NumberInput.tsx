@@ -11,7 +11,14 @@ interface NumberInputProps {
   className?: string
 }
 
-export function NumberInput({ value, onChange, min, max, label, className = '' }: NumberInputProps) {
+export function NumberInput({
+  value,
+  onChange,
+  min,
+  max,
+  label,
+  className = '',
+}: NumberInputProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const handleDecrement = () => {

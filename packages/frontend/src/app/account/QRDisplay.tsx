@@ -54,18 +54,10 @@ export function QRDisplay() {
 
   return (
     <div className="space-y-4">
-      {error && (
-        <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">
-          {error}
-        </div>
-      )}
+      {error && <div className="p-3 rounded-lg bg-red-50 text-red-600 text-sm">{error}</div>}
 
       {!showQR ? (
-        <Button
-          onClick={toggleQR}
-          variant="outline"
-          className="w-full justify-start"
-        >
+        <Button onClick={toggleQR} variant="outline" className="w-full justify-start">
           <Eye className="w-4 h-4 mr-2" />
           {t('account.qrDisplay.showButton')}
         </Button>
@@ -75,12 +67,7 @@ export function QRDisplay() {
           <div className="bg-card border-2 rounded-xl p-6 flex flex-col items-center">
             {qrData && (
               <>
-                <QRCodeSVG
-                  value={qrData}
-                  size={200}
-                  level="H"
-                  includeMargin={true}
-                />
+                <QRCodeSVG value={qrData} size={200} level="H" includeMargin={true} />
                 <p className="text-xs text-muted-foreground mt-3 text-center">
                   {t('account.qrDisplay.scanInstruction')}
                 </p>
@@ -90,17 +77,11 @@ export function QRDisplay() {
 
           {/* Security Warning */}
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-            <p className="text-sm text-foreground">
-              {t('account.qrDisplay.securityWarning')}
-            </p>
+            <p className="text-sm text-foreground">{t('account.qrDisplay.securityWarning')}</p>
           </div>
 
           {/* Hide Button */}
-          <Button
-            onClick={toggleQR}
-            variant="outline"
-            className="w-full justify-start"
-          >
+          <Button onClick={toggleQR} variant="outline" className="w-full justify-start">
             <EyeOff className="w-4 h-4 mr-2" />
             {t('account.qrDisplay.hideButton')}
           </Button>

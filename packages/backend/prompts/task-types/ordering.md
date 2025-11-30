@@ -7,6 +7,7 @@ description: A task where students arrange 3-5 items in the correct sequence
 Create an ordering task where students arrange 3-5 items in correct sequence.
 
 **CRITICAL**:
+
 - Generate 3-5 items with unique IDs ("a", "b", "c"...)
 - Randomize `items` array order (NOT the correct order)
 - `correctOrder` contains IDs in the correct sequence
