@@ -5,12 +5,12 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { appRouter } from './routers';
+import { appRouter } from './router';
 import { createContext } from './trpc';
 import { errorHandler } from './common/middleware/errorHandler';
 import { cacheCleanupService } from './cache/cacheCleanup';
 import { subjectRegistry } from './subjects/registry';
-import { taskTypeRegistry } from './tasks/types/registry';
+import { taskTypeRegistry } from './tasks/task-types';
 import { initializeDatabase, closeDatabase } from '../database/db';
 import { initializeContainer } from './container';
 import { createLogger } from './common/logger';
@@ -75,5 +75,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   });
 }
 
-export default app;
-export type { AppRouter } from './routers';
+export type { AppRouter } from './router.ts';

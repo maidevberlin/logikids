@@ -1,7 +1,7 @@
 import {TaskRequest} from './types';
-import {TaskResponse, BaseTaskResponse, extractSolution} from './types';
+import {TaskResponse, BaseTaskResponse} from './types';
 import {AIClient} from '../common/ai/base';
-import {TaskTypeRegistry} from './types/registry';
+import {TaskTypeRegistry} from './task-types';
 import {v4 as uuidv4} from 'uuid';
 import {TaskCache, TaskContext} from '../cache/taskCache';
 import {SubjectRegistry} from '../subjects/registry';
@@ -128,8 +128,7 @@ export class TaskService {
             grade: request.grade,
             difficulty: request.difficulty,
             language,
-            generatedTask: responseWithType.task,
-            solution: extractSolution(responseWithType),
+            taskResponse: responseWithType,
             hintsGenerated: [],
             createdAt: Date.now()
         };

@@ -1,6 +1,6 @@
-import { TaskGenerationParams, TaskSolution } from '../tasks/types';
+import { TaskGenerationParams, BaseTaskResponse } from '../tasks/types';
 import { Subject, HintPrompt } from './loader';
-import { TaskTypeWithSchema } from '../tasks/types/registry';
+import { TaskTypeWithSchema } from '../tasks/task-types';
 import { validateNoPlaceholders } from './helpers';
 import { VariationLoader } from './variations/loader';
 import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer';
@@ -190,8 +190,7 @@ export class PromptBuilder {
       grade: number;
       difficulty: string;
       language: string;
-      task: string;
-      solution: TaskSolution;
+      taskResponse: BaseTaskResponse;
       hintsGenerated: string[];
     },
     hintNumber: number
@@ -216,8 +215,8 @@ export class PromptBuilder {
 
     // Prepare variables for template
     const variables = {
-      task: context.task,
-      solution: JSON.stringify(context.solution, null, 2),
+      task: context.taskResponse.task,
+      solution: JSON.stringify(context.taskResponse, null, 2),
       previousHints,
       hintNumber: hintNumber.toString(),
       grade: context.grade.toString(),

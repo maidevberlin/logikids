@@ -1,36 +1,10 @@
 import { z } from 'zod';
-
-// Zod schemas for each task type's solution format
-const singleChoiceOptionSchema = z.object({
-  text: z.string(),
-  isCorrect: z.boolean()
-});
-
-const multiSelectOptionSchema = z.object({
-  id: z.number(),
-  text: z.string(),
-  isCorrect: z.boolean()
-});
-
-const fillInBlankItemSchema = z.object({
-  id: z.number(),
-  acceptedAnswers: z.array(z.string()),
-  caseSensitive: z.boolean()
-});
-
-// TaskSolution union schema matching the TypeScript type
-const taskSolutionSchema = z.union([
-  z.array(singleChoiceOptionSchema),  // single_choice
-  z.array(multiSelectOptionSchema),   // multi_select
-  z.boolean(),                        // yes_no
-  z.number(),                         // number_input
-  z.array(fillInBlankItemSchema),     // fill_in_blank
-  z.array(z.string())                 // ordering
-]);
+import type { BaseTaskResponse } from '../tasks/types';
 
 /**
- * Zod schema for task context stored in cache
- * Replaces manual interface with type-safe schema
+ * Zod schema for task context stored in cache.
+ * The taskResponse stores the full AI-generated task response,
+ * which is already validated at generation time.
  */
 export const taskContextSchema = z.object({
   taskId: z.string(),
@@ -40,8 +14,7 @@ export const taskContextSchema = z.object({
   grade: z.number(),
   difficulty: z.string(),
   language: z.string(),
-  generatedTask: z.string(),
-  solution: taskSolutionSchema,
+  taskResponse: z.custom<BaseTaskResponse>(),
   hintsGenerated: z.array(z.string()),
   createdAt: z.number()
 });

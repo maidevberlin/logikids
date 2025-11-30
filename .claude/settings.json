@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__jetbrains__*",
+      "WebFetch(domain:www.kmk.org)",
+      "Skill(bulk-generate-concepts)",
+      "Skill(jetbrains-coding)",
+      "Skill(write-concept)",
+      "Bash(bun:*)",
+      "Bash(bunx:*)",
+      "Bash(cat:*)",
+      "Bash(chmod:*)",
+      "Bash(cp:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(jq:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(tail:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "Bash(docker:*)",
+      "Bash(./invite:*)",
+      "Bash(./restart.sh)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|mcp__jetbrains__create_new_file|mcp__jetbrains__replace_text_in_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/format-file.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

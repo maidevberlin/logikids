@@ -21,7 +21,7 @@ src/
 │   └── ai/        # AI service implementations (OpenAI, Ollama)
 ├── config/        # Configuration management
 ├── tasks/         # Task management domain with integrated hints
-└── index.ts       # Application entry point
+└── router.ts       # Application entry point
 ```
 
 ## Key Features

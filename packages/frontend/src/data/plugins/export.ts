@@ -1,4 +1,4 @@
-import { UserData } from '../core/types.ts'
+import { UserData } from '@/data'
 import { getData, loginWithAccount } from '../core/userData.ts'
 import { storeKey, storeUserId, loadKey } from '../core/storage.ts'
 import { importKey, encrypt, exportKey } from '../core/crypto.ts'

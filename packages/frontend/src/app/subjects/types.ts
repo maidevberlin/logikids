@@ -1,4 +1,4 @@
-import { Concept } from '../concepts/types'
+import { Concept } from '@/app/concepts'
 
 export interface Subject {
   id: string

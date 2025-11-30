@@ -1,5 +1,5 @@
 import { Subject } from './loader';
-import { TaskTypeWithSchema } from '../tasks/types/registry';
+import { TaskTypeWithSchema } from '../tasks/task-types';
 import { Concept } from './schemas';
 import { Difficulty, Gender } from '../tasks/types';
 

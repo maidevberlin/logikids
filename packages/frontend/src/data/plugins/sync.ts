@@ -1,7 +1,6 @@
-import {UserData} from '../core/types.ts'
-import {getData, setData} from '../core/userData.ts'
-import {getAccessToken, getUserId, loadKey} from '../core/storage.ts'
-import {decrypt, encrypt} from '../core/crypto.ts'
+import {UserData, getData, setData} from '@/data'
+import {getAccessToken, getUserId, loadKey} from '../core/storage'
+import {decrypt, encrypt} from '../core/crypto'
 import {createLogger} from '@/lib/logger'
 
 const logger = createLogger('SyncPlugin')

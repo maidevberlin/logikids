@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { subjectRegistry } from '../subjects/registry';
-import { taskTypeRegistry } from './types/registry';
+import { taskTypeRegistry } from './task-types';
 import { Concept } from '../prompts/schemas';
 
 // Difficulty Levels
@@ -57,6 +57,5 @@ export interface TaskGenerationParams {
 }
 
 // Re-export task response types for convenience
-export type { TaskResponse, BaseTaskResponse, MultiSelectResponse, YesNoResponse, TaskSolution } from './types/';
-export { extractSolution } from './types/';
+export type { TaskResponse, BaseTaskResponse, MultiSelectResponse, YesNoResponse } from './task-types/';
 

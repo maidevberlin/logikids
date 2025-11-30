@@ -17,5 +17,8 @@
   },
   "comments": {
     "ports": "Frontend dev: 5153, Frontend prod: 5154, Backend dev: 5175, Backend prod: 5176"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.3"
   }
 }

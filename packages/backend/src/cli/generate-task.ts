@@ -11,7 +11,7 @@
  */
 
 import { subjectRegistry } from '../subjects/registry';
-import { taskTypeRegistry } from '../tasks/types/registry';
+import { taskTypeRegistry } from '../tasks/task-types';
 import { TaskService } from '../tasks/service';
 import { TaskCache } from '../cache/taskCache';
 import { createAIClient } from '../common/ai/factory';

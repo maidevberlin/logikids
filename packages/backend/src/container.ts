@@ -8,7 +8,7 @@ import {VariationLoader} from './prompts/variations/loader';
 import {TaskService} from './tasks/service';
 import {HintService} from './hints/service';
 import {subjectRegistry, SubjectRegistry} from './subjects/registry';
-import {taskTypeRegistry, TaskTypeRegistry} from './tasks/types/registry';
+import {taskTypeRegistry, TaskTypeRegistry} from './tasks/task-types';
 import {taskCache, TaskCache} from './cache/taskCache';
 import {createLogger} from './common/logger';
 

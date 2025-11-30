@@ -3,7 +3,7 @@
  */
 
 import { subjectRegistry } from '../subjects/registry';
-import { taskTypeRegistry, TaskTypeWithSchema } from '../tasks/types/registry';
+import { taskTypeRegistry, TaskTypeWithSchema } from '../tasks/task-types';
 import { PromptService } from '../prompts/service';
 import { PromptLoader, Subject } from '../prompts/loader';
 import { VariationLoader } from '../prompts/variations/loader';

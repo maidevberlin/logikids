@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ApplicationError, ValidationError } from '../errors/index';
+import { ApplicationError, ValidationError } from '../errors';
 import { ZodError, ZodIssue } from 'zod';
 import { createLogger } from '../logger';
 

@@ -5,7 +5,7 @@
 import { existsSync } from 'fs';
 import { resolve } from 'path';
 import { subjectRegistry } from '../../../subjects/registry';
-import { taskTypeRegistry } from '../../../tasks/types/registry';
+import { taskTypeRegistry } from '../../../tasks/task-types';
 import { PromptLoader } from '../../../prompts/loader';
 import type { CheckResult } from '../types';
 
