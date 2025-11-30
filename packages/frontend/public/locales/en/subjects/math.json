@@ -471,6 +471,18 @@
     "grade4-geometry-spatial": {
       "description": "Properties of 2D and 3D shapes; symmetry and lines; spatial visualization; nets of geometric solids; parallel and perpendicular relationships",
       "name": "Geometry and Spatial Reasoning"
+    },
+    "grade4-scale-maps": {
+      "description": "Reading and creating floor plans and maps; understanding scale as a ratio; calculating real distances from map distances; spatial orientation and direction",
+      "name": "Scale and Maps"
+    },
+    "grade4-volume-unit-cubes": {
+      "description": "Understanding volume by counting unit cubes and comparing volumes of 3D shapes",
+      "name": "Volume with Unit Cubes"
+    },
+    "grade4-combinatorics": {
+      "description": "Finding all possibilities systematically using tree diagrams, organized lists, and tables to solve combination and arrangement problems",
+      "name": "Combinatorics and Systematic Counting"
     }
   }
 }

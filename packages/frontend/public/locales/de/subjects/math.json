@@ -471,6 +471,18 @@
     "grade4-geometry-spatial": {
       "description": "Eigenschaften von ebenen und räumlichen Figuren; Symmetrie und Linien; räumliches Vorstellungsvermögen; Netze geometrischer Körper; parallele und senkrechte Beziehungen",
       "name": "Geometrie und räumliches Denken"
+    },
+    "grade4-scale-maps": {
+      "description": "Grundrisse und Karten lesen und erstellen; Maßstab als Verhältnis verstehen; reale Entfernungen aus Kartenabständen berechnen; räumliche Orientierung und Richtungen",
+      "name": "Maßstab und Karten"
+    },
+    "grade4-volume-unit-cubes": {
+      "description": "Volumen verstehen durch Zählen von Einheitswürfeln und Vergleichen von Volumina dreidimensionaler Körper",
+      "name": "Volumen mit Einheitswürfeln"
+    },
+    "grade4-combinatorics": {
+      "description": "Alle Möglichkeiten systematisch finden mit Baumdiagrammen, strukturierten Listen und Tabellen, um Kombinations- und Anordnungsprobleme zu lösen",
+      "name": "Kombinatorik und systematisches Zählen"
     }
   }
 }
