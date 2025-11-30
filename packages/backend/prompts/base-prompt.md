@@ -60,6 +60,3 @@ The `explanation` field contains the solution reasoning (shown after correct ans
 
 <%subject_base_template%>
 
-- LaTeX: `$x^2$` (inline), `$$\frac{a}{b}$$` (block)
-- Tables, **bold**, _italic_, lists
-- SVG in `<figure>` tags with `<figcaption>`

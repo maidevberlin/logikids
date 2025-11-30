@@ -1,5 +1,5 @@
 import { memo, useEffect, useRef, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
@@ -112,6 +112,7 @@ function MarkdownRendererComponent({
         <ReactMarkdown
           remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
           rehypePlugins={[rehypeRaw as any, ...(enableMath ? [rehypeKatex as any] : [])]}
+          urlTransform={(url) => (url.startsWith('data:') ? url : defaultUrlTransform(url))}
           components={{
             svg({ children, ...props }: any) {
               // Wrap SVGs in a container with white background and controlled width

@@ -15,6 +15,7 @@ import {
   TaskTypeNotFoundError,
 } from '../common/errors'
 import { Concept } from '../prompts/schemas'
+import { convertTaskSvgs } from '../common/svg'
 
 const logger = createLogger('TaskService')
 
@@ -109,11 +110,14 @@ export class TaskService {
       }
     )
 
+    // Convert inline SVGs to data URLs for reliable rendering
+    const convertedResult = convertTaskSvgs(aiResponse.result)
+
     // Generate taskId and add to response
     // Note: type is already correctly set in aiResponse.result by the schema
     const taskId = uuidv4()
     const responseWithType = {
-      ...aiResponse.result,
+      ...convertedResult,
       taskId,
       // Add usage information if available
       ...(aiResponse.usage && {
