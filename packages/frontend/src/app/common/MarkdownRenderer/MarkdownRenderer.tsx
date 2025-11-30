@@ -113,7 +113,7 @@ function MarkdownRendererComponent({
           remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
           rehypePlugins={[rehypeRaw as any, ...(enableMath ? [rehypeKatex as any] : [])]}
           components={{
-            svg({ node, children, ...props }: any) {
+            svg({ children, ...props }: any) {
               // Wrap SVGs in a container with white background and controlled width
               return (
                 <div
@@ -134,7 +134,7 @@ function MarkdownRendererComponent({
                 </div>
               )
             },
-            pre({ node, children, ...props }: any) {
+            pre({ children, ...props }: any) {
               // Check if pre contains SVG content
               const childContent = typeof children === 'object' && children?.props?.children
               const contentStr = String(childContent || children || '')
@@ -153,7 +153,7 @@ function MarkdownRendererComponent({
               // Default pre rendering for code blocks
               return <pre {...props}>{children}</pre>
             },
-            code({ node, inline, className, children, ...props }: any) {
+            code({ inline, className, children, ...props }: any) {
               const match = /language-(\w+)/.exec(className || '')
               const language = match ? match[1] : ''
 
