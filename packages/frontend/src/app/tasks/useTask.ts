@@ -5,7 +5,18 @@ import { useTaskAnswer } from './useTaskAnswer'
 import { useHint } from './useHint'
 import { useTaskData } from '@/hooks/useTaskData'
 
-export const useTask = (params: TaskRequest) => {
+interface HintUsage {
+  inputTokens: number
+  outputTokens: number
+  totalTokens: number
+  cost?: number
+}
+
+interface UseTaskOptions {
+  onHintReceived?: (usage?: HintUsage) => void
+}
+
+export const useTask = (params: TaskRequest, options?: UseTaskOptions) => {
   const [startTime, setStartTime] = useState(Date.now())
 
   // Use the dedicated useTaskData hook for data fetching
@@ -21,9 +32,11 @@ export const useTask = (params: TaskRequest) => {
   } = useTaskAnswer({ task })
 
   // Use the new useHint hook for hint management
-  const { hints, hintsUsed, requestHint, hintLoading, hintError, canRequestHint } = useHint({
-    taskId: task?.taskId,
-  })
+  const { hints, hintsUsed, requestHint, hintLoading, hintError, canRequestHint, totalHintUsage } =
+    useHint({
+      taskId: task?.taskId,
+      onHintReceived: options?.onHintReceived,
+    })
 
   // Update startTime whenever a new task is fetched
   useEffect(() => {
@@ -65,5 +78,6 @@ export const useTask = (params: TaskRequest) => {
     hintError,
     canRequestHint,
     startTime,
+    totalHintUsage,
   }
 }

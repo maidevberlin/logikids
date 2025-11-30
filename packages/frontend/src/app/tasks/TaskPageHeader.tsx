@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { useUserData } from '@/app/account'
 import { trpc } from '@/api/trpc'
-import { Skeleton } from '@/app/common/ui/skeleton'
 import { SubjectConceptSelector } from './SubjectConceptSelector'
 
 interface TaskPageHeaderProps {
@@ -14,16 +13,13 @@ export function TaskPageHeader({ subject, concept, onConceptChange }: TaskPageHe
   const { data: userData } = useUserData()
 
   // Fetch filtered subjects (by grade)
-  const { data: filteredSubjects, isLoading: isLoadingFiltered } = trpc.subjects.getAll.useQuery(
+  const { data: filteredSubjects } = trpc.subjects.getAll.useQuery(
     { grade: userData?.settings.grade ?? 5 },
     { enabled: !!userData }
   )
 
   // Fetch all subjects (no grade filter)
-  const { data: allSubjects, isLoading: isLoadingAll } = trpc.subjects.getAll.useQuery(
-    {},
-    { enabled: !!userData }
-  )
+  const { data: allSubjects } = trpc.subjects.getAll.useQuery({}, { enabled: !!userData })
 
   // Detect if current concept is in filtered list
   const showAllByDefault = useMemo(() => {
@@ -33,10 +29,8 @@ export function TaskPageHeader({ subject, concept, onConceptChange }: TaskPageHe
     return !conceptExists
   }, [concept, subject, filteredSubjects])
 
-  if (isLoadingFiltered || isLoadingAll) {
-    return <Skeleton className="h-10 w-48" />
-  }
-
+  // Render immediately - we have subject/concept from URL params
+  // The SubjectConceptSelector will handle loading state for dropdown content
   return (
     <SubjectConceptSelector
       subject={subject}

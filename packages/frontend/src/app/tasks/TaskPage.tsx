@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useEffect, useRef } from 'react'
-import { useParams, useSearchParams, useNavigate } from 'react-router-dom'
+import { useCallback, useMemo, useEffect, useState } from 'react'
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTask } from './useTask'
 import { useUserData } from '@/app/account'
 import { setData } from '@/data'
@@ -37,23 +37,36 @@ const taskDefaults: TaskRequest = {
 
 export function TaskPage() {
   const { subject, concept } = useParams<{ subject: string; concept: string }>()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const { data } = useUserData()
   const { submitTaskAttempt } = useProgress()
 
   // Adaptive difficulty tracking
-  const { currentDifficulty, notification, checkAndAdjustDifficulty, dismissNotification } =
-    useDifficultyTracking(subject || 'math', concept || 'random')
+  const {
+    currentDifficulty,
+    notification,
+    checkAndAdjustDifficulty,
+    dismissNotification,
+    setDifficulty,
+  } = useDifficultyTracking(subject || 'math', concept || 'random')
 
-  // Track if current task was answered (to detect skips)
-  const taskAnsweredRef = useRef(false)
-  const previousTaskIdRef = useRef<string | null>(null)
+  // Local difficulty for current task - only updates on explicit user actions (next task, manual change)
+  // This prevents the task from refetching when adaptive difficulty changes mid-task
+  const [activeDifficulty, setActiveDifficulty] = useState<Difficulty>(currentDifficulty)
+
+  // Track which task we've already submitted an attempt for (to avoid counting multiple wrong answers)
+  const [submittedTaskId, setSubmittedTaskId] = useState<string | null>(null)
+
+  // Sync activeDifficulty when currentDifficulty changes on initial load or concept change
+  useEffect(() => {
+    setActiveDifficulty(currentDifficulty)
+  }, [subject, concept]) // Only on subject/concept change, not on every currentDifficulty change
 
   // Memoize task parameters
   const taskParams = useMemo(() => {
     return {
-      difficulty: currentDifficulty,
+      difficulty: activeDifficulty,
       subject: subject ?? taskDefaults.subject,
       concept: concept && concept !== 'random' ? concept : undefined,
       age: data?.settings.age ?? taskDefaults.age,
@@ -69,7 +82,7 @@ export function TaskPage() {
   }, [
     subject,
     concept,
-    currentDifficulty,
+    activeDifficulty,
     data?.settings.age,
     data?.settings.grade,
     data?.settings.gender,
@@ -84,6 +97,30 @@ export function TaskPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [taskParams.subject, taskParams.concept])
+
+  // Callback to record hint costs
+  const handleHintReceived = useCallback(
+    (usage?: { inputTokens: number; outputTokens: number; totalTokens: number; cost?: number }) => {
+      if (usage && data) {
+        const currentCosts = data.costs || []
+        setData({
+          costs: [
+            ...currentCosts,
+            {
+              subject: taskParams.subject,
+              concept: taskParams.concept || 'random',
+              inputTokens: usage.inputTokens,
+              outputTokens: usage.outputTokens,
+              totalTokens: usage.totalTokens,
+              cost: usage.cost,
+              timestamp: Date.now(),
+            },
+          ],
+        })
+      }
+    },
+    [data, taskParams.subject, taskParams.concept]
+  )
 
   const {
     task,
@@ -102,12 +139,15 @@ export function TaskPage() {
     hintError,
     canRequestHint,
     startTime,
-  } = useTask(taskParams)
+    totalHintUsage,
+  } = useTask(taskParams, { onHintReceived: handleHintReceived })
 
-  // Track progress when answer is checked
+  // Track progress when answer is checked (only once per task)
   useEffect(() => {
-    if (task && selectedAnswer !== null && isCorrect !== null) {
-      taskAnsweredRef.current = true
+    if (task && selectedAnswer !== null && isCorrect !== null && submittedTaskId !== task.taskId) {
+      // Mark this task as submitted
+      setSubmittedTaskId(task.taskId)
+
       submitTaskAttempt({
         subject: taskParams.subject,
         conceptId: taskParams.concept || 'random',
@@ -130,6 +170,7 @@ export function TaskPage() {
               inputTokens: task.usage.inputTokens,
               outputTokens: task.usage.outputTokens,
               totalTokens: task.usage.totalTokens,
+              cost: task.usage.cost,
               timestamp: Date.now(),
             },
           ],
@@ -140,29 +181,12 @@ export function TaskPage() {
       checkAndAdjustDifficulty()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    task,
-    selectedAnswer,
-    isCorrect,
-    taskParams.subject,
-    taskParams.concept,
-    taskParams.difficulty,
-    hintsUsed,
-    startTime,
-    // NOTE: submitTaskAttempt and checkAndAdjustDifficulty intentionally omitted to prevent infinite loop
-    // The callbacks use the latest values via closure
-  ])
+  }, [task?.taskId, isCorrect])
 
-  // Track skips when task changes
-  useEffect(() => {
-    if (!task) return
-
-    // If task changed and previous task wasn't answered, record skip
-    if (
-      previousTaskIdRef.current &&
-      previousTaskIdRef.current !== task.taskId &&
-      !taskAnsweredRef.current
-    ) {
+  // Handlers
+  const handleNextTask = useCallback(() => {
+    // Record skip if task exists and no answer was submitted (isCorrect is still null)
+    if (task && isCorrect === null) {
       submitTaskAttempt({
         subject: taskParams.subject,
         conceptId: taskParams.concept || 'random',
@@ -172,26 +196,29 @@ export function TaskPage() {
         startTime,
         skipped: true,
       })
-      // Check and adjust difficulty after recording skip
-      checkAndAdjustDifficulty()
     }
+    // Apply any pending difficulty change from adaptive tracking
+    setActiveDifficulty(currentDifficulty)
+    nextTask()
+  }, [
+    task,
+    isCorrect,
+    taskParams.subject,
+    taskParams.concept,
+    taskParams.difficulty,
+    hintsUsed,
+    startTime,
+    submitTaskAttempt,
+    currentDifficulty,
+    nextTask,
+  ])
 
-    // Update refs for next task
-    previousTaskIdRef.current = task.taskId
-    taskAnsweredRef.current = false
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [task?.taskId])
-
-  // Handlers
   const handleDifficultyChange = useCallback(
     (newDifficulty: Difficulty) => {
-      setSearchParams((prev) => {
-        const newParams = new URLSearchParams(prev)
-        newParams.set('difficulty', newDifficulty)
-        return newParams
-      })
+      setDifficulty(newDifficulty)
+      setActiveDifficulty(newDifficulty) // Apply immediately for manual changes
     },
-    [setSearchParams]
+    [setDifficulty]
   )
 
   const handleConceptChange = useCallback(
@@ -245,7 +272,7 @@ export function TaskPage() {
             gradingDetails={gradingDetails}
             onAnswerSelect={selectAnswer}
             onAnswerSubmit={checkAnswer}
-            onNextTask={nextTask}
+            onNextTask={handleNextTask}
             hints={hints}
             requestHint={requestHint}
             hintLoading={hintLoading}
@@ -253,6 +280,7 @@ export function TaskPage() {
             canRequestHint={canRequestHint}
             difficulty={taskParams.difficulty}
             onDifficultyChange={handleDifficultyChange}
+            hintUsage={totalHintUsage}
           />
         </div>
       </PageLayout>

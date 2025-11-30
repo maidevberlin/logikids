@@ -15,11 +15,20 @@ export class TasksController {
     return this.taskService.generateTask(input, userId)
   }
 
-  async getHint(taskId: string): Promise<{
+  async getHint(
+    taskId: string,
+    userId: string
+  ): Promise<{
     hint: string
     hintNumber: number
     totalHintsAvailable: number
+    usage?: {
+      inputTokens: number
+      outputTokens: number
+      totalTokens: number
+      cost?: number
+    }
   }> {
-    return this.hintService.generateHint(taskId)
+    return this.hintService.generateHint(taskId, userId)
   }
 }

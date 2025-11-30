@@ -11,7 +11,7 @@ export const tasksRouter = router({
     return getController().getTask(input, ctx.userId)
   }),
 
-  getHint: protectedProcedure.input(getHintInputSchema).mutation(async ({ input }) => {
-    return getController().getHint(input.taskId)
+  getHint: protectedProcedure.input(getHintInputSchema).mutation(async ({ input, ctx }) => {
+    return getController().getHint(input.taskId, ctx.userId)
   }),
 })

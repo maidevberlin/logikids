@@ -111,7 +111,10 @@ function MarkdownRendererComponent({
       >
         <ReactMarkdown
           remarkPlugins={[remarkGfm, ...(enableMath ? [remarkMath] : [])]}
-          rehypePlugins={[rehypeRaw as any, ...(enableMath ? [rehypeKatex as any] : [])]}
+          rehypePlugins={[
+            rehypeRaw as any,
+            ...(enableMath ? [[rehypeKatex, { strict: false }] as any] : []),
+          ]}
           urlTransform={(url) => (url.startsWith('data:') ? url : defaultUrlTransform(url))}
           components={{
             svg({ children, ...props }: any) {

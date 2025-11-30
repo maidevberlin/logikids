@@ -51,7 +51,7 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Write|Edit|mcp__jetbrains__create_new_file|mcp__jetbrains__replace_text_in_file",
+        "matcher": "Write|Edit|Update|mcp__jetbrains__create_new_file|mcp__jetbrains__replace_text_in_file",
         "hooks": [
           {
             "type": "command",

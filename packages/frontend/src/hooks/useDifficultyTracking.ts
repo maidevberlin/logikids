@@ -57,10 +57,43 @@ export function useDifficultyTracking(subject: string, conceptId: string) {
     setNotification(null)
   }, [])
 
+  // Manually set difficulty (user override)
+  const setDifficulty = useCallback(
+    (newDifficulty: Difficulty) => {
+      if (!userData) return
+
+      const updatedProgress = { ...userData.progress }
+      if (!updatedProgress[subject]) {
+        updatedProgress[subject] = {}
+      }
+      if (!updatedProgress[subject][conceptId]) {
+        updatedProgress[subject][conceptId] = {
+          attempts: [],
+          aggregate: {
+            totalAttempts: 0,
+            correct: 0,
+            wrong: 0,
+            skipped: 0,
+            totalHintsUsed: 0,
+            totalTimeSeconds: 0,
+            averageTimeSeconds: 0,
+            successRate: 0,
+            lastAttemptTimestamp: 0,
+            firstAttemptTimestamp: 0,
+          },
+        }
+      }
+      updatedProgress[subject][conceptId].difficulty = newDifficulty
+      updateProgress(updatedProgress)
+    },
+    [userData, subject, conceptId, updateProgress]
+  )
+
   return {
     currentDifficulty,
     notification,
     checkAndAdjustDifficulty,
     dismissNotification,
+    setDifficulty,
   }
 }

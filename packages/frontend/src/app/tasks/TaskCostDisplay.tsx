@@ -1,35 +1,72 @@
 import { TaskUsageInfo } from './types'
 
 interface TaskCostDisplayProps {
-  usage?: TaskUsageInfo
+  taskUsage?: TaskUsageInfo
+  hintUsage?: TaskUsageInfo
 }
 
-export function TaskCostDisplay({ usage }: TaskCostDisplayProps) {
-  if (!usage) {
+export function TaskCostDisplay({ taskUsage, hintUsage }: TaskCostDisplayProps) {
+  // Calculate combined totals
+  const hasTaskUsage = taskUsage && taskUsage.inputTokens > 0
+  const hasHintUsage = hintUsage && hintUsage.inputTokens > 0
+
+  if (!hasTaskUsage && !hasHintUsage) {
     return null
   }
 
+  const totalInputTokens = (taskUsage?.inputTokens || 0) + (hintUsage?.inputTokens || 0)
+  const totalOutputTokens = (taskUsage?.outputTokens || 0) + (hintUsage?.outputTokens || 0)
+  const totalCost = (taskUsage?.cost || 0) + (hintUsage?.cost || 0)
+
   // Format cost in USD with appropriate precision
   const formatCost = (cost: number) => {
-    if (cost < 0.01) {
-      return `$${(cost * 1000).toFixed(2)}m` // Show in millicents for very small amounts
+    if (cost < 0.001) {
+      return `$${cost.toFixed(5)}`
     }
-    return `$${cost.toFixed(4)}`
+    if (cost < 0.01) {
+      return `$${cost.toFixed(4)}`
+    }
+    return `$${cost.toFixed(3)}`
+  }
+
+  const formatTokens = (num: number) => {
+    if (num >= 10000) {
+      return `${(num / 1000).toFixed(0)}k`
+    }
+    if (num >= 1000) {
+      return `${(num / 1000).toFixed(1)}k`
+    }
+    return num.toString()
   }
 
   return (
-    <div className="flex items-center justify-end gap-3 text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
-      {usage.cost !== undefined && (
-        <span className="font-mono font-semibold text-foreground/70">{formatCost(usage.cost)}</span>
+    <div className="flex items-center justify-end gap-3 mt-6 pt-3 border-t border-border/30">
+      {/* Token usage pill */}
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-muted/40 to-muted/20 text-[11px] text-muted-foreground/80">
+        <div className="flex items-center gap-1.5">
+          <span className="text-emerald-600/70 dark:text-emerald-400/70">↓</span>
+          <span className="font-medium tabular-nums">{formatTokens(totalInputTokens)}</span>
+        </div>
+        <div className="w-px h-3 bg-border/50" />
+        <div className="flex items-center gap-1.5">
+          <span className="text-blue-600/70 dark:text-blue-400/70">↑</span>
+          <span className="font-medium tabular-nums">{formatTokens(totalOutputTokens)}</span>
+        </div>
+      </div>
+
+      {/* Cost pill */}
+      {totalCost > 0 && (
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-[11px]">
+          <span className="font-medium tabular-nums text-amber-800 dark:text-amber-200">
+            {formatCost(totalCost)}
+          </span>
+          {hasHintUsage && (
+            <span className="text-[9px] text-amber-800/70 dark:text-amber-300 font-medium">
+              +hints
+            </span>
+          )}
+        </div>
       )}
-      <span className="flex items-center gap-1">
-        <span className="font-mono">↓{usage.inputTokens.toLocaleString()}</span>
-        <span className="font-mono">↑{usage.outputTokens.toLocaleString()}</span>
-        {usage.totalTokens && (
-          <span className="font-mono">Σ{usage.totalTokens.toLocaleString()}</span>
-        )}
-      </span>
-      <span className="text-[10px] opacity-70">tokens</span>
     </div>
   )
 }

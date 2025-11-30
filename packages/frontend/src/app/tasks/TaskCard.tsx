@@ -9,7 +9,7 @@ import { TaskAnswerRenderer } from './TaskAnswerRenderer'
 import { TaskFeedback } from './TaskFeedback'
 import { TaskActions } from './TaskActions'
 import { TaskCostDisplay } from './TaskCostDisplay'
-import { Task } from './types'
+import { Task, TaskUsageInfo } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
 import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
 
@@ -39,6 +39,7 @@ interface TaskCardProps {
   canRequestHint: boolean
   difficulty: 'easy' | 'medium' | 'hard'
   onDifficultyChange: (difficulty: 'easy' | 'medium' | 'hard') => void
+  hintUsage?: TaskUsageInfo
 }
 
 export function TaskCard({
@@ -59,6 +60,7 @@ export function TaskCard({
   canRequestHint,
   difficulty,
   onDifficultyChange,
+  hintUsage,
 }: TaskCardProps) {
   const { t } = useTranslation()
   const [showFeedback, setShowFeedback] = useState(false)
@@ -176,7 +178,7 @@ export function TaskCard({
       />
 
       {/* Cost information */}
-      <TaskCostDisplay usage={task.usage} />
+      <TaskCostDisplay taskUsage={task.usage} hintUsage={hintUsage} />
     </Card>
   )
 }

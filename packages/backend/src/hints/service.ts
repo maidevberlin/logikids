@@ -34,12 +34,21 @@ export class HintService {
     logger.info('Initialization complete')
   }
 
-  public async generateHint(taskId: string): Promise<{
+  public async generateHint(
+    taskId: string,
+    userId?: string
+  ): Promise<{
     hint: string
     hintNumber: number
     totalHintsAvailable: number
+    usage?: {
+      inputTokens: number
+      outputTokens: number
+      totalTokens: number
+      cost?: number
+    }
   }> {
-    logger.info('Generating hint for task', { taskId })
+    logger.info('Generating hint for task', { taskId, userId })
 
     // Get task context from cache
     const context = taskCache.get(taskId)
@@ -99,7 +108,14 @@ export class HintService {
     const aiStartTime = Date.now()
     const aiResponse = await this.aiClient.generateStructured<{ hint: string }>(
       hintPrompt,
-      hintSchema
+      hintSchema,
+      {
+        costTracking: {
+          userId,
+          subject: context.subject,
+          concept: context.concept,
+        },
+      }
     )
     const aiDuration = Date.now() - aiStartTime
     logger.info('Hint generated', { duration: aiDuration, usage: aiResponse.usage })
@@ -113,6 +129,14 @@ export class HintService {
       hint: aiResponse.result.hint,
       hintNumber,
       totalHintsAvailable: 4,
+      ...(aiResponse.usage && {
+        usage: {
+          inputTokens: aiResponse.usage.inputTokens,
+          outputTokens: aiResponse.usage.outputTokens,
+          totalTokens: aiResponse.usage.totalTokens,
+          cost: aiResponse.usage.cost,
+        },
+      }),
     }
   }
 }

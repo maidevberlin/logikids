@@ -92,6 +92,10 @@
       "description": "Grundlegende ebene Figuren identifizieren, benennen und beschreiben",
       "name": "Ebene Figuren"
     },
+    "grade1-probability-basics": {
+      "description": "Zufall und Wahrscheinlichkeit mit Begriffen wie sicher, möglich und unmöglich anhand einfacher Alltagssituationen verstehen",
+      "name": "Wahrscheinlichkeit - Grundlagen"
+    },
     "grade1-solid-shapes": {
       "description": "Geometrische Körper (Würfel, Kugel, Zylinder, Kegel, Quader) identifizieren, benennen und mit realen Objekten in Verbindung bringen",
       "name": "Geometrische Körper"
@@ -100,9 +104,17 @@
       "description": "Positionswörter verstehen und verwenden, um Orte zu beschreiben und Anweisungen zu folgen",
       "name": "Räumliche Orientierung"
     },
+    "grade1-symmetry": {
+      "description": "Achsensymmetrie durch Falten und Spiegelaktivitäten erkennen, symmetrische Formen identifizieren und symmetrische Muster erstellen",
+      "name": "Symmetrie"
+    },
     "grade2-addition-subtraction-to-100": {
       "description": "Addition und Subtraktion im Zahlenraum bis 100 mit Kopfrechenstrategien, mit und ohne Zehnerübergang, und Lösen mehrstufiger Textaufgaben",
       "name": "Addition und Subtraktion bis 100"
+    },
+    "grade2-money-and-currency": {
+      "description": "Mit Euro-Münzen und Scheinen bis 100 € rechnen, € und ct Schreibweise verwenden, Geldbeträge addieren und subtrahieren, Wechselgeld berechnen und Einkaufsaufgaben lösen",
+      "name": "Geld und Währung"
     },
     "grade2-geometry-and-symmetry": {
       "description": "Vertiefung von ebenen und räumlichen Figuren, Erkennen und Erstellen symmetrischer Figuren und Arbeiten mit Symmetrieachsen",
@@ -207,6 +219,10 @@
     "grade4-data-analysis-and-statistics": {
       "description": "Diagramme analysieren, arithmetisches Mittel berechnen, Datensätze vergleichen und Wahrscheinlichkeitskonzepte verstehen",
       "name": "Datenanalyse und Statistik"
+    },
+    "grade4-data-probability": {
+      "description": "Daten aus Umfragen und Experimenten sammeln und organisieren; Balkendiagramme, Piktogramme und Tabellen erstellen und interpretieren; einfache Durchschnittswerte berechnen; Wahrscheinlichkeit und Ereignisse verstehen",
+      "name": "Datenanalyse und Wahrscheinlichkeit"
     },
     "grade4-fractions": {
       "description": "Brüche als Teile eines Ganzen verstehen, Bruchschreibweise und einfache Brüche vergleichen",
@@ -411,6 +427,38 @@
     "grade3-measurement-mass-volume": {
       "description": "Gramm, Kilogramm, Milliliter und Liter verstehen und anwenden durch Messen, Vergleichen und Umrechnen",
       "name": "Größen: Masse und Volumen"
+    },
+    "grade4-numbers-to-million": {
+      "description": "Stellenwertsystem mit sechs Stellen verstehen; Zahlen lesen, schreiben, vergleichen und ordnen; Runden auf Tausender und darüber hinaus; Zahlenmuster in großen Zahlen erkennen",
+      "name": "Zahlen bis 1.000.000"
+    },
+    "grade4-written-multiplication-division": {
+      "description": "Standardverfahren für schriftliche Multiplikation und Division mehrstelliger Zahlen beherrschen; Wissen, wann welche Operation angewendet wird; Sachaufgaben lösen",
+      "name": "Schriftliche Multiplikation und Division"
+    },
+    "grade4-patterns-equations": {
+      "description": "Zahlenmuster erkennen und fortsetzen, Folgeregeln finden, Variablen als Platzhalter verstehen, einfache einschrittige Gleichungen lösen und mathematische Beziehungen beschreiben",
+      "name": "Muster und einfache Gleichungen"
+    },
+    "grade4-time-calendar": {
+      "description": "Analoge und digitale Uhren im 24-Stunden-Format ablesen; zwischen Zeiteinheiten umrechnen; Zeitdauern und verstrichene Zeit berechnen; mit Kalendern arbeiten einschließlich Tagen, Wochen, Monaten und Jahren",
+      "name": "Zeit und Kalender"
+    },
+    "grade4-measurement-units": {
+      "description": "Umrechnung zwischen Längen-, Masse-, Volumen- und Zeiteinheiten; Dezimalschreibweise für Größen verstehen; Schätzen und Lösen von Sachaufgaben mit Größen",
+      "name": "Größen und Einheitenumrechnung"
+    },
+    "grade4-money-decimals": {
+      "description": "Geldbeträge in Euro und Cent mit Kommaschreibweise verstehen; Geldbeträge addieren, subtrahieren und mit ganzen Zahlen multiplizieren; Wechselgeld berechnen und Gesamtbeträge ermitteln; Preise vergleichen und zwischen Euro und Cent umrechnen",
+      "name": "Geld und Kommaschreibweise"
+    },
+    "grade4-area-perimeter": {
+      "description": "Flächeninhalt und Umfang von Rechtecken und Quadraten berechnen; mit Quadrateinheiten arbeiten; Flächeninhalt und Umfang unterscheiden; Textaufgaben mit fehlenden Maßen lösen",
+      "name": "Flächeninhalt und Umfang"
+    },
+    "grade4-geometry-spatial": {
+      "description": "Eigenschaften von ebenen und räumlichen Figuren; Symmetrie und Linien; räumliches Vorstellungsvermögen; Netze geometrischer Körper; parallele und senkrechte Beziehungen",
+      "name": "Geometrie und räumliches Denken"
     }
   }
 }

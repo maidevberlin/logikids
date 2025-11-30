@@ -92,6 +92,10 @@
       "description": "Identifying, naming, and describing basic 2D shapes",
       "name": "Plane Shapes"
     },
+    "grade1-probability-basics": {
+      "description": "Understanding chance and likelihood using vocabulary like certain, possible, and impossible through simple everyday situations",
+      "name": "Probability Basics"
+    },
     "grade1-solid-shapes": {
       "description": "Identifying and naming 3D shapes (cube, sphere, cylinder, cone, cuboid) and relating them to real-world objects",
       "name": "Solid Shapes"
@@ -100,9 +104,17 @@
       "description": "Understanding and using position words to describe locations and follow directions",
       "name": "Spatial Orientation"
     },
+    "grade1-symmetry": {
+      "description": "Recognizing axial symmetry through folding and mirror activities, identifying symmetric shapes, and creating symmetric patterns",
+      "name": "Symmetry"
+    },
     "grade2-addition-subtraction-to-100": {
       "description": "Adding and subtracting numbers within 100 using mental strategies, with and without regrouping, and solving multi-step word problems",
       "name": "Addition and Subtraction to 100"
+    },
+    "grade2-money-and-currency": {
+      "description": "Working with Euro coins and bills up to 100€, using € and ct notation, adding and subtracting money amounts, calculating change, and solving shopping problems",
+      "name": "Money and Currency"
     },
     "grade2-geometry-and-symmetry": {
       "description": "Deepening understanding of 2D and 3D shapes, identifying and creating symmetric figures, and working with lines of symmetry",
@@ -208,9 +220,13 @@
       "description": "Analyzing diagrams, calculating arithmetic mean, comparing datasets, and understanding probability concepts",
       "name": "Data Analysis and Statistics"
     },
+    "grade4-data-probability": {
+      "description": "Collecting and organizing data from surveys and experiments; creating and interpreting bar charts, pictographs, and tables; calculating simple averages; understanding likelihood and probability events",
+      "name": "Data Analysis and Probability"
+    },
     "grade4-fractions": {
-      "description": "Understanding fractions as parts of a whole, fraction notation, and comparing simple fractions",
-      "name": "Fractions"
+      "description": "Understanding fractions as parts of a whole, fraction notation, visual representation, comparing and ordering fractions with same denominators, recognizing equivalent fractions, and applying fractions in everyday contexts",
+      "name": "Introduction to Fractions"
     },
     "grade4-large-numbers": {
       "description": "Understanding numbers up to one million, place value, rounding, and number comparison",
@@ -411,6 +427,38 @@
     "grade3-measurement-mass-volume": {
       "description": "Understanding and working with grams, kilograms, milliliters, and liters through measuring, comparing, and converting",
       "name": "Measurement - Mass and Volume"
+    },
+    "grade4-numbers-to-million": {
+      "description": "Understanding place value with six digits; reading, writing, comparing, and ordering numbers; rounding to thousands and beyond; recognizing patterns in large numbers",
+      "name": "Numbers to 1,000,000"
+    },
+    "grade4-written-multiplication-division": {
+      "description": "Mastering standard written algorithms for multi-digit multiplication and division; understanding when to apply each operation; solving real-world problems",
+      "name": "Written Multiplication and Division"
+    },
+    "grade4-patterns-equations": {
+      "description": "Recognizing and extending number patterns, finding sequence rules, understanding variables as placeholders, solving simple one-step equations, and describing mathematical relationships",
+      "name": "Patterns and Simple Equations"
+    },
+    "grade4-measurement-units": {
+      "description": "Converting between units of length, mass, volume, and time; understanding decimal notation for measurements; estimating and solving word problems with measurements",
+      "name": "Measurement and Unit Conversion"
+    },
+    "grade4-money-decimals": {
+      "description": "Understanding euro and cent notation with decimals; adding, subtracting, and multiplying money amounts; making change and calculating totals; comparing prices and converting between euros and cents",
+      "name": "Money and Decimal Notation"
+    },
+    "grade4-time-calendar": {
+      "description": "Reading analog and digital clocks in 24-hour format; converting between time units; calculating time durations and elapsed time; working with calendars including days, weeks, months, and years",
+      "name": "Time and Calendar"
+    },
+    "grade4-area-perimeter": {
+      "description": "Calculating area and perimeter of rectangles and squares; using square units; distinguishing between area and perimeter; solving word problems with missing dimensions",
+      "name": "Area and Perimeter"
+    },
+    "grade4-geometry-spatial": {
+      "description": "Properties of 2D and 3D shapes; symmetry and lines; spatial visualization; nets of geometric solids; parallel and perpendicular relationships",
+      "name": "Geometry and Spatial Reasoning"
     }
   }
 }
