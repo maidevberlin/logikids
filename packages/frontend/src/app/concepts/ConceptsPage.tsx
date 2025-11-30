@@ -8,9 +8,12 @@ import { Concept } from './types'
 import { useUserData } from '@/app/account'
 import { Button } from '@/app/common/ui/button'
 import { Skeleton } from '@/app/common/ui/skeleton'
+import { Input } from '@/app/common/ui/input'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/common/ui/tabs'
-import { Sparkles, GraduationCap } from 'lucide-react'
+import { Sparkles, GraduationCap, Search } from 'lucide-react'
 import { trpc } from '@/api/trpc'
+import { useDebounce } from '@/hooks/useDebounce'
+import { useConceptSearch } from '@/hooks/useConceptSearch'
 
 export function ConceptsPage() {
   const { subject: subjectId } = useParams<{ subject: string }>()
@@ -25,6 +28,9 @@ export function ConceptsPage() {
   )
   const [activeTab, setActiveTab] = useState<'school' | 'fun'>('school')
   const [initialTabSet, setInitialTabSet] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const debouncedQuery = useDebounce(searchQuery, 150)
+  const matchingIds = useConceptSearch(debouncedQuery, subjectId || '')
 
   const grade = userData?.settings.grade
 
@@ -86,12 +92,16 @@ export function ConceptsPage() {
     )
   }
 
-  // Get concepts from current data and sort them
+  // Get concepts from current data, filter by search, and sort them
   const concepts = useMemo(() => {
     const rawConcepts = data?.concepts || []
 
+    // Filter by search query if provided
+    const filtered =
+      matchingIds === null ? rawConcepts : rawConcepts.filter((c) => matchingIds.has(c.id))
+
     // Sort by grade desc (higher grades first), then by name asc (alphabetical)
-    return [...rawConcepts].sort((a, b) => {
+    return [...filtered].sort((a, b) => {
       // Handle undefined grades - put them last
       const gradeA = a.grade ?? -1
       const gradeB = b.grade ?? -1
@@ -104,7 +114,7 @@ export function ConceptsPage() {
       // If same grade, sort by name ascending
       return a.name.localeCompare(b.name)
     })
-  }, [data?.concepts])
+  }, [data?.concepts, matchingIds])
 
   // Group concepts by grade for "show all" view
   const groupedByGrade = useMemo(() => {
@@ -199,6 +209,18 @@ export function ConceptsPage() {
             </p>
           </div>
         )}
+
+        {/* Search input */}
+        <div className="relative mb-6">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder={t('concepts.search.placeholder', { defaultValue: 'Search concepts...' })}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-12 h-12 text-lg rounded-xl"
+          />
+        </div>
 
         <Tabs
           value={activeTab}
