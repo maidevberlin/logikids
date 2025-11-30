@@ -52,7 +52,8 @@ Browser → Host Nginx (SSL) → Frontend Container (Nginx) → Static files
 | Frontend | 5153 | 5154 | 80 |
 | Backend | 5175 | 5176 | 3000 |
 | PostgreSQL | 5432 | 5432 | 5432 |
-| Adminer | 8080 | - | 8080 |
+| Adminer | 8080 | - | 5480 |
+| Backend Test | - | - | 3000 |
 
 ## Installation Scripts
 
@@ -64,30 +65,16 @@ Browser → Host Nginx (SSL) → Frontend Container (Nginx) → Static files
 3. **Generates secure secrets automatically** (if `.env` doesn't exist)
    - Random PostgreSQL password (32 chars)
    - Random JWT secret (64 chars)
-4. Runs AI configuration (`configure.sh`)
-5. Builds Docker containers
-6. Starts production services
-7. Optionally sets up Nginx with SSL
+4. Prompts for AI provider configuration (Anthropic/OpenAI/Ollama)
+5. Creates `packages/backend/config.yaml` with AI settings
+6. Builds Docker containers
+7. Starts production services
+8. Optionally sets up Nginx with SSL
 
 **Usage:**
 ```bash
 ./install.sh
 ```
-
-### `configure.sh`
-
-**What it does:**
-1. Prompts for AI provider (OpenAI or Anthropic)
-2. Validates API key
-3. Prompts for model selection
-4. Creates `packages/backend/config.yaml`
-
-**Usage:**
-```bash
-./configure.sh
-```
-
-**Note:** This is called automatically by `install.sh`
 
 ### `setup-nginx.sh`
 
@@ -177,7 +164,7 @@ openssl rand -base64 64 | tr -d "=+/" | cut -c1-64
 
 ### `packages/backend/config.yaml`
 
-**Created by `configure.sh`:**
+**Created by `install.sh` during AI configuration:**
 ```yaml
 server:
   port: 3000

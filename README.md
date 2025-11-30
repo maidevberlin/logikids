@@ -27,18 +27,18 @@ An innovative educational platform designed to help children aged 8-16 develop l
 ### Frontend
 - React with TypeScript
 - TailwindCSS for styling
-- React Query for data fetching
+- TanStack Query for data fetching
+- tRPC for typed client-server communication
 - React Router for navigation
 - Zod for data validation
-- React Testing Library & Jest for testing
+- i18next for internationalization (German/English)
 - Vite for development and building
 
 ### Backend
-- Node.js with TypeScript
-- Bun runtime for improved performance
-- RESTful API design
-- AI integration for task generation
-- Comprehensive test coverage
+- Bun runtime with TypeScript
+- Express API with tRPC
+- PostgreSQL database
+- AI integration (Anthropic, OpenAI, Ollama)
 
 ## 🛠 Installation
 
@@ -166,8 +166,9 @@ LogiKids is currently in closed beta with invite-only access. Use the `./invite`
 logikids/
 ├── packages/
 │   ├── frontend/          # React frontend application
-│   └── backend/           # Node.js backend service
-├── docs/                  # Documentation for AI prompts and other stuff
+│   ├── backend/           # Bun backend service
+│   └── content/           # Educational subjects and concepts
+├── .claude/docs/          # Internal documentation
 └── docker-compose.yml     # Docker services configuration
 ```
 
@@ -181,7 +182,17 @@ logikids/
 
 ## 📝 License
 
-...
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+You are free to:
+- **Share** — copy and redistribute the material
+- **Adapt** — remix, transform, and build upon the material
+
+Under the following terms:
+- **Attribution** — You must give appropriate credit
+- **NonCommercial** — You may not use the material for commercial purposes
+
+See [LICENSE](LICENSE) for full details.
 
 ## 🆘 Support
 
