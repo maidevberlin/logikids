@@ -24,9 +24,33 @@
       "name": "Buchstaben und Laute lernen",
       "description": "Lesen und Schreiben"
     },
+    "grade1-letter-sounds": {
+      "name": "Buchstaben-Laut-Zuordnung",
+      "description": "Buchstaben ihren Lauten zuordnen, Anlaute erkennen und Vokale von Konsonanten unterscheiden"
+    },
+    "grade1-phonological-awareness": {
+      "name": "Phonologische Bewusstheit",
+      "description": "Lautstrukturen in gesprochenen Wörtern durch Silben, Reime und Klangmuster erkennen"
+    },
+    "grade1-writing-letters": {
+      "name": "Buchstaben schreiben",
+      "description": "Buchstabenformen und Schreibgrundlagen lernen, Groß- und Kleinbuchstaben erkennen"
+    },
     "grade1-listening-comprehension": {
       "name": "Hörverstehen",
-      "description": "Sprechen und Zuhören"
+      "description": "Gesprochene Sprache verstehen durch Befolgen mündlicher Anweisungen, Verstehen kurzer Geschichten und Erkennen von Hauptgedanken und Details"
+    },
+    "grade1-writing-simple-words": {
+      "name": "Einfache Wörter schreiben",
+      "description": "Wörter nach Gehör schreiben, lautgetreu buchstabieren und häufige Wörter korrekt schreiben"
+    },
+    "grade1-reading-simple-words": {
+      "name": "Einfache Wörter lesen",
+      "description": "Lesen und Schreiben"
+    },
+    "grade1-reading-short-sentences": {
+      "name": "Kurze Sätze lesen",
+      "description": "Einfache Sätze lesen und verstehen, Sätze Bildern zuordnen und einfache schriftliche Anweisungen befolgen"
     },
     "grade1-rhymes-and-poems": {
       "name": "Reime und Gedichte",
@@ -35,6 +59,10 @@
     "grade1-sound-based-spelling": {
       "name": "Lautgetreues Schreiben",
       "description": "Lesen und Schreiben"
+    },
+    "grade1-speaking-communication": {
+      "name": "Sprechen und Kommunikation",
+      "description": "Erfahrungen klar ausdrücken, Gesprächsregeln befolgen, höflich kommunizieren und in verschiedenen Situationen angemessen reagieren"
     },
     "grade1-speaking-in-complete-sentences": {
       "name": "In ganzen Sätzen sprechen",
