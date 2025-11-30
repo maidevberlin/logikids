@@ -93,13 +93,16 @@ function checkSingleConcept(input: string): number {
       return 1;
     }
 
-    const filenameResult = checkFilename(filename, frontmatter.grade);
+    // Use validated frontmatter data for type-safe access
+    const validatedFrontmatter = schemaResult.data!;
+
+    const filenameResult = checkFilename(filename, validatedFrontmatter.grade);
     const contentResult = checkContent(content);
-    const structureResult = checkStructure(frontmatter);
+    const structureResult = checkStructure(validatedFrontmatter);
     const templateResult = checkTemplates(content);
     const wordCountResult = checkWordCount(content);
-    const prerequisitesResult = checkPrerequisites(frontmatter);
-    const translationResult = checkTranslations(frontmatter.id, subject);
+    const prerequisitesResult = checkPrerequisites(validatedFrontmatter);
+    const translationResult = checkTranslations(validatedFrontmatter.id, subject);
 
     // Print all results
     printSection('SCHEMA VALIDATION', schemaResult);
@@ -167,14 +170,17 @@ function checkConceptBatch(conceptPath: string, subject: string): ConceptCheckRe
       };
     }
 
-    // Run remaining checks (NOTE: checkStructure takes frontmatter, not content!)
+    // Use validated frontmatter data for type-safe access
+    const validatedFrontmatter = schemaResult.data!;
+
+    // Run remaining checks
     const results = [
-      checkFilename(filename, frontmatter.grade),
+      checkFilename(filename, validatedFrontmatter.grade),
       checkContent(content),
-      checkStructure(frontmatter),
+      checkStructure(validatedFrontmatter),
       checkTemplates(content),
       checkWordCount(content),
-      checkTranslations(frontmatter.id, subject),
+      checkTranslations(validatedFrontmatter.id, subject),
     ];
 
     const criticalFailures = results.filter(r => r.status === 'fail').length;

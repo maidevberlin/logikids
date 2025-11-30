@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { useUserData } from '@/app/account'
+import type { UserData } from '@/data/core/types'
 
 export interface WelcomeStats {
   streak: number
@@ -51,7 +52,7 @@ export function useWelcomeStats(): WelcomeStats {
 /**
  * Helper to determine the latest achievement based on gameStats
  */
-function getLatestAchievement(data: any): string | null {
+function getLatestAchievement(data: UserData): string | null {
   if (!data.gameStats) return null
 
   const { streaks, perfectRun, weekly } = data.gameStats
@@ -75,12 +76,8 @@ function getLatestAchievement(data: any): string | null {
   let totalTasks = 0
   const progress = data.progress || {}
   for (const subjectConcepts of Object.values(progress)) {
-    if (typeof subjectConcepts === 'object' && subjectConcepts !== null) {
-      for (const conceptStats of Object.values(subjectConcepts)) {
-        if (conceptStats && typeof conceptStats === 'object' && 'aggregate' in conceptStats) {
-          totalTasks += (conceptStats.aggregate as any)?.totalAttempts || 0
-        }
-      }
+    for (const conceptStats of Object.values(subjectConcepts)) {
+      totalTasks += conceptStats.aggregate?.totalAttempts || 0
     }
   }
 

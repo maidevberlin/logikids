@@ -2,6 +2,7 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import matter from 'gray-matter';
 import chokidar, { FSWatcher } from 'chokidar';
+import { z } from 'zod';
 import {
   conceptFrontmatterSchema,
   subjectFrontmatterSchema,
@@ -40,7 +41,7 @@ export interface HintPrompt {
   promptTemplate: string;
 }
 
-interface LoadedPrompt<T = any> {
+interface LoadedPrompt<T> {
   metadata: T;
   content: string;
 }
@@ -80,8 +81,9 @@ export class PromptLoader {
       const parsed = matter(fileContent);
       this.basePromptCache = parsed.content.trim();
       return this.basePromptCache;
-    } catch (error: any) {
-      throw new PromptTemplateError(`Error loading base prompt from ${basePath}: ${error.message}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      throw new PromptTemplateError(`Error loading base prompt from ${basePath}: ${message}`);
     }
   }
 
@@ -100,8 +102,9 @@ export class PromptLoader {
       const parsed = matter(fileContent);
       this.variationsTemplateCache = parsed.content.trim();
       return this.variationsTemplateCache;
-    } catch (error: any) {
-      throw new PromptTemplateError(`Error loading variations template from ${variationsPath}: ${error.message}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      throw new PromptTemplateError(`Error loading variations template from ${variationsPath}: ${message}`);
     }
   }
 
@@ -381,7 +384,7 @@ export class PromptLoader {
    */
   private async parsePromptFile<T>(
     filePath: string,
-    schema: any
+    schema: z.ZodType<T>
   ): Promise<LoadedPrompt<T>> {
     try {
       const fileContent = await fs.readFile(filePath, 'utf-8');
@@ -394,9 +397,9 @@ export class PromptLoader {
         metadata: validatedMetadata,
         content: parsed.content.trim(),
       };
-    } catch (error: any) {
-      if (error.name === 'ZodError') {
-        const issues = error.issues.map((issue: any) =>
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const issues = error.issues.map((issue) =>
           `  - ${issue.path.join('.')}: ${issue.message}`
         ).join('\n');
 
@@ -404,7 +407,8 @@ export class PromptLoader {
           `Error loading prompt: ${filePath}\n${issues}\n\nPlease check the frontmatter format.`
         );
       }
-      throw new PromptTemplateError(`Error reading file ${filePath}: ${error.message}`);
+      const message = error instanceof Error ? error.message : String(error);
+      throw new PromptTemplateError(`Error reading file ${filePath}: ${message}`);
     }
   }
 

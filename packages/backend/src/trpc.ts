@@ -1,8 +1,9 @@
 import { initTRPC, TRPCError } from '@trpc/server';
 import { CreateExpressContextOptions } from '@trpc/server/adapters/express';
 import jwt from 'jsonwebtoken';
+import { env } from './config/env';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-for-development';
+const JWT_SECRET = env.JWT_SECRET;
 
 /**
  * Create context for each request

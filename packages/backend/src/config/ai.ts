@@ -1,5 +1,23 @@
 import { z } from 'zod';
 
+/**
+ * API keys are loaded from environment variables, not config.yaml.
+ * This keeps secrets out of config files entirely.
+ */
+export function getApiKey(provider: 'openai' | 'anthropic'): string {
+  const envVar = provider === 'openai' ? 'OPENAI_API_KEY' : 'ANTHROPIC_API_KEY';
+  const key = process.env[envVar];
+  
+  if (!key) {
+    throw new Error(
+      `Missing ${envVar} environment variable. ` +
+      `Set it in .env or run ./setup.sh to configure.`
+    );
+  }
+  
+  return key;
+}
+
 const ollamaSchema = z.object({
   host: z.string(),
   model: z.string(),
@@ -8,16 +26,18 @@ const ollamaSchema = z.object({
   top_p: z.number().optional(),
 });
 
+// Note: apiKey is optional in schema because it comes from env vars
 const openaiSchema = z.object({
-  apiKey: z.string(),
+  apiKey: z.string().optional(), // Ignored - loaded from OPENAI_API_KEY env var
   model: z.string(),
   temperature: z.number().optional(),
   maxTokens: z.number().optional(),
   topP: z.number().optional(),
 });
 
+// Note: apiKey is optional in schema because it comes from env vars
 const anthropicSchema = z.object({
-  apiKey: z.string(),
+  apiKey: z.string().optional(), // Ignored - loaded from ANTHROPIC_API_KEY env var
   model: z.string(),
   maxTokens: z.number().optional(),
   temperature: z.number().optional(),

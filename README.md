@@ -54,7 +54,7 @@ An innovative educational platform designed to help children aged 8-16 develop l
    cd packages/backend
    
    # Copy configuration template
-   cp config.template.yaml config.yaml
+   cp config.yaml.example config.yaml
    
    # Edit config.yaml with your preferred settings
    # - Choose AI provider (ollama/openai)

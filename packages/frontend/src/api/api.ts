@@ -121,20 +121,5 @@ api.interceptors.response.use(
   }
 );
 
-// Type for API error responses
-export interface ApiErrorResponse {
-  message: string;
-  code?: string;
-  details?: Record<string, unknown>;
-}
-
-// Helper to extract error message from API response
-export const getErrorMessage = (error: unknown): string => {
-  if (error instanceof Error) {
-    return error.message;
-  }
-  return 'An unexpected error occurred';
-};
-
 // Export types for better type safety across the app
 export type ApiResponse<T> = Promise<T>; 

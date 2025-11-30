@@ -11,6 +11,7 @@ import { resolve } from 'path';
 import matter from 'gray-matter';
 import type { CheckResult, CheckIssue } from '../types';
 import { getSubjectsBasePath } from '../paths';
+import type { ConceptFrontmatter } from '../../../prompts/concept-schema';
 
 interface ConceptIndex {
   // Set of all concept IDs (without subject prefix)
@@ -65,11 +66,11 @@ function getAllConceptIds(): ConceptIndex {
   return { conceptIds, qualifiedIds };
 }
 
-export function checkPrerequisites(frontmatter: any): CheckResult {
+export function checkPrerequisites(frontmatter: ConceptFrontmatter): CheckResult {
   const prerequisites = frontmatter.prerequisites;
 
   // No prerequisites is valid
-  if (!prerequisites || !Array.isArray(prerequisites) || prerequisites.length === 0) {
+  if (!prerequisites || prerequisites.length === 0) {
     return { status: 'pass', issues: [] };
   }
 
@@ -77,15 +78,6 @@ export function checkPrerequisites(frontmatter: any): CheckResult {
   const issues: CheckIssue[] = [];
 
   for (const prereqId of prerequisites) {
-    if (typeof prereqId !== 'string') {
-      issues.push({
-        message: `Invalid prerequisite value: ${JSON.stringify(prereqId)}`,
-        fix: 'Prerequisites must be strings (concept IDs or subject/concept-id)',
-        reference: 'concept-rules.md - prerequisites',
-      });
-      continue;
-    }
-
     // Check if it's a qualified ID (subject/concept-id) or just concept-id
     if (prereqId.includes('/')) {
       // Qualified format: must match exactly

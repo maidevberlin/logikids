@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ApplicationError, ValidationError } from '../errors/index';
-import { ZodError } from 'zod';
+import { ZodError, ZodIssue } from 'zod';
 import { createLogger } from '../logger';
 
 const logger = createLogger('ErrorHandler');
@@ -8,7 +8,7 @@ const logger = createLogger('ErrorHandler');
 interface ErrorResponse {
   error: string;
   code?: string;
-  details?: unknown;
+  details?: string | ZodIssue[];
   status: number;
 }
 

@@ -37,9 +37,9 @@ src/
 
 ## Development Setup
 
-1. Copy `config.template.yaml` to `config.yaml` and fill in your configuration values:
+1. Copy `config.yaml.example` to `config.yaml` and fill in your configuration values:
    ```bash
-   cp config.template.yaml config.yaml
+   cp config.yaml.example config.yaml
    ```
 
 2. The application can be run in different environments using Docker:

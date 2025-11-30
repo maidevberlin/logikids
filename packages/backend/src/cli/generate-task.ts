@@ -93,7 +93,7 @@ async function generateTask() {
   if (!verbose) {
     process.env.NODE_ENV = 'production';
     const originalLog = console.log;
-    console.log = (...args: any[]) => {
+    console.log = (...args: unknown[]) => {
       const msg = args.join(' ');
       // Only suppress registry/loader logs
       if (msg.startsWith('[') || msg.includes('Loaded variations:') || msg.includes('Hot-reload')) {

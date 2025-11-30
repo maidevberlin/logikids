@@ -1,4 +1,3 @@
-import { createLogger } from '../logger';
 import type { Logger } from '../logger';
 import { RegistryInitializationError } from '../errors';
 

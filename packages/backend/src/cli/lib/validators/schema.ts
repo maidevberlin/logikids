@@ -1,15 +1,16 @@
 /**
  * Schema validator for concept frontmatter
+ * Returns validated data on success for type-safe downstream usage
  */
 
-import { conceptFrontmatterSchema } from '../../../prompts/schemas';
-import type { CheckResult, CheckIssue } from '../types';
+import { conceptFrontmatterSchema, type ConceptFrontmatter } from '../../../prompts/schemas';
+import type { SchemaCheckResult, CheckIssue } from '../types';
 
-export function checkSchema(frontmatter: any): CheckResult {
+export function checkSchema(frontmatter: Record<string, unknown>): SchemaCheckResult<ConceptFrontmatter> {
   const result = conceptFrontmatterSchema.safeParse(frontmatter);
 
   if (result.success) {
-    return { status: 'pass', issues: [] };
+    return { status: 'pass', issues: [], data: result.data };
   }
 
   const issues: CheckIssue[] = result.error.errors.map(err => ({

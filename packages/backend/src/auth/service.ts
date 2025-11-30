@@ -12,9 +12,9 @@ import {
   AccountNotFoundError,
   AccountRevokedError
 } from '../common/errors'
+import { env } from '../config/env'
 
-// JWT secret - in production, use environment variable
-const JWT_SECRET = process.env.JWT_SECRET || 'logikids-dev-secret-change-in-production'
+const JWT_SECRET = env.JWT_SECRET
 const ACCESS_TOKEN_EXPIRES_IN = '1h' // Short-lived access token
 
 export interface JWTPayload {

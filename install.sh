@@ -1,113 +1,309 @@
 #!/bin/bash
+#
+# Logikids Installation Script
+#
+# Usage:
+#   Fresh server:  curl -sSL https://raw.githubusercontent.com/maidevberlin/logikids/main/install.sh | bash
+#   Local:         ./install.sh
+#
+# This script:
+#   1. Installs Docker (if on Linux)
+#   2. Clones/updates the repository
+#   3. Generates secure secrets
+#   4. Configures AI provider
+#   5. Builds and starts the application
+#   6. Optionally sets up Nginx with SSL
 
-# Exit on error
 set -e
 
-echo "🚀 Starting Logikids installation..."
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-# Update package list and install dependencies
-echo "📦 Updating system and installing dependencies..."
-sudo apt-get update
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release \
-    git
+echo -e "${BLUE}"
+echo "╔══════════════════════════════════════════════════════════════════╗"
+echo "║                   Logikids Installation                          ║"
+echo "╚══════════════════════════════════════════════════════════════════╝"
+echo -e "${NC}"
 
-# Install Docker if not already installed
-if ! command -v docker &> /dev/null; then
-    echo "🐳 Installing Docker..."
-    # Add Docker's official GPG key
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+# Detect OS
+OS="$(uname -s)"
+IS_LINUX=false
+if [[ "$OS" == "Linux" ]]; then
+    IS_LINUX=true
+fi
 
-    # Add Docker repository
-    echo \
-        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
-        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 1: Install Docker (Linux only)
+# ═══════════════════════════════════════════════════════════════════════
 
-    # Install Docker Engine and Docker Compose plugin
-    sudo apt-get update
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+if $IS_LINUX; then
+    echo -e "${BLUE}[1/6] Checking Docker installation...${NC}"
+
+    if ! command -v docker &> /dev/null; then
+        echo "Installing Docker..."
+        sudo apt-get update
+        sudo apt-get install -y \
+            apt-transport-https \
+            ca-certificates \
+            curl \
+            gnupg \
+            lsb-release
+
+        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+        echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+            $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+        sudo apt-get update
+        sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo usermod -aG docker $USER
+        echo -e "${GREEN}✓ Docker installed${NC}"
+    else
+        echo -e "${GREEN}✓ Docker already installed${NC}"
+    fi
+
+    # Ensure Docker Compose plugin
+    if ! docker compose version &> /dev/null; then
+        sudo apt-get install -y docker-compose-plugin
+    fi
 else
-    echo "✅ Docker already installed"
+    echo -e "${BLUE}[1/6] Skipping Docker install (not Linux)${NC}"
+    echo "Make sure Docker Desktop is running."
 fi
 
-# Remove old standalone docker-compose and install plugin if needed
-if command -v docker-compose &> /dev/null && [ -f /usr/local/bin/docker-compose ]; then
-    echo "🔄 Removing old standalone docker-compose..."
-    sudo rm -f /usr/local/bin/docker-compose
-fi
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 2: Clone/Update Repository
+# ═══════════════════════════════════════════════════════════════════════
 
-# Ensure Docker Compose plugin is installed
-if ! docker compose version &> /dev/null; then
-    echo "🐋 Installing Docker Compose plugin..."
-    sudo apt-get update
-    sudo apt-get install -y docker-compose-plugin
+echo ""
+echo -e "${BLUE}[2/6] Setting up repository...${NC}"
+
+# Check if we're already in the repo
+if [[ -f "docker-compose.yml" && -d "packages/backend" ]]; then
+    echo -e "${GREEN}✓ Already in logikids directory${NC}"
+    git pull 2>/dev/null || echo "Could not pull updates (not a git repo or no remote)"
+elif [[ -d "logikids" ]]; then
+    cd logikids
+    echo -e "${GREEN}✓ Using existing logikids directory${NC}"
+    git pull 2>/dev/null || true
 else
-    echo "✅ Docker Compose plugin already installed"
-fi
-
-# Add current user to docker group
-sudo usermod -aG docker $USER
-echo "👤 Added current user to docker group"
-
-# Clone the repository if not already present
-if [ ! -d "logikids" ]; then
-    echo "📥 Cloning the repository..."
+    echo "Cloning repository..."
     git clone https://github.com/maidevberlin/logikids.git
     cd logikids
-else
-    cd logikids
-    echo "📂 Using existing repository..."
-    git pull
+    echo -e "${GREEN}✓ Repository cloned${NC}"
 fi
 
-# Generate .env file with secrets if it doesn't exist
-if [ ! -f ".env" ]; then
-    echo "🔐 Generating secure secrets..."
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 3: Generate Secrets
+# ═══════════════════════════════════════════════════════════════════════
 
-    # Generate random secure passwords
-    POSTGRES_PASSWORD=$(openssl rand -base64 32 | tr -d "=+/" | cut -c1-32)
-    JWT_SECRET=$(openssl rand -base64 64 | tr -d "=+/" | cut -c1-64)
+echo ""
+echo -e "${BLUE}[3/6] Configuring secrets...${NC}"
 
-    cat > .env << EOL
-# Database Configuration
-POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+generate_secret() {
+    openssl rand -base64 64 | tr -d "=+/" | cut -c1-64
+}
 
-# JWT Secret for authentication
-JWT_SECRET=${JWT_SECRET}
+# Load existing .env if present
+POSTGRES_PASSWORD=""
+JWT_SECRET=""
+ANTHROPIC_API_KEY=""
+OPENAI_API_KEY=""
 
-# Generated on $(date)
-EOL
-
-    echo "✅ Secrets generated and saved to .env"
-else
-    echo "✅ Using existing .env file"
+if [[ -f ".env" ]]; then
+    source .env 2>/dev/null || true
+    echo "Found existing .env file"
 fi
 
-# Run the configuration script
-echo "🔧 Running configuration setup..."
-./configure.sh
+# Generate missing secrets
+if [[ -z "$POSTGRES_PASSWORD" ]]; then
+    POSTGRES_PASSWORD=$(generate_secret)
+    echo "Generated new POSTGRES_PASSWORD"
+fi
 
-# Build the containers
-echo "🏗️ Building Docker containers..."
+if [[ -z "$JWT_SECRET" ]]; then
+    JWT_SECRET=$(generate_secret)
+    echo "Generated new JWT_SECRET"
+fi
+
+echo -e "${GREEN}✓ Secrets configured${NC}"
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 4: Configure AI Provider
+# ═══════════════════════════════════════════════════════════════════════
+
+echo ""
+echo -e "${BLUE}[4/6] Configuring AI provider...${NC}"
+echo ""
+
+# Check if we need to configure AI
+NEED_AI_CONFIG=true
+if [[ -n "$ANTHROPIC_API_KEY" || -n "$OPENAI_API_KEY" ]]; then
+    echo "Existing API key found."
+    read -p "Reconfigure AI provider? (y/N): " -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        NEED_AI_CONFIG=false
+    fi
+fi
+
+PROVIDER="anthropic"
+MODEL="claude-sonnet-4-5"
+
+if $NEED_AI_CONFIG; then
+    echo "Select AI provider:"
+    echo "  1) Anthropic (Claude) - Recommended"
+    echo "  2) OpenAI (GPT)"
+    echo "  3) Ollama (Local, no API key needed)"
+    echo ""
+    read -p "Enter choice [1-3]: " -n 1 -r AI_CHOICE
+    echo ""
+    echo ""
+
+    case $AI_CHOICE in
+        1)
+            PROVIDER="anthropic"
+            echo "Enter your Anthropic API key (https://console.anthropic.com/):"
+            read -r NEW_KEY
+            if [[ -n "$NEW_KEY" ]]; then
+                ANTHROPIC_API_KEY="$NEW_KEY"
+            fi
+
+            echo ""
+            echo "Select Claude model:"
+            echo "  1) claude-sonnet-4-5 (Recommended)"
+            echo "  2) claude-haiku-4-5 (Faster, cheaper)"
+            echo "  3) claude-3-5-sonnet (Previous gen)"
+            read -p "Choice [1-3]: " -n 1 -r
+            echo ""
+            case $REPLY in
+                2) MODEL="claude-haiku-4-5" ;;
+                3) MODEL="claude-3-5-sonnet-20241022" ;;
+                *) MODEL="claude-sonnet-4-5" ;;
+            esac
+            ;;
+        2)
+            PROVIDER="openai"
+            echo "Enter your OpenAI API key (https://platform.openai.com/):"
+            read -r NEW_KEY
+            if [[ -n "$NEW_KEY" ]]; then
+                OPENAI_API_KEY="$NEW_KEY"
+            fi
+
+            echo ""
+            echo "Select GPT model:"
+            echo "  1) gpt-4o (Recommended)"
+            echo "  2) gpt-4-turbo"
+            echo "  3) gpt-3.5-turbo (Cheaper)"
+            read -p "Choice [1-3]: " -n 1 -r
+            echo ""
+            case $REPLY in
+                2) MODEL="gpt-4-turbo" ;;
+                3) MODEL="gpt-3.5-turbo" ;;
+                *) MODEL="gpt-4o" ;;
+            esac
+            ;;
+        3)
+            PROVIDER="ollama"
+            MODEL="llama3-8b"
+            echo -e "${YELLOW}Make sure Ollama is running on http://localhost:11434${NC}"
+            ;;
+        *)
+            echo "Keeping default: Anthropic"
+            ;;
+    esac
+
+    echo -e "${GREEN}✓ AI provider: $PROVIDER ($MODEL)${NC}"
+fi
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 5: Write Configuration Files
+# ═══════════════════════════════════════════════════════════════════════
+
+echo ""
+echo -e "${BLUE}[5/6] Writing configuration...${NC}"
+
+# Write .env file
+cat > .env << EOF
+# Logikids Environment Configuration
+# Generated: $(date)
+# WARNING: Never commit this file!
+
+# Security Secrets
+POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+JWT_SECRET=$JWT_SECRET
+
+# AI Provider API Keys
+ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY
+OPENAI_API_KEY=$OPENAI_API_KEY
+EOF
+
+echo -e "${GREEN}✓ Created .env${NC}"
+
+# Write config.yaml
+cat > packages/backend/config.yaml << EOF
+server:
+  port: 3000
+
+ai:
+  provider: $PROVIDER
+
+  ollama:
+    host: http://host.docker.internal:11434
+    model: llama3-8b
+
+  openai:
+    model: ${MODEL}
+
+  anthropic:
+    model: ${MODEL}
+    maxTokens: 4096
+    temperature: 0.7
+EOF
+
+echo -e "${GREEN}✓ Created config.yaml${NC}"
+
+# ═══════════════════════════════════════════════════════════════════════
+# STEP 6: Build and Start
+# ═══════════════════════════════════════════════════════════════════════
+
+echo ""
+echo -e "${BLUE}[6/6] Building and starting application...${NC}"
+
 docker compose build frontend-prod backend-prod
-
-# Start the application in production mode
-echo "🚀 Starting the application in production mode..."
 docker compose up -d postgres frontend-prod backend-prod
 
-echo "✅ Installation complete!"
-echo "🌐 Frontend is available at http://localhost:5154"
-echo "🔌 Backend is available at http://localhost:5176"
-echo "💡 The frontend automatically proxies /api requests to the backend"
-echo "Note: Please log out and log back in for docker group changes to take effect."
+echo ""
+echo -e "${GREEN}╔══════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${GREEN}║                   Installation Complete!                         ║${NC}"
+echo -e "${GREEN}╚══════════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+echo "Application is running:"
+echo "  Frontend: http://localhost:5154"
+echo "  Backend:  http://localhost:5176"
+echo ""
+echo "Next steps:"
+echo "  1. Create an invite code: ./invite create \"Your name\""
+echo "  2. Open http://localhost:5154 in your browser"
+echo ""
 
-# Ask if user wants to set up Nginx with SSL
-read -p "Would you like to set up Nginx with SSL support? (y/N) " setup_nginx
-if [[ $setup_nginx =~ ^[Yy]$ ]]; then
-    echo "🔒 Setting up Nginx with SSL..."
-    sudo ./setup-nginx.sh
-fi 
+# Offer Nginx setup on Linux
+if $IS_LINUX; then
+    read -p "Set up Nginx with SSL for a domain? (y/N): " -n 1 -r
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        if [[ -f "setup-nginx.sh" ]]; then
+            sudo ./setup-nginx.sh
+        else
+            echo -e "${YELLOW}setup-nginx.sh not found. Please set up Nginx manually.${NC}"
+        fi
+    fi
+fi
+
+echo ""
+echo "For help: ./invite help"

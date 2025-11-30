@@ -33,6 +33,15 @@ export interface Enrichment {
 }
 
 /**
+ * Raw item from YAML before validation
+ */
+export interface RawVariationItem {
+  text?: string;
+  context?: string;
+  age?: [number, number];
+}
+
+/**
  * Raw variation data loaded from YAML files
  */
 export interface VariationData {

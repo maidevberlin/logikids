@@ -5,14 +5,13 @@ import { ApplicationError } from './base';
  *
  * @example
  * ```typescript
- * const result = schema.safeParse(data);
- * if (!result.success) {
- *   throw new ValidationError(result.error.issues);
+ * if (hasUnreplacedPlaceholders(template)) {
+ *   throw new ValidationError('Template contains unreplaced placeholders');
  * }
  * ```
  */
 export class ValidationError extends ApplicationError {
-  constructor(public readonly details: unknown) {
+  constructor(public readonly details: string) {
     super('Validation Error', 400, 'VALIDATION_ERROR');
   }
 }

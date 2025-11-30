@@ -36,6 +36,49 @@ export async function generateQRData(): Promise<QRPayload> {
 }
 
 /**
+ * Parse a backup code string into a QRPayload
+ * Backup codes are base64-encoded strings containing userId:keyJson
+ */
+export function parseBackupCode(code: string): QRPayload {
+  // Remove dashes and whitespace
+  const base64 = code.replace(/[-\s]/g, '')
+
+  // Decode base64
+  let decoded: string
+  try {
+    decoded = atob(base64)
+  } catch {
+    throw new Error('Invalid backup code: not valid base64')
+  }
+
+  // Split on first colon only
+  const colonIndex = decoded.indexOf(':')
+  if (colonIndex === -1) {
+    throw new Error('Invalid backup code format: missing separator')
+  }
+
+  const userId = decoded.substring(0, colonIndex)
+  const keyJson = decoded.substring(colonIndex + 1)
+
+  if (!userId || !keyJson) {
+    throw new Error('Invalid backup code format')
+  }
+
+  // Validate JSON
+  try {
+    JSON.parse(keyJson)
+  } catch {
+    throw new Error('Backup code appears to be corrupted or incomplete')
+  }
+
+  return {
+    userId,
+    key: keyJson,
+    timestamp: Date.now()
+  }
+}
+
+/**
  * Import QR code data from another device
  */
 export async function importQRData(payload: QRPayload): Promise<void> {

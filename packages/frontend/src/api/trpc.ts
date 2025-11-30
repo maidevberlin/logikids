@@ -1,5 +1,5 @@
 import { createTRPCReact } from '@trpc/react-query';
-import { httpBatchLink, TRPCClientError } from '@trpc/client';
+import { httpBatchLink } from '@trpc/client';
 import type { AppRouter } from '@logikids/backend';
 import { getAccessToken, storeTokens, getUserId } from '../data/core/storage';
 import { createLogger } from '@/lib/logger';

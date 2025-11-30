@@ -17,7 +17,8 @@ export interface UsageInfo {
 
 export interface GenerateResponse {
   response: string;
-  context?: unknown;
+  /** Ollama-specific conversation context for multi-turn conversations */
+  context?: number[];
   provider: 'ollama' | 'openai' | 'anthropic';
   model: string;
   usage?: UsageInfo;

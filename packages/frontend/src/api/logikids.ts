@@ -1,13 +1,11 @@
 import { z } from 'zod';
-import { api, ApiResponse } from './api';
-import { DIFFICULTIES, Task, TASK_TYPES } from '@/app/tasks/types';
+import { DIFFICULTIES, TASK_TYPES } from '@/app/tasks/types';
 
 // Re-export for backward compatibility
 export { LogikidsApiError } from './errors';
 
 // Gender options
 export const GENDERS = ['male', 'female', 'non-binary', 'prefer-not-to-say'] as const;
-export type Gender = typeof GENDERS[number];
 
 // Request schema and type
 export const taskRequestSchema = z.object({
@@ -51,36 +49,3 @@ export interface SubjectInfo {
   maxGrade?: number;
   concepts?: ConceptInfo[]; // Only present when grade filtering is active
 }
-
-export interface SubjectsResponse {
-  subjects: SubjectInfo[];
-}
-
-// Hint response type
-export interface HintResponse {
-  hint: string;
-  hintNumber: number;
-  totalHintsAvailable: number;
-}
-
-export const logikids = {
-  getSubjects: (params?: SubjectsParams, signal?: AbortSignal): ApiResponse<SubjectsResponse> => {
-    return api.get<SubjectsParams | undefined, SubjectsResponse>('/task/subjects', {
-      params,
-      signal
-    });
-  },
-
-  getTask: (params: TaskRequest, signal?: AbortSignal): ApiResponse<Task> => {
-    return api.get<TaskRequest, Task>('/task', {
-      params,
-      signal
-    });
-  },
-
-  getHint: (taskId: string, signal?: AbortSignal): ApiResponse<HintResponse> => {
-    return api.post<void, HintResponse>(`/task/${taskId}/hint`, undefined, {
-      signal
-    });
-  }
-}; 

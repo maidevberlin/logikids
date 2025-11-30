@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import matter from 'gray-matter';
-import { AgeFilteredItem, Enrichment, EnrichmentType } from './types';
+import { AgeFilteredItem, Enrichment, EnrichmentType, RawVariationItem } from './types';
 import { createLogger } from '../common/logger';
 import { InvalidFormatError } from '../common/errors';
 
@@ -75,11 +75,16 @@ export class VariationLoader {
     }
 
     // Validate each item has age property
-    const items: AgeFilteredItem[] = data[key].map((item: any, index: number) => {
+    const rawItems = data[key] as RawVariationItem[];
+    const items: AgeFilteredItem[] = rawItems.map((item: RawVariationItem, index: number) => {
       if (!item.age || !Array.isArray(item.age) || item.age.length !== 2) {
         throw new InvalidFormatError(filename, `item ${index} missing age array [min, max]`);
       }
-      return item as AgeFilteredItem;
+      return {
+        text: item.text,
+        context: item.context,
+        age: item.age,
+      };
     });
 
     return items;

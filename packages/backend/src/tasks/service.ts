@@ -1,5 +1,5 @@
 import {TaskRequest} from './types';
-import {TaskResponse, BaseTaskResponse} from './types';
+import {TaskResponse, BaseTaskResponse, extractSolution} from './types';
 import {AIClient} from '../common/ai/base';
 import {TaskTypeRegistry} from './types/registry';
 import {v4 as uuidv4} from 'uuid';
@@ -14,6 +14,7 @@ import {
   NoTaskTypesError,
   TaskTypeNotFoundError
 } from '../common/errors';
+import { Concept } from '../prompts/schemas';
 
 const logger = createLogger('TaskService');
 
@@ -39,20 +40,22 @@ export class TaskService {
         logger.debug('Subject loaded', { subjectId });
 
         // Load concept (random if not specified)
-        let concept: any;
+        let concept: Concept;
         if (!requestedConcept) {
             // Random selection with grade filtering
-            concept = this.subjectRegistry.getRandomConcept(subjectId, { grade, difficulty });
-            if (!concept) {
+            const randomConcept = this.subjectRegistry.getRandomConcept(subjectId, { grade, difficulty });
+            if (!randomConcept) {
                 throw new NoConceptsFoundError({ subject: subjectId, grade, difficulty });
             }
+            concept = randomConcept;
             logger.debug('Random concept selected', { conceptId: concept.id });
         } else {
             // Get specific concept
-            concept = this.subjectRegistry.getConcept(subjectId, requestedConcept);
-            if (!concept) {
+            const foundConcept = this.subjectRegistry.getConcept(subjectId, requestedConcept);
+            if (!foundConcept) {
                 throw new ConceptNotFoundError(requestedConcept, subjectId);
             }
+            concept = foundConcept;
             logger.debug('Concept loaded', { conceptId: concept.id });
         }
 
@@ -128,7 +131,7 @@ export class TaskService {
             difficulty: request.difficulty,
             language,
             generatedTask: responseWithType.task,
-            solution: (responseWithType as any).solution || (responseWithType as any).options,
+            solution: extractSolution(responseWithType),
             hintsGenerated: [],
             createdAt: Date.now()
         };

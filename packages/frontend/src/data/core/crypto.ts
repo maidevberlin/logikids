@@ -41,7 +41,7 @@ export async function generateKey(): Promise<CryptoKey> {
 /**
  * Encrypt data with the given key
  */
-export async function encrypt(key: CryptoKey, data: any): Promise<string> {
+export async function encrypt(key: CryptoKey, data: unknown): Promise<string> {
   // Generate random IV
   const iv = crypto.getRandomValues(new Uint8Array(IV_LENGTH))
 
@@ -68,7 +68,7 @@ export async function encrypt(key: CryptoKey, data: any): Promise<string> {
 /**
  * Decrypt data with the given key
  */
-export async function decrypt(key: CryptoKey, encryptedString: string): Promise<any> {
+export async function decrypt<T = unknown>(key: CryptoKey, encryptedString: string): Promise<T> {
   // Decode base64
   const combined = base64ToArray(encryptedString)
 
@@ -87,7 +87,7 @@ export async function decrypt(key: CryptoKey, encryptedString: string): Promise<
   const decoder = new TextDecoder()
   const jsonString = decoder.decode(decryptedData)
 
-  return JSON.parse(jsonString)
+  return JSON.parse(jsonString) as T
 }
 
 /**

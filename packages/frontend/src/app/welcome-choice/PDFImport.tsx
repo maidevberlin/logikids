@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as pdfjsLib from 'pdfjs-dist'
-import { importQRData, QRPayload } from '@/data/plugins/qr'
+import { importQRData, parseBackupCode } from '@/data/plugins/qr'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Upload, FileText } from 'lucide-react'
@@ -102,58 +102,6 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
     return backupCode
   }
 
-  /**
-   * Parse backup code to QRPayload
-   */
-  const parseBackupCode = (code: string): QRPayload => {
-    try {
-      // Remove dashes and whitespace
-      const base64 = code.replace(/[-\s]/g, '')
-
-      // Decode base64
-      const decoded = atob(base64)
-
-      // Split on first colon only
-      const colonIndex = decoded.indexOf(':')
-      if (colonIndex === -1) {
-        throw new Error(t('welcomeChoice.import.invalidBackupFormat', {
-          defaultValue: 'Invalid backup code format: missing separator'
-        }))
-      }
-
-      const userId = decoded.substring(0, colonIndex)
-      const keyJson = decoded.substring(colonIndex + 1)
-
-      if (!userId || !keyJson) {
-        throw new Error(t('welcomeChoice.import.invalidBackupFormat', {
-          defaultValue: 'Invalid backup code format'
-        }))
-      }
-
-      // Validate JSON
-      try {
-        JSON.parse(keyJson)
-      } catch (jsonError) {
-        throw new Error(t('welcomeChoice.import.corruptedBackupCode', {
-          defaultValue: 'Backup code appears to be corrupted or incomplete'
-        }))
-      }
-
-      return {
-        userId,
-        key: keyJson,
-        timestamp: Date.now()
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        throw error
-      }
-      throw new Error(t('welcomeChoice.import.invalidBackupCode', {
-        defaultValue: 'Invalid backup code'
-      }))
-    }
-  }
-
   const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (!file) return
@@ -178,7 +126,7 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
         const page = await pdf.getPage(i)
         const textContent = await page.getTextContent()
         const pageText = textContent.items
-          .map((item: any) => item.str)
+          .map((item) => 'str' in item ? item.str : '')
           .join('\n')
         fullText += pageText + '\n'
       }

@@ -3,6 +3,7 @@ import { OllamaClient } from './ollama';
 import { OpenAIClient } from './openai';
 import { AnthropicClient } from './anthropic';
 import { getConfig } from '../../config';
+import { getApiKey } from '../../config/ai';
 import { ConfigurationError, UnsupportedProviderError } from '../errors';
 
 export async function createAIClient(): Promise<AIClient> {
@@ -18,10 +19,18 @@ export async function createAIClient(): Promise<AIClient> {
       return new OllamaClient(aiConfig.ollama!);
 
     case 'openai':
-      return new OpenAIClient(aiConfig.openai!);
+      // API key comes from environment, not config file
+      return new OpenAIClient({
+        ...aiConfig.openai!,
+        apiKey: getApiKey('openai'),
+      });
 
     case 'anthropic':
-      return new AnthropicClient(aiConfig.anthropic!);
+      // API key comes from environment, not config file
+      return new AnthropicClient({
+        ...aiConfig.anthropic!,
+        apiKey: getApiKey('anthropic'),
+      });
 
     default:
       throw new UnsupportedProviderError(aiConfig.provider);

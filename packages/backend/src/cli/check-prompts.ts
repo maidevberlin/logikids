@@ -66,14 +66,17 @@ function checkConcept(conceptPath: string, subject: string): ConceptCheckResult 
       };
     }
 
+    // Use validated frontmatter data for type-safe access
+    const validatedFrontmatter = schemaResult.data!;
+
     // Run remaining checks
     const results = [
-      checkFilename(filename, frontmatter.grade),
+      checkFilename(filename, validatedFrontmatter.grade),
       checkContent(content),
-      checkStructure(content),
+      checkStructure(validatedFrontmatter),
       checkTemplates(content),
       checkWordCount(content),
-      checkTranslations(frontmatter.id, subject),
+      checkTranslations(validatedFrontmatter.id, subject),
     ];
 
     const criticalFailures = results.filter(r => r.status === 'fail').length;

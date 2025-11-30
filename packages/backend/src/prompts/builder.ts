@@ -1,4 +1,4 @@
-import { TaskGenerationParams } from '../tasks/types';
+import { TaskGenerationParams, TaskSolution } from '../tasks/types';
 import { Subject, HintPrompt } from './loader';
 import { TaskTypeWithSchema } from '../tasks/types/registry';
 import { validateNoPlaceholders } from './helpers.ts';
@@ -192,7 +192,7 @@ export class PromptBuilder {
       difficulty: string;
       language: string;
       task: string;
-      solution: any;
+      solution: TaskSolution;
       hintsGenerated: string[];
     },
     hintNumber: number
