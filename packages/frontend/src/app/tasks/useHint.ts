@@ -18,9 +18,15 @@ export const useHint = ({ taskId, maxHints = 4 }: UseHintOptions) => {
 
   const hintMutation = trpc.tasks.getHint.useMutation()
 
-  const requestHint = useCallback(() => {
+  const requestHint = useCallback(async () => {
     if (hints.length < maxHints && !hintMutation.isPending && taskId) {
-      hintMutation.mutate({ taskId })
+      try {
+        const data = await hintMutation.mutateAsync({ taskId })
+        setHints((prev) => [...prev, data.hint])
+        setHintError(null)
+      } catch (error) {
+        setHintError(error instanceof Error ? error.message : 'Failed to get hint')
+      }
     }
   }, [hints.length, maxHints, hintMutation, taskId])
 
