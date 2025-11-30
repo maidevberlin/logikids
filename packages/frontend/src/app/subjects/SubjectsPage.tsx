@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { PageLayout } from '@/app/common'
+import { PageLayout } from '@/app/common/PageLayout'
 import { SubjectCard } from './SubjectCard'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { useUserData } from '@/app/account'

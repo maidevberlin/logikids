@@ -3,24 +3,26 @@
   "version": "0.1.0",
   "type": "module",
   "main": "src/index.ts",
-  "types": "src/index.ts",
+  "types": "dist/src/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
+      "types": "./dist/src/index.d.ts",
       "default": "./src/index.ts"
     },
     "./tasks/types": {
-      "types": "./src/tasks/types.ts",
+      "types": "./dist/src/tasks/types.d.ts",
       "default": "./src/tasks/types.ts"
     },
     "./tasks/subjects": {
-      "types": "./src/tasks/subjects/index.ts",
+      "types": "./dist/src/tasks/subjects/index.d.ts",
       "default": "./src/tasks/subjects/index.ts"
     }
   },
   "scripts": {
+    "postinstall": "tsc --project tsconfig.build.json || true",
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
+    "build:types": "tsc --project tsconfig.build.json",
     "migrate": "bun database/migrate.ts",
     "generate:prompt": "bun src/cli/generate-prompt.ts",
     "generate:task": "bun src/cli/generate-task.ts",

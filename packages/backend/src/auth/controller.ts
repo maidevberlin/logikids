@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import {inject, injectable} from 'tsyringe';
-import type {UserAccount as ServiceUserAccount} from './service.ts';
-import {AuthService} from './service.ts';
+import type {UserAccount as ServiceUserAccount} from './service';
+import {AuthService} from './service';
 import {AccountNotFoundError} from '../common/errors';
 import type {
     LoginInput,

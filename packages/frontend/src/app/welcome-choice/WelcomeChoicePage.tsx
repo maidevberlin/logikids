@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/app/common/ui/card'
@@ -6,7 +6,9 @@ import { Button } from '@/app/common/ui/button'
 import { Label } from '@/app/common/ui/label'
 import { Input } from '@/app/common/ui/input'
 import { Upload, Camera, FileText, ArrowRight } from 'lucide-react'
-import { PDFImport } from './PDFImport'
+
+// Lazy load heavy PDF component
+const PDFImport = lazy(() => import('./PDFImport').then(m => ({ default: m.PDFImport })))
 import { QRScanner } from './QRScanner'
 import { ManualImport } from './ManualImport'
 import { useAuth } from '@/app/account'
@@ -181,13 +183,15 @@ export function WelcomeChoicePage() {
 
         {/* Import Dialogs */}
         {showPDFImport && (
-          <PDFImport
-            onClose={() => setShowPDFImport(false)}
-            onSuccess={() => {
-              // Navigate to onboarding - it will redirect to home if account data is complete
-              navigate('/onboarding', { replace: true })
-            }}
-          />
+          <Suspense fallback={<div className="fixed inset-0 bg-black/50 flex items-center justify-center"><div className="bg-white p-4 rounded-lg">Loading...</div></div>}>
+            <PDFImport
+              onClose={() => setShowPDFImport(false)}
+              onSuccess={() => {
+                // Navigate to onboarding - it will redirect to home if account data is complete
+                navigate('/onboarding', { replace: true })
+              }}
+            />
+          </Suspense>
         )}
 
         {showQRScanner && (

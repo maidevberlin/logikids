@@ -1,4 +1,4 @@
-import { PageLayout } from '@/app/common'
+import { PageLayout } from '@/app/common/PageLayout'
 import { GreetingHeader } from './GreetingHeader'
 import { StatsHeader } from './StatsHeader'
 import { NavigationCards } from './NavigationCards'

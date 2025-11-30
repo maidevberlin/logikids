@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {JSONSchema} from '../common/ai/base.ts';
+import {JSONSchema} from '../common/ai/base';
 
 // Re-export concept schema from dedicated file
 export { conceptFrontmatterSchema, type ConceptFrontmatter, type Concept } from './concept-schema';

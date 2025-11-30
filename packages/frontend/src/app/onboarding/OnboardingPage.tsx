@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { PageLayout } from '@/app/common'
+import { PageLayout } from '@/app/common/PageLayout'
 import { ParentalConsentStep } from './ParentalConsentStep'
 import { StudentInfoStep } from './StudentInfoStep'
 import { StudentInfo } from './types'

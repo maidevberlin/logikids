@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { PageLayout } from '@/app/common'
+import { PageLayout } from '@/app/common/PageLayout'
 import { getSubjectTheme } from '@/app/common/subjectTheme'
 import { ConceptsTabContent } from './ConceptsTabContent'
 import { Concept } from './types'

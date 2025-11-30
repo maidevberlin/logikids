@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { PageLayout } from '@/app/common'
+import { PageLayout } from '@/app/common/PageLayout'
 import { useUserData } from '@/app/account'
 import { useProgress } from '@/data/progress/hooks'
 import { LevelBadge } from './LevelBadge'

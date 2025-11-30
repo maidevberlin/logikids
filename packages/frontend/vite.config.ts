@@ -47,6 +47,53 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src")
     }
   },
+  build: {
+    chunkSizeWarningLimit: 850, // Vendor chunks are expected to be larger
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Core React ecosystem
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // UI components library
+          'vendor-ui': [
+            '@radix-ui/react-checkbox',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-label',
+            '@radix-ui/react-popover',
+            '@radix-ui/react-progress',
+            '@radix-ui/react-scroll-area',
+            '@radix-ui/react-select',
+            '@radix-ui/react-separator',
+            '@radix-ui/react-slot',
+            '@radix-ui/react-switch',
+            '@radix-ui/react-tabs',
+            '@radix-ui/react-tooltip',
+            'lucide-react',
+            'framer-motion',
+          ],
+          // Charts and visualization
+          'vendor-charts': ['recharts'],
+          // Mermaid diagrams (large)
+          'vendor-mermaid': ['mermaid'],
+          // PDF handling (very large)
+          'vendor-pdf': ['pdfjs-dist', 'jspdf'],
+          // Markdown rendering
+          'vendor-markdown': [
+            'react-markdown',
+            'remark-gfm',
+            'remark-math',
+            'rehype-katex',
+            'rehype-raw',
+            'katex',
+          ],
+          // i18n
+          'vendor-i18n': ['i18next', 'react-i18next', 'i18next-http-backend'],
+          // tRPC and data fetching
+          'vendor-data': ['@trpc/client', '@trpc/react-query', '@tanstack/react-query'],
+        },
+      },
+    },
+  },
   server: {
     host: true,
     port: 80,

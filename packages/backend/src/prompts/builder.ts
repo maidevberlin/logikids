@@ -1,7 +1,7 @@
 import { TaskGenerationParams, TaskSolution } from '../tasks/types';
 import { Subject, HintPrompt } from './loader';
 import { TaskTypeWithSchema } from '../tasks/types/registry';
-import { validateNoPlaceholders } from './helpers.ts';
+import { validateNoPlaceholders } from './helpers';
 import { VariationLoader } from './variations/loader';
 import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer';
 import { createLogger } from '../common/logger';

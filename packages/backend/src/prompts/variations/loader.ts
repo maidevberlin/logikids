@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import matter from 'gray-matter';
-import {AgeFilteredItem, Enrichment, EnrichmentType, RawVariationItem} from './types.ts';
-import {createLogger} from '../../common/logger.ts';
-import {InvalidFormatError} from '../../common/errors.ts';
+import {AgeFilteredItem, Enrichment, EnrichmentType, RawVariationItem} from './types';
+import {createLogger} from '../../common/logger';
+import {InvalidFormatError} from '../../common/errors';
 
 const logger = createLogger('VariationLoader');
 

@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
 import { StorageService } from './storage'
-import { SyncPayload, SyncPayloadSchema } from './schema.ts'
+import { SyncPayload, SyncPayloadSchema } from './schema'
 import { createLogger } from '../common/logger'
 import { InvalidChecksumError } from '../common/errors'
 

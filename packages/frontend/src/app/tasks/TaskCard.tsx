@@ -155,7 +155,6 @@ export function TaskCard({
         isCorrect={isCorrect}
         gradingDetails={gradingDetails}
         task={task}
-        selectedAnswer={selectedAnswer}
       />
 
       {/* Action buttons and hints */}

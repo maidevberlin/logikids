@@ -12,13 +12,23 @@ COPY packages/backend/package.json packages/backend/
 
 RUN bun install
 
-# Copy source files
-COPY packages/frontend packages/frontend
+# Copy backend source and config for type generation
 COPY packages/backend/src packages/backend/src
+COPY packages/backend/database packages/backend/database
+COPY packages/backend/tsconfig.json packages/backend/
+COPY packages/backend/tsconfig.build.json packages/backend/
 
-# Build frontend (uses .env.production for config)
+# Generate backend type declarations
+WORKDIR /app/packages/backend
+RUN bunx tsc --project tsconfig.build.json
+
+# Copy frontend source
+WORKDIR /app
+COPY packages/frontend packages/frontend
+
+# Build frontend with type checking
 WORKDIR /app/packages/frontend
-RUN bunx vite build
+RUN bun run build
 
 FROM nginx:alpine
 

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { subjectsInputSchema } from './schemas';
+import { Source } from '../concepts/types';
 
 export type SubjectsInput = z.infer<typeof subjectsInputSchema>;
 
@@ -9,7 +10,7 @@ export interface ConceptSummary {
   description: string;
   grade: number;
   difficulty: 'easy' | 'medium' | 'hard';
-  source: string;
+  source: Source;
   focus: string;
   learning_objectives: string[];
 }

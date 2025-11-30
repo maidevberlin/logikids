@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { injectable } from 'tsyringe';
 import { subjectRegistry } from './registry';
 import type { SubjectsInput, SubjectWithConcepts, ConceptSummary } from './types';
+import type { Source } from '../concepts/types';
 
 @injectable()
 export class SubjectsService {
@@ -39,7 +40,7 @@ export class SubjectsService {
     description: string;
     grade: number;
     difficulty: 'easy' | 'medium' | 'hard';
-    source: string;
+    source: Source;
     focus: string;
     learning_objectives: string[];
   }): ConceptSummary {

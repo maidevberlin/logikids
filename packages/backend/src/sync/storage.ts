@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { injectable } from 'tsyringe';
 import { pool } from '../../database/db'
-import { SyncRecord, SyncPayload } from './schema.ts'
+import { SyncRecord, SyncPayload } from './schema'
 
 /**
  * PostgreSQL-based storage for encrypted user data
