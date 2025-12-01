@@ -304,13 +304,25 @@
       "description": "Einführung in dreidimensionale Messung, Volumenberechnung von Quadern, Umrechnung zwischen Volumen- und Hohlmaßeinheiten, praktische Probleme lösen",
       "name": "Volumen und Rauminhalt"
     },
+    "grade6-angles-advanced": {
+      "description": "Winkel präzise messen und zeichnen, Winkelbeziehungen wie Scheitelwinkel, Stufenwinkel und Nebenwinkel erkennen und Winkelhalbierenden konstruieren",
+      "name": "Winkel und Winkelbeziehungen"
+    },
     "grade6-area-complex-shapes": {
       "description": "Berechnung von Flächen von Dreiecken, Parallelogrammen, Trapezen und zusammengesetzten Figuren durch Zerlegung und Formelanwendung, Lösung mehrstufiger Aufgaben und Überprüfung von Berechnungen",
       "name": "Flächenberechnung zusammengesetzter Figuren"
     },
+    "grade6-area-formulas": {
+      "description": "Herleitung und Anwendung von Flächenformeln für Parallelogramme, Dreiecke und Trapeze; Berechnung von Oberflächen einfacher Körper mithilfe von Zerlegungs- und Ergänzungsstrategien",
+      "name": "Flächenformeln"
+    },
     "grade6-circle-geometry": {
       "description": "Kreisterminologie, Umfangsberechnung (U=πd), Flächenberechnung (A=πr²) und Lösen von realen Problemen mit Kreisen",
       "name": "Kreis und Kreisberechnungen"
+    },
+    "grade6-decimal-fractions": {
+      "description": "Stellenwerte bei Dezimalzahlen verstehen, Runden, Umwandlung zwischen Brüchen und Dezimalzahlen, und Unterscheidung zwischen abbrechenden und periodischen Dezimalzahlen",
+      "name": "Dezimalbrüche"
     },
     "grade6-decimal-numbers": {
       "description": "Dezimalschreibweise verstehen, Stellenwertsysteme, Operationen mit Dezimalzahlen, Umwandlung zwischen Brüchen und Dezimalzahlen, Runden und Schätzen und Anwendung von Dezimalzahlen in realen Kontexten",
@@ -320,9 +332,33 @@
       "description": "Umfassende Brucharbeit einschließlich Erweitern, Kürzen, Umwandeln und alle vier Grundrechenarten mit Brüchen",
       "name": "Bruchrechnung"
     },
+    "grade6-fractions-basics": {
+      "description": "Brüche als Teile vom Ganzen interpretieren, Brüche mit verschiedenen Strategien vergleichen, Brüche erweitern und kürzen unter Werterhaltung, Brüche auf Zahlenstrahlen darstellen einschließlich negativer Brüche, und Prozentangaben mit Bruchschreibweise verbinden",
+      "name": "Brüche und Bruchzahlen"
+    },
+    "grade6-data-diagrams": {
+      "description": "Absolute und relative Häufigkeiten bestimmen, Daten mit Kreis- und Säulendiagrammen darstellen, arithmetisches Mittel berechnen und interpretieren, manipulative Darstellungen in Datenvisualisierungen erkennen",
+      "name": "Daten und Diagramme"
+    },
+    "grade6-volume": {
+      "description": "Volumenberechnung von Quadern und Prismen mit Formeln, Umrechnung zwischen Volumeneinheiten und Problemlösung durch Zerlegungs- und Ergänzungsstrategien",
+      "name": "Volumen von Prismen"
+    },
+    "grade6-geometric-constructions": {
+      "description": "Konstruktion von Senkrechten und Parallelen, Durchführung von Achsen- und Punktspiegelungen",
+      "name": "Geometrische Konstruktionen"
+    },
+    "grade6-rational-multiplication-division": {
+      "description": "Produkte und Quotienten von Brüchen mit aussagekräftigen Darstellungen berechnen, Kehrwerte zur Division anwenden, Potenzen mit rationalen Basen und natürlichen oder negativen ganzzahligen Exponenten berechnen, und Rechenvorteile zur Vereinfachung nutzen",
+      "name": "Multiplikation und Division rationaler Zahlen"
+    },
     "grade6-percentages-basics": {
       "description": "Prozent als pro Hundert verstehen, Umwandlung zwischen Brüchen/Dezimalzahlen/Prozenten und grundlegende Prozentrechnungen",
       "name": "Einführung in Prozentrechnung"
+    },
+    "grade6-percentages": {
+      "description": "Lösen von Alltagsproblemen mit Prozenten, einschließlich Rabatten und Zinsen, Anwendung der Grundgleichung der Prozentrechnung (Grundwert × Prozentsatz = Prozentwert) und Unterscheidung zwischen Prozent und Prozentpunkten",
+      "name": "Prozentrechnung"
     },
     "grade6-probability-basics": {
       "description": "Wahrscheinlichkeit als Maß für Wahrscheinlichkeit verstehen, experimentelle und theoretische Wahrscheinlichkeit erkunden und einfache Wahrscheinlichkeiten berechnen",
@@ -519,6 +555,14 @@
     "grade5-fractions-operations": {
       "description": "Brüche mit gleichen und unterschiedlichen Nennern addieren und subtrahieren, Brüche mit ganzen Zahlen multiplizieren und Brüche vollständig kürzen",
       "name": "Rechnen mit Brüchen"
+    },
+    "grade6-rational-addition-subtraction": {
+      "description": "Brüche mit gleichen und unterschiedlichen Nennern addieren und subtrahieren, gemischte Zahlen und Dezimalzahlen verarbeiten mit Rechenstrategien und Ergebnisüberprüfung durch Überschlagsrechnung",
+      "name": "Addieren und Subtrahieren rationaler Zahlen"
+    },
+    "grade6-combined-operations": {
+      "description": "Termstrukturen, Rechenreihenfolge, Distributivgesetz und mehrstufige Probleme mit Brüchen, Dezimalzahlen und ganzen Zahlen",
+      "name": "Verknüpfte Rechenoperationen mit rationalen Zahlen"
     }
   }
 }

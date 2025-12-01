@@ -304,13 +304,25 @@
       "description": "Introduction to three-dimensional measurement, calculating volume of cuboids, converting between volume and capacity units, solving practical problems",
       "name": "Volume and Capacity"
     },
+    "grade6-angles-advanced": {
+      "description": "Measuring and drawing angles accurately, identifying angle relationships including vertical, corresponding, and adjacent angles, and constructing angle bisectors",
+      "name": "Angles and Angle Relationships"
+    },
     "grade6-area-complex-shapes": {
       "description": "Calculating areas of triangles, parallelograms, trapezoids, and composite figures through decomposition and formula application, solving multi-step problems and verifying calculations",
       "name": "Area of Composite Shapes"
     },
+    "grade6-area-formulas": {
+      "description": "Deriving and applying area formulas for parallelograms, triangles, and trapezoids; calculating surface areas of simple solids using decomposition and complementation strategies",
+      "name": "Area Formulas"
+    },
     "grade6-circle-geometry": {
       "description": "Circle terminology, circumference calculation (C=πd), area calculation (A=πr²), and solving real-world problems involving circles",
       "name": "Circle Geometry"
+    },
+    "grade6-decimal-fractions": {
+      "description": "Understanding place values in decimals, rounding, converting between fractions and decimals, and distinguishing terminating from repeating decimals",
+      "name": "Decimal Fractions"
     },
     "grade6-decimal-numbers": {
       "description": "Understanding decimal notation, place value systems, operations with decimals, converting between fractions and decimals, rounding and estimation, and applying decimals in real-world contexts",
@@ -320,9 +332,33 @@
       "description": "Comprehensive fraction work including expanding, reducing, converting, and performing all four operations with fractions",
       "name": "Fraction Operations"
     },
+    "grade6-fractions-basics": {
+      "description": "Interpreting fractions as parts of wholes, comparing fractions using multiple strategies, extending and reducing fractions while preserving value, representing fractions on number lines including negative fractions, and connecting percentages to fraction notation",
+      "name": "Fractions and Fractional Numbers"
+    },
+    "grade6-data-diagrams": {
+      "description": "Determining absolute and relative frequencies, displaying data using circle and column diagrams, calculating and interpreting arithmetic mean, recognizing manipulative presentations in data visualization",
+      "name": "Data and Diagrams"
+    },
+    "grade6-geometric-constructions": {
+      "description": "Constructing perpendicular and parallel lines, performing axial and point reflections",
+      "name": "Geometric Constructions"
+    },
+    "grade6-rational-multiplication-division": {
+      "description": "Computing products and quotients of fractions using meaningful representations, applying reciprocals for division, calculating powers with rational bases and natural or negative integer exponents, and using computational advantages to simplify calculations",
+      "name": "Multiplying and Dividing Rational Numbers"
+    },
+    "grade6-volume": {
+      "description": "Calculate volumes of cuboids and prisms using formulas, convert between volume units, and solve problems through decomposition and complementation strategies",
+      "name": "Volume of Prisms"
+    },
     "grade6-percentages-basics": {
       "description": "Understanding percent as per hundred, converting between fractions/decimals/percentages, and basic percentage calculations",
       "name": "Introduction to Percentages"
+    },
+    "grade6-percentages": {
+      "description": "Solving everyday percentage problems including discounts and interest, applying the basic percentage equation (base value × percentage rate = percentage value), and distinguishing between percent and percentage points",
+      "name": "Percentages"
     },
     "grade6-probability-basics": {
       "description": "Understanding probability as a measure of likelihood, exploring experimental vs theoretical probability, and calculating simple probabilities",
@@ -519,6 +555,14 @@
     "grade5-fractions-operations": {
       "description": "Adding and subtracting fractions with same and different denominators, multiplying fractions by whole numbers, and simplifying fractions to lowest terms",
       "name": "Operations with Fractions"
+    },
+    "grade6-rational-addition-subtraction": {
+      "description": "Adding and subtracting fractions with same and different denominators, mixed numbers, and decimals using computational strategies and verifying results through estimation",
+      "name": "Adding and Subtracting Rational Numbers"
+    },
+    "grade6-combined-operations": {
+      "description": "Term structures, order of operations, distributive property, and multi-step problems with fractions, decimals, and whole numbers",
+      "name": "Combined Operations with Rational Numbers"
     }
   }
 }
