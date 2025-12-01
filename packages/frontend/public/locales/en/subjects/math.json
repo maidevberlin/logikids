@@ -580,6 +580,50 @@
       "description": "Understanding and working with rational functions of the form f(x) = a/(x+b) + c, including domain restrictions, asymptotes, graphing, and indirect proportionality as a special case",
       "name": "Elementary Rational Functions"
     },
+    "grade9-binomial-formulas": {
+      "description": "Master the three binomial formulas for expanding and factoring algebraic expressions efficiently",
+      "name": "Binomial Formulas"
+    },
+    "grade9-compound-probability": {
+      "description": "Understanding compound events through set notation, Venn diagrams, contingency tables, and calculating probabilities of unions and intersections using the addition rule",
+      "name": "Compound Probability"
+    },
+    "grade9-power-functions": {
+      "description": "Understanding power functions with various exponents, their graphs, and relationships to radical notation",
+      "name": "Power Functions"
+    },
+    "grade9-pythagorean-theorem": {
+      "description": "Understanding and applying the Pythagorean theorem, its proof, converse, and practical applications in geometry and measurement",
+      "name": "Pythagorean Theorem"
+    },
+    "grade9-quadratic-equations": {
+      "description": "Solving quadratic equations using factoring, completing the square, and quadratic formulas (p-q and abc form). Understanding the discriminant and applying solutions to real-world problems.",
+      "name": "Quadratic Equations"
+    },
+    "grade9-similarity": {
+      "description": "Understanding triangle similarity criteria, applying the intercept theorem, calculating proportional segments, and analyzing how scaling factors affect area and volume",
+      "name": "Similarity and Proportionality"
+    },
+    "grade9-quadratic-functions": {
+      "description": "Study parabolas, their equations (vertex form, general form, factored form), parameter effects, graphing techniques, and key properties including range, zeros, and monotonicity.",
+      "name": "Quadratic Functions"
+    },
+    "grade9-square-roots": {
+      "description": "Understanding square roots, simplifying radical expressions, rationalizing denominators, and exploring irrational numbers",
+      "name": "Square Roots and Radicals"
+    },
+    "grade9-right-triangle-trigonometry": {
+      "description": "Understanding sine, cosine, and tangent as ratios in right triangles, applying fundamental trigonometric identities, and solving practical surveying and physics problems",
+      "name": "Right Triangle Trigonometry"
+    },
+    "grade9-sine-cosine-laws": {
+      "description": "Applying sine and cosine laws to solve non-right triangles, understanding unit circle visualization, and recognizing the Pythagorean theorem as a special case",
+      "name": "Sine and Cosine Laws"
+    },
+    "grade9-systems-of-equations": {
+      "description": "Solving systems of three linear equations with three unknowns using substitution, elimination, and Gaussian elimination methods, including real-world modeling",
+      "name": "Systems of Linear Equations (3 Variables)"
+    },
     "inequalities": {
       "description": "Understanding inequality notation, solving simple inequalities, representing solutions on number lines, and working with solution sets",
       "name": "Linear Inequalities"

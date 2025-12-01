@@ -580,6 +580,50 @@
       "description": "Verständnis und Arbeit mit gebrochenrationalen Funktionen der Form f(x) = a/(x+b) + c, einschließlich Definitionsbereich, Asymptoten, Graphen zeichnen und indirekte Proportionalität als Spezialfall",
       "name": "Elementare gebrochenrationale Funktionen"
     },
+    "grade9-binomial-formulas": {
+      "description": "Die drei binomischen Formeln zum effizienten Ausmultiplizieren und Faktorisieren algebraischer Ausdrücke beherrschen",
+      "name": "Binomische Formeln"
+    },
+    "grade9-compound-probability": {
+      "description": "Verständnis zusammengesetzter Ereignisse durch Mengenschreibweise, Venn-Diagramme, Vierfeldertafeln und Berechnung von Wahrscheinlichkeiten von Vereinigungen und Schnittmengen mit der Additionsregel",
+      "name": "Zusammengesetzte Wahrscheinlichkeit"
+    },
+    "grade9-pythagorean-theorem": {
+      "description": "Verständnis und Anwendung des Satzes des Pythagoras, sein Beweis, die Umkehrung und praktische Anwendungen in Geometrie und Messung",
+      "name": "Satz des Pythagoras"
+    },
+    "grade9-power-functions": {
+      "description": "Verständnis von Potenzfunktionen mit verschiedenen Exponenten, deren Graphen und Beziehungen zur Wurzelschreibweise",
+      "name": "Potenzfunktionen"
+    },
+    "grade9-quadratic-equations": {
+      "description": "Lösen quadratischer Gleichungen durch Faktorisieren, quadratische Ergänzung und Lösungsformeln (p-q- und abc-Form). Diskriminante verstehen und Lösungen auf reale Probleme anwenden.",
+      "name": "Quadratische Gleichungen"
+    },
+    "grade9-quadratic-functions": {
+      "description": "Parabeln studieren, ihre Gleichungen (Scheitelpunktform, allgemeine Form, faktorisierte Form), Parametereffekte, Zeichentechniken und Schlüsseleigenschaften einschließlich Wertebereich, Nullstellen und Monotonie.",
+      "name": "Quadratische Funktionen"
+    },
+    "grade9-square-roots": {
+      "description": "Quadratwurzeln verstehen, Radikalausdrücke vereinfachen, Nenner rationalisieren und irrationale Zahlen erkunden",
+      "name": "Quadratwurzeln und Radikale"
+    },
+    "grade9-systems-of-equations": {
+      "description": "Lösen von Systemen aus drei linearen Gleichungen mit drei Unbekannten mittels Einsetzungs-, Gleichsetzungs- und Gauß-Eliminationsverfahren, einschließlich Modellierung realer Probleme",
+      "name": "Lineare Gleichungssysteme (3 Variablen)"
+    },
+    "grade9-right-triangle-trigonometry": {
+      "description": "Sinus, Kosinus und Tangens als Seitenverhältnisse in rechtwinkligen Dreiecken verstehen, grundlegende trigonometrische Identitäten anwenden und praktische Vermessungs- und Physikaufgaben lösen",
+      "name": "Trigonometrie am rechtwinkligen Dreieck"
+    },
+    "grade9-sine-cosine-laws": {
+      "description": "Anwendung von Sinus- und Kosinussatz zur Lösung beliebiger Dreiecke, Verständnis der Einheitskreisdarstellung und Erkennung des Satzes des Pythagoras als Spezialfall",
+      "name": "Sinus- und Kosinussatz"
+    },
+    "grade9-similarity": {
+      "description": "Verständnis von Dreieckssähnlichkeitskriterien, Anwendung des Strahlensatzes, Berechnung proportionaler Strecken und Analyse der Auswirkungen von Skalierungsfaktoren auf Fläche und Volumen",
+      "name": "Ähnlichkeit und Proportionalität"
+    },
     "inequalities": {
       "description": "Verständnis der Ungleichungsnotation, Lösen einfacher Ungleichungen, Darstellung von Lösungsmengen auf Zahlenstrahlen und Arbeit mit Lösungsmengen",
       "name": "Lineare Ungleichungen"

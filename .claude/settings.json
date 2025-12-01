@@ -23,6 +23,7 @@
       "mcp__jetbrains__get_repositories",
       "mcp__ide__getDiagnostics",
       "WebFetch(domain:www.kmk.org)",
+      "WebFetch(domain:www.lehrplanplus.bayern.de)",
       "Skill(bulk-generate-concepts)",
       "Skill(jetbrains-coding)",
       "Skill(write-concept)",
