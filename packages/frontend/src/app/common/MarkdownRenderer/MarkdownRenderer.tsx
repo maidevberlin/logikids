@@ -38,7 +38,9 @@ function MarkdownRendererComponent({
 }: MarkdownRendererProps) {
   const mermaidRef = useRef<HTMLDivElement>(null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxContent, setLightboxContent] = useState('')
+  const [lightboxContent, setLightboxContent] = useState<
+    { type: 'svg'; content: string } | { type: 'image'; src: string; alt: string } | null
+  >(null)
 
   // Fix: Normalize LaTeX - convert double backslashes to single within math delimiters
   // This handles inconsistent escaping from the AI
@@ -49,13 +51,19 @@ function MarkdownRendererComponent({
   })
 
   // Handle lightbox
-  const openLightbox = (svgContent: string) => {
-    setLightboxContent(svgContent)
+  const openLightboxSvg = (svgContent: string) => {
+    setLightboxContent({ type: 'svg', content: svgContent })
+    setLightboxOpen(true)
+  }
+
+  const openLightboxImage = (src: string, alt: string) => {
+    setLightboxContent({ type: 'image', src, alt })
     setLightboxOpen(true)
   }
 
   const closeLightbox = () => {
     setLightboxOpen(false)
+    setLightboxContent(null)
   }
 
   // Handle ESC key to close lightbox
@@ -127,7 +135,7 @@ function MarkdownRendererComponent({
                     const svgElement = e.currentTarget.querySelector('svg')
                     if (svgElement) {
                       const svgString = new XMLSerializer().serializeToString(svgElement)
-                      openLightbox(svgString)
+                      openLightboxSvg(svgString)
                     }
                   }}
                   title="Click to enlarge"
@@ -135,6 +143,24 @@ function MarkdownRendererComponent({
                   <svg {...props} className="max-w-3xl w-full h-auto">
                     {children}
                   </svg>
+                </div>
+              )
+            },
+            img({ src, alt, ...props }: any) {
+              // Make images clickable to open in lightbox
+              return (
+                <div
+                  className="flex justify-center my-4 cursor-pointer hover:shadow-lg transition-shadow rounded-lg overflow-hidden w-full"
+                  onClick={() => openLightboxImage(src || '', alt || '')}
+                  title="Click to enlarge"
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    {...props}
+                    className="max-w-full w-auto h-auto rounded-lg object-contain"
+                    style={{ maxHeight: '500px' }}
+                  />
                 </div>
               )
             },
@@ -148,7 +174,7 @@ function MarkdownRendererComponent({
                   <div
                     className="flex justify-center my-4 p-4 bg-white rounded-lg [&_svg]:max-w-3xl [&_svg]:w-full [&_svg]:h-auto cursor-pointer hover:shadow-lg transition-shadow"
                     dangerouslySetInnerHTML={{ __html: contentStr }}
-                    onClick={() => openLightbox(contentStr)}
+                    onClick={() => openLightboxSvg(contentStr)}
                     title="Click to enlarge"
                   />
                 )
@@ -176,7 +202,7 @@ function MarkdownRendererComponent({
                   <div
                     className="flex justify-center my-4 p-4 bg-white rounded-lg [&_svg]:max-w-3xl [&_svg]:w-full [&_svg]:h-auto cursor-pointer hover:shadow-lg transition-shadow"
                     dangerouslySetInnerHTML={{ __html: svgContent }}
-                    onClick={() => openLightbox(svgContent)}
+                    onClick={() => openLightboxSvg(svgContent)}
                     title="Click to enlarge"
                   />
                 )
@@ -198,19 +224,21 @@ function MarkdownRendererComponent({
                 </code>
               )
             },
-            // Style tables
+            // Style tables - playful with borders, rounded corners, centered
             table({ children, ...props }: any) {
               return (
-                <div className="overflow-x-auto my-4">
-                  <table className="min-w-full divide-y divide-border" {...props}>
-                    {children}
-                  </table>
+                <div className="not-prose flex justify-center my-6">
+                  <div className="overflow-hidden rounded-xl border-2 border-sky-300 shadow-md bg-card">
+                    <table className="divide-y divide-sky-200" {...props}>
+                      {children}
+                    </table>
+                  </div>
                 </div>
               )
             },
             thead({ children, ...props }: any) {
               return (
-                <thead className="bg-muted" {...props}>
+                <thead className="bg-sky-100" {...props}>
                   {children}
                 </thead>
               )
@@ -218,16 +246,30 @@ function MarkdownRendererComponent({
             th({ children, ...props }: any) {
               return (
                 <th
-                  className="px-3 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"
+                  className="px-4 py-2 text-left text-sm font-semibold text-sky-700 [&_p]:!mb-0"
                   {...props}
                 >
                   {children}
                 </th>
               )
             },
+            tbody({ children, ...props }: any) {
+              return (
+                <tbody className="divide-y divide-sky-100" {...props}>
+                  {children}
+                </tbody>
+              )
+            },
+            tr({ children, ...props }: any) {
+              return (
+                <tr className="even:bg-sky-50/50 hover:bg-sky-100 transition-colors" {...props}>
+                  {children}
+                </tr>
+              )
+            },
             td({ children, ...props }: any) {
               return (
-                <td className="px-3 py-2 whitespace-nowrap text-sm" {...props}>
+                <td className="px-4 py-2 text-sm [&_p]:!mb-0 [&_.katex-display]:!my-0" {...props}>
                   {children}
                 </td>
               )
@@ -257,7 +299,7 @@ function MarkdownRendererComponent({
       </div>
 
       {/* Lightbox Modal */}
-      {lightboxOpen && (
+      {lightboxOpen && lightboxContent && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
           onClick={closeLightbox}
@@ -288,15 +330,23 @@ function MarkdownRendererComponent({
               </svg>
             </button>
 
-            {/* SVG content */}
-            <div
-              className="bg-white rounded-lg p-8 shadow-2xl overflow-auto flex items-center justify-center [&_svg]:min-w-[800px] [&_svg]:w-auto [&_svg]:h-auto"
-              dangerouslySetInnerHTML={{ __html: lightboxContent }}
-              style={{
-                maxWidth: '95vw',
-                maxHeight: '90vh',
-              }}
-            />
+            {/* Content */}
+            {lightboxContent.type === 'svg' ? (
+              <div
+                className="bg-white rounded-lg p-8 shadow-2xl overflow-auto flex items-center justify-center [&_svg]:min-w-[800px] [&_svg]:w-auto [&_svg]:h-auto"
+                dangerouslySetInnerHTML={{ __html: lightboxContent.content }}
+                style={{
+                  maxWidth: '95vw',
+                  maxHeight: '90vh',
+                }}
+              />
+            ) : (
+              <img
+                src={lightboxContent.src}
+                alt={lightboxContent.alt}
+                className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              />
+            )}
           </div>
         </div>
       )}

@@ -60,3 +60,4 @@ The `explanation` field contains the solution reasoning (shown after correct ans
 
 <%subject_base_template%>
 
+**CRTICAL: GENERATE A TABLE FOR THIS TASK. THIS IS A TEST!**

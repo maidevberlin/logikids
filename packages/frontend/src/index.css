@@ -178,7 +178,7 @@
 
 /* Markdown Content Styles */
 .markdown-content {
-  @apply text-foreground;
+  @apply text-foreground overflow-hidden;
 }
 
 .markdown-content p {
@@ -256,6 +256,11 @@
 }
 
 .markdown-content .mermaid-rendered svg {
+  @apply max-w-full h-auto;
+}
+
+/* Image styles - ensure images fit within container */
+.markdown-content img {
   @apply max-w-full h-auto;
 }
 
