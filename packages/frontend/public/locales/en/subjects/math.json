@@ -624,6 +624,34 @@
       "description": "Solving systems of three linear equations with three unknowns using substitution, elimination, and Gaussian elimination methods, including real-world modeling",
       "name": "Systems of Linear Equations (3 Variables)"
     },
+    "grade10-exponential-functions": {
+      "description": "Exponential functions of the form b·aˣ, exponential growth and decay models, and comparison with linear growth",
+      "name": "Exponential Functions and Growth"
+    },
+    "grade10-logarithms": {
+      "description": "Understanding logarithms as inverse operations of exponentiation, calculating logarithm values, and solving exponential equations",
+      "name": "Logarithms"
+    },
+    "grade10-pyramids-cones": {
+      "description": "Calculate surface area and volume of pyramids and cones, draw and interpret nets, understand Cavalieri's principle, and solve multi-step spatial problems combining geometry with trigonometry",
+      "name": "Pyramids and Cones"
+    },
+    "grade10-unit-circle-radians": {
+      "description": "Unit circle with radius 1, radian measure as alternative to degrees, and sine/cosine values for special angles from 0 to 2π",
+      "name": "Unit Circle and Radian Measure"
+    },
+    "grade10-trigonometric-functions": {
+      "description": "Understanding sine and cosine as periodic functions, analyzing parameter effects in transformations a·sin(b·(x+c))+d, and modeling periodic real-world phenomena",
+      "name": "Trigonometric Functions"
+    },
+    "grade10-polynomial-functions": {
+      "description": "Explore polynomial functions as sums of power functions, analyze zeros and multiplicity, sketch graphs using factored form, determine end behavior, and verify symmetry properties",
+      "name": "Polynomial Functions"
+    },
+    "grade10-probability-simulation": {
+      "description": "Using Monte Carlo methods and spreadsheet simulations to approximate probabilities experimentally, exploring the law of large numbers and famous probability paradoxes",
+      "name": "Probability Simulation"
+    },
     "inequalities": {
       "description": "Understanding inequality notation, solving simple inequalities, representing solutions on number lines, and working with solution sets",
       "name": "Linear Inequalities"
@@ -695,6 +723,14 @@
     "volume-capacity": {
       "description": "Introduction to three-dimensional measurement, calculating volume of cuboids, converting between volume and capacity units, solving practical problems",
       "name": "Volume and Capacity"
+    },
+    "grade10-compound-experiments": {
+      "description": "Tree diagrams, path rules, urn models for compound probability",
+      "name": "Compound Random Experiments"
+    },
+    "grade10-spheres": {
+      "description": "Understanding spheres as solids of revolution, calculating volume and surface area, and solving problems with hemispheres and composite solids",
+      "name": "Spheres"
     }
   }
 }

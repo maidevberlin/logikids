@@ -612,6 +612,34 @@
       "description": "Lösen von Systemen aus drei linearen Gleichungen mit drei Unbekannten mittels Einsetzungs-, Gleichsetzungs- und Gauß-Eliminationsverfahren, einschließlich Modellierung realer Probleme",
       "name": "Lineare Gleichungssysteme (3 Variablen)"
     },
+    "grade10-exponential-functions": {
+      "description": "Exponentialfunktionen der Form b·aˣ, Modelle für exponentielles Wachstum und Zerfall sowie Vergleich mit linearem Wachstum",
+      "name": "Exponentialfunktionen und Wachstum"
+    },
+    "grade10-logarithms": {
+      "description": "Verständnis von Logarithmen als Umkehroperationen der Potenzierung, Berechnung von Logarithmuswerten und Lösung von Exponentialgleichungen",
+      "name": "Logarithmen"
+    },
+    "grade10-pyramids-cones": {
+      "description": "Oberfläche und Volumen von Pyramiden und Kegeln berechnen, Netze zeichnen und interpretieren, das Prinzip von Cavalieri verstehen, und mehrstufige räumliche Probleme lösen, die Geometrie mit Trigonometrie verbinden",
+      "name": "Pyramiden und Kegel"
+    },
+    "grade10-unit-circle-radians": {
+      "description": "Einheitskreis mit Radius 1, Bogenmaß als Alternative zu Graden und Sinus-/Kosinuswerte für besondere Winkel von 0 bis 2π",
+      "name": "Einheitskreis und Bogenmaß"
+    },
+    "grade10-trigonometric-functions": {
+      "description": "Sinus und Kosinus als periodische Funktionen verstehen, Parametereffekte in Transformationen a·sin(b·(x+c))+d analysieren und periodische reale Phänomene modellieren",
+      "name": "Trigonometrische Funktionen"
+    },
+    "grade10-polynomial-functions": {
+      "description": "Ganzrationale Funktionen als Summen von Potenzfunktionen erforschen, Nullstellen und Vielfachheit analysieren, Graphen mit faktorisierter Form skizzieren, Grenzverhalten bestimmen und Symmetrieeigenschaften überprüfen",
+      "name": "Ganzrationale Funktionen"
+    },
+    "grade10-probability-simulation": {
+      "description": "Monte-Carlo-Methoden und Tabellenkalkulationssimulationen verwenden, um Wahrscheinlichkeiten experimentell zu approximieren, das Gesetz der großen Zahlen erforschen und berühmte Wahrscheinlichkeitsparadoxa untersuchen",
+      "name": "Wahrscheinlichkeitssimulation"
+    },
     "grade9-right-triangle-trigonometry": {
       "description": "Sinus, Kosinus und Tangens als Seitenverhältnisse in rechtwinkligen Dreiecken verstehen, grundlegende trigonometrische Identitäten anwenden und praktische Vermessungs- und Physikaufgaben lösen",
       "name": "Trigonometrie am rechtwinkligen Dreieck"
@@ -695,6 +723,14 @@
     "volume-capacity": {
       "description": "Einführung in dreidimensionale Messung, Volumenberechnung von Quadern, Umrechnung zwischen Volumen- und Hohlmaßeinheiten, praktische Probleme lösen",
       "name": "Volumen und Rauminhalt"
+    },
+    "grade10-compound-experiments": {
+      "description": "Baumdiagramme, Pfadregeln, Urnenmodelle für mehrstufige Wahrscheinlichkeit",
+      "name": "Mehrstufige Zufallsexperimente"
+    },
+    "grade10-spheres": {
+      "description": "Verständnis von Kugeln als Rotationskörper, Berechnung von Volumen und Oberfläche, und Lösen von Problemen mit Halbkugeln und zusammengesetzten Körpern",
+      "name": "Kugeln"
     }
   }
 }
