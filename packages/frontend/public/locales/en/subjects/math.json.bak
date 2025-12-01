@@ -1,0 +1,688 @@
+{
+  "concepts": {
+    "angle-relationships": {
+      "description": "Understanding angle types, complementary and supplementary angles, vertical angles, and angle relationships formed by parallel lines and transversals",
+      "name": "Angle Relationships"
+    },
+    "area-complex-shapes": {
+      "description": "Calculating areas of triangles, parallelograms, trapezoids, and composite figures through decomposition and formula application, solving multi-step problems and verifying calculations",
+      "name": "Area of Composite Shapes"
+    },
+    "area-perimeter": {
+      "description": "Calculating perimeter and area of rectangles and squares, understanding units, converting between area units, solving practical problems",
+      "name": "Area and Perimeter"
+    },
+    "circle-geometry": {
+      "description": "Circle terminology, circumference calculation (C=πd), area calculation (A=πr²), and solving real-world problems involving circles",
+      "name": "Circle Geometry"
+    },
+    "congruence-similarity-intro": {
+      "description": "Explore triangle congruence conditions (SSS, SAS, ASA, AAS), similarity concepts, scale factors, and their applications to maps and scale drawings",
+      "name": "Congruence and Similarity Introduction"
+    },
+    "coordinate-system-advanced": {
+      "description": "Mastering the coordinate system with all four quadrants, graphing linear relationships, understanding slope and y-intercept, creating graphs from real-world situations, and calculating distances",
+      "name": "Coordinate System and Linear Functions"
+    },
+    "coordinate-system-basics": {
+      "description": "Understanding the Cartesian coordinate system (first quadrant), plotting and reading points, describing spatial relationships and positions, identifying geometric relationships, and calculating distances between points",
+      "name": "Coordinate System and Spatial Relationships"
+    },
+    "data-collection-charts": {
+      "description": "Collecting, organizing, and representing data using tables, bar charts, pictographs, and line graphs",
+      "name": "Data Collection and Charts"
+    },
+    "decimal-numbers": {
+      "description": "Understanding decimal notation, place value systems, operations with decimals, converting between fractions and decimals, rounding and estimation, and applying decimals in real-world contexts",
+      "name": "Decimal Numbers"
+    },
+    "divisibility-prime-numbers": {
+      "description": "Understanding divisibility rules, distinguishing prime and composite numbers, and working with factors",
+      "name": "Divisibility and Prime Numbers"
+    },
+    "fraction-operations": {
+      "description": "Comprehensive fraction work including expanding, reducing, converting, and performing all four operations with fractions",
+      "name": "Fraction Operations"
+    },
+    "geometric-shapes-2d": {
+      "description": "Properties and classification of basic 2D shapes including triangles, quadrilaterals, and circles, symmetry and geometric constructions",
+      "name": "Two-Dimensional Geometric Shapes"
+    },
+    "grade1-addition-subtraction-to-20": {
+      "description": "Adding and subtracting numbers within 20, including crossing the ten, fact families, and mental calculation strategies",
+      "name": "Addition and Subtraction to 20"
+    },
+    "grade1-basic-arithmetic-operations": {
+      "description": "Master addition and subtraction within 20, including number bonds, crossing ten, and mental calculation strategies",
+      "name": "Basic Arithmetic Operations (0-20)"
+    },
+    "grade1-data-and-probability-basics": {
+      "description": "Collecting data from the immediate environment, creating tally charts and simple tables, understanding probability language",
+      "name": "Data and Probability Basics"
+    },
+    "grade1-geometry-and-spatial-awareness": {
+      "description": "Recognizing shapes, understanding spatial relations, and exploring symmetry through hands-on activities",
+      "name": "Geometry and Spatial Awareness"
+    },
+    "grade1-introduction-to-measurement": {
+      "description": "Comparing lengths, using non-standard units, and understanding basic time concepts",
+      "name": "Introduction to Measurement"
+    },
+    "grade1-money": {
+      "description": "Recognizing coins and bills, counting money, and solving simple purchase problems",
+      "name": "Money"
+    },
+    "grade1-number-concept-development": {
+      "description": "Understanding numbers 1-20, counting forwards and backwards, comparing and ordering numbers",
+      "name": "Number Concept Development"
+    },
+    "grade1-number-sense-to-20": {
+      "description": "Counting, reading, writing, comparing, and ordering numbers from 0 to 20; understanding quantity and number relationships",
+      "name": "Number Sense to 20"
+    },
+    "grade1-patterns-and-data": {
+      "description": "Recognizing, continuing, and creating patterns; collecting and representing simple data",
+      "name": "Patterns and Data"
+    },
+    "grade1-patterns-and-structures": {
+      "description": "Identifying, continuing, and creating patterns with shapes, colors, and numbers",
+      "name": "Patterns and Structures"
+    },
+    "grade1-plane-shapes": {
+      "description": "Identifying, naming, and describing basic 2D shapes",
+      "name": "Plane Shapes"
+    },
+    "grade1-probability-basics": {
+      "description": "Understanding chance and likelihood using vocabulary like certain, possible, and impossible through simple everyday situations",
+      "name": "Probability Basics"
+    },
+    "grade1-solid-shapes": {
+      "description": "Identifying and naming 3D shapes (cube, sphere, cylinder, cone, cuboid) and relating them to real-world objects",
+      "name": "Solid Shapes"
+    },
+    "grade1-spatial-orientation": {
+      "description": "Understanding and using position words to describe locations and follow directions",
+      "name": "Spatial Orientation"
+    },
+    "grade1-symmetry": {
+      "description": "Recognizing axial symmetry through folding and mirror activities, identifying symmetric shapes, and creating symmetric patterns",
+      "name": "Symmetry"
+    },
+    "grade2-addition-subtraction-to-100": {
+      "description": "Adding and subtracting numbers within 100 using mental strategies, with and without regrouping, and solving multi-step word problems",
+      "name": "Addition and Subtraction to 100"
+    },
+    "grade2-geometry-and-symmetry": {
+      "description": "Deepening understanding of 2D and 3D shapes, identifying and creating symmetric figures, and working with lines of symmetry",
+      "name": "Geometry and Symmetry"
+    },
+    "grade2-introduction-to-chance": {
+      "description": "Understanding certain, possible, and impossible events through simple experiments",
+      "name": "Introduction to Chance"
+    },
+    "grade2-introduction-to-division": {
+      "description": "Understanding division through sharing and grouping strategies, connecting to multiplication, and building foundational division facts",
+      "name": "Introduction to Division"
+    },
+    "grade2-introduction-to-multiplication": {
+      "description": "Understanding multiplication as repeated addition, arrays, equal groups, and foundational times tables (2, 5, 10)",
+      "name": "Introduction to Multiplication"
+    },
+    "grade2-introduction-to-multiplication-and-division": {
+      "description": "Understanding multiplication as repeated addition and division as sharing and grouping, with times tables for 2, 5, and 10",
+      "name": "Introduction to Multiplication and Division"
+    },
+    "grade2-measurement-skills": {
+      "description": "Measuring length, understanding time, and comparing measurements",
+      "name": "Measurement Skills"
+    },
+    "grade2-money-and-currency": {
+      "description": "Working with Euro coins and bills up to 100€, using € and ct notation, adding and subtracting money amounts, calculating change, and solving shopping problems",
+      "name": "Money and Currency"
+    },
+    "grade2-numbers-and-operations-to-100": {
+      "description": "Understanding place value, addition, subtraction, comparing, ordering, and rounding numbers within the range 0-100",
+      "name": "Numbers and Operations to 100"
+    },
+    "grade2-numbers-to-100": {
+      "description": "Understanding place value with tens and ones, reading, writing, comparing numbers to 100, using hundred chart and number line",
+      "name": "Numbers to 100"
+    },
+    "grade2-patterns-and-data-representation": {
+      "description": "Number sequences; data collection; tally charts; simple bar graphs; interpreting data",
+      "name": "Patterns and Data Representation"
+    },
+    "grade3-advanced-geometry": {
+      "description": "Exploring pyramids, cones, and cylinders; understanding nets of 3D shapes; deepened symmetry work",
+      "name": "Advanced Geometry"
+    },
+    "grade3-all-measurement-domains": {
+      "description": "Working with lengths, mass, volume, time, converting units, and solving complex measurement problems",
+      "name": "All Measurement Domains"
+    },
+    "grade3-area": {
+      "description": "Covering with unit squares; comparing areas; area as measurement",
+      "name": "Introduction to Area"
+    },
+    "grade3-arithmetic-laws": {
+      "description": "Understanding and applying commutative, associative, and distributive properties to make calculations more efficient",
+      "name": "Arithmetic Laws and Properties"
+    },
+    "grade3-arithmetic-laws-and-patterns": {
+      "description": "Understanding and applying commutative, associative, and distributive properties; recognizing and creating number sequences",
+      "name": "Arithmetic Laws and Patterns"
+    },
+    "grade3-data-and-combinatorics": {
+      "description": "Collecting, organizing, and interpreting data; systematic counting and simple combinations",
+      "name": "Data and Combinatorics"
+    },
+    "grade3-data-probability-and-combinatorics": {
+      "description": "Collect data, create diagrams, investigate probability through experiments, and find all combinations systematically",
+      "name": "Data, Probability and Combinatorics"
+    },
+    "grade3-geometry-and-area": {
+      "description": "Properties of geometric figures, symmetry, drawing with tools, and measuring area with square units",
+      "name": "Geometry and Area"
+    },
+    "grade3-length-measurement": {
+      "description": "Measuring with mm, cm, m, km; unit conversions; estimation and comparison of lengths",
+      "name": "Length Measurement"
+    },
+    "grade3-measurement-mass-volume": {
+      "description": "Understanding and working with grams, kilograms, milliliters, and liters through measuring, comparing, and converting",
+      "name": "Measurement - Mass and Volume"
+    },
+    "grade3-money-advanced": {
+      "description": "Working with amounts up to 1000 Euro, using decimal notation, handling 100€, 200€, and 500€ bills, solving multi-step shopping problems, and budget planning",
+      "name": "Advanced Money Skills"
+    },
+    "grade3-multiplication-and-division-mastery": {
+      "description": "Automatic recall of multiplication facts, division with remainders, and multi-digit multiplication strategies",
+      "name": "Multiplication and Division Mastery"
+    },
+    "grade3-multiplication-division-strategies": {
+      "description": "Half-written methods for multiplication, multiplying by 10 and 100, and division with remainder",
+      "name": "Multiplication and Division Strategies"
+    },
+    "grade3-multiplication-tables": {
+      "description": "Mastering all times tables 1-10 with automatic recall and understanding inverse operations (division facts)",
+      "name": "Multiplication Tables"
+    },
+    "grade3-numbers-and-operations-to-1000": {
+      "description": "Place value, comparing, ordering, rounding, mental addition and subtraction strategies with three-digit numbers",
+      "name": "Numbers and Operations to 1000"
+    },
+    "grade3-numbers-to-1000": {
+      "description": "Understanding place value with hundreds, tens, and ones; reading, writing, comparing, and ordering numbers; rounding; recognizing number patterns",
+      "name": "Numbers to 1000"
+    },
+    "grade3-perimeter": {
+      "description": "Calculating the perimeter of shapes by adding side lengths; working with rectangles, squares, triangles, and polygons",
+      "name": "Perimeter"
+    },
+    "grade3-time-and-duration": {
+      "description": "Reading clocks, calculating time spans, understanding calendar relationships, and working with units of time",
+      "name": "Time and Duration"
+    },
+    "grade3-written-addition-and-subtraction": {
+      "description": "Standard algorithms for multi-digit addition and subtraction with regrouping",
+      "name": "Written Addition and Subtraction"
+    },
+    "grade4-advanced-geometry": {
+      "description": "Geometric constructions, transformations, solids and nets, area and perimeter calculations using tools",
+      "name": "Advanced Geometry"
+    },
+    "grade4-algebraic-thinking": {
+      "description": "Understanding terms, order of operations, simple equations, variables, divisibility, and functional relationships",
+      "name": "Algebraic Thinking"
+    },
+    "grade4-area-perimeter": {
+      "description": "Calculating area and perimeter of rectangles and squares; using square units; distinguishing between area and perimeter; solving word problems with missing dimensions",
+      "name": "Area and Perimeter"
+    },
+    "grade4-combinatorics": {
+      "description": "Finding all possibilities systematically using tree diagrams, organized lists, and tables to solve combination and arrangement problems",
+      "name": "Combinatorics and Systematic Counting"
+    },
+    "grade4-data-analysis-and-statistics": {
+      "description": "Analyzing diagrams, calculating arithmetic mean, comparing datasets, and understanding probability concepts",
+      "name": "Data Analysis and Statistics"
+    },
+    "grade4-data-probability": {
+      "description": "Collecting and organizing data from surveys and experiments; creating and interpreting bar charts, pictographs, and tables; calculating simple averages; understanding likelihood and probability events",
+      "name": "Data Analysis and Probability"
+    },
+    "grade4-fractions": {
+      "description": "Understanding fractions as parts of a whole, fraction notation, visual representation, comparing and ordering fractions with same denominators, recognizing equivalent fractions, and applying fractions in everyday contexts",
+      "name": "Introduction to Fractions"
+    },
+    "grade4-geometry-spatial": {
+      "description": "Properties of 2D and 3D shapes; symmetry and lines; spatial visualization; nets of geometric solids; parallel and perpendicular relationships",
+      "name": "Geometry and Spatial Reasoning"
+    },
+    "grade4-large-numbers": {
+      "description": "Understanding numbers up to one million, place value, rounding, and number comparison",
+      "name": "Large Numbers"
+    },
+    "grade4-measurement-units": {
+      "description": "Converting between units of length, mass, volume, and time; understanding decimal notation for measurements; estimating and solving word problems with measurements",
+      "name": "Measurement and Unit Conversion"
+    },
+    "grade4-money-decimals": {
+      "description": "Understanding euro and cent notation with decimals; adding, subtracting, and multiplying money amounts; making change and calculating totals; comparing prices and converting between euros and cents",
+      "name": "Money and Decimal Notation"
+    },
+    "grade4-numbers-to-million": {
+      "description": "Understanding place value with six digits; reading, writing, comparing, and ordering numbers; rounding to thousands and beyond; recognizing patterns in large numbers",
+      "name": "Numbers to 1,000,000"
+    },
+    "grade4-patterns-equations": {
+      "description": "Recognizing and extending number patterns, finding sequence rules, understanding variables as placeholders, solving simple one-step equations, and describing mathematical relationships",
+      "name": "Patterns and Simple Equations"
+    },
+    "grade4-scale-maps": {
+      "description": "Reading and creating floor plans and maps; understanding scale as a ratio; calculating real distances from map distances; spatial orientation and direction",
+      "name": "Scale and Maps"
+    },
+    "grade4-time-calendar": {
+      "description": "Reading analog and digital clocks in 24-hour format; converting between time units; calculating time durations and elapsed time; working with calendars including days, weeks, months, and years",
+      "name": "Time and Calendar"
+    },
+    "grade4-volume-unit-cubes": {
+      "description": "Understanding volume by counting unit cubes and comparing volumes of 3D shapes",
+      "name": "Volume with Unit Cubes"
+    },
+    "grade4-written-multiplication-and-division": {
+      "description": "Standard algorithms for multiplying and dividing multi-digit numbers with estimation and remainder interpretation",
+      "name": "Written Multiplication and Division"
+    },
+    "grade4-written-multiplication-division": {
+      "description": "Mastering standard written algorithms for multi-digit multiplication and division; understanding when to apply each operation; solving real-world problems",
+      "name": "Written Multiplication and Division"
+    },
+    "grade5-angles": {
+      "description": "Understanding angle types, measuring angles with a protractor, estimating angles, and recognizing angle relationships",
+      "name": "Angles and Measurement"
+    },
+    "grade5-area-perimeter": {
+      "description": "Calculating perimeter and area of rectangles and squares, understanding units, converting between area units, solving practical problems",
+      "name": "Area and Perimeter"
+    },
+    "grade5-area-perimeter-advanced": {
+      "description": "Calculate area and perimeter of rectangles, squares, triangles, and composite shapes",
+      "name": "Area and Perimeter - Advanced"
+    },
+    "grade5-arithmetic-operations": {
+      "description": "Written methods for all four operations, order of operations, estimation and verification",
+      "name": "Arithmetic Operations"
+    },
+    "grade5-coordinate-system-basics": {
+      "description": "Understanding the Cartesian coordinate system (first quadrant), plotting and reading points, describing spatial relationships and positions, identifying geometric relationships, and calculating distances between points",
+      "name": "Coordinate System and Spatial Relationships"
+    },
+    "grade5-data-collection-charts": {
+      "description": "Collecting, organizing, and representing data using tables, bar charts, pictographs, and line graphs",
+      "name": "Data Collection and Charts"
+    },
+    "grade5-decimals": {
+      "description": "Understanding decimal place value, converting between fractions and decimals, performing operations with decimals, and rounding",
+      "name": "Decimals"
+    },
+    "grade5-divisibility-prime-numbers": {
+      "description": "Applying divisibility rules for 2, 3, 5, 9, and 10, identifying prime and composite numbers, performing prime factorization using factor trees, and determining GCD and LCM of numbers",
+      "name": "Divisibility and Prime Numbers"
+    },
+    "grade5-fractions-operations": {
+      "description": "Adding and subtracting fractions with same and different denominators, multiplying fractions by whole numbers, and simplifying fractions to lowest terms",
+      "name": "Operations with Fractions"
+    },
+    "grade5-geometric-shapes-2d": {
+      "description": "Properties and classification of basic 2D shapes including triangles, quadrilaterals, and circles, symmetry and geometric constructions",
+      "name": "Two-Dimensional Geometric Shapes"
+    },
+    "grade5-geometry-basics": {
+      "description": "Points, lines, rays, segments, parallel and perpendicular lines, and basic geometric notation",
+      "name": "Basic Geometric Elements"
+    },
+    "grade5-introduction-fractions": {
+      "description": "Understanding fractions as parts of a whole, visual representation, comparing and ordering fractions, and recognizing equivalent fractions",
+      "name": "Introduction to Fractions"
+    },
+    "grade5-natural-numbers-large": {
+      "description": "Understanding natural numbers beyond 1 million, place value to billions, Roman numerals, and comparing different number systems",
+      "name": "Large Natural Numbers"
+    },
+    "grade5-natural-numbers-operations": {
+      "description": "Introduction to the natural number system, place value understanding up to millions, and mastery of the four basic arithmetic operations with increasingly large numbers",
+      "name": "Natural Numbers and Basic Operations"
+    },
+    "grade5-negative-numbers": {
+      "description": "Introduction to integers, number line representation, comparing and ordering integers, and real-world contexts",
+      "name": "Negative Numbers"
+    },
+    "grade5-units-measurement": {
+      "description": "Advanced metric unit conversions, calculations with mixed units, and choosing appropriate measurement units for different contexts",
+      "name": "Units and Measurement"
+    },
+    "grade5-volume": {
+      "description": "Calculate volume using formulas, convert between cubic units, and relate volume to capacity",
+      "name": "Volume of Cuboids and Cubes"
+    },
+    "grade5-volume-capacity": {
+      "description": "Introduction to three-dimensional measurement, calculating volume of cuboids, converting between volume and capacity units, solving practical problems",
+      "name": "Volume and Capacity"
+    },
+    "grade6-angles-advanced": {
+      "description": "Measuring and drawing angles accurately, identifying angle relationships including vertical, corresponding, and adjacent angles, and constructing angle bisectors",
+      "name": "Angles and Angle Relationships"
+    },
+    "grade6-area-complex-shapes": {
+      "description": "Calculating areas of triangles, parallelograms, trapezoids, and composite figures through decomposition and formula application, solving multi-step problems and verifying calculations",
+      "name": "Area of Composite Shapes"
+    },
+    "grade6-area-formulas": {
+      "description": "Deriving and applying area formulas for parallelograms, triangles, and trapezoids; calculating surface areas of simple solids using decomposition and complementation strategies",
+      "name": "Area Formulas"
+    },
+    "grade6-circle-geometry": {
+      "description": "Circle terminology, circumference calculation (C=πd), area calculation (A=πr²), and solving real-world problems involving circles",
+      "name": "Circle Geometry"
+    },
+    "grade6-combined-operations": {
+      "description": "Term structures, order of operations, distributive property, and multi-step problems with fractions, decimals, and whole numbers",
+      "name": "Combined Operations with Rational Numbers"
+    },
+    "grade6-coordinate-system": {
+      "description": "Understanding the Cartesian coordinate system with all four quadrants, plotting and reading points with positive and negative coordinates, calculating distances, and describing geometric relationships",
+      "name": "Coordinate System"
+    },
+    "grade6-data-diagrams": {
+      "description": "Determining absolute and relative frequencies, displaying data using circle and column diagrams, calculating and interpreting arithmetic mean, recognizing manipulative presentations in data visualization",
+      "name": "Data and Diagrams"
+    },
+    "grade6-decimal-fractions": {
+      "description": "Understanding place values in decimals, rounding, converting between fractions and decimals, and distinguishing terminating from repeating decimals",
+      "name": "Decimal Fractions"
+    },
+    "grade6-decimal-numbers": {
+      "description": "Understanding decimal notation, place value systems, operations with decimals, converting between fractions and decimals, rounding and estimation, and applying decimals in real-world contexts",
+      "name": "Decimal Numbers"
+    },
+    "grade6-fraction-operations": {
+      "description": "Comprehensive fraction work including expanding, reducing, converting, and performing all four operations with fractions",
+      "name": "Fraction Operations"
+    },
+    "grade6-fractions-basics": {
+      "description": "Interpreting fractions as parts of wholes, comparing fractions using multiple strategies, extending and reducing fractions while preserving value, representing fractions on number lines including negative fractions, and connecting percentages to fraction notation",
+      "name": "Fractions and Fractional Numbers"
+    },
+    "grade6-geometric-constructions": {
+      "description": "Constructing perpendicular and parallel lines, performing axial and point reflections",
+      "name": "Geometric Constructions"
+    },
+    "grade6-integer-operations": {
+      "description": "Adding and subtracting integers using number line models and sign rules, understanding absolute value in calculations, and applying integer operations to real-world contexts",
+      "name": "Integer Operations"
+    },
+    "grade6-percentages": {
+      "description": "Solving everyday percentage problems including discounts and interest, applying the basic percentage equation (base value × percentage rate = percentage value), and distinguishing between percent and percentage points",
+      "name": "Percentages"
+    },
+    "grade6-percentages-basics": {
+      "description": "Understanding percent as per hundred, converting between fractions/decimals/percentages, and basic percentage calculations",
+      "name": "Introduction to Percentages"
+    },
+    "grade6-probability-basics": {
+      "description": "Understanding probability as a measure of likelihood, exploring experimental vs theoretical probability, and calculating simple probabilities",
+      "name": "Introduction to Probability"
+    },
+    "grade6-proportionality": {
+      "description": "Understanding ratios as comparisons, recognizing proportional relationships, using ratio tables and the rule of three, and distinguishing proportional from non-proportional situations",
+      "name": "Proportionality and Ratios"
+    },
+    "grade6-rational-addition-subtraction": {
+      "description": "Adding and subtracting fractions with same and different denominators, mixed numbers, and decimals using computational strategies and verifying results through estimation",
+      "name": "Adding and Subtracting Rational Numbers"
+    },
+    "grade6-rational-multiplication-division": {
+      "description": "Computing products and quotients of fractions using meaningful representations, applying reciprocals for division, calculating powers with rational bases and natural or negative integer exponents, and using computational advantages to simplify calculations",
+      "name": "Multiplying and Dividing Rational Numbers"
+    },
+    "grade6-ratios-proportions": {
+      "description": "Understanding and working with ratios, proportional relationships, and solving proportions using cross multiplication",
+      "name": "Ratios and Proportions"
+    },
+    "grade6-surface-area-volume": {
+      "description": "Comprehensive understanding of surface area and volume of three-dimensional solids including prisms and cylinders, calculating using formulas, working with nets, and solving real-world problems",
+      "name": "Surface Area and Volume of Solids"
+    },
+    "grade6-triangles-quadrilaterals": {
+      "description": "In-depth study of triangle and quadrilateral properties, classification by angles and sides, angle sum theorems, congruence, and geometric construction techniques",
+      "name": "Triangles and Quadrilaterals"
+    },
+    "grade6-volume": {
+      "description": "Calculate volumes of cuboids and prisms using formulas, convert between volume units, and solve problems through decomposition and complementation strategies",
+      "name": "Volume of Prisms"
+    },
+    "grade7-algebraic-terms": {
+      "description": "Setting up, interpreting, and transforming algebraic terms with variables including powers",
+      "name": "Algebraic Terms"
+    },
+    "grade7-angle-relationships": {
+      "description": "Understanding angle properties at intersecting lines, with parallel lines, and in polygons",
+      "name": "Angle Relationships"
+    },
+    "grade7-congruence-similarity-intro": {
+      "description": "Explore triangle congruence conditions (SSS, SAS, ASA, AAS), similarity concepts, scale factors, and their applications to maps and scale drawings",
+      "name": "Congruence and Similarity Introduction"
+    },
+    "grade7-congruence-triangles": {
+      "description": "Congruence theorems (SSS, SAS, ASA, AAS) and constructing triangles from given elements",
+      "name": "Congruence and Triangle Construction"
+    },
+    "grade7-coordinate-system-advanced": {
+      "description": "Mastering the coordinate system with all four quadrants, graphing linear relationships, understanding slope and y-intercept, creating graphs from real-world situations, and calculating distances",
+      "name": "Coordinate System and Linear Functions"
+    },
+    "grade7-inequalities": {
+      "description": "Understanding inequality notation, solving simple inequalities, representing solutions on number lines, and working with solution sets",
+      "name": "Linear Inequalities"
+    },
+    "grade7-integers-negative-numbers": {
+      "description": "Extending the number system to include negative integers, understanding absolute value, and performing operations with positive and negative numbers",
+      "name": "Integers and Negative Numbers"
+    },
+    "grade7-linear-equations": {
+      "description": "Solving linear equations with one variable including one-step, two-step, variables on both sides, and real-world word problems",
+      "name": "Linear Equations"
+    },
+    "grade7-parallel-translation": {
+      "description": "Parallel displacement as congruence mapping, translation vectors, coordinate calculations",
+      "name": "Parallel Translation and Vectors"
+    },
+    "grade7-percentage-applications": {
+      "description": "Advanced percentage calculations including interest, discounts, and multi-step problems",
+      "name": "Percentage Applications"
+    },
+    "grade7-powers-exponents": {
+      "description": "Understanding power notation as repeated multiplication, applying power laws including product rule, quotient rule, and power of power, simplifying expressions with integer exponents, and working with powers of variables",
+      "name": "Powers and Exponents"
+    },
+    "grade7-proportional-relationships": {
+      "description": "Understanding direct proportionality (y=kx) and inverse proportionality (y=k/x), determining the constant of proportionality, applying the rule of three, creating and interpreting proportional graphs",
+      "name": "Proportional and Inversely Proportional Relationships"
+    },
+    "grade7-proportionality": {
+      "description": "Recognizing and applying direct and inverse proportional relationships, creating ratio tables, graphing proportional functions, and distinguishing between proportional and non-proportional situations in real-world contexts",
+      "name": "Proportionality"
+    },
+    "grade7-rational-numbers": {
+      "description": "Understanding the rational number system (ℚ), operations with positive and negative fractions and decimals, flexible conversions, and solving complex problems",
+      "name": "Rational Numbers"
+    },
+    "grade7-statistical-measures": {
+      "description": "Calculate and interpret mean, median, mode, range, quartiles, and boxplots for statistical data analysis and comparison",
+      "name": "Statistical Measures"
+    },
+    "grade7-statistics-interpretation": {
+      "description": "Understanding measures of central tendency, data analysis, and statistical reasoning with real-world applications",
+      "name": "Statistics Interpretation and Analysis"
+    },
+    "grade7-symmetry-constructions": {
+      "description": "Constructing symmetric figures, perpendicular bisectors, angle bisectors, and geometric loci",
+      "name": "Symmetry and Geometric Constructions"
+    },
+    "grade7-terms-algebraic-expressions": {
+      "description": "Understanding variables, writing and interpreting algebraic expressions, simplifying terms using the distributive property, and evaluating expressions with given values",
+      "name": "Terms and Algebraic Expressions"
+    },
+    "grade7-thales-theorem": {
+      "description": "Applying Thales' theorem and its converse to identify right angles, construct tangent lines, and solve geometric problems",
+      "name": "Thales' Theorem"
+    },
+    "grade8-circles": {
+      "description": "Circle circumference, area, understanding pi, and applications with composite shapes",
+      "name": "Circles"
+    },
+    "grade8-fractional-equations": {
+      "description": "Solving equations with algebraic fractions, checking for extraneous solutions, and rearranging formulas in scientific contexts",
+      "name": "Fractional Equations"
+    },
+    "grade8-fractional-terms": {
+      "description": "Operations on algebraic fractions - simplifying, expanding, adding, subtracting, multiplying, and dividing fractional terms",
+      "name": "Fractional Terms"
+    },
+    "grade8-functions-basics": {
+      "description": "Understanding the function concept as a unique assignment, distinguishing function terminology (function term, graph, domain, range), using tables and diagrams to represent functions, and determining function values and intersection points",
+      "name": "Functions and Terms"
+    },
+    "grade8-integer-exponents": {
+      "description": "Understanding negative and zero exponents, applying power rules with integer exponents, writing and calculating with scientific notation, and simplifying complex exponential expressions",
+      "name": "Integer Exponents"
+    },
+    "grade8-laplace-probability": {
+      "description": "Random experiments, Laplace formula P(E)=|E|/|Ω|, counting principles, tree diagrams for multi-stage experiments, relative frequency, law of large numbers",
+      "name": "Laplace Experiments"
+    },
+    "grade8-linear-functions": {
+      "description": "Understanding and working with linear functions y = mx + t, including graphing, interpreting slope and y-intercept, finding zeros and intersection points, and solving linear inequalities",
+      "name": "Linear Functions"
+    },
+    "grade8-linear-systems": {
+      "description": "Solving systems of two linear equations with two unknowns using graphical methods and substitution, understanding solution cases (unique, none, infinite)",
+      "name": "Linear Equation Systems"
+    },
+    "grade8-prisms-cylinders": {
+      "description": "Calculate surface area and volume of prisms and cylinders, draw and interpret nets, and apply the V = base area × height formula to solve real-world problems",
+      "name": "Prisms and Cylinders"
+    },
+    "grade8-rational-functions": {
+      "description": "Understanding and working with rational functions of the form f(x) = a/(x+b) + c, including domain restrictions, asymptotes, graphing, and indirect proportionality as a special case",
+      "name": "Elementary Rational Functions"
+    },
+    "grade9-binomial-formulas": {
+      "description": "Master the three binomial formulas for expanding and factoring algebraic expressions efficiently",
+      "name": "Binomial Formulas"
+    },
+    "grade9-compound-probability": {
+      "description": "Understanding compound events through set notation, Venn diagrams, contingency tables, and calculating probabilities of unions and intersections using the addition rule",
+      "name": "Compound Probability"
+    },
+    "grade9-power-functions": {
+      "description": "Understanding power functions with various exponents, their graphs, and relationships to radical notation",
+      "name": "Power Functions"
+    },
+    "grade9-pythagorean-theorem": {
+      "description": "Understanding and applying the Pythagorean theorem, its proof, converse, and practical applications in geometry and measurement",
+      "name": "Pythagorean Theorem"
+    },
+    "grade9-quadratic-equations": {
+      "description": "Solving quadratic equations using factoring, completing the square, and quadratic formulas (p-q and abc form). Understanding the discriminant and applying solutions to real-world problems.",
+      "name": "Quadratic Equations"
+    },
+    "grade9-square-roots": {
+      "description": "Understanding square roots, simplifying radical expressions, rationalizing denominators, and exploring irrational numbers",
+      "name": "Square Roots and Radicals"
+    },
+    "grade9-right-triangle-trigonometry": {
+      "description": "Understanding sine, cosine, and tangent as ratios in right triangles, applying fundamental trigonometric identities, and solving practical surveying and physics problems",
+      "name": "Right Triangle Trigonometry"
+    },
+    "grade9-systems-of-equations": {
+      "description": "Solving systems of three linear equations with three unknowns using substitution, elimination, and Gaussian elimination methods, including real-world modeling",
+      "name": "Systems of Linear Equations (3 Variables)"
+    },
+    "inequalities": {
+      "description": "Understanding inequality notation, solving simple inequalities, representing solutions on number lines, and working with solution sets",
+      "name": "Linear Inequalities"
+    },
+    "integers-negative-numbers": {
+      "description": "Extending the number system to include negative integers, understanding absolute value, and performing operations with positive and negative numbers",
+      "name": "Integers and Negative Numbers"
+    },
+    "introduction-fractions": {
+      "description": "Understanding fractions as parts of a whole, visual representation, comparing and ordering fractions, and recognizing equivalent fractions",
+      "name": "Introduction to Fractions"
+    },
+    "introduction-to-multiplication-and-division": {
+      "description": "Understanding multiplication as repeated addition and division as sharing and grouping, with times tables for 2, 5, and 10",
+      "name": "Introduction to Multiplication and Division"
+    },
+    "linear-equations": {
+      "description": "Solving linear equations with one variable including one-step, two-step, variables on both sides, and real-world word problems",
+      "name": "Linear Equations"
+    },
+    "measurement-units": {
+      "description": "Working with standard measurement units for length, mass, time, and money including conversions and practical applications",
+      "name": "Quantities and Units of Measurement"
+    },
+    "multiplication-tables": {
+      "description": "Master multiplication facts from 2×2 to 10×10 and apply them in various contexts",
+      "name": "Multiplication Tables (2-10)"
+    },
+    "natural-numbers-operations": {
+      "description": "Introduction to the natural number system, place value understanding up to millions, and mastery of the four basic arithmetic operations with increasingly large numbers",
+      "name": "Natural Numbers and Basic Operations"
+    },
+    "percentages-basics": {
+      "description": "Understanding percent as per hundred, converting between fractions/decimals/percentages, and basic percentage calculations",
+      "name": "Introduction to Percentages"
+    },
+    "probability-basics": {
+      "description": "Understanding probability as a measure of likelihood, exploring experimental vs theoretical probability, and calculating simple probabilities",
+      "name": "Introduction to Probability"
+    },
+    "proportional-relationships": {
+      "description": "Understanding direct proportionality (y=kx) and inverse proportionality (y=k/x), determining the constant of proportionality, applying the rule of three, creating and interpreting proportional graphs",
+      "name": "Proportional and Inversely Proportional Relationships"
+    },
+    "rational-numbers": {
+      "description": "Understanding the rational number system (ℚ), operations with positive and negative fractions and decimals, flexible conversions, and solving complex problems",
+      "name": "Rational Numbers"
+    },
+    "ratios-proportions": {
+      "description": "Understanding and working with ratios, proportional relationships, and solving proportions using cross multiplication",
+      "name": "Ratios and Proportions"
+    },
+    "statistics-interpretation": {
+      "description": "Understanding measures of central tendency, data analysis, and statistical reasoning with real-world applications",
+      "name": "Statistics Interpretation and Analysis"
+    },
+    "surface-area-volume": {
+      "description": "Comprehensive understanding of surface area and volume of three-dimensional solids including prisms and cylinders, calculating using formulas, working with nets, and solving real-world problems",
+      "name": "Surface Area and Volume of Solids"
+    },
+    "terms-algebraic-expressions": {
+      "description": "Understanding variables, writing and interpreting algebraic expressions, simplifying terms using the distributive property, and evaluating expressions with given values",
+      "name": "Terms and Algebraic Expressions"
+    },
+    "triangles-quadrilaterals": {
+      "description": "In-depth study of triangle and quadrilateral properties, classification by angles and sides, angle sum theorems, congruence, and geometric construction techniques",
+      "name": "Triangles and Quadrilaterals"
+    },
+    "volume-capacity": {
+      "description": "Introduction to three-dimensional measurement, calculating volume of cuboids, converting between volume and capacity units, solving practical problems",
+      "name": "Volume and Capacity"
+    }
+  }
+}
