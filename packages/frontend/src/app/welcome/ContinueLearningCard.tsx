@@ -66,22 +66,24 @@ export function ContinueLearningCard() {
       })
 
   // Use subject color if available, otherwise use primary
-  const cardBg = theme ? theme.colors.bg : 'bg-primary'
-  const cardHover = theme ? theme.colors.hover : 'hover:bg-primary/90'
+  const iconBg = theme ? 'bg-white/20' : 'bg-primary/10'
+  const iconColor = theme ? 'text-white' : 'text-primary'
+  const cardBg = theme ? theme.colors.bg : 'bg-card'
+  const cardHover = theme ? theme.colors.hover : 'hover:bg-card'
+  const textColor = theme ? 'text-white' : 'text-foreground'
+  const descColor = theme ? 'text-white/90' : 'text-muted-foreground'
 
   return (
-    <Link to={linkTo} className="block md:col-span-3">
+    <Link to={linkTo} className="block">
       <Card
-        className={`p-8 ${cardBg} ${cardHover} shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer text-white hover:scale-[1.02] rounded-2xl`}
+        className={`p-6 ${cardBg} ${cardHover} shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer ${textColor} hover:scale-[1.02] rounded-2xl h-full`}
       >
-        <div className="flex items-center space-x-4">
-          <div className="bg-white/20 p-4 rounded-full">
-            <SubjectIcon className="w-12 h-12" />
+        <div className="flex flex-col items-center text-center space-y-3 h-full justify-center">
+          <div className={`${iconBg} p-4 rounded-full`}>
+            <SubjectIcon className={`w-8 h-8 ${iconColor}`} />
           </div>
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-2">{title}</h2>
-            <p className="text-white/90 text-lg">{description}</p>
-          </div>
+          <h3 className={`text-xl font-bold ${textColor}`}>{title}</h3>
+          <p className={descColor}>{description}</p>
         </div>
       </Card>
     </Link>
