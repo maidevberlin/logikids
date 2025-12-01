@@ -65,21 +65,28 @@ export function ConceptsPage() {
   // Determine current source filter
   const currentSource = activeTab === 'school' ? 'curriculum' : 'custom'
 
+  // Check if we have an active search
+  const isSearching = debouncedQuery.trim().length > 0
+
   // Fetch grade-filtered concepts for current tab
   const { data: filteredData, isLoading: isLoadingFiltered } = trpc.concepts.get.useQuery(
     { subject: subjectId!, grade, source: currentSource },
-    { enabled: !!subjectId && !!grade && !showAll }
+    { enabled: !!subjectId && !!grade && !showAll && !isSearching }
   )
 
-  // Fetch all concepts for current tab (when user clicks "show all" OR when no grade is set)
+  // Fetch all concepts for current tab (when user clicks "show all" OR when no grade is set OR when searching)
   const { data: allData, isLoading: isLoadingAll } = trpc.concepts.get.useQuery(
     { subject: subjectId!, source: currentSource },
-    { enabled: !!subjectId && (showAll || !grade) }
+    { enabled: !!subjectId && (showAll || !grade || isSearching) }
   )
 
-  // Determine which data to use
-  const data = grade && !showAll ? filteredData : allData
-  const isLoading = grade && !showAll ? isLoadingFiltered : isLoadingAll
+  // Determine which data to use - always use allData when searching
+  const data = isSearching ? allData : grade && !showAll ? filteredData : allData
+  const isLoading = isSearching
+    ? isLoadingAll
+    : grade && !showAll
+      ? isLoadingFiltered
+      : isLoadingAll
   const subject = subjectsData?.subjects.find((s) => s.id === subjectId)
 
   if (!subjectId) {

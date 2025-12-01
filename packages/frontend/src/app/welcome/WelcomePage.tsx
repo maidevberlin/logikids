@@ -11,8 +11,8 @@ export function WelcomePage() {
   // No need for additional checks or redirects here
 
   return (
-    <PageLayout showHeader={false}>
-      <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4">
+    <PageLayout showAccount>
+      <div className="min-h-screen flex flex-col items-center pt-8 pb-12 px-4">
         <div className="w-full max-w-5xl space-y-8">
           {/* Greeting */}
           <GreetingHeader name={data!.settings.name} />

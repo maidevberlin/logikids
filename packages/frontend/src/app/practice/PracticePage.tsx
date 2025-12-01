@@ -6,6 +6,7 @@ import { PageLayout } from '@/app/common/PageLayout'
 import { Card } from '@/app/common/ui/card.tsx'
 import { Button } from '@/app/common/ui/button.tsx'
 import { Target, TrendingUp, Clock, Lightbulb, ArrowRight } from 'lucide-react'
+import { PracticeReason } from './PracticeReason'
 import { trpc } from '@/api/trpc.ts'
 
 export function PracticePage() {
@@ -37,29 +38,6 @@ export function PracticePage() {
     return t(`subjects/${subjectId}:concepts.${conceptId}.name`, {
       defaultValue: concept.name || formatConceptName(conceptId),
     })
-  }
-
-  // Helper function to translate practice reasons
-  const translateReason = (reason: string) => {
-    if (reason === 'Building mastery') {
-      return t('practice.reasons.buildingMastery')
-    }
-
-    // Parse "Needs work: ..." pattern
-    const needsWorkMatch = reason.match(/^Needs work: (.+)$/)
-    if (needsWorkMatch) {
-      const issuesText = needsWorkMatch[1]
-
-      // Translate individual issues
-      const translatedIssues = issuesText
-        .replace(/low success rate/g, t('practice.reasons.lowSuccessRate'))
-        .replace(/taking too long/g, t('practice.reasons.takingTooLong'))
-        .replace(/using many hints/g, t('practice.reasons.usingManyHints'))
-
-      return t('practice.reasons.needsWork', { issues: translatedIssues })
-    }
-
-    return reason
   }
 
   if (recommendations.length === 0) {
@@ -129,9 +107,7 @@ export function PracticePage() {
                       <h3 className="text-xl font-bold text-foreground">
                         {getSubjectName(rec.subject)} - {getConceptName(rec.subject, rec.conceptId)}
                       </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {translateReason(rec.reason)}
-                      </p>
+                      <PracticeReason reason={rec.reason} />
                     </div>
 
                     {/* Metrics */}
