@@ -392,6 +392,10 @@
       "description": "Termstrukturen, Rechenreihenfolge, Distributivgesetz und mehrstufige Probleme mit Brüchen, Dezimalzahlen und ganzen Zahlen",
       "name": "Verknüpfte Rechenoperationen mit rationalen Zahlen"
     },
+    "grade6-coordinate-system": {
+      "description": "Kartesisches Koordinatensystem mit allen vier Quadranten verstehen, Punkte mit positiven und negativen Koordinaten plotten und ablesen, Abstände berechnen und geometrische Zusammenhänge beschreiben",
+      "name": "Koordinatensystem"
+    },
     "grade6-data-diagrams": {
       "description": "Absolute und relative Häufigkeiten bestimmen, Daten mit Kreis- und Säulendiagrammen darstellen, arithmetisches Mittel berechnen und interpretieren, manipulative Darstellungen in Datenvisualisierungen erkennen",
       "name": "Daten und Diagramme"
@@ -416,6 +420,10 @@
       "description": "Konstruktion von Senkrechten und Parallelen, Durchführung von Achsen- und Punktspiegelungen",
       "name": "Geometrische Konstruktionen"
     },
+    "grade6-integer-operations": {
+      "description": "Addition und Subtraktion ganzer Zahlen mit Zahlenstrahlmodellen und Vorzeichenregeln, Betrag in Berechnungen verstehen und anwenden, ganzzahlige Operationen auf reale Kontexte anwenden",
+      "name": "Rechnen mit ganzen Zahlen"
+    },
     "grade6-percentages": {
       "description": "Lösen von Alltagsproblemen mit Prozenten, einschließlich Rabatten und Zinsen, Anwendung der Grundgleichung der Prozentrechnung (Grundwert × Prozentsatz = Prozentwert) und Unterscheidung zwischen Prozent und Prozentpunkten",
       "name": "Prozentrechnung"
@@ -427,6 +435,10 @@
     "grade6-probability-basics": {
       "description": "Wahrscheinlichkeit als Maß für Wahrscheinlichkeit verstehen, experimentelle und theoretische Wahrscheinlichkeit erkunden und einfache Wahrscheinlichkeiten berechnen",
       "name": "Einführung in Wahrscheinlichkeit"
+    },
+    "grade6-proportionality": {
+      "description": "Verhältnisse als Vergleiche verstehen, proportionale Beziehungen erkennen, Wertetabellen und Dreisatz anwenden, proportionale von nicht-proportionalen Situationen unterscheiden",
+      "name": "Proportionalität und Verhältnisse"
     },
     "grade6-rational-addition-subtraction": {
       "description": "Brüche mit gleichen und unterschiedlichen Nennern addieren und subtrahieren, gemischte Zahlen und Dezimalzahlen verarbeiten mit Rechenstrategien und Ergebnisüberprüfung durch Überschlagsrechnung",
@@ -496,13 +508,13 @@
       "description": "Verständnis der Potenzschreibweise als wiederholte Multiplikation, Anwendung von Potenzgesetzen einschließlich Produktregel, Quotientenregel und Potenz einer Potenz, Vereinfachung von Ausdrücken mit ganzzahligen Exponenten und Arbeiten mit Potenzen von Variablen",
       "name": "Potenzen und Exponenten"
     },
-    "grade7-proportionality": {
-      "description": "Erkennen und Anwenden direkter und indirekter proportionaler Zuordnungen, Erstellen von Wertetabellen, Zeichnen von Graphen proportionaler Funktionen und Unterscheiden zwischen proportionalen und nicht-proportionalen Situationen in realen Kontexten",
-      "name": "Proportionalität"
-    },
     "grade7-proportional-relationships": {
       "description": "Direkte Proportionalität (y=kx) und inverse Proportionalität (y=k/x), Bestimmung der Proportionalitätskonstanten, Anwendung des Dreisatzes, Erstellen und Interpretieren von Graphen",
       "name": "Proportionale und antiproportionale Zuordnungen"
+    },
+    "grade7-proportionality": {
+      "description": "Erkennen und Anwenden direkter und indirekter proportionaler Zuordnungen, Erstellen von Wertetabellen, Zeichnen von Graphen proportionaler Funktionen und Unterscheiden zwischen proportionalen und nicht-proportionalen Situationen in realen Kontexten",
+      "name": "Proportionalität"
     },
     "grade7-rational-numbers": {
       "description": "Verständnis des Zahlensystems der rationalen Zahlen (ℚ), Operationen mit positiven und negativen Brüchen und Dezimalzahlen, flexible Umwandlungen und komplexe Problemlösungen",
@@ -527,6 +539,46 @@
     "grade7-thales-theorem": {
       "description": "Anwendung des Satzes von Thales und seiner Umkehrung zur Identifikation rechter Winkel, Konstruktion von Tangenten und Lösung geometrischer Probleme",
       "name": "Satz des Thales"
+    },
+    "grade8-circles": {
+      "description": "Kreisumfang, Kreisfläche, Verständnis von Pi und Anwendungen mit zusammengesetzten Figuren",
+      "name": "Kreise"
+    },
+    "grade8-fractional-equations": {
+      "description": "Lösen von Gleichungen mit algebraischen Brüchen, Überprüfung auf Scheinlösungen und Umformen von Formeln in naturwissenschaftlichen Kontexten",
+      "name": "Bruchgleichungen"
+    },
+    "grade8-fractional-terms": {
+      "description": "Operationen mit algebraischen Brüchen - Bruchterme vereinfachen, erweitern, addieren, subtrahieren, multiplizieren und dividieren",
+      "name": "Bruchterme"
+    },
+    "grade8-functions-basics": {
+      "description": "Verständnis des Funktionsbegriffs als eindeutige Zuordnung, Unterscheidung der Funktionsbegriffe (Funktionsterm, Graph, Definitionsmenge, Wertemenge), Nutzung von Tabellen und Diagrammen zur Darstellung von Funktionen sowie Bestimmung von Funktionswerten und Schnittpunkten",
+      "name": "Funktionen und Terme"
+    },
+    "grade8-integer-exponents": {
+      "description": "Verständnis negativer und Null-Exponenten, Anwendung von Potenzgesetzen mit ganzzahligen Exponenten, Schreiben und Rechnen mit wissenschaftlicher Notation und Vereinfachen komplexer Potenzausdrücke",
+      "name": "Ganzzahlige Exponenten"
+    },
+    "grade8-laplace-probability": {
+      "description": "Zufallsexperimente, Laplace-Formel P(E)=|E|/|Ω|, Zählprinzipien, Baumdiagramme für mehrstufige Experimente, relative Häufigkeit, Gesetz der großen Zahlen",
+      "name": "Laplace-Experimente"
+    },
+    "grade8-linear-functions": {
+      "description": "Verständnis und Arbeit mit linearen Funktionen y = mx + t, einschließlich Zeichnen von Graphen, Interpretation von Steigung und y-Achsenabschnitt, Berechnung von Nullstellen und Schnittpunkten sowie Lösen linearer Ungleichungen",
+      "name": "Lineare Funktionen"
+    },
+    "grade8-linear-systems": {
+      "description": "Lösen von linearen Gleichungssystemen mit zwei Gleichungen und zwei Unbekannten durch grafische Methoden und Einsetzungsverfahren, Verständnis der Lösungsfälle (eindeutig, keine, unendlich viele)",
+      "name": "Lineare Gleichungssysteme"
+    },
+    "grade8-prisms-cylinders": {
+      "description": "Oberfläche und Volumen von Prismen und Zylindern berechnen, Netze zeichnen und interpretieren, und die Formel V = Grundfläche × Höhe zur Lösung praktischer Probleme anwenden",
+      "name": "Prismen und Zylinder"
+    },
+    "grade8-rational-functions": {
+      "description": "Verständnis und Arbeit mit gebrochenrationalen Funktionen der Form f(x) = a/(x+b) + c, einschließlich Definitionsbereich, Asymptoten, Graphen zeichnen und indirekte Proportionalität als Spezialfall",
+      "name": "Elementare gebrochenrationale Funktionen"
     },
     "inequalities": {
       "description": "Verständnis der Ungleichungsnotation, Lösen einfacher Ungleichungen, Darstellung von Lösungsmengen auf Zahlenstrahlen und Arbeit mit Lösungsmengen",

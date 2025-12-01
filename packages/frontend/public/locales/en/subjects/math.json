@@ -392,6 +392,10 @@
       "description": "Term structures, order of operations, distributive property, and multi-step problems with fractions, decimals, and whole numbers",
       "name": "Combined Operations with Rational Numbers"
     },
+    "grade6-coordinate-system": {
+      "description": "Understanding the Cartesian coordinate system with all four quadrants, plotting and reading points with positive and negative coordinates, calculating distances, and describing geometric relationships",
+      "name": "Coordinate System"
+    },
     "grade6-data-diagrams": {
       "description": "Determining absolute and relative frequencies, displaying data using circle and column diagrams, calculating and interpreting arithmetic mean, recognizing manipulative presentations in data visualization",
       "name": "Data and Diagrams"
@@ -416,6 +420,10 @@
       "description": "Constructing perpendicular and parallel lines, performing axial and point reflections",
       "name": "Geometric Constructions"
     },
+    "grade6-integer-operations": {
+      "description": "Adding and subtracting integers using number line models and sign rules, understanding absolute value in calculations, and applying integer operations to real-world contexts",
+      "name": "Integer Operations"
+    },
     "grade6-percentages": {
       "description": "Solving everyday percentage problems including discounts and interest, applying the basic percentage equation (base value × percentage rate = percentage value), and distinguishing between percent and percentage points",
       "name": "Percentages"
@@ -427,6 +435,10 @@
     "grade6-probability-basics": {
       "description": "Understanding probability as a measure of likelihood, exploring experimental vs theoretical probability, and calculating simple probabilities",
       "name": "Introduction to Probability"
+    },
+    "grade6-proportionality": {
+      "description": "Understanding ratios as comparisons, recognizing proportional relationships, using ratio tables and the rule of three, and distinguishing proportional from non-proportional situations",
+      "name": "Proportionality and Ratios"
     },
     "grade6-rational-addition-subtraction": {
       "description": "Adding and subtracting fractions with same and different denominators, mixed numbers, and decimals using computational strategies and verifying results through estimation",
@@ -496,13 +508,13 @@
       "description": "Understanding power notation as repeated multiplication, applying power laws including product rule, quotient rule, and power of power, simplifying expressions with integer exponents, and working with powers of variables",
       "name": "Powers and Exponents"
     },
-    "grade7-proportionality": {
-      "description": "Recognizing and applying direct and inverse proportional relationships, creating ratio tables, graphing proportional functions, and distinguishing between proportional and non-proportional situations in real-world contexts",
-      "name": "Proportionality"
-    },
     "grade7-proportional-relationships": {
       "description": "Understanding direct proportionality (y=kx) and inverse proportionality (y=k/x), determining the constant of proportionality, applying the rule of three, creating and interpreting proportional graphs",
       "name": "Proportional and Inversely Proportional Relationships"
+    },
+    "grade7-proportionality": {
+      "description": "Recognizing and applying direct and inverse proportional relationships, creating ratio tables, graphing proportional functions, and distinguishing between proportional and non-proportional situations in real-world contexts",
+      "name": "Proportionality"
     },
     "grade7-rational-numbers": {
       "description": "Understanding the rational number system (ℚ), operations with positive and negative fractions and decimals, flexible conversions, and solving complex problems",
@@ -520,13 +532,53 @@
       "description": "Constructing symmetric figures, perpendicular bisectors, angle bisectors, and geometric loci",
       "name": "Symmetry and Geometric Constructions"
     },
+    "grade7-terms-algebraic-expressions": {
+      "description": "Understanding variables, writing and interpreting algebraic expressions, simplifying terms using the distributive property, and evaluating expressions with given values",
+      "name": "Terms and Algebraic Expressions"
+    },
     "grade7-thales-theorem": {
       "description": "Applying Thales' theorem and its converse to identify right angles, construct tangent lines, and solve geometric problems",
       "name": "Thales' Theorem"
     },
-    "grade7-terms-algebraic-expressions": {
-      "description": "Understanding variables, writing and interpreting algebraic expressions, simplifying terms using the distributive property, and evaluating expressions with given values",
-      "name": "Terms and Algebraic Expressions"
+    "grade8-circles": {
+      "description": "Circle circumference, area, understanding pi, and applications with composite shapes",
+      "name": "Circles"
+    },
+    "grade8-fractional-equations": {
+      "description": "Solving equations with algebraic fractions, checking for extraneous solutions, and rearranging formulas in scientific contexts",
+      "name": "Fractional Equations"
+    },
+    "grade8-fractional-terms": {
+      "description": "Operations on algebraic fractions - simplifying, expanding, adding, subtracting, multiplying, and dividing fractional terms",
+      "name": "Fractional Terms"
+    },
+    "grade8-functions-basics": {
+      "description": "Understanding the function concept as a unique assignment, distinguishing function terminology (function term, graph, domain, range), using tables and diagrams to represent functions, and determining function values and intersection points",
+      "name": "Functions and Terms"
+    },
+    "grade8-integer-exponents": {
+      "description": "Understanding negative and zero exponents, applying power rules with integer exponents, writing and calculating with scientific notation, and simplifying complex exponential expressions",
+      "name": "Integer Exponents"
+    },
+    "grade8-laplace-probability": {
+      "description": "Random experiments, Laplace formula P(E)=|E|/|Ω|, counting principles, tree diagrams for multi-stage experiments, relative frequency, law of large numbers",
+      "name": "Laplace Experiments"
+    },
+    "grade8-linear-functions": {
+      "description": "Understanding and working with linear functions y = mx + t, including graphing, interpreting slope and y-intercept, finding zeros and intersection points, and solving linear inequalities",
+      "name": "Linear Functions"
+    },
+    "grade8-linear-systems": {
+      "description": "Solving systems of two linear equations with two unknowns using graphical methods and substitution, understanding solution cases (unique, none, infinite)",
+      "name": "Linear Equation Systems"
+    },
+    "grade8-prisms-cylinders": {
+      "description": "Calculate surface area and volume of prisms and cylinders, draw and interpret nets, and apply the V = base area × height formula to solve real-world problems",
+      "name": "Prisms and Cylinders"
+    },
+    "grade8-rational-functions": {
+      "description": "Understanding and working with rational functions of the form f(x) = a/(x+b) + c, including domain restrictions, asymptotes, graphing, and indirect proportionality as a special case",
+      "name": "Elementary Rational Functions"
     },
     "inequalities": {
       "description": "Understanding inequality notation, solving simple inequalities, representing solutions on number lines, and working with solution sets",
