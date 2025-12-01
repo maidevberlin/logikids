@@ -39,10 +39,6 @@
         "title": "Practice Mode",
         "description": "Focus on concepts that need improvement"
       },
-      "dailyChallenge": {
-        "title": "Daily Challenge",
-        "description": "Complete today's special task"
-      },
       "profile": {
         "title": "Profile",
         "description": "Manage your account and settings"

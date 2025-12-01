@@ -39,10 +39,6 @@
         "title": "Übungsmodus",
         "description": "Konzentriere dich auf Konzepte, die Verbesserung brauchen"
       },
-      "dailyChallenge": {
-        "title": "Tägliche Herausforderung",
-        "description": "Erledige die heutige besondere Aufgabe"
-      },
       "profile": {
         "title": "Profil",
         "description": "Verwalte dein Konto und Einstellungen"
@@ -270,7 +266,7 @@
       "lowSuccessRate": "niedrige Erfolgsrate",
       "takingTooLong": "zu viel Zeit benötigt",
       "usingManyHints": "viele Hinweise benutzt",
-      "buildingMastery": "Verbesserung in Arbeit",
+      "buildingMastery": "Auf dem Weg zum Meister",
       "needsWork": "Übung nötig: {{issues}}"
     }
   },
