@@ -10,7 +10,11 @@ const logger = createLogger('tRPC')
 export const trpc = createTRPCReact<AppRouter>()
 
 // Get API URL from environment
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5175'
+// In production: use current origin (so /api works via Nginx proxy)
+// In development: use localhost:5175 (dev backend)
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.MODE === 'production' ? window.location.origin : 'http://localhost:5175')
 
 let isRefreshing = false
 let refreshPromise: Promise<string> | null = null
