@@ -3,10 +3,10 @@ import { getUserId, loadKey, storeKey, storeTokens, storeUserId } from './storag
 import { decrypt, encrypt, generateKey } from './crypto.ts'
 import { GameStats } from '@/app/stats/gameTypes'
 import { createLogger } from '@/lib/logger'
+import { trpcClient } from '@/api/trpc'
 
 const logger = createLogger('UserData')
 const STORAGE_KEY = 'logikids_data'
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
 
 /**
  * Remove old localStorage keys from previous implementation
@@ -57,21 +57,8 @@ export async function registerUser(inviteCode: string): Promise<UserData> {
     const key = await generateKey()
     const userId = crypto.randomUUID()
 
-    // Register with backend and get JWT token
-    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ userId, inviteCode }),
-    })
-
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error || 'Registration failed')
-    }
-
-    const { accessToken } = await response.json()
+    // Register with backend and get JWT token using tRPC
+    const { accessToken } = await trpcClient.auth.register.mutate({ userId, inviteCode })
 
     // Store key, userId, and tokens
     await storeKey(key)
@@ -104,21 +91,8 @@ export async function registerUser(inviteCode: string): Promise<UserData> {
  */
 export async function loginWithAccount(userId: string): Promise<void> {
   try {
-    // Login with backend to get JWT tokens
-    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ userId }),
-    })
-
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.error || 'Login failed')
-    }
-
-    const { accessToken } = await response.json()
+    // Login with backend to get JWT tokens using tRPC
+    const { accessToken } = await trpcClient.auth.login.mutate({ userId })
 
     // Store tokens
     await storeTokens(accessToken)
