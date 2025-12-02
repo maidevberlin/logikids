@@ -67,8 +67,13 @@ process.on('SIGINT', async () => {
   process.exit(0)
 })
 
-// Start server if not imported as module
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Start server (skip only if explicitly imported as module in tests)
+const isMainModule =
+  import.meta.url === `file://${process.argv[1]}` ||
+  import.meta.url.endsWith(process.argv[1] || '') ||
+  process.env.NODE_ENV === 'production'
+
+if (isMainModule) {
   const port = config.server?.port || 3000
 
   // Initialize all services before starting server
