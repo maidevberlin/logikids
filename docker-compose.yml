@@ -42,8 +42,27 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
       - JWT_SECRET=${JWT_SECRET:-logikids-dev-secret-change-in-production}
+      # AI Provider Configuration
+      - AI_PROVIDER=${AI_PROVIDER:-ollama}
+      # Ollama
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-llama2}
+      - OLLAMA_TEMPERATURE=${OLLAMA_TEMPERATURE:-}
+      - OLLAMA_TOP_K=${OLLAMA_TOP_K:-}
+      - OLLAMA_TOP_P=${OLLAMA_TOP_P:-}
+      # OpenAI
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - OPENAI_TEMPERATURE=${OPENAI_TEMPERATURE:-}
+      - OPENAI_MAX_TOKENS=${OPENAI_MAX_TOKENS:-}
+      - OPENAI_TOP_P=${OPENAI_TOP_P:-}
+      # Anthropic
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-sonnet-4-5}
+      - ANTHROPIC_MAX_TOKENS=${ANTHROPIC_MAX_TOKENS:-4096}
+      - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-0.7}
+      # Server
+      - SERVER_PORT=${SERVER_PORT:-3000}
     depends_on:
       postgres:
         condition: service_healthy
@@ -63,8 +82,27 @@ services:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD}@postgres:5432/logikids
       - JWT_SECRET=${JWT_SECRET}
+      # AI Provider Configuration
+      - AI_PROVIDER=${AI_PROVIDER}
+      # Ollama
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-llama2}
+      - OLLAMA_TEMPERATURE=${OLLAMA_TEMPERATURE:-}
+      - OLLAMA_TOP_K=${OLLAMA_TOP_K:-}
+      - OLLAMA_TOP_P=${OLLAMA_TOP_P:-}
+      # OpenAI
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - OPENAI_TEMPERATURE=${OPENAI_TEMPERATURE:-}
+      - OPENAI_MAX_TOKENS=${OPENAI_MAX_TOKENS:-}
+      - OPENAI_TOP_P=${OPENAI_TOP_P:-}
+      # Anthropic
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-sonnet-4-5}
+      - ANTHROPIC_MAX_TOKENS=${ANTHROPIC_MAX_TOKENS:-4096}
+      - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-0.7}
+      # Server
+      - SERVER_PORT=${SERVER_PORT:-3000}
     depends_on:
       postgres:
         condition: service_healthy

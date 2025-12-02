@@ -111,7 +111,9 @@ export class TaskService {
     )
 
     // Convert inline SVGs to data URLs for reliable rendering
-    const convertedResult = convertTaskSvgs(aiResponse.result)
+    const convertedResult = convertTaskSvgs(
+      aiResponse.result as unknown as Record<string, unknown>
+    ) as unknown as BaseTaskResponse
 
     // Generate taskId and add to response
     // Note: type is already correctly set in aiResponse.result by the schema
@@ -124,8 +126,10 @@ export class TaskService {
         usage: {
           inputTokens: aiResponse.usage.inputTokens,
           outputTokens: aiResponse.usage.outputTokens,
-          totalTokens: aiResponse.usage.totalTokens,
-          cost: aiResponse.usage.cost,
+          totalTokens:
+            aiResponse.usage.totalTokens ??
+            aiResponse.usage.inputTokens + aiResponse.usage.outputTokens,
+          ...(aiResponse.usage.cost !== undefined && { cost: aiResponse.usage.cost }),
         },
       }),
     } as TaskResponse

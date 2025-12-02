@@ -133,8 +133,8 @@ export class HintService {
         usage: {
           inputTokens: aiResponse.usage.inputTokens,
           outputTokens: aiResponse.usage.outputTokens,
-          totalTokens: aiResponse.usage.totalTokens,
-          cost: aiResponse.usage.cost,
+          totalTokens: aiResponse.usage.inputTokens + aiResponse.usage.outputTokens,
+          ...(aiResponse.usage.cost !== undefined && { cost: aiResponse.usage.cost }),
         },
       }),
     }

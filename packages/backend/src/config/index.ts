@@ -1,8 +1,6 @@
 import { z } from 'zod'
-import yaml from 'js-yaml'
-import { join } from 'path'
-import { aiConfigSchema, defaultConfig as defaultAIConfig } from './ai'
-import { defaultServerConfig, serverConfigSchema } from './server'
+import { aiConfigSchema, loadAIConfigFromEnv } from './ai'
+import { serverConfigSchema, loadServerConfigFromEnv } from './server'
 import { createLogger } from '../common/logger'
 
 const logger = createLogger('Config')
@@ -16,13 +14,12 @@ const configSchema = z.object({
 // Infer type from schema (single source of truth)
 export type Config = z.infer<typeof configSchema>
 
-const defaultConfig: Config = {
-  ai: defaultAIConfig,
-  server: defaultServerConfig,
-}
-
 let cachedConfig: Config | null = null
 
+/**
+ * Load configuration from environment variables.
+ * All configuration is now read from .env file.
+ */
 export async function loadConfig(): Promise<Config> {
   // Return cached config if available
   if (cachedConfig) {
@@ -30,43 +27,29 @@ export async function loadConfig(): Promise<Config> {
   }
 
   try {
-    // Try to read the config file from project root (two levels up from this file)
-    const configPath = join(process.cwd(), 'config.yaml')
-    const file = Bun.file(configPath)
+    logger.info('Loading configuration from environment variables')
 
-    // Check if file exists and is readable
-    if (!(await file.exists())) {
-      logger.warn('No config.yaml found in project root, using default configuration')
-      cachedConfig = defaultConfig
-      return defaultConfig
-    }
-
-    // Read and parse the config file
-    const content = await file.text()
-    const parsedConfig = yaml.load(content) as unknown
-
-    // Validate the config (includes provider-specific validation via Zod refinement)
-    const validated = configSchema.parse(parsedConfig)
-
-    // Transform to our internal config format
+    // Load each config section from env vars
     const config: Config = {
-      ai: validated.ai,
-      server: validated.server,
+      ai: loadAIConfigFromEnv(),
+      server: loadServerConfigFromEnv(),
     }
+
+    // Validate the complete config
+    const validated = configSchema.parse(config)
 
     // Cache the config
-    cachedConfig = config
-    return config
+    cachedConfig = validated
+    logger.info(`Configuration loaded successfully (AI provider: ${validated.ai.provider})`)
+    return validated
   } catch (error) {
     if (error instanceof Error) {
-      logger.error('Error loading config:', error.message)
+      logger.error('Error loading configuration from environment:', error.message)
+      throw error
     } else {
-      logger.error('Unknown error loading config')
+      logger.error('Unknown error loading configuration')
+      throw new Error('Failed to load configuration')
     }
-    logger.warn('Using default configuration')
-
-    cachedConfig = defaultConfig
-    return defaultConfig
   }
 }
 

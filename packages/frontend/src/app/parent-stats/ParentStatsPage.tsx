@@ -4,7 +4,6 @@ import { PageLayout } from '@/app/common/PageLayout'
 import { useUserData } from '@/app/account'
 import { Card } from '@/app/common/ui/card'
 import { MetricCard } from '@/app/stats/MetricCard'
-import { TaskCostRecord } from '@/data/core/types'
 
 function formatCost(cost: number): string {
   if (cost < 0.01) {

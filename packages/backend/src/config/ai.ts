@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 /**
- * API keys are loaded from environment variables, not config.yaml.
- * This keeps secrets out of config files entirely.
+ * All AI configuration is loaded from environment variables.
+ * This keeps all configuration in one place (.env file).
  */
 export function getApiKey(provider: 'openai' | 'anthropic'): string {
   const envVar = provider === 'openai' ? 'OPENAI_API_KEY' : 'ANTHROPIC_API_KEY'
@@ -10,11 +10,30 @@ export function getApiKey(provider: 'openai' | 'anthropic'): string {
 
   if (!key) {
     throw new Error(
-      `Missing ${envVar} environment variable. ` + `Set it in .env or run ./setup.sh to configure.`
+      `Missing ${envVar} environment variable. ` +
+        `Set it in .env or run ./install.sh to configure.`
     )
   }
 
   return key
+}
+
+function getEnvString(key: string, defaultValue?: string): string {
+  const value = process.env[key]
+  if (!value && defaultValue === undefined) {
+    throw new Error(`Missing required environment variable: ${key}`)
+  }
+  return value || defaultValue!
+}
+
+function getEnvNumber(key: string, defaultValue: number): number {
+  const value = process.env[key]
+  if (!value) return defaultValue
+  const num = Number(value)
+  if (isNaN(num)) {
+    throw new Error(`Invalid number for environment variable ${key}: ${value}`)
+  }
+  return num
 }
 
 const ollamaSchema = z.object({
@@ -79,4 +98,51 @@ export const defaultConfig: AIConfig = {
     host: 'http://host.docker.internal:11434',
     model: 'llama2',
   },
+}
+
+/**
+ * Load AI configuration from environment variables
+ */
+export function loadAIConfigFromEnv(): AIConfig {
+  const provider = getEnvString('AI_PROVIDER', 'ollama') as 'ollama' | 'openai' | 'anthropic'
+
+  const config: AIConfig = {
+    provider,
+  }
+
+  switch (provider) {
+    case 'ollama':
+      config.ollama = {
+        host: getEnvString('OLLAMA_HOST', 'http://host.docker.internal:11434'),
+        model: getEnvString('OLLAMA_MODEL', 'llama2'),
+        temperature: getEnvNumber('OLLAMA_TEMPERATURE', 0.7),
+        top_k: process.env.OLLAMA_TOP_K ? getEnvNumber('OLLAMA_TOP_K', 40) : undefined,
+        top_p: process.env.OLLAMA_TOP_P ? getEnvNumber('OLLAMA_TOP_P', 0.9) : undefined,
+      }
+      break
+
+    case 'openai':
+      config.openai = {
+        model: getEnvString('OPENAI_MODEL', 'gpt-4o'),
+        temperature: process.env.OPENAI_TEMPERATURE
+          ? getEnvNumber('OPENAI_TEMPERATURE', 0.7)
+          : undefined,
+        maxTokens: process.env.OPENAI_MAX_TOKENS
+          ? getEnvNumber('OPENAI_MAX_TOKENS', 4096)
+          : undefined,
+        topP: process.env.OPENAI_TOP_P ? getEnvNumber('OPENAI_TOP_P', 1.0) : undefined,
+      }
+      break
+
+    case 'anthropic':
+      config.anthropic = {
+        model: getEnvString('ANTHROPIC_MODEL', 'claude-sonnet-4-5'),
+        maxTokens: getEnvNumber('ANTHROPIC_MAX_TOKENS', 4096),
+        temperature: getEnvNumber('ANTHROPIC_TEMPERATURE', 0.7),
+      }
+      break
+  }
+
+  // Validate the configuration
+  return aiConfigSchema.parse(config)
 }

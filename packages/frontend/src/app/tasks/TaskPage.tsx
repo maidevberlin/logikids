@@ -169,7 +169,8 @@ export function TaskPage() {
               concept: taskParams.concept || 'random',
               inputTokens: task.usage.inputTokens,
               outputTokens: task.usage.outputTokens,
-              totalTokens: task.usage.totalTokens,
+              totalTokens:
+                task.usage.totalTokens || task.usage.inputTokens + task.usage.outputTokens,
               cost: task.usage.cost,
               timestamp: Date.now(),
             },

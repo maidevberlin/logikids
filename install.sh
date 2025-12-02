@@ -222,51 +222,63 @@ if $NEED_AI_CONFIG; then
 fi
 
 # ═══════════════════════════════════════════════════════════════════════
-# STEP 5: Write Configuration Files
+# STEP 5: Write Configuration
 # ═══════════════════════════════════════════════════════════════════════
 
 echo ""
 echo -e "${BLUE}[5/6] Writing configuration...${NC}"
 
-# Write .env file
+# Write .env file with all configuration
 cat > .env << EOF
 # Logikids Environment Configuration
 # Generated: $(date)
 # WARNING: Never commit this file!
 
-# Security Secrets
+# ═══════════════════════════════════════════════════════════════════════
+# Security Secrets (REQUIRED)
+# ═══════════════════════════════════════════════════════════════════════
+
 POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 JWT_SECRET=$JWT_SECRET
 
-# AI Provider API Keys
-ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY
-OPENAI_API_KEY=$OPENAI_API_KEY
+# ═══════════════════════════════════════════════════════════════════════
+# AI Provider Configuration
+# ═══════════════════════════════════════════════════════════════════════
+
+AI_PROVIDER=$PROVIDER
 EOF
+
+# Add provider-specific configuration
+case $PROVIDER in
+    ollama)
+        cat >> .env << EOF
+
+# Ollama Configuration
+OLLAMA_HOST=http://host.docker.internal:11434
+OLLAMA_MODEL=$MODEL
+EOF
+        ;;
+    openai)
+        cat >> .env << EOF
+
+# OpenAI Configuration
+OPENAI_API_KEY=$OPENAI_API_KEY
+OPENAI_MODEL=$MODEL
+EOF
+        ;;
+    anthropic)
+        cat >> .env << EOF
+
+# Anthropic Configuration
+ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY
+ANTHROPIC_MODEL=$MODEL
+ANTHROPIC_MAX_TOKENS=4096
+ANTHROPIC_TEMPERATURE=0.7
+EOF
+        ;;
+esac
 
 echo -e "${GREEN}✓ Created .env${NC}"
-
-# Write config.yaml
-cat > packages/backend/config.yaml << EOF
-server:
-  port: 3000
-
-ai:
-  provider: $PROVIDER
-
-  ollama:
-    host: http://host.docker.internal:11434
-    model: llama3-8b
-
-  openai:
-    model: ${MODEL}
-
-  anthropic:
-    model: ${MODEL}
-    maxTokens: 4096
-    temperature: 0.7
-EOF
-
-echo -e "${GREEN}✓ Created config.yaml${NC}"
 
 # ═══════════════════════════════════════════════════════════════════════
 # STEP 6: Build and Start

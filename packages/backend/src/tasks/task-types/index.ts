@@ -25,7 +25,8 @@ import type { OrderingResponse } from './ordering'
 export interface TaskUsageInfo {
   inputTokens: number
   outputTokens: number
-  totalTokens?: number
+  totalTokens: number
+  cost?: number
 }
 
 // Base task response types (without taskId)

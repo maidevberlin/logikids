@@ -10,5 +10,5 @@ if ! command -v bunx nodemon &> /dev/null; then
     bun add -d nodemon
 fi
 
-# Start development server with nodemon watching both ts files and config.yaml
-bunx nodemon --watch 'src/**/*.ts' --watch 'src/**/*.yaml' --watch 'config.yaml' --exec 'bun run dev' -e ts,yaml
+# Start development server with nodemon watching ts files and .env
+bunx nodemon --watch 'src/**/*.ts' --watch 'src/**/*.yaml' --watch '.env' --exec 'bun run dev' -e ts,yaml,env

@@ -1,5 +1,5 @@
-# Config files
-config.yaml
+# Config files (deprecated, now using .env)
+# config.yaml
 
 # Dependencies
 node_modules/
