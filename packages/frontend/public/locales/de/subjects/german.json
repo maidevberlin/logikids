@@ -8,6 +8,10 @@
       "name": "Darstellendes Spiel & Rollenspiel",
       "description": "Emotionen und Charaktere durch Gestik, Bewegung, Mimik und Rollenspiele ausdrücken"
     },
+    "grade1-grammar": {
+      "name": "Grammatik & Wortarten",
+      "description": "Grundlegende Wortarten wie Nomen, Verben und Adjektive erkennen und verwenden sowie einfache Wortbildung und Satzstruktur verstehen"
+    },
     "grade1-first-children-s-books": {
       "name": "Erste Kinderbücher",
       "description": "Texte und Medien"
@@ -88,9 +92,21 @@
       "name": "Rechtschreibstrategien & Orthografie",
       "description": "Phonologische, silbische, morphologische und grammatische Prinzipien zur korrekten Rechtschreibung anwenden"
     },
+    "grade1-reading-comprehension": {
+      "name": "Lesestrategien & Leseverstehen",
+      "description": "Vor-, während- und nach dem Lesen Strategien anwenden, Vorhersagen treffen, unbekannte Wörter klären und Fragen zum Text beantworten"
+    },
     "grade1-text-types": {
       "name": "Textsorten und literarische Auseinandersetzung",
       "description": "Verschiedene Textsorten (Gedichte, Geschichten, Sachtexte) verstehen, Figuren und Handlungselemente analysieren und Texte präsentieren"
+    },
+    "grade1-handwriting": {
+      "name": "Handschrift und Schreibtechnik",
+      "description": "Entwicklung einer klaren, lesbaren Handschrift mit korrekter Buchstabenformung, Haltung und Schreibgeschwindigkeit"
+    },
+    "grade1-language-awareness": {
+      "name": "Sprachbewusstsein & Mehrsprachigkeit",
+      "description": "Kommunikationszwecke verstehen, Dialekte erkennen, Sprachen vergleichen und sprachliche Vielfalt wertschätzen"
     },
     "grade2-reading-simple-texts": {
       "name": "Einfache Texte lesen",

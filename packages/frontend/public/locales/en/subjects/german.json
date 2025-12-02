@@ -4,6 +4,10 @@
       "name": "Conversation Rules",
       "description": "Speaking and Listening"
     },
+    "grade1-dramatic-expression": {
+      "name": "Dramatic Expression & Role Play",
+      "description": "Express emotions and characters through gesture, movement, facial expressions, and role-playing activities"
+    },
     "grade1-letter-sounds": {
       "name": "Letter-Sound Correspondence",
       "description": "Match letters with their sounds, recognize initial sounds, and distinguish vowels from consonants"
@@ -84,9 +88,25 @@
       "name": "Spelling Strategies & Orthography",
       "description": "Applying phonological, syllabic, morphological, and grammatical principles to spell words correctly"
     },
+    "grade1-reading-comprehension": {
+      "name": "Reading Comprehension Strategies",
+      "description": "Apply pre-, during-, and post-reading strategies, make predictions, clarify unknown words, and answer comprehension questions"
+    },
     "grade1-text-types": {
       "name": "Text Types & Literary Engagement",
       "description": "Understanding different text types (poems, stories, informational texts), analyzing characters and story elements, and presenting texts"
+    },
+    "grade1-grammar": {
+      "name": "Grammar & Parts of Speech",
+      "description": "Identify and use basic parts of speech including nouns, verbs, and adjectives, and understand simple word formation and sentence structure"
+    },
+    "grade1-handwriting": {
+      "name": "Handwriting & Writing Mechanics",
+      "description": "Developing clear, legible handwriting with proper letter formation, posture, and writing speed"
+    },
+    "grade1-language-awareness": {
+      "name": "Language Awareness & Multilingualism",
+      "description": "Understanding communication purposes, recognizing dialects, comparing languages, and appreciating linguistic diversity"
     },
     "grade2-reading-simple-texts": {
       "name": "Reading Simple Texts",
