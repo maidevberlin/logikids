@@ -208,6 +208,10 @@
       "name": "Pluralformen",
       "description": "Grundlegende Pluralformen im Deutschen verstehen und bilden mit Endungen wie -e, -en, -er, -s und Umlautveränderungen"
     },
+    "grade3-dialogue-roleplay": {
+      "name": "Dialog und Rollenspiel",
+      "description": "Kommunikationssituationen routiniert bewältigen, Gesprächsregeln befolgen, konstruktives Feedback geben und in darstellendem Spiel Rollen mit Figurenperspektive übernehmen"
+    },
     "grade3-active-listening": {
       "name": "Aktives Zuhören",
       "description": "Sprechen und Zuhören"
@@ -288,6 +292,14 @@
       "name": "Erzählung mit Höhepunkt",
       "description": "Lesen und Schreiben"
     },
+    "grade3-text-analysis": {
+      "name": "Textanalyse und literarisches Verständnis",
+      "description": "Handlungsverläufe analysieren, Figuren beschreiben, bildliche Sprache erklären und verschiedene Textarten vergleichen"
+    },
+    "grade3-reading-fluency": {
+      "name": "Leseflüssigkeit und Ausdruck",
+      "description": "Texte flüssig, genau und in angemessenem Tempo lesen; Texte mit variiertem Tempo und Betonung vortragen; umfangreichen Sichtwortschatz aufbauen"
+    },
     "grade3-tenses-present-and-past": {
       "name": "Zeitformen - Gegenwart und Vergangenheit",
       "description": "Sprache untersuchen"
@@ -295,6 +307,42 @@
     "grade3-using-dictionary": {
       "name": "Wörterbuch benutzen",
       "description": "Lesen und Schreiben"
+    },
+    "grade3-writing-mechanics": {
+      "name": "Schreibtechnik und Handschrift",
+      "description": "Lesbare Handschrift entwickeln; Schrift je nach Zweck anpassen (Druckschrift vs. Schreibschrift); richtige Haltung und Stifthaltung beibehalten"
+    },
+    "grade3-grammar-structures": {
+      "name": "Grammatik und Satzstrukturen",
+      "description": "Komplexe Wörter bilden, Zeitformen anwenden, Wortarten erkennen, direkte Rede zeichensetzen und Sätze mit Konjunktionen verbinden"
+    },
+    "grade3-composition-planning": {
+      "name": "Texte planen und verfassen",
+      "description": "Ideen mit Mindmaps und Wortlisten organisieren lernen und verschiedene Textarten wie Erzählungen, Informations- und Argumentationstexte planen"
+    },
+    "grade3-reading-strategies": {
+      "name": "Lesestrategien und Leseverstehen",
+      "description": "Vor-, während- und nach dem Lesen Strategien anwenden; Vorwissen aktivieren; Texte markieren; Wortschatz klären; Handlungselemente visualisieren"
+    },
+    "grade3-revision-feedback": {
+      "name": "Überarbeitung und Feedback",
+      "description": "Konstruktives Feedback geben und annehmen, Texte auf Klarheit und Korrektheit überarbeiten und ansprechend gestalten"
+    },
+    "grade3-word-building": {
+      "name": "Wortbildung und Morphologie",
+      "description": "Wortstämme, Präfixe, Suffixe verstehen; Wortfamilien bilden; zusammengesetzte Nomen erkennen; Vokalwechsel in Wortfamilien untersuchen"
+    },
+    "grade3-listening-comprehension": {
+      "name": "Hörverstehen und Bildungssprache",
+      "description": "Wesentliche Informationen aus fachspezifischer Bildungssprache entnehmen, Verständnis durch Zusammenfassungen nachweisen und verstehen, wie stimmliche und gestische Elemente die Bedeutung unterstützen"
+    },
+    "grade3-speaking-presentations": {
+      "name": "Sprechen und Präsentationen",
+      "description": "Logische Beiträge konstruieren, angemessene Lautstärke und Tempo verwenden, Präsentationen mit Notizen vorbereiten und Standardsprache sowie Bildungssprache anwenden"
+    },
+    "grade3-spelling-principles": {
+      "name": "Rechtschreibprinzipien und -strategien",
+      "description": "Phonologische, silbische und morphologische Prinzipien anwenden; Grundwortschatz beherrschen; Wörterbücher nutzen; orthographische Muster erkennen"
     },
     "grade4-active-and-passive-voice-introduction": {
       "name": "Aktiv und Passiv (Einführung)",

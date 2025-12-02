@@ -208,6 +208,10 @@
       "name": "Syllables and Word Structure",
       "description": "Identifying syllables, clapping syllables, and understanding how words are built from syllable units"
     },
+    "grade3-dialogue-roleplay": {
+      "name": "Dialogue and Role Play",
+      "description": "Navigate communication situations routinely, follow conversation rules, provide feedback, and assume roles in dramatic play with character perspective"
+    },
     "grade3-active-listening": {
       "name": "Active Listening",
       "description": "Speaking and Listening"
@@ -288,6 +292,46 @@
       "name": "Story with Climax",
       "description": "Reading and Writing"
     },
+    "grade3-text-analysis": {
+      "name": "Text Analysis and Literary Understanding",
+      "description": "Analyzing plot sequences, describing characters, explaining figurative language, and comparing different text types"
+    },
+    "grade3-reading-fluency": {
+      "name": "Reading Fluency and Expression",
+      "description": "Reading texts fluently with accuracy, appropriate pace, varied tempo and emphasis, while building extensive sight-word vocabulary"
+    },
+    "grade3-grammar-structures": {
+      "name": "Grammar and Sentence Structures",
+      "description": "Form complex words, apply verb tenses, identify parts of speech, punctuate direct speech, and combine sentences with conjunctions"
+    },
+    "grade3-composition-planning": {
+      "name": "Composition and Planning",
+      "description": "Learn to plan and organize ideas for different types of writing using mind maps, word lists, and narrative structures"
+    },
+    "grade3-reading-strategies": {
+      "name": "Reading Comprehension Strategies",
+      "description": "Applying pre-, during-, and post-reading strategies to understand texts; activating prior knowledge; annotating; clarifying vocabulary; visualizing narrative elements"
+    },
+    "grade3-speaking-presentations": {
+      "name": "Speaking and Presentations",
+      "description": "Construct logical contributions, use appropriate volume and pace, prepare presentations with notes, and apply standard and academic language"
+    },
+    "grade3-revision-feedback": {
+      "name": "Revision and Peer Feedback",
+      "description": "Give and receive constructive feedback, revise writing for clarity and correctness, and format texts appealingly"
+    },
+    "grade3-word-building": {
+      "name": "Word Building and Morphology",
+      "description": "Understand stems, prefixes, suffixes; create word families; recognize compound nouns; explore vowel shifts in word families"
+    },
+    "grade3-listening-comprehension": {
+      "name": "Listening Comprehension and Academic Language",
+      "description": "Extract key information from subject-specific academic language, demonstrate comprehension through summaries, and understand how vocal and gestural elements support meaning"
+    },
+    "grade3-spelling-principles": {
+      "name": "Spelling Principles and Strategies",
+      "description": "Apply phonological, syllabic, and morphological principles; master core vocabulary; use dictionaries; recognize orthographic patterns"
+    },
     "grade3-tenses-present-and-past": {
       "name": "Tenses - Present and Past",
       "description": "Language Reflection"
@@ -295,6 +339,10 @@
     "grade3-using-dictionary": {
       "name": "Using Dictionary",
       "description": "Reading and Writing"
+    },
+    "grade3-writing-mechanics": {
+      "name": "Writing Mechanics and Handwriting",
+      "description": "Produce legible handwriting; adjust script for purpose (print vs. cursive); maintain proper posture and grip"
     },
     "grade4-active-and-passive-voice-introduction": {
       "name": "Active and Passive Voice (Introduction)",
