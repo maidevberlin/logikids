@@ -9,8 +9,8 @@
       "description": "Match letters with their sounds, recognize initial sounds, and distinguish vowels from consonants"
     },
     "grade1-phonological-awareness": {
-      "name": "Phonological Awareness",
-      "description": "Develop awareness of sound structures in spoken words through syllables, rhymes, and sound patterns"
+      "name": "Phonological Awareness and Letter-Sound Correspondence",
+      "description": "Recognizing sounds in words, identifying syllables, distinguishing vowels from consonants, and matching letters to their sounds"
     },
     "grade1-writing-letters": {
       "name": "Writing Letters",
@@ -19,6 +19,10 @@
     "grade1-writing-simple-words": {
       "name": "Writing Simple Words",
       "description": "Write words by listening to sounds, spell phonetically regular words, and write common sight words"
+    },
+    "grade1-writing-composition": {
+      "name": "Writing Composition & Process",
+      "description": "Learn to plan, draft, and revise simple texts including narratives, journal entries, and informational writing"
     },
     "grade1-first-children-s-books": {
       "name": "First Children's Books",
@@ -41,12 +45,16 @@
       "description": "Reading and Writing"
     },
     "grade1-listening-comprehension": {
-      "name": "Listening Comprehension",
-      "description": "Speaking and Listening"
+      "name": "Listening & Auditory Comprehension",
+      "description": "Developing attentive listening skills, extracting essential information from spoken language, and demonstrating comprehension through appropriate responses"
     },
     "grade1-reading-simple-words": {
       "name": "Reading Simple Words",
       "description": "Reading and Writing"
+    },
+    "grade1-reading-fluency": {
+      "name": "Reading Fluency & Decoding",
+      "description": "Developing automatic word recognition through sight words, blending skills, letter combination mastery, and punctuation-guided reading"
     },
     "grade1-reading-short-sentences": {
       "name": "Reading Short Sentences",
@@ -64,13 +72,33 @@
       "name": "Speaking and Communication",
       "description": "Express experiences clearly, follow conversation rules, use polite communication, and respond appropriately in different situations"
     },
+    "grade1-speaking-conversation": {
+      "name": "Speaking & Conversation Skills",
+      "description": "Narrating experiences, following conversation rules, discussing learning processes, and giving constructive feedback"
+    },
     "grade1-speaking-in-complete-sentences": {
       "name": "Speaking in Complete Sentences",
       "description": "Speaking and Listening"
     },
+    "grade1-spelling": {
+      "name": "Spelling Strategies & Orthography",
+      "description": "Applying phonological, syllabic, morphological, and grammatical principles to spell words correctly"
+    },
+    "grade1-text-types": {
+      "name": "Text Types & Literary Engagement",
+      "description": "Understanding different text types (poems, stories, informational texts), analyzing characters and story elements, and presenting texts"
+    },
+    "grade2-reading-simple-texts": {
+      "name": "Reading Simple Texts",
+      "description": "Decoding words, reading simple sentences and short texts with basic comprehension"
+    },
     "grade2-capital-letters-nouns-introduction": {
       "name": "Capital Letters - Nouns (Introduction)",
       "description": "Reading and Writing"
+    },
+    "grade2-compound-words": {
+      "name": "Compound Words",
+      "description": "Understanding and forming German compound words by combining two or more words to create new meanings"
     },
     "grade2-capital-letters-sentence-start": {
       "name": "Capital Letters - Sentence Start",
@@ -112,6 +140,10 @@
       "name": "Retelling Stories",
       "description": "Speaking and Listening"
     },
+    "grade2-rhyming-words": {
+      "name": "Rhyming Words",
+      "description": "Identifying and producing rhyming words, understanding sound patterns in German"
+    },
     "grade2-sentence-structure": {
       "name": "Sentence Structure",
       "description": "Language Reflection"
@@ -131,6 +163,30 @@
     "grade2-writing-short-stories": {
       "name": "Writing Short Stories",
       "description": "Reading and Writing"
+    },
+    "grade2-asking-questions": {
+      "name": "Asking Questions",
+      "description": "Forming questions, using question words, and punctuating questions correctly"
+    },
+    "grade2-writing-simple-sentences": {
+      "name": "Writing Simple Sentences",
+      "description": "Write complete sentences with capital letters at the beginning and periods at the end"
+    },
+    "grade2-alphabet-and-abc-order": {
+      "name": "Alphabet and ABC Order",
+      "description": "Learning the German alphabet, alphabetical order, and using it for organizing and finding words"
+    },
+    "grade2-nouns-and-capital-letters": {
+      "name": "Nouns and Capital Letters",
+      "description": "Recognizing nouns and writing them with capital letters"
+    },
+    "grade2-plural-forms": {
+      "name": "Plural Forms",
+      "description": "Understanding and forming basic plural forms in German using patterns like -e, -en, -er, -s, and Umlaut changes"
+    },
+    "grade2-syllables-and-word-structure": {
+      "name": "Syllables and Word Structure",
+      "description": "Identifying syllables, clapping syllables, and understanding how words are built from syllable units"
     },
     "grade3-active-listening": {
       "name": "Active Listening",
