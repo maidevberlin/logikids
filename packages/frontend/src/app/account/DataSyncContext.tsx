@@ -100,7 +100,11 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
 
   const importQR = async (payload: qrPlugin.QRPayload) => {
     try {
-      await qrPlugin.importQRData(payload)
+      // Prepare storage (store key + userId)
+      await qrPlugin.prepareImportData(payload)
+
+      // Note: Caller should handle login and sync separately
+      // This function just prepares the import data
     } catch (error) {
       logger.error('Import QR failed', error as Error)
       throw error

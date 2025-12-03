@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as pdfjsLib from 'pdfjs-dist'
-import { importQRData, parseBackupCode } from '@/data/plugins/qr'
+import { prepareImportData, parseBackupCode } from '@/data/plugins/qr'
+import { useAuth } from '@/app/account'
+import { useSync } from '@/app/account/useSync'
 import { Button } from '@/app/common/ui/button'
 import {
   Dialog,
@@ -28,6 +30,8 @@ interface PDFImportProps {
 
 export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
   const { t } = useTranslation('common')
+  const { login } = useAuth()
+  const { sync } = useSync()
   const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [fileName, setFileName] = useState<string | null>(null)
@@ -146,9 +150,24 @@ export function PDFImport({ onClose, onSuccess }: PDFImportProps) {
       // Extract backup code from text
       const backupCode = extractBackupCode(fullText)
 
-      // Parse and import
+      // Parse backup code
       const payload = parseBackupCode(backupCode)
-      await importQRData(payload)
+
+      // Prepare storage (store key + userId)
+      await prepareImportData(payload)
+
+      // Login with backend to get JWT tokens
+      await login(payload.userId)
+
+      // Sync data from server
+      try {
+        await sync()
+      } catch (error) {
+        logger.error('Sync after import failed', error as Error)
+      }
+
+      // Trigger data refresh event
+      window.dispatchEvent(new Event('data-changed'))
 
       onSuccess()
     } catch (err) {

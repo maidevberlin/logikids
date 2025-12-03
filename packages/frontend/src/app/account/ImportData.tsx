@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { importQRData, parseBackupCode, QRPayload } from '@/data/plugins/qr'
+import { prepareImportData, parseBackupCode, QRPayload } from '@/data/plugins/qr'
 import { getData } from '@/data/core/userData'
+import { useAuth } from '@/app/account'
+import { useSync } from '@/app/account/useSync'
 import { Button } from '@/app/common/ui/button'
 import { Label } from '@/app/common/ui/label'
 import { Upload, AlertTriangle } from 'lucide-react'
@@ -20,6 +22,8 @@ import {
  */
 export function ImportData() {
   const { t } = useTranslation('profile')
+  const { login } = useAuth()
+  const { sync } = useSync()
   const [backupCode, setBackupCode] = useState('')
   const [isImporting, setIsImporting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -80,7 +84,22 @@ export function ImportData() {
     setError(null)
 
     try {
-      await importQRData(payload)
+      // Prepare storage (store key + userId)
+      await prepareImportData(payload)
+
+      // Login with backend to get JWT tokens
+      await login(payload.userId)
+
+      // Sync data from server
+      try {
+        await sync()
+      } catch (error) {
+        console.error('Sync after import failed', error)
+      }
+
+      // Trigger data refresh event
+      window.dispatchEvent(new Event('data-changed'))
+
       setSuccess(true)
       setBackupCode('')
       setShowConflictDialog(false)

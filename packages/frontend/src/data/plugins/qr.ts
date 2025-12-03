@@ -1,10 +1,5 @@
 import { loadKey, storeKey, storeUserId, getUserId } from '../core/storage.ts'
 import { exportKey, importKey } from '../core/crypto.ts'
-import { sync } from './sync.ts'
-import { loginWithAccount } from '../core/userData.ts'
-import { createLogger } from '@/lib/logger'
-
-const logger = createLogger('QRPlugin')
 
 export interface QRPayload {
   userId: string
@@ -79,29 +74,15 @@ export function parseBackupCode(code: string): QRPayload {
 }
 
 /**
- * Import QR code data from another device
+ * Prepare key and userId from QR payload for import
+ * Call this before calling auth.login() and sync()
  */
-export async function importQRData(payload: QRPayload): Promise<void> {
+export async function prepareImportData(payload: QRPayload): Promise<void> {
   // Import the encryption key
   const keyJwk = JSON.parse(payload.key)
   const key = await importKey(keyJwk)
 
-  // Store key and userId
+  // Store key and userId in IndexedDB
   await storeKey(key)
   await storeUserId(payload.userId)
-
-  // Login with backend to get JWT tokens
-  await loginWithAccount(payload.userId)
-
-  // Sync data from server - this will download encrypted data and restore it locally
-  try {
-    await sync()
-  } catch (error) {
-    logger.error('Sync after import failed', error as Error)
-    // If sync fails, at least we have the key/userId stored
-    // User can try syncing again later
-  }
-
-  // Trigger data refresh event so UI updates
-  window.dispatchEvent(new Event('data-changed'))
 }

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Html5Qrcode } from 'html5-qrcode'
-import { importQRData, QRPayload } from '@/data/plugins/qr'
+import { prepareImportData, QRPayload } from '@/data/plugins/qr'
+import { useAuth } from '@/app/account'
+import { useSync } from '@/app/account/useSync'
 import { Button } from '@/app/common/ui/button'
 import {
   Dialog,
@@ -19,6 +21,8 @@ interface QRScannerProps {
 
 export function QRScanner({ onClose, onSuccess }: QRScannerProps) {
   const { t } = useTranslation('common')
+  const { login } = useAuth()
+  const { sync } = useSync()
   const [isScanning, setIsScanning] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const scannerRef = useRef<Html5Qrcode | null>(null)
@@ -42,7 +46,23 @@ export function QRScanner({ onClose, onSuccess }: QRScannerProps) {
           // QR code scanned successfully
           try {
             const payload: QRPayload = JSON.parse(decodedText)
-            await importQRData(payload)
+
+            // Prepare storage (store key + userId)
+            await prepareImportData(payload)
+
+            // Login with backend to get JWT tokens
+            await login(payload.userId)
+
+            // Sync data from server
+            try {
+              await sync()
+            } catch (error) {
+              console.error('Sync after import failed', error)
+            }
+
+            // Trigger data refresh event
+            window.dispatchEvent(new Event('data-changed'))
+
             await stopScanner()
             onSuccess()
           } catch (err) {

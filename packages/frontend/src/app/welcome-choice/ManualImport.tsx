@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { importQRData, parseBackupCode } from '@/data/plugins/qr'
+import { prepareImportData, parseBackupCode } from '@/data/plugins/qr'
+import { useAuth } from '@/app/account'
+import { useSync } from '@/app/account/useSync'
 import { Button } from '@/app/common/ui/button'
 import { Label } from '@/app/common/ui/label'
 import {
@@ -21,6 +23,8 @@ interface ManualImportProps {
 
 export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
   const { t } = useTranslation('common')
+  const { login } = useAuth()
+  const { sync } = useSync()
   const [backupCode, setBackupCode] = useState('')
   const [isImporting, setIsImporting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -36,7 +40,23 @@ export function ManualImport({ onClose, onSuccess }: ManualImportProps) {
 
     try {
       const payload = parseBackupCode(backupCode)
-      await importQRData(payload)
+
+      // Prepare storage (store key + userId)
+      await prepareImportData(payload)
+
+      // Login with backend to get JWT tokens
+      await login(payload.userId)
+
+      // Sync data from server
+      try {
+        await sync()
+      } catch (error) {
+        logger.error('Sync after import failed', error as Error)
+      }
+
+      // Trigger data refresh event
+      window.dispatchEvent(new Event('data-changed'))
+
       onSuccess()
     } catch (err) {
       logger.error('Manual import error', err as Error)
