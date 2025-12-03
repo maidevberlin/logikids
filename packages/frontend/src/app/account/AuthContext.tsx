@@ -1,10 +1,9 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import {
-  registerUser as coreRegisterUser,
-  loginWithAccount as coreLoginWithAccount,
-} from '@/data/core/userData.ts'
-import { getUserId } from '@/data/core/storage.ts'
+import { getUserId, storeKey, storeUserId, storeTokens } from '@/data/core/storage.ts'
+import { generateKey, encrypt } from '@/data/core/crypto.ts'
 import { createLogger } from '@/lib/logger'
+import { trpcClient } from '@/api/trpc'
+import { createDefaultUserData } from '@/data/core/types.ts'
 
 const logger = createLogger('AuthContext')
 
@@ -63,9 +62,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
   async function register(inviteCode: string): Promise<void> {
     try {
       logger.debug('Registering new user')
-      const userData = await coreRegisterUser(inviteCode)
-      setCurrentUserId(userData.userId)
-      logger.info('User registered successfully', { userId: userData.userId })
+
+      // Generate key and userId locally
+      const key = await generateKey()
+      const userId = crypto.randomUUID()
+
+      // Call backend via tRPC
+      const { accessToken } = await trpcClient.auth.register.mutate({
+        userId,
+        inviteCode,
+      })
+
+      // Store key, userId, and tokens in IndexedDB
+      await storeKey(key)
+      await storeUserId(userId)
+      await storeTokens(accessToken)
+
+      // Create default data and encrypt to localStorage
+      const defaultData = createDefaultUserData(userId)
+      const encrypted = await encrypt(key, defaultData)
+      localStorage.setItem('logikids_data', encrypted)
+
+      setCurrentUserId(userId)
+      logger.info('User registered successfully', { userId })
 
       // Trigger data-changed event for other listeners
       window.dispatchEvent(new Event('data-changed'))
@@ -78,7 +97,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   async function login(userId: string): Promise<void> {
     try {
       logger.debug('Logging in user', { userId })
-      await coreLoginWithAccount(userId)
+
+      // Call backend via tRPC
+      const { accessToken } = await trpcClient.auth.login.mutate({ userId })
+
+      // Store tokens in IndexedDB
+      await storeTokens(accessToken)
+
       setCurrentUserId(userId)
       logger.info('User logged in successfully', { userId })
 
