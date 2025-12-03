@@ -82,7 +82,14 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
 
   const importData = async (json: string) => {
     try {
-      await exportPlugin.importData(json)
+      // Import returns userId for us to handle login
+      const userId = await exportPlugin.importData(json)
+
+      // Note: Caller should handle login and sync separately if needed
+      // This is typically used from settings where user is already logged in
+
+      // Trigger data refresh event so UI updates
+      window.dispatchEvent(new Event('data-changed'))
     } catch (error) {
       logger.error('Import failed', error as Error)
       throw error
@@ -135,6 +142,9 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
     window.addEventListener('beforeunload', unloadHandler)
 
     setAutoSyncEnabled(true)
+
+    // Trigger immediate sync when enabling
+    sync().catch((error) => logger.warn('Initial auto-sync failed', { error }))
   }
 
   const disableAutoSync = () => {
