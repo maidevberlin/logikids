@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react'
 import { useSync } from './useSync'
 import * as exportPlugin from '@/data/plugins/export.ts'
 import * as qrPlugin from '@/data/plugins/qr.ts'
