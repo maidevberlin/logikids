@@ -47,7 +47,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
 ## Constraints
 
-- Max 8-10 concepts per grade (consolidate if curriculum suggests more)
+- Max 12-14 concepts per grade (consolidate if curriculum suggests more)
 - Subagents read write-concept skill themselves - don't duplicate rules
 - Research happens ONCE in parent, not per-agent (saves tokens)
 

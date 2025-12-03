@@ -73,6 +73,13 @@
       "conflictWarning": "Stelle sicher, dass du dein aktuelles Wiederherstellungs-Kit heruntergeladen hast, wenn du diese Daten behalten möchtest.",
       "conflictCancel": "Abbrechen",
       "conflictConfirm": "Ja, Daten überschreiben"
+    },
+    "accountNotFound": {
+      "title": "Zeit für einen Neuanfang!",
+      "message1": "Dein vorheriges Konto muss aufgrund aktueller Updates in unserer Beta-Phase zurückgesetzt werden.",
+      "message2": "Bereit für einen Neuanfang? Du brauchst einen neuen Einladungscode, um deine Lernreise fortzusetzen!",
+      "startButton": "Neu starten",
+      "note": "Dies löscht deine lokalen Daten"
     }
   },
   "settings": {

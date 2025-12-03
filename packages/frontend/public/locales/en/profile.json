@@ -73,6 +73,13 @@
       "conflictWarning": "Make sure to download your current recovery kit first if you want to keep this data.",
       "conflictCancel": "Cancel",
       "conflictConfirm": "Yes, Override Data"
+    },
+    "accountNotFound": {
+      "title": "Time for a Fresh Start!",
+      "message1": "Your previous account needs to be reset due to recent updates during our beta phase.",
+      "message2": "Ready to start fresh? You'll need a new invite code to continue your learning journey!",
+      "startButton": "Start Fresh",
+      "note": "This will clear your local data"
     }
   },
   "settings": {

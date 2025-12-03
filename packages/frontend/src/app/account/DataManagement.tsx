@@ -182,11 +182,7 @@ export function DataManagement({
             {t('account.logout', { defaultValue: 'Logout' })}
           </Button>
 
-          <Button
-            onClick={handleDelete}
-            variant="outline"
-            className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
-          >
+          <Button onClick={handleDelete} variant="destructive" className="w-full justify-start">
             <Trash2 className="w-4 h-4 mr-2" />
             {t('account.deleteData', { defaultValue: 'Delete All Data' })}
           </Button>
