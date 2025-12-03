@@ -2,8 +2,8 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import { getUserId, storeKey, storeUserId, storeTokens } from '@/data/core/storage.ts'
 import { generateKey, encrypt } from '@/data/core/crypto.ts'
 import { createLogger } from '@/lib/logger'
-import { trpcClient } from '@/api/trpc'
 import { createDefaultUserData } from '@/data/core/types.ts'
+import { trpc } from '@/api/trpc'
 
 const logger = createLogger('AuthContext')
 
@@ -25,6 +25,10 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [currentUserId, setCurrentUserId] = useState<string | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
+
+  // tRPC mutations
+  const registerMutation = trpc.auth.register.useMutation()
+  const loginMutation = trpc.auth.login.useMutation()
 
   // Derived state
   const isAuthenticated = currentUserId !== null
@@ -67,8 +71,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const key = await generateKey()
       const userId = crypto.randomUUID()
 
-      // Call backend via tRPC
-      const { accessToken } = await trpcClient.auth.register.mutate({
+      // Call backend via tRPC mutation
+      const { accessToken } = await registerMutation.mutateAsync({
         userId,
         inviteCode,
       })
@@ -98,8 +102,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       logger.debug('Logging in user', { userId })
 
-      // Call backend via tRPC
-      const { accessToken } = await trpcClient.auth.login.mutate({ userId })
+      // Call backend via tRPC mutation
+      const { accessToken } = await loginMutation.mutateAsync({ userId })
 
       // Store tokens in IndexedDB
       await storeTokens(accessToken)
