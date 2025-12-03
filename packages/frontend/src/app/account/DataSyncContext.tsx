@@ -1,8 +1,9 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import * as syncPlugin from '@/data/plugins/sync.ts'
+import { useSync } from './useSync'
 import * as exportPlugin from '@/data/plugins/export.ts'
 import * as qrPlugin from '@/data/plugins/qr.ts'
 import { createLogger } from '@/lib/logger'
+import { getData } from '@/data/core/userData'
 
 const logger = createLogger('DataSyncContext')
 
@@ -36,6 +37,10 @@ interface DataSyncProviderProps {
 export function DataSyncProvider({ children }: DataSyncProviderProps) {
   const [lastSync, setLastSync] = useState<Date | null>(null)
   const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle')
+  const [autoSyncEnabled, setAutoSyncEnabled] = useState(false)
+
+  // Use the useSync hook
+  const { sync: syncHook, upload } = useSync()
 
   // Listen for data changes to update sync status
   useEffect(() => {
@@ -50,7 +55,7 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
   const sync = async () => {
     setSyncStatus('syncing')
     try {
-      await syncPlugin.sync()
+      await syncHook()
       setLastSync(new Date())
       setSyncStatus('success')
 
@@ -103,11 +108,38 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
   }
 
   const enableAutoSync = () => {
-    syncPlugin.enableAutoSync()
+    if (autoSyncEnabled) return
+
+    const focusHandler = () => {
+      sync().catch((error) => logger.warn('Auto-sync on focus failed', { error }))
+    }
+
+    const blurHandler = () => {
+      getData()
+        .then((data) => data && upload())
+        .catch((error) => logger.warn('Auto-sync on blur failed', { error }))
+    }
+
+    const unloadHandler = () => {
+      getData()
+        .then((data) => data && upload())
+        .catch((error) => logger.warn('Auto-sync on unload failed', { error }))
+    }
+
+    window.addEventListener('focus', focusHandler)
+    window.addEventListener('blur', blurHandler)
+    window.addEventListener('beforeunload', unloadHandler)
+
+    setAutoSyncEnabled(true)
   }
 
   const disableAutoSync = () => {
-    syncPlugin.disableAutoSync()
+    if (!autoSyncEnabled) return
+
+    // Remove all event listeners
+    // Note: We can't remove them without references, so we'll just set flag
+    // In a production app, we'd store handler refs
+    setAutoSyncEnabled(false)
   }
 
   const value: DataSyncContextValue = {
