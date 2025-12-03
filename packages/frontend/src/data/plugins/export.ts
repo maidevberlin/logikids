@@ -1,5 +1,5 @@
 import { UserData } from '@/data'
-import { getData, loginWithAccount } from '../core/userData.ts'
+import { getData } from '../core/userData.ts'
 import { storeKey, storeUserId, loadKey } from '../core/storage.ts'
 import { importKey, encrypt, exportKey } from '../core/crypto.ts'
 
@@ -32,9 +32,9 @@ export async function exportData(): Promise<string> {
 /**
  * Import user data from JSON string
  * Merges progress additively (never loses data)
- * Also logs in with the backend using the imported userId
+ * Returns the imported userId for caller to handle login
  */
-export async function importData(json: string): Promise<void> {
+export async function importData(json: string): Promise<string> {
   const imported: UserData = JSON.parse(json)
 
   // Import must include encryption key
@@ -67,11 +67,8 @@ export async function importData(json: string): Promise<void> {
   const encrypted = await encrypt(key, merged)
   localStorage.setItem(STORAGE_KEY, encrypted)
 
-  // Login with backend to get JWT tokens
-  await loginWithAccount(imported.userId)
-
-  // Trigger data refresh event so UI updates
-  window.dispatchEvent(new Event('data-changed'))
+  // Return userId for caller to handle login
+  return imported.userId
 }
 
 /**

@@ -1,9 +1,8 @@
 import { createDefaultUserData, UserData, UserSettings } from './types.ts'
-import { getUserId, loadKey, storeKey, storeTokens, storeUserId } from './storage.ts'
-import { decrypt, encrypt, generateKey } from './crypto.ts'
+import { getUserId, loadKey } from './storage.ts'
+import { decrypt, encrypt } from './crypto.ts'
 import { GameStats } from '@/app/stats/gameTypes'
 import { createLogger } from '@/lib/logger'
-import { trpcClient } from '@/api/trpc'
 
 const logger = createLogger('UserData')
 const STORAGE_KEY = 'logikids_data'
@@ -43,65 +42,6 @@ export async function initialize(): Promise<UserData | null> {
     return null
   } catch (error) {
     logger.error('Failed to initialize user data', error as Error)
-    throw error
-  }
-}
-
-/**
- * Register a new user with invite code and get JWT token
- * Called during onboarding after invite code validation
- */
-export async function registerUser(inviteCode: string): Promise<UserData> {
-  try {
-    // Generate key and userId
-    const key = await generateKey()
-    const userId = crypto.randomUUID()
-
-    // Register with backend and get JWT token using tRPC
-    const { accessToken } = await trpcClient.auth.register.mutate({ userId, inviteCode })
-
-    // Store key, userId, and tokens
-    await storeKey(key)
-    await storeUserId(userId)
-    await storeTokens(accessToken)
-
-    // Create default data
-    const defaultData = createDefaultUserData(userId)
-
-    // Store it encrypted
-    const encrypted = await encrypt(key, defaultData)
-    localStorage.setItem(STORAGE_KEY, encrypted)
-
-    // Clean up any legacy storage
-    cleanupLegacyStorage()
-
-    // Dispatch event for React reactivity
-    window.dispatchEvent(new Event('data-changed'))
-
-    return defaultData
-  } catch (error) {
-    logger.error('Failed to register user', error as Error)
-    throw error
-  }
-}
-
-/**
- * Login with existing account (for import/restore flows)
- * Called when user imports account data that includes userId + encryption key
- */
-export async function loginWithAccount(userId: string): Promise<void> {
-  try {
-    // Login with backend to get JWT tokens using tRPC
-    const { accessToken } = await trpcClient.auth.login.mutate({ userId })
-
-    // Store tokens
-    await storeTokens(accessToken)
-
-    // User ID and encryption key should already be stored by import flow
-    // Dispatch event for React reactivity
-    window.dispatchEvent(new Event('data-changed'))
-  } catch (error) {
-    logger.error('Failed to login with account', error as Error)
     throw error
   }
 }
