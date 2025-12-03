@@ -26,16 +26,13 @@ export class SyncController {
     return { success: true }
   }
 
-  async download(userId: string, ctxUserId: string): Promise<SyncPayload> {
+  async download(userId: string, ctxUserId: string): Promise<SyncPayload | null> {
     if (userId !== ctxUserId) {
       throw new TRPCError({ code: 'FORBIDDEN', message: 'Cannot download data for another user' })
     }
 
+    // Return null if no data exists (first sync)
     const payload = await this.syncService.download(userId)
-    if (!payload) {
-      throw new TRPCError({ code: 'NOT_FOUND', message: 'User not found' })
-    }
-
     return payload
   }
 
