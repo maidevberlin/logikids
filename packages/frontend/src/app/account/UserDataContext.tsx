@@ -63,7 +63,8 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     } else {
       dataSync.disableAutoSync()
     }
-  }, [data?.settings.syncEnabled, dataSync])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.settings.syncEnabled])
 
   const refresh = async () => {
     try {

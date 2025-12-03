@@ -39,6 +39,13 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
   const [syncStatus, setSyncStatus] = useState<SyncStatus>('idle')
   const [autoSyncEnabled, setAutoSyncEnabled] = useState(false)
 
+  // Store handler references for cleanup
+  const handlersRef = useRef<{
+    focus: (() => void) | null
+    blur: (() => void) | null
+    unload: (() => void) | null
+  }>({ focus: null, blur: null, unload: null })
+
   // Use the useSync hook
   const { sync: syncHook, upload } = useSync()
 
@@ -121,20 +128,36 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
   const enableAutoSync = () => {
     if (autoSyncEnabled) return
 
+    // Create handlers and store references
     const focusHandler = () => {
       sync().catch((error) => logger.warn('Auto-sync on focus failed', { error }))
     }
 
     const blurHandler = () => {
       getData()
-        .then((data) => data && upload())
+        .then((data) => {
+          if (data) {
+            return upload()
+          }
+        })
         .catch((error) => logger.warn('Auto-sync on blur failed', { error }))
     }
 
     const unloadHandler = () => {
       getData()
-        .then((data) => data && upload())
+        .then((data) => {
+          if (data) {
+            return upload()
+          }
+        })
         .catch((error) => logger.warn('Auto-sync on unload failed', { error }))
+    }
+
+    // Store handler references for cleanup
+    handlersRef.current = {
+      focus: focusHandler,
+      blur: blurHandler,
+      unload: unloadHandler,
     }
 
     window.addEventListener('focus', focusHandler)
@@ -150,9 +173,15 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
   const disableAutoSync = () => {
     if (!autoSyncEnabled) return
 
-    // Remove all event listeners
-    // Note: We can't remove them without references, so we'll just set flag
-    // In a production app, we'd store handler refs
+    // Remove event listeners using stored references
+    const { focus, blur, unload } = handlersRef.current
+    if (focus) window.removeEventListener('focus', focus)
+    if (blur) window.removeEventListener('blur', blur)
+    if (unload) window.removeEventListener('beforeunload', unload)
+
+    // Clear references
+    handlersRef.current = { focus: null, blur: null, unload: null }
+
     setAutoSyncEnabled(false)
   }
 
