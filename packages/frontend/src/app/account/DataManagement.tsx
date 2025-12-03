@@ -14,6 +14,7 @@ import {
 } from '@/app/common/ui/dialog'
 import { Database, LogOut, Trash2 } from 'lucide-react'
 import { useAuth } from './AuthContext'
+import { useDataSync } from './DataSyncContext'
 import { RecoveryKit } from './RecoveryKit'
 import { QRDisplay } from './QRDisplay'
 import { ExportData } from './ExportData'
@@ -35,6 +36,7 @@ export function DataManagement({
 }: DataManagementProps) {
   const { t } = useTranslation('profile')
   const { logout } = useAuth()
+  const dataSync = useDataSync()
   const [showLogoutDialog, setShowLogoutDialog] = useState(false)
   const [localSyncEnabled, setLocalSyncEnabled] = useState(syncEnabled)
 
@@ -76,6 +78,18 @@ export function DataManagement({
 
   const handleLogout = async () => {
     try {
+      // Sync data before logout if sync is enabled
+      if (syncEnabled) {
+        try {
+          logger.debug('Syncing data before logout...')
+          await dataSync.sync()
+          logger.debug('Data synced successfully before logout')
+        } catch (syncError) {
+          logger.warn('Failed to sync before logout, continuing with logout', syncError as Error)
+          // Continue with logout anyway - don't block user from logging out
+        }
+      }
+
       // Use AuthContext logout which handles all cleanup
       await logout()
 

@@ -85,11 +85,25 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
   const updateProgress = async (progress: Record<string, any>) => {
     await coreUpdateProgress(progress)
     await refresh()
+
+    // Sync after task completion if sync is enabled
+    if (data?.settings.syncEnabled) {
+      dataSync.sync().catch((err) => {
+        console.warn('Background sync after task failed', err)
+      })
+    }
   }
 
   const updateGameStats = async (gameStats: GameStats) => {
     await coreUpdateGameStats(gameStats)
     await refresh()
+
+    // Sync after game stats update if sync is enabled
+    if (data?.settings.syncEnabled) {
+      dataSync.sync().catch((err) => {
+        console.warn('Background sync after stats update failed', err)
+      })
+    }
   }
 
   const value: UserDataContextValue = {
