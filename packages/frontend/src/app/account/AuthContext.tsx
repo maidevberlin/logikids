@@ -4,6 +4,7 @@ import { generateKey, encrypt } from '@/data/core/crypto.ts'
 import { createLogger } from '@/lib/logger'
 import { createDefaultUserData } from '@/data/core/types.ts'
 import { trpc } from '@/api/trpc'
+import { AccountNotFoundModal } from './AccountNotFoundModal'
 
 const logger = createLogger('AuthContext')
 
@@ -25,6 +26,7 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [currentUserId, setCurrentUserId] = useState<string | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
+  const [accountNotFound, setAccountNotFound] = useState(false)
 
   // tRPC mutations
   const registerMutation = trpc.auth.register.useMutation()
@@ -53,8 +55,35 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       setAuthLoading(true)
       const userId = await getUserId()
-      setCurrentUserId(userId)
-      logger.debug('Auth initialized', { userId: userId ? 'present' : 'absent' })
+
+      if (!userId) {
+        setCurrentUserId(null)
+        logger.debug('Auth initialized', { userId: 'absent' })
+        return
+      }
+
+      // Verify user still exists by logging in
+      try {
+        const { accessToken } = await loginMutation.mutateAsync({ userId })
+        await storeTokens(accessToken)
+        setCurrentUserId(userId)
+        logger.debug('Auth initialized', { userId: 'present' })
+      } catch (error) {
+        // Check if account was not found (404)
+        const is404 =
+          error instanceof Error &&
+          (error.message.includes('NOT_FOUND') || error.message.includes('404'))
+
+        if (is404) {
+          logger.warn('Account not found during auth init')
+          setAccountNotFound(true)
+          setCurrentUserId(null)
+        } else {
+          // Other errors - just clear auth state
+          logger.error('Failed to verify user', error as Error)
+          setCurrentUserId(null)
+        }
+      }
     } catch (error) {
       logger.error('Failed to initialize auth', error as Error)
       setCurrentUserId(null)
@@ -155,7 +184,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
     logout,
   }
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+      {accountNotFound && <AccountNotFoundModal />}
+    </AuthContext.Provider>
+  )
 }
 
 export function useAuth(): AuthContextValue {

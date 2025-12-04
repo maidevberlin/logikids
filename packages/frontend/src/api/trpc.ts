@@ -40,6 +40,10 @@ async function refreshAccessToken(): Promise<string> {
       })
 
       if (!response.ok) {
+        // Check if this is an ACCOUNT_NOT_FOUND error (DB reset scenario)
+        if (response.status === 404) {
+          throw new Error('ACCOUNT_NOT_FOUND')
+        }
         throw new Error('Token refresh failed')
       }
 
@@ -93,8 +97,10 @@ export const trpcClient = trpc.createClient({
 
             return fetch(url, retryOptions)
           } catch (error) {
+            // Token refresh failed - redirect to welcome page
+            // (ACCOUNT_NOT_FOUND is handled by AuthContext on init)
             logger.error('Token refresh failed', error as Error)
-            window.location.href = '/welcome-choice'
+            window.location.href = '/#/welcome-choice'
             throw error
           }
         }

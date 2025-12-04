@@ -1,9 +1,6 @@
 import { z } from 'zod'
 import { DIFFICULTIES, TASK_TYPES } from '@/app/tasks/types'
 
-// Re-export for backward compatibility
-export { LogikidsApiError } from './errors'
-
 // Gender options
 export const GENDERS = ['male', 'female', 'non-binary', 'prefer-not-to-say'] as const
 

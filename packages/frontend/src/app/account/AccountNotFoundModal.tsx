@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   Dialog,
@@ -18,20 +17,11 @@ const logger = createLogger('AccountNotFoundModal')
  * Modal shown when the user's account is not found in the backend database.
  * This happens when the database is reset but the user still has old credentials stored locally.
  * The only option is to delete all local data and start fresh.
+ *
+ * Rendered conditionally by AuthContext when account is not found.
  */
 export function AccountNotFoundModal() {
   const { t } = useTranslation('profile')
-  const [isOpen, setIsOpen] = useState(false)
-
-  useEffect(() => {
-    const handleAccountNotFound = () => {
-      logger.warn('Account not found - showing modal')
-      setIsOpen(true)
-    }
-
-    window.addEventListener('account-not-found', handleAccountNotFound)
-    return () => window.removeEventListener('account-not-found', handleAccountNotFound)
-  }, [])
 
   const handleDeleteData = async () => {
     try {
@@ -50,16 +40,16 @@ export function AccountNotFoundModal() {
       })
 
       // Reload to reset everything
-      window.location.href = '/welcome-choice'
+      window.location.href = '/#/welcome-choice'
     } catch (error) {
       logger.error('Failed to delete data', error as Error)
       // Still reload even if deletion fails
-      window.location.href = '/welcome-choice'
+      window.location.href = '/#/welcome-choice'
     }
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}} modal>
+    <Dialog open onOpenChange={() => {}} modal>
       <DialogContent className="sm:max-w-md [&>button]:hidden">
         <DialogHeader>
           <div className="flex items-center justify-center mb-4">
