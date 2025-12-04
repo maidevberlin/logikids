@@ -1,4 +1,4 @@
-import { createDefaultUserData, UserData, UserSettings } from './types.ts'
+import { UserData, UserSettings } from './types.ts'
 import { getUserId, loadKey } from './storage.ts'
 import { decrypt, encrypt } from './crypto.ts'
 import { GameStats } from '@/app/stats/gameTypes'

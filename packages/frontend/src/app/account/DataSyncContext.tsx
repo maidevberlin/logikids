@@ -89,8 +89,8 @@ export function DataSyncProvider({ children }: DataSyncProviderProps) {
 
   const importData = async (json: string) => {
     try {
-      // Import returns userId for us to handle login
-      const userId = await exportPlugin.importData(json)
+      // Import data (userId return value not used here - caller handles auth)
+      await exportPlugin.importData(json)
 
       // Note: Caller should handle login and sync separately if needed
       // This is typically used from settings where user is already logged in

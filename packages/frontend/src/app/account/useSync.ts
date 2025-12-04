@@ -2,6 +2,7 @@ import { trpc } from '@/api/trpc'
 import { getUserId, loadKey } from '@/data/core/storage'
 import { encrypt, decrypt } from '@/data/core/crypto'
 import { getData, setData } from '@/data/core/userData'
+import { UserData } from '@/data/core/types'
 import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('useSync')
@@ -107,7 +108,7 @@ export function useSync() {
         throw new Error('Encryption key not found')
       }
 
-      return await decrypt(key, encryptedBlob)
+      return await decrypt<UserData>(key, encryptedBlob)
     } catch (error) {
       logger.error('Download failed', error as Error)
       throw error

@@ -85,7 +85,7 @@ export function DataManagement({
           await dataSync.sync()
           logger.debug('Data synced successfully before logout')
         } catch (syncError) {
-          logger.warn('Failed to sync before logout, continuing with logout', syncError as Error)
+          logger.warn('Failed to sync before logout, continuing with logout', { error: syncError })
           // Continue with logout anyway - don't block user from logging out
         }
       }
