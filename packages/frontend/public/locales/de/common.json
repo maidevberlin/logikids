@@ -321,6 +321,7 @@
       "pdfHint": "Wähle dein Logikids Wiederherstellungs-Kit PDF",
       "invalidQR": "Ungültiger QR-Code",
       "cameraError": "Kamera kann nicht zugegriffen werden",
+      "startCamera": "Tippe, um die Kamera zu starten",
       "initializingCamera": "Initialisiere Kamera...",
       "cancel": "Abbrechen",
       "invalidBackupFormat": "Ungültiges Backup-Code-Format",

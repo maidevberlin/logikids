@@ -321,6 +321,7 @@
       "pdfHint": "Select your Logikids Recovery Kit PDF",
       "invalidQR": "Invalid QR code",
       "cameraError": "Cannot access camera",
+      "startCamera": "Tap to start camera",
       "initializingCamera": "Initializing camera...",
       "cancel": "Cancel",
       "invalidBackupFormat": "Invalid backup code format",
