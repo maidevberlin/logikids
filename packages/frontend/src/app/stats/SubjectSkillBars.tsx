@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/app/common/ui/card'
 import { GameStats } from './gameTypes'
+import { MIN_TASKS_FOR_STARS } from '@/data/progress/aggregation'
 
 const SUBJECT_COLORS: Record<string, string> = {
   math: 'bg-blue-500',
@@ -50,6 +51,7 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
       <div className="space-y-4">
         {subjects.map(([subject, mastery]) => {
           const subjectColor = SUBJECT_COLORS[subject] || 'bg-muted-foreground'
+          const isGettingStarted = mastery.totalTasks < MIN_TASKS_FOR_STARS
 
           return (
             <div key={subject} className="flex items-center gap-4">
@@ -57,21 +59,42 @@ export function SubjectSkillBars({ gameStats }: SubjectSkillBarsProps) {
                 {t(`subjects.${subject}.label`, { defaultValue: subject })}
               </div>
 
-              <div className="flex-1 flex gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <div
-                    key={star}
-                    className={`h-4 flex-1 rounded transition-all duration-300 ${
-                      star <= mastery.stars ? subjectColor : 'bg-muted'
-                    }`}
-                    style={{
-                      transitionDelay: `${star * 100}ms`,
-                    }}
-                  />
-                ))}
-              </div>
-
-              <div className="w-8 text-sm font-bold text-muted-foreground">{mastery.stars}/5</div>
+              {isGettingStarted ? (
+                // "Getting started" progress bar toward unlocking rating
+                <>
+                  <div className="flex-1 h-4 bg-muted rounded overflow-hidden">
+                    <div
+                      className={`h-full ${subjectColor} rounded transition-all duration-300`}
+                      style={{
+                        width: `${(mastery.totalTasks / MIN_TASKS_FOR_STARS) * 100}%`,
+                      }}
+                    />
+                  </div>
+                  <div className="w-12 text-xs text-muted-foreground text-right">
+                    {mastery.totalTasks}/{MIN_TASKS_FOR_STARS}
+                  </div>
+                </>
+              ) : (
+                // Star rating display
+                <>
+                  <div className="flex-1 flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <div
+                        key={star}
+                        className={`h-4 flex-1 rounded transition-all duration-300 ${
+                          star <= mastery.stars ? subjectColor : 'bg-muted'
+                        }`}
+                        style={{
+                          transitionDelay: `${star * 100}ms`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <div className="w-8 text-sm font-bold text-muted-foreground">
+                    {mastery.stars}/5
+                  </div>
+                </>
+              )}
             </div>
           )
         })}

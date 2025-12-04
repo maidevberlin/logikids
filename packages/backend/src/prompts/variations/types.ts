@@ -1,10 +1,10 @@
 /**
- * Unified age-filtered item (used for scenarios and all enrichments)
+ * Unified grade-filtered item (used for scenarios and all enrichments)
  */
-export interface AgeFilteredItem {
+export interface GradeFilteredItem {
   text?: string // For enrichments (text content)
   context?: string // For scenarios (context string)
-  age: [number, number] // [minAge, maxAge]
+  grade: [number, number] // [minGrade, maxGrade]
 }
 
 export type EnrichmentType =
@@ -28,5 +28,5 @@ export interface Enrichment {
 export interface RawVariationItem {
   text?: string
   context?: string
-  age?: [number, number]
+  grade?: [number, number]
 }

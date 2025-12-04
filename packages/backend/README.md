@@ -68,7 +68,7 @@ src/
 ### Tasks
 
 - `GET /api/task` - Generate a task based on:
-  - age (6-21)
+  - grade (1-13)
   - difficulty (easy/medium/hard)
   - subject (math/logic)
   - concept (optional, for focused learning)

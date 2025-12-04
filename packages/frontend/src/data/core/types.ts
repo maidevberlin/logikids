@@ -3,10 +3,8 @@ import { ProgressData } from '@/data/progress/types'
 
 export interface UserSettings {
   name: string
-  age: number
   grade: number
   language: string
-  gender: string
   syncEnabled: boolean
 }
 
@@ -39,10 +37,8 @@ export interface UserData {
 
 export const DEFAULT_SETTINGS: UserSettings = {
   name: '',
-  age: 10,
   grade: 5,
   language: 'en',
-  gender: 'non-binary',
   syncEnabled: false,
 }
 

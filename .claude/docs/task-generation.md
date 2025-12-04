@@ -23,7 +23,6 @@ HTTP Request → TaskController → TaskService → PromptBuilder → AI Client 
 - `subject` — Subject ID (e.g., `math`)
 - `concept` — Concept ID (e.g., `grade1-basic-arithmetic-operations`)
 - `grade` — Student grade level (1-13)
-- `age` — Student age (6-20, must align with grade ±2 years)
 - `difficulty` — Task difficulty (`easy`, `medium`, `hard`)
 - `language` — Response language (`en`, `de`)
 
@@ -91,23 +90,21 @@ difficultyGuidelines = concept.difficulty_guidelines[difficulty]
 
 #### All Variables
 
-| Variable                        | Source     | Description                              |
-| ------------------------------- | ---------- | ---------------------------------------- |
-| `[[age]]`                       | Request    | Student age from frontend                |
-| `[[grade]]`                     | Request    | Student grade                            |
-| `[[difficulty]]`                | Request    | Task difficulty                          |
-| `[[language]]`                  | Request    | "English" or "German"                    |
-| `[[concept_name]]`              | Concept    | Display name                             |
-| `[[concept_focus]]`             | Concept    | Thematic focus                           |
-| `[[selected_objective]]`        | Concept    | Random learning objective                |
-| `[[selected_problem_type]]`     | Concept    | Random problem type                      |
-| `[[difficulty_guidelines]]`     | Concept    | Difficulty guidelines (bullet list)      |
-| `[[real_world_context]]`        | Concept    | Context for scenarios                    |
-| `[[anti_patterns]]`             | Concept    | Things AI should avoid (bullet list)     |
-| `[[scenario]]`                  | Variations | Age-filtered scenario context            |
-| `[[language_style]]`            | Calculated | Grade-based language style               |
-| `[[enrichment_formatted]]`      | Variations | Creative enrichments (formatted bullets) |
-| `[[student_context_formatted]]` | Request    | Student gender context (if provided)     |
+| Variable                    | Source     | Description                              |
+| --------------------------- | ---------- | ---------------------------------------- |
+| `[[grade]]`                 | Request    | Student grade                            |
+| `[[difficulty]]`            | Request    | Task difficulty                          |
+| `[[language]]`              | Request    | "English" or "German"                    |
+| `[[concept_name]]`          | Concept    | Display name                             |
+| `[[concept_focus]]`         | Concept    | Thematic focus                           |
+| `[[selected_objective]]`    | Concept    | Random learning objective                |
+| `[[selected_problem_type]]` | Concept    | Random problem type                      |
+| `[[difficulty_guidelines]]` | Concept    | Difficulty guidelines (bullet list)      |
+| `[[real_world_context]]`    | Concept    | Context for scenarios                    |
+| `[[anti_patterns]]`         | Concept    | Things AI should avoid (bullet list)     |
+| `[[scenario]]`              | Variations | Grade-filtered scenario context          |
+| `[[language_style]]`        | Calculated | Grade-based language style               |
+| `[[enrichment_formatted]]`  | Variations | Creative enrichments (formatted bullets) |
 
 ### 5. AI Generation
 
@@ -151,9 +148,9 @@ The assembled prompt is sent to the AI client with a JSON schema for structured 
 
 ## Variations System
 
-Variations add variety to tasks through age-filtered enrichments.
+Variations add variety to tasks through grade-filtered enrichments.
 **Location:** `prompts/variations/`
-Each variation item has an age range for filtering.
+Each variation item has a grade range for filtering.
 
 ## Concept Impact Summary
 

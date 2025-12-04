@@ -7,7 +7,7 @@ import { taskTypeRegistry, TaskTypeWithSchema } from '../tasks/task-types'
 import { PromptService } from '../prompts/service'
 import { PromptLoader, Subject } from '../prompts/loader'
 import { VariationLoader } from '../prompts/variations/loader'
-import { Difficulty, Gender } from '../tasks/types'
+import { Difficulty } from '../tasks/types'
 import { Concept } from '../prompts/schemas'
 
 // ANSI colors
@@ -23,9 +23,11 @@ export interface ParsedCliArgs {
   grade: number
   difficulty: Difficulty
   language: string
-  gender: Gender | undefined
   output: string
   verbose: boolean
+  // AI provider/model overrides (for testing)
+  provider: 'ollama' | 'openai' | 'anthropic' | undefined
+  model: string | undefined
 }
 
 /**
@@ -59,9 +61,12 @@ export function parseCliArgs(args: string[], printUsage: () => void): ParsedCliA
   const gradeArg = getArg('grade', '')
   const difficulty = getArg('difficulty', 'medium') as Difficulty
   const language = getArg('language', 'en')
-  const genderArg = getArg('gender', '')
   const output = getArg('output', '')
   const verbose = args.includes('--verbose')
+
+  // AI provider/model overrides
+  const providerArg = getArg('provider', '')
+  const modelArg = getArg('model', '')
 
   return {
     subject,
@@ -70,9 +75,10 @@ export function parseCliArgs(args: string[], printUsage: () => void): ParsedCliA
     grade: gradeArg ? parseInt(gradeArg) : 0,
     difficulty,
     language,
-    gender: genderArg ? (genderArg as Gender) : undefined,
     output,
     verbose,
+    provider: providerArg ? (providerArg as 'ollama' | 'openai' | 'anthropic') : undefined,
+    model: modelArg || undefined,
   }
 }
 
@@ -87,7 +93,8 @@ export function printParameters(args: ParsedCliArgs): void {
   console.log(`  Grade: ${args.grade || '(from concept)'}`)
   console.log(`  Difficulty: ${args.difficulty}`)
   console.log(`  Language: ${args.language}`)
-  if (args.gender) console.log(`  Gender: ${args.gender}`)
+  if (args.provider) console.log(`  Provider: ${args.provider}`)
+  if (args.model) console.log(`  Model: ${args.model}`)
   console.log('')
 }
 
@@ -122,7 +129,6 @@ export interface InitializedServices {
   subject: Subject
   taskType: TaskTypeWithSchema
   grade: number
-  age: number
 }
 
 /**
@@ -162,7 +168,6 @@ export async function initializeServices(
 
   // Determine grade
   const grade = gradeOverride || concept.grade
-  const age = grade + 6
 
   // Create loaders and PromptService
   if (verbose) console.log('Creating loaders...')
@@ -179,6 +184,5 @@ export async function initializeServices(
     subject,
     taskType,
     grade,
-    age,
   }
 }

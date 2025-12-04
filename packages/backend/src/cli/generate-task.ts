@@ -39,14 +39,17 @@ ${colors.cyan}Options:${colors.reset}
   --grade=<n>            Grade level (default: from concept)
   --difficulty=<level>   easy, medium, hard (default: medium)
   --language=<lang>      Language code (default: en)
-  --gender=<g>           male, female (optional)
   --output=<file>        Save task to file
   --verbose              Show debug info
 
+${colors.cyan}AI Provider Options:${colors.reset}
+  --provider=<p>         ollama, openai, anthropic (overrides .env)
+  --model=<m>            Model name (overrides .env)
+
 ${colors.cyan}Examples:${colors.reset}
   bun run generate:task math/grade5-fractions
-  bun run generate:task math/grade1-basic-arithmetic-operations --difficulty=easy
-  bun run generate:task math/grade5-fractions --taskType=multipleSelect --verbose
+  bun run generate:task math/grade5-fractions --provider=openai --model=gpt-5-mini
+  bun run generate:task math/grade5-fractions --provider=anthropic --verbose
 `)
 }
 
@@ -63,9 +66,10 @@ async function generateTask() {
     grade: gradeOverride,
     difficulty,
     language,
-    gender,
     output,
     verbose,
+    provider,
+    model,
   } = parsed
 
   suppressLogsUnlessVerbose(verbose)
@@ -77,11 +81,12 @@ async function generateTask() {
 
   try {
     const services = await initializeServices(subject, concept, taskType, gradeOverride, verbose)
-    const { promptService, grade, age } = services
+    const { promptService, grade } = services
 
-    // Create AI client
+    // Create AI client (with optional provider/model overrides)
     if (verbose) console.log('Creating AI client...')
-    const aiClient = await createAIClient()
+    const aiClient = await createAIClient({ provider, model })
+    if (verbose) console.log(`  Using: ${aiClient.provider} / ${aiClient.model}`)
 
     // Create task cache (in-memory for CLI)
     const taskCache = new TaskCache()
@@ -102,10 +107,8 @@ async function generateTask() {
       concept,
       taskType,
       grade,
-      age,
       difficulty,
       language,
-      gender,
     }
 
     // Generate task

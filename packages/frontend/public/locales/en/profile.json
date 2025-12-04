@@ -54,9 +54,20 @@
     },
     "qrDisplay": {
       "showButton": "Show QR Code for Device Pairing",
-      "hideButton": "Hide QR Code",
       "scanInstruction": "Scan this code on another device to sync your account",
       "securityWarning": "This QR code contains your account credentials. Only scan it on devices you trust."
+    },
+    "pair": {
+      "importing": "Logging you in...",
+      "noCodeError": "No pairing code found in URL",
+      "importError": "Failed to import account",
+      "existingAccountTitle": "Already Logged In",
+      "existingAccountMessage": "You already have an account on this device. Please logout first if you want to switch to a different account.",
+      "goToAccount": "Go to Account Settings",
+      "goHome": "Go to Home",
+      "successTitle": "Success!",
+      "successMessage": "Your account has been synced. Redirecting...",
+      "errorTitle": "Something went wrong"
     },
     "import": {
       "backupCodeLabel": "Backup Code",
@@ -86,19 +97,9 @@
     "title": "Settings",
     "nameLabel": "What's your name?",
     "namePlaceholder": "Type your name here...",
-    "ageLabel": "How old are you?",
     "gradeLabel": "What grade are you in?",
     "languageLabel": "Choose your language",
     "syncLabel": "Cloud Backup",
-    "syncDescription": "Automatically backup your data to the cloud",
-    "gender": {
-      "label": "Gender (optional)",
-      "options": {
-        "male": "Male",
-        "female": "Female",
-        "non-binary": "Non-binary",
-        "prefer-not-to-say": "Prefer not to say"
-      }
-    }
+    "syncDescription": "Automatically backup your data to the cloud"
   }
 }

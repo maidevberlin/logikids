@@ -37,17 +37,16 @@ export function SubjectsPage() {
   const { t } = useTranslation()
   const { data: userData } = useUserData()
   const userGrade = userData?.settings.grade
-  const userAge = userData?.settings.age
 
   // Fetch all subjects with metadata (for subjects with no concepts for user's grade)
   const { data: allSubjects } = trpc.subjects.getAll.useQuery({})
 
-  // Fetch filtered subjects (concepts available for user's grade/age)
+  // Fetch filtered subjects (concepts available for user's grade)
   const {
     data: filteredSubjects,
     isLoading,
     error,
-  } = trpc.subjects.getAll.useQuery({ grade: userGrade!, age: userAge }, { enabled: !!userGrade })
+  } = trpc.subjects.getAll.useQuery({ grade: userGrade! }, { enabled: !!userGrade })
 
   // Create a map of filtered subjects for quick lookup
   const filteredSubjectIds = new Set(filteredSubjects?.subjects?.map((s) => s.id) ?? [])

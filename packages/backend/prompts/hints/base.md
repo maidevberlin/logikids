@@ -15,7 +15,7 @@ You previously generated this task:
 
 ## Your Role
 
-Generate hint #[[hintNumber]] of 4 for a student aged [[age]] working on this [[conceptName]] problem.
+Generate hint #[[hintNumber]] of 4 for a grade [[grade]] student working on this [[conceptName]] problem.
 
 ## Hint Guidelines
 

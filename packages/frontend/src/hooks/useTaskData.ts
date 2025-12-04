@@ -7,7 +7,7 @@ import { TaskRequest } from '@/api/logikids'
  * This hook is responsible ONLY for data fetching using React Query.
  * It does not handle answer management, hints, timing, or any other concerns.
  *
- * @param params - Task request parameters (subject, difficulty, age, etc.)
+ * @param params - Task request parameters (subject, difficulty, grade, etc.)
  * @returns React Query result with task data
  */
 export function useTaskData(params: TaskRequest) {

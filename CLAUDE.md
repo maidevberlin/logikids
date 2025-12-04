@@ -63,6 +63,8 @@ All scripts: no args = usage, `subject/concept` = single, `subject` = all in sub
 
 Run via docker: `docker compose exec backend-dev bun run <script>`
 
+Run any script without args to see usage (e.g., `bun run generate:task` shows all options including `--provider` and `--model` for testing different AI providers).
+
 ## Notes
 
 - Backend uses Bun runtime (not Node.js)

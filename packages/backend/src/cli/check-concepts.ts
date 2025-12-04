@@ -300,7 +300,7 @@ ${colors.cyan}Checks performed:${colors.reset}
   • Filename convention (grade{X}-{name}.md)
   • CARDINAL RULE (no code examples)
   • Problem structure variety (5-10 problem types)
-  • Template variables ({{age}}, {{difficulty}})
+  • Template variables ({{grade}}, {{difficulty}})
   • Word count (150-250 optimal, 300+ warning, 400+ fail)
   • Prerequisites validation
   • Translation completeness (all languages)

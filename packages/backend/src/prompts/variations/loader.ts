@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
-import { AgeFilteredItem, Enrichment, EnrichmentType, RawVariationItem } from './types'
+import { GradeFilteredItem, Enrichment, EnrichmentType, RawVariationItem } from './types'
 import { createLogger } from '../../common/logger'
 import { InvalidFormatError } from '../../common/errors'
 
@@ -11,15 +11,15 @@ const logger = createLogger('VariationLoader')
  * Loads and manages task variation data from markdown files
  */
 export class VariationLoader {
-  private scenarios: AgeFilteredItem[] = []
-  private framings: AgeFilteredItem[] = []
-  private dynamics: AgeFilteredItem[] = []
-  private temporalContexts: AgeFilteredItem[] = []
-  private metacognitivePrompts: AgeFilteredItem[] = []
-  private mysteryFramings: AgeFilteredItem[] = []
-  private realWorldConnections: AgeFilteredItem[] = []
-  private emotionalFramings: AgeFilteredItem[] = []
-  private structureVariations: AgeFilteredItem[] = []
+  private scenarios: GradeFilteredItem[] = []
+  private framings: GradeFilteredItem[] = []
+  private dynamics: GradeFilteredItem[] = []
+  private temporalContexts: GradeFilteredItem[] = []
+  private metacognitivePrompts: GradeFilteredItem[] = []
+  private mysteryFramings: GradeFilteredItem[] = []
+  private realWorldConnections: GradeFilteredItem[] = []
+  private emotionalFramings: GradeFilteredItem[] = []
+  private structureVariations: GradeFilteredItem[] = []
 
   private readonly variationsDir: string
 
@@ -35,21 +35,21 @@ export class VariationLoader {
 
     try {
       // Load each variation file
-      this.scenarios = await this.loadAgeFilteredList('scenarios.md', 'scenarios')
-      this.framings = await this.loadAgeFilteredList('problem-framings.md', 'framings')
-      this.dynamics = await this.loadAgeFilteredList('character-dynamics.md', 'dynamics')
-      this.temporalContexts = await this.loadAgeFilteredList('temporal-contexts.md', 'contexts')
-      this.metacognitivePrompts = await this.loadAgeFilteredList(
+      this.scenarios = await this.loadGradeFilteredList('scenarios.md', 'scenarios')
+      this.framings = await this.loadGradeFilteredList('problem-framings.md', 'framings')
+      this.dynamics = await this.loadGradeFilteredList('character-dynamics.md', 'dynamics')
+      this.temporalContexts = await this.loadGradeFilteredList('temporal-contexts.md', 'contexts')
+      this.metacognitivePrompts = await this.loadGradeFilteredList(
         'metacognitive-prompts.md',
         'prompts'
       )
-      this.mysteryFramings = await this.loadAgeFilteredList('mystery-framings.md', 'framings')
-      this.realWorldConnections = await this.loadAgeFilteredList(
+      this.mysteryFramings = await this.loadGradeFilteredList('mystery-framings.md', 'framings')
+      this.realWorldConnections = await this.loadGradeFilteredList(
         'real-world-connections.md',
         'connections'
       )
-      this.emotionalFramings = await this.loadAgeFilteredList('emotional-framings.md', 'framings')
-      this.structureVariations = await this.loadAgeFilteredList(
+      this.emotionalFramings = await this.loadGradeFilteredList('emotional-framings.md', 'framings')
+      this.structureVariations = await this.loadGradeFilteredList(
         'structure-variations.md',
         'structures'
       )
@@ -72,9 +72,9 @@ export class VariationLoader {
   }
 
   /**
-   * Load age-filtered list (unified loader for all variation types)
+   * Load grade-filtered list (unified loader for all variation types)
    */
-  private async loadAgeFilteredList(filename: string, key: string): Promise<AgeFilteredItem[]> {
+  private async loadGradeFilteredList(filename: string, key: string): Promise<GradeFilteredItem[]> {
     const filePath = path.join(this.variationsDir, filename)
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const { data } = matter(fileContent)
@@ -83,31 +83,31 @@ export class VariationLoader {
       throw new InvalidFormatError(filename, `missing ${key} array`)
     }
 
-    // Validate each item has age property
+    // Validate each item has grade property
     const rawItems = data[key] as RawVariationItem[]
     return rawItems.map((item: RawVariationItem, index: number) => {
-      if (!item.age || !Array.isArray(item.age) || item.age.length !== 2) {
-        throw new InvalidFormatError(filename, `item ${index} missing age array [min, max]`)
+      if (!item.grade || !Array.isArray(item.grade) || item.grade.length !== 2) {
+        throw new InvalidFormatError(filename, `item ${index} missing grade array [min, max]`)
       }
       return {
         text: item.text,
         context: item.context,
-        age: item.age,
+        grade: item.grade,
       }
     })
   }
 
   /**
-   * Get a random scenario, filtered by age
+   * Get a random scenario, filtered by grade
    */
-  getScenario(age?: number): string {
+  getScenario(grade?: number): string {
     if (this.scenarios.length === 0) {
       return 'a typical everyday situation'
     }
 
-    // Filter by age if provided
-    const eligible = age
-      ? this.scenarios.filter((s) => age >= s.age[0] && age <= s.age[1])
+    // Filter by grade if provided
+    const eligible = grade
+      ? this.scenarios.filter((s) => grade >= s.grade[0] && grade <= s.grade[1])
       : this.scenarios
 
     if (eligible.length === 0) {
@@ -121,30 +121,30 @@ export class VariationLoader {
   }
 
   /**
-   * Get 2-3 random enrichments (75% chance of any enrichments), filtered by age
+   * Get 2-3 random enrichments (75% chance of any enrichments), filtered by grade
    */
-  getRandomEnrichments(age?: number): Enrichment[] {
+  getRandomEnrichments(grade?: number): Enrichment[] {
     // 75% chance of having enrichments
     if (Math.random() > 0.75) {
       return []
     }
 
-    // Helper function to filter items by age
-    const filterByAge = (items: AgeFilteredItem[]): AgeFilteredItem[] => {
-      if (!age) return items
-      return items.filter((item) => age >= item.age[0] && age <= item.age[1])
+    // Helper function to filter items by grade
+    const filterByGrade = (items: GradeFilteredItem[]): GradeFilteredItem[] => {
+      if (!grade) return items
+      return items.filter((item) => grade >= item.grade[0] && grade <= item.grade[1])
     }
 
-    // Build list of all available dimensions with age filtering
-    const dimensions: { type: EnrichmentType; values: AgeFilteredItem[] }[] = [
-      { type: 'framing', values: filterByAge(this.framings) },
-      { type: 'character', values: filterByAge(this.dynamics) },
-      { type: 'temporal', values: filterByAge(this.temporalContexts) },
-      { type: 'metacognitive', values: filterByAge(this.metacognitivePrompts) },
-      { type: 'mystery', values: filterByAge(this.mysteryFramings) },
-      { type: 'realWorld', values: filterByAge(this.realWorldConnections) },
-      { type: 'emotional', values: filterByAge(this.emotionalFramings) },
-      { type: 'structure', values: filterByAge(this.structureVariations) },
+    // Build list of all available dimensions with grade filtering
+    const dimensions: { type: EnrichmentType; values: GradeFilteredItem[] }[] = [
+      { type: 'framing', values: filterByGrade(this.framings) },
+      { type: 'character', values: filterByGrade(this.dynamics) },
+      { type: 'temporal', values: filterByGrade(this.temporalContexts) },
+      { type: 'metacognitive', values: filterByGrade(this.metacognitivePrompts) },
+      { type: 'mystery', values: filterByGrade(this.mysteryFramings) },
+      { type: 'realWorld', values: filterByGrade(this.realWorldConnections) },
+      { type: 'emotional', values: filterByGrade(this.emotionalFramings) },
+      { type: 'structure', values: filterByGrade(this.structureVariations) },
     ]
 
     // Filter out empty dimensions

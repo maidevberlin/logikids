@@ -36,7 +36,6 @@ export class TaskService {
       concept: requestedConcept,
       taskType,
       grade,
-      age,
       difficulty,
       language,
     } = request
@@ -90,11 +89,9 @@ export class TaskService {
       subject,
       taskType: selectedTaskType,
       concept,
-      age,
       grade: request.grade,
       difficulty: request.difficulty,
       language,
-      gender: request.gender,
     })
 
     // Generate the task using AI with structured output

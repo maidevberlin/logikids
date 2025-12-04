@@ -184,9 +184,9 @@ Optional markdown body after frontmatter. Leave empty unless fine-tuning is need
 
 **Limit:** Under 100 words.
 
-**Handlebars variables:** `{{age}}`, `{{grade}}`, `{{difficulty}}`, `{{concept_name}}`, `{{concept_focus}}`
+**Handlebars variables:** `{{grade}}`, `{{difficulty}}`, `{{concept_name}}`, `{{concept_focus}}`
 
-**Conditionals:** `{{#if (lt age 10)}}...{{/if}}`, `{{#if (eq difficulty "hard")}}...{{/if}}`
+**Conditionals:** `{{#if (lt grade 4)}}...{{/if}}`, `{{#if (eq difficulty "hard")}}...{{/if}}`
 
 ---
 

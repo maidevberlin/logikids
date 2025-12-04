@@ -30,7 +30,6 @@ const backgrounds = {
 const taskDefaults: TaskRequest = {
   difficulty: 'medium',
   subject: 'math',
-  age: 10,
   grade: 5,
   language: 'en',
 }
@@ -69,24 +68,10 @@ export function TaskPage() {
       difficulty: activeDifficulty,
       subject: subject ?? taskDefaults.subject,
       concept: concept && concept !== 'random' ? concept : undefined,
-      age: data?.settings.age ?? taskDefaults.age,
       grade: data?.settings.grade ?? taskDefaults.grade,
       language: getCurrentLanguage(),
-      gender: data?.settings.gender as
-        | 'male'
-        | 'female'
-        | 'non-binary'
-        | 'prefer-not-to-say'
-        | undefined,
     }
-  }, [
-    subject,
-    concept,
-    activeDifficulty,
-    data?.settings.age,
-    data?.settings.grade,
-    data?.settings.gender,
-  ])
+  }, [subject, concept, activeDifficulty, data?.settings.grade])
 
   // Store subject and concept when they change
   useEffect(() => {

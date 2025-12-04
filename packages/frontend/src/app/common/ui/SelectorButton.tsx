@@ -13,7 +13,7 @@ interface SelectorButtonProps<T = string> {
 
 /**
  * Reusable selector button component with different visual variants
- * Eliminates code duplication across GradeSelector, GenderSelector, LanguageSelector
+ * Eliminates code duplication across GradeSelector, LanguageSelector
  */
 export function SelectorButton<T = string>({
   value,

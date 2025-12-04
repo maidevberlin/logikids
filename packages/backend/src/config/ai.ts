@@ -123,7 +123,7 @@ export function loadAIConfigFromEnv(): AIConfig {
 
     case 'openai':
       config.openai = {
-        model: getEnvString('OPENAI_MODEL', 'gpt-4o'),
+        model: getEnvString('OPENAI_MODEL', 'gpt-5-mini'),
         temperature: process.env.OPENAI_TEMPERATURE
           ? getEnvNumber('OPENAI_TEMPERATURE', 0.7)
           : undefined,

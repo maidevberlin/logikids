@@ -69,9 +69,9 @@
       "privacyExplained": "Anders als die meisten Apps werden alle Daten deines Kindes ausschließlich auf deinem Gerät gespeichert. Wir verwenden Zero-Knowledge-Verschlüsselung, das heißt selbst wir können deine Daten nicht sehen - nur du besitzt die Schlüssel.",
       "privacyBackup": "Ein optionales Cloud-Backup ist für mehr Komfort verfügbar, aber die Daten werden immer auf deinem Gerät verschlüsselt, bevor sie versendet werden. Der Server speichert nur verschlüsselte Blobs, die ohne deinen Schlüssel bedeutungslos sind.",
       "aiTitle": "KI-Gestützte Personalisierte Lernaufgaben",
-      "aiExplained": "Jede Aufgabe wird dynamisch von KI generiert, um dem Alter, der Klassenstufe und dem Lerntempo deines Kindes zu entsprechen. Die Inhalte passen sich dem Fortschritt an und bieten die richtige Herausforderung zur richtigen Zeit.",
+      "aiExplained": "Jede Aufgabe wird dynamisch von KI generiert, um der Klassenstufe und dem Lerntempo deines Kindes zu entsprechen. Die Inhalte passen sich dem Fortschritt an und bieten die richtige Herausforderung zur richtigen Zeit.",
       "contentTitle": "Altersgerechter Lernfokus",
-      "contentExplained": "Unsere KI-Prompts sind speziell darauf ausgelegt, pädagogische Inhalte zu generieren, die dem Alter und der Klassenstufe deines Kindes entsprechen. Obwohl wir die KI anweisen, sichere, lernorientierte Inhalte zu erstellen, empfehlen wir elterliche Aufsicht wie bei jedem pädagogischen Werkzeug.",
+      "contentExplained": "Unsere KI-Prompts sind speziell darauf ausgelegt, pädagogische Inhalte zu generieren, die der Klassenstufe deines Kindes entsprechen. Obwohl wir die KI anweisen, sichere, lernorientierte Inhalte zu erstellen, empfehlen wir elterliche Aufsicht wie bei jedem pädagogischen Werkzeug.",
       "complianceTitle": "DSGVO & KI-Verordnung Konform",
       "complianceExplained": "Volle Einhaltung der DSGVO und der EU-KI-Verordnung. Du hast jederzeit das Recht auf Zugang, Export oder Löschung aller Daten. Niemals Datenweitergabe an Dritte.",
       "inviteTitle": "Einladungscode Erforderlich",
@@ -88,17 +88,11 @@
       "subtitle": "Erzähl uns ein bisschen über dich, um loszulegen",
       "nameLabel": "Wie heißt du?",
       "namePlaceholder": "Dein Name",
-      "ageLabel": "Wie alt bist du?",
-      "ageHint": "Alter 6-18",
       "gradeLabel": "In welche Klasse gehst du?",
       "gradeValue": "Klasse {{grade}}",
       "gradeDescription": "Deine Schulklasse",
-      "genderHint": "Das hilft uns, tolle Aufgaben für dich zu erstellen",
-      "gradeMismatchWarning": "Bitte bestätigen: Du hast Alter {{age}} und Klasse {{grade}} eingegeben. Die meisten {{age}}-Jährigen sind in Klasse {{expectedGrade}}. Trotzdem fortfahren?",
       "creating": "Erstelle...",
-      "create": "Los geht's!",
-      "showAllGrades": "Alle Klassen anzeigen",
-      "showRecommended": "Empfohlene Klassen anzeigen"
+      "create": "Los geht's!"
     }
   },
   "task": {
@@ -353,7 +347,7 @@
         "description": "Logikids ist mit Datenschutz als Fundament gebaut:",
         "localOnly": {
           "title": "Keine Daten verlassen Ihr Gerät (Standard)",
-          "description": "Standardmäßig werden ALLE Daten Ihres Kindes - Name, Alter, Lernfortschritt, Präferenzen und Kontoinformationen - NUR auf Ihrem Gerät gespeichert. Nichts wird an unsere Server oder Dritte gesendet. Die App funktioniert komplett offline."
+          "description": "Standardmäßig werden ALLE Daten Ihres Kindes - Name, Lernfortschritt, Präferenzen und Kontoinformationen - NUR auf Ihrem Gerät gespeichert. Nichts wird an unsere Server oder Dritte gesendet. Die App funktioniert komplett offline."
         },
         "noTracking": {
           "title": "Keine Analytik oder Tracking",
@@ -371,8 +365,8 @@
       },
       "aiUsage": {
         "title": "KI-generierte Inhalte (Keine persönlichen Daten gesendet)",
-        "paragraph1": "Logikids verwendet KI (entweder lokal gehostetes Ollama oder OpenAI), um personalisierte Lernaufgaben für Ihr Kind zu generieren. Bei der Generierung von Aufgaben senden wir NUR den notwendigen Kontext (Fach, Schwierigkeitsgrad, Altersbereich) an den KI-Anbieter.",
-        "paragraph2": "Keine persönlichen Informationen über Ihr Kind werden jemals an den KI-Anbieter gesendet. Wir senden keine Namen, spezifischen Altersangaben oder identifizierende Informationen. Die Aufgabengenerierung ist komplett zustandslos und anonym."
+        "paragraph1": "Logikids verwendet KI (entweder lokal gehostetes Ollama oder OpenAI), um personalisierte Lernaufgaben für Ihr Kind zu generieren. Bei der Generierung von Aufgaben senden wir NUR den notwendigen Kontext (Fach, Schwierigkeitsgrad, Klassenstufe) an den KI-Anbieter.",
+        "paragraph2": "Keine persönlichen Informationen über Ihr Kind werden jemals an den KI-Anbieter gesendet. Wir senden nur Fach, Schwierigkeitsgrad und Klassenstufe. Die Aufgabengenerierung ist komplett zustandslos und anonym."
       },
       "gdprRights": {
         "title": "Ihre DSGVO-Rechte",
@@ -400,7 +394,7 @@
       },
       "thirdParty": {
         "title": "Weitergabe von Daten an Dritte",
-        "description": "Wir geben, verkaufen oder übertragen Ihre persönlichen Daten niemals an Dritte. Punkt. Ihre Daten bleiben auf Ihrem Gerät. Der einzige externe Dienst, den wir verwenden, ist der KI-Anbieter für die Aufgabengenerierung, und wir senden nur anonyme, nicht-identifizierende Kontextdaten (Fach, Schwierigkeitsgrad, Altersbereich - niemals Namen oder persönliche Informationen)."
+        "description": "Wir geben, verkaufen oder übertragen Ihre persönlichen Daten niemals an Dritte. Punkt. Ihre Daten bleiben auf Ihrem Gerät. Der einzige externe Dienst, den wir verwenden, ist der KI-Anbieter für die Aufgabengenerierung, und wir senden nur anonyme, nicht-identifizierende Kontextdaten (Fach, Schwierigkeitsgrad, Klassenstufe - niemals Namen oder persönliche Informationen)."
       },
       "changes": {
         "title": "Änderungen dieser Richtlinie",

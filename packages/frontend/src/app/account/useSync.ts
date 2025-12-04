@@ -1,14 +1,36 @@
+/**
+ * Privacy-First Sync Infrastructure
+ * ==================================
+ *
+ * This module handles synchronization of user data across devices while maintaining
+ * privacy-first principles:
+ *
+ * 1. All data is encrypted client-side before leaving the device
+ * 2. Server only stores opaque encrypted blobs - cannot read user data
+ * 3. Encryption key never leaves the client
+ *
+ * SYNC PROTOCOL (always follows this order):
+ * ------------------------------------------
+ * 1. DOWNLOAD - Fetch encrypted blob from server, decrypt locally
+ * 2. MERGE    - Combine local + remote data (no data loss)
+ * 3. UPLOAD   - Encrypt merged result, send to server
+ *
+ * This ensures data from all devices is preserved. Race conditions are minimized
+ * to simultaneous syncs only (extremely unlikely for single user).
+ */
+
 import { trpc } from '@/api/trpc'
 import { getUserId, loadKey } from '@/data/core/storage'
 import { encrypt, decrypt } from '@/data/core/crypto'
 import { getData, setData } from '@/data/core/userData'
 import { UserData } from '@/data/core/types'
+import { mergeUserData } from '@/data/core/merge'
 import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('useSync')
 
 /**
- * Calculate SHA-256 checksum
+ * Calculate SHA-256 checksum for data integrity verification
  */
 async function calculateChecksum(data: Uint8Array): Promise<string> {
   const hashBuffer = await crypto.subtle.digest(
@@ -20,152 +42,160 @@ async function calculateChecksum(data: Uint8Array): Promise<string> {
 }
 
 export function useSync() {
-  // tRPC hooks
   const uploadMutation = trpc.sync.upload.useMutation()
   const utils = trpc.useUtils()
 
-  /**
-   * Upload user data to server
-   */
-  const upload = async (): Promise<void> => {
-    try {
-      const data = await getData()
-      if (!data) {
-        throw new Error('No user data to upload')
-      }
-
-      const key = await loadKey()
-      if (!key) {
-        throw new Error('Encryption key not found')
-      }
-
-      const encrypted = await encrypt(key, data)
-
-      // Extract IV from encrypted blob (first 12 bytes)
-      const encryptedBytes = Uint8Array.from(atob(encrypted), (c) => c.charCodeAt(0))
-      const iv = encryptedBytes.slice(0, 12)
-      const ivBase64 = btoa(String.fromCharCode(...iv))
-
-      // Calculate checksum of the entire encrypted blob (IV + ciphertext)
-      const ciphertext = encryptedBytes.slice(12)
-      const checksum = await calculateChecksum(encryptedBytes)
-
-      const payload = {
-        encryptedBlob: btoa(String.fromCharCode(...ciphertext)),
-        iv: ivBase64,
-        timestamp: data.timestamp,
-        checksum,
-      }
-
-      const userId = await getUserId()
-      if (!userId) {
-        throw new Error('User ID not found')
-      }
-
-      await uploadMutation.mutateAsync({ userId, payload })
-    } catch (error) {
-      logger.error('Upload failed', error as Error)
-      throw error
+  // ============================================================================
+  // STEP 1: DOWNLOAD - Fetch and decrypt remote data
+  // ============================================================================
+  const download = async (): Promise<UserData | null> => {
+    const userId = await getUserId()
+    if (!userId) {
+      throw new Error('User ID not found')
     }
+
+    const payload = await utils.client.sync.download.query({ userId })
+
+    if (!payload) {
+      return null // No remote data exists yet
+    }
+
+    // Reconstruct encrypted blob and verify integrity
+    const iv = Uint8Array.from(atob(payload.iv), (c) => c.charCodeAt(0))
+    const ciphertext = Uint8Array.from(atob(payload.encryptedBlob), (c) => c.charCodeAt(0))
+    const combined = new Uint8Array(iv.length + ciphertext.length)
+    combined.set(iv, 0)
+    combined.set(ciphertext, iv.length)
+
+    const calculatedChecksum = await calculateChecksum(combined)
+    if (calculatedChecksum !== payload.checksum) {
+      throw new Error('Data integrity check failed - checksum mismatch')
+    }
+
+    const key = await loadKey()
+    if (!key) {
+      throw new Error('Encryption key not found')
+    }
+
+    const encryptedBlob = btoa(String.fromCharCode(...combined))
+    return await decrypt<UserData>(key, encryptedBlob)
   }
 
-  /**
-   * Download user data from server
-   */
-  const download = async () => {
-    try {
-      const userId = await getUserId()
-      if (!userId) {
-        throw new Error('User ID not found')
-      }
-
-      // Use tRPC query via utils.client
-      const payload = await utils.client.sync.download.query({ userId })
-
-      if (!payload) {
-        // User not found on server (first sync)
-        return null
-      }
-
-      // Reconstruct full encrypted blob (IV + ciphertext) for checksum verification
-      const iv = Uint8Array.from(atob(payload.iv), (c) => c.charCodeAt(0))
-      const ciphertext = Uint8Array.from(atob(payload.encryptedBlob), (c) => c.charCodeAt(0))
-      const combined = new Uint8Array(iv.length + ciphertext.length)
-      combined.set(iv, 0)
-      combined.set(ciphertext, iv.length)
-
-      // Verify checksum of the entire encrypted blob (IV + ciphertext)
-      const calculatedChecksum = await calculateChecksum(combined)
-
-      if (calculatedChecksum !== payload.checksum) {
-        throw new Error('Data integrity check failed - checksum mismatch')
-      }
-
-      const encryptedBlob = btoa(String.fromCharCode(...combined))
-
-      const key = await loadKey()
-      if (!key) {
-        throw new Error('Encryption key not found')
-      }
-
-      return await decrypt<UserData>(key, encryptedBlob)
-    } catch (error) {
-      logger.error('Download failed', error as Error)
-      throw error
+  // ============================================================================
+  // STEP 3: UPLOAD - Encrypt and send data to server
+  // ============================================================================
+  const upload = async (data: UserData): Promise<void> => {
+    const key = await loadKey()
+    if (!key) {
+      throw new Error('Encryption key not found')
     }
+
+    const encrypted = await encrypt(key, data)
+
+    // Extract IV and ciphertext
+    const encryptedBytes = Uint8Array.from(atob(encrypted), (c) => c.charCodeAt(0))
+    const iv = encryptedBytes.slice(0, 12)
+    const ciphertext = encryptedBytes.slice(12)
+    const checksum = await calculateChecksum(encryptedBytes)
+
+    const payload = {
+      encryptedBlob: btoa(String.fromCharCode(...ciphertext)),
+      iv: btoa(String.fromCharCode(...iv)),
+      timestamp: data.timestamp,
+      checksum,
+    }
+
+    const userId = await getUserId()
+    if (!userId) {
+      throw new Error('User ID not found')
+    }
+
+    await uploadMutation.mutateAsync({ userId, payload })
   }
 
-  /**
-   * Sync: Smart merge with last-write-wins conflict resolution
-   */
+  // ============================================================================
+  // SYNC: The complete sync operation (DOWNLOAD → MERGE → UPLOAD)
+  // ============================================================================
   const sync = async (): Promise<void> => {
     try {
-      const local = await getData()
+      // ---- STEP 1: DOWNLOAD ----
       const remote = await download()
 
-      // If no local data (e.g., fresh import), just restore from remote
-      if (!local) {
-        if (remote) {
-          // Import case: we have remote data but no local data yet
-          // Write directly to localStorage since setData requires existing data
-          const key = await loadKey()
-          if (!key) throw new Error('Encryption key not found')
+      // ---- Get local data ----
+      const local = await getData()
 
-          const encrypted = await encrypt(key, { ...remote, lastSyncTimestamp: Date.now() })
-          localStorage.setItem('logikids_data', encrypted)
-
-          // Dispatch event for React reactivity
-          window.dispatchEvent(new Event('data-changed'))
-        }
+      // ---- Handle edge cases ----
+      if (!local && !remote) {
+        // Nothing to sync
         return
       }
 
-      if (!remote) {
-        // No remote data, upload local
-        await upload()
+      if (!local && remote) {
+        // Fresh device with remote data: restore from remote
+        const key = await loadKey()
+        if (!key) throw new Error('Encryption key not found')
+
+        const dataWithSync = { ...remote, lastSyncTimestamp: Date.now() }
+        const encrypted = await encrypt(key, dataWithSync)
+        localStorage.setItem('logikids_data', encrypted)
+        window.dispatchEvent(new Event('data-changed'))
+        return
+      }
+
+      if (local && !remote) {
+        // First sync: upload local data
+        await upload(local)
         await setData({ lastSyncTimestamp: Date.now() })
         return
       }
 
-      // Compare timestamps
-      if (remote.timestamp > local.timestamp) {
-        // Remote is newer, update local
-        await setData({ ...remote, lastSyncTimestamp: Date.now() })
-      } else {
-        // Local is newer, upload
-        await upload()
-        await setData({ lastSyncTimestamp: Date.now() })
-      }
+      // ---- STEP 2: MERGE ----
+      // Both local and remote exist - merge them
+      const merged = mergeUserData(local!, remote!)
+
+      // ---- STEP 3: UPLOAD ----
+      await upload(merged)
+
+      // ---- Save merged result locally ----
+      await setData({ ...merged, lastSyncTimestamp: Date.now() })
+
+      logger.debug('Sync complete', {
+        localAttempts: countAttempts(local!),
+        remoteAttempts: countAttempts(remote!),
+        mergedAttempts: countAttempts(merged),
+      })
     } catch (error) {
       logger.warn('Sync failed, continuing offline', { error })
-      // Don't throw - sync is optional
+      // Don't throw - sync is optional, app works offline
     }
+  }
+
+  // Legacy upload function for backward compatibility (blur/unload handlers)
+  const uploadCurrentData = async (): Promise<void> => {
+    const data = await getData()
+    if (!data) {
+      throw new Error('No user data to upload')
+    }
+    await upload(data)
   }
 
   return {
-    upload,
-    download,
     sync,
+    download,
+    upload: uploadCurrentData,
     isUploading: uploadMutation.isPending,
   }
+}
+
+/**
+ * Count total attempts across all concepts (for logging)
+ */
+function countAttempts(data: UserData): number {
+  let count = 0
+  for (const subject of Object.values(data.progress)) {
+    for (const concept of Object.values(subject)) {
+      count += concept.attempts.length
+    }
+  }
+  return count
 }

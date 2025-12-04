@@ -10,7 +10,7 @@ Generate an educational task for this student:
 
 |              |                                      |
 | ------------ | ------------------------------------ |
-| **Student**  | Age [[age]], Grade [[grade]]         |
+| **Student**  | Grade [[grade]]                      |
 | **Subject**  | [[subject_name]]                     |
 | **Concept**  | [[concept_name]] ([[concept_focus]]) |
 | **Language** | [[language]]                         |

@@ -16,48 +16,41 @@ export interface UsageInfo {
   model: string
 }
 
-// Pricing per 1M tokens (as of November 2025)
-// Source: https://claude.com/pricing
+// Pricing per 1M tokens (as of December 2025)
+// Sources:
+// - Anthropic: https://www.anthropic.com/pricing
+// - OpenAI: https://openai.com/api/pricing/
 const PRICING = {
   anthropic: {
-    // Claude Sonnet 4.5 (latest)
+    // Claude 4.5 Sonnet
     'claude-sonnet-4-5-20250929': {
-      input: 3.0, // $3 per 1M input tokens (≤200K context)
-      output: 15.0, // $15 per 1M output tokens (≤200K context)
-    },
-    // Claude 3.5 Sonnet (legacy)
-    'claude-3-5-sonnet-20241022': {
       input: 3.0, // $3 per 1M input tokens
       output: 15.0, // $15 per 1M output tokens
     },
-    // Claude Haiku 4.5
+    // Claude 4.5 Haiku
     'claude-haiku-4-5-20250929': {
       input: 1.0, // $1 per 1M input tokens
       output: 5.0, // $5 per 1M output tokens
     },
-    // Claude 3.5 Haiku (legacy)
-    'claude-3-5-haiku-20241022': {
-      input: 1.0, // $1 per 1M input tokens
-      output: 5.0, // $5 per 1M output tokens
-    },
-    // Claude Opus 4.1
+    // Claude 4.1 Opus
     'claude-opus-4-1-20250929': {
       input: 15.0, // $15 per 1M input tokens
       output: 75.0, // $75 per 1M output tokens
     },
   },
   openai: {
-    'gpt-4o': {
-      input: 2.5, // $2.50 per 1M input tokens
+    // GPT-5 family (August 2025)
+    'gpt-5': {
+      input: 1.25, // $1.25 per 1M input tokens
       output: 10.0, // $10 per 1M output tokens
     },
-    'gpt-4o-mini': {
-      input: 0.15, // $0.15 per 1M input tokens
-      output: 0.6, // $0.60 per 1M output tokens
+    'gpt-5-mini': {
+      input: 0.25, // $0.25 per 1M input tokens
+      output: 2.0, // $2 per 1M output tokens
     },
-    'gpt-4-turbo': {
-      input: 10.0, // $10 per 1M input tokens
-      output: 30.0, // $30 per 1M output tokens
+    'gpt-5-nano': {
+      input: 0.05, // $0.05 per 1M input tokens
+      output: 0.4, // $0.40 per 1M output tokens
     },
   },
 } as const
@@ -67,6 +60,11 @@ const PRICING = {
  * @returns Cost in USD
  */
 export function calculateCost(usage: UsageInfo): number {
+  // Ollama runs locally - no API cost
+  if (usage.provider === 'ollama') {
+    return 0
+  }
+
   // Get provider pricing
   if (usage.provider === 'anthropic') {
     const modelPricing = PRICING.anthropic[usage.model as keyof typeof PRICING.anthropic]

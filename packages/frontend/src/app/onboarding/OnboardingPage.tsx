@@ -28,7 +28,7 @@ export function OnboardingPage() {
     }
 
     // User data exists and onboarding is complete? Go to main app
-    if (data.settings?.name && data.settings?.age && data.settings?.grade) {
+    if (data.settings?.name && data.settings?.grade) {
       navigate('/', { replace: true })
     }
   }, [isLoading, data, navigate])
@@ -41,10 +41,8 @@ export function OnboardingPage() {
     try {
       await updateSettings({
         name: info.name,
-        age: info.age,
         grade: info.grade,
         language: i18n.language, // Save current language from i18n
-        ...(info.gender && { gender: info.gender }),
       })
 
       localStorage.setItem('hasSeenOnboarding', 'true')

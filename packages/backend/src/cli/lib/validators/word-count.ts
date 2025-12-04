@@ -51,7 +51,7 @@ export function checkWordCount(content: string): CheckResult {
     issues: [
       {
         message: `Prompt content has ${wordCount} words (maximum: 200)`,
-        fix: 'Move problem types, age guidelines, and difficulty guidelines to frontmatter fields. Prompt content should only contain minimal fine-tuning notes.',
+        fix: 'Move problem types and difficulty guidelines to frontmatter fields. Prompt content should only contain minimal fine-tuning notes.',
       },
     ],
   }

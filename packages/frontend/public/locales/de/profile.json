@@ -54,9 +54,20 @@
     },
     "qrDisplay": {
       "showButton": "QR-Code für Gerätekopplung anzeigen",
-      "hideButton": "QR-Code verbergen",
       "scanInstruction": "Scanne diesen Code auf einem anderen Gerät, um dein Konto zu synchronisieren",
       "securityWarning": "Dieser QR-Code enthält deine Zugangsdaten. Scanne ihn nur auf Geräten, denen du vertraust."
+    },
+    "pair": {
+      "importing": "Du wirst angemeldet...",
+      "noCodeError": "Kein Kopplungscode in der URL gefunden",
+      "importError": "Kontoimport fehlgeschlagen",
+      "existingAccountTitle": "Bereits angemeldet",
+      "existingAccountMessage": "Du hast bereits ein Konto auf diesem Gerät. Bitte melde dich zuerst ab, wenn du zu einem anderen Konto wechseln möchtest.",
+      "goToAccount": "Zu den Kontoeinstellungen",
+      "goHome": "Zur Startseite",
+      "successTitle": "Erfolgreich!",
+      "successMessage": "Dein Konto wurde synchronisiert. Weiterleitung...",
+      "errorTitle": "Etwas ist schiefgelaufen"
     },
     "import": {
       "backupCodeLabel": "Backup-Code",
@@ -86,19 +97,9 @@
     "title": "Einstellungen",
     "nameLabel": "Wie heißt du?",
     "namePlaceholder": "Gib deinen Namen ein...",
-    "ageLabel": "Wie alt bist du?",
     "gradeLabel": "In welcher Klasse bist du?",
     "languageLabel": "Wähle deine Sprache",
     "syncLabel": "Cloud-Backup",
-    "syncDescription": "Sichere deine Daten automatisch in der Cloud",
-    "gender": {
-      "label": "Geschlecht (optional)",
-      "options": {
-        "male": "Männlich",
-        "female": "Weiblich",
-        "non-binary": "Divers",
-        "prefer-not-to-say": "Geheim"
-      }
-    }
+    "syncDescription": "Sichere deine Daten automatisch in der Cloud"
   }
 }

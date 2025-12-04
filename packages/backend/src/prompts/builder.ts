@@ -59,8 +59,6 @@ export class PromptBuilder {
    */
   buildPrompt(params: TaskGenerationParams): string {
     // === STEP 0: Prepare variables for Handlebars (needed for concept template) ===
-    const age = params.age
-
     // Select one learning objective and problem type randomly
     const selectedObjective = randomChoice(params.concept.learning_objectives)
     const selectedProblemType = randomChoice(params.concept.problem_types)
@@ -70,7 +68,6 @@ export class PromptBuilder {
 
     // Variables needed for Handlebars conditionals in concept templates
     const handlebarsVariables = {
-      age,
       grade: params.grade,
       difficulty: params.difficulty,
       concept_name: params.concept.name,
@@ -78,7 +75,7 @@ export class PromptBuilder {
     }
 
     // === STEP 0.5: Compile concept template with Handlebars ===
-    // This evaluates conditionals like {{#if (lt age 8)}}...{{/if}}
+    // This evaluates conditionals like {{#if (lt grade 4)}}...{{/if}}
     const compiledConceptTemplate = compileHandlebars(params.concept.prompt, handlebarsVariables)
 
     // === STEP 1: Compose Template Hierarchy ===
@@ -94,7 +91,7 @@ export class PromptBuilder {
     // === STEP 2: Build Flat Variable Object ===
     // Create single object with ALL variables (duplicates OK - same values)
 
-    const enrichments = this.variationLoader.getRandomEnrichments(age)
+    const enrichments = this.variationLoader.getRandomEnrichments(params.grade)
     const enrichment = enrichments.length > 0 ? enrichments[0] : null
 
     // Format multiple enrichments as bullet points
@@ -114,22 +111,17 @@ export class PromptBuilder {
       .join('')
 
     const allVariables: Record<string, string | number> = {
-      // Variation variables (all age-filtered now!)
-      scenario: this.variationLoader.getScenario(age),
+      // Variation variables (all grade-filtered now!)
+      scenario: this.variationLoader.getScenario(params.grade),
       language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
-      student_context: params.gender
-        ? `The student identifies as ${params.gender}. Consider this naturally in your task creation.`
-        : '',
+      student_context: '',
       enrichment_instruction: enrichment?.value || '',
 
       // Formatted versions for clean bullet list integration
       enrichment_formatted: enrichmentsFormatted,
-      student_context_formatted: params.gender
-        ? `\n- **Student Context**: The student identifies as ${params.gender}. Consider this naturally in your task creation.`
-        : '',
+      student_context_formatted: '',
 
       // Subject/Concept/TaskType variables (duplicates OK - same values)
-      age,
       grade: params.grade,
       difficulty: params.difficulty,
       language: this.formatLanguage(params.language),

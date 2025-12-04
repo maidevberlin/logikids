@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { NumberInput, GenderSelector, GradeSelector, LanguageSelector } from '@/app/common'
+import { GradeSelector, LanguageSelector } from '@/app/common'
 import { Card } from '@/app/common/ui/card'
 import { Label } from '@/app/common/ui/label'
 import { User, Check, Loader2 } from 'lucide-react'
@@ -18,9 +18,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   const { t, i18n } = useTranslation('profile')
 
   const [name, setName] = useState('')
-  const [age, setAge] = useState(10)
   const [grade, setGrade] = useState(5)
-  const [gender, setGender] = useState('non-binary')
   const [language, setLanguage] = useState('en')
   const [isSaving, setIsSaving] = useState(false)
   const [showSaved, setShowSaved] = useState(false)
@@ -32,9 +30,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   // Initialize form with current settings
   useEffect(() => {
     setName(settings.name || '')
-    setAge(settings.age || 10)
     setGrade(settings.grade || 5)
-    setGender(settings.gender || 'non-binary')
     setLanguage(settings.language || 'en')
   }, [settings])
 
@@ -86,35 +82,25 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   const handleNameChange = (newName: string) => {
     setName(newName)
     if (newName.trim()) {
-      void autoSave({ name: newName, age, grade, gender, language })
+      void autoSave({ name: newName, grade, language })
     }
   }
 
   const handleNameBlur = () => {
     setIsEditingName(false)
     if (name.trim()) {
-      autoSave({ name, age, grade, gender, language })
+      autoSave({ name, grade, language })
     }
-  }
-
-  const handleAgeChange = (newAge: number) => {
-    setAge(newAge)
-    autoSave({ name, age: newAge, grade, gender, language })
   }
 
   const handleGradeChange = (newGrade: number) => {
     setGrade(newGrade)
-    autoSave({ name, age, grade: newGrade, gender, language })
-  }
-
-  const handleGenderChange = (newGender: string) => {
-    setGender(newGender)
-    autoSave({ name, age, grade, gender: newGender, language })
+    autoSave({ name, grade: newGrade, language })
   }
 
   const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage)
-    autoSave({ name, age, grade, gender, language: newLanguage })
+    autoSave({ name, grade, language: newLanguage })
   }
 
   return (
@@ -189,34 +175,12 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
         {/* Divider */}
         <div className="border-t" />
 
-        {/* Age Section */}
-        <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-foreground text-center">
-            {t('settings.ageLabel', { defaultValue: 'How old are you?' })}
-          </Label>
-          <NumberInput value={age} onChange={handleAgeChange} min={6} max={18} />
-        </div>
-
-        {/* Divider */}
-        <div className="border-t" />
-
         {/* Grade Section */}
         <div className="space-y-4">
           <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.gradeLabel', { defaultValue: 'What grade are you in?' })}
           </Label>
-          <GradeSelector value={grade} onChange={handleGradeChange} age={age} />
-        </div>
-
-        {/* Divider */}
-        <div className="border-t" />
-
-        {/* Gender Section */}
-        <div className="space-y-4">
-          <Label className="block text-xl font-semibold text-foreground text-center">
-            {t('settings.gender.label', { defaultValue: 'Gender (optional)' })}
-          </Label>
-          <GenderSelector value={gender} onChange={handleGenderChange} />
+          <GradeSelector value={grade} onChange={handleGradeChange} />
         </div>
 
         {/* Divider */}

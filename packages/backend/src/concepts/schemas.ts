@@ -12,7 +12,6 @@ export const conceptsInputSchema = z.object({
       message: 'Invalid subject',
     }),
   grade: z.number().int().min(1).max(13).optional(),
-  age: z.number().int().min(6).max(18).optional(),
   difficulty: difficultyEnum.optional(),
   source: sourceEnum.optional(),
 })

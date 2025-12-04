@@ -3,6 +3,12 @@ import { AttemptData, ConceptAggregate, ConceptStats, SubjectMastery } from './t
 const ONE_YEAR_MS = 365 * 24 * 60 * 60 * 1000
 
 /**
+ * Minimum tasks required before stars are calculated for a subject.
+ * Below this threshold, stars = 0 to avoid misleading ratings from small samples.
+ */
+export const MIN_TASKS_FOR_STARS = 10
+
+/**
  * Calculate aggregate statistics from attempts array
  */
 export function calculateConceptAggregate(attempts: AttemptData[]): ConceptAggregate {
@@ -47,7 +53,9 @@ export function calculateConceptAggregate(attempts: AttemptData[]): ConceptAggre
 }
 
 /**
- * Calculate subject mastery from all concepts in that subject
+ * Calculate subject mastery from all concepts in that subject.
+ * Stars are only calculated once MIN_TASKS_FOR_STARS is reached to avoid
+ * misleading ratings from small sample sizes.
  */
 export function calculateSubjectMastery(
   conceptStats: Record<string, ConceptStats>
@@ -70,18 +78,21 @@ export function calculateSubjectMastery(
   const totalAttempts = concepts.reduce((sum, c) => sum + c.aggregate.totalAttempts, 0)
   const totalCorrect = concepts.reduce((sum, c) => sum + c.aggregate.correct, 0)
   const totalTime = concepts.reduce((sum, c) => sum + c.aggregate.totalTimeSeconds, 0)
-  const successRate = totalCorrect / totalAttempts
+  const successRate = totalAttempts > 0 ? totalCorrect / totalAttempts : 0
 
   // Classify concepts by performance
   const mastered = concepts.filter((c) => c.aggregate.successRate >= 0.8).length
   const needingHelp = concepts.filter((c) => c.aggregate.successRate < 0.5).length
   const inProgress = concepts.length - mastered - needingHelp
 
+  // Only calculate stars if we have enough tasks for a meaningful rating
+  const stars = totalAttempts >= MIN_TASKS_FOR_STARS ? calculateStars(successRate) : 0
+
   return {
-    stars: calculateStars(successRate),
+    stars,
     totalTasks: totalAttempts,
     successRate,
-    averageTimeSeconds: totalTime / totalAttempts,
+    averageTimeSeconds: totalAttempts > 0 ? totalTime / totalAttempts : 0,
     conceptsMastered: mastered,
     conceptsInProgress: inProgress,
     conceptsNeedingHelp: needingHelp,

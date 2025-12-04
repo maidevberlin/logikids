@@ -10,6 +10,7 @@ import {
 import { createLogger } from '../logger'
 import { withErrorHandling } from './errorHandler'
 import { trackCost, calculateCost } from './cost-tracker'
+import { EmptyAIResponseError } from '../errors'
 
 const logger = createLogger('OpenAIClient')
 
@@ -26,37 +27,69 @@ export class OpenAIClient extends AIClient {
   async generate(prompt: string, options?: GenerateOptions): Promise<GenerateResponse> {
     const config = this.config as OpenAIConfig
 
-    try {
-      const completion = await this.client.chat.completions.create({
-        model: config.model,
-        messages: [{ role: 'user', content: prompt }],
-      })
+    logger.debug('Starting API call...', { model: config.model, promptLength: prompt.length })
 
-      const response = completion.choices[0]?.message?.content
+    return withErrorHandling(
+      async () => {
+        logger.debug('Calling OpenAI API...')
+        const startTime = Date.now()
 
-      if (!response) {
-        throw new Error('OpenAI returned empty response')
-      }
+        const completion = await this.client.chat.completions.create({
+          model: config.model,
+          messages: [{ role: 'user', content: prompt }],
+          temperature: options?.temperature ?? config.temperature,
+          max_tokens: options?.maxTokens ?? config.maxTokens,
+          top_p: options?.topP ?? config.topP,
+        })
 
-      // Track cost if context and usage info are provided
-      if (options?.costTracking && completion.usage) {
-        await trackCost(options.costTracking, {
-          inputTokens: completion.usage.prompt_tokens,
-          outputTokens: completion.usage.completion_tokens,
+        const duration = Date.now() - startTime
+        logger.info('API call completed', {
+          duration,
+          model: completion.model,
+          inputTokens: completion.usage?.prompt_tokens,
+          outputTokens: completion.usage?.completion_tokens,
+        })
+
+        const response = completion.choices[0]?.message?.content
+
+        if (!response) {
+          throw new EmptyAIResponseError('OpenAI')
+        }
+
+        logger.debug('Response received', { responseLength: response.length })
+
+        // Track cost if context and usage info are provided
+        if (options?.costTracking && completion.usage) {
+          await trackCost(options.costTracking, {
+            inputTokens: completion.usage.prompt_tokens,
+            outputTokens: completion.usage.completion_tokens,
+            provider: this.provider,
+            model: completion.model,
+          })
+        }
+
+        return {
+          response,
           provider: this.provider,
           model: completion.model,
-        })
-      }
-
-      return {
-        response,
-        provider: this.provider,
-        model: completion.model,
-      }
-    } catch (error) {
-      logger.error('Error:', error instanceof Error ? error.message : 'Unknown error')
-      throw error
-    }
+          usage: completion.usage
+            ? {
+                inputTokens: completion.usage.prompt_tokens,
+                outputTokens: completion.usage.completion_tokens,
+                totalTokens: completion.usage.total_tokens,
+                cost: calculateCost({
+                  inputTokens: completion.usage.prompt_tokens,
+                  outputTokens: completion.usage.completion_tokens,
+                  provider: this.provider,
+                  model: completion.model,
+                }),
+              }
+            : undefined,
+        }
+      },
+      'OpenAI chat completion',
+      logger
+    )
   }
 
   async generateStructured<T = unknown>(
@@ -101,7 +134,7 @@ export class OpenAIClient extends AIClient {
         const responseContent = completion.choices[0]?.message?.content
 
         if (!responseContent) {
-          throw new Error('OpenAI returned empty response')
+          throw new EmptyAIResponseError('OpenAI')
         }
 
         logger.debug('Response received', { responseLength: responseContent.length })

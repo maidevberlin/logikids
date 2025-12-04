@@ -28,6 +28,7 @@ const ImpressumPage = lazy(() =>
 const ParentStatsPage = lazy(() =>
   import('@/app/parent-stats').then((m) => ({ default: m.ParentStatsPage }))
 )
+const PairPage = lazy(() => import('@/app/pair').then((m) => ({ default: m.PairPage })))
 
 export const router = createHashRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ export const router = createHashRouter(
       <Route path="onboarding" element={<OnboardingPage />} />
       <Route path="privacy" element={<PrivacyPage />} />
       <Route path="impressum" element={<ImpressumPage />} />
+      <Route path="pair" element={<PairPage />} />
 
       {/* All protected routes */}
       <Route element={<ProtectedRoute />}>

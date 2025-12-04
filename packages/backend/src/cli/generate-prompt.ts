@@ -33,7 +33,6 @@ ${colors.cyan}Options:${colors.reset}
   --grade=<n>            Grade level (default: from concept)
   --difficulty=<level>   easy, medium, hard (default: medium)
   --language=<lang>      Language code (default: en)
-  --gender=<g>           male, female (optional)
   --output=<file>        Save prompt to file
   --verbose              Show debug info
 
@@ -57,7 +56,6 @@ async function testPrompt() {
     grade: gradeOverride,
     difficulty,
     language,
-    gender,
     output,
     verbose,
   } = parsed
@@ -77,7 +75,6 @@ async function testPrompt() {
       subject: subjectObj,
       taskType: taskTypeObj,
       grade,
-      age,
     } = services
 
     // Build prompt using PromptService
@@ -86,11 +83,9 @@ async function testPrompt() {
       subject: subjectObj,
       taskType: taskTypeObj,
       concept: selectedConcept,
-      age,
       grade,
       difficulty,
       language,
-      gender,
     })
 
     // Output result

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Achievement } from './achievements'
+import { Achievement, getCurrentLevel, getLevelThreshold } from './achievements'
 import { GameStats } from './gameTypes'
 import { ProgressData } from '@/data/progress/types'
 import { AchievementDetailDialog } from './AchievementDetailDialog'
@@ -17,6 +17,11 @@ export function AchievementBadge({ achievement, gameStats, progress }: Achieveme
   const isUnlocked = gameStats.achievements[achievement.id]?.unlocked || false
   const progressData = achievement.getProgress(gameStats, progress)
   const progressPercent = (progressData.current / progressData.total) * 100
+
+  // Check if achievement is level-gated
+  const currentLevel = getCurrentLevel(progress)
+  const isLevelLocked = currentLevel < achievement.requiredLevel
+  const requiredTasks = getLevelThreshold(achievement.requiredLevel)
 
   return (
     <>
@@ -55,15 +60,29 @@ export function AchievementBadge({ achievement, gameStats, progress }: Achieveme
         {/* Progress bar for locked achievements */}
         {!isUnlocked && (
           <div className="mt-4">
-            <div className="h-2 bg-muted rounded-full overflow-hidden">
-              <div
-                className="h-full bg-blue-400 transition-all duration-300"
-                style={{ width: `${Math.min(progressPercent, 100)}%` }}
-              />
-            </div>
-            <div className="text-xs text-muted-foreground text-center mt-1">
-              {progressData.current} / {progressData.total}
-            </div>
+            {isLevelLocked ? (
+              // Show level requirement
+              <div className="text-xs text-muted-foreground text-center">
+                {t('achievements.levelRequired', {
+                  level: achievement.requiredLevel,
+                  tasks: requiredTasks,
+                  defaultValue: `Unlocks at Level ${achievement.requiredLevel} (${requiredTasks} tasks)`,
+                })}
+              </div>
+            ) : (
+              // Show progress bar
+              <>
+                <div className="h-2 bg-muted rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-blue-400 transition-all duration-300"
+                    style={{ width: `${Math.min(progressPercent, 100)}%` }}
+                  />
+                </div>
+                <div className="text-xs text-muted-foreground text-center mt-1">
+                  {progressData.current} / {progressData.total}
+                </div>
+              </>
+            )}
           </div>
         )}
 

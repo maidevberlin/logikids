@@ -31,6 +31,29 @@ export async function generateQRData(): Promise<QRPayload> {
 }
 
 /**
+ * Generate a backup code string from QR payload
+ * Format: base64(userId:keyJson), split with dashes for readability
+ */
+export function generateBackupCode(payload: QRPayload): string {
+  const raw = `${payload.userId}:${payload.key}`
+  const base64 = btoa(raw)
+  // Split into groups of 4 for readability
+  return base64.match(/.{1,4}/g)?.join('-') || base64
+}
+
+/**
+ * Generate a full URL for QR code scanning
+ * When scanned, opens the app and attempts to log in
+ */
+export async function generateQRUrl(): Promise<string> {
+  const payload = await generateQRData()
+  const backupCode = generateBackupCode(payload)
+  // Use current origin with hash router
+  const baseUrl = window.location.origin + window.location.pathname
+  return `${baseUrl}#/pair?code=${encodeURIComponent(backupCode)}`
+}
+
+/**
  * Parse a backup code string into a QRPayload
  * Backup codes are base64-encoded strings containing userId:keyJson
  */

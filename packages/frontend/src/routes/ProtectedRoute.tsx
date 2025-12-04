@@ -9,7 +9,7 @@ import { LoadingState } from '@/app/common'
  * - Brand new user with no data at all
  *
  * Redirects to /onboarding if:
- * - User has some data but hasn't completed onboarding (missing name, age, or grade)
+ * - User has some data but hasn't completed onboarding (missing name or grade)
  *
  * Shows loading state while checking user data
  * Renders nested routes via <Outlet /> when authenticated
@@ -32,8 +32,7 @@ export function ProtectedRoute() {
   }
 
   // Check if user has completed onboarding
-  const hasCompletedOnboarding =
-    data?.settings?.name && data?.settings?.age && data?.settings?.grade
+  const hasCompletedOnboarding = data?.settings?.name && data?.settings?.grade
 
   // Redirect to onboarding if started but not completed
   if (!hasCompletedOnboarding) {
