@@ -509,8 +509,12 @@
       "description": "Reading and Writing"
     },
     "grade5-informational-texts": {
-      "name": "Informational Texts",
-      "description": "Texts and Media"
+      "name": "Informational Text Comprehension",
+      "description": "Comprehending non-fiction texts and non-linear information formats"
+    },
+    "grade5-narrative-writing": {
+      "name": "Narrative Writing",
+      "description": "Writing narratives with clear perspective and story structure (Einleitung, Hauptteil, Schluss)"
     },
     "grade5-narrative-perspective-change": {
       "name": "Narrative - Perspective Change",
@@ -539,6 +543,10 @@
     "grade5-poetry-forms-and-analysis": {
       "name": "Poetry - Forms and Analysis",
       "description": "Texts and Media"
+    },
+    "grade5-poetry-analysis": {
+      "name": "Poetry Analysis",
+      "description": "Understanding and appreciating poetic texts through form and expression"
     },
     "grade5-presentation-skills": {
       "name": "Presentation Skills",
@@ -723,6 +731,58 @@
     "grade4-dramatic-expression": {
       "name": "Dramatic Expression and Role Play",
       "description": "Adopting perspectives, developing roles, exploring situations through play with advanced use of voice, gesture, and movement"
+    },
+    "grade5-discussion-skills": {
+      "name": "Discussion Skills and Classroom Dialogue",
+      "description": "Participating effectively in classroom discussions following established rules, responding appropriately to others, formulating and justifying opinions, and distinguishing conversation roles"
+    },
+    "grade5-media-literacy": {
+      "name": "Media Literacy",
+      "description": "Understanding library systems, digital research, and reflecting on media use"
+    },
+    "grade5-oral-presentations": {
+      "name": "Oral Presentations",
+      "description": "Presenting information and experiences to classmates with clear structure and visual aids"
+    },
+    "grade5-literary-text-analysis": {
+      "name": "Literary Text Analysis",
+      "description": "Understanding narrative literary forms: Fabeln (fables), Märchen (fairy tales), and Sagen (legends) - analyzing structure, characters, and themes"
+    },
+    "grade5-attentive-listening": {
+      "name": "Attentive Listening",
+      "description": "Comprehending spoken texts, extracting key information"
+    },
+    "grade5-sentence-elements": {
+      "name": "Sentence Elements and Clause Structure",
+      "description": "Advanced sentence analysis including identifying all sentence elements (Satzglieder), distinguishing main and subordinate clauses, and understanding different types of adverbial modifiers"
+    },
+    "grade5-informative-writing": {
+      "name": "Informative Writing",
+      "description": "Writing factual texts with logical organization (Bericht, Beschreibung)"
+    },
+    "grade5-reading-strategies": {
+      "name": "Reading Strategies",
+      "description": "Marking, structuring, identifying key ideas, reading journals"
+    },
+    "grade5-text-revision": {
+      "name": "Text Revision",
+      "description": "Planning, reviewing and improving own and peer texts"
+    },
+    "grade5-word-classes": {
+      "name": "Word Classes and Morphology",
+      "description": "All Wortarten, word formation, prefixes, suffixes"
+    },
+    "grade5-creative-writing": {
+      "name": "Creative Writing",
+      "description": "Producing creative texts by adapting literary forms (Fabel, Märchen adaptation, fantasy)"
+    },
+    "grade5-spelling-rules": {
+      "name": "Spelling and Punctuation",
+      "description": "Mastering spelling rules for vowel length, s-sounds, and punctuation"
+    },
+    "grade5-dramatic-play": {
+      "name": "Dramatic Play and Expression",
+      "description": "Using theatrical expression to interpret texts and develop self-expression"
     }
   }
 }
