@@ -33,6 +33,19 @@ Generate an educational task for this student:
 
 ---
 
+# Rich Content
+
+Use your full capabilities to make the task engaging and clear:
+
+- **SVG graphics**: Diagrams, shapes, graphs, illustrations - render directly in the task
+- **Tables**: Organize data, show patterns, structure comparisons
+- **Mermaid diagrams**: Flowcharts, trees, sequences
+- **LaTeX**: Mathematical notation via `$...$` or `$$...$$`
+
+When the concept benefits from visual representation, include it. Don't just describe what could be shown.
+
+---
+
 # Creative Framing
 
 <%variations_template%>
