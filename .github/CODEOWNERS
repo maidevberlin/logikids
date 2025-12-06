@@ -1,8 +1,8 @@
 # CODEOWNERS - Defines who must review PRs
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
-# Default: maidevberlin must approve all PRs
-* @maidevberlin
+# Default: maibaum007 must approve all PRs
+* @maibaum007
 
 # To add more reviewers later, add lines like:
 # /packages/frontend/ @frontend-lead
