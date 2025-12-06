@@ -664,6 +664,54 @@
       "name": "Textkohäsion",
       "description": "Sprache untersuchen"
     },
+    "grade6-listening-comprehension": {
+      "name": "Hörverstehen",
+      "description": "Gesprochene Texte verstehen, Informationen entnehmen und Sprecherabsichten erkennen"
+    },
+    "grade6-oral-presentation": {
+      "name": "Mündliche Präsentationsfähigkeiten",
+      "description": "Präsentationen halten, Texte ausdrucksvoll vortragen und Körpersprache effektiv einsetzen"
+    },
+    "grade6-discussion-argumentation": {
+      "name": "Diskussion und Argumentation",
+      "description": "Gesprächsfähigkeiten in verschiedenen Kontexten meistern, Meinungen mit begründeter Unterstützung äußern, Konfliktlösungsstrategien anwenden, konstruktiv auf gegensätzliche Ansichten reagieren und auf Beiträge anderer aufbauen"
+    },
+    "grade6-text-revision": {
+      "name": "Texte überarbeiten und korrigieren",
+      "description": "Peer-Feedback, Überarbeitungsstrategien, Editieren mit festgelegten Kriterien"
+    },
+    "grade6-reading-strategies": {
+      "name": "Lesestrategien",
+      "description": "Fortgeschrittene Lesetechniken wie Markieren, Notizen machen, Lesetagebücher, Textnavigation und Lesegeschwindigkeit dem Zweck anpassen"
+    },
+    "grade6-informative-writing": {
+      "name": "Informierendes Schreiben",
+      "description": "Sachtexte mit klarer logischer Struktur, objektiver Darstellung und genauer Zusammenfassung verfassen"
+    },
+    "grade6-narrative-writing": {
+      "name": "Erzählendes Schreiben",
+      "description": "Geschichten verfassen, Handlungsaufbau, Figurenentwicklung, Erzählperspektive"
+    },
+    "grade6-literary-text-analysis": {
+      "name": "Literarische Textanalyse",
+      "description": "Erzählungen, Mythen, Gedichte und Jugendliteratur analysieren durch Figurenanalyse, Themenidentifikation, literarische Stilmittel und kulturelle Erkundung"
+    },
+    "grade6-informational-texts": {
+      "name": "Sachtexte",
+      "description": "Sachtexte, Nachschlagewerke nutzen, Diagramme und Grafiken auswerten"
+    },
+    "grade6-spelling-orthography": {
+      "name": "Rechtschreibung und Orthografie",
+      "description": "Fortgeschrittene Rechtschreibregeln beherrschen: Konsonantenverdopplung, das/dass-Unterscheidung, Großschreibung, Homophone und Fremdwörter korrekt schreiben"
+    },
+    "grade6-grammar-syntax": {
+      "name": "Grammatik und Syntax",
+      "description": "Wortarten, Aktiv/Passiv, Satzglieder, Nebensatzarten"
+    },
+    "grade6-punctuation": {
+      "name": "Zeichensetzung",
+      "description": "Zeichensetzungsregeln korrekt anwenden: Kommas in komplexen Sätzen, Anführungszeichen bei direkter Rede und Satzschlusszeichen"
+    },
     "grade4-reading-comprehension": {
       "name": "Erweitertes Leseverstehen",
       "description": "Texte analysieren, Hauptideen finden, Behauptungen mit Belegen stützen, Texte vergleichen"
