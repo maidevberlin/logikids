@@ -516,6 +516,10 @@
       "name": "Sachtexte verstehen",
       "description": "Sachtexte und nicht-lineare Informationsformate erfassen und verstehen"
     },
+    "grade5-narrative-writing": {
+      "name": "Erzählende Texte schreiben",
+      "description": "Erzählungen mit klarer Perspektive und Struktur schreiben (Einleitung, Hauptteil, Schluss)"
+    },
     "grade5-narrative-perspective-change": {
       "name": "Erzählung - Perspektivwechsel",
       "description": "Lesen und Schreiben"
@@ -672,6 +676,54 @@
       "name": "Textkohäsion",
       "description": "Sprache untersuchen"
     },
+    "grade6-listening-comprehension": {
+      "name": "Hörverstehen",
+      "description": "Gesprochene Texte verstehen, Informationen entnehmen und Sprecherabsichten erkennen"
+    },
+    "grade6-oral-presentation": {
+      "name": "Mündliche Präsentationsfähigkeiten",
+      "description": "Präsentationen halten, Texte ausdrucksvoll vortragen und Körpersprache effektiv einsetzen"
+    },
+    "grade6-discussion-argumentation": {
+      "name": "Diskussion und Argumentation",
+      "description": "Gesprächsfähigkeiten in verschiedenen Kontexten meistern, Meinungen mit begründeter Unterstützung äußern, Konfliktlösungsstrategien anwenden, konstruktiv auf gegensätzliche Ansichten reagieren und auf Beiträge anderer aufbauen"
+    },
+    "grade6-text-revision": {
+      "name": "Texte überarbeiten und korrigieren",
+      "description": "Peer-Feedback, Überarbeitungsstrategien, Editieren mit festgelegten Kriterien"
+    },
+    "grade6-reading-strategies": {
+      "name": "Lesestrategien",
+      "description": "Fortgeschrittene Lesetechniken wie Markieren, Notizen machen, Lesetagebücher, Textnavigation und Lesegeschwindigkeit dem Zweck anpassen"
+    },
+    "grade6-informative-writing": {
+      "name": "Informierendes Schreiben",
+      "description": "Sachtexte mit klarer logischer Struktur, objektiver Darstellung und genauer Zusammenfassung verfassen"
+    },
+    "grade6-narrative-writing": {
+      "name": "Erzählendes Schreiben",
+      "description": "Geschichten verfassen, Handlungsaufbau, Figurenentwicklung, Erzählperspektive"
+    },
+    "grade6-literary-text-analysis": {
+      "name": "Literarische Textanalyse",
+      "description": "Erzählungen, Mythen, Gedichte und Jugendliteratur analysieren durch Figurenanalyse, Themenidentifikation, literarische Stilmittel und kulturelle Erkundung"
+    },
+    "grade6-informational-texts": {
+      "name": "Sachtexte",
+      "description": "Sachtexte, Nachschlagewerke nutzen, Diagramme und Grafiken auswerten"
+    },
+    "grade6-spelling-orthography": {
+      "name": "Rechtschreibung und Orthografie",
+      "description": "Fortgeschrittene Rechtschreibregeln beherrschen: Konsonantenverdopplung, das/dass-Unterscheidung, Großschreibung, Homophone und Fremdwörter korrekt schreiben"
+    },
+    "grade6-grammar-syntax": {
+      "name": "Grammatik und Syntax",
+      "description": "Wortarten, Aktiv/Passiv, Satzglieder, Nebensatzarten"
+    },
+    "grade6-punctuation": {
+      "name": "Zeichensetzung",
+      "description": "Zeichensetzungsregeln korrekt anwenden: Kommas in komplexen Sätzen, Anführungszeichen bei direkter Rede und Satzschlusszeichen"
+    },
     "grade4-reading-comprehension": {
       "name": "Erweitertes Leseverstehen",
       "description": "Texte analysieren, Hauptideen finden, Behauptungen mit Belegen stützen, Texte vergleichen"
@@ -699,6 +751,38 @@
     "grade5-reading-strategies": {
       "name": "Lesestrategien",
       "description": "Markieren, strukturieren, Kerngedanken erkennen, Lesetagebuch"
+    },
+    "grade5-literary-text-analysis": {
+      "name": "Literarische Textanalyse",
+      "description": "Narrative literarische Formen verstehen: Fabeln, Märchen und Sagen - Aufbau, Figuren und Themen analysieren"
+    },
+    "grade5-sentence-elements": {
+      "name": "Satzglieder und Satzarten",
+      "description": "Fortgeschrittene Satzanalyse: alle Satzglieder identifizieren, Haupt- und Nebensätze unterscheiden sowie verschiedene Arten adverbialer Bestimmungen verstehen"
+    },
+    "grade5-informative-writing": {
+      "name": "Informierendes Schreiben",
+      "description": "Sachtexte mit logischer Gliederung verfassen (Bericht, Beschreibung)"
+    },
+    "grade5-text-revision": {
+      "name": "Textüberarbeitung",
+      "description": "Texte planen, eigene und fremde Texte überprüfen und verbessern"
+    },
+    "grade5-word-classes": {
+      "name": "Wortarten und Morphologie",
+      "description": "Alle Wortarten, Wortbildung, Präfixe, Suffixe"
+    },
+    "grade5-creative-writing": {
+      "name": "Kreatives Schreiben",
+      "description": "Kreative Texte durch Anpassung literarischer Formen verfassen (Fabeln, Märchen-Umschreibung, Fantasie)"
+    },
+    "grade5-spelling-rules": {
+      "name": "Rechtschreibung und Zeichensetzung",
+      "description": "Rechtschreibregeln für Vokallänge, S-Laute und Zeichensetzung beherrschen"
+    },
+    "grade5-dramatic-play": {
+      "name": "Szenisches Spiel und Ausdruck",
+      "description": "Theatralischen Ausdruck nutzen, um Texte zu interpretieren und Selbstausdruck zu entwickeln"
     }
   }
 }

@@ -45,8 +45,8 @@ anti_patterns:
   - Avoid narratives lacking clear three-part structure (Einleitung, Hauptteil, Schluss)
   - Do not use complex flashback structures or non-linear timelines
   - Avoid abstract or philosophical themes inappropriate for age level
-  - Do not require advanced vocabulary beyond typical Grade 5 comprehension
-  - Avoid prompts with culturally specific references unfamiliar to 10-11 year olds
+  - Do not require advanced vocabulary beyond Grade 5 comprehension
+  - Avoid culturally specific references unfamiliar to 10-11 year olds
 prerequisites:
   - grade4-text-planning
 version: 1
