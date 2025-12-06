@@ -1,6 +1,7 @@
 import { Card } from '@/app/common/ui/card'
 import { Checkbox } from '@/app/common/ui/checkbox'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { PlayButton } from '@/app/common/PlayButton'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
@@ -14,6 +15,7 @@ interface MultiSelectOption {
 }
 
 interface MultiSelectAnswerProps {
+  taskId?: string
   options: MultiSelectOption[]
   expectedCount: number
   selectedAnswer: number[] | null
@@ -23,6 +25,7 @@ interface MultiSelectAnswerProps {
 }
 
 export function MultiSelectAnswer({
+  taskId,
   options,
   expectedCount,
   selectedAnswer,
@@ -115,6 +118,7 @@ export function MultiSelectAnswer({
                   noParagraphMargin={true}
                 />
               </div>
+              {taskId && <PlayButton taskId={taskId} field={`options:${index}`} />}
             </Card>
           )
         })}

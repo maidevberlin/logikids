@@ -14,6 +14,7 @@ import { taskTypeRegistry } from './tasks/task-types'
 import { initializeDatabase, closeDatabase } from '../database/db'
 import { initializeContainer } from './container'
 import { createLogger } from './common/logger'
+import { ttsRouter } from './tts'
 
 const logger = createLogger('Server')
 
@@ -36,6 +37,9 @@ async function initializeServices() {
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+// Mount TTS Express router (before tRPC to handle binary responses)
+app.use('/api', ttsRouter)
 
 // Mount tRPC handler
 app.use(

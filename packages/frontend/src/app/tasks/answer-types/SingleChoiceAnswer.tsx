@@ -1,5 +1,6 @@
 import { Card } from '@/app/common/ui/card'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { PlayButton } from '@/app/common/PlayButton'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { OPTION_COLORS } from '@/app/common/colors.ts'
@@ -10,6 +11,7 @@ interface Option {
 }
 
 interface SingleChoiceAnswerProps {
+  taskId?: string
   options: Option[]
   selectedAnswer: number | null
   onAnswerSelect: (index: number) => void
@@ -18,6 +20,7 @@ interface SingleChoiceAnswerProps {
 }
 
 export function SingleChoiceAnswer({
+  taskId,
   options,
   selectedAnswer,
   onAnswerSelect,
@@ -42,18 +45,22 @@ export function SingleChoiceAnswer({
           data-selected={selectedAnswer === index}
           onClick={isLocked ? undefined : () => onAnswerSelect(index)}
           className={cn(
-            'p-6 transition-all duration-200 border-2 flex items-center justify-center min-h-24',
+            'p-6 transition-all duration-200 border-2 min-h-24',
             isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer',
             OPTION_COLORS[index % OPTION_COLORS.length]
           )}
         >
-          <MarkdownRenderer
-            content={option.text}
-            enableMath={true}
-            enableMermaid={false}
-            enableCode={false}
-            noParagraphMargin={true}
-          />
+          <div className="flex items-center gap-2 w-full">
+            <MarkdownRenderer
+              content={option.text}
+              className="flex-1"
+              enableMath={true}
+              enableMermaid={false}
+              enableCode={false}
+              noParagraphMargin={true}
+            />
+            {taskId && <PlayButton taskId={taskId} field={`options:${index}`} />}
+          </div>
         </Card>
       ))}
     </div>

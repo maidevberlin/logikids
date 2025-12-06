@@ -36,6 +36,7 @@ export function TaskAnswerRenderer({
       const AnswerComponent = answerTypeComponents.single_choice
       return (
         <AnswerComponent
+          taskId={task.taskId}
           options={scTask.options}
           selectedAnswer={selectedAnswer as number | null}
           onAnswerSelect={(index) => onAnswerSelect(index)}
@@ -75,6 +76,7 @@ export function TaskAnswerRenderer({
       const AnswerComponent = answerTypeComponents.multi_select
       return (
         <AnswerComponent
+          taskId={task.taskId}
           options={msTask.options}
           expectedCount={msTask.expectedCount}
           selectedAnswer={selectedAnswer as number[] | null}
@@ -89,6 +91,7 @@ export function TaskAnswerRenderer({
       const AnswerComponent = answerTypeComponents.ordering
       return (
         <AnswerComponent
+          taskId={task.taskId}
           items={oTask.items}
           selectedAnswer={selectedAnswer as string[] | null}
           onAnswerSelect={(order) => onAnswerSelect(order)}

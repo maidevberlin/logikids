@@ -4,10 +4,12 @@ import { Card } from '@/app/common/ui/card'
 import { Button } from '@/app/common/ui/button'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { PlayButton } from '@/app/common/PlayButton'
 import { Lightbulb, Info, CircleDot, CheckCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface HintSectionProps {
+  taskId: string
   hints: string[]
   hasWrongAnswer?: boolean
   requestHint?: () => void
@@ -34,6 +36,7 @@ const HINT_BUTTON_COLORS = [
 ]
 
 export function HintSection({
+  taskId,
   hints,
   hasWrongAnswer = false,
   requestHint,
@@ -93,6 +96,7 @@ export function HintSection({
                   enableCode={false}
                 />
               </div>
+              <PlayButton taskId={taskId} field={`hint:${index}`} />
             </div>
           </Card>
         )

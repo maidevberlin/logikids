@@ -5,6 +5,7 @@ import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface TaskActionsProps {
+  taskId: string
   isLoading: boolean
   isCorrect: boolean | null
   selectedAnswer:
@@ -27,6 +28,7 @@ interface TaskActionsProps {
 }
 
 export function TaskActions({
+  taskId,
   isLoading,
   isCorrect,
   selectedAnswer,
@@ -87,6 +89,7 @@ export function TaskActions({
       {!isLoading && isCorrect !== true && (
         <>
           <HintSection
+            taskId={taskId}
             hints={hints}
             hasWrongAnswer={isCorrect === false}
             requestHint={requestHint}
