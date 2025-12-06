@@ -261,8 +261,8 @@
       "description": "Lesen und Schreiben"
     },
     "grade3-reading-strategies": {
-      "name": "Lesestrategien",
-      "description": "Lesen und Schreiben"
+      "name": "Lesestrategien und Leseverstehen",
+      "description": "Vor-, während- und nach dem Lesen Strategien anwenden; Vorwissen aktivieren; Texte markieren; Wortschatz klären; Handlungselemente visualisieren"
     },
     "grade3-reading-youth-books": {
       "name": "Jugendbücher lesen",
@@ -320,10 +320,6 @@
       "name": "Texte planen und verfassen",
       "description": "Ideen mit Mindmaps und Wortlisten organisieren lernen und verschiedene Textarten wie Erzählungen, Informations- und Argumentationstexte planen"
     },
-    "grade3-reading-strategies": {
-      "name": "Lesestrategien und Leseverstehen",
-      "description": "Vor-, während- und nach dem Lesen Strategien anwenden; Vorwissen aktivieren; Texte markieren; Wortschatz klären; Handlungselemente visualisieren"
-    },
     "grade3-revision-feedback": {
       "name": "Überarbeitung und Feedback",
       "description": "Konstruktives Feedback geben und annehmen, Texte auf Klarheit und Korrektheit überarbeiten und ansprechend gestalten"
@@ -348,6 +344,10 @@
       "name": "Aktiv und Passiv (Einführung)",
       "description": "Sprache untersuchen"
     },
+    "grade4-advanced-listening": {
+      "name": "Fortgeschrittenes Hörverstehen",
+      "description": "Komplexe gesprochene Texte verstehen, gezielte Fragen stellen, Verständnislücken erkennen"
+    },
     "grade4-all-four-cases": {
       "name": "Alle vier Fälle",
       "description": "Sprache untersuchen"
@@ -355,6 +355,10 @@
     "grade4-all-tenses": {
       "name": "Alle Zeitformen",
       "description": "Sprache untersuchen"
+    },
+    "grade4-parts-of-speech": {
+      "name": "Wortarten-Beherrschung",
+      "description": "Alle wichtigen Wortarten mit vollem Bewusstsein identifizieren und verwenden: Nomen (Fall, Geschlecht), Verben (alle Zeiten), Artikel, Adjektive und Pronomen"
     },
     "grade4-argumentation": {
       "name": "Argumentation",
@@ -372,6 +376,10 @@
       "name": "Kreatives Schreiben",
       "description": "Lesen und Schreiben"
     },
+    "grade4-literary-response": {
+      "name": "Literarische Reaktion und Interpretation",
+      "description": "Entwicklung persönlicher Reaktionen auf Literatur, Verständnis von Figurengefühlen und Beziehungen, Entwicklung lebendiger Vorstellungen und kreative Auseinandersetzung mit Texten"
+    },
     "grade4-media-use-and-critique": {
       "name": "Mediennutzung und -kritik",
       "description": "Texte und Medien"
@@ -383,6 +391,14 @@
     "grade4-presentation-with-media": {
       "name": "Präsentation mit Medien",
       "description": "Sprechen und Zuhören"
+    },
+    "grade4-discussion-skills": {
+      "name": "Diskussion und Argumentation",
+      "description": "Diskussionen effektiv leiten, Argumente mit Belegen präsentieren und verteidigen, sinnvoll auf Beiträge anderer reagieren und Konflikte durch gemeinsamen Dialog lösen"
+    },
+    "grade4-text-planning": {
+      "name": "Texte planen und strukturieren",
+      "description": "Zweck und Zielgruppe klären, Wortschatz und Formulierungen sammeln, Ideen systematisch vor dem Schreiben organisieren"
     },
     "grade4-punctuation-direct-speech": {
       "name": "Zeichensetzung - Direkte Rede",
@@ -412,9 +428,25 @@
       "name": "Rechtschreibung - Gleich klingende Wörter",
       "description": "Lesen und Schreiben"
     },
+    "grade4-spelling-strategies": {
+      "name": "Rechtschreibstrategien und Regeln",
+      "description": "Ableiten, mitsprechen und merken anwenden; Nachschlagewerke nutzen; Zeichensetzung bei wörtlicher Rede beherrschen"
+    },
+    "grade4-sentence-structure": {
+      "name": "Satzbau und Syntax",
+      "description": "Satzarten beherrschen, Subjekt-Prädikat-Ergänzung-Struktur analysieren, Zeitbezüge in Sätzen verstehen, komplexe Sätze bilden und Zeichensetzung bei verschiedenen Satzarten anwenden"
+    },
     "grade4-summary": {
       "name": "Zusammenfassung",
       "description": "Lesen und Schreiben"
+    },
+    "grade4-text-revision": {
+      "name": "Texte überarbeiten und korrigieren",
+      "description": "Selbstkorrektur, Überprüfung auf Klarheit und Wirkung, Vorbereitung zur Veröffentlichung"
+    },
+    "grade4-text-types-genres": {
+      "name": "Textsorten und Genres",
+      "description": "Erzählende, lyrische und dramatische Textformen unterscheiden, Fiktion von Sachtext trennen und Medienkompetenz entwickeln"
     },
     "grade4-theater-and-role-play": {
       "name": "Theater und Rollenspiel",
@@ -423,6 +455,14 @@
     "grade4-youth-literature": {
       "name": "Jugendliteratur",
       "description": "Texte und Medien"
+    },
+    "grade4-expressive-speaking": {
+      "name": "Ausdrucksstarkes Sprechen und Präsentieren",
+      "description": "Sprechen an Kontext anpassen (erzählen, informieren, argumentieren), Hochdeutsch verwenden, Präsentationsfähigkeiten entwickeln"
+    },
+    "grade4-word-formation": {
+      "name": "Wortbildung und Wortschatz",
+      "description": "Wortstruktur durch Wortstämme, Vor- und Nachsilben, Wortfamilien, Wortfelder und systematische Wortschatzerweiterung verstehen"
     },
     "grade5-active-and-passive-deepened": {
       "name": "Aktiv und Passiv vertieft",
@@ -623,6 +663,18 @@
     "grade6-text-cohesion": {
       "name": "Textkohäsion",
       "description": "Sprache untersuchen"
+    },
+    "grade4-reading-comprehension": {
+      "name": "Erweitertes Leseverstehen",
+      "description": "Texte analysieren, Hauptideen finden, Behauptungen mit Belegen stützen, Texte vergleichen"
+    },
+    "grade4-language-comparison": {
+      "name": "Sprachbewusstsein und Sprachvergleich",
+      "description": "Deutsch mit anderen Sprachen vergleichen, Dialekte und Fremdwörter erkennen, gesprochene und geschriebene Sprachformen unterscheiden"
+    },
+    "grade4-dramatic-expression": {
+      "name": "Darstellendes Spiel und Rollengestaltung",
+      "description": "Perspektiven einnehmen, Rollen entwickeln, Situationen spielerisch erkunden mit fortgeschrittenem Einsatz von Stimme, Gestik und Bewegung"
     }
   }
 }

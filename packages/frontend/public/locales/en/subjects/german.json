@@ -261,8 +261,8 @@
       "description": "Reading and Writing"
     },
     "grade3-reading-strategies": {
-      "name": "Reading Strategies",
-      "description": "Reading and Writing"
+      "name": "Reading Comprehension Strategies",
+      "description": "Applying pre-, during-, and post-reading strategies to understand texts; activating prior knowledge; annotating; clarifying vocabulary; visualizing narrative elements"
     },
     "grade3-reading-youth-books": {
       "name": "Reading Youth Books",
@@ -308,10 +308,6 @@
       "name": "Composition and Planning",
       "description": "Learn to plan and organize ideas for different types of writing using mind maps, word lists, and narrative structures"
     },
-    "grade3-reading-strategies": {
-      "name": "Reading Comprehension Strategies",
-      "description": "Applying pre-, during-, and post-reading strategies to understand texts; activating prior knowledge; annotating; clarifying vocabulary; visualizing narrative elements"
-    },
     "grade3-speaking-presentations": {
       "name": "Speaking and Presentations",
       "description": "Construct logical contributions, use appropriate volume and pace, prepare presentations with notes, and apply standard and academic language"
@@ -348,6 +344,10 @@
       "name": "Active and Passive Voice (Introduction)",
       "description": "Language Reflection"
     },
+    "grade4-advanced-listening": {
+      "name": "Advanced Listening Comprehension",
+      "description": "Understanding complex spoken texts, asking targeted questions, recognizing comprehension gaps"
+    },
     "grade4-all-four-cases": {
       "name": "All Four Cases",
       "description": "Language Reflection"
@@ -355,6 +355,10 @@
     "grade4-all-tenses": {
       "name": "All Tenses",
       "description": "Language Reflection"
+    },
+    "grade4-parts-of-speech": {
+      "name": "Parts of Speech Mastery",
+      "description": "Identify and use all major parts of speech with full awareness of nouns (case, gender), verbs (all tenses), articles, adjectives, and pronouns"
     },
     "grade4-argumentation": {
       "name": "Argumentation",
@@ -384,6 +388,14 @@
       "name": "Presentation with Media",
       "description": "Speaking and Listening"
     },
+    "grade4-discussion-skills": {
+      "name": "Discussion and Argumentation",
+      "description": "Lead discussions effectively, present and defend arguments with evidence, respond meaningfully to others' contributions, and resolve conflicts through collaborative dialogue"
+    },
+    "grade4-text-planning": {
+      "name": "Planning and Structuring Texts",
+      "description": "Learn to clarify purpose and audience, gather vocabulary and phrases, and organize ideas systematically before writing"
+    },
     "grade4-punctuation-direct-speech": {
       "name": "Punctuation - Direct Speech",
       "description": "Reading and Writing"
@@ -412,9 +424,21 @@
       "name": "Spelling - Same Sounding Words",
       "description": "Reading and Writing"
     },
+    "grade4-spelling-strategies": {
+      "name": "Spelling Strategies and Rules",
+      "description": "Apply derivation, sounding out, and memorization strategies; use reference tools effectively; master punctuation in direct speech"
+    },
     "grade4-summary": {
       "name": "Summary",
       "description": "Reading and Writing"
+    },
+    "grade4-text-revision": {
+      "name": "Text Revision and Editing",
+      "description": "Self-correction, checking for clarity and effect, preparing for publication"
+    },
+    "grade4-text-types-genres": {
+      "name": "Text Types and Genres",
+      "description": "Recognizing and distinguishing fiction vs. non-fiction, narrative/poetic/dramatic forms, and developing media literacy"
     },
     "grade4-theater-and-role-play": {
       "name": "Theater and Role Play",
@@ -423,6 +447,22 @@
     "grade4-youth-literature": {
       "name": "Youth Literature",
       "description": "Texts and Media"
+    },
+    "grade4-expressive-speaking": {
+      "name": "Expressive Speaking and Presentation",
+      "description": "Adapting speech to context (narrating, informing, arguing), using standard German, presentation skills"
+    },
+    "grade4-literary-response": {
+      "name": "Literary Response and Interpretation",
+      "description": "Developing personal responses to literature, understanding character emotions and relationships, creating vivid mental images, and engaging creatively with texts through various forms"
+    },
+    "grade4-word-formation": {
+      "name": "Word Formation and Vocabulary",
+      "description": "Understanding word structure through stems, prefixes, suffixes, word families, semantic fields, and systematic vocabulary expansion"
+    },
+    "grade4-sentence-structure": {
+      "name": "Sentence Structure and Syntax",
+      "description": "Master sentence types, subject-predicate-complement structure, time references in sentences, complex sentence formation, and punctuation for different sentence types"
     },
     "grade5-active-and-passive-deepened": {
       "name": "Active and Passive Deepened",
@@ -623,6 +663,18 @@
     "grade6-text-cohesion": {
       "name": "Text Cohesion",
       "description": "Language Reflection"
+    },
+    "grade4-reading-comprehension": {
+      "name": "Advanced Reading Comprehension",
+      "description": "Analyzing texts, finding central ideas, supporting claims with evidence, comparing texts"
+    },
+    "grade4-language-comparison": {
+      "name": "Language Awareness and Comparison",
+      "description": "Comparing German with other languages, recognizing dialects and foreign words, distinguishing spoken and written language forms"
+    },
+    "grade4-dramatic-expression": {
+      "name": "Dramatic Expression and Role Play",
+      "description": "Adopting perspectives, developing roles, exploring situations through play with advanced use of voice, gesture, and movement"
     }
   }
 }
