@@ -664,6 +664,54 @@
       "name": "Text Cohesion",
       "description": "Language Reflection"
     },
+    "grade6-listening-comprehension": {
+      "name": "Listening Comprehension",
+      "description": "Understanding spoken texts, extracting information, identifying speaker intentions"
+    },
+    "grade6-oral-presentation": {
+      "name": "Oral Presentation Skills",
+      "description": "Delivering presentations, reciting texts expressively, using body language effectively"
+    },
+    "grade6-discussion-argumentation": {
+      "name": "Discussion and Argumentation",
+      "description": "Master conversation skills in various contexts, state opinions with reasoned support, apply conflict resolution strategies, respond constructively to opposing viewpoints, and build on others' contributions"
+    },
+    "grade6-text-revision": {
+      "name": "Text Revision and Editing",
+      "description": "Peer feedback, revision strategies, editing with established criteria"
+    },
+    "grade6-reading-strategies": {
+      "name": "Reading Strategies",
+      "description": "Advanced reading techniques including highlighting, note-taking, reading journals, text navigation, and adjusting reading speed to purpose"
+    },
+    "grade6-informative-writing": {
+      "name": "Informative Writing",
+      "description": "Composing factual texts with clear logical structure, objective presentation, and accurate summarization"
+    },
+    "grade6-narrative-writing": {
+      "name": "Narrative Writing",
+      "description": "Story composition, plot structure, character development, narrative perspective"
+    },
+    "grade6-literary-text-analysis": {
+      "name": "Literary Text Analysis",
+      "description": "Analyzing narratives, myths, poems, and young adult literature through character analysis, theme identification, literary devices, and cultural exploration"
+    },
+    "grade6-informational-texts": {
+      "name": "Informational Texts",
+      "description": "Non-fiction texts, using reference materials, evaluating diagrams and graphics"
+    },
+    "grade6-spelling-orthography": {
+      "name": "Spelling and Orthography",
+      "description": "Master advanced spelling rules including consonant doubling, das/dass distinction, capitalization, homophones, and foreign word spelling"
+    },
+    "grade6-grammar-syntax": {
+      "name": "Grammar and Syntax",
+      "description": "Parts of speech, active/passive voice, sentence components, clause types"
+    },
+    "grade6-punctuation": {
+      "name": "Punctuation",
+      "description": "Apply punctuation rules correctly including commas in complex sentences, quotation marks in direct speech, and sentence-ending punctuation"
+    },
     "grade4-reading-comprehension": {
       "name": "Advanced Reading Comprehension",
       "description": "Analyzing texts, finding central ideas, supporting claims with evidence, comparing texts"
