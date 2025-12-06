@@ -9,7 +9,16 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
 1. **Clarify scope** - Subject, grades, curriculum standard (e.g., German Rahmenlehrplan)
 
-2. **Research curriculum ONCE** - Use official sources (ministry sites). Extract:
+2. **Create feature branch** - Before any work:
+
+   ```bash
+   git fetch origin dev
+   git checkout -b concepts/{subject}-grade{N} origin/dev
+   ```
+
+   Branch naming: `concepts/{subject}-grade{N}` (e.g., `concepts/german-grade4`)
+
+3. **Research curriculum ONCE** - Use official sources (ministry sites). Extract:
    - Learning objectives per concept
    - Age-appropriate expectations
    - Difficulty progression
@@ -22,7 +31,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
    Get user approval on concept list.
 
-3. **Spawn parallel agents** - One Task tool call per concept:
+4. **Spawn parallel agents** - One Task tool call per concept:
 
    ```
    Create concept: {subject}/{concept-id} (Grade {grade})
@@ -37,13 +46,20 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
    **Do NOT paste curriculum content into agent prompts.** Agents read the research doc themselves. Keep prompts minimal.
 
-4. **Verify files exist** - Check that concept files were actually created. Agents may report success without writing files.
+5. **Verify files exist** - Check that concept files were actually created. Agents may report success without writing files.
 
-5. **Validate** - Use `docker compose exec backend-dev bun run check:concepts` to efficiently check the generated concepts. If failures, resume agents with fixes.
+6. **Validate** - Use `docker compose exec backend-dev bun run check:concepts` to efficiently check the generated concepts. If failures, resume agents with fixes.
 
-6. **Commit** - Stage all concept files + translations, commit with summary.
+7. **Commit and create PR** - Stage, commit, push, and open PR against `dev`:
 
-7. **Cleanup** - Delete `docs/{subject}-curriculum-research.md` after successful commit.
+   ```bash
+   git add packages/content/subjects/{subject}/ packages/frontend/public/locales/
+   git commit -m "feat(content): add {Subject} Grade {N} concepts (curriculum aligned)"
+   git push -u origin concepts/{subject}-grade{N}
+   gh pr create --base dev --title "feat(content): {Subject} Grade {N} concepts" --body "Add {N} new concepts for Grade {N} {Subject} based on {curriculum}."
+   ```
+
+8. **Cleanup** - Delete `docs/{subject}-curriculum-research.md` after PR is created.
 
 ## Constraints
 
