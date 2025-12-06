@@ -464,6 +464,10 @@
       "name": "Wortbildung und Wortschatz",
       "description": "Wortstruktur durch Wortstämme, Vor- und Nachsilben, Wortfamilien, Wortfelder und systematische Wortschatzerweiterung verstehen"
     },
+    "grade5-attentive-listening": {
+      "name": "Aufmerksames Zuhören",
+      "description": "Gesprochene Texte verstehen, Kerninformationen entnehmen"
+    },
     "grade5-active-and-passive-deepened": {
       "name": "Aktiv und Passiv vertieft",
       "description": "Sprache untersuchen"
@@ -509,8 +513,8 @@
       "description": "Lesen und Schreiben"
     },
     "grade5-informational-texts": {
-      "name": "Sachtexte",
-      "description": "Texte und Medien"
+      "name": "Sachtexte verstehen",
+      "description": "Sachtexte und nicht-lineare Informationsformate erfassen und verstehen"
     },
     "grade5-narrative-perspective-change": {
       "name": "Erzählung - Perspektivwechsel",
@@ -539,6 +543,10 @@
     "grade5-poetry-forms-and-analysis": {
       "name": "Lyrik - Formen und Analyse",
       "description": "Texte und Medien"
+    },
+    "grade5-poetry-analysis": {
+      "name": "Gedichtanalyse",
+      "description": "Gedichte durch Form und Ausdruck verstehen und würdigen"
     },
     "grade5-presentation-skills": {
       "name": "Präsentationsfähigkeiten",
@@ -675,6 +683,22 @@
     "grade4-dramatic-expression": {
       "name": "Darstellendes Spiel und Rollengestaltung",
       "description": "Perspektiven einnehmen, Rollen entwickeln, Situationen spielerisch erkunden mit fortgeschrittenem Einsatz von Stimme, Gestik und Bewegung"
+    },
+    "grade5-discussion-skills": {
+      "name": "Gesprächsführung und Diskussionsregeln",
+      "description": "Aktiv an Klassengesprächen teilnehmen unter Einhaltung von Gesprächsregeln, angemessen auf andere reagieren, Meinungen formulieren und begründen sowie Gesprächsrollen unterscheiden"
+    },
+    "grade5-media-literacy": {
+      "name": "Medienkompetenz",
+      "description": "Bibliothekssysteme verstehen, digitale Recherche durchführen und über Mediennutzung reflektieren"
+    },
+    "grade5-oral-presentations": {
+      "name": "Mündliche Präsentationen",
+      "description": "Informationen und Erlebnisse vor Mitschülern mit klarer Struktur und Visualisierungshilfen präsentieren"
+    },
+    "grade5-reading-strategies": {
+      "name": "Lesestrategien",
+      "description": "Markieren, strukturieren, Kerngedanken erkennen, Lesetagebuch"
     }
   }
 }
