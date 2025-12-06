@@ -71,6 +71,12 @@ Run any script without args to see usage (e.g., `bun run generate:task` shows al
 - All content must be curriculum-aligned
 - JWT auth with invite-code beta access
 
+## Git Workflow
+
+- Protected branches: `main` and `dev` (no direct push)
+- Feature work: branch from `dev` → PR to `dev`
+- Hotfixes: `hotfix/*` branch from `main` → PR to `main`
+
 # Critical Rules for success
 
 - You MUST use the jetbrains-coding skill
