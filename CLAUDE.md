@@ -31,7 +31,6 @@ Logikids is an AI-powered educational platform for children aged 8-16. It genera
 | Task generation     | `.claude/docs/task-generation.md`                   |
 | AI prompts          | `packages/backend/prompts/`                         |
 | Prompt builder      | `packages/backend/src/prompts/`                     |
-| Backend config      | `packages/backend/config.yaml`                      |
 | Task type schemas   | `packages/backend/src/tasks/types/`                 |
 | Answer components   | `packages/frontend/src/app/tasks/answer-types/`     |
 | Translations        | `packages/frontend/public/locales/{lang}/`          |
@@ -70,6 +69,12 @@ Run any script without args to see usage (e.g., `bun run generate:task` shows al
 - Backend uses Bun runtime (not Node.js)
 - All content must be curriculum-aligned
 - JWT auth with invite-code beta access
+
+## Git Workflow
+
+- Protected branches: `main` and `dev` (no direct push)
+- Feature work: branch from `dev` → PR to `dev`
+- Hotfixes: `hotfix/*` branch from `main` → PR to `main`
 
 # Critical Rules for success
 

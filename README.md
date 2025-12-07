@@ -1,216 +1,101 @@
-# Logikids - AI-Powered Educational Platform
+# Logikids
 
-An innovative educational platform designed to help children aged 8-16 develop logical thinking and problem-solving skills through interactive, AI-powered tasks. The platform focuses on various subjects including logic, mathematics, and music, delivering personalized learning experiences.
+**Free, AI-powered learning for everyone.**
 
-## 🌟 Features
+Not every family can afford private tutoring. Logikids provides personalized, curriculum-aligned learning tasks to all children - regardless of their family's financial situation.
 
-- **Multi-Subject Learning**
-  - Logic puzzles and pattern recognition
-  - Mathematical reasoning
-  - Music theory and rhythm
-  - Dynamic task generation based on subject and concept
+**[Try it out](https://logikids.maidev.de)** (Beta - invite only, contact lamaberlin@gmail.com for access)
 
-- **AI-Powered Learning Experience**
-  - Intelligent task generation system
-  - Personalized learning paths
-  - Real-time feedback and hints
-  - Adaptive difficulty levels
+## What is Logikids?
 
-- **Modern Architecture**
-  - Microservices-based design
-  - Containerized development and deployment
-  - Scalable and maintainable codebase
-  - Privacy-first approach
+Logikids generates educational tasks for **any subject** using AI (LLMs). Teachers and parents define what to teach through simple concept files, and the AI creates age-appropriate, varied exercises.
 
-## 🚀 Tech Stack
+**Features:**
 
-### Frontend
+- **AI-powered task generation** - Creates tasks for any subject and grade level
+- **6 task types** - Single choice, multiple select, fill-in-blank, ordering, number input, yes/no
+- **Progressive hints** - 4-step AI-generated hints that build on each other: from general approach, to key concept, to major reasoning step, to near-complete guidance - without giving away the answer
+- **Adaptive difficulty** - Automatically adjusts (easy/medium/hard) based on performance streaks
+- **Gamification** - Star ratings (0-5), day streaks, achievements, subject mastery tracking
+- **Privacy-first** - All data stored locally with zero-knowledge encryption. No tracking, no cookies. GDPR compliant by design
 
-- React with TypeScript
-- TailwindCSS for styling
-- TanStack Query for data fetching
-- tRPC for typed client-server communication
-- React Router for navigation
-- Zod for data validation
-- i18next for internationalization (German/English)
-- Vite for development and building
+**This is not a commercial project.** There's no company, no investors, no monetization. Just an open-source tool to make AI useful for society.
 
-### Backend
+## Running Locally
 
-- Bun runtime with TypeScript
-- Express API with tRPC
-- PostgreSQL database
-- AI integration (Anthropic, OpenAI, Ollama)
-
-## 🛠 Installation
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/maidev/logikids.git
-   cd logikids
-   ```
-
-2. **Configure AI Settings**
-
-   ```bash
-   # Navigate to backend package
-   cd packages/backend
-
-   # Copy configuration template
-   cp config.yaml.example config.yaml
-
-   # Edit config.yaml with your preferred settings
-   # - Choose AI provider (ollama/openai)
-   # - Set API keys if using OpenAI
-   # - Adjust model parameters
-   ```
-
-3. **Setup Ollama (if using Ollama as AI provider)**
-
-   ```bash
-   # Install Ollama following instructions at: https://ollama.ai
-
-   # Install required models
-   ollama pull llama2
-   ollama pull llama2-vision
-
-   # Verify Ollama is running
-   curl http://localhost:11434/api/tags
-   ```
-
-## 🛠 Development Setup
-
-### Prerequisites
+**Prerequisites:**
 
 - Docker and Docker Compose
-- Ollama (for AI features)
+- An API key for Anthropic, OpenAI, or a local Ollama installation
 
-### Development Commands
-
-1. **Start Development Environment**
-
-   ```bash
-   # Start all services in development mode (this will build the images if they don't exist)
-   docker compose up frontend-dev backend-dev
-
-   # Start only frontend
-   docker compose up frontend-dev
-
-   # Start only backend
-   docker compose up backend-dev
-   ```
-
-   - Frontend will be available at: http://localhost:5153
-   - Backend API will be available at: http://localhost:5175
-
-2. **Production Mode**
-
-   ```bash
-   # Build and start production services
-   docker compose up frontend-prod backend-prod --build
-
-   # Start without rebuilding
-   docker compose up frontend-prod backend-prod
-   ```
-
-   - Frontend will be available at: http://localhost:5154
-   - Backend API will be available at: http://localhost:5176
-
-3. **Docker Commands**
-
-   ```bash
-   # View logs
-   docker compose logs -f frontend-dev
-   docker compose logs -f backend-dev
-
-   # Rebuild specific service
-   docker compose build frontend-dev
-   docker compose build backend-dev
-
-   # Stop all services
-   docker compose down
-
-   # Remove all containers and volumes
-   docker compose down -v
-   ```
-
-### Testing
+**Quick start:**
 
 ```bash
-# Run backend tests
-docker compose run backend-test
-
-# Run frontend tests
-docker compose run frontend-dev npm test
+git clone https://github.com/maidevberlin/logikids.git
+cd logikids
+./install.sh
 ```
 
-### Invite Code Management (Beta Access)
+The install script will:
 
-LogiKids is currently in closed beta with invite-only access. Use the `./invite` script to manage codes:
+1. Generate secure secrets
+2. Ask which AI provider you want to use
+3. Configure everything in a `.env` file
+4. Build and start the application
 
-```bash
-# List all active invite codes
-./invite list
+App available at http://localhost:5154
 
-# Create new invite code with optional note
-./invite create "For Maria's family"
+Create an invite code to access: `./invite create "Your name"`
 
-# Remove specific invite code
-./invite remove ABCD-1234
+## Contributing
 
-# Delete all invite codes (with confirmation)
-./invite clear
+We welcome contributions! This project exists to help children learn.
 
-# Show help
-./invite help
-```
+### For Content Contributors
 
-**Notes:**
+You don't need to write code. With Claude Code, you can generate curriculum-aligned content using your own API tokens. The skills handle quality automatically.
 
-- Codes expire after 7 days if unused
-- Codes are automatically deleted after successful use
-- Each code can only be used once
-- Codes use format: XXXX-XXXX (e.g., AB3D-KL89)
-
-## 📁 Project Structure
+**Example - generate all math concepts for grade 5:**
 
 ```
-logikids/
-├── packages/
-│   ├── frontend/          # React frontend application
-│   ├── backend/           # Bun backend service
-│   └── content/           # Educational subjects and concepts
-├── .claude/docs/          # Internal documentation
-└── docker-compose.yml     # Docker services configuration
+# In Claude Code, just tell the agent:
+"Generate concepts for math grade 5 Germany"
 ```
 
-## 🤝 Contributing
+The `bulk-generate-concepts` skill will:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Research the official curriculum
+2. Create properly structured concept files
+3. Update translations
+4. Validate everything
 
-## 📝 License
+That's it. Your contribution helps every child using the platform.
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+### For Developers
 
-You are free to:
+**Branching model:**
 
-- **Share** — copy and redistribute the material
-- **Adapt** — remix, transform, and build upon the material
+- Branch from `dev` for features -> PR to `dev`
+- Hotfixes: branch from `main` -> PR to `main`
+- All PRs require approval before merge
 
-Under the following terms:
+**Important:** There's no money here. We're trying to make AI useful in a social way, not commercial. If you're looking for paid work, this isn't it. If you want to help kids learn, welcome aboard.
 
-- **Attribution** — You must give appropriate credit
-- **NonCommercial** — You may not use the material for commercial purposes
+## Tech Stack
 
-See [LICENSE](LICENSE) for full details.
+- **Frontend:** React, TypeScript, Vite, TailwindCSS
+- **Backend:** Bun, Express, tRPC
+- **AI:** Anthropic Claude, OpenAI, or Ollama
+- **Database:** PostgreSQL
 
-## 🆘 Support
+## License
 
-For questions and support:
+Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)
 
-1. Open an issue in the repository
+Free to share and adapt, but not for commercial use.
+
+## Contact
+
+Maik Maibaum - lamaberlin@gmail.com
+
+Questions? Want an invite code? Want to contribute? Just reach out.
