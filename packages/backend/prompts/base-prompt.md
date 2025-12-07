@@ -39,6 +39,7 @@ Use your full capabilities to make the task engaging and clear:
 
 - **SVG graphics**: Diagrams, shapes, graphs, illustrations - render directly in the task
 - **TikZ**: Precise geometric diagrams with exact angles and measurements (use ```tikz code block)
+  - Available libraries: angles, quotes, calc, patterns, arrows.meta, shapes.geometric, intersections, through
 - **Tables**: Organize data, show patterns, structure comparisons
 - **Mermaid diagrams**: Flowcharts, trees, sequences
 - **LaTeX**: Mathematical notation via `$...$` or `$$...$$`
