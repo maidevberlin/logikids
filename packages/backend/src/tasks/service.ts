@@ -16,6 +16,7 @@ import {
 } from '../common/errors'
 import { Concept } from '../prompts/schemas'
 import { convertTaskSvgs } from '../common/svg'
+import { convertTaskTikz } from '../common/tikz'
 
 const logger = createLogger('TaskService')
 
@@ -107,10 +108,13 @@ export class TaskService {
       }
     )
 
-    // Convert inline SVGs to data URLs for reliable rendering
-    const convertedResult = convertTaskSvgs(
+    // Convert TikZ code blocks to SVG (must run before SVG conversion)
+    const tikzConverted = await convertTaskTikz(
       aiResponse.result as unknown as Record<string, unknown>
-    ) as unknown as BaseTaskResponse
+    )
+
+    // Convert inline SVGs to data URLs for reliable rendering
+    const convertedResult = convertTaskSvgs(tikzConverted) as unknown as BaseTaskResponse
 
     // Generate taskId and add to response
     // Note: type is already correctly set in aiResponse.result by the schema
