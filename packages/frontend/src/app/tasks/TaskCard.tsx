@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Card } from '@/app/common/ui/card'
 import { Button } from '@/app/common/ui/button'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { PlayButton } from '@/app/common/PlayButton'
 import { TaskLoadingState } from './TaskLoadingState'
 import { TaskHeader } from './TaskHeader'
 import { TaskAnswerRenderer } from './TaskAnswerRenderer'
@@ -138,13 +139,16 @@ export function TaskCard({
       <TaskHeader task={task} difficulty={difficulty} onDifficultyChange={onDifficultyChange} />
 
       {/* Task content */}
-      <MarkdownRenderer
-        content={task.task}
-        className="prose max-w-none mb-4 sm:mb-6"
-        enableMath={true}
-        enableMermaid={true}
-        enableCode={true}
-      />
+      <div className="flex items-start gap-2 mb-4 sm:mb-6">
+        <MarkdownRenderer
+          content={task.task}
+          className="prose max-w-none flex-1"
+          enableMath={true}
+          enableMermaid={true}
+          enableCode={true}
+        />
+        <PlayButton taskId={task.taskId} field="task" />
+      </div>
 
       {/* Answer options */}
       <TaskAnswerRenderer
@@ -164,6 +168,7 @@ export function TaskCard({
 
       {/* Action buttons and hints */}
       <TaskActions
+        taskId={task.taskId}
         isLoading={isLoading}
         isCorrect={isCorrect}
         selectedAnswer={selectedAnswer}

@@ -1,6 +1,7 @@
 import { Card } from '@/app/common/ui/card'
 import { Button } from '@/app/common/ui/button'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { PlayButton } from '@/app/common/PlayButton'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
@@ -13,6 +14,7 @@ interface OrderingItem {
 }
 
 interface OrderingAnswerProps {
+  taskId?: string
   items: OrderingItem[]
   selectedAnswer: string[] | null
   onAnswerSelect: (orderedIds: string[]) => void
@@ -21,6 +23,7 @@ interface OrderingAnswerProps {
 }
 
 function OrderingItemCard({
+  taskId,
   item,
   index,
   isLocked,
@@ -29,6 +32,7 @@ function OrderingItemCard({
   canMoveUp,
   canMoveDown,
 }: {
+  taskId?: string
   item: OrderingItem
   index: number
   isLocked: boolean
@@ -83,6 +87,9 @@ function OrderingItemCard({
             />
           </div>
 
+          {/* TTS Button */}
+          {taskId && <PlayButton taskId={taskId} field={`items:${index}`} />}
+
           {/* Accessibility Buttons */}
           <div className="flex flex-col gap-1">
             <Button
@@ -111,6 +118,7 @@ function OrderingItemCard({
 }
 
 export function OrderingAnswer({
+  taskId,
   items,
   selectedAnswer,
   onAnswerSelect,
@@ -162,6 +170,7 @@ export function OrderingAnswer({
         {orderedItems.map((item, index) => (
           <OrderingItemCard
             key={item.id}
+            taskId={taskId}
             item={item}
             index={index}
             isLocked={isLocked}
