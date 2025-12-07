@@ -47,11 +47,11 @@ real_world_context:
   - Homophone distinction prevents misunderstandings in written communication and formal correspondence
   - Capitalization mastery supports academic writing quality and professional presentation of work
 anti_patterns:
-  - Avoid obscure foreign words from languages not commonly taught in German schools
-  - Do not include das/dass in sentences requiring advanced subordinate clause analysis
-  - Avoid technical linguistic terminology beyond standard grammatical terms
-  - Do not combine multiple orthographic rules in single words unless contextually appropriate
-  - Avoid archaic or outdated spelling variants not aligned with current Duden standards
+  - Avoid obscure foreign words from uncommonly taught languages
+  - Do not include das/dass in sentences with advanced clause analysis
+  - Avoid technical linguistic terminology beyond standard terms
+  - Do not combine multiple orthographic rules in single words
+  - Avoid archaic spelling variants not aligned with current Duden
 version: 1
 version_notes: Initial version based on KMK Bildungsstandards Grade 6 orthography and spelling competencies
 ---

@@ -42,7 +42,7 @@ real_world_context:
   - Retelling familiar stories from different character perspectives to explore narrative viewpoint
   - Crafting fantasy or adventure stories inspired by books, films, or imagination
 anti_patterns:
-  - Avoid narratives lacking clear three-part structure (Einleitung, Hauptteil, Schluss)
+  - Avoid narratives lacking clear three-part structure
   - Do not use complex flashback structures or non-linear timelines
   - Avoid abstract or philosophical themes inappropriate for age level
   - Do not require advanced vocabulary beyond Grade 5 comprehension

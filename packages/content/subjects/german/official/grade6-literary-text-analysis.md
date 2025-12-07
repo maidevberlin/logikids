@@ -49,7 +49,7 @@ anti_patterns:
   - Avoid university-level literary theory or overly complex terminology
   - Don't require memorization of author biographies or publication dates
   - Avoid texts with mature themes inappropriate for 11-12 year olds
-  - Don't expect single correct interpretations that ignore valid alternative readings
+  - Don't expect single correct interpretations ignoring valid alternatives
   - Avoid cultural references that require extensive background knowledge
 version: 1
 version_notes: Initial version aligned with KMK Bildungsstandards Grade 6 - literary text analysis and interpretation

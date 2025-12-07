@@ -47,11 +47,11 @@ real_world_context:
   - Comma placement in relative clauses ensures clarity when describing characters in book reports and literary analysis
   - Sentence-ending punctuation conveys intended tone and meaning in emails, presentations, and formal correspondence
 anti_patterns:
-  - Avoid sentences with more than three subordinate clauses requiring complex punctuation
-  - Do not include archaic punctuation rules not aligned with current German standards
-  - Avoid ambiguous sentences where multiple punctuation solutions are equally valid
-  - Do not mix direct and indirect speech in ways that create punctuation confusion
-  - Avoid technical grammatical terminology beyond standard clause and sentence structure terms
+  - Avoid sentences with more than three subordinate clauses
+  - Do not include archaic punctuation rules not in current standards
+  - Avoid ambiguous sentences with multiple valid punctuation solutions
+  - Do not mix direct and indirect speech creating punctuation confusion
+  - Avoid technical grammatical terminology beyond standard terms
 version: 1
 version_notes: Initial version based on KMK Bildungsstandards Grade 6 punctuation competencies
 ---

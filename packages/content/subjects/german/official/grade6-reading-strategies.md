@@ -47,7 +47,7 @@ real_world_context:
 anti_patterns:
   - Avoid texts shorter than 200 words which do not require strategic reading
   - Don't ask students to apply every strategy type in a single reading task
-  - Avoid texts without clear structural features when teaching navigation strategies
+  - Avoid texts without clear structural features for navigation tasks
   - Don't use abstract philosophical texts beyond age 11-12 comprehension level
   - Avoid journal prompts that ask for personal emotional disclosure
 version: 1
