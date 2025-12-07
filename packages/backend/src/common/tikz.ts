@@ -36,7 +36,7 @@ function wrapTikzCode(tikzCode: string): string {
     : `\\begin{tikzpicture}\n${trimmed}\n\\end{tikzpicture}`
 
   // node-tikzjax already has tikz loaded, but we add common libraries
-  return `\\usetikzlibrary{angles,quotes,calc,patterns,arrows.meta}
+  return `\\usetikzlibrary{angles,quotes,calc,patterns,arrows.meta,shapes.geometric,intersections,through}
 \\begin{document}
 ${tikzContent}
 \\end{document}`
