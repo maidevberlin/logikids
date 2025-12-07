@@ -1,9 +1,6 @@
 import 'reflect-metadata'
 import express from 'express'
 import cors from 'cors'
-import yaml from 'js-yaml'
-import fs from 'fs'
-import path from 'path'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { appRouter } from './router'
 import { createContext } from './trpc'
@@ -16,10 +13,6 @@ import { initializeContainer } from './container'
 import { createLogger } from './common/logger'
 
 const logger = createLogger('Server')
-
-// Load configuration
-const configPath = path.join(__dirname, '../config.yaml')
-const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, any>
 
 // Initialize registries, database, and DI container before starting server
 async function initializeServices() {
@@ -74,7 +67,7 @@ const isMainModule =
   process.env.NODE_ENV === 'production'
 
 if (isMainModule) {
-  const port = config.server?.port || 3000
+  const port = 3000
 
   // Initialize all services before starting server
   await initializeServices()
