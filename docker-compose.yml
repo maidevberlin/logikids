@@ -63,6 +63,8 @@ services:
       - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-0.7}
       # Server
       - SERVER_PORT=${SERVER_PORT:-3000}
+      # TTS
+      - GOOGLE_CLOUD_TTS_API_KEY=${GOOGLE_CLOUD_TTS_API_KEY:-}
     depends_on:
       postgres:
         condition: service_healthy
@@ -103,6 +105,8 @@ services:
       - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-0.7}
       # Server
       - SERVER_PORT=${SERVER_PORT:-3000}
+      # TTS
+      - GOOGLE_CLOUD_TTS_API_KEY=${GOOGLE_CLOUD_TTS_API_KEY:-}
     depends_on:
       postgres:
         condition: service_healthy
