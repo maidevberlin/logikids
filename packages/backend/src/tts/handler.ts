@@ -1,16 +1,15 @@
 import 'reflect-metadata'
-import { Router, Request, Response } from 'express'
 import { container } from 'tsyringe'
+import * as Sentry from '@sentry/bun'
+import jwt from 'jsonwebtoken'
 import { TTSService } from './service'
 import { TTSCache } from './cache'
 import { taskCache } from '../cache/taskCache'
 import { createLogger } from '../common/logger'
 import { TaskNotFoundError } from '../common/errors'
-import jwt from 'jsonwebtoken'
 import { env } from '../config/env'
 
-const logger = createLogger('TTSRouter')
-
+const logger = createLogger('TTSHandler')
 const JWT_SECRET = env.JWT_SECRET
 
 /**
@@ -30,37 +29,66 @@ function getTextFromTask(task: any, field: string): string | null {
 }
 
 /**
- * Middleware to authenticate requests
+ * Authenticate request and extract userId
  */
-async function authenticate(req: Request, res: Response, next: () => void) {
-  const authHeader = req.headers.authorization
+function authenticate(req: Request): string | null {
+  const authHeader = req.headers.get('authorization')
   if (!authHeader?.startsWith('Bearer ')) {
-    res.status(401).json({ error: 'Not authenticated' })
-    return
+    return null
   }
 
   const token = authHeader.substring(7)
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as { userId: string }
-    ;(req as any).userId = decoded.userId
-    next()
+    return decoded.userId
   } catch (error) {
-    res.status(401).json({ error: 'Invalid token' })
+    return null
   }
 }
 
 /**
- * TTS router - provides text-to-speech audio for task fields
+ * CORS headers for TTS responses
  */
-export const ttsRouter = Router()
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
 
-ttsRouter.post('/tts', authenticate, async (req: Request, res: Response) => {
+/**
+ * Handle TTS requests - returns audio binary data
+ */
+export async function handleTTSRequest(req: Request): Promise<Response> {
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: corsHeaders })
+  }
+
+  if (req.method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+
+  // Authenticate
+  const userId = authenticate(req)
+  if (!userId) {
+    return new Response(JSON.stringify({ error: 'Not authenticated' }), {
+      status: 401,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+
   try {
-    const { taskId, field } = req.body
+    const body = await req.json()
+    const { taskId, field } = body
 
     if (!taskId || !field) {
-      res.status(400).json({ error: 'Missing taskId or field' })
-      return
+      return new Response(JSON.stringify({ error: 'Missing taskId or field' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
     logger.debug('TTS request', { taskId, field })
@@ -85,8 +113,10 @@ ttsRouter.post('/tts', authenticate, async (req: Request, res: Response) => {
     }
 
     if (!text) {
-      res.status(404).json({ error: 'Text not found for field' })
-      return
+      return new Response(JSON.stringify({ error: 'Text not found for field' }), {
+        status: 404,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
     logger.debug('Text extracted', { field, textLength: text.length })
@@ -108,20 +138,32 @@ ttsRouter.post('/tts', authenticate, async (req: Request, res: Response) => {
       await ttsCache.set(text, language, audio)
     }
 
-    // Return audio
-    res.setHeader('Content-Type', 'audio/mpeg')
-    res.setHeader('Content-Length', audio.length.toString())
-    res.send(audio)
-
     logger.info('TTS audio sent', { taskId, field, audioSize: audio.length })
+
+    // Return audio
+    return new Response(audio, {
+      status: 200,
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'audio/mpeg',
+        'Content-Length': audio.length.toString(),
+      },
+    })
   } catch (error) {
+    // Capture error in Sentry
+    Sentry.captureException(error)
     logger.error('Error processing TTS request', { error })
 
     if (error instanceof TaskNotFoundError) {
-      res.status(404).json({ error: 'Task not found' })
-      return
+      return new Response(JSON.stringify({ error: 'Task not found' }), {
+        status: 404,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
-    res.status(500).json({ error: 'Internal server error' })
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
   }
-})
+}

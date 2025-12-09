@@ -28,9 +28,8 @@ interface UseTTSResult {
 }
 
 // Get API URL (same pattern as trpc.ts)
-const API_URL =
-  import.meta.env.VITE_API_URL ||
-  (import.meta.env.MODE === 'production' ? window.location.origin : 'http://localhost:5175')
+// Default to empty string so requests use relative URLs and go through Vite/Nginx proxy
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 /**
  * Hook for Text-to-Speech functionality

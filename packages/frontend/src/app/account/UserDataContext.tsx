@@ -6,6 +6,7 @@ import {
   updateSettings as coreUpdateSettings,
   updateProgress as coreUpdateProgress,
   updateGameStats as coreUpdateGameStats,
+  updateProgressAndGameStats as coreUpdateProgressAndGameStats,
 } from '@/data/core/userData.ts'
 import { GameStats } from '@/app/stats/gameTypes'
 import { useAuth } from './AuthContext'
@@ -20,6 +21,7 @@ export interface UserDataContextValue {
   updateSettings: (settings: Partial<UserSettings>) => Promise<void>
   updateProgress: (progress: Record<string, any>) => Promise<void>
   updateGameStats: (gameStats: GameStats) => Promise<void>
+  updateProgressAndGameStats: (progress: Record<string, any>, gameStats: GameStats) => Promise<void>
   refresh: () => Promise<void>
 }
 
@@ -76,18 +78,18 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     }
   }
 
-  // Core operations (pass-through to core)
+  // Core operations - use returned data to avoid redundant reads
   const updateSettings = async (settings: Partial<UserSettings>) => {
-    await coreUpdateSettings(settings)
-    await refresh()
+    const updated = await coreUpdateSettings(settings)
+    setData(updated)
   }
 
   const updateProgress = async (progress: Record<string, any>) => {
-    await coreUpdateProgress(progress)
-    await refresh()
+    const updated = await coreUpdateProgress(progress)
+    setData(updated)
 
     // Sync after task completion if sync is enabled
-    if (data?.settings.syncEnabled) {
+    if (updated.settings.syncEnabled) {
       dataSync.sync().catch((err) => {
         console.warn('Background sync after task failed', err)
       })
@@ -95,13 +97,29 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
   }
 
   const updateGameStats = async (gameStats: GameStats) => {
-    await coreUpdateGameStats(gameStats)
-    await refresh()
+    const updated = await coreUpdateGameStats(gameStats)
+    setData(updated)
 
     // Sync after game stats update if sync is enabled
-    if (data?.settings.syncEnabled) {
+    if (updated.settings.syncEnabled) {
       dataSync.sync().catch((err) => {
         console.warn('Background sync after stats update failed', err)
+      })
+    }
+  }
+
+  // Batched update for progress + gameStats (single read, single write, single sync)
+  const updateProgressAndGameStats = async (
+    progress: Record<string, any>,
+    gameStats: GameStats
+  ) => {
+    const updated = await coreUpdateProgressAndGameStats(progress, gameStats)
+    setData(updated)
+
+    // Single sync after both updates
+    if (updated.settings.syncEnabled) {
+      dataSync.sync().catch((err) => {
+        console.warn('Background sync after task failed', err)
       })
     }
   }
@@ -113,6 +131,7 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
     updateSettings,
     updateProgress,
     updateGameStats,
+    updateProgressAndGameStats,
     refresh,
   }
 

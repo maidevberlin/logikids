@@ -145,7 +145,7 @@ export function useSync() {
       if (local && !remote) {
         // First sync: upload local data
         await upload(local)
-        await setData({ lastSyncTimestamp: Date.now() })
+        await setData({ lastSyncTimestamp: Date.now() }, local)
         return
       }
 
@@ -156,8 +156,8 @@ export function useSync() {
       // ---- STEP 3: UPLOAD ----
       await upload(merged)
 
-      // ---- Save merged result locally ----
-      await setData({ ...merged, lastSyncTimestamp: Date.now() })
+      // ---- Save merged result locally (pass merged to avoid redundant read) ----
+      await setData({ lastSyncTimestamp: Date.now() }, merged)
 
       logger.debug('Sync complete', {
         localAttempts: countAttempts(local!),

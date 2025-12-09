@@ -74,10 +74,17 @@ export async function getData(): Promise<UserData | null> {
 /**
  * Update user data (merges with existing)
  * Throws error if no user data exists
+ *
+ * @param updates - Partial data to merge
+ * @param currentData - Optional pre-loaded data to avoid redundant read
+ * @returns The merged UserData that was saved
  */
-export async function setData(updates: Partial<UserData>): Promise<void> {
+export async function setData(
+  updates: Partial<UserData>,
+  currentData?: UserData
+): Promise<UserData> {
   try {
-    const current = await getData()
+    const current = currentData ?? (await getData())
     if (!current) {
       throw new Error('Cannot update data: no user exists. Call createNewUser() first.')
     }
@@ -98,6 +105,8 @@ export async function setData(updates: Partial<UserData>): Promise<void> {
 
     // Dispatch event for React reactivity
     window.dispatchEvent(new Event('data-changed'))
+
+    return merged
   } catch (error) {
     logger.error('Failed to save user data', error as Error)
     throw error
@@ -107,43 +116,72 @@ export async function setData(updates: Partial<UserData>): Promise<void> {
 /**
  * Update only settings (convenience method)
  */
-export async function updateSettings(settings: Partial<UserSettings>): Promise<void> {
+export async function updateSettings(settings: Partial<UserSettings>): Promise<UserData> {
   const current = await getData()
   if (!current) {
     throw new Error('Cannot update settings: no user exists')
   }
-  await setData({
-    settings: {
-      ...current.settings,
-      ...settings,
+  return setData(
+    {
+      settings: {
+        ...current.settings,
+        ...settings,
+      },
     },
-  })
+    current
+  )
 }
 
 /**
  * Update only progress (convenience method with deep merge)
  */
-export async function updateProgress(progress: Record<string, any>): Promise<void> {
+export async function updateProgress(progress: Record<string, any>): Promise<UserData> {
   const current = await getData()
   if (!current) {
     throw new Error('Cannot update progress: no user exists')
   }
-  await setData({
-    progress: deepMerge(current.progress, progress),
-  })
+  return setData(
+    {
+      progress: deepMerge(current.progress, progress),
+    },
+    current
+  )
 }
 
 /**
  * Update only gameStats (convenience method)
  */
-export async function updateGameStats(gameStats: GameStats): Promise<void> {
+export async function updateGameStats(gameStats: GameStats): Promise<UserData> {
   const current = await getData()
   if (!current) {
     throw new Error('Cannot update game stats: no user exists')
   }
-  await setData({
-    gameStats: gameStats,
-  })
+  return setData(
+    {
+      gameStats: gameStats,
+    },
+    current
+  )
+}
+
+/**
+ * Update progress and gameStats together (single read, single write)
+ */
+export async function updateProgressAndGameStats(
+  progress: Record<string, any>,
+  gameStats: GameStats
+): Promise<UserData> {
+  const current = await getData()
+  if (!current) {
+    throw new Error('Cannot update data: no user exists')
+  }
+  return setData(
+    {
+      progress: deepMerge(current.progress, progress),
+      gameStats: gameStats,
+    },
+    current
+  )
 }
 
 /**

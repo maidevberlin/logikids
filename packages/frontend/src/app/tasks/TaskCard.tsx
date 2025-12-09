@@ -114,7 +114,7 @@ export function TaskCard({
   // Error state
   if (error) {
     return (
-      <Card className="p-4 sm:p-8 border-red-200 bg-red-50 shadow-2xl">
+      <Card className="p-4 sm:p-8 border-red-200 bg-red-50/80 backdrop-blur-md shadow-2xl">
         <div className="text-center">
           <h3 className="text-xl font-bold text-red-900 mb-2">
             {t('error.title', { defaultValue: 'Oops!' })}
@@ -134,7 +134,7 @@ export function TaskCard({
   }
 
   return (
-    <Card className="p-4 sm:p-8 shadow-2xl bg-card">
+    <Card className="p-4 sm:p-8 shadow-2xl bg-card/60 backdrop-blur-md border-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.4)]">
       {/* Header with title and difficulty */}
       <TaskHeader task={task} difficulty={difficulty} onDifficultyChange={onDifficultyChange} />
 

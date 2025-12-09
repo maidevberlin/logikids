@@ -11,7 +11,21 @@ interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            // Cache data for 1 hour - subjects/concepts rarely change
+            staleTime: 60 * 60 * 1000,
+            // Keep unused data in cache for 2 hours
+            gcTime: 2 * 60 * 60 * 1000,
+            // Don't refetch on window focus for better UX
+            refetchOnWindowFocus: false,
+          },
+        },
+      })
+  )
 
   return (
     <ErrorBoundary>

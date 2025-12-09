@@ -9,7 +9,7 @@ import { createLogger } from '@/lib/logger'
  */
 export function useProgress() {
   const logger = createLogger('useProgress')
-  const { data, updateProgress, updateGameStats } = useUserData()
+  const { data, updateProgressAndGameStats } = useUserData()
 
   const progress: ProgressData = data?.progress || {}
   const gameStats = data?.gameStats
@@ -30,10 +30,10 @@ export function useProgress() {
         submission
       )
 
-      await updateProgress(updatedProgress)
-      await updateGameStats(updatedGameStats)
+      // Single batched update: 1 read, 1 write, 1 sync
+      await updateProgressAndGameStats(updatedProgress, updatedGameStats)
     },
-    [data, progress, gameStats, updateProgress, updateGameStats]
+    [data, progress, gameStats, updateProgressAndGameStats]
   )
 
   /**
