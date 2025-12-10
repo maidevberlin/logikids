@@ -113,9 +113,21 @@ export default defineConfig({
             console.log('Target URL:', proxyReq.path)
             console.log('Headers:', proxyReq.getHeaders())
           })
-          proxy.on('proxyRes', (proxyRes, req, _res) => {
+          proxy.on('proxyRes', (proxyRes, req, res) => {
             console.log('Received Response from the Target:', proxyRes.statusCode, req.url)
             console.log('Response headers:', proxyRes.headers)
+
+            // Debug: track response body size for TTS requests
+            if (req.url?.includes('/api/tts')) {
+              let bodySize = 0
+              proxyRes.on('data', (chunk: Buffer) => {
+                bodySize += chunk.length
+                console.log('TTS proxy chunk received:', chunk.length, 'bytes, total:', bodySize)
+              })
+              proxyRes.on('end', () => {
+                console.log('TTS proxy response complete, total size:', bodySize)
+              })
+            }
           })
         },
       },

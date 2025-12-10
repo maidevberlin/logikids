@@ -9,7 +9,6 @@ import { taskTypeRegistry } from './tasks/task-types'
 import { initializeDatabase, closeDatabase } from '../database/db'
 import { initializeContainer } from './container'
 import { createLogger } from './common/logger'
-import { handleTTSRequest } from './tts'
 
 // Initialize Sentry error tracking
 if (process.env.SENTRY_DSN) {
@@ -81,11 +80,6 @@ if (isMainModule) {
       // Handle CORS preflight for all routes
       if (req.method === 'OPTIONS') {
         return new Response(null, { status: 204, headers: corsHeaders })
-      }
-
-      // Handle TTS requests (binary audio response)
-      if (url.pathname === '/api/tts') {
-        return handleTTSRequest(req)
       }
 
       // Handle tRPC requests

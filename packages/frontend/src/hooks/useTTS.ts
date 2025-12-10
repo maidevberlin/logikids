@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { getAccessToken } from '@/data/core/storage'
+import { trpc } from '@/api/trpc'
 import { createLogger } from '@/lib/logger'
 
 const logger = createLogger('TTS')
@@ -27,10 +27,6 @@ interface UseTTSResult {
   stop: () => void
 }
 
-// Get API URL (same pattern as trpc.ts)
-// Default to empty string so requests use relative URLs and go through Vite/Nginx proxy
-const API_URL = import.meta.env.VITE_API_URL || ''
-
 /**
  * Hook for Text-to-Speech functionality
  *
@@ -44,14 +40,23 @@ export function useTTS({ taskId, field }: UseTTSOptions): UseTTSResult {
   const [state, setState] = useState<TTSState>('idle')
   const cacheKey = `${taskId}:${field}`
   const isMountedRef = useRef(true)
+  const ttsMutation = trpc.tts.synthesize.useMutation()
 
-  // Cleanup on unmount
+  // Track mounted state - only on true mount/unmount
   useEffect(() => {
+    isMountedRef.current = true
     return () => {
       isMountedRef.current = false
-      // If this instance is currently playing, stop it
-      if (currentlyPlaying === cacheKey) {
-        stop()
+    }
+  }, [])
+
+  // Stop playback when cacheKey changes
+  useEffect(() => {
+    return () => {
+      if (currentlyPlaying === cacheKey && sharedAudio) {
+        sharedAudio.pause()
+        sharedAudio.currentTime = 0
+        currentlyPlaying = null
       }
     }
   }, [cacheKey])
@@ -64,31 +69,24 @@ export function useTTS({ taskId, field }: UseTTSOptions): UseTTSResult {
       return cached
     }
 
-    // Fetch from API
+    // Fetch from API using tRPC
     logger.debug(`Fetching audio for ${cacheKey}`)
-    const token = await getAccessToken()
 
-    const response = await fetch(`${API_URL}/api/tts`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      },
-      body: JSON.stringify({ taskId, field }),
-    })
+    const data = await ttsMutation.mutateAsync({ taskId, field })
 
-    if (!response.ok) {
-      throw new Error(`TTS request failed: ${response.status} ${response.statusText}`)
+    const binaryString = atob(data.audio)
+    const bytes = new Uint8Array(binaryString.length)
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i)
     }
-
-    const blob = await response.blob()
+    const blob = new Blob([bytes], { type: 'audio/mpeg' })
 
     // Cache the blob
     audioCache.set(cacheKey, blob)
     logger.debug(`Cached audio for ${cacheKey}`)
 
     return blob
-  }, [taskId, field, cacheKey])
+  }, [taskId, field, cacheKey, ttsMutation])
 
   const play = useCallback(async () => {
     try {

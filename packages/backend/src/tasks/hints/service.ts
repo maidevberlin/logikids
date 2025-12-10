@@ -1,18 +1,18 @@
-import { AIClient } from '../common/ai/base'
-import { PromptBuilder } from '../prompts/builder'
-import { PromptLoader } from '../prompts/loader'
-import { taskTypeRegistry } from '../tasks/task-types'
-import { taskCache } from '../cache/taskCache'
-import { hintSchema } from '../prompts/schemas'
-import { subjectRegistry } from '../subjects/registry'
-import { VariationLoader } from '../prompts/variations/loader'
-import { createLogger } from '../common/logger'
+import { AIClient } from '../../common/ai/base'
+import { PromptBuilder } from '../../prompts/builder'
+import { PromptLoader } from '../../prompts/loader'
+import { taskTypeRegistry } from '../task-types'
+import { taskCache } from '../../cache/taskCache'
+import { hintSchema } from '../../prompts/schemas'
+import { subjectRegistry } from '../../subjects/registry'
+import { VariationLoader } from '../../prompts/variations/loader'
+import { createLogger } from '../../common/logger'
 import {
   TaskNotFoundError,
   AllHintsUsedError,
   SubjectNotFoundError,
   TaskTypeNotFoundError,
-} from '../common/errors'
+} from '../../common/errors'
 
 const logger = createLogger('HintService')
 
