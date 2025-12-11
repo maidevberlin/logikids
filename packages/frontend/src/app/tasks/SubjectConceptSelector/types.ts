@@ -1,4 +1,4 @@
-import { SubjectInfo, ConceptInfo } from '@/api/logikids'
+import { SubjectInfo, ConceptInfo } from '@/api/types.ts'
 
 export interface UnifiedSubjectConceptSelectorProps {
   subject: string

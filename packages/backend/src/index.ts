@@ -3,12 +3,12 @@ import * as Sentry from '@sentry/bun'
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 import { appRouter } from './router'
 import { createContext } from './trpc'
-import { cacheCleanupService } from './cache/cacheCleanup'
+import { container } from 'tsyringe'
+import { CacheCleanupService } from './cache/cacheCleanup'
 import { subjectRegistry } from './subjects/registry'
 import { taskTypeRegistry } from './tasks/task-types'
 import { initializeDatabase, closeDatabase } from '../database/db'
 import { initializeContainer } from './container'
-import { createLogger } from './common/logger'
 
 // Initialize Sentry error tracking
 if (process.env.SENTRY_DSN) {
@@ -19,8 +19,6 @@ if (process.env.SENTRY_DSN) {
   })
 }
 
-const logger = createLogger('Server')
-
 // CORS headers
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -30,30 +28,30 @@ const corsHeaders = {
 
 // Initialize registries, database, and DI container before starting server
 async function initializeServices() {
-  logger.debug('Initializing registries, database, and DI container...')
   await Promise.all([
     subjectRegistry.initialize(),
     taskTypeRegistry.initialize(),
     initializeDatabase(),
   ])
   await initializeContainer()
-  logger.debug('All services initialized')
 }
 
-// Start cache cleanup job
-cacheCleanupService.start()
+// Get cache cleanup service from container and start it
+let cacheCleanupService: CacheCleanupService
 
 // Graceful shutdown
 process.on('SIGTERM', async () => {
-  logger.debug('SIGTERM received, shutting down gracefully...')
-  cacheCleanupService.stop()
+  if (cacheCleanupService) {
+    cacheCleanupService.stop()
+  }
   await closeDatabase()
   process.exit(0)
 })
 
 process.on('SIGINT', async () => {
-  logger.debug('SIGINT received, shutting down gracefully...')
-  cacheCleanupService.stop()
+  if (cacheCleanupService) {
+    cacheCleanupService.stop()
+  }
   await closeDatabase()
   process.exit(0)
 })
@@ -70,6 +68,10 @@ if (isMainModule) {
   // Initialize all services before starting server
   await initializeServices()
 
+  // Start cache cleanup service
+  cacheCleanupService = container.resolve<CacheCleanupService>(CacheCleanupService)
+  cacheCleanupService.start()
+
   // Start Bun HTTP server with tRPC fetch adapter
   Bun.serve({
     port,
@@ -84,8 +86,6 @@ if (isMainModule) {
 
       // Handle tRPC requests
       if (url.pathname.startsWith('/api')) {
-        logger.debug('tRPC request received', { path: url.pathname, method: req.method })
-
         try {
           const response = await fetchRequestHandler({
             endpoint: '/api',
@@ -98,8 +98,7 @@ if (isMainModule) {
               }
             },
             onError({ error }) {
-              // Sentry captures errors via trpcMiddleware, but log them too
-              logger.error('tRPC error', { error })
+              // Sentry captures errors via trpcMiddleware
             },
           })
 
@@ -107,13 +106,6 @@ if (isMainModule) {
           // This is needed because the fetch adapter returns a stream without Content-Length
           // which causes issues with HTTP/1.1 proxies (like Vite's dev proxy)
           const bodyText = await response.text()
-
-          logger.debug('tRPC response', {
-            status: response.status,
-            contentType: response.headers.get('content-type'),
-            bodyLength: bodyText.length,
-            bodyPreview: bodyText.substring(0, 500),
-          })
 
           // Create new response with explicit Content-Length
           const newHeaders = new Headers(response.headers)
@@ -125,7 +117,6 @@ if (isMainModule) {
             headers: newHeaders,
           })
         } catch (err) {
-          logger.error('tRPC handler threw exception', { error: err })
           throw err
         }
       }
@@ -137,8 +128,6 @@ if (isMainModule) {
       })
     },
   })
-
-  logger.debug(`Server running on port ${port}`)
 }
 
 export type { AppRouter } from './router.ts'

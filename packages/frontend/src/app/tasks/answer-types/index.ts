@@ -14,6 +14,9 @@ export {
   MultiSelectAnswer,
 }
 
+// Shared components
+export { AnswerOptionCard } from './AnswerOptionCard'
+
 // Component registry for dynamic rendering
 export const answerTypeComponents = {
   yes_no: YesNoAnswer,

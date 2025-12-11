@@ -1,32 +1,20 @@
 import { Card } from '@/app/common/ui/card'
 import { cn } from '@/lib/utils'
 import { Check, X } from 'lucide-react'
-import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
 
 interface YesNoAnswerProps {
   selectedAnswer: boolean | null
   onAnswerSelect: (answer: boolean) => void
-  isLoading?: boolean
   isLocked?: boolean
 }
 
 export function YesNoAnswer({
   selectedAnswer,
   onAnswerSelect,
-  isLoading = false,
   isLocked = false,
 }: YesNoAnswerProps) {
   const { t } = useTranslation()
-
-  if (isLoading) {
-    return (
-      <div className="flex gap-3 sm:gap-4 justify-center my-4 sm:my-6">
-        <Skeleton className="h-24 w-32 sm:h-32 sm:w-48 rounded-2xl" />
-        <Skeleton className="h-24 w-32 sm:h-32 sm:w-48 rounded-2xl" />
-      </div>
-    )
-  }
 
   return (
     <div className="flex gap-3 sm:gap-4 justify-center my-4 sm:my-6">

@@ -8,11 +8,8 @@ import { multiSelectSchema } from './multiSelect'
 import { numberInputSchema } from './numberInput'
 import { orderingSchema } from './ordering'
 import { JSONSchema } from '../../common/ai/base'
-import { createLogger, Logger } from '../../common/logger'
-import { NoJsonSchemaError } from '../../common/errors'
+import { internalError } from '../../common/errors'
 import { BaseRegistry } from '../../common/registry'
-
-const logger = createLogger('TaskTypeRegistry')
 
 /**
  * Extended TaskType with JSON schema for validation
@@ -64,7 +61,7 @@ export class TaskTypeRegistry extends BaseRegistry<TaskTypeWithSchema> {
     // Get the JSON schema for this task type
     const jsonSchema = this.schemas[taskTypeId]
     if (!jsonSchema) {
-      throw new NoJsonSchemaError(taskTypeId)
+      throw internalError(`No JSON schema found for task type: ${taskTypeId}`)
     }
 
     return {
@@ -81,14 +78,7 @@ export class TaskTypeRegistry extends BaseRegistry<TaskTypeWithSchema> {
   }
 
   /**
-   * Get the logger instance
-   */
-  protected getLogger(): Logger {
-    return logger
-  }
-
-  /**
-   * Get the registry name for logging
+   * Get the registry name for error reporting
    */
   protected getRegistryName(): string {
     return 'TaskTypeRegistry'

@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import * as Sentry from '@sentry/react'
 
 // Internal imports
-import './i18n/config'
+import './i18n.ts'
 import './index.css'
 import { router } from './routes'
 import { ErrorBoundary, LoadingState } from '@/app/common'

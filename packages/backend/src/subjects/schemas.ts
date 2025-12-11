@@ -5,3 +5,5 @@ export const subjectsInputSchema = z.object({
   difficulty: z.enum(['easy', 'medium', 'hard']).optional(),
   language: z.string().min(2).max(5).optional(),
 })
+
+export type SubjectsInput = z.infer<typeof subjectsInputSchema>

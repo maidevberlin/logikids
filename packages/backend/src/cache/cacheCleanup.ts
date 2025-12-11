@@ -1,26 +1,21 @@
-import { taskCache } from './taskCache'
-import { createLogger } from '../common/logger'
-
-const logger = createLogger('CacheCleanup')
+import 'reflect-metadata'
+import { injectable, inject } from 'tsyringe'
+import { TaskCache } from './taskCache'
 
 /**
  * Periodically clean expired tasks from cache
  */
+@injectable()
 export class CacheCleanupService {
   private intervalId?: Timer
-  private readonly intervalMs: number
+  private readonly intervalMs = 5 * 60 * 1000 // 5 minutes
 
-  constructor(intervalMinutes: number = 5) {
-    this.intervalMs = intervalMinutes * 60 * 1000
-  }
+  constructor(@inject(TaskCache) private readonly taskCache: TaskCache) {}
 
   start(): void {
     if (this.intervalId) {
-      logger.debug('Already running')
       return
     }
-
-    logger.debug(`[CacheCleanup] Starting cleanup job (every ${this.intervalMs / 60000} minutes)`)
 
     // Run immediately
     this.cleanup()
@@ -35,18 +30,10 @@ export class CacheCleanupService {
     if (this.intervalId) {
       clearInterval(this.intervalId)
       this.intervalId = undefined
-      logger.debug('Stopped')
     }
   }
 
   private cleanup(): void {
-    logger.debug('Running cleanup...')
-    const startTime = Date.now()
-    taskCache.cleanExpired()
-    const duration = Date.now() - startTime
-    logger.debug(`[CacheCleanup] Cleanup completed in ${duration}ms`)
+    this.taskCache.cleanExpired()
   }
 }
-
-// Export singleton
-export const cacheCleanupService = new CacheCleanupService()

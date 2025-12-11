@@ -1,9 +1,6 @@
 import { z } from 'zod'
 import { aiConfigSchema, loadAIConfigFromEnv } from './ai'
 import { serverConfigSchema, loadServerConfigFromEnv } from './server'
-import { createLogger } from '../common/logger'
-
-const logger = createLogger('Config')
 
 const configSchema = z.object({
   ai: aiConfigSchema,
@@ -27,8 +24,6 @@ export async function loadConfig(): Promise<Config> {
   }
 
   try {
-    logger.info('Loading configuration from environment variables')
-
     // Load each config section from env vars
     const config: Config = {
       ai: loadAIConfigFromEnv(),
@@ -40,14 +35,11 @@ export async function loadConfig(): Promise<Config> {
 
     // Cache the config
     cachedConfig = validated
-    logger.info(`Configuration loaded successfully (AI provider: ${validated.ai.provider})`)
     return validated
   } catch (error) {
     if (error instanceof Error) {
-      logger.error('Error loading configuration from environment:', error.message)
       throw error
     } else {
-      logger.error('Unknown error loading configuration')
       throw new Error('Failed to load configuration')
     }
   }

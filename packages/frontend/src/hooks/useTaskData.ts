@@ -1,5 +1,5 @@
 import { trpc } from '@/api/trpc'
-import { TaskRequest } from '@/api/logikids'
+import { TaskRequest } from '@/api/types.ts'
 
 /**
  * Hook for fetching task data from the API.

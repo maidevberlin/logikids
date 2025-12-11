@@ -9,6 +9,10 @@ export const getTaskInputSchema = z.object({
   language: z.string().min(2).max(5),
 })
 
+export type GetTaskInput = z.infer<typeof getTaskInputSchema>
+
 export const getHintInputSchema = z.object({
   taskId: z.string(),
 })
+
+export type GetHintInput = z.infer<typeof getHintInputSchema>

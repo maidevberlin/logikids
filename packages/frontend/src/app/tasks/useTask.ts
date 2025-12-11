@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import { i18n } from '@/i18n/config'
-import { TaskRequest } from '@/api/logikids'
+import { i18n } from '@/i18n.ts'
+import { TaskRequest } from '@/api/types.ts'
 import { useTaskAnswer } from './useTaskAnswer'
 import { useHint } from './useHint'
 import { useTaskData } from '@/hooks/useTaskData'

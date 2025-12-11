@@ -8,9 +8,9 @@ description: Mathematical concepts and problem-solving
 
 Teaching mathematics with focus on computational skills and mathematical reasoning.
 
-## Content Types
+## Content Support
 
-**Use:**
+**If it supports understanding the task, use these for visual enhancement:**
 
 - LaTeX for equations
 - SVG diagrams for geometry, graphs, number lines
@@ -18,14 +18,14 @@ Teaching mathematics with focus on computational skills and mathematical reasoni
 - Tables for data, patterns, comparisons
 - Step-by-step worked examples
 
-## Visual Content Protocol
+## Generation Protocol
 
-Before generating ANY visual content (SVG, TikZ, diagrams):
+Before generating ANY content:
 
-1. **Calculate first**: Compute all mathematical values explicitly: Angles, Coordinates, Proportions, etc.
+1. **Calculate first**: Compute all mathematical values explicitly: Values, Equations, Options, Angles, Coordinates, Proportions, etc.
 
-2. **State visual implications**: Translate math to visual properties
+2. **State implications**: Translate math to contextual and visual properties
 
-3. **Generate diagram**: Use calculated values, not approximations
+3. **Generate Task/Solutions**: Use calculated values, not approximations
 
-This prevents visual-mathematical mismatches where diagrams contradict stated values.
+This prevents mathematical mismatches where solutions, options, diagrams contradict stated values.

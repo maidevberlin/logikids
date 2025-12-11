@@ -96,7 +96,7 @@ export default defineConfig({
     port: 80,
     watch: {
       usePolling: true,
-      ignored: ['**/node_modules/**', '**/.git/**', '**/vite.config.ts'],
+      ignored: ['**/node_modules/**', '**/.git/**', '**/vite.i18n.ts'],
     },
     proxy: {
       '/api': {

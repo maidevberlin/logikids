@@ -4,10 +4,7 @@ import { TaskTypeWithSchema } from '../tasks/task-types'
 import { validateNoPlaceholders } from './helpers'
 import { VariationLoader } from './variations/loader'
 import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer'
-import { createLogger } from '../common/logger'
-import { HintPromptNotLoadedError } from '../common/errors'
-
-const logger = createLogger('PromptBuilder')
+import { internalError } from '../common/errors'
 
 const LANGUAGE_NAMES: Record<string, string> = {
   en: 'English',
@@ -153,18 +150,6 @@ export class PromptBuilder {
 
     validateNoPlaceholders(finalPrompt, 'PromptBuilder.buildPrompt')
 
-    // === STEP 5: Debug logging ===
-
-    if (process.env.NODE_ENV === 'development') {
-      logger.debug('Prompt generation debug', {
-        subject: this.subject.id,
-        concept: params.concept.id,
-        taskType: this.taskType.id,
-        variables: allVariables,
-        prompt: finalPrompt,
-      })
-    }
-
     return finalPrompt
   }
 
@@ -186,7 +171,7 @@ export class PromptBuilder {
   ): string {
     // If no hint prompt is provided, use fallback template
     if (!this.hintPrompt) {
-      throw new HintPromptNotLoadedError()
+      throw internalError('Hint prompt template not loaded')
     }
 
     const languageName = this.formatLanguage(context.language)

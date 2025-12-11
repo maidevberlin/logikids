@@ -1,19 +1,18 @@
 import 'reflect-metadata'
-import { injectable } from 'tsyringe'
+import { injectable, inject } from 'tsyringe'
 import { TTSService } from './service'
 import { TTSCache } from './cache'
-import { taskCache } from '../cache/taskCache'
-import { createLogger } from '../common/logger'
-import { TaskNotFoundError } from '../common/errors'
+import { TaskCache } from '../cache/taskCache'
+import { notFound } from '../common/errors'
+import { markdownToSpeech } from './markdown-to-speech'
 import type { SynthesizeInput } from './schemas'
-
-const logger = createLogger('TTSController')
 
 @injectable()
 export class TTSController {
   constructor(
-    private readonly ttsService: TTSService,
-    private readonly ttsCache: TTSCache
+    @inject(TTSService) private readonly ttsService: TTSService,
+    @inject(TTSCache) private readonly ttsCache: TTSCache,
+    @inject(TaskCache) private readonly taskCache: TaskCache
   ) {}
 
   /**
@@ -39,12 +38,10 @@ export class TTSController {
   async synthesize(input: SynthesizeInput, _userId: string): Promise<{ audio: string }> {
     const { taskId, field } = input
 
-    logger.debug('TTS request', { taskId, field })
-
     // Get task from cache
-    const context = taskCache.get(taskId)
+    const context = this.taskCache.get(taskId)
     if (!context) {
-      throw new TaskNotFoundError()
+      throw notFound('Task not found or expired')
     }
 
     // Extract text from task
@@ -61,27 +58,29 @@ export class TTSController {
     }
 
     if (!text) {
-      throw new TaskNotFoundError('Text not found for field')
+      throw notFound('Text not found for field')
     }
-
-    logger.debug('Text extracted', { field, textLength: text.length })
 
     // Get language from task context
     const language = context.language
 
-    // Check cache first
-    let audio = await this.ttsCache.get(text, language)
+    // Convert markdown to speech-friendly text (with language for proper LaTeX conversion)
+    const speechText = await markdownToSpeech(text, language)
+
+    if (!speechText.trim()) {
+      throw notFound('No speakable text found for field')
+    }
+
+    // Check cache first (use converted text for cache key)
+    let audio = await this.ttsCache.get(speechText, language)
 
     // If not cached, synthesize
     if (!audio) {
-      logger.debug('Cache miss, synthesizing audio')
-      audio = await this.ttsService.synthesize(text, language)
+      audio = await this.ttsService.synthesize(speechText, language)
 
       // Store in cache
-      await this.ttsCache.set(text, language, audio)
+      await this.ttsCache.set(speechText, language, audio)
     }
-
-    logger.info('TTS audio generated', { taskId, field, audioSize: audio.length })
 
     // Return audio as base64
     return { audio: audio.toString('base64') }

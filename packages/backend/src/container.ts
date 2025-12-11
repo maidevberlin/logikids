@@ -7,67 +7,71 @@ import { PromptLoader } from './prompts/loader'
 import { VariationLoader } from './prompts/variations/loader'
 import { TaskService } from './tasks/service'
 import { HintService } from './tasks/hints/service'
+import { ConceptsService } from './concepts/service'
+import { SubjectsService } from './subjects/service'
+import { CacheCleanupService } from './cache/cacheCleanup'
+import { AuthService } from './auth/service'
+import { InviteService } from './invites/service'
+import { SyncService } from './sync/service'
+import { StorageService } from './sync/storage'
+import { TTSService } from './tts/service'
+import { TTSCache } from './tts/cache'
 import { subjectRegistry, SubjectRegistry } from './subjects/registry'
 import { taskTypeRegistry, TaskTypeRegistry } from './tasks/task-types'
 import { taskCache, TaskCache } from './cache/taskCache'
-import { createLogger } from './common/logger'
-
-const logger = createLogger('Container')
-
-// Injection tokens for instances
-export const AI_CLIENT = 'AIClient'
-export const PROMPT_SERVICE = 'PromptService'
-export const SUBJECT_REGISTRY = 'SubjectRegistry'
-export const TASK_TYPE_REGISTRY = 'TaskTypeRegistry'
-export const TASK_CACHE = 'TaskCache'
+import { AIClientToken } from './di-tokens'
 
 /**
  * Initialize the DI container with all async dependencies.
  * Must be called before using any services that depend on these.
  */
 export async function initializeContainer(): Promise<void> {
-  logger.info('Initializing DI container...')
-
   // Register singleton instances
-  container.registerInstance<SubjectRegistry>(SUBJECT_REGISTRY, subjectRegistry)
-  container.registerInstance<TaskTypeRegistry>(TASK_TYPE_REGISTRY, taskTypeRegistry)
-  container.registerInstance<TaskCache>(TASK_CACHE, taskCache)
+  container.registerInstance<SubjectRegistry>(SubjectRegistry, subjectRegistry)
+  container.registerInstance<TaskTypeRegistry>(TaskTypeRegistry, taskTypeRegistry)
+  container.registerInstance<TaskCache>(TaskCache, taskCache)
 
   // Create and register AI client
   const aiClient = await createAIClient()
-  container.registerInstance<AIClient>(AI_CLIENT, aiClient)
+  container.registerInstance<AIClient>(AIClientToken, aiClient)
 
-  // Create and initialize PromptService
+  // Create and register PromptLoader and VariationLoader
   const promptLoader = new PromptLoader()
   const variationLoader = new VariationLoader()
-  const promptService = new PromptService(promptLoader, variationLoader)
+  container.registerInstance<PromptLoader>(PromptLoader, promptLoader)
+  container.registerInstance<VariationLoader>(VariationLoader, variationLoader)
+
+  // Register and initialize PromptService
+  container.registerSingleton<PromptService>(PromptService)
+  const promptService = container.resolve<PromptService>(PromptService)
   await promptService.initialize()
-  container.registerInstance<PromptService>(PROMPT_SERVICE, promptService)
 
-  // Register TaskService with factory
-  container.register<TaskService>(TaskService, {
-    useFactory: (c) => {
-      return new TaskService(
-        c.resolve<AIClient>(AI_CLIENT),
-        c.resolve<PromptService>(PROMPT_SERVICE),
-        c.resolve<SubjectRegistry>(SUBJECT_REGISTRY),
-        c.resolve<TaskTypeRegistry>(TASK_TYPE_REGISTRY),
-        c.resolve<TaskCache>(TASK_CACHE)
-      )
-    },
-  })
+  // Register TaskService as singleton (auto-resolved via @injectable)
+  container.registerSingleton<TaskService>(TaskService)
 
-  // Register HintService with factory
-  container.register<HintService>(HintService, {
-    useFactory: (c) => {
-      // Note: initialize() is called separately since it's async
-      return new HintService(c.resolve<AIClient>(AI_CLIENT))
-    },
-  })
-
-  // Initialize HintService (async operation)
+  // Register HintService as singleton (auto-resolved via @injectable)
+  container.registerSingleton<HintService>(HintService)
   const hintService = container.resolve<HintService>(HintService)
   await hintService.initialize()
 
-  logger.info('DI container initialized')
+  // Register ConceptsService as singleton (auto-resolved via @injectable)
+  container.registerSingleton<ConceptsService>(ConceptsService)
+
+  // Register SubjectsService as singleton (auto-resolved via @injectable)
+  container.registerSingleton<SubjectsService>(SubjectsService)
+
+  // Register CacheCleanupService as singleton (auto-resolved via @injectable)
+  container.registerSingleton<CacheCleanupService>(CacheCleanupService)
+
+  // Register Auth services
+  container.registerSingleton<AuthService>(AuthService)
+  container.registerSingleton<InviteService>(InviteService)
+
+  // Register Sync services
+  container.registerSingleton<StorageService>(StorageService)
+  container.registerSingleton<SyncService>(SyncService)
+
+  // Register TTS services
+  container.registerSingleton<TTSCache>(TTSCache)
+  container.registerSingleton<TTSService>(TTSService)
 }

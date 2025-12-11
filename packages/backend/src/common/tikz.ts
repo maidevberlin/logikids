@@ -4,9 +4,6 @@
  */
 
 import tex2svg from 'node-tikzjax'
-import { createLogger } from './logger'
-
-const logger = createLogger('TikZProcessor')
 
 // Regex to match ```tikz code blocks
 const TIKZ_CODE_BLOCK_REGEX = /```tikz\s*([\s\S]*?)```/gi
@@ -49,17 +46,14 @@ ${tikzContent}
 async function renderTikzToSvg(tikzCode: string): Promise<string> {
   try {
     const wrappedCode = wrapTikzCode(tikzCode)
-    logger.debug('Rendering TikZ', { codeLength: wrappedCode.length })
 
     const svg = await tex2svg(wrappedCode, {
       showConsole: false,
       embedFontCss: true,
     })
 
-    logger.debug('TikZ rendered successfully', { svgLength: svg.length })
     return svg
   } catch (error) {
-    logger.error('TikZ rendering failed', error as Error, { tikzCode })
     // Return an error placeholder that's visible to the user
     return `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100">
       <rect width="100%" height="100%" fill="#fee2e2" rx="8"/>
@@ -87,8 +81,6 @@ export async function convertTikzToSvg(content: string): Promise<string> {
   if (matches.length === 0) {
     return content
   }
-
-  logger.info('Found TikZ code blocks to convert', { count: matches.length })
 
   // Process each match sequentially (node-tikzjax doesn't support parallel execution)
   let result = content

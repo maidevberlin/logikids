@@ -4,7 +4,7 @@ import { SubjectCard } from './SubjectCard'
 import { Skeleton } from '@/app/common/ui/skeleton'
 import { useUserData } from '@/app/account'
 import { trpc } from '@/api/trpc'
-import { SubjectInfo } from '@/api/logikids'
+import { SubjectInfo } from '@/api/types.ts'
 
 // School subject ordering (when they typically start in school)
 const SUBJECT_ORDER = ['math', 'german', 'english', 'physics', 'logic', 'music']

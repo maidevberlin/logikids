@@ -1,37 +1,32 @@
+import 'reflect-metadata'
+import { injectable, inject } from 'tsyringe'
 import { AIClient } from '../../common/ai/base'
 import { PromptBuilder } from '../../prompts/builder'
 import { PromptLoader } from '../../prompts/loader'
-import { taskTypeRegistry } from '../task-types'
-import { taskCache } from '../../cache/taskCache'
+import { TaskTypeRegistry } from '../task-types'
+import { TaskCache } from '../../cache/taskCache'
 import { hintSchema } from '../../prompts/schemas'
-import { subjectRegistry } from '../../subjects/registry'
+import { SubjectRegistry } from '../../subjects/registry'
 import { VariationLoader } from '../../prompts/variations/loader'
-import { createLogger } from '../../common/logger'
-import {
-  TaskNotFoundError,
-  AllHintsUsedError,
-  SubjectNotFoundError,
-  TaskTypeNotFoundError,
-} from '../../common/errors'
+import { notFound, badRequest } from '../../common/errors'
+import { AIClientToken } from '../../di-tokens'
 
-const logger = createLogger('HintService')
-
+@injectable()
 export class HintService {
-  private readonly promptLoader: PromptLoader
-  private readonly variationLoader: VariationLoader
-
-  constructor(private readonly aiClient: AIClient) {
-    this.promptLoader = new PromptLoader()
-    this.variationLoader = new VariationLoader()
-  }
+  constructor(
+    @inject(AIClientToken) private readonly aiClient: AIClient,
+    @inject(SubjectRegistry) private readonly subjectRegistry: SubjectRegistry,
+    @inject(TaskTypeRegistry) private readonly taskTypeRegistry: TaskTypeRegistry,
+    @inject(TaskCache) private readonly taskCache: TaskCache,
+    @inject(PromptLoader) private readonly promptLoader: PromptLoader,
+    @inject(VariationLoader) private readonly variationLoader: VariationLoader
+  ) {}
 
   /**
    * Initialize the hint service (load variations)
    */
   async initialize(): Promise<void> {
-    logger.info('Initializing...')
     await this.variationLoader.loadAll()
-    logger.info('Initialization complete')
   }
 
   public async generateHint(
@@ -48,29 +43,27 @@ export class HintService {
       cost?: number
     }
   }> {
-    logger.info('Generating hint for task', { taskId, userId })
-
     // Get task context from cache
-    const context = taskCache.get(taskId)
+    const context = this.taskCache.get(taskId)
     if (!context) {
-      throw new TaskNotFoundError()
+      throw notFound('Task not found or expired')
     }
 
     // Check if all hints have been used
     const hintNumber = context.hintsGenerated.length + 1
     if (hintNumber > 4) {
-      throw new AllHintsUsedError()
+      throw badRequest('All hints have been used')
     }
 
     // Get subject and task type for prompt building
-    const subject = subjectRegistry.get(context.subject)
+    const subject = this.subjectRegistry.get(context.subject)
     if (!subject) {
-      throw new SubjectNotFoundError(context.subject)
+      throw notFound(`Subject ${context.subject} not found`)
     }
 
-    const taskType = taskTypeRegistry.get(context.taskType)
+    const taskType = this.taskTypeRegistry.get(context.taskType)
     if (!taskType) {
-      throw new TaskTypeNotFoundError(context.taskType)
+      throw notFound(`Task type ${context.taskType} not found`)
     }
 
     // Load base prompt, variations template, and hint prompt template
@@ -102,8 +95,6 @@ export class HintService {
       hintNumber
     )
 
-    logger.debug('Hint prompt built', { promptLength: hintPrompt.length })
-
     // Generate hint using structured output
     const aiStartTime = Date.now()
     const aiResponse = await this.aiClient.generateStructured<{ hint: string }>(
@@ -117,13 +108,10 @@ export class HintService {
         },
       }
     )
-    const aiDuration = Date.now() - aiStartTime
-    logger.info('Hint generated', { duration: aiDuration, usage: aiResponse.usage })
 
     // Store hint in cache
     context.hintsGenerated.push(aiResponse.result.hint)
-    taskCache.set(taskId, context)
-    logger.debug('Hint stored in cache', { totalHints: context.hintsGenerated.length })
+    this.taskCache.set(taskId, context)
 
     return {
       hint: aiResponse.result.hint,

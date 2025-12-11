@@ -15,3 +15,5 @@ export const conceptsInputSchema = z.object({
   difficulty: difficultyEnum.optional(),
   source: sourceEnum.optional(),
 })
+
+export type ConceptsInput = z.infer<typeof conceptsInputSchema>

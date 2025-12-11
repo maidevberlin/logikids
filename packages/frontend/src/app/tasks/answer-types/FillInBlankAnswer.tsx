@@ -1,7 +1,6 @@
 import { Input } from '@/app/common/ui/input'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { cn } from '@/lib/utils'
-import { Skeleton } from '@/app/common/ui/skeleton'
 import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
 
@@ -10,7 +9,6 @@ interface FillInBlankAnswerProps {
   blanksCount: number
   selectedAnswer: string[] | null
   onAnswerSelect: (answers: string[]) => void
-  isLoading?: boolean
   isLocked?: boolean
 }
 
@@ -19,7 +17,6 @@ export function FillInBlankAnswer({
   blanksCount,
   selectedAnswer,
   onAnswerSelect,
-  isLoading = false,
   isLocked = false,
 }: FillInBlankAnswerProps) {
   const { t } = useTranslation()
@@ -109,19 +106,6 @@ export function FillInBlankAnswer({
         noParagraphMargin={true}
         className="inline"
       />
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="my-6 space-y-4">
-        <Skeleton className="h-20 rounded-2xl" />
-        <div className="flex gap-2 justify-center">
-          {Array.from({ length: blanksCount }).map((_, i) => (
-            <Skeleton key={i} className="h-10 w-32 rounded-xl" />
-          ))}
-        </div>
-      </div>
     )
   }
 

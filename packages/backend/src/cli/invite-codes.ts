@@ -10,15 +10,7 @@
 
 import { pool } from '../../database/db'
 import { randomBytes } from 'crypto'
-
-interface InviteCode {
-  code: string
-  created_at: number
-  expires_at: number
-  note: string | null
-  used_by: string | null
-  used_at: number | null
-}
+import type { InviteCode } from '../invites/types'
 
 // Generate random invite code (8 chars, alphanumeric, easy to type)
 function generateCode(): string {

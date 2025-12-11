@@ -1,15 +1,7 @@
 import 'reflect-metadata'
 import { injectable } from 'tsyringe'
 import { pool } from '../../database/db'
-
-export interface InviteCode {
-  code: string
-  created_at: number
-  expires_at: number
-  note: string | null
-  used_by: string | null
-  used_at: number | null
-}
+import type { InviteCode } from './types'
 
 @injectable()
 export class InviteService {

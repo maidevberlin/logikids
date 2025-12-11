@@ -1,7 +1,4 @@
 import { pool } from '../../../database/db'
-import { createLogger } from '../logger'
-
-const logger = createLogger('CostTracker')
 
 export interface CostTrackingContext {
   userId?: string
@@ -69,7 +66,6 @@ export function calculateCost(usage: UsageInfo): number {
   if (usage.provider === 'anthropic') {
     const modelPricing = PRICING.anthropic[usage.model as keyof typeof PRICING.anthropic]
     if (!modelPricing) {
-      logger.warn('Unknown Anthropic model for cost calculation', { model: usage.model })
       return 0
     }
     const inputCost = (usage.inputTokens / 1_000_000) * modelPricing.input
@@ -78,14 +74,12 @@ export function calculateCost(usage: UsageInfo): number {
   } else if (usage.provider === 'openai') {
     const modelPricing = PRICING.openai[usage.model as keyof typeof PRICING.openai]
     if (!modelPricing) {
-      logger.warn('Unknown OpenAI model for cost calculation', { model: usage.model })
       return 0
     }
     const inputCost = (usage.inputTokens / 1_000_000) * modelPricing.input
     const outputCost = (usage.outputTokens / 1_000_000) * modelPricing.output
     return inputCost + outputCost
   } else {
-    logger.warn('Unknown provider for cost calculation', { provider: usage.provider })
     return 0
   }
 }
@@ -97,7 +91,6 @@ export async function trackCost(context: CostTrackingContext, usage: UsageInfo):
   try {
     // Skip tracking if no user ID (shouldn't happen with requireAuth, but defensive)
     if (!context.userId) {
-      logger.debug('Skipping cost tracking - no user ID')
       return
     }
 
@@ -119,23 +112,7 @@ export async function trackCost(context: CostTrackingContext, usage: UsageInfo):
         Date.now(),
       ]
     )
-
-    logger.info('Cost tracked', {
-      userId: context.userId,
-      subject: context.subject,
-      concept: context.concept,
-      inputTokens: usage.inputTokens,
-      outputTokens: usage.outputTokens,
-      totalCost: totalCost.toFixed(6),
-      provider: usage.provider,
-      model: usage.model,
-    })
   } catch (error) {
     // Don't throw - cost tracking failure shouldn't break task generation
-    logger.error('Failed to track cost', {
-      error: error instanceof Error ? error.message : 'Unknown error',
-      context,
-      usage,
-    })
   }
 }

@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { injectable, inject } from 'tsyringe'
-import { TRPCError } from '@trpc/server'
+import { forbidden } from '../common/errors'
 import { SyncService } from './service'
 import type { SyncPayload } from './schema'
 
@@ -14,12 +14,7 @@ export class SyncController {
     ctxUserId: string
   ): Promise<{ success: boolean }> {
     if (userId !== ctxUserId) {
-      throw new TRPCError({ code: 'FORBIDDEN', message: 'Cannot upload data for another user' })
-    }
-
-    const blobSize = Buffer.from(payload.encryptedBlob, 'base64').length
-    if (blobSize > 1_000_000) {
-      throw new TRPCError({ code: 'PAYLOAD_TOO_LARGE', message: 'Payload too large (max 1MB)' })
+      throw forbidden('Cannot upload data for another user')
     }
 
     await this.syncService.upload(userId, payload)
@@ -28,7 +23,7 @@ export class SyncController {
 
   async download(userId: string, ctxUserId: string): Promise<SyncPayload | null> {
     if (userId !== ctxUserId) {
-      throw new TRPCError({ code: 'FORBIDDEN', message: 'Cannot download data for another user' })
+      throw forbidden('Cannot download data for another user')
     }
 
     // Return null if no data exists (first sync)
@@ -38,7 +33,7 @@ export class SyncController {
 
   async verify(userId: string, ctxUserId: string): Promise<{ exists: boolean }> {
     if (userId !== ctxUserId) {
-      throw new TRPCError({ code: 'FORBIDDEN', message: 'Cannot verify another user' })
+      throw forbidden('Cannot verify another user')
     }
 
     const exists = await this.syncService.verify(userId)
@@ -47,7 +42,7 @@ export class SyncController {
 
   async delete(userId: string, ctxUserId: string): Promise<{ success: boolean }> {
     if (userId !== ctxUserId) {
-      throw new TRPCError({ code: 'FORBIDDEN', message: 'Cannot delete data for another user' })
+      throw forbidden('Cannot delete data for another user')
     }
 
     await this.syncService.deleteUser(userId)
