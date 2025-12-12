@@ -1,7 +1,8 @@
-import { useTTS } from '@/hooks/useTTS'
+import { useTTS } from './useTTS'
+import { useTTSCostReporter } from '@/app/tasks/TTSCostContext'
 import { Volume2, Loader2 } from 'lucide-react'
 import { Button } from '@/app/common/ui/button'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface PlayButtonProps {
   taskId: string
@@ -20,7 +21,8 @@ interface PlayButtonProps {
  * @param className - Optional additional CSS classes
  */
 export function PlayButton({ taskId, field, className }: PlayButtonProps) {
-  const { state, play } = useTTS({ taskId, field })
+  const reportCost = useTTSCostReporter()
+  const { state, play } = useTTS({ taskId, field, onCostReceived: reportCost })
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation() // Prevent triggering parent click handlers

@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Html5Qrcode } from 'html5-qrcode'
-import { prepareImportData, QRPayload } from '@/data/plugins/qr'
-import { useAuth } from '@/app/account'
-import { useSync } from '@/app/account/useSync'
+import { prepareImportData, QRPayload, useSync } from '@/app/user/sync'
+import { useAuth } from '@/app/user'
 import { Button } from '@/app/common/ui/button'
 import {
   Dialog,

@@ -11,10 +11,10 @@ import { Upload, Camera, FileText, ArrowRight } from 'lucide-react'
 const PDFImport = lazy(() => import('./PDFImport').then((m) => ({ default: m.PDFImport })))
 import { QRScanner } from './QRScanner'
 import { ManualImport } from './ManualImport'
-import { useAuth } from '@/app/account'
+import { useAuth } from '@/app/user'
 import { Footer } from '@/app/common/Footer'
-import { createLogger } from '@/lib/logger'
-import { trpc } from '@/api/trpc'
+import { createLogger } from '@/app/common/logger'
+import { trpc } from '@/app/common/trpc'
 
 const logger = createLogger('WelcomeChoicePage')
 

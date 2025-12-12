@@ -4,7 +4,7 @@ import { OpenAIClient } from './openai'
 import { AnthropicClient } from './anthropic'
 import { getConfig } from '../../config'
 import { getApiKey, OllamaConfig, OpenAIConfig, AnthropicConfig } from '../../config/ai'
-import { ConfigurationError, UnsupportedProviderError } from '../errors'
+import { internalError, badRequest } from '../errors'
 
 export interface AIClientOverrides {
   provider?: 'ollama' | 'openai' | 'anthropic'
@@ -15,7 +15,7 @@ export async function createAIClient(overrides?: AIClientOverrides): Promise<AIC
   const aiConfig = await getConfig('ai')
 
   if (!aiConfig) {
-    throw new ConfigurationError('No configuration found for AI')
+    throw internalError('No configuration found for AI')
   }
 
   // Use override provider if specified, otherwise use config
@@ -55,6 +55,6 @@ export async function createAIClient(overrides?: AIClientOverrides): Promise<AIC
     }
 
     default:
-      throw new UnsupportedProviderError(provider)
+      throw badRequest(`Unsupported AI provider: ${provider}`)
   }
 }

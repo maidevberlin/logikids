@@ -7,8 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/app/common/ui/select'
-import { cn } from '@/lib/utils'
-import { Skeleton } from '@/app/common/ui/skeleton'
+import { cn } from '@/app/common/cn'
 
 interface NumberInputAnswerProps {
   expectedAnswer: number // The correct answer (for sizing)
@@ -16,7 +15,6 @@ interface NumberInputAnswerProps {
   unitOptions?: string[] // Unit choices (overrides unit prop)
   selectedAnswer: { value: number | null; unit?: string } | null
   onAnswerSelect: (answer: { value: number | null; unit?: string }) => void
-  isLoading?: boolean
   isLocked?: boolean
 }
 
@@ -26,7 +24,6 @@ export function NumberInputAnswer({
   unitOptions,
   selectedAnswer,
   onAnswerSelect,
-  isLoading = false,
   isLocked = false,
 }: NumberInputAnswerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -86,14 +83,6 @@ export function NumberInputAnswer({
   const handleUnitChange = (newUnit: string) => {
     if (isLocked) return
     onAnswerSelect({ ...answer, unit: newUnit })
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center my-6">
-        <Skeleton className="h-24 w-96" />
-      </div>
-    )
   }
 
   return (

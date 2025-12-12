@@ -1,41 +1,36 @@
+import ReactCountryFlag from 'react-country-flag'
 import { SelectorButton } from '@/app/common/ui/SelectorButton'
-
-interface LanguageOption {
-  value: string
-  label: string
-  flag: string
-}
+import { Language, LANGUAGES, SUPPORTED_LANGUAGES } from '@content/schema'
 
 interface LanguageSelectorProps {
-  value: string
-  onChange: (value: string) => void
+  value: Language
+  onChange: (value: Language) => void
   className?: string
 }
 
 export function LanguageSelector({ value, onChange, className = '' }: LanguageSelectorProps) {
-  const languageOptions: LanguageOption[] = [
-    { value: 'en', label: 'English', flag: '🇬🇧' },
-    { value: 'de', label: 'Deutsch', flag: '🇩🇪' },
-  ]
-
   return (
     <div className={`flex justify-center gap-6 ${className}`}>
-      {languageOptions.map((option) => (
-        <div key={option.value} className="flex flex-col items-center gap-2">
+      {SUPPORTED_LANGUAGES.map((lang) => (
+        <div key={lang} className="flex flex-col items-center gap-2">
           <SelectorButton
-            value={option.value}
-            isSelected={value === option.value}
+            value={lang}
+            isSelected={value === lang}
             onChange={onChange}
             variant="flag"
           >
-            {option.flag}
+            <ReactCountryFlag
+              countryCode={LANGUAGES[lang].countryCode}
+              svg
+              style={{ width: '2em', height: '2em' }}
+            />
           </SelectorButton>
           <span
             className={`text-sm font-medium transition-colors ${
-              value === option.value ? 'text-primary' : 'text-foreground'
+              value === lang ? 'text-primary' : 'text-foreground'
             }`}
           >
-            {option.label}
+            {LANGUAGES[lang].label}
           </span>
         </div>
       ))}

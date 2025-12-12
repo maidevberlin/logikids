@@ -24,7 +24,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
    - Difficulty progression
    - Key terminology
 
-   Save to `docs/{subject}-curriculum-research.md` with:
+   Save to `docs/research/{subject}-curriculum-research.md` with:
    - Concept list (IDs, titles, grades, scope)
    - Extracted curriculum details per concept
    - Source URLs
@@ -36,7 +36,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
    ```
    Create concept: {subject}/{concept-id} (Grade {grade})
 
-   1. Read `.claude/docs/concept-rules.md` first
+   1. Read `docs/concept-rules.md` first
    2. Use write-concept skill
    3. Reference `docs/{subject}-curriculum-research.md` for curriculum context
    4. **SKIP RESEARCH**: All content is provided!
@@ -48,12 +48,12 @@ description: Use when generating multiple curriculum-aligned concept files in pa
 
 5. **Verify files exist** - Check that concept files were actually created. Agents may report success without writing files.
 
-6. **Validate** - Use `docker compose exec backend-dev bun run check:concepts` to efficiently check the generated concepts. If failures, resume agents with fixes.
+6. **Validate** - Use `bun run check:concepts` to efficiently check the generated concepts. If failures, resume agents with fixes.
 
 7. **Commit and create PR** - Stage, commit, push, and open PR against `dev`:
 
    ```bash
-   git add packages/content/subjects/{subject}/ packages/frontend/public/locales/
+   git add content/subjects/{subject}/ packages/frontend/public/locales/
    git commit -m "feat(content): add {Subject} Grade {N} concepts (curriculum aligned)"
    git push -u origin concepts/{subject}-grade{N}
    gh pr create --base dev --title "feat(content): {Subject} Grade {N} concepts" --body "Add {N} new concepts for Grade {N} {Subject} based on {curriculum}."

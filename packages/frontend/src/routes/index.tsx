@@ -13,9 +13,9 @@ const OnboardingPage = lazy(() =>
 )
 const SubjectsPage = lazy(() => import('@/app/subjects').then((m) => ({ default: m.SubjectsPage })))
 const ConceptsPage = lazy(() => import('@/app/concepts').then((m) => ({ default: m.ConceptsPage })))
-const AccountPage = lazy(() => import('@/app/account').then((m) => ({ default: m.AccountPage })))
+const AccountPage = lazy(() => import('@/app/user').then((m) => ({ default: m.AccountPage })))
 const TaskPage = lazy(() => import('@/app/tasks').then((m) => ({ default: m.TaskPage })))
-const StatsPage = lazy(() => import('@/app/stats').then((m) => ({ default: m.StatsPage })))
+const StatsPage = lazy(() => import('@/app/gamification').then((m) => ({ default: m.StatsPage })))
 const PracticePage = lazy(() =>
   import('@/app/practice/PracticePage').then((m) => ({ default: m.PracticePage }))
 )

@@ -32,3 +32,4 @@ yarn-error.log*
 
 # Git worktrees
 .worktrees/
+content/*.d.ts

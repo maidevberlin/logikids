@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { injectable, inject } from 'tsyringe'
 import { TaskService } from './service'
-import { HintService } from '../hints/service'
+import { HintService } from './hints/service'
 import type { TaskRequest, TaskResponse } from './types'
 
 @injectable()

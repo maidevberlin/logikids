@@ -2,7 +2,7 @@ import { PageLayout } from '@/app/common/PageLayout'
 import { GreetingHeader } from './GreetingHeader'
 import { StatsHeader } from './StatsHeader'
 import { NavigationCards } from './NavigationCards'
-import { useUserData } from '@/app/account'
+import { useUserData } from '@/app/user'
 
 export function WelcomePage() {
   const { data } = useUserData()

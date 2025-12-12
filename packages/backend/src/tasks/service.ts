@@ -1,3 +1,5 @@
+import 'reflect-metadata'
+import { injectable, inject } from 'tsyringe'
 import { TaskRequest } from './types'
 import { TaskResponse, BaseTaskResponse } from './types'
 import { AIClient } from '../common/ai/base'
@@ -6,32 +8,23 @@ import { v4 as uuidv4 } from 'uuid'
 import { TaskCache, TaskContext } from '../cache/taskCache'
 import { SubjectRegistry } from '../subjects/registry'
 import { PromptService } from '../prompts/service'
-import { createLogger } from '../common/logger'
-import {
-  SubjectNotFoundError,
-  NoConceptsFoundError,
-  ConceptNotFoundError,
-  NoTaskTypesError,
-  TaskTypeNotFoundError,
-} from '../common/errors'
+import { notFound, internalError } from '../common/errors'
 import { Concept } from '../prompts/schemas'
 import { convertTaskSvgs } from '../common/svg'
 import { convertTaskTikz } from '../common/tikz'
+import { AIClientToken } from '../di-tokens'
 
-const logger = createLogger('TaskService')
-
+@injectable()
 export class TaskService {
   constructor(
-    private readonly aiClient: AIClient,
-    private readonly promptService: PromptService,
-    private readonly subjectRegistry: SubjectRegistry,
-    private readonly taskTypeRegistry: TaskTypeRegistry,
-    private readonly taskCache: TaskCache
+    @inject(AIClientToken) private readonly aiClient: AIClient,
+    @inject(PromptService) private readonly promptService: PromptService,
+    @inject(SubjectRegistry) private readonly subjectRegistry: SubjectRegistry,
+    @inject(TaskTypeRegistry) private readonly taskTypeRegistry: TaskTypeRegistry,
+    @inject(TaskCache) private readonly taskCache: TaskCache
   ) {}
 
   public async generateTask(request: TaskRequest, userId?: string): Promise<TaskResponse> {
-    logger.info('Starting task generation', { request, userId })
-
     const {
       subject: subjectId,
       concept: requestedConcept,
@@ -44,9 +37,8 @@ export class TaskService {
     // Get the subject
     const subject = this.subjectRegistry.get(subjectId)
     if (!subject) {
-      throw new SubjectNotFoundError(subjectId)
+      throw notFound(`Subject '${subjectId}' not found`)
     }
-    logger.debug('Subject loaded', { subjectId })
 
     // Load concept (random if not specified)
     let concept: Concept
@@ -54,18 +46,18 @@ export class TaskService {
       // Random selection with grade filtering
       const randomConcept = this.subjectRegistry.getRandomConcept(subjectId, { grade, difficulty })
       if (!randomConcept) {
-        throw new NoConceptsFoundError({ subject: subjectId, grade, difficulty })
+        throw notFound(
+          `No concepts found for subject '${subjectId}' with grade ${grade} and difficulty ${difficulty}`
+        )
       }
       concept = randomConcept
-      logger.debug('Random concept selected', { conceptId: concept.id })
     } else {
       // Get specific concept
       const foundConcept = this.subjectRegistry.getConcept(subjectId, requestedConcept)
       if (!foundConcept) {
-        throw new ConceptNotFoundError(requestedConcept, subjectId)
+        throw notFound(`Concept '${requestedConcept}' not found in subject '${subjectId}'`)
       }
       concept = foundConcept
-      logger.debug('Concept loaded', { conceptId: concept.id })
     }
 
     // Get the task type (random if not specified)
@@ -73,16 +65,14 @@ export class TaskService {
     if (!taskType) {
       const allTypes = this.taskTypeRegistry.getAll()
       if (allTypes.length === 0) {
-        throw new NoTaskTypesError()
+        throw internalError('No task types available')
       }
       selectedTaskType = allTypes[Math.floor(Math.random() * allTypes.length)]
-      logger.debug('Random task type selected', { taskTypeId: selectedTaskType.id })
     } else {
       selectedTaskType = this.taskTypeRegistry.get(taskType)
       if (!selectedTaskType) {
-        throw new TaskTypeNotFoundError(taskType)
+        throw notFound(`Task type '${taskType}' not found`)
       }
-      logger.debug('Task type loaded', { taskTypeId: selectedTaskType.id })
     }
 
     // Build prompt using PromptService
@@ -134,7 +124,6 @@ export class TaskService {
         },
       }),
     } as TaskResponse
-    logger.debug('Task ID generated', { taskId, usage: aiResponse.usage })
 
     // Store context in cache for hint generation
     const taskContext: TaskContext = {
@@ -150,7 +139,6 @@ export class TaskService {
       createdAt: Date.now(),
     }
     this.taskCache.set(taskId, taskContext)
-    logger.debug('Task context stored in cache')
 
     return responseWithType
   }

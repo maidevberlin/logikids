@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ChevronLeft, Home, User } from 'lucide-react'
 import { Button } from '@/app/common/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/app/common/ui/tooltip'
-import { HeaderGameStats } from './HeaderGameStats'
+import { HeaderGameStats } from '@/app/progress'
 
 interface HeaderProps {
   /** Show back button on the left */

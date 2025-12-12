@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
-import { i18n } from '@/i18n/config'
-import { TaskRequest } from '@/api/logikids'
+import { i18n } from '@/i18n.ts'
+import { TaskRequest } from './types'
 import { useTaskAnswer } from './useTaskAnswer'
-import { useHint } from './useHint'
-import { useTaskData } from '@/hooks/useTaskData'
+import { useHint } from './hints/useHint'
+import { useTaskData } from './useTaskData'
 
 interface HintUsage {
   inputTokens: number
@@ -61,10 +61,13 @@ export const useTask = (params: TaskRequest, options?: UseTaskOptions) => {
     await refetch()
   }, [refetch])
 
+  // Extract error code for special handling (e.g., rate limiting)
+  const errorCode = error?.data?.code as string | undefined
+
   return {
     task,
     isLoading: isLoading || isFetching,
-    error: error ? error.message : null,
+    error: error ? { message: error.message, code: errorCode } : null,
     selectedAnswer,
     isCorrect,
     gradingDetails,

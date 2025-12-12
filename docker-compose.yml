@@ -7,8 +7,10 @@ services:
       - '5153:80'
     volumes:
       - ./packages/frontend:/app
+      - ./content:/content:ro
     environment:
       - NODE_ENV=development
+      - VITE_SENTRY_DSN=${VITE_SENTRY_DSN:-}
     depends_on:
       - backend-dev
     networks:
@@ -22,6 +24,7 @@ services:
       - '5154:80'
     environment:
       - NODE_ENV=production
+      - VITE_SENTRY_DSN=${VITE_SENTRY_DSN:-}
     depends_on:
       - backend-prod
     networks:
@@ -35,9 +38,8 @@ services:
       - '5175:3000'
     volumes:
       - ./packages/backend:/app
-      - ./packages/content:/content
+      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
-      - ./scripts:/app/scripts
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
@@ -63,6 +65,10 @@ services:
       - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-0.7}
       # Server
       - SERVER_PORT=${SERVER_PORT:-3000}
+      # TTS
+      - GOOGLE_CLOUD_TTS_API_KEY=${GOOGLE_CLOUD_TTS_API_KEY:-}
+      # Error Tracking
+      - SENTRY_DSN=${SENTRY_DSN:-}
     depends_on:
       postgres:
         condition: service_healthy
@@ -76,7 +82,7 @@ services:
     ports:
       - '5176:3000'
     volumes:
-      - ./packages/content:/content
+      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
     environment:
       - NODE_ENV=production
@@ -103,6 +109,10 @@ services:
       - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-0.7}
       # Server
       - SERVER_PORT=${SERVER_PORT:-3000}
+      # TTS
+      - GOOGLE_CLOUD_TTS_API_KEY=${GOOGLE_CLOUD_TTS_API_KEY:-}
+      # Error Tracking
+      - SENTRY_DSN=${SENTRY_DSN:-}
     depends_on:
       postgres:
         condition: service_healthy
@@ -115,7 +125,7 @@ services:
       dockerfile: Dockerfile.test
     volumes:
       - ./packages/backend:/app
-      - ./packages/content:/content
+      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
     environment:
       - NODE_ENV=test
@@ -152,6 +162,18 @@ services:
       - ADMINER_DESIGN=nette
     depends_on:
       - postgres
+    networks:
+      - app-network
+
+  scripts:
+    build:
+      context: ./scripts
+      dockerfile: Dockerfile
+    volumes:
+      - ./scripts:/app/scripts
+      - ./content:/app/content
+      - ./packages/frontend/public/locales:/app/packages/frontend/public/locales:ro
+      - ./packages/backend/locales:/app/packages/backend/locales:ro
     networks:
       - app-network
 

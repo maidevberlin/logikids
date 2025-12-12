@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { parseBackupCode, prepareImportData } from '@/data/plugins/qr'
-import { useAuth } from '@/app/account'
-import { useSync } from '@/app/account/useSync'
+import { parseBackupCode, prepareImportData, useSync } from '@/app/user/sync'
+import { useAuth } from '@/app/user'
 import { Button } from '@/app/common/ui/button'
 import { Loader2, AlertTriangle, CheckCircle } from 'lucide-react'
 

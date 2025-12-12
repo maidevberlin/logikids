@@ -1,12 +1,10 @@
-import { Card } from '@/app/common/ui/card'
 import { Checkbox } from '@/app/common/ui/checkbox'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { PlayButton } from '@/app/common/PlayButton'
-import { cn } from '@/lib/utils'
-import { Skeleton } from '@/app/common/ui/skeleton'
+import { cn } from '@/app/common/cn'
 import { useTranslation } from 'react-i18next'
 import { AlertCircle } from 'lucide-react'
-import { OPTION_COLORS } from '@/app/common/colors.ts'
+import { AnswerOptionCard } from './AnswerOptionCard'
 
 interface MultiSelectOption {
   id: number
@@ -20,7 +18,6 @@ interface MultiSelectAnswerProps {
   expectedCount: number
   selectedAnswer: number[] | null
   onAnswerSelect: (selectedIndices: number[]) => void
-  isLoading?: boolean
   isLocked?: boolean
 }
 
@@ -30,7 +27,6 @@ export function MultiSelectAnswer({
   expectedCount,
   selectedAnswer,
   onAnswerSelect,
-  isLoading = false,
   isLocked = false,
 }: MultiSelectAnswerProps) {
   const { t } = useTranslation()
@@ -47,16 +43,6 @@ export function MultiSelectAnswer({
   }
 
   const isOverSelected = selectedIndices.length > expectedCount
-
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-        {options.map((_, i) => (
-          <Skeleton key={i} className="h-24 rounded-2xl" />
-        ))}
-      </div>
-    )
-  }
 
   return (
     <div className="my-6 space-y-4">
@@ -93,15 +79,16 @@ export function MultiSelectAnswer({
           const isSelected = selectedIndices.includes(index)
 
           return (
-            <Card
+            <AnswerOptionCard
               key={index}
-              data-selected={isSelected}
-              onClick={isLocked ? undefined : () => handleToggle(index)}
-              className={cn(
-                'p-6 transition-all duration-200 border-2 flex items-center gap-4 min-h-24',
-                isLocked ? 'cursor-not-allowed opacity-75' : 'cursor-pointer',
-                OPTION_COLORS[index % OPTION_COLORS.length]
-              )}
+              content={option.text}
+              index={index}
+              isSelected={isSelected}
+              onClick={() => handleToggle(index)}
+              isLocked={isLocked}
+              taskId={taskId}
+              ttsField={`options:${index}`}
+              className="flex items-center gap-4"
             >
               <Checkbox
                 checked={isSelected}
@@ -119,7 +106,7 @@ export function MultiSelectAnswer({
                 />
               </div>
               {taskId && <PlayButton taskId={taskId} field={`options:${index}`} />}
-            </Card>
+            </AnswerOptionCard>
           )
         })}
       </div>

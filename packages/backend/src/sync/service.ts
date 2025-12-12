@@ -2,10 +2,7 @@ import 'reflect-metadata'
 import { injectable, inject } from 'tsyringe'
 import { StorageService } from './storage'
 import { SyncPayload, SyncPayloadSchema } from './schema'
-import { createLogger } from '../common/logger'
-import { InvalidChecksumError } from '../common/errors'
-
-const logger = createLogger('SyncService')
+import { badRequest } from '../common/errors'
 
 /**
  * Business logic for encrypted data synchronization
@@ -28,7 +25,7 @@ export class SyncService {
 
     // Validate checksum format (basic sanity check)
     if (!/^[a-f0-9]{64}$/i.test(validated.checksum)) {
-      throw new InvalidChecksumError()
+      throw badRequest('Invalid checksum format')
     }
 
     // Store encrypted blob
@@ -74,10 +71,6 @@ export class SyncService {
   async cleanupInactiveAccounts(): Promise<number> {
     const inactiveDays = 365 * 2 // 2 years
     const deletedCount = await this.storage.deleteInactive(inactiveDays)
-
-    if (deletedCount > 0) {
-      logger.info('Deleted inactive accounts', { deletedCount })
-    }
 
     return deletedCount
   }

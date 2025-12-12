@@ -2,8 +2,7 @@ import { Card } from '@/app/common/ui/card'
 import { Button } from '@/app/common/ui/button'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { PlayButton } from '@/app/common/PlayButton'
-import { cn } from '@/lib/utils'
-import { Skeleton } from '@/app/common/ui/skeleton'
+import { cn } from '@/app/common/cn'
 import { useTranslation } from 'react-i18next'
 import { Reorder, useDragControls } from 'framer-motion'
 import { GripVertical, ChevronUp, ChevronDown } from 'lucide-react'
@@ -18,7 +17,6 @@ interface OrderingAnswerProps {
   items: OrderingItem[]
   selectedAnswer: string[] | null
   onAnswerSelect: (orderedIds: string[]) => void
-  isLoading?: boolean
   isLocked?: boolean
 }
 
@@ -122,7 +120,6 @@ export function OrderingAnswer({
   items,
   selectedAnswer,
   onAnswerSelect,
-  isLoading = false,
   isLocked = false,
 }: OrderingAnswerProps) {
   const { t } = useTranslation()
@@ -150,16 +147,6 @@ export function OrderingAnswer({
     const newOrder = [...orderedItems]
     ;[newOrder[index], newOrder[index + 1]] = [newOrder[index + 1], newOrder[index]]
     onAnswerSelect(newOrder.map((item) => item.id))
-  }
-
-  if (isLoading) {
-    return (
-      <div className="space-y-3 my-6">
-        {items.map((_, i) => (
-          <Skeleton key={i} className="h-20 rounded-2xl" />
-        ))}
-      </div>
-    )
   }
 
   return (

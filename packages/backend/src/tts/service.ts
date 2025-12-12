@@ -1,9 +1,7 @@
 import 'reflect-metadata'
 import { injectable } from 'tsyringe'
-import { createLogger } from '../common/logger'
-import { ConfigurationError } from '../common/errors'
-
-const logger = createLogger('TTSService')
+import { internalError } from '../common/errors'
+import { Language, DEFAULT_LANGUAGE } from '@content/schema'
 
 interface GoogleTTSRequest {
   input: {
@@ -22,6 +20,12 @@ interface GoogleTTSResponse {
   audioContent: string // Base64-encoded audio
 }
 
+export interface TTSSynthesizeResult {
+  audio: Buffer
+  characterCount: number
+  voiceType: 'standard' | 'wavenet' | 'neural2'
+}
+
 @injectable()
 export class TTSService {
   private readonly apiKey: string
@@ -35,8 +39,21 @@ export class TTSService {
     this.voiceEN = process.env.TTS_VOICE_EN || 'en-US-Standard-C'
 
     if (!this.apiKey) {
-      throw new ConfigurationError('GOOGLE_CLOUD_TTS_API_KEY environment variable is required')
+      throw internalError('GOOGLE_CLOUD_TTS_API_KEY environment variable is required')
     }
+  }
+
+  // Voice configuration per language
+  // When adding a new language to SUPPORTED_LANGUAGES:
+  // 1. Add TTS_VOICE_XX environment variable
+  // 2. Add voiceXX property to constructor
+  // 3. Add case to selectVoice()
+  private readonly voiceConfig: Record<
+    Language,
+    { languageCode: string; envVar: string; default: string }
+  > = {
+    de: { languageCode: 'de-DE', envVar: 'TTS_VOICE_DE', default: 'de-DE-Standard-A' },
+    en: { languageCode: 'en-US', envVar: 'TTS_VOICE_EN', default: 'en-US-Standard-C' },
   }
 
   /**
@@ -44,27 +61,21 @@ export class TTSService {
    */
   private selectVoice(language: string): { languageCode: string; name: string } {
     // Extract language code (e.g., 'de' from 'de-DE')
-    const langCode = language.split('-')[0].toLowerCase()
+    const langCode = language.split('-')[0].toLowerCase() as Language
 
-    switch (langCode) {
-      case 'de':
-        return { languageCode: 'de-DE', name: this.voiceDE }
-      case 'en':
-        return { languageCode: 'en-US', name: this.voiceEN }
-      default:
-        // Default to English for unknown languages
-        logger.warn('Unknown language, defaulting to English', { language })
-        return { languageCode: 'en-US', name: this.voiceEN }
-    }
+    const config = this.voiceConfig[langCode] || this.voiceConfig[DEFAULT_LANGUAGE]
+    const voiceName = langCode === 'de' ? this.voiceDE : this.voiceEN
+
+    return { languageCode: config.languageCode, name: voiceName }
   }
 
   /**
    * Synthesize text to audio using Google Cloud TTS API
    * @param text Text to synthesize
    * @param language Language code (e.g., 'de-DE', 'en-US')
-   * @returns Audio buffer in MP3 format
+   * @returns Audio buffer in MP3 format with metadata
    */
-  async synthesize(text: string, language: string): Promise<Buffer> {
+  async synthesize(text: string, language: string): Promise<TTSSynthesizeResult> {
     const voice = this.selectVoice(language)
 
     const requestBody: GoogleTTSRequest = {
@@ -74,12 +85,6 @@ export class TTSService {
         audioEncoding: 'MP3',
       },
     }
-
-    logger.debug('Calling Google Cloud TTS API', {
-      textLength: text.length,
-      language,
-      voice: voice.name,
-    })
 
     try {
       const response = await fetch(`${this.endpoint}?key=${this.apiKey}`, {
@@ -92,11 +97,6 @@ export class TTSService {
 
       if (!response.ok) {
         const errorText = await response.text()
-        logger.error('Google Cloud TTS API error', {
-          status: response.status,
-          statusText: response.statusText,
-          error: errorText,
-        })
         throw new Error(`TTS API error: ${response.status} ${response.statusText}`)
       }
 
@@ -105,16 +105,29 @@ export class TTSService {
       // Decode base64 audio content to buffer
       const audioBuffer = Buffer.from(data.audioContent, 'base64')
 
-      logger.info('TTS synthesis successful', {
-        textLength: text.length,
-        audioSize: audioBuffer.length,
-        language,
-      })
+      // Determine voice type from voice name
+      const voiceType = this.getVoiceType(voice.name)
 
-      return audioBuffer
+      return {
+        audio: audioBuffer,
+        characterCount: text.length,
+        voiceType,
+      }
     } catch (error) {
-      logger.error('Error synthesizing text', { error, textLength: text.length, language })
       throw error
     }
+  }
+
+  /**
+   * Determine voice type from voice name
+   */
+  private getVoiceType(voiceName: string): 'standard' | 'wavenet' | 'neural2' {
+    if (voiceName.includes('Wavenet')) {
+      return 'wavenet'
+    }
+    if (voiceName.includes('Neural2')) {
+      return 'neural2'
+    }
+    return 'standard'
   }
 }

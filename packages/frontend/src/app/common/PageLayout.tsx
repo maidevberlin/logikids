@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 export interface PageLayoutProps {
   children: ReactNode
@@ -49,7 +49,7 @@ export function PageLayout({
       )}
 
       {/* Page Content */}
-      <div className="p-4 sm:p-8 flex-1">
+      <div className="p-2 sm:p-8 flex-1">
         <div className={cn('max-w-6xl mx-auto', className)}>{children}</div>
       </div>
 

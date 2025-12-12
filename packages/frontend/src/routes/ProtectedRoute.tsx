@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useUserData } from '@/app/account'
+import { useUserData } from '@/app/user'
 import { LoadingState } from '@/app/common'
 
 /**
