@@ -24,6 +24,7 @@ Create a subfolder when:
 
 - 3+ files are closely related AND form a coherent subgroup
 - It's a true subdomain (e.g., `hints/` within `tasks/`)
+- Domain folder exceeds ~10 files - look for natural groupings
 
 Don't create subfolders for:
 

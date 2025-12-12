@@ -1,7 +1,7 @@
 import { Checkbox } from '@/app/common/ui/checkbox'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { PlayButton } from '@/app/common/PlayButton'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 import { useTranslation } from 'react-i18next'
 import { AlertCircle } from 'lucide-react'
 import { AnswerOptionCard } from './AnswerOptionCard'

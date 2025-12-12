@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { DifficultyNotification } from '@/data/progress/difficultyAdjuster.ts'
-import { cn } from '@/lib/utils.ts'
+import { DifficultyNotification } from '@/app/progress'
+import { cn } from '@/app/common/cn.ts'
 
 interface DifficultyBannerProps {
   notification: DifficultyNotification

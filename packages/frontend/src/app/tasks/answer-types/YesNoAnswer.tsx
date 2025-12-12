@@ -1,5 +1,5 @@
 import { Card } from '@/app/common/ui/card'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 import { Check, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 

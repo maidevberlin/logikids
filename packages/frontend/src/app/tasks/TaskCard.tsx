@@ -12,7 +12,7 @@ import { TaskActions } from './TaskActions'
 import { TaskCostDisplay } from './TaskCostDisplay'
 import { Task, TaskUsageInfo } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
-import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
+import { useTaskLoadingCalibration } from './useTaskLoadingCalibration'
 
 interface TaskCardProps {
   task: Task | null

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { useUserData } from '@/app/account'
-import type { UserData } from '@/data/core/types'
+import { useUserData } from '@/app/user'
+import type { UserData } from '@/app/user/types'
 
 export interface WelcomeStats {
   streak: number

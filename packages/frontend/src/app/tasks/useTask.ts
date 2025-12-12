@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { i18n } from '@/i18n.ts'
-import { TaskRequest } from '@/api/types.ts'
+import { TaskRequest } from './types'
 import { useTaskAnswer } from './useTaskAnswer'
-import { useHint } from './useHint'
-import { useTaskData } from '@/hooks/useTaskData'
+import { useHint } from './hints/useHint'
+import { useTaskData } from './useTaskData'
 
 interface HintUsage {
   inputTokens: number

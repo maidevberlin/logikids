@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
-import { useUserData } from '@/app/account'
+import { useUserData } from '@/app/user'
 import { Card } from '@/app/common/ui/card'
-import { MetricCard } from '@/app/stats/MetricCard'
+import { MetricCard } from '@/app/gamification/MetricCard'
 
 function formatCost(cost: number): string {
   if (cost < 0.01) {

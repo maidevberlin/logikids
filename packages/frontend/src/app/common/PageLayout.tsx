@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 export interface PageLayoutProps {
   children: ReactNode

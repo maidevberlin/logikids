@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/app/common/ui/card'
-import { getSubjectTheme } from '@/app/common/subjectTheme'
-import { SubjectInfo } from '@/api/types.ts'
-import { formatGradeRange } from '@/lib/formatGrade'
+import { getSubjectTheme } from './subjectTheme'
+import { SubjectInfo } from './types'
+import { formatGradeRange } from '@/app/common/formatGrade'
 
 export interface SubjectCardProps {
   subject: SubjectInfo & { isDisabledForGrade?: boolean }

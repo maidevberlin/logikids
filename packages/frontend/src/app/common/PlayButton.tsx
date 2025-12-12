@@ -1,7 +1,7 @@
-import { useTTS } from '@/hooks/useTTS'
+import { useTTS } from '@/app/tasks/useTTS'
 import { Volume2, Loader2 } from 'lucide-react'
 import { Button } from '@/app/common/ui/button'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface PlayButtonProps {
   taskId: string

@@ -3,7 +3,7 @@ import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { PlayButton } from '@/app/common/PlayButton'
 import { Task } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface TaskFeedbackProps {
   showFeedback: boolean

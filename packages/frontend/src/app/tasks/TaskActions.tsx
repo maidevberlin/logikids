@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/app/common/ui/button'
-import { HintSection } from './HintSection'
+import { HintSection } from './hints/HintSection'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface TaskActionsProps {
   taskId: string

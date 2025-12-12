@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/app/common/ui/card'
 import { TaskLoadingContent } from './TaskLoadingContent'
-import { getSubjectTheme } from '@/app/common/subjectTheme'
-import { cn } from '@/lib/utils'
-import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
+import { getSubjectTheme } from '@/app/subjects/subjectTheme'
+import { cn } from '@/app/common/cn'
+import { useTaskLoadingCalibration } from './useTaskLoadingCalibration'
 import { Brain, Wand2, Sparkles, CheckCircle2 } from 'lucide-react'
 
 /**

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { useProgress } from '@/data/progress/hooks'
-import { ACHIEVEMENTS } from '@/app/stats/achievements'
+import { useProgress } from '@/app/progress'
+import { ACHIEVEMENTS } from '@/app/gamification/achievements'
 
 // Level thresholds for progress display
 const LEVEL_THRESHOLDS = [

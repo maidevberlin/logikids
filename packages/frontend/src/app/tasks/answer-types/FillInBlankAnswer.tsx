@@ -1,6 +1,6 @@
 import { Input } from '@/app/common/ui/input'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
 

@@ -5,9 +5,9 @@ import { PageLayout } from '@/app/common/PageLayout'
 import { ParentalConsentStep } from './ParentalConsentStep'
 import { StudentInfoStep } from './StudentInfoStep'
 import { StudentInfo } from './types'
-import { useUserData } from '@/app/account'
+import { useUserData } from '@/app/user'
 import { LoadingState } from '@/app/common'
-import { createLogger } from '@/lib/logger'
+import { createLogger } from '@/app/common/logger'
 
 const logger = createLogger('OnboardingPage')
 

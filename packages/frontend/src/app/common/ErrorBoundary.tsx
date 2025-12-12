@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, ReactNode } from 'react'
 import { ErrorDisplay } from './ErrorDisplay.tsx'
-import { createLogger } from '@/lib/logger.ts'
+import { createLogger } from '@/app/common/logger.ts'
 
 const logger = createLogger('ErrorBoundary')
 

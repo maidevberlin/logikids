@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Providers } from './app/Providers.tsx'
-import { useTimeOfDay } from './hooks/useTimeOfDay'
+import { useTimeOfDay } from '@/app/common/useTimeOfDay'
 
 export function App() {
   useTimeOfDay() // Applies time-based class to body

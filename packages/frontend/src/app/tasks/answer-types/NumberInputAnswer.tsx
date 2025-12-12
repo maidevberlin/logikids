@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/app/common/ui/select'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface NumberInputAnswerProps {
   expectedAnswer: number // The correct answer (for sizing)

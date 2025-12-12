@@ -1,7 +1,7 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
-import { createLogger } from '@/lib/logger.ts'
+import { createLogger } from '@/app/common/logger.ts'
 
 const logger = createLogger('i18nConfig')
 

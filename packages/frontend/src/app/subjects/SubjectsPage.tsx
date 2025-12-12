@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
 import { SubjectCard } from './SubjectCard'
 import { Skeleton } from '@/app/common/ui/skeleton'
-import { useUserData } from '@/app/account'
-import { trpc } from '@/api/trpc'
-import { SubjectInfo } from '@/api/types.ts'
+import { useUserData } from '@/app/user'
+import { trpc } from '@/app/common/trpc'
+import { SubjectInfo } from './types'
 
 // School subject ordering (when they typically start in school)
 const SUBJECT_ORDER = ['math', 'german', 'english', 'physics', 'logic', 'music']

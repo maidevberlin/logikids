@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { Card } from '@/app/common/ui/card'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
 import { PlayButton } from '@/app/common/PlayButton'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 import { OPTION_COLORS } from '@/app/common/colors.ts'
 
 interface AnswerOptionCardProps {
