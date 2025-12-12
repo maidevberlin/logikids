@@ -1,0 +1,13 @@
+{
+  "name": "@logikids/content",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "schema.ts",
+  "types": "schema.ts",
+  "exports": {
+    "./schema": {
+      "types": "./schema.ts",
+      "default": "./schema.ts"
+    }
+  }
+}

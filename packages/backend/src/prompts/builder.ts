@@ -5,7 +5,7 @@ import { validateNoPlaceholders } from './helpers'
 import { VariationLoader } from './variations/loader'
 import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer'
 import { internalError } from '../common/errors'
-import { Language, LANGUAGES } from '@content/schema'
+import { Language, LANGUAGES } from '@logikids/content/schema'
 
 /**
  * Randomly select one item from an array

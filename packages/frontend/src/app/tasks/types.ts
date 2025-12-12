@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { SUPPORTED_LANGUAGES, type Language } from '@logikids/content/schema'
 
 // Task Request (for API calls)
 export const taskRequestSchema = z.object({
@@ -7,8 +8,11 @@ export const taskRequestSchema = z.object({
   taskType: z.enum(['single_choice', 'yes_no']).optional(),
   grade: z.number().min(1).max(13),
   difficulty: z.enum(['easy', 'medium', 'hard']),
-  language: z.string().min(2).max(5),
+  language: z.enum(SUPPORTED_LANGUAGES),
 })
+
+// Re-export Language type for convenience
+export type { Language }
 
 export type TaskRequest = z.infer<typeof taskRequestSchema>
 
