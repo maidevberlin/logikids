@@ -5,11 +5,7 @@ import { validateNoPlaceholders } from './helpers'
 import { VariationLoader } from './variations/loader'
 import { composeAndReplace, replaceVariables, compileHandlebars } from './template-replacer'
 import { internalError } from '../common/errors'
-
-const LANGUAGE_NAMES: Record<string, string> = {
-  en: 'English',
-  de: 'German',
-}
+import { Language, LANGUAGES } from '@content/schema'
 
 /**
  * Randomly select one item from an array
@@ -35,7 +31,8 @@ export class PromptBuilder {
    * Format language code to full name (e.g. "de" -> "German")
    */
   private formatLanguage(code: string): string {
-    return LANGUAGE_NAMES[code] || code
+    const lang = code as Language
+    return LANGUAGES[lang]?.displayName || code
   }
 
   /**

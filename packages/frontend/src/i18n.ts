@@ -2,6 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
 import { createLogger } from '@/app/common/logger.ts'
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '@content/schema'
 
 const logger = createLogger('i18nConfig')
 
@@ -32,8 +33,10 @@ try {
   logger.warn('Could not access localStorage', { error })
 }
 
-// Use stored language first, then browser language, then fallback to English
-const initialLanguage = storedLanguage || getBrowserLanguage() || 'en'
+// Use stored language first, then browser language, then fallback to default
+const browserLang = getBrowserLanguage()
+const validBrowserLang = SUPPORTED_LANGUAGES.includes(browserLang as any) ? browserLang : null
+const initialLanguage = storedLanguage || validBrowserLang || DEFAULT_LANGUAGE
 
 // Export for use in other parts of the application
 export const getCurrentLanguage = () => i18n.language
@@ -49,7 +52,7 @@ void i18n
   .init({
     // Use stored language or fallback to English
     lng: initialLanguage,
-    fallbackLng: 'en',
+    fallbackLng: DEFAULT_LANGUAGE,
     // Debug mode disabled to reduce console noise
     debug: false,
     // Namespace

@@ -8,6 +8,7 @@ import { StudentInfo } from './types'
 import { useUserData } from '@/app/user'
 import { LoadingState } from '@/app/common'
 import { createLogger } from '@/app/common/logger'
+import { Language, DEFAULT_LANGUAGE } from '@content/schema'
 
 const logger = createLogger('OnboardingPage')
 
@@ -42,7 +43,7 @@ export function OnboardingPage() {
       await updateSettings({
         name: info.name,
         grade: info.grade,
-        language: i18n.language, // Save current language from i18n
+        language: (i18n.language as Language) || DEFAULT_LANGUAGE, // Save current language from i18n
       })
 
       localStorage.setItem('hasSeenOnboarding', 'true')

@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import { injectable } from 'tsyringe'
 import { internalError } from '../common/errors'
+import { Language, DEFAULT_LANGUAGE } from '@content/schema'
 
 interface GoogleTTSRequest {
   input: {
@@ -42,22 +43,30 @@ export class TTSService {
     }
   }
 
+  // Voice configuration per language
+  // When adding a new language to SUPPORTED_LANGUAGES:
+  // 1. Add TTS_VOICE_XX environment variable
+  // 2. Add voiceXX property to constructor
+  // 3. Add case to selectVoice()
+  private readonly voiceConfig: Record<
+    Language,
+    { languageCode: string; envVar: string; default: string }
+  > = {
+    de: { languageCode: 'de-DE', envVar: 'TTS_VOICE_DE', default: 'de-DE-Standard-A' },
+    en: { languageCode: 'en-US', envVar: 'TTS_VOICE_EN', default: 'en-US-Standard-C' },
+  }
+
   /**
    * Select appropriate voice based on language
    */
   private selectVoice(language: string): { languageCode: string; name: string } {
     // Extract language code (e.g., 'de' from 'de-DE')
-    const langCode = language.split('-')[0].toLowerCase()
+    const langCode = language.split('-')[0].toLowerCase() as Language
 
-    switch (langCode) {
-      case 'de':
-        return { languageCode: 'de-DE', name: this.voiceDE }
-      case 'en':
-        return { languageCode: 'en-US', name: this.voiceEN }
-      default:
-        // Default to English for unknown languages
-        return { languageCode: 'en-US', name: this.voiceEN }
-    }
+    const config = this.voiceConfig[langCode] || this.voiceConfig[DEFAULT_LANGUAGE]
+    const voiceName = langCode === 'de' ? this.voiceDE : this.voiceEN
+
+    return { languageCode: config.languageCode, name: voiceName }
   }
 
   /**

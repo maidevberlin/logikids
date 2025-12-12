@@ -6,6 +6,7 @@ import { Label } from '@/app/common/ui/label'
 import { User, Check, Loader2 } from 'lucide-react'
 import type { UserSettings } from '@/app/user/types'
 import { createLogger } from '@/app/common/logger'
+import { Language, DEFAULT_LANGUAGE } from '@content/schema'
 
 const logger = createLogger('ProfileSettings')
 
@@ -19,7 +20,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
 
   const [name, setName] = useState('')
   const [grade, setGrade] = useState(5)
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE)
   const [isSaving, setIsSaving] = useState(false)
   const [showSaved, setShowSaved] = useState(false)
   const [isEditingName, setIsEditingName] = useState(false)
@@ -31,7 +32,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
   useEffect(() => {
     setName(settings.name || '')
     setGrade(settings.grade || 5)
-    setLanguage(settings.language || 'en')
+    setLanguage(settings.language || DEFAULT_LANGUAGE)
   }, [settings])
 
   const autoSave = useCallback(
@@ -98,7 +99,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
     autoSave({ name, grade: newGrade, language })
   }
 
-  const handleLanguageChange = (newLanguage: string) => {
+  const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage)
     autoSave({ name, grade, language: newLanguage })
   }

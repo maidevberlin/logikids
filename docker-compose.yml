@@ -7,6 +7,7 @@ services:
       - '5153:80'
     volumes:
       - ./packages/frontend:/app
+      - ./content:/content:ro
     environment:
       - NODE_ENV=development
       - VITE_SENTRY_DSN=${VITE_SENTRY_DSN:-}
@@ -161,6 +162,18 @@ services:
       - ADMINER_DESIGN=nette
     depends_on:
       - postgres
+    networks:
+      - app-network
+
+  scripts:
+    build:
+      context: ./scripts
+      dockerfile: Dockerfile
+    volumes:
+      - ./scripts:/app/scripts
+      - ./content:/app/content
+      - ./packages/frontend/public/locales:/app/packages/frontend/public/locales:ro
+      - ./packages/backend/locales:/app/packages/backend/locales:ro
     networks:
       - app-network
 

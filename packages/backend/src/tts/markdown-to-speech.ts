@@ -6,20 +6,44 @@
  * - SVG/images/code blocks → removed
  * - Bold/italic/links → text only
  *
- * Supports: en, de (extendable)
+ * Translations: packages/backend/locales/{lang}/tts.json
  */
 
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import strip from 'strip-markdown'
 import latexToSpeech from 'latex-to-speech'
+import { readFileSync } from 'fs'
+import { join } from 'path'
+import { Language, DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '@content/schema'
 
-export type TTSLocale = 'en' | 'de'
-
-const tableLabels: Record<TTSLocale, { header: string; row: string }> = {
-  en: { header: 'Header', row: 'Row' },
-  de: { header: 'Kopfzeile', row: 'Zeile' },
+interface TTSTranslations {
+  table: {
+    header: string
+    row: string
+  }
 }
+
+// Load TTS translations from backend locales
+function loadTTSTranslations(): Record<Language, TTSTranslations> {
+  const translations = {} as Record<Language, TTSTranslations>
+  const localesPath = join(import.meta.dir, '../../locales')
+
+  for (const lang of SUPPORTED_LANGUAGES) {
+    try {
+      const filePath = join(localesPath, lang, 'tts.json')
+      translations[lang] = JSON.parse(readFileSync(filePath, 'utf-8'))
+    } catch {
+      // Fallback to English if translation file missing
+      console.warn(`TTS translations missing for ${lang}, using defaults`)
+      translations[lang] = { table: { header: 'Header', row: 'Row' } }
+    }
+  }
+
+  return translations
+}
+
+const ttsTranslations = loadTTSTranslations()
 
 /** Extract LaTeX expressions ($...$ and $$...$$) */
 function extractLatex(content: string): Array<{ match: string; latex: string }> {
@@ -39,7 +63,7 @@ function extractLatex(content: string): Array<{ match: string; latex: string }> 
 }
 
 /** Convert LaTeX to speech, remove on failure */
-async function convertLatex(content: string, locale: TTSLocale): Promise<string> {
+async function convertLatex(content: string, locale: Language): Promise<string> {
   const expressions = extractLatex(content)
   if (!expressions.length) return content
 
@@ -62,8 +86,9 @@ async function convertLatex(content: string, locale: TTSLocale): Promise<string>
 }
 
 /** Convert markdown tables to speakable text */
-function convertTables(content: string, locale: TTSLocale): string {
-  const { header, row } = tableLabels[locale] || tableLabels.en
+function convertTables(content: string, locale: Language): string {
+  const labels = ttsTranslations[locale] || ttsTranslations[DEFAULT_LANGUAGE]
+  const { header, row } = labels.table
   const tableRegex = /(\|.+\|)\r?\n(\|[-:\s|]+\|)\r?\n((?:\|.+\|(?:\r?\n|$))+)/g
 
   return content.replace(tableRegex, (_, headerRow, _sep, bodyRows) => {
@@ -122,7 +147,7 @@ function cleanup(content: string): string {
 export async function markdownToSpeech(markdown: string, language = 'en'): Promise<string> {
   if (!markdown) return ''
 
-  const locale: TTSLocale = language.startsWith('de') ? 'de' : 'en'
+  const locale: Language = language.startsWith('de') ? 'de' : DEFAULT_LANGUAGE
 
   // 1. LaTeX → speech
   let result = await convertLatex(markdown, locale)

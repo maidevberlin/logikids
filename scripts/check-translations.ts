@@ -14,8 +14,7 @@
 import { readdirSync, readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
-
-const LANGUAGES = ['de', 'en']
+import { SUPPORTED_LANGUAGES } from '../content/schema'
 
 // Path resolution
 function getContentPath(): string {
@@ -51,7 +50,7 @@ function checkConceptTranslations(conceptId: string, subject: string): Translati
   const localesPath = getLocalesPath()
   const result: TranslationResult = { missing: [], orphaned: [] }
 
-  for (const lang of LANGUAGES) {
+  for (const lang of SUPPORTED_LANGUAGES) {
     const translationPath = join(localesPath, lang, 'subjects', `${subject}.json`)
 
     if (!existsSync(translationPath)) {
@@ -188,12 +187,99 @@ function checkSubject(subject: string): { passed: number; failed: number } {
   return { passed, failed }
 }
 
+// Check language setup status
+interface LangStatus {
+  lang: string
+  frontendDir: boolean
+  backendDir: boolean
+}
+
+function checkLanguageSetup(): LangStatus[] {
+  const frontendLocalesPath = getLocalesPath()
+  const backendLocalesPath = join(import.meta.dir, '../packages/backend/locales')
+
+  return SUPPORTED_LANGUAGES.map((lang) => ({
+    lang,
+    frontendDir: existsSync(join(frontendLocalesPath, lang)),
+    backendDir: existsSync(join(backendLocalesPath, lang)),
+  }))
+}
+
 // Check all subjects
 function checkAll(): number {
   const contentPath = getContentPath()
 
   if (!existsSync(contentPath)) {
     console.error(`❌ Content directory not found: ${contentPath}`)
+    return 1
+  }
+
+  // Check language setup
+  const langStatuses = checkLanguageSetup()
+  const incomplete = langStatuses.filter((s) => !s.frontendDir || !s.backendDir)
+
+  if (incomplete.length > 0) {
+    console.log(`\n${'═'.repeat(60)}`)
+    console.log(`LANGUAGE SETUP STATUS`)
+    console.log('═'.repeat(60))
+
+    for (const status of langStatuses) {
+      const frontendIcon = status.frontendDir ? '✅' : '❌'
+      const backendIcon = status.backendDir ? '✅' : '❌'
+      console.log(`\n  ${status.lang.toUpperCase()}:`)
+      console.log(`    ${frontendIcon} Frontend: packages/frontend/public/locales/${status.lang}/`)
+      console.log(`    ${backendIcon} Backend:  packages/backend/locales/${status.lang}/`)
+    }
+
+    // Show fix instructions only for what's missing
+    const missingFrontend = langStatuses.filter((s) => !s.frontendDir)
+    const missingBackend = langStatuses.filter((s) => !s.backendDir)
+
+    if (missingFrontend.length > 0 || missingBackend.length > 0) {
+      console.log(`\n${'─'.repeat(60)}`)
+      console.log(`HOW TO FIX:`)
+      console.log('─'.repeat(60))
+
+      let step = 1
+
+      if (missingFrontend.length > 0) {
+        console.log(`\n${step}. Create frontend locale directories:`)
+        for (const { lang } of missingFrontend) {
+          console.log(`   mkdir -p packages/frontend/public/locales/${lang}/subjects`)
+        }
+        step++
+
+        console.log(`\n${step}. Copy frontend templates and translate:`)
+        for (const { lang } of missingFrontend) {
+          console.log(
+            `   cp packages/frontend/public/locales/en/*.json packages/frontend/public/locales/${lang}/`
+          )
+          console.log(
+            `   cp packages/frontend/public/locales/en/subjects/*.json packages/frontend/public/locales/${lang}/subjects/`
+          )
+        }
+        step++
+      }
+
+      if (missingBackend.length > 0) {
+        console.log(`\n${step}. Create backend locale directories:`)
+        for (const { lang } of missingBackend) {
+          console.log(`   mkdir -p packages/backend/locales/${lang}`)
+          console.log(`   cp packages/backend/locales/en/*.json packages/backend/locales/${lang}/`)
+        }
+        step++
+      }
+
+      console.log(`\n${step}. Add concept translations to subject files:`)
+      console.log(`   Edit: packages/frontend/public/locales/{lang}/subjects/*.json`)
+      console.log(`   Each concept needs: { "name": "...", "description": "..." }`)
+      step++
+
+      console.log(`\n${step}. Update TTS voice config (if TTS needed):`)
+      console.log(`   packages/backend/src/tts/service.ts (voiceConfig)`)
+    }
+
+    console.log(`\n${'═'.repeat(60)}\n`)
     return 1
   }
 

@@ -12,7 +12,12 @@ export interface SubjectCardProps {
   showGradeRange?: boolean
 }
 
-export function SubjectCard({ subject, minGrade, showGradeRange = true }: SubjectCardProps) {
+export function SubjectCard({
+  subject,
+  disabled,
+  minGrade,
+  showGradeRange = true,
+}: SubjectCardProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const theme = getSubjectTheme(subject.id)
@@ -22,6 +27,8 @@ export function SubjectCard({ subject, minGrade, showGradeRange = true }: Subjec
   const gradeRangeText = formatGradeRange(subject.minGrade, subject.maxGrade, t)
 
   const handleClick = () => {
+    if (disabled) return
+
     if (subject.isDisabledForGrade) {
       // Navigate with showAll state for out-of-grade subjects
       navigate(`/subjects/${subject.id}`, { state: { showAll: true } })
@@ -33,11 +40,15 @@ export function SubjectCard({ subject, minGrade, showGradeRange = true }: Subjec
 
   return (
     <Card
-      className="shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl hover:shadow-lg cursor-pointer hover:scale-[1.02]"
+      className={`shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl ${
+        disabled
+          ? 'opacity-50 cursor-not-allowed'
+          : 'hover:shadow-lg cursor-pointer hover:scale-[1.02]'
+      }`}
       onClick={handleClick}
     >
       <CardContent
-        className={`h-full p-8 text-white ${bg} ${hover} transition-colors duration-300`}
+        className={`h-full p-8 text-white ${bg} ${disabled ? '' : hover} transition-colors duration-300`}
       >
         <Icon className="w-16 h-16 mb-4" />
         <h2 className="text-2xl font-bold mb-2">

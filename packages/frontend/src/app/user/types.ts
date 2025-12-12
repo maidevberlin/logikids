@@ -1,10 +1,11 @@
 import { GameStats } from '@/app/gamification/gameTypes'
 import { ProgressData } from '@/app/progress'
+import { Language, DEFAULT_LANGUAGE } from '@content/schema'
 
 export interface UserSettings {
   name: string
   grade: number
-  language: string
+  language: Language
   syncEnabled: boolean
 }
 
@@ -41,7 +42,7 @@ export interface UserData {
 export const DEFAULT_SETTINGS: UserSettings = {
   name: '',
   grade: 5,
-  language: 'en',
+  language: DEFAULT_LANGUAGE,
   syncEnabled: false,
 }
 

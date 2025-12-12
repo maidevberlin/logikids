@@ -6,7 +6,7 @@ export {
   conceptFrontmatterSchema,
   type ConceptFrontmatter,
   type Concept,
-} from '../../../content/schema'
+} from '@content/schema'
 
 /**
  * Schema for subject base.md frontmatter metadata

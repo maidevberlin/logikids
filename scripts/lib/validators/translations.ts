@@ -5,6 +5,7 @@
 import { readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import type { CheckResult, CheckIssue } from '../types'
+import { SUPPORTED_LANGUAGES } from '../../../content/schema'
 
 function getLocalesPath(): string {
   // Root scripts run from repo root
@@ -13,10 +14,9 @@ function getLocalesPath(): string {
 
 export function checkTranslations(conceptId: string, subject: string): CheckResult {
   const localesPath = getLocalesPath()
-  const languages = ['de', 'en']
   const issues: CheckIssue[] = []
 
-  for (const lang of languages) {
+  for (const lang of SUPPORTED_LANGUAGES) {
     const translationPath = join(localesPath, lang, 'subjects', `${subject}.json`)
 
     if (!existsSync(translationPath)) {

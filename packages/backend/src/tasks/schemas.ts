@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { SUPPORTED_LANGUAGES } from '@content/schema'
 
 export const getTaskInputSchema = z.object({
   subject: z.string(),
@@ -6,7 +7,7 @@ export const getTaskInputSchema = z.object({
   taskType: z.string().optional(),
   grade: z.number().min(1).max(13),
   difficulty: z.enum(['easy', 'medium', 'hard']),
-  language: z.string().min(2).max(5),
+  language: z.enum(SUPPORTED_LANGUAGES),
 })
 
 export type GetTaskInput = z.infer<typeof getTaskInputSchema>
