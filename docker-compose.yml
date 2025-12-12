@@ -77,8 +77,8 @@ services:
 
   backend-prod:
     build:
-      context: ./packages/backend
-      dockerfile: Dockerfile.prod
+      context: .
+      dockerfile: packages/backend/Dockerfile.prod
     ports:
       - '5176:3000'
     volumes:

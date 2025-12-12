@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
 import { createLogger } from '@/app/common/logger.ts'
-import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '@content/schema'
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, type Language } from '@logikids/content/schema'
 
 const logger = createLogger('i18nConfig')
 
@@ -39,7 +39,11 @@ const validBrowserLang = SUPPORTED_LANGUAGES.includes(browserLang as any) ? brow
 const initialLanguage = storedLanguage || validBrowserLang || DEFAULT_LANGUAGE
 
 // Export for use in other parts of the application
-export const getCurrentLanguage = () => i18n.language
+export const getCurrentLanguage = (): Language => {
+  const lang = i18n.language
+  // Validate and return a supported language, or fallback to default
+  return SUPPORTED_LANGUAGES.includes(lang as Language) ? (lang as Language) : DEFAULT_LANGUAGE
+}
 
 // Cache breaker using content hash - only changes when translations change
 const CACHE_BREAKER = import.meta.env.VITE_TRANSLATIONS_HASH

@@ -15,7 +15,7 @@ import strip from 'strip-markdown'
 import latexToSpeech from 'latex-to-speech'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { Language, DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '@content/schema'
+import { Language, DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '@logikids/content/schema'
 
 interface TTSTranslations {
   table: {

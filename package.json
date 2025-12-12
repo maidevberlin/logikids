@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "content"
   ],
   "scripts": {
     "dev": "docker compose up frontend-dev backend-dev",

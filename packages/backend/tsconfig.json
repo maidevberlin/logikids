@@ -14,10 +14,7 @@
     "allowJs": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": ".",
-    "paths": {
-      "@content/*": ["/content/*", "../../content/*"]
-    }
+    "baseUrl": "."
   },
-  "include": ["src", "database", "../../content"]
+  "include": ["src", "database"]
 }
