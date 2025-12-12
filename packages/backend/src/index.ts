@@ -1,68 +1,57 @@
 import 'reflect-metadata'
-import express from 'express'
-import cors from 'cors'
-import yaml from 'js-yaml'
-import fs from 'fs'
-import path from 'path'
-import * as trpcExpress from '@trpc/server/adapters/express'
+import * as Sentry from '@sentry/bun'
+import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 import { appRouter } from './router'
 import { createContext } from './trpc'
-import { errorHandler } from './common/middleware/errorHandler'
-import { cacheCleanupService } from './cache/cacheCleanup'
+import { container } from 'tsyringe'
+import { CacheCleanupService } from './cache/cacheCleanup'
 import { subjectRegistry } from './subjects/registry'
 import { taskTypeRegistry } from './tasks/task-types'
 import { initializeDatabase, closeDatabase } from '../database/db'
 import { initializeContainer } from './container'
-import { createLogger } from './common/logger'
 
-const logger = createLogger('Server')
+// Initialize Sentry error tracking
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    sendDefaultPii: true,
+    environment: process.env.NODE_ENV || 'development',
+  })
+}
 
-// Load configuration
-const configPath = path.join(__dirname, '../config.yaml')
-const config = yaml.load(fs.readFileSync(configPath, 'utf8')) as Record<string, any>
+// CORS headers
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
 
 // Initialize registries, database, and DI container before starting server
 async function initializeServices() {
-  logger.debug('Initializing registries, database, and DI container...')
   await Promise.all([
     subjectRegistry.initialize(),
     taskTypeRegistry.initialize(),
     initializeDatabase(),
   ])
   await initializeContainer()
-  logger.debug('All services initialized')
 }
 
-const app = express()
-app.use(cors())
-app.use(express.json())
-
-// Mount tRPC handler
-app.use(
-  '/api',
-  trpcExpress.createExpressMiddleware({
-    router: appRouter,
-    createContext,
-  })
-)
-
-// Error handling (for non-tRPC routes if any)
-app.use(errorHandler)
-
-// Start cache cleanup job
-cacheCleanupService.start()
+// Get cache cleanup service from container and start it
+let cacheCleanupService: CacheCleanupService
 
 // Graceful shutdown
 process.on('SIGTERM', async () => {
-  logger.debug('SIGTERM received, shutting down gracefully...')
-  cacheCleanupService.stop()
+  if (cacheCleanupService) {
+    cacheCleanupService.stop()
+  }
   await closeDatabase()
   process.exit(0)
 })
 
 process.on('SIGINT', async () => {
-  logger.debug('SIGINT received, shutting down gracefully...')
-  cacheCleanupService.stop()
+  if (cacheCleanupService) {
+    cacheCleanupService.stop()
+  }
   await closeDatabase()
   process.exit(0)
 })
@@ -74,13 +63,70 @@ const isMainModule =
   process.env.NODE_ENV === 'production'
 
 if (isMainModule) {
-  const port = config.server?.port || 3000
+  const port = 3000
 
   // Initialize all services before starting server
   await initializeServices()
 
-  app.listen(port, () => {
-    logger.debug(`Server running on port ${port}`)
+  // Start cache cleanup service
+  cacheCleanupService = container.resolve<CacheCleanupService>(CacheCleanupService)
+  cacheCleanupService.start()
+
+  // Start Bun HTTP server with tRPC fetch adapter
+  Bun.serve({
+    port,
+    idleTimeout: 120, // 120 seconds - needed for slow AI task generation (default is 10s since Bun 1.1.26)
+    async fetch(req) {
+      const url = new URL(req.url)
+
+      // Handle CORS preflight for all routes
+      if (req.method === 'OPTIONS') {
+        return new Response(null, { status: 204, headers: corsHeaders })
+      }
+
+      // Handle tRPC requests
+      if (url.pathname.startsWith('/api')) {
+        try {
+          const response = await fetchRequestHandler({
+            endpoint: '/api',
+            req,
+            router: appRouter,
+            createContext: () => createContext({ req }),
+            responseMeta() {
+              return {
+                headers: corsHeaders,
+              }
+            },
+            onError({ error }) {
+              // Sentry captures errors via trpcMiddleware
+            },
+          })
+
+          // Read the response body to ensure Content-Length is set
+          // This is needed because the fetch adapter returns a stream without Content-Length
+          // which causes issues with HTTP/1.1 proxies (like Vite's dev proxy)
+          const bodyText = await response.text()
+
+          // Create new response with explicit Content-Length
+          const newHeaders = new Headers(response.headers)
+          newHeaders.set('Content-Length', String(Buffer.byteLength(bodyText, 'utf-8')))
+
+          return new Response(bodyText, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: newHeaders,
+          })
+        } catch (err) {
+          throw err
+        }
+      }
+
+      // Not found for other routes
+      return new Response(JSON.stringify({ error: 'Not found' }), {
+        status: 404,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    },
   })
 }
 

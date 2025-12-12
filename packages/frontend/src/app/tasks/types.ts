@@ -1,3 +1,17 @@
+import { z } from 'zod'
+
+// Task Request (for API calls)
+export const taskRequestSchema = z.object({
+  subject: z.string(),
+  concept: z.string().optional(),
+  taskType: z.enum(['single_choice', 'yes_no']).optional(),
+  grade: z.number().min(1).max(13),
+  difficulty: z.enum(['easy', 'medium', 'hard']),
+  language: z.string().min(2).max(5),
+})
+
+export type TaskRequest = z.infer<typeof taskRequestSchema>
+
 // Task types
 export const TASK_TYPES = {
   single_choice: 'single_choice',

@@ -36,10 +36,10 @@ export function TaskAnswerRenderer({
       const AnswerComponent = answerTypeComponents.single_choice
       return (
         <AnswerComponent
+          taskId={task.taskId}
           options={scTask.options}
           selectedAnswer={selectedAnswer as number | null}
           onAnswerSelect={(index) => onAnswerSelect(index)}
-          isLoading={false}
           isLocked={isCorrect === true}
         />
       )
@@ -50,7 +50,6 @@ export function TaskAnswerRenderer({
         <AnswerComponent
           selectedAnswer={selectedAnswer as boolean | null}
           onAnswerSelect={(answer) => onAnswerSelect(answer)}
-          isLoading={false}
           isLocked={isCorrect === true}
         />
       )
@@ -65,7 +64,6 @@ export function TaskAnswerRenderer({
           unitOptions={niTask.unitOptions}
           selectedAnswer={selectedAnswer as { value: number | null; unit?: string } | null}
           onAnswerSelect={(answer) => onAnswerSelect(answer)}
-          isLoading={false}
           isLocked={isCorrect === true}
         />
       )
@@ -75,11 +73,11 @@ export function TaskAnswerRenderer({
       const AnswerComponent = answerTypeComponents.multi_select
       return (
         <AnswerComponent
+          taskId={task.taskId}
           options={msTask.options}
           expectedCount={msTask.expectedCount}
           selectedAnswer={selectedAnswer as number[] | null}
           onAnswerSelect={(indices) => onAnswerSelect(indices)}
-          isLoading={false}
           isLocked={isCorrect === true}
         />
       )
@@ -89,10 +87,10 @@ export function TaskAnswerRenderer({
       const AnswerComponent = answerTypeComponents.ordering
       return (
         <AnswerComponent
+          taskId={task.taskId}
           items={oTask.items}
           selectedAnswer={selectedAnswer as string[] | null}
           onAnswerSelect={(order) => onAnswerSelect(order)}
-          isLoading={false}
           isLocked={isCorrect === true}
         />
       )
@@ -106,7 +104,6 @@ export function TaskAnswerRenderer({
           blanksCount={fibTask.blanks.length}
           selectedAnswer={selectedAnswer as string[] | null}
           onAnswerSelect={(answers) => onAnswerSelect(answers)}
-          isLoading={false}
           isLocked={isCorrect === true}
         />
       )

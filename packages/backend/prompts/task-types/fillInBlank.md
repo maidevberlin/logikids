@@ -8,6 +8,11 @@ Create a fill-in-the-blank task with 1-3 blanks.
 
 **CRITICAL**: Write `__BLANK__` literally in fillableText. Include 2-3 accepted answer variations per blank.
 
+**NEVER** place `__BLANK__` inside LaTeX math expressions like `$\frac{__BLANK__}{8}$`. This breaks rendering. Instead, describe the math context in plain text:
+
+- Bad: `$\frac{__BLANK__}{8}$`
+- Good: `Der Zähler des Bruchs ⅙ · 48 ist __BLANK__.` or `__BLANK__ ÷ 8 = 6`
+
 **Structure:**
 
 - `task`: Context (NO blanks)

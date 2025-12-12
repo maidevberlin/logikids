@@ -21,15 +21,15 @@ description: Use when creating or improving educational concept files - includes
 
 ### 3. Read rules
 
-- `.claude/docs/concept-rules.md`
-- `packages/backend/src/prompts/concept-schema.ts`
+- `docs/concept-rules.md`
+- `content/schema.ts`
 
 ### 4. Write/edit concept file
 
-- Location: `packages/content/subjects/{subject}/official/{id}.md`
+- Location: `content/subjects/{subject}/official/{id}.md`
 - Follow concept-rules.md for all field requirements
 - **Always update:** `version` (increment) and `version_notes` (describe changes)
-- **Prerequisites:** Check `packages/content/subjects/{subject}/official/` for existing concept IDs
+- **Prerequisites:** Check `content/subjects/{subject}/official/` for existing concept IDs
 
 ### 5. Update translations
 
@@ -39,7 +39,7 @@ description: Use when creating or improving educational concept files - includes
 ### 6. Validate
 
 ```bash
-docker compose exec backend-dev bun run check:concepts {subject}/{concept-id}
+bun run check:concepts {subject}/{concept-id}
 ```
 
 ## Red Flags

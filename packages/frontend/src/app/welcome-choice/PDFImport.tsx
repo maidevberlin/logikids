@@ -1,9 +1,8 @@
 import { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as pdfjsLib from 'pdfjs-dist'
-import { prepareImportData, parseBackupCode } from '@/data/plugins/qr'
-import { useAuth } from '@/app/account'
-import { useSync } from '@/app/account/useSync'
+import { prepareImportData, parseBackupCode, useSync } from '@/app/user/sync'
+import { useAuth } from '@/app/user'
 import { Button } from '@/app/common/ui/button'
 import {
   Dialog,
@@ -13,7 +12,7 @@ import {
   DialogTitle,
 } from '@/app/common/ui/dialog'
 import { Upload, FileText } from 'lucide-react'
-import { createLogger } from '@/lib/logger'
+import { createLogger } from '@/app/common/logger'
 
 const logger = createLogger('PDFImport')
 

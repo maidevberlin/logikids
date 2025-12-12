@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/app/common/ui/button'
-import { HintSection } from './HintSection'
+import { HintSection } from './hints/HintSection'
 import { CheckCircle, ArrowRight, RotateCcw, SkipForward } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface TaskActionsProps {
+  taskId: string
   isLoading: boolean
   isCorrect: boolean | null
   selectedAnswer:
@@ -27,6 +28,7 @@ interface TaskActionsProps {
 }
 
 export function TaskActions({
+  taskId,
   isLoading,
   isCorrect,
   selectedAnswer,
@@ -87,6 +89,7 @@ export function TaskActions({
       {!isLoading && isCorrect !== true && (
         <>
           <HintSection
+            taskId={taskId}
             hints={hints}
             hasWrongAnswer={isCorrect === false}
             requestHint={requestHint}

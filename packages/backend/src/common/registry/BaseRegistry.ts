@@ -1,5 +1,4 @@
-import type { Logger } from '../logger'
-import { RegistryInitializationError } from '../errors'
+import { internalError } from '../errors'
 
 /**
  * Abstract base class for registries that load and manage items
@@ -14,15 +13,11 @@ export abstract class BaseRegistry<T, TId = string> {
    */
   async initialize(): Promise<void> {
     if (this.initialized) {
-      this.getLogger().debug('Already initialized')
       return
     }
 
     try {
       const ids = await this.getItemIds()
-      const logger = this.getLogger()
-
-      logger.debug(`[${this.getRegistryName()}] Loading ${ids.length} items...`)
 
       // Load each item
       for (const id of ids) {
@@ -30,24 +25,19 @@ export abstract class BaseRegistry<T, TId = string> {
           const item = await this.loadItem(id)
           const key = this.getItemKey(item)
           this.items.set(key, item)
-          logger.debug(`[${this.getRegistryName()}] Loaded item: ${key}`)
         } catch (error) {
           const message = error instanceof Error ? error.message : String(error)
-          logger.error(`[${this.getRegistryName()}] Failed to load item ${id}:`, message)
           throw error // Fail fast on invalid items
         }
       }
 
       this.initialized = true
-      logger.debug(
-        `[${this.getRegistryName()}] Initialization complete: ${this.items.size} items loaded`
-      )
 
       // Call post-initialization hook
       await this.afterInitialize()
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
-      throw new RegistryInitializationError(this.getRegistryName(), message)
+      throw internalError(`Failed to initialize ${this.getRegistryName()}: ${message}`)
     }
   }
 
@@ -81,12 +71,7 @@ export abstract class BaseRegistry<T, TId = string> {
   protected abstract getItemKey(item: T): string
 
   /**
-   * Get the logger instance for this registry
-   */
-  protected abstract getLogger(): Logger
-
-  /**
-   * Get the registry name for logging purposes
+   * Get the registry name for error reporting purposes
    */
   protected abstract getRegistryName(): string
 

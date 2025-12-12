@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/app/common/ui/card'
 import { Badge } from '@/app/common/ui/badge'
 import { Concept } from './types'
-import { useProgress } from '@/data/progress/hooks'
-import { calculateConceptStars } from '@/data/progress/mastery'
+import { useProgress, calculateConceptStars } from '@/app/progress'
 import { StarRating } from '@/app/common/ui/star-rating'
-import { formatGrade } from '@/lib/formatGrade'
+import { formatGrade } from '@/app/common/formatGrade'
 
 const difficultyColors: Record<string, string> = {
   easy: 'bg-green-50 text-green-700',

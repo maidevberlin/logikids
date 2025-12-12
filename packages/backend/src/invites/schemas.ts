@@ -5,3 +5,5 @@ export const checkInviteInputSchema = z.object({
     .string()
     .regex(/^[A-Z0-9]{4}-[A-Z0-9]{4}$/i, 'Invalid invite code format. Expected format: XXXX-YYYY'),
 })
+
+export type CheckInviteInput = z.infer<typeof checkInviteInputSchema>

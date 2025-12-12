@@ -1,75 +1,57 @@
 # CLAUDE.md
 
-## Important
+## Skills (load before working)
 
-- Before reading or writing code, use the `jetbrains-coding` skill.
-- Before working on concepts, use the `write-concept` skill.
+- **Code changes**: Use `jetbrains-coding` skill before reading or writing code
+- **Concepts**: Use `write-concept` skill before working on educational concepts
 
 ## Overview
 
-Logikids is an AI-powered educational platform for children aged 8-16. It generates personalized learning tasks based on curriculum-aligned concepts using AI (Ollama/OpenAI/Anthropic).
+Logikids is an AI-powered educational platform for children (ages 8-19) that generates personalized learning tasks from curriculum-aligned concepts using AI.
 
-**Monorepo structure:**
-
-- **Frontend**: React + TypeScript + Vite
-- **Backend**: Bun + Express API
-- **Content**: Markdown-based educational concepts
+**Monorepo:** Frontend (React/Vite) · Backend (Bun/tRPC) · Content (Markdown concepts)
 
 **Task types:** single choice, multiple select, fill-in-blank, ordering, number input, yes/no
 
+## Architecture (read when needed)
+
+| Area     | Doc                                 | When to read                               |
+| -------- | ----------------------------------- | ------------------------------------------ |
+| Frontend | `docs/frontend-fdd-architecture.md` | Refactoring, adding features, code reviews |
+| Backend  | `docs/backend-fdd-architecture.md`  | Refactoring, adding features, code reviews |
+
 ## Quick Reference
 
-| What                | Where                                               |
-| ------------------- | --------------------------------------------------- |
-| Docker setup        | `docker-compose.yml`                                |
-| Invite codes CLI    | `./invite`                                          |
-| Frontend code       | `packages/frontend/src/`                            |
-| Backend code        | `packages/backend/src/`                             |
-| Educational content | `packages/content/subjects/`                        |
-| Concept file format | See any `packages/content/subjects/*/official/*.md` |
-| Concept rules       | `.claude/docs/concept-rules.md`                     |
-| Task generation     | `.claude/docs/task-generation.md`                   |
-| AI prompts          | `packages/backend/prompts/`                         |
-| Prompt builder      | `packages/backend/src/prompts/`                     |
-| Backend config      | `packages/backend/config.yaml`                      |
-| Task type schemas   | `packages/backend/src/tasks/types/`                 |
-| Answer components   | `packages/frontend/src/app/tasks/answer-types/`     |
-| Translations        | `packages/frontend/public/locales/{lang}/`          |
-| DB migrations       | `packages/backend/database/migrations/`             |
-
-## Key Patterns
-
-- **Registry pattern**: Subjects and task types are auto-discovered from directories
-- **Typed errors**: Use `src/common/errors/` hierarchy, not generic errors
-- **Logging**: Use `createLogger(name)` from `src/common/logger.ts`
-
-## Adding New Features
-
-| Feature       | Steps                                                                                                                                        |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| New subject   | Add `base.md` + concepts in `packages/content/subjects/{name}/`                                                                              |
-| New concept   | Add `.md` file in `packages/content/subjects/{subject}/official/`                                                                            |
-| New task type | (1) prompt in `prompts/task-types/`, (2) schema in `src/tasks/types/`, (3) grading in `src/tasks/grading/`, (4) answer component in frontend |
+| What            | Where                                      |
+| --------------- | ------------------------------------------ |
+| Docker setup    | `docker-compose.yml`                       |
+| Invite codes    | `./invite`                                 |
+| Frontend        | `packages/frontend/src/`                   |
+| Backend         | `packages/backend/src/`                    |
+| Content         | `content/subjects/`                        |
+| Concept schema  | `content/schema.ts`                        |
+| Concept rules   | `docs/concept-rules.md`                    |
+| Task generation | `docs/task-generation.md`                  |
+| AI prompts      | `packages/backend/prompts/`                |
+| Translations    | `packages/frontend/public/locales/{lang}/` |
+| DB migrations   | `packages/backend/database/migrations/`    |
 
 ## CLI Scripts
 
 All scripts: no args = usage, `subject/concept` = single, `subject` = all in subject, `--all` = everything.
 
-- `check:concepts` - Validate concept files
-- `check:translations` - Check translation completeness
+**Root scripts** (run from host):
+
+- `bun run check:concepts` - Validate concept files
+- `bun run check:translations` - Check translation completeness
+
+**Backend scripts** (run via docker):
+
 - `check:prompts` - Validate prompt templates (no args, full system check)
 - `generate:prompt` - Generate AI prompt without calling LLM
 - `generate:task` - Generate task using AI
 
-Run via docker: `docker compose exec backend-dev bun run <script>`
-
-Run any script without args to see usage (e.g., `bun run generate:task` shows all options including `--provider` and `--model` for testing different AI providers).
-
-## Notes
-
-- Backend uses Bun runtime (not Node.js)
-- All content must be curriculum-aligned
-- JWT auth with invite-code beta access
+Run backend scripts via docker: `docker compose exec backend-dev bun run <script>`
 
 ## Git Workflow
 
@@ -77,13 +59,9 @@ Run any script without args to see usage (e.g., `bun run generate:task` shows al
 - Feature work: branch from `dev` → PR to `dev`
 - Hotfixes: `hotfix/*` branch from `main` → PR to `main`
 
-# Critical Rules for success
+## Critical Rules
 
-- You MUST use the jetbrains-coding skill
-
-The user is always in a rush. You have to be the slow, thorough thinking part.
-These rules help you to perform much better. So use them to increase your value.
-
-- You MUST understand what to do. If anything is unclear, you MUST ask clarifying questions.
-- Don't react to pressure. Pressure produces errors, errors cost more time. Keep a clear head. Tackle one problem at a time.
-- If there are many issues at a time: put them on a todo list, and slowly work on them one by one. never work on 2 issues at the same time.
+1. **Use skills first** - Load `jetbrains-coding` before code work
+2. **Understand before acting** - Ask clarifying questions if unclear
+3. **One problem at a time** - Use todo lists for multiple issues
+4. **No rushing** - Pressure causes errors; stay methodical

@@ -2,10 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import matter from 'gray-matter'
 import { GradeFilteredItem, Enrichment, EnrichmentType, RawVariationItem } from './types'
-import { createLogger } from '../../common/logger'
-import { InvalidFormatError } from '../../common/errors'
-
-const logger = createLogger('VariationLoader')
+import { badRequest } from '../../common/errors'
 
 /**
  * Loads and manages task variation data from markdown files
@@ -31,8 +28,6 @@ export class VariationLoader {
    * Load all variation files
    */
   async loadAll(): Promise<void> {
-    logger.info('Loading variations from', { variationsDir: this.variationsDir })
-
     try {
       // Load each variation file
       this.scenarios = await this.loadGradeFilteredList('scenarios.md', 'scenarios')
@@ -53,20 +48,7 @@ export class VariationLoader {
         'structure-variations.md',
         'structures'
       )
-
-      logger.info('Loaded variations', {
-        scenarios: this.scenarios.length,
-        problemFramings: this.framings.length,
-        characterDynamics: this.dynamics.length,
-        temporalContexts: this.temporalContexts.length,
-        metacognitivePrompts: this.metacognitivePrompts.length,
-        mysteryFramings: this.mysteryFramings.length,
-        realWorldConnections: this.realWorldConnections.length,
-        emotionalFramings: this.emotionalFramings.length,
-        structureVariations: this.structureVariations.length,
-      })
     } catch (error) {
-      logger.error('Error loading variations', error)
       throw error
     }
   }
@@ -80,14 +62,16 @@ export class VariationLoader {
     const { data } = matter(fileContent)
 
     if (!data[key] || !Array.isArray(data[key])) {
-      throw new InvalidFormatError(filename, `missing ${key} array`)
+      throw badRequest(`Invalid format in ${filename}: missing ${key} array`)
     }
 
     // Validate each item has grade property
     const rawItems = data[key] as RawVariationItem[]
     return rawItems.map((item: RawVariationItem, index: number) => {
       if (!item.grade || !Array.isArray(item.grade) || item.grade.length !== 2) {
-        throw new InvalidFormatError(filename, `item ${index} missing grade array [min, max]`)
+        throw badRequest(
+          `Invalid format in ${filename}: item ${index} missing grade array [min, max]`
+        )
       }
       return {
         text: item.text,

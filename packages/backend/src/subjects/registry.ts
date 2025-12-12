@@ -2,10 +2,7 @@ import * as fs from 'fs/promises'
 import * as path from 'path'
 import { PromptLoader, Subject } from '../prompts/loader'
 import { Concept } from '../prompts/schemas'
-import { createLogger, Logger } from '../common/logger'
 import { BaseRegistry } from '../common/registry'
-
-const logger = createLogger('SubjectRegistry')
 
 /**
  * Registry for managing all available subjects
@@ -44,8 +41,6 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
     }
     this.concepts.set(subjectId, conceptMap)
 
-    logger.debug(`[SubjectRegistry] Loaded subject: ${subject.id} (${concepts.length} concepts)`)
-
     return subject
   }
 
@@ -57,14 +52,7 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
   }
 
   /**
-   * Get the logger instance
-   */
-  protected getLogger(): Logger {
-    return logger
-  }
-
-  /**
-   * Get the registry name for logging
+   * Get the registry name for error reporting
    */
   protected getRegistryName(): string {
     return 'SubjectRegistry'

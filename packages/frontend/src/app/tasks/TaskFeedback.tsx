@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
+import { PlayButton } from '@/app/common/PlayButton'
 import { Task } from './types'
 import { NumberInputGradingDetails } from './useTaskAnswer'
-import { cn } from '@/lib/utils'
+import { cn } from '@/app/common/cn'
 
 interface TaskFeedbackProps {
   showFeedback: boolean
@@ -46,13 +47,15 @@ export function TaskFeedback({ showFeedback, isCorrect, gradingDetails, task }: 
               })}
       </p>
       {isCorrect && task.explanation && (
-        <div className="mt-2">
+        <div className="mt-2 flex items-start gap-2">
           <MarkdownRenderer
             content={task.explanation}
+            className="flex-1"
             enableMath={true}
             enableMermaid={false}
             enableCode={false}
           />
+          <PlayButton taskId={task.taskId} field="explanation" />
         </div>
       )}
     </div>

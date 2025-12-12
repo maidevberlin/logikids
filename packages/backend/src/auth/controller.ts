@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { inject, injectable } from 'tsyringe'
-import type { UserAccount as ServiceUserAccount } from './service'
 import { AuthService } from './service'
-import { AccountNotFoundError } from '../common/errors'
+import { notFound } from '../common/errors'
 import type {
   LoginInput,
   LoginResponse,
@@ -11,6 +10,7 @@ import type {
   RegisterInput,
   RegisterResponse,
   UserAccount,
+  UserAccountRow,
   VerifyResponse,
 } from './types'
 
@@ -18,7 +18,7 @@ import type {
 export class AuthController {
   constructor(@inject(AuthService) private authService: AuthService) {}
 
-  private mapAccount(serviceAccount: ServiceUserAccount): UserAccount {
+  private mapAccount(serviceAccount: UserAccountRow): UserAccount {
     return {
       userId: serviceAccount.user_id,
       createdAt: new Date(serviceAccount.created_at),
@@ -59,7 +59,7 @@ export class AuthController {
     const account = await this.authService.getAccount(userId)
 
     if (!account) {
-      throw new AccountNotFoundError()
+      throw notFound('Account not found')
     }
 
     return this.mapAccount(account)

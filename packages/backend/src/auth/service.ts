@@ -2,32 +2,12 @@ import 'reflect-metadata'
 import { injectable } from 'tsyringe'
 import jwt from 'jsonwebtoken'
 import { pool } from '../../database/db'
-import {
-  AccountNotFoundError,
-  AccountRevokedError,
-  InviteAlreadyUsedError,
-  InviteExpiredError,
-  InviteNotFoundError,
-  UserExistsError,
-} from '../common/errors'
+import { notFound, badRequest, forbidden } from '../common/errors'
 import { env } from '../config/env'
+import type { JWTPayload, UserAccountRow } from './types'
 
 const JWT_SECRET = env.JWT_SECRET
 const ACCESS_TOKEN_EXPIRES_IN = '1h' // Short-lived access token
-
-export interface JWTPayload {
-  userId: string
-  inviteCode: string
-  iat?: number
-  exp?: number
-}
-
-export interface UserAccount {
-  user_id: string
-  invite_code: string
-  created_at: number
-  last_seen: number
-}
 
 @injectable()
 export class AuthService {
@@ -38,7 +18,7 @@ export class AuthService {
   async register(
     userId: string,
     inviteCode: string
-  ): Promise<{ accessToken: string; account: UserAccount }> {
+  ): Promise<{ accessToken: string; account: UserAccountRow }> {
     const normalizedCode = inviteCode.toUpperCase().trim()
     const client = await pool.connect()
 
@@ -52,7 +32,7 @@ export class AuthService {
       )
 
       if (existingUser.rows.length > 0) {
-        throw new UserExistsError(userId)
+        throw badRequest(`User ${userId} already exists`)
       }
 
       // Validate invite code (must exist, not expired, not used)
@@ -62,7 +42,7 @@ export class AuthService {
       )
 
       if (inviteResult.rows.length === 0) {
-        throw new InviteNotFoundError()
+        throw notFound('Invite code not found')
       }
 
       const invite = {
@@ -71,11 +51,11 @@ export class AuthService {
       }
 
       if (invite.expires_at < Date.now()) {
-        throw new InviteExpiredError()
+        throw badRequest('Invite code has expired')
       }
 
       if (invite.used_by) {
-        throw new InviteAlreadyUsedError()
+        throw badRequest('Invite code has already been used')
       }
 
       // Mark invite as used
@@ -97,7 +77,7 @@ export class AuthService {
       // Generate access token
       const accessToken = this.generateAccessToken(userId, normalizedCode)
 
-      const account: UserAccount = {
+      const account: UserAccountRow = {
         user_id: userId,
         invite_code: normalizedCode,
         created_at: now,
@@ -140,8 +120,8 @@ export class AuthService {
   /**
    * Get user account info
    */
-  async getAccount(userId: string): Promise<UserAccount | null> {
-    const result = await pool.query<UserAccount>(
+  async getAccount(userId: string): Promise<UserAccountRow | null> {
+    const result = await pool.query<UserAccountRow>(
       'SELECT user_id, invite_code, created_at, last_seen FROM user_accounts WHERE user_id = $1',
       [userId]
     )
@@ -164,20 +144,20 @@ export class AuthService {
    */
   async renewAccessToken(userId: string): Promise<{ accessToken: string }> {
     // Check if user account exists
-    const result = await pool.query<UserAccount & { revoked: boolean }>(
+    const result = await pool.query<UserAccountRow & { revoked: boolean }>(
       'SELECT user_id, invite_code, created_at, last_seen, revoked FROM user_accounts WHERE user_id = $1',
       [userId]
     )
 
     if (result.rows.length === 0) {
-      throw new AccountNotFoundError()
+      throw notFound('Account not found')
     }
 
     const accountRow = result.rows[0]
 
     // Check if account is revoked
     if (accountRow.revoked) {
-      throw new AccountRevokedError()
+      throw forbidden('Account has been revoked')
     }
 
     // Generate new access token
@@ -193,25 +173,25 @@ export class AuthService {
    * Login with existing userId (for account import/restore)
    * Verifies account exists and is not revoked, then issues tokens
    */
-  async login(userId: string): Promise<{ accessToken: string; account: UserAccount }> {
+  async login(userId: string): Promise<{ accessToken: string; account: UserAccountRow }> {
     // Check if user account exists
-    const result = await pool.query<UserAccount & { revoked: boolean }>(
+    const result = await pool.query<UserAccountRow & { revoked: boolean }>(
       'SELECT user_id, invite_code, created_at, last_seen, revoked FROM user_accounts WHERE user_id = $1',
       [userId]
     )
 
     if (result.rows.length === 0) {
-      throw new AccountNotFoundError()
+      throw notFound('Account not found')
     }
 
     const accountRow = result.rows[0]
 
     // Check if account is revoked
     if (accountRow.revoked) {
-      throw new AccountRevokedError()
+      throw forbidden('Account has been revoked')
     }
 
-    const account: UserAccount = {
+    const account: UserAccountRow = {
       user_id: accountRow.user_id,
       invite_code: accountRow.invite_code,
       created_at: Number(accountRow.created_at),

@@ -1,0 +1,46 @@
+{
+  "type": "multi_select",
+  "title": "Dein Hunde-Gassi-Service",
+  "task": "Du startest einen Hunde-Gassi-Service! Du berechnest deine Einnahmen mit dem Term:\n\n$$E = 8h + 3$$\n\nDabei ist $h$ die Anzahl der Hunde, die du ausführst, und $E$ deine Einnahmen in Euro.\n\n**Welche Aussagen über diesen Term sind richtig?**\n\n![diagram](data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIEdyb3VuZCAtLT4KICA8cmVjdCB4PSIwIiB5PSIxNjAiIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAiIGZpbGw9IiM5MEVFOTAiIG9wYWNpdHk9IjAuMyIvPgogIAogIDwhLS0gVHJlZXMgaW4gYmFja2dyb3VuZCAtLT4KICA8Y2lyY2xlIGN4PSI4MCIgY3k9IjEwMCIgcj0iMjUiIGZpbGw9IiMyMjhCMjIiIG9wYWNpdHk9IjAuNCIvPgogIDxyZWN0IHg9Ijc1IiB5PSIxMDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSI2MCIgZmlsbD0iIzhCNDUxMyIgb3BhY2l0eT0iMC40Ii8+CiAgCiAgPGNpcmNsZSBjeD0iMzIwIiBjeT0iOTAiIHI9IjMwIiBmaWxsPSIjMjI4QjIyIiBvcGFjaXR5PSIwLjQiLz4KICA8cmVjdCB4PSIzMTUiIHk9IjkwIiB3aWR0aD0iMTAiIGhlaWdodD0iNzAiIGZpbGw9IiM4QjQ1MTMiIG9wYWNpdHk9IjAuNCIvPgogIAogIDwhLS0gUGVyc29uIHdhbGtpbmcgZG9ncyAtLT4KICA8IS0tIFBlcnNvbiAtLT4KICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMjAiIHI9IjEyIiBmaWxsPSIjRkZENzAwIi8+CiAgPGxpbmUgeDE9IjIwMCIgeTE9IjEzMiIgeDI9IjIwMCIgeTI9IjE2NSIgc3Ryb2tlPSIjRkZENzAwIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8bGluZSB4MT0iMjAwIiB5MT0iMTQwIiB4Mj0iMTg1IiB5Mj0iMTU1IiBzdHJva2U9IiNGRkQ3MDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIDxsaW5lIHgxPSIyMDAiIHkxPSIxNDAiIHgyPSIyMTUiIHkyPSIxNTAiIHN0cm9rZT0iI0ZGRDcwMCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGxpbmUgeDE9IjIwMCIgeTE9IjE2NSIgeDI9IjE5MCIgeTI9IjE4MCIgc3Ryb2tlPSIjRkZENzAwIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8bGluZSB4MT0iMjAwIiB5MT0iMTY1IiB4Mj0iMjEwIiB5Mj0iMTgwIiBzdHJva2U9IiNGRkQ3MDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIAogIDwhLS0gTGVhc2hlcyAtLT4KICA8cGF0aCBkPSJNIDIxNSAxNTAgUSAyNDAgMTU1IDI1MCAxNjUiIHN0cm9rZT0iIzhCNDUxMyIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+CiAgPHBhdGggZD0iTSAyMTUgMTUwIFEgMjYwIDE0NSAyODAgMTYwIiBzdHJva2U9IiM4QjQ1MTMiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPgogIDxwYXRoIGQ9Ik0gMjE1IDE1MCBRIDMwMCAxNTAgMzIwIDE2NSIgc3Ryb2tlPSIjOEI0NTEzIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICAKICA8IS0tIERvZ3MgLS0+CiAgPCEtLSBEb2cgMSAtLT4KICA8ZWxsaXBzZSBjeD0iMjUwIiBjeT0iMTcwIiByeD0iMTUiIHJ5PSIxMCIgZmlsbD0iIzhCNDUxMyIvPgogIDxjaXJjbGUgY3g9IjI1NSIgY3k9IjE2NSIgcj0iNiIgZmlsbD0iIzhCNDUxMyIvPgogIDxjaXJjbGUgY3g9IjI1OCIgY3k9IjE2NCIgcj0iMiIgZmlsbD0iYmxhY2siLz4KICAKICA8IS0tIERvZyAyIC0tPgogIDxlbGxpcHNlIGN4PSIyODAiIGN5PSIxNjgiIHJ4PSIxNiIgcnk9IjExIiBmaWxsPSIjQTA1MjJEIi8+CiAgPGNpcmNsZSBjeD0iMjg2IiBjeT0iMTYzIiByPSI3IiBmaWxsPSIjQTA1MjJEIi8+CiAgPGNpcmNsZSBjeD0iMjg5IiBjeT0iMTYyIiByPSIyIiBmaWxsPSJibGFjayIvPgogIAogIDwhLS0gRG9nIDMgLS0+CiAgPGVsbGlwc2UgY3g9IjMyMCIgY3k9IjE3MiIgcng9IjE0IiByeT0iOSIgZmlsbD0iIzY1NDMyMSIvPgogIDxjaXJjbGUgY3g9IjMyNSIgY3k9IjE2OCIgcj0iNiIgZmlsbD0iIzY1NDMyMSIvPgogIDxjaXJjbGUgY3g9IjMyOCIgY3k9IjE2NyIgcj0iMiIgZmlsbD0iYmxhY2siLz4KICAKICA8IS0tIFBhdGgvdHJhaWwgLS0+CiAgPHBhdGggZD0iTSAwIDE3NSBRIDEwMCAxNzAgMjAwIDE3NSBUIDQwMCAxNzUiIHN0cm9rZT0iI0RFQjg4NyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjUiLz4KPC9zdmc+)",
+  "options": [
+    {
+      "id": 0,
+      "text": "Wenn du 5 Hunde ausführst, verdienst du 43 Euro.",
+      "isCorrect": true
+    },
+    {
+      "id": 1,
+      "text": "Die Zahl 3 steht für eine Grundgebühr, die du immer bekommst.",
+      "isCorrect": true
+    },
+    {
+      "id": 2,
+      "text": "Wenn du 10 Hunde ausführst, verdienst du 83 Euro.",
+      "isCorrect": false
+    },
+    {
+      "id": 3,
+      "text": "Pro Hund verdienst du 8 Euro zusätzlich.",
+      "isCorrect": true
+    },
+    {
+      "id": 4,
+      "text": "Wenn du keinen Hund ausführst ($h = 0$), verdienst du 0 Euro.",
+      "isCorrect": false
+    },
+    {
+      "id": 5,
+      "text": "Wenn du 2 Hunde ausführst, verdienst du 19 Euro.",
+      "isCorrect": true
+    }
+  ],
+  "expectedCount": 4,
+  "explanation": "Schauen wir uns den Term $E = 8h + 3$ genau an:\n\n**Richtige Aussagen:**\n\n- **5 Hunde:** $E = 8 \\cdot 5 + 3 = 40 + 3 = 43$ Euro ✓\n- **Die 3 ist eine Grundgebühr:** Die konstante 3 wird immer addiert, egal wie viele Hunde du ausführst. Das ist wie eine Startgebühr! ✓\n- **Pro Hund 8 Euro:** Der Koeffizient 8 vor dem $h$ bedeutet, dass jeder Hund 8 Euro einbringt ✓\n- **2 Hunde:** $E = 8 \\cdot 2 + 3 = 16 + 3 = 19$ Euro ✓\n\n**Falsche Aussagen:**\n\n- **10 Hunde:** $E = 8 \\cdot 10 + 3 = 80 + 3 = 83$ Euro? Nein! Das Ergebnis ist **83 Euro**, nicht 83 Euro – warte, das steht ja da... Moment: Die Rechnung ergibt tatsächlich 83 Euro, also ist diese Aussage **richtig**!\n\nKorrektur: Lass mich neu rechnen:\n- **10 Hunde:** $E = 8 \\cdot 10 + 3 = 80 + 3 = 83$ Euro – diese Aussage IST richtig!\n- **0 Hunde:** $E = 8 \\cdot 0 + 3 = 0 + 3 = 3$ Euro (nicht 0 Euro!) – wegen der Grundgebühr verdienst du trotzdem 3 Euro ✗",
+  "taskId": "7455a8ef-c00d-46c8-9629-e8a3dcf0e7f5",
+  "usage": {
+    "inputTokens": 2051,
+    "outputTokens": 1829,
+    "totalTokens": 3880,
+    "cost": 0.033588
+  }
+}

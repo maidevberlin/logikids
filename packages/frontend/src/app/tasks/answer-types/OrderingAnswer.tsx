@@ -1,8 +1,8 @@
 import { Card } from '@/app/common/ui/card'
 import { Button } from '@/app/common/ui/button'
 import { MarkdownRenderer } from '@/app/common/MarkdownRenderer'
-import { cn } from '@/lib/utils'
-import { Skeleton } from '@/app/common/ui/skeleton'
+import { PlayButton } from '@/app/common/PlayButton'
+import { cn } from '@/app/common/cn'
 import { useTranslation } from 'react-i18next'
 import { Reorder, useDragControls } from 'framer-motion'
 import { GripVertical, ChevronUp, ChevronDown } from 'lucide-react'
@@ -13,14 +13,15 @@ interface OrderingItem {
 }
 
 interface OrderingAnswerProps {
+  taskId?: string
   items: OrderingItem[]
   selectedAnswer: string[] | null
   onAnswerSelect: (orderedIds: string[]) => void
-  isLoading?: boolean
   isLocked?: boolean
 }
 
 function OrderingItemCard({
+  taskId,
   item,
   index,
   isLocked,
@@ -29,6 +30,7 @@ function OrderingItemCard({
   canMoveUp,
   canMoveDown,
 }: {
+  taskId?: string
   item: OrderingItem
   index: number
   isLocked: boolean
@@ -83,6 +85,9 @@ function OrderingItemCard({
             />
           </div>
 
+          {/* TTS Button */}
+          {taskId && <PlayButton taskId={taskId} field={`items:${index}`} />}
+
           {/* Accessibility Buttons */}
           <div className="flex flex-col gap-1">
             <Button
@@ -111,10 +116,10 @@ function OrderingItemCard({
 }
 
 export function OrderingAnswer({
+  taskId,
   items,
   selectedAnswer,
   onAnswerSelect,
-  isLoading = false,
   isLocked = false,
 }: OrderingAnswerProps) {
   const { t } = useTranslation()
@@ -144,16 +149,6 @@ export function OrderingAnswer({
     onAnswerSelect(newOrder.map((item) => item.id))
   }
 
-  if (isLoading) {
-    return (
-      <div className="space-y-3 my-6">
-        {items.map((_, i) => (
-          <Skeleton key={i} className="h-20 rounded-2xl" />
-        ))}
-      </div>
-    )
-  }
-
   return (
     <div className="my-6 space-y-4">
       <div className="text-sm text-muted-foreground text-center mb-4">{t('task.dragToOrder')}</div>
@@ -162,6 +157,7 @@ export function OrderingAnswer({
         {orderedItems.map((item, index) => (
           <OrderingItemCard
             key={item.id}
+            taskId={taskId}
             item={item}
             index={index}
             isLocked={isLocked}

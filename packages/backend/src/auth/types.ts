@@ -1,9 +1,21 @@
-import { z } from 'zod'
-import { registerSchema, loginSchema, refreshSchema } from './schemas'
+// Input types are defined in schemas.ts using z.infer
+export type { RegisterInput, LoginInput, RefreshInput } from './schemas'
 
-export type RegisterInput = z.infer<typeof registerSchema>
-export type LoginInput = z.infer<typeof loginSchema>
-export type RefreshInput = z.infer<typeof refreshSchema>
+// JWT payload structure
+export interface JWTPayload {
+  userId: string
+  inviteCode: string
+  iat?: number
+  exp?: number
+}
+
+// Database row type (snake_case fields from DB)
+export interface UserAccountRow {
+  user_id: string
+  invite_code: string
+  created_at: number
+  last_seen: number
+}
 
 export interface UserAccount {
   userId: string

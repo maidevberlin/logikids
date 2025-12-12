@@ -1,4 +1,4 @@
-import { ProgressData, Difficulty } from '@/data/progress/types.ts'
+import { ProgressData, Difficulty } from '@/app/progress'
 
 export interface PracticeRecommendation {
   subject: string

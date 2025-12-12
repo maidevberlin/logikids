@@ -8,7 +8,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import mermaid from 'mermaid'
 import 'katex/dist/katex.min.css'
-import { createLogger } from '@/lib/logger'
+import { createLogger } from '@/app/common/logger'
 
 const logger = createLogger('MarkdownRenderer')
 

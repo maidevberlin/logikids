@@ -1,17 +1,31 @@
 import { ReactNode, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { trpc, trpcClient } from '../api/trpc'
+import { trpc, trpcClient } from '@/app/common/trpc'
 import { ErrorBoundary } from '@/app/common'
-import { AuthProvider } from './account/AuthContext'
-import { DataSyncProvider } from './account/DataSyncContext'
-import { UserDataProvider } from './account/UserDataContext'
+import { AuthProvider } from './user/AuthContext'
+import { DataSyncProvider } from './user/sync'
+import { UserDataProvider } from './user/UserDataContext'
 
 interface ProvidersProps {
   children: ReactNode
 }
 
 export function Providers({ children }: ProvidersProps) {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            // Cache data for 1 hour - subjects/concepts rarely change
+            staleTime: 60 * 60 * 1000,
+            // Keep unused data in cache for 2 hours
+            gcTime: 2 * 60 * 60 * 1000,
+            // Don't refetch on window focus for better UX
+            refetchOnWindowFocus: false,
+          },
+        },
+      })
+  )
 
   return (
     <ErrorBoundary>

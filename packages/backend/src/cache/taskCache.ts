@@ -1,5 +1,7 @@
 import { z } from 'zod'
 import type { BaseTaskResponse } from '../tasks/types'
+import { cleanupRegistry } from '../common/cleanup'
+import type { Cleanable } from '../common/cleanup'
 
 /**
  * Zod schema for task context stored in cache.
@@ -22,9 +24,34 @@ export const taskContextSchema = z.object({
 // Inferred type replaces manual interface
 export type TaskContext = z.infer<typeof taskContextSchema>
 
-export class TaskCache {
+/**
+ * In-memory task cache with TTL.
+ *
+ * REDIS MIGRATION: Replace this class with a Redis-backed implementation:
+ * 1. Use Redis SET with EX option for automatic TTL
+ * 2. Use Redis GET for retrieval
+ * 3. Remove registration from cleanupRegistry (Redis handles TTL)
+ *
+ * Example Redis implementation:
+ * ```
+ * set(taskId, context) {
+ *   await redis.set(`task:${taskId}`, JSON.stringify(context), 'EX', 1800)
+ * }
+ * get(taskId) {
+ *   const data = await redis.get(`task:${taskId}`)
+ *   return data ? JSON.parse(data) : null
+ * }
+ * ```
+ */
+export class TaskCache implements Cleanable {
+  name = 'TaskCache'
   private cache = new Map<string, TaskContext>()
   private readonly TTL = 30 * 60 * 1000 // 30 minutes
+
+  constructor() {
+    // Register for cleanup
+    cleanupRegistry.register(this)
+  }
 
   set(taskId: string, context: TaskContext): void {
     this.cache.set(taskId, context)
@@ -44,7 +71,7 @@ export class TaskCache {
     return context
   }
 
-  cleanExpired(): void {
+  cleanup(): void {
     const now = Date.now()
     for (const [taskId, context] of this.cache.entries()) {
       if (now - context.createdAt > this.TTL) {

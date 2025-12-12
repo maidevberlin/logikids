@@ -1,90 +1,53 @@
 /**
- * Error class hierarchy for the Logikids backend
+ * Minimal error class for the Logikids backend
  *
- * This module provides typed error classes for all domain errors,
- * replacing string-based error handling with proper error instances
- * that include HTTP status codes and error codes.
+ * Replaces the complex error hierarchy with a single lightweight class
+ * that includes just a message and HTTP status code.
  *
  * @example Basic usage
  * ```typescript
- * import { UserExistsError, InviteNotFoundError } from '../common/errors';
+ * import { AppError, notFound, badRequest } from '../common/errors';
  *
- * // Throw typed errors
- * if (existingUser) {
- *   throw new UserExistsError(userId);
- * }
+ * // Throw with status code
+ * throw new AppError('User not found', 404);
  *
- * // Catch and handle with proper status codes
- * try {
- *   await registerUser(userId, inviteCode);
- * } catch (error) {
- *   if (error instanceof UserExistsError) {
- *     res.status(error.statusCode).json({ error: error.message });
- *   }
- * }
+ * // Use factory functions
+ * throw notFound('Task not found or expired');
+ * throw badRequest('Invalid parameters');
  * ```
- *
- * @module errors
+ */
+export class AppError extends Error {
+  constructor(
+    message: string,
+    public readonly statusCode: number = 500,
+    cause?: unknown
+  ) {
+    super(message, cause !== undefined ? { cause } : undefined)
+    this.name = 'AppError'
+    Error.captureStackTrace(this, this.constructor)
+  }
+}
+
+/**
+ * Factory functions for common HTTP error codes
  */
 
-// Base error class
-export { ApplicationError } from './base'
+export function badRequest(message: string, cause?: unknown): AppError {
+  return new AppError(message, 400, cause)
+}
 
-// Authentication and authorization errors
-export {
-  UserExistsError,
-  UserNotFoundError,
-  AccountNotFoundError,
-  AccountRevokedError,
-  InvalidCredentialsError,
-  UnauthorizedError,
-  ForbiddenError,
-} from './auth'
+export function unauthorized(message: string = 'Not authenticated', cause?: unknown): AppError {
+  return new AppError(message, 401, cause)
+}
 
-// Invite code errors
-export {
-  InviteNotFoundError,
-  InvalidInviteError,
-  InviteExpiredError,
-  InviteAlreadyUsedError,
-} from './invite'
+export function forbidden(message: string = 'Access forbidden', cause?: unknown): AppError {
+  return new AppError(message, 403, cause)
+}
 
-// Task generation and management errors
-export {
-  TaskGenerationError,
-  NoTasksFoundError,
-  InvalidTaskParametersError,
-  SubjectNotFoundError,
-  ConceptNotFoundError,
-  NoConceptsFoundError,
-  TaskTypeNotFoundError,
-  NoTaskTypesError,
-  TaskNotFoundError,
-  AllHintsUsedError,
-} from './task'
+export function notFound(message: string, cause?: unknown): AppError {
+  return new AppError(message, 404, cause)
+}
 
-// Sync errors
-export { InvalidChecksumError } from './sync'
-
-// Configuration errors
-export { ConfigurationError, UnsupportedProviderError } from './config'
-
-// AI provider errors
-export { EmptyAIResponseError, AIProviderError, AIGenerationError, NoToolUseError } from './ai'
-
-// Database errors
-export { DatabaseConnectionError } from './database'
-
-// Prompt template errors
-export { PromptTemplateError, HintPromptNotLoadedError } from './prompt'
-
-// Validation errors
-export {
-  ValidationError,
-  MissingFieldError,
-  InvalidFormatError,
-  InvalidSolutionError,
-} from './validation'
-
-// Registry errors
-export { RegistryInitializationError, NoJsonSchemaError } from './registry'
+export function internalError(message: string, cause?: unknown): AppError {
+  return new AppError(message, 500, cause)
+}

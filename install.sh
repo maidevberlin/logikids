@@ -222,6 +222,25 @@ if $NEED_AI_CONFIG; then
 fi
 
 # ═══════════════════════════════════════════════════════════════════════
+# STEP 4b: Configure TTS (Optional)
+# ═══════════════════════════════════════════════════════════════════════
+
+echo ""
+echo -e "${BLUE}[4b/6] Configuring Text-to-Speech (optional)...${NC}"
+echo ""
+echo "Text-to-Speech allows tasks to be read aloud to students."
+echo "Requires a Google Cloud API key with Text-to-Speech enabled."
+echo ""
+read -p "Enter Google Cloud TTS API key (or press Enter to skip): " TTS_KEY
+
+if [[ -n "$TTS_KEY" ]]; then
+    GOOGLE_CLOUD_TTS_API_KEY="$TTS_KEY"
+    echo -e "${GREEN}✓ TTS configured${NC}"
+else
+    echo "Skipping TTS configuration"
+fi
+
+# ═══════════════════════════════════════════════════════════════════════
 # STEP 5: Write Configuration
 # ═══════════════════════════════════════════════════════════════════════
 
@@ -277,6 +296,17 @@ ANTHROPIC_TEMPERATURE=0.7
 EOF
         ;;
 esac
+
+# Add TTS configuration if provided
+if [[ -n "$GOOGLE_CLOUD_TTS_API_KEY" ]]; then
+    cat >> .env << EOF
+
+# Text-to-Speech Configuration
+GOOGLE_CLOUD_TTS_API_KEY=$GOOGLE_CLOUD_TTS_API_KEY
+TTS_VOICE_DE=de-DE-Standard-A
+TTS_VOICE_EN=en-US-Standard-C
+EOF
+fi
 
 echo -e "${GREEN}✓ Created .env${NC}"
 

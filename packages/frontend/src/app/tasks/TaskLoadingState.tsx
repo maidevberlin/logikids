@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/app/common/ui/card'
 import { TaskLoadingContent } from './TaskLoadingContent'
-import { getSubjectTheme } from '@/app/common/subjectTheme'
-import { cn } from '@/lib/utils'
-import { useTaskLoadingCalibration } from '@/hooks/useTaskLoadingCalibration'
+import { getSubjectTheme } from '@/app/subjects'
+import { cn } from '@/app/common/cn'
+import { useTaskLoadingCalibration } from './useTaskLoadingCalibration'
 import { Brain, Wand2, Sparkles, CheckCircle2 } from 'lucide-react'
 
 /**
@@ -189,7 +189,12 @@ export function TaskLoadingState({ subject, className }: TaskLoadingStateProps) 
       </div>
 
       <Card
-        className={cn('w-full max-w-2xl mx-auto', 'p-6 sm:p-8', 'space-y-8')}
+        className={cn(
+          'w-full max-w-2xl mx-auto',
+          'p-6 sm:p-8',
+          'space-y-8',
+          'bg-card/60 backdrop-blur-md border-white/60 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.4)]'
+        )}
         role="region"
         aria-label={t('header', 'Preparing your task...')}
         aria-live="polite"

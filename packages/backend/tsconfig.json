@@ -13,6 +13,11 @@
     "downlevelIteration": true,
     "allowJs": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "@content/*": ["/content/*", "../../content/*"]
+    }
+  },
+  "include": ["src", "database", "../../content"]
 }

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { useUserData } from '@/app/account'
-import { trpc } from '@/api/trpc'
+import { useUserData } from '@/app/user'
+import { trpc } from '@/app/common/trpc'
 import { SubjectConceptSelector } from './SubjectConceptSelector'
 
 interface TaskPageHeaderProps {

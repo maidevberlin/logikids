@@ -1,9 +1,11 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
-import { useUserData } from '@/app/account'
+import { useUserData } from '@/app/user'
 import { Card } from '@/app/common/ui/card'
-import { MetricCard } from '@/app/stats/MetricCard'
+import { Button } from '@/app/common/ui/button'
+import { ChevronLeft, ChevronRight, TrendingUp, TrendingDown, Minus } from 'lucide-react'
+import { ComposedChart, Bar, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts'
 
 function formatCost(cost: number): string {
   if (cost < 0.01) {
@@ -12,188 +14,265 @@ function formatCost(cost: number): string {
   return `$${cost.toFixed(2)}`
 }
 
-function formatNumber(num: number): string {
-  if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(1)}M`
-  }
-  if (num >= 1000) {
-    return `${(num / 1000).toFixed(1)}K`
-  }
-  return num.toString()
+function getMonthName(date: Date): string {
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
 }
 
-interface CostsBySubject {
-  [subject: string]: {
-    totalCost: number
-    totalTokens: number
-    count: number
-  }
+function getDaysInMonth(year: number, month: number): number {
+  return new Date(year, month + 1, 0).getDate()
 }
 
 export function ParentStatsPage() {
   const { t } = useTranslation('common')
   const { data } = useUserData()
+  const [monthOffset, setMonthOffset] = useState(0) // 0 = current month, -1 = last month, etc.
 
   const stats = useMemo(() => {
     const costs = data?.costs || []
 
-    // Total stats
+    // Separate TTS costs from AI costs
+    const ttsCosts = costs.filter((c) => c.inputTokens === 0 && c.outputTokens === 0)
+    const aiCosts = costs.filter((c) => c.inputTokens > 0 || c.outputTokens > 0)
+
+    // Total cost
     const totalCost = costs.reduce((sum, c) => sum + (c.cost || 0), 0)
-    const totalInputTokens = costs.reduce((sum, c) => sum + c.inputTokens, 0)
-    const totalOutputTokens = costs.reduce((sum, c) => sum + c.outputTokens, 0)
-    const totalTokens = totalInputTokens + totalOutputTokens
-    const totalRequests = costs.length
 
-    // Group by subject
-    const bySubject: CostsBySubject = {}
-    costs.forEach((c) => {
-      if (!bySubject[c.subject]) {
-        bySubject[c.subject] = { totalCost: 0, totalTokens: 0, count: 0 }
-      }
-      bySubject[c.subject].totalCost += c.cost || 0
-      bySubject[c.subject].totalTokens += (c.inputTokens || 0) + (c.outputTokens || 0)
-      bySubject[c.subject].count++
-    })
+    // AI costs breakdown
+    const aiTotalCost = aiCosts.reduce((sum, c) => sum + (c.cost || 0), 0)
+    const aiRequests = aiCosts.length
 
-    // Recent costs (last 7 days)
-    const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
-    const recentCosts = costs.filter((c) => c.timestamp > weekAgo)
-    const weekCost = recentCosts.reduce((sum, c) => sum + (c.cost || 0), 0)
+    // TTS costs
+    const ttsTotalCost = ttsCosts.reduce((sum, c) => sum + (c.cost || 0), 0)
+    const ttsRequests = ttsCosts.length
 
-    // Average cost per request
-    const avgCost = totalRequests > 0 ? totalCost / totalRequests : 0
+    // Week over week usage trend (based on request count)
+    const now = Date.now()
+    const weekAgo = now - 7 * 24 * 60 * 60 * 1000
+    const twoWeeksAgo = now - 14 * 24 * 60 * 60 * 1000
+
+    const thisWeekCount = costs.filter((c) => c.timestamp > weekAgo).length
+    const lastWeekCount = costs.filter(
+      (c) => c.timestamp > twoWeeksAgo && c.timestamp <= weekAgo
+    ).length
+
+    let usageTrendPercent = 0
+    if (lastWeekCount > 0) {
+      usageTrendPercent = ((thisWeekCount - lastWeekCount) / lastWeekCount) * 100
+    } else if (thisWeekCount > 0) {
+      usageTrendPercent = 100 // New usage this week
+    }
 
     return {
       totalCost,
-      totalInputTokens,
-      totalOutputTokens,
-      totalTokens,
-      totalRequests,
-      bySubject,
-      weekCost,
-      avgCost,
+      aiTotalCost,
+      aiRequests,
+      ttsTotalCost,
+      ttsRequests,
+      usageTrendPercent,
+      hasData: costs.length > 0,
     }
   }, [data?.costs])
+
+  // Chart data for selected month with rolling 30-day average
+  const chartData = useMemo(() => {
+    const costs = data?.costs || []
+
+    const now = new Date()
+    const targetDate = new Date(now.getFullYear(), now.getMonth() + monthOffset, 1)
+    const year = targetDate.getFullYear()
+    const month = targetDate.getMonth()
+    const daysInMonth = getDaysInMonth(year, month)
+
+    // Build a map of daily costs for the last 60 days (to calculate rolling avg)
+    const dailyMap = new Map<string, number>()
+    costs.forEach((c) => {
+      const date = new Date(c.timestamp)
+      const key = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+      dailyMap.set(key, (dailyMap.get(key) || 0) + (c.cost || 0))
+    })
+
+    // Build chart data with rolling 30-day average
+    const chartDays: { day: number; cost: number; avg: number }[] = []
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const currentDate = new Date(year, month, day)
+      const key = `${year}-${month}-${day}`
+      const dayCost = dailyMap.get(key) || 0
+
+      // Calculate 30-day rolling average up to this day
+      let sum = 0
+      let count = 0
+      for (let i = 0; i < 30; i++) {
+        const pastDate = new Date(currentDate)
+        pastDate.setDate(pastDate.getDate() - i)
+        const pastKey = `${pastDate.getFullYear()}-${pastDate.getMonth()}-${pastDate.getDate()}`
+        if (dailyMap.has(pastKey)) {
+          sum += dailyMap.get(pastKey)!
+          count++
+        }
+      }
+      const avg = count > 0 ? sum / count : 0 // Average of days with activity
+
+      chartDays.push({ day, cost: dayCost, avg })
+    }
+
+    return {
+      data: chartDays,
+      monthName: getMonthName(targetDate),
+      isCurrentMonth: monthOffset === 0,
+    }
+  }, [data?.costs, monthOffset])
+
+  const canGoForward = monthOffset < 0
 
   if (!data) return null
 
   return (
     <PageLayout showBack showHome showAccount>
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div>
-          <h1 className="text-4xl font-bold text-foreground mb-2">
-            {t('parentStats.title', { defaultValue: 'Usage Statistics' })}
-          </h1>
-          <p className="text-muted-foreground">
-            {t('parentStats.subtitle', { defaultValue: 'AI usage and cost tracking for parents' })}
-          </p>
-        </div>
+      <div className="max-w-md mx-auto space-y-4">
+        <h1 className="text-2xl font-bold text-foreground">
+          {t('parentStats.title', { defaultValue: 'Usage & Costs' })}
+        </h1>
 
-        {/* Overview Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <MetricCard
-            icon="💰"
-            title={t('parentStats.totalCost', { defaultValue: 'Total Cost' })}
-            value={formatCost(stats.totalCost)}
-            subtitle={t('parentStats.allTime', { defaultValue: 'All time' })}
-            colorClass="text-green-600"
-          />
-          <MetricCard
-            icon="📅"
-            title={t('parentStats.thisWeek', { defaultValue: 'This Week' })}
-            value={formatCost(stats.weekCost)}
-            subtitle={t('parentStats.last7Days', { defaultValue: 'Last 7 days' })}
-            colorClass="text-blue-600"
-          />
-          <MetricCard
-            icon="🔢"
-            title={t('parentStats.requests', { defaultValue: 'AI Requests' })}
-            value={stats.totalRequests}
-            subtitle={t('parentStats.tasksAndHints', { defaultValue: 'Tasks & hints' })}
-            colorClass="text-purple-600"
-          />
-          <MetricCard
-            icon="📊"
-            title={t('parentStats.avgCost', { defaultValue: 'Avg Cost' })}
-            value={formatCost(stats.avgCost)}
-            subtitle={t('parentStats.perRequest', { defaultValue: 'Per request' })}
-            colorClass="text-orange-600"
-          />
-        </div>
+        {stats.hasData ? (
+          <>
+            {/* Chart Card */}
+            <Card className="p-4 bg-card shadow-sm rounded-2xl border-0">
+              {/* Usage trend */}
+              {stats.usageTrendPercent !== 0 && (
+                <div
+                  className={`flex items-center justify-center gap-1 mb-3 text-sm ${
+                    Math.abs(stats.usageTrendPercent) <= 10
+                      ? 'text-gray-400'
+                      : stats.usageTrendPercent > 0
+                        ? 'text-green-500'
+                        : 'text-orange-500'
+                  }`}
+                >
+                  {Math.abs(stats.usageTrendPercent) <= 10 ? (
+                    <Minus className="w-4 h-4" />
+                  ) : stats.usageTrendPercent > 0 ? (
+                    <TrendingUp className="w-4 h-4" />
+                  ) : (
+                    <TrendingDown className="w-4 h-4" />
+                  )}
+                  <span>
+                    {stats.usageTrendPercent > 0 ? '+' : ''}
+                    {stats.usageTrendPercent.toFixed(0)}% usage vs last week
+                  </span>
+                </div>
+              )}
 
-        {/* Token Usage */}
-        <Card className="p-6 bg-card shadow-sm rounded-2xl border-0">
-          <h2 className="text-xl font-semibold mb-4">
-            {t('parentStats.tokenUsage', { defaultValue: 'Token Usage' })}
-          </h2>
-          <div className="grid grid-cols-3 gap-4 text-center">
-            <div>
-              <div className="text-2xl font-bold text-blue-600">
-                {formatNumber(stats.totalInputTokens)}
+              {/* Month navigation */}
+              <div className="flex items-center justify-between mb-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setMonthOffset((m) => m - 1)}
+                  className="p-2"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <span className="font-medium">{chartData.monthName}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setMonthOffset((m) => m + 1)}
+                  disabled={!canGoForward}
+                  className="p-2"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
               </div>
-              <div className="text-sm text-muted-foreground">
-                {t('parentStats.inputTokens', { defaultValue: 'Input Tokens' })}
-              </div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-green-600">
-                {formatNumber(stats.totalOutputTokens)}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {t('parentStats.outputTokens', { defaultValue: 'Output Tokens' })}
-              </div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-purple-600">
-                {formatNumber(stats.totalTokens)}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {t('parentStats.totalTokens', { defaultValue: 'Total Tokens' })}
-              </div>
-            </div>
-          </div>
-        </Card>
 
-        {/* Cost by Subject */}
-        {Object.keys(stats.bySubject).length > 0 && (
-          <Card className="p-6 bg-card shadow-sm rounded-2xl border-0">
-            <h2 className="text-xl font-semibold mb-4">
-              {t('parentStats.bySubject', { defaultValue: 'Usage by Subject' })}
-            </h2>
-            <div className="space-y-3">
-              {Object.entries(stats.bySubject)
-                .sort(([, a], [, b]) => b.totalCost - a.totalCost)
-                .map(([subject, data]) => (
-                  <div
-                    key={subject}
-                    className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
-                  >
-                    <div>
-                      <div className="font-medium capitalize">
-                        {t(`subjects.${subject}.label`, { defaultValue: subject })}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {data.count} {t('parentStats.requestsCount', { defaultValue: 'requests' })}{' '}
-                        • {formatNumber(data.totalTokens)}{' '}
-                        {t('parentStats.tokens', { defaultValue: 'tokens' })}
-                      </div>
-                    </div>
-                    <div className="text-lg font-semibold text-green-600">
-                      {formatCost(data.totalCost)}
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </Card>
-        )}
+              {/* Bar Chart with Average Line */}
+              <div className="h-40">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={chartData.data} barCategoryGap="20%">
+                    <XAxis
+                      dataKey="day"
+                      tick={{ fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={false}
+                      interval={0}
+                      tickFormatter={(day) => (day % 5 === 0 || day === 1 ? String(day) : '')}
+                    />
+                    <YAxis hide />
+                    <Tooltip
+                      formatter={(value: number, name: string) => [
+                        formatCost(value),
+                        name === 'cost' ? 'Daily' : '30d Avg',
+                      ]}
+                      labelFormatter={(day) => `Day ${day}`}
+                      contentStyle={{
+                        backgroundColor: 'white',
+                        border: '1px solid #e5e7eb',
+                        borderRadius: '8px',
+                        fontSize: '12px',
+                      }}
+                    />
+                    <Bar dataKey="cost" fill="#6366f1" radius={[2, 2, 0, 0]} />
+                    <Line
+                      type="monotone"
+                      dataKey="avg"
+                      stroke="#94a3b8"
+                      strokeWidth={2}
+                      dot={false}
+                    />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
 
-        {/* Empty State */}
-        {stats.totalRequests === 0 && (
+              {/* Legend */}
+              <div className="flex justify-center gap-4 mt-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#6366f1' }} />
+                  <span>Daily</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="w-4 h-0.5" style={{ backgroundColor: '#94a3b8' }} />
+                  <span>30d Avg</span>
+                </div>
+              </div>
+            </Card>
+
+            {/* Costs Card */}
+            <Card className="p-6 bg-card shadow-sm rounded-2xl border-0">
+              <div className="text-center mb-4">
+                <div className="text-sm text-muted-foreground mb-1">
+                  {t('parentStats.totalSpent', { defaultValue: 'Total Spent' })}
+                </div>
+                <div className="text-3xl font-bold text-foreground">
+                  {formatCost(stats.totalCost)}
+                </div>
+              </div>
+
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between items-center py-1 border-b border-border">
+                  <span className="text-muted-foreground">
+                    {t('parentStats.aiTasks', { defaultValue: 'AI Tasks & Hints' })}
+                  </span>
+                  <span className="font-medium">
+                    {formatCost(stats.aiTotalCost)}{' '}
+                    <span className="text-muted-foreground">({stats.aiRequests}×)</span>
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center py-1">
+                  <span className="text-muted-foreground">
+                    {t('parentStats.tts', { defaultValue: 'Text-to-Speech' })}
+                  </span>
+                  <span className="font-medium">
+                    {formatCost(stats.ttsTotalCost)}{' '}
+                    <span className="text-muted-foreground">({stats.ttsRequests}×)</span>
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </>
+        ) : (
           <Card className="p-8 bg-card shadow-sm rounded-2xl border-0 text-center">
             <div className="text-4xl mb-4">📊</div>
-            <h2 className="text-xl font-semibold mb-2">
-              {t('parentStats.noData', { defaultValue: 'No usage data yet' })}
-            </h2>
             <p className="text-muted-foreground">
               {t('parentStats.noDataDescription', {
                 defaultValue: 'Usage statistics will appear here once your child starts learning.',

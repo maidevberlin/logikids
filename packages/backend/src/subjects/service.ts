@@ -1,22 +1,24 @@
 import 'reflect-metadata'
-import { injectable } from 'tsyringe'
-import { subjectRegistry } from './registry'
+import { injectable, inject } from 'tsyringe'
+import { SubjectRegistry } from './registry'
 import type { SubjectsInput, SubjectWithConcepts, ConceptSummary } from './types'
 import type { Source } from '../concepts/types'
 
 @injectable()
 export class SubjectsService {
+  constructor(@inject(SubjectRegistry) private readonly subjectRegistry: SubjectRegistry) {}
+
   getAll(input: SubjectsInput): SubjectWithConcepts[] {
     const { grade, difficulty } = input
 
-    const subjects = subjectRegistry.getAll().map((subject) => {
-      const metadata = subjectRegistry.getConceptMetadata(subject.id)
+    const subjects = this.subjectRegistry.getAll().map((subject) => {
+      const metadata = this.subjectRegistry.getConceptMetadata(subject.id)
 
       // Get concepts (filtered or all)
       const concepts =
         grade !== undefined
-          ? subjectRegistry.getConcepts(subject.id, { grade, difficulty })
-          : subjectRegistry.getConcepts(subject.id)
+          ? this.subjectRegistry.getConcepts(subject.id, { grade, difficulty })
+          : this.subjectRegistry.getConcepts(subject.id)
 
       return {
         id: subject.id,
