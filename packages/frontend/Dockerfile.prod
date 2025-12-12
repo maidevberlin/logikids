@@ -6,11 +6,15 @@ WORKDIR /app
 COPY package.json .
 COPY bun.lockb .
 
-# Copy both packages for workspace resolution
+# Copy all packages for workspace resolution
 COPY packages/frontend/package.json packages/frontend/
 COPY packages/backend/package.json packages/backend/
+COPY content/package.json content/
 
 RUN bun install
+
+# Copy content (shared between packages)
+COPY content content
 
 # Copy backend source and config for type generation
 COPY packages/backend/src packages/backend/src

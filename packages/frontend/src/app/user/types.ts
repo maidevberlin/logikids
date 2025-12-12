@@ -1,6 +1,6 @@
 import { GameStats } from '@/app/gamification/gameTypes'
 import { ProgressData } from '@/app/progress'
-import { Language, DEFAULT_LANGUAGE } from '@content/schema'
+import { Language, DEFAULT_LANGUAGE } from '@logikids/content/schema'
 
 export interface UserSettings {
   name: string

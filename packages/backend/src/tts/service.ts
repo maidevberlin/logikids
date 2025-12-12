@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { injectable } from 'tsyringe'
 import { internalError } from '../common/errors'
-import { Language, DEFAULT_LANGUAGE } from '@content/schema'
+import { Language, DEFAULT_LANGUAGE } from '@logikids/content/schema'
 
 interface GoogleTTSRequest {
   input: {
