@@ -23,14 +23,14 @@ Logikids is an AI-powered educational platform for children (ages 8-19) that gen
 ## Quick Reference
 
 | What            | Where                                      |
-| --------------- | ------------------------------------------ |
+| --------------- |--------------------------------------------|
 | Docker setup    | `docker-compose.yml`                       |
 | Invite codes    | `./invite`                                 |
 | Frontend        | `packages/frontend/src/`                   |
 | Backend         | `packages/backend/src/`                    |
 | Content         | `packages/content/subjects/`               |
-| Concept rules   | `.claude/docs/concept-rules.md`            |
-| Task generation | `.claude/docs/task-generation.md`          |
+| Concept rules   | `docs/concept-rules.md`                    |
+| Task generation | `docs/task-generation.md`                  |
 | AI prompts      | `packages/backend/prompts/`                |
 | Translations    | `packages/frontend/public/locales/{lang}/` |
 | DB migrations   | `packages/backend/database/migrations/`    |

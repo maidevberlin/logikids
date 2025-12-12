@@ -24,7 +24,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
    - Difficulty progression
    - Key terminology
 
-   Save to `docs/{subject}-curriculum-research.md` with:
+   Save to `docs/research/{subject}-curriculum-research.md` with:
    - Concept list (IDs, titles, grades, scope)
    - Extracted curriculum details per concept
    - Source URLs
@@ -36,7 +36,7 @@ description: Use when generating multiple curriculum-aligned concept files in pa
    ```
    Create concept: {subject}/{concept-id} (Grade {grade})
 
-   1. Read `.claude/docs/concept-rules.md` first
+   1. Read `docs/concept-rules.md` first
    2. Use write-concept skill
    3. Reference `docs/{subject}-curriculum-research.md` for curriculum context
    4. **SKIP RESEARCH**: All content is provided!

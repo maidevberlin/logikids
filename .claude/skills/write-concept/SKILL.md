@@ -21,7 +21,7 @@ description: Use when creating or improving educational concept files - includes
 
 ### 3. Read rules
 
-- `.claude/docs/concept-rules.md`
+- `docs/concept-rules.md`
 - `packages/backend/src/prompts/concept-schema.ts`
 
 ### 4. Write/edit concept file
