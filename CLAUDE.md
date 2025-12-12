@@ -23,12 +23,13 @@ Logikids is an AI-powered educational platform for children (ages 8-19) that gen
 ## Quick Reference
 
 | What            | Where                                      |
-| --------------- |--------------------------------------------|
+| --------------- | ------------------------------------------ |
 | Docker setup    | `docker-compose.yml`                       |
 | Invite codes    | `./invite`                                 |
 | Frontend        | `packages/frontend/src/`                   |
 | Backend         | `packages/backend/src/`                    |
-| Content         | `packages/content/subjects/`               |
+| Content         | `content/subjects/`                        |
+| Concept schema  | `content/schema.ts`                        |
 | Concept rules   | `docs/concept-rules.md`                    |
 | Task generation | `docs/task-generation.md`                  |
 | AI prompts      | `packages/backend/prompts/`                |
@@ -39,13 +40,18 @@ Logikids is an AI-powered educational platform for children (ages 8-19) that gen
 
 All scripts: no args = usage, `subject/concept` = single, `subject` = all in subject, `--all` = everything.
 
-- `check:concepts` - Validate concept files
-- `check:translations` - Check translation completeness
+**Root scripts** (run from host):
+
+- `bun run check:concepts` - Validate concept files
+- `bun run check:translations` - Check translation completeness
+
+**Backend scripts** (run via docker):
+
 - `check:prompts` - Validate prompt templates (no args, full system check)
 - `generate:prompt` - Generate AI prompt without calling LLM
 - `generate:task` - Generate task using AI
 
-Run via docker: `docker compose exec backend-dev bun run <script>`
+Run backend scripts via docker: `docker compose exec backend-dev bun run <script>`
 
 ## Git Workflow
 

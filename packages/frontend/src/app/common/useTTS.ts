@@ -16,9 +16,16 @@ let currentlyPlaying: string | null = null
 
 type TTSState = 'idle' | 'loading' | 'playing'
 
+export interface TTSUsage {
+  characterCount: number
+  cost: number
+  cached: boolean
+}
+
 interface UseTTSOptions {
   taskId: string
   field: string
+  onCostReceived?: (usage: TTSUsage) => void
 }
 
 interface UseTTSResult {
@@ -36,11 +43,17 @@ interface UseTTSResult {
  * @param options - taskId and field to play
  * @returns state, play, and stop functions
  */
-export function useTTS({ taskId, field }: UseTTSOptions): UseTTSResult {
+export function useTTS({ taskId, field, onCostReceived }: UseTTSOptions): UseTTSResult {
   const [state, setState] = useState<TTSState>('idle')
   const cacheKey = `${taskId}:${field}`
   const isMountedRef = useRef(true)
+  const onCostReceivedRef = useRef(onCostReceived)
   const ttsMutation = trpc.tts.synthesize.useMutation()
+
+  // Keep callback ref up to date
+  useEffect(() => {
+    onCostReceivedRef.current = onCostReceived
+  }, [onCostReceived])
 
   // Track mounted state - only on true mount/unmount
   useEffect(() => {
@@ -73,6 +86,11 @@ export function useTTS({ taskId, field }: UseTTSOptions): UseTTSResult {
     logger.debug(`Fetching audio for ${cacheKey}`)
 
     const data = await ttsMutation.mutateAsync({ taskId, field })
+
+    // Call cost callback if provided and usage info is available
+    if (data.usage && onCostReceivedRef.current) {
+      onCostReceivedRef.current(data.usage)
+    }
 
     const binaryString = atob(data.audio)
     const bytes = new Uint8Array(binaryString.length)

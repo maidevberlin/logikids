@@ -136,7 +136,8 @@
   },
   "error": {
     "tryAgain": "Try Again",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "rateLimited": "Please wait a moment before generating another task"
   },
   "subjects": {
     "title": "Subjects",

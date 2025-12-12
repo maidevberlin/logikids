@@ -9,9 +9,9 @@
     "dev": "docker compose up frontend-dev backend-dev",
     "prod": "docker compose up frontend-prod backend-prod",
     "build": "docker compose build",
-    "check:concepts": "docker compose exec backend-dev bun run check:concepts",
+    "check:concepts": "bun scripts/check-concepts.ts",
+    "check:translations": "bun scripts/check-translations.ts",
     "check:prompts": "docker compose exec backend-dev bun run check:prompts",
-    "check:translations": "docker compose exec backend-dev bun run check:translations",
     "generate:prompt": "docker compose exec backend-dev bun run generate:prompt",
     "generate:task": "docker compose exec backend-dev bun run generate:task"
   },

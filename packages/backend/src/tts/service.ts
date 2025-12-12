@@ -19,6 +19,12 @@ interface GoogleTTSResponse {
   audioContent: string // Base64-encoded audio
 }
 
+export interface TTSSynthesizeResult {
+  audio: Buffer
+  characterCount: number
+  voiceType: 'standard' | 'wavenet' | 'neural2'
+}
+
 @injectable()
 export class TTSService {
   private readonly apiKey: string
@@ -58,9 +64,9 @@ export class TTSService {
    * Synthesize text to audio using Google Cloud TTS API
    * @param text Text to synthesize
    * @param language Language code (e.g., 'de-DE', 'en-US')
-   * @returns Audio buffer in MP3 format
+   * @returns Audio buffer in MP3 format with metadata
    */
-  async synthesize(text: string, language: string): Promise<Buffer> {
+  async synthesize(text: string, language: string): Promise<TTSSynthesizeResult> {
     const voice = this.selectVoice(language)
 
     const requestBody: GoogleTTSRequest = {
@@ -90,9 +96,29 @@ export class TTSService {
       // Decode base64 audio content to buffer
       const audioBuffer = Buffer.from(data.audioContent, 'base64')
 
-      return audioBuffer
+      // Determine voice type from voice name
+      const voiceType = this.getVoiceType(voice.name)
+
+      return {
+        audio: audioBuffer,
+        characterCount: text.length,
+        voiceType,
+      }
     } catch (error) {
       throw error
     }
+  }
+
+  /**
+   * Determine voice type from voice name
+   */
+  private getVoiceType(voiceName: string): 'standard' | 'wavenet' | 'neural2' {
+    if (voiceName.includes('Wavenet')) {
+      return 'wavenet'
+    }
+    if (voiceName.includes('Neural2')) {
+      return 'neural2'
+    }
+    return 'standard'
   }
 }

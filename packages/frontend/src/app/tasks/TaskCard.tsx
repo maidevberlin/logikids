@@ -17,7 +17,7 @@ import { useTaskLoadingCalibration } from './useTaskLoadingCalibration'
 interface TaskCardProps {
   task: Task | null
   isLoading: boolean
-  error: string | null
+  error: { message: string; code?: string } | null
   subject: string
   selectedAnswer:
     | number
@@ -113,15 +113,18 @@ export function TaskCard({
 
   // Error state
   if (error) {
+    // Use translated message for rate limiting, fallback to server message for others
+    const errorMessage = error.code === 'TOO_MANY_REQUESTS' ? t('error.rateLimited') : error.message
+
     return (
       <Card className="p-4 sm:p-8 border-red-200 bg-red-50/80 backdrop-blur-md shadow-2xl">
         <div className="text-center">
           <h3 className="text-xl font-bold text-red-900 mb-2">
             {t('error.title', { defaultValue: 'Oops!' })}
           </h3>
-          <p className="text-red-700 mb-4">{error}</p>
+          <p className="text-red-700 mb-4">{errorMessage}</p>
           <Button onClick={onNextTask} variant="outline" className="rounded-xl">
-            {t('error.retry', { defaultValue: 'Try Again' })}
+            {t('error.tryAgain')}
           </Button>
         </div>
       </Card>

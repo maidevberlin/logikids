@@ -11,3 +11,6 @@ export type { AccountSettings, UserData, UserSettings, LastTask, TaskCostRecord 
 // Re-export from sync subdomain
 export { useDataSync } from './sync'
 export type { SyncStatus, DataSyncContextValue } from './sync'
+
+// Storage (for cross-domain access)
+export { setData, getData, getAccessToken, storeTokens, getUserId } from './storage'

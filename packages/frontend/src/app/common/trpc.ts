@@ -1,7 +1,7 @@
 import { createTRPCReact } from '@trpc/react-query'
 import { httpBatchLink } from '@trpc/client'
 import type { AppRouter } from '@logikids/backend'
-import { getAccessToken, storeTokens, getUserId } from '@/app/user/storage'
+import { getAccessToken, storeTokens, getUserId } from '@/app/user'
 import { createLogger } from '@/app/common/logger'
 
 const logger = createLogger('tRPC')

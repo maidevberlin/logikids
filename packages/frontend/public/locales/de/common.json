@@ -136,7 +136,8 @@
   },
   "error": {
     "tryAgain": "Erneut versuchen",
-    "backToHome": "Zurück zur Startseite"
+    "backToHome": "Zurück zur Startseite",
+    "rateLimited": "Bitte warte einen Moment, bevor du eine neue Aufgabe generierst"
   },
   "subjects": {
     "title": "Fächer",

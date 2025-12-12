@@ -5,7 +5,17 @@ import { TTSCache } from './cache'
 import { TaskCache } from '../cache/taskCache'
 import { notFound } from '../common/errors'
 import { markdownToSpeech } from './markdown-to-speech'
+import { trackTTSCost, calculateTTSCost, type TTSUsageInfo } from './cost-tracker'
 import type { SynthesizeInput } from './schemas'
+
+export interface TTSSynthesizeResponse {
+  audio: string
+  usage?: {
+    characterCount: number
+    cost: number
+    cached: boolean
+  }
+}
 
 @injectable()
 export class TTSController {
@@ -33,9 +43,9 @@ export class TTSController {
 
   /**
    * Synthesize text to speech for a task field
-   * @returns Base64-encoded audio string
+   * @returns Base64-encoded audio string with usage info
    */
-  async synthesize(input: SynthesizeInput, _userId: string): Promise<{ audio: string }> {
+  async synthesize(input: SynthesizeInput, userId: string): Promise<TTSSynthesizeResponse> {
     const { taskId, field } = input
 
     // Get task from cache
@@ -73,16 +83,49 @@ export class TTSController {
 
     // Check cache first (use converted text for cache key)
     let audio = await this.ttsCache.get(speechText, language)
+    let cached = true
+    let voiceType: 'standard' | 'wavenet' | 'neural2' = 'standard'
 
     // If not cached, synthesize
     if (!audio) {
-      audio = await this.ttsService.synthesize(speechText, language)
+      cached = false
+      const result = await this.ttsService.synthesize(speechText, language)
+      audio = result.audio
+      voiceType = result.voiceType
 
       // Store in cache
       await this.ttsCache.set(speechText, language, audio)
     }
 
-    // Return audio as base64
-    return { audio: audio.toString('base64') }
+    // Build usage info
+    const usageInfo: TTSUsageInfo = {
+      characterCount: speechText.length,
+      language,
+      voiceType,
+      cached,
+    }
+
+    // Track cost in database
+    await trackTTSCost(
+      {
+        userId,
+        subject: context.subject,
+        concept: context.concept,
+      },
+      usageInfo
+    )
+
+    // Calculate cost for response
+    const cost = calculateTTSCost(usageInfo)
+
+    // Return audio as base64 with usage info
+    return {
+      audio: audio.toString('base64'),
+      usage: {
+        characterCount: speechText.length,
+        cost,
+        cached,
+      },
+    }
   }
 }

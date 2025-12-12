@@ -2,7 +2,7 @@
 export { Breadcrumb, type BreadcrumbProps, type BreadcrumbItem } from './Breadcrumb'
 export { PageLayout, type PageLayoutProps } from './PageLayout'
 export { Header } from './Header'
-export { HeaderGameStats } from './HeaderGameStats'
+
 export { Footer } from './Footer'
 
 // UI Components
@@ -12,7 +12,6 @@ export { LanguageSelector } from './LanguageSelector'
 export { LoadingState } from './LoadingState'
 export { ErrorBoundary, type ErrorBoundaryProps } from './ErrorBoundary'
 export { ErrorDisplay } from './ErrorDisplay'
-export { DifficultyBanner } from './DifficultyBanner'
 export { PlayButton } from './PlayButton'
 
 // Utilities
@@ -23,6 +22,7 @@ export { formatGrade, formatGradeRange } from './formatGrade'
 // Hooks
 export { useDebounce } from './useDebounce'
 export { useTimeOfDay, type TimeOfDay } from './useTimeOfDay'
+export { useTTS } from './useTTS'
 
 // API
 export { trpc, trpcClient } from './trpc'

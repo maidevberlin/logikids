@@ -37,9 +37,8 @@ services:
       - '5175:3000'
     volumes:
       - ./packages/backend:/app
-      - ./packages/content:/content
+      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
-      - ./scripts:/app/scripts
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD:-development}@postgres:5432/logikids
@@ -82,7 +81,7 @@ services:
     ports:
       - '5176:3000'
     volumes:
-      - ./packages/content:/content
+      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
     environment:
       - NODE_ENV=production
@@ -125,7 +124,7 @@ services:
       dockerfile: Dockerfile.test
     volumes:
       - ./packages/backend:/app
-      - ./packages/content:/content
+      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
     environment:
       - NODE_ENV=test

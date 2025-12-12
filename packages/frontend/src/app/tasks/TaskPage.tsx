@@ -2,7 +2,7 @@ import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTask } from './useTask'
 import { useUserData } from '@/app/user'
-import { setData } from '@/app/user/storage'
+import { setData } from '@/app/user'
 import { useProgress } from '@/app/progress'
 import { getCurrentLanguage } from '@/i18n.ts'
 import { TaskRequest } from './types'
@@ -11,7 +11,9 @@ import { PageLayout } from '@/app/common/PageLayout'
 import { TaskPageHeader } from './TaskPageHeader'
 import { TaskCard } from './TaskCard'
 import { useDifficultyTracking } from '@/app/progress'
-import { DifficultyBanner } from '@/app/common/DifficultyBanner.tsx'
+import { DifficultyBanner } from './DifficultyBanner'
+import { TTSCostProvider } from './TTSCostContext'
+import type { TTSUsage } from '@/app/common/useTTS'
 
 // Import background patterns
 import mathBg from '@/assets/math.webp'
@@ -97,6 +99,31 @@ export function TaskPage() {
               inputTokens: usage.inputTokens,
               outputTokens: usage.outputTokens,
               totalTokens: usage.totalTokens,
+              cost: usage.cost,
+              timestamp: Date.now(),
+            },
+          ],
+        })
+      }
+    },
+    [data, taskParams.subject, taskParams.concept]
+  )
+
+  // Callback to record TTS costs
+  const handleTTSCostReceived = useCallback(
+    (usage: TTSUsage) => {
+      // Only record non-cached TTS usage (cached has zero cost)
+      if (usage && data && !usage.cached && usage.cost > 0) {
+        const currentCosts = data.costs || []
+        setData({
+          costs: [
+            ...currentCosts,
+            {
+              subject: taskParams.subject,
+              concept: taskParams.concept || 'random',
+              inputTokens: 0, // TTS doesn't use tokens
+              outputTokens: 0,
+              totalTokens: usage.characterCount, // Store character count in totalTokens field
               cost: usage.cost,
               timestamp: Date.now(),
             },
@@ -218,7 +245,7 @@ export function TaskPage() {
   )
 
   return (
-    <>
+    <TTSCostProvider onCostReceived={handleTTSCostReceived}>
       {/* Difficulty Notification Banner */}
       <DifficultyBanner notification={notification} onDismiss={dismissNotification} />
 
@@ -270,6 +297,6 @@ export function TaskPage() {
           />
         </div>
       </PageLayout>
-    </>
+    </TTSCostProvider>
   )
 }

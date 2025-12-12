@@ -61,10 +61,13 @@ export const useTask = (params: TaskRequest, options?: UseTaskOptions) => {
     await refetch()
   }, [refetch])
 
+  // Extract error code for special handling (e.g., rate limiting)
+  const errorCode = error?.data?.code as string | undefined
+
   return {
     task,
     isLoading: isLoading || isFetching,
-    error: error ? error.message : null,
+    error: error ? { message: error.message, code: errorCode } : null,
     selectedAnswer,
     isCorrect,
     gradingDetails,

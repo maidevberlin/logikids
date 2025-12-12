@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/app/common/ui/button'
 import { ScrollArea } from '@/app/common/ui/scroll-area'
-import { getSubjectTheme } from '@/app/subjects/subjectTheme'
+import { getSubjectTheme } from '@/app/subjects'
 import { SubjectListProps } from './types'
 
 export const SubjectList = memo(function SubjectList({

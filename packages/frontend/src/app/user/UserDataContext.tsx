@@ -8,7 +8,7 @@ import {
   updateGameStats as coreUpdateGameStats,
   updateProgressAndGameStats as coreUpdateProgressAndGameStats,
 } from '@/app/user/storage'
-import { GameStats } from '@/app/gamification/gameTypes'
+import type { GameStats } from '@/app/gamification'
 import { useAuth } from './AuthContext'
 import { useDataSync } from './sync'
 

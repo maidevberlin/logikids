@@ -25,11 +25,9 @@
     "build:types": "tsc --project tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "migrate": "bun database/migrate.ts",
-    "generate:prompt": "bun src/cli/generate-prompt.ts",
-    "generate:task": "bun src/cli/generate-task.ts",
-    "check:concepts": "bun src/cli/check-concepts.ts",
-    "check:prompts": "bun src/cli/check-prompts.ts",
-    "check:translations": "bun src/cli/check-translations.ts"
+    "generate:prompt": "bun src/scripts/generate-prompt.ts",
+    "generate:task": "bun src/scripts/generate-task.ts",
+    "check:prompts": "bun src/scripts/check-prompts.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",

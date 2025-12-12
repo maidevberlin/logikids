@@ -11,6 +11,9 @@ export type {
 // Main hook
 export { useProgress } from './useProgress'
 
+// Components
+export { HeaderGameStats } from './HeaderGameStats'
+
 // Task submission
 export { addAttempt } from './addAttempt'
 export type { TaskSubmissionData } from './addAttempt'

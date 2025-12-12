@@ -1,10 +1,9 @@
 /**
- * Structure validator - checks learning_objectives, problem_types, age_guidelines, and difficulty_guidelines
- * Called AFTER schema validation, so frontmatter is known to be valid ConceptFrontmatter
+ * Structure validator - checks learning_objectives, problem_types, etc.
  */
 
 import type { CheckResult, CheckIssue } from '../types'
-import type { ConceptFrontmatter } from '../../../prompts/concept-schema'
+import type { ConceptFrontmatter } from '../../../content/schema'
 
 export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
   const issues: CheckIssue[] = []
@@ -16,7 +15,7 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     issues.push({
       message: `Found ${count} problem types, required 5-10`,
       fix: `Add ${5 - count} more problem type descriptions`,
-      reference: 'concept-rules.md - Schema Requirements',
+      reference: 'docs/concept-rules.md',
     })
   }
 
@@ -24,7 +23,6 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     issues.push({
       message: `Found ${count} problem types, recommended maximum is 10`,
       fix: 'Consider consolidating similar problem types',
-      reference: 'concept-rules.md - Schema Requirements',
     })
   }
 
@@ -35,7 +33,6 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     issues.push({
       message: `Found ${objectiveCount} learning objectives, required 3-7`,
       fix: `Add ${3 - objectiveCount} more learning objectives`,
-      reference: 'concept-rules.md - learning_objectives',
     })
   }
 
@@ -43,7 +40,6 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     issues.push({
       message: `Found ${objectiveCount} learning objectives, recommended maximum is 7`,
       fix: 'Consider consolidating similar objectives',
-      reference: 'concept-rules.md - learning_objectives',
     })
   }
 
@@ -53,7 +49,6 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
       issues.push({
         message: `difficulty_guidelines[${level}] has ${guidelines.length} items (max 3)`,
         fix: 'Reduce to 3 most important guidelines',
-        reference: 'concept-rules.md - difficulty_guidelines',
       })
     }
   }
@@ -65,7 +60,6 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     issues.push({
       message: `Found ${contextCount} real_world_context items, required 3-5`,
       fix: `Add ${3 - contextCount} more real-world context examples`,
-      reference: 'concept-rules.md - real_world_context',
     })
   }
 
@@ -73,7 +67,6 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     issues.push({
       message: `Found ${contextCount} real_world_context items, maximum is 5`,
       fix: 'Reduce to 5 most relevant real-world contexts',
-      reference: 'concept-rules.md - real_world_context',
     })
   }
 
@@ -81,6 +74,5 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
     return { status: 'pass', issues: [] }
   }
 
-  // Determine severity: problem_types issues are warnings, age_guidelines issues are warnings
   return { status: 'warning', issues }
 }

@@ -1,39 +1,25 @@
 import 'reflect-metadata'
-import { injectable, inject } from 'tsyringe'
-import { TaskCache } from './taskCache'
+import { injectable } from 'tsyringe'
+import { cleanupService } from '../common/cleanup'
+
+// Import to trigger registration with cleanup registry
+import './taskCache'
 
 /**
- * Periodically clean expired tasks from cache
+ * Service wrapper for the centralized cleanup system.
+ *
+ * REDIS MIGRATION: When all resources migrate to Redis:
+ * 1. Resources won't register with cleanupRegistry (Redis handles TTL)
+ * 2. This service can be removed entirely
+ * 3. Remove the start/stop calls from index.ts
  */
 @injectable()
 export class CacheCleanupService {
-  private intervalId?: Timer
-  private readonly intervalMs = 5 * 60 * 1000 // 5 minutes
-
-  constructor(@inject(TaskCache) private readonly taskCache: TaskCache) {}
-
   start(): void {
-    if (this.intervalId) {
-      return
-    }
-
-    // Run immediately
-    this.cleanup()
-
-    // Then run periodically
-    this.intervalId = setInterval(() => {
-      this.cleanup()
-    }, this.intervalMs)
+    cleanupService.start()
   }
 
   stop(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId)
-      this.intervalId = undefined
-    }
-  }
-
-  private cleanup(): void {
-    this.taskCache.cleanExpired()
+    cleanupService.stop()
   }
 }

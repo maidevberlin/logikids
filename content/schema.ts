@@ -2,7 +2,9 @@ import { z } from 'zod'
 
 /**
  * Schema for concept frontmatter metadata
- * Referenced by: .claude/docs/concept-rules.md
+ * This schema defines the structure of concept markdown files in /content/subjects/
+ *
+ * Referenced by: docs/concept-rules.md
  */
 export const conceptFrontmatterSchema = z
   .object({
@@ -34,7 +36,7 @@ export const conceptFrontmatterSchema = z
 export type ConceptFrontmatter = z.infer<typeof conceptFrontmatterSchema>
 
 /**
- * Concept with source tracking
+ * Concept with source tracking (used by backend when loading concepts)
  */
 export interface Concept extends ConceptFrontmatter {
   prompt: string

@@ -1,39 +1,26 @@
 import { useNavigate } from 'react-router-dom'
-import { useProgress } from '@/app/progress'
-import { ACHIEVEMENTS } from '@/app/gamification/achievements'
-
-// Level thresholds for progress display
-const LEVEL_THRESHOLDS = [
-  0, 5, 15, 30, 50, 75, 100, 150, 200, 300, 400, 550, 700, 900, 1100, 1350, 1600, 2000, 2500, 3000,
-  4000,
-]
+import { useProgress } from './useProgress'
+import { ACHIEVEMENTS, TASK_LEVELS } from '@/app/gamification'
 
 function getLevelFromTasks(totalTasks: number): { level: number; progressPercent: number } {
-  let level = 0
-  for (let i = 0; i < LEVEL_THRESHOLDS.length; i++) {
-    if (totalTasks >= LEVEL_THRESHOLDS[i]) {
-      level = i
-    } else {
-      break
-    }
-  }
+  const currentLevelIndex = TASK_LEVELS.findIndex((lvl) => totalTasks < lvl.threshold)
+  const level = currentLevelIndex === -1 ? TASK_LEVELS.length : currentLevelIndex
 
-  const previousThreshold = level > 0 ? LEVEL_THRESHOLDS[level] : 0
+  const previousThreshold = level > 0 ? TASK_LEVELS[level - 1].threshold : 0
   const nextThreshold =
-    level < LEVEL_THRESHOLDS.length - 1 ? LEVEL_THRESHOLDS[level + 1] : LEVEL_THRESHOLDS[level]
+    level >= TASK_LEVELS.length
+      ? TASK_LEVELS[TASK_LEVELS.length - 1].threshold
+      : TASK_LEVELS[level].threshold
   const progressPercent =
     ((totalTasks - previousThreshold) / (nextThreshold - previousThreshold)) * 100
 
   return { level: level + 1, progressPercent: Math.min(progressPercent, 100) }
 }
 
-function getLevelColor(level: number): string {
-  if (level === 1) return 'bg-blue-500'
-  if (level === 2) return 'bg-green-500'
-  if (level === 3) return 'bg-yellow-500'
-  if (level === 4) return 'bg-orange-500'
-  if (level === 5) return 'bg-red-500'
-  return 'bg-purple-500'
+function getLevelColorClass(level: number): string {
+  // level is 1-indexed, TASK_LEVELS is 0-indexed
+  const index = Math.min(level - 1, TASK_LEVELS.length - 1)
+  return TASK_LEVELS[index].colorClass
 }
 
 export function HeaderGameStats() {
@@ -42,6 +29,7 @@ export function HeaderGameStats() {
 
   const overallStats = getOverallStats()
   const { level, progressPercent } = getLevelFromTasks(overallStats.totalCorrect)
+  const colorClass = getLevelColorClass(level)
 
   // Get tier 3 and 4 achievements to display (max 3)
   const highlightAchievements = gameStats
@@ -53,7 +41,7 @@ export function HeaderGameStats() {
       onClick={() => navigate('/stats')}
       className="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-1.5 rounded-xl hover:bg-muted transition-all duration-200 group"
     >
-      {/* Circular progress around level badge (now used for all screen sizes) */}
+      {/* Circular progress around level badge */}
       <div className="relative w-8 h-8">
         {/* SVG circular progress */}
         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
@@ -77,24 +65,12 @@ export function HeaderGameStats() {
             strokeWidth="2"
             strokeDasharray={`${progressPercent} ${100 - progressPercent}`}
             strokeLinecap="round"
-            className={`transition-all duration-300 ${
-              level === 1
-                ? 'text-blue-500'
-                : level === 2
-                  ? 'text-green-500'
-                  : level === 3
-                    ? 'text-yellow-500'
-                    : level === 4
-                      ? 'text-orange-500'
-                      : level === 5
-                        ? 'text-red-500'
-                        : 'text-purple-500'
-            }`}
+            className={`transition-all duration-300 ${colorClass.replace('bg-', 'text-')}`}
           />
         </svg>
         {/* Level badge in center */}
         <div
-          className={`absolute inset-0 m-auto w-6 h-6 rounded-full ${getLevelColor(level)} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}
+          className={`absolute inset-0 m-auto w-6 h-6 rounded-full ${colorClass} flex items-center justify-center text-white font-bold text-[10px] shadow-md group-hover:scale-110 transition-transform`}
         >
           {level}
         </div>

@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
-import { getSubjectTheme } from '@/app/subjects/subjectTheme'
+import { getSubjectTheme } from '@/app/subjects'
 import { ConceptsTabContent } from './ConceptsTabContent'
 import { Concept } from './types'
 import { useUserData } from '@/app/user'
@@ -13,7 +13,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/app/common/ui/tabs'
 import { Sparkles, GraduationCap, Search } from 'lucide-react'
 import { trpc } from '@/app/common/trpc'
 import { useDebounce } from '@/app/common/useDebounce'
-import { useConceptSearch } from '@/app/subjects/useConceptSearch'
+import { useConceptSearch } from '@/app/subjects'
 
 export function ConceptsPage() {
   const { subject: subjectId } = useParams<{ subject: string }>()

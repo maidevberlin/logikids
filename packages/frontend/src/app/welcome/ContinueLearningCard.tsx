@@ -4,7 +4,7 @@ import { Card } from '@/app/common/ui/card'
 import { GraduationCap } from 'lucide-react'
 import { useUserData } from '@/app/user'
 import { trpc } from '@/app/common/trpc'
-import { getSubjectTheme } from '@/app/subjects/subjectTheme'
+import { getSubjectTheme } from '@/app/subjects'
 
 export function ContinueLearningCard() {
   const { t } = useTranslation()

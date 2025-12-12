@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
 import { useUserData } from '@/app/user'
 import { Card } from '@/app/common/ui/card'
-import { MetricCard } from '@/app/gamification/MetricCard'
+import { MetricCard } from '@/app/gamification'
 
 function formatCost(cost: number): string {
   if (cost < 0.01) {
