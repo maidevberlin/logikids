@@ -2,17 +2,21 @@ FROM oven/bun:1
 
 WORKDIR /app
 
-# Copy backend
-COPY packages/backend/package.json .
-COPY packages/backend/bun.lockb* .
+# Create workspace structure
+COPY package.json .
+COPY bun.lockb .
 
-# Copy content package for @logikids/content resolution
-COPY content content
+# Copy package.json files for workspace resolution
+COPY packages/backend/package.json packages/backend/
+COPY content/package.json content/
 
 RUN bun install
 
-# Copy backend source
-COPY packages/backend .
+# Copy source files
+COPY content content
+COPY packages/backend packages/backend
+
+WORKDIR /app/packages/backend
 
 EXPOSE 3000
 CMD ["bun", "start"]
