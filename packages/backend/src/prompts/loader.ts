@@ -53,23 +53,12 @@ export class PromptLoader {
   private basePromptCache: string | null = null
   private variationsTemplateCache: string | null = null
 
-  constructor(promptsDir: string = path.join(process.cwd(), 'prompts'), contentDir?: string) {
+  constructor(
+    promptsDir: string = path.join(process.cwd(), 'prompts'),
+    contentDir: string = path.join(process.cwd(), '..', 'content')
+  ) {
     this.promptsDir = promptsDir
-    // Docker mounts content at /content, local dev uses relative path
-    this.contentDir = contentDir ?? this.resolveContentDir()
-  }
-
-  private resolveContentDir(): string {
-    const dockerPath = '/content'
-    const localPath = path.join(process.cwd(), '..', 'content')
-
-    // Sync check - constructor can't be async
-    try {
-      require('fs').accessSync(dockerPath)
-      return dockerPath
-    } catch {
-      return localPath
-    }
+    this.contentDir = contentDir
   }
 
   /**
