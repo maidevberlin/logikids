@@ -2,21 +2,19 @@ FROM oven/bun:1
 
 WORKDIR /app
 
-# Create workspace structure
-COPY package.json .
-COPY bun.lockb .
-
-# Copy package.json files for workspace resolution
-COPY packages/backend/package.json packages/backend/
-COPY content/package.json content/
-
-RUN bun install
+# Copy and install dependencies
+COPY packages/backend/package.json .
+COPY packages/backend/bun.lockb .
+RUN bun install --production
 
 # Copy source files
-COPY content content
-COPY packages/backend packages/backend
+COPY packages/backend/src src
+COPY packages/backend/prompts prompts
+COPY packages/backend/locales locales
+COPY packages/backend/database database
 
-WORKDIR /app/packages/backend
+# Copy content
+COPY content /content
 
 EXPOSE 3000
-CMD ["bun", "start"]
+CMD ["bun", "src/index.ts"]

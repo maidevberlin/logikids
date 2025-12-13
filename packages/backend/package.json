@@ -30,7 +30,6 @@
     "check:prompts": "bun src/scripts/check-prompts.ts"
   },
   "dependencies": {
-    "@logikids/content": "workspace:*",
     "@anthropic-ai/sdk": "^0.67.0",
     "@sentry/bun": "^10.29.0",
     "@trpc/client": "^11.7.1",

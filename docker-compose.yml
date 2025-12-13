@@ -82,7 +82,6 @@ services:
     ports:
       - '5176:3000'
     volumes:
-      - ./content:/content
       - ./packages/frontend/public/locales:/frontend/public/locales:ro
     environment:
       - NODE_ENV=production
