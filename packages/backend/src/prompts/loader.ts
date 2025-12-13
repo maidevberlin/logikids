@@ -55,7 +55,7 @@ export class PromptLoader {
 
   constructor(
     promptsDir: string = path.join(process.cwd(), 'prompts'),
-    contentDir: string = path.join(process.cwd(), '..', 'content')
+    contentDir: string = '/content'
   ) {
     this.promptsDir = promptsDir
     this.contentDir = contentDir

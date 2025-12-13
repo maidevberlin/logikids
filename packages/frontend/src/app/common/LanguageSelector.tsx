@@ -1,6 +1,6 @@
 import ReactCountryFlag from 'react-country-flag'
 import { SelectorButton } from '@/app/common/ui/SelectorButton'
-import { Language, LANGUAGES, SUPPORTED_LANGUAGES } from '@logikids/content/schema'
+import { Language, LANGUAGES, SUPPORTED_LANGUAGES } from '/content/languages'
 
 interface LanguageSelectorProps {
   value: Language
