@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { SUPPORTED_LANGUAGES } from '@logikids/content/schema'
+import { SUPPORTED_LANGUAGES } from '/content/schema'
 
 export const subjectsInputSchema = z.object({
   grade: z.number().int().min(1).max(13).optional(),

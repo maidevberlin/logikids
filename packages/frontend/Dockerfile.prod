@@ -2,37 +2,25 @@ FROM oven/bun:1 AS builder
 
 WORKDIR /app
 
-# Copy root workspace files
-COPY package.json .
-COPY bun.lockb .
-
-# Copy all packages for workspace resolution
+# Copy workspace files for dependency resolution
+COPY package.json bun.lockb ./
 COPY packages/frontend/package.json packages/frontend/
 COPY packages/backend/package.json packages/backend/
-COPY content/package.json content/
-
 RUN bun install
 
-# Copy content (shared between packages)
-COPY content content
+# Copy content
+COPY content /content
 
-# Copy backend source and config for type generation
-COPY packages/backend/src packages/backend/src
-COPY packages/backend/database packages/backend/database
-COPY packages/backend/tsconfig.json packages/backend/
-COPY packages/backend/tsconfig.build.json packages/backend/
-
-# Generate backend type declarations
-WORKDIR /app/packages/backend
-RUN bunx tsc --project tsconfig.build.json
-
-# Copy frontend source
-WORKDIR /app
-COPY packages/frontend packages/frontend
-
-# Build frontend with type checking
+# Copy frontend source and build
+COPY packages/frontend/src packages/frontend/src
+COPY packages/frontend/public packages/frontend/public
+COPY packages/frontend/index.html packages/frontend/
+COPY packages/frontend/vite.config.ts packages/frontend/
+COPY packages/frontend/tsconfig.json packages/frontend/
+COPY packages/frontend/tsconfig.node.json packages/frontend/
+COPY packages/frontend/postcss.config.js packages/frontend/
 WORKDIR /app/packages/frontend
-RUN bun run build
+RUN bunx vite build
 
 FROM nginx:alpine
 
