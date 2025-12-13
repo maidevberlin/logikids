@@ -20,7 +20,19 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
    * Get all subject IDs to load
    */
   protected async getItemIds(): Promise<string[]> {
-    const contentDir = path.join(process.cwd(), '..', 'content')
+    // Docker mounts content at /content, local dev uses relative path
+    const dockerPath = '/content'
+    const localPath = path.join(process.cwd(), '..', 'content')
+
+    // Check which path exists
+    let contentDir = localPath
+    try {
+      await fs.access(dockerPath)
+      contentDir = dockerPath
+    } catch {
+      // Use local path
+    }
+
     const subjectsDir = path.join(contentDir, 'subjects')
 
     const subjectDirs = await fs.readdir(subjectsDir, { withFileTypes: true })
