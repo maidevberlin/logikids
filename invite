@@ -16,15 +16,15 @@ shift || true
 
 case "$COMMAND" in
   list|l)
-    docker compose exec $CONTAINER bun run src/cli/invite-codes.ts list
+    docker compose exec $CONTAINER bun run src/scripts/invite-codes.ts list
     ;;
 
   create|c)
     NOTE="$*"
     if [ -z "$NOTE" ]; then
-      docker compose exec $CONTAINER bun run src/cli/invite-codes.ts create
+      docker compose exec $CONTAINER bun run src/scripts/invite-codes.ts create
     else
-      docker compose exec $CONTAINER bun run src/cli/invite-codes.ts create "$NOTE"
+      docker compose exec $CONTAINER bun run src/scripts/invite-codes.ts create "$NOTE"
     fi
     ;;
 
@@ -35,11 +35,11 @@ case "$COMMAND" in
       echo "Usage: ./invite remove <code>"
       exit 1
     fi
-    docker compose exec $CONTAINER bun run src/cli/invite-codes.ts remove "$CODE"
+    docker compose exec $CONTAINER bun run src/scripts/invite-codes.ts remove "$CODE"
     ;;
 
   clear)
-    docker compose exec $CONTAINER bun run src/cli/invite-codes.ts clear
+    docker compose exec $CONTAINER bun run src/scripts/invite-codes.ts clear
     ;;
 
   help|h|"")
