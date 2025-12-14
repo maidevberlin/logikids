@@ -13,8 +13,8 @@ COPY packages/backend/prompts prompts
 COPY packages/backend/locales locales
 COPY packages/backend/database database
 
-# Copy content
-COPY content /content
+# Copy content package
+COPY packages/content packages/content
 
 EXPOSE 3000
 CMD ["bun", "src/index.ts"]

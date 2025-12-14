@@ -3,7 +3,7 @@
  */
 
 import type { CheckResult, CheckIssue } from '../types'
-import type { ConceptFrontmatter } from '../../../content/schema'
+import type { ConceptFrontmatter } from '@logikids/content/schema'
 
 export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
   const issues: CheckIssue[] = []

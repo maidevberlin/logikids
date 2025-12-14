@@ -20,7 +20,7 @@ export class SubjectRegistry extends BaseRegistry<Subject> {
    * Get all subject IDs to load
    */
   protected async getItemIds(): Promise<string[]> {
-    const contentDir = '/content'
+    const contentDir = '/app/packages/content'
     const subjectsDir = path.join(contentDir, 'subjects')
 
     const subjectDirs = await fs.readdir(subjectsDir, { withFileTypes: true })

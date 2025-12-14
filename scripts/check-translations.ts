@@ -14,11 +14,11 @@
 import { readdirSync, readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
-import { SUPPORTED_LANGUAGES } from '../content/schema'
+import { SUPPORTED_LANGUAGES } from '@logikids/content/schema'
 
 // Path resolution
 function getContentPath(): string {
-  return join(import.meta.dir, '../content/subjects')
+  return join(import.meta.dir, '../packages/content/subjects')
 }
 
 function getLocalesPath(): string {

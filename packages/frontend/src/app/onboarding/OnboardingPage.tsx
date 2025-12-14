@@ -8,7 +8,7 @@ import { StudentInfo } from './types'
 import { useUserData } from '@/app/user'
 import { LoadingState } from '@/app/common'
 import { createLogger } from '@/app/common/logger'
-import { Language, DEFAULT_LANGUAGE } from '/content/languages'
+import { Language, DEFAULT_LANGUAGE } from '@logikids/content/languages'
 
 const logger = createLogger('OnboardingPage')
 

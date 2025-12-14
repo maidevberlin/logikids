@@ -6,10 +6,19 @@ WORKDIR /app
 COPY package.json bun.lockb ./
 COPY packages/frontend/package.json packages/frontend/
 COPY packages/backend/package.json packages/backend/
+COPY packages/content/package.json packages/content/
 RUN bun install
 
-# Copy content
-COPY content /content
+# Copy content package source
+COPY packages/content packages/content
+
+# Copy backend source and build types for tRPC
+COPY packages/backend/src packages/backend/src
+COPY packages/backend/database packages/backend/database
+COPY packages/backend/tsconfig.json packages/backend/
+COPY packages/backend/tsconfig.build.json packages/backend/
+WORKDIR /app/packages/backend
+RUN bun run build:types
 
 # Copy frontend source and build
 COPY packages/frontend/src packages/frontend/src

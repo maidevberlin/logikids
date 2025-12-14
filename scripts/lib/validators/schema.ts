@@ -2,7 +2,7 @@
  * Schema validator for concept frontmatter
  */
 
-import { conceptFrontmatterSchema, type ConceptFrontmatter } from '../../../content/schema'
+import { conceptFrontmatterSchema, type ConceptFrontmatter } from '@logikids/content/schema'
 import type { SchemaCheckResult, CheckIssue } from '../types'
 
 export function checkSchema(

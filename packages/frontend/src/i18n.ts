@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
 import { createLogger } from '@/app/common/logger.ts'
-import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, type Language } from '/content/languages'
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, type Language } from '@logikids/content/languages'
 
 const logger = createLogger('i18nConfig')
 
