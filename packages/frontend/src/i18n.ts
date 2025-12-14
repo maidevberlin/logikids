@@ -59,21 +59,10 @@ void i18n
     fallbackLng: DEFAULT_LANGUAGE,
     // Debug mode disabled to reduce console noise
     debug: false,
-    // Namespace
+    // Namespace - only load core namespaces initially
+    // Subject namespaces are loaded on-demand via useSubjectTranslations hook
     defaultNS: 'common',
-    ns: [
-      'common',
-      'greetings',
-      'profile',
-      'stats',
-      'loading',
-      'subjects/math',
-      'subjects/german',
-      'subjects/english',
-      'subjects/physics',
-      'subjects/biology',
-      'subjects/logic',
-    ],
+    ns: ['common', 'greetings', 'profile', 'stats', 'loading'],
     // Backend configuration for lazy loading
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json?h=' + CACHE_BREAKER,

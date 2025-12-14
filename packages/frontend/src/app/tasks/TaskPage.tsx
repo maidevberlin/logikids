@@ -2,8 +2,9 @@ import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTask } from './useTask'
 import { useUserData } from '@/app/user'
+import { useSubjectTranslations } from '@/app/common/useSubjectTranslations'
 import { setData } from '@/app/user'
-import { useProgress } from '@/app/progress'
+import { useProgress } from '@/app/progress/useProgress'
 import { getCurrentLanguage } from '@/i18n.ts'
 import { TaskRequest } from './types'
 import { Difficulty } from './types'
@@ -42,6 +43,9 @@ export function TaskPage() {
   const navigate = useNavigate()
   const { data } = useUserData()
   const { submitTaskAttempt } = useProgress()
+
+  // Lazy-load subject translations
+  useSubjectTranslations(subject)
 
   // Adaptive difficulty tracking
   const {

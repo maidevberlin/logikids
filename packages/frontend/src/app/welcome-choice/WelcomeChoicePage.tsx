@@ -7,11 +7,11 @@ import { Label } from '@/app/common/ui/label'
 import { Input } from '@/app/common/ui/input'
 import { Upload, Camera, FileText, ArrowRight } from 'lucide-react'
 
-// Lazy load heavy PDF component
+// Lazy load heavy components to improve initial bundle size
 const PDFImport = lazy(() => import('./PDFImport').then((m) => ({ default: m.PDFImport })))
-import { QRScanner } from './QRScanner'
-import { ManualImport } from './ManualImport'
-import { useAuth } from '@/app/user'
+const QRScanner = lazy(() => import('./QRScanner').then((m) => ({ default: m.QRScanner })))
+const ManualImport = lazy(() => import('./ManualImport').then((m) => ({ default: m.ManualImport })))
+import { useAuth } from '@/app/user/AuthContext'
 import { Footer } from '@/app/common/Footer'
 import { createLogger } from '@/app/common/logger'
 import { trpc } from '@/app/common/trpc'
@@ -217,23 +217,27 @@ export function WelcomeChoicePage() {
           )}
 
           {showQRScanner && (
-            <QRScanner
-              onClose={() => setShowQRScanner(false)}
-              onSuccess={() => {
-                // Navigate to onboarding - it will redirect to home if account data is complete
-                navigate('/onboarding', { replace: true })
-              }}
-            />
+            <Suspense fallback={null}>
+              <QRScanner
+                onClose={() => setShowQRScanner(false)}
+                onSuccess={() => {
+                  // Navigate to onboarding - it will redirect to home if account data is complete
+                  navigate('/onboarding', { replace: true })
+                }}
+              />
+            </Suspense>
           )}
 
           {showManualImport && (
-            <ManualImport
-              onClose={() => setShowManualImport(false)}
-              onSuccess={() => {
-                // Navigate to onboarding - it will redirect to home if account data is complete
-                navigate('/onboarding', { replace: true })
-              }}
-            />
+            <Suspense fallback={null}>
+              <ManualImport
+                onClose={() => setShowManualImport(false)}
+                onSuccess={() => {
+                  // Navigate to onboarding - it will redirect to home if account data is complete
+                  navigate('/onboarding', { replace: true })
+                }}
+              />
+            </Suspense>
           )}
         </div>
       </div>
