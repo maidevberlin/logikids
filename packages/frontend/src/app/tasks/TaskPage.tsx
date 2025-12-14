@@ -16,9 +16,9 @@ import { TTSCostProvider } from './TTSCostContext'
 import type { TTSUsage } from '@/app/common/useTTS'
 
 // Import background patterns
-import mathBg from '@/assets/math.webp'
-import logicBg from '@/assets/logic.webp'
-import musicBg from '@/assets/music.webp'
+import mathBg from '@/assets/concepts/math.webp'
+import logicBg from '@/assets/concepts/logic.webp'
+import musicBg from '@/assets/concepts/music.webp'
 import defaultBg from '@/assets/default.webp'
 
 const backgrounds = {

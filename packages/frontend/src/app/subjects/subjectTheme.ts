@@ -16,6 +16,10 @@ export interface SubjectTheme {
     hoverLight: string
     badge: string
     active: string
+    /** Tailwind bg class for glass card tinting (with opacity) */
+    glass: string
+    /** Tailwind border class for glass card border */
+    glassBorder: string
   }
 }
 
@@ -30,6 +34,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       hoverLight: 'hover:bg-blue-100',
       badge: 'bg-blue-100 text-blue-800',
       active: 'bg-blue-100 text-blue-800',
+      glass: 'bg-blue-500/60',
+      glassBorder: 'border-blue-300',
     },
   },
   logic: {
@@ -42,6 +48,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       hoverLight: 'hover:bg-purple-100',
       badge: 'bg-purple-100 text-purple-800',
       active: 'bg-purple-100 text-purple-800',
+      glass: 'bg-purple-500/60',
+      glassBorder: 'border-purple-300',
     },
   },
   physics: {
@@ -54,6 +62,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       hoverLight: 'hover:bg-emerald-100',
       badge: 'bg-emerald-100 text-emerald-800',
       active: 'bg-emerald-100 text-emerald-800',
+      glass: 'bg-emerald-500/60',
+      glassBorder: 'border-emerald-300',
     },
   },
   german: {
@@ -66,6 +76,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       hoverLight: 'hover:bg-red-100',
       badge: 'bg-red-100 text-red-800',
       active: 'bg-red-100 text-red-800',
+      glass: 'bg-red-500/60',
+      glassBorder: 'border-red-300',
     },
   },
   english: {
@@ -78,6 +90,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       hoverLight: 'hover:bg-amber-100',
       badge: 'bg-amber-100 text-amber-800',
       active: 'bg-amber-100 text-amber-800',
+      glass: 'bg-amber-500/60',
+      glassBorder: 'border-amber-300',
     },
   },
   music: {
@@ -90,6 +104,8 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       hoverLight: 'hover:bg-pink-100',
       badge: 'bg-pink-100 text-pink-800',
       active: 'bg-pink-100 text-pink-800',
+      glass: 'bg-pink-500/60',
+      glassBorder: 'border-pink-300',
     },
   },
 }
@@ -104,6 +120,8 @@ export const defaultTheme: SubjectTheme = {
     hoverLight: 'hover:bg-gray-100',
     badge: 'bg-gray-100 text-gray-800',
     active: 'bg-gray-100 text-gray-800',
+    glass: 'bg-gray-500/60',
+    glassBorder: 'border-gray-300',
   },
 }
 
