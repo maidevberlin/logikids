@@ -29,7 +29,7 @@ COPY packages/frontend/tsconfig.json packages/frontend/
 COPY packages/frontend/tsconfig.node.json packages/frontend/
 COPY packages/frontend/postcss.config.js packages/frontend/
 WORKDIR /app/packages/frontend
-RUN bunx vite build
+RUN bun run build
 
 FROM nginx:alpine
 
