@@ -1,0 +1,140 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+env:
+  # Use CI-specific secrets (not dev values, which are rejected by prod)
+  JWT_SECRET: ${{ secrets.CI_JWT_SECRET || 'ci-test-jwt-secret-not-for-production-use-only-for-testing-1234567890' }}
+  POSTGRES_PASSWORD: ci_test_password_12345
+
+jobs:
+  validate:
+    name: Validate Content
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Install script dependencies
+        working-directory: scripts
+        run: bun install
+
+      - name: Check concepts
+        run: bun scripts/check-concepts.ts --all
+
+      - name: Check translations
+        run: bun scripts/check-translations.ts --all
+
+  build:
+    name: Build Production Images
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build frontend-prod
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: packages/frontend/Dockerfile.prod
+          push: false
+          tags: logikids-frontend-prod:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build backend-prod
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: packages/backend/Dockerfile.prod
+          push: false
+          tags: logikids-backend-prod:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  integration:
+    name: Integration Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create .env file for CI
+        run: |
+          cat > .env << EOF
+          JWT_SECRET=${{ env.JWT_SECRET }}
+          POSTGRES_PASSWORD=${{ env.POSTGRES_PASSWORD }}
+          AI_PROVIDER=ollama
+          OLLAMA_HOST=http://localhost:11434
+          EOF
+
+      - name: Start services
+        run: |
+          docker compose up -d postgres
+          docker compose up -d --build backend-prod frontend-prod
+
+      - name: Wait for postgres
+        run: |
+          for i in {1..30}; do
+            if docker compose exec -T postgres pg_isready -U logikids; then
+              echo "Postgres is ready"
+              break
+            fi
+            echo "Waiting for postgres... ($i/30)"
+            sleep 2
+          done
+
+      - name: Wait for backend
+        run: |
+          for i in {1..30}; do
+            if curl -sf http://localhost:5176/health > /dev/null 2>&1; then
+              echo "Backend is healthy"
+              break
+            fi
+            echo "Waiting for backend... ($i/30)"
+            sleep 2
+          done
+          # Final check with output
+          curl -f http://localhost:5176/health
+
+      - name: Wait for frontend
+        run: |
+          for i in {1..30}; do
+            if curl -sf http://localhost:5154 > /dev/null 2>&1; then
+              echo "Frontend is serving"
+              break
+            fi
+            echo "Waiting for frontend... ($i/30)"
+            sleep 2
+          done
+          # Final check
+          curl -f http://localhost:5154 -o /dev/null
+
+      - name: Show logs on failure
+        if: failure()
+        run: |
+          echo "=== Backend logs ==="
+          docker compose logs backend-prod --tail 100
+          echo "=== Frontend logs ==="
+          docker compose logs frontend-prod --tail 100
+          echo "=== Postgres logs ==="
+          docker compose logs postgres --tail 50
+
+      - name: Cleanup
+        if: always()
+        run: docker compose down -v

@@ -84,6 +84,14 @@ if (isMainModule) {
         return new Response(null, { status: 204, headers: corsHeaders })
       }
 
+      // Health check endpoint
+      if (url.pathname === '/health') {
+        return new Response(JSON.stringify({ status: 'ok' }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        })
+      }
+
       // Handle tRPC requests
       if (url.pathname.startsWith('/api')) {
         try {
