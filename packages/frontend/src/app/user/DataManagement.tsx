@@ -14,7 +14,8 @@ import {
 } from '@/app/common/ui/dialog'
 import { Database, LogOut, Trash2 } from 'lucide-react'
 import { useAuth } from './AuthContext'
-import { useDataSync, QRDisplay, ExportData, ImportData } from './sync'
+import { useDataSync } from './sync/DataSyncContext'
+import { QRDisplay, ExportData, ImportData } from './sync'
 import { RecoveryKit } from './RecoveryKit'
 import { createLogger } from '@/app/common/logger'
 

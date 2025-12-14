@@ -137,7 +137,7 @@ export function TaskCard({
   }
 
   return (
-    <Card className="p-4 sm:p-8 shadow-2xl bg-card/60 backdrop-blur-md border-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.4)]">
+    <Card variant="glass" className="bg-card/60 border-white/80 p-4 sm:p-8 shadow-2xl">
       {/* Header with title and difficulty */}
       <TaskHeader task={task} difficulty={difficulty} onDifficultyChange={onDifficultyChange} />
 

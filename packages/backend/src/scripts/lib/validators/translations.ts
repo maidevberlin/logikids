@@ -8,9 +8,9 @@ import type { CheckResult, CheckIssue } from '../types'
 
 export function checkTranslations(conceptId: string, subject: string): CheckResult {
   // Auto-detect locales path (docker vs local)
-  // In docker: /app/../frontend/public/locales (mounted volumes)
+  // In docker: /app/packages/frontend/public/locales (monorepo mounted)
   // In development: ../../packages/frontend/public/locales (relative)
-  const dockerLocalesPath = '/frontend/public/locales'
+  const dockerLocalesPath = '/app/packages/frontend/public/locales'
   const localLocalesPath = resolve(process.cwd(), '../../packages/frontend/public/locales')
   const localesPath = existsSync(dockerLocalesPath) ? dockerLocalesPath : localLocalesPath
   const languages = ['de', 'en']

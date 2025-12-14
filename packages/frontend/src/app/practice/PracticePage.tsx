@@ -1,6 +1,7 @@
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useProgress } from '@/app/progress'
+import { useProgress } from '@/app/progress/useProgress'
 import { generatePracticeRecommendations } from './practice.ts'
 import { PageLayout } from '@/app/common/PageLayout'
 import { Card } from '@/app/common/ui/card.tsx'
@@ -8,6 +9,7 @@ import { Button } from '@/app/common/ui/button.tsx'
 import { Target, TrendingUp, Clock, Lightbulb, ArrowRight } from 'lucide-react'
 import { PracticeReason } from './PracticeReason'
 import { trpc } from '@/app/common/trpc.ts'
+import { useMultipleSubjectTranslations } from '@/app/common/useSubjectTranslations'
 
 export function PracticePage() {
   const navigate = useNavigate()
@@ -19,6 +21,13 @@ export function PracticePage() {
   const subjects = subjectsData?.subjects ?? []
 
   const recommendations = generatePracticeRecommendations(progress, 5)
+
+  // Get unique subjects from recommendations and lazy-load their translations
+  const uniqueSubjects = useMemo(
+    () => [...new Set(recommendations.map((r) => r.subject))],
+    [recommendations]
+  )
+  useMultipleSubjectTranslations(uniqueSubjects)
 
   // Helper function to get translated subject name
   const getSubjectName = (subjectId: string) => {

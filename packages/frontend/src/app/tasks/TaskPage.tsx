@@ -2,8 +2,9 @@ import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { useTask } from './useTask'
 import { useUserData } from '@/app/user'
+import { useSubjectTranslations } from '@/app/common/useSubjectTranslations'
 import { setData } from '@/app/user'
-import { useProgress } from '@/app/progress'
+import { useProgress } from '@/app/progress/useProgress'
 import { getCurrentLanguage } from '@/i18n.ts'
 import { TaskRequest } from './types'
 import { Difficulty } from './types'
@@ -16,9 +17,9 @@ import { TTSCostProvider } from './TTSCostContext'
 import type { TTSUsage } from '@/app/common/useTTS'
 
 // Import background patterns
-import mathBg from '@/assets/math.webp'
-import logicBg from '@/assets/logic.webp'
-import musicBg from '@/assets/music.webp'
+import mathBg from '@/assets/concepts/math.webp'
+import logicBg from '@/assets/concepts/logic.webp'
+import musicBg from '@/assets/concepts/music.webp'
 import defaultBg from '@/assets/default.webp'
 
 const backgrounds = {
@@ -42,6 +43,9 @@ export function TaskPage() {
   const navigate = useNavigate()
   const { data } = useUserData()
   const { submitTaskAttempt } = useProgress()
+
+  // Lazy-load subject translations
+  useSubjectTranslations(subject)
 
   // Adaptive difficulty tracking
   const {

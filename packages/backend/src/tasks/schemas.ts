@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { SUPPORTED_LANGUAGES } from '/content/schema'
+import { SUPPORTED_LANGUAGES } from '@logikids/content/schema'
 
 export const getTaskInputSchema = z.object({
   subject: z.string(),

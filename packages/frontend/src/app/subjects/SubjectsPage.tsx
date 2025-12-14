@@ -6,6 +6,12 @@ import { useUserData } from '@/app/user'
 import { trpc } from '@/app/common/trpc'
 import { SubjectInfo } from './types'
 
+// Background images by grade range
+import bgGrade1_6 from '@/assets/subjects/grade1-6.png'
+import bgGrade1_6Mobile from '@/assets/subjects/grade1-6.mobile.png'
+import bgGrade7_13 from '@/assets/subjects/grade7-13.png'
+import bgGrade7_13Mobile from '@/assets/subjects/grade7-13.mobile.png'
+
 // School subject ordering (when they typically start in school)
 const SUBJECT_ORDER = ['math', 'german', 'english', 'physics', 'logic', 'music']
 
@@ -64,9 +70,23 @@ export function SubjectsPage() {
 
   const sortedSubjects = sortSubjects(subjects)
 
+  // Select background based on student's grade
+  const isOlderStudent = userGrade && userGrade >= 7
+  const bgDesktop = isOlderStudent ? bgGrade7_13 : bgGrade1_6
+  const bgMobile = isOlderStudent ? bgGrade7_13Mobile : bgGrade1_6Mobile
+
   return (
     <PageLayout showHome showGameStats showAccount>
-      <div className="max-w-7xl mx-auto">
+      {/* Background image - responsive */}
+      <div
+        className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat hidden sm:block opacity-30"
+        style={{ backgroundImage: `url(${bgDesktop})` }}
+      />
+      <div
+        className="fixed inset-0 -z-10 bg-cover bg-bottom bg-no-repeat sm:hidden opacity-30"
+        style={{ backgroundImage: `url(${bgMobile})` }}
+      />
+      <div className="max-w-7xl mx-auto relative">
         <h1 className="text-4xl font-bold text-foreground mb-4">
           {t('subjects.pageTitle', { defaultValue: 'Choose Your Subject' })}
         </h1>

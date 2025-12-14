@@ -2,19 +2,25 @@ FROM oven/bun:1
 
 WORKDIR /app
 
-# Copy and install dependencies
-COPY packages/backend/package.json .
-COPY packages/backend/bun.lockb .
-RUN bun install --production
+# Copy workspace configuration and package files
+COPY package.json .
+COPY packages/backend/package.json packages/backend/
+COPY packages/content/package.json packages/content/
+
+# Install dependencies (this sets up workspace links)
+# Note: Not copying lockfile due to bun version differences between local/Docker
+RUN bun install --production --ignore-scripts
 
 # Copy source files
-COPY packages/backend/src src
-COPY packages/backend/prompts prompts
-COPY packages/backend/locales locales
-COPY packages/backend/database database
+COPY packages/backend/src packages/backend/src
+COPY packages/backend/prompts packages/backend/prompts
+COPY packages/backend/locales packages/backend/locales
+COPY packages/backend/database packages/backend/database
 
-# Copy content
-COPY content /content
+# Copy content package source
+COPY packages/content packages/content
+
+WORKDIR /app/packages/backend
 
 EXPOSE 3000
 CMD ["bun", "src/index.ts"]

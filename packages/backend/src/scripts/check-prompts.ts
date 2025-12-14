@@ -6,7 +6,7 @@
  * For concept validation, use `bun run scripts/check-concepts.ts` from repo root.
  *
  * Usage:
- *   bun run src/cli/check-prompts.ts
+ *   bun run src/scripts/check-prompts.ts
  */
 
 import { validatePrompts } from './lib/validators'

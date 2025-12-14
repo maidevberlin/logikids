@@ -6,7 +6,7 @@ import { Label } from '@/app/common/ui/label'
 import { User, Check, Loader2 } from 'lucide-react'
 import type { UserSettings } from '@/app/user/types'
 import { createLogger } from '@/app/common/logger'
-import { Language, DEFAULT_LANGUAGE } from '/content/languages'
+import { Language, DEFAULT_LANGUAGE } from '@logikids/content/languages'
 
 const logger = createLogger('ProfileSettings')
 

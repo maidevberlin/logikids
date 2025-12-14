@@ -3,9 +3,9 @@
  * Invite Code Management CLI
  *
  * Usage:
- *   bun run src/cli/invite-codes.ts list
- *   bun run src/cli/invite-codes.ts create [note]
- *   bun run src/cli/invite-codes.ts remove <code>
+ *   bun run src/scripts/invite-codes.ts list
+ *   bun run src/scripts/invite-codes.ts create [note]
+ *   bun run src/scripts/invite-codes.ts remove <code>
  */
 
 import { pool } from '../../database/db'
@@ -142,7 +142,7 @@ async function main() {
 
       if (!codeToRemove) {
         console.error('❌ Error: Please provide a code to remove')
-        console.log('Usage: bun run src/cli/invite-codes.ts remove <code>')
+        console.log('Usage: bun run src/scripts/invite-codes.ts remove <code>')
         process.exit(1)
       }
 
@@ -189,15 +189,15 @@ async function main() {
 📨 Invite Code Manager
 
 Usage:
-  bun run src/cli/invite-codes.ts list              - List all invite codes
-  bun run src/cli/invite-codes.ts create [note]     - Create new invite code (optional note)
-  bun run src/cli/invite-codes.ts remove <code>     - Remove invite code
-  bun run src/cli/invite-codes.ts clear             - Delete ALL invite codes (with confirmation)
+  bun run src/scripts/invite-codes.ts list              - List all invite codes
+  bun run src/scripts/invite-codes.ts create [note]     - Create new invite code (optional note)
+  bun run src/scripts/invite-codes.ts remove <code>     - Remove invite code
+  bun run src/scripts/invite-codes.ts clear             - Delete ALL invite codes (with confirmation)
 
 Examples:
-  bun run src/cli/invite-codes.ts create "For Maria's family"
-  bun run src/cli/invite-codes.ts remove ABCD-1234
-  bun run src/cli/invite-codes.ts clear
+  bun run src/scripts/invite-codes.ts create "For Maria's family"
+  bun run src/scripts/invite-codes.ts remove ABCD-1234
+  bun run src/scripts/invite-codes.ts clear
 
 Note: Used codes are automatically deleted after successful validation.
       `)

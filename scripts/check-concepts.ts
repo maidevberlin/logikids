@@ -26,7 +26,7 @@ import {
 
 // Path resolution
 function getContentPath(): string {
-  return join(import.meta.dir, '../content/subjects')
+  return join(import.meta.dir, '../packages/content/subjects')
 }
 
 function resolveConceptPath(input: string): string {

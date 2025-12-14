@@ -14,6 +14,9 @@ let sharedAudio: HTMLAudioElement | null = null
 // Track currently playing field
 let currentlyPlaying: string | null = null
 
+// Event name for notifying hooks when playback changes
+const TTS_PLAYBACK_CHANGED = 'tts-playback-changed'
+
 type TTSState = 'idle' | 'loading' | 'playing'
 
 export interface TTSUsage {
@@ -74,6 +77,19 @@ export function useTTS({ taskId, field, onCostReceived }: UseTTSOptions): UseTTS
     }
   }, [cacheKey])
 
+  // Listen for playback changes from other hooks
+  useEffect(() => {
+    const handlePlaybackChanged = () => {
+      // If another hook took over playback, reset our state to idle
+      if (currentlyPlaying !== cacheKey) {
+        setState('idle')
+      }
+    }
+
+    window.addEventListener(TTS_PLAYBACK_CHANGED, handlePlaybackChanged)
+    return () => window.removeEventListener(TTS_PLAYBACK_CHANGED, handlePlaybackChanged)
+  }, [cacheKey])
+
   const fetchAudio = useCallback(async (): Promise<Blob> => {
     // Check cache first
     const cached = audioCache.get(cacheKey)
@@ -118,6 +134,7 @@ export function useTTS({ taskId, field, onCostReceived }: UseTTSOptions): UseTTS
 
       setState('loading')
       currentlyPlaying = cacheKey
+      window.dispatchEvent(new Event(TTS_PLAYBACK_CHANGED))
 
       // Get audio blob (from cache or fetch)
       const blob = await fetchAudio()
