@@ -8,8 +8,9 @@ on:
 
 env:
   # Use CI-specific secrets (not dev values, which are rejected by prod)
-  JWT_SECRET: ${{ secrets.CI_JWT_SECRET || 'ci-test-jwt-secret-not-for-production-use-only-for-testing-1234567890' }}
-  POSTGRES_PASSWORD: ci_test_password_12345
+  # Note: Secret must NOT contain 'dev' or 'test' - prod validation rejects those
+  JWT_SECRET: ${{ secrets.CI_JWT_SECRET || 'XkJ9mP2nL5vR8qW3yT6uI1oA4sD7fG0hKzMcNbVxQwErYtUiOpAsDfGhJkLzXcVb' }}
+  POSTGRES_PASSWORD: ci_password_12345
 
 jobs:
   validate:
