@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
 import { useUserData } from '@/app/user'
-import { useProgress } from '@/app/progress'
+import { useProgress } from '@/app/progress/useProgress'
 import { LevelBadge } from './LevelBadge'
 import { SubjectSkillBars } from './SubjectSkillBars'
 import { CompetitiveMetrics } from './CompetitiveMetrics'

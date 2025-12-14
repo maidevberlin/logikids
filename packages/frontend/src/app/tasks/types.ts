@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { SUPPORTED_LANGUAGES, type Language } from '/content/languages'
+import { SUPPORTED_LANGUAGES, type Language } from '@logikids/content/languages'
 
 // Task Request (for API calls)
 export const taskRequestSchema = z.object({

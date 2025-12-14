@@ -22,7 +22,7 @@ export function SubjectCard({
   const navigate = useNavigate()
   const theme = getSubjectTheme(subject.id)
   const Icon = theme.icon
-  const { bg, hover } = theme.colors
+  const { glass, glassBorder } = theme.colors
 
   const gradeRangeText = formatGradeRange(subject.minGrade, subject.maxGrade, t)
 
@@ -40,16 +40,15 @@ export function SubjectCard({
 
   return (
     <Card
-      className={`shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl ${
+      variant="glass"
+      className={`${glass} ${glassBorder} shadow-md transition-all duration-300 h-full overflow-hidden rounded-2xl ${
         disabled
           ? 'opacity-50 cursor-not-allowed'
           : 'hover:shadow-lg cursor-pointer hover:scale-[1.02]'
       }`}
       onClick={handleClick}
     >
-      <CardContent
-        className={`h-full p-8 text-white ${bg} ${disabled ? '' : hover} transition-colors duration-300`}
-      >
+      <CardContent className="h-full p-8 text-white">
         <Icon className="w-16 h-16 mb-4" />
         <h2 className="text-2xl font-bold mb-2">
           {t(`subjects.${subject.id}.label`, { defaultValue: subject.name })}

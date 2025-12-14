@@ -21,6 +21,8 @@ export interface PageLayoutProps {
   headerRight?: ReactNode
   /** Custom className for the content container */
   className?: string
+  /** Custom className for the outer wrapper (use to override bg-background) */
+  wrapperClassName?: string
 }
 
 export function PageLayout({
@@ -33,9 +35,10 @@ export function PageLayout({
   headerCenter,
   headerRight,
   className,
+  wrapperClassName,
 }: PageLayoutProps) {
   return (
-    <div className="bg-background min-h-screen flex flex-col">
+    <div className={cn('min-h-screen flex flex-col', wrapperClassName)}>
       {/* Unified Header */}
       {showHeader && (
         <Header

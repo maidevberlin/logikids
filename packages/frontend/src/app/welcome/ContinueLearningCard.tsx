@@ -5,10 +5,15 @@ import { GraduationCap } from 'lucide-react'
 import { useUserData } from '@/app/user'
 import { trpc } from '@/app/common/trpc'
 import { getSubjectTheme } from '@/app/subjects'
+import { useSubjectTranslations } from '@/app/common/useSubjectTranslations'
 
 export function ContinueLearningCard() {
   const { t } = useTranslation()
   const { data: userData } = useUserData()
+
+  // Lazy-load subject translations for the last visited subject
+  const lastSubject = userData?.lastTask?.subject
+  useSubjectTranslations(lastSubject)
 
   // Fetch subjects to get display names
   const { data: subjectsData } = trpc.subjects.getAll.useQuery(

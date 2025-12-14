@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
 import { createLogger } from '@/app/common/logger.ts'
-import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, type Language } from '/content/languages'
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, type Language } from '@logikids/content/languages'
 
 const logger = createLogger('i18nConfig')
 
@@ -59,21 +59,10 @@ void i18n
     fallbackLng: DEFAULT_LANGUAGE,
     // Debug mode disabled to reduce console noise
     debug: false,
-    // Namespace
+    // Namespace - only load core namespaces initially
+    // Subject namespaces are loaded on-demand via useSubjectTranslations hook
     defaultNS: 'common',
-    ns: [
-      'common',
-      'greetings',
-      'profile',
-      'stats',
-      'loading',
-      'subjects/math',
-      'subjects/german',
-      'subjects/english',
-      'subjects/physics',
-      'subjects/biology',
-      'subjects/logic',
-    ],
+    ns: ['common', 'greetings', 'profile', 'stats', 'loading'],
     // Backend configuration for lazy loading
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json?h=' + CACHE_BREAKER,

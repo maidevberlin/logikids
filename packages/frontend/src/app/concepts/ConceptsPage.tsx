@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { PageLayout } from '@/app/common/PageLayout'
+import { useSubjectTranslations } from '@/app/common/useSubjectTranslations'
 import { getSubjectTheme } from '@/app/subjects'
 import { ConceptsTabContent } from './ConceptsTabContent'
 import { Concept } from './types'
@@ -21,6 +22,9 @@ export function ConceptsPage() {
   const navigate = useNavigate()
   const location = useLocation()
   const { data: userData } = useUserData()
+
+  // Lazy-load subject translations
+  useSubjectTranslations(subjectId)
 
   // Initialize showAll from location state (e.g., from disabled subject click) or default to false
   const [showAll, setShowAll] = useState(

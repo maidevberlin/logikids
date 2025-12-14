@@ -2,7 +2,11 @@ import { z } from 'zod'
 import { JSONSchema } from '../common/ai/base'
 
 // Re-export concept schema from content folder (shared with root scripts)
-export { conceptFrontmatterSchema, type ConceptFrontmatter, type Concept } from '/content/schema'
+export {
+  conceptFrontmatterSchema,
+  type ConceptFrontmatter,
+  type Concept,
+} from '@logikids/content/schema'
 
 /**
  * Schema for subject base.md frontmatter metadata

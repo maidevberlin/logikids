@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { prepareImportData, parseBackupCode, useSync } from '@/app/user/sync'
-import { useAuth } from '@/app/user'
+import { prepareImportData, parseBackupCode } from '@/app/user/sync'
+import { useSync } from '@/app/user/sync/useSync'
+import { useAuth } from '@/app/user/AuthContext'
 import { Button } from '@/app/common/ui/button'
 import { Label } from '@/app/common/ui/label'
 import {

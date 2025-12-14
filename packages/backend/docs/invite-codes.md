@@ -17,13 +17,13 @@ Run commands inside the backend Docker container:
 
 ```bash
 # List all invite codes
-docker compose exec backend-dev bun run src/cli/invite-codes.ts list
+docker compose exec backend-dev bun run src/scripts/invite-codes.ts list
 
 # Create new invite code (with optional note)
-docker compose exec backend-dev bun run src/cli/invite-codes.ts create "For Maria's family"
+docker compose exec backend-dev bun run src/scripts/invite-codes.ts create "For Maria's family"
 
 # Remove invite code
-docker compose exec backend-dev bun run src/cli/invite-codes.ts remove ABCD-1234
+docker compose exec backend-dev bun run src/scripts/invite-codes.ts remove ABCD-1234
 ```
 
 ## Code Format

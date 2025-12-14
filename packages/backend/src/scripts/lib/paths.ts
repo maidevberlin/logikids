@@ -25,7 +25,7 @@ export function resolveConceptPath(input: string): string {
   // Auto-detect content path (docker vs local)
   // In docker: /content/subjects (mounted volume)
   // In development: ../../packages/content/subjects (relative)
-  const dockerContentPath = '/content/subjects'
+  const dockerContentPath = '/app/packages/content/subjects'
   const localContentPath = resolve(process.cwd(), '../../packages/content/subjects')
 
   const contentBase = existsSync(dockerContentPath) ? dockerContentPath : localContentPath
@@ -44,7 +44,7 @@ export function resolveSubjectPath(subject: string): string {
   }
 
   // Auto-detect content path (docker vs local)
-  const dockerContentPath = '/content/subjects'
+  const dockerContentPath = '/app/packages/content/subjects'
   const localContentPath = resolve(process.cwd(), '../../packages/content/subjects')
   const contentBase = existsSync(dockerContentPath) ? dockerContentPath : localContentPath
 
@@ -73,7 +73,7 @@ export function extractSubjectFromPath(conceptPath: string): string {
  */
 export function getSubjectsBasePath(): string {
   // Auto-detect content path (docker vs local)
-  const dockerContentPath = '/content/subjects'
+  const dockerContentPath = '/app/packages/content/subjects'
   const localContentPath = resolve(process.cwd(), '../../packages/content/subjects')
   return existsSync(dockerContentPath) ? dockerContentPath : localContentPath
 }
