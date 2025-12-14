@@ -6,7 +6,7 @@ import { existsSync, readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 import type { CheckResult, CheckIssue } from '../types'
-import type { ConceptFrontmatter } from '@logikids/content/schema'
+import type { ConceptFrontmatter } from '../../../packages/content/schema'
 
 function getContentPath(): string {
   return join(import.meta.dir, '../../../packages/content/subjects')

@@ -4,7 +4,7 @@
 
 import { readFileSync } from 'fs'
 import matter from 'gray-matter'
-import type { ConceptFrontmatter } from '@logikids/content/schema'
+import type { ConceptFrontmatter } from '../../../packages/content/schema'
 import type { SchemaCheckResult } from '../types'
 import { checkSchema } from './schema'
 

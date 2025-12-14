@@ -14,7 +14,7 @@
 import { readdirSync, readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
-import { SUPPORTED_LANGUAGES } from '@logikids/content/schema'
+import { SUPPORTED_LANGUAGES } from '../packages/content/schema'
 
 // Path resolution
 function getContentPath(): string {

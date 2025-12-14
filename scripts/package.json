@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "check:concepts": "bun scripts/check-concepts.ts",
-    "check:translations": "bun scripts/check-translations.ts"
+    "check:concepts": "bun check-concepts.ts",
+    "check:translations": "bun check-translations.ts"
   },
   "dependencies": {
-    "@logikids/content": "workspace:*",
     "gray-matter": "^4.0.3",
     "zod": "^3.24.0"
   }

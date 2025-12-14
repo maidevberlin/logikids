@@ -5,7 +5,7 @@
 import { readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import type { CheckResult, CheckIssue } from '../types'
-import { SUPPORTED_LANGUAGES } from '@logikids/content/schema'
+import { SUPPORTED_LANGUAGES } from '../../../packages/content/schema'
 
 function getLocalesPath(): string {
   // Root scripts run from repo root
