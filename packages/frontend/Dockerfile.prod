@@ -21,6 +21,7 @@ WORKDIR /app/packages/backend
 RUN bun run build:types
 
 # Copy frontend source and build
+WORKDIR /app
 COPY packages/frontend/src packages/frontend/src
 COPY packages/frontend/public packages/frontend/public
 COPY packages/frontend/index.html packages/frontend/
