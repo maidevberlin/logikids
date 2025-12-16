@@ -42,7 +42,6 @@
     "js-yaml": "4.1.1",
     "jsonwebtoken": "^9.0.2",
     "latex-to-speech": "^0.0.4",
-    "node-tikzjax": "^1.0.3",
     "openai": "^4.76.0",
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",

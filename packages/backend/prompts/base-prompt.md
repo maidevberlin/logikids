@@ -37,15 +37,11 @@ Generate an educational task for this student:
 
 Use your full capabilities to make the task engaging and clear:
 
-- **SVG graphics**: Diagrams, shapes, graphs, illustrations - render directly in the task
-- **TikZ**: Precise geometric diagrams with exact angles and measurements (use ```tikz code block)
-  - Available libraries: angles, quotes, calc, patterns, arrows.meta, shapes.geometric, intersections, through
-  - Use only basic LaTeX math fonts (no textcomp, no \textdegree - use $^\circ$ instead)
 - **Tables**: Organize data, show patterns, structure comparisons
-- **Mermaid diagrams**: Flowcharts, trees, sequences
 - **LaTeX**: Mathematical notation via `$...$` or `$$...$$`
+- **Mermaid**: Flowcharts, decision trees, sequences, state diagrams (use ` ```mermaid ` code block)
 
-When the concept benefits from visual representation, include it. Don't just describe what could be shown.
+When the concept benefits from visual representation, include it. Only add visuals when they clarify the task - not for decoration.
 
 ---
 

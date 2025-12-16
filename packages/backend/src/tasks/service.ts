@@ -11,7 +11,6 @@ import { PromptService } from '../prompts/service'
 import { notFound, internalError } from '../common/errors'
 import { Concept } from '../prompts/schemas'
 import { convertTaskSvgs } from '../common/svg'
-import { convertTaskTikz } from '../common/tikz'
 import { AIClientToken } from '../di-tokens'
 
 @injectable()
@@ -98,13 +97,10 @@ export class TaskService {
       }
     )
 
-    // Convert TikZ code blocks to SVG (must run before SVG conversion)
-    const tikzConverted = await convertTaskTikz(
-      aiResponse.result as unknown as Record<string, unknown>
-    )
-
     // Convert inline SVGs to data URLs for reliable rendering
-    const convertedResult = convertTaskSvgs(tikzConverted) as unknown as BaseTaskResponse
+    const convertedResult = convertTaskSvgs(
+      aiResponse.result as unknown as Record<string, unknown>
+    ) as unknown as BaseTaskResponse
 
     // Generate taskId and add to response
     // Note: type is already correctly set in aiResponse.result by the schema
