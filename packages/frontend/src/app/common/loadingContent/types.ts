@@ -38,8 +38,8 @@ export interface LoadingContent {
   german: SubjectLoadingContent
   /** English language content */
   english: SubjectLoadingContent
-  /** Shared motivational messages that work across all subjects (5-7 messages) */
-  encouragement: string[]
+  /** Subject-specific encouragement messages connecting learning to real life */
+  encouragement: Record<string, string[]>
 }
 
 /**

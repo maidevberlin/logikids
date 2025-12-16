@@ -97,16 +97,18 @@ export function getLoadingContent(subject: string): SubjectLoadingContent {
 }
 
 /**
- * Get all encouragement messages (subject-agnostic).
+ * Get encouragement messages for a specific subject.
+ * Returns fallback messages if the subject is not found.
  *
- * @returns Array of i18n keys for motivational messages
+ * @param subject - Subject identifier (e.g., 'math', 'physics')
+ * @returns Array of i18n keys for subject-specific encouragement
  *
  * @example
  * ```typescript
- * const messages = getEncouragement()
- * console.log(messages) // ['loading.encouragement.0', ...]
+ * const messages = getEncouragement('math')
+ * console.log(messages) // ['encouragement.math.0', ...]
  * ```
  */
-export function getEncouragement(): string[] {
-  return encouragement
+export function getEncouragement(subject: string): string[] {
+  return encouragement[subject] || encouragement.fallback
 }
