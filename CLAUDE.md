@@ -22,19 +22,21 @@ Logikids is an AI-powered educational platform for children (ages 8-19) that gen
 
 ## Quick Reference
 
-| What            | Where                                      |
-| --------------- | ------------------------------------------ |
-| Docker setup    | `docker-compose.yml`                       |
-| Invite codes    | `./invite`                                 |
-| Frontend        | `packages/frontend/src/`                   |
-| Backend         | `packages/backend/src/`                    |
-| Content         | `content/subjects/`                        |
-| Concept schema  | `content/schema.ts`                        |
-| Concept rules   | `docs/concept-rules.md`                    |
-| Task generation | `docs/task-generation.md`                  |
-| AI prompts      | `packages/backend/prompts/`                |
-| Translations    | `packages/frontend/public/locales/{lang}/` |
-| DB migrations   | `packages/backend/database/migrations/`    |
+| What                | Where                                      |
+| ------------------- | ------------------------------------------ |
+| Docker setup        | `docker-compose.yml`                       |
+| Invite codes        | `./invite`                                 |
+| Frontend            | `packages/frontend/src/`                   |
+| Backend             | `packages/backend/src/`                    |
+| Content             | `content/subjects/`                        |
+| Concept schema      | `content/schema.ts`                        |
+| Concept rules       | `docs/concept-rules.md`                    |
+| Adding subjects     | `docs/adding-subjects.md`                  |
+| Task generation     | `docs/task-generation.md`                  |
+| AI prompts          | `packages/backend/prompts/`                |
+| Translations        | `packages/frontend/public/locales/{lang}/` |
+| DB migrations       | `packages/backend/database/migrations/`    |
+| Future enhancements | `docs/future-enhancements.md`              |
 
 ## CLI Scripts
 

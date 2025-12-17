@@ -14,15 +14,92 @@
     "preview": "Gleich geht's los",
     "encouragement": "Weiter so!"
   },
-  "encouragement": [
-    "Jeder Fehler ist eine Chance, etwas Neues zu lernen!",
-    "Du entwickelst wichtige Fähigkeiten mit jeder gelösten Aufgabe!",
-    "Fordere dich selbst heraus und werde stärker!",
-    "Lernen geschieht Schritt für Schritt!",
-    "Dein Gehirn wird durch Übung immer stärker!",
-    "Neugier führt zu erstaunlichen Entdeckungen!",
-    "Mach weiter so, du machst das großartig!"
-  ],
+  "encouragement": {
+    "math": [
+      "Prozentrechnung hilft dir zu erkennen, ob ein Rabatt wirklich gut ist oder nur Marketing",
+      "Mit Dreisatz rechnest du Rezepte für mehr oder weniger Personen um",
+      "Zinsrechnung zeigt dir, wie teuer ein Kredit wirklich wird – bevor du unterschreibst",
+      "Statistik hilft dir, irreführende Grafiken in Nachrichten zu durchschauen",
+      "Kopfrechnen macht dich schneller beim Aufteilen von Rechnungen mit Freunden",
+      "Wahrscheinlichkeit erklärt, warum Lotto spielen fast nie funktioniert",
+      "Flächen berechnen brauchst du, um zu wissen, wie viel Farbe du zum Streichen kaufen musst",
+      "Mit Maßstäben verstehst du, wie weit Orte auf einer Karte wirklich voneinander entfernt sind",
+      "Bruchrechnung nutzt du, wenn du Pizza, Kuchen oder Kosten fair aufteilst",
+      "Einheiten umrechnen hilft dir bei Rezepten aus dem Internet mit Cups und Ounces"
+    ],
+    "physics": [
+      "Physik erklärt, warum dein Handy-Akku im Winter schneller leer wird",
+      "Optik zeigt dir, warum du in machen Spiegeln dünner oder dicker aussiehst",
+      "Wärmelehre erklärt, warum du im nassen T-Shirt so schnell frierst",
+      "Mit Elektrizität verstehst du, warum manche Ladekabel schneller laden als andere",
+      "Mechanik erklärt, warum du beim Fahrradfahren nicht umfällst",
+      "Schall erklärt, warum du Gewitter erst siehst und dann hörst",
+      "Aerodynamik zeigt, warum Spoiler bei Autos nicht nur cool aussehen",
+      "Reibung erklärt, warum Winterreifen im Schnee besser greifen",
+      "Druck erklärt, warum deine Ohren im Flugzeug oder beim Tauchen wehtun",
+      "Auftrieb erklärt, warum riesige Schiffe aus Stahl schwimmen können"
+    ],
+    "logic": [
+      "Logik hilft dir, Fake News und echte Nachrichten zu unterscheiden",
+      "Mit logischem Denken erkennst du, wenn dich jemand mit schlechten Argumenten überzeugen will",
+      "Logik hilft dir zu checken, ob Online-Bewertungen echt oder gefaked sind",
+      "Wenn du Muster erkennst, löst du Rätsel in Games schneller",
+      "Logik hilft dir, die schnellste Route zu finden, nicht nur die kürzeste",
+      "Mit logischem Denken durchschaust du manipulative Werbung",
+      "Debugging ist angewandte Logik – egal ob bei Code oder kaputten Geräten",
+      "Logik hilft dir, Clickbait-Überschriften von echten News zu unterscheiden",
+      "Wenn-Dann-Denken hilft dir, Konsequenzen von Entscheidungen vorherzusehen",
+      "Mit Logik findest du raus, wer bei Werwolf oder Among Us lügt"
+    ],
+    "music": [
+      "Rhythmusgefühl hilft dir nicht nur bei Musik, sondern auch beim Tanzen und Sport",
+      "Mit Gehörtraining erkennst du, wenn jemand beim Karaoke schief singt",
+      "Musiktheorie erklärt, warum manche Songs traurig und andere fröhlich klingen",
+      "Taktgefühl brauchst du beim Rappen, Beatboxen und beim Schneiden von Videos",
+      "Wenn du Intervalle erkennst, kannst du Melodien nach Gehör nachspielen",
+      "Harmonielehre erklärt, warum bestimmte Akkorde dir Gänsehaut machen",
+      "Notenlesen ermöglicht dir, jedes Stück zu spielen, ohne es vorher gehört zu haben",
+      "Dynamik verstehen hilft dir, Emotionen in Musik bewusster wahrzunehmen",
+      "Mit Musiktheorie produzierst du eigene Beats, die wirklich gut klingen",
+      "Rhythmus hilft dir, beim Sport oder Tanzen im Takt zu bleiben"
+    ],
+    "german": [
+      "Textverständnis hilft dir, Verträge und AGB zu verstehen, bevor du zustimmst",
+      "Mit Sprachgefühl erkennst du, wenn Werbung dich manipulieren will",
+      "Gute Formulierung hilft dir, Beschwerden zu schreiben, die wirklich etwas bewirken",
+      "Lesekompetenz schützt dich vor Phishing-Mails und Betrugsmaschen",
+      "Mit Wortschatz drückst du genau aus, was du meinst – ohne Missverständnisse",
+      "Grammatik hilft dir, Nachrichten zu schreiben, die nicht falsch verstanden werden",
+      "Textanalyse hilft dir, politische Reden und ihre Tricks zu durchschauen",
+      "Wer Beipackzettel versteht, nimmt Medikamente richtig ein",
+      "Mit gutem Deutsch schreibst du Nachrichten, die ernst genommen werden",
+      "Sprachverständnis hilft dir, Clickbait von echten Nachrichten zu unterscheiden"
+    ],
+    "english": [
+      "Mit Englisch verstehst du Games, Serien und YouTube ohne Untertitel",
+      "Die meisten Programmier-Tutorials und Tech-Hilfen sind auf Englisch",
+      "Im Urlaub kommst du mit Englisch fast überall zurecht",
+      "Mit Englisch kannst du mit Menschen aus der ganzen Welt chatten und zocken",
+      "Song-Lyrics verstehen macht mehr Spaß als nur mitsummen",
+      "Englische Fehlermeldungen verstehen spart dir Stunden beim Troubleshooting",
+      "Reddit, Discord und internationale Communities laufen hauptsächlich auf Englisch",
+      "Die neuesten Tech-News kommen zuerst auf Englisch – oft Wochen vor der Übersetzung",
+      "Mit Englisch kannst du bei internationalen Projekten und Kollaborationen mitmachen",
+      "Englische Produktbewertungen helfen dir, vor dem Kauf die Wahrheit zu finden"
+    ],
+    "fallback": [
+      "Was du hier lernst, hilft dir bei echten Problemen im Alltag",
+      "Wissen schützt dich davor, über den Tisch gezogen zu werden",
+      "Verstehen ist besser als Auswendiglernen – und bleibt länger hängen",
+      "Fehler sind kein Problem, solange du verstehst, was schiefging",
+      "Jedes Thema hat einen Bezug zu deinem echten Leben – manchmal musst du nur suchen",
+      "Wer Zusammenhänge versteht, lässt sich nicht so leicht manipulieren",
+      "Schwierige Aufgaben machen dich stärker als einfache",
+      "Neugier ist der Antrieb für alles, was du je lernen wirst",
+      "Kritisch denken hilft dir, gute von schlechten Informationen zu unterscheiden",
+      "Je mehr du verstehst, desto bessere Entscheidungen triffst du"
+    ]
+  },
   "tips": {
     "math": [
       "Zerlege komplexe Probleme in kleinere, überschaubare Schritte!",
