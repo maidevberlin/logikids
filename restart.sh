@@ -3,19 +3,21 @@
 # Exit on error
 set -e
 
-echo "🔄 Restarting Logikids..."
+echo "Restarting Logikids..."
 
 # Stop running containers
-echo "⏹️ Stopping running containers..."
-docker compose down
+echo "Stopping running containers..."
+docker compose -f docker-compose.prod.yml down
 
-# Rebuild and start containers
-echo "🏗️ Rebuilding and starting containers..."
-docker compose build frontend-prod backend-prod
-docker compose up -d postgres frontend-prod backend-prod
+# Pull latest images
+echo "Pulling latest images from ghcr.io..."
+docker compose -f docker-compose.prod.yml pull
 
-echo "✅ Restart complete!"
-echo "🗄️ PostgreSQL is running on port 5432"
-echo "🌐 Frontend is available at http://localhost:5154"
-echo "🔌 Backend is available at http://localhost:5176"
-echo "💡 The frontend automatically proxies /api requests to the backend" 
+# Start containers
+echo "Starting containers..."
+docker compose -f docker-compose.prod.yml up -d
+
+echo "Restart complete!"
+echo "PostgreSQL is running on port 5432"
+echo "Frontend is available at http://localhost:5154"
+echo "Backend is available at http://localhost:5176"

@@ -1,0 +1,83 @@
+# Production compose file - uses pre-built images from ghcr.io
+# Usage: docker compose -f docker-compose.prod.yml up -d
+
+services:
+  frontend:
+    image: ghcr.io/maidevberlin/logikids/frontend:latest
+    restart: unless-stopped
+    ports:
+      - '5154:80'
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    image: ghcr.io/maidevberlin/logikids/backend:latest
+    restart: unless-stopped
+    ports:
+      - '5176:3000'
+    volumes:
+      - ./packages/frontend/public/locales:/app/packages/frontend/public/locales:ro
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://logikids:${POSTGRES_PASSWORD}@postgres:5432/logikids
+      - JWT_SECRET=${JWT_SECRET}
+      # AI Provider Configuration
+      - AI_PROVIDER=${AI_PROVIDER}
+      # Ollama
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-llama2}
+      - OLLAMA_TEMPERATURE=${OLLAMA_TEMPERATURE:-}
+      - OLLAMA_TOP_K=${OLLAMA_TOP_K:-}
+      - OLLAMA_TOP_P=${OLLAMA_TOP_P:-}
+      # OpenAI
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-5}
+      - OPENAI_TEMPERATURE=${OPENAI_TEMPERATURE:-}
+      - OPENAI_MAX_TOKENS=${OPENAI_MAX_TOKENS:-}
+      - OPENAI_TOP_P=${OPENAI_TOP_P:-}
+      # Anthropic
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-sonnet-4-5}
+      - ANTHROPIC_MAX_TOKENS=${ANTHROPIC_MAX_TOKENS:-}
+      - ANTHROPIC_TEMPERATURE=${ANTHROPIC_TEMPERATURE:-}
+      # Server
+      - SERVER_PORT=${SERVER_PORT:-3000}
+      # TTS
+      - GOOGLE_CLOUD_TTS_API_KEY=${GOOGLE_CLOUD_TTS_API_KEY:-}
+      # Error Tracking
+      - SENTRY_DSN=${SENTRY_DSN:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: logikids-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: logikids
+      POSTGRES_USER: logikids
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./packages/backend/database/migrations:/docker-entrypoint-initdb.d:ro
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U logikids']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge
