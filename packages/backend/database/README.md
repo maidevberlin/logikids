@@ -44,7 +44,7 @@ try {
 docker compose exec backend-dev bun run migrate
 
 # Production
-docker compose exec backend-prod bun run migrate
+docker compose exec backend bun run migrate
 ```
 
 ### How Migrations Work
@@ -157,7 +157,7 @@ DATABASE_URL=postgresql://logikids:password@postgres:5432/logikids
 1. Deploy new code
 2. Run migrations:
    ```bash
-   docker compose exec backend-prod bun run migrate
+   docker compose exec backend bun run migrate
    ```
 3. Verify all services are healthy
 

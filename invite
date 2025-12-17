@@ -7,7 +7,7 @@ set -e
 # Determine environment (default: dev)
 CONTAINER="backend-dev"
 if [[ "$1" == "--prod" ]] || [[ "$1" == "-p" ]]; then
-  CONTAINER="backend-prod"
+  CONTAINER="backend"
   shift
 fi
 
