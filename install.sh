@@ -315,10 +315,13 @@ echo -e "${GREEN}✓ Created .env${NC}"
 # ═══════════════════════════════════════════════════════════════════════
 
 echo ""
-echo -e "${BLUE}[6/6] Building and starting application...${NC}"
+echo -e "${BLUE}[6/6] Starting application...${NC}"
 
-docker compose build frontend-prod backend-prod
-docker compose up -d postgres frontend-prod backend-prod
+echo "Pulling pre-built images from GitHub Container Registry..."
+docker compose -f docker-compose.prod.yml pull
+
+echo "Starting services..."
+docker compose -f docker-compose.prod.yml up -d
 
 echo ""
 echo -e "${GREEN}╔══════════════════════════════════════════════════════════════════╗${NC}"
