@@ -136,7 +136,7 @@ export function TaskLoadingContent({
   // Initialize content queue on mount or when subject changes
   useEffect(() => {
     const subjectContent = getLoadingContent(subject)
-    const encouragementMessages = getEncouragement()
+    const encouragementMessages = getEncouragement(subject)
 
     // Build complete content pool
     const allContent: ContentItem[] = [

@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState, Suspense, lazy } from 'react'
 import { createPortal } from 'react-dom'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import remarkMath from 'remark-math'
@@ -10,6 +10,15 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import mermaid from 'mermaid'
 import 'katex/dist/katex.min.css'
 import { createLogger } from '@/app/common/logger'
+
+// Lazy load visualization components to reduce initial bundle size
+const GraphvizRenderer = lazy(() =>
+  import('./GraphvizRenderer').then((m) => ({ default: m.GraphvizRenderer }))
+)
+const JSXGraphRenderer = lazy(() =>
+  import('./JSXGraphRenderer').then((m) => ({ default: m.JSXGraphRenderer }))
+)
+const MafsRenderer = lazy(() => import('./MafsRenderer').then((m) => ({ default: m.MafsRenderer })))
 
 const logger = createLogger('MarkdownRenderer')
 
@@ -206,10 +215,56 @@ function MarkdownRendererComponent({
             code({ inline, className, children, ...props }: any) {
               const match = /language-(\w+)/.exec(className || '')
               const language = match ? match[1] : ''
+              const codeContent = String(children).replace(/\n$/, '')
 
               // Handle Mermaid diagrams
               if (enableMermaid && language === 'mermaid') {
-                return <div className="language-mermaid">{String(children).replace(/\n$/, '')}</div>
+                return <div className="language-mermaid">{codeContent}</div>
+              }
+
+              // Handle Graphviz (DOT) diagrams
+              if (language === 'dot' || language === 'graphviz') {
+                return (
+                  <Suspense
+                    fallback={
+                      <div className="flex justify-center my-4 p-4 bg-gray-50 rounded-lg animate-pulse">
+                        <div className="text-gray-400">Loading graph...</div>
+                      </div>
+                    }
+                  >
+                    <GraphvizRenderer code={codeContent} onSvgClick={openLightboxSvg} />
+                  </Suspense>
+                )
+              }
+
+              // Handle JSXGraph geometry diagrams
+              if (language === 'jsxgraph') {
+                return (
+                  <Suspense
+                    fallback={
+                      <div className="flex justify-center my-4 p-4 bg-gray-50 rounded-lg animate-pulse">
+                        <div className="text-gray-400">Loading geometry...</div>
+                      </div>
+                    }
+                  >
+                    <JSXGraphRenderer code={codeContent} onSvgClick={openLightboxSvg} />
+                  </Suspense>
+                )
+              }
+
+              // Handle Mafs function plots and coordinate graphics
+              if (language === 'mafs') {
+                return (
+                  <Suspense
+                    fallback={
+                      <div className="flex justify-center my-4 p-4 bg-gray-50 rounded-lg animate-pulse">
+                        <div className="text-gray-400">Loading plot...</div>
+                      </div>
+                    }
+                  >
+                    <MafsRenderer code={codeContent} onSvgClick={openLightboxSvg} />
+                  </Suspense>
+                )
               }
 
               // Handle SVG - render as actual SVG instead of code
@@ -217,12 +272,11 @@ function MarkdownRendererComponent({
                 language === 'svg' ||
                 (language === 'html' && String(children).trim().startsWith('<svg'))
               ) {
-                const svgContent = String(children).replace(/\n$/, '')
                 return (
                   <div
                     className="flex justify-center my-4 p-4 bg-white rounded-lg [&_svg]:max-w-3xl [&_svg]:w-full [&_svg]:h-auto cursor-pointer hover:shadow-lg transition-shadow"
-                    dangerouslySetInnerHTML={{ __html: svgContent }}
-                    onClick={() => openLightboxSvg(svgContent)}
+                    dangerouslySetInnerHTML={{ __html: codeContent }}
+                    onClick={() => openLightboxSvg(codeContent)}
                     title="Click to enlarge"
                   />
                 )
@@ -232,7 +286,7 @@ function MarkdownRendererComponent({
               if (!inline && enableCode && match) {
                 return (
                   <SyntaxHighlighter style={oneDark} language={language} PreTag="div" {...props}>
-                    {String(children).replace(/\n$/, '')}
+                    {codeContent}
                   </SyntaxHighlighter>
                 )
               }

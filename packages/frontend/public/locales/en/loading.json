@@ -14,15 +14,92 @@
     "preview": "Coming up",
     "encouragement": "Keep going!"
   },
-  "encouragement": [
-    "Every mistake is a chance to learn something new!",
-    "You're building important skills with every task you complete!",
-    "Challenge yourself and grow stronger!",
-    "Learning happens one step at a time!",
-    "Your brain gets stronger with practice!",
-    "Curiosity leads to amazing discoveries!",
-    "Keep going, you're doing great!"
-  ],
+  "encouragement": {
+    "math": [
+      "Percentages help you spot when a 'sale' is actually just marketing",
+      "Ratios help you scale recipes for more or fewer people",
+      "Interest calculations show you how expensive a loan really is – before you sign",
+      "Statistics help you see through misleading graphs in the news",
+      "Mental math makes you faster at splitting bills with friends",
+      "Probability explains why playing the lottery almost never works",
+      "Calculating area tells you how much paint you need before you start",
+      "Understanding scale helps you know how far places really are on a map",
+      "Fractions help you split pizza, cake, or costs fairly",
+      "Unit conversion helps with recipes from the internet using cups and ounces"
+    ],
+    "physics": [
+      "Physics explains why your phone battery drains faster in winter",
+      "Optics shows why you look thinner or wider in different mirrors",
+      "Heat transfer explains why you freeze so fast in a wet shirt",
+      "Electricity helps you understand why some chargers are faster than others",
+      "Mechanics explains why you don't fall over when riding a bike",
+      "Sound explains why you see lightning before you hear thunder",
+      "Aerodynamics shows why car spoilers aren't just for looks",
+      "Friction explains why winter tires grip better in snow",
+      "Pressure explains why your ears hurt on planes or when diving",
+      "Buoyancy explains why massive steel ships can float"
+    ],
+    "logic": [
+      "Logic helps you tell fake news from real news",
+      "Logical thinking helps you spot when someone's using bad arguments to convince you",
+      "Logic helps you check if online reviews are real or faked",
+      "When you recognize patterns, you solve puzzles in games faster",
+      "Logic helps you find the fastest route, not just the shortest",
+      "Logical thinking helps you see through manipulative advertising",
+      "Debugging is applied logic – whether it's code or broken devices",
+      "Logic helps you tell clickbait headlines from real news",
+      "If-then thinking helps you foresee consequences of decisions",
+      "Logic helps you figure out who's lying in Werewolf or Among Us"
+    ],
+    "music": [
+      "Rhythm helps you not just with music, but also with dancing and sports",
+      "Ear training helps you notice when someone's singing off-key at karaoke",
+      "Music theory explains why some songs sound sad and others happy",
+      "Keeping time matters for rapping, beatboxing, and editing videos",
+      "If you recognize intervals, you can play melodies by ear",
+      "Harmony explains why certain chords give you goosebumps",
+      "Reading sheet music lets you play any piece without hearing it first",
+      "Understanding dynamics helps you perceive emotions in music more consciously",
+      "With music theory, you produce your own beats that actually sound good",
+      "Rhythm helps you stay on beat when dancing or playing sports"
+    ],
+    "german": [
+      "Reading comprehension helps you understand contracts and terms before you agree",
+      "Language awareness helps you spot when ads are trying to manipulate you",
+      "Good writing helps you write complaints that actually get results",
+      "Reading skills protect you from phishing emails and scams",
+      "With vocabulary, you express exactly what you mean – no misunderstandings",
+      "Grammar helps you write messages that won't be misunderstood",
+      "Text analysis helps you see through political speeches and their tricks",
+      "Understanding medication instructions means taking them correctly",
+      "With good German, you write messages that get taken seriously",
+      "Language skills help you tell clickbait from real news"
+    ],
+    "english": [
+      "With English you can enjoy games, shows, and YouTube without subtitles",
+      "Most programming tutorials and tech help are in English",
+      "English gets you by almost anywhere when traveling",
+      "With English you can chat and game with people from all over the world",
+      "Understanding song lyrics is more fun than just humming along",
+      "Understanding English error messages saves you hours of troubleshooting",
+      "Reddit, Discord, and international communities run mostly on English",
+      "The latest tech news comes out in English first – often weeks before translations",
+      "With English you can join international projects and collaborations",
+      "English product reviews help you find the truth before buying"
+    ],
+    "fallback": [
+      "What you learn here helps you with real problems in everyday life",
+      "Knowledge protects you from getting ripped off",
+      "Understanding beats memorizing – and sticks longer",
+      "Mistakes are fine as long as you understand what went wrong",
+      "Every topic connects to your real life – sometimes you just have to look",
+      "Understanding connections makes you harder to manipulate",
+      "Difficult tasks make you stronger than easy ones",
+      "Curiosity drives everything you'll ever learn",
+      "Critical thinking helps you tell good information from bad",
+      "The more you understand, the better decisions you make"
+    ]
+  },
   "tips": {
     "math": [
       "Break complex problems into smaller, manageable steps!",

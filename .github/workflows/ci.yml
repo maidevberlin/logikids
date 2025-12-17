@@ -3,8 +3,9 @@ name: CI
 on:
   pull_request:
     branches: [main, dev]
+  # Only run on push to main (post-merge verification)
   push:
-    branches: [main, dev]
+    branches: [main]
 
 env:
   # Use CI-specific secrets (not dev values, which are rejected by prod)
