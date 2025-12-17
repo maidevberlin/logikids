@@ -88,9 +88,9 @@ export const loadingContent: LoadingContent = {
 export function getLoadingContent(subject: string): SubjectLoadingContent {
   const content = loadingContent[subject as keyof typeof loadingContent]
 
-  // If content exists and is a SubjectLoadingContent (not encouragement array)
+  // If content exists and is a SubjectLoadingContent (not encouragement)
   if (content && typeof content === 'object' && 'tips' in content) {
-    return content
+    return content as SubjectLoadingContent
   }
 
   return fallbackContent
