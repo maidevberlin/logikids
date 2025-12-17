@@ -18,15 +18,16 @@ export function TaskCostDisplay({ taskUsage, hintUsage }: TaskCostDisplayProps) 
   const totalOutputTokens = (taskUsage?.outputTokens || 0) + (hintUsage?.outputTokens || 0)
   const totalCost = (taskUsage?.cost || 0) + (hintUsage?.cost || 0)
 
-  // Format cost in USD with appropriate precision
+  // Format cost in cents
   const formatCost = (cost: number) => {
-    if (cost < 0.001) {
-      return `$${cost.toFixed(5)}`
+    const cents = cost * 100
+    if (cents < 0.1) {
+      return `${cents.toFixed(3)}¢`
     }
-    if (cost < 0.01) {
-      return `$${cost.toFixed(4)}`
+    if (cents < 1) {
+      return `${cents.toFixed(2)}¢`
     }
-    return `$${cost.toFixed(3)}`
+    return `${cents.toFixed(1)}¢`
   }
 
   const formatTokens = (num: number) => {
