@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "dev": "docker compose up frontend-dev backend-dev",
-    "prod": "docker compose up frontend-prod backend-prod",
+    "prod": "docker compose up frontend backend",
     "build": "docker compose build",
     "check:concepts": "docker compose exec scripts bun run check:concepts",
     "check:translations": "docker compose exec scripts bun run check:translations",
@@ -16,7 +16,7 @@
     "generate:task": "docker compose exec backend-dev bun run generate:task"
   },
   "comments": {
-    "ports": "Frontend dev: 5153, Frontend prod: 5154, Backend dev: 5175, Backend prod: 5176"
+    "ports": "Frontend dev: 5153, Frontend: 5154, Backend dev: 5175, Backend: 5176"
   },
   "devDependencies": {
     "prettier": "^3.7.3"
