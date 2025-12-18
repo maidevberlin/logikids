@@ -41,16 +41,16 @@ prerequisites:
   - grade6-fractions-basics
   - grade5-decimals
 real_world_context:
-  - Combining recipe ingredients with different fractional measurements (1/3 cup flour + 1/4 cup sugar)
-  - Calculating total distances or durations in sports activities (2.5 km + 1.75 km)
-  - Managing budgets with decimal currency amounts (12.45 euros + 8.99 euros)
-  - Determining remaining quantities after using portions (3/4 liter - 1/3 liter)
+  - Combining recipe ingredients with different fractional measurements
+  - Calculating total distances or durations in sports activities 
+  - Managing budgets with decimal currency amounts
+  - Determining remaining quantities after using portions
   - Tracking progress toward goals using fractions and percentages
-  - Splitting a pizza among friends and calculating remaining slices (5/8 - 2/8 pizza)
-  - Measuring fabric lengths for a craft project (2.75 m + 1.25 m of ribbon)
-  - Calculating total weight of luggage for a trip (15.5 kg + 8.75 kg)
-  - Dividing chores fairly and tracking completed portions (3/4 done + 1/4 remaining)
-  - Adjusting music playlist durations (3.5 minutes + 4.25 minutes per song)
+  - Splitting a pizza among friends and calculating remaining slices
+  - Measuring fabric lengths for a craft project
+  - Calculating total weight of luggage for a trip
+  - Dividing chores fairly and tracking completed portions
+  - Adjusting music playlist durations
 anti_patterns:
   - Avoid denominators larger than 60
   - Don't combine multiplication or division in the same problem
