@@ -5,7 +5,7 @@ structures:
     grade: [1, 13] # Step-by-step universal
   - text: 'List the steps needed to solve this in order'
     grade: [1, 13] # Ordered steps universal
-  - text: 'Create a plan before you start calculating'
+  - text: 'Create a plan before you start solving'
     grade: [2, 13] # Planning works broadly
   - text: 'Work through this one piece at a time'
     grade: [1, 13] # Sequential work universal
@@ -35,24 +35,24 @@ structures:
     grade: [3, 13] # Path clarity more advanced
 
   # Estimation & Verification (6)
-  - text: 'Make an estimate first, then calculate the exact answer'
-    grade: [1, 13] # Estimation universal
+  - text: 'Make a guess first, then find the actual answer'
+    grade: [1, 13] # Guessing universal
   - text: 'Predict the answer before solving'
     grade: [1, 13] # Prediction universal
-  - text: 'Check your work by solving it a different way'
+  - text: 'Check your work by trying a different approach'
     grade: [2, 13] # Verification works broadly
   - text: 'Test if your answer makes sense'
     grade: [1, 13] # Sense-checking universal
-  - text: 'Verify your solution using reverse calculation'
+  - text: 'Verify your solution by checking it backwards'
     grade: [3, 13] # Reverse verification more advanced
-  - text: 'Validate your result through multiple methods'
+  - text: 'Confirm your result using a second method'
     grade: [4, 13] # Multi-method validation advanced
 
   # Information Processing (6)
   - text: 'Identify what information is needed and what can be ignored'
     grade: [2, 13] # Information filtering works broadly
-  - text: 'Organize the data before attempting to solve'
-    grade: [2, 13] # Data organization works broadly
+  - text: 'Organize what you know before attempting to solve'
+    grade: [2, 13] # Organization works broadly
   - text: 'Sort out essential facts from distractions'
     grade: [3, 13] # Fact sorting more advanced
   - text: 'Categorize the information into useful groups'
@@ -93,4 +93,22 @@ structures:
     grade: [3, 13] # Modeling more advanced
   - text: 'Map the relationships between elements'
     grade: [4, 13] # Relationship mapping advanced
+
+  # Self-Questioning & Elimination (8) - focuses on younger grades
+  - text: 'Ask yourself: what am I looking for?'
+    grade: [1, 13] # Self-questioning universal
+  - text: 'Rule out answers that cannot be right'
+    grade: [1, 13] # Elimination universal
+  - text: 'Try it with a simple example first'
+    grade: [1, 13] # Example-based universal
+  - text: 'Label each part to keep track'
+    grade: [1, 13] # Labeling universal
+  - text: 'Think about where you see this in real life'
+    grade: [1, 13] # Real-world connection universal
+  - text: 'Start from what you know for sure'
+    grade: [1, 13] # Certainty-first universal
+  - text: 'Cross out options as you check them'
+    grade: [1, 13] # Process of elimination universal
+  - text: 'Use your fingers or objects to help you think'
+    grade: [1, 4] # Manipulatives for young learners
 ---
