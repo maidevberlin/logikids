@@ -47,6 +47,13 @@ real_world_context:
   - Skip counting in everyday situations (counting by 2s for shoes, by 5s for fingers)
   - Buying multiple identical items (cost of 3 cookies at 5 cents each)
   - Sharing equally (if 10 candies go into 2 bags, how many per bag?)
+  - A spider spinning webs with equal numbers of threads in each section
+  - Counting wheels on multiple bicycles or tricycles at a playground
+  - Arranging chocolate pieces in rows inside a box
+  - A pirate captain dividing treasure coins into equal piles for the crew
+  - Counting petals on multiple flowers in a garden
+  - Setting up chairs in equal rows for a school assembly
+  - Counting windows on floors of an apartment building
 
 anti_patterns:
   - Avoid multiplication facts beyond 10×10 (too advanced for grade 2)
@@ -55,6 +62,6 @@ anti_patterns:
   - Don't introduce times tables other than 2, 5, and 10
   - Avoid abstract contexts unfamiliar to 7-8 year olds
 
-version: 1
-version_notes: Initial version following new concept schema with curriculum-aligned scope for German Grade 2
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

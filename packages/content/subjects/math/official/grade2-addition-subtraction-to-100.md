@@ -43,6 +43,13 @@ real_world_context:
   - Counting collections such as trading cards, stickers, or marbles
   - Solving problems about classroom attendance or absences
   - Calculating scores or points in games and sports activities
+  - A wizard mixing potion ingredients by adding or removing quantities
+  - Tracking book pages read and pages remaining in a chapter book
+  - A zookeeper counting animals after some are moved to other exhibits
+  - Adding up points earned across multiple levels in a video game
+  - Figuring out how many more laps to swim to reach a goal
+  - A baker calculating rolls baked minus rolls sold during the day
+  - Planning party supplies needed when some guests cancel
 anti_patterns:
   - Avoid numbers larger than 100
   - Don't use negative numbers or results below zero
@@ -51,6 +58,6 @@ anti_patterns:
   - Avoid fractions, decimals, or abstract scenarios unfamiliar to 7-8 year olds
 prerequisites:
   - grade1-addition-subtraction-to-20
-version: 1
-version_notes: Initial version - covers mental strategies, regrouping, and problem-solving for grade 2
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

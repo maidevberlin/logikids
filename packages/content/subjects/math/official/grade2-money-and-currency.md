@@ -46,12 +46,19 @@ real_world_context:
   - Comparing prices of similar items to find the cheaper or more expensive option
   - Receiving change after making a purchase at a kiosk or market
   - Exchanging coins at a bank or combining coins to make larger amounts
+  - A young entrepreneur running a lemonade stand and counting earnings
+  - Budgeting money for rides and snacks at a funfair
+  - Collecting coins found in a treasure hunt and calculating the total
+  - Paying for entry tickets at a zoo or museum with exact change
+  - Comparing meal prices at different food stalls during a school trip
+  - Saving up for a specific toy by tracking weekly allowance
+  - Splitting the cost of a gift equally among siblings
 anti_patterns:
   - Avoid amounts exceeding 100€
   - Don't use decimal notation (use 5 € 30 ct not 5.30 €)
   - Avoid calculations requiring regrouping beyond grade 2 level
   - Don't include bills larger than 50€ in problems
   - Avoid unrealistic prices that children cannot relate to
-version: 1
-version_notes: Initial version covering Grade 2 money skills per German KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
