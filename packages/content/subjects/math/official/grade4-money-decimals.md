@@ -46,12 +46,19 @@ real_world_context:
   - Determining if you have enough money for a purchase and how much change you'll receive
   - Comparing prices at different stores to find the best deal
   - Saving money over time and tracking progress toward a savings goal
+  - Planning a class party budget with decorations and snacks
+  - A young entrepreneur pricing items at a garage sale
+  - Comparing meal deals at different restaurants
+  - Tracking weekly allowance and spending habits
+  - Budgeting for holiday gifts for family members
+  - Calculating entry fees and snack costs for a day at the zoo
+  - Splitting restaurant bills among family members
 anti_patterns:
   - Avoid amounts with more than two decimal places
   - Don't use contexts unfamiliar to 9-10 year olds (investments, interest)
   - Avoid ambiguous "best value" without clear comparison criteria
   - Don't mix currencies or use exchange rates
   - Avoid division of money amounts (not in Grade 4 curriculum)
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

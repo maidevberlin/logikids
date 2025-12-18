@@ -46,12 +46,19 @@ real_world_context:
   - Reading product packaging that shows measurements in different units (500 mL bottle vs 0.5 L)
   - Planning travel times and calculating journey durations with departure and arrival times
   - Comparing prices per unit weight at the grocery store (price per kg vs per 100 g)
+  - A veterinarian measuring pet weights for medication dosages
+  - Converting pool lengths from meters to centimeters for swim records
+  - Reading medicine bottle measurements for proper doses
+  - A carpenter converting lumber lengths for building projects
+  - Tracking marathon training distances in different units
+  - Measuring fabric for sewing projects in centimeters and meters
+  - Converting water bottle sizes when planning for outdoor activities
 anti_patterns:
   - Avoid imperial units (miles, pounds, gallons, inches)
   - Don't use units beyond metric system (t, kg, g, km, m, cm, mm, L, mL)
   - Avoid mixing different measurement types in conversions (kg to liters)
   - Don't require knowledge of area units (m², cm²) or volume units (m³)
   - Avoid time zones, 24-hour notation, or calendar date calculations
-version: 1
-version_notes: Initial version aligned with German Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -43,12 +43,19 @@ real_world_context:
   - Finding all possible routes from home to school using different streets
   - Organizing teams or groups with specific requirements
   - Planning activities by combining different options like sports, times, and locations
+  - An ice cream shop listing all possible sundae combinations
+  - Creating unique pizza orders with different topping choices
+  - Planning vacation itineraries with different activity options each day
+  - A photographer arranging family members in different photo positions
+  - Designing custom sandwiches with bread, protein, and topping choices
+  - Planning party games with different team arrangements
+  - Creating secret codes using different symbol combinations
 anti_patterns:
   - Avoid more than 3 categories or sets larger than 4 items
   - Don't use abstract symbols without concrete context
   - Avoid problems where order matters unless explicitly teaching arrangements
   - Don't present incomplete trees or tables without clear instructions
   - Avoid contexts unfamiliar to 9-10 year olds
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards 2022 and LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -46,12 +46,19 @@ real_world_context:
   - Understanding building plans when helping parents plan room layouts
   - Reading treasure maps or game boards that show scaled-down versions of real spaces
   - Using enlargement when copying drawings or patterns to a bigger size
+  - A theme park visitor using maps to plan which rides to visit
+  - Creating model railway layouts with scaled buildings
+  - An interior designer presenting room arrangements to clients
+  - Planning hiking routes using trail maps with distance scales
+  - Understanding zoo maps to find animal exhibits
+  - A toy designer creating miniature versions of real vehicles
+  - Reading stadium seating charts to find assigned seats
 anti_patterns:
   - Avoid non-whole-number scales like 1:250 or 1:50000
   - Don't use complex map symbols beyond basic labels and shapes
   - Avoid diagonal measurements or Pythagorean theorem calculations
   - Don't require compass use or precise angle measurements for directions
   - Avoid mixing different units in scale ratios (e.g., cm to m without conversion)
-version: 1
-version_notes: Initial version aligned with LehrplanPLUS Bayern M3/4 2.1 and 2.3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

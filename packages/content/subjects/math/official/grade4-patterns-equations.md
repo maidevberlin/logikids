@@ -45,12 +45,19 @@ real_world_context:
   - Building block towers where each level follows a construction rule
   - Price calculations in a shop with consistent pricing patterns
   - Game scores that increase by fixed amounts each round
+  - Stacking chairs where each row adds a fixed number
+  - Tracking daily step count patterns over a week
+  - A DJ mixing music with beats following mathematical patterns
+  - Counting seats in theater rows that increase by a fixed number
+  - Predicting next numbers in sports jersey numbering systems
+  - Tracking book pages read following a daily reading plan
+  - Following knitting or crocheting patterns with repeating sequences
 anti_patterns:
   - Avoid patterns requiring numbers above 1000 or decimal operations
   - Don't use algebraic notation beyond simple placeholder symbols (□, ?, x)
   - Avoid multi-step equations requiring more than two operations
   - Don't combine order of operations with complex nested parentheses
   - Avoid patterns requiring advanced concepts like exponents or square roots
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -45,12 +45,19 @@ real_world_context:
   - Understanding TV program schedules and movie start times
   - Tracking sports event durations and timing
   - Planning birthday parties and calculating days until events
+  - A train conductor announcing arrival times at stations
+  - Scheduling homework time around after-school activities
+  - Calculating countdown days until summer vacation
+  - Planning baking times for multiple dishes in the oven
+  - A museum guide scheduling tour group rotations
+  - Tracking reading time for a classroom challenge
+  - Coordinating pickup times for carpool schedules
 anti_patterns:
   - Avoid time zones beyond simple comparison (too complex for grade 4)
   - Don't use 12-hour AM/PM format exclusively; prioritize 24-hour format
   - Avoid ambiguous date formats (use day-month-year clearly)
   - Don't combine time with fractions or decimals (e.g., 2.5 hours as decimal)
   - Avoid historical dates or contexts unfamiliar to 9-10 year olds
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
