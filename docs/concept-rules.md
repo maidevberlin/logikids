@@ -137,12 +137,8 @@ Each ID must reference an existing concept. The validation script checks this an
 
 - 10-15 items, each describing a distinct scenario
 - Each item should be a complete sentence or phrase
-- Mix contexts from different categories to maximize variety:
-  - **Everyday:** Shopping, cooking, sports, games, hobbies, travel
-  - **Historical/Adventure:** Pirates, knights, ancient Egypt, dinosaurs, space explorers
-  - **Fantasy/Imagination:** Magic potions, treasure maps, robot helpers, underwater worlds
-  - **Nature/Science:** Animal behaviors, weather patterns, plant growth
-- Avoid clustering too many items in one category
+- Maximize variety: mix everyday situations, historical periods, fantasy worlds, nature, professions, cultures, and adventures
+- Think beyond the obvious - surprise and delight students with unexpected but relatable contexts
 
 ### anti_patterns (required, 3-5 items)
 
