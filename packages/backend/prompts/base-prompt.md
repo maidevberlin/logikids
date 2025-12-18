@@ -47,6 +47,8 @@ When the concept benefits from visual representation, include it. Only add visua
 
 # Creative Framing
 
+Incorporate these elements to make the task engaging:
+
 <%variations_template%>
 
 **Real-world context:** [[real_world_context]]
@@ -66,7 +68,5 @@ When the concept benefits from visual representation, include it. Only add visua
 The `task` field is what students see. It must NOT contain answers, explanations, or hints.
 
 The `explanation` field contains the solution reasoning (shown after correct answer).
-
-## Formatting Options
 
 <%subject_base_template%>
