@@ -26,7 +26,7 @@ export const conceptFrontmatterSchema = z
       hard: z.array(z.string()).min(1),
     }),
     // Required fields
-    real_world_context: z.array(z.string().min(1)).min(3).max(5),
+    real_world_context: z.array(z.string().min(1)).min(10).max(15),
     version: z.number().int().positive(),
     // Optional fields
     prerequisites: z.array(z.string()).optional(),

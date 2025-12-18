@@ -56,17 +56,17 @@ export function checkStructure(frontmatter: ConceptFrontmatter): CheckResult {
   // Check real_world_context count
   const contextCount = frontmatter.real_world_context.length
 
-  if (contextCount < 3) {
+  if (contextCount < 10) {
     issues.push({
-      message: `Found ${contextCount} real_world_context items, required 3-5`,
-      fix: `Add ${3 - contextCount} more real-world context examples`,
+      message: `Found ${contextCount} real_world_context items, required 10-15`,
+      fix: `Add at least ${10 - contextCount} more real-world context examples`,
     })
   }
 
-  if (contextCount > 5) {
+  if (contextCount > 15) {
     issues.push({
-      message: `Found ${contextCount} real_world_context items, maximum is 5`,
-      fix: 'Reduce to 5 most relevant real-world contexts',
+      message: `Found ${contextCount} real_world_context items, maximum is 15`,
+      fix: 'Reduce to 15 most relevant real-world contexts',
     })
   }
 

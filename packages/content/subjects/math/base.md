@@ -8,15 +8,6 @@ description: Mathematical concepts and problem-solving
 
 Teaching mathematics with focus on computational skills and mathematical reasoning.
 
-## Math-Specific Distractors
-
-For wrong answers in math tasks, use these common error types:
-
-- Computational errors (forgot to carry, wrong sign, decimal misplacement)
-- Operation confusion (added instead of multiplied, wrong order of operations)
-- Partial solutions (stopped one step early, forgot to simplify)
-- Off-by-one errors (fencepost problems, inclusive vs exclusive counting)
-
 ## Generation Protocol
 
 Before generating ANY content:

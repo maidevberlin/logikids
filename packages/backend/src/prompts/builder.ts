@@ -93,13 +93,10 @@ export class PromptBuilder {
 
     const allVariables: Record<string, string | number> = {
       // Variation variables (all grade-filtered now!)
-      scenario: this.variationLoader.getScenario(params.grade),
-      student_context: '',
       enrichment_instruction: enrichment?.value || '',
 
       // Formatted versions for clean bullet list integration
       enrichment_formatted: enrichmentsFormatted,
-      student_context_formatted: '',
 
       // Subject/Concept/TaskType variables (duplicates OK - same values)
       grade: params.grade,
@@ -115,7 +112,7 @@ export class PromptBuilder {
       difficulty_guidelines: difficultyGuidelines.map((g) => `- ${g}`).join('\n'),
       prerequisites: params.concept.prerequisites?.join(', ') || '',
       real_world_context: Array.isArray(params.concept.real_world_context)
-        ? params.concept.real_world_context.map((c) => `- ${c}`).join('\n')
+        ? randomChoice(params.concept.real_world_context)
         : params.concept.real_world_context || '',
       anti_patterns: params.concept.anti_patterns?.length
         ? params.concept.anti_patterns.map((p) => `- ${p}`).join('\n')

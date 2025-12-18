@@ -49,8 +49,7 @@ When the concept benefits from visual representation, include it. Only add visua
 
 <%variations_template%>
 
-**Real-world context options:**
-[[real_world_context]]
+**Real-world context:** [[real_world_context]]
 
 ---
 

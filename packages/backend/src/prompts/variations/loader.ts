@@ -8,7 +8,6 @@ import { badRequest } from '../../common/errors'
  * Loads and manages task variation data from markdown files
  */
 export class VariationLoader {
-  private scenarios: GradeFilteredItem[] = []
   private framings: GradeFilteredItem[] = []
   private dynamics: GradeFilteredItem[] = []
   private temporalContexts: GradeFilteredItem[] = []
@@ -30,7 +29,6 @@ export class VariationLoader {
   async loadAll(): Promise<void> {
     try {
       // Load each variation file
-      this.scenarios = await this.loadGradeFilteredList('scenarios.md', 'scenarios')
       this.framings = await this.loadGradeFilteredList('problem-framings.md', 'framings')
       this.dynamics = await this.loadGradeFilteredList('character-dynamics.md', 'dynamics')
       this.temporalContexts = await this.loadGradeFilteredList('temporal-contexts.md', 'contexts')
@@ -79,29 +77,6 @@ export class VariationLoader {
         grade: item.grade,
       }
     })
-  }
-
-  /**
-   * Get a random scenario, filtered by grade
-   */
-  getScenario(grade?: number): string {
-    if (this.scenarios.length === 0) {
-      return 'a typical everyday situation'
-    }
-
-    // Filter by grade if provided
-    const eligible = grade
-      ? this.scenarios.filter((s) => grade >= s.grade[0] && grade <= s.grade[1])
-      : this.scenarios
-
-    if (eligible.length === 0) {
-      // Fallback to all scenarios if no match
-      const fallback = this.scenarios[Math.floor(Math.random() * this.scenarios.length)]
-      return fallback.context || fallback.text || 'a typical everyday situation'
-    }
-
-    const selected = eligible[Math.floor(Math.random() * eligible.length)]
-    return selected.context || selected.text || 'a typical everyday situation'
   }
 
   /**
