@@ -38,12 +38,19 @@ real_world_context:
   - Human faces are approximately symmetric with the nose as the center line
   - Buildings and windows often have symmetric designs
   - Folded paper crafts like paper hearts and snowflakes use symmetry
+  - A royal crown with jewels arranged symmetrically on both sides
+  - Kites flying in the sky have symmetric shapes for balance
+  - Ladybugs and other insects have symmetric patterns on their wings
+  - Masks for carnival or theater often have symmetric decorations
+  - Reflection in a lake shows symmetric images of trees and mountains
+  - Traditional folk costumes with symmetric embroidery patterns
+  - Christmas trees decorated symmetrically with ornaments on both sides
 anti_patterns:
   - Avoid shapes with multiple lines of symmetry (too complex for grade 1)
   - Don't use diagonal lines of symmetry
   - Avoid rotational symmetry concepts
   - Don't require precise drawing or measuring
   - Avoid abstract shapes unfamiliar to 6-7 year olds
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards and LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

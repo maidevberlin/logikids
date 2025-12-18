@@ -38,12 +38,19 @@ real_world_context:
   - Describing where people are sitting or standing in relation to each other
   - Giving directions for games, treasure hunts, or finding hidden objects
   - Organizing items in specific positions (toys on the shelf, clothes in the closet)
+  - A fairy giving directions to find a hidden magical flower in an enchanted garden
+  - Describing where animals are positioned in a zoo exhibit
+  - A ship captain navigating between islands using left, right, and between
+  - Setting the table with plates, cups, and utensils in correct positions
+  - A robot following commands to move through a room and pick up objects
+  - Describing the position of players on a sports field during a game
+  - Arranging stuffed animals on a bed using above, below, and next to
 anti_patterns:
   - Avoid using diagonal directions (northeast, southwest) not in Grade 1 curriculum
   - Don't combine more than 3 position words in a single description
   - Avoid mirror/reflection concepts beyond simple left-right awareness
   - Don't use coordinate systems or grid references
   - Avoid abstract spatial concepts requiring mental rotation beyond 180 degrees
-version: 1
-version_notes: Initial concept for Grade 1 spatial orientation
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

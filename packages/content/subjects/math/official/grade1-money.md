@@ -41,6 +41,13 @@ real_world_context:
   - Comparing prices of different items to choose the cheaper option
   - Receiving allowance and understanding coin and bill values
   - Paying for items at a bakery or kiosk
+  - A young merchant trading goods at a medieval market fair
+  - Counting coins earned from a lemonade stand on a summer day
+  - Buying tickets for a carousel ride at an amusement park
+  - Collecting coins found in a sandbox or playground treasure hunt
+  - Shopping for birthday presents within a budget for a friend
+  - Paying for bus or tram fare for a school trip
+  - Buying postcards or souvenirs at a museum gift shop
 anti_patterns:
   - Avoid totals exceeding 20€
   - Don't use bills larger than 10€ in calculations
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid scenarios requiring more than 10 individual coins or bills
 prerequisites:
   - grade1-addition-subtraction-to-20
-version: 1
-version_notes: Initial version
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

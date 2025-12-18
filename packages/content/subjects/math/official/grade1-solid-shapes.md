@@ -18,6 +18,14 @@ real_world_context:
   - Recognizing shapes in food packaging like boxes, cans, and containers
   - Finding shapes in buildings and structures like towers, houses, and bridges
   - Sorting household objects by their shape characteristics
+  - A dragon hoarding treasures shaped like cubes, spheres, and cylinders
+  - Ice cream cones as cones and scoops as spheres at a summer fair
+  - Party hats shaped like cones and gift boxes shaped like cubes
+  - A builder stacking different shaped blocks to construct a castle
+  - Spotting cylindrical candles and spherical ornaments during holidays
+  - Camping supplies like cylindrical flashlights and cube-shaped coolers
+  - Musical instruments with 3D shapes like cylindrical drums and cube-shaped boxes
+  - Fruits and vegetables with different shapes (round oranges, cylindrical cucumbers)
 problem_types:
   - Shape Identification
   - Real Object Matching
@@ -45,6 +53,6 @@ anti_patterns:
   - Avoid abstract or unfamiliar objects - use everyday items
   - Don't ask about measurements or counting surfaces
   - Avoid pyramid - it's introduced in grade 3
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 1
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

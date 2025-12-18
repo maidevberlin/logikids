@@ -46,6 +46,13 @@ real_world_context:
   - Pizza slices are triangles, cookies can be circles or rectangles
   - Building blocks and toys come in different shapes
   - Picture frames are usually rectangles or squares
+  - A wizard sorting magical gems by their shapes in an enchanted tower
+  - Sports fields and courts have different shapes (rectangular soccer field, circular center spot)
+  - Musical instruments have shape parts (circular drums, triangular triangle instrument)
+  - An architect designing a house with different shaped windows and doors
+  - Sandwiches cut into triangles, squares, or rectangles for a picnic
+  - A robot identifying shapes to navigate through a maze
+  - Art projects using cut-out shapes to create pictures and patterns
 
 anti_patterns:
   - Avoid shapes with more than 4 sides (not appropriate for grade 1)
@@ -54,6 +61,6 @@ anti_patterns:
   - Don't ask about angle measurements or precise dimensions
   - Avoid shapes too similar in size and color (reduces clarity)
 
-version: 1.0
-version_notes: Initial version for Grade 1 plane shapes concept
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

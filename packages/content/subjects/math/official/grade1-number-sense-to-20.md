@@ -41,12 +41,19 @@ real_world_context:
   - Comparing ages of friends or siblings
   - Organizing items by quantity, such as pencils in a case or toys on a shelf
   - Using number cards or dice in games
+  - Counting birds at a bird feeder or ducks swimming in a pond
+  - A pirate counting gold coins in a treasure chest
+  - Counting players on a soccer or basketball team
+  - A baker counting rolls fresh from the oven
+  - Counting steps on a staircase or tiles on a floor
+  - A zookeeper counting animals during morning check
+  - Counting passengers waiting at a bus stop
 anti_patterns:
   - Avoid numbers larger than 20
   - Don't introduce place value terminology (tens/ones) yet
   - Avoid negative numbers or zero as a subtraction result
   - Don't use fraction or decimal notation
   - Avoid abstract contexts unfamiliar to 6-7 year olds
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards for Grade 1
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

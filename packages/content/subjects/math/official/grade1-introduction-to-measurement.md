@@ -41,12 +41,19 @@ real_world_context:
   - Reading clocks to know when activities happen during the school day
   - Using calendars to track days of the week for school schedules and weekend plans
   - Understanding time words like morning, afternoon, and evening in daily routines
+  - A giant measuring objects using his massive footsteps as units
+  - Comparing the lengths of different toy cars or trains
+  - Figuring out which pencil, crayon, or marker is longest
+  - Knowing what time favorite TV shows or bedtime stories start
+  - Planning activities for different days of the week at summer camp
+  - A caterpillar measuring leaves by crawling along their length
+  - Comparing ribbons to see which is long enough for a gift
 anti_patterns:
   - Avoid using standard units like centimeters or meters
   - Don't include half-hours or minutes on clock faces
   - Avoid complex word problems requiring calculations beyond simple comparison
   - Don't combine measurement types in a single problem
   - Avoid unfamiliar time contexts beyond daily school/home routines
-version: 1
-version_notes: Initial version for German Grade 1 curriculum (KMK standards)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
