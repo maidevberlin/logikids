@@ -8,16 +8,6 @@ description: Mathematical concepts and problem-solving
 
 Teaching mathematics with focus on computational skills and mathematical reasoning.
 
-## Content Support
-
-**If it supports understanding the task, use these for visual enhancement:**
-
-- LaTeX for equations
-- SVG diagrams for geometry, graphs, number lines
-- TikZ for precise geometric diagrams (angles, constructions, coordinate geometry)
-- Tables for data, patterns, comparisons
-- Step-by-step worked examples
-
 ## Generation Protocol
 
 Before generating ANY content:

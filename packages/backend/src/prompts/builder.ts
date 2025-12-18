@@ -36,19 +36,6 @@ export class PromptBuilder {
   }
 
   /**
-   * Get language style based on grade
-   */
-  private getLanguageStyle(grade: number): string {
-    if (grade <= 4) {
-      return 'Use very simple, playful language with short sentences. Keep it fun and encouraging.'
-    } else if (grade <= 8) {
-      return 'Use casual but structured language. Explain concepts clearly without being condescending.'
-    } else {
-      return 'Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.'
-    }
-  }
-
-  /**
    * Build the final prompt by combining templates with flat variable replacement
    */
   buildPrompt(params: TaskGenerationParams): string {
@@ -107,7 +94,6 @@ export class PromptBuilder {
     const allVariables: Record<string, string | number> = {
       // Variation variables (all grade-filtered now!)
       scenario: this.variationLoader.getScenario(params.grade),
-      language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
       student_context: '',
       enrichment_instruction: enrichment?.value || '',
 
