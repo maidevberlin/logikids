@@ -33,25 +33,13 @@ Generate an educational task for this student:
 
 ---
 
-# Rich Content
-
-Use your full capabilities to make the task engaging and clear:
-
-- **Tables**: Organize data, show patterns, structure comparisons
-- **LaTeX**: Mathematical notation via `$...$` or `$$...$$`
-- **Mermaid**: Flowcharts, decision trees, sequences, state diagrams (use ` ```mermaid ` code block)
-
-When the concept benefits from visual representation, include it. Only add visuals when they clarify the task - not for decoration.
-
----
-
 # Creative Framing
 
-Incorporate these elements to make the task engaging:
+**Scenario:** Set the problem in this real-world situation:
+
+> [[real_world_context]]
 
 <%variations_template%>
-
-**Real-world context:** [[real_world_context]]
 
 ---
 

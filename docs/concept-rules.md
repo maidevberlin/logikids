@@ -131,14 +131,18 @@ Each ID must reference an existing concept. The validation script checks this an
 
 ### real_world_context (required, 10-15 items)
 
-**Impact:** Inserted as `[[real_world_context]]`. Helps AI generate relatable scenarios.
+**Impact:** ONE context is randomly selected per task and inserted as `[[real_world_context]]`. This is the primary driver for task variety and engagement.
 
 **Requirements:**
 
-- 10-15 items, each describing a distinct real-world application
-- Cover diverse situations where students encounter this concept
+- 10-15 items, each describing a distinct scenario
 - Each item should be a complete sentence or phrase
-- Focus on applications relevant to the target age group
+- Mix contexts from different categories to maximize variety:
+  - **Everyday:** Shopping, cooking, sports, games, hobbies, travel
+  - **Historical/Adventure:** Pirates, knights, ancient Egypt, dinosaurs, space explorers
+  - **Fantasy/Imagination:** Magic potions, treasure maps, robot helpers, underwater worlds
+  - **Nature/Science:** Animal behaviors, weather patterns, plant growth
+- Avoid clustering too many items in one category
 
 ### anti_patterns (required, 3-5 items)
 

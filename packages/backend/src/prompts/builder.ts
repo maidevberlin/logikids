@@ -73,29 +73,19 @@ export class PromptBuilder {
     // Create single object with ALL variables (duplicates OK - same values)
 
     const enrichments = this.variationLoader.getRandomEnrichments(params.grade)
-    const enrichment = enrichments.length > 0 ? enrichments[0] : null
 
-    // Format multiple enrichments as bullet points
+    // Format enrichments with specific instructions for each type
     const enrichmentLabels: Record<string, string> = {
-      framing: 'Creative Framing',
-      character: 'Character Perspective',
-      temporal: 'Time Context',
-      metacognitive: 'Thinking Challenge',
-      mystery: 'Mystery Element',
-      realWorld: 'Real-World Connection',
-      emotional: 'Emotional Angle',
-      structure: 'Structure Variation',
+      structure: '**Guide the student to:**',
+      metacognitive: '**Include this reflection question:**',
     }
 
     const enrichmentsFormatted = enrichments
-      .map((e) => `\n- **${enrichmentLabels[e.type]}**: ${e.value}`)
-      .join('')
+      .map((e) => `${enrichmentLabels[e.type]}\n> ${e.value}`)
+      .join('\n\n')
 
     const allVariables: Record<string, string | number> = {
-      // Variation variables (all grade-filtered now!)
-      enrichment_instruction: enrichment?.value || '',
-
-      // Formatted versions for clean bullet list integration
+      // Formatted enrichments for bullet list integration
       enrichment_formatted: enrichmentsFormatted,
 
       // Subject/Concept/TaskType variables (duplicates OK - same values)

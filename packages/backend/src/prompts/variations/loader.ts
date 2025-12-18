@@ -8,13 +8,7 @@ import { badRequest } from '../../common/errors'
  * Loads and manages task variation data from markdown files
  */
 export class VariationLoader {
-  private framings: GradeFilteredItem[] = []
-  private dynamics: GradeFilteredItem[] = []
-  private temporalContexts: GradeFilteredItem[] = []
   private metacognitivePrompts: GradeFilteredItem[] = []
-  private mysteryFramings: GradeFilteredItem[] = []
-  private realWorldConnections: GradeFilteredItem[] = []
-  private emotionalFramings: GradeFilteredItem[] = []
   private structureVariations: GradeFilteredItem[] = []
 
   private readonly variationsDir: string
@@ -27,28 +21,14 @@ export class VariationLoader {
    * Load all variation files
    */
   async loadAll(): Promise<void> {
-    try {
-      // Load each variation file
-      this.framings = await this.loadGradeFilteredList('problem-framings.md', 'framings')
-      this.dynamics = await this.loadGradeFilteredList('character-dynamics.md', 'dynamics')
-      this.temporalContexts = await this.loadGradeFilteredList('temporal-contexts.md', 'contexts')
-      this.metacognitivePrompts = await this.loadGradeFilteredList(
-        'metacognitive-prompts.md',
-        'prompts'
-      )
-      this.mysteryFramings = await this.loadGradeFilteredList('mystery-framings.md', 'framings')
-      this.realWorldConnections = await this.loadGradeFilteredList(
-        'real-world-connections.md',
-        'connections'
-      )
-      this.emotionalFramings = await this.loadGradeFilteredList('emotional-framings.md', 'framings')
-      this.structureVariations = await this.loadGradeFilteredList(
-        'structure-variations.md',
-        'structures'
-      )
-    } catch (error) {
-      throw error
-    }
+    this.metacognitivePrompts = await this.loadGradeFilteredList(
+      'metacognitive-prompts.md',
+      'prompts'
+    )
+    this.structureVariations = await this.loadGradeFilteredList(
+      'structure-variations.md',
+      'structures'
+    )
   }
 
   /**
@@ -80,29 +60,19 @@ export class VariationLoader {
   }
 
   /**
-   * Get 2-3 random enrichments (75% chance of any enrichments), filtered by grade
+   * Get 1-2 random enrichments, filtered by grade
+   * Always returns at least one enrichment (metacognitive or structure)
    */
   getRandomEnrichments(grade?: number): Enrichment[] {
-    // 75% chance of having enrichments
-    if (Math.random() > 0.75) {
-      return []
-    }
-
     // Helper function to filter items by grade
     const filterByGrade = (items: GradeFilteredItem[]): GradeFilteredItem[] => {
       if (!grade) return items
       return items.filter((item) => grade >= item.grade[0] && grade <= item.grade[1])
     }
 
-    // Build list of all available dimensions with grade filtering
+    // Build list of available dimensions with grade filtering
     const dimensions: { type: EnrichmentType; values: GradeFilteredItem[] }[] = [
-      { type: 'framing', values: filterByGrade(this.framings) },
-      { type: 'character', values: filterByGrade(this.dynamics) },
-      { type: 'temporal', values: filterByGrade(this.temporalContexts) },
       { type: 'metacognitive', values: filterByGrade(this.metacognitivePrompts) },
-      { type: 'mystery', values: filterByGrade(this.mysteryFramings) },
-      { type: 'realWorld', values: filterByGrade(this.realWorldConnections) },
-      { type: 'emotional', values: filterByGrade(this.emotionalFramings) },
       { type: 'structure', values: filterByGrade(this.structureVariations) },
     ]
 
@@ -113,26 +83,23 @@ export class VariationLoader {
       return []
     }
 
-    // Pick 2-3 random enrichments from different dimensions
-    const count = Math.floor(Math.random() * 2) + 2 // 2 or 3
+    // Pick 1 or 2 enrichments (50% chance each)
+    const count = Math.random() < 0.5 ? 1 : 2
     const enrichments: Enrichment[] = []
-    const usedDimensions = new Set<EnrichmentType>()
 
     // Shuffle available dimensions
     const shuffled = [...available].sort(() => Math.random() - 0.5)
 
     for (const dimension of shuffled) {
       if (enrichments.length >= count) break
-      if (usedDimensions.has(dimension.type)) continue
 
       const selected = dimension.values[Math.floor(Math.random() * dimension.values.length)]
-      const value = selected.text || selected.context || ''
+      const value = selected.text || ''
 
       enrichments.push({
         type: dimension.type,
         value,
       })
-      usedDimensions.add(dimension.type)
     }
 
     return enrichments

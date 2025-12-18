@@ -8,6 +8,16 @@ description: Mathematical concepts and problem-solving
 
 Teaching mathematics with focus on computational skills and mathematical reasoning.
 
+## Content Types
+
+**Use:**
+
+- **LaTeX** for equations and expressions: `$\frac{1}{2}$`, `$x^2 + 3x = 10$`
+- **Tables** for data, patterns, number sequences
+- **Mermaid** for flowcharts, decision trees (when helpful)
+
+**Important:** Only use visuals when they clarify the task - not for decoration.
+
 ## Generation Protocol
 
 Before generating ANY content:
