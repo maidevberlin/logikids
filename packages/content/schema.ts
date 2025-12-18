@@ -21,9 +21,9 @@ export const conceptFrontmatterSchema = z
     // Task guidance fields
     problem_types: z.array(z.string()).min(5).max(10),
     difficulty_guidelines: z.object({
-      easy: z.array(z.string()).min(1),
-      medium: z.array(z.string()).min(1),
-      hard: z.array(z.string()).min(1),
+      easy: z.array(z.string()).min(1).max(3),
+      medium: z.array(z.string()).min(1).max(3),
+      hard: z.array(z.string()).min(1).max(3),
     }),
     // Required fields
     real_world_context: z.array(z.string().min(1)).min(10).max(15),
