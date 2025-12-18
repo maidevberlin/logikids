@@ -44,12 +44,19 @@ real_world_context:
   - Helping parents calculate costs when buying multiple items at the store
   - Planning a class trip budget for transportation and entrance fees
   - Comparing product prices to find the best deal or value
+  - A young entrepreneur calculating profits from a lemonade stand
+  - Budgeting pocket money for a week of school lunches and snacks
+  - Comparing prices of different brands at a toy store
+  - Planning expenses for a birthday party with decorations and cake
+  - Calculating total cost of school supplies from a shopping list
+  - A pet owner budgeting for food, treats, and toys
+  - Figuring out change when paying with large bills at a market
 anti_patterns:
   - Avoid amounts above 1000€ (beyond grade 3 scope)
   - Don't use coins smaller than 1 cent or fractional cents
   - Avoid scenarios requiring multiplication or division
   - Don't introduce percentages or discounts (grade 4+ topic)
   - Avoid unrealistic prices that don't match actual store items
-version: 1
-version_notes: Initial version covering grade 3 advanced money skills per KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

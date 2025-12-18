@@ -46,12 +46,19 @@ real_world_context:
   - Weather data collected over weeks shows patterns in temperature or rainfall
   - Choosing outfits involves combining different clothing items systematically
   - Menu planning requires counting combinations of main dishes, sides, and drinks
+  - An ice cream shop listing all possible sundae combinations
+  - Tracking library book borrowing to find popular genres
+  - A restaurant server tallying daily orders by menu item
+  - Planning all possible routes from home to school
+  - Recording bird species spotted during nature walks
+  - A pizza parlor showing topping combination options
+  - Surveying classmates about preferred field trip destinations
 anti_patterns:
   - Avoid data sets requiring reading or interpreting numbers beyond 1000
   - Don't use complex probability calculations or percentages
   - Avoid combination problems with more than 4 different categories
   - Don't require creation of complex multi-axis graphs
   - Avoid statistical terms like mean, median, mode, or range
-version: 1
-version_notes: Initial concept creation based on KMK Bildungsstandards Grade 3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

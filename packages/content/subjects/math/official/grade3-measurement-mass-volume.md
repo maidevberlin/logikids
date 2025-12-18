@@ -43,12 +43,19 @@ real_world_context:
   - Reading product labels showing mass (cereal box, fruit package) or volume (juice carton, shampoo bottle)
   - Comparing weights at the grocery store to choose fruit, vegetables, or bulk items
   - Understanding how much a backpack, pet, or sports equipment weighs
+  - A scientist measuring liquids for a classroom experiment
+  - Comparing package weights to find the best value at the market
+  - A veterinarian weighing animals during checkups
+  - Measuring water volumes for watering different plants
+  - A mail carrier weighing parcels to determine postage costs
+  - Filling containers with specific amounts of sand for a science project
+  - Comparing fuel tank capacities of different vehicles
 anti_patterns:
   - Avoid units beyond kg/g and L/mL (no metric tons, hectoliters, etc.)
   - Don't use decimal notation (use 1 kg 500 g, not 1.5 kg)
   - Avoid mixing mass and volume in comparison problems
   - Don't require knowledge of density or volume-mass relationships
   - Avoid imperial units (pounds, ounces, gallons, cups)
-version: 1
-version_notes: Initial creation for Grade 3 mass and volume measurement
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -39,12 +39,19 @@ real_world_context:
   - Reading house numbers and street addresses
   - Understanding population numbers of small towns
   - Tracking pages in books or points in games
+  - A librarian organizing books by catalog numbers in the hundreds
+  - Counting attendance at a school assembly or community event
+  - Reading odometer readings on a family car trip
+  - Tracking daily step counts on a fitness tracker
+  - A museum curator numbering artifacts in a collection
+  - Comparing building heights measured in meters
+  - Reading seat numbers at a concert hall or stadium
 anti_patterns:
   - Avoid numbers above 1000 or decimal notation
   - Don't mix place value with arithmetic operations
   - Avoid ambiguous rounding (e.g., "round 250" without specifying to tens/hundreds)
   - Don't use unfamiliar contexts (stock markets, complex measurements)
   - Avoid multiple-step word problems combining several concepts
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
