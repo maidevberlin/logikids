@@ -10,6 +10,7 @@
 export const LANGUAGES = {
   de: { label: 'Deutsch', countryCode: 'DE', displayName: 'German' },
   en: { label: 'English', countryCode: 'GB', displayName: 'English' },
+  tr: { label: 'Türkçe', countryCode: 'TR', displayName: 'Turkish' },
 } as const
 
 export type Language = keyof typeof LANGUAGES

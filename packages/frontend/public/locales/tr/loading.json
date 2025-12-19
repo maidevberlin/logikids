@@ -1,0 +1,295 @@
+{
+  "header": "Görevin hazırlanıyor...",
+  "timeRemaining": "Yaklaşık {{seconds}} saniye kaldı...",
+  "almostThere": "Neredeyse bitti... senin için harika bir soru oluşturuluyor!",
+  "stages": {
+    "analyzing": "Öğrenme seviyen analiz ediliyor...",
+    "crafting": "Sorun hazırlanıyor...",
+    "generating": "İpuçları ve çözümler oluşturuluyor...",
+    "finalizing": "Son rötuşlar..."
+  },
+  "contentTypes": {
+    "tip": "İpucu",
+    "fact": "Biliyor muydun?",
+    "preview": "Sırada",
+    "encouragement": "Devam et!"
+  },
+  "encouragement": {
+    "math": [
+      "Yüzdeler, bir 'indirim'in gerçekten pazarlama olup olmadığını anlamanı sağlar",
+      "Oranlar, tarifleri daha fazla veya daha az kişi için uyarlamanı sağlar",
+      "Faiz hesapları, imzalamadan önce bir kredinin gerçekte ne kadar pahalı olduğunu gösterir",
+      "İstatistikler, haberlerdeki yanıltıcı grafikleri görmenizi sağlar",
+      "Zihinden hesap, arkadaşlarla hesabı paylaşırken seni hızlandırır",
+      "Olasılık, piyango oynamanın neredeyse hiç işe yaramadığını açıklar",
+      "Alan hesabı, başlamadan önce ne kadar boya gerektiğini söyler",
+      "Ölçeği anlamak, haritada yerlerin gerçekte ne kadar uzak olduğunu bilmeni sağlar",
+      "Kesirler, pizza, pasta veya masrafları adil bir şekilde paylaşmanı sağlar",
+      "Birim dönüştürme, fincan ve ons kullanan internet tariflerinde yardımcı olur"
+    ],
+    "physics": [
+      "Fizik, kışın telefonunun pilinin neden daha hızlı bittiğini açıklar",
+      "Optik, farklı aynalarda neden daha ince veya geniş göründüğünü açıklar",
+      "Isı transferi, ıslak bir tişörtle neden bu kadar çabuk üşüdüğünü açıklar",
+      "Elektrik, bazı şarj cihazlarının neden diğerlerinden daha hızlı olduğunu anlamanı sağlar",
+      "Mekanik, bisiklete binerken neden düşmediğini açıklar",
+      "Ses, yıldırımı gök gürültüsünden önce neden gördüğünü açıklar",
+      "Aerodinamik, araba spoilerlerinin sadece görünüş için olmadığını gösterir",
+      "Sürtünme, kış lastiklerinin karda neden daha iyi tuttuğunu açıklar",
+      "Basınç, uçaklarda veya dalışta kulaklarının neden ağrıdığını açıklar",
+      "Kaldırma kuvveti, devasa çelik gemilerin neden yüzdüğünü açıklar"
+    ],
+    "logic": [
+      "Mantık, sahte haberleri gerçek haberlerden ayırmanı sağlar",
+      "Mantıksal düşünme, birinin seni ikna etmek için kötü argümanlar kullandığını fark etmeni sağlar",
+      "Mantık, çevrimiçi yorumların gerçek mi sahte mi olduğunu kontrol etmeni sağlar",
+      "Kalıpları tanıdığında, oyunlardaki bulmacaları daha hızlı çözersin",
+      "Mantık, sadece en kısa değil, en hızlı rotayı bulmana yardımcı olur",
+      "Mantıksal düşünme, manipülatif reklamları görmenizi sağlar",
+      "Hata ayıklama, uygulamalı mantıktır - ister kod ister bozuk cihazlar olsun",
+      "Mantık, tıklama tuzağı başlıklarını gerçek haberlerden ayırmanı sağlar",
+      "Eğer-o halde düşüncesi, kararların sonuçlarını önceden görmenizi sağlar",
+      "Mantık, Kurt Adam veya Among Us'ta kimin yalan söylediğini anlamanı sağlar"
+    ],
+    "music": [
+      "Ritim sadece müzikte değil, dans ve sporda da yardımcı olur",
+      "Kulak eğitimi, karaokede birinin yanlış söylediğini fark etmeni sağlar",
+      "Müzik teorisi, bazı şarkıların neden hüzünlü, diğerlerinin neden neşeli göründüğünü açıklar",
+      "Tempo tutmak, rap, beatbox ve video düzenleme için önemlidir",
+      "Aralıkları tanırsan, melodileri kulaktan çalabilirsin",
+      "Armoni, belirli akorların neden tüylerini diken diken ettiğini açıklar",
+      "Nota okumak, önce duymadan herhangi bir parçayı çalmanı sağlar",
+      "Dinamikleri anlamak, müzikteki duyguları daha bilinçli algılamanı sağlar",
+      "Müzik teorisiyle, gerçekten iyi ses çıkaran kendi ritimlerini üretirsin",
+      "Ritim, dans ederken veya spor yaparken tempoda kalmana yardımcı olur"
+    ],
+    "german": [
+      "Okuduğunu anlama, kabul etmeden önce sözleşmeleri ve koşulları anlamanı sağlar",
+      "Dil farkındalığı, reklamların seni manipüle etmeye çalıştığını fark etmeni sağlar",
+      "İyi yazma, gerçekten sonuç alan şikayetler yazmana yardımcı olur",
+      "Okuma becerileri seni oltalama e-postalarından ve dolandırıcılıklardan korur",
+      "Kelime hazinesiyle, tam olarak ne demek istediğini ifade edersin - yanlış anlaşılma olmaz",
+      "Dilbilgisi, yanlış anlaşılmayacak mesajlar yazmana yardımcı olur",
+      "Metin analizi, siyasi konuşmaları ve hilelerini görmenizi sağlar",
+      "İlaç talimatlarını anlamak, onları doğru almanı sağlar",
+      "İyi Almanca ile ciddiye alınacak mesajlar yazarsın",
+      "Dil becerileri, tıklama tuzağını gerçek haberlerden ayırmanı sağlar"
+    ],
+    "english": [
+      "İngilizce ile oyunları, dizileri ve YouTube'u altyazısız izleyebilirsin",
+      "Çoğu programlama dersi ve teknik yardım İngilizce",
+      "İngilizce, seyahat ederken neredeyse her yerde seni kurtarır",
+      "İngilizce ile dünyanın her yerinden insanlarla sohbet edebilir ve oyun oynayabilirsin",
+      "Şarkı sözlerini anlamak, sadece mırıldanmaktan daha eğlenceli",
+      "İngilizce hata mesajlarını anlamak, saatlerce sorun gidermekten kurtarır",
+      "Reddit, Discord ve uluslararası topluluklar çoğunlukla İngilizce çalışır",
+      "En son teknoloji haberleri önce İngilizce çıkar - çoğu zaman çevirilerden haftalar önce",
+      "İngilizce ile uluslararası projelere ve işbirliklerine katılabilirsin",
+      "İngilizce ürün incelemeleri, satın almadan önce gerçeği bulmanı sağlar"
+    ],
+    "fallback": [
+      "Burada öğrendiklerin günlük hayatta gerçek problemlere yardımcı olur",
+      "Bilgi seni dolandırılmaktan korur",
+      "Anlamak ezberlemekten üstündür - ve daha uzun kalır",
+      "Hatalar, neyin yanlış gittiğini anladığın sürece sorun değil",
+      "Her konu gerçek hayatınla bağlantılı - bazen sadece bakman gerekir",
+      "Bağlantıları anlamak, manipüle edilmeni zorlaştırır",
+      "Zor görevler seni kolay olanlardan daha güçlü yapar",
+      "Merak, öğreneceğin her şeyi harekete geçirir",
+      "Eleştirel düşünme, iyi bilgiyi kötüden ayırmanı sağlar",
+      "Ne kadar çok anlarsan, o kadar iyi kararlar verirsin"
+    ]
+  },
+  "tips": {
+    "math": [
+      "Karmaşık problemleri daha küçük, yönetilebilir adımlara böl!",
+      "Problemi görselleştirmek için diyagramlar veya resimler çiz!",
+      "Cevabını adımlar üzerinden geriye doğru çalışarak kontrol et!",
+      "Akıllı kısayollar bulmak için sayılardaki kalıpları ara!",
+      "Sayı duygusu geliştirmek için düzenli olarak zihinden hesap yap!",
+      "Çözmeye başlamadan önce bildiklerini yaz!",
+      "Farklı yaklaşımları denemekten korkma!"
+    ],
+    "physics": [
+      "Şeylerin nasıl etkileştiğini anlamak için kuvvet diyagramları çiz!",
+      "Hesaplamalarında birimlere dikkatli ol!",
+      "Kavramları daha iyi anlamak için gerçek dünya örneklerini düşün!",
+      "Unutma: kapalı sistemlerde enerji her zaman korunur!",
+      "Vektör yönü, büyüklüğü kadar önemlidir!",
+      "Karmaşık problemleri basitleştirmek için simetri hakkında düşün!",
+      "Deneyler teorik tahminleri doğrulamanı sağlar!"
+    ],
+    "logic": [
+      "Sonuçlara atlamadan önce problemi dikkatlice oku!",
+      "Bilgilerini net bir şekilde organize etmek için doğruluk tabloları çiz!",
+      "Yanlış cevapları elemek için çelişkiler ara!",
+      "Karmaşık ifadeleri daha basit, daha küçük parçalara böl!",
+      "Tüm olasılıkları sistematik bir şekilde düşün!",
+      "Eğer-o halde ifadeleri mantıksal akıl yürütmenin temelidir!",
+      "Yaygın mantıksal kalıpları tanımayı pratik yap!"
+    ],
+    "music": [
+      "Melodilerdeki tekrarlayan kalıpları tanımak için dikkatlice dinle!",
+      "Müzikle birlikte el çırparak veya vurarak ritim pratik yap!",
+      "Dizileri anlamak besteleme konusunda yardımcı olur!",
+      "Tempoda kalmak için vuruşları dikkatlice say!",
+      "Müzik notasyonu adım adım öğrenebileceğin bir dildir!",
+      "Perde ilişkilerini içselleştirmek için melodileri söyle veya mırıldan!",
+      "Düzenli pratik müzikal sezgini geliştirir!"
+    ],
+    "german": [
+      "Almanca metinleri düzenli olarak okumak kelime hazineni doğal olarak geliştirir!",
+      "İsim cinsiyetlerine dikkat et: der, die ve das!",
+      "Akıcılık geliştirmek için düzenli olarak fiil çekimlerini pratik yap!",
+      "Almanca bileşik kelimeler kendi ilginç hikayelerini anlatır!",
+      "Telaffuzunu geliştirmek için Almanca konuşanları dinle!",
+      "Cümle yapısı öğrenebileceğin kalıpları takip eder!",
+      "Her gün kendini dile maruz bırakmaya çalış!"
+    ],
+    "english": [
+      "Çeşitli metinler okumak anlama becerilerini geliştirir!",
+      "Yeni kelimeleri anlamak için bağlam ipuçlarını kullan!",
+      "Dilbilgisi kurallarını pekiştirmek için yazma pratik yap!",
+      "Doğal ritmi öğrenmek için anadili konuşanları dinle!",
+      "Yaygın deyimleri ve ifadeleri öğren!",
+      "Düzenli okuyarak kelime hazineni geliştir!",
+      "Konuşurken hata yapmaktan korkma!"
+    ],
+    "fallback": [
+      "Soruyu tam olarak anlamak için zaman ayır!",
+      "Problemleri yönetilebilir adımlara böl!",
+      "Göndermeden önce cevabını dikkatlice kontrol et!",
+      "Gelişmek için hatalarından öğren!",
+      "Pratik mükemmelleştirir!"
+    ]
+  },
+  "facts": {
+    "math": [
+      "Sıfır sayısı yaklaşık M.S. 500'de Hindistan'da icat edildi!",
+      "Pi sayısı 100 trilyon basamağın üzerinde hesaplandı!",
+      "Fibonacci dizisi ayçiçeklerinden çam kozalaklarına kadar doğada her yerde görülür!",
+      "Antik Mısırlılar M.Ö. 1800'lerde kesirleri kullandı!",
+      "Googol, 1'in ardından 100 sıfır gelen sayıdır - Google'ın adına ilham vermiştir!",
+      "Matematikte farklı sonsuzluk boyutları vardır!",
+      "Eşittir işareti (=) 1557'de Robert Recorde tarafından icat edildi!",
+      "111.111.111 × 111.111.111 = 12.345.678.987.654.321 - mükemmel bir palindrom!",
+      "'Forty' (kırk) harfleri alfabetik sırayla yazılan tek İngilizce sayıdır!",
+      "2520, 1'den 10'a kadar tüm sayılara tam bölünebilen en küçük sayıdır!",
+      "Bir futbol topu tam olarak 12 beşgen ve 20 altıgenden yapılmıştır!",
+      "Bal arıları altıgen hücreler inşa eder çünkü altıgenler en az mumu kullanır!",
+      "Herhangi bir üçgende açıların toplamı her zaman tam olarak 180 derecedir!",
+      "Möbius şeridi sadece bir yüzü ve bir kenarı olan bir yüzeydir!",
+      "Antik Babilliler 60 tabanını kullandı, bu yüzden bir dakikada 60 saniye var!",
+      "Antik Romalıların rakam sisteminde sıfır için sembolleri yoktu!",
+      "Carl Friedrich Gauss, çocukken 1'den 100'e kadar sayıları saniyeler içinde topladı - toplam 5050!",
+      "Ayçiçeği tohumları Fibonacci dizisini takip eden spiraller halinde büyür!",
+      "Kar taneleri her zaman tam olarak 6 kenara sahiptir çünkü su molekülleri bu şekilde bağlanır!",
+      "Altın oran (1,618...) ünlü sanatta, mimaride ve doğada görülür!",
+      "Bir deste kartı iyice karıştırırsan, o tam sıralama muhtemelen daha önce hiç var olmamıştır!",
+      "Gözlemlenebilir evrendeki atomlardan daha fazla olası satranç oyunu dizisi vardır!",
+      "Sadece 23 kişilik bir odada, iki kişinin aynı doğum gününü paylaşma olasılığı %50!",
+      "7 sayısı, insanların 1 ile 10 arasında seçtiği en popüler 'rastgele' sayıdır!",
+      "Bir dairenin sonsuz simetri çizgisi vardır!",
+      "Abaküs, M.Ö. 2700 civarında antik Mezopotamya'da hesaplamalar için kullanıldı!",
+      "Asal sayılara Latince 'primus' yani 'birinci' veya 'temel' anlamından dolayı 'asal' denir!",
+      "Bilinen en büyük asal sayının 24 milyondan fazla basamağı var!",
+      "Sıfır, Roma rakamlarıyla temsil edilemeyen tek sayıdır!",
+      "'Matematik' kelimesi Yunanca 'mathema' yani 'bilgi' veya 'öğrenme' anlamından gelir!",
+      "121 ve 1331 gibi palindrom sayılar ileri ve geri aynı okunur!",
+      "1 sayısı asal sayı olarak kabul edilmez çünkü asalların tam olarak iki çarpanı olmalıdır!",
+      "2'den büyük her çift sayı, iki asal sayının toplamı olarak yazılabilir!",
+      "Mükemmel sayı, bölenlerinin toplamına eşittir - 6 = 1+2+3 ilkidir!",
+      "Bölme işareti (÷) obelus olarak adlandırılır!",
+      "Negatif sayılar 1700'lere kadar matematikçiler tarafından reddedildi!",
+      "Antik Yunanlılar 1 sayısının ne tek ne de çift olduğunu düşünüyordu!",
+      "Jiffy gerçek bir zaman birimi: saniyenin 1/100'ü!",
+      "5 sayısı, 5 ile biten tek asal sayıdır!",
+      "9'u herhangi bir sayıyla çarp, sonucun rakamları her zaman 9'a toplar!"
+    ],
+    "physics": [
+      "Işık, boşlukta saniyede 299.792.458 metre hızla hareket eder!",
+      "Ses, havadan çok daha hızlı katılarda hareket eder!",
+      "Sabahları biraz daha uzunsun çünkü yerçekimi omurgana etki eder!",
+      "Yıldırım aslında Güneş'in yüzeyinden daha sıcaktır!",
+      "Venüs'te bir gün, tüm yılından daha uzundur!",
+      "Su, üçlü noktada aynı anda kaynayabilir ve donabilir!",
+      "Bazı nötron yıldızları saniyede 600'den fazla kez dönebilir!"
+    ],
+    "logic": [
+      "Aristoteles 2.400 yıldan fazla önce biçimsel mantığı kurdu!",
+      "Bilgisayarlar sadece 0 ve 1'lerle ikili mantık kullanır!",
+      "Paradoks, kendisiyle çelişen bir ifadedir!",
+      "Sudoku bulmacaları aslında mantıksal çıkarım egzersizleridir!",
+      "George Boole, 1854'te Boolean cebirini icat etti!",
+      "Mantık bulmacaları çözmek eleştirel düşünme becerilerini geliştirir!",
+      "Sherlock Holmes tümdengelimli akıl yürütme kullanmasıyla ünlüdür!"
+    ],
+    "music": [
+      "Müzik beyninin neredeyse her bölgesini aktive eder!",
+      "Bilinen en eski müzik aleti 40.000 yıldan fazla eskidir!",
+      "Mozart ilk müzik parçasını sadece 5 yaşında besteledi!",
+      "Oktavlar benzer ses çıkarır çünkü frekansları iki katına çıkar!",
+      "Dünya çapında 1.500'den fazla farklı müzik aleti vardır!",
+      "Beethoven tamamen sağır olduğunda bile harika müzikler besteledi!",
+      "Müzik dinlemek hafızanı ve odaklanmanı geliştirebilir!"
+    ],
+    "german": [
+      "Almanca dünya çapında 130 milyondan fazla kişi tarafından konuşulur!",
+      "Resmi olarak kullanılan en uzun Almanca kelimenin 63 harfi var!",
+      "Almanca'da isimler için üç dilbilgisel cinsiyet var!",
+      "Birçok İngilizce kelime aslında Almanca köklerden gelir!",
+      "Tüm Almanca isimler her zaman büyük harfle yazılır!",
+      "Avusturya ve İsviçre Almancası'nın kendine özgü özellikleri var!",
+      "Almanca öğrenmek zengin edebiyat ve felsefeye kapı açar!"
+    ],
+    "english": [
+      "İngilizce'de şu anda aktif kullanımda 170.000'den fazla kelime var!",
+      "Shakespeare, bugün hâlâ kullandığımız 1.700'den fazla kelime icat etti!",
+      "İngilizce 67 farklı ülkede resmi dildir!",
+      "'Go!' (Git!) aslında tam bir cümledir!",
+      "İngilizce 350'den fazla farklı dilden kelime ödünç almıştır!",
+      "'I am' (Ben varım) İngilizce'deki en kısa tam cümledir!",
+      "İngilizce'de çoğu dilden daha fazla eş anlamlı kelime var!"
+    ],
+    "fallback": [
+      "Yeni şeyler öğrenmek beynini fiziksel olarak yeniden şekillendirir!",
+      "Merak, keşfi ve yeniliği harekete geçirir!",
+      "Her uzman bir zamanlar tam bir acemiydi!",
+      "Beynin hayat boyunca öğrenmeyi asla bırakmaz!",
+      "Fikirler arasında bağlantılar kurmak hafızayı güçlendirir!"
+    ]
+  },
+  "previews": {
+    "math": [
+      "Büyüleyici sayıları ve kalıpları keşfetmeye hazırlan!",
+      "Matematik, her gün gerçek dünya problemlerini çözmemize yardımcı olur!",
+      "Her denklem kendi benzersiz hikayesini anlatır!"
+    ],
+    "physics": [
+      "Evrenin gerçekte nasıl çalıştığını keşfet!",
+      "Fizik, küçük atomlardan devasa galaksilere kadar her şeyi açıklar!",
+      "Kuvvetleri, enerjiyi ve hareketi keşfetmeye hazırlan!"
+    ],
+    "logic": [
+      "Akıl yürütme ve eleştirel düşünme becerilerini keskinleştir!",
+      "Mantık, bulmacaları çözmene ve daha iyi kararlar vermene yardımcı olur!",
+      "Problemleri adım adım düşünmeye hazırlan!"
+    ],
+    "music": [
+      "Ses ve ritmin güzel dünyasını keşfet!",
+      "Müzik; matematiği, yaratıcılığı ve duyguyu birleştirir!",
+      "Büyüleyici müzikal kalıpları keşfetmeye hazırlan!"
+    ],
+    "german": [
+      "Goethe, Kafka ve Einstein'ın dilinde ustalaş!",
+      "Almanca dilbilgisi mantıklıdır ve net kalıpları takip eder!",
+      "Dilsel yeteneklerini genişletmeye hazırlan!"
+    ],
+    "english": [
+      "Küresel iletişim dilinde ustalaş!",
+      "İngilizce, dünya çapında fırsatlara kapı açar!",
+      "Dil becerilerini geliştirmeye hazırlan!"
+    ],
+    "fallback": ["İlgi çekici bir meydan okumaya hazırlan!", "Bugün yeni bir şey öğreneceksin!"]
+  }
+}

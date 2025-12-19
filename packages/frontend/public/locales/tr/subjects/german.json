@@ -1,52 +1,356 @@
 {
   "concepts": {
+    "grade1-dramatic-expression": {
+      "name": "Dramatik İfade ve Rol Yapma",
+      "description": "Jest, hareket, yüz ifadeleri ve rol yapma etkinlikleri aracılığıyla duyguları ve karakterleri ifade etme"
+    },
+    "grade1-phonological-awareness": {
+      "name": "Fonolojik Farkındalık ve Harf-Ses Uyumu",
+      "description": "Kelimelerdeki sesleri tanıma, heceleri belirleme, sesli harfleri sessiz harflerden ayırt etme ve harfleri sesleriyle eşleştirme"
+    },
+    "grade1-writing-composition": {
+      "name": "Yazı Kompozisyonu ve Süreci",
+      "description": "Anlatılar, günlük girişleri ve bilgilendirici yazılar dahil basit metinleri planlama, taslak oluşturma ve gözden geçirmeyi öğrenme"
+    },
+    "grade1-listening-comprehension": {
+      "name": "Dinleme ve İşitsel Anlama",
+      "description": "Dikkatli dinleme becerilerini geliştirme, konuşulan dilden temel bilgileri çıkarma ve uygun yanıtlarla anlamayı gösterme"
+    },
+    "grade1-reading-fluency": {
+      "name": "Okuma Akıcılığı ve Çözümleme",
+      "description": "Görsel kelimeler, harmanama becerileri, harf kombinasyonu ustalığı ve noktalama işaretleri rehberliğinde okuma yoluyla otomatik kelime tanımayı geliştirme"
+    },
+    "grade1-speaking-conversation": {
+      "name": "Konuşma ve Sohbet Becerileri",
+      "description": "Deneyimleri anlatma, konuşma kurallarına uyma, öğrenme süreçlerini tartışma ve yapıcı geri bildirim verme"
+    },
+    "grade1-spelling": {
+      "name": "Yazım Stratejileri ve İmla",
+      "description": "Kelimeleri doğru yazmak için fonolojik, heceli, morfolojik ve dilbilgisel ilkeleri uygulama"
+    },
+    "grade1-reading-comprehension": {
+      "name": "Okuduğunu Anlama Stratejileri",
+      "description": "Okuma öncesi, okuma sırası ve okuma sonrası stratejilerini uygulama, tahminlerde bulunma, bilinmeyen kelimeleri açıklama ve anlama sorularını yanıtlama"
+    },
+    "grade1-text-types": {
+      "name": "Metin Türleri ve Edebi Etkileşim",
+      "description": "Farklı metin türlerini (şiirler, hikayeler, bilgilendirici metinler) anlama, karakterleri ve hikaye unsurlarını analiz etme ve metinleri sunma"
+    },
+    "grade1-grammar": {
+      "name": "Dilbilgisi ve Sözcük Türleri",
+      "description": "İsimler, fiiller ve sıfatlar dahil temel sözcük türlerini tanımlama ve kullanma, basit kelime oluşturma ve cümle yapısını anlama"
+    },
+    "grade1-handwriting": {
+      "name": "El Yazısı ve Yazı Mekaniği",
+      "description": "Doğru harf oluşturma, duruş ve yazma hızıyla açık, okunabilir el yazısı geliştirme"
+    },
+    "grade1-language-awareness": {
+      "name": "Dil Farkındalığı ve Çok Dillilik",
+      "description": "İletişim amaçlarını anlama, lehçeleri tanıma, dilleri karşılaştırma ve dilsel çeşitliliği takdir etme"
+    },
+    "grade2-reading-simple-texts": {
+      "name": "Basit Metinleri Okuma",
+      "description": "Kelimeleri çözümleme, basit cümleleri ve kısa metinleri temel anlayışla okuma"
+    },
+    "grade2-compound-words": {
+      "name": "Bileşik Kelimeler",
+      "description": "Yeni anlamlar oluşturmak için iki veya daha fazla kelimeyi birleştirerek Almanca bileşik kelimeleri anlama ve oluşturma"
+    },
+    "grade2-retelling-stories": {
+      "name": "Hikayeleri Yeniden Anlatma",
+      "description": "Konuşma ve Dinleme"
+    },
+    "grade2-rhyming-words": {
+      "name": "Kafiyeli Kelimeler",
+      "description": "Kafiyeli kelimeleri tanımlama ve üretme, Almanca ses kalıplarını anlama"
+    },
+    "grade2-asking-questions": {
+      "name": "Soru Sorma",
+      "description": "Sorular oluşturma, soru kelimelerini kullanma ve soruları doğru noktalama"
+    },
+    "grade2-writing-simple-sentences": {
+      "name": "Basit Cümleler Yazma",
+      "description": "Başta büyük harf ve sonda nokta ile tam cümleler yazma"
+    },
+    "grade2-alphabet-and-abc-order": {
+      "name": "Alfabe ve ABC Sırası",
+      "description": "Almanca alfabeyi, alfabetik sırayı öğrenme ve kelimeleri düzenlemek ve bulmak için kullanma"
+    },
+    "grade2-nouns-and-capital-letters": {
+      "name": "İsimler ve Büyük Harfler",
+      "description": "İsimleri tanıma ve büyük harfle yazma"
+    },
+    "grade2-plural-forms": {
+      "name": "Çoğul Biçimler",
+      "description": "-e, -en, -er, -s ve Umlaut değişiklikleri gibi kalıpları kullanarak Almancada temel çoğul biçimlerini anlama ve oluşturma"
+    },
+    "grade2-syllables-and-word-structure": {
+      "name": "Heceler ve Kelime Yapısı",
+      "description": "Heceleri tanımlama, heceleri alkışlama ve kelimelerin hece birimlerinden nasıl oluşturulduğunu anlama"
+    },
+    "grade3-dialogue-roleplay": {
+      "name": "Diyalog ve Rol Yapma",
+      "description": "İletişim durumlarında rutin olarak gezinme, konuşma kurallarına uyma, geri bildirim verme ve karakter perspektifiyle dramatik oyunda roller üstlenme"
+    },
+    "grade3-reading-strategies": {
+      "name": "Okuduğunu Anlama Stratejileri",
+      "description": "Metinleri anlamak için okuma öncesi, okuma sırası ve okuma sonrası stratejilerini uygulama; ön bilgiyi etkinleştirme; notlar alma; kelime dağarcığını açıklama; anlatı unsurlarını görselleştirme"
+    },
+    "grade3-text-analysis": {
+      "name": "Metin Analizi ve Edebi Anlama",
+      "description": "Olay dizilerini analiz etme, karakterleri betimleme, mecazi dili açıklama ve farklı metin türlerini karşılaştırma"
+    },
+    "grade3-reading-fluency": {
+      "name": "Okuma Akıcılığı ve İfade",
+      "description": "Metinleri doğruluk, uygun hız, değişken tempo ve vurguyla akıcı okuma, geniş görsel kelime dağarcığı oluşturma"
+    },
+    "grade3-grammar-structures": {
+      "name": "Dilbilgisi ve Cümle Yapıları",
+      "description": "Karmaşık kelimeler oluşturma, fiil zamanlarını uygulama, sözcük türlerini tanımlama, doğrudan konuşmayı noktalama ve cümleleri bağlaçlarla birleştirme"
+    },
+    "grade3-composition-planning": {
+      "name": "Kompozisyon ve Planlama",
+      "description": "Zihin haritaları, kelime listeleri ve anlatı yapılarını kullanarak farklı yazı türleri için fikirleri planlama ve düzenlemeyi öğrenme"
+    },
+    "grade3-speaking-presentations": {
+      "name": "Konuşma ve Sunumlar",
+      "description": "Mantıklı katkılar oluşturma, uygun ses yüksekliği ve hız kullanma, notlarla sunumlar hazırlama ve standart ve akademik dil uygulama"
+    },
+    "grade3-revision-feedback": {
+      "name": "Gözden Geçirme ve Akran Geri Bildirimi",
+      "description": "Yapıcı geri bildirim verme ve alma, yazıyı açıklık ve doğruluk için gözden geçirme ve metinleri çekici biçimlendirme"
+    },
+    "grade3-word-building": {
+      "name": "Kelime Oluşturma ve Morfoloji",
+      "description": "Kökler, önekler, sonekler anlama; kelime aileleri oluşturma; bileşik isimleri tanıma; kelime ailelerinde ünlü değişimlerini keşfetme"
+    },
+    "grade3-listening-comprehension": {
+      "name": "Dinleme Anlama ve Akademik Dil",
+      "description": "Konuya özgü akademik dilden temel bilgileri çıkarma, özetler yoluyla anlamayı gösterme ve ses ve jest unsurlarının anlamı nasıl desteklediğini anlama"
+    },
+    "grade3-spelling-principles": {
+      "name": "Yazım İlkeleri ve Stratejileri",
+      "description": "Fonolojik, heceli ve morfolojik ilkeleri uygulama; temel kelime dağarcığına hakim olma; sözlük kullanma; imla kalıplarını tanıma"
+    },
+    "grade3-writing-mechanics": {
+      "name": "Yazı Mekaniği ve El Yazısı",
+      "description": "Okunabilir el yazısı üretme; amaca göre yazı ayarlama (basılı ve el yazısı); uygun duruş ve tutuş koruma"
+    },
+    "grade4-advanced-listening": {
+      "name": "İleri Dinleme Anlama",
+      "description": "Karmaşık sözlü metinleri anlama, hedefli sorular sorma, anlama boşluklarını fark etme"
+    },
+    "grade4-parts-of-speech": {
+      "name": "Sözcük Türleri Ustalığı",
+      "description": "İsimler (hal, cinsiyet), fiiller (tüm zamanlar), tanımlıklar, sıfatlar ve zamirler dahil tüm ana sözcük türlerini tam farkındalıkla tanımlama ve kullanma"
+    },
+    "grade4-discussion-skills": {
+      "name": "Tartışma ve Argümantasyon",
+      "description": "Tartışmaları etkili yönetme, argümanları kanıtlarla sunma ve savunma, başkalarının katkılarına anlamlı yanıt verme ve işbirlikçi diyalog yoluyla çatışmaları çözme"
+    },
+    "grade4-text-planning": {
+      "name": "Metin Planlama ve Yapılandırma",
+      "description": "Amaç ve hedef kitleyi belirleme, kelime ve ifadeler toplama ve yazmadan önce fikirleri sistematik olarak düzenlemeyi öğrenme"
+    },
+    "grade4-spelling-strategies": {
+      "name": "Yazım Stratejileri ve Kuralları",
+      "description": "Türetme, seslendirme ve ezberleme stratejilerini uygulama; referans araçlarını etkili kullanma; doğrudan konuşmada noktalamaya hakim olma"
+    },
+    "grade4-text-revision": {
+      "name": "Metin Gözden Geçirme ve Düzenleme",
+      "description": "Öz düzeltme, açıklık ve etki için kontrol, yayına hazırlık"
+    },
+    "grade4-text-types-genres": {
+      "name": "Metin Türleri ve Türler",
+      "description": "Kurgu ve kurgu dışı, anlatısal/şiirsel/dramatik biçimleri tanıma ve ayırt etme ve medya okuryazarlığı geliştirme"
+    },
+    "grade4-expressive-speaking": {
+      "name": "İfadeli Konuşma ve Sunum",
+      "description": "Konuşmayı bağlama uyarlama (anlatma, bilgilendirme, tartışma), standart Almanca kullanma, sunum becerileri"
+    },
+    "grade4-literary-response": {
+      "name": "Edebi Yanıt ve Yorum",
+      "description": "Edebiyata kişisel yanıtlar geliştirme, karakter duygularını ve ilişkilerini anlama, canlı zihinsel imgeler oluşturma ve çeşitli biçimlerle metinlerle yaratıcı etkileşim kurma"
+    },
+    "grade4-word-formation": {
+      "name": "Kelime Oluşturma ve Kelime Dağarcığı",
+      "description": "Kökler, önekler, sonekler, kelime aileleri, anlam alanları ve sistematik kelime dağarcığı genişletme yoluyla kelime yapısını anlama"
+    },
+    "grade4-sentence-structure": {
+      "name": "Cümle Yapısı ve Sözdizimi",
+      "description": "Cümle türleri, özne-yüklem-tümleç yapısı, cümlelerde zaman referansları, karmaşık cümle oluşturma ve farklı cümle türleri için noktalamaya hakim olma"
+    },
+    "grade5-informational-texts": {
+      "name": "Bilgilendirici Metin Anlama",
+      "description": "Kurgu dışı metinleri ve doğrusal olmayan bilgi formatlarını anlama"
+    },
+    "grade5-narrative-writing": {
+      "name": "Anlatı Yazımı",
+      "description": "Net perspektif ve hikaye yapısıyla (Giriş, Gelişme, Sonuç) anlatılar yazma"
+    },
+    "grade5-poetry-analysis": {
+      "name": "Şiir Analizi",
+      "description": "Şiirsel metinleri biçim ve ifade yoluyla anlama ve takdir etme"
+    },
+    "grade6-listening-comprehension": {
+      "name": "Dinleme Anlama",
+      "description": "Sözlü metinleri anlama, bilgi çıkarma, konuşmacı niyetlerini belirleme"
+    },
+    "grade6-oral-presentation": {
+      "name": "Sözlü Sunum Becerileri",
+      "description": "Sunumlar yapma, metinleri ifadeli okuma, beden dilini etkili kullanma"
+    },
+    "grade6-discussion-argumentation": {
+      "name": "Tartışma ve Argümantasyon",
+      "description": "Çeşitli bağlamlarda konuşma becerilerine hakim olma, gerekçeli destekle görüşleri ifade etme, çatışma çözme stratejileri uygulama, karşıt görüşlere yapıcı yanıt verme ve başkalarının katkıları üzerine inşa etme"
+    },
+    "grade6-text-revision": {
+      "name": "Metin Gözden Geçirme ve Düzenleme",
+      "description": "Akran geri bildirimi, gözden geçirme stratejileri, belirlenen ölçütlerle düzenleme"
+    },
+    "grade6-reading-strategies": {
+      "name": "Okuma Stratejileri",
+      "description": "Vurgulama, not alma, okuma günlükleri, metin navigasyonu ve okuma hızını amaca göre ayarlama dahil ileri okuma teknikleri"
+    },
+    "grade6-informative-writing": {
+      "name": "Bilgilendirici Yazı",
+      "description": "Net mantıksal yapı, nesnel sunum ve doğru özetleme ile gerçekçi metinler oluşturma"
+    },
+    "grade6-narrative-writing": {
+      "name": "Anlatı Yazımı",
+      "description": "Hikaye kompozisyonu, olay örgüsü yapısı, karakter gelişimi, anlatı perspektifi"
+    },
+    "grade6-literary-text-analysis": {
+      "name": "Edebi Metin Analizi",
+      "description": "Karakter analizi, tema belirleme, edebi araçlar ve kültürel keşif yoluyla anlatıları, mitleri, şiirleri ve genç yetişkin edebiyatını analiz etme"
+    },
+    "grade6-informational-texts": {
+      "name": "Bilgilendirici Metinler",
+      "description": "Kurgu dışı metinler, referans materyalleri kullanma, diyagramları ve grafikleri değerlendirme"
+    },
+    "grade6-spelling-orthography": {
+      "name": "Yazım ve İmla",
+      "description": "Ünsüz ikizleme, das/dass ayrımı, büyük harfler, eşsesliler ve yabancı kelime yazımı dahil ileri yazım kurallarına hakim olma"
+    },
+    "grade6-grammar-syntax": {
+      "name": "Dilbilgisi ve Sözdizimi",
+      "description": "Sözcük türleri, etken/edilgen çatı, cümle bileşenleri, cümlecik türleri"
+    },
+    "grade6-punctuation": {
+      "name": "Noktalama",
+      "description": "Karmaşık cümlelerde virgül, doğrudan konuşmada tırnak işaretleri ve cümle sonu noktalama dahil noktalama kurallarını doğru uygulama"
+    },
+    "grade4-reading-comprehension": {
+      "name": "İleri Okuduğunu Anlama",
+      "description": "Metinleri analiz etme, ana fikirleri bulma, iddiaları kanıtlarla destekleme, metinleri karşılaştırma"
+    },
+    "grade4-language-comparison": {
+      "name": "Dil Farkındalığı ve Karşılaştırma",
+      "description": "Almancayı diğer dillerle karşılaştırma, lehçeleri ve yabancı kelimeleri tanıma, sözlü ve yazılı dil biçimlerini ayırt etme"
+    },
+    "grade4-dramatic-expression": {
+      "name": "Dramatik İfade ve Rol Yapma",
+      "description": "Perspektif benimseme, roller geliştirme, ses, jest ve hareketin ileri kullanımıyla oyun aracılığıyla durumları keşfetme"
+    },
+    "grade5-discussion-skills": {
+      "name": "Tartışma Becerileri ve Sınıf Diyaloğu",
+      "description": "Belirlenen kurallara uyarak sınıf tartışmalarına etkili katılma, başkalarına uygun yanıt verme, görüşleri formüle etme ve gerekçelendirme ve konuşma rollerini ayırt etme"
+    },
+    "grade5-media-literacy": {
+      "name": "Medya Okuryazarlığı",
+      "description": "Kütüphane sistemlerini, dijital araştırmayı anlama ve medya kullanımı üzerine düşünme"
+    },
+    "grade5-oral-presentations": {
+      "name": "Sözlü Sunumlar",
+      "description": "Net yapı ve görsel yardımcılarla sınıf arkadaşlarına bilgi ve deneyimleri sunma"
+    },
+    "grade5-literary-text-analysis": {
+      "name": "Edebi Metin Analizi",
+      "description": "Anlatı edebi biçimlerini anlama: Fabllar (fabl), Masallar (masal) ve Sagalar (efsane) - yapı, karakterler ve temaları analiz etme"
+    },
+    "grade5-attentive-listening": {
+      "name": "Dikkatli Dinleme",
+      "description": "Sözlü metinleri anlama, temel bilgileri çıkarma"
+    },
+    "grade5-sentence-elements": {
+      "name": "Cümle Öğeleri ve Cümlecik Yapısı",
+      "description": "Tüm cümle öğelerini (Satzglieder) tanımlama, ana ve yan cümleleri ayırt etme ve farklı zarf tümleçi türlerini anlama dahil ileri cümle analizi"
+    },
+    "grade5-informative-writing": {
+      "name": "Bilgilendirici Yazı",
+      "description": "Mantıksal düzenlemeyle gerçekçi metinler yazma (Rapor, Betimleme)"
+    },
+    "grade5-reading-strategies": {
+      "name": "Okuma Stratejileri",
+      "description": "İşaretleme, yapılandırma, ana fikirleri belirleme, okuma günlükleri"
+    },
+    "grade5-text-revision": {
+      "name": "Metin Gözden Geçirme",
+      "description": "Kendi ve akran metinlerini planlama, gözden geçirme ve iyileştirme"
+    },
+    "grade5-word-classes": {
+      "name": "Sözcük Sınıfları ve Morfoloji",
+      "description": "Tüm sözcük türleri, kelime oluşturma, önekler, sonekler"
+    },
+    "grade5-creative-writing": {
+      "name": "Yaratıcı Yazarlık",
+      "description": "Edebi biçimleri uyarlayarak yaratıcı metinler üretme (Fabl, Masal uyarlaması, fantezi)"
+    },
+    "grade5-spelling-rules": {
+      "name": "Yazım ve Noktalama",
+      "description": "Ünlü uzunluğu, s sesleri ve noktalama için yazım kurallarına hakim olma"
+    },
+    "grade5-dramatic-play": {
+      "name": "Dramatik Oyun ve İfade",
+      "description": "Metinleri yorumlamak ve öz ifadeyi geliştirmek için teatral ifade kullanma"
+    },
     "grade7-ballads-poetry": {
-      "name": "Balad ve Şiir Analizi",
-      "description": "Balad ve şiirleri ölçü, kafiye şeması, edebi araçlar, anlatı yapısı ve şiirsel formun ruh hali ve atmosferi nasıl yarattığını inceleyerek analiz etme"
+      "name": "Baladlar ve Şiir Analizi",
+      "description": "Ölçü, kafiye şemaları, edebi araçlar, anlatı yapısı ve şiirsel biçimin nasıl atmosfer ve ruh hali yarattığını inceleyerek baladları ve şiirleri analiz etme"
     },
     "grade7-dramatic-performance": {
       "name": "Dramatik Performans ve Sahne Oluşturma",
-      "description": "Özgün sahneler yaratma, karakterleri yorumlama ve metin anlayışı için teatral ifade kullanma"
+      "description": "Orijinal sahneler yaratma, karakterleri yorumlama ve metin anlama için teatral ifade kullanma"
     },
     "grade7-youth-literature": {
       "name": "Gençlik Edebiyatı Analizi",
-      "description": "Modern ve klasik gençlik romanları, kısa anlatılar, temalar, karakter gelişimi ve anlatım tekniklerini analiz etme"
+      "description": "Modern ve klasik gençlik romanlarını, kısa anlatıları, temaları, karakter gelişimini ve anlatı tekniklerini analiz etme"
+    },
+    "grade7-argumentative-writing": {
+      "name": "Tartışmacı Yazı",
+      "description": "Mektuplar dahil resmi tartışmacı metinler yazma, argümanları geçerlilik sırasına göre düzenleme ve iddiaları akıl yürütme ve kanıtlarla destekleme"
     },
     "grade7-subjunctive-mood": {
       "name": "Dilek Kipi (Konjunktiv)",
-      "description": "Dolaylı anlatım, raporlama ve varsayımsal durumlar için dilek kipi I ve II kullanma"
+      "description": "Dolaylı anlatım, aktarılan konuşma ve varsayımsal veya gerçeğe aykırı durumları ifade etmek için dilek kipi I ve II kullanma"
     },
     "grade7-media-literacy": {
       "name": "Medya Okuryazarlığı ve Kaynak Değerlendirme",
       "description": "İnternet araştırması, kaynak güvenilirliğini değerlendirme, bilgi kalitesini karşılaştırma"
     },
-    "grade7-argumentative-writing": {
-      "name": "Tartışmalı Yazma",
-      "description": "Mektuplar dahil resmi tartışmalı metinler yazma, argümanları geçerliliğe göre düzenleme ve iddiaları mantıksal gerekçe ve kanıtlarla destekleme"
-    },
     "grade7-reading-documentation": {
       "name": "Okuma ve Not Alma",
-      "description": "Okuma deneyimlerini derinleştirmek için okuma günlükleri, belgeleme stratejileri ve anlama takibi"
+      "description": "Okuma deneyimlerini derinleştirmek için okuma günlükleri, dokümantasyon stratejileri ve anlama takibi"
     },
     "grade7-complex-sentences": {
       "name": "Karmaşık Cümle Yapıları",
-      "description": "Koşul, sonuç, karşıtlık ve zıtlık yan cümleleri; birden fazla yan cümle içeren karmaşık cümlelerin oluşturulması ve analizi"
+      "description": "Koşul, sonuç, ödün ve karşıtlık cümlecikleri; bileşik-karmaşık cümleleri oluşturma ve analiz etme"
     },
     "grade7-indirect-speech": {
-      "name": "Dolaylı Anlatım ve Başka Sözcüklerle İfade Etme",
-      "description": "Doğrudan anlatımı dolaylı anlatıma dönüştürme, kaynakları doğru bir şekilde başka sözcüklerle ifade etme ve alıntılanan içeriği düzgün bir şekilde işaretleme"
+      "name": "Dolaylı Anlatım ve Alıntı Yapma",
+      "description": "Doğrudan anlatımı dolaylı anlatıma dönüştürme, kaynakları doğru parafrazlama ve alıntılanan içeriği düzgün işaretleme"
     },
     "grade7-oral-presentations": {
       "name": "Yapılandırılmış Sözlü Sunumlar",
-      "description": "Görselleştirme araçları, retorik teknikler ve dinleyici katılımı teknikleriyle sunum yapma"
+      "description": "Görselleştirme yardımcıları, retorik araçları ve izleyici etkileşim teknikleriyle sunumlar yapma"
     },
     "grade7-discussion-debate": {
       "name": "Tartışma ve Münazara Becerileri",
-      "description": "Demokratik diyaloga ve resmi münazaraya katılma, çatışmaları yapıcı bir şekilde çözme, yapılandırılmış argümanlarla görüşleri sunma ve savunma, karşıt pozisyonları mantıklı karşı argümanlarla ele alma"
+      "description": "Demokratik diyalog ve resmi münazaraya katılma, çatışmaları yapıcı çözme, yapılandırılmış argümanlarla bakış açılarını sunma ve savunma ve karşıt pozisyonları gerekçeli karşı argümanlarla ele alma"
     },
     "grade7-advanced-punctuation": {
-      "name": "İleri Noktalama İşaretleri",
-      "description": "Mastar deyimleri ve açıklayıcı ifadelerde virgüller, başlıklar ve konuşma için tırnak işaretleri ve birleşik-karmaşık cümlelerde noktalama"
+      "name": "İleri Noktalama",
+      "description": "Karmaşık cümlelerde, doğrudan konuşmada ve alıntılarda noktalama kurallarına hakim olma"
     }
   }
 }

@@ -1,0 +1,97 @@
+{
+  "title": "İlerleme Durumun",
+  "greeting": "Merhaba {{name}}, işte oyun profilin!",
+  "noTasksYet": "Henüz tamamlanmış görev yok. Macerana başla!",
+  "totalTasks": "Toplam Görev",
+  "tasks": "görev",
+  "successRate": "Başarı Oranı",
+  "averageHints": "Ort. İpucu",
+  "bySubject": "Derse Göre İlerleme",
+  "success": "başarı",
+  "hints": "İpucu",
+  "hero": {
+    "level": "Seviye {{level}}",
+    "tasksToNext": "{{current}} / {{next}} görev",
+    "skills": "Beceriler"
+  },
+  "metrics": {
+    "streak": "Seri",
+    "days": "gün",
+    "bestStreak": "En İyi: {{days}}",
+    "perfectRun": "Kusursuz Seri",
+    "inARow": "art arda",
+    "allTimeBest": "Rekor: {{count}}",
+    "noHints": "İpucusuz Usta",
+    "thisWeek": "bu hafta",
+    "accuracy": "Doğruluk",
+    "personalBest": "Kişisel Rekor!",
+    "success": "başarı"
+  },
+  "achievements": {
+    "title": "Başarılar",
+    "unlocked": "Açıldı",
+    "locked": "Kilitli",
+    "progress": "{{current}} / {{total}}",
+    "firstSteps": {
+      "name": "İlk Adımlar",
+      "description": "5 görevi tamamla",
+      "calculationDetails": "Tüm dersler ve zorluk seviyelerinde en az 5 görevi tamamla. İlerleme: {{totalTasks}} / 5 görev."
+    },
+    "dedicated": {
+      "name": "Kararlı",
+      "description": "3 günlük seri yap",
+      "calculationDetails": "3 ardışık gün boyunca her gün en az bir görevi tamamla. Mevcut serin: {{currentStreak}} gün. En iyi: {{bestStreak}} gün."
+    },
+    "weekWarrior": {
+      "name": "Hafta Savaşçısı",
+      "description": "7 günlük seri yap",
+      "calculationDetails": "7 ardışık gün boyunca her gün en az bir görevi tamamla. Mevcut serin: {{currentStreak}} gün. En iyi: {{bestStreak}} gün."
+    },
+    "sharpshooter": {
+      "name": "Keskin Nişancı",
+      "description": "%100 doğrulukla 10 görevi tamamla",
+      "calculationDetails": "Art arda 10 görevi kusursuz puanlarla (yanlış cevap olmadan) tamamla. Mevcut seri: {{currentPerfect}}. En iyi: {{bestPerfect}}."
+    },
+    "speedDemon": {
+      "name": "Hız Canavarı",
+      "description": "Bu hafta ipucu almadan 5 görev",
+      "calculationDetails": "Aynı hafta içinde ipucu kullanmadan 5 görevi tamamla. Bu hafta: {{noHintThisWeek}} / 5 görev."
+    },
+    "polymath": {
+      "name": "Çok Yönlü",
+      "description": "Tüm derslerde 3+ yıldız al",
+      "calculationDetails": "Tüm mevcut derslerde en az 3 yıldız kazan. Her ders, 3+ yıldıza ulaşmak için önemli ölçüde pratik ve yüksek doğruluk gerektirir."
+    },
+    "scholar": {
+      "name": "Bilgin",
+      "description": "Seviye 10'a ulaş",
+      "calculationDetails": "Toplam 100 görevi tamamlayarak seviye 10'a ulaş. Seviye 10, 100 görevde açılır. İlerleme: {{totalTasks}} / 100 görev."
+    },
+    "master": {
+      "name": "Usta",
+      "description": "Herhangi bir derste maksimum (5 yıldız) kazan",
+      "calculationDetails": "Herhangi bir derste 5 yıldız ustalığı elde et. O derste %90+ başarı oranıyla 100+ görev gerektirir."
+    }
+  },
+  "empty": {
+    "noStreak": "Serine bugün başla!",
+    "noAchievements": "Başarıları açmak için görevleri tamamla!",
+    "keepPracticing": "Becerilerini geliştirmek için görevleri tamamla!"
+  },
+  "achievementDetails": {
+    "description": "Açıklama",
+    "status": "Durum",
+    "unlocked": "Açıldı",
+    "progress": "İlerleme",
+    "calculation": "Hesaplama",
+    "currentData": "Mevcut Veriler",
+    "totalTasksCompleted": "Tamamlanan toplam görev",
+    "currentStreak": "Mevcut seri",
+    "bestStreak": "En iyi seri",
+    "days": "gün",
+    "currentPerfectRun": "Mevcut kusursuz seri",
+    "bestPerfectRun": "En iyi kusursuz seri",
+    "tasksWithoutHintsThisWeek": "Bu hafta ipucusuz görevler",
+    "tier": "Kademe"
+  }
+}
