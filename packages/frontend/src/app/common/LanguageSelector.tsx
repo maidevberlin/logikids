@@ -2,7 +2,6 @@ import ReactCountryFlag from 'react-country-flag'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { SelectorButton } from '@/app/common/ui/SelectorButton'
-import { Button } from '@/app/common/ui/button'
 import { Language, LANGUAGES, SUPPORTED_LANGUAGES } from '@logikids/content/languages'
 
 interface LanguageSelectorProps {
