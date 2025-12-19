@@ -39,6 +39,13 @@ real_world_context:
   - Sports statistics display batting averages and race times as decimals
   - Digital displays show temperature, weight, and distance in decimal format
   - Discount percentages convert to decimals for price calculations
+  - Fuel efficiency ratings displayed as liters per 100 kilometers
+  - GPA calculations using decimal grade point averages
+  - Cooking measurements converting fractions to decimal equivalents
+  - Stock prices shown with decimal cents for precision
+  - Music tempo and BPM displayed as decimal values
+  - Photography camera settings using decimal aperture values
+  - Medical dosages calculated with decimal precision
 anti_patterns:
   - Avoid fractions with denominators larger than 20
   - Don't use more than 4 decimal places unless discussing repeating decimals
@@ -49,6 +56,6 @@ prerequisites:
   - grade5-decimals
   - grade5-fractions-operations
   - grade6-fractions-basics
-version: 1
-version_notes: Initial concept creation for Grade 6 decimal fractions
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -43,12 +43,19 @@ real_world_context:
   - Architects design buildings with parallel walls and need to calculate corner angles to ensure rooms are properly squared
   - Carpenters use angle bisectors to divide angles precisely when creating symmetric furniture pieces or decorative woodwork
   - Traffic engineers plan intersection angles for roads, ensuring proper sight lines and turn angles for driver safety
+  - A jeweler cutting gemstones at precise angles to maximize sparkle
+  - Photographers adjusting camera angles for perfect symmetry in shots
+  - Billiard players calculating rebound angles for bank shots
+  - A tailor measuring fabric angles for collar and lapel construction
+  - Surveyors measuring land boundaries using angle relationships
+  - Artists drawing perspective scenes with converging parallel lines
+  - A pilot calculating approach angles for landing strips
 anti_patterns:
   - Avoid using angle measures requiring decimal precision beyond whole degrees
   - Don't include trigonometric ratios or functions (sine, cosine, tangent)
   - Avoid polygon interior angle sums (covered in separate geometry topics)
   - Don't use coordinate geometry or analytical methods for angle calculation
   - Avoid overlapping multiple angle types in one diagram that creates ambiguity
-version: 1
-version_notes: Initial version aligned with German KMK curriculum standards for Grade 6, building on Grade 5 angle measurement foundations
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
