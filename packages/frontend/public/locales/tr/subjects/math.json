@@ -1,0 +1,452 @@
+{
+  "concepts": {
+    "grade1-addition-subtraction-to-20": {
+      "description": "20'ye kadar sayılarla toplama ve çıkarma, onluğu geçme, işlem aileleri ve zihinsel hesaplama stratejileri",
+      "name": "20'ye Kadar Toplama ve Çıkarma"
+    },
+    "grade1-introduction-to-measurement": {
+      "description": "Uzunlukları karşılaştırma, standart olmayan birimler kullanma ve temel zaman kavramlarını anlama",
+      "name": "Ölçmeye Giriş"
+    },
+    "grade1-money": {
+      "description": "Madeni para ve banknotları tanıma, para sayma ve basit alışveriş problemlerini çözme",
+      "name": "Para"
+    },
+    "grade1-number-sense-to-20": {
+      "description": "0'dan 20'ye kadar sayıları sayma, okuma, yazma, karşılaştırma ve sıralama; miktar ve sayı ilişkilerini anlama",
+      "name": "20'ye Kadar Sayı Duyusu"
+    },
+    "grade1-patterns-and-data": {
+      "description": "Örüntüleri tanıma, devam ettirme ve oluşturma; basit verileri toplama ve gösterme",
+      "name": "Örüntüler ve Veri"
+    },
+    "grade1-plane-shapes": {
+      "description": "Temel 2 boyutlu şekilleri tanıma, adlandırma ve tanımlama",
+      "name": "Düzlemsel Şekiller"
+    },
+    "grade1-probability-basics": {
+      "description": "Basit günlük durumlar üzerinden kesin, olası ve imkansız gibi kavramlarla şans ve olasılığı anlama",
+      "name": "Olasılık Temelleri"
+    },
+    "grade1-solid-shapes": {
+      "description": "3 boyutlu şekilleri (küp, küre, silindir, koni, dikdörtgenler prizması) tanıma ve adlandırma ve bunları gerçek dünya nesneleriyle ilişkilendirme",
+      "name": "Uzay Şekilleri"
+    },
+    "grade1-spatial-orientation": {
+      "description": "Konumları tanımlamak ve yönergeleri takip etmek için konum sözcüklerini anlama ve kullanma",
+      "name": "Uzaysal Yönelim"
+    },
+    "grade1-symmetry": {
+      "description": "Katlama ve ayna etkinlikleriyle eksen simetrisini tanıma, simetrik şekilleri belirleme ve simetrik örüntüler oluşturma",
+      "name": "Simetri"
+    },
+    "grade2-addition-subtraction-to-100": {
+      "description": "Zihinsel stratejiler kullanarak 100'e kadar sayılarla toplama ve çıkarma, onluk oluşturmalı ve oluşturmasız işlemler ve çok adımlı sözel problemler çözme",
+      "name": "100'e Kadar Toplama ve Çıkarma"
+    },
+    "grade2-geometry-and-symmetry": {
+      "description": "2 ve 3 boyutlu şekillerin anlaşılmasını derinleştirme, simetrik şekilleri belirleme ve oluşturma ve simetri eksenleriyle çalışma",
+      "name": "Geometri ve Simetri"
+    },
+    "grade2-introduction-to-chance": {
+      "description": "Basit deneyler aracılığıyla kesin, olası ve imkansız olayları anlama",
+      "name": "Şansa Giriş"
+    },
+    "grade2-introduction-to-division": {
+      "description": "Paylaşma ve gruplama stratejileriyle bölmeyi anlama, çarpmaya bağlama ve temel bölme gerçeklerini oluşturma",
+      "name": "Bölmeye Giriş"
+    },
+    "grade2-introduction-to-multiplication": {
+      "description": "Çarpmayı tekrarlı toplama, diziler, eşit gruplar ve temel çarpım tabloları (2, 5, 10) olarak anlama",
+      "name": "Çarpmaya Giriş"
+    },
+    "grade2-measurement-skills": {
+      "description": "Uzunluk ölçme, zamanı anlama ve ölçümleri karşılaştırma",
+      "name": "Ölçme Becerileri"
+    },
+    "grade2-money-and-currency": {
+      "description": "100€'ya kadar Euro madeni para ve banknotlarla çalışma, € ve ct gösterimini kullanma, para miktarlarını toplama ve çıkarma, para üstü hesaplama ve alışveriş problemleri çözme",
+      "name": "Para ve Döviz"
+    },
+    "grade2-numbers-to-100": {
+      "description": "Onluk ve birliklerle basamak değerini anlama, 100'e kadar sayıları okuma, yazma, karşılaştırma, yüzlük tablo ve sayı doğrusu kullanma",
+      "name": "100'e Kadar Sayılar"
+    },
+    "grade2-patterns-and-data-representation": {
+      "description": "Sayı dizileri; veri toplama; çetele tabloları; basit çubuk grafikler; verileri yorumlama",
+      "name": "Örüntüler ve Veri Gösterimi"
+    },
+    "grade3-advanced-geometry": {
+      "description": "Piramitler, koniler ve silindirleri keşfetme; 3 boyutlu şekillerin açınımlarını anlama; derinleştirilmiş simetri çalışması",
+      "name": "İleri Geometri"
+    },
+    "grade3-area": {
+      "description": "Birim karelerle kaplama; alanları karşılaştırma; ölçüm olarak alan",
+      "name": "Alana Giriş"
+    },
+    "grade3-arithmetic-laws": {
+      "description": "Hesaplamaları daha verimli hale getirmek için değişme, birleşme ve dağılma özelliklerini anlama ve uygulama",
+      "name": "Aritmetik Yasaları ve Özellikleri"
+    },
+    "grade3-data-and-combinatorics": {
+      "description": "Veri toplama, düzenleme ve yorumlama; sistematik sayma ve basit kombinasyonlar",
+      "name": "Veri ve Kombinatorik"
+    },
+    "grade3-length-measurement": {
+      "description": "mm, cm, m, km ile ölçme; birim dönüşümleri; uzunlukları tahmin etme ve karşılaştırma",
+      "name": "Uzunluk Ölçümü"
+    },
+    "grade3-measurement-mass-volume": {
+      "description": "Gram, kilogram, mililitre ve litre ile ölçme, karşılaştırma ve dönüştürme yoluyla çalışma",
+      "name": "Ölçüm - Kütle ve Hacim"
+    },
+    "grade3-money-advanced": {
+      "description": "1000 Euro'ya kadar miktarlarla çalışma, ondalık gösterim kullanma, 100€, 200€ ve 500€ banknotlarla işlem yapma, çok adımlı alışveriş problemleri çözme ve bütçe planlama",
+      "name": "İleri Para Becerileri"
+    },
+    "grade3-multiplication-division-strategies": {
+      "description": "Çarpma için yarı yazılı yöntemler, 10 ve 100 ile çarpma ve kalanı olan bölme",
+      "name": "Çarpma ve Bölme Stratejileri"
+    },
+    "grade3-multiplication-tables": {
+      "description": "Tüm 1-10 çarpım tablolarına otomatik erişimle hakim olma ve ters işlemleri (bölme gerçekleri) anlama",
+      "name": "Çarpım Tabloları"
+    },
+    "grade3-numbers-to-1000": {
+      "description": "Yüzlükler, onluklar ve birliklerle basamak değerini anlama; sayıları okuma, yazma, karşılaştırma ve sıralama; yuvarlama; sayı örüntülerini tanıma",
+      "name": "1000'e Kadar Sayılar"
+    },
+    "grade3-perimeter": {
+      "description": "Kenar uzunluklarını toplayarak şekillerin çevresini hesaplama; dikdörtgenler, kareler, üçgenler ve çokgenlerle çalışma",
+      "name": "Çevre"
+    },
+    "grade3-time-and-duration": {
+      "description": "Saatleri okuma, zaman aralıklarını hesaplama, takvim ilişkilerini anlama ve zaman birimleriyle çalışma",
+      "name": "Zaman ve Süre"
+    },
+    "grade3-written-addition-and-subtraction": {
+      "description": "Onluk oluşturmalı çok basamaklı toplama ve çıkarma için standart algoritmalar",
+      "name": "Yazılı Toplama ve Çıkarma"
+    },
+    "grade4-area-perimeter": {
+      "description": "Dikdörtgen ve karelerin alanını ve çevresini hesaplama; kare birimleri kullanma; alan ve çevre arasında ayrım yapma; eksik boyutlu sözel problemler çözme",
+      "name": "Alan ve Çevre"
+    },
+    "grade4-combinatorics": {
+      "description": "Ağaç diyagramları, düzenli listeler ve tablolar kullanarak kombinasyon ve düzenleme problemlerini çözmek için tüm olasılıkları sistematik olarak bulma",
+      "name": "Kombinatorik ve Sistematik Sayma"
+    },
+    "grade4-data-probability": {
+      "description": "Anketler ve deneylerden veri toplama ve düzenleme; çubuk grafikler, piktogramlar ve tablolar oluşturma ve yorumlama; basit ortalamalar hesaplama; olasılık ve olasılık olaylarını anlama",
+      "name": "Veri Analizi ve Olasılık"
+    },
+    "grade4-fractions": {
+      "description": "Kesirleri bütünün parçaları olarak anlama, kesir gösterimi, görsel temsil, aynı paydaya sahip kesirleri karşılaştırma ve sıralama, denk kesirleri tanıma ve günlük bağlamlarda kesirleri uygulama",
+      "name": "Kesirlere Giriş"
+    },
+    "grade4-geometry-spatial": {
+      "description": "2 ve 3 boyutlu şekillerin özellikleri; simetri ve doğrular; uzaysal görselleştirme; geometrik cisimlerin açınımları; paralel ve dik ilişkiler",
+      "name": "Geometri ve Uzaysal Akıl Yürütme"
+    },
+    "grade4-measurement-units": {
+      "description": "Uzunluk, kütle, hacim ve zaman birimleri arasında dönüşüm yapma; ölçümler için ondalık gösterimi anlama; ölçümlerle sözel problemleri tahmin etme ve çözme",
+      "name": "Ölçüm ve Birim Dönüşümü"
+    },
+    "grade4-money-decimals": {
+      "description": "Ondalıklarla euro ve sent gösterimini anlama; para miktarlarını toplama, çıkarma ve çarpma; para üstü verme ve toplamları hesaplama; fiyatları karşılaştırma ve euro ile sent arasında dönüşüm yapma",
+      "name": "Para ve Ondalık Gösterim"
+    },
+    "grade4-numbers-to-million": {
+      "description": "Altı basamaklı sayılarla basamak değerini anlama; sayıları okuma, yazma, karşılaştırma ve sıralama; binlere ve ötesine yuvarlama; büyük sayılardaki örüntüleri tanıma",
+      "name": "1.000.000'a Kadar Sayılar"
+    },
+    "grade4-patterns-equations": {
+      "description": "Sayı örüntülerini tanıma ve genişletme, dizi kurallarını bulma, değişkenleri yer tutucu olarak anlama, basit tek adımlı denklemleri çözme ve matematiksel ilişkileri tanımlama",
+      "name": "Örüntüler ve Basit Denklemler"
+    },
+    "grade4-scale-maps": {
+      "description": "Kat planlarını ve haritaları okuma ve oluşturma; ölçeği oran olarak anlama; harita mesafelerinden gerçek mesafeleri hesaplama; uzaysal yönelim ve yön",
+      "name": "Ölçek ve Haritalar"
+    },
+    "grade4-time-calendar": {
+      "description": "Analog ve dijital saatleri 24 saat formatında okuma; zaman birimleri arasında dönüşüm yapma; süreleri ve geçen zamanı hesaplama; günler, haftalar, aylar ve yıllar dahil takvimlerle çalışma",
+      "name": "Zaman ve Takvim"
+    },
+    "grade4-volume-unit-cubes": {
+      "description": "Birim küpleri sayarak hacmi anlama ve 3 boyutlu şekillerin hacimlerini karşılaştırma",
+      "name": "Birim Küplerle Hacim"
+    },
+    "grade4-written-multiplication-division": {
+      "description": "Çok basamaklı çarpma ve bölme için standart yazılı algoritmalara hakim olma; her işlemi ne zaman uygulayacağını anlama; gerçek dünya problemleri çözme",
+      "name": "Yazılı Çarpma ve Bölme"
+    },
+    "grade5-angles": {
+      "description": "Açı türlerini anlama, iletki ile açı ölçme, açıları tahmin etme ve açı ilişkilerini tanıma",
+      "name": "Açılar ve Ölçüm"
+    },
+    "grade5-area-perimeter-advanced": {
+      "description": "Dikdörtgenler, kareler, üçgenler ve bileşik şekillerin alan ve çevresini hesaplama",
+      "name": "Alan ve Çevre - İleri"
+    },
+    "grade5-arithmetic-operations": {
+      "description": "Dört işlem için yazılı yöntemler, işlem sırası, tahmin ve doğrulama",
+      "name": "Aritmetik İşlemler"
+    },
+    "grade5-data-collection-charts": {
+      "description": "Tablolar, çubuk grafikler, piktogramlar ve çizgi grafikler kullanarak verileri toplama, düzenleme ve gösterme",
+      "name": "Veri Toplama ve Grafikler"
+    },
+    "grade5-decimals": {
+      "description": "Ondalık basamak değerini anlama, kesirler ve ondalıklar arasında dönüşüm yapma, ondalıklarla işlemler yapma ve yuvarlama",
+      "name": "Ondalık Sayılar"
+    },
+    "grade5-divisibility-prime-numbers": {
+      "description": "2, 3, 5, 9 ve 10 için bölünebilme kurallarını uygulama, asal ve bileşik sayıları belirleme, çarpan ağaçları kullanarak asal çarpanlara ayırma ve sayıların EBOB ve EKOK'unu belirleme",
+      "name": "Bölünebilirlik ve Asal Sayılar"
+    },
+    "grade5-fractions-operations": {
+      "description": "Aynı ve farklı paydalı kesirleri toplama ve çıkarma, kesirleri tam sayılarla çarpma ve kesirleri en sade haline getirme",
+      "name": "Kesirlerle İşlemler"
+    },
+    "grade5-geometry-basics": {
+      "description": "Noktalar, doğrular, ışınlar, doğru parçaları, paralel ve dik doğrular ve temel geometrik gösterim",
+      "name": "Temel Geometrik Elemanlar"
+    },
+    "grade5-natural-numbers-large": {
+      "description": "1 milyonun ötesinde doğal sayıları anlama, milyarlara kadar basamak değeri, Roma rakamları ve farklı sayı sistemlerini karşılaştırma",
+      "name": "Büyük Doğal Sayılar"
+    },
+    "grade5-negative-numbers": {
+      "description": "Tam sayılara giriş, sayı doğrusu gösterimi, tam sayıları karşılaştırma ve sıralama ve gerçek dünya bağlamları",
+      "name": "Negatif Sayılar"
+    },
+    "grade5-units-measurement": {
+      "description": "İleri metrik birim dönüşümleri, karışık birimlerle hesaplamalar ve farklı bağlamlar için uygun ölçüm birimleri seçme",
+      "name": "Birimler ve Ölçüm"
+    },
+    "grade5-volume": {
+      "description": "Formüller kullanarak hacim hesaplama, kübik birimler arasında dönüşüm yapma ve hacmi kapasiteyle ilişkilendirme",
+      "name": "Dikdörtgenler Prizması ve Küplerin Hacmi"
+    },
+    "grade6-angles-advanced": {
+      "description": "Açıları doğru bir şekilde ölçme ve çizme, ters, yöndeş ve komşu açılar dahil açı ilişkilerini belirleme ve açıortay inşa etme",
+      "name": "Açılar ve Açı İlişkileri"
+    },
+    "grade6-area-formulas": {
+      "description": "Paralelkenarlar, üçgenler ve yamuklara için alan formüllerini türetme ve uygulama; ayrıştırma ve tamamlama stratejileri kullanarak basit cisimlerin yüzey alanlarını hesaplama",
+      "name": "Alan Formülleri"
+    },
+    "grade6-combined-operations": {
+      "description": "Terim yapıları, işlem sırası, dağılma özelliği ve kesirler, ondalıklar ve tam sayılarla çok adımlı problemler",
+      "name": "Rasyonel Sayılarla Birleşik İşlemler"
+    },
+    "grade6-coordinate-system": {
+      "description": "Dört bölgeli Kartezyen koordinat sistemini anlama, pozitif ve negatif koordinatlı noktaları yerleştirme ve okuma, mesafeleri hesaplama ve geometrik ilişkileri tanımlama",
+      "name": "Koordinat Sistemi"
+    },
+    "grade6-data-diagrams": {
+      "description": "Mutlak ve bağıl frekansları belirleme, daire ve sütun diyagramları kullanarak verileri gösterme, aritmetik ortalamayı hesaplama ve yorumlama, veri görselleştirmesinde manipülatif sunumları tanıma",
+      "name": "Veri ve Diyagramlar"
+    },
+    "grade6-decimal-fractions": {
+      "description": "Ondalıklarda basamak değerlerini anlama, yuvarlama, kesirler ve ondalıklar arasında dönüşüm yapma ve sonlu ondalıkları devirli ondalıklardan ayırt etme",
+      "name": "Ondalık Kesirler"
+    },
+    "grade6-fractions-basics": {
+      "description": "Kesirleri bütünlerin parçaları olarak yorumlama, birden fazla strateji kullanarak kesirleri karşılaştırma, değeri koruyarak kesirleri genişletme ve sadeleştirme, negatif kesirler dahil sayı doğrusunda kesirleri gösterme ve yüzdeleri kesir gösterimiyle ilişkilendirme",
+      "name": "Kesirler ve Kesir Sayıları"
+    },
+    "grade6-geometric-constructions": {
+      "description": "Dik ve paralel doğrular inşa etme, eksen ve nokta simetrileri yapma",
+      "name": "Geometrik İnşalar"
+    },
+    "grade6-integer-operations": {
+      "description": "Sayı doğrusu modelleri ve işaret kurallarını kullanarak tam sayıları toplama ve çıkarma, hesaplamalarda mutlak değeri anlama ve tam sayı işlemlerini gerçek dünya bağlamlarına uygulama",
+      "name": "Tam Sayı İşlemleri"
+    },
+    "grade6-percentages": {
+      "description": "İndirimler ve faiz dahil günlük yüzde problemlerini çözme, temel yüzde denklemini (taban değer × yüzde oranı = yüzde değeri) uygulama ve yüzde ile yüzde puanını ayırt etme",
+      "name": "Yüzdeler"
+    },
+    "grade6-proportionality": {
+      "description": "Oranları karşılaştırma olarak anlama, orantılı ilişkileri tanıma, oran tabloları ve içler-dışlar kuralını kullanma ve orantılı durumları orantılı olmayan durumlardan ayırt etme",
+      "name": "Orantı ve Oranlar"
+    },
+    "grade6-rational-addition-subtraction": {
+      "description": "Aynı ve farklı paydalı kesirleri, bileşik sayıları ve ondalıkları hesaplama stratejileri kullanarak toplama ve çıkarma ve sonuçları tahminle doğrulama",
+      "name": "Rasyonel Sayıları Toplama ve Çıkarma"
+    },
+    "grade6-rational-multiplication-division": {
+      "description": "Anlamlı temsillerle kesirlerin çarpım ve bölümlerini hesaplama, bölme için ters kesirleri uygulama, rasyonel taban ve doğal veya negatif tam sayı üslü kuvvetleri hesaplama ve hesaplamaları basitleştirmek için hesaplama avantajlarını kullanma",
+      "name": "Rasyonel Sayıları Çarpma ve Bölme"
+    },
+    "grade6-volume": {
+      "description": "Formüller kullanarak dikdörtgenler prizması ve prizmaların hacimlerini hesaplama, hacim birimleri arasında dönüşüm yapma ve ayrıştırma ve tamamlama stratejileriyle problemler çözme",
+      "name": "Prizmaların Hacmi"
+    },
+    "grade7-algebraic-terms": {
+      "description": "Kuvvetler dahil değişkenli cebirsel terimleri kurma, yorumlama ve dönüştürme",
+      "name": "Cebirsel Terimler"
+    },
+    "grade7-angle-relationships": {
+      "description": "Kesişen doğrularda, paralel doğrularda ve çokgenlerde açı özelliklerini anlama",
+      "name": "Açı İlişkileri"
+    },
+    "grade7-congruence-triangles": {
+      "description": "Eşlik teoremleri (KKK, KAK, AKA, AAK) ve verilen elemanlardan üçgen inşa etme",
+      "name": "Eşlik ve Üçgen İnşası"
+    },
+    "grade7-linear-equations": {
+      "description": "Tek adımlı, iki adımlı, her iki tarafta değişkenli ve gerçek dünya sözel problemleri dahil tek değişkenli doğrusal denklemleri çözme",
+      "name": "Doğrusal Denklemler"
+    },
+    "grade7-parallel-translation": {
+      "description": "Eşlik dönüşümü olarak paralel öteleme, öteleme vektörleri, koordinat hesaplamaları",
+      "name": "Paralel Öteleme ve Vektörler"
+    },
+    "grade7-percentage-applications": {
+      "description": "Faiz, indirimler ve çok adımlı problemler dahil ileri yüzde hesaplamaları",
+      "name": "Yüzde Uygulamaları"
+    },
+    "grade7-powers-exponents": {
+      "description": "Kuvvet gösterimini tekrarlı çarpma olarak anlama, çarpım kuralı, bölüm kuralı ve kuvvetin kuvveti dahil kuvvet yasalarını uygulama, tam sayı üslü ifadeleri sadeleştirme ve değişkenlerin kuvvetleriyle çalışma",
+      "name": "Kuvvetler ve Üsler"
+    },
+    "grade7-proportionality": {
+      "description": "Doğru ve ters orantılı ilişkileri tanıma ve uygulama, oran tabloları oluşturma, orantılı fonksiyonları grafikleme ve gerçek dünya bağlamlarında orantılı ve orantılı olmayan durumları ayırt etme",
+      "name": "Orantı"
+    },
+    "grade7-statistical-measures": {
+      "description": "İstatistiksel veri analizi ve karşılaştırma için ortalama, medyan, mod, aralık, çeyrekler ve kutu grafiklerini hesaplama ve yorumlama",
+      "name": "İstatistiksel Ölçüler"
+    },
+    "grade7-symmetry-constructions": {
+      "description": "Simetrik şekiller, kenar orta dikmeleri, açıortaylar ve geometrik yer inşa etme",
+      "name": "Simetri ve Geometrik İnşalar"
+    },
+    "grade7-thales-theorem": {
+      "description": "Dik açıları belirlemek, teğet doğrular inşa etmek ve geometrik problemler çözmek için Thales teoremini ve tersini uygulama",
+      "name": "Thales Teoremi"
+    },
+    "grade8-circles": {
+      "description": "Çember çevresi, alan, pi sayısını anlama ve bileşik şekillerle uygulamalar",
+      "name": "Çemberler"
+    },
+    "grade8-fractional-equations": {
+      "description": "Cebirsel kesirli denklemleri çözme, yabancı çözümleri kontrol etme ve bilimsel bağlamlarda formülleri yeniden düzenleme",
+      "name": "Kesirli Denklemler"
+    },
+    "grade8-fractional-terms": {
+      "description": "Cebirsel kesirler üzerinde işlemler - kesirli terimleri sadeleştirme, genişletme, toplama, çıkarma, çarpma ve bölme",
+      "name": "Kesirli Terimler"
+    },
+    "grade8-functions-basics": {
+      "description": "Fonksiyon kavramını benzersiz atama olarak anlama, fonksiyon terminolojisini ayırt etme (fonksiyon terimi, grafik, tanım kümesi, değer kümesi), fonksiyonları temsil etmek için tablolar ve diyagramlar kullanma ve fonksiyon değerlerini ve kesişim noktalarını belirleme",
+      "name": "Fonksiyonlar ve Terimler"
+    },
+    "grade8-integer-exponents": {
+      "description": "Negatif ve sıfır üsleri anlama, tam sayı üslü kuvvet kurallarını uygulama, bilimsel gösterimle yazma ve hesaplama ve karmaşık üstel ifadeleri sadeleştirme",
+      "name": "Tam Sayı Üsler"
+    },
+    "grade8-laplace-probability": {
+      "description": "Rastgele deneyler, Laplace formülü P(E)=|E|/|Ω|, sayma ilkeleri, çok aşamalı deneyler için ağaç diyagramları, bağıl frekans, büyük sayılar yasası",
+      "name": "Laplace Deneyleri"
+    },
+    "grade8-linear-functions": {
+      "description": "y = mx + t formundaki doğrusal fonksiyonları anlama ve çalışma, grafik çizme, eğim ve y-kesişimini yorumlama, sıfırları ve kesişim noktalarını bulma ve doğrusal eşitsizlikleri çözme dahil",
+      "name": "Doğrusal Fonksiyonlar"
+    },
+    "grade8-linear-systems": {
+      "description": "Grafik yöntemleri ve yerine koyma kullanarak iki bilinmeyenli iki doğrusal denklem sistemini çözme, çözüm durumlarını anlama (tek, hiç, sonsuz)",
+      "name": "Doğrusal Denklem Sistemleri"
+    },
+    "grade8-prisms-cylinders": {
+      "description": "Prizma ve silindirlerin yüzey alanı ve hacmini hesaplama, açınımları çizme ve yorumlama ve V = taban alanı × yükseklik formülünü gerçek dünya problemlerine uygulama",
+      "name": "Prizmalar ve Silindirler"
+    },
+    "grade8-rational-functions": {
+      "description": "f(x) = a/(x+b) + c formundaki rasyonel fonksiyonları anlama ve çalışma, tanım kümesi kısıtlamaları, asimptotlar, grafik çizme ve özel durum olarak ters orantılılık dahil",
+      "name": "Temel Rasyonel Fonksiyonlar"
+    },
+    "grade9-binomial-formulas": {
+      "description": "Cebirsel ifadeleri verimli bir şekilde açmak ve çarpanlarına ayırmak için üç binom formülüne hakim olma",
+      "name": "Binom Formülleri"
+    },
+    "grade9-compound-probability": {
+      "description": "Küme gösterimi, Venn diyagramları, olasılık tabloları aracılığıyla bileşik olayları anlama ve toplama kuralını kullanarak birleşim ve kesişim olasılıklarını hesaplama",
+      "name": "Bileşik Olasılık"
+    },
+    "grade9-power-functions": {
+      "description": "Çeşitli üslü kuvvet fonksiyonlarını, grafiklerini ve köklü gösterimle ilişkilerini anlama",
+      "name": "Kuvvet Fonksiyonları"
+    },
+    "grade9-pythagorean-theorem": {
+      "description": "Pisagor teoremini, ispatını, tersini ve geometri ve ölçümde pratik uygulamalarını anlama ve uygulama",
+      "name": "Pisagor Teoremi"
+    },
+    "grade9-quadratic-equations": {
+      "description": "Çarpanlara ayırma, kare tamamlama ve ikinci dereceden formüller (p-q ve abc formu) kullanarak ikinci dereceden denklemleri çözme. Diskriminantı anlama ve çözümleri gerçek dünya problemlerine uygulama.",
+      "name": "İkinci Dereceden Denklemler"
+    },
+    "grade9-similarity": {
+      "description": "Üçgen benzerlik kriterlerini anlama, kesme teoremini uygulama, orantılı parçaları hesaplama ve ölçek faktörlerinin alan ve hacmi nasıl etkilediğini analiz etme",
+      "name": "Benzerlik ve Orantılılık"
+    },
+    "grade9-quadratic-functions": {
+      "description": "Parabolları, denklemlerini (tepe formu, genel form, çarpanlara ayrılmış form), parametre etkilerini, grafik tekniklerini ve aralık, sıfırlar ve monotonluk dahil temel özellikleri inceleme.",
+      "name": "İkinci Dereceden Fonksiyonlar"
+    },
+    "grade9-square-roots": {
+      "description": "Kareköklerini anlama, köklü ifadeleri sadeleştirme, paydayı rasyonelleştirme ve irrasyonel sayıları keşfetme",
+      "name": "Karekökler ve Kökler"
+    },
+    "grade9-right-triangle-trigonometry": {
+      "description": "Dik üçgenlerde sinüs, kosinüs ve tanjantı oranlar olarak anlama, temel trigonometrik özdeşlikleri uygulama ve pratik arazi ölçümü ve fizik problemlerini çözme",
+      "name": "Dik Üçgen Trigonometrisi"
+    },
+    "grade9-sine-cosine-laws": {
+      "description": "Dik olmayan üçgenleri çözmek için sinüs ve kosinüs yasalarını uygulama, birim çember görselleştirmesini anlama ve Pisagor teoremini özel durum olarak tanıma",
+      "name": "Sinüs ve Kosinüs Yasaları"
+    },
+    "grade9-systems-of-equations": {
+      "description": "Üç bilinmeyenli üç doğrusal denklem sistemlerini yerine koyma, eleme ve Gauss eleme yöntemlerini kullanarak çözme, gerçek dünya modellemesi dahil",
+      "name": "Doğrusal Denklem Sistemleri (3 Değişken)"
+    },
+    "grade10-exponential-functions": {
+      "description": "b·aˣ formunda üstel fonksiyonlar, üstel büyüme ve azalma modelleri ve doğrusal büyüme ile karşılaştırma",
+      "name": "Üstel Fonksiyonlar ve Büyüme"
+    },
+    "grade10-logarithms": {
+      "description": "Logaritmaları üs almanın ters işlemi olarak anlama, logaritma değerlerini hesaplama ve üstel denklemleri çözme",
+      "name": "Logaritmalar"
+    },
+    "grade10-pyramids-cones": {
+      "description": "Piramit ve konilerin yüzey alanı ve hacmini hesaplama, açınımları çizme ve yorumlama, Cavalieri ilkesini anlama ve geometriyi trigonometriyle birleştiren çok adımlı uzaysal problemler çözme",
+      "name": "Piramitler ve Koniler"
+    },
+    "grade10-unit-circle-radians": {
+      "description": "Yarıçapı 1 olan birim çember, derecelere alternatif olarak radyan ölçüsü ve 0'dan 2π'ye özel açılar için sinüs/kosinüs değerleri",
+      "name": "Birim Çember ve Radyan Ölçüsü"
+    },
+    "grade10-trigonometric-functions": {
+      "description": "Sinüs ve kosinüsü periyodik fonksiyonlar olarak anlama, a·sin(b·(x+c))+d dönüşümlerinde parametre etkilerini analiz etme ve periyodik gerçek dünya olaylarını modelleme",
+      "name": "Trigonometrik Fonksiyonlar"
+    },
+    "grade10-polynomial-functions": {
+      "description": "Polinom fonksiyonlarını kuvvet fonksiyonlarının toplamı olarak keşfetme, sıfırları ve çokluğu analiz etme, çarpanlara ayrılmış formla grafikler çizme, uç davranışı belirleme ve simetri özelliklerini doğrulama",
+      "name": "Polinom Fonksiyonları"
+    },
+    "grade10-probability-simulation": {
+      "description": "Olasılıkları deneysel olarak yaklaşık olarak belirlemek için Monte Carlo yöntemlerini ve elektronik tablo simülasyonlarını kullanma, büyük sayılar yasasını ve ünlü olasılık paradokslarını keşfetme",
+      "name": "Olasılık Simülasyonu"
+    },
+    "grade10-compound-experiments": {
+      "description": "Ağaç diyagramları, yol kuralları, bileşik olasılık için urne modelleri",
+      "name": "Bileşik Rastgele Deneyler"
+    },
+    "grade10-spheres": {
+      "description": "Küreleri dönel cisimler olarak anlama, hacim ve yüzey alanı hesaplama ve yarım küre ve bileşik cisimlerle problemler çözme",
+      "name": "Küreler"
+    }
+  }
+}

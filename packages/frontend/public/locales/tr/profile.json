@@ -1,0 +1,105 @@
+{
+  "account": {
+    "title": "Hesabım",
+    "subtitle": "Profilini ve tercihlerini yönet",
+    "profileSettings": "Profil Ayarları",
+    "dataManagement": "Veri Yönetimi",
+    "dataInfo": "Verilerin cihazında güvenli bir şekilde saklanıyor. İstediğin zaman dışa aktarabilir veya silebilirsin.",
+    "saveButton": "Değişiklikleri Kaydet",
+    "saving": "Kaydediliyor...",
+    "saved": "Değişiklikler başarıyla kaydedildi!",
+    "exportData": {
+      "downloadButton": "Verileri Dışa Aktar (JSON)",
+      "exporting": "Dışa aktarılıyor...",
+      "description": "Tüm verilerini JSON dosyası olarak indir. Bunu yedekleme veya verilerini aktarmak için kullanabilirsin."
+    },
+    "logout": "Çıkış Yap",
+    "logoutTitle": "Çıkış Yap",
+    "logoutDescription": "Çıkış yapmak istediğinden emin misin? Bu, tüm verilerini bu cihazdan silecek. Bulut yedeklemeyi etkinleştirdiysen, verilerin korunacak ve tekrar giriş yaparak geri yükleyebilirsin.",
+    "confirmLogout": "Çıkış Yap",
+    "cancel": "İptal",
+    "deleteData": "Tüm Verileri Sil",
+    "deleteConfirm": "Tüm verilerini silmek istediğinden emin misin? Bu işlem geri alınamaz.",
+    "backToHome": "Ana Sayfaya Dön",
+    "lastSynced": "Son senkronizasyon: {{time}}",
+    "neverSynced": "Hiç",
+    "justNow": "Az önce",
+    "minutesAgo": "{{count}} dakika önce",
+    "minutesAgo_other": "{{count}} dakika önce",
+    "hoursAgo": "{{count}} saat önce",
+    "hoursAgo_other": "{{count}} saat önce",
+    "daysAgo": "{{count}} gün önce",
+    "daysAgo_other": "{{count}} gün önce",
+    "recoveryKit": {
+      "downloadButton": "Kurtarma Kitini İndir (PDF)",
+      "generating": "PDF oluşturuluyor...",
+      "whatsIncluded": "İçerik: QR kod, yedekleme kodu, kullanıcı kimliği ve kurtarma talimatları",
+      "securityNote": "Bu PDF'i güvenli bir yerde sakla - hesap bilgilerini içeriyor",
+      "pdf": {
+        "title": "Logikids Kurtarma Kiti",
+        "subtitle": "Hesabını kurtarmak için bu belgeyi sakla",
+        "qrLabel": "Hesabını geri yüklemek için bu QR kodu tara",
+        "backupCodeTitle": "Yedekleme Kodu",
+        "userIdLabel": "Kullanıcı Kimliği:",
+        "instructionsTitle": "Bu Kurtarma Kiti Nasıl Kullanılır:",
+        "instruction1": "1. Bu belgeyi güvenli bir yerde sakla",
+        "instruction2": "2. Hesabını geri yüklemek için QR kodu tara veya yedekleme kodunu gir",
+        "instruction3": "3. Hesap verilerin şifreli - şifreyi çözmek için bu kurtarma kiti gerekli",
+        "instruction4": "4. Bu kurtarma kitine sahip olan herkes hesabına erişebilir",
+        "securityWarningTitle": "Güvenlik Uyarısı:",
+        "securityWarning1": "Bu kurtarma kiti şifreleme anahtarını içeriyor. Güvenli ve gizli tut.",
+        "securityWarning2": "Asla paylaşma veya bulut hizmetlerine yükleme.",
+        "footer": "Logikids tarafından oluşturuldu"
+      }
+    },
+    "qrDisplay": {
+      "showButton": "Cihaz Eşleştirme İçin QR Kodu Göster",
+      "scanInstruction": "Hesabını senkronize etmek için bu kodu başka bir cihazda tara",
+      "securityWarning": "Bu QR kod hesap bilgilerini içeriyor. Sadece güvendiğin cihazlarda tara."
+    },
+    "pair": {
+      "importing": "Giriş yapılıyor...",
+      "noCodeError": "URL'de eşleştirme kodu bulunamadı",
+      "importError": "Hesap içe aktarılamadı",
+      "existingAccountTitle": "Zaten Giriş Yapıldı",
+      "existingAccountMessage": "Bu cihazda zaten bir hesabın var. Farklı bir hesaba geçmek istiyorsan önce çıkış yap.",
+      "goToAccount": "Hesap Ayarlarına Git",
+      "goHome": "Ana Sayfaya Git",
+      "successTitle": "Başarılı!",
+      "successMessage": "Hesabın senkronize edildi. Yönlendiriliyor...",
+      "errorTitle": "Bir şeyler yanlış gitti"
+    },
+    "import": {
+      "backupCodeLabel": "Yedekleme Kodu",
+      "backupCodePlaceholder": "Yedekleme kodunu gir (XXXX-XXXX-XXXX-...)",
+      "backupCodeHint": "Kurtarma kiti PDF'inden yedekleme kodunu yapıştır",
+      "importButton": "Hesap Verilerini İçe Aktar",
+      "importing": "İçe aktarılıyor...",
+      "importSuccess": "İçe aktarma başarılı! Yeniden yükleniyor...",
+      "enterCodeError": "Lütfen bir yedekleme kodu gir",
+      "invalidCodeError": "Geçersiz yedekleme kodu. Lütfen kontrol edip tekrar dene.",
+      "importFailed": "İçe aktarma başarısız",
+      "conflictTitle": "Mevcut Verilerin Üzerine Yazılsın mı?",
+      "conflictMessage": "Bu cihazda zaten hesap verileri var. İçe aktarma, tüm mevcut verileri içe aktarılan hesapla değiştirecek.",
+      "conflictWarning": "Bu verileri korumak istiyorsan önce mevcut kurtarma kitini indirdiğinden emin ol.",
+      "conflictCancel": "İptal",
+      "conflictConfirm": "Evet, Verilerin Üzerine Yaz"
+    },
+    "accountNotFound": {
+      "title": "Yeni Bir Başlangıç Zamanı!",
+      "message1": "Beta aşamasındaki son güncellemeler nedeniyle önceki hesabının sıfırlanması gerekiyor.",
+      "message2": "Yeni başlamaya hazır mısın? Öğrenme yolculuğuna devam etmek için yeni bir davet koduna ihtiyacın olacak!",
+      "startButton": "Yeniden Başla",
+      "note": "Bu, yerel verilerini temizleyecek"
+    }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "nameLabel": "İsmin ne?",
+    "namePlaceholder": "İsmini buraya yaz...",
+    "gradeLabel": "Kaçıncı sınıftasın?",
+    "languageLabel": "Dilini seç",
+    "syncLabel": "Bulut Yedekleme",
+    "syncDescription": "Verilerini otomatik olarak buluta yedekle"
+  }
+}
