@@ -44,12 +44,19 @@ real_world_context:
   - Using library categories (fiction, non-fiction, poetry) to find books for different purposes
   - Identifying whether a text is trying to inform, entertain, persuade, or instruct based on its features
   - Searching online for information and distinguishing reliable sources from entertainment content
+  - Distinguishing between recipes, assembly instructions, and game rules by recognizing their structural features
+  - Identifying poetry by noticing rhyme, rhythm, and line breaks that differ from regular paragraph text
+  - Recognizing biography versus autobiography when reading about famous scientists, athletes, or historical figures
+  - Understanding that advertisements try to persuade while informational brochures aim to educate or inform
+  - Comparing fairy tales with realistic fiction to understand how fantasy elements differ from everyday situations
+  - Navigating different sections of websites or magazines by recognizing text types like interviews, reviews, or tutorials
+  - Identifying drama scripts by noticing character names, dialogue format, and stage directions that guide performance
 anti_patterns:
   - Avoid relying solely on formatting or visual layout for genre identification
   - Don't use obscure or regional text types unfamiliar to 9-10 year olds
   - Avoid texts requiring knowledge of literary history or adult genres
   - Don't conflate difficulty level with genre complexity
   - Avoid assuming all fiction is narrative or all non-fiction is dry factual text
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 4 reading competencies (Lesen - über Leseerfahrungen verfügen)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

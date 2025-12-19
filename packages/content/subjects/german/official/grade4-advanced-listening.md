@@ -42,12 +42,19 @@ real_world_context:
   - Watching educational videos or documentaries and taking notes on key information
   - Understanding oral presentations from peers and identifying what additional information would help comprehension
   - Processing spoken narratives or audiobooks and monitoring own understanding throughout
+  - Following a museum guide's explanation during a field trip and asking questions about unfamiliar historical or scientific concepts
+  - Listening to a coach's complex game strategy instructions and recognizing which parts need further clarification before the match
+  - Understanding announcements at train stations or airports while traveling and identifying important details about platforms or gates
+  - Following along with cooking or craft tutorial videos and pausing to clarify unclear steps before continuing
+  - Listening to guest speakers at school assemblies and formulating thoughtful questions about their experiences or expertise
+  - Processing radio adventure stories or podcast episodes and mentally summarizing key plot points to check comprehension
+  - Understanding veterinarian or doctor explanations about pet or personal health care and asking targeted follow-up questions
 anti_patterns:
   - Avoid spoken texts longer than 20 sentences for Grade 4 attention span
   - Don't use vocabulary or concepts beyond Grade 4 curriculum scope
   - Avoid comprehension gaps that require background knowledge students lack
   - Don't create questions with multiple valid clarification approaches
   - Avoid texts where main ideas cannot be distinguished from details
-version: 1
-version_notes: Initial concept for German Grade 4 advanced listening comprehension based on KMK Bildungsstandards, focusing on understanding complex spoken content and metacognitive awareness of comprehension gaps
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

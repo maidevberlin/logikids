@@ -43,12 +43,19 @@ real_world_context:
   - Drawing pictures or creating artwork inspired by stories you read
   - Acting out scenes from books in school plays or with siblings
   - Recommending books to others based on what you enjoyed and learned
+  - Writing alternative endings to stories and explaining how different choices would change the outcome
+  - Creating book trailers or presentations that capture the mood and themes of favorite novels
+  - Comparing your own experiences with moving, making friends, or facing challenges to characters in books
+  - Designing book covers that represent the most important themes or emotions in a story
+  - Participating in book clubs where you share personal reactions and debate character decisions
+  - Writing letters to characters offering advice or expressing opinions about their actions
+  - Creating dramatic readings of favorite passages with expression that matches character emotions
 anti_patterns:
   - Avoid texts with themes inappropriate for 9-10 year olds
   - Don't require knowledge of authors or literary terms beyond age level
   - Avoid questions with single correct answers that ignore personal response
   - Don't expect analysis of complex literary devices (symbolism, metaphor)
   - Avoid unfamiliar cultural contexts without sufficient background
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards Grade 4 - literary response and interpretation
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -41,6 +41,13 @@ real_world_context:
   - Developing creative narratives for school magazines, competitions, or class anthologies
   - Retelling familiar stories from different character perspectives to explore narrative viewpoint
   - Crafting fantasy or adventure stories inspired by books, films, or imagination
+  - Writing diary entries about exciting days, first experiences, or special achievements
+  - Creating mystery stories with detectives solving puzzles or uncovering secrets
+  - Narrating sports events or outdoor adventures experienced during summer camps or field trips
+  - Writing historical fiction placing themselves in different time periods after history lessons
+  - Creating illustrated story books combining text and drawings as birthday presents
+  - Narrating humorous family anecdotes or pet adventures to entertain relatives
+  - Writing continuation chapters for favorite book series with original plot developments
 anti_patterns:
   - Avoid narratives lacking clear three-part structure
   - Do not use complex flashback structures or non-linear timelines
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid culturally specific references unfamiliar to 10-11 year olds
 prerequisites:
   - grade4-text-planning
-version: 1
-version_notes: Initial concept for German Grade 5 narrative writing aligned with Berlin-Brandenburg Rahmenlehrplan
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

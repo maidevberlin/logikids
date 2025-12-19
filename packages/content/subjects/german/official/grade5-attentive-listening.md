@@ -43,12 +43,19 @@ real_world_context:
   - Comprehending audio books, podcasts, and educational videos for school subjects
   - Listening to announcements at school events, assemblies, and during field trips
   - Participating in family discussions about planning, current events, and decisions
+  - Following directions from sports coaches or music teachers during practice sessions
+  - Understanding tour guide explanations during museum visits or historical site excursions
+  - Listening to librarians introducing new book series or explaining library research tools
+  - Comprehending safety briefings before science experiments or outdoor adventure activities
+  - Following multi-step game rules explained by peers at recess or board game sessions
+  - Understanding doctor's instructions during health checkups or explaining symptoms to medical staff
+  - Listening to storytellers at cultural festivals or community events to follow plot developments
 anti_patterns:
   - Avoid texts with background noise or unclear pronunciation
   - Don't use vocabulary significantly beyond grade 5 academic level
   - Avoid overly abstract or philosophical content inappropriate for age
   - Don't create ambiguous questions with multiple valid interpretations
   - Avoid texts longer than 6 minutes that exceed attention span
-version: 1
-version_notes: Initial concept for German Grade 5 attentive listening based on Berlin-Brandenburg curriculum Niveaustufe C-D
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

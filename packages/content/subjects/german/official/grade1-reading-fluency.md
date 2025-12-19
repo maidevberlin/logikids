@@ -41,12 +41,19 @@ real_world_context:
   - Following written instructions for simple games or activities
   - Reading aloud during class reading time or with reading partners
   - Identifying words in favorite songs, poems, or nursery rhymes
+  - Decoding words on breakfast cereal boxes and snack packages
+  - Reading name labels on lockers, desks, and classroom storage bins
+  - Practicing sight words through digital reading apps or tablet games
+  - Reading captions under photos in family albums or scrapbooks
+  - Sounding out animal names at the zoo or aquarium displays
+  - Reading dialogue in comic strips and graphic novels for children
+  - Recognizing familiar words on restaurant menus or shopping lists
 anti_patterns:
   - Avoid vocabulary beyond Grade 1 curriculum scope
   - Don't use words with silent letters or irregular spellings at easy level
   - Avoid sentences longer than 8-10 words for fluency practice
   - Don't introduce complex grammar structures requiring advanced comprehension
   - Avoid unfamiliar cultural references or abstract concepts
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 1 reading standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

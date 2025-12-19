@@ -45,12 +45,19 @@ real_world_context:
   - Students revise and polish texts for school publications, blogs, or competitions
   - Adolescents edit their written work using digital tools and collaborative platforms
   - Students prepare presentations and written materials by iteratively improving clarity and audience fit
+  - Revising creative stories after teacher feedback to strengthen character development and plot coherence
+  - Using writing conference protocols to help classmates improve their science lab reports
+  - Editing draft emails to teachers or administrators to ensure appropriate tone and clarity
+  - Revising persuasive essays by checking that arguments align with intended audience values
+  - Improving procedural writing by testing instructions with a partner and clarifying confusing steps
+  - Using word processing spell-check and grammar tools while maintaining critical judgment about suggestions
+  - Revising historical narratives to ensure factual accuracy while maintaining engaging storytelling
 anti_patterns:
   - Avoid focusing only on surface errors - include content and structure revision
   - Don't provide complete corrections - guide students to identify and fix issues
   - Avoid unrealistic peer feedback scenarios with hostile or unhelpful responses
   - Don't mix too many unrelated revision criteria in a single task
   - Avoid texts where revision priorities are unclear or contradictory
-version: 1
-version_notes: Initial concept based on KMK Bildungsstandards Sekundarstufe I - Schreiben (überarbeiten)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -41,6 +41,13 @@ real_world_context:
   - Using computers at home or school to type and revise essays, with features like spell-check and editing tools
   - Planning a personal letter or email by organizing thoughts before writing and checking clarity before sending
   - Creating school newspaper articles that go through multiple drafts with editor feedback
+  - Brainstorming story ideas using mind maps before writing creative narratives for competitions
+  - Reviewing book reports with partners to improve organization and supporting details
+  - Using checklists to evaluate own writing for grammar, punctuation, and content before submission
+  - Planning science project reports by outlining main sections and gathering information systematically
+  - Receiving teacher comments on essays and implementing revisions to strengthen arguments
+  - Creating writing portfolios that showcase improvement through multiple draft versions
+  - Using word processing tools to reorganize paragraphs and improve text flow in research papers
 anti_patterns:
   - Avoid vague feedback like just better or improve this without specifics
   - Do not present revision as punishment rather than improvement opportunity
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid peer feedback scenarios with only negative criticism
 prerequisites:
   - grade4-text-revision
-version: 1
-version_notes: Initial version for German Grade 5 text revision concept
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

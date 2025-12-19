@@ -45,12 +45,19 @@ real_world_context:
   - Recognizing sentence elements supports students in translating between German and other languages with different word order patterns
   - Identifying adverbial types helps students answer comprehension questions about when, where, how, and why events occur in texts
   - Analyzing subordinate clauses improves students' ability to express causal relationships, conditions, and temporal sequences in argumentative writing
+  - Breaking down complex instructions into sentence elements to follow multi-step directions accurately
+  - Using subject-verb-object analysis to construct grammatically correct sentences in creative writing
+  - Identifying conjunctions to understand relationships between ideas in science or social studies texts
+  - Recognizing sentence patterns when learning foreign languages with different grammatical structures
+  - Analyzing compound versus complex sentences to vary writing style in essays and reports
+  - Using adverbial identification to add descriptive details about time, place, and manner in narratives
+  - Understanding clause boundaries to improve reading fluency and comprehension of literary texts
 anti_patterns:
   - Avoid sentence structures requiring knowledge of relative clauses or attributes
   - Do not include subjunctive mood or indirect speech constructions
   - Avoid prepositional objects (präpositionales Objekt) beyond Grade 5 scope
   - Do not use more than two levels of clause embedding
   - Avoid archaic or literary word order patterns unfamiliar to students
-version: 1
-version_notes: Initial version based on Berlin-Brandenburg Rahmenlehrplan Grade 5 Niveaustufe C-D
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

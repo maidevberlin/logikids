@@ -42,12 +42,19 @@ real_world_context:
   - Recognizing rhyming words in poetry and children's books
   - Breaking down unfamiliar long words into manageable parts
   - Understanding how words are separated when people speak
+  - Creating silly rhyming names for pets and stuffed animals
+  - Stomping feet to syllable beats during music and movement activities
+  - Finding rhyming pairs in memory card games with picture words
+  - Chanting tongue twisters and sound-alike phrases for fun
+  - Counting syllables on fingers when learning new vocabulary words
+  - Making up rhyming riddles about animals, colors, or food
+  - Playing "I spy" games focusing on words that sound similar
 anti_patterns:
   - Avoid written letters or spelling; focus purely on sounds
   - Don't use words with unclear syllable boundaries
   - Avoid vocabulary unfamiliar to 6-7 year olds
   - Don't mix phonological awareness with letter recognition
   - Avoid words where pronunciation varies by dialect
-version: 1
-version_notes: Initial concept for German Grade 1 foundational phonological awareness
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

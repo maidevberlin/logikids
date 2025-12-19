@@ -40,12 +40,19 @@ real_world_context:
   - Talking about favorite books or stories with classmates
   - Giving compliments and helpful suggestions on peers' work
   - Explaining to parents what was learned at school today
+  - Taking turns telling adventure stories during show-and-tell time
+  - Asking and answering questions during science experiments or nature walks
+  - Sharing opinions about favorite animals, foods, or playground games
+  - Describing vacation experiences to friends who went somewhere different
+  - Participating in group discussions about fairy tale characters and their choices
+  - Practicing telephone conversations when role-playing in dramatic play areas
+  - Giving feedback to peers after listening to their oral presentations
 anti_patterns:
   - Avoid adult-level vocabulary or abstract discussion topics
   - Don't require written responses for oral communication tasks
   - Avoid scenarios involving conflict resolution without teacher guidance
   - Don't expect perfect grammar - focus on communication effectiveness
   - Avoid conversations requiring more than 3-4 exchange turns
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 1 speaking and listening standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

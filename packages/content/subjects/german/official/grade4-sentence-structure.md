@@ -45,12 +45,19 @@ real_world_context:
   - Understanding subject-predicate structure helps students translate between German and other languages
   - Combining sentences with connectors enables students to write more sophisticated reports and arguments
   - Time reference analysis supports comprehension of historical texts and science process descriptions
+  - Using correct punctuation for questions and exclamations in text messages and emails to friends
+  - Constructing complex sentences with "weil" and "dass" to explain reasoning in homework assignments
+  - Identifying sentence boundaries when reading aloud to pause at appropriate moments for listeners
+  - Combining short sentences into longer ones to make adventure stories flow more smoothly
+  - Analyzing how newspapers use different sentence types to report facts versus express opinions
+  - Understanding inverted word order in German questions to properly formulate inquiries in conversations
+  - Using direct speech punctuation correctly when writing dialogue in creative writing projects
 anti_patterns:
   - Avoid subjunctive mood or complex conditional structures beyond grade 4
   - Do not introduce relative clauses with complex case relationships
   - Avoid dialect-specific word order patterns unfamiliar to standard German
   - Do not use archaic punctuation rules or literary sentence structures
   - Avoid sentences with more than three clauses or nested subordination
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 4 sentence-level competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

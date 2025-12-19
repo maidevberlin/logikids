@@ -43,12 +43,19 @@ real_world_context:
   - Creating character-driven narratives based on personal experiences
   - Composing diary entries or journal narratives from fictional perspectives
   - Developing short stories that explore different cultures and time periods
+  - Writing adventure stories set in fantasy worlds with dragons, wizards, and quests
+  - Creating mystery stories where characters solve puzzles and uncover clues
+  - Composing historical fiction narratives from the perspective of children in different eras
+  - Writing sequels or prequels to favorite books, maintaining original character voices
+  - Creating science fiction stories about space exploration or future technologies
+  - Developing nature-based narratives from animal perspectives in wilderness settings
+  - Writing collaborative stories with classmates, taking turns continuing the plot
 anti_patterns:
   - Avoid jumbled chronology without clear transitions or flashback markers
   - Don't mix first-person and third-person perspectives within the same scene
   - Avoid dialogue without proper formatting (quotation marks and speaker tags)
   - Don't introduce too many characters in a short narrative (limit to 3-4 main)
   - Avoid abstract descriptions; use concrete sensory details instead
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Deutsch Sekundarstufe I (2022) and Bayern LehrplanPLUS
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

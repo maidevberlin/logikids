@@ -45,12 +45,19 @@ real_world_context:
   - Dictionary skills support independent writing in all subjects when students encounter new technical terms
   - Correct direct speech punctuation is essential when writing dialogue in narratives and interview transcripts
   - Spelling sensitivity helps students proofread essays and presentations before submission to improve quality
+  - Using memorization for high-frequency words like "because," "their," and "which" in everyday writing assignments
+  - Applying root word knowledge to spell compound words correctly when writing instructions or explanations
+  - Checking spelling in emails, text messages, and online communications before sending to avoid misunderstandings
+  - Using dictionaries during research projects to verify spellings of technical or specialized vocabulary
+  - Recognizing spelling patterns in word families to quickly spell new related words during timed writing tasks
+  - Applying direct speech punctuation when writing comic strips, plays, or interview transcripts for class
+  - Developing spelling awareness to catch errors when typing on computers or tablets without spell-check enabled
 anti_patterns:
   - Avoid technical vocabulary beyond grade 4 core curriculum expectations
   - Do not include words with more than five syllables or rare patterns
   - Avoid nested quotations or complex attribution in direct speech examples
   - Do not mix multiple punctuation rules beyond direct speech fundamentals
   - Avoid archaic or regional spelling variations unfamiliar to learners
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 4 spelling strategies and punctuation competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -40,12 +40,19 @@ real_world_context:
   - Students review their writing posture after noticing hand fatigue during a long story
   - Classmates exchange handwriting samples and provide specific feedback on letter clarity
   - A student plans a final text layout with title, sections, and illustrations before copying neatly
+  - Writing neatly in a greeting card so the recipient can easily read the message
+  - Using print letters to create clear labels for a classroom poster about recycling
+  - Switching to cursive writing to take faster notes during a science demonstration
+  - Adjusting pencil grip after the teacher notices tension causing hand pain
+  - Formatting a book report with a title, paragraphs, and space for drawings
+  - Practicing consistent letter size and spacing when copying a poem for display
+  - Writing legibly in a reading journal so classmates can read entries during sharing time
 anti_patterns:
   - Avoid technical typography terms inappropriate for 8-9 year olds
   - Don't focus on calligraphy or artistic lettering beyond legibility
   - Avoid ergonomic jargon; use simple language for posture and grip
   - Don't assess handwriting speed without considering legibility maintenance
   - Avoid scenarios requiring left-handed vs. right-handed distinctions
-version: 1
-version_notes: Initial concept based on LehrplanPLUS Bayern Grade 3 (3.1 Writing Mechanics)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

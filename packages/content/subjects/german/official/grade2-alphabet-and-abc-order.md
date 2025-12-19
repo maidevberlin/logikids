@@ -38,6 +38,13 @@ real_world_context:
   - Looking up names in class lists or contact directories
   - Using alphabetical ordering in library catalogs and reference sections
   - Finding entries in alphabetically organized glossaries and indexes
+  - Sorting trading cards or sticker albums by character names alphabetically
+  - A detective organizing clues by witness names to solve a mystery
+  - Finding ingredients alphabetically in a cookbook's index to bake cookies
+  - A zookeeper arranging animal feeding schedules by species names
+  - Organizing music playlists by song titles on a digital device
+  - A medieval scribe organizing scrolls in the royal library by title
+  - Finding friends' phone numbers in an alphabetically sorted contact book
 anti_patterns:
   - Avoid using umlauts (ä, ö, ü) or ß in sorting tasks for Grade 2
   - Don't include more than 8 items to sort in a single task
@@ -46,6 +53,6 @@ anti_patterns:
   - Avoid abstract concepts; use concrete nouns familiar to 7-8 year olds
 prerequisites:
   - grade1-letter-sounds
-version: 1
-version_notes: Initial concept creation for German Grade 2 alphabet and alphabetical order skills
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

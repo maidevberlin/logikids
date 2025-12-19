@@ -44,12 +44,19 @@ real_world_context:
   - Contributing constructively to group project planning by building on teammates' ideas
   - Defending a research position with evidence from multiple sources in a presentation
   - Adapting discussion style when moving from casual peer conversations to formal class discussions
+  - Discussing environmental issues in science class, weighing different conservation strategies with supporting data
+  - Negotiating team roles and responsibilities when organizing a school event or sports team activity
+  - Participating in family discussions about vacation plans, presenting preferences with logical reasoning
+  - Engaging in book club conversations where members interpret characters' actions differently
+  - Contributing to student council meetings about proposed school policy changes
+  - Discussing historical decisions in a time-travel adventure, evaluating choices different historical figures made
+  - Debating fantasy world governance systems in role-playing games, considering fairness and consequences
 anti_patterns:
   - Avoid topics requiring specialized knowledge beyond 11-12 year experience
   - Don't expect formal debate tournament structures or advanced rhetoric
   - Avoid conflicts requiring sophisticated emotional regulation or moral philosophy
   - Don't include more than 6 distinct participant voices in discussion scenarios
   - Avoid opinion topics with objectively verifiable correct answers
-version: 1
-version_notes: Initial concept for German Grade 6 discussion and argumentation based on KMK Bildungsstandards Deutsch Sekundarstufe I (Sprechen und Zuhören)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

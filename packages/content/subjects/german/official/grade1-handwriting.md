@@ -42,12 +42,19 @@ real_world_context:
   - Keeping a daily journal or diary about your day
   - Filling out library cards and permission forms
   - Making shopping lists and reminder notes
+  - Labeling drawings and craft projects for classroom displays
+  - Writing secret messages to friends during playtime
+  - Copying favorite poem lines into a personal poetry collection
+  - Creating treasure hunt clues for outdoor adventure games
+  - Writing letters to grandparents or pen pals in other cities
+  - Making recipe cards when helping parents cook special meals
+  - Designing name tags for stuffed animals and toy collections
 anti_patterns:
   - Avoid requiring cursive before print mastery is established
   - Don't use words with letters not yet taught in curriculum sequence
   - Avoid tasks requiring fine motor skills beyond 6-7 year old capability
   - Don't combine handwriting with complex spelling or grammar evaluation
   - Avoid digital/typed examples when focusing on handwriting mechanics
-version: 1
-version_notes: Initial creation for Grade 1 German curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

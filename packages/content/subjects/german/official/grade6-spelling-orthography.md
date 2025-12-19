@@ -46,12 +46,19 @@ real_world_context:
   - Foreign word spelling is essential when discussing technology, music, sports, and international topics
   - Homophone distinction prevents misunderstandings in written communication and formal correspondence
   - Capitalization mastery supports academic writing quality and professional presentation of work
+  - Spelling nominalized verbs correctly when writing about abstract concepts like "das Lernen" or "das Schreiben"
+  - Using derivation strategies to verify spelling of unfamiliar words by finding familiar root words
+  - Applying vowel length rules when spelling compound words in creative writing projects
+  - Distinguishing "seit" (since) from "seid" (are) in narrative writing to maintain grammatical accuracy
+  - Spelling foreign loan words from English correctly in technology reports and music discussions
+  - Using word lengthening techniques to determine whether consonants should be doubled in derived forms
+  - Applying capitalization rules consistently when writing formal letters to adults or institutions
 anti_patterns:
   - Avoid obscure foreign words from uncommonly taught languages
   - Do not include das/dass in sentences with advanced clause analysis
   - Avoid technical linguistic terminology beyond standard terms
   - Do not combine multiple orthographic rules in single words
   - Avoid archaic spelling variants not aligned with current Duden
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 6 orthography and spelling competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -44,12 +44,19 @@ real_world_context:
   - Researching topics of personal interest using library books and websites
   - Understanding letters, emails, and messages from friends and family
   - Comparing product descriptions when making purchasing decisions
+  - Reading recipe instructions carefully to successfully bake cookies or prepare meals with family
+  - Analyzing movie or book reviews to decide what to watch or read during leisure time
+  - Understanding safety instructions for sports equipment, theme park rides, or science experiments
+  - Reading informational plaques at museums or zoos to learn about exhibits and animals
+  - Following multi-step assembly instructions for toys, furniture, or craft kits
+  - Researching animals or historical topics for school projects using multiple sources
+  - Reading travel brochures or guidebooks when planning family trips or vacations
 anti_patterns:
   - Avoid texts with vocabulary significantly above grade 4 level
   - Don't ask questions answerable without reading the text
   - Avoid ambiguous questions with multiple valid interpretations
   - Don't require knowledge of topics unfamiliar to 9-10 year olds
   - Avoid texts requiring specialized cultural or historical knowledge
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards 2022
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

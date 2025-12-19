@@ -44,12 +44,19 @@ real_world_context:
   - Looking up unfamiliar words in dictionaries or asking adults when reading chapter books independently
   - Creating mental pictures of story scenes while reading adventure or fantasy novels
   - Taking notes on key information when reading instructions for multi-step activities or experiments
+  - Predicting what will happen next in a mystery story by thinking about the clues found so far
+  - Connecting a character's feelings in a book to similar experiences from their own life
+  - Skimming through a nature encyclopedia to find the page about dolphins before reading carefully
+  - Visualizing the setting of a historical story by imagining the castles and clothes described
+  - Asking questions while reading a science text about the solar system to check understanding
+  - Re-reading confusing paragraphs in a biography to make sure they understand what happened
+  - Using picture clues and captions to help understand difficult words in an animal guide
 anti_patterns:
   - Avoid texts longer than 20 sentences for Grade 3 students
   - Don't use academic vocabulary beyond age 8-9 without context support
   - Avoid asking students to apply more than 3 different strategies in a single task
   - Don't include texts with specialized knowledge inaccessible through context
   - Avoid abstract figurative language requiring adult interpretation
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 3 reading comprehension strategies (2.3)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

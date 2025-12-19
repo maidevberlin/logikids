@@ -43,12 +43,19 @@ real_world_context:
   - Creating signs and posters for school projects
   - Writing messages or notes to friends and teachers
   - Keeping a simple diary or learning journal
+  - Spelling animal names when creating nature observation notebooks
+  - Writing invitations for playdates or birthday celebrations
+  - Labeling drawings and artwork for classroom gallery displays
+  - Spelling ingredients when helping parents cook favorite recipes
+  - Creating word lists for treasure hunts or scavenger games
+  - Writing captions for family photos in scrapbooks or albums
+  - Spelling location names when making maps of neighborhoods or fantasy lands
 anti_patterns:
   - Avoid words with silent letters or irregular spellings
   - Don't use vocabulary beyond typical first-grade experience
   - Avoid regional spelling variations or dialectal words
   - Don't mix multiple spelling principles in a single task
   - Avoid words where syllable boundaries are ambiguous
-version: 1
-version_notes: Initial concept for German Grade 1 spelling strategies covering phonological, syllabic, morphological, and grammatical principles
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

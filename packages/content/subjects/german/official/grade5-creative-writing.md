@@ -41,6 +41,13 @@ real_world_context:
   - Composing poems for greeting cards, special occasions, or school poetry contests
   - Writing letters to pen pals, relatives, or as characters from stories to explore perspectives
   - Retelling familiar stories from villain or secondary character viewpoints for creative discussions
+  - Inventing fantasy adventure stories featuring heroes, magical creatures, and enchanted forests
+  - Writing continuation stories for cliffhanger endings in favorite book series
+  - Creating fables about environmental themes like teamwork in ant colonies or forest conservation
+  - Composing humorous poems about school life, pets, or family situations for class magazines
+  - Writing diary entries from historical figures' perspectives after learning about different time periods
+  - Adapting classic tales to modern settings like cities, space stations, or underwater kingdoms
+  - Creating illustrated story books as gifts for younger siblings or charity book drives
 anti_patterns:
   - Avoid obscure fable morals or complex philosophical lessons
   - Do not ask for advanced poetic forms beyond simple rhyme and rhythm
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid prompts mixing multiple literary forms in confusing ways
 prerequisites:
   - grade4-text-types-genres
-version: 1
-version_notes: Initial concept for German Grade 5 creative writing aligned with Berlin-Brandenburg Rahmenlehrplan
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

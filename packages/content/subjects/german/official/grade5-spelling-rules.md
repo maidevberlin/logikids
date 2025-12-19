@@ -45,14 +45,21 @@ real_world_context:
   - Text messaging and social media writing benefits from knowing when to apply formal spelling rules versus informal communication
   - School assignments and tests are evaluated partly on spelling accuracy and punctuation correctness
   - Understanding spelling patterns helps when learning new vocabulary and recognizing unfamiliar words in context
+  - Writing thank-you notes or invitations requires correct punctuation with commas and quotation marks
+  - Proofreading school newspaper articles to ensure professional appearance and readability
+  - Using vowel length rules to correctly spell compound words in creative writing projects
+  - Applying s-sound rules when writing dialogue with direct speech and exclamations
+  - Recognizing capitalization patterns when reading German texts aloud with proper emphasis
+  - Using spelling strategies to decode unfamiliar words in library books or online articles
+  - Writing postcards or letters to relatives demonstrating formal and informal address correctly
 anti_patterns:
   - Avoid regional spelling variations or dialect-specific forms
   - Do not use lowercase for nouns or capitalized common verbs
   - Avoid ambiguous contexts where multiple comma placements are valid
   - Do not mix old and new German spelling conventions (pre-1996 reform)
   - Avoid words with irregular spelling patterns not covered by standard rules
-version: 1
-version_notes: Initial creation - comprehensive Grade 5 spelling and punctuation competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
 
 This concept covers the complete Grade 5 spelling curriculum including vowel length markers (Dehnung), vowel shortness markers (Schärfung), s-sound spelling rules, capitalization rules for all contexts, and punctuation including commas in lists and between clauses, quotation marks for direct speech, and colons before direct speech. Students apply phonological, syllabic, morphological, and grammatical strategies to spell correctly.

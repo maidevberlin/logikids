@@ -43,12 +43,19 @@ real_world_context:
   - Identifying whether online content is factual information or creative storytelling
   - Using highlighting and note-taking strategies when researching school projects
   - Tracking plot developments and character changes when reading novels for pleasure
+  - Underlining key dates and events when studying history texts for presentations
+  - Writing reading journal entries to remember favorite quotes and personal reactions to stories
+  - Distinguishing between encyclopedia articles and adventure stories in library research
+  - Making margin notes when reading science texts to connect concepts with real-world examples
+  - Creating character maps and plot summaries when reading chapter books independently
+  - Highlighting important vocabulary words when reading foreign language texts or complex articles
+  - Organizing reading notes by main ideas when preparing for book club discussions
 anti_patterns:
   - Avoid texts without clear structural elements for section recognition tasks
   - Don't ask students to mark everything; focus on selective highlighting
   - Avoid conflating literary analysis with reading strategy application
   - Don't require journal entries longer than 3-4 sentences for medium tasks
   - Avoid texts where literary vs pragmatic distinction is ambiguous
-version: 1
-version_notes: Initial version based on Berlin-Brandenburg Rahmenlehrplan Niveaustufe C-D
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
