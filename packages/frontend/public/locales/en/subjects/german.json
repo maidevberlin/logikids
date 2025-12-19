@@ -1,88 +1,28 @@
 {
   "concepts": {
-    "grade1-conversation-rules": {
-      "name": "Conversation Rules",
-      "description": "Speaking and Listening"
-    },
     "grade1-dramatic-expression": {
       "name": "Dramatic Expression & Role Play",
       "description": "Express emotions and characters through gesture, movement, facial expressions, and role-playing activities"
-    },
-    "grade1-letter-sounds": {
-      "name": "Letter-Sound Correspondence",
-      "description": "Match letters with their sounds, recognize initial sounds, and distinguish vowels from consonants"
     },
     "grade1-phonological-awareness": {
       "name": "Phonological Awareness and Letter-Sound Correspondence",
       "description": "Recognizing sounds in words, identifying syllables, distinguishing vowels from consonants, and matching letters to their sounds"
     },
-    "grade1-writing-letters": {
-      "name": "Writing Letters",
-      "description": "Learn letter formation and handwriting basics including uppercase and lowercase letter recognition"
-    },
-    "grade1-writing-simple-words": {
-      "name": "Writing Simple Words",
-      "description": "Write words by listening to sounds, spell phonetically regular words, and write common sight words"
-    },
     "grade1-writing-composition": {
       "name": "Writing Composition & Process",
       "description": "Learn to plan, draft, and revise simple texts including narratives, journal entries, and informational writing"
-    },
-    "grade1-first-children-s-books": {
-      "name": "First Children's Books",
-      "description": "Texts and Media"
-    },
-    "grade1-first-language-observations": {
-      "name": "First Language Observations",
-      "description": "Language Reflection"
-    },
-    "grade1-first-reading": {
-      "name": "First Reading",
-      "description": "Reading and Writing"
-    },
-    "grade1-first-writing": {
-      "name": "First Writing",
-      "description": "Reading and Writing"
-    },
-    "grade1-letter-and-sound-learning": {
-      "name": "Letter and Sound Learning",
-      "description": "Reading and Writing"
     },
     "grade1-listening-comprehension": {
       "name": "Listening & Auditory Comprehension",
       "description": "Developing attentive listening skills, extracting essential information from spoken language, and demonstrating comprehension through appropriate responses"
     },
-    "grade1-reading-simple-words": {
-      "name": "Reading Simple Words",
-      "description": "Reading and Writing"
-    },
     "grade1-reading-fluency": {
       "name": "Reading Fluency & Decoding",
       "description": "Developing automatic word recognition through sight words, blending skills, letter combination mastery, and punctuation-guided reading"
     },
-    "grade1-reading-short-sentences": {
-      "name": "Reading Short Sentences",
-      "description": "Reading and understanding simple sentences, matching sentences to pictures, and following written instructions"
-    },
-    "grade1-rhymes-and-poems": {
-      "name": "Rhymes and Poems",
-      "description": "Texts and Media"
-    },
-    "grade1-sound-based-spelling": {
-      "name": "Sound-Based Spelling",
-      "description": "Reading and Writing"
-    },
-    "grade1-speaking-communication": {
-      "name": "Speaking and Communication",
-      "description": "Express experiences clearly, follow conversation rules, use polite communication, and respond appropriately in different situations"
-    },
     "grade1-speaking-conversation": {
       "name": "Speaking & Conversation Skills",
       "description": "Narrating experiences, following conversation rules, discussing learning processes, and giving constructive feedback"
-    },
-    "grade1-speaking-in-complete-sentences": {
-      "name": "Speaking in Complete Sentences",
-      "description": "Speaking and Listening"
     },
     "grade1-spelling": {
       "name": "Spelling Strategies & Orthography",
@@ -112,49 +52,9 @@
       "name": "Reading Simple Texts",
       "description": "Decoding words, reading simple sentences and short texts with basic comprehension"
     },
-    "grade2-capital-letters-nouns-introduction": {
-      "name": "Capital Letters - Nouns (Introduction)",
-      "description": "Reading and Writing"
-    },
     "grade2-compound-words": {
       "name": "Compound Words",
       "description": "Understanding and forming German compound words by combining two or more words to create new meanings"
-    },
-    "grade2-capital-letters-sentence-start": {
-      "name": "Capital Letters - Sentence Start",
-      "description": "Reading and Writing"
-    },
-    "grade2-describing": {
-      "name": "Describing",
-      "description": "Reading and Writing"
-    },
-    "grade2-expanding-reading-skills": {
-      "name": "Expanding Reading Skills",
-      "description": "Reading and Writing"
-    },
-    "grade2-fairy-tales": {
-      "name": "Fairy Tales",
-      "description": "Texts and Media"
-    },
-    "grade2-giving-presentations": {
-      "name": "Giving Presentations",
-      "description": "Speaking and Listening"
-    },
-    "grade2-nouns-verbs-adjectives": {
-      "name": "'Nouns, Verbs, Adjectives'",
-      "description": "Language Reflection"
-    },
-    "grade2-poems-and-recitation": {
-      "name": "Poems and Recitation",
-      "description": "Texts and Media"
-    },
-    "grade2-reading-children-s-books": {
-      "name": "Reading Children's Books",
-      "description": "Texts and Media"
-    },
-    "grade2-reading-comprehension": {
-      "name": "Reading Comprehension",
-      "description": "Reading and Writing"
     },
     "grade2-retelling-stories": {
       "name": "Retelling Stories",
@@ -163,26 +63,6 @@
     "grade2-rhyming-words": {
       "name": "Rhyming Words",
       "description": "Identifying and producing rhyming words, understanding sound patterns in German"
-    },
-    "grade2-sentence-structure": {
-      "name": "Sentence Structure",
-      "description": "Language Reflection"
-    },
-    "grade2-spelling-strategies-derive": {
-      "name": "Spelling Strategies - Derive",
-      "description": "Reading and Writing"
-    },
-    "grade2-spelling-strategies-elongate": {
-      "name": "Spelling Strategies - Elongate",
-      "description": "Reading and Writing"
-    },
-    "grade2-spelling-strategies-syllables": {
-      "name": "Spelling Strategies - Syllables",
-      "description": "Reading and Writing"
-    },
-    "grade2-writing-short-stories": {
-      "name": "Writing Short Stories",
-      "description": "Reading and Writing"
     },
     "grade2-asking-questions": {
       "name": "Asking Questions",
@@ -212,85 +92,9 @@
       "name": "Dialogue and Role Play",
       "description": "Navigate communication situations routinely, follow conversation rules, provide feedback, and assume roles in dramatic play with character perspective"
     },
-    "grade3-active-listening": {
-      "name": "Active Listening",
-      "description": "Speaking and Listening"
-    },
-    "grade3-ballads-introduction": {
-      "name": "Ballads (Introduction)",
-      "description": "Texts and Media"
-    },
-    "grade3-cases-nominative-and-accusative": {
-      "name": "Cases - Nominative and Accusative",
-      "description": "Language Reflection"
-    },
-    "grade3-discussion-techniques": {
-      "name": "Discussion Techniques",
-      "description": "Speaking and Listening"
-    },
-    "grade3-expressive-reading-aloud": {
-      "name": "Expressive Reading Aloud",
-      "description": "Reading and Writing"
-    },
-    "grade3-fables": {
-      "name": "Fables",
-      "description": "Texts and Media"
-    },
-    "grade3-fluent-silent-reading": {
-      "name": "Fluent Silent Reading",
-      "description": "Reading and Writing"
-    },
-    "grade3-informational-texts": {
-      "name": "Informational Texts",
-      "description": "Texts and Media"
-    },
-    "grade3-legends-and-myths": {
-      "name": "Legends and Myths",
-      "description": "Texts and Media"
-    },
-    "grade3-letter-writing": {
-      "name": "Letter Writing",
-      "description": "Reading and Writing"
-    },
-    "grade3-process-description": {
-      "name": "Process Description",
-      "description": "Reading and Writing"
-    },
-    "grade3-punctuation-comma-in-lists": {
-      "name": "Punctuation - Comma in Lists",
-      "description": "Reading and Writing"
-    },
     "grade3-reading-strategies": {
       "name": "Reading Comprehension Strategies",
       "description": "Applying pre-, during-, and post-reading strategies to understand texts; activating prior knowledge; annotating; clarifying vocabulary; visualizing narrative elements"
-    },
-    "grade3-reading-youth-books": {
-      "name": "Reading Youth Books",
-      "description": "Texts and Media"
-    },
-    "grade3-report": {
-      "name": "Report",
-      "description": "Reading and Writing"
-    },
-    "grade3-sentence-parts": {
-      "name": "Sentence Parts",
-      "description": "Language Reflection"
-    },
-    "grade3-short-presentation": {
-      "name": "Short Presentation",
-      "description": "Speaking and Listening"
-    },
-    "grade3-spelling-s-sounds": {
-      "name": "Spelling - S-Sounds",
-      "description": "Reading and Writing"
-    },
-    "grade3-spelling-word-families": {
-      "name": "Spelling - Word Families",
-      "description": "Reading and Writing"
-    },
-    "grade3-story-with-climax": {
-      "name": "Story with Climax",
-      "description": "Reading and Writing"
     },
     "grade3-text-analysis": {
       "name": "Text Analysis and Literary Understanding",
@@ -328,65 +132,17 @@
       "name": "Spelling Principles and Strategies",
       "description": "Apply phonological, syllabic, and morphological principles; master core vocabulary; use dictionaries; recognize orthographic patterns"
     },
-    "grade3-tenses-present-and-past": {
-      "name": "Tenses - Present and Past",
-      "description": "Language Reflection"
-    },
-    "grade3-using-dictionary": {
-      "name": "Using Dictionary",
-      "description": "Reading and Writing"
-    },
     "grade3-writing-mechanics": {
       "name": "Writing Mechanics and Handwriting",
       "description": "Produce legible handwriting; adjust script for purpose (print vs. cursive); maintain proper posture and grip"
-    },
-    "grade4-active-and-passive-voice-introduction": {
-      "name": "Active and Passive Voice (Introduction)",
-      "description": "Language Reflection"
     },
     "grade4-advanced-listening": {
       "name": "Advanced Listening Comprehension",
       "description": "Understanding complex spoken texts, asking targeted questions, recognizing comprehension gaps"
     },
-    "grade4-all-four-cases": {
-      "name": "All Four Cases",
-      "description": "Language Reflection"
-    },
-    "grade4-all-tenses": {
-      "name": "All Tenses",
-      "description": "Language Reflection"
-    },
     "grade4-parts-of-speech": {
       "name": "Parts of Speech Mastery",
       "description": "Identify and use all major parts of speech with full awareness of nouns (case, gender), verbs (all tenses), articles, adjectives, and pronouns"
-    },
-    "grade4-argumentation": {
-      "name": "Argumentation",
-      "description": "Reading and Writing"
-    },
-    "grade4-comics-and-graphic-novels": {
-      "name": "Comics and Graphic Novels",
-      "description": "Texts and Media"
-    },
-    "grade4-conducting-interviews": {
-      "name": "Conducting Interviews",
-      "description": "Speaking and Listening"
-    },
-    "grade4-creative-writing": {
-      "name": "Creative Writing",
-      "description": "Reading and Writing"
-    },
-    "grade4-media-use-and-critique": {
-      "name": "Media Use and Critique",
-      "description": "Texts and Media"
-    },
-    "grade4-poetry-analysis-introduction": {
-      "name": "Poetry Analysis (Introduction)",
-      "description": "Texts and Media"
-    },
-    "grade4-presentation-with-media": {
-      "name": "Presentation with Media",
-      "description": "Speaking and Listening"
     },
     "grade4-discussion-skills": {
       "name": "Discussion and Argumentation",
@@ -396,41 +152,9 @@
       "name": "Planning and Structuring Texts",
       "description": "Learn to clarify purpose and audience, gather vocabulary and phrases, and organize ideas systematically before writing"
     },
-    "grade4-punctuation-direct-speech": {
-      "name": "Punctuation - Direct Speech",
-      "description": "Reading and Writing"
-    },
-    "grade4-reading-different-text-types": {
-      "name": "Reading Different Text Types",
-      "description": "Reading and Writing"
-    },
-    "grade4-reading-digital-texts": {
-      "name": "Reading Digital Texts",
-      "description": "Reading and Writing"
-    },
-    "grade4-sentence-types": {
-      "name": "Sentence Types",
-      "description": "Language Reflection"
-    },
-    "grade4-short-stories": {
-      "name": "Short Stories",
-      "description": "Texts and Media"
-    },
-    "grade4-spelling-compound-words": {
-      "name": "Spelling - Compound Words",
-      "description": "Reading and Writing"
-    },
-    "grade4-spelling-same-sounding-words": {
-      "name": "Spelling - Same Sounding Words",
-      "description": "Reading and Writing"
-    },
     "grade4-spelling-strategies": {
       "name": "Spelling Strategies and Rules",
       "description": "Apply derivation, sounding out, and memorization strategies; use reference tools effectively; master punctuation in direct speech"
-    },
-    "grade4-summary": {
-      "name": "Summary",
-      "description": "Reading and Writing"
     },
     "grade4-text-revision": {
       "name": "Text Revision and Editing",
@@ -439,14 +163,6 @@
     "grade4-text-types-genres": {
       "name": "Text Types and Genres",
       "description": "Recognizing and distinguishing fiction vs. non-fiction, narrative/poetic/dramatic forms, and developing media literacy"
-    },
-    "grade4-theater-and-role-play": {
-      "name": "Theater and Role Play",
-      "description": "Speaking and Listening"
-    },
-    "grade4-youth-literature": {
-      "name": "Youth Literature",
-      "description": "Texts and Media"
     },
     "grade4-expressive-speaking": {
       "name": "Expressive Speaking and Presentation",
@@ -464,50 +180,6 @@
       "name": "Sentence Structure and Syntax",
       "description": "Master sentence types, subject-predicate-complement structure, time references in sentences, complex sentence formation, and punctuation for different sentence types"
     },
-    "grade5-active-and-passive-deepened": {
-      "name": "Active and Passive Deepened",
-      "description": "Language Reflection"
-    },
-    "grade5-advanced-spelling-rules": {
-      "name": "Advanced Spelling Rules",
-      "description": "Reading and Writing"
-    },
-    "grade5-advertising-analysis": {
-      "name": "Advertising Analysis",
-      "description": "Texts and Media"
-    },
-    "grade5-ballad": {
-      "name": "Ballad",
-      "description": "Texts and Media"
-    },
-    "grade5-comma-rules-subordinate-clauses": {
-      "name": "Comma Rules - Subordinate Clauses",
-      "description": "Reading and Writing"
-    },
-    "grade5-description-image": {
-      "name": "Description - Image",
-      "description": "Reading and Writing"
-    },
-    "grade5-description-object-and-person": {
-      "name": "Description - Object and Person",
-      "description": "Reading and Writing"
-    },
-    "grade5-discussion-and-debate": {
-      "name": "Discussion and Debate",
-      "description": "Speaking and Listening"
-    },
-    "grade5-drama-introduction": {
-      "name": "Drama - Introduction",
-      "description": "Texts and Media"
-    },
-    "grade5-fairy-tales-and-fables-deepened": {
-      "name": "Fairy Tales and Fables Deepened",
-      "description": "Texts and Media"
-    },
-    "grade5-information-extraction": {
-      "name": "Information Extraction",
-      "description": "Reading and Writing"
-    },
     "grade5-informational-texts": {
       "name": "Informational Text Comprehension",
       "description": "Comprehending non-fiction texts and non-linear information formats"
@@ -516,161 +188,9 @@
       "name": "Narrative Writing",
       "description": "Writing narratives with clear perspective and story structure (Einleitung, Hauptteil, Schluss)"
     },
-    "grade5-narrative-perspective-change": {
-      "name": "Narrative - Perspective Change",
-      "description": "Reading and Writing"
-    },
-    "grade5-narrative-retelling": {
-      "name": "Narrative - Retelling",
-      "description": "Reading and Writing"
-    },
-    "grade5-narrative-texts-novel": {
-      "name": "Narrative Texts - Novel",
-      "description": "Texts and Media"
-    },
-    "grade5-narrative-texts-short-story": {
-      "name": "Narrative Texts - Short Story",
-      "description": "Texts and Media"
-    },
-    "grade5-newspaper-and-journalism": {
-      "name": "Newspaper and Journalism",
-      "description": "Texts and Media"
-    },
-    "grade5-opinion-statement-with-reasons": {
-      "name": "Opinion Statement with Reasons",
-      "description": "Reading and Writing"
-    },
-    "grade5-poetry-forms-and-analysis": {
-      "name": "Poetry - Forms and Analysis",
-      "description": "Texts and Media"
-    },
     "grade5-poetry-analysis": {
       "name": "Poetry Analysis",
       "description": "Understanding and appreciating poetic texts through form and expression"
-    },
-    "grade5-presentation-skills": {
-      "name": "Presentation Skills",
-      "description": "Speaking and Listening"
-    },
-    "grade5-reading-techniques-deepened": {
-      "name": "Reading Techniques Deepened",
-      "description": "Reading and Writing"
-    },
-    "grade5-report": {
-      "name": "Report",
-      "description": "Reading and Writing"
-    },
-    "grade5-syntax-main-and-subordinate-clauses": {
-      "name": "Syntax - Main and Subordinate Clauses",
-      "description": "Language Reflection"
-    },
-    "grade5-syntax-sentence-elements": {
-      "name": "Syntax - Sentence Elements",
-      "description": "Language Reflection"
-    },
-    "grade5-word-formation": {
-      "name": "Word Formation",
-      "description": "Language Reflection"
-    },
-    "grade5-word-types-deepened": {
-      "name": "Word Types Deepened",
-      "description": "Language Reflection"
-    },
-    "grade6-advanced-comma-rules": {
-      "name": "Advanced Comma Rules",
-      "description": "Reading and Writing"
-    },
-    "grade6-argumentation-and-discussion": {
-      "name": "Argumentation and Discussion",
-      "description": "Reading and Writing"
-    },
-    "grade6-comparing-literary-texts": {
-      "name": "Comparing Literary Texts",
-      "description": "Texts and Media"
-    },
-    "grade6-creative-interpretation": {
-      "name": "Creative Interpretation",
-      "description": "Reading and Writing"
-    },
-    "grade6-critical-reading": {
-      "name": "Critical Reading",
-      "description": "Reading and Writing"
-    },
-    "grade6-debate-techniques": {
-      "name": "Debate Techniques",
-      "description": "Speaking and Listening"
-    },
-    "grade6-drama-analysis": {
-      "name": "Drama Analysis",
-      "description": "Texts and Media"
-    },
-    "grade6-extended-summary": {
-      "name": "Extended Summary",
-      "description": "Reading and Writing"
-    },
-    "grade6-indirect-speech-introduction": {
-      "name": "Indirect Speech (Introduction)",
-      "description": "Reading and Writing"
-    },
-    "grade6-internet-research": {
-      "name": "Internet Research",
-      "description": "Texts and Media"
-    },
-    "grade6-letter-to-the-editor": {
-      "name": "Letter to the Editor",
-      "description": "Reading and Writing"
-    },
-    "grade6-literature-character-analysis": {
-      "name": "Literature - Character Analysis",
-      "description": "Texts and Media"
-    },
-    "grade6-literature-themes-and-motifs": {
-      "name": "Literature - Themes and Motifs",
-      "description": "Texts and Media"
-    },
-    "grade6-media-production": {
-      "name": "Media Production",
-      "description": "Texts and Media"
-    },
-    "grade6-non-fiction-analysis": {
-      "name": "Non-Fiction Analysis",
-      "description": "Texts and Media"
-    },
-    "grade6-poetry-interpretation": {
-      "name": "Poetry Interpretation",
-      "description": "Texts and Media"
-    },
-    "grade6-presentation-and-rhetoric": {
-      "name": "Presentation and Rhetoric",
-      "description": "Speaking and Listening"
-    },
-    "grade6-protocol": {
-      "name": "Protocol",
-      "description": "Reading and Writing"
-    },
-    "grade6-reading-complex-texts": {
-      "name": "Reading Complex Texts",
-      "description": "Reading and Writing"
-    },
-    "grade6-style-and-register": {
-      "name": "Style and Register",
-      "description": "Language Reflection"
-    },
-    "grade6-subjunctive-mood-introduction": {
-      "name": "Subjunctive Mood (Introduction)",
-      "description": "Language Reflection"
-    },
-    "grade6-syntax-attributes": {
-      "name": "Syntax - Attributes",
-      "description": "Language Reflection"
-    },
-    "grade6-syntax-relative-clauses": {
-      "name": "Syntax - Relative Clauses",
-      "description": "Language Reflection"
-    },
-    "grade6-text-cohesion": {
-      "name": "Text Cohesion",
-      "description": "Language Reflection"
     },
     "grade6-listening-comprehension": {
       "name": "Listening Comprehension",

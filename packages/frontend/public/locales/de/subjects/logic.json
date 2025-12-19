@@ -1,20 +1,3 @@
 {
-  "concepts": {
-    "analogical": {
-      "name": "Analogien und Beziehungen",
-      "description": "Beziehungen zwischen Konzepten verstehen"
-    },
-    "deductive": {
-      "name": "Logische Deduktion",
-      "description": "Gegebene Informationen nutzen, um logische Schlussfolgerungen zu ziehen"
-    },
-    "patterns": {
-      "name": "Mustererkennung",
-      "description": "Muster in logischen Sequenzen finden und verstehen"
-    },
-    "sequences": {
-      "name": "Zahlenfolgen",
-      "description": "Zahlenfolgen verstehen und fortsetzen"
-    }
-  }
+  "concepts": {}
 }

@@ -1,68 +1,8 @@
 {
   "concepts": {
-    "angle-relationships": {
-      "description": "Verständnis von Winkeltypen, komplementären und supplementären Winkeln, Scheitelwinkeln und Winkelbeziehungen durch parallele Linien und Transversalen",
-      "name": "Winkelbeziehungen"
-    },
-    "area-complex-shapes": {
-      "description": "Berechnung von Flächen von Dreiecken, Parallelogrammen, Trapezen und zusammengesetzten Figuren durch Zerlegung und Formelanwendung, Lösung mehrstufiger Aufgaben und Überprüfung von Berechnungen",
-      "name": "Flächenberechnung zusammengesetzter Figuren"
-    },
-    "area-perimeter": {
-      "description": "Umfang und Flächeninhalt von Rechtecken und Quadraten berechnen, Einheiten verstehen, zwischen Flächeneinheiten umrechnen, praktische Probleme lösen",
-      "name": "Flächeninhalt und Umfang"
-    },
-    "circle-geometry": {
-      "description": "Kreisterminologie, Umfangsberechnung (U=πd), Flächenberechnung (A=πr²) und Lösen von realen Problemen mit Kreisen",
-      "name": "Kreis und Kreisberechnungen"
-    },
-    "congruence-similarity-intro": {
-      "description": "Kongruenzbedingungen (SSS, SAS, ASA, AAS) erkunden, Ähnlichkeitskonzepte verstehen, Skalenfaktoren berechnen und auf Landkarten und Maßstabzeichnungen anwenden",
-      "name": "Kongruenz und Ähnlichkeit"
-    },
-    "coordinate-system-advanced": {
-      "description": "Beherrschung des Koordinatensystems in allen vier Quadranten, Graphen linearer Beziehungen, Verständnis von Steigung und y-Achsenabschnitt, Graphen von realen Situationen erstellen, Abstände berechnen",
-      "name": "Koordinatensystem und lineare Funktionen"
-    },
-    "coordinate-system-basics": {
-      "description": "Verständnis des kartesischen Koordinatensystems (erstes Quadrant), Plotten und Lesen von Punkten, Beschreibung räumlicher Beziehungen und Positionen, Identifizierung geometrischer Beziehungen und Berechnung von Entfernungen zwischen Punkten",
-      "name": "Koordinatensystem und räumliche Beziehungen"
-    },
-    "data-collection-charts": {
-      "description": "Daten sammeln, organisieren und mit Tabellen, Balkendiagrammen, Piktogrammen und Liniendiagrammen darstellen",
-      "name": "Datenerfassung und Diagramme"
-    },
-    "decimal-numbers": {
-      "description": "Dezimalschreibweise verstehen, Stellenwertsysteme, Operationen mit Dezimalzahlen, Umwandlung zwischen Brüchen und Dezimalzahlen, Runden und Schätzen und Anwendung von Dezimalzahlen in realen Kontexten",
-      "name": "Dezimalzahlen"
-    },
-    "divisibility-prime-numbers": {
-      "description": "Teilbarkeitsregeln verstehen, Primzahlen und zusammengesetzte Zahlen unterscheiden und mit Faktoren arbeiten",
-      "name": "Teilbarkeit und Primzahlen"
-    },
-    "fraction-operations": {
-      "description": "Umfassende Brucharbeit einschließlich Erweitern, Kürzen, Umwandeln und alle vier Grundrechenarten mit Brüchen",
-      "name": "Bruchrechnung"
-    },
-    "geometric-shapes-2d": {
-      "description": "Eigenschaften und Klassifizierung grundlegender ebener Figuren wie Dreiecke, Vierecke und Kreise, Symmetrie und geometrische Konstruktionen",
-      "name": "Ebene geometrische Figuren"
-    },
     "grade1-addition-subtraction-to-20": {
       "description": "Addition und Subtraktion im Zahlenraum bis 20, einschließlich Zehnerübergang, Aufgabenfamilien und Kopfrechenstrategien",
       "name": "Addition und Subtraktion bis 20"
-    },
-    "grade1-basic-arithmetic-operations": {
-      "description": "Addition und Subtraktion bis 20 beherrschen, einschließlich Zahlzerlegungen, Zehnerübergang und Kopfrechenstrategien",
-      "name": "Grundrechenarten im Zahlraum bis 20"
-    },
-    "grade1-data-and-probability-basics": {
-      "description": "Daten sammeln und organisieren, Wahrscheinlichkeitssprache verwenden und Zufallsereignisse im Alltag erkunden",
-      "name": "Daten und Wahrscheinlichkeit - Grundlagen"
-    },
-    "grade1-geometry-and-spatial-awareness": {
-      "description": "Formen erkennen, räumliche Beziehungen verstehen und Symmetrie durch praktische Aktivitäten erkunden",
-      "name": "Geometrie und räumliche Orientierung"
     },
     "grade1-introduction-to-measurement": {
       "description": "Längen vergleichen, nicht-standardisierte Einheiten verwenden und grundlegende Zeitkonzepte verstehen",
@@ -72,10 +12,6 @@
       "description": "Münzen und Scheine erkennen, Geld zählen und einfache Einkaufsaufgaben lösen",
       "name": "Geld"
     },
-    "grade1-number-concept-development": {
-      "description": "Zahlen von 1 bis 20 verstehen, vorwärts und rückwärts zählen, Zahlen vergleichen und ordnen",
-      "name": "Zahlbegriffsentwicklung"
-    },
     "grade1-number-sense-to-20": {
       "description": "Zählen, Lesen, Schreiben, Vergleichen und Ordnen von Zahlen von 0 bis 20; Mengenverständnis und Zahlbeziehungen",
       "name": "Zahlensinn bis 20"
@@ -83,10 +19,6 @@
     "grade1-patterns-and-data": {
       "description": "Muster erkennen, fortsetzen und erstellen; einfache Daten sammeln und darstellen",
       "name": "Muster und Daten"
-    },
-    "grade1-patterns-and-structures": {
-      "description": "Muster mit Formen, Farben und Zahlen erkennen, fortsetzen und erstellen",
-      "name": "Muster und Strukturen"
     },
     "grade1-plane-shapes": {
       "description": "Grundlegende ebene Figuren identifizieren, benennen und beschreiben",
@@ -128,10 +60,6 @@
       "description": "Multiplikation als wiederholte Addition, Anordnungen, gleiche Gruppen und grundlegendes Einmaleins (2, 5, 10) verstehen",
       "name": "Einführung in die Multiplikation"
     },
-    "grade2-introduction-to-multiplication-and-division": {
-      "description": "Multiplikation als wiederholte Addition und Division als Aufteilen und Verteilen verstehen, mit dem kleinen Einmaleins der 2, 5 und 10",
-      "name": "Einführung in Multiplikation und Division"
-    },
     "grade2-measurement-skills": {
       "description": "Längen messen, Zeit verstehen und Messungen vergleichen",
       "name": "Größen und Messen"
@@ -139,10 +67,6 @@
     "grade2-money-and-currency": {
       "description": "Mit Euro-Münzen und Scheinen bis 100 € rechnen, € und ct Schreibweise verwenden, Geldbeträge addieren und subtrahieren, Wechselgeld berechnen und Einkaufsaufgaben lösen",
       "name": "Geld und Währung"
-    },
-    "grade2-numbers-and-operations-to-100": {
-      "description": "Stellenwertsystem verstehen, Addition und Subtraktion, Zahlen vergleichen, ordnen und runden im Zahlenraum bis 100",
-      "name": "Zahlen und Operationen bis 100"
     },
     "grade2-numbers-to-100": {
       "description": "Stellenwerte mit Zehnern und Einern verstehen, Zahlen bis 100 lesen und schreiben, vergleichen, Hundertertafel und Zahlenstrahl nutzen",
@@ -156,10 +80,6 @@
       "description": "Pyramiden, Kegel und Zylinder erkunden; Netze von 3D-Körpern verstehen; vertiefte Symmetriearbeit",
       "name": "Erweiterte Geometrie"
     },
-    "grade3-all-measurement-domains": {
-      "description": "Einheiten umrechnen und Probleme mit Längen, Massen, Volumen und Zeitspannen lösen",
-      "name": "Alle Größenbereiche"
-    },
     "grade3-area": {
       "description": "Mit Einheitsquadraten bedecken; Flächen vergleichen; Fläche als Messgröße",
       "name": "Einführung in den Flächeninhalt"
@@ -168,21 +88,9 @@
       "description": "Kommutativ-, Assoziativ- und Distributivgesetz verstehen und anwenden, um Berechnungen effizienter zu gestalten",
       "name": "Rechengesetze und Eigenschaften"
     },
-    "grade3-arithmetic-laws-and-patterns": {
-      "description": "Kommutativ-, Assoziativ- und Distributivgesetz verstehen und anwenden; Zahlenfolgen erkennen und erstellen",
-      "name": "Rechengesetze und Zahlenmuster"
-    },
     "grade3-data-and-combinatorics": {
       "description": "Daten sammeln, organisieren und interpretieren; systematisches Zählen und einfache Kombinationen",
       "name": "Daten und Kombinatorik"
-    },
-    "grade3-data-probability-and-combinatorics": {
-      "description": "Daten sammeln und in Diagrammen darstellen, Wahrscheinlichkeit durch Experimente erforschen und alle Möglichkeiten systematisch finden",
-      "name": "Daten, Wahrscheinlichkeit und Kombinatorik"
-    },
-    "grade3-geometry-and-area": {
-      "description": "Eigenschaften geometrischer Figuren, Symmetrie, Zeichnen mit Werkzeugen und Flächenmessung mit Quadratzentimetern",
-      "name": "Geometrie und Flächeninhalt"
     },
     "grade3-length-measurement": {
       "description": "Messen mit mm, cm, m, km; Einheiten umrechnen; Längen schätzen und vergleichen",
@@ -196,10 +104,6 @@
       "description": "Mit Beträgen bis 1000 Euro rechnen, Kommaschreibweise verwenden, mit 100€-, 200€- und 500€-Scheinen arbeiten, mehrstufige Einkaufsaufgaben lösen und Budgetplanung durchführen",
       "name": "Geld - Erweiterte Fähigkeiten"
     },
-    "grade3-multiplication-and-division-mastery": {
-      "description": "Automatisierung des Einmaleins, Division mit Rest und mehrstellige Multiplikationsstrategien",
-      "name": "Multiplikation und Division - Vertiefung"
-    },
     "grade3-multiplication-division-strategies": {
       "description": "Halbschriftliche Verfahren für Multiplikation, Multiplikation mit 10 und 100, Division mit Rest",
       "name": "Multiplikations- und Divisionsstrategien"
@@ -207,10 +111,6 @@
     "grade3-multiplication-tables": {
       "description": "Beherrschung des kleinen Einmaleins (1-10) mit automatischem Abruf und Verständnis der Umkehroperationen (Divisionsaufgaben)",
       "name": "Einmaleins"
-    },
-    "grade3-numbers-and-operations-to-1000": {
-      "description": "Stellenwertsystem, Vergleichen, Ordnen, Runden, Kopf- und halbschriftliche Additions- und Subtraktionsstrategien mit dreistelligen Zahlen",
-      "name": "Zahlen und Operationen bis 1000"
     },
     "grade3-numbers-to-1000": {
       "description": "Stellenwertsystem mit Hundertern, Zehnern und Einern verstehen; Zahlen lesen, schreiben, vergleichen und ordnen; Runden; Zahlenmuster erkennen",
@@ -228,14 +128,6 @@
       "description": "Standardverfahren für mehrstellige Addition und Subtraktion mit Übertrag bzw. Entbündelung",
       "name": "Schriftliche Addition und Subtraktion"
     },
-    "grade4-advanced-geometry": {
-      "description": "Geometrische Konstruktionen, Transformationen, Netze und Körper, Flächen- und Umfangsberechnungen mit Werkzeugen",
-      "name": "Erweiterte Geometrie"
-    },
-    "grade4-algebraic-thinking": {
-      "description": "Terme verstehen, Rechenregeln anwenden, einfache Gleichungen lösen, Variablen nutzen, Teilbarkeit erkennen und funktionale Zusammenhänge beschreiben",
-      "name": "Algebraisches Denken"
-    },
     "grade4-area-perimeter": {
       "description": "Flächeninhalt und Umfang von Rechtecken und Quadraten berechnen; mit Quadrateinheiten arbeiten; Flächeninhalt und Umfang unterscheiden; Textaufgaben mit fehlenden Maßen lösen",
       "name": "Flächeninhalt und Umfang"
@@ -243,10 +135,6 @@
     "grade4-combinatorics": {
       "description": "Alle Möglichkeiten systematisch finden mit Baumdiagrammen, strukturierten Listen und Tabellen, um Kombinations- und Anordnungsprobleme zu lösen",
       "name": "Kombinatorik und systematisches Zählen"
-    },
-    "grade4-data-analysis-and-statistics": {
-      "description": "Diagramme analysieren, arithmetisches Mittel berechnen, Datensätze vergleichen und Wahrscheinlichkeitskonzepte verstehen",
-      "name": "Datenanalyse und Statistik"
     },
     "grade4-data-probability": {
       "description": "Daten aus Umfragen und Experimenten sammeln und organisieren; Balkendiagramme, Piktogramme und Tabellen erstellen und interpretieren; einfache Durchschnittswerte berechnen; Wahrscheinlichkeit und Ereignisse verstehen",
@@ -259,10 +147,6 @@
     "grade4-geometry-spatial": {
       "description": "Eigenschaften von ebenen und räumlichen Figuren; Symmetrie und Linien; räumliches Vorstellungsvermögen; Netze geometrischer Körper; parallele und senkrechte Beziehungen",
       "name": "Geometrie und räumliches Denken"
-    },
-    "grade4-large-numbers": {
-      "description": "Zahlen bis zu einer Million verstehen, Stellenwerte, Runden und Zahlenvergleich",
-      "name": "Große Zahlen"
     },
     "grade4-measurement-units": {
       "description": "Umrechnung zwischen Längen-, Masse-, Volumen- und Zeiteinheiten; Dezimalschreibweise für Größen verstehen; Schätzen und Lösen von Sachaufgaben mit Größen",
@@ -292,10 +176,6 @@
       "description": "Volumen verstehen durch Zählen von Einheitswürfeln und Vergleichen von Volumina dreidimensionaler Körper",
       "name": "Volumen mit Einheitswürfeln"
     },
-    "grade4-written-multiplication-and-division": {
-      "description": "Standardverfahren zum Multiplizieren und Dividieren mehrstelliger Zahlen mit Überschlagsrechnung und Restinterpretation",
-      "name": "Schriftliche Multiplikation und Division"
-    },
     "grade4-written-multiplication-division": {
       "description": "Standardverfahren für schriftliche Multiplikation und Division mehrstelliger Zahlen beherrschen; Wissen, wann welche Operation angewendet wird; Sachaufgaben lösen",
       "name": "Schriftliche Multiplikation und Division"
@@ -304,10 +184,6 @@
       "description": "Winkelarten verstehen, Winkel mit dem Geodreieck messen, Winkel schätzen und Winkelbeziehungen erkennen",
       "name": "Winkel und Winkelmessung"
     },
-    "grade5-area-perimeter": {
-      "description": "Umfang und Flächeninhalt von Rechtecken und Quadraten berechnen, Einheiten verstehen, zwischen Flächeneinheiten umrechnen, praktische Probleme lösen",
-      "name": "Flächeninhalt und Umfang"
-    },
     "grade5-area-perimeter-advanced": {
       "description": "Flächeninhalt und Umfang von Rechtecken, Quadraten, Dreiecken und zusammengesetzten Figuren berechnen",
       "name": "Flächeninhalt und Umfang - Erweitert"
@@ -315,10 +191,6 @@
     "grade5-arithmetic-operations": {
       "description": "Schriftliche Verfahren für alle vier Grundrechenarten, Rechenreihenfolge, Überschlagsrechnung und Ergebnisüberprüfung",
       "name": "Grundrechenarten"
-    },
-    "grade5-coordinate-system-basics": {
-      "description": "Verständnis des kartesischen Koordinatensystems (erstes Quadrant), Plotten und Lesen von Punkten, Beschreibung räumlicher Beziehungen und Positionen, Identifizierung geometrischer Beziehungen und Berechnung von Entfernungen zwischen Punkten",
-      "name": "Koordinatensystem und räumliche Beziehungen"
     },
     "grade5-data-collection-charts": {
       "description": "Daten sammeln, organisieren und mit Tabellen, Balkendiagrammen, Piktogrammen und Liniendiagrammen darstellen",
@@ -336,25 +208,13 @@
       "description": "Brüche mit gleichen und unterschiedlichen Nennern addieren und subtrahieren, Brüche mit ganzen Zahlen multiplizieren und Brüche vollständig kürzen",
       "name": "Rechnen mit Brüchen"
     },
-    "grade5-geometric-shapes-2d": {
-      "description": "Eigenschaften und Klassifizierung grundlegender ebener Figuren wie Dreiecke, Vierecke und Kreise, Symmetrie und geometrische Konstruktionen",
-      "name": "Ebene geometrische Figuren"
-    },
     "grade5-geometry-basics": {
       "description": "Punkte, Geraden, Halbgeraden, Strecken, parallele und senkrechte Linien, und grundlegende geometrische Notation",
       "name": "Geometrische Grundelemente"
     },
-    "grade5-introduction-fractions": {
-      "description": "Brüche als Teile eines Ganzen verstehen, visuelle Darstellung, Vergleich und Ordnung von Brüchen und Erkennung äquivalenter Brüche",
-      "name": "Einführung in Brüche"
-    },
     "grade5-natural-numbers-large": {
       "description": "Natürliche Zahlen über 1 Million verstehen, Stellenwertsystem bis zu Milliarden, Römische Zahlen und Vergleich verschiedener Zahlensysteme",
       "name": "Große natürliche Zahlen"
-    },
-    "grade5-natural-numbers-operations": {
-      "description": "Einführung in das natürliche Zahlensystem, Stellenwertverständnis bis zur Million und Beherrschung der vier Grundrechenarten mit zunehmend großen Zahlen",
-      "name": "Natürliche Zahlen und Grundrechenarten"
     },
     "grade5-negative-numbers": {
       "description": "Einführung in ganze Zahlen, Zahlendarstellung auf dem Zahlenstrahl, Vergleich und Ordnung von ganzen Zahlen und reale Kontexte",
@@ -368,25 +228,13 @@
       "description": "Volumenberechnung mit Formeln, Umrechnung zwischen Kubikeinheiten und Beziehung zwischen Volumen und Hohlmaß",
       "name": "Volumen von Quadern und Würfeln"
     },
-    "grade5-volume-capacity": {
-      "description": "Einführung in dreidimensionale Messung, Volumenberechnung von Quadern, Umrechnung zwischen Volumen- und Hohlmaßeinheiten, praktische Probleme lösen",
-      "name": "Volumen und Rauminhalt"
-    },
     "grade6-angles-advanced": {
       "description": "Winkel präzise messen und zeichnen, Winkelbeziehungen wie Scheitelwinkel, Stufenwinkel und Nebenwinkel erkennen und Winkelhalbierenden konstruieren",
       "name": "Winkel und Winkelbeziehungen"
     },
-    "grade6-area-complex-shapes": {
-      "description": "Berechnung von Flächen von Dreiecken, Parallelogrammen, Trapezen und zusammengesetzten Figuren durch Zerlegung und Formelanwendung, Lösung mehrstufiger Aufgaben und Überprüfung von Berechnungen",
-      "name": "Flächenberechnung zusammengesetzter Figuren"
-    },
     "grade6-area-formulas": {
       "description": "Herleitung und Anwendung von Flächenformeln für Parallelogramme, Dreiecke und Trapeze; Berechnung von Oberflächen einfacher Körper mithilfe von Zerlegungs- und Ergänzungsstrategien",
       "name": "Flächenformeln"
-    },
-    "grade6-circle-geometry": {
-      "description": "Kreisterminologie, Umfangsberechnung (U=πd), Flächenberechnung (A=πr²) und Lösen von realen Problemen mit Kreisen",
-      "name": "Kreis und Kreisberechnungen"
     },
     "grade6-combined-operations": {
       "description": "Termstrukturen, Rechenreihenfolge, Distributivgesetz und mehrstufige Probleme mit Brüchen, Dezimalzahlen und ganzen Zahlen",
@@ -404,14 +252,6 @@
       "description": "Stellenwerte bei Dezimalzahlen verstehen, Runden, Umwandlung zwischen Brüchen und Dezimalzahlen, und Unterscheidung zwischen abbrechenden und periodischen Dezimalzahlen",
       "name": "Dezimalbrüche"
     },
-    "grade6-decimal-numbers": {
-      "description": "Dezimalschreibweise verstehen, Stellenwertsysteme, Operationen mit Dezimalzahlen, Umwandlung zwischen Brüchen und Dezimalzahlen, Runden und Schätzen und Anwendung von Dezimalzahlen in realen Kontexten",
-      "name": "Dezimalzahlen"
-    },
-    "grade6-fraction-operations": {
-      "description": "Umfassende Brucharbeit einschließlich Erweitern, Kürzen, Umwandeln und alle vier Grundrechenarten mit Brüchen",
-      "name": "Bruchrechnung"
-    },
     "grade6-fractions-basics": {
       "description": "Brüche als Teile vom Ganzen interpretieren, Brüche mit verschiedenen Strategien vergleichen, Brüche erweitern und kürzen unter Werterhaltung, Brüche auf Zahlenstrahlen darstellen einschließlich negativer Brüche, und Prozentangaben mit Bruchschreibweise verbinden",
       "name": "Brüche und Bruchzahlen"
@@ -428,14 +268,6 @@
       "description": "Lösen von Alltagsproblemen mit Prozenten, einschließlich Rabatten und Zinsen, Anwendung der Grundgleichung der Prozentrechnung (Grundwert × Prozentsatz = Prozentwert) und Unterscheidung zwischen Prozent und Prozentpunkten",
       "name": "Prozentrechnung"
     },
-    "grade6-percentages-basics": {
-      "description": "Prozent als pro Hundert verstehen, Umwandlung zwischen Brüchen/Dezimalzahlen/Prozenten und grundlegende Prozentrechnungen",
-      "name": "Einführung in Prozentrechnung"
-    },
-    "grade6-probability-basics": {
-      "description": "Wahrscheinlichkeit als Maß für Wahrscheinlichkeit verstehen, experimentelle und theoretische Wahrscheinlichkeit erkunden und einfache Wahrscheinlichkeiten berechnen",
-      "name": "Einführung in Wahrscheinlichkeit"
-    },
     "grade6-proportionality": {
       "description": "Verhältnisse als Vergleiche verstehen, proportionale Beziehungen erkennen, Wertetabellen und Dreisatz anwenden, proportionale von nicht-proportionalen Situationen unterscheiden",
       "name": "Proportionalität und Verhältnisse"
@@ -447,18 +279,6 @@
     "grade6-rational-multiplication-division": {
       "description": "Produkte und Quotienten von Brüchen mit aussagekräftigen Darstellungen berechnen, Kehrwerte zur Division anwenden, Potenzen mit rationalen Basen und natürlichen oder negativen ganzzahligen Exponenten berechnen, und Rechenvorteile zur Vereinfachung nutzen",
       "name": "Multiplikation und Division rationaler Zahlen"
-    },
-    "grade6-ratios-proportions": {
-      "description": "Verständnis von Verhältnissen und proportionalen Beziehungen, Lösen von Proportionen mit Kreuzweise Multiplikation",
-      "name": "Verhältnisse und Proportionen"
-    },
-    "grade6-surface-area-volume": {
-      "description": "Umfassendes Verständnis von Oberfläche und Volumen dreidimensionaler Körper wie Prismen und Zylinder, Berechnung mit Formeln, Arbeit mit Netzen und Lösung praktischer Aufgaben",
-      "name": "Oberfläche und Volumen von Körpern"
-    },
-    "grade6-triangles-quadrilaterals": {
-      "description": "Vertieftes Studium der Eigenschaften von Dreiecken und Vierecken, Klassifizierung nach Winkeln und Seiten, Winkelsummensätze, Kongruenz und Konstruktionstechniken",
-      "name": "Dreiecke und Vierecke"
     },
     "grade6-volume": {
       "description": "Volumenberechnung von Quadern und Prismen mit Formeln, Umrechnung zwischen Volumeneinheiten und Problemlösung durch Zerlegungs- und Ergänzungsstrategien",
@@ -472,25 +292,9 @@
       "description": "Winkeleigenschaften an sich schneidenden Linien, bei parallelen Linien und in Vielecken verstehen",
       "name": "Winkelbeziehungen"
     },
-    "grade7-congruence-similarity-intro": {
-      "description": "Kongruenzbedingungen (SSS, SAS, ASA, AAS) erkunden, Ähnlichkeitskonzepte verstehen, Skalenfaktoren berechnen und auf Landkarten und Maßstabzeichnungen anwenden",
-      "name": "Kongruenz und Ähnlichkeit"
-    },
     "grade7-congruence-triangles": {
       "description": "Kongruenzsätze (SSS, SWS, WSW, SsW) und Konstruktion von Dreiecken aus gegebenen Bestimmungsstücken",
       "name": "Kongruenz und Dreieckskonstruktion"
-    },
-    "grade7-coordinate-system-advanced": {
-      "description": "Beherrschung des Koordinatensystems in allen vier Quadranten, Graphen linearer Beziehungen, Verständnis von Steigung und y-Achsenabschnitt, Graphen von realen Situationen erstellen, Abstände berechnen",
-      "name": "Koordinatensystem und lineare Funktionen"
-    },
-    "grade7-inequalities": {
-      "description": "Verständnis der Ungleichungsnotation, Lösen einfacher Ungleichungen, Darstellung von Lösungsmengen auf Zahlenstrahlen und Arbeit mit Lösungsmengen",
-      "name": "Lineare Ungleichungen"
-    },
-    "grade7-integers-negative-numbers": {
-      "description": "Erweiterung des Zahlensystems auf negative Zahlen, Verständnis des Betragswerts und Operationen mit positiven und negativen Zahlen",
-      "name": "Ganze Zahlen und negative Zahlen"
     },
     "grade7-linear-equations": {
       "description": "Lösen linearer Gleichungen mit einer Variablen durch Äquivalenzumformungen und Waageprinzip, einschließlich Gleichungen mit Klammern, mehrstufigen Gleichungen und einfachen Ungleichungen",
@@ -508,33 +312,17 @@
       "description": "Verständnis der Potenzschreibweise als wiederholte Multiplikation, Anwendung von Potenzgesetzen einschließlich Produktregel, Quotientenregel und Potenz einer Potenz, Vereinfachung von Ausdrücken mit ganzzahligen Exponenten und Arbeiten mit Potenzen von Variablen",
       "name": "Potenzen und Exponenten"
     },
-    "grade7-proportional-relationships": {
-      "description": "Direkte Proportionalität (y=kx) und inverse Proportionalität (y=k/x), Bestimmung der Proportionalitätskonstanten, Anwendung des Dreisatzes, Erstellen und Interpretieren von Graphen",
-      "name": "Proportionale und antiproportionale Zuordnungen"
-    },
     "grade7-proportionality": {
       "description": "Erkennen und Anwenden direkter und indirekter proportionaler Zuordnungen, Erstellen von Wertetabellen, Zeichnen von Graphen proportionaler Funktionen und Unterscheiden zwischen proportionalen und nicht-proportionalen Situationen in realen Kontexten",
       "name": "Proportionalität"
-    },
-    "grade7-rational-numbers": {
-      "description": "Verständnis des Zahlensystems der rationalen Zahlen (ℚ), Operationen mit positiven und negativen Brüchen und Dezimalzahlen, flexible Umwandlungen und komplexe Problemlösungen",
-      "name": "Rationale Zahlen"
     },
     "grade7-statistical-measures": {
       "description": "Arithmetisches Mittel, Median, Modalwert, Spannweite, Quartile und Boxplots berechnen und interpretieren für statistische Datenanalyse und Vergleiche",
       "name": "Statistische Kenngrößen"
     },
-    "grade7-statistics-interpretation": {
-      "description": "Verständnis von Lagemaßen, Datenanalyse und statistisches Denken mit realen Anwendungen",
-      "name": "Datenauswertung und Statistik"
-    },
     "grade7-symmetry-constructions": {
       "description": "Konstruktion symmetrischer Figuren, Mittelsenkrechten, Winkelhalbierenden und geometrischer Ortslinien",
       "name": "Symmetrie und geometrische Konstruktionen"
-    },
-    "grade7-terms-algebraic-expressions": {
-      "description": "Verständnis von Variablen, Schreiben und Interpretieren von algebraischen Ausdrücken, Vereinfachung von Termen mit dem Distributivgesetz und Auswertung von Ausdrücken mit gegebenen Werten",
-      "name": "Terme und algebraische Ausdrücke"
     },
     "grade7-thales-theorem": {
       "description": "Anwendung des Satzes von Thales und seiner Umkehrung zur Identifikation rechter Winkel, Konstruktion von Tangenten und Lösung geometrischer Probleme",
@@ -651,78 +439,6 @@
     "grade9-similarity": {
       "description": "Verständnis von Dreieckssähnlichkeitskriterien, Anwendung des Strahlensatzes, Berechnung proportionaler Strecken und Analyse der Auswirkungen von Skalierungsfaktoren auf Fläche und Volumen",
       "name": "Ähnlichkeit und Proportionalität"
-    },
-    "inequalities": {
-      "description": "Verständnis der Ungleichungsnotation, Lösen einfacher Ungleichungen, Darstellung von Lösungsmengen auf Zahlenstrahlen und Arbeit mit Lösungsmengen",
-      "name": "Lineare Ungleichungen"
-    },
-    "integers-negative-numbers": {
-      "description": "Erweiterung des Zahlensystems auf negative Zahlen, Verständnis des Betragswerts und Operationen mit positiven und negativen Zahlen",
-      "name": "Ganze Zahlen und negative Zahlen"
-    },
-    "introduction-fractions": {
-      "description": "Brüche als Teile eines Ganzen verstehen, visuelle Darstellung, Vergleich und Ordnung von Brüchen und Erkennung äquivalenter Brüche",
-      "name": "Einführung in Brüche"
-    },
-    "introduction-to-multiplication-and-division": {
-      "description": "Multiplikation als wiederholte Addition und Division als Teilen und Gruppieren verstehen, mit Einmaleins für 2, 5 und 10",
-      "name": "Einführung in Multiplikation und Division"
-    },
-    "linear-equations": {
-      "description": "Lösen linearer Gleichungen mit einer Variablen, einschließlich Einstufiger Gleichungen, zweistufiger Gleichungen, Variablen auf beiden Seiten und Textaufgaben",
-      "name": "Lineare Gleichungen"
-    },
-    "measurement-units": {
-      "description": "Arbeiten mit Standardmaßeinheiten für Länge, Masse, Zeit und Geld einschließlich Umwandlungen und praktischer Anwendungen",
-      "name": "Größen und Maßeinheiten"
-    },
-    "multiplication-tables": {
-      "description": "Das kleine Einmaleins von 2×2 bis 10×10 beherrschen und in verschiedenen Kontexten anwenden",
-      "name": "Einmaleins (2-10)"
-    },
-    "natural-numbers-operations": {
-      "description": "Einführung in das natürliche Zahlensystem, Stellenwertverständnis bis zur Million und Beherrschung der vier Grundrechenarten mit zunehmend großen Zahlen",
-      "name": "Natürliche Zahlen und Grundrechenarten"
-    },
-    "percentages-basics": {
-      "description": "Prozent als pro Hundert verstehen, Umwandlung zwischen Brüchen/Dezimalzahlen/Prozenten und grundlegende Prozentrechnungen",
-      "name": "Einführung in Prozentrechnung"
-    },
-    "probability-basics": {
-      "description": "Wahrscheinlichkeit als Maß für Wahrscheinlichkeit verstehen, experimentelle und theoretische Wahrscheinlichkeit erkunden und einfache Wahrscheinlichkeiten berechnen",
-      "name": "Einführung in Wahrscheinlichkeit"
-    },
-    "proportional-relationships": {
-      "description": "Direkte Proportionalität (y=kx) und inverse Proportionalität (y=k/x), Bestimmung der Proportionalitätskonstanten, Anwendung des Dreisatzes, Erstellen und Interpretieren von Graphen",
-      "name": "Proportionale und antiproportionale Zuordnungen"
-    },
-    "rational-numbers": {
-      "description": "Verständnis des Zahlensystems der rationalen Zahlen (ℚ), Operationen mit positiven und negativen Brüchen und Dezimalzahlen, flexible Umwandlungen und komplexe Problemlösungen",
-      "name": "Rationale Zahlen"
-    },
-    "ratios-proportions": {
-      "description": "Verständnis von Verhältnissen und proportionalen Beziehungen, Lösen von Proportionen mit Kreuzweise Multiplikation",
-      "name": "Verhältnisse und Proportionen"
-    },
-    "statistics-interpretation": {
-      "description": "Verständnis von Lagemaßen, Datenanalyse und statistisches Denken mit realen Anwendungen",
-      "name": "Datenauswertung und Statistik"
-    },
-    "surface-area-volume": {
-      "description": "Umfassendes Verständnis von Oberfläche und Volumen dreidimensionaler Körper wie Prismen und Zylinder, Berechnung mit Formeln, Arbeit mit Netzen und Lösung praktischer Aufgaben",
-      "name": "Oberfläche und Volumen von Körpern"
-    },
-    "terms-algebraic-expressions": {
-      "description": "Verständnis von Variablen, Schreiben und Interpretieren von algebraischen Ausdrücken, Vereinfachung von Termen mit dem Distributivgesetz und Auswertung von Ausdrücken mit gegebenen Werten",
-      "name": "Terme und algebraische Ausdrücke"
-    },
-    "triangles-quadrilaterals": {
-      "description": "Vertieftes Studium der Eigenschaften von Dreiecken und Vierecken, Klassifizierung nach Winkeln und Seiten, Winkelsummensätze, Kongruenz und Konstruktionstechniken",
-      "name": "Dreiecke und Vierecke"
-    },
-    "volume-capacity": {
-      "description": "Einführung in dreidimensionale Messung, Volumenberechnung von Quadern, Umrechnung zwischen Volumen- und Hohlmaßeinheiten, praktische Probleme lösen",
-      "name": "Volumen und Rauminhalt"
     },
     "grade10-compound-experiments": {
       "description": "Baumdiagramme, Pfadregeln, Urnenmodelle für mehrstufige Wahrscheinlichkeit",
