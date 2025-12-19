@@ -43,12 +43,19 @@ real_world_context:
   - Engineers determine diagonal bracing lengths needed to stabilize rectangular frames in bridges and buildings
   - Surveyors measure inaccessible distances by creating right triangles and calculating the hypotenuse from known legs
   - Firefighters use ladder safety guidelines based on the Pythagorean theorem to determine safe placement distance from buildings
+  - Television and monitor screen sizes measured diagonally using the Pythagorean theorem
+  - Hikers calculating direct distances versus trail distances on topographic maps
+  - Pilots determining ground distances when accounting for altitude changes
+  - Carpenters cutting roof rafters to the correct length for given rise and run
+  - Soccer players calculating optimal passing distances across rectangular fields
+  - Interior designers planning furniture placement using room diagonal measurements
+  - Drone operators calculating flight paths over rectangular areas
 anti_patterns:
   - Don't assume all triangles are right triangles without verification
   - Avoid problems where the right angle position is ambiguous
   - Don't use the theorem for non-right triangles without justification
   - Avoid calculations requiring radicals beyond square roots
   - Don't present proofs requiring advanced algebra or trigonometry
-version: 1
-version_notes: Initial creation for Grade 9 covering theorem proof, converse, calculations, and applications in 2D and 3D geometry
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

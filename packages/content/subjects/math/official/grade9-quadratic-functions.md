@@ -45,12 +45,19 @@ real_world_context:
   - Physics models the relationship between braking distance and speed as a quadratic function
   - Economics applies quadratic functions to revenue, profit, and cost optimization problems
   - Engineering designs satellite dishes and headlights using parabolic reflectors for signal focusing
+  - Suspension bridge cables forming parabolic curves under uniform load
+  - Water fountain jets following parabolic paths due to gravity
+  - Solar cookers using parabolic mirrors to concentrate sunlight
+  - Skateboard half-pipes designed with parabolic cross-sections
+  - Sound reflectors in amphitheaters using parabolic shapes for acoustics
+  - Telescope mirrors ground to parabolic curves for light focusing
+  - Basketball free-throw arcs optimized for scoring probability
 anti_patterns:
   - Avoid confusing vertex form y = a(x-h)² + k with y = a(x+d)² + e notation
   - Don't mix up the effect of parameter a on opening width vs direction
   - Avoid problems where multiple forms are trivially equivalent without conversion
   - Don't ask for zeros when the discriminant is negative without clarification
   - Avoid real-world contexts ignoring physical constraints (negative values)
-version: 1
-version_notes: Initial version covering German KMK Grade 9 curriculum for quadratic functions
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
