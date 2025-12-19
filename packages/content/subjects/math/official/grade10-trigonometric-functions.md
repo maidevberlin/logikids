@@ -44,12 +44,19 @@ real_world_context:
   - Seasonal temperature variations throughout the year follow sinusoidal patterns with annual periods used in climate modeling
   - Day length varies periodically through the year with a 12-month period, modeled for agricultural planning and solar energy calculations
   - Alternating current in electrical systems oscillates sinusoidally with specific frequency and amplitude for power distribution
+  - Heart rhythms displaying periodic ECG patterns for medical diagnosis
+  - Pendulum swings following sinusoidal motion over time
+  - Radio signal transmission using carrier waves with modulated amplitudes
+  - Ferris wheel rider height varying sinusoidally with rotation
+  - Breathing patterns following periodic expansion and contraction cycles
+  - Stock market seasonal trends modeled with periodic functions
+  - Sunrise and sunset times varying sinusoidally through the year
 anti_patterns:
   - Avoid using radian measure without prior introduction or clear notation
   - Do not use angles beyond one or two periods (0 to 4π) for basic tasks
   - Avoid problems where phase shift and vertical shift are both zero
   - Do not include tangent function (concept focuses on sine and cosine)
   - Avoid frequency values that produce periods longer than 4π
-version: 1
-version_notes: Initial creation for Grade 10 trigonometric functions based on German KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

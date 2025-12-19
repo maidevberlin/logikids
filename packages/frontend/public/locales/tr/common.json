@@ -1,0 +1,446 @@
+{
+  "welcome": {
+    "title": "Logikids'e Hoş Geldin",
+    "personalizedTitle": "Tekrar hoş geldin, {{name}}!",
+    "subtitle": "Matematik ve mantıksal düşünmenin heyecan verici dünyasına yolculuğuna başla!",
+    "personalizedSubtitle": "Öğrenme macerana devam etmeye hazır mısın?",
+    "todayPrompt": "Bugün ne yapmak istersin?",
+    "startButton": "Öğrenmeye Başla",
+    "setupAccount": "Hesabını Kur",
+    "stats": {
+      "streak": "Gün Serisi",
+      "stars": "Yıldızlar",
+      "level": "Seviye",
+      "achievement": "Başarı",
+      "noAchievement": "Devam et!",
+      "streakTooltip": "En az bir görevi tamamladığın ardışık gün sayısı",
+      "levelTooltip": "Tüm derslerdeki ortalama ustalık seviyenin yıldız olarak gösterimi",
+      "achievementTooltip": "Serilere, kusursuz performanslara veya toplam tamamlanan görevlere dayanan en son başarın"
+    },
+    "navigation": {
+      "startLearning": {
+        "title": "Öğrenmeye Başla",
+        "description": "Bir ders seç ve öğrenme yolculuğuna başla"
+      },
+      "continueWith": "{{subject}} ile devam et: {{concept}}",
+      "continueWithSubject": "{{subject}} ile devam et",
+      "continue": {
+        "description": "Kaldığın yerden devam et"
+      },
+      "browseSubjects": {
+        "title": "Derslere Göz At",
+        "description": "Tüm dersleri ve kavramları keşfet"
+      },
+      "progress": {
+        "title": "İlerleme Durumun",
+        "description": "Durumunu gör ve başarılarını takip et"
+      },
+      "practiceMode": {
+        "title": "Alıştırma Modu",
+        "description": "Geliştirilmesi gereken kavramlara odaklan"
+      },
+      "profile": {
+        "title": "Profil",
+        "description": "Hesabını ve ayarlarını yönet"
+      }
+    },
+    "achievements": {
+      "streak3": "3 Günlük Seri",
+      "streak7": "7 Günlük Seri",
+      "streak14": "2 Haftalık Seri",
+      "streak30": "30 Günlük Seri",
+      "perfect5": "5 Kusursuz Görev",
+      "perfect10": "10 Kusursuz Görev",
+      "perfect20": "20 Kusursuz Görev",
+      "noHints5": "İpucu Almadan 5 Görev",
+      "noHints10": "İpucu Almadan 10 Görev",
+      "tasks10": "10 Görev Tamamlandı",
+      "tasks20": "20 Görev Tamamlandı",
+      "tasks50": "50 Görev Tamamlandı",
+      "tasks100": "100 Görev Tamamlandı"
+    }
+  },
+  "onboarding": {
+    "parentalConsent": {
+      "title": "LogiKids'e Hoş Geldiniz",
+      "intro": "LogiKids, çocuğunuz için kişiselleştirilmiş öğrenme görevleri oluşturmak amacıyla yapay zeka kullanmaktadır.",
+      "keyPointsTitle": "Önemli Noktalar",
+      "privacyTitle": "Önce Gizlilik: Verileriniz Sizin",
+      "privacyExplained": "Çoğu uygulamanın aksine, çocuğunuzun tüm verileri yalnızca cihazınızda saklanır. Sıfır bilgi şifreleme kullanıyoruz, yani biz bile verilerinizi göremiyoruz - anahtarlar sadece sizde.",
+      "privacyBackup": "Kolaylık için isteğe bağlı bulut yedekleme mevcuttur, ancak gönderilmeden önce her zaman cihazınızda şifrelenir. Sunucu, anahtarınız olmadan anlamsız olan şifreli veriler saklar.",
+      "aiTitle": "Yapay Zeka Destekli Kişiselleştirilmiş Öğrenme",
+      "aiExplained": "Her görev, çocuğunuzun sınıf seviyesine ve öğrenme hızına uygun olarak yapay zeka tarafından dinamik olarak oluşturulur. İçerik ilerlemeye göre uyarlanarak doğru zamanda doğru zorluk seviyesi sağlanır.",
+      "contentTitle": "Yaşa Uygun Eğitim Odaklı İçerik",
+      "contentExplained": "Yapay zeka yönergelerimiz, çocuğunuzun sınıf seviyesine uygun eğitim içeriği oluşturmak için özel olarak tasarlanmıştır. Yapay zekaya güvenli, öğrenme odaklı içerik oluşturması talimatı versek de, her eğitim aracında olduğu gibi ebeveyn gözetimi öneriyoruz.",
+      "complianceTitle": "GDPR ve AB Yapay Zeka Yasası Uyumlu",
+      "complianceExplained": "GDPR düzenlemeleri ve AB Yapay Zeka Yasası ile tam uyum. Dilediğiniz zaman tüm verilere erişme, dışa aktarma veya silme hakkınız vardır. Hiçbir zaman üçüncü taraflarla veri paylaşımı yapılmaz.",
+      "inviteTitle": "Davet Kodu Gerekli",
+      "inviteExplained": "LogiKids şu anda kapalı beta aşamasındadır. Devam etmek için aldığınız davet kodunu girin.",
+      "invitePlaceholder": "Davet kodunu girin (örn. ABCD-1234)",
+      "consentCheckbox": "Ebeveyn/veli olarak yukarıdaki bilgileri okuduğumu ve anladığımı onaylıyorum. Bu uygulamanın eğitim içeriği oluşturmak için yapay zeka kullandığını anlıyor ve kullanım sırasında uygun ebeveyn gözetimi sağlamayı kabul ediyorum.",
+      "privacyPolicy": "Gizlilik Politikası",
+      "terms": "Kullanım Koşulları",
+      "validating": "Doğrulanıyor...",
+      "continue": "Devam Et"
+    },
+    "studentInfo": {
+      "title": "Profilini oluşturalım!",
+      "subtitle": "Başlamak için bize biraz kendinden bahset",
+      "nameLabel": "İsim",
+      "namePlaceholder": "İsmini gir",
+      "gradeLabel": "Sınıf",
+      "gradeValue": "{{grade}}. Sınıf",
+      "gradeDescription": "Şu anki okul sınıfın",
+      "creating": "Oluşturuluyor...",
+      "create": "Hesap Oluştur"
+    }
+  },
+  "task": {
+    "title": "Görev",
+    "difficulty": "Zorluk",
+    "randomConcept": "Rastgele",
+    "getHint": "İpucu Göster",
+    "getAnotherHint": "Başka İpucu Göster",
+    "skip": "Görevi Atla",
+    "solutionExplanation": "Çözüm Açıklaması",
+    "checkAnswer": "Cevabı Kontrol Et",
+    "nextTask": "Sonraki Görev",
+    "tryAgain": "Tekrar Dene",
+    "yes": "Evet",
+    "no": "Hayır",
+    "selectSubjectConcept": "Ders ve kavram seç",
+    "subjects": "Dersler",
+    "concepts": "Kavramlar",
+    "conceptsFor": "{{subject}} için kavramlar gösteriliyor",
+    "viewAll": "Tümünü Gör",
+    "showAllSubjects": "Tümünü göster →",
+    "showRecommended": "← Önerilenleri göster",
+    "fillInBlanks_one": "{{count}}. boşluğu doldur",
+    "fillInBlanks_other": "{{count}} boşluğu doldur",
+    "enterNumber": "Sayı gir",
+    "unitOptional": "Birim (isteğe bağlı)",
+    "selectUnit": "Uygun birimi seç",
+    "dragToOrder": "Sıralamak için sürükle",
+    "arrowsToOrder": "Sıralamak için ok düğmelerini kullan",
+    "selectCorrectAnswers_one": "{{count}} doğru cevabı seç",
+    "selectCorrectAnswers_other": "{{count}} doğru cevabı seç",
+    "selectedCount": "Seçilen: {{selected}} / {{total}}",
+    "tooManySelected": "Uyarı: Çok fazla seçim yaptın"
+  },
+  "feedback": {
+    "correct": "Doğru!",
+    "incorrect": "Tam doğru değil. Tekrar dene!",
+    "numberCorrectUnitWrong": "Sayı doğru ama birimi kontrol et",
+    "unitCorrectNumberWrong": "Birim doğru ama hesabını kontrol et",
+    "bothWrong": "Tam doğru değil, tekrar dene"
+  },
+  "error": {
+    "tryAgain": "Tekrar Dene",
+    "backToHome": "Ana Sayfaya Dön",
+    "rateLimited": "Başka bir görev oluşturmadan önce lütfen biraz bekle"
+  },
+  "subjects": {
+    "title": "Dersler",
+    "pageTitle": "Dersini Seç",
+    "pageDescription": "Öğrenmeye başlamak için bir ders seç",
+    "error": "Dersler yüklenemedi. Lütfen tekrar dene.",
+    "availableFromGrade": "{{grade}}. sınıftan itibaren",
+    "grade": "{{grade}}. Sınıf",
+    "gradeRange": "{{minGrade}}-{{maxGrade}}. Sınıflar",
+    "random": "Rastgele",
+    "math": {
+      "label": "Matematik",
+      "description": "Matematiksel kavramlar ve problem çözme",
+      "concepts": {
+        "arithmetic": "Temel Aritmetik",
+        "mental_math": "Zihinden Hesap",
+        "word_problems": "Sözel Problemler",
+        "fractions": "Kesirler ve Ondalıklar",
+        "introduction_fractions": "Kesirlere Giriş",
+        "percentages_basics": "Yüzdelere Giriş",
+        "ratios_proportions": "Oran ve Orantı",
+        "decimal_numbers": "Ondalık Sayılar",
+        "geometry": "Geometri",
+        "measurement": "Ölçme ve Birimler",
+        "grade6-percentages-basics": "Yüzdelere Giriş"
+      }
+    },
+    "logic": {
+      "label": "Mantık",
+      "description": "Mantıksal düşünme ve problem çözme",
+      "concepts": {
+        "patterns": "Örüntü Tanıma",
+        "conditional": "Eğer-O Halde Mantığı",
+        "sorting": "Sıralama ve Gruplama",
+        "sequences": "Mantıksal Diziler",
+        "analogical": "Analojik Düşünme",
+        "deductive": "Tümdengelimli Akıl Yürütme"
+      }
+    },
+    "music": {
+      "label": "Müzik",
+      "description": "Müzikal kavramlar ve anlayış",
+      "concepts": {
+        "rhythm": "Ritim Tanıma",
+        "melody": "Melodi Kalıpları"
+      }
+    },
+    "physics": {
+      "label": "Fizik",
+      "description": "Evrenimizi yöneten temel yasaları öğren",
+      "concepts": {
+        "mechanics": "Mekanik",
+        "waves": "Dalgalar",
+        "matter": "Madde"
+      }
+    },
+    "german": {
+      "label": "Almanca",
+      "description": "Almanca dil öğrenimi ve anlama",
+      "concepts": {
+        "parts_of_speech": "Sözcük Türleri",
+        "spelling": "Yazım",
+        "reading_comprehension": "Okuduğunu Anlama"
+      }
+    },
+    "english": {
+      "label": "İngilizce",
+      "description": "İngilizce dil öğrenimi ve anlama",
+      "concepts": {}
+    },
+    "surpriseMe": {
+      "title": "Beni Şaşırt!",
+      "description": "Rastgele bir öğrenme macerasına atla",
+      "emoji": "🎲"
+    }
+  },
+  "concepts": {
+    "subjectNotFound": "Ders bulunamadı",
+    "noConcepts": "Bu ders için kavram bulunmuyor.",
+    "noConceptsForGrade": "Sınıfın için kavram bulunmuyor. \"Tüm Kavramları Göster\"i dene.",
+    "showAdvanced": "Tüm Kavramları Göster",
+    "hideAdvanced": "Sadece Sınıfa Uygun Olanları Göster",
+    "startLearning": "Öğrenmeye başla",
+    "advanced": "İleri Düzey",
+    "gradeLabel": "{{grade}}. Sınıf",
+    "tabs": {
+      "school": "Okul",
+      "fun": "Eğlence"
+    },
+    "search": {
+      "placeholder": "Kavram ara...",
+      "noResults": "'{{query}}' için kavram bulunamadı"
+    },
+    "gradeGroup": {
+      "gradeN": "{{grade}}. Sınıf",
+      "other": "Diğer"
+    },
+    "surpriseMe": {
+      "title": "Beni Şaşırt!",
+      "description": "Rastgele bir kavram dene",
+      "emoji": "✨"
+    }
+  },
+  "practice": {
+    "title": "Alıştırma Modu",
+    "subtitle": "Geliştirilmesi gereken kavramlara odaklan",
+    "empty": {
+      "title": "Harika İş!",
+      "description": "Şu anda alıştırma yapman gereken kavram yok. Mükemmel çalışmaya devam et!",
+      "button": "Daha Fazla Ders Keşfet"
+    },
+    "metrics": {
+      "success": "Başarı",
+      "avgTime": "Ort. Süre",
+      "hintsPerTask": "İpucu/Görev",
+      "attempts": "Deneme"
+    },
+    "suggested": "Önerilen:",
+    "browseAll": "Veya tüm derslere göz at",
+    "reasons": {
+      "lowSuccessRate": "düşük başarı oranı",
+      "takingTooLong": "çok uzun sürüyor",
+      "usingManyHints": "çok fazla ipucu kullanılıyor",
+      "buildingMastery": "Ustalık geliştiriliyor",
+      "needsWork": "Çalışma gerekiyor: {{issues}}"
+    }
+  },
+  "difficulty": {
+    "easy": "Kolay",
+    "medium": "Orta",
+    "hard": "Zor",
+    "levelUp": {
+      "medium": "Orta seviyeye yükseldin!",
+      "hard": "Zor seviyeye yükseldin!"
+    },
+    "levelDown": {
+      "medium": "Orta seviyeye döndün - yapabilirsin!",
+      "easy": "Kolay seviyeye döndün - pratik mükemmelleştirir!"
+    },
+    "achievement": {
+      "masteringHard": "Zor seviyede ustalaşıyorsun! Devam et!",
+      "practicingEasy": "Pratik yapmaya devam et - öğreniyorsun!"
+    }
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "continue": "Devam Et",
+    "back": "Geri"
+  },
+  "welcomeChoice": {
+    "title": "Logikids'e Hoş Geldin",
+    "subtitle": "Nasıl başlamak istediğini seç",
+    "newAccount": {
+      "title": "Davet Kodum Var",
+      "description": "Yeni bir hesapla başla",
+      "inviteLabel": "Davet Kodu",
+      "invitePlaceholder": "Davet kodunu gir",
+      "validating": "Doğrulanıyor...",
+      "continue": "Devam Et",
+      "invalidCode": "Geçersiz davet kodu",
+      "validationError": "Davet kodu doğrulanamadı"
+    },
+    "import": {
+      "title": "Mevcut Hesabı İçe Aktar",
+      "description": "Kurtarma kitinden geri yükle",
+      "uploadPDF": "Kurtarma Kiti PDF'ini Yükle",
+      "uploadPDFDescription": "Hesabını geri yüklemek için kurtarma kiti PDF dosyanı seç",
+      "scanQR": "Kamera ile QR Kod Tara",
+      "scanQRDescription": "Kameranı kurtarma kitindeki QR koda doğrult",
+      "manualCode": "Yedekleme Kodunu Manuel Gir",
+      "invalidFileType": "Lütfen bir PDF dosyası seç",
+      "pdfParseError": "PDF dosyası işlenemedi",
+      "noBackupCodeFound": "PDF'de yedekleme kodu bulunamadı",
+      "processingPDF": "PDF işleniyor...",
+      "clickToUpload": "PDF dosyası yüklemek için tıkla",
+      "pdfHint": "Logikids Kurtarma Kiti PDF'ini seç",
+      "invalidQR": "Geçersiz QR kod",
+      "cameraError": "Kameraya erişilemiyor",
+      "startCamera": "Kamerayı başlatmak için dokun",
+      "initializingCamera": "Kamera başlatılıyor...",
+      "cancel": "İptal",
+      "invalidBackupFormat": "Geçersiz yedekleme kodu formatı",
+      "corruptedBackupCode": "Yedekleme kodu bozuk veya eksik görünüyor",
+      "invalidBackupCode": "Geçersiz yedekleme kodu",
+      "enterCode": "Lütfen bir yedekleme kodu gir",
+      "importFailed": "İçe aktarma başarısız",
+      "manualCodeDescription": "Kurtarma kitinden yedekleme kodunu yapıştır",
+      "backupCode": "Yedekleme Kodu",
+      "importing": "İçe aktarılıyor...",
+      "import": "İçe Aktar"
+    }
+  },
+  "footer": {
+    "allRightsReserved": "Tüm hakları saklıdır.",
+    "privacyPolicy": "Gizlilik Politikası",
+    "impressum": "Yasal Uyarı"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "intro": {
+        "title": "Giriş",
+        "paragraph1": "Logikids'te gizliliğinizi ciddiye alıyoruz. Bu Gizlilik Politikası, eğitim platformumuzda verileri nasıl işlediğimizi açıklar.",
+        "paragraph2": "Temel ilkemiz: Verileriniz cihazınızda kalır. Nokta."
+      },
+      "dataCollection": {
+        "title": "Veri Depolama: Varsayılan Olarak Yerel Öncelikli",
+        "description": "Logikids, gizlilik temel alınarak inşa edilmiştir:",
+        "localOnly": {
+          "title": "Veriler Cihazınızdan Çıkmaz (Varsayılan)",
+          "description": "Varsayılan olarak, çocuğunuzun TÜM verileri - isim, öğrenme ilerlemesi, tercihler ve hesap bilgileri - YALNIZCA cihazınızda saklanır. Sunucularımıza veya herhangi bir üçüncü tarafa hiçbir şey gönderilmez. Uygulama tamamen çevrimdışı çalışır."
+        },
+        "noTracking": {
+          "title": "Analitik veya İzleme Yok",
+          "description": "Analitik, izleme çerezleri veya herhangi bir üçüncü taraf izleme hizmeti kullanmıyoruz. Davranışsal veri, IP adresi veya gezinme kalıpları toplamıyoruz. Asla."
+        },
+        "encrypted": {
+          "title": "İsteğe Bağlı Bulut Yedekleme (Varsayılan Kapalı)",
+          "description": "Ayarlardan verilerinizi cihazlar arasında senkronize etmek için İSTEĞE BAĞLI olarak bulut yedeklemeyi etkinleştirebilirsiniz. Bu varsayılan olarak KAPALIDIR. Etkinleştirmeyi seçerseniz, tüm veriler sunucularımıza gönderilmeden önce cihazınızda şifrelenir. Sadece şifreleme anahtarınız olmadan anlamsız olan şifreli veriler saklarız."
+        }
+      },
+      "encryption": {
+        "title": "İsteğe Bağlı Bulut Yedekleme Nasıl Çalışır",
+        "paragraph1": "Ayarlarda bulut yedeklemeyi açıkça etkinleştirirseniz, tüm veriler iletilmeden önce cihazınızda güçlü şifreleme kullanılarak şifrelenir. Şifreleme anahtarınız asla cihazınızdan ayrılmaz ve asla sunucularımıza gönderilmez.",
+        "paragraph2": "Bu sıfır bilgi yaklaşımı, sunucularımız tehlikeye girse bile verilerinizin güvende kalacağı anlamına gelir çünkü yalnızca sizin sahip olduğunuz anahtarlarla şifrelenir. Verilerinizi okuyamaz, erişemez veya şifresini çözemeyiz."
+      },
+      "aiUsage": {
+        "title": "Yapay Zeka ile Oluşturulan İçerik (Kişisel Veri Gönderilmez)",
+        "paragraph1": "Logikids, çocuğunuz için kişiselleştirilmiş eğitim görevleri oluşturmak amacıyla yapay zeka (yerel olarak barındırılan Ollama veya OpenAI) kullanır. Görevler oluşturulurken yapay zeka sağlayıcısına YALNIZCA gerekli bağlamı (ders, zorluk seviyesi, sınıf seviyesi) göndeririz.",
+        "paragraph2": "Çocuğunuz hakkında hiçbir kişisel bilgi yapay zeka sağlayıcısına gönderilmez. Yalnızca ders, zorluk seviyesi ve sınıf seviyesi göndeririz. Görev oluşturma tamamen durumsuz ve anonimdir."
+      },
+      "gdprRights": {
+        "title": "GDPR Haklarınız",
+        "description": "GDPR kapsamında aşağıdaki haklara sahipsiniz:",
+        "access": {
+          "title": "Erişim Hakkı",
+          "description": "Tüm verileriniz zaten cihazınızdadır. Hesap ayarları üzerinden istediğiniz zaman kurtarma kiti (QR kodlu PDF) olarak dışa aktarabilirsiniz."
+        },
+        "export": {
+          "title": "Dışa Aktarma Hakkı",
+          "description": "Verilerinizi başka bir cihaza aktarmak veya çevrimdışı yedek olarak saklamak için kurtarma kiti olarak dışa aktarabilirsiniz."
+        },
+        "deletion": {
+          "title": "Silme Hakkı",
+          "description": "Hesap ayarları üzerinden yerel verilerinizi istediğiniz zaman silebilirsiniz. Bulut yedeklemeyi etkinleştirdiyseniz, sunucularımızdan şifreli yedeğin silinmesini de talep edebilirsiniz."
+        },
+        "portability": {
+          "title": "Veri Taşınabilirliği",
+          "description": "Verileriniz kurtarma kiti aracılığıyla tamamen taşınabilirdir, cihazlar arasında aktarmanıza veya çevrimdışı yedekler tutmanıza olanak tanır. Satıcı bağımlılığı yoktur."
+        }
+      },
+      "dataRetention": {
+        "title": "Veri Saklama",
+        "description": "Verileriniz, uygulamayı yüklü tuttuğunuz sürece cihazınızda kalır. İsteğe bağlı bulut yedeklemeyi etkinleştirdiyseniz, şifreli yedekler açıkça silme talep edene kadar sunucularımızda tutulur. Etkinliği izlemiyoruz veya otomatik silme politikaları uygulamıyoruz. Tam kontrol sizdedir ve verilerinizi istediğiniz zaman silebilirsiniz."
+      },
+      "thirdParty": {
+        "title": "Üçüncü Taraf Veri Paylaşımı",
+        "description": "Kişisel verilerinizi asla üçüncü taraflarla paylaşmıyor, satmıyor veya aktarmıyoruz. Nokta. Verileriniz cihazınızda kalır. Kullandığımız tek harici hizmet, görev oluşturma için yapay zeka sağlayıcısıdır ve yalnızca anonim, kimlik belirleyici olmayan bağlam verileri göndeririz (ders, zorluk seviyesi, sınıf seviyesi - asla isim veya kişisel bilgi)."
+      },
+      "changes": {
+        "title": "Bu Politikadaki Değişiklikler",
+        "description": "Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Herhangi bir değişiklik, güncellenmiş revizyon tarihiyle bu sayfada yayınlanacaktır. Değişikliklerden sonra Logikids'i kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir."
+      },
+      "contact": {
+        "title": "Bize Ulaşın",
+        "description": "Bu Gizlilik Politikası veya verileriniz hakkında sorularınız varsa, lütfen Yasal Uyarı (Impressum) bölümünde sağlanan bilgiler aracılığıyla bizimle iletişime geçin."
+      }
+    },
+    "impressum": {
+      "title": "Yasal Uyarı (Impressum)",
+      "provider": {
+        "title": "Hizmet Sağlayıcı",
+        "name": "İsim/Şirket",
+        "address": "Adres",
+        "city": "Şehir, Posta Kodu",
+        "country": "Ülke"
+      },
+      "contact": {
+        "title": "İletişim Bilgileri",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "optional": "isteğe bağlı"
+      },
+      "responsible": {
+        "title": "İçerikten Sorumlu",
+        "description": "§ 55 Abs. 2 RStV'ye göre bu web sitesinin içeriğinden sorumlu:"
+      },
+      "disclaimer": {
+        "title": "Sorumluluk Reddi",
+        "content": {
+          "title": "İçerik Sorumluluğu",
+          "description": "Sayfalarımızın içeriği en büyük özenle oluşturulmuştur. Ancak içeriğin doğruluğunu, tamlığını veya güncelliğini garanti edemeyiz. Hizmet sağlayıcı olarak, bu sayfalardaki kendi içeriklerimizden genel yasalar kapsamında sorumluyuz. Ancak iletilen veya depolanan üçüncü taraf bilgilerini izlemek veya yasadışı faaliyetlere işaret eden koşulları araştırmakla yükümlü değiliz."
+        },
+        "links": {
+          "title": "Bağlantı Sorumluluğu",
+          "description": "Web sitemiz, içerikleri üzerinde kontrolümüz olmayan harici üçüncü taraf web sitelerine bağlantılar içermektedir. Bu nedenle bu üçüncü taraf içerikleri için herhangi bir sorumluluk kabul edemeyiz. Bağlantı verilen sayfaların içeriğinden her zaman ilgili sağlayıcı veya operatör sorumludur."
+        }
+      },
+      "euDispute": {
+        "title": "AB Uyuşmazlık Çözümü",
+        "paragraph1": "Avrupa Komisyonu, çevrimiçi uyuşmazlık çözümü (OS) için bir platform sağlamaktadır.",
+        "paragraph2": "Platforma şu adresten ulaşabilirsiniz:"
+      }
+    }
+  }
+}

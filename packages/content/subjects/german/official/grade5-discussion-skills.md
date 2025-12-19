@@ -44,12 +44,19 @@ real_world_context:
   - Taking on the moderator role in a class meeting to ensure everyone gets a turn to speak
   - Listening attentively to classmates' presentations and asking thoughtful follow-up questions
   - Contributing to literature circle discussions by building on peers' interpretations of characters
+  - Facilitating team strategy discussions during sports games or collaborative playground activities
+  - Participating in family councils to discuss vacation plans, house rules, or weekend activities
+  - Engaging in science class discussions about experimental results and hypothesis evaluation
+  - Contributing to student council meetings about school improvement ideas or event planning
+  - Discussing ethical dilemmas in fictional scenarios like sharing resources or helping others
+  - Moderating peer mediation sessions to help classmates resolve misunderstandings respectfully
+  - Participating in environmental club discussions about recycling initiatives or nature conservation
 anti_patterns:
   - Avoid topics requiring specialized knowledge beyond 10-11 year experience
   - Don't expect formal debate structures or parliamentary procedures
   - Avoid conflicts requiring sophisticated emotional intelligence or ethics
   - Don't include discussions with more than 6 distinct speaking roles
   - Avoid abstract topics - focus on concrete scenarios familiar to grade 5 students
-version: 1
-version_notes: Initial concept for German Grade 5 discussion skills based on Berlin-Brandenburg Rahmenlehrplan Niveaustufe C-D (Gespräche führen)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

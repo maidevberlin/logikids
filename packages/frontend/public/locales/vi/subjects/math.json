@@ -1,0 +1,456 @@
+{
+  "concepts": {
+    "grade1-addition-subtraction-to-20": {
+      "description": "Cộng và trừ các số trong phạm vi 20, bao gồm vượt qua số mười, họ số học và các chiến lược tính nhẩm",
+      "name": "Cộng và trừ đến 20"
+    },
+    "grade1-length-measurement": {
+      "description": "So sánh độ dài, sắp xếp đồ vật theo kích thước và đo lường bằng đơn vị không chuẩn",
+      "name": "Đo độ dài"
+    },
+    "grade1-time-concepts": {
+      "description": "Đọc đồng hồ theo giờ, hiểu các ngày trong tuần và sử dụng từ vựng thời gian cơ bản",
+      "name": "Khái niệm thời gian"
+    },
+    "grade1-money": {
+      "description": "Nhận biết tiền xu và tiền giấy, đếm tiền và giải các bài toán mua hàng đơn giản",
+      "name": "Tiền"
+    },
+    "grade1-number-sense-to-20": {
+      "description": "Đếm, đọc, viết, so sánh và sắp xếp các số từ 0 đến 20; hiểu số lượng và mối quan hệ số",
+      "name": "Giác quan số đến 20"
+    },
+    "grade1-patterns-and-data": {
+      "description": "Nhận biết, tiếp tục và tạo mẫu; thu thập và biểu diễn dữ liệu đơn giản",
+      "name": "Mẫu và dữ liệu"
+    },
+    "grade1-plane-shapes": {
+      "description": "Xác định, đặt tên và mô tả các hình 2D cơ bản",
+      "name": "Hình phẳng"
+    },
+    "grade1-probability-basics": {
+      "description": "Hiểu cơ hội và khả năng sử dụng từ vựng như chắc chắn, có thể và không thể qua các tình huống hàng ngày đơn giản",
+      "name": "Cơ bản về xác suất"
+    },
+    "grade1-solid-shapes": {
+      "description": "Xác định và đặt tên các hình 3D (hình lập phương, hình cầu, hình trụ, hình nón, hình hộp chữ nhật) và liên hệ chúng với các vật thể trong thế giới thực",
+      "name": "Hình khối"
+    },
+    "grade1-spatial-orientation": {
+      "description": "Hiểu và sử dụng từ vị trí để mô tả vị trí và làm theo hướng dẫn",
+      "name": "Định hướng không gian"
+    },
+    "grade1-symmetry": {
+      "description": "Nhận biết đối xứng trục qua hoạt động gấp và gương, xác định các hình đối xứng và tạo các mẫu đối xứng",
+      "name": "Đối xứng"
+    },
+    "grade2-addition-subtraction-to-100": {
+      "description": "Cộng và trừ các số trong phạm vi 100 bằng các chiến lược tính nhẩm, có và không có nhóm lại, và giải các bài toán lời văn nhiều bước",
+      "name": "Cộng và trừ đến 100"
+    },
+    "grade2-geometry-and-symmetry": {
+      "description": "Làm sâu sắc hiểu biết về các hình 2D và 3D, xác định và tạo các hình đối xứng, và làm việc với các trục đối xứng",
+      "name": "Hình học và đối xứng"
+    },
+    "grade2-introduction-to-chance": {
+      "description": "Hiểu các sự kiện chắc chắn, có thể và không thể qua các thí nghiệm đơn giản",
+      "name": "Giới thiệu về cơ hội"
+    },
+    "grade2-introduction-to-division": {
+      "description": "Hiểu phép chia qua các chiến lược chia sẻ và nhóm, kết nối với phép nhân và xây dựng các phép chia cơ bản",
+      "name": "Giới thiệu về phép chia"
+    },
+    "grade2-introduction-to-multiplication": {
+      "description": "Hiểu phép nhân như phép cộng lặp lại, mảng, nhóm bằng nhau và bảng nhân cơ bản (2, 5, 10)",
+      "name": "Giới thiệu về phép nhân"
+    },
+    "grade2-measurement-skills": {
+      "description": "Đo độ dài, hiểu thời gian và so sánh các phép đo",
+      "name": "Kỹ năng đo lường"
+    },
+    "grade2-money-and-currency": {
+      "description": "Làm việc với tiền xu và tiền giấy Euro đến 100€, sử dụng ký hiệu € và ct, cộng và trừ số tiền, tính tiền thối và giải các bài toán mua sắm",
+      "name": "Tiền và tiền tệ"
+    },
+    "grade2-numbers-to-100": {
+      "description": "Hiểu giá trị vị trí với hàng chục và hàng đơn vị, đọc, viết, so sánh số đến 100, sử dụng bảng trăm và trục số",
+      "name": "Số đến 100"
+    },
+    "grade2-patterns-and-data-representation": {
+      "description": "Chuỗi số; thu thập dữ liệu; biểu đồ kiểm đếm; biểu đồ cột đơn giản; diễn giải dữ liệu",
+      "name": "Mẫu và biểu diễn dữ liệu"
+    },
+    "grade3-advanced-geometry": {
+      "description": "Khám phá hình chóp, hình nón và hình trụ; hiểu các mô hình mở rộng của hình 3D; công việc đối xứng sâu hơn",
+      "name": "Hình học nâng cao"
+    },
+    "grade3-area": {
+      "description": "Phủ bằng ô vuông đơn vị; so sánh diện tích; diện tích như phép đo",
+      "name": "Giới thiệu về diện tích"
+    },
+    "grade3-arithmetic-laws": {
+      "description": "Hiểu và áp dụng các tính chất giao hoán, kết hợp và phân phối để tính toán hiệu quả hơn",
+      "name": "Quy luật và tính chất số học"
+    },
+    "grade3-data-and-combinatorics": {
+      "description": "Thu thập, tổ chức và diễn giải dữ liệu; đếm có hệ thống và tổ hợp đơn giản",
+      "name": "Dữ liệu và tổ hợp"
+    },
+    "grade3-length-measurement": {
+      "description": "Đo bằng mm, cm, m, km; chuyển đổi đơn vị; ước lượng và so sánh độ dài",
+      "name": "Đo độ dài"
+    },
+    "grade3-measurement-mass-volume": {
+      "description": "Hiểu và làm việc với gram, kilogram, mililit và lít qua đo lường, so sánh và chuyển đổi",
+      "name": "Đo lường - Khối lượng và thể tích"
+    },
+    "grade3-money-advanced": {
+      "description": "Làm việc với số tiền lên đến 1000 Euro, sử dụng ký hiệu thập phân, xử lý tiền giấy 100€, 200€ và 500€, giải các bài toán mua sắm nhiều bước và lập kế hoạch ngân sách",
+      "name": "Kỹ năng tiền tệ nâng cao"
+    },
+    "grade3-multiplication-division-strategies": {
+      "description": "Phương pháp nửa viết cho phép nhân, nhân với 10 và 100, và phép chia có dư",
+      "name": "Chiến lược nhân và chia"
+    },
+    "grade3-multiplication-tables": {
+      "description": "Thành thạo tất cả bảng nhân 1-10 với khả năng nhớ tự động và hiểu các phép toán nghịch đảo (phép chia)",
+      "name": "Bảng nhân"
+    },
+    "grade3-numbers-to-1000": {
+      "description": "Hiểu giá trị vị trí với hàng trăm, hàng chục và hàng đơn vị; đọc, viết, so sánh và sắp xếp số; làm tròn; nhận biết mẫu số",
+      "name": "Số đến 1000"
+    },
+    "grade3-perimeter": {
+      "description": "Tính chu vi của các hình bằng cách cộng độ dài các cạnh; làm việc với hình chữ nhật, hình vuông, tam giác và đa giác",
+      "name": "Chu vi"
+    },
+    "grade3-time-and-duration": {
+      "description": "Đọc đồng hồ, tính khoảng thời gian, hiểu mối quan hệ lịch và làm việc với các đơn vị thời gian",
+      "name": "Thời gian và khoảng thời gian"
+    },
+    "grade3-written-addition-and-subtraction": {
+      "description": "Thuật toán chuẩn cho phép cộng và trừ nhiều chữ số có nhóm lại",
+      "name": "Cộng và trừ viết"
+    },
+    "grade4-area-perimeter": {
+      "description": "Tính diện tích và chu vi của hình chữ nhật và hình vuông; sử dụng đơn vị vuông; phân biệt giữa diện tích và chu vi; giải các bài toán lời văn với kích thước thiếu",
+      "name": "Diện tích và chu vi"
+    },
+    "grade4-combinatorics": {
+      "description": "Tìm tất cả các khả năng có hệ thống bằng sơ đồ cây, danh sách tổ chức và bảng để giải các bài toán tổ hợp và sắp xếp",
+      "name": "Tổ hợp và đếm có hệ thống"
+    },
+    "grade4-data-probability": {
+      "description": "Thu thập và tổ chức dữ liệu từ khảo sát và thí nghiệm; tạo và diễn giải biểu đồ cột, biểu đồ tranh và bảng; tính trung bình đơn giản; hiểu khả năng và các sự kiện xác suất",
+      "name": "Phân tích dữ liệu và xác suất"
+    },
+    "grade4-fractions": {
+      "description": "Hiểu phân số như các phần của một tổng thể, ký hiệu phân số, biểu diễn trực quan, so sánh và sắp xếp phân số với cùng mẫu số, nhận biết phân số tương đương và áp dụng phân số trong các ngữ cảnh hàng ngày",
+      "name": "Giới thiệu về phân số"
+    },
+    "grade4-geometry-spatial": {
+      "description": "Tính chất của các hình 2D và 3D; đối xứng và đường thẳng; hình dung không gian; mô hình mở rộng của các khối hình học; mối quan hệ song song và vuông góc",
+      "name": "Hình học và lập luận không gian"
+    },
+    "grade4-measurement-units": {
+      "description": "Chuyển đổi giữa các đơn vị độ dài, khối lượng, thể tích và thời gian; hiểu ký hiệu thập phân cho các phép đo; ước lượng và giải các bài toán lời văn với các phép đo",
+      "name": "Đo lường và chuyển đổi đơn vị"
+    },
+    "grade4-money-decimals": {
+      "description": "Hiểu ký hiệu euro và cent với số thập phân; cộng, trừ và nhân số tiền; tính tiền thối và tính tổng; so sánh giá cả và chuyển đổi giữa euro và cent",
+      "name": "Tiền và ký hiệu thập phân"
+    },
+    "grade4-numbers-to-million": {
+      "description": "Hiểu giá trị vị trí với sáu chữ số; đọc, viết, so sánh và sắp xếp số; làm tròn đến hàng nghìn và hơn thế; nhận biết mẫu trong số lớn",
+      "name": "Số đến 1,000,000"
+    },
+    "grade4-patterns-equations": {
+      "description": "Nhận biết và mở rộng mẫu số, tìm quy tắc chuỗi, hiểu biến là trình giữ chỗ, giải các phương trình một bước đơn giản và mô tả các mối quan hệ toán học",
+      "name": "Mẫu và phương trình đơn giản"
+    },
+    "grade4-scale-maps": {
+      "description": "Đọc và tạo sơ đồ mặt bằng và bản đồ; hiểu tỷ lệ như một tỷ số; tính khoảng cách thực từ khoảng cách trên bản đồ; định hướng không gian và phương hướng",
+      "name": "Tỷ lệ và bản đồ"
+    },
+    "grade4-time-calendar": {
+      "description": "Đọc đồng hồ analog và kỹ thuật số ở định dạng 24 giờ; chuyển đổi giữa các đơn vị thời gian; tính thời gian và thời gian trôi qua; làm việc với lịch bao gồm ngày, tuần, tháng và năm",
+      "name": "Thời gian và lịch"
+    },
+    "grade4-volume-unit-cubes": {
+      "description": "Hiểu thể tích bằng cách đếm khối đơn vị và so sánh thể tích của các hình 3D",
+      "name": "Thể tích với khối đơn vị"
+    },
+    "grade4-written-multiplication-division": {
+      "description": "Thành thạo các thuật toán viết chuẩn cho phép nhân và chia nhiều chữ số; hiểu khi nào áp dụng mỗi phép toán; giải các bài toán thế giới thực",
+      "name": "Nhân và chia viết"
+    },
+    "grade5-angles": {
+      "description": "Hiểu các loại góc, đo góc bằng thước đo góc, ước lượng góc và nhận biết mối quan hệ góc",
+      "name": "Góc và đo lường"
+    },
+    "grade5-area-perimeter-advanced": {
+      "description": "Tính diện tích và chu vi của hình chữ nhật, hình vuông, tam giác và các hình hợp",
+      "name": "Diện tích và chu vi - Nâng cao"
+    },
+    "grade5-arithmetic-operations": {
+      "description": "Phương pháp viết cho tất cả bốn phép toán, thứ tự các phép toán, ước lượng và xác minh",
+      "name": "Các phép toán số học"
+    },
+    "grade5-data-collection-charts": {
+      "description": "Thu thập, tổ chức và biểu diễn dữ liệu bằng bảng, biểu đồ cột, biểu đồ tranh và biểu đồ đường",
+      "name": "Thu thập dữ liệu và biểu đồ"
+    },
+    "grade5-decimals": {
+      "description": "Hiểu giá trị vị trí thập phân, chuyển đổi giữa phân số và số thập phân, thực hiện các phép toán với số thập phân và làm tròn",
+      "name": "Số thập phân"
+    },
+    "grade5-divisibility-prime-numbers": {
+      "description": "Áp dụng quy tắc chia hết cho 2, 3, 5, 9 và 10, xác định số nguyên tố và hợp số, thực hiện phân tích thừa số nguyên tố bằng cây thừa số và xác định ƯC và BC của các số",
+      "name": "Chia hết và số nguyên tố"
+    },
+    "grade5-fractions-operations": {
+      "description": "Cộng và trừ phân số với cùng và khác mẫu số, nhân phân số với số nguyên và đơn giản hóa phân số về dạng tối giản",
+      "name": "Phép toán với phân số"
+    },
+    "grade5-geometry-basics": {
+      "description": "Điểm, đường thẳng, tia, đoạn thẳng, đường song song và vuông góc và ký hiệu hình học cơ bản",
+      "name": "Các yếu tố hình học cơ bản"
+    },
+    "grade5-natural-numbers-large": {
+      "description": "Hiểu số tự nhiên vượt quá 1 triệu, giá trị vị trí đến hàng tỷ, số La Mã và so sánh các hệ thống số khác nhau",
+      "name": "Số tự nhiên lớn"
+    },
+    "grade5-negative-numbers": {
+      "description": "Giới thiệu về số nguyên, biểu diễn trên trục số, so sánh và sắp xếp số nguyên và các ngữ cảnh thế giới thực",
+      "name": "Số âm"
+    },
+    "grade5-units-measurement": {
+      "description": "Chuyển đổi đơn vị metric nâng cao, tính toán với đơn vị hỗn hợp và chọn đơn vị đo phù hợp cho các ngữ cảnh khác nhau",
+      "name": "Đơn vị và đo lường"
+    },
+    "grade5-volume": {
+      "description": "Tính thể tích bằng công thức, chuyển đổi giữa các đơn vị khối và liên hệ thể tích với dung tích",
+      "name": "Thể tích của hình hộp chữ nhật và hình lập phương"
+    },
+    "grade6-angles-advanced": {
+      "description": "Đo và vẽ góc chính xác, xác định mối quan hệ góc bao gồm góc đối đỉnh, góc tương ứng và góc kề và dựng đường phân giác góc",
+      "name": "Góc và mối quan hệ góc"
+    },
+    "grade6-area-formulas": {
+      "description": "Suy ra và áp dụng công thức diện tích cho hình bình hành, tam giác và hình thang; tính diện tích bề mặt của các khối đơn giản bằng chiến lược phân tách và bổ sung",
+      "name": "Công thức diện tích"
+    },
+    "grade6-combined-operations": {
+      "description": "Cấu trúc số hạng, thứ tự các phép toán, tính chất phân phối và các bài toán nhiều bước với phân số, số thập phân và số nguyên",
+      "name": "Phép toán kết hợp với số hữu tỷ"
+    },
+    "grade6-coordinate-system": {
+      "description": "Hiểu hệ tọa độ Descartes với tất cả bốn góc phần tư, vẽ và đọc điểm với tọa độ dương và âm, tính khoảng cách và mô tả mối quan hệ hình học",
+      "name": "Hệ tọa độ"
+    },
+    "grade6-data-diagrams": {
+      "description": "Xác định tần số tuyệt đối và tương đối, hiển thị dữ liệu bằng biểu đồ tròn và cột, tính và diễn giải trung bình cộng, nhận biết các trình bày thao túng trong trực quan hóa dữ liệu",
+      "name": "Dữ liệu và biểu đồ"
+    },
+    "grade6-decimal-fractions": {
+      "description": "Hiểu giá trị vị trí trong số thập phân, làm tròn, chuyển đổi giữa phân số và số thập phân và phân biệt số thập phân hữu hạn với số thập phân vô hạn tuần hoàn",
+      "name": "Phân số thập phân"
+    },
+    "grade6-fractions-basics": {
+      "description": "Diễn giải phân số như các phần của tổng thể, so sánh phân số bằng nhiều chiến lược, mở rộng và rút gọn phân số trong khi bảo toàn giá trị, biểu diễn phân số trên trục số bao gồm phân số âm và kết nối phần trăm với ký hiệu phân số",
+      "name": "Phân số và số phân số"
+    },
+    "grade6-geometric-constructions": {
+      "description": "Dựng các đường thẳng vuông góc và song song, thực hiện phản xạ trục và điểm",
+      "name": "Dựng hình học"
+    },
+    "grade6-integer-operations": {
+      "description": "Cộng và trừ số nguyên bằng mô hình trục số và quy tắc dấu, hiểu giá trị tuyệt đối trong tính toán và áp dụng các phép toán số nguyên vào các ngữ cảnh thế giới thực",
+      "name": "Phép toán số nguyên"
+    },
+    "grade6-percentages": {
+      "description": "Giải các bài toán phần trăm hàng ngày bao gồm giảm giá và lãi suất, áp dụng phương trình phần trăm cơ bản (giá trị cơ sở × tỷ lệ phần trăm = giá trị phần trăm) và phân biệt giữa phần trăm và điểm phần trăm",
+      "name": "Phần trăm"
+    },
+    "grade6-proportionality": {
+      "description": "Hiểu tỷ lệ như so sánh, nhận biết mối quan hệ tỷ lệ thuận, sử dụng bảng tỷ lệ và quy tắc ba và phân biệt các tình huống tỷ lệ thuận với không tỷ lệ",
+      "name": "Tỷ lệ và tỷ số"
+    },
+    "grade6-rational-addition-subtraction": {
+      "description": "Cộng và trừ phân số với cùng và khác mẫu số, số hỗn hợp và số thập phân bằng các chiến lược tính toán và xác minh kết quả qua ước lượng",
+      "name": "Cộng và trừ số hữu tỷ"
+    },
+    "grade6-rational-multiplication-division": {
+      "description": "Tính tích và thương của phân số bằng biểu diễn có ý nghĩa, áp dụng số nghịch đảo cho phép chia, tính lũy thừa với cơ số hữu tỷ và số mũ nguyên tự nhiên hoặc nguyên âm và sử dụng lợi thế tính toán để đơn giản hóa",
+      "name": "Nhân và chia số hữu tỷ"
+    },
+    "grade6-volume": {
+      "description": "Tính thể tích của hình hộp chữ nhật và lăng trụ bằng công thức, chuyển đổi giữa các đơn vị thể tích và giải các bài toán qua chiến lược phân tách và bổ sung",
+      "name": "Thể tích của lăng trụ"
+    },
+    "grade7-algebraic-terms": {
+      "description": "Thiết lập, diễn giải và biến đổi các biểu thức đại số với biến bao gồm lũy thừa",
+      "name": "Biểu thức đại số"
+    },
+    "grade7-angle-relationships": {
+      "description": "Hiểu tính chất góc tại các đường thẳng cắt nhau, với các đường song song và trong đa giác",
+      "name": "Mối quan hệ góc"
+    },
+    "grade7-congruence-triangles": {
+      "description": "Định lý đồng dạng (SSS, SAS, ASA, AAS) và dựng tam giác từ các yếu tố cho trước",
+      "name": "Đồng dạng và dựng tam giác"
+    },
+    "grade7-linear-equations": {
+      "description": "Giải phương trình tuyến tính một biến bao gồm một bước, hai bước, biến ở cả hai vế và các bài toán lời văn thế giới thực",
+      "name": "Phương trình tuyến tính"
+    },
+    "grade7-parallel-translation": {
+      "description": "Dịch chuyển song song như ánh xạ đồng dạng, vectơ dịch chuyển, tính toán tọa độ",
+      "name": "Dịch chuyển song song và vectơ"
+    },
+    "grade7-percentage-applications": {
+      "description": "Tính toán phần trăm nâng cao bao gồm lãi suất, giảm giá và các bài toán nhiều bước",
+      "name": "Ứng dụng phần trăm"
+    },
+    "grade7-powers-exponents": {
+      "description": "Hiểu ký hiệu lũy thừa như phép nhân lặp lại, áp dụng quy tắc lũy thừa bao gồm quy tắc tích, quy tắc thương và lũy thừa của lũy thừa, đơn giản hóa biểu thức với số mũ nguyên và làm việc với lũy thừa của biến",
+      "name": "Lũy thừa và số mũ"
+    },
+    "grade7-proportionality": {
+      "description": "Nhận biết và áp dụng mối quan hệ tỷ lệ thuận và nghịch, tạo bảng tỷ lệ, vẽ đồ thị hàm tỷ lệ và phân biệt giữa các tình huống tỷ lệ và không tỷ lệ trong các ngữ cảnh thế giới thực",
+      "name": "Tỷ lệ"
+    },
+    "grade7-statistical-measures": {
+      "description": "Tính và diễn giải trung bình, trung vị, mode, phạm vi, tứ phân vị và biểu đồ hộp cho phân tích và so sánh dữ liệu thống kê",
+      "name": "Các đại lượng thống kê"
+    },
+    "grade7-symmetry-constructions": {
+      "description": "Dựng các hình đối xứng, đường trung trực, đường phân giác góc và quỹ tích hình học",
+      "name": "Đối xứng và dựng hình học"
+    },
+    "grade7-thales-theorem": {
+      "description": "Áp dụng định lý Thales và định lý đảo để xác định góc vuông, dựng đường tiếp tuyến và giải các bài toán hình học",
+      "name": "Định lý Thales"
+    },
+    "grade8-circles": {
+      "description": "Chu vi hình tròn, diện tích, hiểu pi và ứng dụng với các hình hợp",
+      "name": "Hình tròn"
+    },
+    "grade8-fractional-equations": {
+      "description": "Giải phương trình với phân số đại số, kiểm tra nghiệm ngoại lai và sắp xếp lại công thức trong các ngữ cảnh khoa học",
+      "name": "Phương trình phân số"
+    },
+    "grade8-fractional-terms": {
+      "description": "Các phép toán trên phân số đại số - đơn giản hóa, mở rộng, cộng, trừ, nhân và chia các biểu thức phân số",
+      "name": "Biểu thức phân số"
+    },
+    "grade8-functions-basics": {
+      "description": "Hiểu khái niệm hàm như một phép gán duy nhất, phân biệt thuật ngữ hàm (biểu thức hàm, đồ thị, tập xác định, tập giá trị), sử dụng bảng và biểu đồ để biểu diễn hàm và xác định giá trị hàm và điểm giao nhau",
+      "name": "Hàm và biểu thức"
+    },
+    "grade8-integer-exponents": {
+      "description": "Hiểu số mũ âm và không, áp dụng quy tắc lũy thừa với số mũ nguyên, viết và tính toán với ký hiệu khoa học và đơn giản hóa biểu thức mũ phức tạp",
+      "name": "Số mũ nguyên"
+    },
+    "grade8-laplace-probability": {
+      "description": "Thí nghiệm ngẫu nhiên, công thức Laplace P(E)=|E|/|Ω|, nguyên tắc đếm, sơ đồ cây cho thí nghiệm nhiều giai đoạn, tần số tương đối, luật số lớn",
+      "name": "Thí nghiệm Laplace"
+    },
+    "grade8-linear-functions": {
+      "description": "Hiểu và làm việc với hàm tuyến tính y = mx + t, bao gồm vẽ đồ thị, diễn giải hệ số góc và giao điểm y, tìm điểm không và điểm giao nhau và giải bất phương trình tuyến tính",
+      "name": "Hàm tuyến tính"
+    },
+    "grade8-linear-systems": {
+      "description": "Giải hệ hai phương trình tuyến tính hai ẩn bằng phương pháp đồ thị và thế, hiểu các trường hợp nghiệm (duy nhất, không có, vô số)",
+      "name": "Hệ phương trình tuyến tính"
+    },
+    "grade8-prisms-cylinders": {
+      "description": "Tính diện tích bề mặt và thể tích của lăng trụ và hình trụ, vẽ và diễn giải mô hình mở rộng và áp dụng công thức V = diện tích đáy × chiều cao để giải các bài toán thế giới thực",
+      "name": "Lăng trụ và hình trụ"
+    },
+    "grade8-rational-functions": {
+      "description": "Hiểu và làm việc với hàm hữu tỷ dạng f(x) = a/(x+b) + c, bao gồm giới hạn tập xác định, tiệm cận, vẽ đồ thị và tỷ lệ nghịch như một trường hợp đặc biệt",
+      "name": "Hàm hữu tỷ cơ bản"
+    },
+    "grade9-binomial-formulas": {
+      "description": "Làm chủ ba công thức nhị thức để mở rộng và phân tích các biểu thức đại số một cách hiệu quả",
+      "name": "Công thức nhị thức"
+    },
+    "grade9-compound-probability": {
+      "description": "Hiểu các sự kiện hợp qua ký hiệu tập hợp, biểu đồ Venn, bảng liên hợp và tính xác suất của hợp và giao bằng quy tắc cộng",
+      "name": "Xác suất hợp"
+    },
+    "grade9-power-functions": {
+      "description": "Hiểu hàm lũy thừa với các số mũ khác nhau, đồ thị của chúng và mối quan hệ với ký hiệu căn",
+      "name": "Hàm lũy thừa"
+    },
+    "grade9-pythagorean-theorem": {
+      "description": "Hiểu và áp dụng định lý Pythagoras, chứng minh, định lý đảo và ứng dụng thực tế trong hình học và đo lường",
+      "name": "Định lý Pythagoras"
+    },
+    "grade9-quadratic-equations": {
+      "description": "Giải phương trình bậc hai bằng phân tích thừa số, hoàn thành bình phương và công thức bậc hai (dạng p-q và abc). Hiểu biệt số và áp dụng nghiệm vào các bài toán thế giới thực.",
+      "name": "Phương trình bậc hai"
+    },
+    "grade9-similarity": {
+      "description": "Hiểu tiêu chí đồng dạng tam giác, áp dụng định lý chắn, tính các đoạn tỷ lệ và phân tích cách các hệ số tỷ lệ ảnh hưởng đến diện tích và thể tích",
+      "name": "Đồng dạng và tỷ lệ"
+    },
+    "grade9-quadratic-functions": {
+      "description": "Nghiên cứu parabol, phương trình của chúng (dạng đỉnh, dạng tổng quát, dạng phân tích), hiệu ứng tham số, kỹ thuật vẽ đồ thị và các tính chất chính bao gồm phạm vi, điểm không và tính đơn điệu.",
+      "name": "Hàm bậc hai"
+    },
+    "grade9-square-roots": {
+      "description": "Hiểu căn bậc hai, đơn giản hóa biểu thức căn, hữu tỷ hóa mẫu và khám phá số vô tỷ",
+      "name": "Căn bậc hai và căn"
+    },
+    "grade9-right-triangle-trigonometry": {
+      "description": "Hiểu sin, cos và tan như tỷ số trong tam giác vuông, áp dụng các đồng nhất thức lượng giác cơ bản và giải các bài toán khảo sát và vật lý thực tế",
+      "name": "Lượng giác tam giác vuông"
+    },
+    "grade9-sine-cosine-laws": {
+      "description": "Áp dụng định lý sin và cos để giải các tam giác không vuông, hiểu trực quan hóa vòng tròn đơn vị và nhận biết định lý Pythagoras như một trường hợp đặc biệt",
+      "name": "Định lý sin và cos"
+    },
+    "grade9-systems-of-equations": {
+      "description": "Giải hệ ba phương trình tuyến tính ba ẩn bằng phương pháp thế, khử và khử Gauss, bao gồm mô hình hóa thế giới thực",
+      "name": "Hệ phương trình tuyến tính (3 biến)"
+    },
+    "grade10-exponential-functions": {
+      "description": "Hàm mũ dạng b·aˣ, mô hình tăng trưởng và phân rã mũ và so sánh với tăng trưởng tuyến tính",
+      "name": "Hàm mũ và tăng trưởng"
+    },
+    "grade10-logarithms": {
+      "description": "Hiểu logarit như phép toán nghịch đảo của lũy thừa, tính giá trị logarit và giải phương trình mũ",
+      "name": "Logarit"
+    },
+    "grade10-pyramids-cones": {
+      "description": "Tính diện tích bề mặt và thể tích của hình chóp và hình nón, vẽ và diễn giải mô hình mở rộng, hiểu nguyên lý Cavalieri và giải các bài toán không gian nhiều bước kết hợp hình học với lượng giác",
+      "name": "Hình chóp và hình nón"
+    },
+    "grade10-unit-circle-radians": {
+      "description": "Vòng tròn đơn vị với bán kính 1, độ đo radian như thay thế cho độ và giá trị sin/cos cho các góc đặc biệt từ 0 đến 2π",
+      "name": "Vòng tròn đơn vị và độ đo radian"
+    },
+    "grade10-trigonometric-functions": {
+      "description": "Hiểu sin và cos như các hàm tuần hoàn, phân tích hiệu ứng tham số trong biến đổi a·sin(b·(x+c))+d và mô hình hóa các hiện tượng tuần hoàn thế giới thực",
+      "name": "Hàm lượng giác"
+    },
+    "grade10-polynomial-functions": {
+      "description": "Khám phá hàm đa thức như tổng của các hàm lũy thừa, phân tích điểm không và bội số, vẽ đồ thị bằng dạng phân tích, xác định hành vi cuối và xác minh tính chất đối xứng",
+      "name": "Hàm đa thức"
+    },
+    "grade10-probability-simulation": {
+      "description": "Sử dụng phương pháp Monte Carlo và mô phỏng bảng tính để xấp xỉ xác suất thực nghiệm, khám phá luật số lớn và các nghịch lý xác suất nổi tiếng",
+      "name": "Mô phỏng xác suất"
+    },
+    "grade10-compound-experiments": {
+      "description": "Sơ đồ cây, quy tắc đường đi, mô hình hũ cho xác suất hợp",
+      "name": "Thí nghiệm ngẫu nhiên hợp"
+    },
+    "grade10-spheres": {
+      "description": "Hiểu hình cầu như khối quay, tính thể tích và diện tích bề mặt và giải các bài toán với nửa hình cầu và khối hợp",
+      "name": "Hình cầu"
+    }
+  }
+}

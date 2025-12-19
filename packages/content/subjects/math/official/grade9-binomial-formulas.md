@@ -41,12 +41,19 @@ real_world_context:
   - Simplify complex algebraic expressions in physics formulas
   - Recognize factoring patterns in engineering stress-strain relationships
   - Apply to financial calculations involving compound growth differences
+  - Computer scientists optimizing algorithms using algebraic simplifications
+  - Architects calculating floor areas of rooms with variable dimensions
+  - Game developers computing distances using squared coordinate differences
+  - Statisticians simplifying variance formulas in data analysis
+  - Musicians understanding frequency ratios in harmonic relationships
+  - Photographers calculating exposure settings with squared light intensity
+  - Athletes analyzing performance metrics with squared time improvements
 anti_patterns:
   - Avoid asking to expand expressions that are already expanded
   - Don't use variables beyond x, y, z (keep notation simple)
   - Avoid expressions where factoring yields trivial (a+0) or (a+a) patterns
   - Don't mix binomial formulas with polynomial division in the same problem
   - Avoid coefficients larger than 20 or fractions with denominators over 12
-version: 1.0
-version_notes: Initial version aligned with German KMK Grade 9 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

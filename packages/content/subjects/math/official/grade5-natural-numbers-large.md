@@ -20,6 +20,13 @@ real_world_context:
   - National budgets and large financial figures in news reports
   - Historical dates and events using Roman numerals
   - Scientific notation for expressing very large quantities
+  - Super Bowl numbers written in Roman numerals on logos
+  - Clock faces on historic buildings using Roman numerals
+  - Movie sequel numbers in film credits (Rocky IV, Star Wars Episode VI)
+  - Counting YouTube video views in millions
+  - Stadium seating capacities for major sports arenas
+  - Tracking social media followers for popular accounts
+  - Reading population signs when entering cities
 problem_types:
   - Place value identification
   - Roman numeral conversion
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid abstract contexts - always ground in real-world examples
 prerequisites:
   - grade4-numbers-to-million
-version: 1
-version_notes: Initial version covering natural numbers beyond 1 million
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

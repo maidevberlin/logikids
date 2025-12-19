@@ -41,6 +41,13 @@ real_world_context:
   - Reading stories with plural nouns and understanding quantity
   - Describing groups of animals, toys, or items using appropriate plural forms
   - Understanding that German plural patterns differ from English and follow specific rules
+  - A zookeeper counting animals in enclosures using plural forms (drei Affen, fünf Vögel)
+  - Making shopping lists with plural items (vier Äpfel, zwei Brote, drei Eier)
+  - A pirate captain counting treasures in different chests using plural nouns
+  - Describing collections of toys, stamps, or trading cards using correct plurals
+  - A teacher taking attendance and talking about students as a group (alle Kinder)
+  - Writing invitations mentioning how many friends, games, and presents at a party
+  - A gardener planting multiple flowers, trees, and vegetables in the garden
 anti_patterns:
   - Avoid nouns with complex or rare plural patterns unsuitable for 7-8 year olds
   - Do not use abstract nouns that rarely appear in plural for young children
@@ -50,6 +57,6 @@ anti_patterns:
 prerequisites:
   - grade1-reading-simple-words
   - grade1-writing-simple-words
-version: 1
-version_notes: Initial version - foundational grammar concept for plural formation in Grade 2
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

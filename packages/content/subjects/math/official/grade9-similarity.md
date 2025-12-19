@@ -44,12 +44,19 @@ real_world_context:
   - Surveyors measure inaccessible distances using similar triangles and known measurements
   - Map makers apply scaling relationships where distance on map relates to real distance
   - Engineers analyze how doubling dimensions affects material needed (area) or capacity (volume)
+  - Film directors using forced perspective for visual effects in movies
+  - Fashion designers scaling patterns from samples to production sizes
+  - Model train enthusiasts calculating dimensions for realistic miniatures
+  - Biologists comparing anatomical proportions across related species
+  - Bakers scaling cake tier sizes for wedding cake designs
+  - Astronomers using similar triangles for parallax distance measurements
+  - Video game artists creating consistent character proportions at different zoom levels
 anti_patterns:
   - Avoid assuming triangles are similar without verifying criteria
   - Do not confuse congruence with similarity (same shape vs same size)
   - Avoid applying linear scale factor to area or volume directly
   - Do not present diagrams where parallel lines are unclear or unmarked
   - Avoid problems requiring trigonometry beyond Grade 9 level
-version: 1
-version_notes: Initial version based on German KMK curriculum for Grade 9
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

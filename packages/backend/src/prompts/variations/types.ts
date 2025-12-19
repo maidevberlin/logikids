@@ -7,15 +7,7 @@ export interface GradeFilteredItem {
   grade: [number, number] // [minGrade, maxGrade]
 }
 
-export type EnrichmentType =
-  | 'framing'
-  | 'character'
-  | 'temporal'
-  | 'metacognitive'
-  | 'mystery'
-  | 'realWorld'
-  | 'emotional'
-  | 'structure'
+export type EnrichmentType = 'metacognitive' | 'structure'
 
 export interface Enrichment {
   type: EnrichmentType

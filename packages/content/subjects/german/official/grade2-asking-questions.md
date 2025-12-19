@@ -39,6 +39,13 @@ real_world_context:
   - Questions help children learn about new topics and clarify confusion
   - Asking questions is essential for conversations with friends and family
   - Children use questions to express curiosity about the world around them
+  - A young explorer asking "Where is the hidden treasure?" on a treasure hunt
+  - Interviewing grandparents about their childhood using question words
+  - A veterinarian asking pet owners "What does your animal eat?" at the clinic
+  - Finding out game rules by asking "How do we play this?" to friends
+  - A journalist for the school newspaper interviewing classmates
+  - A wizard's apprentice asking "When will I learn the next spell?" in a magical academy
+  - Planning a birthday party by asking "Who wants to come?" and "What should we eat?"
 anti_patterns:
   - Avoid complex subordinate clauses or compound questions
   - Don't use question words that require abstract thinking (Weshalb, Wieso)
@@ -46,6 +53,6 @@ anti_patterns:
   - Don't mix formal and informal address (Sie/du) in the same task
   - Avoid questions requiring cultural knowledge beyond German basics
 prerequisites: []
-version: 1
-version_notes: Initial concept for German Grade 2 question formation
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

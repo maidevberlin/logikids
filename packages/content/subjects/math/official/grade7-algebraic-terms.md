@@ -44,12 +44,19 @@ real_world_context:
   - Expressing formulas for area and perimeter of rectangles with variable side lengths
   - Calculating distances in uniform motion where time or speed varies
   - Simplifying expressions in physics formulas such as force, energy, or power calculations
+  - A baker calculating ingredient amounts when scaling recipes by a variable multiplier
+  - Video game designers creating damage formulas that depend on character level and equipment
+  - Musicians calculating tempo changes using algebraic expressions for beats per minute
+  - Athletes tracking training progress with formulas combining distance, time, and heart rate
+  - Event planners estimating costs for variable numbers of guests and fixed venue fees
+  - Gardeners calculating fertilizer amounts based on garden area expressed algebraically
+  - Phone plan comparisons using terms for base cost plus per-gigabyte data charges
 anti_patterns:
   - Avoid terms with more than 3 different variables
   - Don't use exponents larger than 4 or negative exponents
   - Avoid fractions with variables in the denominator
   - Don't combine unrelated operations in one problem
   - Avoid context scenarios unfamiliar to 13-year-olds
-version: 1
-version_notes: Initial version covering term evaluation, combination, distributive law, factoring, and binomial formulas
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

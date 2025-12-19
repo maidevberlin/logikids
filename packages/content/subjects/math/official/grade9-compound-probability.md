@@ -43,12 +43,19 @@ real_world_context:
   - Survey analysis uses contingency tables to examine relationships between demographics and preferences, such as age groups and product choices
   - Insurance companies calculate compound probabilities when assessing multiple risk factors, such as the probability of accidents given weather conditions and driver experience
   - Social media analytics use set operations to analyze user overlap between different platforms or interest groups
+  - Streaming services analyzing viewer preferences across multiple content genres
+  - Sports scouts evaluating athletes who excel in multiple skill categories
+  - College admissions analyzing applicants meeting various qualification criteria
+  - Marketing teams identifying customer segments with overlapping interests
+  - Wildlife biologists studying species that inhabit multiple ecosystem types
+  - Event planners calculating guest attendance across multiple invitation lists
+  - HR departments analyzing employees with combinations of certifications and skills
 anti_patterns:
   - Avoid using P(A∪B) = P(A) + P(B) without checking for overlap
   - Don't create Venn diagrams where regions don't sum to 1 or total sample size
   - Avoid contingency tables with inconsistent row or column totals
   - Don't use abstract symbols without defining what events A and B represent
   - Avoid three-set problems without visual support for Grade 9
-version: 1.0
-version_notes: Initial version for German KMK Grade 9 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

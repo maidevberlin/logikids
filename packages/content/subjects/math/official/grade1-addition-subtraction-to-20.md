@@ -41,12 +41,19 @@ real_world_context:
   - Calculating total points in simple games
   - Determining how many more items are needed to reach a goal
   - Solving problems about ages, such as age differences between siblings
+  - A squirrel gathering acorns and eating some throughout the day
+  - Knights collecting shields and swords for a castle tournament
+  - Adding up stickers earned for good behavior during the week
+  - A librarian counting books returned and borrowed each day
+  - Figuring out how many more balloons are needed for a birthday party
+  - A farmer counting eggs collected from the chicken coop
+  - Astronauts counting supplies for a space mission
 anti_patterns:
   - Avoid numbers larger than 20
   - Don't use negative numbers or results
   - Avoid problems requiring multiplication or division concepts
   - Don't include more than two numbers in a single operation
   - Avoid abstract scenarios unfamiliar to 6-7 year olds
-version: 1
-version_notes: Initial version
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

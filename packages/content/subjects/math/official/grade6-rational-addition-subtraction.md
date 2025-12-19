@@ -41,17 +41,24 @@ prerequisites:
   - grade6-fractions-basics
   - grade5-decimals
 real_world_context:
-  - Combining recipe ingredients with different fractional measurements (1/3 cup flour + 1/4 cup sugar)
-  - Calculating total distances or durations in sports activities (2.5 km + 1.75 km)
-  - Managing budgets with decimal currency amounts (12.45 euros + 8.99 euros)
-  - Determining remaining quantities after using portions (3/4 liter - 1/3 liter)
+  - Combining recipe ingredients with different fractional measurements
+  - Calculating total distances or durations in sports activities
+  - Managing budgets with decimal currency amounts
+  - Determining remaining quantities after using portions
   - Tracking progress toward goals using fractions and percentages
+  - Splitting a pizza among friends and calculating remaining slices
+  - Measuring fabric lengths for a craft project
+  - Calculating total weight of luggage for a trip
+  - Dividing chores fairly and tracking completed portions
+  - Adjusting music playlist durations
+  - Combining paint amounts from partial cans
+  - Computing fuel remaining after multiple trips
 anti_patterns:
   - Avoid denominators larger than 60
   - Don't combine multiplication or division in the same problem
   - Avoid negative numbers (separate concept in Grade 5)
   - Don't use repeating decimals
   - Avoid mixed operations requiring order of operations with parentheses
-version: 1.0
-version_notes: Initial version based on Grade 6 KMK and Bayern LehrplanPLUS curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 10 to 12 items for better variety
 ---

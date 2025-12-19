@@ -43,12 +43,19 @@ real_world_context:
   - Decibel scale for sound intensity is logarithmic (doubling sound power increases decibels by about 3)
   - Carbon dating and radioactive decay calculations require logarithms to determine age from half-life
   - Compound interest problems use logarithms to find time needed to reach investment goals
+  - Musical pitch perception following logarithmic frequency relationships
+  - Stellar magnitude scale measuring star brightness logarithmically
+  - Information theory using logarithms for data compression efficiency
+  - Population growth time calculations using logarithmic equations
+  - Drug half-life calculations in pharmacology
+  - Weber-Fechner law describing logarithmic human perception of stimuli
+  - Password entropy measured in logarithmic bits of security
 anti_patterns:
   - Avoid logarithms with bases other than 2, 10, or e unless specified
   - Don't use logarithm arguments that are negative or zero
   - Avoid combining too many properties in one expression for medium difficulty
   - Don't assume students know change-of-base formula without introduction
   - Avoid contexts requiring chemistry or physics knowledge beyond basic concepts
-version: 1
-version_notes: Initial version for Grade 10 German KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

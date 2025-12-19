@@ -47,6 +47,13 @@ real_world_context:
   - Expressing emotions and perspectives in conflict resolution
   - Presenting historical events through role-play scenarios
   - Creating video content with character voices and performances
+  - Acting out favorite book scenes during literature circles to explore character motivations
+  - Participating in improvisation games at drama club or summer camps
+  - Performing puppet shows for younger children using different voices for each character
+  - Reading aloud with expression during family story time or bedtime routines
+  - Creating radio play recordings with sound effects and dramatic narration
+  - Role-playing job interviews or customer service scenarios in career exploration activities
+  - Performing poetry slam pieces with gestures and vocal emphasis at school events
 
 anti_patterns:
   - Avoid requiring professional acting terminology beyond grade level
@@ -55,6 +62,6 @@ anti_patterns:
   - Don't expect students to memorize long monologues
   - Avoid abstract theatrical concepts without concrete examples
 
-version: 1.0
-version_notes: Initial concept for Grade 5 dramatic play and expression
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -40,12 +40,20 @@ real_world_context:
   - Building structures and architecture using geometric elements
   - Sports fields and courts with marked lines and boundaries
   - Map reading and navigation using straight paths and crossings
+  - Power lines and telephone poles creating parallel line patterns
+  - Ladder rungs as parallel segments connected to side rails
+  - Floor tiles arranged in perpendicular grid patterns
+  - Window frames with horizontal and vertical bars
+  - Bridge cables radiating from towers as rays from a point
+  - Airplane contrails creating intersecting lines in the sky
+  - Crosswalk stripes as parallel line segments
+  - Laser beams in science fiction movies as rays of light
 anti_patterns:
   - Avoid angle measurements (separate concept for Grade 5)
   - Don't include coordinate geometry or grids
   - Avoid complex constructions requiring compass or advanced tools
   - Don't use 3D representations or perspective drawings
   - Avoid more than 5 distinct elements in a single figure
-version: 1
-version_notes: Initial version aligned with German KMK standards for Grade 5
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

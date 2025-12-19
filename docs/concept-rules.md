@@ -129,16 +129,16 @@ One of: `easy`, `medium`, `hard`
 
 Each ID must reference an existing concept. The validation script checks this and fails if any prerequisite does not exist. To find existing concepts, check `packages/content/subjects/{subject}/official/` and `custom/`.
 
-### real_world_context (3-5 items)
+### real_world_context (required, 10-15 items)
 
-**Impact:** Inserted as `[[real_world_context]]`. Helps AI generate relatable scenarios.
+**Impact:** ONE context is randomly selected per task and inserted as `[[real_world_context]]`. This is the primary driver for task variety and engagement.
 
 **Requirements:**
 
-- 3-5 items, each describing a distinct real-world application
-- Cover diverse situations where students encounter this concept
+- 10-15 items, each describing a distinct scenario
 - Each item should be a complete sentence or phrase
-- Focus on applications relevant to the target age group
+- Maximize variety: mix everyday situations, historical periods, fantasy worlds, nature, professions, cultures, and adventures
+- Think beyond the obvious - surprise and delight students with unexpected but relatable contexts
 
 ### anti_patterns (required, 3-5 items)
 

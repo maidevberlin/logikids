@@ -48,6 +48,13 @@ real_world_context:
   - Folding paper to create snowflakes or decorations uses symmetry
   - Many logos, signs, and letters have lines of symmetry (A, H, M, T)
   - Packaging boxes (cereal, juice, gift boxes) are 3D shapes with flat faces
+  - A castle with identical towers on each side showing perfect symmetry
+  - Masks and costumes for theater with symmetric decorations
+  - Spotting shapes in playground equipment (cylindrical poles, cube blocks)
+  - Traditional quilts and blankets with symmetric pattern designs
+  - Cathedral windows with elaborate symmetric stained glass patterns
+  - Identifying 3D shapes in kitchen items (cylindrical cans, cube sugar boxes)
+  - Flags of countries that have symmetric designs
 
 anti_patterns:
   - Avoid technical terms like "rotational symmetry" or "congruent"
@@ -56,6 +63,6 @@ anti_patterns:
   - Don't ask students to count all symmetry lines on complex shapes
   - Avoid symmetry tasks requiring precise measurement or angles
 
-version: 1
-version_notes: Initial version for Grade 2 geometry and symmetry concept following KMK Bildungsstandards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

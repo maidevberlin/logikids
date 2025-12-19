@@ -45,12 +45,19 @@ real_world_context:
   - Mediating playground conflicts by helping friends understand each other's perspectives
   - Contributing to group decisions about project topics or field trip choices
   - Respectfully disagreeing with a peer's argument while acknowledging their valid points
+  - Debating with family members about which movie to watch and presenting reasons based on everyone's interests
+  - Discussing environmental topics in class and defending personal views on recycling or conservation with evidence
+  - Negotiating game rules with friends during recess and finding compromises that everyone accepts
+  - Participating in student council meetings and presenting well-reasoned proposals for school improvements
+  - Discussing historical events and explaining why different people might have made different choices
+  - Resolving disagreements about team strategies in sports by listening to all viewpoints and building consensus
+  - Presenting arguments at home for later bedtimes or increased allowance using logical reasoning and examples
 anti_patterns:
   - Avoid topics requiring specialized knowledge beyond 9-10 year experience
   - Don't expect formal debate structures or advanced rhetorical devices
   - Avoid conflicts requiring adult-level emotional regulation or abstract ethics
   - Don't include discussions with more than 5 distinct participant voices
   - Avoid opinion topics with objectively correct answers - focus on preference
-version: 1
-version_notes: Initial concept for German Grade 4 discussion and argumentation based on KMK Bildungsstandards Deutsch (Gespräche führen)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

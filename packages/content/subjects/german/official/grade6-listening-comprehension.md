@@ -42,12 +42,19 @@ real_world_context:
   - Listening to friends' stories and responding appropriately to their emotions
   - Following spoken instructions for group projects or team activities
   - Evaluating information from audio news reports or educational videos
+  - Understanding museum audio guides during field trips to extract key historical information
+  - Following oral directions for science experiments or craft activities in real time
+  - Listening to audiobooks and identifying character motivations from tone and dialogue
+  - Understanding sports commentary to follow game strategies and play-by-play action
+  - Listening to guest speakers at school assemblies and identifying their main arguments
+  - Following oral storytelling at cultural events, tracking plot and character development
+  - Understanding instructions from coaches or activity leaders during outdoor education programs
 anti_patterns:
   - Avoid texts with highly specialized vocabulary beyond grade 6 level
   - Don't use audio scenarios unfamiliar to 11-12 year olds
   - Avoid ambiguous questions with multiple valid interpretations
   - Don't require memorization of excessive details from long passages
   - Avoid cultural references specific to regions outside German-speaking areas
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards 2022 and Bayern LehrplanPLUS
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

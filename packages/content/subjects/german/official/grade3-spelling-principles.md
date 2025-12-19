@@ -48,12 +48,19 @@ real_world_context:
   - Dictionary skills help students verify spellings during independent writing projects and homework
   - Recognizing suffix patterns supports understanding of text structure in science and social studies
   - Spelling awareness enables students to proofread their own work and improve writing quality over time
+  - Checking if compound words need double consonants when combining word parts like "Schiff-fahrt"
+  - Using vowel length rules to decide between single and double consonants in new vocabulary
+  - Looking up uncertain spellings in a dictionary before finishing a letter to a pen pal
+  - Recognizing word stems to correctly spell related words like "fahren", "Fahrer", "Fahrt"
+  - Applying capitalization rules when writing about animals and remembering nouns are capitalized
+  - Dividing words at line breaks according to syllable boundaries in handwritten essays
+  - Identifying personal spelling mistakes and practicing those specific words in a spelling journal
 anti_patterns:
   - Avoid words with more than four syllables for grade 3 spelling tasks
   - Do not include diphthongs beyond ei/eu/au or trigraphs beyond sch/tsch
   - Avoid rare or archaic compound linking elements unfamiliar to 8-9 year olds
   - Do not mix umlaut rules with other complex orthographic patterns in single tasks
   - Avoid technical vocabulary from subjects beyond grade 3 core curriculum
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 3 spelling curriculum covering all five orthographic principles
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

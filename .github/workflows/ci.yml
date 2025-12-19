@@ -39,6 +39,9 @@ jobs:
       - name: Check translations
         run: bun scripts/check-translations.ts --all
 
+      - name: Check orphaned translations
+        run: bun scripts/check-orphaned-translations.ts --all
+
   build:
     name: Build Production Images
     runs-on: ubuntu-latest

@@ -38,6 +38,14 @@ real_world_context:
   - Determining space in shipping boxes and containers
   - Finding volume of swimming pools and water needed to fill them
   - Planning storage space and packing efficiency
+  - A moving company estimating truck space needed for furniture
+  - Calculating soil volume for rectangular garden beds
+  - Filling a rectangular sandbox with the right amount of sand
+  - Determining how many boxes fit in a storage unit
+  - A chef measuring container volumes for food storage
+  - Calculating concrete needed for a rectangular foundation
+  - Planning luggage space for a family road trip
+  - Comparing refrigerator capacities when shopping for appliances
 anti_patterns:
   - Avoid non-rectangular prisms like cylinders or pyramids
   - Don't use irregular or composite 3D solids
@@ -48,6 +56,6 @@ prerequisites:
   - grade4-volume-unit-cubes
   - grade4-measurement-units
   - grade5-units-measurement
-version: 1
-version_notes: Initial creation for Grade 5 curriculum building on unit cube counting with formulas and conversions
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

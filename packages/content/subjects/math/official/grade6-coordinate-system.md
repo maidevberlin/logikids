@@ -44,12 +44,19 @@ real_world_context:
   - Battleship-style games where positions are identified by coordinates
   - Graphing temperature changes over time with negative values in winter
   - Architecture and design using grid systems to place elements precisely
+  - Chess notation using letter-number coordinates for moves
+  - Spreadsheet cells identified by column letters and row numbers
+  - Radar screens showing aircraft positions relative to center
+  - Treasure maps with X and Y coordinates for hidden locations
+  - Stadium seating using section and row coordinates
+  - Minecraft building using block coordinates in 3D space
+  - Drone navigation following programmed coordinate paths
 anti_patterns:
   - Avoid coordinates with absolute values larger than 20
   - Don't introduce linear equations or slope concepts
   - Avoid decimal or fractional coordinates
   - Don't combine with advanced transformations like rotations
   - Avoid problems requiring the distance formula (Pythagorean theorem)
-version: 1
-version_notes: Initial creation for Grade 6 coordinate system covering all four quadrants with integer coordinates
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

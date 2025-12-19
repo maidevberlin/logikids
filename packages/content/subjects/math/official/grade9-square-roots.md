@@ -43,12 +43,19 @@ real_world_context:
   - Computer graphics use square roots for distance calculations between pixels
   - Engineers rationalize denominators to avoid division by irrational numbers in calculations
   - The diagonal of a square with side length 1 is √2, demonstrating irrationality in geometry
+  - Audio engineers calculating sound pressure levels using root mean square values
+  - Statisticians computing standard deviation involving squared differences
+  - Physicists calculating velocity from kinetic energy using square roots
+  - Financial analysts computing volatility using root of variance
+  - Tile installers determining diagonal tile cuts for floor patterns
+  - Video editors calculating aspect ratio conversions with root relationships
+  - GPS systems computing distances between coordinates on maps
 anti_patterns:
   - Avoid claiming √(a²) = a without considering absolute value
   - Don't simplify √(a + b) as √a + √b
   - Avoid radicands larger than 500 for simplification tasks
   - Don't use variables without stating domain restrictions (non-negative)
   - Avoid combining √a · √b operations with addition/subtraction in one step
-version: 1.0
-version_notes: Initial version covering square root definition, simplification, rationalization, irrationality, and Heron's algorithm
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

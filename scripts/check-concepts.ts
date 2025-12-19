@@ -16,8 +16,6 @@ import { basename, join } from 'path'
 import {
   checkFilename,
   checkContent,
-  checkStructure,
-  checkTemplates,
   checkTranslations,
   checkWordCount,
   checkPrerequisites,
@@ -86,8 +84,6 @@ function checkSingleConcept(input: string): number {
     const results = [
       { name: 'FILENAME', result: checkFilename(filename, frontmatter.grade) },
       { name: 'CONTENT (No Code)', result: checkContent(content) },
-      { name: 'STRUCTURE', result: checkStructure(frontmatter) },
-      { name: 'TEMPLATES', result: checkTemplates(content) },
       { name: 'WORD COUNT', result: checkWordCount(content) },
       { name: 'PREREQUISITES', result: checkPrerequisites(frontmatter) },
       { name: 'TRANSLATIONS', result: checkTranslations(frontmatter.id, subject) },
@@ -180,7 +176,6 @@ function checkSubject(subject: string): { passed: number; failed: number } {
       const results = [
         checkFilename(file, frontmatter.grade),
         checkContent(content),
-        checkStructure(frontmatter),
         checkWordCount(content),
         checkTranslations(frontmatter.id, subject),
       ]

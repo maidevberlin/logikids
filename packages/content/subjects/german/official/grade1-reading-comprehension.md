@@ -42,12 +42,19 @@ real_world_context:
   - Answering questions from parents or teachers about stories read in class
   - Thinking about what might happen next while listening to bedtime stories
   - Connecting story characters to similar experiences from own life
+  - Predicting endings while reading adventure stories about pirates or knights
+  - Using comic book illustrations to understand character emotions and actions
+  - Comparing storybook settings to familiar places like home, school, or parks
+  - Discussing what you already know about animals before reading nature books
+  - Retelling favorite fairy tales using picture sequence cards
+  - Finding clues in pictures to figure out unknown words in recipe books
+  - Relating story problems to similar challenges faced in daily life
 anti_patterns:
   - Avoid texts longer than 8 sentences for Grade 1 students
   - Don't use vocabulary beyond daily experiences of 6-7 year olds
   - Avoid questions requiring factual knowledge not provided in the text
   - Don't include cultural references unfamiliar to young children
   - Avoid ambiguous illustrations that confuse rather than clarify text
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 1 reading comprehension competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

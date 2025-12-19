@@ -46,12 +46,19 @@ real_world_context:
   - Knowledge of compound words helps navigate German's characteristic long words in official documents, instructions, and informational texts
   - Organizing vocabulary by semantic fields improves writing precision when describing experiences, objects, or concepts in essays and presentations
   - Understanding word families accelerates vocabulary learning in German and provides strategies for learning other languages
+  - Analyzing word structure to understand new vocabulary in fantasy novels or science fiction stories
+  - Using derivation knowledge to create expressive adjectives and adverbs in creative writing
+  - Recognizing root words when encountering unfamiliar terms in history or geography textbooks
+  - Building compound words to precisely describe inventions or imaginary creatures in storytelling
+  - Identifying word classes to improve grammar accuracy when learning foreign languages
+  - Using semantic fields to organize vocabulary study for tests or expand descriptive writing
+  - Applying morphological analysis to decode technical instructions for games, crafts, or experiments
 anti_patterns:
   - Avoid word class examples with ambiguous function without clear context
   - Don't use regional dialects or archaic word forms in morphology tasks
   - Avoid compound words longer than three components for Grade 5 students
   - Don't introduce Latin or Greek word roots without German derivation context
   - Avoid semantic fields mixing abstract concepts beyond 10-11 year old experience
-version: 1
-version_notes: Initial creation based on Berlin-Brandenburg Rahmenlehrplan Grade 5 competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -41,12 +41,19 @@ real_world_context:
   - Deciding which websites are trustworthy when researching a school project
   - Reflecting on daily screen time and choosing which media to consume
   - Comparing a book you read with its film adaptation
+  - Navigating library catalog systems to locate specific books for book reports
+  - Evaluating YouTube educational videos for accuracy when learning about science topics
+  - Discussing with parents about appropriate media choices for entertainment and learning
+  - Analyzing how music and sound effects create suspense in audio books or radio plays
+  - Comparing illustrated book versions with graphic novel adaptations of the same story
+  - Identifying sponsored content versus objective information on children's websites
+  - Using search engines to find reliable sources for geography or history presentations
 anti_patterns:
   - Avoid requiring knowledge of advanced library classification systems
   - Don't assume familiarity with specific search engines or interfaces
   - Avoid abstract media theory beyond concrete observation
   - Don't require technical terminology for film or audio production
   - Avoid topics requiring adult-level source evaluation skills
-version: 1
-version_notes: Initial version based on Berlin-Brandenburg Rahmenlehrplan Grade 5
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

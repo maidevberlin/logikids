@@ -37,6 +37,14 @@ real_world_context:
   - Reading German books shows that nouns always start with capital letters, unlike in English
   - Learning proper nouns helps children write their own names, friends' names, and places correctly
   - Understanding nouns helps organize vocabulary lists and word sorting activities
+  - A young author writing adventure stories about dragons, castles, and heroes
+  - Labeling parts of a science poster about plants, animals, and habitats
+  - A shopkeeper making price tags with capital letters for Brot, Milch, and Käse
+  - Writing postcards from vacation mentioning cities, mountains, and landmarks
+  - A museum guide creating labels for paintings, sculptures, and exhibits
+  - Making a treasure map with capitalized nouns for Island, Cave, and Mountain
+  - Writing a class newspaper with proper capitalization of people, places, and things
+  - A chef writing menu items with correctly capitalized food nouns
 anti_patterns:
   - Avoid introducing articles (der/die/das) - focus only on capitalization
   - Don't use plural forms - keep nouns singular for Grade 2
@@ -44,6 +52,6 @@ anti_patterns:
   - Don't include abstract nouns beyond simple emotions (Mut, Glück)
   - Avoid sentences longer than 10 words
 prerequisites: []
-version: 1
-version_notes: Initial version for German Grade 2 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

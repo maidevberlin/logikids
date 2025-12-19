@@ -41,12 +41,19 @@ real_world_context:
   - Optics formulas connect focal length, object distance, and image distance in lenses
   - Average speed calculations involve distance and time in fractional relationships
   - Economic formulas determine unit prices and total costs with variable quantities
+  - Medicine dosage calculations based on body weight and medication concentration
+  - Engineering gear ratios connecting wheel sizes and rotation speeds
+  - Cooking recipe scaling when adjusting portions with fractional ingredient amounts
+  - Music tempo relationships between beats per minute and song duration
+  - Photography exposure formulas relating aperture, shutter speed, and ISO
+  - Nutrition calculations converting serving sizes to actual consumption
+  - Construction mix ratios for concrete combining cement, sand, and water proportions
 anti_patterns:
   - Avoid equations requiring quadratic formula or factoring beyond linear terms
   - Don't introduce rational functions with polynomial numerators of degree > 1
   - Avoid systems of fractional equations
   - Don't use denominators that factor into more than 2 distinct terms
   - Avoid formulas from advanced physics topics unfamiliar to 14-year-olds
-version: 1
-version_notes: Initial creation for KMK/Bavaria M8.4 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

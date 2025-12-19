@@ -45,12 +45,19 @@ real_world_context:
   - Calculating traffic flow at intersections where three roads meet with known inflow and outflow rates at each junction
   - Solving chemistry mixture problems involving three substances with different concentrations to achieve target composition
   - Balancing production schedules in manufacturing when three products share limited resources (time, materials, workers)
+  - Sports team managers allocating playing time across three player positions
+  - Event caterers planning menus with three course options and budget constraints
+  - Farmers distributing fertilizer types across three different crop fields
+  - Investment advisors balancing portfolios across three asset classes
+  - Logistics planners routing shipments through three distribution centers
+  - Teachers scheduling three subjects with room and time constraints
+  - Electricians balancing current loads across three-phase power systems
 anti_patterns:
   - Avoid systems with more than three equations or three unknowns
   - Don't introduce matrix notation, determinants, or Cramer's rule
   - Avoid coefficients requiring complex fraction arithmetic beyond basic operations
   - Don't present systems with no solution or infinite solutions at easy level
   - Avoid context requiring advanced knowledge beyond Grade 9 curriculum
-version: 1
-version_notes: Initial version based on Grade 9 KMK curriculum standards and LehrplanPLUS Bayern M9
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

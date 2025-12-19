@@ -43,6 +43,13 @@ real_world_context:
   - Determining break-even points in business and economics
   - Computing distances and times in motion problems with acceleration
   - Solving geometric problems involving areas and perimeters
+  - Sports analysts modeling ball trajectories in basketball and soccer
+  - Engineers designing parabolic satellite dishes for signal focus
+  - Gardeners maximizing enclosed area with fixed fencing lengths
+  - Fountain designers calculating water arc heights and distances
+  - Architects determining arch dimensions for doorways and bridges
+  - Roller coaster designers plotting track curves for thrilling rides
+  - Farmers optimizing crop plot shapes for maximum yield
 prerequisites:
   - grade7-linear-equations
   - grade7-algebraic-terms
@@ -53,6 +60,6 @@ anti_patterns:
   - Avoid word problems with ambiguous or unclear mathematical relationships
   - Don't mix multiple unrelated mathematical concepts in one problem
   - Avoid numbers that make mental calculation or estimation impossible
-version: 1
-version_notes: Initial version based on German KMK Grade 9 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

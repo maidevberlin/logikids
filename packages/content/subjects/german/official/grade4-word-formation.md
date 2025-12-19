@@ -43,6 +43,13 @@ real_world_context:
   - Expanding reading comprehension by analyzing unfamiliar words into known components
   - Creating precise descriptions by selecting words from appropriate semantic fields
   - Learning new languages more easily by recognizing common word formation patterns
+  - Creating imaginative compound words for creative writing like "Blitzschneewetter" or "Drachenhöhlenabenteuer"
+  - Understanding product names and brand labels by recognizing familiar word stems and prefixes
+  - Decoding unfamiliar words in recipes or instructions by breaking them into recognizable parts
+  - Organizing vocabulary for different topics like weather, emotions, or animals into semantic families
+  - Playing word games with family by adding prefixes and suffixes to create new related words
+  - Understanding medical or technical terms at doctor visits by recognizing familiar word components
+  - Expanding expressive vocabulary for writing by systematically exploring word families and related terms
 anti_patterns:
   - Avoid using words outside Grade 4 vocabulary without clear morphological clues
   - Do not create nonsensical compound words that violate German formation rules

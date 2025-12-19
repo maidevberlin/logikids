@@ -45,12 +45,19 @@ real_world_context:
   - Computing distances for repeated trips (daily commute times number of days)
   - Determining how many containers needed to pack a given quantity
   - Calculating area of rectangular spaces (floor tiles, garden plots)
+  - A baker multiplying recipe quantities for large orders
+  - Distributing sports equipment equally among team members
+  - Calculating pages read over multiple weeks of a reading challenge
+  - A theater manager calculating total seats across multiple rows
+  - Figuring out how many buses needed for a school field trip
+  - Computing total heartbeats during exercise sessions
+  - A farmer dividing harvest among market stalls
 anti_patterns:
   - Avoid divisors larger than 9 (two-digit division is grade 5+)
   - Don't mix written algorithms with mental math in the same problem
   - Avoid products exceeding 1,000,000
   - Don't introduce decimals in division (remainders only, no decimal quotients)
   - Avoid problems where remainder interpretation is ambiguous
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

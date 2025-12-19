@@ -46,12 +46,19 @@ real_world_context:
   - Proper punctuation of lists helps organize information clearly in science lab reports and procedural instructions
   - Comma placement in relative clauses ensures clarity when describing characters in book reports and literary analysis
   - Sentence-ending punctuation conveys intended tone and meaning in emails, presentations, and formal correspondence
+  - Writing dialogue in creative stories requires correct quotation mark placement to show character speech
+  - Punctuating compound sentences helps readers understand relationships between connected ideas in persuasive essays
+  - Using commas in letters and emails to separate greeting and closing phrases maintains professional formatting
+  - Correct punctuation in instructions and recipes ensures readers can follow steps without confusion
+  - Question marks distinguish genuine questions from rhetorical ones in literary analysis discussions
+  - Punctuating interview transcripts accurately preserves speaker meaning in journalism projects
+  - Using exclamation marks appropriately adds emphasis in creative writing without overusing them
 anti_patterns:
   - Avoid sentences with more than three subordinate clauses
   - Do not include archaic punctuation rules not in current standards
   - Avoid ambiguous sentences with multiple valid punctuation solutions
   - Do not mix direct and indirect speech creating punctuation confusion
   - Avoid technical grammatical terminology beyond standard terms
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 6 punctuation competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

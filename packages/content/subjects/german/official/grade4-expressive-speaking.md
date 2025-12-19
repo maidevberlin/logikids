@@ -44,12 +44,19 @@ real_world_context:
   - Informing parents about a school event using clear, structured explanations
   - Appealing to the school community to participate in a charity initiative
   - Adapting speech register when speaking to teachers versus peers about the same topic
+  - Telling an exciting adventure story to younger siblings using vivid language and varied voice tones
+  - Presenting a science experiment to the class with careful explanations of each step and the results
+  - Arguing for a family pet by presenting well-organized reasons and addressing potential concerns
+  - Explaining game rules to new players using clear, sequential instructions with appropriate pacing
+  - Delivering a book report that combines factual information with personal reactions and recommendations
+  - Welcoming visiting students to school with a friendly, informative presentation about daily routines and activities
+  - Narrating a sports match or game experience with dramatic emphasis on exciting moments and outcomes
 anti_patterns:
   - Avoid topics requiring rhetorical skills beyond 9-10 year old capacity
   - Don't expect formal debate-level argumentation for Grade 4
   - Avoid abstract or philosophical topics not relatable to children
   - Don't require dialects students may not speak at home
   - Avoid scenarios with emotionally charged or controversial subject matter
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 4 - Sprechen und Zuhören competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

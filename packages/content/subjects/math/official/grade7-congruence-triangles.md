@@ -44,12 +44,19 @@ real_world_context:
   - Surveyors use triangle construction principles to measure distances and map terrain without directly measuring inaccessible distances
   - Quality control inspectors verify that manufactured parts are congruent to specifications using geometric measurements
   - Navigation systems use triangulation based on congruence principles to determine precise locations from multiple reference points
+  - Fashion designers creating symmetric patterns that require congruent triangular pieces
+  - Origami artists folding paper where congruent triangles ensure symmetric designs
+  - Forensic investigators using footprint triangles to determine stride and height
+  - Stage lighting technicians positioning lights using triangular configurations
+  - Kite builders ensuring congruent triangular panels for balanced flight
+  - Tent manufacturers designing shelters with congruent support triangles
+  - Video game developers creating 3D models using triangular mesh congruence
 anti_patterns:
   - Avoid using SSA (side-side-angle) which does not guarantee congruence
   - Don't present ambiguous cases where multiple triangles could be constructed
   - Avoid measurements requiring precision beyond compass and straightedge
   - Don't mix similar triangles with congruent triangles in the same problem
   - Avoid figures where congruence depends on unmarked equal angles or sides
-version: 1
-version_notes: Initial creation for Grade 7 triangle congruence covering SSS, SAS, ASA, AAS theorems and construction methods
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

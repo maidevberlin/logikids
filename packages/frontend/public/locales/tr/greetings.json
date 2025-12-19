@@ -1,0 +1,58 @@
+{
+  "morning": [
+    "Günaydın",
+    "Selam",
+    "Seni görmek güzel",
+    "Güne başlamaya hazır mısın",
+    "Bugünü harika yapalım",
+    "Tekrar hoş geldin",
+    "Harika bir şeyler öğrenme zamanı",
+    "Yapabilirsin",
+    "Hadi başlayalım",
+    "Maceraya hazır mısın",
+    "Seni tekrar görmek güzel",
+    "Haydi başlayalım"
+  ],
+  "afternoon": [
+    "Selam",
+    "İyi öğleden sonralar",
+    "Tekrar hoş geldin",
+    "Seni görmek güzel",
+    "İvmeyi koruyalım",
+    "Devama hazır mısın",
+    "Harika gidiyorsun",
+    "Eğlenceli bir şeyler zamanı",
+    "Birlikte üstesinden gelelim",
+    "Tam zamanında",
+    "Öğrenmeye hazır",
+    "Hadi dalalım"
+  ],
+  "evening": [
+    "İyi akşamlar",
+    "Selam",
+    "Hâlâ güçlü gidiyorsun",
+    "Tekrar hoş geldin",
+    "Harika bir özveri",
+    "Öğrenmeye devam edelim",
+    "Bugün ateştesin",
+    "Devama hazır mısın",
+    "Kendine meydan okuma zamanı",
+    "Harika görünüyorsun",
+    "İlerleme kaydedelim",
+    "Etkileyici çaba"
+  ],
+  "night": [
+    "Selam gece kuşu",
+    "Hâlâ burada mısın",
+    "Etkileyici bir özveri",
+    "Tekrar hoş geldin",
+    "Durdurulamıyorsun",
+    "Gece öğrencisi",
+    "Odaklanmış görünüyorsun",
+    "Güçlü bitirelim",
+    "Bir tur daha",
+    "Enerjin var",
+    "Düşünmeye hazır",
+    "Hadi gidelim"
+  ]
+}

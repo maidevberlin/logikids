@@ -45,12 +45,19 @@ real_world_context:
   - Navigation systems determine distances and bearings between locations using trigonometric calculations
   - Engineers analyze forces on inclined planes and ramps by decomposing forces into components using sine and cosine
   - Photographers and filmmakers calculate camera angles and lens positions to achieve desired perspectives and framing
+  - Pilots calculating descent angles and runway approach paths
+  - Rock climbers evaluating route steepness and rope lengths
+  - Ski slope designers determining gradient percentages for trails
+  - Crane operators calculating boom angles for safe lifting
+  - Astronomers measuring angles to celestial objects for distance estimates
+  - Stair builders calculating riser and tread dimensions for comfort
+  - Wheelchair ramp designers ensuring ADA-compliant slope angles
 anti_patterns:
   - Avoid using angles outside the 0° to 90° range for basic right triangle problems
   - Do not apply trigonometric ratios to non-right triangles without indication
   - Avoid problems where the hypotenuse is incorrectly identified or ambiguous
   - Do not mix degrees and radians in the same problem without clear notation
   - Avoid contexts requiring calculator precision beyond two decimal places
-version: 1
-version_notes: Initial creation for Grade 9 right triangle trigonometry based on German KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

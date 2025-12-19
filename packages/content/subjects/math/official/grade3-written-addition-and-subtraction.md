@@ -44,12 +44,19 @@ real_world_context:
   - Computing distances for multi-leg journeys or trips
   - Tracking savings goals by adding deposits and subtracting withdrawals
   - Calculating ingredient quantities when adjusting recipe amounts
+  - A treasure hunter adding up gold coins found in different chests
+  - Tracking points across multiple rounds of a board game tournament
+  - Computing remaining pages to read across several chapter books
+  - A zookeeper calculating total animals after transfers between exhibits
+  - Adding attendance numbers from different classrooms for a field trip
+  - Figuring out remaining tickets after selling some at a school fair
+  - A pilot calculating fuel remaining after a flight leg
 anti_patterns:
   - Avoid numbers larger than 1000
   - Don't introduce negative results in subtraction
   - Avoid decimal numbers or fractions
   - Don't mix addition and subtraction in a single column format
   - Avoid scenarios requiring multiplication or division understanding
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -41,12 +41,19 @@ real_world_context:
   - Telling time with analog clocks (quarter past, half past)
   - Dividing toys, stickers, or craft materials among classmates
   - Understanding portions in sports (quarter of a game, half-time)
+  - A gardener dividing flower beds into equal sections
+  - Cutting ribbon or fabric into equal pieces for crafts
+  - Reading fuel gauges showing tank fractions
+  - Splitting allowance money into portions for saving and spending
+  - Understanding music notes as fractions of a whole beat
+  - Dividing a hiking trail into equal segments for rest stops
+  - Sharing art supplies equally among project groups
 anti_patterns:
   - Avoid fractions with denominators larger than 12
   - Don't introduce multiplication or division of fractions
   - Avoid comparing fractions with different denominators (except equivalents)
   - Don't use improper fractions or mixed numbers
   - Avoid abstract contexts unfamiliar to 9-10 year olds
-version: 1
-version_notes: Initial version aligned with German Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

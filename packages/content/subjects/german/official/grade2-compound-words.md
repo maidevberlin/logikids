@@ -38,6 +38,13 @@ real_world_context:
   - Using compound words when describing objects and activities
   - Recognizing how German creates new words by combining existing ones
   - Learning that the last word in a compound determines its gender
+  - Creating funny fantasy creatures by combining animal words (Löwenfrosch, Elefantenvogel)
+  - A carpenter building a toy chest learning words like Werkzeugkasten and Schraubenzieher
+  - Reading recipes that use compound words like Geburtstagskuchen or Apfelsaft
+  - A farmer naming fields and buildings using compounds like Gemüsegarten and Hühnerstall
+  - Playing word invention games to create new compound words for imaginary objects
+  - A space explorer discovering planets and naming them with compound words
+  - Understanding traffic signs with compounds like Fahrradweg and Bushaltestelle
 anti_patterns:
   - Avoid compounds with abstract or unfamiliar vocabulary for 7-8 year olds
   - Do not use compounds requiring knowledge of specialized technical terms
@@ -47,6 +54,6 @@ anti_patterns:
 prerequisites:
   - grade1-reading-simple-words
   - grade1-writing-simple-words
-version: 1
-version_notes: Initial version - foundational word formation concept for Grade 2
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

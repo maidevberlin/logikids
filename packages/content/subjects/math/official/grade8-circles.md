@@ -45,12 +45,19 @@ real_world_context:
   - Determining the area covered by sprinkler systems or satellite signals
   - Calculating pizza slice areas and circular food portions
   - Measuring circular sports fields, tracks, or arenas
+  - Bicycle mechanics calculating tire circumference for speedometer calibration
+  - Artists creating circular canvas sizes for paintings
+  - Bakers determining the size of round cake pans and serving portions
+  - Engineers calculating pipe cross-sections for water flow rates
+  - Party planners measuring tablecloth sizes for round tables
+  - Astronomers comparing planet sizes using circular area calculations
+  - Frisbee manufacturers optimizing disc dimensions for flight performance
 anti_patterns:
   - Avoid trigonometry or angle calculations beyond simple sectors
   - Don't introduce arc length formulas separately from sectors
   - Avoid circles in coordinate systems or tangent lines
   - Don't combine with advanced algebraic expressions
   - Avoid problems requiring more than 3 decimal places for pi
-version: 1
-version_notes: Initial version aligned with German KMK standards for Grade 8
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

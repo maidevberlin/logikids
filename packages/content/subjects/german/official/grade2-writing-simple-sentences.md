@@ -43,12 +43,19 @@ real_world_context:
   - Writing simple letters or messages to friends and family members
   - Composing short stories with a beginning, middle, and end
   - Making signs or labels that communicate complete information
+  - A young author writing adventure sentences about brave heroes and dragons
+  - Creating thank-you notes with complete sentences after receiving gifts
+  - A scientist writing observation sentences about plants growing in the garden
+  - Making recipe cards with clear sentence instructions for simple snacks
+  - Writing sentences to describe favorite vacation memories in a scrapbook
+  - A newspaper reporter writing complete sentences about school events
+  - Creating sentence captions for a photo album of family celebrations
 anti_patterns:
   - Avoid complex grammatical structures not yet introduced in Grade 2
   - Don't use vocabulary with difficult spelling unfamiliar to 7-8 year olds
   - Avoid sentences longer than 8 words at easy/medium levels
   - Don't introduce quotation marks or comma usage yet
   - Avoid abstract topics; use concrete, age-appropriate content
-version: 1
-version_notes: Initial concept for German Grade 2 sentence writing with basic punctuation and capitalization
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

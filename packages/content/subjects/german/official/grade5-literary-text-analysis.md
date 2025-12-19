@@ -43,12 +43,19 @@ real_world_context:
   - Local legends (Sagen) connect students to their region's history and cultural identity through storytelling
   - Moral lessons from fables provide frameworks for discussing ethical decisions and social behavior in school and family contexts
   - Recognizing story patterns and archetypes helps students understand new narratives across different media and cultures
+  - Analyzing fairy tales helps students identify good versus evil themes in fantasy novels and adventure movies
+  - Understanding fable morals aids in interpreting proverbs and wise sayings used by family members
+  - Recognizing magical elements in Märchen enhances enjoyment of fantasy video games and animated films
+  - Exploring local Sagen during regional field trips deepens connection to castles, rivers, or mountain landmarks
+  - Comparing different versions of the same fairy tale from various cultures in multicultural classrooms
+  - Identifying archetypal characters like heroes, tricksters, or mentors in popular book series
+  - Analyzing how modern retellings subvert traditional fairy tale expectations in contemporary children's literature
 anti_patterns:
   - Avoid texts requiring advanced literary terminology beyond basic genre elements
   - Don't use obscure or regional Sagen unfamiliar to most German students
   - Avoid mixing multiple genres in one task without clear separation
   - Don't expect analysis of subtle subtext beyond explicit characterization
   - Avoid Märchen or Fabeln with outdated language inaccessible to 10-year-olds
-version: 1
-version_notes: Initial creation based on Berlin-Brandenburg Rahmenlehrplan Grade 5
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

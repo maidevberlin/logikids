@@ -45,12 +45,19 @@ real_world_context:
   - Estimating concrete needed for construction projects
   - Comparing volumes of different product packages (juice boxes, cereal boxes)
   - Calculating room volumes for heating or air conditioning requirements
+  - A gardener computing soil volume for raised planter beds
+  - Measuring luggage dimensions for airline size restrictions
+  - Computing water tank capacity for camping trips
+  - Estimating sand volume for a backyard sandbox
+  - Calculating ingredient storage for bulk food containers
+  - Determining ice needed to fill a cooler for picnics
+  - A moving company estimating box volumes for truck packing
 anti_patterns:
   - Avoid mixing different unit systems without clear conversion context
   - Don't use dimensions larger than 1000 or smaller than 0.1 without context
   - Avoid decomposition problems where shapes don't clearly align on a grid
   - Don't present estimation tasks without reasonable reference objects
   - Avoid confusing volume with surface area in problem statements
-version: 1
-version_notes: Initial creation based on KMK standards and LehrplanPLUS Bayern Grade 6
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

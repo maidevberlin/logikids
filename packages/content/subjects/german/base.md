@@ -17,8 +17,6 @@ Teaching German language and literature - grammar, vocabulary, reading comprehen
 - Tables for cases, conjugations, declensions
 - Lists for vocabulary, grammar rules
 
-**Avoid:** LaTeX, code blocks, Mermaid
-
 ## Task Variation
 
 **IMPORTANT**: Ensure content diversity across tasks:

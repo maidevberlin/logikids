@@ -44,12 +44,19 @@ real_world_context:
   - Comparing price changes during sales events and seasonal promotions
   - Understanding loan interest and payment plans for purchases
   - Analyzing population growth, inflation rates, and economic statistics
+  - Athletes tracking improvement percentages in speed, strength, or accuracy
+  - Gamers analyzing win rates and success percentages in competitive matches
+  - Students calculating grade improvements from one test to the next
+  - Restaurant servers estimating tips based on bill percentages
+  - Shoppers comparing unit prices with different coupon discounts
+  - Fitness trackers showing progress toward daily step or calorie goals
+  - Social media users understanding follower growth rates and engagement percentages
 anti_patterns:
   - Avoid percentage rates above 50% unless clearly justified by context
   - Don't combine more than three percentage operations in one problem
   - Avoid ambiguous phrasing about whether tax is added before or after discount
   - Don't use interest periods longer than 5 years for simple interest
   - Avoid scenarios unfamiliar to 12-14 year olds
-version: 1.0
-version_notes: Initial version based on KMK Bildungsstandards and LehrplanPLUS Bayern Grade 7
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

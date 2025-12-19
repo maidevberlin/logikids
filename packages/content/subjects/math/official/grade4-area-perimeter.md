@@ -46,12 +46,19 @@ real_world_context:
   - Finding the border length needed for a picture frame (perimeter)
   - Comparing the size of different rooms or yards to see which has more space (area)
   - Planning how much paint or wallpaper is needed to cover a wall (area)
+  - A landscaper measuring lawn sections for fertilizer amounts
+  - Calculating ribbon needed to border a bulletin board
+  - Comparing playground sections to see which has more play space
+  - Planning decorative lights needed around a patio edge
+  - A farmer calculating field sizes for planting seeds
+  - Determining fabric amounts for making rectangular tablecloths
+  - Measuring baseboard trim needed for a bedroom
 anti_patterns:
   - Don't confuse area and perimeter - specify which measurement is needed
   - Avoid irregular shapes - focus only on rectangles and squares
   - Don't use fractional dimensions - keep to whole numbers
   - Avoid mixing different units in the same problem without conversion context
   - Don't introduce formulas without context - connect to real measurements
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

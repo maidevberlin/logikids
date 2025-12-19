@@ -42,12 +42,19 @@ real_world_context:
   - Finding faster ways to add up scores in games by regrouping
   - Distributing multiplication across addition when organizing collections
   - Recognizing that order doesn't matter when combining equal groups
+  - A magician grouping cards differently to count them faster
+  - Breaking apart large multiplication into easier steps when shopping
+  - Reorganizing sports equipment into convenient groups for counting
+  - A chef combining ingredients in any order for the same recipe result
+  - Adding donation amounts by grouping numbers that make tens
+  - Rearranging furniture counts room by room versus all at once
+  - A cashier adding prices in convenient order for mental math
 anti_patterns:
   - Avoid using numbers larger than 100 in calculations
   - Don't introduce formal algebraic notation or variables
   - Avoid mixing more than two different properties in one problem
   - Don't use contexts requiring knowledge of fractions or decimals
   - Avoid problems that require understanding of negative numbers
-version: 1
-version_notes: Initial creation for Grade 3 arithmetic laws and properties
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

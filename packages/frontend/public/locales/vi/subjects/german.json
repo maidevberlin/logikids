@@ -1,0 +1,356 @@
+{
+  "concepts": {
+    "grade1-dramatic-expression": {
+      "name": "Biểu diễn kịch và nhập vai",
+      "description": "Thể hiện cảm xúc và nhân vật qua cử chỉ, chuyển động, biểu cảm khuôn mặt và các hoạt động nhập vai"
+    },
+    "grade1-phonological-awareness": {
+      "name": "Nhận thức ngữ âm và tương ứng chữ-âm",
+      "description": "Nhận biết âm trong từ, xác định âm tiết, phân biệt nguyên âm với phụ âm và khớp chữ cái với âm thanh của chúng"
+    },
+    "grade1-writing-composition": {
+      "name": "Sáng tác và quy trình viết",
+      "description": "Học cách lên kế hoạch, soạn thảo và sửa đổi các văn bản đơn giản bao gồm câu chuyện, nhật ký và viết thông tin"
+    },
+    "grade1-listening-comprehension": {
+      "name": "Nghe và hiểu thính giác",
+      "description": "Phát triển kỹ năng lắng nghe chăm chú, trích xuất thông tin thiết yếu từ ngôn ngữ nói và thể hiện sự hiểu biết qua các phản ứng phù hợp"
+    },
+    "grade1-reading-fluency": {
+      "name": "Trôi chảy đọc và giải mã",
+      "description": "Phát triển khả năng nhận từ tự động thông qua từ nhìn, kỹ năng kết hợp, thành thạo kết hợp chữ cái và đọc hướng dẫn dấu câu"
+    },
+    "grade1-speaking-conversation": {
+      "name": "Kỹ năng nói và đối thoại",
+      "description": "Kể lại kinh nghiệm, tuân theo quy tắc đối thoại, thảo luận quy trình học tập và đưa ra phản hồi mang tính xây dựng"
+    },
+    "grade1-spelling": {
+      "name": "Chiến lược chính tả và chính tả",
+      "description": "Áp dụng các nguyên tắc ngữ âm, âm tiết, hình thái và ngữ pháp để đánh vần từ chính xác"
+    },
+    "grade1-reading-comprehension": {
+      "name": "Chiến lược đọc hiểu",
+      "description": "Áp dụng các chiến lược trước, trong và sau khi đọc, đưa ra dự đoán, làm rõ từ chưa biết và trả lời các câu hỏi hiểu"
+    },
+    "grade1-text-types": {
+      "name": "Loại văn bản và tương tác văn học",
+      "description": "Hiểu các loại văn bản khác nhau (thơ, truyện, văn bản thông tin), phân tích nhân vật và yếu tố truyện và trình bày văn bản"
+    },
+    "grade1-grammar": {
+      "name": "Ngữ pháp và từ loại",
+      "description": "Xác định và sử dụng các từ loại cơ bản bao gồm danh từ, động từ và tính từ, và hiểu cấu tạo từ và cấu trúc câu đơn giản"
+    },
+    "grade1-handwriting": {
+      "name": "Viết tay và cơ chế viết",
+      "description": "Phát triển chữ viết tay rõ ràng, dễ đọc với hình thức chữ cái, tư thế và tốc độ viết phù hợp"
+    },
+    "grade1-language-awareness": {
+      "name": "Nhận thức ngôn ngữ và đa ngôn ngữ",
+      "description": "Hiểu mục đích giao tiếp, nhận biết phương ngữ, so sánh ngôn ngữ và đánh giá cao sự đa dạng ngôn ngữ"
+    },
+    "grade2-reading-simple-texts": {
+      "name": "Đọc văn bản đơn giản",
+      "description": "Giải mã từ, đọc câu đơn giản và văn bản ngắn với hiểu biết cơ bản"
+    },
+    "grade2-compound-words": {
+      "name": "Từ ghép",
+      "description": "Hiểu và hình thành từ ghép tiếng Đức bằng cách kết hợp hai hoặc nhiều từ để tạo ý nghĩa mới"
+    },
+    "grade2-retelling-stories": {
+      "name": "Kể lại truyện",
+      "description": "Nói và nghe"
+    },
+    "grade2-rhyming-words": {
+      "name": "Từ vần",
+      "description": "Xác định và tạo từ vần, hiểu mẫu âm thanh trong tiếng Đức"
+    },
+    "grade2-asking-questions": {
+      "name": "Đặt câu hỏi",
+      "description": "Hình thành câu hỏi, sử dụng từ để hỏi và đánh dấu câu hỏi một cách chính xác"
+    },
+    "grade2-writing-simple-sentences": {
+      "name": "Viết câu đơn giản",
+      "description": "Viết câu hoàn chỉnh với chữ hoa ở đầu và dấu chấm ở cuối"
+    },
+    "grade2-alphabet-and-abc-order": {
+      "name": "Bảng chữ cái và thứ tự ABC",
+      "description": "Học bảng chữ cái tiếng Đức, thứ tự bảng chữ cái và sử dụng nó để tổ chức và tìm từ"
+    },
+    "grade2-nouns-and-capital-letters": {
+      "name": "Danh từ và chữ hoa",
+      "description": "Nhận biết danh từ và viết chúng bằng chữ hoa"
+    },
+    "grade2-plural-forms": {
+      "name": "Dạng số nhiều",
+      "description": "Hiểu và hình thành các dạng số nhiều cơ bản trong tiếng Đức sử dụng các mẫu như -e, -en, -er, -s và thay đổi Umlaut"
+    },
+    "grade2-syllables-and-word-structure": {
+      "name": "Âm tiết và cấu trúc từ",
+      "description": "Xác định âm tiết, vỗ tay theo âm tiết và hiểu cách từ được xây dựng từ các đơn vị âm tiết"
+    },
+    "grade3-dialogue-roleplay": {
+      "name": "Đối thoại và nhập vai",
+      "description": "Điều hướng các tình huống giao tiếp thường xuyên, tuân theo quy tắc đối thoại, cung cấp phản hồi và đảm nhận vai trò trong trò chơi kịch với quan điểm nhân vật"
+    },
+    "grade3-reading-strategies": {
+      "name": "Chiến lược đọc hiểu",
+      "description": "Áp dụng các chiến lược trước, trong và sau khi đọc để hiểu văn bản; kích hoạt kiến thức trước; chú thích; làm rõ từ vựng; hình dung các yếu tố tường thuật"
+    },
+    "grade3-text-analysis": {
+      "name": "Phân tích văn bản và hiểu văn học",
+      "description": "Phân tích chuỗi cốt truyện, mô tả nhân vật, giải thích ngôn ngữ bóng bẩy và so sánh các loại văn bản khác nhau"
+    },
+    "grade3-reading-fluency": {
+      "name": "Trôi chảy đọc và diễn đạt",
+      "description": "Đọc văn bản trôi chảy với độ chính xác, tốc độ phù hợp, nhịp độ và nhấn mạnh đa dạng, trong khi xây dựng vốn từ vựng nhìn rộng"
+    },
+    "grade3-grammar-structures": {
+      "name": "Ngữ pháp và cấu trúc câu",
+      "description": "Hình thành từ phức tạp, áp dụng thì động từ, xác định từ loại, đánh dấu câu trực tiếp và kết hợp câu với liên từ"
+    },
+    "grade3-composition-planning": {
+      "name": "Sáng tác và lập kế hoạch",
+      "description": "Học cách lên kế hoạch và tổ chức ý tưởng cho các loại văn bản khác nhau bằng sơ đồ tư duy, danh sách từ và cấu trúc tường thuật"
+    },
+    "grade3-speaking-presentations": {
+      "name": "Nói và trình bày",
+      "description": "Xây dựng đóng góp logic, sử dụng âm lượng và tốc độ phù hợp, chuẩn bị bài trình bày với ghi chú và áp dụng ngôn ngữ chuẩn và học thuật"
+    },
+    "grade3-revision-feedback": {
+      "name": "Sửa đổi và phản hồi đồng đẳng",
+      "description": "Đưa ra và nhận phản hồi mang tính xây dựng, sửa đổi văn bản để rõ ràng và chính xác và định dạng văn bản hấp dẫn"
+    },
+    "grade3-word-building": {
+      "name": "Xây dựng từ và hình thái",
+      "description": "Hiểu gốc, tiền tố, hậu tố; tạo họ từ; nhận biết danh từ ghép; khám phá sự thay đổi nguyên âm trong họ từ"
+    },
+    "grade3-listening-comprehension": {
+      "name": "Nghe hiểu và ngôn ngữ học thuật",
+      "description": "Trích xuất thông tin chính từ ngôn ngữ học thuật cụ thể theo môn học, thể hiện sự hiểu biết qua tóm tắt và hiểu cách các yếu tố thanh âm và cử chỉ hỗ trợ ý nghĩa"
+    },
+    "grade3-spelling-principles": {
+      "name": "Nguyên tắc và chiến lược chính tả",
+      "description": "Áp dụng các nguyên tắc ngữ âm, âm tiết và hình thái; thành thạo vốn từ vựng cốt lõi; sử dụng từ điển; nhận biết các mẫu chính tả"
+    },
+    "grade3-writing-mechanics": {
+      "name": "Cơ chế viết và viết tay",
+      "description": "Tạo ra chữ viết tay dễ đọc; điều chỉnh chữ viết theo mục đích (in so với nét liền); duy trì tư thế và cầm bút phù hợp"
+    },
+    "grade4-advanced-listening": {
+      "name": "Nghe hiểu nâng cao",
+      "description": "Hiểu các văn bản nói phức tạp, đặt câu hỏi có mục tiêu, nhận biết khoảng trống hiểu biết"
+    },
+    "grade4-parts-of-speech": {
+      "name": "Thành thạo từ loại",
+      "description": "Xác định và sử dụng tất cả các từ loại chính với nhận thức đầy đủ về danh từ (cách, giống), động từ (tất cả các thì), mạo từ, tính từ và đại từ"
+    },
+    "grade4-discussion-skills": {
+      "name": "Thảo luận và lập luận",
+      "description": "Dẫn dắt thảo luận hiệu quả, trình bày và bảo vệ lập luận với bằng chứng, phản hồi có ý nghĩa với đóng góp của người khác và giải quyết xung đột thông qua đối thoại hợp tác"
+    },
+    "grade4-text-planning": {
+      "name": "Lập kế hoạch và cấu trúc văn bản",
+      "description": "Học cách làm rõ mục đích và đối tượng, thu thập từ vựng và cụm từ và tổ chức ý tưởng có hệ thống trước khi viết"
+    },
+    "grade4-spelling-strategies": {
+      "name": "Chiến lược và quy tắc chính tả",
+      "description": "Áp dụng chiến lược suy diễn, phát âm và ghi nhớ; sử dụng công cụ tham khảo hiệu quả; thành thạo dấu câu trong câu trực tiếp"
+    },
+    "grade4-text-revision": {
+      "name": "Sửa đổi và biên tập văn bản",
+      "description": "Tự sửa, kiểm tra độ rõ ràng và hiệu quả, chuẩn bị xuất bản"
+    },
+    "grade4-text-types-genres": {
+      "name": "Loại và thể loại văn bản",
+      "description": "Nhận biết và phân biệt tiểu thuyết so với phi tiểu thuyết, các hình thức tường thuật/thơ/kịch và phát triển hiểu biết về phương tiện truyền thông"
+    },
+    "grade4-expressive-speaking": {
+      "name": "Nói diễn cảm và trình bày",
+      "description": "Điều chỉnh lời nói theo ngữ cảnh (kể lại, thông báo, tranh luận), sử dụng tiếng Đức chuẩn, kỹ năng trình bày"
+    },
+    "grade4-literary-response": {
+      "name": "Phản ứng và diễn giải văn học",
+      "description": "Phát triển phản ứng cá nhân với văn học, hiểu cảm xúc và mối quan hệ nhân vật, tạo hình ảnh tâm trí sống động và tương tác sáng tạo với văn bản thông qua các hình thức khác nhau"
+    },
+    "grade4-word-formation": {
+      "name": "Hình thành từ và từ vựng",
+      "description": "Hiểu cấu trúc từ thông qua gốc, tiền tố, hậu tố, họ từ, trường nghĩa và mở rộng từ vựng có hệ thống"
+    },
+    "grade4-sentence-structure": {
+      "name": "Cấu trúc câu và cú pháp",
+      "description": "Thành thạo các loại câu, cấu trúc chủ-vị-bổ ngữ, tham chiếu thời gian trong câu, hình thành câu phức tạp và dấu câu cho các loại câu khác nhau"
+    },
+    "grade5-informational-texts": {
+      "name": "Đọc hiểu văn bản thông tin",
+      "description": "Đọc hiểu văn bản phi tiểu thuyết và các định dạng thông tin phi tuyến tính"
+    },
+    "grade5-narrative-writing": {
+      "name": "Viết tường thuật",
+      "description": "Viết tường thuật với quan điểm rõ ràng và cấu trúc truyện (Einleitung, Hauptteil, Schluss)"
+    },
+    "grade5-poetry-analysis": {
+      "name": "Phân tích thơ",
+      "description": "Hiểu và đánh giá cao các văn bản thơ thông qua hình thức và biểu đạt"
+    },
+    "grade6-listening-comprehension": {
+      "name": "Nghe hiểu",
+      "description": "Hiểu các văn bản nói, trích xuất thông tin, xác định ý định của người nói"
+    },
+    "grade6-oral-presentation": {
+      "name": "Kỹ năng trình bày miệng",
+      "description": "Trình bày bài thuyết trình, đọc văn bản một cách diễn cảm, sử dụng ngôn ngữ cơ thể hiệu quả"
+    },
+    "grade6-discussion-argumentation": {
+      "name": "Thảo luận và lập luận",
+      "description": "Thành thạo kỹ năng đối thoại trong các ngữ cảnh khác nhau, nêu ý kiến với sự hỗ trợ có lý, áp dụng các chiến lược giải quyết xung đột, phản hồi mang tính xây dựng với quan điểm đối lập và xây dựng dựa trên đóng góp của người khác"
+    },
+    "grade6-text-revision": {
+      "name": "Sửa đổi và biên tập văn bản",
+      "description": "Phản hồi đồng đẳng, chiến lược sửa đổi, biên tập với tiêu chí đã thiết lập"
+    },
+    "grade6-reading-strategies": {
+      "name": "Chiến lược đọc",
+      "description": "Kỹ thuật đọc nâng cao bao gồm làm nổi bật, ghi chú, nhật ký đọc, điều hướng văn bản và điều chỉnh tốc độ đọc theo mục đích"
+    },
+    "grade6-informative-writing": {
+      "name": "Viết thông tin",
+      "description": "Sáng tác văn bản sự thật với cấu trúc logic rõ ràng, trình bày khách quan và tóm tắt chính xác"
+    },
+    "grade6-narrative-writing": {
+      "name": "Viết tường thuật",
+      "description": "Sáng tác truyện, cấu trúc cốt truyện, phát triển nhân vật, quan điểm tường thuật"
+    },
+    "grade6-literary-text-analysis": {
+      "name": "Phân tích văn bản văn học",
+      "description": "Phân tích tường thuật, thần화, thơ và văn học thanh thiếu niên thông qua phân tích nhân vật, xác định chủ đề, các thiết bị văn học và khám phá văn hóa"
+    },
+    "grade6-informational-texts": {
+      "name": "Văn bản thông tin",
+      "description": "Văn bản phi tiểu thuyết, sử dụng tài liệu tham khảo, đánh giá biểu đồ và đồ họa"
+    },
+    "grade6-spelling-orthography": {
+      "name": "Chính tả và chính tả",
+      "description": "Thành thạo các quy tắc chính tả nâng cao bao gồm nhân đôi phụ âm, phân biệt das/dass, viết hoa, đồng âm và chính tả từ ngoại lai"
+    },
+    "grade6-grammar-syntax": {
+      "name": "Ngữ pháp và cú pháp",
+      "description": "Từ loại, thể chủ động/bị động, thành phần câu, các loại mệnh đề"
+    },
+    "grade6-punctuation": {
+      "name": "Dấu câu",
+      "description": "Áp dụng quy tắc dấu câu chính xác bao gồm dấu phẩy trong câu phức tạp, dấu ngoặc kép trong câu trực tiếp và dấu câu kết thúc câu"
+    },
+    "grade4-reading-comprehension": {
+      "name": "Đọc hiểu nâng cao",
+      "description": "Phân tích văn bản, tìm ý tưởng trung tâm, hỗ trợ tuyên bố với bằng chứng, so sánh văn bản"
+    },
+    "grade4-language-comparison": {
+      "name": "Nhận thức và so sánh ngôn ngữ",
+      "description": "So sánh tiếng Đức với các ngôn ngữ khác, nhận biết phương ngữ và từ ngoại lai, phân biệt các hình thức ngôn ngữ nói và viết"
+    },
+    "grade4-dramatic-expression": {
+      "name": "Biểu diễn kịch và nhập vai",
+      "description": "Áp dụng quan điểm, phát triển vai trò, khám phá các tình huống qua trò chơi với việc sử dụng giọng nói, cử chỉ và chuyển động nâng cao"
+    },
+    "grade5-discussion-skills": {
+      "name": "Kỹ năng thảo luận và đối thoại lớp học",
+      "description": "Tham gia hiệu quả vào các cuộc thảo luận lớp học tuân theo các quy tắc đã thiết lập, phản hồi phù hợp với người khác, hình thành và biện minh ý kiến và phân biệt vai trò đối thoại"
+    },
+    "grade5-media-literacy": {
+      "name": "Hiểu biết về phương tiện truyền thông",
+      "description": "Hiểu hệ thống thư viện, nghiên cứu kỹ thuật số và phản ánh việc sử dụng phương tiện truyền thông"
+    },
+    "grade5-oral-presentations": {
+      "name": "Trình bày miệng",
+      "description": "Trình bày thông tin và kinh nghiệm cho bạn cùng lớp với cấu trúc rõ ràng và hỗ trợ trực quan"
+    },
+    "grade5-literary-text-analysis": {
+      "name": "Phân tích văn bản văn học",
+      "description": "Hiểu các hình thức văn học tường thuật: Fabeln (ngụ ngôn), Märchen (truyện cổ tích) và Sagen (truyền thuyết) - phân tích cấu trúc, nhân vật và chủ đề"
+    },
+    "grade5-attentive-listening": {
+      "name": "Lắng nghe chăm chú",
+      "description": "Đọc hiểu các văn bản nói, trích xuất thông tin chính"
+    },
+    "grade5-sentence-elements": {
+      "name": "Yếu tố câu và cấu trúc mệnh đề",
+      "description": "Phân tích câu nâng cao bao gồm xác định tất cả các yếu tố câu (Satzglieder), phân biệt mệnh đề chính và phụ và hiểu các loại trạng ngữ khác nhau"
+    },
+    "grade5-informative-writing": {
+      "name": "Viết thông tin",
+      "description": "Viết văn bản sự thật với tổ chức logic (Bericht, Beschreibung)"
+    },
+    "grade5-reading-strategies": {
+      "name": "Chiến lược đọc",
+      "description": "Đánh dấu, cấu trúc, xác định ý tưởng chính, nhật ký đọc"
+    },
+    "grade5-text-revision": {
+      "name": "Sửa đổi văn bản",
+      "description": "Lập kế hoạch, xem xét và cải thiện văn bản của riêng mình và đồng đẳng"
+    },
+    "grade5-word-classes": {
+      "name": "Lớp từ và hình thái",
+      "description": "Tất cả Wortarten, hình thành từ, tiền tố, hậu tố"
+    },
+    "grade5-creative-writing": {
+      "name": "Viết sáng tạo",
+      "description": "Tạo ra các văn bản sáng tạo bằng cách điều chỉnh các hình thức văn học (Fabel, điều chỉnh Märchen, ảo tưởng)"
+    },
+    "grade5-spelling-rules": {
+      "name": "Chính tả và dấu câu",
+      "description": "Thành thạo các quy tắc chính tả cho độ dài nguyên âm, âm s và dấu câu"
+    },
+    "grade5-dramatic-play": {
+      "name": "Chơi kịch và biểu đạt",
+      "description": "Sử dụng biểu đạt sân khấu để diễn giải văn bản và phát triển khả năng tự thể hiện"
+    },
+    "grade7-ballads-poetry": {
+      "name": "Phân tích ballad và thơ",
+      "description": "Phân tích ballad và thơ bằng cách kiểm tra nhịp điệu, sơ đồ vần, các thiết bị văn học, cấu trúc tường thuật và cách hình thức thơ tạo ra tâm trạng và bầu không khí"
+    },
+    "grade7-dramatic-performance": {
+      "name": "Biểu diễn kịch và tạo cảnh",
+      "description": "Tạo các cảnh ban đầu, diễn giải nhân vật và sử dụng biểu đạt sân khấu để hiểu văn bản"
+    },
+    "grade7-youth-literature": {
+      "name": "Phân tích văn học thanh thiếu niên",
+      "description": "Phân tích tiểu thuyết thanh thiếu niên hiện đại và cổ điển, tường thuật ngắn, chủ đề, phát triển nhân vật và kỹ thuật tường thuật"
+    },
+    "grade7-argumentative-writing": {
+      "name": "Viết lập luận",
+      "description": "Viết các văn bản lập luận chính thức bao gồm thư, tổ chức lập luận theo tính hợp lệ và hỗ trợ tuyên bố với lý lẽ và bằng chứng"
+    },
+    "grade7-subjunctive-mood": {
+      "name": "Thức giả định (Konjunktiv)",
+      "description": "Sử dụng giả định I và II cho lời nói gián tiếp, lời nói được báo cáo và thể hiện các tình huống giả định hoặc trái với thực tế"
+    },
+    "grade7-media-literacy": {
+      "name": "Hiểu biết về phương tiện truyền thông và đánh giá nguồn",
+      "description": "Nghiên cứu internet, đánh giá độ tin cậy nguồn, so sánh chất lượng thông tin"
+    },
+    "grade7-reading-documentation": {
+      "name": "Đọc và ghi chú",
+      "description": "Nhật ký đọc, chiến lược tài liệu và theo dõi hiểu biết để làm sâu sắc trải nghiệm đọc"
+    },
+    "grade7-complex-sentences": {
+      "name": "Cấu trúc câu phức tạp",
+      "description": "Mệnh đề điều kiện, kết quả, nhượng bộ và đối lập; xây dựng và phân tích câu ghép-phức"
+    },
+    "grade7-indirect-speech": {
+      "name": "Lời nói gián tiếp và diễn giải lại",
+      "description": "Chuyển đổi lời nói trực tiếp sang gián tiếp, diễn giải lại các nguồn chính xác và đánh dấu nội dung mượn đúng cách"
+    },
+    "grade7-oral-presentations": {
+      "name": "Trình bày miệng có cấu trúc",
+      "description": "Trình bày bài thuyết trình với hỗ trợ trực quan, các thiết bị tu từ và kỹ thuật thu hút khán giả"
+    },
+    "grade7-discussion-debate": {
+      "name": "Kỹ năng thảo luận và tranh luận",
+      "description": "Tham gia đối thoại dân chủ và tranh luận chính thức, giải quyết xung đột mang tính xây dựng, trình bày và bảo vệ quan điểm với lập luận có cấu trúc và giải quyết các vị trí đối lập với phản biện có lý"
+    },
+    "grade7-advanced-punctuation": {
+      "name": "Dấu câu nâng cao",
+      "description": "Dấu phẩy với cụm nguyên mẫu và cụm đồng vị, dấu ngoặc kép cho tiêu đề và lời nói và dấu câu trong câu ghép-phức"
+    }
+  }
+}

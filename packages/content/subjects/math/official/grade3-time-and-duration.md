@@ -43,12 +43,19 @@ real_world_context:
   - Reading bus or train schedules to arrive at destinations on time
   - Calculating cooking or baking times using timers and clocks
   - Understanding age differences and birthdays using calendar knowledge
+  - A movie theater manager scheduling film start and end times
+  - Tracking practice duration for learning a musical instrument
+  - Planning arrival times for appointments at the dentist or doctor
+  - A lifeguard scheduling pool session rotations
+  - Calculating time remaining until a special holiday or event
+  - A pilot announcing flight duration and arrival time to passengers
+  - Timing laps during a swimming or running practice session
 anti_patterns:
   - Avoid using 24-hour clock notation (use 12-hour AM/PM format)
   - Don't include time zones or daylight saving time concepts
   - Avoid durations longer than one week unless specifically calendar-focused
   - Don't use decimal time notation (use hours and minutes separately)
   - Avoid problems requiring knowledge of leap years or historical dates
-version: 1
-version_notes: Initial creation for Grade 3 time and duration
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -48,12 +48,19 @@ real_world_context:
   - Direct speech punctuation appears in creative writing, comic strips, and theater scripts
   - Combining sentences with conjunctions helps students write more sophisticated reports and arguments
   - Understanding parts of speech supports dictionary use and learning foreign languages in later grades
+  - Writing dialogue for a puppet show requires proper punctuation of what characters say
+  - Creating fantasy creature names by combining word stems like "Fire-breathing-dragon"
+  - Using past tense to write a newspaper report about last week's school festival
+  - Combining short choppy sentences with "because" to explain why an experiment worked
+  - Identifying adjectives to make nature descriptions more vivid in poetry writing
+  - Using future tense to write an invitation explaining what will happen at a birthday party
+  - Forming compound words to name new inventions in a creative technology project
 anti_patterns:
   - Avoid compound words longer than three components for grade 3
   - Do not mix subjunctive mood or passive voice in verb tense tasks
   - Avoid dative-accusative distinction beyond basic prepositional phrases
   - Do not use archaic or literary conjunctions unfamiliar to 8-9 year olds
   - Avoid abstract semantic fields; prefer concrete categories
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 3 grammatical structures curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

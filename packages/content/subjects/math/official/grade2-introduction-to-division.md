@@ -47,6 +47,13 @@ real_world_context:
   - Organizing objects into equal rows (arranging chairs, planting seeds)
   - Splitting collections into groups (sorting cards into piles)
   - Dividing classroom supplies (distributing crayons, paper, books)
+  - A fairy godmother splitting magic dust equally among wishes
+  - Portioning pizza slices so everyone at the table gets the same amount
+  - Dividing stickers evenly among party favor bags
+  - A farmer putting eggs into cartons with equal numbers in each
+  - Splitting a deck of cards equally among players for a game
+  - Arranging flowers equally into vases for table decorations
+  - A coach forming equal teams from a group of players
 
 anti_patterns:
   - Avoid division facts beyond the 10 times table
@@ -55,6 +62,6 @@ anti_patterns:
   - Don't combine division with other operations in single problems
   - Avoid abstract contexts unfamiliar to 7-8 year olds
 
-version: 1
-version_notes: Initial version following curriculum-aligned scope for German Grade 2, emphasizing equal weight to sharing, grouping, and multiplication relationship
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -45,12 +45,19 @@ real_world_context:
   - Currency exchange rates use direct proportionality for converting between currencies
   - Work completion time depends inversely on the number of workers (more workers, less time)
   - Map scales use direct proportionality to relate map distances to real distances
+  - Musicians adjusting metronome tempo inversely affects time to play a piece
+  - Photographers using aperture settings where light and exposure are inversely related
+  - Cyclists experiencing inverse proportionality between gear ratio and pedaling effort
+  - Paint mixing requiring direct proportionality to maintain consistent colors
+  - Video streaming quality inversely proportional to number of users sharing bandwidth
+  - Fuel efficiency calculations using distance traveled per liter of gasoline
+  - Shadow lengths directly proportional to object heights at the same time of day
 anti_patterns:
   - Avoid mixing direct and inverse proportionality in a single problem
   - Do not use proportions where additive patterns would be more appropriate
   - Avoid contexts unfamiliar to 12-13 year olds (compound interest, physics)
   - Do not present ratio tables with inconsistent or non-proportional data
   - Avoid graphs without clear axis labels and scale markings
-version: 1
-version_notes: Initial version based on German KMK curriculum for Grade 7
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

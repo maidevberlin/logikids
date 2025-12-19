@@ -103,7 +103,6 @@ difficultyGuidelines = concept.difficulty_guidelines[difficulty]
 | `[[real_world_context]]`    | Concept    | Context for scenarios                    |
 | `[[anti_patterns]]`         | Concept    | Things AI should avoid (bullet list)     |
 | `[[scenario]]`              | Variations | Grade-filtered scenario context          |
-| `[[language_style]]`        | Calculated | Grade-based language style               |
 | `[[enrichment_formatted]]`  | Variations | Creative enrichments (formatted bullets) |
 
 ### 5. AI Generation
