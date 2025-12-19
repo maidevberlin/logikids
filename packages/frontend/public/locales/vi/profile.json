@@ -1,0 +1,105 @@
+{
+  "account": {
+    "title": "Tài khoản của tôi",
+    "subtitle": "Quản lý hồ sơ và tùy chọn của bạn",
+    "profileSettings": "Cài đặt hồ sơ",
+    "dataManagement": "Quản lý dữ liệu",
+    "dataInfo": "Dữ liệu của bạn được lưu trữ an toàn trên thiết bị của bạn. Bạn có thể xuất hoặc xóa nó bất cứ lúc nào.",
+    "saveButton": "Lưu thay đổi",
+    "saving": "Đang lưu...",
+    "saved": "Đã lưu thay đổi thành công!",
+    "exportData": {
+      "downloadButton": "Xuất dữ liệu (JSON)",
+      "exporting": "Đang xuất...",
+      "description": "Tải xuống tất cả dữ liệu của bạn dưới dạng tệp JSON. Bạn có thể sử dụng điều này để sao lưu hoặc chuyển dữ liệu của mình."
+    },
+    "logout": "Đăng xuất",
+    "logoutTitle": "Đăng xuất",
+    "logoutDescription": "Bạn có chắc chắn muốn đăng xuất không? Điều này sẽ xóa tất cả dữ liệu của bạn khỏi thiết bị này. Nếu bạn đã bật sao lưu đám mây, dữ liệu của bạn sẽ được bảo toàn và bạn có thể đăng nhập lại để khôi phục nó.",
+    "confirmLogout": "Đăng xuất",
+    "cancel": "Hủy",
+    "deleteData": "Xóa tất cả dữ liệu",
+    "deleteConfirm": "Bạn có chắc chắn muốn xóa tất cả dữ liệu của mình không? Điều này không thể hoàn tác.",
+    "backToHome": "Về trang chủ",
+    "lastSynced": "Đồng bộ lần cuối: {{time}}",
+    "neverSynced": "Chưa bao giờ",
+    "justNow": "Vừa xong",
+    "minutesAgo": "{{count}} phút trước",
+    "minutesAgo_other": "{{count}} phút trước",
+    "hoursAgo": "{{count}} giờ trước",
+    "hoursAgo_other": "{{count}} giờ trước",
+    "daysAgo": "{{count}} ngày trước",
+    "daysAgo_other": "{{count}} ngày trước",
+    "recoveryKit": {
+      "downloadButton": "Tải xuống bộ khôi phục (PDF)",
+      "generating": "Đang tạo PDF...",
+      "whatsIncluded": "Bao gồm: mã QR, mã sao lưu, ID người dùng và hướng dẫn khôi phục",
+      "securityNote": "Lưu trữ PDF này ở nơi an toàn - nó chứa thông tin đăng nhập tài khoản của bạn",
+      "pdf": {
+        "title": "Bộ khôi phục Logikids",
+        "subtitle": "Lưu tài liệu này để khôi phục tài khoản của bạn",
+        "qrLabel": "Quét mã QR này để khôi phục tài khoản của bạn",
+        "backupCodeTitle": "Mã sao lưu",
+        "userIdLabel": "ID người dùng:",
+        "instructionsTitle": "Cách sử dụng bộ khôi phục này:",
+        "instruction1": "1. Giữ tài liệu này ở nơi an toàn",
+        "instruction2": "2. Để khôi phục tài khoản của bạn, quét mã QR hoặc nhập mã sao lưu",
+        "instruction3": "3. Dữ liệu tài khoản của bạn được mã hóa - bộ khôi phục này cần thiết để giải mã",
+        "instruction4": "4. Bất kỳ ai có bộ khôi phục này đều có thể truy cập tài khoản của bạn",
+        "securityWarningTitle": "Cảnh báo bảo mật:",
+        "securityWarning1": "Bộ khôi phục này chứa khóa mã hóa của bạn. Giữ nó an toàn và riêng tư.",
+        "securityWarning2": "Không bao giờ chia sẻ nó hoặc tải lên các dịch vụ đám mây.",
+        "footer": "Được tạo bởi Logikids"
+      }
+    },
+    "qrDisplay": {
+      "showButton": "Hiển thị mã QR để ghép nối thiết bị",
+      "scanInstruction": "Quét mã này trên thiết bị khác để đồng bộ tài khoản của bạn",
+      "securityWarning": "Mã QR này chứa thông tin đăng nhập tài khoản của bạn. Chỉ quét nó trên các thiết bị bạn tin tưởng."
+    },
+    "pair": {
+      "importing": "Đang đăng nhập...",
+      "noCodeError": "Không tìm thấy mã ghép nối trong URL",
+      "importError": "Không thể nhập tài khoản",
+      "existingAccountTitle": "Đã đăng nhập",
+      "existingAccountMessage": "Bạn đã có tài khoản trên thiết bị này. Vui lòng đăng xuất trước nếu bạn muốn chuyển sang tài khoản khác.",
+      "goToAccount": "Đi đến cài đặt tài khoản",
+      "goHome": "Về trang chủ",
+      "successTitle": "Thành công!",
+      "successMessage": "Tài khoản của bạn đã được đồng bộ. Đang chuyển hướng...",
+      "errorTitle": "Đã xảy ra lỗi"
+    },
+    "import": {
+      "backupCodeLabel": "Mã sao lưu",
+      "backupCodePlaceholder": "Nhập mã sao lưu của bạn (XXXX-XXXX-XXXX-...)",
+      "backupCodeHint": "Dán mã sao lưu từ PDF bộ khôi phục của bạn",
+      "importButton": "Nhập dữ liệu tài khoản",
+      "importing": "Đang nhập...",
+      "importSuccess": "Nhập thành công! Đang tải lại...",
+      "enterCodeError": "Vui lòng nhập mã sao lưu",
+      "invalidCodeError": "Mã sao lưu không hợp lệ. Vui lòng kiểm tra và thử lại.",
+      "importFailed": "Nhập thất bại",
+      "conflictTitle": "Ghi đè dữ liệu hiện có?",
+      "conflictMessage": "Thiết bị này đã có dữ liệu tài khoản. Nhập sẽ thay thế tất cả dữ liệu hiện có bằng tài khoản được nhập.",
+      "conflictWarning": "Hãy chắc chắn tải xuống bộ khôi phục hiện tại của bạn trước nếu bạn muốn giữ dữ liệu này.",
+      "conflictCancel": "Hủy",
+      "conflictConfirm": "Có, ghi đè dữ liệu"
+    },
+    "accountNotFound": {
+      "title": "Đã đến lúc bắt đầu mới!",
+      "message1": "Tài khoản trước đây của bạn cần được đặt lại do các cập nhật gần đây trong giai đoạn beta của chúng tôi.",
+      "message2": "Sẵn sàng bắt đầu mới? Bạn sẽ cần mã mời mới để tiếp tục hành trình học tập của mình!",
+      "startButton": "Bắt đầu mới",
+      "note": "Điều này sẽ xóa dữ liệu cục bộ của bạn"
+    }
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "nameLabel": "Tên của bạn là gì?",
+    "namePlaceholder": "Nhập tên của bạn ở đây...",
+    "gradeLabel": "Bạn học lớp mấy?",
+    "languageLabel": "Chọn ngôn ngữ của bạn",
+    "syncLabel": "Sao lưu đám mây",
+    "syncDescription": "Tự động sao lưu dữ liệu của bạn lên đám mây"
+  }
+}

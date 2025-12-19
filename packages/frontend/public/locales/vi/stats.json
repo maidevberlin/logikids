@@ -1,0 +1,97 @@
+{
+  "title": "Tiến trình của bạn",
+  "greeting": "Chào {{name}}, đây là hồ sơ trò chơi của bạn!",
+  "noTasksYet": "Chưa hoàn thành bài tập nào. Bắt đầu cuộc phiêu lưu của bạn!",
+  "totalTasks": "Tổng số bài tập",
+  "tasks": "bài tập",
+  "successRate": "Tỷ lệ thành công",
+  "averageHints": "Gợi ý TB",
+  "bySubject": "Tiến trình theo môn học",
+  "success": "thành công",
+  "hints": "Gợi ý",
+  "hero": {
+    "level": "Cấp {{level}}",
+    "tasksToNext": "{{current}} / {{next}} bài tập",
+    "skills": "Kỹ năng"
+  },
+  "metrics": {
+    "streak": "Chuỗi",
+    "days": "ngày",
+    "bestStreak": "Tốt nhất: {{days}}",
+    "perfectRun": "Chuỗi hoàn hảo",
+    "inARow": "liên tiếp",
+    "allTimeBest": "Kỷ lục: {{count}}",
+    "noHints": "Bậc thầy không gợi ý",
+    "thisWeek": "tuần này",
+    "accuracy": "Độ chính xác",
+    "personalBest": "Kỷ lục cá nhân!",
+    "success": "thành công"
+  },
+  "achievements": {
+    "title": "Thành tích",
+    "unlocked": "Đã mở khóa",
+    "locked": "Đã khóa",
+    "progress": "{{current}} / {{total}}",
+    "firstSteps": {
+      "name": "Bước đầu tiên",
+      "description": "Hoàn thành 5 bài tập",
+      "calculationDetails": "Hoàn thành ít nhất 5 bài tập trên tất cả các môn học và độ khó. Tiến trình: {{totalTasks}} / 5 bài tập."
+    },
+    "dedicated": {
+      "name": "Tận tâm",
+      "description": "Duy trì chuỗi 3 ngày",
+      "calculationDetails": "Hoàn thành ít nhất một bài tập mỗi ngày trong 3 ngày liên tiếp. Chuỗi hiện tại của bạn: {{currentStreak}} ngày. Tốt nhất: {{bestStreak}} ngày."
+    },
+    "weekWarrior": {
+      "name": "Chiến binh tuần",
+      "description": "Duy trì chuỗi 7 ngày",
+      "calculationDetails": "Hoàn thành ít nhất một bài tập mỗi ngày trong 7 ngày liên tiếp. Chuỗi hiện tại của bạn: {{currentStreak}} ngày. Tốt nhất: {{bestStreak}} ngày."
+    },
+    "sharpshooter": {
+      "name": "Xạ thủ",
+      "description": "Hoàn thành 10 bài tập với độ chính xác 100%",
+      "calculationDetails": "Hoàn thành 10 bài tập liên tiếp với điểm hoàn hảo (không có câu trả lời sai). Chuỗi hiện tại: {{currentPerfect}}. Tốt nhất: {{bestPerfect}}."
+    },
+    "speedDemon": {
+      "name": "Quỷ tốc độ",
+      "description": "5 bài tập không cần gợi ý trong tuần này",
+      "calculationDetails": "Hoàn thành 5 bài tập không sử dụng gợi ý trong cùng một tuần. Tuần này: {{noHintThisWeek}} / 5 bài tập."
+    },
+    "polymath": {
+      "name": "Bác học",
+      "description": "Đạt 3+ sao ở tất cả các môn học",
+      "calculationDetails": "Đạt ít nhất 3 sao ở tất cả các môn học có sẵn. Mỗi môn học cần luyện tập đáng kể và độ chính xác cao để đạt 3+ sao."
+    },
+    "scholar": {
+      "name": "Học giả",
+      "description": "Đạt cấp 10",
+      "calculationDetails": "Đạt cấp 10 bằng cách hoàn thành 100 bài tập tổng cộng. Cấp 10 mở khóa ở 100 bài tập. Tiến trình: {{totalTasks}} / 100 bài tập."
+    },
+    "master": {
+      "name": "Bậc thầy",
+      "description": "Đạt tối đa (5 sao) ở bất kỳ môn học nào",
+      "calculationDetails": "Đạt thành thạo 5 sao ở bất kỳ môn học nào. Yêu cầu 100+ bài tập với tỷ lệ thành công 90%+ ở môn học đó."
+    }
+  },
+  "empty": {
+    "noStreak": "Bắt đầu chuỗi của bạn hôm nay!",
+    "noAchievements": "Hoàn thành bài tập để mở khóa thành tích!",
+    "keepPracticing": "Hoàn thành bài tập để nâng cấp kỹ năng của bạn!"
+  },
+  "achievementDetails": {
+    "description": "Mô tả",
+    "status": "Trạng thái",
+    "unlocked": "Đã mở khóa",
+    "progress": "Tiến trình",
+    "calculation": "Tính toán",
+    "currentData": "Dữ liệu hiện tại",
+    "totalTasksCompleted": "Tổng số bài tập đã hoàn thành",
+    "currentStreak": "Chuỗi hiện tại",
+    "bestStreak": "Chuỗi tốt nhất",
+    "days": "ngày",
+    "currentPerfectRun": "Chuỗi hoàn hảo hiện tại",
+    "bestPerfectRun": "Chuỗi hoàn hảo tốt nhất",
+    "tasksWithoutHintsThisWeek": "Bài tập không cần gợi ý tuần này",
+    "tier": "Cấp"
+  }
+}

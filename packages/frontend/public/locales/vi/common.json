@@ -1,0 +1,446 @@
+{
+  "welcome": {
+    "title": "Chào mừng đến với Logikids",
+    "personalizedTitle": "Chào mừng trở lại, {{name}}!",
+    "subtitle": "Bắt đầu hành trình khám phá thế giới toán học và tư duy logic thú vị!",
+    "personalizedSubtitle": "Sẵn sàng tiếp tục cuộc phiêu lưu học tập chưa?",
+    "todayPrompt": "Hôm nay bạn muốn làm gì?",
+    "startButton": "Bắt đầu học",
+    "setupAccount": "Thiết lập tài khoản",
+    "stats": {
+      "streak": "Chuỗi ngày",
+      "stars": "Ngôi sao",
+      "level": "Cấp độ",
+      "achievement": "Thành tích",
+      "noAchievement": "Tiếp tục phấn đấu!",
+      "streakTooltip": "Số ngày liên tiếp bạn đã hoàn thành ít nhất một bài tập",
+      "levelTooltip": "Mức độ thành thạo trung bình của bạn trên tất cả các môn học, hiển thị bằng số sao",
+      "achievementTooltip": "Cột mốc mới nhất của bạn dựa trên chuỗi ngày, bài làm hoàn hảo hoặc tổng số bài tập đã hoàn thành"
+    },
+    "navigation": {
+      "startLearning": {
+        "title": "Bắt đầu học",
+        "description": "Chọn môn học và bắt đầu hành trình học tập"
+      },
+      "continueWith": "Tiếp tục với {{subject}}: {{concept}}",
+      "continueWithSubject": "Tiếp tục với {{subject}}",
+      "continue": {
+        "description": "Tiếp tục từ nơi bạn đã dừng lại"
+      },
+      "browseSubjects": {
+        "title": "Duyệt môn học",
+        "description": "Khám phá tất cả môn học và khái niệm"
+      },
+      "progress": {
+        "title": "Tiến trình của bạn",
+        "description": "Xem bạn đang làm tốt thế nào và theo dõi thành tích"
+      },
+      "practiceMode": {
+        "title": "Chế độ luyện tập",
+        "description": "Tập trung vào các khái niệm cần cải thiện"
+      },
+      "profile": {
+        "title": "Hồ sơ",
+        "description": "Quản lý tài khoản và cài đặt"
+      }
+    },
+    "achievements": {
+      "streak3": "Chuỗi 3 ngày",
+      "streak7": "Chuỗi 7 ngày",
+      "streak14": "Chuỗi 2 tuần",
+      "streak30": "Chuỗi 30 ngày",
+      "perfect5": "5 bài làm hoàn hảo",
+      "perfect10": "10 bài làm hoàn hảo",
+      "perfect20": "20 bài làm hoàn hảo",
+      "noHints5": "5 bài không cần gợi ý",
+      "noHints10": "10 bài không cần gợi ý",
+      "tasks10": "Hoàn thành 10 bài tập",
+      "tasks20": "Hoàn thành 20 bài tập",
+      "tasks50": "Hoàn thành 50 bài tập",
+      "tasks100": "Hoàn thành 100 bài tập"
+    }
+  },
+  "onboarding": {
+    "parentalConsent": {
+      "title": "Chào mừng đến với LogiKids",
+      "intro": "LogiKids sử dụng AI để tạo các bài tập học cá nhân hóa cho con bạn.",
+      "keyPointsTitle": "Điểm chính",
+      "privacyTitle": "Ưu tiên quyền riêng tư: Dữ liệu của bạn thuộc về bạn",
+      "privacyExplained": "Khác với hầu hết các ứng dụng, tất cả dữ liệu của con bạn được lưu trữ độc quyền trên thiết bị của bạn. Chúng tôi sử dụng mã hóa zero-knowledge, có nghĩa là ngay cả chúng tôi cũng không thể xem dữ liệu của bạn - chỉ bạn mới giữ chìa khóa.",
+      "privacyBackup": "Sao lưu đám mây tùy chọn có sẵn để thuận tiện, nhưng luôn được mã hóa trên thiết bị của bạn trước khi gửi đi. Máy chủ chỉ lưu trữ các dữ liệu được mã hóa mà không có ý nghĩa gì nếu không có khóa của bạn.",
+      "aiTitle": "Học tập cá nhân hóa bằng AI",
+      "aiExplained": "Mỗi bài tập được tạo động bởi AI để phù hợp với cấp lớp và tốc độ học của con bạn. Nội dung thích ứng với tiến trình của các em, cung cấp mức độ thử thách phù hợp vào đúng thời điểm.",
+      "contentTitle": "Nội dung giáo dục phù hợp với lứa tuổi",
+      "contentExplained": "Các lời nhắc AI của chúng tôi được thiết kế đặc biệt để tạo nội dung giáo dục phù hợp với cấp lớp của con bạn. Mặc dù chúng tôi hướng dẫn AI tạo nội dung an toàn, tập trung vào học tập, chúng tôi khuyến nghị sự giám sát của phụ huynh như với bất kỳ công cụ giáo dục nào.",
+      "complianceTitle": "Tuân thủ GDPR & Đạo luật AI",
+      "complianceExplained": "Tuân thủ đầy đủ các quy định GDPR và Đạo luật AI của EU. Bạn có quyền truy cập, xuất hoặc xóa tất cả dữ liệu bất cứ lúc nào. Không chia sẻ dữ liệu với bên thứ ba, bao giờ cũng vậy.",
+      "inviteTitle": "Yêu cầu mã mời",
+      "inviteExplained": "LogiKids hiện đang trong giai đoạn beta đóng. Vui lòng nhập mã mời bạn đã nhận để tiếp tục.",
+      "invitePlaceholder": "Nhập mã mời (ví dụ: ABCD-1234)",
+      "consentCheckbox": "Tôi là phụ huynh/người giám hộ và xác nhận rằng tôi đã đọc và hiểu các thông tin trên. Tôi hiểu rằng ứng dụng này sử dụng AI để tạo nội dung giáo dục và tôi đồng ý cung cấp sự giám sát của phụ huynh thích hợp trong quá trình sử dụng.",
+      "privacyPolicy": "Chính sách quyền riêng tư",
+      "terms": "Điều khoản dịch vụ",
+      "validating": "Đang xác thực...",
+      "continue": "Tiếp tục"
+    },
+    "studentInfo": {
+      "title": "Hãy thiết lập hồ sơ của bạn!",
+      "subtitle": "Hãy cho chúng tôi biết một chút về bạn để bắt đầu",
+      "nameLabel": "Tên",
+      "namePlaceholder": "Nhập tên của bạn",
+      "gradeLabel": "Lớp",
+      "gradeValue": "Lớp {{grade}}",
+      "gradeDescription": "Lớp học hiện tại của bạn",
+      "creating": "Đang tạo...",
+      "create": "Tạo tài khoản"
+    }
+  },
+  "task": {
+    "title": "Bài tập",
+    "difficulty": "Độ khó",
+    "randomConcept": "Ngẫu nhiên",
+    "getHint": "Hiện gợi ý",
+    "getAnotherHint": "Hiện thêm gợi ý",
+    "skip": "Bỏ qua bài tập",
+    "solutionExplanation": "Giải thích đáp án",
+    "checkAnswer": "Kiểm tra đáp án",
+    "nextTask": "Bài tập tiếp theo",
+    "tryAgain": "Thử lại",
+    "yes": "Có",
+    "no": "Không",
+    "selectSubjectConcept": "Chọn môn học và khái niệm",
+    "subjects": "Môn học",
+    "concepts": "Khái niệm",
+    "conceptsFor": "Hiển thị khái niệm cho {{subject}}",
+    "viewAll": "Xem tất cả",
+    "showAllSubjects": "Hiện tất cả →",
+    "showRecommended": "← Hiện đề xuất",
+    "fillInBlanks_one": "Điền vào chỗ trống #{{count}}",
+    "fillInBlanks_other": "Điền vào {{count}} chỗ trống",
+    "enterNumber": "Nhập số",
+    "unitOptional": "Đơn vị (tùy chọn)",
+    "selectUnit": "Chọn đơn vị phù hợp",
+    "dragToOrder": "Kéo để sắp xếp lại",
+    "arrowsToOrder": "Sử dụng nút mũi tên để sắp xếp lại",
+    "selectCorrectAnswers_one": "Chọn {{count}} đáp án đúng",
+    "selectCorrectAnswers_other": "Chọn {{count}} đáp án đúng",
+    "selectedCount": "Đã chọn: {{selected}} / {{total}}",
+    "tooManySelected": "Cảnh báo: Bạn đã chọn quá nhiều"
+  },
+  "feedback": {
+    "correct": "Chính xác!",
+    "incorrect": "Chưa đúng lắm. Hãy thử lại!",
+    "numberCorrectUnitWrong": "Số đúng rồi, nhưng hãy kiểm tra lại đơn vị",
+    "unitCorrectNumberWrong": "Đơn vị đúng rồi, nhưng hãy kiểm tra lại phép tính",
+    "bothWrong": "Chưa đúng lắm, hãy thử lại"
+  },
+  "error": {
+    "tryAgain": "Thử lại",
+    "backToHome": "Về trang chủ",
+    "rateLimited": "Vui lòng đợi một chút trước khi tạo bài tập khác"
+  },
+  "subjects": {
+    "title": "Môn học",
+    "pageTitle": "Chọn môn học của bạn",
+    "pageDescription": "Chọn một môn học để bắt đầu học",
+    "error": "Không thể tải môn học. Vui lòng thử lại.",
+    "availableFromGrade": "Có sẵn từ lớp {{grade}}",
+    "grade": "Lớp {{grade}}",
+    "gradeRange": "Lớp {{minGrade}}-{{maxGrade}}",
+    "random": "Ngẫu nhiên",
+    "math": {
+      "label": "Toán học",
+      "description": "Các khái niệm toán học và giải quyết vấn đề",
+      "concepts": {
+        "arithmetic": "Số học cơ bản",
+        "mental_math": "Tính nhẩm",
+        "word_problems": "Bài toán lời văn",
+        "fractions": "Phân số và số thập phân",
+        "introduction_fractions": "Giới thiệu về phân số",
+        "percentages_basics": "Giới thiệu về phần trăm",
+        "ratios_proportions": "Tỷ lệ và tỷ số",
+        "decimal_numbers": "Số thập phân",
+        "geometry": "Hình học",
+        "measurement": "Đo lường và đơn vị",
+        "grade6-percentages-basics": "Giới thiệu về phần trăm"
+      }
+    },
+    "logic": {
+      "label": "Logic",
+      "description": "Tư duy logic và giải quyết vấn đề",
+      "concepts": {
+        "patterns": "Nhận dạng mẫu",
+        "conditional": "Logic nếu-thì",
+        "sorting": "Phân loại và nhóm",
+        "sequences": "Chuỗi logic",
+        "analogical": "Tư duy tương tự",
+        "deductive": "Suy luận diễn dịch"
+      }
+    },
+    "music": {
+      "label": "Âm nhạc",
+      "description": "Khái niệm và hiểu biết về âm nhạc",
+      "concepts": {
+        "rhythm": "Nhận dạng nhịp điệu",
+        "melody": "Mẫu giai điệu"
+      }
+    },
+    "physics": {
+      "label": "Vật lý",
+      "description": "Tìm hiểu về các quy luật cơ bản chi phối vũ trụ của chúng ta",
+      "concepts": {
+        "mechanics": "Cơ học",
+        "waves": "Sóng",
+        "matter": "Vật chất"
+      }
+    },
+    "german": {
+      "label": "Tiếng Đức",
+      "description": "Học tập và hiểu biết tiếng Đức",
+      "concepts": {
+        "parts_of_speech": "Từ loại",
+        "spelling": "Chính tả",
+        "reading_comprehension": "Đọc hiểu"
+      }
+    },
+    "english": {
+      "label": "Tiếng Anh",
+      "description": "Học tập và hiểu biết tiếng Anh",
+      "concepts": {}
+    },
+    "surpriseMe": {
+      "title": "Làm tôi ngạc nhiên!",
+      "description": "Nhảy vào một cuộc phiêu lưu học tập ngẫu nhiên",
+      "emoji": "🎲"
+    }
+  },
+  "concepts": {
+    "subjectNotFound": "Không tìm thấy môn học",
+    "noConcepts": "Không có khái niệm nào cho môn học này.",
+    "noConceptsForGrade": "Không có khái niệm nào cho lớp của bạn. Hãy thử \"Hiện tất cả khái niệm\".",
+    "showAdvanced": "Hiện tất cả khái niệm",
+    "hideAdvanced": "Chỉ hiện phù hợp với lớp",
+    "startLearning": "Bắt đầu học",
+    "advanced": "Nâng cao",
+    "gradeLabel": "Lớp {{grade}}",
+    "tabs": {
+      "school": "Trường học",
+      "fun": "Vui"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm khái niệm...",
+      "noResults": "Không tìm thấy khái niệm nào cho '{{query}}'"
+    },
+    "gradeGroup": {
+      "gradeN": "Lớp {{grade}}",
+      "other": "Khác"
+    },
+    "surpriseMe": {
+      "title": "Làm tôi ngạc nhiên!",
+      "description": "Thử một khái niệm ngẫu nhiên",
+      "emoji": "✨"
+    }
+  },
+  "practice": {
+    "title": "Chế độ luyện tập",
+    "subtitle": "Tập trung vào các khái niệm cần cải thiện",
+    "empty": {
+      "title": "Làm tốt lắm!",
+      "description": "Bạn không có khái niệm nào cần luyện tập ngay bây giờ. Hãy tiếp tục phát huy!",
+      "button": "Khám phá thêm môn học"
+    },
+    "metrics": {
+      "success": "Thành công",
+      "avgTime": "Thời gian TB",
+      "hintsPerTask": "Gợi ý/Bài",
+      "attempts": "Lần thử"
+    },
+    "suggested": "Đề xuất:",
+    "browseAll": "Hoặc duyệt tất cả môn học",
+    "reasons": {
+      "lowSuccessRate": "tỷ lệ thành công thấp",
+      "takingTooLong": "mất quá nhiều thời gian",
+      "usingManyHints": "sử dụng nhiều gợi ý",
+      "buildingMastery": "Đang xây dựng kỹ năng",
+      "needsWork": "Cần cải thiện: {{issues}}"
+    }
+  },
+  "difficulty": {
+    "easy": "Dễ",
+    "medium": "Trung bình",
+    "hard": "Khó",
+    "levelUp": {
+      "medium": "Bạn đã lên cấp Trung bình!",
+      "hard": "Bạn đã lên cấp Khó!"
+    },
+    "levelDown": {
+      "medium": "Về cấp Trung bình - bạn làm được!",
+      "easy": "Về cấp Dễ - luyện tập tạo nên sự hoàn hảo!"
+    },
+    "achievement": {
+      "masteringHard": "Đang làm chủ cấp độ khó! Tiếp tục phát huy!",
+      "practicingEasy": "Tiếp tục luyện tập - bạn đang học hỏi!"
+    }
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "continue": "Tiếp tục",
+    "back": "Quay lại"
+  },
+  "welcomeChoice": {
+    "title": "Chào mừng đến với Logikids",
+    "subtitle": "Chọn cách bạn muốn bắt đầu",
+    "newAccount": {
+      "title": "Tôi có mã mời",
+      "description": "Bắt đầu mới với tài khoản mới",
+      "inviteLabel": "Mã mời",
+      "invitePlaceholder": "Nhập mã mời của bạn",
+      "validating": "Đang xác thực...",
+      "continue": "Tiếp tục",
+      "invalidCode": "Mã mời không hợp lệ",
+      "validationError": "Không thể xác thực mã mời"
+    },
+    "import": {
+      "title": "Nhập tài khoản hiện có",
+      "description": "Khôi phục từ bộ khôi phục của bạn",
+      "uploadPDF": "Tải lên PDF bộ khôi phục",
+      "uploadPDFDescription": "Chọn tệp PDF bộ khôi phục của bạn để khôi phục tài khoản",
+      "scanQR": "Quét mã QR bằng camera",
+      "scanQRDescription": "Hướng camera vào mã QR từ bộ khôi phục của bạn",
+      "manualCode": "Nhập mã sao lưu thủ công",
+      "invalidFileType": "Vui lòng chọn tệp PDF",
+      "pdfParseError": "Không thể phân tích tệp PDF",
+      "noBackupCodeFound": "Không tìm thấy mã sao lưu trong PDF",
+      "processingPDF": "Đang xử lý PDF...",
+      "clickToUpload": "Nhấp để tải lên tệp PDF",
+      "pdfHint": "Chọn PDF bộ khôi phục Logikids của bạn",
+      "invalidQR": "Mã QR không hợp lệ",
+      "cameraError": "Không thể truy cập camera",
+      "startCamera": "Nhấn để khởi động camera",
+      "initializingCamera": "Đang khởi tạo camera...",
+      "cancel": "Hủy",
+      "invalidBackupFormat": "Định dạng mã sao lưu không hợp lệ",
+      "corruptedBackupCode": "Mã sao lưu có vẻ bị hỏng hoặc không đầy đủ",
+      "invalidBackupCode": "Mã sao lưu không hợp lệ",
+      "enterCode": "Vui lòng nhập mã sao lưu",
+      "importFailed": "Nhập thất bại",
+      "manualCodeDescription": "Dán mã sao lưu của bạn từ bộ khôi phục",
+      "backupCode": "Mã sao lưu",
+      "importing": "Đang nhập...",
+      "import": "Nhập"
+    }
+  },
+  "footer": {
+    "allRightsReserved": "Mọi quyền được bảo lưu.",
+    "privacyPolicy": "Chính sách quyền riêng tư",
+    "impressum": "Thông báo pháp lý"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Chính sách quyền riêng tư",
+      "intro": {
+        "title": "Giới thiệu",
+        "paragraph1": "Tại Logikids, chúng tôi coi trọng quyền riêng tư của bạn. Chính sách quyền riêng tư này giải thích cách chúng tôi xử lý dữ liệu trong nền tảng giáo dục của mình.",
+        "paragraph2": "Nguyên tắc cơ bản của chúng tôi: Dữ liệu của bạn ở trên thiết bị của bạn. Chỉ vậy thôi."
+      },
+      "dataCollection": {
+        "title": "Lưu trữ dữ liệu: Ưu tiên cục bộ theo mặc định",
+        "description": "Logikids được xây dựng với quyền riêng tư là nền tảng:",
+        "localOnly": {
+          "title": "Không có dữ liệu rời khỏi thiết bị của bạn (Mặc định)",
+          "description": "Theo mặc định, TẤT CẢ dữ liệu của con bạn - tên, tiến trình học tập, sở thích và thông tin tài khoản - được lưu trữ CHỈ trên thiết bị của bạn. Không có gì được gửi đến máy chủ của chúng tôi hoặc bất kỳ bên thứ ba nào. Ứng dụng hoạt động hoàn toàn ngoại tuyến."
+        },
+        "noTracking": {
+          "title": "Không theo dõi hoặc phân tích",
+          "description": "Chúng tôi không sử dụng phân tích, theo dõi cookie hoặc bất kỳ dịch vụ theo dõi bên thứ ba nào. Chúng tôi không thu thập dữ liệu hành vi, địa chỉ IP hoặc mẫu duyệt web. Bao giờ cũng vậy."
+        },
+        "encrypted": {
+          "title": "Sao lưu đám mây tùy chọn (Tắt theo mặc định)",
+          "description": "Bạn có thể TÙY CHỌN bật sao lưu đám mây trong cài đặt để đồng bộ dữ liệu của bạn trên các thiết bị. Tính năng này được TẮT theo mặc định. Nếu bạn chọn bật, tất cả dữ liệu được mã hóa trên thiết bị của bạn trước khi gửi đến máy chủ của chúng tôi. Chúng tôi chỉ lưu trữ các dữ liệu được mã hóa mà không có ý nghĩa gì nếu không có khóa mã hóa của bạn."
+        }
+      },
+      "encryption": {
+        "title": "Cách sao lưu đám mây tùy chọn hoạt động",
+        "paragraph1": "Nếu bạn chọn bật sao lưu đám mây trong cài đặt, tất cả dữ liệu được mã hóa trên thiết bị của bạn bằng mã hóa mạnh trước khi truyền. Khóa mã hóa của bạn không bao giờ rời khỏi thiết bị của bạn và không bao giờ được gửi đến máy chủ của chúng tôi.",
+        "paragraph2": "Phương pháp zero-knowledge này có nghĩa là ngay cả khi máy chủ của chúng tôi bị xâm phạm, dữ liệu của bạn vẫn an toàn vì nó được mã hóa bằng khóa chỉ bạn mới có. Chúng tôi không thể đọc, truy cập hoặc giải mã dữ liệu của bạn."
+      },
+      "aiUsage": {
+        "title": "Nội dung được tạo bởi AI (Không gửi dữ liệu cá nhân)",
+        "paragraph1": "Logikids sử dụng AI (Ollama được lưu trữ cục bộ hoặc OpenAI) để tạo các bài tập giáo dục cá nhân hóa cho con bạn. Khi tạo bài tập, chúng tôi CHỈ gửi ngữ cảnh cần thiết (môn học, mức độ khó, cấp lớp) cho nhà cung cấp AI.",
+        "paragraph2": "Không có thông tin cá nhân nào về con bạn được gửi đến nhà cung cấp AI. Chúng tôi chỉ gửi môn học, mức độ khó và cấp lớp. Việc tạo bài tập hoàn toàn không lưu trạng thái và ẩn danh."
+      },
+      "gdprRights": {
+        "title": "Quyền GDPR của bạn",
+        "description": "Theo GDPR, bạn có các quyền sau:",
+        "access": {
+          "title": "Quyền truy cập",
+          "description": "Tất cả dữ liệu của bạn đã có trên thiết bị của bạn. Bạn có thể xuất nó dưới dạng bộ khôi phục (PDF với mã QR) bất cứ lúc nào thông qua cài đặt tài khoản."
+        },
+        "export": {
+          "title": "Quyền xuất",
+          "description": "Bạn có thể xuất dữ liệu của mình dưới dạng bộ khôi phục để nhập vào thiết bị khác hoặc giữ làm bản sao lưu ngoại tuyến."
+        },
+        "deletion": {
+          "title": "Quyền xóa",
+          "description": "Bạn có thể xóa dữ liệu cục bộ của mình bất cứ lúc nào thông qua cài đặt tài khoản. Nếu bạn đã bật sao lưu đám mây, bạn cũng có thể yêu cầu xóa bản sao lưu được mã hóa khỏi máy chủ của chúng tôi."
+        },
+        "portability": {
+          "title": "Tính di động của dữ liệu",
+          "description": "Dữ liệu của bạn có thể di chuyển hoàn toàn thông qua bộ khôi phục, cho phép bạn chuyển nó giữa các thiết bị hoặc giữ bản sao lưu ngoại tuyến. Không bị ràng buộc nhà cung cấp."
+        }
+      },
+      "dataRetention": {
+        "title": "Lưu giữ dữ liệu",
+        "description": "Dữ liệu của bạn ở trên thiết bị của bạn miễn là bạn vẫn cài đặt ứng dụng. Nếu bạn đã bật sao lưu đám mây tùy chọn, các bản sao lưu được mã hóa được giữ trên máy chủ của chúng tôi cho đến khi bạn yêu cầu xóa rõ ràng. Chúng tôi không theo dõi hoạt động hoặc thực hiện các chính sách xóa tự động. Bạn có toàn quyền kiểm soát và có thể xóa dữ liệu của mình bất cứ lúc nào."
+      },
+      "thirdParty": {
+        "title": "Chia sẻ dữ liệu với bên thứ ba",
+        "description": "Chúng tôi không bao giờ chia sẻ, bán hoặc chuyển dữ liệu cá nhân của bạn cho bên thứ ba. Chỉ vậy thôi. Dữ liệu của bạn ở trên thiết bị của bạn. Dịch vụ bên ngoài duy nhất chúng tôi sử dụng là nhà cung cấp AI để tạo bài tập, và chúng tôi chỉ gửi dữ liệu ngữ cảnh ẩn danh, không xác định (môn học, mức độ khó, cấp lớp - không bao giờ tên hoặc thông tin cá nhân)."
+      },
+      "changes": {
+        "title": "Thay đổi chính sách này",
+        "description": "Chúng tôi có thể cập nhật Chính sách quyền riêng tư này theo thời gian. Mọi thay đổi sẽ được đăng trên trang này với ngày sửa đổi được cập nhật. Việc tiếp tục sử dụng Logikids sau khi thay đổi đồng nghĩa với việc chấp nhận chính sách được cập nhật."
+      },
+      "contact": {
+        "title": "Liên hệ chúng tôi",
+        "description": "Nếu bạn có bất kỳ câu hỏi nào về Chính sách quyền riêng tư này hoặc dữ liệu của bạn, vui lòng liên hệ với chúng tôi qua thông tin được cung cấp trong Thông báo pháp lý (Impressum)."
+      }
+    },
+    "impressum": {
+      "title": "Thông báo pháp lý (Impressum)",
+      "provider": {
+        "title": "Nhà cung cấp dịch vụ",
+        "name": "Tên/Công ty",
+        "address": "Địa chỉ",
+        "city": "Thành phố, Mã bưu điện",
+        "country": "Quốc gia"
+      },
+      "contact": {
+        "title": "Thông tin liên hệ",
+        "email": "Email",
+        "phone": "Điện thoại",
+        "optional": "tùy chọn"
+      },
+      "responsible": {
+        "title": "Chịu trách nhiệm về nội dung",
+        "description": "Chịu trách nhiệm về nội dung của trang web này theo § 55 Abs. 2 RStV:"
+      },
+      "disclaimer": {
+        "title": "Tuyên bố từ chối trách nhiệm",
+        "content": {
+          "title": "Trách nhiệm về nội dung",
+          "description": "Nội dung các trang của chúng tôi đã được tạo ra với sự cẩn thận tối đa. Tuy nhiên, chúng tôi không thể đảm bảo tính chính xác, đầy đủ hoặc cập nhật của nội dung. Là nhà cung cấp dịch vụ, chúng tôi chịu trách nhiệm về nội dung riêng của mình trên các trang này theo luật chung. Tuy nhiên, chúng tôi không có nghĩa vụ giám sát thông tin của bên thứ ba được truyền hoặc lưu trữ hoặc điều tra các tình huống chỉ ra hoạt động bất hợp pháp."
+        },
+        "links": {
+          "title": "Trách nhiệm về liên kết",
+          "description": "Trang web của chúng tôi chứa các liên kết đến các trang web của bên thứ ba mà chúng tôi không có quyền kiểm soát nội dung. Do đó, chúng tôi không thể chấp nhận bất kỳ trách nhiệm nào đối với nội dung của bên thứ ba này. Nhà cung cấp hoặc người vận hành tương ứng của các trang luôn chịu trách nhiệm về nội dung của các trang được liên kết."
+        }
+      },
+      "euDispute": {
+        "title": "Giải quyết tranh chấp của EU",
+        "paragraph1": "Ủy ban Châu Âu cung cấp một nền tảng để giải quyết tranh chấp trực tuyến (OS).",
+        "paragraph2": "Bạn có thể tìm thấy nền tảng tại:"
+      }
+    }
+  }
+}
