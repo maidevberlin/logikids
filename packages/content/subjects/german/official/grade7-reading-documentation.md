@@ -44,6 +44,13 @@ real_world_context:
   - Creating summary notes from history textbook chapters to review before exams
   - Annotating online articles about current events to identify main arguments and supporting evidence
   - Tracking vocabulary words encountered while reading fantasy novels by keeping a reading log with definitions
+  - Documenting research progress for extended projects by maintaining organized source notes
+  - Using Cornell note-taking method for lectures and educational videos in various subjects
+  - Creating visual reading maps or mind maps to track plot developments in longer novels
+  - Writing reflective reading responses connecting texts to personal experiences or other readings
+  - Maintaining digital annotation systems for e-books or PDF materials for school assignments
+  - Using sticky notes and bookmarks to organize information across multiple reference sources
+  - Tracking reading goals and progress through structured reading logs over a semester
 anti_patterns:
   - Avoid texts shorter than 300 words which do not require systematic documentation
   - Don't ask for journal entries that require deep personal emotional disclosure

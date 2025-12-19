@@ -44,6 +44,13 @@ real_world_context:
   - Debating ethical dilemmas in literature class, such as character decisions in novels or historical moral choices
   - Leading student council discussions where members propose and debate school improvement initiatives
   - Engaging in science debates about environmental policies, weighing economic and ecological considerations
+  - Participating in Model United Nations or Model European Parliament simulations at school
+  - Leading class discussions about controversial topics in ethics, politics, or current events
+  - Moderating student council meetings or club discussions with proper speaking protocols
+  - Preparing for formal debate competitions or speech tournaments at regional level
+  - Facilitating peer mediation sessions to resolve conflicts between classmates constructively
+  - Conducting interviews with community members for school journalism or research projects
+  - Organizing fishbowl discussions or panel debates for school assemblies on important topics
 anti_patterns:
   - Avoid topics requiring specialized political or legal knowledge
   - Don't expect formal parliamentary debate rules or advanced rhetoric

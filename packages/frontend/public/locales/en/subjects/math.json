@@ -4,9 +4,13 @@
       "description": "Adding and subtracting numbers within 20, including crossing the ten, fact families, and mental calculation strategies",
       "name": "Addition and Subtraction to 20"
     },
-    "grade1-introduction-to-measurement": {
-      "description": "Comparing lengths, using non-standard units, and understanding basic time concepts",
-      "name": "Introduction to Measurement"
+    "grade1-length-measurement": {
+      "description": "Comparing lengths, ordering objects by size, and measuring using non-standard units",
+      "name": "Length Measurement"
+    },
+    "grade1-time-concepts": {
+      "description": "Reading clocks to the hour, understanding days of the week, and using basic time vocabulary",
+      "name": "Time Concepts"
     },
     "grade1-money": {
       "description": "Recognizing coins and bills, counting money, and solving simple purchase problems",

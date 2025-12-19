@@ -45,6 +45,13 @@ real_world_context:
   - Reading romantic ballads to explore how rhythm and repetition create emotional intensity
   - Comparing traditional folk ballads with modern narrative poetry to understand genre evolution
   - Analyzing nature poems to understand how sound devices like alliteration mimic natural sounds
+  - Performing dramatic readings of ballads at school poetry slams or cultural heritage celebrations
+  - Writing original ballad-style poems about modern events or personal experiences for creative writing
+  - Analyzing how contemporary musicians adapt classical ballad structures in modern German music
+  - Creating illustrated versions of famous ballads combining visual art with literary interpretation
+  - Comparing ballad adaptations in different media such as theater productions or audio dramas
+  - Using knowledge of meter and rhyme to compose birthday poems or ceremonial verses for events
+  - Recognizing ballad influences in video game narratives and fantasy literature
 anti_patterns:
   - Avoid requiring memorization of technical terminology without application
   - Don't use archaic language that obscures meaning for 12-13 year olds

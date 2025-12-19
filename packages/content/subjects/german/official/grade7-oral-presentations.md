@@ -46,6 +46,13 @@ real_world_context:
   - Explaining scientific experiment results using diagrams, charts, and demonstration videos
   - Presenting literary analysis of novels with quotations, character maps, and thematic connections
   - Delivering historical event presentations with timeline visuals, maps, and primary source excerpts
+  - Giving book recommendations to the class with summaries and personal evaluation
+  - Presenting project results from group work in other subjects like geography or biology
+  - Creating and delivering video presentations for remote or hybrid learning situations
+  - Presenting hobby or personal interest topics to practice audience engagement techniques
+  - Explaining how-to tutorials or DIY projects with step-by-step visual demonstrations
+  - Presenting career research findings about professions of interest during orientation units
+  - Delivering current events reports analyzing news stories with supporting media
 anti_patterns:
   - Avoid topics requiring university-level analysis or professional expertise
   - Don't expect presentations longer than 15 minutes for 12-13 year olds

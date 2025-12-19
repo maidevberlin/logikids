@@ -4,9 +4,13 @@
       "description": "Addition und Subtraktion im Zahlenraum bis 20, einschließlich Zehnerübergang, Aufgabenfamilien und Kopfrechenstrategien",
       "name": "Addition und Subtraktion bis 20"
     },
-    "grade1-introduction-to-measurement": {
-      "description": "Längen vergleichen, nicht-standardisierte Einheiten verwenden und grundlegende Zeitkonzepte verstehen",
-      "name": "Einführung in das Messen"
+    "grade1-length-measurement": {
+      "description": "Längen vergleichen, Gegenstände nach Größe ordnen und mit nicht-standardisierten Einheiten messen",
+      "name": "Längen messen"
+    },
+    "grade1-time-concepts": {
+      "description": "Uhren zur vollen Stunde lesen, Wochentage verstehen und grundlegende Zeitbegriffe verwenden",
+      "name": "Zeitkonzepte"
     },
     "grade1-money": {
       "description": "Münzen und Scheine erkennen, Geld zählen und einfache Einkaufsaufgaben lösen",

@@ -45,6 +45,13 @@ real_world_context:
   - Using improvisation to explore conflict resolution and perspective-taking in social situations
   - Interpreting literary characters through performance to deepen understanding of texts
   - Developing presentation skills through theatrical techniques for school projects
+  - Performing in school theater productions for parents, students, and community audiences
+  - Creating and acting in educational videos or dramatic readings for younger students
+  - Participating in drama club activities and theater workshops during extracurricular time
+  - Developing characters for role-play exercises in history, languages, or social studies classes
+  - Recording dramatic readings of literature for podcast projects or audiobook presentations
+  - Designing and performing short skits to illustrate concepts in other subjects
+  - Auditioning for youth theater programs or summer drama camps in the community
 anti_patterns:
   - Avoid requiring advanced theatrical terminology beyond basic stage directions
   - Don't use scenes with adult themes inappropriate for 12-13 year olds

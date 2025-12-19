@@ -46,6 +46,13 @@ real_world_context:
   - Complex sentence punctuation helps organize multi-clause arguments in persuasive essays and literary analysis
   - Distinguishing restrictive and non-restrictive clauses with commas prevents ambiguity in technical instructions and journalism
   - Correction strategies help identify and fix punctuation errors before submitting written work in all subjects
+  - Punctuating dialogue correctly in short stories for school literary magazines or creative writing competitions
+  - Using quotation marks for song titles and movie names when writing music or film reviews for student newspapers
+  - Applying comma rules when writing detailed explanations in science lab reports with multiple dependent clauses
+  - Formatting interview transcripts with proper quotation marks and speaker attributions for journalism projects
+  - Punctuating complex arguments in debate preparation materials and formal speech outlines
+  - Using appositives with commas to add biographical details about historical figures in history essays
+  - Applying punctuation conventions when writing subtitles or captions for video projects and presentations
 anti_patterns:
   - Avoid sentences with more than four subordinate clauses
   - Do not include rare or archaic punctuation conventions

@@ -46,6 +46,13 @@ real_world_context:
   - Comparing book-to-film adaptations to understand how narrative techniques differ between media
   - Discussing dystopian youth literature to explore ethical dilemmas and societal structures
   - Writing character journals from alternative perspectives to deepen understanding of motivation
+  - Participating in school book clubs discussing novels with peers from different perspectives
+  - Creating book trailers or promotional materials for favorite youth novels as media projects
+  - Writing fan fiction that extends storylines or explores alternative character developments
+  - Analyzing graphic novels and manga to understand how visual elements enhance narrative
+  - Discussing representation and diversity in youth literature across different cultures and identities
+  - Recommending books to younger students or peers based on analysis of themes and reading levels
+  - Exploring how youth literature addresses contemporary issues like climate change or technology
 anti_patterns:
   - Avoid texts with adult content inappropriate for 12-13 year olds
   - Don't require memorization of publication dates or biographical details

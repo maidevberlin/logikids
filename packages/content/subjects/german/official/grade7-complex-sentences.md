@@ -47,6 +47,13 @@ real_world_context:
   - Reading scientific texts that use adversative clauses to compare contrasting phenomena or experimental results
   - Crafting debate responses with consequential clauses to demonstrate logical connections between claims and evidence
   - Understanding complex instructions that combine multiple conditions and consequences in assembly manuals or recipes
+  - Constructing clear conditional sentences when writing instructions for DIY projects or tutorials
+  - Using temporal clauses to organize chronological narratives in history reports or biographical essays
+  - Combining clauses effectively when explaining scientific processes in lab reports and research papers
+  - Creating complex sentences that compare and contrast in literary analysis and book reviews
+  - Writing concessive clauses to acknowledge counterarguments in persuasive essays and debates
+  - Structuring causal relationships clearly in problem-solution essays about social issues
+  - Using relative clauses to add precision and detail in descriptive writing about places or people
 anti_patterns:
   - Avoid more than three levels of clause embedding
   - Do not use archaic conjunctions like obschon, wiewohl unfamiliar to students

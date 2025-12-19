@@ -44,6 +44,13 @@ real_world_context:
   - Verifying viral social media claims by cross-referencing with reliable sources
   - Recognizing echo chambers and filter bubbles in personalized social media feeds
   - Using fact-checking websites to verify questionable claims encountered online
+  - Evaluating Wikipedia articles by checking sources and comparing to authoritative references
+  - Researching topics for school projects while assessing which websites provide reliable information
+  - Analyzing how influencers present sponsored content versus genuine recommendations
+  - Identifying clickbait headlines and misleading thumbnails in online content
+  - Comparing coverage of scientific topics across mainstream media and specialized sources
+  - Evaluating credibility of health or environmental claims shared on social media
+  - Recognizing how search algorithms personalize results and affect information access
 anti_patterns:
   - Avoid requiring technical knowledge of SEO or search algorithms
   - Don't assume access to specific platforms or paywalled sources

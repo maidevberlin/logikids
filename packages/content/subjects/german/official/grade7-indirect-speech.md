@@ -43,6 +43,13 @@ real_world_context:
   - Reading news articles that report statements from interviews using indirect speech
   - Creating book reports that summarize plot events without copying the author's exact words
   - Writing essays that reference multiple sources while avoiding plagiarism
+  - Summarizing class discussions for absent classmates using accurate indirect speech reporting
+  - Writing meeting minutes for student council or club meetings with attributed statements
+  - Creating interview summaries for journalism projects with properly reported quotations
+  - Paraphrasing textbook content for study notes while preserving essential meaning
+  - Reporting survey results with attributed responses from different participants
+  - Writing historical accounts that incorporate primary source statements in indirect form
+  - Creating character journals that report dialogue and events from alternative perspectives
 anti_patterns:
   - Avoid mixing direct and indirect speech without clear transitions
   - Don't introduce subjunctive mood forms not yet covered in Grade 7

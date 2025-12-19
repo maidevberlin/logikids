@@ -4,9 +4,13 @@
       "description": "20'ye kadar sayılarla toplama ve çıkarma, onluğu geçme, işlem aileleri ve zihinsel hesaplama stratejileri",
       "name": "20'ye Kadar Toplama ve Çıkarma"
     },
-    "grade1-introduction-to-measurement": {
-      "description": "Uzunlukları karşılaştırma, standart olmayan birimler kullanma ve temel zaman kavramlarını anlama",
-      "name": "Ölçmeye Giriş"
+    "grade1-length-measurement": {
+      "description": "Uzunlukları karşılaştırma, nesneleri boyutlarına göre sıralama ve standart olmayan birimlerle ölçme",
+      "name": "Uzunluk Ölçümü"
+    },
+    "grade1-time-concepts": {
+      "description": "Tam saatlerde saat okuma, haftanın günlerini anlama ve temel zaman kavramlarını kullanma",
+      "name": "Zaman Kavramları"
     },
     "grade1-money": {
       "description": "Madeni para ve banknotları tanıma, para sayma ve basit alışveriş problemlerini çözme",

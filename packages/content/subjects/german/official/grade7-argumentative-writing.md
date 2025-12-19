@@ -45,6 +45,13 @@ real_world_context:
   - Creating a formal complaint letter to a company about a defective product with structured claims
   - Composing an argumentative piece for the school newspaper about homework policies supported by research
   - Writing a persuasive text about social media usage policies, addressing counterarguments from opposing viewpoints
+  - Composing persuasive speeches for student council elections or school assembly presentations
+  - Writing recommendation requests that convince teachers or mentors to support applications
+  - Crafting arguments for or against school policy changes in formal proposals to administration
+  - Developing position papers on environmental or social issues for Model United Nations participation
+  - Creating convincing fundraising appeals for class trips or charitable causes
+  - Writing product or book reviews that persuade readers with balanced but clear recommendations
+  - Formulating arguments in formal complaint letters about consumer issues or service problems
 anti_patterns:
   - Avoid topics requiring political sophistication beyond 12-13 year experience
   - Don't expect formal rhetoric terminology like ethos, pathos, logos

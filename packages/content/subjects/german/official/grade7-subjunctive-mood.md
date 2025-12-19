@@ -43,6 +43,13 @@ real_world_context:
   - Understanding literary texts where authors use subjunctive to create distance from characters' thoughts or unreliable narrators
   - Reporting conversations to parents or teachers using indirect speech to relay what others said accurately
   - Expressing wishes or hypothetical scenarios in discussions about future plans or imaginary situations
+  - Using polite subjunctive forms when making requests to teachers or authority figures
+  - Writing creative stories that include hypothetical or counterfactual scenarios using Konjunktiv II
+  - Analyzing how subjunctive creates ironic distance in satirical texts or commentary
+  - Formulating what-if questions and responses in philosophical discussions or ethics class
+  - Understanding conditional sentences in game instructions or competition rules
+  - Recognizing subjunctive in song lyrics, especially in ballads expressing wishes or regrets
+  - Using subjunctive appropriately when giving advice or making suggestions to peers
 anti_patterns:
   - Avoid mixing Konjunktiv I and würde-forms within single passages
   - Don't use subjunctive forms beyond Grade 7 scope (Plusquamperfekt Konjunktiv)
