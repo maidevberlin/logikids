@@ -1,9 +1,5 @@
 {
   "concepts": {
-    "grade1-conversation-rules": {
-      "name": "Gesprächsregeln",
-      "description": "Sprechen und Zuhören"
-    },
     "grade1-dramatic-expression": {
       "name": "Darstellendes Spiel & Rollenspiel",
       "description": "Emotionen und Charaktere durch Gestik, Bewegung, Mimik und Rollenspiele ausdrücken"
@@ -12,81 +8,25 @@
       "name": "Grammatik & Wortarten",
       "description": "Grundlegende Wortarten wie Nomen, Verben und Adjektive erkennen und verwenden sowie einfache Wortbildung und Satzstruktur verstehen"
     },
-    "grade1-first-children-s-books": {
-      "name": "Erste Kinderbücher",
-      "description": "Texte und Medien"
-    },
-    "grade1-first-language-observations": {
-      "name": "Erste Sprachbeobachtungen",
-      "description": "Sprache untersuchen"
-    },
-    "grade1-first-reading": {
-      "name": "Erstes Lesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade1-first-writing": {
-      "name": "Erstes Schreiben",
-      "description": "Lesen und Schreiben"
-    },
-    "grade1-letter-and-sound-learning": {
-      "name": "Buchstaben und Laute lernen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade1-letter-sounds": {
-      "name": "Buchstaben-Laut-Zuordnung",
-      "description": "Buchstaben ihren Lauten zuordnen, Anlaute erkennen und Vokale von Konsonanten unterscheiden"
-    },
     "grade1-phonological-awareness": {
       "name": "Phonologische Bewusstheit und Laut-Buchstaben-Zuordnung",
       "description": "Laute in Wörtern erkennen, Silben identifizieren, Vokale von Konsonanten unterscheiden und Buchstaben ihren Lauten zuordnen"
-    },
-    "grade1-writing-letters": {
-      "name": "Buchstaben schreiben",
-      "description": "Buchstabenformen und Schreibgrundlagen lernen, Groß- und Kleinbuchstaben erkennen"
     },
     "grade1-listening-comprehension": {
       "name": "Hörverstehen & auditive Wahrnehmung",
       "description": "Entwicklung aufmerksamer Zuhörfähigkeiten, Entnahme wesentlicher Informationen aus gesprochener Sprache und Nachweis des Verständnisses durch angemessene Reaktionen"
     },
-    "grade1-writing-simple-words": {
-      "name": "Einfache Wörter schreiben",
-      "description": "Wörter nach Gehör schreiben, lautgetreu buchstabieren und häufige Wörter korrekt schreiben"
-    },
     "grade1-writing-composition": {
       "name": "Texte planen und schreiben",
       "description": "Eigene Texte planen, verfassen und überarbeiten: Geschichten, Tagebucheinträge und Sachtexte mit logischer Reihenfolge"
-    },
-    "grade1-reading-simple-words": {
-      "name": "Einfache Wörter lesen",
-      "description": "Lesen und Schreiben"
     },
     "grade1-reading-fluency": {
       "name": "Leseflüssigkeit & Dekodierung",
       "description": "Automatische Worterkennung entwickeln durch Sichtwörter, Zusammenlauten, Buchstabenkombinationen und satzzeichengesteuertes Lesen"
     },
-    "grade1-reading-short-sentences": {
-      "name": "Kurze Sätze lesen",
-      "description": "Einfache Sätze lesen und verstehen, Sätze Bildern zuordnen und einfache schriftliche Anweisungen befolgen"
-    },
-    "grade1-rhymes-and-poems": {
-      "name": "Reime und Gedichte",
-      "description": "Texte und Medien"
-    },
-    "grade1-sound-based-spelling": {
-      "name": "Lautgetreues Schreiben",
-      "description": "Lesen und Schreiben"
-    },
-    "grade1-speaking-communication": {
-      "name": "Sprechen und Kommunikation",
-      "description": "Erfahrungen klar ausdrücken, Gesprächsregeln befolgen, höflich kommunizieren und in verschiedenen Situationen angemessen reagieren"
-    },
     "grade1-speaking-conversation": {
       "name": "Sprechen & Gesprächsfähigkeiten",
       "description": "Erfahrungen erzählen, Gesprächsregeln befolgen, über Lernprozesse sprechen und konstruktives Feedback geben"
-    },
-    "grade1-speaking-in-complete-sentences": {
-      "name": "In ganzen Sätzen sprechen",
-      "description": "Sprechen und Zuhören"
     },
     "grade1-spelling": {
       "name": "Rechtschreibstrategien & Orthografie",
@@ -112,49 +52,9 @@
       "name": "Einfache Texte lesen",
       "description": "Wörter entschlüsseln, einfache Sätze und kurze Texte mit grundlegendem Verständnis lesen"
     },
-    "grade2-capital-letters-nouns-introduction": {
-      "name": "Großschreibung - Nomen (Einführung)",
-      "description": "Lesen und Schreiben"
-    },
     "grade2-compound-words": {
       "name": "Zusammengesetzte Wörter",
       "description": "Deutsche zusammengesetzte Wörter verstehen und bilden, indem zwei oder mehr Wörter kombiniert werden, um neue Bedeutungen zu schaffen"
-    },
-    "grade2-capital-letters-sentence-start": {
-      "name": "Großschreibung - Satzanfang",
-      "description": "Lesen und Schreiben"
-    },
-    "grade2-describing": {
-      "name": "Beschreiben",
-      "description": "Lesen und Schreiben"
-    },
-    "grade2-expanding-reading-skills": {
-      "name": "Lesefähigkeiten erweitern",
-      "description": "Lesen und Schreiben"
-    },
-    "grade2-fairy-tales": {
-      "name": "Märchen",
-      "description": "Texte und Medien"
-    },
-    "grade2-giving-presentations": {
-      "name": "Präsentieren",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade2-nouns-verbs-adjectives": {
-      "name": "Nomen, Verben, Adjektive",
-      "description": "Sprache untersuchen"
-    },
-    "grade2-poems-and-recitation": {
-      "name": "Gedichte und Vortrag",
-      "description": "Texte und Medien"
-    },
-    "grade2-reading-children-s-books": {
-      "name": "Kinderbücher lesen",
-      "description": "Texte und Medien"
-    },
-    "grade2-reading-comprehension": {
-      "name": "Leseverstehen",
-      "description": "Lesen und Schreiben"
     },
     "grade2-retelling-stories": {
       "name": "Geschichten nacherzählen",
@@ -163,26 +63,6 @@
     "grade2-rhyming-words": {
       "name": "Reimwörter",
       "description": "Reimwörter erkennen und bilden, Klangmuster im Deutschen verstehen"
-    },
-    "grade2-sentence-structure": {
-      "name": "Satzbau",
-      "description": "Sprache untersuchen"
-    },
-    "grade2-spelling-strategies-derive": {
-      "name": "Rechtschreibstrategien - Ableiten",
-      "description": "Lesen und Schreiben"
-    },
-    "grade2-spelling-strategies-elongate": {
-      "name": "Rechtschreibstrategien - Verlängern",
-      "description": "Lesen und Schreiben"
-    },
-    "grade2-spelling-strategies-syllables": {
-      "name": "Rechtschreibstrategien - Silben",
-      "description": "Lesen und Schreiben"
-    },
-    "grade2-writing-short-stories": {
-      "name": "Kleine Geschichten schreiben",
-      "description": "Lesen und Schreiben"
     },
     "grade2-asking-questions": {
       "name": "Fragen stellen",
@@ -212,85 +92,9 @@
       "name": "Dialog und Rollenspiel",
       "description": "Kommunikationssituationen routiniert bewältigen, Gesprächsregeln befolgen, konstruktives Feedback geben und in darstellendem Spiel Rollen mit Figurenperspektive übernehmen"
     },
-    "grade3-active-listening": {
-      "name": "Aktives Zuhören",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade3-ballads-introduction": {
-      "name": "Balladen (Einführung)",
-      "description": "Texte und Medien"
-    },
-    "grade3-cases-nominative-and-accusative": {
-      "name": "Fälle - Nominativ und Akkusativ",
-      "description": "Sprache untersuchen"
-    },
-    "grade3-discussion-techniques": {
-      "name": "Gesprächstechniken",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade3-expressive-reading-aloud": {
-      "name": "Ausdrucksvoll vorlesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-fables": {
-      "name": "Fabeln",
-      "description": "Texte und Medien"
-    },
-    "grade3-fluent-silent-reading": {
-      "name": "Flüssiges leises Lesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-informational-texts": {
-      "name": "Sachtexte",
-      "description": "Texte und Medien"
-    },
-    "grade3-legends-and-myths": {
-      "name": "Sagen und Mythen",
-      "description": "Texte und Medien"
-    },
-    "grade3-letter-writing": {
-      "name": "Briefe schreiben",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-process-description": {
-      "name": "Vorgangsbeschreibung",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-punctuation-comma-in-lists": {
-      "name": "Zeichensetzung - Komma bei Aufzählungen",
-      "description": "Lesen und Schreiben"
-    },
     "grade3-reading-strategies": {
       "name": "Lesestrategien und Leseverstehen",
       "description": "Vor-, während- und nach dem Lesen Strategien anwenden; Vorwissen aktivieren; Texte markieren; Wortschatz klären; Handlungselemente visualisieren"
-    },
-    "grade3-reading-youth-books": {
-      "name": "Jugendbücher lesen",
-      "description": "Texte und Medien"
-    },
-    "grade3-report": {
-      "name": "Bericht",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-sentence-parts": {
-      "name": "Satzglieder",
-      "description": "Sprache untersuchen"
-    },
-    "grade3-short-presentation": {
-      "name": "Kurzvortrag",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade3-spelling-s-sounds": {
-      "name": "Rechtschreibung - S-Laute",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-spelling-word-families": {
-      "name": "Rechtschreibung - Wortfamilien",
-      "description": "Lesen und Schreiben"
-    },
-    "grade3-story-with-climax": {
-      "name": "Erzählung mit Höhepunkt",
-      "description": "Lesen und Schreiben"
     },
     "grade3-text-analysis": {
       "name": "Textanalyse und literarisches Verständnis",
@@ -299,14 +103,6 @@
     "grade3-reading-fluency": {
       "name": "Leseflüssigkeit und Ausdruck",
       "description": "Texte flüssig, genau und in angemessenem Tempo lesen; Texte mit variiertem Tempo und Betonung vortragen; umfangreichen Sichtwortschatz aufbauen"
-    },
-    "grade3-tenses-present-and-past": {
-      "name": "Zeitformen - Gegenwart und Vergangenheit",
-      "description": "Sprache untersuchen"
-    },
-    "grade3-using-dictionary": {
-      "name": "Wörterbuch benutzen",
-      "description": "Lesen und Schreiben"
     },
     "grade3-writing-mechanics": {
       "name": "Schreibtechnik und Handschrift",
@@ -340,57 +136,17 @@
       "name": "Rechtschreibprinzipien und -strategien",
       "description": "Phonologische, silbische und morphologische Prinzipien anwenden; Grundwortschatz beherrschen; Wörterbücher nutzen; orthographische Muster erkennen"
     },
-    "grade4-active-and-passive-voice-introduction": {
-      "name": "Aktiv und Passiv (Einführung)",
-      "description": "Sprache untersuchen"
-    },
     "grade4-advanced-listening": {
       "name": "Fortgeschrittenes Hörverstehen",
       "description": "Komplexe gesprochene Texte verstehen, gezielte Fragen stellen, Verständnislücken erkennen"
-    },
-    "grade4-all-four-cases": {
-      "name": "Alle vier Fälle",
-      "description": "Sprache untersuchen"
-    },
-    "grade4-all-tenses": {
-      "name": "Alle Zeitformen",
-      "description": "Sprache untersuchen"
     },
     "grade4-parts-of-speech": {
       "name": "Wortarten-Beherrschung",
       "description": "Alle wichtigen Wortarten mit vollem Bewusstsein identifizieren und verwenden: Nomen (Fall, Geschlecht), Verben (alle Zeiten), Artikel, Adjektive und Pronomen"
     },
-    "grade4-argumentation": {
-      "name": "Argumentation",
-      "description": "Lesen und Schreiben"
-    },
-    "grade4-comics-and-graphic-novels": {
-      "name": "Comics und Graphic Novels",
-      "description": "Texte und Medien"
-    },
-    "grade4-conducting-interviews": {
-      "name": "Interviews führen",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade4-creative-writing": {
-      "name": "Kreatives Schreiben",
-      "description": "Lesen und Schreiben"
-    },
     "grade4-literary-response": {
       "name": "Literarische Reaktion und Interpretation",
       "description": "Entwicklung persönlicher Reaktionen auf Literatur, Verständnis von Figurengefühlen und Beziehungen, Entwicklung lebendiger Vorstellungen und kreative Auseinandersetzung mit Texten"
-    },
-    "grade4-media-use-and-critique": {
-      "name": "Mediennutzung und -kritik",
-      "description": "Texte und Medien"
-    },
-    "grade4-poetry-analysis-introduction": {
-      "name": "Gedichtanalyse (Einführung)",
-      "description": "Texte und Medien"
-    },
-    "grade4-presentation-with-media": {
-      "name": "Präsentation mit Medien",
-      "description": "Sprechen und Zuhören"
     },
     "grade4-discussion-skills": {
       "name": "Diskussion und Argumentation",
@@ -400,34 +156,6 @@
       "name": "Texte planen und strukturieren",
       "description": "Zweck und Zielgruppe klären, Wortschatz und Formulierungen sammeln, Ideen systematisch vor dem Schreiben organisieren"
     },
-    "grade4-punctuation-direct-speech": {
-      "name": "Zeichensetzung - Direkte Rede",
-      "description": "Lesen und Schreiben"
-    },
-    "grade4-reading-different-text-types": {
-      "name": "Verschiedene Textsorten lesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade4-reading-digital-texts": {
-      "name": "Digitale Texte lesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade4-sentence-types": {
-      "name": "Satzarten",
-      "description": "Sprache untersuchen"
-    },
-    "grade4-short-stories": {
-      "name": "Kurzgeschichten",
-      "description": "Texte und Medien"
-    },
-    "grade4-spelling-compound-words": {
-      "name": "Rechtschreibung - Zusammengesetzte Wörter",
-      "description": "Lesen und Schreiben"
-    },
-    "grade4-spelling-same-sounding-words": {
-      "name": "Rechtschreibung - Gleich klingende Wörter",
-      "description": "Lesen und Schreiben"
-    },
     "grade4-spelling-strategies": {
       "name": "Rechtschreibstrategien und Regeln",
       "description": "Ableiten, mitsprechen und merken anwenden; Nachschlagewerke nutzen; Zeichensetzung bei wörtlicher Rede beherrschen"
@@ -436,10 +164,6 @@
       "name": "Satzbau und Syntax",
       "description": "Satzarten beherrschen, Subjekt-Prädikat-Ergänzung-Struktur analysieren, Zeitbezüge in Sätzen verstehen, komplexe Sätze bilden und Zeichensetzung bei verschiedenen Satzarten anwenden"
     },
-    "grade4-summary": {
-      "name": "Zusammenfassung",
-      "description": "Lesen und Schreiben"
-    },
     "grade4-text-revision": {
       "name": "Texte überarbeiten und korrigieren",
       "description": "Selbstkorrektur, Überprüfung auf Klarheit und Wirkung, Vorbereitung zur Veröffentlichung"
@@ -447,14 +171,6 @@
     "grade4-text-types-genres": {
       "name": "Textsorten und Genres",
       "description": "Erzählende, lyrische und dramatische Textformen unterscheiden, Fiktion von Sachtext trennen und Medienkompetenz entwickeln"
-    },
-    "grade4-theater-and-role-play": {
-      "name": "Theater und Rollenspiel",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade4-youth-literature": {
-      "name": "Jugendliteratur",
-      "description": "Texte und Medien"
     },
     "grade4-expressive-speaking": {
       "name": "Ausdrucksstarkes Sprechen und Präsentieren",
@@ -468,50 +184,6 @@
       "name": "Aufmerksames Zuhören",
       "description": "Gesprochene Texte verstehen, Kerninformationen entnehmen"
     },
-    "grade5-active-and-passive-deepened": {
-      "name": "Aktiv und Passiv vertieft",
-      "description": "Sprache untersuchen"
-    },
-    "grade5-advanced-spelling-rules": {
-      "name": "Erweiterte Rechtschreibregeln",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-advertising-analysis": {
-      "name": "Werbeanalyse",
-      "description": "Texte und Medien"
-    },
-    "grade5-ballad": {
-      "name": "Ballade",
-      "description": "Texte und Medien"
-    },
-    "grade5-comma-rules-subordinate-clauses": {
-      "name": "Kommaregeln - Nebensätze",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-description-image": {
-      "name": "Beschreibung - Bild",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-description-object-and-person": {
-      "name": "Beschreibung - Gegenstand und Person",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-discussion-and-debate": {
-      "name": "Diskussion und Debatte",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade5-drama-introduction": {
-      "name": "Drama - Einführung",
-      "description": "Texte und Medien"
-    },
-    "grade5-fairy-tales-and-fables-deepened": {
-      "name": "Märchen und Fabeln vertieft",
-      "description": "Texte und Medien"
-    },
-    "grade5-information-extraction": {
-      "name": "Informationsentnahme",
-      "description": "Lesen und Schreiben"
-    },
     "grade5-informational-texts": {
       "name": "Sachtexte verstehen",
       "description": "Sachtexte und nicht-lineare Informationsformate erfassen und verstehen"
@@ -520,161 +192,9 @@
       "name": "Erzählende Texte schreiben",
       "description": "Erzählungen mit klarer Perspektive und Struktur schreiben (Einleitung, Hauptteil, Schluss)"
     },
-    "grade5-narrative-perspective-change": {
-      "name": "Erzählung - Perspektivwechsel",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-narrative-retelling": {
-      "name": "Erzählung - Nacherzählung",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-narrative-texts-novel": {
-      "name": "Erzählende Texte - Roman",
-      "description": "Texte und Medien"
-    },
-    "grade5-narrative-texts-short-story": {
-      "name": "Erzählende Texte - Kurzgeschichte",
-      "description": "Texte und Medien"
-    },
-    "grade5-newspaper-and-journalism": {
-      "name": "Zeitung und Journalismus",
-      "description": "Texte und Medien"
-    },
-    "grade5-opinion-statement-with-reasons": {
-      "name": "Stellungnahme mit Begründung",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-poetry-forms-and-analysis": {
-      "name": "Lyrik - Formen und Analyse",
-      "description": "Texte und Medien"
-    },
     "grade5-poetry-analysis": {
       "name": "Gedichtanalyse",
       "description": "Gedichte durch Form und Ausdruck verstehen und würdigen"
-    },
-    "grade5-presentation-skills": {
-      "name": "Präsentationsfähigkeiten",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade5-reading-techniques-deepened": {
-      "name": "Lesetechniken vertieft",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-report": {
-      "name": "Bericht",
-      "description": "Lesen und Schreiben"
-    },
-    "grade5-syntax-main-and-subordinate-clauses": {
-      "name": "Syntax - Haupt- und Nebensätze",
-      "description": "Sprache untersuchen"
-    },
-    "grade5-syntax-sentence-elements": {
-      "name": "Syntax - Satzglieder",
-      "description": "Sprache untersuchen"
-    },
-    "grade5-word-formation": {
-      "name": "Wortbildung",
-      "description": "Sprache untersuchen"
-    },
-    "grade5-word-types-deepened": {
-      "name": "Wortarten vertieft",
-      "description": "Sprache untersuchen"
-    },
-    "grade6-advanced-comma-rules": {
-      "name": "Erweiterte Kommaregeln",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-argumentation-and-discussion": {
-      "name": "Argumentation und Erörterung",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-comparing-literary-texts": {
-      "name": "Literarische Texte vergleichen",
-      "description": "Texte und Medien"
-    },
-    "grade6-creative-interpretation": {
-      "name": "Kreative Textinterpretation",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-critical-reading": {
-      "name": "Kritisches Lesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-debate-techniques": {
-      "name": "Debattiertechniken",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade6-drama-analysis": {
-      "name": "Drama-Analyse",
-      "description": "Texte und Medien"
-    },
-    "grade6-extended-summary": {
-      "name": "Erweiterte Zusammenfassung",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-indirect-speech-introduction": {
-      "name": "Indirekte Rede (Einführung)",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-internet-research": {
-      "name": "Internetrecherche",
-      "description": "Texte und Medien"
-    },
-    "grade6-letter-to-the-editor": {
-      "name": "Leserbrief",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-literature-character-analysis": {
-      "name": "Literatur - Figurenanalyse",
-      "description": "Texte und Medien"
-    },
-    "grade6-literature-themes-and-motifs": {
-      "name": "Literatur - Themen und Motive",
-      "description": "Texte und Medien"
-    },
-    "grade6-media-production": {
-      "name": "Medienproduktion",
-      "description": "Texte und Medien"
-    },
-    "grade6-non-fiction-analysis": {
-      "name": "Sachtextanalyse",
-      "description": "Texte und Medien"
-    },
-    "grade6-poetry-interpretation": {
-      "name": "Gedichtinterpretation",
-      "description": "Texte und Medien"
-    },
-    "grade6-presentation-and-rhetoric": {
-      "name": "Präsentation und Rhetorik",
-      "description": "Sprechen und Zuhören"
-    },
-    "grade6-protocol": {
-      "name": "Protokoll",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-reading-complex-texts": {
-      "name": "Komplexe Texte lesen",
-      "description": "Lesen und Schreiben"
-    },
-    "grade6-style-and-register": {
-      "name": "Stil und Sprachebene",
-      "description": "Sprache untersuchen"
-    },
-    "grade6-subjunctive-mood-introduction": {
-      "name": "Konjunktiv (Einführung)",
-      "description": "Sprache untersuchen"
-    },
-    "grade6-syntax-attributes": {
-      "name": "Syntax - Attribute",
-      "description": "Sprache untersuchen"
-    },
-    "grade6-syntax-relative-clauses": {
-      "name": "Syntax - Relativsätze",
-      "description": "Sprache untersuchen"
-    },
-    "grade6-text-cohesion": {
-      "name": "Textkohäsion",
-      "description": "Sprache untersuchen"
     },
     "grade6-listening-comprehension": {
       "name": "Hörverstehen",

@@ -1,20 +1,3 @@
 {
-  "concepts": {
-    "analogical": {
-      "name": "Analogies and Relationships",
-      "description": "Understanding relationships between concepts"
-    },
-    "deductive": {
-      "name": "Logical Deduction",
-      "description": "Using given information to reach logical conclusions"
-    },
-    "patterns": {
-      "name": "Pattern Recognition",
-      "description": "Finding and understanding patterns in logical sequences"
-    },
-    "sequences": {
-      "name": "Number Sequences",
-      "description": "Understanding and continuing numerical sequences"
-    }
-  }
+  "concepts": {}
 }
