@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { GradeSelector, LanguageSelector } from '@/app/common'
+import { LanguageSelector, NumberInput } from '@/app/common'
 import { Card } from '@/app/common/ui/card'
 import { Label } from '@/app/common/ui/label'
 import { User, Check, Loader2 } from 'lucide-react'
@@ -181,7 +181,7 @@ export function ProfileSettings({ settings, onUpdate }: ProfileSettingsProps) {
           <Label className="block text-xl font-semibold text-foreground text-center">
             {t('settings.gradeLabel', { defaultValue: 'What grade are you in?' })}
           </Label>
-          <GradeSelector value={grade} onChange={handleGradeChange} />
+          <NumberInput value={grade} onChange={handleGradeChange} min={1} max={13} />
         </div>
 
         {/* Divider */}

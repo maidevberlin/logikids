@@ -1,6 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { Button } from '@/app/common/ui/button'
 
 interface NumberInputProps {
   value: number
@@ -58,32 +57,26 @@ export function NumberInput({
       className={`flex flex-col items-center gap-3 ${className}`}
     >
       {label && <label className="text-lg font-semibold text-foreground">{label}</label>}
-      <div className="flex items-center gap-4">
-        <Button
+      <div className="flex items-center justify-center gap-2 h-28 px-4 rounded-3xl bg-primary text-white shadow-lg">
+        <button
           type="button"
-          variant="outline"
-          size="icon"
           onClick={handleDecrement}
           disabled={value <= min}
-          className="h-16 w-16 rounded-full text-2xl"
+          className="transition-opacity hover:opacity-70 disabled:opacity-30"
         >
           <ChevronLeft className="h-8 w-8" />
-        </Button>
+        </button>
 
-        <div className="flex h-28 w-28 items-center justify-center rounded-3xl bg-primary text-5xl font-bold text-white shadow-lg">
-          {value}
-        </div>
+        <div className="w-20 text-center text-5xl font-bold">{value}</div>
 
-        <Button
+        <button
           type="button"
-          variant="outline"
-          size="icon"
           onClick={handleIncrement}
           disabled={value >= max}
-          className="h-16 w-16 rounded-full text-2xl"
+          className="transition-opacity hover:opacity-70 disabled:opacity-30"
         >
           <ChevronRight className="h-8 w-8" />
-        </Button>
+        </button>
       </div>
     </div>
   )
