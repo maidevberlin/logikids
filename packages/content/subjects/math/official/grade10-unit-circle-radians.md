@@ -43,6 +43,13 @@ real_world_context:
   - Rotating machinery with angular positions specified in radians
   - Navigation systems using radians for directional bearings
   - Circular motion of planets and satellites with angles in radians
+  - Clock hands moving through radian angles each hour
+  - Bicycle wheels calculating distance from rotation angles
+  - Record turntables spinning at angular velocities in radians per second
+  - Wind turbine blades tracking rotational position
+  - Radar systems measuring bearing angles in military applications
+  - Robotic arm joints programmed with radian angle movements
+  - Compass directions converted to radian measures for calculations
 anti_patterns:
   - Avoid mixing degrees and radians in the same problem without clear labels
   - Don't ask for decimal approximations of exact values like √2/2 or √3/2
@@ -51,6 +58,6 @@ anti_patterns:
   - Avoid problems requiring calculator-based inverse trig (covered later)
 prerequisites:
   - grade9-right-triangle-trigonometry
-version: 1
-version_notes: Initial version based on KMK curriculum for Grade 10
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

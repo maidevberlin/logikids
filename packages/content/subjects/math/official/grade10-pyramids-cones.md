@@ -46,12 +46,19 @@ real_world_context:
   - Planning concrete volume for pyramid or conical monuments and structures
   - Designing ice cream cone packaging to optimize material and volume
   - Analyzing Egyptian pyramid dimensions and construction requirements
+  - Traffic cone manufacturers optimizing visibility and material costs
+  - Volcano scientists modeling lava flow from conical mountain shapes
+  - Party hat designers calculating paper needed for different sizes
+  - Funnel manufacturers determining flow rates through conical shapes
+  - Tent designers creating teepee-style camping shelters
+  - Chocolate makers molding pyramid-shaped pralines and candies
+  - Speaker designers using conical shapes for sound projection
 anti_patterns:
   - Avoid oblique pyramids and cones where height is not perpendicular to base
   - Do not use composite solids with more than 3 components
   - Avoid decimal dimensions beyond two decimal places
   - Do not combine volume with density or mass calculations
   - Avoid bases with more than 6 sides for pyramids
-version: 1
-version_notes: Initial version based on German KMK curriculum for Grade 10, covering three-dimensional geometry with pyramids and cones
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
