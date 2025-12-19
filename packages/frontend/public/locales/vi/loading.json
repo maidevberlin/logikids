@@ -1,0 +1,295 @@
+{
+  "header": "Đang chuẩn bị bài tập của bạn...",
+  "timeRemaining": "Còn khoảng {{seconds}} giây nữa...",
+  "almostThere": "Sắp xong rồi... đang tạo một câu hỏi hay cho bạn!",
+  "stages": {
+    "analyzing": "Đang phân tích trình độ học của bạn...",
+    "crafting": "Đang soạn câu hỏi của bạn...",
+    "generating": "Đang tạo gợi ý và lời giải...",
+    "finalizing": "Hoàn thiện cuối cùng..."
+  },
+  "contentTypes": {
+    "tip": "Mẹo",
+    "fact": "Bạn có biết?",
+    "preview": "Sắp tới",
+    "encouragement": "Tiếp tục phát huy!"
+  },
+  "encouragement": {
+    "math": [
+      "Phần trăm giúp bạn nhận ra khi một 'đợt giảm giá' chỉ là chiêu marketing",
+      "Tỷ lệ giúp bạn điều chỉnh công thức nấu ăn cho nhiều hoặc ít người hơn",
+      "Tính lãi suất cho thấy một khoản vay đắt đến mức nào – trước khi bạn ký",
+      "Thống kê giúp bạn nhìn thấu các biểu đồ lừa đảo trên báo chí",
+      "Tính nhẩm giúp bạn nhanh hơn khi chia tiền với bạn bè",
+      "Xác suất giải thích tại sao chơi xổ số hầu như không bao giờ hiệu quả",
+      "Tính diện tích cho bạn biết cần bao nhiêu sơn trước khi bắt đầu",
+      "Hiểu tỷ lệ giúp bạn biết các địa điểm thực sự cách xa bao xa trên bản đồ",
+      "Phân số giúp bạn chia pizza, bánh hoặc chi phí một cách công bằng",
+      "Chuyển đổi đơn vị giúp với công thức nấu ăn từ internet sử dụng cup và ounce"
+    ],
+    "physics": [
+      "Vật lý giải thích tại sao pin điện thoại của bạn cạn nhanh hơn vào mùa đông",
+      "Quang học cho thấy tại sao bạn trông gầy hơn hoặc béo hơn trong các gương khác nhau",
+      "Truyền nhiệt giải thích tại sao bạn lạnh rất nhanh trong áo ướt",
+      "Điện học giúp bạn hiểu tại sao một số bộ sạc nhanh hơn các loại khác",
+      "Cơ học giải thích tại sao bạn không bị ngã khi đi xe đạp",
+      "Âm thanh giải thích tại sao bạn thấy chớp trước khi nghe sấm",
+      "Khí động học cho thấy tại sao cánh lướt gió xe không chỉ để trang trí",
+      "Ma sát giải thích tại sao lốp mùa đông bám đường tốt hơn trong tuyết",
+      "Áp suất giải thích tại sao tai bạn đau trên máy bay hoặc khi lặn",
+      "Độ nổi giải thích tại sao tàu thép khổng lồ có thể nổi"
+    ],
+    "logic": [
+      "Logic giúp bạn phân biệt tin giả với tin thật",
+      "Tư duy logic giúp bạn nhận ra khi ai đó sử dụng lập luận kém để thuyết phục bạn",
+      "Logic giúp bạn kiểm tra xem đánh giá trực tuyến là thật hay giả",
+      "Khi bạn nhận ra mẫu, bạn giải các câu đố trong trò chơi nhanh hơn",
+      "Logic giúp bạn tìm tuyến đường nhanh nhất, không chỉ ngắn nhất",
+      "Tư duy logic giúp bạn nhìn thấu quảng cáo thao túng",
+      "Debug là logic ứng dụng – cho dù là code hay thiết bị hỏng",
+      "Logic giúp bạn phân biệt tiêu đề câu view với tin tức thật",
+      "Tư duy nếu-thì giúp bạn thấy trước hậu quả của các quyết định",
+      "Logic giúp bạn tìm ra ai đang nói dối trong Werewolf hoặc Among Us"
+    ],
+    "music": [
+      "Nhịp điệu không chỉ giúp bạn với âm nhạc mà còn với khiêu vũ và thể thao",
+      "Rèn luyện tai giúp bạn nhận ra khi ai đó hát lệch giọng ở karaoke",
+      "Lý thuyết âm nhạc giải thích tại sao một số bài hát nghe buồn và những bài khác vui",
+      "Giữ nhịp quan trọng cho rap, beatbox và chỉnh sửa video",
+      "Nếu bạn nhận ra khoảng, bạn có thể chơi giai điệu bằng tai",
+      "Hòa âm giải thích tại sao một số hợp âm khiến bạn nổi da gà",
+      "Đọc bản nhạc cho phép bạn chơi bất kỳ bản nhạc nào mà không cần nghe trước",
+      "Hiểu dynamics giúp bạn cảm nhận cảm xúc trong âm nhạc có ý thức hơn",
+      "Với lý thuyết âm nhạc, bạn sản xuất beat riêng của mình nghe thực sự hay",
+      "Nhịp điệu giúp bạn giữ nhịp khi khiêu vũ hoặc chơi thể thao"
+    ],
+    "german": [
+      "Đọc hiểu giúp bạn hiểu hợp đồng và điều khoản trước khi đồng ý",
+      "Nhận thức ngôn ngữ giúp bạn nhận ra khi quảng cáo cố gắng thao túng bạn",
+      "Viết tốt giúp bạn viết khiếu nại thực sự có kết quả",
+      "Kỹ năng đọc bảo vệ bạn khỏi email lừa đảo và gian lận",
+      "Với vốn từ vựng, bạn diễn đạt chính xác ý của mình – không hiểu lầm",
+      "Ngữ pháp giúp bạn viết tin nhắn không bị hiểu sai",
+      "Phân tích văn bản giúp bạn nhìn thấu các bài phát biểu chính trị và thủ đoạn của chúng",
+      "Hiểu hướng dẫn thuốc có nghĩa là uống chúng đúng cách",
+      "Với tiếng Đức tốt, bạn viết tin nhắn được coi trọng",
+      "Kỹ năng ngôn ngữ giúp bạn phân biệt tiêu đề câu view với tin tức thật"
+    ],
+    "english": [
+      "Với tiếng Anh bạn có thể thưởng thức trò chơi, chương trình và YouTube không cần phụ đề",
+      "Hầu hết hướng dẫn lập trình và trợ giúp kỹ thuật đều bằng tiếng Anh",
+      "Tiếng Anh giúp bạn đi du lịch hầu như ở bất cứ đâu",
+      "Với tiếng Anh bạn có thể trò chuyện và chơi game với mọi người trên toàn thế giới",
+      "Hiểu lời bài hát vui hơn là chỉ ngân nga theo",
+      "Hiểu thông báo lỗi tiếng Anh giúp bạn tiết kiệm hàng giờ khắc phục sự cố",
+      "Reddit, Discord và cộng đồng quốc tế chủ yếu chạy bằng tiếng Anh",
+      "Tin tức công nghệ mới nhất ra trước bằng tiếng Anh – thường sớm hơn hàng tuần so với bản dịch",
+      "Với tiếng Anh bạn có thể tham gia các dự án và hợp tác quốc tế",
+      "Đánh giá sản phẩm tiếng Anh giúp bạn tìm sự thật trước khi mua"
+    ],
+    "fallback": [
+      "Những gì bạn học ở đây giúp bạn với các vấn đề thực tế trong cuộc sống hàng ngày",
+      "Kiến thức bảo vệ bạn khỏi bị lừa",
+      "Hiểu vượt trội hơn ghi nhớ – và lâu hơn",
+      "Sai lầm không sao miễn là bạn hiểu điều gì đã sai",
+      "Mọi chủ đề đều kết nối với cuộc sống thực của bạn – đôi khi bạn chỉ cần nhìn",
+      "Hiểu các mối liên hệ khiến bạn khó bị thao túng hơn",
+      "Nhiệm vụ khó khiến bạn mạnh hơn nhiệm vụ dễ",
+      "Tò mò thúc đẩy mọi thứ bạn sẽ học",
+      "Tư duy phản biện giúp bạn phân biệt thông tin tốt với thông tin xấu",
+      "Bạn càng hiểu nhiều, bạn càng đưa ra quyết định tốt hơn"
+    ]
+  },
+  "tips": {
+    "math": [
+      "Chia các bài toán phức tạp thành các bước nhỏ, dễ quản lý!",
+      "Vẽ sơ đồ hoặc hình ảnh để hình dung bài toán!",
+      "Kiểm tra đáp án bằng cách làm ngược lại các bước!",
+      "Tìm mẫu trong các số để tìm phím tắt thông minh!",
+      "Luyện tập tính nhẩm thường xuyên để xây dựng giác quan số!",
+      "Viết ra những gì bạn biết trước khi bắt đầu giải!",
+      "Đừng ngại thử các cách tiếp cận khác nhau!"
+    ],
+    "physics": [
+      "Vẽ sơ đồ lực để hiểu cách các vật tương tác!",
+      "Chú ý cẩn thận đến đơn vị trong các phép tính của bạn!",
+      "Nghĩ về các ví dụ thực tế để hiểu khái niệm tốt hơn!",
+      "Nhớ: năng lượng luôn được bảo toàn trong các hệ kín!",
+      "Hướng vectơ quan trọng ngang với độ lớn của nó!",
+      "Nghĩ về đối xứng để đơn giản hóa các bài toán phức tạp!",
+      "Thí nghiệm giúp bạn xác minh các dự đoán lý thuyết!"
+    ],
+    "logic": [
+      "Đọc kỹ bài toán trước khi vội kết luận!",
+      "Vẽ bảng chân lý để tổ chức thông tin của bạn rõ ràng!",
+      "Tìm mâu thuẫn để loại bỏ các đáp án sai!",
+      "Chia các câu phức tạp thành các phần nhỏ hơn, đơn giản hơn!",
+      "Xem xét tất cả các khả năng theo cách có hệ thống!",
+      "Câu nếu-thì là nền tảng của lập luận logic!",
+      "Luyện tập nhận ra các mẫu logic phổ biến!"
+    ],
+    "music": [
+      "Lắng nghe cẩn thận để xác định các mẫu lặp lại trong giai điệu!",
+      "Luyện tập nhịp điệu bằng cách vỗ tay hoặc gõ theo nhạc!",
+      "Hiểu âm giai giúp bạn với sáng tác!",
+      "Đếm nhịp cẩn thận để giữ đúng thời gian!",
+      "Ký hiệu âm nhạc là một ngôn ngữ bạn có thể học từng bước!",
+      "Hát hoặc ngân nga giai điệu để nội hóa mối quan hệ cao độ!",
+      "Luyện tập thường xuyên xây dựng trực giác âm nhạc của bạn!"
+    ],
+    "german": [
+      "Đọc văn bản tiếng Đức thường xuyên giúp xây dựng vốn từ vựng tự nhiên!",
+      "Chú ý đến giống từ của danh từ: der, die và das!",
+      "Luyện tập chia động từ thường xuyên để xây dựng sự thành thạo!",
+      "Từ ghép tiếng Đức kể những câu chuyện thú vị của riêng chúng!",
+      "Lắng nghe người nói tiếng Đức để cải thiện phát âm của bạn!",
+      "Cấu trúc câu theo các mẫu bạn có thể học!",
+      "Cố gắng đắm mình trong ngôn ngữ mỗi ngày!"
+    ],
+    "english": [
+      "Đọc các văn bản đa dạng cải thiện kỹ năng đọc hiểu của bạn!",
+      "Sử dụng manh mối ngữ cảnh để hiểu từ mới!",
+      "Luyện tập viết để củng cố quy tắc ngữ pháp!",
+      "Lắng nghe người bản xứ để học nhịp điệu tự nhiên!",
+      "Học các thành ngữ và cách diễn đạt phổ biến!",
+      "Xây dựng vốn từ vựng của bạn bằng cách đọc thường xuyên!",
+      "Đừng ngại mắc lỗi khi nói!"
+    ],
+    "fallback": [
+      "Dành thời gian để hiểu đầy đủ câu hỏi!",
+      "Chia bài toán thành các bước dễ quản lý!",
+      "Xem xét kỹ đáp án của bạn trước khi gửi!",
+      "Học từ sai lầm để cải thiện!",
+      "Luyện tập tạo nên sự hoàn hảo!"
+    ]
+  },
+  "facts": {
+    "math": [
+      "Số không được phát minh vào khoảng năm 500 CN ở Ấn Độ!",
+      "Số Pi đã được tính đến hơn 100 nghìn tỷ chữ số!",
+      "Dãy Fibonacci xuất hiện ở khắp nơi trong tự nhiên, từ hoa hướng dương đến quả thông!",
+      "Người Ai Cập cổ đại đã sử dụng phân số từ xa xưa như năm 1800 TCN!",
+      "Một googol là số 1 theo sau bởi 100 số không - nó đã truyền cảm hứng cho tên Google!",
+      "Có các kích thước vô cực khác nhau trong toán học!",
+      "Dấu bằng (=) được phát minh vào năm 1557 bởi Robert Recorde!",
+      "111,111,111 × 111,111,111 = 12,345,678,987,654,321 - một palindrome hoàn hảo!",
+      "Từ 'forty' là số duy nhất được đánh vần với các chữ cái theo thứ tự alphabet!",
+      "2520 là số nhỏ nhất có thể chia hết cho tất cả các số từ 1 đến 10!",
+      "Quả bóng đá được tạo thành từ chính xác 12 hình ngũ giác và 20 hình lục giác!",
+      "Ong mật xây các ô lục giác vì lục giác sử dụng ít sáp nhất!",
+      "Tổng các góc trong bất kỳ tam giác nào luôn chính xác là 180 độ!",
+      "Dải Möbius là một bề mặt chỉ có một mặt và một cạnh!",
+      "Người Babylon cổ đại sử dụng cơ số 60, đó là lý do tại sao chúng ta có 60 giây trong một phút!",
+      "Người La Mã cổ đại không có ký hiệu cho số không trong hệ thống số của họ!",
+      "Carl Friedrich Gauss cộng các số từ 1 đến 100 trong vài giây khi còn nhỏ - tổng là 5050!",
+      "Hạt hướng dương phát triển theo xo螺旋 tuân theo dãy Fibonacci!",
+      "Bông tuyết luôn có chính xác 6 cạnh vì cách các phân tử nước liên kết!",
+      "Tỷ lệ vàng (1.618...) xuất hiện trong nghệ thuật nổi tiếng, kiến trúc và tự nhiên!",
+      "Nếu bạn xáo trộn bộ bài tốt, thứ tự chính xác đó có thể chưa bao giờ tồn tại trước đây!",
+      "Có nhiều chuỗi trò chơi cờ vua có thể có hơn số nguyên tử trong vũ trụ quan sát được!",
+      "Trong một phòng chỉ có 23 người, có 50% cơ hội hai người có cùng sinh nhật!",
+      "Số 7 là số 'ngẫu nhiên' phổ biến nhất mọi người chọn giữa 1 và 10!",
+      "Hình tròn có vô số trục đối xứng!",
+      "Bàn tính được sử dụng để tính toán ở Mesopotamia cổ đại vào khoảng năm 2700 TCN!",
+      "Số nguyên tố được gọi là 'prime' từ tiếng Latin 'primus' có nghĩa là 'đầu tiên' hoặc 'cơ bản'!",
+      "Số nguyên tố lớn nhất được biết đến có hơn 24 triệu chữ số!",
+      "Số không là số duy nhất không thể được biểu diễn bằng chữ số La Mã!",
+      "Từ 'mathematics' xuất phát từ tiếng Hy Lạp 'mathema' có nghĩa là 'kiến thức' hoặc 'học tập'!",
+      "Các số palindrome như 121 và 1331 đọc giống nhau từ trước ra sau và ngược lại!",
+      "Số 1 không được coi là số nguyên tố vì số nguyên tố phải có chính xác hai ước!",
+      "Mọi số chẵn lớn hơn 2 đều có thể được viết dưới dạng tổng của hai số nguyên tố!",
+      "Một số hoàn hảo bằng tổng các ước của nó - 6 = 1+2+3 là số đầu tiên!",
+      "Ký hiệu chia (÷) được gọi là obelus!",
+      "Số âm bị các nhà toán học từ chối cho đến những năm 1700!",
+      "Người Hy Lạp cổ đại nghĩ rằng số 1 không phải là lẻ cũng không phải là chẵn!",
+      "Một jiffy là đơn vị thời gian thực tế: 1/100 giây!",
+      "Số 5 là số nguyên tố duy nhất kết thúc bằng 5!",
+      "Nhân 9 với bất kỳ số nào, và các chữ số của kết quả luôn cộng lại bằng 9!"
+    ],
+    "physics": [
+      "Ánh sáng di chuyển ở tốc độ 299,792,458 mét mỗi giây trong chân không!",
+      "Âm thanh di chuyển nhanh hơn nhiều qua chất rắn so với qua không khí!",
+      "Bạn cao hơn một chút vào buổi sáng vì tác động của trọng lực lên cột sống của bạn!",
+      "Sét thực sự nóng hơn bề mặt Mặt trời!",
+      "Một ngày trên Sao Kim dài hơn cả một năm của nó!",
+      "Nước có thể sôi và đóng băng cùng lúc tại điểm ba!",
+      "Một số sao neutron có thể quay hơn 600 lần mỗi giây!"
+    ],
+    "logic": [
+      "Aristotle đã thành lập logic hình thức cách đây hơn 2.400 năm!",
+      "Máy tính sử dụng logic nhị phân chỉ với 0 và 1!",
+      "Nghịch lý là một câu nói mâu thuẫn với chính nó!",
+      "Các câu đố Sudoku thực sự là bài tập suy luận logic!",
+      "George Boole đã phát minh đại số Boolean vào năm 1854!",
+      "Giải các câu đố logic cải thiện kỹ năng tư duy phản biện của bạn!",
+      "Sherlock Holmes nổi tiếng với việc sử dụng lập luận diễn dịch!"
+    ],
+    "music": [
+      "Âm nhạc kích hoạt hầu như mọi vùng não của bạn!",
+      "Nhạc cụ cổ nhất được biết đến đã hơn 40.000 năm tuổi!",
+      "Mozart đã sáng tác bản nhạc đầu tiên của mình khi mới 5 tuổi!",
+      "Quãng tám nghe tương tự vì tần số của chúng gấp đôi!",
+      "Có hơn 1.500 nhạc cụ khác nhau trên toàn thế giới!",
+      "Beethoven đã sáng tác nhạc tuyệt vời ngay cả khi hoàn toàn điếc!",
+      "Nghe nhạc có thể cải thiện trí nhớ và sự tập trung của bạn!"
+    ],
+    "german": [
+      "Tiếng Đức được nói bởi hơn 130 triệu người trên toàn thế giới!",
+      "Từ tiếng Đức dài nhất được sử dụng chính thức có 63 chữ cái!",
+      "Tiếng Đức có ba giống ngữ pháp cho danh từ!",
+      "Nhiều từ tiếng Anh thực sự đến từ gốc tiếng Đức!",
+      "Tất cả danh từ tiếng Đức luôn được viết với chữ cái đầu viết hoa!",
+      "Tiếng Đức Áo và Thụy Sĩ có những đặc điểm riêng độc đáo!",
+      "Học tiếng Đức mở ra cánh cửa đến với văn học và triết học phong phú!"
+    ],
+    "english": [
+      "Tiếng Anh có hơn 170.000 từ hiện đang được sử dụng tích cực!",
+      "Shakespeare đã phát minh hơn 1.700 từ mà chúng ta vẫn sử dụng ngày nay!",
+      "Tiếng Anh là ngôn ngữ chính thức ở 67 quốc gia khác nhau!",
+      "Từ 'Go!' thực sự là một câu hoàn chỉnh!",
+      "Tiếng Anh đã vay mượn từ hơn 350 ngôn ngữ khác nhau!",
+      "'I am' là câu hoàn chỉnh ngắn nhất trong tiếng Anh!",
+      "Tiếng Anh có nhiều từ đồng nghĩa hơn hầu hết các ngôn ngữ khác!"
+    ],
+    "fallback": [
+      "Học những điều mới thực sự thay đổi cấu trúc não bạn!",
+      "Tò mò là thứ thúc đẩy khám phá và đổi mới!",
+      "Mọi chuyên gia đều từng là người mới bắt đầu hoàn toàn!",
+      "Não của bạn không bao giờ ngừng học trong suốt cuộc đời!",
+      "Tạo kết nối giữa các ý tưởng giúp củng cố trí nhớ!"
+    ]
+  },
+  "previews": {
+    "math": [
+      "Sẵn sàng khám phá các con số và mẫu hấp dẫn!",
+      "Toán học giúp chúng ta giải quyết các vấn đề thực tế hàng ngày!",
+      "Mỗi phương trình kể một câu chuyện độc đáo riêng!"
+    ],
+    "physics": [
+      "Khám phá vũ trụ thực sự hoạt động như thế nào!",
+      "Vật lý giải thích mọi thứ từ nguyên tử nhỏ đến thiên hà khổng lồ!",
+      "Sẵn sàng khám phá lực, năng lượng và chuyển động!"
+    ],
+    "logic": [
+      "Mài giũa kỹ năng lập luận và tư duy phản biện của bạn!",
+      "Logic giúp bạn giải câu đố và đưa ra quyết định tốt hơn!",
+      "Sẵn sàng suy nghĩ qua các vấn đề từng bước!"
+    ],
+    "music": [
+      "Khám phá thế giới âm thanh và nhịp điệu tuyệt đẹp!",
+      "Âm nhạc kết hợp toán học, sáng tạo và cảm xúc!",
+      "Sẵn sàng khám phá các mẫu âm nhạc hấp dẫn!"
+    ],
+    "german": [
+      "Làm chủ ngôn ngữ của Goethe, Kafka và Einstein!",
+      "Ngữ pháp tiếng Đức logic và theo các mẫu rõ ràng!",
+      "Sẵn sàng mở rộng khả năng ngôn ngữ của bạn!"
+    ],
+    "english": [
+      "Làm chủ ngôn ngữ giao tiếp toàn cầu!",
+      "Tiếng Anh mở ra cánh cửa đến cơ hội trên toàn thế giới!",
+      "Sẵn sàng nâng cao kỹ năng ngôn ngữ của bạn!"
+    ],
+    "fallback": ["Sẵn sàng cho một thử thách hấp dẫn!", "Bạn sắp học một điều gì đó mới hôm nay!"]
+  }
+}
