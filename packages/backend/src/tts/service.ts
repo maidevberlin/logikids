@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { injectable } from 'tsyringe'
 import { internalError } from '../common/errors'
-import { Language, DEFAULT_LANGUAGE } from '@logikids/content/schema'
+import { Language, DEFAULT_LANGUAGE, LANGUAGES } from '@logikids/content/schema'
 
 interface GoogleTTSRequest {
   input: {
@@ -29,44 +29,29 @@ export interface TTSSynthesizeResult {
 @injectable()
 export class TTSService {
   private readonly apiKey: string
-  private readonly voiceDE: string
-  private readonly voiceEN: string
   private readonly endpoint = 'https://texttospeech.googleapis.com/v1/text:synthesize'
 
   constructor() {
     this.apiKey = process.env.GOOGLE_CLOUD_TTS_API_KEY || ''
-    this.voiceDE = process.env.TTS_VOICE_DE || 'de-DE-Standard-A'
-    this.voiceEN = process.env.TTS_VOICE_EN || 'en-US-Standard-C'
 
     if (!this.apiKey) {
       throw internalError('GOOGLE_CLOUD_TTS_API_KEY environment variable is required')
     }
   }
 
-  // Voice configuration per language
-  // When adding a new language to SUPPORTED_LANGUAGES:
-  // 1. Add TTS_VOICE_XX environment variable
-  // 2. Add voiceXX property to constructor
-  // 3. Add case to selectVoice()
-  private readonly voiceConfig: Record<
-    Language,
-    { languageCode: string; envVar: string; default: string }
-  > = {
-    de: { languageCode: 'de-DE', envVar: 'TTS_VOICE_DE', default: 'de-DE-Standard-A' },
-    en: { languageCode: 'en-US', envVar: 'TTS_VOICE_EN', default: 'en-US-Standard-C' },
-  }
-
   /**
    * Select appropriate voice based on language
+   * TTS config is defined in packages/content/languages.ts
    */
   private selectVoice(language: string): { languageCode: string; name: string } {
     // Extract language code (e.g., 'de' from 'de-DE')
     const langCode = language.split('-')[0].toLowerCase() as Language
 
-    const config = this.voiceConfig[langCode] || this.voiceConfig[DEFAULT_LANGUAGE]
-    const voiceName = langCode === 'de' ? this.voiceDE : this.voiceEN
+    const ttsConfig = LANGUAGES[langCode]?.tts || LANGUAGES[DEFAULT_LANGUAGE].tts
+    // Use environment variable if set, otherwise use default voice
+    const voiceName = process.env[ttsConfig.envVar] || ttsConfig.defaultVoice
 
-    return { languageCode: config.languageCode, name: voiceName }
+    return { languageCode: ttsConfig.languageCode, name: voiceName }
   }
 
   /**

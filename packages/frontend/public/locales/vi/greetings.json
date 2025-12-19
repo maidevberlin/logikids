@@ -1,0 +1,58 @@
+{
+  "morning": [
+    "Chào buổi sáng",
+    "Chào bạn",
+    "Rất vui được gặp bạn",
+    "Sẵn sàng bắt đầu ngày mới",
+    "Hãy cùng làm cho hôm nay tuyệt vời",
+    "Chào mừng trở lại",
+    "Đã đến lúc học điều gì đó thú vị",
+    "Bạn làm được mà",
+    "Hãy bắt đầu nào",
+    "Sẵn sàng cho cuộc phiêu lưu",
+    "Rất vui được gặp lại bạn",
+    "Hãy bắt đầu"
+  ],
+  "afternoon": [
+    "Chào",
+    "Chào buổi chiều",
+    "Chào mừng trở lại",
+    "Rất vui được gặp bạn",
+    "Hãy tiếp tục đà",
+    "Sẵn sàng cho nhiều hơn nữa",
+    "Bạn đang làm rất tốt",
+    "Đã đến lúc làm điều gì đó vui",
+    "Hãy cùng giải quyết điều này",
+    "Đúng lúc",
+    "Sẵn sàng học",
+    "Hãy lao vào"
+  ],
+  "evening": [
+    "Chào buổi tối",
+    "Chào bạn",
+    "Vẫn mạnh mẽ",
+    "Chào mừng trở lại",
+    "Tận tâm tuyệt vời",
+    "Hãy tiếp tục học",
+    "Bạn đang bùng cháy hôm nay",
+    "Sẵn sàng cho nhiều hơn nữa",
+    "Đã đến lúc thử thách bản thân",
+    "Trông sắc sảo",
+    "Hãy tiến bộ nào",
+    "Nỗ lực ấn tượng"
+  ],
+  "night": [
+    "Chào cú đêm",
+    "Vẫn ở đây",
+    "Tận tâm ấn tượng",
+    "Chào mừng trở lại",
+    "Bạn không thể cản được",
+    "Người học đêm khuya",
+    "Trông tập trung",
+    "Hãy kết thúc mạnh mẽ",
+    "Một vòng nữa",
+    "Bạn có năng lượng",
+    "Sẵn sàng suy nghĩ",
+    "Hãy bắt đầu"
+  ]
+}
