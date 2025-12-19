@@ -23,6 +23,8 @@ Generate an educational task for this student:
 
 **Problem Type:** [[selected_problem_type]]
 
+The problem type defines the core task structure. Interpret the type name literally - each word matters. Different types require fundamentally different tasks.
+
 **Difficulty ([[difficulty]]):**
 [[difficulty_guidelines]]
 
