@@ -783,6 +783,54 @@
     "grade5-dramatic-play": {
       "name": "Szenisches Spiel und Ausdruck",
       "description": "Theatralischen Ausdruck nutzen, um Texte zu interpretieren und Selbstausdruck zu entwickeln"
+    },
+    "grade7-ballads-poetry": {
+      "name": "Balladen und Gedichtanalyse",
+      "description": "Balladen und Gedichte analysieren durch Untersuchung von Metrum, Reimschema, Stilmitteln, narrativer Struktur und wie poetische Form Stimmung und Atmosphäre erzeugt"
+    },
+    "grade7-dramatic-performance": {
+      "name": "Szenisches Spiel und Szenengestaltung",
+      "description": "Eigene Szenen entwickeln, Figuren interpretieren und theatralischen Ausdruck zum Textverständnis nutzen"
+    },
+    "grade7-youth-literature": {
+      "name": "Jugendliteratur Analyse",
+      "description": "Moderne und klassische Jugendromane, kurze Erzählungen, Themen, Charakterentwicklung und Erzähltechniken analysieren"
+    },
+    "grade7-subjunctive-mood": {
+      "name": "Konjunktiv",
+      "description": "Konjunktiv I und II für indirekte Rede, Berichterstattung und hypothetische Situationen verwenden"
+    },
+    "grade7-media-literacy": {
+      "name": "Medienkompetenz und Quellenbewertung",
+      "description": "Internetrecherche, Quellenglaubwürdigkeit bewerten, Informationsqualität vergleichen"
+    },
+    "grade7-argumentative-writing": {
+      "name": "Argumentatives Schreiben",
+      "description": "Formale argumentative Texte wie Briefe verfassen, Argumente nach Gültigkeit ordnen und Behauptungen mit Begründungen und Belegen untermauern"
+    },
+    "grade7-reading-documentation": {
+      "name": "Lesen und Notizen machen",
+      "description": "Lesetagebücher, Dokumentationsstrategien und Verständnisverfolgung für vertiefende Leseerfahrungen"
+    },
+    "grade7-complex-sentences": {
+      "name": "Komplexe Satzstrukturen",
+      "description": "Konditionalsätze, Konsekutivsätze, Konzessivsätze und Adversativsätze; Konstruktion und Analyse von Satzgefügen mit mehreren Nebensätzen"
+    },
+    "grade7-indirect-speech": {
+      "name": "Indirekte Rede und Paraphrasieren",
+      "description": "Umwandlung direkter Rede in indirekte Rede, präzises Paraphrasieren von Quellen und korrektes Kennzeichnen übernommener Inhalte"
+    },
+    "grade7-oral-presentations": {
+      "name": "Strukturierte mündliche Präsentationen",
+      "description": "Präsentationen mit Visualisierungshilfen, rhetorischen Mitteln und Techniken zur Publikumseinbindung halten"
+    },
+    "grade7-discussion-debate": {
+      "name": "Diskussion und Debatte",
+      "description": "An demokratischem Dialog und formeller Debatte teilnehmen, Konflikte konstruktiv lösen, Standpunkte mit strukturierten Argumenten präsentieren und verteidigen sowie gegensätzliche Positionen mit begründeten Gegenargumenten behandeln"
+    },
+    "grade7-advanced-punctuation": {
+      "name": "Erweiterte Zeichensetzung",
+      "description": "Kommas bei Infinitivsätzen und Appositionen, Anführungszeichen für Titel und direkte Rede sowie Zeichensetzung in mehrfach zusammengesetzten Sätzen"
     }
   }
 }

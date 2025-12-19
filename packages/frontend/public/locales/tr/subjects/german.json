@@ -1,0 +1,52 @@
+{
+  "concepts": {
+    "grade7-ballads-poetry": {
+      "name": "Balad ve Şiir Analizi",
+      "description": "Balad ve şiirleri ölçü, kafiye şeması, edebi araçlar, anlatı yapısı ve şiirsel formun ruh hali ve atmosferi nasıl yarattığını inceleyerek analiz etme"
+    },
+    "grade7-dramatic-performance": {
+      "name": "Dramatik Performans ve Sahne Oluşturma",
+      "description": "Özgün sahneler yaratma, karakterleri yorumlama ve metin anlayışı için teatral ifade kullanma"
+    },
+    "grade7-youth-literature": {
+      "name": "Gençlik Edebiyatı Analizi",
+      "description": "Modern ve klasik gençlik romanları, kısa anlatılar, temalar, karakter gelişimi ve anlatım tekniklerini analiz etme"
+    },
+    "grade7-subjunctive-mood": {
+      "name": "Dilek Kipi (Konjunktiv)",
+      "description": "Dolaylı anlatım, raporlama ve varsayımsal durumlar için dilek kipi I ve II kullanma"
+    },
+    "grade7-media-literacy": {
+      "name": "Medya Okuryazarlığı ve Kaynak Değerlendirme",
+      "description": "İnternet araştırması, kaynak güvenilirliğini değerlendirme, bilgi kalitesini karşılaştırma"
+    },
+    "grade7-argumentative-writing": {
+      "name": "Tartışmalı Yazma",
+      "description": "Mektuplar dahil resmi tartışmalı metinler yazma, argümanları geçerliliğe göre düzenleme ve iddiaları mantıksal gerekçe ve kanıtlarla destekleme"
+    },
+    "grade7-reading-documentation": {
+      "name": "Okuma ve Not Alma",
+      "description": "Okuma deneyimlerini derinleştirmek için okuma günlükleri, belgeleme stratejileri ve anlama takibi"
+    },
+    "grade7-complex-sentences": {
+      "name": "Karmaşık Cümle Yapıları",
+      "description": "Koşul, sonuç, karşıtlık ve zıtlık yan cümleleri; birden fazla yan cümle içeren karmaşık cümlelerin oluşturulması ve analizi"
+    },
+    "grade7-indirect-speech": {
+      "name": "Dolaylı Anlatım ve Başka Sözcüklerle İfade Etme",
+      "description": "Doğrudan anlatımı dolaylı anlatıma dönüştürme, kaynakları doğru bir şekilde başka sözcüklerle ifade etme ve alıntılanan içeriği düzgün bir şekilde işaretleme"
+    },
+    "grade7-oral-presentations": {
+      "name": "Yapılandırılmış Sözlü Sunumlar",
+      "description": "Görselleştirme araçları, retorik teknikler ve dinleyici katılımı teknikleriyle sunum yapma"
+    },
+    "grade7-discussion-debate": {
+      "name": "Tartışma ve Münazara Becerileri",
+      "description": "Demokratik diyaloga ve resmi münazaraya katılma, çatışmaları yapıcı bir şekilde çözme, yapılandırılmış argümanlarla görüşleri sunma ve savunma, karşıt pozisyonları mantıklı karşı argümanlarla ele alma"
+    },
+    "grade7-advanced-punctuation": {
+      "name": "İleri Noktalama İşaretleri",
+      "description": "Mastar deyimleri ve açıklayıcı ifadelerde virgüller, başlıklar ve konuşma için tırnak işaretleri ve birleşik-karmaşık cümlelerde noktalama"
+    }
+  }
+}

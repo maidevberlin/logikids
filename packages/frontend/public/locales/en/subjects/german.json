@@ -783,6 +783,54 @@
     "grade5-dramatic-play": {
       "name": "Dramatic Play and Expression",
       "description": "Using theatrical expression to interpret texts and develop self-expression"
+    },
+    "grade7-ballads-poetry": {
+      "name": "Ballads and Poetry Analysis",
+      "description": "Analyzing ballads and poems by examining meter, rhyme schemes, literary devices, narrative structure, and how poetic form creates mood and atmosphere"
+    },
+    "grade7-dramatic-performance": {
+      "name": "Dramatic Performance and Scene Creation",
+      "description": "Creating original scenes, interpreting characters, and using theatrical expression for text comprehension"
+    },
+    "grade7-youth-literature": {
+      "name": "Youth Literature Analysis",
+      "description": "Analyzing modern and classic youth novels, short narratives, themes, character development, and narrative techniques"
+    },
+    "grade7-argumentative-writing": {
+      "name": "Argumentative Writing",
+      "description": "Writing formal argumentative texts including letters, organizing arguments by validity, and supporting claims with reasoning and evidence"
+    },
+    "grade7-subjunctive-mood": {
+      "name": "Subjunctive Mood (Konjunktiv)",
+      "description": "Using subjunctive I and II for indirect speech, reported speech, and expressing hypothetical or contrary-to-fact situations"
+    },
+    "grade7-media-literacy": {
+      "name": "Media Literacy and Source Evaluation",
+      "description": "Internet research, evaluating source reliability, comparing information quality"
+    },
+    "grade7-reading-documentation": {
+      "name": "Reading and Note-Taking",
+      "description": "Reading journals, documentation strategies, and comprehension tracking for deepening reading experiences"
+    },
+    "grade7-complex-sentences": {
+      "name": "Complex Sentence Structures",
+      "description": "Conditional, consequential, concessive, and adversative clauses; constructing and analyzing compound-complex sentences"
+    },
+    "grade7-indirect-speech": {
+      "name": "Indirect Speech and Paraphrasing",
+      "description": "Converting direct speech to indirect speech, paraphrasing sources accurately, and properly marking borrowed content"
+    },
+    "grade7-oral-presentations": {
+      "name": "Structured Oral Presentations",
+      "description": "Delivering presentations with visualization aids, rhetorical devices, and audience engagement techniques"
+    },
+    "grade7-discussion-debate": {
+      "name": "Discussion and Debate Skills",
+      "description": "Engage in democratic dialogue and formal debate, resolve conflicts constructively, present and defend viewpoints with structured arguments, and address opposing positions with reasoned counter-arguments"
+    },
+    "grade7-advanced-punctuation": {
+      "name": "Advanced Punctuation",
+      "description": "Commas with infinitive phrases and appositives, quotation marks for titles and speech, and punctuation in compound-complex sentences"
     }
   }
 }
