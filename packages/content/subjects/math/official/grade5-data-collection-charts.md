@@ -21,6 +21,13 @@ real_world_context:
   - Recording and comparing sports statistics
   - Monitoring environmental data like rainfall or plant growth
   - Organizing sales data and business information
+  - A scientist graphing daily bird sightings at a feeder
+  - Tracking reading progress across the school year
+  - Comparing favorite ice cream flavors in a class survey
+  - Recording pet types owned by students in different grades
+  - Graphing daily step counts from a fitness tracker
+  - Charting video game play times throughout a week
+  - Displaying birthday months for all students in a class
 problem_types:
   - Data Organization
   - Table Creation
@@ -49,11 +56,6 @@ anti_patterns:
   - Avoid decimal values in data - use whole numbers only
   - Don't create ambiguous scales that could be read multiple ways
   - Avoid data values larger than 100 for bar charts
-version: 3
-version_notes: >-
-  v3: Added required anti_patterns field (3-5 items).
-  v2: Fixed id to match filename, converted real_world_context to list format,
-  removed prerequisites (counting-and-tally doesn't exist), reduced
-  age_guidelines to single threshold (1-2 year span), reduced all guideline
-  bullets to max 3 per level
+version: 4
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

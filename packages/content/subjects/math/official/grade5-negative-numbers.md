@@ -38,6 +38,14 @@ real_world_context:
   - Elevation levels showing heights above and below sea level in geography
   - Bank account balances representing deposits (positive) and debts (negative)
   - Building floors with basement levels shown as negative numbers
+  - Golf scores showing strokes under or over par
+  - Time zones displayed as hours ahead or behind UTC
+  - Football yardage showing gains and losses on plays
+  - Diving depths below water surface in marine biology
+  - Credit and debit entries in a personal budget tracker
+  - Game scores with penalty points reducing a player's total
+  - Parking garage levels below ground level
+  - Stock market changes showing rises and falls in value
 prerequisites:
   - grade4-numbers-to-million
 anti_patterns:
@@ -46,6 +54,6 @@ anti_patterns:
   - Avoid abstract contexts without real-world grounding
   - Don't use decimal notation with negative signs
   - Avoid mixing negative numbers with fractions
-version: 1
-version_notes: Initial version covering introduction to negative numbers for Grade 5
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---
