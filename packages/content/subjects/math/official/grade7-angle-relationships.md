@@ -45,12 +45,19 @@ real_world_context:
   - Carpenters use the triangle angle sum to create stable triangular bracing
   - Map makers rely on angle relationships to ensure accurate representations of terrain
   - Bridge designers use polygon angle properties when creating truss structures
+  - Pool table players calculating ball trajectories using angles of reflection
+  - Photographers adjusting camera angles to capture symmetrical compositions
+  - Sailors navigating using angle measurements between landmarks and compass bearings
+  - Soccer players analyzing optimal shooting angles toward the goal
+  - Tile installers ensuring floor patterns meet at consistent angles
+  - Astronomers measuring angles between stars and celestial objects
+  - Skateboarders calculating ramp angles for tricks and jumps
 anti_patterns:
   - Avoid problems where angles can be guessed without using angle relationships
   - Do not use polygons with more than 8 sides for angle sum calculations
   - Avoid figures where parallel lines are not clearly indicated or stated
   - Do not mix radian and degree measurements
   - Avoid terminology mixing (use either German or English terms consistently)
-version: 1.0
-version_notes: Initial version covering angle relationships at intersecting lines, parallel lines, and in polygons
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

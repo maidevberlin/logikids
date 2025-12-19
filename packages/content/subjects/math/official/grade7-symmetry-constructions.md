@@ -44,12 +44,19 @@ real_world_context:
   - Graphic designers apply axial and point symmetry when creating logos, patterns, and visual identities for brands
   - Architects use geometric loci to define curved walls, arches, and spatial boundaries in building designs
   - Urban planners use locus concepts to determine zones of equal access to public services like schools or hospitals
+  - Jewelry designers creating symmetric gemstone settings using bisector constructions
+  - Quilters planning fabric patterns with precise axial symmetry
+  - Soccer coaches dividing training fields using perpendicular bisectors
+  - Landscape architects placing fountains equidistant from garden borders
+  - Wedding photographers positioning subjects using symmetry principles
+  - Cake decorators creating symmetric frosting patterns for celebrations
+  - Skateboard ramp builders ensuring symmetric curves for balanced riding
 anti_patterns:
   - Avoid constructions requiring protractors or rulers with measurements
   - Don't ask for constructions with more than 4 sequential steps
   - Avoid locus problems where multiple valid interpretations exist
   - Don't combine bisector constructions with angle calculations in degrees
   - Avoid figures where symmetry axes or centers are unclear or ambiguous
-version: 1
-version_notes: Initial creation for Grade 7 covering advanced symmetry constructions, bisectors, and geometric loci
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

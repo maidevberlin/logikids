@@ -46,12 +46,19 @@ real_world_context:
   - Finding how many weeks of saving allowance are needed to afford a desired purchase
   - Balancing chemical equations in science requires understanding equation solving principles
   - Calculating break-even points where costs equal revenue in business scenarios
+  - A chef adjusting recipe quantities to serve a specific number of guests
+  - Athletes determining training duration to reach fitness goals at a steady pace
+  - Gamers calculating experience points needed to reach the next level
+  - Musicians figuring out practice hours required to master a piece
+  - Event planners determining ticket prices to cover venue costs
+  - Pet owners calculating food portions based on pet weight and activity
+  - Travel planners finding departure times to arrive at a destination on schedule
 anti_patterns:
   - Avoid equations requiring fraction operations beyond simple halves or thirds
   - Don't use decimal coefficients smaller than 0.1 or larger than 100
   - Avoid word problems with ambiguous or multiple valid interpretations
   - Don't introduce quadratic equations or equations with squared variables
   - Avoid problems combining equation solving with complex geometry formulas
-version: 1
-version_notes: Initial version based on Grade 7 KMK curriculum standards and LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -45,12 +45,19 @@ real_world_context:
   - Population growth models showing how quantities multiply repeatedly
   - Computer data storage where each step up doubles capacity (bytes, kilobytes, megabytes)
   - Cell division in biology where organisms grow by repeated doubling
+  - Sound intensity measured in decibels using powers of 10
+  - Earthquake magnitude scales comparing energy release exponentially
+  - Password security strength doubling with each additional character
+  - Viral content spreading through social networks with exponential reach
+  - Chemical decay processes where substances reduce by powers over time
+  - Tournament brackets where rounds reduce teams by powers of 2
+  - Photo resolution increasing by powers of 2 in megapixels
 anti_patterns:
   - Avoid mixing addition/subtraction with power operations in same problem
   - Don't use bases larger than 10 or exponents beyond ±5 for numerical calculations
   - Avoid fractional or decimal exponents (keep to integer exponents only)
   - Don't combine different bases in power law applications
   - Avoid expressions requiring order of operations beyond power laws
-version: 1
-version_notes: Initial version based on Grade 7 KMK and LehrplanPLUS Bayern curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

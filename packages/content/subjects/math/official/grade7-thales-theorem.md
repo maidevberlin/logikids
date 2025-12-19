@@ -44,12 +44,19 @@ real_world_context:
   - Surveyors use the tangent property to determine accessible measurement points when direct measurement is impossible
   - Astronomers historically used Thales' theorem to calculate distances to celestial objects using angular measurements
   - Navigation systems use circle geometry and tangent lines to calculate optimal routes around obstacles
+  - Woodworkers verifying right angles using the semicircle method with a compass
+  - Sailors determining perpendicular headings from circular navigation charts
+  - Camera operators setting up crane shots along semicircular paths
+  - Watch designers ensuring hour markers form right angles to the center
+  - Playground equipment featuring semicircular climbing structures with perpendicular supports
+  - Archaeologists reconstructing circular ancient structures from partial remains
+  - Pool designers planning curved edges that meet pool walls at right angles
 anti_patterns:
   - Avoid angles larger than 180 degrees or reflex angles in problems
   - Don't introduce circle theorems beyond Thales and tangent properties
   - Avoid constructions requiring precise angle measurements without tools
   - Don't combine Thales' theorem with trigonometry or coordinate geometry
   - Avoid diagrams where the diameter or center point is not clearly marked
-version: 1
-version_notes: Initial creation for Grade 7 covering Thales' theorem, converse, and tangent constructions aligned with KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
