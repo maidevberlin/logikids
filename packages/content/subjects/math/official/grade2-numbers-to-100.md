@@ -43,12 +43,19 @@ real_world_context:
   - Understanding scores in games that go beyond 20
   - Organizing items by size or quantity in groups of tens
   - Reading price tags and comparing costs at a store
+  - A knight counting soldiers lined up in rows of ten for a castle defense
+  - Tracking daily steps on a pedometer during a school fitness challenge
+  - Numbering seats in a theater or classroom for assigned seating
+  - Counting beads on an abacus to understand tens and ones
+  - A train conductor counting passengers in different carriages
+  - Reading jersey numbers at a soccer match or sports event
+  - Organizing a stamp or trading card collection by number
 anti_patterns:
   - Avoid numbers larger than 100
   - Don't use negative numbers
   - Avoid fractions or decimals - not appropriate for Grade 2
   - Don't require written addition or subtraction - focus on number sense
   - Avoid skip counting by steps larger than 10 or unusual increments
-version: 1.0
-version_notes: Initial version for Grade 2 numbers to 100
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -40,12 +40,19 @@ real_world_context:
   - Knowing that drawing a name from a hat could be any student in the class
   - Recognizing that rolling a standard die will give a number between 1 and 6
   - Comparing likelihood of events like finding a shell at the beach versus in the forest
+  - A fortune teller at a fair predicting possible outcomes from a crystal ball
+  - Guessing which flavor gumball will come out of a machine
+  - Predicting whether a soccer team will win, lose, or draw
+  - Wondering if a knocked-over tower of blocks will fall left or right
+  - Deciding which card might be drawn next in a memory game
+  - Predicting if the school bus will arrive early, on time, or late
+  - Guessing which balloon will pop first at a party game
 anti_patterns:
   - Avoid numerical probabilities or fractions (e.g., 1/2, 50%)
   - Don't use terms beyond certain/possible/impossible/likely/unlikely
   - Avoid complex scenarios requiring multi-step reasoning
   - Don't introduce formal experiments with data recording or tallying
   - Avoid events that require specialized knowledge to judge likelihood
-version: 1
-version_notes: Initial version for Grade 2 probability introduction based on KMK standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

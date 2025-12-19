@@ -23,6 +23,8 @@ Generate an educational task for this student:
 
 **Problem Type:** [[selected_problem_type]]
 
+The problem type defines the core task structure. Interpret the type name literally - each word matters. Different types require fundamentally different tasks.
+
 **Difficulty ([[difficulty]]):**
 [[difficulty_guidelines]]
 
@@ -33,24 +35,13 @@ Generate an educational task for this student:
 
 ---
 
-# Rich Content
-
-Use your full capabilities to make the task engaging and clear:
-
-- **Tables**: Organize data, show patterns, structure comparisons
-- **LaTeX**: Mathematical notation via `$...$` or `$$...$$`
-- **Mermaid**: Flowcharts, decision trees, sequences, state diagrams (use ` ```mermaid ` code block)
-
-When the concept benefits from visual representation, include it. Only add visuals when they clarify the task - not for decoration.
-
----
-
 # Creative Framing
 
-<%variations_template%>
+**Scenario:** Set the problem in this real-world situation:
 
-**Real-world context options:**
-[[real_world_context]]
+> [[real_world_context]]
+
+<%variations_template%>
 
 ---
 
@@ -67,7 +58,5 @@ When the concept benefits from visual representation, include it. Only add visua
 The `task` field is what students see. It must NOT contain answers, explanations, or hints.
 
 The `explanation` field contains the solution reasoning (shown after correct answer).
-
-## Formatting Options
 
 <%subject_base_template%>

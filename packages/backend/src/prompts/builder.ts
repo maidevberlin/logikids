@@ -36,19 +36,6 @@ export class PromptBuilder {
   }
 
   /**
-   * Get language style based on grade
-   */
-  private getLanguageStyle(grade: number): string {
-    if (grade <= 4) {
-      return 'Use very simple, playful language with short sentences. Keep it fun and encouraging.'
-    } else if (grade <= 8) {
-      return 'Use casual but structured language. Explain concepts clearly without being condescending.'
-    } else {
-      return 'Use sophisticated, respectful tone. Assume good comprehension and critical thinking skills.'
-    }
-  }
-
-  /**
    * Build the final prompt by combining templates with flat variable replacement
    */
   buildPrompt(params: TaskGenerationParams): string {
@@ -86,34 +73,20 @@ export class PromptBuilder {
     // Create single object with ALL variables (duplicates OK - same values)
 
     const enrichments = this.variationLoader.getRandomEnrichments(params.grade)
-    const enrichment = enrichments.length > 0 ? enrichments[0] : null
 
-    // Format multiple enrichments as bullet points
+    // Format enrichments with specific instructions for each type
     const enrichmentLabels: Record<string, string> = {
-      framing: 'Creative Framing',
-      character: 'Character Perspective',
-      temporal: 'Time Context',
-      metacognitive: 'Thinking Challenge',
-      mystery: 'Mystery Element',
-      realWorld: 'Real-World Connection',
-      emotional: 'Emotional Angle',
-      structure: 'Structure Variation',
+      structure: '**Guide the student to:**',
+      metacognitive: '**Include this reflection question:**',
     }
 
     const enrichmentsFormatted = enrichments
-      .map((e) => `\n- **${enrichmentLabels[e.type]}**: ${e.value}`)
-      .join('')
+      .map((e) => `${enrichmentLabels[e.type]}\n> ${e.value}`)
+      .join('\n\n')
 
     const allVariables: Record<string, string | number> = {
-      // Variation variables (all grade-filtered now!)
-      scenario: this.variationLoader.getScenario(params.grade),
-      language_style: params.grade ? this.getLanguageStyle(params.grade) : '',
-      student_context: '',
-      enrichment_instruction: enrichment?.value || '',
-
-      // Formatted versions for clean bullet list integration
+      // Formatted enrichments for bullet list integration
       enrichment_formatted: enrichmentsFormatted,
-      student_context_formatted: '',
 
       // Subject/Concept/TaskType variables (duplicates OK - same values)
       grade: params.grade,
@@ -129,7 +102,7 @@ export class PromptBuilder {
       difficulty_guidelines: difficultyGuidelines.map((g) => `- ${g}`).join('\n'),
       prerequisites: params.concept.prerequisites?.join(', ') || '',
       real_world_context: Array.isArray(params.concept.real_world_context)
-        ? params.concept.real_world_context.map((c) => `- ${c}`).join('\n')
+        ? randomChoice(params.concept.real_world_context)
         : params.concept.real_world_context || '',
       anti_patterns: params.concept.anti_patterns?.length
         ? params.concept.anti_patterns.map((p) => `- ${p}`).join('\n')

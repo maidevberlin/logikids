@@ -40,12 +40,19 @@ real_world_context:
   - Growth rates in biology follow power laws (metabolic rate scales with body mass to the 3/4 power)
   - Engineering calculations for beam strength involve power relationships with dimensions
   - Sound intensity decreases with distance following an inverse square relationship
+  - Camera aperture settings controlling light by the square of the f-stop number
+  - Wind turbine power output scaling with the cube of wind speed
+  - Braking distance increasing with the square of vehicle speed
+  - Drug dosage calculations based on body surface area power relationships
+  - Antenna signal strength decreasing by the square of distance
+  - Cooking time scaling non-linearly with food volume for roasting
+  - Athletic performance scaling with body mass in weight class sports
 anti_patterns:
   - Avoid mixing rational exponents with operations they haven't learned yet
   - Don't use exponents with absolute value greater than 5 for integer cases
   - Avoid ambiguous radical notation without clear indication of root order
   - Don't combine multiple unfamiliar concepts in one problem
   - Avoid contexts requiring advanced physics or engineering knowledge
-version: 1.0
-version_notes: Initial version for Grade 9 German KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

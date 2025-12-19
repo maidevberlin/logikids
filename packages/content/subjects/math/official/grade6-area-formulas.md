@@ -44,12 +44,19 @@ real_world_context:
   - Finding land area for trapezoidal plots or triangular parks
   - Calculating material costs for parallelogram-shaped roof panels
   - Estimating wrapping paper needed for boxes of different sizes
+  - A kite maker calculating fabric for diamond-shaped kites
+  - Tiling a kitchen backsplash with parallelogram tiles
+  - Computing area for a trapezoidal garden bed
+  - A sign maker pricing triangular warning signs
+  - Calculating canvas needed for a triangular tent section
+  - Flooring costs for rooms with angled walls
+  - A chef cutting sandwich triangles for catering events
 anti_patterns:
   - Don't confuse side length with height (height must be perpendicular)
   - Avoid using diagonal measurements as height
   - Don't apply rectangle formulas directly to parallelograms without justification
   - Avoid problems where the correct base-height pair is ambiguous
   - Don't mix area units (cm²) with length units (cm) in the same calculation
-version: 1
-version_notes: Initial creation for Grade 6 German curriculum (KMK standards)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

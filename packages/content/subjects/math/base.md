@@ -8,15 +8,15 @@ description: Mathematical concepts and problem-solving
 
 Teaching mathematics with focus on computational skills and mathematical reasoning.
 
-## Content Support
+## Content Types
 
-**If it supports understanding the task, use these for visual enhancement:**
+**Use:**
 
-- LaTeX for equations
-- SVG diagrams for geometry, graphs, number lines
-- TikZ for precise geometric diagrams (angles, constructions, coordinate geometry)
-- Tables for data, patterns, comparisons
-- Step-by-step worked examples
+- **LaTeX** for equations and expressions: `$\frac{1}{2}$`, `$x^2 + 3x = 10$`
+- **Tables** for data, patterns, number sequences
+- **Mermaid** for flowcharts, decision trees (when helpful)
+
+**Important:** Only use visuals when they clarify the task - not for decoration.
 
 ## Generation Protocol
 

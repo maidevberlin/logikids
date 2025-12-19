@@ -46,12 +46,19 @@ real_world_context:
   - Calculating compound interest or repeated percentage changes using powers
   - Understanding scientific notation with negative exponents for small measurements
   - Sharing resources fairly by dividing total amounts by fractional portions
+  - Photography exposure times using fractional shutter speeds
+  - Calculating fabric yardage for craft projects with fractional measurements
+  - Determining medication dosages based on fractional body weight
+  - Splitting inheritance or assets using fractional portions
+  - Music production adjusting volume levels by fractional multipliers
+  - Computing fractional discounts during sales events
+  - Calculating speed as distance divided by fractional time
 anti_patterns:
   - Avoid adding or subtracting during multiplication/division problems
   - Don't use denominators larger than 20 except in simplified results
   - Avoid exponents larger than 5 or negative exponents beyond -4
   - Don't introduce irrational results (keep answers as rational numbers)
   - Avoid word problems requiring multi-step order of operations with parentheses
-version: 1.0
-version_notes: Initial version based on Grade 6 KMK and Bayern curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

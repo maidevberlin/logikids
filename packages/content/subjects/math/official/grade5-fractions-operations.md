@@ -43,12 +43,19 @@ real_world_context:
   - Measuring fabric, wood, or craft materials for projects
   - Calculating time fractions (1/2 hour + 3/4 hour of study time)
   - Determining portions in sports or games (combining playing times)
+  - A pizza party where friends combine leftover slices from different pizzas
+  - Mixing paint colors using fractional amounts of each color
+  - Calculating remaining fuel in a tank after using fractional portions
+  - A runner tracking fractional miles completed during training
+  - Combining partial rolls of wrapping paper for a gift
+  - Measuring ingredients for a chemistry experiment in fractions
+  - A musician practicing different song sections for fractional hours
 anti_patterns:
   - Avoid division of fractions (separate advanced concept)
   - Don't use improper fractions or mixed numbers extensively in problems
   - Avoid denominators larger than 24
   - Don't combine fraction operations with decimal operations in same problem
   - Avoid contexts requiring prior knowledge of specialized domains
-version: 1
-version_notes: Initial version aligned with German Bildungsstandards for Grade 5, extending Grade 4 fraction concepts to operations
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

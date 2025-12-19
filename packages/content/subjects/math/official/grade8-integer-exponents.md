@@ -45,12 +45,19 @@ real_world_context:
   - Computer processing speeds are measured in nanoseconds (10^(-9) seconds per operation)
   - National debt or budget figures use scientific notation for clarity (1.2 × 10^12 euros)
   - Chemical concentrations in solutions express tiny amounts (3 × 10^(-5) moles per liter)
+  - Earthquake energy measured in joules using powers of 10 for comparison
+  - Digital storage capacity expressed from bytes to terabytes using powers of 2
+  - Bacterial growth rates doubling at regular intervals expressed exponentially
+  - Electric charge of subatomic particles measured in coulombs with negative exponents
+  - Radio frequencies spanning from kilohertz to gigahertz using scientific notation
+  - Camera sensor pixel counts expressed in megapixels using powers of 10
+  - Internet data transfer speeds from kilobits to gigabits per second
 anti_patterns:
   - Avoid fractional or decimal exponents (keep strictly to integer exponents)
   - Don't use bases larger than 10 in numerical calculations requiring evaluation
   - Avoid mixing exponent rules with unrelated algebraic operations in same problem
   - Don't create ambiguous scientific notation (ensure 1 ≤ coefficient < 10)
   - Avoid expressions requiring more than 4 sequential power rule applications
-version: 1
-version_notes: Initial version based on Grade 8 KMK and LehrplanPLUS Bayern curriculum standards, extending grade7-powers-exponents with focus on negative/zero exponents and scientific notation
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

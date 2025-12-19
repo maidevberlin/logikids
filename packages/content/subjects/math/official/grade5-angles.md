@@ -41,12 +41,19 @@ real_world_context:
   - Opening doors and lids to various positions
   - Turns and directions in navigation and map reading
   - Sports angles like skateboard ramps or golf club positions
+  - A pizza chef cutting slices at equal angles
+  - Airplane wings and how their tilt affects flight
+  - A carpenter measuring corner angles for furniture
+  - Windmill blades rotating through different angle positions
+  - Camera tripod legs spread at various angles for stability
+  - Roof slopes and how steepness affects rain drainage
+  - A dancer's leg positions in ballet or gymnastics
 anti_patterns:
   - Avoid angle calculations requiring algebraic equations
   - Don't include trigonometry concepts (sine, cosine, tangent)
   - Avoid angles in polygons (separate topic for later grades)
   - Don't use negative angle measures
   - Avoid contexts requiring precise technical drawing tools beyond protractor
-version: 1
-version_notes: Initial version aligned with German KMK Bildungsstandards for Grade 5
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

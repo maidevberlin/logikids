@@ -50,6 +50,13 @@ real_world_context:
   - Determining cost of multiple identical items or unit price
   - Understanding time relationships (weeks to days, hours to minutes using 7× and 60×)
   - Area calculations using arrays and rectangular arrangements
+  - A baker arranging muffins in rows on baking trays
+  - Counting wheels on multiple bicycles parked in a rack
+  - A farmer counting eggs in cartons of six or twelve
+  - Setting up equal teams for a sports day relay race
+  - Arranging stickers in rows on a collection page
+  - A florist bundling flowers into equal bouquets
+  - Counting legs on groups of insects or spiders in a nature study
 
 anti_patterns:
   - Avoid multiplication facts beyond 10×10 (outside grade 3 scope)
@@ -58,6 +65,6 @@ anti_patterns:
   - Don't introduce multi-digit multiplication algorithms (covered in grade 4)
   - Avoid mixing multiplication tables with fractions or decimals
 
-version: 1
-version_notes: Initial version following KMK Bildungsstandards for German Grade 3, emphasizing automatic recall of all times tables and inverse division facts
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

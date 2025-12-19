@@ -45,12 +45,19 @@ real_world_context:
   - Bar graphs show survey results like favorite school subjects or number of books read each month
   - Data collection helps answer questions like "How many students prefer each lunch option?"
   - Growing patterns appear in plant growth, stacking blocks, or saving money over weeks
+  - A detective analyzing clues that follow a pattern to solve a mystery
+  - Tracking birds visiting a feeder each day and graphing the results
+  - Recording temperatures throughout the week and comparing days
+  - Creating a bar graph of favorite ice cream flavors in the class
+  - Noticing number patterns on a hopscotch grid or board game
+  - Surveying friends about their favorite sports and showing results
+  - Observing tile patterns on floors and predicting what comes next
 anti_patterns:
   - Avoid number sequences beyond 100
   - Don't use fractions or decimals in number patterns
   - Avoid bar graphs with scales requiring multiplication beyond 2x or 5x tables
   - Don't combine multiple mathematical operations within a single pattern
   - Avoid data scenarios requiring knowledge of topics unfamiliar to 7-8 year olds
-version: 1
-version_notes: Initial concept creation based on KMK Bildungsstandards Grade 2
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

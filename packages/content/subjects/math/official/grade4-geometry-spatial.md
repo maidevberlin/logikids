@@ -44,12 +44,19 @@ real_world_context:
   - Unfolding boxes and packages to see nets
   - Map reading and understanding different views of buildings
   - Recognizing parallel lines on roads and perpendicular corners in rooms
+  - An architect designing buildings with symmetric facades
+  - Identifying geometric shapes in playground equipment
+  - Recognizing perpendicular and parallel lines in sports courts
+  - Folding paper to create origami shapes and exploring their nets
+  - Spotting symmetry in traditional textile patterns and quilts
+  - Identifying 3D shapes in kitchen items and food packaging
+  - Exploring tessellations in floor tile designs
 anti_patterns:
   - Avoid technical terminology beyond grade level (vertices, edges, faces are OK)
   - Don't require angle measurement or precise geometric drawing
   - Avoid shapes with more than 8 sides unless clearly illustrated
   - Don't combine multiple unrelated geometric concepts in one problem
   - Avoid 3D visualizations requiring advanced perspective understanding
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

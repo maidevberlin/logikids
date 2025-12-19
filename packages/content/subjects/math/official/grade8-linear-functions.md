@@ -47,12 +47,19 @@ real_world_context:
   - Taxi fares with fixed starting fee plus distance-based cost
   - Savings accounts with initial deposit and regular monthly contributions
   - Speed and distance relationships in uniform motion (d = vt + d₀)
+  - Gym memberships with monthly fees plus initial signup costs
+  - Printing costs combining fixed setup fees with per-page charges
+  - Freelancer billing with hourly rates plus project startup fees
+  - Rental car costs with daily rates plus mileage fees
+  - Electricity bills combining base charges with per-kilowatt-hour usage
+  - Tutoring services with assessment fees plus hourly session rates
+  - Streaming data plans with base data plus overage charges per gigabyte
 anti_patterns:
   - Avoid non-linear functions or curves disguised as lines
   - Don't use slopes steeper than 5 or flatter than 0.1 for graphing tasks
   - Avoid fractional slopes with denominators larger than 10
   - Don't combine systems of equations (covered separately)
   - Keep inequality solutions to single variables, not compound inequalities
-version: 1
-version_notes: Initial creation based on KMK/Bavaria Grade 8 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

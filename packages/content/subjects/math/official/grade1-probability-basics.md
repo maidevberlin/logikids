@@ -37,6 +37,13 @@ real_world_context:
   - Rolling a die and getting a specific number
   - Picking a card from a set of picture cards
   - Everyday events like the sun rising or a cat talking
+  - A magician pulling a rabbit or a flower from a magic hat
+  - Spinning a wheel at a carnival and predicting where it will land
+  - Choosing a snack without looking from a mixed bowl of treats
+  - Predicting if a flipped coin will show heads or tails
+  - Guessing which door has a prize behind it in a game show
+  - Wondering if a pet fish will swim left or right in its tank
+  - Deciding if tomorrow will be a school day or weekend
 anti_patterns:
   - Avoid fractions or numerical probability values
   - Don't use the terms likely and unlikely (introduced in grade 2)
@@ -45,6 +52,6 @@ anti_patterns:
   - Avoid scenarios requiring counting of large numbers of outcomes
 prerequisites:
   - grade1-patterns-and-data
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards and LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

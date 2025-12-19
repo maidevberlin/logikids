@@ -44,12 +44,19 @@ real_world_context:
   - Clothing and fabric designs use repeating patterns (stripes, polka dots, checks)
   - Collecting data helps answer questions like "What is the most popular ice cream flavor?"
   - Tally marks help count attendance, votes, or favorite activities in class
+  - A train of colorful wagons following a repeating color pattern
+  - Beads on a necklace or bracelet arranged in repeating patterns
+  - Dance steps that follow a pattern (clap, stomp, spin, repeat)
+  - Surveying classmates about their favorite animals for a class pet decision
+  - Tiles on a bathroom or kitchen floor arranged in patterns
+  - Traffic lights following a predictable pattern (green, yellow, red)
+  - Counting sunny vs rainy days during a month and comparing
 anti_patterns:
   - Avoid patterns with more than 4 different elements
   - Don't use abstract symbols unfamiliar to 6-7 year olds
   - Avoid data collection scenarios requiring reading complex text
   - Don't combine pattern recognition with arithmetic operations
   - Avoid patterns that require knowledge of sequences beyond simple repetition
-version: 1
-version_notes: Initial concept creation based on KMK Bildungsstandards Grade 1
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

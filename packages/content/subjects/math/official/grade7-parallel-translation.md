@@ -44,12 +44,19 @@ real_world_context:
   - GPS navigation systems calculate position changes as translation vectors when tracking movement from one location to another
   - Robotics engineers program robot movements as sequences of translation vectors to navigate from point to point
   - Pattern designers use repeated translations to create tessellations and wallpaper patterns in textiles and decoration
+  - Air traffic controllers tracking aircraft positions as they move across radar screens
+  - Video game characters moving across platforms using directional vector inputs
+  - Assembly line workers positioning components that shift along conveyor belts
+  - Choreographers planning dance formations where groups move in unison
+  - Astronomers tracking satellite orbits as translations through space
+  - Graphic designers aligning repeated logos in marketing materials
+  - Geologists mapping tectonic plate movements using displacement vectors
 anti_patterns:
   - Avoid mixing translation with rotation or reflection in the same problem
   - Don't use vectors with components larger than 10 units in magnitude
   - Avoid coordinate values outside the range -20 to 20
   - Don't describe translations using only distances without direction
   - Avoid figures with more than 8 vertices for translation tasks
-version: 1
-version_notes: Initial creation for Grade 7 covering parallel translation as congruence mapping with vectors and coordinate calculations
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

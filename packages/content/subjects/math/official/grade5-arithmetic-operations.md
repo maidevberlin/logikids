@@ -38,6 +38,14 @@ real_world_context:
   - Dividing items or costs equally among groups of people
   - Calculating total costs with quantities and unit prices
   - Computing sports statistics and team averages
+  - Planning a party budget with food, decorations, and entertainment costs
+  - A bakery calculating ingredients for multiple batches of cookies
+  - Distributing prize money equally among tournament winners
+  - Computing travel costs including fuel, tolls, and parking
+  - Calculating points in a video game with bonuses and multipliers
+  - A librarian organizing books into equal stacks for different shelves
+  - Planning seating arrangements for a school assembly
+  - Computing total ticket sales and revenue for a school play
 anti_patterns:
   - Avoid fractions or decimals (separate concepts)
   - Don't use more than 3 levels of nested brackets
@@ -45,6 +53,6 @@ anti_patterns:
   - Don't exceed 6-digit results
 prerequisites:
   - grade4-written-multiplication-division
-version: 1
-version_notes: Initial version
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

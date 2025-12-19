@@ -45,12 +45,19 @@ real_world_context:
   - Sports tournament brackets where match outcomes determine future pairings
   - Genetic inheritance patterns showing probability of trait combinations across generations
   - Weather forecasting where tomorrow's weather depends on today's conditions
+  - Password security analyzing probability of guessing multi-character passwords
+  - Drug testing protocols with sequential screening stages
+  - Lottery games with multiple drawing rounds for different prize levels
+  - Airline overbooking models predicting sequential no-show probabilities
+  - Manufacturing assembly lines with multiple quality check stations
+  - Medical diagnosis using sequential testing with conditional probabilities
+  - Gaming tournaments with bracket elimination and seeding effects
 anti_patterns:
   - Avoid tree diagrams with more than 4 stages unless explicitly requested
   - Do not use unfamiliar urn colors or abstract symbols without context
   - Avoid scenarios where independence assumption is ambiguous or unclear
   - Do not mix fractions and decimals in the same probability tree
   - Avoid problems requiring conditional probability formula (grade 11 topic)
-version: 1
-version_notes: Initial version covering compound experiments with tree diagrams and urn models
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

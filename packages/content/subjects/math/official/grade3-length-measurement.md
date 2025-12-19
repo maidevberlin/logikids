@@ -40,6 +40,13 @@ real_world_context:
   - Planning travel distances for family trips or school excursions
   - Comparing heights of classmates, buildings, or trees
   - Estimating and measuring ingredients or materials for craft projects
+  - An architect measuring walls and corridors for a building plan
+  - Tracking long jump distances at a school sports day
+  - A tailor measuring fabric lengths for making costumes
+  - Comparing running track distances for different race events
+  - Measuring rope lengths needed for a climbing course
+  - A scientist recording plant heights in a growth experiment
+  - Planning hiking trail distances for a nature expedition
 anti_patterns:
   - Avoid non-metric units (inches, feet, miles)
   - Don't use decimal notation for mixed units (write 2 m 35 cm, not 2.35 m)
@@ -49,6 +56,6 @@ anti_patterns:
 prerequisites:
   - grade2-measurement-skills
   - grade3-numbers-to-1000
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

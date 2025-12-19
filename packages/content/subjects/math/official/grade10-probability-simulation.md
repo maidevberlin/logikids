@@ -45,12 +45,19 @@ real_world_context:
   - Game developers use simulations to test game balance by running millions of virtual matches to ensure no strategy dominates unfairly
   - Engineers simulate stress tests on bridges and buildings using random variations in load and material properties to assess safety margins
   - Medical researchers use Monte Carlo methods to model disease spread through populations, helping plan vaccination strategies and predict outbreak patterns
+  - Particle physicists using Monte Carlo methods to analyze detector data
+  - Actuaries simulating insurance claim frequencies for premium calculations
+  - Traffic engineers modeling intersection flow with random arrival times
+  - Ecologists simulating species population dynamics with environmental variability
+  - Cryptographers testing random number generator quality for security
+  - Sports analysts simulating season outcomes based on team performance data
+  - Supply chain managers modeling inventory needs with demand uncertainty
 anti_patterns:
   - Avoid using too few trials (under 50) when claiming convergence to theory
   - Don't confuse random number generation with true randomness in interpretation
   - Avoid simulations where theoretical calculation is simpler than simulation
   - Don't present simulation results without comparing to theoretical values
   - Avoid complex spreadsheet formulas without explaining the simulation logic
-version: 1.0
-version_notes: Initial version for German KMK Grade 10 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

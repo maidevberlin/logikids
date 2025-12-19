@@ -45,12 +45,19 @@ real_world_context:
   - Understanding test scores as fractions and percentages (15/20 = 75%)
   - Analyzing survey results showing fractions of respondents
   - Reading nutritional labels showing fractions and percentages of daily values
+  - Music time signatures showing beats per measure as fractions
+  - Battery charge levels displayed as fractions of full capacity
+  - Sports statistics showing win fractions and winning percentages
+  - Pizza portions comparing different slice fractions
+  - Fuel gauges showing tank fractions remaining
+  - Progress bars displaying completion as fractions and percentages
+  - Probability in games expressed as favorable outcomes over total
 anti_patterns:
   - Avoid denominators larger than 100 (except percentages)
   - Don't introduce fraction multiplication or division
   - Avoid complex decimal-fraction conversions
   - Don't combine multiple operations in single problems
   - Avoid contexts requiring repeating decimals understanding
-version: 1.0
-version_notes: Initial version based on Grade 6 KMK curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

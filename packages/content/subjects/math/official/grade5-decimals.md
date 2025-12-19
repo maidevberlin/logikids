@@ -41,12 +41,20 @@ real_world_context:
   - Measurement in metric units such as meters, liters, and kilograms
   - Sports times and statistics like running times and jump distances
   - Scientific measurements and weather data like temperature and rainfall
+  - Fuel prices displayed at gas stations with decimal precision
+  - Cooking measurements for precise recipes using decimal amounts
+  - Body measurements like height in meters and weight in kilograms
+  - Stopwatch times for swimming races down to hundredths of a second
+  - Electricity meter readings showing decimal kilowatt-hours
+  - Battery charge levels displayed as decimal percentages
+  - GPS coordinates using decimal degrees for precise location
+  - Pharmacist measuring medicine doses in decimal milliliters
 anti_patterns:
   - Avoid division of decimals
   - Don't use more than 3 decimal places
   - Avoid repeating decimals like 0.333...
   - Don't mix with negative numbers
   - Avoid fractions with denominators larger than 100
-version: 1
-version_notes: Initial version based on German Grade 5 curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

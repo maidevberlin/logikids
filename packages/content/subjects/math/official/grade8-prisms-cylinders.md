@@ -45,12 +45,19 @@ real_world_context:
   - Planning concrete needed for rectangular or cylindrical building foundations
   - Designing product packaging to minimize material while maintaining volume
   - Calculating paint or coating needed for prism-shaped or cylindrical structures
+  - Aquarium builders computing water volume for fish tank dimensions
+  - Candle makers determining wax quantities for cylindrical mold sizes
+  - Pool maintenance calculating chemical amounts based on pool volume
+  - HVAC engineers sizing air ducts using cross-sectional area and length
+  - Bakers calculating cake tin volumes for recipe scaling
+  - Shipping companies determining package dimensions for freight costs
+  - Juice manufacturers calculating can sizes for optimal product portions
 anti_patterns:
   - Avoid pyramids, cones, and spheres (not part of Grade 8 curriculum)
   - Do not use composite solids with more than 3 components
   - Avoid decimal dimensions beyond one decimal place
   - Do not combine trigonometry with solid geometry
   - Avoid irregular or oblique prisms (keep bases perpendicular to height)
-version: 1
-version_notes: Initial version based on German KMK curriculum for Grade 8, covering M8.7 learning area
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

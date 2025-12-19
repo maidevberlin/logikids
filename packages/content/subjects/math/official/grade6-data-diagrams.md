@@ -46,12 +46,19 @@ real_world_context:
   - Comparing product reviews using star ratings and averages
   - Understanding election results shown in circle and column diagrams
   - Tracking personal data like homework time or screen time and calculating weekly averages
+  - A sports coach analyzing player statistics across multiple games
+  - Comparing nutrition labels using pie charts of daily values
+  - Tracking monthly spending categories with circle diagrams
+  - Analyzing music streaming charts showing genre popularity
+  - A scientist presenting research findings with multiple graph types
+  - Comparing school lunch preferences across different grade levels
+  - Evaluating weather forecasts and their accuracy over time
 anti_patterns:
   - Avoid data sets with more than 12 categories in diagrams
   - Don't use complex statistical measures beyond mean (no median, mode, or range)
   - Avoid requiring exact circle diagram angle calculations
   - Don't create problems requiring decimal percentages beyond one decimal place
   - Avoid contexts with sensitive topics (politics, religion, personal finances)
-version: 1
-version_notes: Initial version based on Grade 6 KMK curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -45,12 +45,19 @@ real_world_context:
   - Calculating when two moving objects (cars, trains) traveling at different speeds will meet at the same location
   - Solving age problems where relationships between two people's ages are given at different time points
   - Balancing budget constraints when shopping with two different discount offers or payment methods
+  - Athletes combining two training types to meet both time and calorie-burning goals
+  - Chemists mixing solutions of different concentrations to achieve a target mixture
+  - Party planners calculating combinations of food trays to meet both guest count and budget
+  - Farmers allocating land between two crops to maximize profit within labor constraints
+  - Musicians scheduling practice time between two instruments to meet weekly goals
+  - Students balancing study time between subjects to meet both homework and test prep needs
+  - Pet store owners mixing bird seed types to create a blend at a specific price point
 anti_patterns:
   - Avoid systems with more than two equations or two unknowns
   - Don't introduce elimination method or matrix notation
   - Avoid coefficients requiring complex fraction arithmetic beyond basic operations
   - Don't use context requiring knowledge of advanced physics or chemistry
   - Avoid systems where coefficients are irrational numbers or complex decimals
-version: 1
-version_notes: Initial version based on Grade 8 KMK curriculum standards and LehrplanPLUS Bayern M8.6
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

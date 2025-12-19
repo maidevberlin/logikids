@@ -41,6 +41,13 @@ real_world_context:
   - Quality control in manufacturing relies on sampling and probability to detect defects
   - Medical testing interprets probabilities to assess disease risk and test accuracy
   - Sports analysts use probability models to predict game outcomes and player performance
+  - Lottery and raffle organizers calculating winning chances for prize distributions
+  - Insurance companies assessing risk probabilities for policy pricing
+  - Card game players evaluating hand probabilities for strategic decisions
+  - Geneticists predicting trait inheritance using probability principles
+  - Traffic engineers modeling accident probabilities at intersections
+  - Market researchers sampling populations to predict consumer preferences
+  - Meteorologists calculating hurricane path probabilities for evacuation planning
 prerequisites:
   - grade4-data-probability
 anti_patterns:
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid probability calculations requiring binomial coefficients
   - Don't introduce geometric or continuous probability distributions
   - Avoid formal set theory notation beyond basic union/intersection
-version: 1
-version_notes: Initial creation based on KMK/Bavaria Grade 8 curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

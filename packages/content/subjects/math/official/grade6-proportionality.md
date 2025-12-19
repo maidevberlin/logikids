@@ -44,12 +44,19 @@ real_world_context:
   - Scale models and maps showing distances in fixed ratios to real dimensions
   - Speed calculations relating distance and time proportionally
   - Currency exchange using conversion rates between different currencies
+  - Fuel consumption rates for cars measured in liters per 100 km
+  - Photo enlargement maintaining aspect ratios
+  - Mixing concrete with specific sand to cement ratios
+  - Diluting cleaning solutions to proper concentrations
+  - Screen resolution ratios for different display sizes
+  - Sports drink mixing with powder to water ratios
+  - Architectural blueprints using standard scale ratios
 anti_patterns:
   - Avoid ratios with numbers larger than 100
   - Don't mix proportional and percentage problems in one task
   - Avoid inverse proportionality (separate Grade 7 concept)
   - Don't use decimal ratios without clear context
   - Avoid ambiguous wording that confuses ratios with fractions
-version: 1
-version_notes: Initial creation for Grade 6 proportionality covering ratios, ratio tables, and rule of three
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

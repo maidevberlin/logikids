@@ -40,12 +40,19 @@ real_world_context:
   - Using a calendar to track birthdays, holidays, and special events
   - Comparing distances like the length of a room or playground
   - Estimating how long activities take, like eating breakfast or walking to school
+  - A scientist measuring the growth of a sunflower over several weeks
+  - Checking the clock to see how long until recess or lunchtime
+  - Planning a birthday party by counting days on the calendar
+  - Measuring fabric or ribbon to wrap a present perfectly
+  - A carpenter measuring wood pieces to build a birdhouse
+  - Tracking sunrise and sunset times across different seasons
+  - Comparing heights of family members using a wall chart
 anti_patterns:
   - Avoid millimeters or kilometers - not appropriate for Grade 2
   - Don't use minutes beyond 00 and 30 (only full and half hours)
   - Avoid mixing metric and imperial units
   - Don't require calculations with units (addition/subtraction of measurements)
   - Avoid abstract time concepts like elapsed time across days
-version: 1.0
-version_notes: Initial version for Grade 2 measurement skills
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

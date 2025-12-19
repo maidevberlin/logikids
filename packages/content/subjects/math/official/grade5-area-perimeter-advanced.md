@@ -38,6 +38,14 @@ real_world_context:
   - Planning gardens with fencing and planting areas
   - Determining paint needed for walls and surfaces
   - Designing sports fields and playground layouts
+  - A farmer calculating land area for different crop sections
+  - Wrapping presents and determining paper needed
+  - Tiling a bathroom floor with square tiles
+  - Planning a backyard patio with different shaped sections
+  - A carpenter building a triangular shelf for a corner
+  - Designing a composite-shaped swimming pool
+  - Calculating fabric for L-shaped curtains
+  - Planning walking paths through a park with various shaped zones
 anti_patterns:
   - Avoid circles and curved shapes
   - Don't use decimal dimensions unless in money context
@@ -48,6 +56,6 @@ prerequisites:
   - grade4-area-perimeter
   - grade4-measurement-units
   - grade3-multiplication-tables
-version: 1
-version_notes: Initial creation for Grade 5 curriculum
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

@@ -45,12 +45,19 @@ real_world_context:
   - Evaluating sports statistics like player scores to determine consistent vs. variable performance
   - Understanding salary distributions in job advertisements using median instead of mean
   - Analyzing survey results with quartiles to identify how most people responded
+  - Video game leaderboards showing player ranking distributions and percentiles
+  - Music streaming services analyzing listening patterns across different genres
+  - Restaurant reviewers comparing rating distributions between establishments
+  - Fitness apps summarizing weekly workout statistics with averages and ranges
+  - Online shoppers comparing product ratings using mean vs. mode of reviews
+  - Teachers analyzing homework completion rates across different class periods
+  - Environmental scientists comparing pollution levels across monitoring stations
 anti_patterns:
   - Avoid data sets with more than 15 values without technology support
   - Don't introduce interquartile range (IQR) or outlier calculation formulas
   - Avoid interpolation for median or quartiles with even-numbered data sets
   - Don't mix continuous and discrete data types in the same problem
   - Avoid contexts requiring interpretation of standard deviation or variance
-version: 1
-version_notes: Initial version based on Grade 7 KMK curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

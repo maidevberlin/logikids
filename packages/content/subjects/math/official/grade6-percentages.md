@@ -44,12 +44,19 @@ real_world_context:
   - News reports describe changes in statistics using percent and percentage points
   - Tax calculations use percentages to determine amounts owed or refunded
   - Sports statistics show win rates and improvement percentages for teams and players
+  - Restaurant tips calculated as percentages of the bill total
+  - Battery and download progress shown as completion percentages
+  - Nutrition labels displaying percentages of daily recommended values
+  - School grades converted to percentage scores
+  - Humidity levels in weather reports as percentages
+  - Commission earned by salespeople as percentage of sales
+  - Crowd capacity at venues shown as percentage filled
 anti_patterns:
   - Avoid percentage values above 100% (except in clearly labeled growth contexts)
   - Don't introduce compound interest or multi-period calculations
   - Avoid ambiguous problems where base value is unclear
   - Don't use more than two percentage operations in sequence
   - Avoid contexts requiring VAT calculations with multiple rates
-version: 1
-version_notes: Initial version based on Grade 6 KMK curriculum standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

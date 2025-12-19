@@ -41,6 +41,13 @@ real_world_context:
   - Water tanks and storage spheres in industrial settings
   - Bubbles and droplets form spherical shapes due to surface tension
   - Earth and other planets are approximately spherical bodies
+  - Submarine designers calculating hull volume for buoyancy
+  - Ice cream scoop manufacturers standardizing portion sizes
+  - Pharmaceutical companies producing spherical pill coatings
+  - Radar dome designers calculating protective covering materials
+  - Hot air balloon operators computing lift capacity
+  - Golf ball manufacturers optimizing dimple coverage area
+  - Snow globe creators calculating liquid volume for displays
 anti_patterns:
   - Avoid confusing radius with diameter in formulas
   - Do not use circle formulas (πr²) instead of sphere formulas
@@ -50,6 +57,6 @@ anti_patterns:
 prerequisites:
   - grade10-pyramids-cones
   - grade8-circles
-version: 1
-version_notes: Initial version for German KMK Grade 10 curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

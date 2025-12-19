@@ -46,12 +46,19 @@ real_world_context:
   - Comparing the size of different gardens or play areas in a schoolyard
   - Determining which piece of wrapping paper is large enough for a gift
   - Estimating how many carpet squares are needed to cover a classroom reading corner
+  - A farmer comparing field sizes to decide what to plant
+  - Counting grid squares on a game board to understand play areas
+  - An interior designer planning how much wallpaper to order
+  - Comparing pizza sizes to see which gives more slices
+  - A groundskeeper measuring lawn sections for fertilizer application
+  - Calculating fabric needed to make a quilt or blanket
+  - Comparing desk surface areas to find the biggest workspace
 anti_patterns:
   - Avoid using formulas like length × width - focus on counting squares
   - Don't use fractional or partial unit squares at grade 3 level
   - Avoid shapes larger than 40 unit squares - keep counting manageable
   - Don't introduce perimeter in the same problem - keep concepts separate
   - Avoid units like cm² or m² - use "unit squares" or "squares" only
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

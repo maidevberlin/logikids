@@ -43,12 +43,19 @@ real_world_context:
   - Elevator movements going up and down floors including basement levels
   - Game scores with points gained and lost during play
   - Altitude changes when hiking up mountains and down into valleys
+  - Football yardage tracking gains and losses on plays
+  - Stock market tracking daily rises and falls in value
+  - Scuba diving recording depths below sea level
+  - Time zone calculations crossing international date lines
+  - Golf scoring relative to par with birdies and bogeys
+  - Budget tracking with income and expenses over time
+  - Chemistry experiments measuring temperature changes in reactions
 anti_patterns:
   - Avoid multiplication or division of integers (separate concept)
   - Don't use integers with absolute values larger than 100
   - Avoid mixing integer operations with fractions or decimals
   - Don't introduce algebraic variables
   - Avoid expressions requiring order of operations beyond addition/subtraction
-version: 1
-version_notes: Initial creation for Grade 6 integer operations focusing on addition and subtraction with sign rules
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

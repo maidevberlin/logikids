@@ -43,12 +43,19 @@ real_world_context:
   - Engineers design truss structures and roof frameworks with non-perpendicular angles using sine and cosine laws to calculate member lengths and forces
   - Astronomers calculate distances to stars and planets using parallax angles and baseline measurements through triangulation with general triangles
   - Search and rescue teams determine target locations from multiple observation points using triangulation methods based on sine and cosine laws
+  - Sailors calculating distances to lighthouses from multiple bearing readings
+  - Archaeologists mapping excavation sites with non-rectangular boundaries
+  - Golf course designers determining hole distances with dogleg fairways
+  - Aircraft mechanics calculating control surface angles for aerodynamic balance
+  - Forestry workers estimating tree heights from oblique viewing positions
+  - Geologists measuring fault line angles in rock formation studies
+  - Billboard designers calculating viewing angles from different road positions
 anti_patterns:
   - Avoid sine law when two sides and included angle given (use cosine law)
   - Do not ignore ambiguous case with SSA configuration in sine law problems
   - Avoid angle sums not equal to 180 degrees or sides violating triangle inequality
   - Do not apply these laws to right triangles without noting simpler methods
   - Avoid spherical trigonometry contexts beyond basic planar triangles
-version: 1
-version_notes: Initial creation for Grade 9 sine and cosine laws based on German KMK curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

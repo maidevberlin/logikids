@@ -42,12 +42,19 @@ real_world_context:
   - Understanding body measurements and health metrics (height in cm or m, weight in kg)
   - Calculating shipping weights and costs for packages using kg and g
   - Comparing product quantities at stores (1.5 L bottle vs 500 mL cans)
+  - A veterinarian weighing pets and calculating medicine doses
+  - Athletes tracking running distances in kilometers and meters
+  - Buying fabric by the meter for sewing projects
+  - Filling water bottles and tracking daily water intake in liters
+  - A scientist measuring liquid volumes in milliliters for experiments
+  - Comparing luggage weight limits for different airlines
+  - Measuring room dimensions for new furniture purchases
 anti_patterns:
   - Avoid imperial or customary units (miles, pounds, gallons, inches)
   - Don't mix mass and weight terminology confusingly
   - Avoid time unit conversions (separate concept)
   - Don't use metric prefixes beyond milli- and kilo- (no micro-, mega-, etc.)
   - Avoid area or volume units (m², cm³) in conversion problems
-version: 1
-version_notes: Initial version for Grade 5, building on Grade 4 measurement foundations
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -46,12 +46,19 @@ real_world_context:
   - Physics describes motion paths and energy relationships with polynomial models
   - Computer graphics generates smooth curves and surfaces using polynomial interpolation
   - Manufacturing optimizes production efficiency through polynomial trend analysis
+  - Roller coaster designers creating smooth track transitions with polynomial curves
+  - Automotive engineers modeling suspension response to road irregularities
+  - Animation software using Bezier curves based on polynomial functions
+  - Pharmacologists modeling drug response curves with polynomial fits
+  - Financial analysts fitting trend lines to market data
+  - Climate scientists modeling temperature variations with polynomial regression
+  - Sports scientists analyzing athlete performance curves over seasons
 anti_patterns:
   - Don't confuse multiplicity with the number of distinct zeros
   - Avoid mixing up odd/even degree effects on end behavior
   - Don't assume all zeros are visible in a limited graph viewing window
   - Avoid biquadratic problems that don't actually require substitution
   - Don't create polynomials with degree higher than 4
-version: 1
-version_notes: Initial version covering German KMK Grade 10 curriculum for polynomial functions
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -43,12 +43,19 @@ real_world_context:
   - Prices of cars, furniture, or electronics
   - Stadium capacities and event attendance
   - Annual savings goals or large purchases
+  - Counting visitors to a popular museum or amusement park
+  - Reading kilometer markers on long road trips
+  - Tracking video game high scores in the thousands
+  - Understanding school enrollment numbers across a district
+  - Comparing sizes of nature reserves or national parks in hectares
+  - Reading fundraising totals for charity events
+  - Counting social media followers or video views
 anti_patterns:
   - Avoid numbers above 1,000,000 or decimal notation
   - Don't mix place value exercises with arithmetic operations
   - Avoid ambiguous rounding without specifying target place value
   - Don't use financial contexts inappropriate for children (mortgages, salaries)
   - Avoid scientific notation or exponential representations
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

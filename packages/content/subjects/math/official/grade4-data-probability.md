@@ -45,12 +45,19 @@ real_world_context:
   - Sports statistics like goals scored, race times, or team standings
   - Probability in games using dice, spinners, or drawing cards
   - School lunch choices or attendance records over time
+  - Tracking daily screen time and comparing weekly patterns
+  - A scientist recording bird sightings at a feeder
+  - Comparing book genres read by different classmates
+  - Predicting outcomes in board games with chance elements
+  - Surveying playground game preferences across grades
+  - Recording sleep hours and looking for patterns
+  - A farmer tracking egg production from different hens
 anti_patterns:
   - Avoid data sets larger than 12 items or values above 100
   - Don't use percentages, fractions as scale units, or decimal averages
   - Avoid complex probability requiring calculation (use qualitative language)
   - Don't mix multiple unrelated concepts in one problem
   - Avoid contexts unfamiliar to 9-10 year olds (stock markets, elections)
-version: 1
-version_notes: Initial version aligned with German KMK Bildungsstandards for Grade 4
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -42,12 +42,19 @@ real_world_context:
   - Arranging items in equal rows and columns for displays or seating
   - Determining if quantities can be split evenly without remainders for packaging
   - Finding the smallest shared timing for periodic events (traffic lights, alarms)
+  - A florist creating equal bouquets from different flower quantities
+  - Organizing sports teams with the same number of players
+  - Finding when two planets will align based on their orbit periods
+  - A baker dividing dough into equal portions for rolls
+  - Scheduling practice sessions that don't conflict for multiple sports
+  - Cryptography puzzles using prime numbers as secret keys
+  - Tiling patterns that repeat at regular intervals
 anti_patterns:
   - Avoid numbers requiring factorization beyond 200
   - Don't test divisibility by 7, 11, or other advanced rules not taught
   - Avoid GCD or LCM with more than 2 numbers
   - Don't mix with fraction operations or decimal notation
   - Avoid abstract contexts without clear real-world grounding
-version: 1
-version_notes: Initial version aligned with German Bildungsstandards and Gymnasium Lehrplan for Grade 5
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -47,12 +47,19 @@ real_world_context:
   - Finding cylinder shapes in cans, pipes, and rolled paper
   - Unfolding cardboard boxes to see their nets and understanding packaging
   - Observing symmetry in nature like butterfly wings, leaves, and flowers
+  - A gift wrapper cutting and folding paper into box shapes
+  - Spotting tent shapes at a campground as pyramid examples
+  - Finding symmetry in traditional tile patterns and mosaics
+  - Recognizing megaphone and funnel shapes as cones
+  - An artist designing symmetric mandala patterns
+  - Identifying cylinder shapes in lighthouse towers and silos
+  - Exploring nets when constructing paper craft models
 anti_patterns:
   - Avoid technical formulas for volume or surface area
   - Don't use shapes beyond pyramid, cone, cylinder for grade 3
   - Avoid nets with more than 8 faces - keep it developmentally appropriate
   - Don't ask about angle measurements or precise geometric calculations
   - Avoid irregular pyramids - use square-based pyramids only
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Grade 3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

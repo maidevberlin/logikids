@@ -38,6 +38,14 @@ real_world_context:
   - Comparing storage capacity of different boxes or drawers
   - Building with construction blocks like LEGO and determining how many blocks you need
   - Filling aquariums or containers and understanding how much space they hold
+  - A moving company estimating how many boxes fit in a truck
+  - Comparing ice cube tray sizes for party planning
+  - Stacking storage bins efficiently in a closet
+  - A game designer creating 3D puzzle levels with blocks
+  - Calculating soil needed to fill rectangular planter boxes
+  - Comparing shipping box sizes for mailing packages
+  - Building block towers and counting total cubes used
+  - Organizing toy blocks in storage containers
 anti_patterns:
   - Avoid using volume formulas or algebraic notation
   - Don't use non-integer dimensions or fractional cubes
@@ -47,6 +55,6 @@ anti_patterns:
 prerequisites:
   - grade3-advanced-geometry
   - grade4-geometry-spatial
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern M3/4 2.5 and KMK Bildungsstandards 2022
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

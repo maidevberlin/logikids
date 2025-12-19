@@ -45,12 +45,19 @@ real_world_context:
   - Planning recipes that require scaling ingredients up or down and combining multiple measurements
   - Determining travel expenses with multiple transportation modes, ticket prices, and group sizes
   - Analyzing scientific data requiring multiple calculation steps to reach final measurements
+  - A DJ calculating playlist timing with song lengths and breaks
+  - Computing phone bill totals with base rate, data usage, and taxes
+  - Planning party supplies with per-person costs and bulk discounts
+  - Calculating video game damage with base attack, multipliers, and defense
+  - A fitness tracker computing weekly calories from daily meals and exercise
+  - Budgeting allowance across savings, spending, and charity portions
+  - Computing test grades with weighted sections and bonus points
 anti_patterns:
   - Avoid problems that can be solved without following order of operations
   - Do not create ambiguous expressions where bracket placement is unclear
   - Avoid using only whole numbers; include fractions and decimals regularly
   - Do not ask for distributive property application where it provides no advantage
   - Avoid overly simple terms like "2 + 3 × 4" without context or challenge
-version: 1.0
-version_notes: Initial creation - comprehensive coverage of term structures, order of operations, distributive property, and multi-step problems
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

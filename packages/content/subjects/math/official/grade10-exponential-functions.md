@@ -42,6 +42,13 @@ real_world_context:
   - Compound interest on savings accounts or loans
   - Viral social media posts spreading exponentially through networks
   - Medicine concentration decreasing exponentially in the bloodstream
+  - Cryptocurrency value fluctuations following exponential patterns
+  - Carbon-14 dating using exponential decay to determine artifact ages
+  - Moore's Law describing transistor count doubling in computer chips
+  - Pandemic spread modeling with exponential infection rates
+  - Electric vehicle battery discharge following exponential curves
+  - Rumor spreading through social groups at exponential rates
+  - Food cooling following exponential temperature decay curves
 anti_patterns:
   - Avoid using both exponential growth and decay in the same problem
   - Don't use bases close to 1 (e.g., 0.95 to 1.05) without clear context
@@ -52,6 +59,6 @@ prerequisites:
   - grade8-functions-basics
   - grade8-linear-functions
   - grade9-power-functions
-version: 1
-version_notes: Initial version based on KMK curriculum for Grade 10
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
