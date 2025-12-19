@@ -41,6 +41,13 @@ real_world_context:
   - Describing animals or natural phenomena for science projects and presentations
   - Writing person descriptions for creative writing or lost-and-found notices
   - Documenting procedures like experiments, field trips, or class activities for portfolios
+  - Writing travel reports about family vacations or school excursions to share with relatives
+  - Creating how-to guides for teaching younger students playground games or sports techniques
+  - Describing historical buildings or monuments for social studies presentations
+  - Writing observation reports about plant growth experiments or weather patterns for science class
+  - Creating fact sheets about favorite hobbies, sports, or collections to inform peers
+  - Writing procedural texts explaining how to care for class pets or maintain a school garden
+  - Documenting athletic events or school competitions with factual accounts for school newspapers
 anti_patterns:
   - Avoid mixing narrative storytelling elements into factual reports
   - Do not use first-person perspective or subjective opinions
@@ -49,6 +56,6 @@ anti_patterns:
   - Avoid topics requiring expert knowledge or technical terminology
 prerequisites:
   - grade4-text-planning
-version: 1
-version_notes: Initial concept for German Grade 5 informative writing aligned with Berlin-Brandenburg Rahmenlehrplan
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

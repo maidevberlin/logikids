@@ -44,12 +44,19 @@ real_world_context:
   - Developing characters for creative writing projects through physical exploration
   - Participating in school theater productions or drama clubs
   - Using dramatic techniques to understand historical figures or literary characters
+  - Acting out different outcomes to fairy tales by changing character motivations and perspectives
+  - Improvising customer and shopkeeper roles during classroom market day simulations
+  - Performing puppet shows with siblings or friends and creating distinct voices for each character
+  - Exploring emotions through movement and gesture during music or physical education classes
+  - Creating video skits with classmates for school projects by adopting expert or interviewer roles
+  - Role-playing job interviews or professional scenarios to practice future life skills
+  - Reenacting important historical moments or scientific discoveries during social studies lessons
 anti_patterns:
   - Avoid requiring memorization of lengthy scripts - focus on improvisation
   - Don't expect professional-level acting techniques or theater vocabulary
   - Avoid scenes requiring more than 4 characters with speaking roles
   - Don't use scenarios requiring adult experiences or complex social situations
   - Avoid abstract or symbolic dramatic concepts beyond concrete representation
-version: 1
-version_notes: Initial concept for German Grade 4 dramatic expression based on KMK Bildungsstandards (Sprechen und Zuhören - szenisch spielen)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

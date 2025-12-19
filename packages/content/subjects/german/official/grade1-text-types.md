@@ -41,6 +41,13 @@ real_world_context:
   - Identifying rhyming patterns in songs and nursery rhymes
   - Describing characters from bedtime stories (what they look like, how they act)
   - Making predictions while listening to read-aloud stories in class
+  - Comparing adventure tales about knights with information books about castles
+  - Recognizing poetry in greeting cards versus instructions on toy boxes
+  - Acting out story sequences using puppets or costume pieces
+  - Distinguishing between fantasy dragon stories and factual dinosaur books
+  - Identifying repeating refrains in traditional folk songs and fairy tales
+  - Predicting whether pirates will find treasure based on story clues
+  - Describing how storybook settings differ from real-world locations
 prerequisites: []
 anti_patterns:
   - Avoid texts longer than 100 words for Grade 1 attention span
@@ -48,6 +55,6 @@ anti_patterns:
   - Avoid complex character motivations requiring inference
   - Don't mix multiple text types in one task for easy difficulty
   - Avoid cultural references unfamiliar to 6-7 year olds
-version: 1
-version_notes: Initial concept for German Grade 1 text types and literary engagement
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

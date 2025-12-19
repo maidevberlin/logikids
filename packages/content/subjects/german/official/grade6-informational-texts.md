@@ -43,12 +43,19 @@ real_world_context:
   - Evaluating website reliability when searching for information online
   - Using dictionaries to understand unfamiliar words in reading materials
   - Comparing information from multiple sources to verify accuracy
+  - Reading museum exhibit labels and informational plaques to learn about historical artifacts
+  - Following assembly instructions with diagrams when building models or furniture
+  - Using library catalog systems to locate books on specific topics for research assignments
+  - Consulting field guides to identify plants, birds, or insects during nature exploration
+  - Reading nutrition labels and ingredient lists to make informed food choices
+  - Comparing product reviews from different websites before making purchase recommendations
+  - Researching ancient civilizations using age-appropriate reference materials for history presentations
 anti_patterns:
   - Avoid sources with content significantly above grade 6 reading level
   - Don't use graphics that require specialized scientific knowledge
   - Avoid research tasks requiring access to unavailable resources
   - Don't ask source evaluation without providing criteria
   - Avoid topics unfamiliar to 11-12 year olds
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards 2022
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

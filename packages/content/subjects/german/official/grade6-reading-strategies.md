@@ -44,12 +44,19 @@ real_world_context:
   - Skimming textbook chapters using headings and bold terms before reading closely for homework assignments
   - Creating mind maps to organize character relationships and plot developments in complex fantasy series
   - Adjusting reading speed when researching online sources, skimming for relevance before close reading useful sections
+  - Previewing science textbooks by reading summaries and reviewing diagrams before tackling detailed explanations
+  - Using sticky notes to mark important passages in library books during research projects
+  - Creating character relationship charts while reading mystery novels to track suspects and clues
+  - Skimming multiple encyclopedia articles quickly to find the most relevant source for a history report
+  - Taking notes in margins of worksheets to capture main ideas during close reading exercises
+  - Using table of contents strategically to navigate reference books when looking for specific information
+  - Adjusting reading pace when reading adventure novels, slowing down for complex action scenes
 anti_patterns:
   - Avoid texts shorter than 200 words which do not require strategic reading
   - Don't ask students to apply every strategy type in a single reading task
   - Avoid texts without clear structural features for navigation tasks
   - Don't use abstract philosophical texts beyond age 11-12 comprehension level
   - Avoid journal prompts that ask for personal emotional disclosure
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards Deutsch Sekundarstufe I (2022) and Bayern LehrplanPLUS Gymnasium Grade 6
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

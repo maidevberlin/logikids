@@ -40,12 +40,19 @@ real_world_context:
   - Showing emotions through face and body when words are difficult
   - Participating in class plays or performance activities at school
   - Imitating animals, people, or characters from favorite stories
+  - Playing doctor, teacher, or shopkeeper in role-play corners
+  - Creating shadow figures with hands to tell adventure stories
+  - Performing as different weather types in nature exploration activities
+  - Becoming a brave knight rescuing a dragon in fantasy adventures
+  - Mimicking how a tired parent, excited child, or grumpy monster moves
+  - Dancing as different forest animals during music and movement time
+  - Showing how a seed grows into a flower through body movements
 anti_patterns:
   - Avoid requiring reading skills beyond simple character names
   - Don't use abstract emotions beyond 6-7 year old experience
   - Avoid scenarios requiring cultural knowledge unfamiliar to young children
   - Don't expect complex multi-character interactions at this level
   - Avoid movements requiring advanced motor coordination
-version: 1
-version_notes: Initial concept for German Grade 1 dramatic expression based on LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

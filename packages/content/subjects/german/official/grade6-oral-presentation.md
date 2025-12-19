@@ -45,12 +45,19 @@ real_world_context:
   - Explaining a science project to judges using diagrams and demonstration
   - Delivering a persuasive speech on a school issue to student council
   - Sharing research findings about historical events using timeline visuals
+  - Presenting travel experiences from family vacations with photos and maps to the class
+  - Explaining hobby techniques like photography, coding, or sports to interested peers
+  - Delivering weather reports or news summaries as part of classroom morning routines
+  - Presenting biographical information about historical figures for history class assessments
+  - Sharing art project processes and inspirations during gallery walk presentations
+  - Explaining game rules and strategies to new players using visual aids and demonstrations
+  - Reciting dramatic monologues from plays or stories during literature unit performances
 anti_patterns:
   - Avoid topics requiring adult-level expertise or specialized knowledge
   - Don't expect presentations longer than 10 minutes for 11-12 year olds
   - Avoid overly formal academic language inappropriate for age group
   - Don't require memorization of entire speeches - notes should be used
   - Avoid scenarios with hostile audiences or high-stakes professional settings
-version: 1
-version_notes: Initial version based on KMK Bildungsstandards 2022 and LehrplanPLUS Bayern Grade 6 oral communication standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

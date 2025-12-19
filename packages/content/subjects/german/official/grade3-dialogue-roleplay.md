@@ -45,12 +45,19 @@ real_world_context:
   - Giving specific feedback on a classmate's presentation or creative work
   - Taking on character roles during literature discussions or school plays
   - Managing turn-taking and time limits during group project planning sessions
+  - Acting out a scene from a fairy tale where different characters have conflicting wishes
+  - Practicing polite requests when asking the librarian for help finding a book
+  - Role-playing a shopkeeper and customer during a math lesson about money
+  - Taking on the perspective of an animal in a nature story and expressing its feelings
+  - Performing a historical dialogue between a knight and a princess for history class
+  - Giving constructive feedback to a partner about their poster presentation on planets
+  - Role-playing a detective and witness to practice asking and answering questions
 anti_patterns:
   - Avoid scenarios requiring cultural knowledge beyond 8-9 year experience
   - Don't expect adult-level formal register or business communication
   - Avoid multi-character interactions with more than 4 distinct roles
   - Don't require memorization of scripted lines - focus on improvisation
   - Avoid feedback tasks without clear criteria or sentence frames for support
-version: 1
-version_notes: Initial concept for German Grade 3 dialogue and role play based on LehrplanPLUS Bayern (1.3 Dialogue Management, 1.5 Dramatic Play)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

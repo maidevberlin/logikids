@@ -44,12 +44,19 @@ real_world_context:
   - Reading informational texts about animals, nature, or familiar topics
   - Following multi-step written directions for crafts or tasks
   - Reading dialogue in comics and graphic stories
+  - A young adventurer reading treasure maps with written clues to find hidden gold
+  - Reading signs at the zoo to learn interesting facts about different animals
+  - Following a recipe with simple written steps to bake a birthday cake
+  - A detective reading witness statements to solve a mystery case
+  - Understanding safety instructions posted at the swimming pool or playground
+  - Reading letters or postcards from pen pals or relatives living far away
+  - A space explorer reading mission briefings about new planets to visit
 anti_patterns:
   - Avoid texts longer than 12 sentences for Grade 2 students
   - Don't use vocabulary beyond everyday experiences of 7-8 year olds
   - Avoid complex sentence structures like relative clauses or passive voice
   - Don't ask questions requiring cultural or factual knowledge beyond text
   - Avoid texts with ambiguous meanings or requiring adult perspective
-version: 1
-version_notes: Initial version based on KMK Grade 2 Lesen competency standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

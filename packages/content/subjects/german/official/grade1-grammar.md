@@ -44,12 +44,19 @@ real_world_context:
   - Making sentences sound more interesting by adding descriptive words
   - Understanding how new words are created by combining familiar words
   - Recognizing that sentences express complete thoughts with proper structure
+  - Naming people, pets, and places with capital letters in birthday invitations
+  - Playing word detective to find verbs in storybooks and fairy tales
+  - Describing favorite toys using colorful adjectives for show-and-tell
+  - Creating funny compound words like "Regenbogenhaus" or "Schokoladenberg"
+  - Helping younger siblings understand why "die Katze läuft" makes sense
+  - Finding noun patterns when labeling classroom objects and furniture
+  - Discovering how changing word parts creates related words in nature topics
 anti_patterns:
   - Avoid complex grammatical terminology beyond grade level
   - Don't use irregular verb forms that haven't been introduced yet
   - Avoid abstract nouns not accessible to 6-7 year olds
   - Don't require knowledge of grammatical cases or declensions
   - Avoid sentences with subordinate clauses or complex structure
-version: 1
-version_notes: Initial concept for German Grade 1 grammar and parts of speech based on LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -43,12 +43,19 @@ real_world_context:
   - Using syllable knowledge to figure out where to split words at line breaks
   - Playing syllable games and rhymes during language activities
   - Understanding how poets use syllable patterns in children's verses
+  - A drummer counting syllables to create rhythmic beats for songs
+  - Playing syllable hopscotch where each jump represents one syllable
+  - A chef reading recipe ingredients and clapping out long word names
+  - Creating syllable robots that speak in separated syllable chunks
+  - Playing syllable sorting games with animal names at the zoo
+  - A linguist explorer discovering new words and analyzing their syllable patterns
+  - Using syllable counting to fit words into crossword puzzle spaces
 anti_patterns:
   - Avoid words where syllable division varies by pronunciation style
   - Don't use vocabulary unfamiliar to 7-8 year olds
   - Avoid words with silent letters that confuse syllable counting
   - Don't mix syllable counting with letter counting
   - Avoid technical linguistic terms beyond "Silbe" and "betont"
-version: 1
-version_notes: Initial concept for German Grade 2 syllable awareness and word structure
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -45,12 +45,19 @@ real_world_context:
   - Students prepare texts for the school newspaper or website, ensuring they meet publication standards
   - Children review and improve their homework assignments before submission
   - Students edit presentations or project descriptions to make them more engaging and understandable
+  - Revising creative stories by adding descriptive details to make characters and settings more vivid for readers
+  - Checking birthday invitations or party announcements to ensure all important information is included and clear
+  - Editing science experiment reports to verify that steps are in logical order and results are clearly explained
+  - Reviewing book reviews before posting online to ensure opinions are supported with specific examples from the text
+  - Polishing poetry or song lyrics by choosing more precise words and checking rhythm and rhyme patterns
+  - Improving persuasive letters or requests by strengthening arguments and checking for respectful, clear language
+  - Editing video scripts or presentation notes to remove repetition and ensure smooth flow between ideas
 anti_patterns:
   - Avoid focusing only on spelling/grammar - include clarity and effect
   - Don't provide the corrected version - guide students to find issues
   - Avoid texts with only one type of error - mix issues realistically
   - Don't use overly complex texts inappropriate for grade 4 level
   - Avoid vague criteria - provide specific, checkable requirements
-version: 1
-version_notes: Initial concept based on KMK Bildungsstandards Grade 4 - Schreiben (überarbeiten)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

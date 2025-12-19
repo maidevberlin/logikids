@@ -41,6 +41,13 @@ real_world_context:
   - Recognizing how sentence structure affects clarity and emphasis in news articles
   - Using grammatical terminology to discuss and improve writing in peer revision sessions
   - Identifying how different clause types help organize complex information in textbooks
+  - Writing instructions for a game or recipe, choosing verb tenses to clarify sequence of actions
+  - Analyzing newspaper headlines to understand how grammatical shortcuts convey meaning efficiently
+  - Transforming active sentences to passive voice in science reports to emphasize results over actors
+  - Identifying temporal clauses in historical narratives to understand when events occurred
+  - Using causal clauses in persuasive essays to explain why readers should accept an argument
+  - Combining short sentences into complex ones when editing creative stories for better flow
+  - Recognizing how fantasy authors use different sentence types to build tension or describe settings
 anti_patterns:
   - Avoid overly technical grammar terms beyond grade 6 curriculum
   - Don't use archaic or literary German forms unfamiliar to 11-12 year olds
@@ -51,6 +58,6 @@ prerequisites:
   - grade4-parts-of-speech
   - grade4-sentence-structure
   - grade3-grammar-structures
-version: 1
-version_notes: Initial creation based on KMK Bildungsstandards Deutsch Sekundarstufe I (2022)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

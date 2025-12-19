@@ -42,12 +42,19 @@ real_world_context:
   - Remembering information through rhyming mnemonics
   - Understanding song lyrics and nursery rhymes
   - Playing word games and rhyming riddles with friends
+  - A young poet writing rhyming birthday cards for family members
+  - Making up silly rhyming songs about daily activities to remember them
+  - A rapper creating rhyming verses about favorite animals or hobbies
+  - Playing rhyming treasure hunts where clues rhyme with locations
+  - Writing rhyming chants for sports teams or classroom cheers
+  - A wizard learning magical spells that only work when words rhyme
+  - Creating rhyming advertisements for a lemonade stand or toy shop
 anti_patterns:
   - Avoid words where rhyme depends on dialect pronunciation
   - Don't assume words with similar spelling always rhyme
   - Avoid obscure vocabulary unfamiliar to 7-8 year olds
   - Don't mix up rhyming with alliteration (same starting sounds)
   - Avoid words with multiple valid pronunciations
-version: 1
-version_notes: Initial concept for German Grade 2 rhyming words building on Grade 1 phonological awareness
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

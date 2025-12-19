@@ -45,12 +45,19 @@ real_world_context:
   - Sharing information about a hobby or interest during show-and-tell
   - Delivering morning announcements or class news to peers
   - Presenting research findings about an animal or historical figure
+  - Teaching classmates how to play a new game by demonstrating the rules clearly
+  - Describing a family vacation with photos while speaking at an appropriate pace
+  - Presenting a poster about recycling using gestures to emphasize important points
+  - Sharing a personal narrative about overcoming a challenge with clear beginning and end
+  - Explaining why the class should adopt a reading buddy program with logical reasons
+  - Demonstrating a craft or cooking project with step-by-step verbal instructions
+  - Presenting a biography of a famous inventor using timeline notes and interesting facts
 anti_patterns:
   - Avoid topics requiring specialized knowledge beyond Grade 3 level
   - Don't expect presentations longer than 7 minutes for 8-9 year olds
   - Avoid formal academic registers appropriate only for older students
   - Don't require memorization - presentations should use notes
   - Avoid scenarios with hostile or challenging audiences
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 3 speaking and presentation standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

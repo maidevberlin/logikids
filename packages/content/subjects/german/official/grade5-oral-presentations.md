@@ -43,12 +43,19 @@ real_world_context:
   - Reciting poems at school events or in front of the class
   - Explaining how to play a game or complete a craft project
   - Telling personal stories or vacation experiences to classmates
+  - Delivering show-and-tell presentations about collections, hobbies, or family traditions
+  - Presenting science experiment results with visual aids showing hypothesis and findings
+  - Reading favorite book passages aloud during reading circle or library visits
+  - Explaining historical events through role-play presentations dressed in period costumes
+  - Presenting expert talks about personal interests like astronomy, dinosaurs, or sports
+  - Demonstrating step-by-step procedures like origami, cooking recipes, or magic tricks
+  - Performing memorized speeches or dramatic monologues at talent shows or class celebrations
 anti_patterns:
   - Avoid presentation topics requiring specialized adult knowledge
   - Don't expect formal slideshow software - focus on posters and basic aids
   - Avoid mixing all presentation modes in one task
   - Don't require presentations longer than 3-5 minutes
   - Avoid complex rhetorical devices beyond Grade 5 level
-version: 1.0
-version_notes: Initial version based on Berlin-Brandenburg Rahmenlehrplan Niveaustufe C-D
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

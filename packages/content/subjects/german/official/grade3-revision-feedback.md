@@ -46,12 +46,19 @@ real_world_context:
   - Preparing final versions of stories, letters, or informational posters for display
   - Using feedback from teachers to improve homework assignments and written work
   - Creating polished, well-formatted texts for school newspapers, contests, or portfolios
+  - Checking spelling in a thank-you letter before mailing it to grandparents
+  - Trading stories with a partner and suggesting ways to make the ending more exciting
+  - Proofreading a science report to fix capitalization and punctuation errors
+  - Adding illustrations and colorful headings to make a book report more appealing
+  - Revising a persuasive letter about playground equipment by adding more reasons
+  - Accepting suggestions from peers about making instructions clearer with numbered steps
+  - Formatting a final draft of a poem with creative layouts and decorative borders
 anti_patterns:
   - Avoid vague feedback like "make it better" instead of specific suggestions
   - Don't focus only on errors; always identify at least one strength first
   - Avoid abstract grammar terms unfamiliar to 8-9 year olds
   - Don't present texts requiring advanced editing beyond Grade 3 scope
   - Avoid revision tasks without clear criteria or examples of quality work
-version: 1
-version_notes: Initial concept for German Grade 3 revision and peer feedback based on LehrplanPLUS curriculum section 3.3
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

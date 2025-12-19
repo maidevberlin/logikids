@@ -45,12 +45,19 @@ real_world_context:
   - Recognizing cases helps you understand how nouns relate to each other in sentences, making reading comprehension easier
   - Using pronouns correctly avoids repetition and makes your speech and writing sound more natural and fluent
   - Grammatical awareness helps when learning other languages by understanding how language structures work
+  - Identifying parts of speech helps you look up unfamiliar words in dictionaries and understand their usage
+  - Mastering noun genders prevents embarrassing mistakes when ordering food or asking for directions
+  - Understanding verb conjugation allows you to tell stories about past adventures, present activities, and future plans accurately
+  - Recognizing adjectives helps you create vivid descriptions in creative writing and art projects
+  - Using correct article-noun agreement makes your German sound more sophisticated in class presentations
+  - Understanding cases helps you properly thank people, ask for help, and describe ownership in everyday conversations
+  - Analyzing sentence structure helps you understand complex instructions in math problems, science experiments, and craft projects
 anti_patterns:
   - Avoid examples with vocabulary beyond Grade 4 reading level
   - Don't mix multiple grammatical concepts in a single question
   - Avoid obscure or rarely-used verb forms like Plusquamperfekt
   - Don't use technical grammatical terminology without clear context
   - Avoid sentences with ambiguous grammatical structures
-version: 1
-version_notes: Initial creation based on KMK Bildungsstandards Grade 4 competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

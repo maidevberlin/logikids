@@ -45,12 +45,19 @@ real_world_context:
   - Recognizing literary devices in poetry, song lyrics, and everyday language
   - Discussing book club selections and defending interpretations with textual evidence
   - Creating fan fiction or alternative endings to explore narrative possibilities
+  - Comparing different adaptations of fairy tales to understand how authors reinterpret classic stories
+  - Analyzing how adventure novels use setting descriptions to create mood and atmosphere
+  - Identifying themes in historical fiction that connect past events to modern issues
+  - Exploring how fantasy authors build imaginary worlds through detailed descriptions and maps
+  - Recognizing symbolism in fables and parables from different cultural traditions
+  - Discussing how young adult novels portray friendship conflicts and moral dilemmas
+  - Analyzing poetry to understand how rhythm and imagery create emotional effects
 anti_patterns:
   - Avoid university-level literary theory or overly complex terminology
   - Don't require memorization of author biographies or publication dates
   - Avoid texts with mature themes inappropriate for 11-12 year olds
   - Don't expect single correct interpretations ignoring valid alternatives
   - Avoid cultural references that require extensive background knowledge
-version: 1
-version_notes: Initial version aligned with KMK Bildungsstandards Grade 6 - literary text analysis and interpretation
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

@@ -41,6 +41,13 @@ real_world_context:
   - Reading independently from chapter books and building reading stamina
   - Following written instructions for crafts, recipes, or assembly tasks
   - Tracking personal reading progress through reading logs and journals
+  - Reading character parts in a reader's theater performance with appropriate emotion
+  - Following along with audio books and matching the narrator's pacing and expression
+  - Reading morning announcements over the school intercom clearly and at a good pace
+  - Practicing tongue twisters and poems to improve fluency and pronunciation
+  - Reading recipes step-by-step while baking with family members
+  - Performing dramatic readings of adventure stories with varied character voices
+  - Reading informational texts about animals smoothly while preparing for a presentation
 anti_patterns:
   - Avoid texts with Grade 4+ vocabulary or abstract academic concepts
   - Don't use archaic language or regional dialects unfamiliar to students
@@ -50,6 +57,6 @@ anti_patterns:
 prerequisites:
   - grade1-reading-fluency
   - grade2-reading-simple-texts
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 3 reading fluency standards (2.2)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

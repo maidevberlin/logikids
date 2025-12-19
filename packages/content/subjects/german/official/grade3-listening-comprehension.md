@@ -42,12 +42,19 @@ real_world_context:
   - Watching educational videos and summarizing the main learning points
   - Recognizing how a speaker's tone and gestures help clarify confusing instructions
   - Following multi-step project descriptions with subject-specific terminology
+  - Listening to a museum guide explain an exhibit and identifying the three main facts
+  - Understanding a librarian's book recommendation with new genre vocabulary
+  - Following a coach's demonstration of a new game with specific rules and positions
+  - Listening to a nature documentary narrator and summarizing what animals need to survive
+  - Understanding a visiting author's explanation of their writing process and key techniques
+  - Following a classmate's science experiment presentation and identifying the hypothesis and conclusion
+  - Listening to recorded audio stories and recognizing how voice changes show different emotions
 anti_patterns:
   - Avoid academic vocabulary beyond Grade 3 subject content
   - Don't use texts longer than 12 sentences for listening comprehension
   - Avoid ambiguous vocal/gestural cues with multiple interpretations
   - Don't combine more than 3 different academic concepts in one task
   - Avoid cultural or subject knowledge beyond typical Grade 3 curriculum
-version: 1
-version_notes: Initial concept for German Grade 3 listening comprehension with focus on academic language and metacognitive understanding of vocal/gestural elements per LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

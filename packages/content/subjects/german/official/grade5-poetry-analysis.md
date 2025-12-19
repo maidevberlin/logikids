@@ -43,12 +43,19 @@ real_world_context:
   - Creating greeting cards or letters with personal poems for special occasions
   - Discussing favorite poems with classmates and explaining what makes them appealing
   - Using poetry techniques to express emotions and experiences in creative writing
+  - Performing poetry slam pieces at school talent shows with rhythm and expression
+  - Analyzing song lyrics to identify rhyme patterns and figurative language
+  - Writing acrostic or shape poems for art projects combining visual and verbal creativity
+  - Memorizing classic German children's poems for cultural literacy and family traditions
+  - Exploring nature poetry during outdoor education to describe seasons and landscapes
+  - Creating collaborative class poems where each student contributes one stanza
+  - Comparing humorous poems with serious ones to understand how tone affects meaning
 anti_patterns:
   - Avoid poems with archaic or outdated vocabulary unfamiliar to 10-year-olds
   - Don't use poems longer than 5 stanzas for analysis tasks
   - Avoid abstract themes that require adult life experience to understand
   - Don't mix multiple rhyme schemes in a single short poem without clear purpose
   - Avoid requiring memorization of poems longer than 12-16 lines
-version: 1
-version_notes: Initial version based on Berlin-Brandenburg Rahmenlehrplan Niveaustufe C-D
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

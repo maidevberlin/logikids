@@ -41,12 +41,19 @@ real_world_context:
   - Understanding when to use polite vs. casual language with teachers and friends
   - Recognizing that "Hallo" in German is "Hello" in English and "Hola" in Spanish
   - Appreciating that some friends write their names in different alphabets
+  - Observing how siblings switch between dialect and school language
+  - Discovering that Turkish, Arabic, or Polish words sound different from German
+  - Learning that some playground words help everyone play together better
+  - Noticing when vacation postcards use unfamiliar writing systems
+  - Understanding that saying "please" and "thank you" shows respect across languages
+  - Comparing how different families greet each other in various languages
+  - Exploring why some story characters speak in old-fashioned or regional ways
 anti_patterns:
   - Avoid implying any language or dialect is "wrong" or inferior
   - Don't use complex linguistic terminology beyond "dialect" and "language"
   - Avoid examples requiring reading fluency in multiple writing systems
   - Don't expect metalinguistic analysis beyond simple comparisons
   - Avoid stereotyping languages or cultures
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 1 language awareness standards (4.1-4.2)
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

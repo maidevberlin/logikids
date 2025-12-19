@@ -46,12 +46,19 @@ real_world_context:
   - Recognizing that writing formal emails requires different language than chatting with friends, even though both use German
   - Comparing German to English or other languages studied in school to see similarities and differences in grammar or vocabulary
   - Appreciating classmates who speak other languages at home and can switch between languages in different contexts
+  - Discovering that many German words for food like "Pizza," "Pasta," and "Croissant" come from Italian and French
+  - Comparing how you greet teachers versus friends and understanding when to use formal "Sie" versus informal "du"
+  - Noticing cognates when learning new languages and seeing patterns like "Haus" and "house" or "Wasser" and "water"
+  - Understanding regional expressions during family visits to different parts of Germany, Austria, or Switzerland
+  - Recognizing borrowed words in sports and technology that show how languages influence each other over time
+  - Observing how bilingual friends mix languages naturally when speaking with family versus using only German at school
+  - Comparing sentence structures across languages and noticing why German verbs go at the end of some sentences
 anti_patterns:
   - Avoid implying any language or dialect is superior or inferior
   - Don't require fluency beyond basic word recognition
   - Avoid complex linguistic terminology like "phoneme" or "morpheme"
   - Don't use examples that stereotype cultures or language communities
   - Avoid analyses requiring knowledge of uncommon foreign languages
-version: 1
-version_notes: Initial creation based on KMK Bildungsstandards Grade 4 language comparison competencies
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

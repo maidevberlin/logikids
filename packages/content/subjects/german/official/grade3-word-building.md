@@ -47,12 +47,19 @@ real_world_context:
   - Understanding word families helps students recognize spelling patterns and avoid common errors
   - Analyzing compound nouns helps students determine the correct article in German grammar
   - Morphological awareness supports dictionary use by helping students find base word entries
+  - Creating compound nouns to name new fantasy creatures like "Feuerdrache" (fire-dragon)
+  - Recognizing that "un-" changes meaning to opposite in words like "glücklich" vs "unglücklich"
+  - Understanding that adding "-chen" makes things smaller like "Hund" becomes "Hündchen"
+  - Building word families from "laufen" to understand "Läufer", "verlaufen", "Lauf"
+  - Determining the article "die" for "Haustür" by identifying "Tür" as the main noun
+  - Using prefix knowledge to guess meanings of unfamiliar words in adventure stories
+  - Recognizing vowel shifts in word pairs like "Vater" and "Väter" for plural forms
 anti_patterns:
   - Avoid word stems shorter than two letters or longer than single syllables
   - Do not use rare or archaic prefixes/suffixes beyond grade 3 vocabulary
   - Avoid compound nouns with more than three components
   - Do not include Latin or Greek stems unfamiliar to 8-9 year olds
   - Avoid word families with highly irregular or unpredictable vowel shifts
-version: 1
-version_notes: Initial version based on LehrplanPLUS Bayern Grade 3 morphology curriculum
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

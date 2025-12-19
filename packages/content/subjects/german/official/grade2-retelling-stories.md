@@ -42,12 +42,19 @@ real_world_context:
   - Retelling a story heard during story time in the library
   - Describing the sequence of events in a game played at recess
   - Sharing what happened during a family outing or trip
+  - A young reporter retelling news events for the class newspaper in order
+  - Describing a birthday party celebration from arrival to going home
+  - A knight retelling a quest adventure to the king using first, then, finally
+  - Explaining how a caterpillar becomes a butterfly in the correct sequence
+  - Retelling a fairy tale to younger siblings using story structure
+  - A detective recounting clues discovered in chronological order to solve a case
+  - Describing a soccer game from kickoff to final whistle with main events
 anti_patterns:
   - Avoid stories with more than 8 distinct events at this level
   - Don't use flashbacks or non-chronological story structures
   - Avoid abstract themes beyond 7-8 year old understanding
   - Don't include multiple similar characters that cause confusion
   - Avoid stories requiring cultural knowledge beyond typical Grade 2 experience
-version: 1
-version_notes: Initial concept for German Grade 2 story retelling skills based on KMK standards
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---

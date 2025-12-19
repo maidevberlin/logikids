@@ -44,12 +44,19 @@ real_world_context:
   - Making an argument plan with reasons why the class should visit a museum
   - Building a word bank of descriptive adjectives before writing about seasons
   - Outlining steps in logical order before writing a recipe or instructions
+  - Planning a fantasy adventure story with a map showing the hero's journey and obstacles
+  - Organizing ideas for a letter to a friend describing summer vacation activities
+  - Creating a word list of weather vocabulary before writing a science report on clouds
+  - Planning a persuasive text about why homework should be shorter with supporting reasons
+  - Using a mind map to brainstorm different animals and their habitats before writing a nature guide
+  - Organizing historical facts chronologically before writing about a famous inventor
+  - Planning a mystery story by listing characters, clues, and the solution before writing
 anti_patterns:
   - Avoid requiring more than 3-4 main organizational levels in mind maps
   - Don't expect fully formed sentences in planning stages
   - Avoid abstract topics unrelated to 8-9 year old experiences
   - Don't combine multiple planning techniques in a single task
   - Avoid planning prompts without clear purpose or text type guidance
-version: 1
-version_notes: Initial concept for German Grade 3 composition planning aligned with LehrplanPLUS Bayern curriculum area 3.2
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
