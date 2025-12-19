@@ -40,6 +40,14 @@ real_world_context:
   - Electrical resistance formulas combining resistors in circuits (1/R_total = 1/R1 + 1/R2)
   - Chemical concentration calculations when mixing solutions with different dilutions
   - Engineering calculations involving ratios of changing quantities
+  - Camera lens formulas relating focal length and magnification ratios
+  - Fuel economy calculations comparing distance traveled to fuel consumed
+  - Sound wave frequency ratios in music theory for harmony and pitch
+  - Hydraulic systems using pressure and area ratios for force multiplication
+  - Investment return formulas combining principal, rate, and time variables
+  - Cooking density calculations for ingredient substitutions by weight and volume
+  - Gear train calculations for bicycle drivetrains with multiple sprocket sizes
+  - Population density formulas dividing population by area in geography
 prerequisites:
   - grade7-algebraic-terms
   - grade6-fractions-basics
@@ -49,6 +57,6 @@ anti_patterns:
   - Avoid nested fractions with more than two levels
   - Don't combine fractional terms with radical expressions
   - Avoid contexts unfamiliar to 13-14 year olds
-version: 1
-version_notes: Initial version covering algebraic fraction operations for KMK Grade 8 curriculum
+version: 2
+version_notes: Expanded real_world_context from 4 to 12 items for better variety
 ---

@@ -46,12 +46,19 @@ real_world_context:
   - Concentration of a solution when mixing water with a fixed amount of substance
   - The intensity of light or sound decreases with the square of distance from the source
   - Dilution problems in chemistry where concentration changes with added solvent
+  - WiFi signal strength decreasing with distance from the router
+  - Average speed changing inversely with travel time for fixed distances
+  - Crowdfunding goal progress where individual contribution decreases as participant count increases
+  - Camera flash effectiveness diminishing with subject distance
+  - Water pressure in pipes varying inversely with pipe diameter
+  - Classroom size affecting individual attention time from teachers
+  - Battery drain rate inversely related to device brightness settings
 anti_patterns:
   - Avoid rational functions with polynomial numerators beyond constants
   - Don't use denominators with degree higher than 1 (quadratic or higher)
   - Avoid parameters causing asymptotes outside coordinate range -10 to 10
   - Don't introduce oblique asymptotes or multiple vertical asymptotes
   - Avoid combining rational functions with trigonometric or exponential functions
-version: 1
-version_notes: Initial version based on Grade 8 KMK curriculum standards and LehrplanPLUS Bayern
+version: 2
+version_notes: Expanded real_world_context from 5 to 12 items for better variety
 ---
