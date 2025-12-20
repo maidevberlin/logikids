@@ -1,0 +1,108 @@
+{
+  "account": {
+    "title": "Mon Compte",
+    "subtitle": "Gere ton profil et tes preferences",
+    "profileSettings": "Parametres du profil",
+    "dataManagement": "Gestion des donnees",
+    "dataInfo": "Tes donnees sont stockees en securite sur ton appareil. Tu peux les exporter ou les supprimer a tout moment.",
+    "saveButton": "Enregistrer",
+    "saving": "Enregistrement...",
+    "saved": "Modifications enregistrees !",
+    "exportData": {
+      "downloadButton": "Exporter les donnees (JSON)",
+      "exporting": "Exportation...",
+      "description": "Telecharge toutes tes donnees en fichier JSON. Tu peux l'utiliser pour des sauvegardes ou pour transferer tes donnees."
+    },
+    "logout": "Deconnexion",
+    "logoutTitle": "Deconnexion",
+    "logoutDescription": "Es-tu sur de vouloir te deconnecter ? Cela effacera toutes tes donnees de cet appareil. Si tu as active la sauvegarde cloud, tes donnees seront conservees et tu pourras te reconnecter pour les restaurer.",
+    "confirmLogout": "Deconnexion",
+    "cancel": "Annuler",
+    "deleteData": "Supprimer toutes les donnees",
+    "deleteConfirm": "Es-tu sur de vouloir supprimer toutes tes donnees ? Cette action est irreversible.",
+    "backToHome": "Retour a l'accueil",
+    "lastSynced": "Derniere synchronisation : {{time}}",
+    "neverSynced": "Jamais",
+    "justNow": "A l'instant",
+    "minutesAgo": "Il y a {{count}} minute",
+    "minutesAgo_other": "Il y a {{count}} minutes",
+    "hoursAgo": "Il y a {{count}} heure",
+    "hoursAgo_other": "Il y a {{count}} heures",
+    "daysAgo": "Il y a {{count}} jour",
+    "daysAgo_other": "Il y a {{count}} jours",
+    "recoveryKit": {
+      "downloadButton": "Telecharger le kit de recuperation (PDF)",
+      "generating": "Generation du PDF...",
+      "whatsIncluded": "Contenu : QR code, code de sauvegarde, identifiant utilisateur et instructions de recuperation",
+      "securityNote": "Conserve ce PDF en lieu sur - il contient tes identifiants de compte",
+      "pdf": {
+        "title": "Kit de recuperation Logikids",
+        "subtitle": "Conserve ce document pour recuperer ton compte",
+        "qrLabel": "Scanne ce QR code pour restaurer ton compte",
+        "backupCodeTitle": "Code de sauvegarde",
+        "userIdLabel": "Identifiant utilisateur :",
+        "instructionsTitle": "Comment utiliser ce kit de recuperation :",
+        "instruction1": "1. Conserve ce document en lieu sur",
+        "instruction2": "2. Pour restaurer ton compte, scanne le QR code ou entre le code de sauvegarde",
+        "instruction3": "3. Les donnees de ton compte sont chiffrees - ce kit est necessaire pour les dechiffrer",
+        "instruction4": "4. Toute personne ayant ce kit peut acceder a ton compte",
+        "securityWarningTitle": "Avertissement de securite :",
+        "securityWarning1": "Ce kit contient ta cle de chiffrement. Garde-le en securite et prive.",
+        "securityWarning2": "Ne le partage jamais et ne le televerse jamais sur des services cloud.",
+        "footer": "Genere par Logikids"
+      }
+    },
+    "qrDisplay": {
+      "showButton": "Afficher le QR code pour l'appairage",
+      "scanInstruction": "Scanne ce code sur un autre appareil pour synchroniser ton compte",
+      "securityWarning": "Ce QR code contient tes identifiants. Ne le scanne que sur des appareils de confiance."
+    },
+    "pair": {
+      "importing": "Connexion en cours...",
+      "noCodeError": "Aucun code d'appairage trouve dans l'URL",
+      "importError": "Echec de l'importation du compte",
+      "existingAccountTitle": "Deja connecte",
+      "existingAccountMessage": "Tu as deja un compte sur cet appareil. Deconnecte-toi d'abord si tu veux changer de compte.",
+      "goToAccount": "Aller aux parametres du compte",
+      "goHome": "Aller a l'accueil",
+      "successTitle": "Succes !",
+      "successMessage": "Ton compte a ete synchronise. Redirection...",
+      "errorTitle": "Une erreur s'est produite"
+    },
+    "import": {
+      "backupCodeLabel": "Code de sauvegarde",
+      "backupCodePlaceholder": "Entre ton code de sauvegarde (XXXX-XXXX-XXXX-...)",
+      "backupCodeHint": "Colle le code de sauvegarde de ton kit de recuperation PDF",
+      "importButton": "Importer les donnees du compte",
+      "importing": "Importation...",
+      "importSuccess": "Importation reussie ! Rechargement...",
+      "enterCodeError": "Entre un code de sauvegarde",
+      "invalidCodeError": "Code de sauvegarde invalide. Verifie et reessaie.",
+      "importFailed": "Echec de l'importation",
+      "conflictTitle": "Remplacer les donnees existantes ?",
+      "conflictMessage": "Cet appareil a deja des donnees de compte. L'importation remplacera toutes les donnees existantes par le compte importe.",
+      "conflictWarning": "Telecharge d'abord ton kit de recuperation actuel si tu veux conserver ces donnees.",
+      "conflictCancel": "Annuler",
+      "conflictConfirm": "Oui, remplacer les donnees"
+    },
+    "parentZone": "Espace parents",
+    "usageStats": "Statistiques d'utilisation",
+    "usageStatsDescription": "Voir l'utilisation de l'IA et le suivi des couts",
+    "accountNotFound": {
+      "title": "C'est l'heure d'un nouveau depart !",
+      "message1": "Ton compte precedent doit etre reinitialise suite aux mises a jour recentes de notre phase beta.",
+      "message2": "Pret a repartir de zero ? Tu auras besoin d'un nouveau code d'invitation pour continuer ton aventure d'apprentissage !",
+      "startButton": "Nouveau depart",
+      "note": "Cela effacera tes donnees locales"
+    }
+  },
+  "settings": {
+    "title": "Parametres",
+    "nameLabel": "Comment t'appelles-tu ?",
+    "namePlaceholder": "Tape ton nom ici...",
+    "gradeLabel": "En quelle classe es-tu ?",
+    "languageLabel": "Choisis ta langue",
+    "syncLabel": "Sauvegarde cloud",
+    "syncDescription": "Sauvegarde automatiquement tes donnees dans le cloud"
+  }
+}

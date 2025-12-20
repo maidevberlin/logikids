@@ -1,0 +1,356 @@
+{
+  "concepts": {
+    "grade1-dramatic-expression": {
+      "name": "Expresion dramatica y juego de roles",
+      "description": "Expresar emociones y personajes a traves de gestos, movimiento, expresiones faciales y actividades de juego de roles"
+    },
+    "grade1-phonological-awareness": {
+      "name": "Conciencia fonologica y correspondencia letra-sonido",
+      "description": "Reconocer sonidos en palabras, identificar silabas, distinguir vocales de consonantes y asociar letras con sus sonidos"
+    },
+    "grade1-writing-composition": {
+      "name": "Composicion y proceso de escritura",
+      "description": "Aprender a planificar, redactar y revisar textos simples incluyendo narrativas, entradas de diario y escritura informativa"
+    },
+    "grade1-listening-comprehension": {
+      "name": "Comprension auditiva",
+      "description": "Desarrollar habilidades de escucha atenta, extraer informacion esencial del lenguaje hablado y demostrar comprension a traves de respuestas apropiadas"
+    },
+    "grade1-reading-fluency": {
+      "name": "Fluidez y decodificacion en lectura",
+      "description": "Desarrollar reconocimiento automatico de palabras a traves de palabras de vista, habilidades de combinacion, dominio de combinaciones de letras y lectura guiada por puntuacion"
+    },
+    "grade1-speaking-conversation": {
+      "name": "Expresion oral y conversacion",
+      "description": "Narrar experiencias, seguir reglas de conversacion, discutir procesos de aprendizaje y dar retroalimentacion constructiva"
+    },
+    "grade1-spelling": {
+      "name": "Estrategias de ortografia",
+      "description": "Aplicar principios fonologicos, silabicos, morfologicos y gramaticales para deletrear palabras correctamente"
+    },
+    "grade1-reading-comprehension": {
+      "name": "Estrategias de comprension lectora",
+      "description": "Aplicar estrategias antes, durante y despues de la lectura, hacer predicciones, aclarar palabras desconocidas y responder preguntas de comprension"
+    },
+    "grade1-text-types": {
+      "name": "Tipos de texto y participacion literaria",
+      "description": "Comprender diferentes tipos de texto (poemas, historias, textos informativos), analizar personajes y elementos de la historia, y presentar textos"
+    },
+    "grade1-grammar": {
+      "name": "Gramatica y clases de palabras",
+      "description": "Identificar y usar clases de palabras basicas incluyendo sustantivos, verbos y adjetivos, y comprender formacion simple de palabras y estructura de oraciones"
+    },
+    "grade1-handwriting": {
+      "name": "Escritura manuscrita y mecanica de escritura",
+      "description": "Desarrollar escritura clara y legible con formacion correcta de letras, postura y velocidad de escritura"
+    },
+    "grade1-language-awareness": {
+      "name": "Conciencia linguistica y multilingüismo",
+      "description": "Comprender propositos de comunicacion, reconocer dialectos, comparar idiomas y apreciar la diversidad linguistica"
+    },
+    "grade2-reading-simple-texts": {
+      "name": "Lectura de textos simples",
+      "description": "Decodificar palabras, leer oraciones simples y textos cortos con comprension basica"
+    },
+    "grade2-compound-words": {
+      "name": "Palabras compuestas",
+      "description": "Comprender y formar palabras compuestas alemanas combinando dos o mas palabras para crear nuevos significados"
+    },
+    "grade2-retelling-stories": {
+      "name": "Recontar historias",
+      "description": "Hablar y escuchar"
+    },
+    "grade2-rhyming-words": {
+      "name": "Palabras que riman",
+      "description": "Identificar y producir palabras que riman, comprender patrones de sonido en aleman"
+    },
+    "grade2-asking-questions": {
+      "name": "Hacer preguntas",
+      "description": "Formar preguntas, usar palabras interrogativas y puntuar preguntas correctamente"
+    },
+    "grade2-writing-simple-sentences": {
+      "name": "Escribir oraciones simples",
+      "description": "Escribir oraciones completas con mayuscula al inicio y punto al final"
+    },
+    "grade2-alphabet-and-abc-order": {
+      "name": "Alfabeto y orden alfabetico",
+      "description": "Aprender el alfabeto aleman, orden alfabetico y usarlo para organizar y encontrar palabras"
+    },
+    "grade2-nouns-and-capital-letters": {
+      "name": "Sustantivos y mayusculas",
+      "description": "Reconocer sustantivos y escribirlos con mayuscula"
+    },
+    "grade2-plural-forms": {
+      "name": "Formas del plural",
+      "description": "Comprender y formar plurales basicos en aleman usando patrones como -e, -en, -er, -s y cambios de vocal (Umlaut)"
+    },
+    "grade2-syllables-and-word-structure": {
+      "name": "Silabas y estructura de palabras",
+      "description": "Identificar silabas, aplaudir silabas y comprender como las palabras se construyen a partir de unidades silabicas"
+    },
+    "grade3-dialogue-roleplay": {
+      "name": "Dialogo y juego de roles",
+      "description": "Navegar situaciones de comunicacion de rutina, seguir reglas de conversacion, proporcionar retroalimentacion y asumir roles en juego dramatico con perspectiva de personaje"
+    },
+    "grade3-reading-strategies": {
+      "name": "Estrategias de comprension lectora",
+      "description": "Aplicar estrategias antes, durante y despues de la lectura para comprender textos; activar conocimiento previo; anotar; aclarar vocabulario; visualizar elementos narrativos"
+    },
+    "grade3-text-analysis": {
+      "name": "Analisis de texto y comprension literaria",
+      "description": "Analizar secuencias de trama, describir personajes, explicar lenguaje figurado y comparar diferentes tipos de texto"
+    },
+    "grade3-reading-fluency": {
+      "name": "Fluidez y expresion en lectura",
+      "description": "Leer textos con fluidez, precision, ritmo apropiado, tempo y enfasis variados, mientras se construye vocabulario extenso de palabras de vista"
+    },
+    "grade3-grammar-structures": {
+      "name": "Gramatica y estructuras de oraciones",
+      "description": "Formar palabras complejas, aplicar tiempos verbales, identificar clases de palabras, puntuar discurso directo y combinar oraciones con conjunciones"
+    },
+    "grade3-composition-planning": {
+      "name": "Composicion y planificacion",
+      "description": "Aprender a planificar y organizar ideas para diferentes tipos de escritura usando mapas mentales, listas de palabras y estructuras narrativas"
+    },
+    "grade3-speaking-presentations": {
+      "name": "Expresion oral y presentaciones",
+      "description": "Construir contribuciones logicas, usar volumen y ritmo apropiados, preparar presentaciones con notas y aplicar lenguaje estandar y academico"
+    },
+    "grade3-revision-feedback": {
+      "name": "Revision y retroalimentacion de pares",
+      "description": "Dar y recibir retroalimentacion constructiva, revisar escritura para claridad y correccion, y formatear textos de manera atractiva"
+    },
+    "grade3-word-building": {
+      "name": "Construccion de palabras y morfologia",
+      "description": "Comprender raices, prefijos, sufijos; crear familias de palabras; reconocer sustantivos compuestos; explorar cambios de vocales en familias de palabras"
+    },
+    "grade3-listening-comprehension": {
+      "name": "Comprension auditiva y lenguaje academico",
+      "description": "Extraer informacion clave del lenguaje academico especifico de la materia, demostrar comprension a traves de resumenes y comprender como los elementos vocales y gestuales apoyan el significado"
+    },
+    "grade3-spelling-principles": {
+      "name": "Principios y estrategias de ortografia",
+      "description": "Aplicar principios fonologicos, silabicos y morfologicos; dominar vocabulario basico; usar diccionarios; reconocer patrones ortograficos"
+    },
+    "grade3-writing-mechanics": {
+      "name": "Mecanica de escritura y letra manuscrita",
+      "description": "Producir letra manuscrita legible; ajustar la escritura al proposito (imprenta vs cursiva); mantener postura y agarre correctos"
+    },
+    "grade4-advanced-listening": {
+      "name": "Comprension auditiva avanzada",
+      "description": "Comprender textos orales complejos, hacer preguntas especificas, reconocer lagunas de comprension"
+    },
+    "grade4-parts-of-speech": {
+      "name": "Dominio de clases de palabras",
+      "description": "Identificar y usar todas las clases de palabras principales con plena conciencia de sustantivos (caso, genero), verbos (todos los tiempos), articulos, adjetivos y pronombres"
+    },
+    "grade4-discussion-skills": {
+      "name": "Discusion y argumentacion",
+      "description": "Liderar discusiones efectivamente, presentar y defender argumentos con evidencia, responder significativamente a las contribuciones de otros y resolver conflictos a traves del dialogo colaborativo"
+    },
+    "grade4-text-planning": {
+      "name": "Planificacion y estructuracion de textos",
+      "description": "Aprender a clarificar proposito y audiencia, reunir vocabulario y frases, y organizar ideas sistematicamente antes de escribir"
+    },
+    "grade4-spelling-strategies": {
+      "name": "Estrategias y reglas de ortografia",
+      "description": "Aplicar estrategias de derivacion, pronunciacion y memorizacion; usar herramientas de referencia efectivamente; dominar puntuacion en discurso directo"
+    },
+    "grade4-text-revision": {
+      "name": "Revision y edicion de texto",
+      "description": "Auto-correccion, verificar claridad y efecto, preparar para publicacion"
+    },
+    "grade4-text-types-genres": {
+      "name": "Tipos de texto y generos",
+      "description": "Reconocer y distinguir ficcion vs no-ficcion, formas narrativas/poeticas/dramaticas, y desarrollar alfabetizacion mediatica"
+    },
+    "grade4-expressive-speaking": {
+      "name": "Expresion oral y presentacion",
+      "description": "Adaptar el habla al contexto (narrar, informar, argumentar), usar aleman estandar, habilidades de presentacion"
+    },
+    "grade4-literary-response": {
+      "name": "Respuesta e interpretacion literaria",
+      "description": "Desarrollar respuestas personales a la literatura, comprender emociones y relaciones de personajes, crear imagenes mentales vividas y participar creativamente con textos a traves de varias formas"
+    },
+    "grade4-word-formation": {
+      "name": "Formacion de palabras y vocabulario",
+      "description": "Comprender estructura de palabras a traves de raices, prefijos, sufijos, familias de palabras, campos semanticos y expansion sistematica de vocabulario"
+    },
+    "grade4-sentence-structure": {
+      "name": "Estructura de oraciones y sintaxis",
+      "description": "Dominar tipos de oraciones, estructura sujeto-predicado-complemento, referencias temporales en oraciones, formacion de oraciones complejas y puntuacion para diferentes tipos de oraciones"
+    },
+    "grade5-informational-texts": {
+      "name": "Comprension de textos informativos",
+      "description": "Comprender textos no ficticios y formatos de informacion no lineales"
+    },
+    "grade5-narrative-writing": {
+      "name": "Escritura narrativa",
+      "description": "Escribir narrativas con perspectiva clara y estructura de historia (Introduccion, Desarrollo, Conclusion)"
+    },
+    "grade5-poetry-analysis": {
+      "name": "Analisis de poesia",
+      "description": "Comprender y apreciar textos poeticos a traves de forma y expresion"
+    },
+    "grade6-listening-comprehension": {
+      "name": "Comprension auditiva",
+      "description": "Comprender textos hablados, extraer informacion, identificar intenciones del hablante"
+    },
+    "grade6-oral-presentation": {
+      "name": "Habilidades de presentacion oral",
+      "description": "Hacer presentaciones, recitar textos expresivamente, usar lenguaje corporal efectivamente"
+    },
+    "grade6-discussion-argumentation": {
+      "name": "Discusion y argumentacion",
+      "description": "Dominar habilidades de conversacion en varios contextos, expresar opiniones con apoyo razonado, aplicar estrategias de resolucion de conflictos, responder constructivamente a puntos de vista opuestos y construir sobre las contribuciones de otros"
+    },
+    "grade6-text-revision": {
+      "name": "Revision y edicion de texto",
+      "description": "Retroalimentacion de pares, estrategias de revision, edicion con criterios establecidos"
+    },
+    "grade6-reading-strategies": {
+      "name": "Estrategias de lectura",
+      "description": "Tecnicas de lectura avanzadas incluyendo resaltado, toma de notas, diarios de lectura, navegacion de texto y ajuste de velocidad de lectura al proposito"
+    },
+    "grade6-informative-writing": {
+      "name": "Escritura informativa",
+      "description": "Componer textos factuales con estructura logica clara, presentacion objetiva y resumen preciso"
+    },
+    "grade6-narrative-writing": {
+      "name": "Escritura narrativa",
+      "description": "Composicion de historias, estructura de trama, desarrollo de personajes, perspectiva narrativa"
+    },
+    "grade6-literary-text-analysis": {
+      "name": "Analisis de textos literarios",
+      "description": "Analizar narrativas, mitos, poemas y literatura juvenil a traves de analisis de personajes, identificacion de temas, recursos literarios y exploracion cultural"
+    },
+    "grade6-informational-texts": {
+      "name": "Textos informativos",
+      "description": "Textos no ficticios, usar materiales de referencia, evaluar diagramas y graficos"
+    },
+    "grade6-spelling-orthography": {
+      "name": "Ortografia",
+      "description": "Dominar reglas de ortografia avanzadas incluyendo duplicacion de consonantes, distincion das/dass, mayusculas, homofonos y ortografia de palabras extranjeras"
+    },
+    "grade6-grammar-syntax": {
+      "name": "Gramatica y sintaxis",
+      "description": "Clases de palabras, voz activa/pasiva, componentes de oracion, tipos de clausulas"
+    },
+    "grade6-punctuation": {
+      "name": "Puntuacion",
+      "description": "Aplicar reglas de puntuacion correctamente incluyendo comas en oraciones complejas, comillas en discurso directo y puntuacion de fin de oracion"
+    },
+    "grade4-reading-comprehension": {
+      "name": "Comprension lectora avanzada",
+      "description": "Analizar textos, encontrar ideas centrales, apoyar afirmaciones con evidencia, comparar textos"
+    },
+    "grade4-language-comparison": {
+      "name": "Conciencia linguistica y comparacion",
+      "description": "Comparar aleman con otros idiomas, reconocer dialectos y palabras extranjeras, distinguir formas de lenguaje oral y escrito"
+    },
+    "grade4-dramatic-expression": {
+      "name": "Expresion dramatica y juego de roles",
+      "description": "Adoptar perspectivas, desarrollar roles, explorar situaciones a traves del juego con uso avanzado de voz, gesto y movimiento"
+    },
+    "grade5-discussion-skills": {
+      "name": "Habilidades de discusion y dialogo en clase",
+      "description": "Participar efectivamente en discusiones de clase siguiendo reglas establecidas, responder apropiadamente a otros, formular y justificar opiniones y distinguir roles de conversacion"
+    },
+    "grade5-media-literacy": {
+      "name": "Alfabetizacion mediatica",
+      "description": "Comprender sistemas de biblioteca, investigacion digital y reflexionar sobre el uso de medios"
+    },
+    "grade5-oral-presentations": {
+      "name": "Presentaciones orales",
+      "description": "Presentar informacion y experiencias a companeros de clase con estructura clara y ayudas visuales"
+    },
+    "grade5-literary-text-analysis": {
+      "name": "Analisis de textos literarios",
+      "description": "Comprender formas literarias narrativas: Fabulas (fabulas), Marchen (cuentos de hadas) y Sagen (leyendas) - analizar estructura, personajes y temas"
+    },
+    "grade5-attentive-listening": {
+      "name": "Escucha atenta",
+      "description": "Comprender textos hablados, extraer informacion clave"
+    },
+    "grade5-sentence-elements": {
+      "name": "Elementos de oracion y estructura de clausulas",
+      "description": "Analisis de oracion avanzado incluyendo identificar todos los elementos de oracion (Satzglieder), distinguir clausulas principales y subordinadas, y comprender diferentes tipos de modificadores adverbiales"
+    },
+    "grade5-informative-writing": {
+      "name": "Escritura informativa",
+      "description": "Escribir textos factuales con organizacion logica (informe, descripcion)"
+    },
+    "grade5-reading-strategies": {
+      "name": "Estrategias de lectura",
+      "description": "Marcado, estructuracion, identificacion de ideas clave, diarios de lectura"
+    },
+    "grade5-text-revision": {
+      "name": "Revision de texto",
+      "description": "Planificar, revisar y mejorar textos propios y de pares"
+    },
+    "grade5-word-classes": {
+      "name": "Clases de palabras y morfologia",
+      "description": "Todas las clases de palabras (Wortarten), formacion de palabras, prefijos, sufijos"
+    },
+    "grade5-creative-writing": {
+      "name": "Escritura creativa",
+      "description": "Producir textos creativos adaptando formas literarias (adaptacion de fabula, cuento de hadas, fantasia)"
+    },
+    "grade5-spelling-rules": {
+      "name": "Ortografia y puntuacion",
+      "description": "Dominar reglas de ortografia para longitud de vocales, sonidos de s y puntuacion"
+    },
+    "grade5-dramatic-play": {
+      "name": "Juego dramatico y expresion",
+      "description": "Usar expresion teatral para interpretar textos y desarrollar autoexpresion"
+    },
+    "grade7-ballads-poetry": {
+      "name": "Analisis de baladas y poesia",
+      "description": "Analizar baladas y poemas examinando metro, esquemas de rima, recursos literarios, estructura narrativa y como la forma poetica crea ambiente y atmosfera"
+    },
+    "grade7-dramatic-performance": {
+      "name": "Actuacion dramatica y creacion de escenas",
+      "description": "Crear escenas originales, interpretar personajes y usar expresion teatral para comprension de texto"
+    },
+    "grade7-youth-literature": {
+      "name": "Analisis de literatura juvenil",
+      "description": "Analizar novelas juveniles modernas y clasicas, narrativas cortas, temas, desarrollo de personajes y tecnicas narrativas"
+    },
+    "grade7-argumentative-writing": {
+      "name": "Escritura argumentativa",
+      "description": "Escribir textos argumentativos formales incluyendo cartas, organizar argumentos por validez y apoyar afirmaciones con razonamiento y evidencia"
+    },
+    "grade7-subjunctive-mood": {
+      "name": "Modo subjuntivo (Konjunktiv)",
+      "description": "Usar subjuntivo I y II para discurso indirecto, discurso reportado y expresar situaciones hipoteticas o contrarias a la realidad"
+    },
+    "grade7-media-literacy": {
+      "name": "Alfabetizacion mediatica y evaluacion de fuentes",
+      "description": "Investigacion en internet, evaluacion de confiabilidad de fuentes, comparacion de calidad de informacion"
+    },
+    "grade7-reading-documentation": {
+      "name": "Lectura y toma de notas",
+      "description": "Diarios de lectura, estrategias de documentacion y seguimiento de comprension para profundizar experiencias de lectura"
+    },
+    "grade7-complex-sentences": {
+      "name": "Estructuras de oraciones complejas",
+      "description": "Clausulas condicionales, consecutivas, concesivas y adversativas; construir y analizar oraciones compuestas-complejas"
+    },
+    "grade7-indirect-speech": {
+      "name": "Discurso indirecto y parafraseo",
+      "description": "Convertir discurso directo a indirecto, parafrasear fuentes con precision y marcar correctamente contenido prestado"
+    },
+    "grade7-oral-presentations": {
+      "name": "Presentaciones orales estructuradas",
+      "description": "Hacer presentaciones con ayudas de visualizacion, recursos retoricos y tecnicas de participacion de la audiencia"
+    },
+    "grade7-discussion-debate": {
+      "name": "Habilidades de discusion y debate",
+      "description": "Participar en dialogo democratico y debate formal, resolver conflictos constructivamente, presentar y defender puntos de vista con argumentos estructurados y abordar posiciones opuestas con contraargumentos razonados"
+    },
+    "grade7-advanced-punctuation": {
+      "name": "Puntuacion avanzada",
+      "description": "Comas con frases infinitivas y aposiciones, comillas para titulos y discurso, y puntuacion en oraciones compuestas-complejas"
+    }
+  }
+}

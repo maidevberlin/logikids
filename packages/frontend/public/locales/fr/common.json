@@ -1,0 +1,446 @@
+{
+  "welcome": {
+    "title": "Bienvenue sur Logikids",
+    "personalizedTitle": "Content de te revoir, {{name}} !",
+    "subtitle": "Commence ton voyage dans le monde passionnant des mathematiques et de la pensee logique !",
+    "personalizedSubtitle": "Pret a continuer ton aventure d'apprentissage ?",
+    "todayPrompt": "Que voudrais-tu faire aujourd'hui ?",
+    "startButton": "Commencer a apprendre",
+    "setupAccount": "Configurer ton compte",
+    "stats": {
+      "streak": "Serie de jours",
+      "stars": "Etoiles",
+      "level": "Niveau",
+      "achievement": "Succes",
+      "noAchievement": "Continue comme ca !",
+      "streakTooltip": "Nombre de jours consecutifs ou tu as termine au moins un exercice",
+      "levelTooltip": "Ton niveau moyen de maitrise dans toutes les matieres, affiche en etoiles",
+      "achievementTooltip": "Ton dernier jalon base sur les series, les parcours parfaits ou le total d'exercices termines"
+    },
+    "navigation": {
+      "startLearning": {
+        "title": "Commencer a apprendre",
+        "description": "Choisis une matiere et commence ton parcours d'apprentissage"
+      },
+      "continueWith": "Continuer avec {{subject}} : {{concept}}",
+      "continueWithSubject": "Continuer avec {{subject}}",
+      "continue": {
+        "description": "Reprends la ou tu en etais"
+      },
+      "browseSubjects": {
+        "title": "Parcourir les matieres",
+        "description": "Explore toutes les matieres et concepts"
+      },
+      "progress": {
+        "title": "Ta progression",
+        "description": "Vois comment tu te debrouilles et suis tes succes"
+      },
+      "practiceMode": {
+        "title": "Mode entrainement",
+        "description": "Concentre-toi sur les concepts a ameliorer"
+      },
+      "profile": {
+        "title": "Profil",
+        "description": "Gere ton compte et tes parametres"
+      }
+    },
+    "achievements": {
+      "streak3": "Serie de 3 jours",
+      "streak7": "Serie de 7 jours",
+      "streak14": "Serie de 2 semaines",
+      "streak30": "Serie de 30 jours",
+      "perfect5": "5 exercices parfaits",
+      "perfect10": "10 exercices parfaits",
+      "perfect20": "20 exercices parfaits",
+      "noHints5": "5 exercices sans indices",
+      "noHints10": "10 exercices sans indices",
+      "tasks10": "10 exercices termines",
+      "tasks20": "20 exercices termines",
+      "tasks50": "50 exercices termines",
+      "tasks100": "100 exercices termines"
+    }
+  },
+  "onboarding": {
+    "parentalConsent": {
+      "title": "Bienvenue sur LogiKids",
+      "intro": "LogiKids utilise l'IA pour generer des exercices d'apprentissage personnalises pour ton enfant.",
+      "keyPointsTitle": "Points cles",
+      "privacyTitle": "Confidentialite d'abord : Tes donnees restent les tiennes",
+      "privacyExplained": "Contrairement a la plupart des applications, toutes les donnees de ton enfant sont stockees exclusivement sur ton appareil. Nous utilisons un chiffrement a connaissance nulle, ce qui signifie que meme nous ne pouvons pas voir tes donnees - seul toi detiens les cles.",
+      "privacyBackup": "La sauvegarde cloud optionnelle est disponible pour plus de commodite, mais elle est toujours chiffree sur ton appareil avant d'etre envoyee. Le serveur ne stocke que des blobs chiffres qui sont inutiles sans ta cle.",
+      "aiTitle": "Apprentissage personnalise propulse par l'IA",
+      "aiExplained": "Chaque exercice est genere dynamiquement par l'IA pour correspondre au niveau scolaire et au rythme d'apprentissage de ton enfant. Le contenu s'adapte a sa progression, fournissant le bon niveau de defi au bon moment.",
+      "contentTitle": "Contenu educatif adapte a l'age",
+      "contentExplained": "Nos prompts IA sont specifiquement concus pour generer du contenu educatif approprie au niveau scolaire de ton enfant. Bien que nous instruisions l'IA de creer du contenu sur et axe sur l'apprentissage, nous recommandons la supervision parentale comme pour tout outil educatif.",
+      "complianceTitle": "Conforme au RGPD et a l'AI Act",
+      "complianceExplained": "Pleine conformite avec les reglementations RGPD et l'AI Act de l'UE. Tu as le droit d'acceder, d'exporter ou de supprimer toutes les donnees a tout moment. Aucun partage de donnees avec des tiers, jamais.",
+      "inviteTitle": "Code d'invitation requis",
+      "inviteExplained": "LogiKids est actuellement en beta fermee. Entre le code d'invitation que tu as recu pour continuer.",
+      "invitePlaceholder": "Entre le code d'invitation (ex : ABCD-1234)",
+      "consentCheckbox": "Je suis un parent/tuteur et je confirme avoir lu et compris les informations ci-dessus. Je comprends que cette application utilise l'IA pour generer du contenu educatif et j'accepte de fournir une supervision parentale appropriee pendant l'utilisation.",
+      "privacyPolicy": "Politique de confidentialite",
+      "terms": "Conditions d'utilisation",
+      "validating": "Validation...",
+      "continue": "Continuer"
+    },
+    "studentInfo": {
+      "title": "Configurons ton profil !",
+      "subtitle": "Parle-nous un peu de toi pour commencer",
+      "nameLabel": "Prenom",
+      "namePlaceholder": "Entre ton prenom",
+      "gradeLabel": "Classe",
+      "gradeValue": "{{grade}}e",
+      "gradeDescription": "Ta classe actuelle",
+      "creating": "Creation...",
+      "create": "Creer le compte"
+    }
+  },
+  "task": {
+    "title": "Exercice",
+    "difficulty": "Difficulte",
+    "randomConcept": "Aleatoire",
+    "getHint": "Afficher un indice",
+    "getAnotherHint": "Afficher un autre indice",
+    "skip": "Passer l'exercice",
+    "solutionExplanation": "Explication de la solution",
+    "checkAnswer": "Verifier la reponse",
+    "nextTask": "Exercice suivant",
+    "tryAgain": "Reessayer",
+    "yes": "Oui",
+    "no": "Non",
+    "selectSubjectConcept": "Selectionne une matiere et un concept",
+    "subjects": "Matieres",
+    "concepts": "Concepts",
+    "conceptsFor": "Concepts pour {{subject}}",
+    "viewAll": "Voir tout",
+    "showAllSubjects": "Afficher tout →",
+    "showRecommended": "← Afficher recommandes",
+    "fillInBlanks_one": "Remplis le trou #{{count}}",
+    "fillInBlanks_other": "Remplis {{count}} trous",
+    "enterNumber": "Entre un nombre",
+    "unitOptional": "Unite (optionnel)",
+    "selectUnit": "Selectionne l'unite appropriee",
+    "dragToOrder": "Glisse pour reordonner",
+    "arrowsToOrder": "Utilise les fleches pour reordonner",
+    "selectCorrectAnswers_one": "Selectionne {{count}} bonne reponse",
+    "selectCorrectAnswers_other": "Selectionne {{count}} bonnes reponses",
+    "selectedCount": "Selectionne : {{selected}} / {{total}}",
+    "tooManySelected": "Attention : Tu as selectionne trop"
+  },
+  "feedback": {
+    "correct": "Correct !",
+    "incorrect": "Pas tout a fait. Reessaie !",
+    "numberCorrectUnitWrong": "Le nombre est correct, mais verifie l'unite",
+    "unitCorrectNumberWrong": "L'unite est correcte, mais verifie ton calcul",
+    "bothWrong": "Pas tout a fait, reessaie"
+  },
+  "error": {
+    "tryAgain": "Reessayer",
+    "backToHome": "Retour a l'accueil",
+    "rateLimited": "Attends un moment avant de generer un autre exercice"
+  },
+  "subjects": {
+    "title": "Matieres",
+    "pageTitle": "Choisis ta matiere",
+    "pageDescription": "Selectionne une matiere pour commencer a apprendre",
+    "error": "Echec du chargement des matieres. Reessaie.",
+    "availableFromGrade": "Disponible a partir de la {{grade}}e",
+    "grade": "{{grade}}e",
+    "gradeRange": "{{minGrade}}e-{{maxGrade}}e",
+    "random": "Aleatoire",
+    "math": {
+      "label": "Mathematiques",
+      "description": "Concepts mathematiques et resolution de problemes",
+      "concepts": {
+        "arithmetic": "Arithmetique de base",
+        "mental_math": "Calcul mental",
+        "word_problems": "Problemes",
+        "fractions": "Fractions et decimales",
+        "introduction_fractions": "Introduction aux fractions",
+        "percentages_basics": "Introduction aux pourcentages",
+        "ratios_proportions": "Ratios et proportions",
+        "decimal_numbers": "Nombres decimaux",
+        "geometry": "Geometrie",
+        "measurement": "Mesures et unites",
+        "grade6-percentages-basics": "Introduction aux pourcentages"
+      }
+    },
+    "logic": {
+      "label": "Logique",
+      "description": "Pensee logique et resolution de problemes",
+      "concepts": {
+        "patterns": "Reconnaissance de patterns",
+        "conditional": "Logique si-alors",
+        "sorting": "Tri et regroupement",
+        "sequences": "Sequences logiques",
+        "analogical": "Pensee analogique",
+        "deductive": "Raisonnement deductif"
+      }
+    },
+    "music": {
+      "label": "Musique",
+      "description": "Concepts musicaux et comprehension",
+      "concepts": {
+        "rhythm": "Reconnaissance du rythme",
+        "melody": "Patterns melodiques"
+      }
+    },
+    "physics": {
+      "label": "Physique",
+      "description": "Decouvre les lois fondamentales qui regissent notre univers",
+      "concepts": {
+        "mechanics": "Mecanique",
+        "waves": "Ondes",
+        "matter": "Matiere"
+      }
+    },
+    "german": {
+      "label": "Allemand",
+      "description": "Apprentissage et comprehension de la langue allemande",
+      "concepts": {
+        "parts_of_speech": "Classes de mots",
+        "spelling": "Orthographe",
+        "reading_comprehension": "Comprehension de lecture"
+      }
+    },
+    "english": {
+      "label": "Anglais",
+      "description": "Apprentissage et comprehension de la langue anglaise",
+      "concepts": {}
+    },
+    "surpriseMe": {
+      "title": "Surprise-moi !",
+      "description": "Lance-toi dans une aventure d'apprentissage aleatoire",
+      "emoji": "🎲"
+    }
+  },
+  "concepts": {
+    "subjectNotFound": "Matiere non trouvee",
+    "noConcepts": "Aucun concept disponible pour cette matiere.",
+    "noConceptsForGrade": "Aucun concept disponible pour ta classe. Essaie \"Afficher tous les concepts\".",
+    "showAdvanced": "Afficher tous les concepts",
+    "hideAdvanced": "Afficher uniquement ceux de ta classe",
+    "startLearning": "Commencer a apprendre",
+    "advanced": "Avance",
+    "gradeLabel": "{{grade}}e",
+    "tabs": {
+      "school": "Ecole",
+      "fun": "Fun"
+    },
+    "search": {
+      "placeholder": "Rechercher des concepts...",
+      "noResults": "Aucun concept trouve pour '{{query}}'"
+    },
+    "gradeGroup": {
+      "gradeN": "{{grade}}e",
+      "other": "Autre"
+    },
+    "surpriseMe": {
+      "title": "Surprise-moi !",
+      "description": "Essaie un concept aleatoire",
+      "emoji": "✨"
+    }
+  },
+  "practice": {
+    "title": "Mode entrainement",
+    "subtitle": "Concentre-toi sur les concepts a ameliorer",
+    "empty": {
+      "title": "Bravo !",
+      "description": "Tu n'as aucun concept a travailler pour l'instant. Continue comme ca !",
+      "button": "Explorer plus de matieres"
+    },
+    "metrics": {
+      "success": "Reussite",
+      "avgTime": "Temps moy.",
+      "hintsPerTask": "Indices/Exercice",
+      "attempts": "Tentatives"
+    },
+    "suggested": "Suggere :",
+    "browseAll": "Ou parcourir toutes les matieres",
+    "reasons": {
+      "lowSuccessRate": "faible taux de reussite",
+      "takingTooLong": "prend trop de temps",
+      "usingManyHints": "utilise beaucoup d'indices",
+      "buildingMastery": "Construction de la maitrise",
+      "needsWork": "A travailler : {{issues}}"
+    }
+  },
+  "difficulty": {
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile",
+    "levelUp": {
+      "medium": "Tu es passe au niveau Moyen !",
+      "hard": "Tu es passe au niveau Difficile !"
+    },
+    "levelDown": {
+      "medium": "Retour au Moyen - tu vas y arriver !",
+      "easy": "Retour au Facile - c'est en forgeant qu'on devient forgeron !"
+    },
+    "achievement": {
+      "masteringHard": "Tu maitrises le niveau difficile ! Continue !",
+      "practicingEasy": "Continue a t'entrainer - tu apprends !"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "continue": "Continuer",
+    "back": "Retour"
+  },
+  "welcomeChoice": {
+    "title": "Bienvenue sur Logikids",
+    "subtitle": "Choisis comment tu veux commencer",
+    "newAccount": {
+      "title": "J'ai un code d'invitation",
+      "description": "Commence avec un nouveau compte",
+      "inviteLabel": "Code d'invitation",
+      "invitePlaceholder": "Entre ton code d'invitation",
+      "validating": "Validation...",
+      "continue": "Continuer",
+      "invalidCode": "Code d'invitation invalide",
+      "validationError": "Echec de la validation du code d'invitation"
+    },
+    "import": {
+      "title": "Importer un compte existant",
+      "description": "Restaure depuis ton kit de recuperation",
+      "uploadPDF": "Telecharger le PDF du kit de recuperation",
+      "uploadPDFDescription": "Selectionne ton fichier PDF de kit de recuperation pour restaurer ton compte",
+      "scanQR": "Scanner le QR code avec la camera",
+      "scanQRDescription": "Dirige ta camera vers le QR code de ton kit de recuperation",
+      "manualCode": "Entrer le code de sauvegarde manuellement",
+      "invalidFileType": "Selectionne un fichier PDF",
+      "pdfParseError": "Echec de l'analyse du fichier PDF",
+      "noBackupCodeFound": "Impossible de trouver le code de sauvegarde dans le PDF",
+      "processingPDF": "Traitement du PDF...",
+      "clickToUpload": "Clique pour telecharger le fichier PDF",
+      "pdfHint": "Selectionne ton PDF de kit de recuperation Logikids",
+      "invalidQR": "QR code invalide",
+      "cameraError": "Impossible d'acceder a la camera",
+      "startCamera": "Appuie pour demarrer la camera",
+      "initializingCamera": "Initialisation de la camera...",
+      "cancel": "Annuler",
+      "invalidBackupFormat": "Format de code de sauvegarde invalide",
+      "corruptedBackupCode": "Le code de sauvegarde semble corrompu ou incomplet",
+      "invalidBackupCode": "Code de sauvegarde invalide",
+      "enterCode": "Entre un code de sauvegarde",
+      "importFailed": "Echec de l'importation",
+      "manualCodeDescription": "Colle ton code de sauvegarde du kit de recuperation",
+      "backupCode": "Code de sauvegarde",
+      "importing": "Importation...",
+      "import": "Importer"
+    }
+  },
+  "footer": {
+    "allRightsReserved": "Tous droits reserves.",
+    "privacyPolicy": "Politique de confidentialite",
+    "impressum": "Mentions legales"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Politique de confidentialite",
+      "intro": {
+        "title": "Introduction",
+        "paragraph1": "Chez Logikids, nous prenons ta vie privee au serieux. Cette politique de confidentialite explique comment nous gerons les donnees dans notre plateforme educative.",
+        "paragraph2": "Notre principe fondamental : Tes donnees restent sur ton appareil. Point final."
+      },
+      "dataCollection": {
+        "title": "Stockage des donnees : Local d'abord par defaut",
+        "description": "Logikids est construit avec la confidentialite comme fondation :",
+        "localOnly": {
+          "title": "Aucune donnee ne quitte ton appareil (par defaut)",
+          "description": "Par defaut, TOUTES les donnees de ton enfant - nom, progression d'apprentissage, preferences et informations de compte - sont stockees UNIQUEMENT sur ton appareil. Rien n'est envoye a nos serveurs ou a des tiers. L'application fonctionne completement hors ligne."
+        },
+        "noTracking": {
+          "title": "Pas d'analyse ni de suivi",
+          "description": "Nous n'utilisons pas d'analyse, de cookies de suivi ou de services de suivi tiers. Nous ne collectons pas de donnees comportementales, d'adresses IP ou de modeles de navigation. Jamais."
+        },
+        "encrypted": {
+          "title": "Sauvegarde cloud optionnelle (desactivee par defaut)",
+          "description": "Tu peux OPTIONNELLEMENT activer la sauvegarde cloud dans les parametres pour synchroniser tes donnees entre appareils. C'est DESACTIVE par defaut. Si tu choisis de l'activer, toutes les donnees sont chiffrees sur ton appareil avant d'etre envoyees a nos serveurs. Nous ne stockons que des blobs chiffres qui sont inutiles sans ta cle de chiffrement."
+        }
+      },
+      "encryption": {
+        "title": "Comment fonctionne la sauvegarde cloud optionnelle",
+        "paragraph1": "Si tu actives explicitement la sauvegarde cloud dans les parametres, toutes les donnees sont chiffrees sur ton appareil avec un chiffrement fort avant d'etre transmises. Ta cle de chiffrement ne quitte jamais ton appareil et n'est jamais envoyee a nos serveurs.",
+        "paragraph2": "Cette approche a connaissance nulle signifie que meme si nos serveurs etaient compromis, tes donnees resteraient securisees car elles sont chiffrees avec des cles que seul toi possedes. Nous ne pouvons pas lire, acceder ou dechiffrer tes donnees."
+      },
+      "aiUsage": {
+        "title": "Contenu genere par l'IA (aucune donnee personnelle envoyee)",
+        "paragraph1": "Logikids utilise l'IA (soit Ollama heberge localement, soit OpenAI) pour generer des exercices educatifs personnalises pour ton enfant. Lors de la generation des exercices, nous envoyons UNIQUEMENT le contexte necessaire (matiere, niveau de difficulte, niveau scolaire) au fournisseur d'IA.",
+        "paragraph2": "Aucune information personnelle sur ton enfant n'est jamais envoyee au fournisseur d'IA. Nous n'envoyons que la matiere, le niveau de difficulte et le niveau scolaire. La generation d'exercices est completement sans etat et anonyme."
+      },
+      "gdprRights": {
+        "title": "Tes droits RGPD",
+        "description": "En vertu du RGPD, tu as les droits suivants :",
+        "access": {
+          "title": "Droit d'acces",
+          "description": "Toutes tes donnees sont deja sur ton appareil. Tu peux les exporter sous forme de kit de recuperation (PDF avec QR code) a tout moment via les parametres du compte."
+        },
+        "export": {
+          "title": "Droit d'exportation",
+          "description": "Tu peux exporter tes donnees sous forme de kit de recuperation pour les importer sur un autre appareil ou les conserver comme sauvegarde hors ligne."
+        },
+        "deletion": {
+          "title": "Droit a l'effacement",
+          "description": "Tu peux supprimer tes donnees locales a tout moment via les parametres du compte. Si tu as active la sauvegarde cloud, tu peux egalement demander la suppression de la sauvegarde chiffree de nos serveurs."
+        },
+        "portability": {
+          "title": "Portabilite des donnees",
+          "description": "Tes donnees sont entierement portables via le kit de recuperation, te permettant de les transferer entre appareils ou de conserver des sauvegardes hors ligne. Pas d'enfermement proprietaire."
+        }
+      },
+      "dataRetention": {
+        "title": "Conservation des donnees",
+        "description": "Tes donnees restent sur ton appareil aussi longtemps que tu gardes l'application installee. Si tu as active la sauvegarde cloud optionnelle, les sauvegardes chiffrees sont conservees sur nos serveurs jusqu'a ce que tu demandes explicitement leur suppression. Nous ne suivons pas l'activite et n'implementons pas de politiques de suppression automatique. Tu as le controle total et peux supprimer tes donnees a tout moment."
+      },
+      "thirdParty": {
+        "title": "Partage de donnees avec des tiers",
+        "description": "Nous ne partageons, vendons ou transferons jamais tes donnees personnelles a des tiers. Point final. Tes donnees restent sur ton appareil. Le seul service externe que nous utilisons est le fournisseur d'IA pour la generation d'exercices, et nous n'envoyons que des donnees de contexte anonymes et non identifiantes (matiere, niveau de difficulte, niveau scolaire - jamais de noms ou d'informations personnelles)."
+      },
+      "changes": {
+        "title": "Modifications de cette politique",
+        "description": "Nous pouvons mettre a jour cette politique de confidentialite de temps en temps. Toute modification sera publiee sur cette page avec une date de revision mise a jour. L'utilisation continue de Logikids apres des modifications constitue une acceptation de la politique mise a jour."
+      },
+      "contact": {
+        "title": "Nous contacter",
+        "description": "Si tu as des questions concernant cette politique de confidentialite ou tes donnees, contacte-nous via les informations fournies dans les mentions legales (Impressum)."
+      }
+    },
+    "impressum": {
+      "title": "Mentions legales (Impressum)",
+      "provider": {
+        "title": "Fournisseur du service",
+        "name": "Nom/Entreprise",
+        "address": "Adresse",
+        "city": "Ville, Code postal",
+        "country": "Pays"
+      },
+      "contact": {
+        "title": "Coordonnees",
+        "email": "E-mail",
+        "phone": "Telephone",
+        "optional": "optionnel"
+      },
+      "responsible": {
+        "title": "Responsable du contenu",
+        "description": "Responsable du contenu de ce site selon le § 55 Abs. 2 RStV :"
+      },
+      "disclaimer": {
+        "title": "Avertissement",
+        "content": {
+          "title": "Responsabilite du contenu",
+          "description": "Le contenu de nos pages a ete cree avec le plus grand soin. Cependant, nous ne pouvons pas garantir l'exactitude, l'exhaustivite ou l'actualite du contenu. En tant que fournisseur de services, nous sommes responsables de notre propre contenu sur ces pages en vertu des lois generales. Toutefois, nous ne sommes pas obliges de surveiller les informations transmises ou stockees par des tiers ni d'enqueter sur des circonstances indiquant une activite illegale."
+        },
+        "links": {
+          "title": "Responsabilite des liens",
+          "description": "Notre site Web contient des liens vers des sites Web externes de tiers sur le contenu desquels nous n'avons aucun controle. Par consequent, nous ne pouvons accepter aucune responsabilite pour ce contenu tiers. Le fournisseur ou operateur respectif des pages est toujours responsable du contenu des pages liees."
+        }
+      },
+      "euDispute": {
+        "title": "Resolution des litiges UE",
+        "paragraph1": "La Commission europeenne fournit une plateforme pour la resolution des litiges en ligne (RLL).",
+        "paragraph2": "Tu peux trouver la plateforme a :"
+      }
+    }
+  }
+}

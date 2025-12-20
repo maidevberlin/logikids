@@ -1,0 +1,456 @@
+{
+  "concepts": {
+    "grade1-addition-subtraction-to-20": {
+      "description": "Addition et soustraction de nombres jusqu'a 20, y compris le passage de la dizaine, familles de faits et strategies de calcul mental",
+      "name": "Addition et soustraction jusqu'a 20"
+    },
+    "grade1-length-measurement": {
+      "description": "Comparer des longueurs, ordonner des objets par taille et mesurer avec des unites non standard",
+      "name": "Mesure de longueurs"
+    },
+    "grade1-time-concepts": {
+      "description": "Lire l'heure a l'heure pile, comprendre les jours de la semaine et utiliser le vocabulaire de base du temps",
+      "name": "Notions de temps"
+    },
+    "grade1-money": {
+      "description": "Reconnaitre les pieces et les billets, compter l'argent et resoudre des problemes d'achat simples",
+      "name": "L'argent"
+    },
+    "grade1-number-sense-to-20": {
+      "description": "Compter, lire, ecrire, comparer et ordonner les nombres de 0 a 20 ; comprendre les quantites et les relations entre les nombres",
+      "name": "Sens des nombres jusqu'a 20"
+    },
+    "grade1-patterns-and-data": {
+      "description": "Reconnaitre, continuer et creer des motifs ; collecter et representer des donnees simples",
+      "name": "Motifs et donnees"
+    },
+    "grade1-plane-shapes": {
+      "description": "Identifier, nommer et decrire les formes 2D de base",
+      "name": "Formes planes"
+    },
+    "grade1-probability-basics": {
+      "description": "Comprendre le hasard et la probabilite en utilisant un vocabulaire comme certain, possible et impossible a travers des situations quotidiennes simples",
+      "name": "Bases des probabilites"
+    },
+    "grade1-solid-shapes": {
+      "description": "Identifier et nommer les formes 3D (cube, sphere, cylindre, cone, pave) et les relier a des objets du monde reel",
+      "name": "Formes solides"
+    },
+    "grade1-spatial-orientation": {
+      "description": "Comprendre et utiliser des mots de position pour decrire des emplacements et suivre des directions",
+      "name": "Orientation spatiale"
+    },
+    "grade1-symmetry": {
+      "description": "Reconnaitre la symetrie axiale par le pliage et les activites de miroir, identifier les formes symetriques et creer des motifs symetriques",
+      "name": "Symetrie"
+    },
+    "grade2-addition-subtraction-to-100": {
+      "description": "Addition et soustraction de nombres jusqu'a 100 avec des strategies mentales, avec et sans retenue, et resolution de problemes a plusieurs etapes",
+      "name": "Addition et soustraction jusqu'a 100"
+    },
+    "grade2-geometry-and-symmetry": {
+      "description": "Approfondir la comprehension des formes 2D et 3D, identifier et creer des figures symetriques, et travailler avec les axes de symetrie",
+      "name": "Geometrie et symetrie"
+    },
+    "grade2-introduction-to-chance": {
+      "description": "Comprendre les evenements certains, possibles et impossibles a travers des experiences simples",
+      "name": "Introduction au hasard"
+    },
+    "grade2-introduction-to-division": {
+      "description": "Comprendre la division par le partage et les strategies de regroupement, relier a la multiplication et construire les faits de division fondamentaux",
+      "name": "Introduction a la division"
+    },
+    "grade2-introduction-to-multiplication": {
+      "description": "Comprendre la multiplication comme addition repetee, tableaux, groupes egaux et tables de multiplication fondamentales (2, 5, 10)",
+      "name": "Introduction a la multiplication"
+    },
+    "grade2-measurement-skills": {
+      "description": "Mesurer des longueurs, comprendre le temps et comparer des mesures",
+      "name": "Competences de mesure"
+    },
+    "grade2-money-and-currency": {
+      "description": "Travailler avec les pieces et billets en euros jusqu'a 100€, utiliser la notation € et ct, additionner et soustraire des sommes d'argent, calculer la monnaie et resoudre des problemes d'achat",
+      "name": "Argent et monnaie"
+    },
+    "grade2-numbers-to-100": {
+      "description": "Comprendre la valeur positionnelle avec dizaines et unites, lire, ecrire, comparer les nombres jusqu'a 100, utiliser le tableau des 100 et la droite numerique",
+      "name": "Nombres jusqu'a 100"
+    },
+    "grade2-patterns-and-data-representation": {
+      "description": "Suites numeriques ; collecte de donnees ; tableaux de pointage ; diagrammes a barres simples ; interpretation de donnees",
+      "name": "Motifs et representation des donnees"
+    },
+    "grade3-advanced-geometry": {
+      "description": "Explorer les pyramides, cones et cylindres ; comprendre les patrons de formes 3D ; travail approfondi sur la symetrie",
+      "name": "Geometrie avancee"
+    },
+    "grade3-area": {
+      "description": "Couvrir avec des carres unites ; comparer des aires ; l'aire comme mesure",
+      "name": "Introduction a l'aire"
+    },
+    "grade3-arithmetic-laws": {
+      "description": "Comprendre et appliquer les proprietes commutative, associative et distributive pour rendre les calculs plus efficaces",
+      "name": "Lois et proprietes arithmetiques"
+    },
+    "grade3-data-and-combinatorics": {
+      "description": "Collecter, organiser et interpreter des donnees ; comptage systematique et combinaisons simples",
+      "name": "Donnees et combinatoire"
+    },
+    "grade3-length-measurement": {
+      "description": "Mesurer en mm, cm, m, km ; conversions d'unites ; estimation et comparaison de longueurs",
+      "name": "Mesure de longueurs"
+    },
+    "grade3-measurement-mass-volume": {
+      "description": "Comprendre et travailler avec les grammes, kilogrammes, millilitres et litres par la mesure, la comparaison et la conversion",
+      "name": "Mesures - Masse et volume"
+    },
+    "grade3-money-advanced": {
+      "description": "Travailler avec des montants jusqu'a 1000 euros, utiliser la notation decimale, gerer les billets de 100€, 200€ et 500€, resoudre des problemes d'achat a plusieurs etapes et planification de budget",
+      "name": "Competences monetaires avancees"
+    },
+    "grade3-multiplication-division-strategies": {
+      "description": "Methodes semi-ecrites pour la multiplication, multiplier par 10 et 100, et division avec reste",
+      "name": "Strategies de multiplication et division"
+    },
+    "grade3-multiplication-tables": {
+      "description": "Maitriser toutes les tables de multiplication de 1 a 10 avec rappel automatique et comprendre les operations inverses (faits de division)",
+      "name": "Tables de multiplication"
+    },
+    "grade3-numbers-to-1000": {
+      "description": "Comprendre la valeur positionnelle avec centaines, dizaines et unites ; lire, ecrire, comparer et ordonner les nombres ; arrondir ; reconnaitre les motifs numeriques",
+      "name": "Nombres jusqu'a 1000"
+    },
+    "grade3-perimeter": {
+      "description": "Calculer le perimetre des formes en additionnant les longueurs des cotes ; travailler avec des rectangles, carres, triangles et polygones",
+      "name": "Perimetre"
+    },
+    "grade3-time-and-duration": {
+      "description": "Lire l'heure, calculer des durees, comprendre les relations du calendrier et travailler avec les unites de temps",
+      "name": "Temps et duree"
+    },
+    "grade3-written-addition-and-subtraction": {
+      "description": "Algorithmes standard pour l'addition et la soustraction a plusieurs chiffres avec retenue",
+      "name": "Addition et soustraction posees"
+    },
+    "grade4-area-perimeter": {
+      "description": "Calculer l'aire et le perimetre des rectangles et carres ; utiliser les unites carrees ; distinguer aire et perimetre ; resoudre des problemes avec dimensions manquantes",
+      "name": "Aire et perimetre"
+    },
+    "grade4-combinatorics": {
+      "description": "Trouver toutes les possibilites systematiquement en utilisant des arbres, listes organisees et tableaux pour resoudre des problemes de combinaisons et d'arrangements",
+      "name": "Combinatoire et comptage systematique"
+    },
+    "grade4-data-probability": {
+      "description": "Collecter et organiser des donnees d'enquetes et experiences ; creer et interpreter des diagrammes a barres, pictogrammes et tableaux ; calculer des moyennes simples ; comprendre la probabilite et les evenements",
+      "name": "Analyse de donnees et probabilite"
+    },
+    "grade4-fractions": {
+      "description": "Comprendre les fractions comme parties d'un tout, notation fractionnaire, representation visuelle, comparer et ordonner les fractions de meme denominateur, reconnaitre les fractions equivalentes et appliquer les fractions dans des contextes quotidiens",
+      "name": "Introduction aux fractions"
+    },
+    "grade4-geometry-spatial": {
+      "description": "Proprietes des formes 2D et 3D ; symetrie et lignes ; visualisation spatiale ; patrons de solides geometriques ; relations paralleles et perpendiculaires",
+      "name": "Geometrie et raisonnement spatial"
+    },
+    "grade4-measurement-units": {
+      "description": "Convertir entre unites de longueur, masse, volume et temps ; comprendre la notation decimale pour les mesures ; estimer et resoudre des problemes avec des mesures",
+      "name": "Mesures et conversion d'unites"
+    },
+    "grade4-money-decimals": {
+      "description": "Comprendre la notation euro et centime avec decimales ; additionner, soustraire et multiplier des sommes d'argent ; rendre la monnaie et calculer des totaux ; comparer des prix et convertir entre euros et centimes",
+      "name": "Argent et notation decimale"
+    },
+    "grade4-numbers-to-million": {
+      "description": "Comprendre la valeur positionnelle a six chiffres ; lire, ecrire, comparer et ordonner les nombres ; arrondir aux milliers et au-dela ; reconnaitre les motifs dans les grands nombres",
+      "name": "Nombres jusqu'a 1 000 000"
+    },
+    "grade4-patterns-equations": {
+      "description": "Reconnaitre et prolonger des motifs numeriques, trouver les regles des suites, comprendre les variables comme marqueurs de place, resoudre des equations simples a une etape et decrire des relations mathematiques",
+      "name": "Motifs et equations simples"
+    },
+    "grade4-scale-maps": {
+      "description": "Lire et creer des plans d'etage et cartes ; comprendre l'echelle comme un rapport ; calculer des distances reelles a partir de distances sur carte ; orientation spatiale et direction",
+      "name": "Echelle et cartes"
+    },
+    "grade4-time-calendar": {
+      "description": "Lire les horloges analogiques et numeriques en format 24 heures ; convertir entre unites de temps ; calculer des durees et temps ecoule ; travailler avec les calendriers incluant jours, semaines, mois et annees",
+      "name": "Temps et calendrier"
+    },
+    "grade4-volume-unit-cubes": {
+      "description": "Comprendre le volume en comptant les cubes unites et en comparant les volumes de formes 3D",
+      "name": "Volume avec cubes unites"
+    },
+    "grade4-written-multiplication-division": {
+      "description": "Maitriser les algorithmes ecrits standard pour la multiplication et la division a plusieurs chiffres ; comprendre quand appliquer chaque operation ; resoudre des problemes du monde reel",
+      "name": "Multiplication et division posees"
+    },
+    "grade5-angles": {
+      "description": "Comprendre les types d'angles, mesurer les angles avec un rapporteur, estimer les angles et reconnaitre les relations entre angles",
+      "name": "Angles et mesure"
+    },
+    "grade5-area-perimeter-advanced": {
+      "description": "Calculer l'aire et le perimetre des rectangles, carres, triangles et formes composees",
+      "name": "Aire et perimetre - Avance"
+    },
+    "grade5-arithmetic-operations": {
+      "description": "Methodes ecrites pour les quatre operations, ordre des operations, estimation et verification",
+      "name": "Operations arithmetiques"
+    },
+    "grade5-data-collection-charts": {
+      "description": "Collecter, organiser et representer des donnees avec des tableaux, diagrammes a barres, pictogrammes et graphiques lineaires",
+      "name": "Collecte de donnees et diagrammes"
+    },
+    "grade5-decimals": {
+      "description": "Comprendre la valeur positionnelle decimale, convertir entre fractions et decimales, effectuer des operations avec des decimales et arrondir",
+      "name": "Nombres decimaux"
+    },
+    "grade5-divisibility-prime-numbers": {
+      "description": "Appliquer les criteres de divisibilite par 2, 3, 5, 9 et 10, identifier les nombres premiers et composes, effectuer la decomposition en facteurs premiers avec des arbres de facteurs, et determiner le PGCD et le PPCM",
+      "name": "Divisibilite et nombres premiers"
+    },
+    "grade5-fractions-operations": {
+      "description": "Additionner et soustraire des fractions de meme denominateur et de denominateurs differents, multiplier des fractions par des entiers et simplifier les fractions au maximum",
+      "name": "Operations sur les fractions"
+    },
+    "grade5-geometry-basics": {
+      "description": "Points, droites, demi-droites, segments, droites paralleles et perpendiculaires, et notation geometrique de base",
+      "name": "Elements geometriques de base"
+    },
+    "grade5-natural-numbers-large": {
+      "description": "Comprendre les nombres naturels au-dela du million, valeur positionnelle jusqu'aux milliards, chiffres romains et comparaison de differents systemes numeriques",
+      "name": "Grands nombres naturels"
+    },
+    "grade5-negative-numbers": {
+      "description": "Introduction aux entiers relatifs, representation sur la droite numerique, comparer et ordonner les entiers, et contextes du monde reel",
+      "name": "Nombres negatifs"
+    },
+    "grade5-units-measurement": {
+      "description": "Conversions avancees d'unites metriques, calculs avec unites mixtes et choix des unites de mesure appropriees pour differents contextes",
+      "name": "Unites et mesures"
+    },
+    "grade5-volume": {
+      "description": "Calculer le volume avec des formules, convertir entre unites cubiques et relier le volume a la capacite",
+      "name": "Volume des paves et cubes"
+    },
+    "grade6-angles-advanced": {
+      "description": "Mesurer et tracer des angles avec precision, identifier les relations entre angles y compris les angles opposes par le sommet, correspondants et adjacents, et construire des bissectrices",
+      "name": "Angles et relations angulaires"
+    },
+    "grade6-area-formulas": {
+      "description": "Deriver et appliquer les formules d'aire pour les parallelogrammes, triangles et trapezes ; calculer les aires de surfaces de solides simples en utilisant des strategies de decomposition et de complementation",
+      "name": "Formules d'aire"
+    },
+    "grade6-combined-operations": {
+      "description": "Structure des expressions, ordre des operations, propriete distributive et problemes a plusieurs etapes avec fractions, decimales et nombres entiers",
+      "name": "Operations combinees avec nombres rationnels"
+    },
+    "grade6-coordinate-system": {
+      "description": "Comprendre le systeme de coordonnees cartesiennes avec les quatre quadrants, placer et lire des points avec coordonnees positives et negatives, calculer des distances et decrire des relations geometriques",
+      "name": "Systeme de coordonnees"
+    },
+    "grade6-data-diagrams": {
+      "description": "Determiner les frequences absolues et relatives, afficher des donnees avec des diagrammes circulaires et en colonnes, calculer et interpreter la moyenne arithmetique, reconnaitre les presentations manipulatrices dans la visualisation de donnees",
+      "name": "Donnees et diagrammes"
+    },
+    "grade6-decimal-fractions": {
+      "description": "Comprendre les valeurs positionnelles decimales, arrondir, convertir entre fractions et decimales, et distinguer les decimales finies des decimales periodiques",
+      "name": "Fractions decimales"
+    },
+    "grade6-fractions-basics": {
+      "description": "Interpreter les fractions comme parties de touts, comparer les fractions avec plusieurs strategies, etendre et reduire les fractions en preservant la valeur, representer les fractions sur des droites numeriques y compris les fractions negatives, et relier les pourcentages a la notation fractionnaire",
+      "name": "Fractions et nombres fractionnaires"
+    },
+    "grade6-geometric-constructions": {
+      "description": "Construire des droites perpendiculaires et paralleles, effectuer des reflexions axiales et ponctuelles",
+      "name": "Constructions geometriques"
+    },
+    "grade6-integer-operations": {
+      "description": "Additionner et soustraire des entiers en utilisant des modeles de droite numerique et des regles de signes, comprendre la valeur absolue dans les calculs et appliquer les operations sur les entiers a des contextes du monde reel",
+      "name": "Operations sur les entiers"
+    },
+    "grade6-percentages": {
+      "description": "Resoudre des problemes de pourcentage quotidiens y compris remises et interets, appliquer l'equation de base du pourcentage (valeur de base × taux = pourcentage), et distinguer entre pourcentage et points de pourcentage",
+      "name": "Pourcentages"
+    },
+    "grade6-proportionality": {
+      "description": "Comprendre les rapports comme comparaisons, reconnaitre les relations proportionnelles, utiliser les tableaux de proportionnalite et la regle de trois, et distinguer les situations proportionnelles des non-proportionnelles",
+      "name": "Proportionnalite et rapports"
+    },
+    "grade6-rational-addition-subtraction": {
+      "description": "Additionner et soustraire des fractions de meme denominateur et de denominateurs differents, nombres mixtes et decimales en utilisant des strategies de calcul et verification des resultats par estimation",
+      "name": "Addition et soustraction de nombres rationnels"
+    },
+    "grade6-rational-multiplication-division": {
+      "description": "Calculer des produits et quotients de fractions en utilisant des representations significatives, appliquer les reciproques pour la division, calculer des puissances avec bases rationnelles et exposants entiers naturels ou negatifs, et utiliser des avantages computationnels pour simplifier les calculs",
+      "name": "Multiplication et division de nombres rationnels"
+    },
+    "grade6-volume": {
+      "description": "Calculer les volumes de paves et prismes avec des formules, convertir entre unites de volume et resoudre des problemes par des strategies de decomposition et de complementation",
+      "name": "Volume des prismes"
+    },
+    "grade7-algebraic-terms": {
+      "description": "Construire, interpreter et transformer des expressions algebriques avec variables incluant les puissances",
+      "name": "Expressions algebriques"
+    },
+    "grade7-angle-relationships": {
+      "description": "Comprendre les proprietes des angles aux droites secantes, avec les droites paralleles et dans les polygones",
+      "name": "Relations angulaires"
+    },
+    "grade7-congruence-triangles": {
+      "description": "Theoremes de congruence (CCC, CAC, ACA, AAC) et construction de triangles a partir d'elements donnes",
+      "name": "Congruence et construction de triangles"
+    },
+    "grade7-linear-equations": {
+      "description": "Resoudre des equations lineaires a une variable y compris une etape, deux etapes, variables des deux cotes, et problemes du monde reel",
+      "name": "Equations lineaires"
+    },
+    "grade7-parallel-translation": {
+      "description": "Deplacement parallele comme transformation de congruence, vecteurs de translation, calculs de coordonnees",
+      "name": "Translation parallele et vecteurs"
+    },
+    "grade7-percentage-applications": {
+      "description": "Calculs de pourcentage avances incluant interets, remises et problemes a plusieurs etapes",
+      "name": "Applications des pourcentages"
+    },
+    "grade7-powers-exponents": {
+      "description": "Comprendre la notation de puissance comme multiplication repetee, appliquer les lois des puissances y compris la regle du produit, du quotient et puissance d'une puissance, simplifier les expressions avec exposants entiers et travailler avec les puissances de variables",
+      "name": "Puissances et exposants"
+    },
+    "grade7-proportionality": {
+      "description": "Reconnaitre et appliquer les relations de proportionnalite directe et inverse, creer des tableaux de proportionnalite, tracer des fonctions proportionnelles et distinguer les situations proportionnelles des non-proportionnelles dans des contextes du monde reel",
+      "name": "Proportionnalite"
+    },
+    "grade7-statistical-measures": {
+      "description": "Calculer et interpreter la moyenne, mediane, mode, etendue, quartiles et boites a moustaches pour l'analyse et la comparaison de donnees statistiques",
+      "name": "Mesures statistiques"
+    },
+    "grade7-symmetry-constructions": {
+      "description": "Construire des figures symetriques, mediatrices, bissectrices et lieux geometriques",
+      "name": "Symetrie et constructions geometriques"
+    },
+    "grade7-thales-theorem": {
+      "description": "Appliquer le theoreme de Thales et sa reciproque pour identifier des angles droits, construire des tangentes et resoudre des problemes geometriques",
+      "name": "Theoreme de Thales"
+    },
+    "grade8-circles": {
+      "description": "Circonference et aire du cercle, comprendre pi et applications avec des formes composees",
+      "name": "Cercles"
+    },
+    "grade8-fractional-equations": {
+      "description": "Resoudre des equations avec des fractions algebriques, verifier les solutions etrangeres et reorganiser des formules dans des contextes scientifiques",
+      "name": "Equations fractionnaires"
+    },
+    "grade8-fractional-terms": {
+      "description": "Operations sur les fractions algebriques - simplifier, developper, additionner, soustraire, multiplier et diviser des expressions fractionnaires",
+      "name": "Expressions fractionnaires"
+    },
+    "grade8-functions-basics": {
+      "description": "Comprendre le concept de fonction comme assignation unique, distinguer la terminologie des fonctions (expression de la fonction, graphique, domaine, image), utiliser des tableaux et diagrammes pour representer les fonctions, et determiner les valeurs de fonctions et points d'intersection",
+      "name": "Fonctions et expressions"
+    },
+    "grade8-integer-exponents": {
+      "description": "Comprendre les exposants negatifs et nuls, appliquer les regles des puissances avec exposants entiers, ecrire et calculer avec la notation scientifique, et simplifier des expressions exponentielles complexes",
+      "name": "Exposants entiers"
+    },
+    "grade8-laplace-probability": {
+      "description": "Experiences aleatoires, formule de Laplace P(E)=|E|/|Ω|, principes de denombrement, arbres de probabilite pour experiences a plusieurs etapes, frequence relative, loi des grands nombres",
+      "name": "Experiences de Laplace"
+    },
+    "grade8-linear-functions": {
+      "description": "Comprendre et travailler avec les fonctions lineaires y = mx + t, y compris le trace, l'interpretation de la pente et de l'ordonnee a l'origine, trouver les zeros et points d'intersection, et resoudre des inequations lineaires",
+      "name": "Fonctions lineaires"
+    },
+    "grade8-linear-systems": {
+      "description": "Resoudre des systemes de deux equations lineaires a deux inconnues par des methodes graphiques et par substitution, comprendre les cas de solution (unique, aucune, infinie)",
+      "name": "Systemes d'equations lineaires"
+    },
+    "grade8-prisms-cylinders": {
+      "description": "Calculer l'aire de surface et le volume des prismes et cylindres, dessiner et interpreter les patrons, et appliquer la formule V = aire de base × hauteur pour resoudre des problemes du monde reel",
+      "name": "Prismes et cylindres"
+    },
+    "grade8-rational-functions": {
+      "description": "Comprendre et travailler avec les fonctions rationnelles de la forme f(x) = a/(x+b) + c, y compris les restrictions de domaine, asymptotes, trace et proportionnalite inverse comme cas particulier",
+      "name": "Fonctions rationnelles elementaires"
+    },
+    "grade9-binomial-formulas": {
+      "description": "Maitriser les trois identites remarquables pour developper et factoriser efficacement des expressions algebriques",
+      "name": "Identites remarquables"
+    },
+    "grade9-compound-probability": {
+      "description": "Comprendre les evenements composes par la notation ensembliste, les diagrammes de Venn, les tableaux de contingence et calculer les probabilites d'unions et intersections en utilisant la regle d'addition",
+      "name": "Probabilite composee"
+    },
+    "grade9-power-functions": {
+      "description": "Comprendre les fonctions puissance avec differents exposants, leurs graphiques et les relations avec la notation radicale",
+      "name": "Fonctions puissance"
+    },
+    "grade9-pythagorean-theorem": {
+      "description": "Comprendre et appliquer le theoreme de Pythagore, sa demonstration, sa reciproque et ses applications pratiques en geometrie et en mesure",
+      "name": "Theoreme de Pythagore"
+    },
+    "grade9-quadratic-equations": {
+      "description": "Resoudre des equations du second degre par factorisation, completion du carre et formules quadratiques (forme p-q et forme abc). Comprendre le discriminant et appliquer les solutions a des problemes du monde reel.",
+      "name": "Equations du second degre"
+    },
+    "grade9-similarity": {
+      "description": "Comprendre les criteres de similitude des triangles, appliquer le theoreme des milieux, calculer des segments proportionnels et analyser comment les facteurs d'echelle affectent l'aire et le volume",
+      "name": "Similitude et proportionnalite"
+    },
+    "grade9-quadratic-functions": {
+      "description": "Etudier les paraboles, leurs equations (forme sommet, forme generale, forme factorisee), effets des parametres, techniques de trace et proprietes cles incluant l'ensemble image, les zeros et la monotonie.",
+      "name": "Fonctions du second degre"
+    },
+    "grade9-square-roots": {
+      "description": "Comprendre les racines carrees, simplifier les expressions radicales, rationaliser les denominateurs et explorer les nombres irrationnels",
+      "name": "Racines carrees et radicaux"
+    },
+    "grade9-right-triangle-trigonometry": {
+      "description": "Comprendre sinus, cosinus et tangente comme rapports dans les triangles rectangles, appliquer les identites trigonometriques fondamentales et resoudre des problemes pratiques de topographie et de physique",
+      "name": "Trigonometrie du triangle rectangle"
+    },
+    "grade9-sine-cosine-laws": {
+      "description": "Appliquer les lois des sinus et cosinus pour resoudre des triangles quelconques, comprendre la visualisation du cercle trigonometrique et reconnaitre le theoreme de Pythagore comme cas particulier",
+      "name": "Lois des sinus et cosinus"
+    },
+    "grade9-systems-of-equations": {
+      "description": "Resoudre des systemes de trois equations lineaires a trois inconnues par substitution, elimination et methode du pivot de Gauss, y compris la modelisation du monde reel",
+      "name": "Systemes d'equations lineaires (3 variables)"
+    },
+    "grade10-exponential-functions": {
+      "description": "Fonctions exponentielles de la forme b·a^x, modeles de croissance et decroissance exponentielle, et comparaison avec la croissance lineaire",
+      "name": "Fonctions exponentielles et croissance"
+    },
+    "grade10-logarithms": {
+      "description": "Comprendre les logarithmes comme operations inverses de l'exponentiation, calculer des valeurs de logarithmes et resoudre des equations exponentielles",
+      "name": "Logarithmes"
+    },
+    "grade10-pyramids-cones": {
+      "description": "Calculer l'aire de surface et le volume des pyramides et cones, dessiner et interpreter les patrons, comprendre le principe de Cavalieri et resoudre des problemes spatiaux a plusieurs etapes combinant geometrie et trigonometrie",
+      "name": "Pyramides et cones"
+    },
+    "grade10-unit-circle-radians": {
+      "description": "Cercle trigonometrique de rayon 1, mesure en radians comme alternative aux degres, et valeurs de sinus/cosinus pour les angles remarquables de 0 a 2π",
+      "name": "Cercle trigonometrique et radians"
+    },
+    "grade10-trigonometric-functions": {
+      "description": "Comprendre sinus et cosinus comme fonctions periodiques, analyser les effets des parametres dans les transformations a·sin(b·(x+c))+d, et modeliser des phenomenes periodiques du monde reel",
+      "name": "Fonctions trigonometriques"
+    },
+    "grade10-polynomial-functions": {
+      "description": "Explorer les fonctions polynomiales comme sommes de fonctions puissance, analyser les zeros et leur multiplicite, tracer les graphiques a partir de la forme factorisee, determiner le comportement aux limites et verifier les proprietes de symetrie",
+      "name": "Fonctions polynomiales"
+    },
+    "grade10-probability-simulation": {
+      "description": "Utiliser les methodes de Monte Carlo et les simulations par tableur pour approximer les probabilites experimentalement, explorer la loi des grands nombres et les paradoxes de probabilite celebres",
+      "name": "Simulation de probabilite"
+    },
+    "grade10-compound-experiments": {
+      "description": "Arbres de probabilite, regles de chemin, modeles d'urne pour la probabilite composee",
+      "name": "Experiences aleatoires composees"
+    },
+    "grade10-spheres": {
+      "description": "Comprendre les spheres comme solides de revolution, calculer le volume et l'aire de surface, et resoudre des problemes avec des hemispheres et des solides composes",
+      "name": "Spheres"
+    }
+  }
+}

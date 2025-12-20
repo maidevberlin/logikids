@@ -1,0 +1,298 @@
+{
+  "header": "Preparation de ton exercice...",
+  "timeRemaining": "Environ {{seconds}} secondes restantes...",
+  "almostThere": "Presque fini... on te prepare une super question !",
+  "stages": {
+    "analyzing": "Analyse de ton niveau...",
+    "crafting": "Creation de ta question...",
+    "generating": "Generation des indices et solutions...",
+    "finalizing": "Touches finales..."
+  },
+  "contentTypes": {
+    "tip": "Astuce",
+    "fact": "Le savais-tu ?",
+    "preview": "A venir",
+    "encouragement": "Continue comme ca !"
+  },
+  "encouragement": {
+    "math": [
+      "Les pourcentages t'aident a reperer quand une 'promo' n'est que du marketing",
+      "Les ratios t'aident a adapter les recettes pour plus ou moins de personnes",
+      "Les calculs d'interets te montrent combien coute vraiment un pret - avant de signer",
+      "Les statistiques t'aident a voir a travers les graphiques trompeurs dans les actualites",
+      "Le calcul mental te rend plus rapide pour partager l'addition entre amis",
+      "Les probabilites expliquent pourquoi jouer au loto ne marche presque jamais",
+      "Calculer les surfaces te dit combien de peinture il te faut avant de commencer",
+      "Comprendre les echelles t'aide a savoir a quelle distance sont vraiment les endroits sur une carte",
+      "Les fractions t'aident a partager equitablement pizza, gateau ou depenses",
+      "La conversion d'unites aide avec les recettes d'internet utilisant cups et ounces"
+    ],
+    "physics": [
+      "La physique explique pourquoi ta batterie de telephone se vide plus vite en hiver",
+      "L'optique montre pourquoi tu parais plus mince ou plus large selon les miroirs",
+      "Le transfert de chaleur explique pourquoi tu geles si vite avec un t-shirt mouille",
+      "L'electricite t'aide a comprendre pourquoi certains chargeurs sont plus rapides",
+      "La mecanique explique pourquoi tu ne tombes pas en faisant du velo",
+      "Le son explique pourquoi tu vois l'eclair avant d'entendre le tonnerre",
+      "L'aerodynamique montre pourquoi les ailerons de voiture ne sont pas que decoratifs",
+      "Le frottement explique pourquoi les pneus hiver adherent mieux dans la neige",
+      "La pression explique pourquoi tes oreilles font mal en avion ou en plongee",
+      "La flottabilite explique pourquoi d'enormes navires en acier peuvent flotter"
+    ],
+    "logic": [
+      "La logique t'aide a distinguer les fake news des vraies infos",
+      "La pensee logique t'aide a reperer quand quelqu'un utilise de mauvais arguments",
+      "La logique t'aide a verifier si les avis en ligne sont vrais ou faux",
+      "Quand tu reconnais des patterns, tu resous plus vite les puzzles dans les jeux",
+      "La logique t'aide a trouver le chemin le plus rapide, pas juste le plus court",
+      "La pensee logique t'aide a voir a travers la publicite manipulatrice",
+      "Le debogage, c'est de la logique appliquee - que ce soit du code ou des appareils casses",
+      "La logique t'aide a distinguer les titres racoleurs des vraies infos",
+      "La pensee si-alors t'aide a prevoir les consequences de tes decisions",
+      "La logique t'aide a trouver qui ment dans Loup-garou ou Among Us"
+    ],
+    "music": [
+      "Le rythme t'aide pas seulement en musique, mais aussi en danse et en sport",
+      "L'entrainement de l'oreille t'aide a remarquer quand quelqu'un chante faux au karaoke",
+      "La theorie musicale explique pourquoi certaines chansons semblent tristes et d'autres joyeuses",
+      "Garder le tempo compte pour le rap, le beatbox et le montage video",
+      "Si tu reconnais les intervalles, tu peux jouer des melodies a l'oreille",
+      "L'harmonie explique pourquoi certains accords te donnent des frissons",
+      "Lire les partitions te permet de jouer n'importe quel morceau sans l'avoir entendu",
+      "Comprendre les nuances t'aide a percevoir les emotions dans la musique plus consciemment",
+      "Avec la theorie musicale, tu produis tes propres beats qui sonnent vraiment bien",
+      "Le rythme t'aide a rester dans le tempo en dansant ou en faisant du sport"
+    ],
+    "german": [
+      "La comprehension de lecture t'aide a comprendre les contrats et conditions avant d'accepter",
+      "La conscience linguistique t'aide a reperer quand les pubs essaient de te manipuler",
+      "Bien ecrire t'aide a rediger des reclamations qui obtiennent des resultats",
+      "Les competences en lecture te protegent des emails de phishing et des arnaques",
+      "Avec du vocabulaire, tu exprimes exactement ce que tu veux dire - sans malentendus",
+      "La grammaire t'aide a ecrire des messages qui ne seront pas mal compris",
+      "L'analyse de texte t'aide a voir a travers les discours politiques et leurs astuces",
+      "Comprendre les notices de medicaments signifie les prendre correctement",
+      "Avec un bon allemand, tu ecris des messages qui sont pris au serieux",
+      "Les competences linguistiques t'aident a distinguer les titres racoleurs des vraies infos"
+    ],
+    "english": [
+      "Avec l'anglais tu peux profiter des jeux, series et YouTube sans sous-titres",
+      "La plupart des tutoriels de programmation et de l'aide tech sont en anglais",
+      "L'anglais te debrouille presque partout en voyage",
+      "Avec l'anglais tu peux discuter et jouer avec des gens du monde entier",
+      "Comprendre les paroles des chansons est plus amusant que juste fredonner",
+      "Comprendre les messages d'erreur en anglais t'economise des heures de depannage",
+      "Reddit, Discord et les communautes internationales fonctionnent surtout en anglais",
+      "Les dernieres news tech sortent en anglais d'abord - souvent des semaines avant les traductions",
+      "Avec l'anglais tu peux rejoindre des projets et collaborations internationaux",
+      "Les avis de produits en anglais t'aident a trouver la verite avant d'acheter"
+    ],
+    "fallback": [
+      "Ce que tu apprends ici t'aide avec les vrais problemes de la vie quotidienne",
+      "La connaissance te protege des arnaques",
+      "Comprendre bat memoriser - et reste plus longtemps",
+      "Les erreurs sont ok tant que tu comprends ce qui s'est mal passe",
+      "Chaque sujet est lie a ta vraie vie - parfois il faut juste chercher",
+      "Comprendre les connexions te rend plus difficile a manipuler",
+      "Les taches difficiles te rendent plus fort que les faciles",
+      "La curiosite motive tout ce que tu apprendras",
+      "L'esprit critique t'aide a distinguer les bonnes des mauvaises infos",
+      "Plus tu comprends, meilleures sont tes decisions"
+    ]
+  },
+  "tips": {
+    "math": [
+      "Decompose les problemes complexes en etapes plus petites et gerable !",
+      "Dessine des diagrammes ou des images pour visualiser le probleme !",
+      "Verifie ta reponse en refaisant les etapes a l'envers !",
+      "Cherche des patterns dans les nombres pour trouver des raccourcis malins !",
+      "Pratique le calcul mental regulierement pour developper ton sens des nombres !",
+      "Ecris ce que tu sais avant de commencer a resoudre !",
+      "N'aie pas peur d'essayer differentes approches !"
+    ],
+    "physics": [
+      "Dessine des diagrammes de forces pour comprendre comment les choses interagissent !",
+      "Fais bien attention aux unites dans tes calculs !",
+      "Pense a des exemples du monde reel pour mieux comprendre les concepts !",
+      "Rappelle-toi : l'energie est toujours conservee dans les systemes fermes !",
+      "La direction d'un vecteur compte autant que sa grandeur !",
+      "Pense a la symetrie pour simplifier les problemes complexes !",
+      "Les experiences t'aident a verifier les predictions theoriques !"
+    ],
+    "logic": [
+      "Lis bien le probleme avant de tirer des conclusions !",
+      "Dessine des tables de verite pour organiser clairement tes informations !",
+      "Cherche les contradictions pour eliminer les mauvaises reponses !",
+      "Decompose les enonces complexes en parties plus simples !",
+      "Considere toutes les possibilites de maniere systematique !",
+      "Les enonces si-alors sont la base du raisonnement logique !",
+      "Entraine-toi a reconnaitre les patterns logiques courants !"
+    ],
+    "music": [
+      "Ecoute attentivement pour identifier les patterns qui se repetent dans les melodies !",
+      "Pratique le rythme en tapant des mains ou en tapant du pied sur la musique !",
+      "Comprendre les gammes t'aide en composition !",
+      "Compte bien les temps pour rester en mesure !",
+      "La notation musicale est un langage que tu peux apprendre etape par etape !",
+      "Chante ou fredonne les melodies pour interioriser les relations de hauteur !",
+      "La pratique reguliere developpe ton intuition musicale !"
+    ],
+    "german": [
+      "Lire des textes allemands regulierement aide a enrichir naturellement ton vocabulaire !",
+      "Fais attention aux genres des noms : der, die et das !",
+      "Pratique regulierement les conjugaisons des verbes pour gagner en fluidite !",
+      "Les mots composes allemands racontent leurs propres histoires interessantes !",
+      "Ecoute des locuteurs allemands pour ameliorer ta prononciation !",
+      "La structure des phrases suit des patterns que tu peux apprendre !",
+      "Essaie de t'immerger dans la langue chaque jour !"
+    ],
+    "english": [
+      "Lire des textes varies ameliore tes competences en comprehension !",
+      "Utilise les indices contextuels pour comprendre les nouveaux mots !",
+      "Pratique l'ecriture pour renforcer les regles de grammaire !",
+      "Ecoute des locuteurs natifs pour apprendre le rythme naturel !",
+      "Apprends les expressions et idiomes courants !",
+      "Enrichis ton vocabulaire en lisant regulierement !",
+      "N'aie pas peur de faire des erreurs en parlant !"
+    ],
+    "fallback": [
+      "Prends ton temps pour bien comprendre la question !",
+      "Decompose les problemes en etapes gerable !",
+      "Verifie attentivement ta reponse avant de soumettre !",
+      "Apprends de tes erreurs pour t'ameliorer !",
+      "C'est en forgeant qu'on devient forgeron !"
+    ]
+  },
+  "facts": {
+    "math": [
+      "Le nombre zero a ete invente vers 500 apres J.-C. en Inde !",
+      "Le nombre Pi a ete calcule a plus de 100 billions de decimales !",
+      "La suite de Fibonacci apparait partout dans la nature, des tournesols aux pommes de pin !",
+      "Les anciens Egyptiens utilisaient les fractions des 1800 avant J.-C. !",
+      "Un googol est le nombre 1 suivi de 100 zeros - il a inspire le nom Google !",
+      "Il existe differentes tailles d'infini en mathematiques !",
+      "Le signe egal (=) a ete invente en 1557 par Robert Recorde !",
+      "111 111 111 x 111 111 111 = 12 345 678 987 654 321 - un palindrome parfait !",
+      "Le mot 'forty' est le seul nombre en anglais dont les lettres sont en ordre alphabetique !",
+      "2520 est le plus petit nombre divisible par tous les nombres de 1 a 10 !",
+      "Un ballon de foot est fait exactement de 12 pentagones et 20 hexagones !",
+      "Les abeilles construisent des cellules hexagonales car les hexagones utilisent le moins de cire !",
+      "La somme des angles dans tout triangle est toujours exactement 180 degres !",
+      "Un ruban de Mobius est une surface avec un seul cote et un seul bord !",
+      "Les anciens Babyloniens utilisaient la base 60, c'est pourquoi nous avons 60 secondes dans une minute !",
+      "Les anciens Romains n'avaient pas de symbole pour zero dans leur systeme de chiffres !",
+      "Carl Friedrich Gauss a additionne les nombres de 1 a 100 en quelques secondes enfant - la somme est 5050 !",
+      "Les graines de tournesol poussent en spirales suivant la suite de Fibonacci !",
+      "Les flocons de neige ont toujours exactement 6 cotes a cause de la facon dont les molecules d'eau se lient !",
+      "Le nombre d'or (1,618...) apparait dans l'art celebre, l'architecture et la nature !",
+      "Si tu melanges bien un jeu de cartes, cet ordre exact n'a probablement jamais existe avant !",
+      "Il y a plus de sequences de parties d'echecs possibles que d'atomes dans l'univers observable !",
+      "Dans une piece de seulement 23 personnes, il y a 50% de chances que deux partagent le meme anniversaire !",
+      "Le nombre 7 est le nombre 'aleatoire' le plus populaire que les gens choisissent entre 1 et 10 !",
+      "Un cercle a une infinite de lignes de symetrie !",
+      "L'abaque etait utilise pour les calculs en ancienne Mesopotamie vers 2700 avant J.-C. !",
+      "Les nombres premiers s'appellent 'premiers' du latin 'primus' signifiant 'premier' ou 'fondamental' !",
+      "Le plus grand nombre premier connu a plus de 24 millions de chiffres !",
+      "Zero est le seul nombre qui ne peut pas etre represente en chiffres romains !",
+      "Le mot 'mathematiques' vient du grec 'mathema' signifiant 'connaissance' ou 'apprentissage' !",
+      "Les nombres palindromes comme 121 et 1331 se lisent de la meme facon a l'endroit et a l'envers !",
+      "Le nombre 1 n'est pas considere comme un nombre premier car les premiers doivent avoir exactement deux diviseurs !",
+      "Tout nombre pair superieur a 2 peut s'ecrire comme la somme de deux nombres premiers !",
+      "Un nombre parfait egale la somme de ses diviseurs - 6 = 1+2+3 est le premier !",
+      "Le symbole de la division (÷) s'appelle un obele !",
+      "Les nombres negatifs ont ete rejetes par les mathematiciens jusqu'aux annees 1700 !",
+      "Les anciens Grecs pensaient que le nombre 1 n'etait ni pair ni impair !",
+      "Un jiffy est une vraie unite de temps : 1/100e de seconde !",
+      "Le nombre 5 est le seul nombre premier qui se termine par 5 !",
+      "Multiplie 9 par n'importe quel nombre, et les chiffres du resultat totalisent toujours 9 !"
+    ],
+    "physics": [
+      "La lumiere voyage a 299 792 458 metres par seconde dans le vide !",
+      "Le son voyage beaucoup plus vite a travers les solides qu'a travers l'air !",
+      "Tu es legerement plus grand le matin a cause de l'effet de la gravite sur ta colonne vertebrale !",
+      "La foudre est en fait plus chaude que la surface du Soleil !",
+      "Un jour sur Venus est plus long que son annee entiere !",
+      "L'eau peut bouillir et geler en meme temps au point triple !",
+      "Certaines etoiles a neutrons peuvent tourner plus de 600 fois par seconde !"
+    ],
+    "logic": [
+      "Aristote a fonde la logique formelle il y a plus de 2 400 ans !",
+      "Les ordinateurs utilisent la logique binaire avec seulement des 0 et des 1 !",
+      "Un paradoxe est un enonce qui se contredit lui-meme !",
+      "Les puzzles Sudoku sont en fait des exercices de deduction logique !",
+      "George Boole a invente l'algebre booleenne en 1854 !",
+      "Resoudre des puzzles de logique ameliore tes capacites de pensee critique !",
+      "Sherlock Holmes est celebre pour utiliser le raisonnement deductif !"
+    ],
+    "music": [
+      "La musique active presque toutes les regions de ton cerveau !",
+      "Le plus ancien instrument de musique connu a plus de 40 000 ans !",
+      "Mozart a compose son premier morceau a seulement 5 ans !",
+      "Les octaves sonnent similaires car leurs frequences doublent !",
+      "Il existe plus de 1 500 instruments de musique differents dans le monde !",
+      "Beethoven a compose de la musique incroyable meme completement sourd !",
+      "Ecouter de la musique peut ameliorer ta memoire et ta concentration !"
+    ],
+    "german": [
+      "L'allemand est parle par plus de 130 millions de personnes dans le monde !",
+      "Le plus long mot allemand officiellement utilise a 63 lettres !",
+      "L'allemand a trois genres grammaticaux pour les noms !",
+      "Beaucoup de mots anglais viennent en fait de racines allemandes !",
+      "Tous les noms allemands s'ecrivent toujours avec une majuscule !",
+      "L'allemand autrichien et suisse ont leurs propres caracteristiques uniques !",
+      "Apprendre l'allemand ouvre les portes a une riche litterature et philosophie !"
+    ],
+    "english": [
+      "L'anglais a plus de 170 000 mots actuellement en usage actif !",
+      "Shakespeare a invente plus de 1 700 mots que nous utilisons encore aujourd'hui !",
+      "L'anglais est une langue officielle dans 67 pays differents !",
+      "Le mot 'Go!' est en fait une phrase complete !",
+      "L'anglais a emprunte des mots a plus de 350 langues differentes !",
+      "'I am' est la phrase complete la plus courte en anglais !",
+      "L'anglais a plus de synonymes que la plupart des autres langues !"
+    ],
+    "fallback": [
+      "Apprendre de nouvelles choses recable physiquement ton cerveau !",
+      "La curiosite est ce qui motive la decouverte et l'innovation !",
+      "Chaque expert etait autrefois un debutant complet !",
+      "Ton cerveau n'arrete jamais d'apprendre tout au long de ta vie !",
+      "Faire des connexions entre les idees aide a renforcer la memoire !"
+    ]
+  },
+  "previews": {
+    "math": [
+      "Prepare-toi a explorer des nombres et des patterns fascinants !",
+      "Les mathematiques nous aident a resoudre des problemes du monde reel chaque jour !",
+      "Chaque equation raconte sa propre histoire unique !"
+    ],
+    "physics": [
+      "Decouvre comment l'univers fonctionne vraiment !",
+      "La physique explique tout, des minuscules atomes aux galaxies massives !",
+      "Prepare-toi a explorer les forces, l'energie et le mouvement !"
+    ],
+    "logic": [
+      "Affute ton raisonnement et tes capacites de pensee critique !",
+      "La logique t'aide a resoudre des puzzles et a prendre de meilleures decisions !",
+      "Prepare-toi a reflechir aux problemes etape par etape !"
+    ],
+    "music": [
+      "Explore le beau monde du son et du rythme !",
+      "La musique combine mathematiques, creativite et emotion !",
+      "Prepare-toi a decouvrir des patterns musicaux fascinants !"
+    ],
+    "german": [
+      "Maitrise la langue de Goethe, Kafka et Einstein !",
+      "La grammaire allemande est logique et suit des patterns clairs !",
+      "Prepare-toi a elargir tes capacites linguistiques !"
+    ],
+    "english": [
+      "Maitrise la langue globale de la communication !",
+      "L'anglais ouvre des portes a des opportunites dans le monde entier !",
+      "Prepare-toi a ameliorer tes competences linguistiques !"
+    ],
+    "fallback": [
+      "Prepare-toi pour un defi captivant !",
+      "Tu vas apprendre quelque chose de nouveau aujourd'hui !"
+    ]
+  }
+}

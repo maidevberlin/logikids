@@ -1,0 +1,108 @@
+{
+  "account": {
+    "title": "Mi Cuenta",
+    "subtitle": "Gestiona tu perfil y preferencias",
+    "profileSettings": "Configuracion del perfil",
+    "dataManagement": "Gestion de datos",
+    "dataInfo": "Tus datos se almacenan de forma segura en tu dispositivo. Puedes exportarlos o eliminarlos en cualquier momento.",
+    "saveButton": "Guardar cambios",
+    "saving": "Guardando...",
+    "saved": "Cambios guardados correctamente!",
+    "exportData": {
+      "downloadButton": "Exportar datos (JSON)",
+      "exporting": "Exportando...",
+      "description": "Descarga todos tus datos como un archivo JSON. Puedes usarlo para copias de seguridad o para transferir tus datos."
+    },
+    "logout": "Cerrar sesion",
+    "logoutTitle": "Cerrar sesion",
+    "logoutDescription": "Estas seguro de que quieres cerrar sesion? Esto borrara todos tus datos de este dispositivo. Si tienes la copia de seguridad en la nube activada, tus datos se conservaran y podras iniciar sesion de nuevo para restaurarlos.",
+    "confirmLogout": "Cerrar sesion",
+    "cancel": "Cancelar",
+    "deleteData": "Eliminar todos los datos",
+    "deleteConfirm": "Estas seguro de que quieres eliminar todos tus datos? Esta accion no se puede deshacer.",
+    "backToHome": "Volver al inicio",
+    "lastSynced": "Ultima sincronizacion: {{time}}",
+    "neverSynced": "Nunca",
+    "justNow": "Ahora mismo",
+    "minutesAgo": "Hace {{count}} minuto",
+    "minutesAgo_other": "Hace {{count}} minutos",
+    "hoursAgo": "Hace {{count}} hora",
+    "hoursAgo_other": "Hace {{count}} horas",
+    "daysAgo": "Hace {{count}} dia",
+    "daysAgo_other": "Hace {{count}} dias",
+    "recoveryKit": {
+      "downloadButton": "Descargar kit de recuperacion (PDF)",
+      "generating": "Generando PDF...",
+      "whatsIncluded": "Incluye: codigo QR, codigo de respaldo, ID de usuario e instrucciones de recuperacion",
+      "securityNote": "Guarda este PDF en un lugar seguro - contiene tus credenciales de cuenta",
+      "pdf": {
+        "title": "Kit de recuperacion de Logikids",
+        "subtitle": "Guarda este documento para recuperar tu cuenta",
+        "qrLabel": "Escanea este codigo QR para restaurar tu cuenta",
+        "backupCodeTitle": "Codigo de respaldo",
+        "userIdLabel": "ID de usuario:",
+        "instructionsTitle": "Como usar este kit de recuperacion:",
+        "instruction1": "1. Guarda este documento en un lugar seguro",
+        "instruction2": "2. Para restaurar tu cuenta, escanea el codigo QR o introduce el codigo de respaldo",
+        "instruction3": "3. Los datos de tu cuenta estan cifrados - este kit es necesario para descifrarlos",
+        "instruction4": "4. Cualquier persona con este kit puede acceder a tu cuenta",
+        "securityWarningTitle": "Advertencia de seguridad:",
+        "securityWarning1": "Este kit contiene tu clave de cifrado. Mantenlo seguro y privado.",
+        "securityWarning2": "Nunca lo compartas ni lo subas a servicios en la nube.",
+        "footer": "Generado por Logikids"
+      }
+    },
+    "qrDisplay": {
+      "showButton": "Mostrar codigo QR para vincular dispositivos",
+      "scanInstruction": "Escanea este codigo en otro dispositivo para sincronizar tu cuenta",
+      "securityWarning": "Este codigo QR contiene tus credenciales. Solo escanealo en dispositivos de confianza."
+    },
+    "pair": {
+      "importing": "Iniciando sesion...",
+      "noCodeError": "No se encontro codigo de vinculacion en la URL",
+      "importError": "Error al importar la cuenta",
+      "existingAccountTitle": "Ya has iniciado sesion",
+      "existingAccountMessage": "Ya tienes una cuenta en este dispositivo. Cierra sesion primero si quieres cambiar a una cuenta diferente.",
+      "goToAccount": "Ir a configuracion de cuenta",
+      "goHome": "Ir al inicio",
+      "successTitle": "Exito!",
+      "successMessage": "Tu cuenta ha sido sincronizada. Redirigiendo...",
+      "errorTitle": "Algo salio mal"
+    },
+    "import": {
+      "backupCodeLabel": "Codigo de respaldo",
+      "backupCodePlaceholder": "Introduce tu codigo de respaldo (XXXX-XXXX-XXXX-...)",
+      "backupCodeHint": "Pega el codigo de respaldo de tu kit de recuperacion PDF",
+      "importButton": "Importar datos de cuenta",
+      "importing": "Importando...",
+      "importSuccess": "Importacion exitosa! Recargando...",
+      "enterCodeError": "Por favor introduce un codigo de respaldo",
+      "invalidCodeError": "Codigo de respaldo invalido. Por favor verifica e intenta de nuevo.",
+      "importFailed": "Error en la importacion",
+      "conflictTitle": "Reemplazar datos existentes?",
+      "conflictMessage": "Este dispositivo ya tiene datos de cuenta. La importacion reemplazara todos los datos existentes con la cuenta importada.",
+      "conflictWarning": "Asegurate de descargar tu kit de recuperacion actual primero si quieres conservar estos datos.",
+      "conflictCancel": "Cancelar",
+      "conflictConfirm": "Si, reemplazar datos"
+    },
+    "parentZone": "Zona de padres",
+    "usageStats": "Estadisticas de uso",
+    "usageStatsDescription": "Ver uso de IA y seguimiento de costos",
+    "accountNotFound": {
+      "title": "Es hora de un nuevo comienzo!",
+      "message1": "Tu cuenta anterior necesita reiniciarse debido a actualizaciones recientes durante nuestra fase beta.",
+      "message2": "Listo para empezar de nuevo? Necesitaras un nuevo codigo de invitacion para continuar tu aventura de aprendizaje!",
+      "startButton": "Empezar de nuevo",
+      "note": "Esto borrara tus datos locales"
+    }
+  },
+  "settings": {
+    "title": "Configuracion",
+    "nameLabel": "Como te llamas?",
+    "namePlaceholder": "Escribe tu nombre aqui...",
+    "gradeLabel": "En que grado estas?",
+    "languageLabel": "Elige tu idioma",
+    "syncLabel": "Copia de seguridad en la nube",
+    "syncDescription": "Respalda automaticamente tus datos en la nube"
+  }
+}
