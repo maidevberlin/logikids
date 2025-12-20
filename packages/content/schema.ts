@@ -32,7 +32,7 @@ export const conceptFrontmatterSchema = z
     prerequisites: z.array(z.string()).optional(),
     version_notes: z.string().optional(),
     // Required fields
-    anti_patterns: z.array(z.string().min(1)).min(3).max(5),
+    anti_patterns: z.array(z.string()).min(3).max(5),
   })
   .strict()
 
