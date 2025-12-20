@@ -91,7 +91,10 @@
       "message2": "Sẵn sàng bắt đầu mới? Bạn sẽ cần mã mời mới để tiếp tục hành trình học tập của mình!",
       "startButton": "Bắt đầu mới",
       "note": "Điều này sẽ xóa dữ liệu cục bộ của bạn"
-    }
+    },
+    "parentZone": "Khu vực phụ huynh",
+    "usageStats": "Thống kê sử dụng",
+    "usageStatsDescription": "Xem mức sử dụng AI và theo dõi chi phí"
   },
   "settings": {
     "title": "Cài đặt",
