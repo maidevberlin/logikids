@@ -79,7 +79,8 @@ Add a "teacher" profile type to Logikids that enables educators to:
 ```sql
 -- Modify invite_codes
 ALTER TABLE invite_codes ADD COLUMN account_type TEXT DEFAULT 'student';
--- Values: 'student' | 'teacher'
+ALTER TABLE invite_codes ADD COLUMN created_by TEXT;  -- Teacher who created the invite (for student invites)
+-- Values for account_type: 'student' | 'teacher'
 
 -- New: teacher_tasks
 CREATE TABLE teacher_tasks (
@@ -97,7 +98,7 @@ CREATE TABLE teacher_worksheets (
   id TEXT PRIMARY KEY,
   teacher_id TEXT NOT NULL,
   name TEXT NOT NULL,
-  pdf_options JSONB,
+  pdf_options JSONB DEFAULT '{}',
   created_at BIGINT NOT NULL,
   updated_at BIGINT NOT NULL,
   FOREIGN KEY (teacher_id) REFERENCES user_accounts(user_id)
@@ -119,6 +120,7 @@ CREATE TABLE worksheet_tasks (
 ```typescript
 // generation_params stored with each task
 interface GenerationParams {
+  subject: string // Subject ID
   concept: string // Concept ID
   taskType: TaskType
   learningObjective: string // Selected or custom
