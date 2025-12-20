@@ -1,400 +1,644 @@
 {
   "concepts": {
     "grade1-dramatic-expression": {
-      "name": "Dramatik İfade ve Rol Yapma",
-      "description": "Jest, hareket, yüz ifadeleri ve rol yapma etkinlikleri aracılığıyla duyguları ve karakterleri ifade etme"
+      "name": "Dramatic Expression & Role Play",
+      "description": "Express emotions and characters through gesture, movement, facial expressions, and role-playing activities"
     },
     "grade1-phonological-awareness": {
-      "name": "Fonolojik Farkındalık ve Harf-Ses Uyumu",
-      "description": "Kelimelerdeki sesleri tanıma, heceleri belirleme, sesli harfleri sessiz harflerden ayırt etme ve harfleri sesleriyle eşleştirme"
+      "name": "Phonological Awareness and Letter-Sound Correspondence",
+      "description": "Recognizing sounds in words, identifying syllables, distinguishing vowels from consonants, and matching letters to their sounds"
     },
     "grade1-writing-composition": {
-      "name": "Yazı Kompozisyonu ve Süreci",
-      "description": "Anlatılar, günlük girişleri ve bilgilendirici yazılar dahil basit metinleri planlama, taslak oluşturma ve gözden geçirmeyi öğrenme"
+      "name": "Writing Composition & Process",
+      "description": "Learn to plan, draft, and revise simple texts including narratives, journal entries, and informational writing"
     },
     "grade1-listening-comprehension": {
-      "name": "Dinleme ve İşitsel Anlama",
-      "description": "Dikkatli dinleme becerilerini geliştirme, konuşulan dilden temel bilgileri çıkarma ve uygun yanıtlarla anlamayı gösterme"
+      "name": "Listening & Auditory Comprehension",
+      "description": "Developing attentive listening skills, extracting essential information from spoken language, and demonstrating comprehension through appropriate responses"
     },
     "grade1-reading-fluency": {
-      "name": "Okuma Akıcılığı ve Çözümleme",
-      "description": "Görsel kelimeler, harmanama becerileri, harf kombinasyonu ustalığı ve noktalama işaretleri rehberliğinde okuma yoluyla otomatik kelime tanımayı geliştirme"
+      "name": "Reading Fluency & Decoding",
+      "description": "Developing automatic word recognition through sight words, blending skills, letter combination mastery, and punctuation-guided reading"
     },
     "grade1-speaking-conversation": {
-      "name": "Konuşma ve Sohbet Becerileri",
-      "description": "Deneyimleri anlatma, konuşma kurallarına uyma, öğrenme süreçlerini tartışma ve yapıcı geri bildirim verme"
+      "name": "Speaking & Conversation Skills",
+      "description": "Narrating experiences, following conversation rules, discussing learning processes, and giving constructive feedback"
     },
     "grade1-spelling": {
-      "name": "Yazım Stratejileri ve İmla",
-      "description": "Kelimeleri doğru yazmak için fonolojik, heceli, morfolojik ve dilbilgisel ilkeleri uygulama"
+      "name": "Spelling Strategies & Orthography",
+      "description": "Applying phonological, syllabic, morphological, and grammatical principles to spell words correctly"
     },
     "grade1-reading-comprehension": {
-      "name": "Okuduğunu Anlama Stratejileri",
-      "description": "Okuma öncesi, okuma sırası ve okuma sonrası stratejilerini uygulama, tahminlerde bulunma, bilinmeyen kelimeleri açıklama ve anlama sorularını yanıtlama"
+      "name": "Reading Comprehension Strategies",
+      "description": "Apply pre-, during-, and post-reading strategies, make predictions, clarify unknown words, and answer comprehension questions"
     },
     "grade1-text-types": {
-      "name": "Metin Türleri ve Edebi Etkileşim",
-      "description": "Farklı metin türlerini (şiirler, hikayeler, bilgilendirici metinler) anlama, karakterleri ve hikaye unsurlarını analiz etme ve metinleri sunma"
+      "name": "Text Types & Literary Engagement",
+      "description": "Understanding different text types (poems, stories, informational texts), analyzing characters and story elements, and presenting texts"
     },
     "grade1-grammar": {
-      "name": "Dilbilgisi ve Sözcük Türleri",
-      "description": "İsimler, fiiller ve sıfatlar dahil temel sözcük türlerini tanımlama ve kullanma, basit kelime oluşturma ve cümle yapısını anlama"
+      "name": "Grammar & Parts of Speech",
+      "description": "Identify and use basic parts of speech including nouns, verbs, and adjectives, and understand simple word formation and sentence structure"
     },
     "grade1-handwriting": {
-      "name": "El Yazısı ve Yazı Mekaniği",
-      "description": "Doğru harf oluşturma, duruş ve yazma hızıyla açık, okunabilir el yazısı geliştirme"
+      "name": "Handwriting & Writing Mechanics",
+      "description": "Developing clear, legible handwriting with proper letter formation, posture, and writing speed"
     },
     "grade1-language-awareness": {
-      "name": "Dil Farkındalığı ve Çok Dillilik",
-      "description": "İletişim amaçlarını anlama, lehçeleri tanıma, dilleri karşılaştırma ve dilsel çeşitliliği takdir etme"
+      "name": "Language Awareness & Multilingualism",
+      "description": "Understanding communication purposes, recognizing dialects, comparing languages, and appreciating linguistic diversity"
     },
     "grade2-reading-simple-texts": {
-      "name": "Basit Metinleri Okuma",
-      "description": "Kelimeleri çözümleme, basit cümleleri ve kısa metinleri temel anlayışla okuma"
+      "name": "Reading Simple Texts",
+      "description": "Decoding words, reading simple sentences and short texts with basic comprehension"
     },
     "grade2-compound-words": {
-      "name": "Bileşik Kelimeler",
-      "description": "Yeni anlamlar oluşturmak için iki veya daha fazla kelimeyi birleştirerek Almanca bileşik kelimeleri anlama ve oluşturma"
+      "name": "Compound Words",
+      "description": "Understanding and forming German compound words by combining two or more words to create new meanings"
     },
     "grade2-retelling-stories": {
-      "name": "Hikayeleri Yeniden Anlatma",
-      "description": "Konuşma ve Dinleme"
+      "name": "Retelling Stories",
+      "description": "Speaking and Listening"
     },
     "grade2-rhyming-words": {
-      "name": "Kafiyeli Kelimeler",
-      "description": "Kafiyeli kelimeleri tanımlama ve üretme, Almanca ses kalıplarını anlama"
+      "name": "Rhyming Words",
+      "description": "Identifying and producing rhyming words, understanding sound patterns in German"
     },
     "grade2-asking-questions": {
-      "name": "Soru Sorma",
-      "description": "Sorular oluşturma, soru kelimelerini kullanma ve soruları doğru noktalama"
+      "name": "Asking Questions",
+      "description": "Forming questions, using question words, and punctuating questions correctly"
     },
     "grade2-writing-simple-sentences": {
-      "name": "Basit Cümleler Yazma",
-      "description": "Başta büyük harf ve sonda nokta ile tam cümleler yazma"
+      "name": "Writing Simple Sentences",
+      "description": "Write complete sentences with capital letters at the beginning and periods at the end"
     },
     "grade2-alphabet-and-abc-order": {
-      "name": "Alfabe ve ABC Sırası",
-      "description": "Almanca alfabeyi, alfabetik sırayı öğrenme ve kelimeleri düzenlemek ve bulmak için kullanma"
+      "name": "Alphabet and ABC Order",
+      "description": "Learning the German alphabet, alphabetical order, and using it for organizing and finding words"
     },
     "grade2-nouns-and-capital-letters": {
-      "name": "İsimler ve Büyük Harfler",
-      "description": "İsimleri tanıma ve büyük harfle yazma"
+      "name": "Nouns and Capital Letters",
+      "description": "Recognizing nouns and writing them with capital letters"
     },
     "grade2-plural-forms": {
-      "name": "Çoğul Biçimler",
-      "description": "-e, -en, -er, -s ve Umlaut değişiklikleri gibi kalıpları kullanarak Almancada temel çoğul biçimlerini anlama ve oluşturma"
+      "name": "Plural Forms",
+      "description": "Understanding and forming basic plural forms in German using patterns like -e, -en, -er, -s, and Umlaut changes"
     },
     "grade2-syllables-and-word-structure": {
-      "name": "Heceler ve Kelime Yapısı",
-      "description": "Heceleri tanımlama, heceleri alkışlama ve kelimelerin hece birimlerinden nasıl oluşturulduğunu anlama"
+      "name": "Syllables and Word Structure",
+      "description": "Identifying syllables, clapping syllables, and understanding how words are built from syllable units"
     },
     "grade3-dialogue-roleplay": {
-      "name": "Diyalog ve Rol Yapma",
-      "description": "İletişim durumlarında rutin olarak gezinme, konuşma kurallarına uyma, geri bildirim verme ve karakter perspektifiyle dramatik oyunda roller üstlenme"
+      "name": "Dialogue and Role Play",
+      "description": "Navigate communication situations routinely, follow conversation rules, provide feedback, and assume roles in dramatic play with character perspective"
     },
     "grade3-reading-strategies": {
-      "name": "Okuduğunu Anlama Stratejileri",
-      "description": "Metinleri anlamak için okuma öncesi, okuma sırası ve okuma sonrası stratejilerini uygulama; ön bilgiyi etkinleştirme; notlar alma; kelime dağarcığını açıklama; anlatı unsurlarını görselleştirme"
+      "name": "Reading Comprehension Strategies",
+      "description": "Applying pre-, during-, and post-reading strategies to understand texts; activating prior knowledge; annotating; clarifying vocabulary; visualizing narrative elements"
     },
     "grade3-text-analysis": {
-      "name": "Metin Analizi ve Edebi Anlama",
-      "description": "Olay dizilerini analiz etme, karakterleri betimleme, mecazi dili açıklama ve farklı metin türlerini karşılaştırma"
+      "name": "Text Analysis and Literary Understanding",
+      "description": "Analyzing plot sequences, describing characters, explaining figurative language, and comparing different text types"
     },
     "grade3-reading-fluency": {
-      "name": "Okuma Akıcılığı ve İfade",
-      "description": "Metinleri doğruluk, uygun hız, değişken tempo ve vurguyla akıcı okuma, geniş görsel kelime dağarcığı oluşturma"
+      "name": "Reading Fluency and Expression",
+      "description": "Reading texts fluently with accuracy, appropriate pace, varied tempo and emphasis, while building extensive sight-word vocabulary"
     },
     "grade3-grammar-structures": {
-      "name": "Dilbilgisi ve Cümle Yapıları",
-      "description": "Karmaşık kelimeler oluşturma, fiil zamanlarını uygulama, sözcük türlerini tanımlama, doğrudan konuşmayı noktalama ve cümleleri bağlaçlarla birleştirme"
+      "name": "Grammar and Sentence Structures",
+      "description": "Form complex words, apply verb tenses, identify parts of speech, punctuate direct speech, and combine sentences with conjunctions"
     },
     "grade3-composition-planning": {
-      "name": "Kompozisyon ve Planlama",
-      "description": "Zihin haritaları, kelime listeleri ve anlatı yapılarını kullanarak farklı yazı türleri için fikirleri planlama ve düzenlemeyi öğrenme"
+      "name": "Composition and Planning",
+      "description": "Learn to plan and organize ideas for different types of writing using mind maps, word lists, and narrative structures"
     },
     "grade3-speaking-presentations": {
-      "name": "Konuşma ve Sunumlar",
-      "description": "Mantıklı katkılar oluşturma, uygun ses yüksekliği ve hız kullanma, notlarla sunumlar hazırlama ve standart ve akademik dil uygulama"
+      "name": "Speaking and Presentations",
+      "description": "Construct logical contributions, use appropriate volume and pace, prepare presentations with notes, and apply standard and academic language"
     },
     "grade3-revision-feedback": {
-      "name": "Gözden Geçirme ve Akran Geri Bildirimi",
-      "description": "Yapıcı geri bildirim verme ve alma, yazıyı açıklık ve doğruluk için gözden geçirme ve metinleri çekici biçimlendirme"
+      "name": "Revision and Peer Feedback",
+      "description": "Give and receive constructive feedback, revise writing for clarity and correctness, and format texts appealingly"
     },
     "grade3-word-building": {
-      "name": "Kelime Oluşturma ve Morfoloji",
-      "description": "Kökler, önekler, sonekler anlama; kelime aileleri oluşturma; bileşik isimleri tanıma; kelime ailelerinde ünlü değişimlerini keşfetme"
+      "name": "Word Building and Morphology",
+      "description": "Understand stems, prefixes, suffixes; create word families; recognize compound nouns; explore vowel shifts in word families"
     },
     "grade3-listening-comprehension": {
-      "name": "Dinleme Anlama ve Akademik Dil",
-      "description": "Konuya özgü akademik dilden temel bilgileri çıkarma, özetler yoluyla anlamayı gösterme ve ses ve jest unsurlarının anlamı nasıl desteklediğini anlama"
+      "name": "Listening Comprehension and Academic Language",
+      "description": "Extract key information from subject-specific academic language, demonstrate comprehension through summaries, and understand how vocal and gestural elements support meaning"
     },
     "grade3-spelling-principles": {
-      "name": "Yazım İlkeleri ve Stratejileri",
-      "description": "Fonolojik, heceli ve morfolojik ilkeleri uygulama; temel kelime dağarcığına hakim olma; sözlük kullanma; imla kalıplarını tanıma"
+      "name": "Spelling Principles and Strategies",
+      "description": "Apply phonological, syllabic, and morphological principles; master core vocabulary; use dictionaries; recognize orthographic patterns"
     },
     "grade3-writing-mechanics": {
-      "name": "Yazı Mekaniği ve El Yazısı",
-      "description": "Okunabilir el yazısı üretme; amaca göre yazı ayarlama (basılı ve el yazısı); uygun duruş ve tutuş koruma"
+      "name": "Writing Mechanics and Handwriting",
+      "description": "Produce legible handwriting; adjust script for purpose (print vs. cursive); maintain proper posture and grip"
     },
     "grade4-advanced-listening": {
-      "name": "İleri Dinleme Anlama",
-      "description": "Karmaşık sözlü metinleri anlama, hedefli sorular sorma, anlama boşluklarını fark etme"
+      "name": "Advanced Listening Comprehension",
+      "description": "Understanding complex spoken texts, asking targeted questions, recognizing comprehension gaps"
     },
     "grade4-parts-of-speech": {
-      "name": "Sözcük Türleri Ustalığı",
-      "description": "İsimler (hal, cinsiyet), fiiller (tüm zamanlar), tanımlıklar, sıfatlar ve zamirler dahil tüm ana sözcük türlerini tam farkındalıkla tanımlama ve kullanma"
+      "name": "Parts of Speech Mastery",
+      "description": "Identify and use all major parts of speech with full awareness of nouns (case, gender), verbs (all tenses), articles, adjectives, and pronouns"
     },
     "grade4-discussion-skills": {
-      "name": "Tartışma ve Argümantasyon",
-      "description": "Tartışmaları etkili yönetme, argümanları kanıtlarla sunma ve savunma, başkalarının katkılarına anlamlı yanıt verme ve işbirlikçi diyalog yoluyla çatışmaları çözme"
+      "name": "Discussion and Argumentation",
+      "description": "Lead discussions effectively, present and defend arguments with evidence, respond meaningfully to others' contributions, and resolve conflicts through collaborative dialogue"
     },
     "grade4-text-planning": {
-      "name": "Metin Planlama ve Yapılandırma",
-      "description": "Amaç ve hedef kitleyi belirleme, kelime ve ifadeler toplama ve yazmadan önce fikirleri sistematik olarak düzenlemeyi öğrenme"
+      "name": "Planning and Structuring Texts",
+      "description": "Learn to clarify purpose and audience, gather vocabulary and phrases, and organize ideas systematically before writing"
     },
     "grade4-spelling-strategies": {
-      "name": "Yazım Stratejileri ve Kuralları",
-      "description": "Türetme, seslendirme ve ezberleme stratejilerini uygulama; referans araçlarını etkili kullanma; doğrudan konuşmada noktalamaya hakim olma"
+      "name": "Spelling Strategies and Rules",
+      "description": "Apply derivation, sounding out, and memorization strategies; use reference tools effectively; master punctuation in direct speech"
     },
     "grade4-text-revision": {
-      "name": "Metin Gözden Geçirme ve Düzenleme",
-      "description": "Öz düzeltme, açıklık ve etki için kontrol, yayına hazırlık"
+      "name": "Text Revision and Editing",
+      "description": "Self-correction, checking for clarity and effect, preparing for publication"
     },
     "grade4-text-types-genres": {
-      "name": "Metin Türleri ve Türler",
-      "description": "Kurgu ve kurgu dışı, anlatısal/şiirsel/dramatik biçimleri tanıma ve ayırt etme ve medya okuryazarlığı geliştirme"
+      "name": "Text Types and Genres",
+      "description": "Recognizing and distinguishing fiction vs. non-fiction, narrative/poetic/dramatic forms, and developing media literacy"
     },
     "grade4-expressive-speaking": {
-      "name": "İfadeli Konuşma ve Sunum",
-      "description": "Konuşmayı bağlama uyarlama (anlatma, bilgilendirme, tartışma), standart Almanca kullanma, sunum becerileri"
+      "name": "Expressive Speaking and Presentation",
+      "description": "Adapting speech to context (narrating, informing, arguing), using standard German, presentation skills"
     },
     "grade4-literary-response": {
-      "name": "Edebi Yanıt ve Yorum",
-      "description": "Edebiyata kişisel yanıtlar geliştirme, karakter duygularını ve ilişkilerini anlama, canlı zihinsel imgeler oluşturma ve çeşitli biçimlerle metinlerle yaratıcı etkileşim kurma"
+      "name": "Literary Response and Interpretation",
+      "description": "Developing personal responses to literature, understanding character emotions and relationships, creating vivid mental images, and engaging creatively with texts through various forms"
     },
     "grade4-word-formation": {
-      "name": "Kelime Oluşturma ve Kelime Dağarcığı",
-      "description": "Kökler, önekler, sonekler, kelime aileleri, anlam alanları ve sistematik kelime dağarcığı genişletme yoluyla kelime yapısını anlama"
+      "name": "Word Formation and Vocabulary",
+      "description": "Understanding word structure through stems, prefixes, suffixes, word families, semantic fields, and systematic vocabulary expansion"
     },
     "grade4-sentence-structure": {
-      "name": "Cümle Yapısı ve Sözdizimi",
-      "description": "Cümle türleri, özne-yüklem-tümleç yapısı, cümlelerde zaman referansları, karmaşık cümle oluşturma ve farklı cümle türleri için noktalamaya hakim olma"
+      "name": "Sentence Structure and Syntax",
+      "description": "Master sentence types, subject-predicate-complement structure, time references in sentences, complex sentence formation, and punctuation for different sentence types"
     },
     "grade5-informational-texts": {
-      "name": "Bilgilendirici Metin Anlama",
-      "description": "Kurgu dışı metinleri ve doğrusal olmayan bilgi formatlarını anlama"
+      "name": "Informational Text Comprehension",
+      "description": "Comprehending non-fiction texts and non-linear information formats"
     },
     "grade5-narrative-writing": {
-      "name": "Anlatı Yazımı",
-      "description": "Net perspektif ve hikaye yapısıyla (Giriş, Gelişme, Sonuç) anlatılar yazma"
+      "name": "Narrative Writing",
+      "description": "Writing narratives with clear perspective and story structure (Einleitung, Hauptteil, Schluss)"
     },
     "grade5-poetry-analysis": {
-      "name": "Şiir Analizi",
-      "description": "Şiirsel metinleri biçim ve ifade yoluyla anlama ve takdir etme"
+      "name": "Poetry Analysis",
+      "description": "Understanding and appreciating poetic texts through form and expression"
     },
     "grade6-listening-comprehension": {
-      "name": "Dinleme Anlama",
-      "description": "Sözlü metinleri anlama, bilgi çıkarma, konuşmacı niyetlerini belirleme"
+      "name": "Listening Comprehension",
+      "description": "Understanding spoken texts, extracting information, identifying speaker intentions"
     },
     "grade6-oral-presentation": {
-      "name": "Sözlü Sunum Becerileri",
-      "description": "Sunumlar yapma, metinleri ifadeli okuma, beden dilini etkili kullanma"
+      "name": "Oral Presentation Skills",
+      "description": "Delivering presentations, reciting texts expressively, using body language effectively"
     },
     "grade6-discussion-argumentation": {
-      "name": "Tartışma ve Argümantasyon",
-      "description": "Çeşitli bağlamlarda konuşma becerilerine hakim olma, gerekçeli destekle görüşleri ifade etme, çatışma çözme stratejileri uygulama, karşıt görüşlere yapıcı yanıt verme ve başkalarının katkıları üzerine inşa etme"
+      "name": "Discussion and Argumentation",
+      "description": "Master conversation skills in various contexts, state opinions with reasoned support, apply conflict resolution strategies, respond constructively to opposing viewpoints, and build on others' contributions"
     },
     "grade6-text-revision": {
-      "name": "Metin Gözden Geçirme ve Düzenleme",
-      "description": "Akran geri bildirimi, gözden geçirme stratejileri, belirlenen ölçütlerle düzenleme"
+      "name": "Text Revision and Editing",
+      "description": "Peer feedback, revision strategies, editing with established criteria"
     },
     "grade6-reading-strategies": {
-      "name": "Okuma Stratejileri",
-      "description": "Vurgulama, not alma, okuma günlükleri, metin navigasyonu ve okuma hızını amaca göre ayarlama dahil ileri okuma teknikleri"
+      "name": "Reading Strategies",
+      "description": "Advanced reading techniques including highlighting, note-taking, reading journals, text navigation, and adjusting reading speed to purpose"
     },
     "grade6-informative-writing": {
-      "name": "Bilgilendirici Yazı",
-      "description": "Net mantıksal yapı, nesnel sunum ve doğru özetleme ile gerçekçi metinler oluşturma"
+      "name": "Informative Writing",
+      "description": "Composing factual texts with clear logical structure, objective presentation, and accurate summarization"
     },
     "grade6-narrative-writing": {
-      "name": "Anlatı Yazımı",
-      "description": "Hikaye kompozisyonu, olay örgüsü yapısı, karakter gelişimi, anlatı perspektifi"
+      "name": "Narrative Writing",
+      "description": "Story composition, plot structure, character development, narrative perspective"
     },
     "grade6-literary-text-analysis": {
-      "name": "Edebi Metin Analizi",
-      "description": "Karakter analizi, tema belirleme, edebi araçlar ve kültürel keşif yoluyla anlatıları, mitleri, şiirleri ve genç yetişkin edebiyatını analiz etme"
+      "name": "Literary Text Analysis",
+      "description": "Analyzing narratives, myths, poems, and young adult literature through character analysis, theme identification, literary devices, and cultural exploration"
     },
     "grade6-informational-texts": {
-      "name": "Bilgilendirici Metinler",
-      "description": "Kurgu dışı metinler, referans materyalleri kullanma, diyagramları ve grafikleri değerlendirme"
+      "name": "Informational Texts",
+      "description": "Non-fiction texts, using reference materials, evaluating diagrams and graphics"
     },
     "grade6-spelling-orthography": {
-      "name": "Yazım ve İmla",
-      "description": "Ünsüz ikizleme, das/dass ayrımı, büyük harfler, eşsesliler ve yabancı kelime yazımı dahil ileri yazım kurallarına hakim olma"
+      "name": "Spelling and Orthography",
+      "description": "Master advanced spelling rules including consonant doubling, das/dass distinction, capitalization, homophones, and foreign word spelling"
     },
     "grade6-grammar-syntax": {
-      "name": "Dilbilgisi ve Sözdizimi",
-      "description": "Sözcük türleri, etken/edilgen çatı, cümle bileşenleri, cümlecik türleri"
+      "name": "Grammar and Syntax",
+      "description": "Parts of speech, active/passive voice, sentence components, clause types"
     },
     "grade6-punctuation": {
-      "name": "Noktalama",
-      "description": "Karmaşık cümlelerde virgül, doğrudan konuşmada tırnak işaretleri ve cümle sonu noktalama dahil noktalama kurallarını doğru uygulama"
+      "name": "Punctuation",
+      "description": "Apply punctuation rules correctly including commas in complex sentences, quotation marks in direct speech, and sentence-ending punctuation"
     },
     "grade4-reading-comprehension": {
-      "name": "İleri Okuduğunu Anlama",
-      "description": "Metinleri analiz etme, ana fikirleri bulma, iddiaları kanıtlarla destekleme, metinleri karşılaştırma"
+      "name": "Advanced Reading Comprehension",
+      "description": "Analyzing texts, finding central ideas, supporting claims with evidence, comparing texts"
     },
     "grade4-language-comparison": {
-      "name": "Dil Farkındalığı ve Karşılaştırma",
-      "description": "Almancayı diğer dillerle karşılaştırma, lehçeleri ve yabancı kelimeleri tanıma, sözlü ve yazılı dil biçimlerini ayırt etme"
+      "name": "Language Awareness and Comparison",
+      "description": "Comparing German with other languages, recognizing dialects and foreign words, distinguishing spoken and written language forms"
     },
     "grade4-dramatic-expression": {
-      "name": "Dramatik İfade ve Rol Yapma",
-      "description": "Perspektif benimseme, roller geliştirme, ses, jest ve hareketin ileri kullanımıyla oyun aracılığıyla durumları keşfetme"
+      "name": "Dramatic Expression and Role Play",
+      "description": "Adopting perspectives, developing roles, exploring situations through play with advanced use of voice, gesture, and movement"
     },
     "grade5-discussion-skills": {
-      "name": "Tartışma Becerileri ve Sınıf Diyaloğu",
-      "description": "Belirlenen kurallara uyarak sınıf tartışmalarına etkili katılma, başkalarına uygun yanıt verme, görüşleri formüle etme ve gerekçelendirme ve konuşma rollerini ayırt etme"
+      "name": "Discussion Skills and Classroom Dialogue",
+      "description": "Participating effectively in classroom discussions following established rules, responding appropriately to others, formulating and justifying opinions, and distinguishing conversation roles"
     },
     "grade5-media-literacy": {
-      "name": "Medya Okuryazarlığı",
-      "description": "Kütüphane sistemlerini, dijital araştırmayı anlama ve medya kullanımı üzerine düşünme"
+      "name": "Media Literacy",
+      "description": "Understanding library systems, digital research, and reflecting on media use"
     },
     "grade5-oral-presentations": {
-      "name": "Sözlü Sunumlar",
-      "description": "Net yapı ve görsel yardımcılarla sınıf arkadaşlarına bilgi ve deneyimleri sunma"
+      "name": "Oral Presentations",
+      "description": "Presenting information and experiences to classmates with clear structure and visual aids"
     },
     "grade5-literary-text-analysis": {
-      "name": "Edebi Metin Analizi",
-      "description": "Anlatı edebi biçimlerini anlama: Fabllar (fabl), Masallar (masal) ve Sagalar (efsane) - yapı, karakterler ve temaları analiz etme"
+      "name": "Literary Text Analysis",
+      "description": "Understanding narrative literary forms: Fabeln (fables), Märchen (fairy tales), and Sagen (legends) - analyzing structure, characters, and themes"
     },
     "grade5-attentive-listening": {
-      "name": "Dikkatli Dinleme",
-      "description": "Sözlü metinleri anlama, temel bilgileri çıkarma"
+      "name": "Attentive Listening",
+      "description": "Comprehending spoken texts, extracting key information"
     },
     "grade5-sentence-elements": {
-      "name": "Cümle Öğeleri ve Cümlecik Yapısı",
-      "description": "Tüm cümle öğelerini (Satzglieder) tanımlama, ana ve yan cümleleri ayırt etme ve farklı zarf tümleçi türlerini anlama dahil ileri cümle analizi"
+      "name": "Sentence Elements and Clause Structure",
+      "description": "Advanced sentence analysis including identifying all sentence elements (Satzglieder), distinguishing main and subordinate clauses, and understanding different types of adverbial modifiers"
     },
     "grade5-informative-writing": {
-      "name": "Bilgilendirici Yazı",
-      "description": "Mantıksal düzenlemeyle gerçekçi metinler yazma (Rapor, Betimleme)"
+      "name": "Informative Writing",
+      "description": "Writing factual texts with logical organization (Bericht, Beschreibung)"
     },
     "grade5-reading-strategies": {
-      "name": "Okuma Stratejileri",
-      "description": "İşaretleme, yapılandırma, ana fikirleri belirleme, okuma günlükleri"
+      "name": "Reading Strategies",
+      "description": "Marking, structuring, identifying key ideas, reading journals"
     },
     "grade5-text-revision": {
-      "name": "Metin Gözden Geçirme",
-      "description": "Kendi ve akran metinlerini planlama, gözden geçirme ve iyileştirme"
+      "name": "Text Revision",
+      "description": "Planning, reviewing and improving own and peer texts"
     },
     "grade5-word-classes": {
-      "name": "Sözcük Sınıfları ve Morfoloji",
-      "description": "Tüm sözcük türleri, kelime oluşturma, önekler, sonekler"
+      "name": "Word Classes and Morphology",
+      "description": "All Wortarten, word formation, prefixes, suffixes"
     },
     "grade5-creative-writing": {
-      "name": "Yaratıcı Yazarlık",
-      "description": "Edebi biçimleri uyarlayarak yaratıcı metinler üretme (Fabl, Masal uyarlaması, fantezi)"
+      "name": "Creative Writing",
+      "description": "Producing creative texts by adapting literary forms (Fabel, Märchen adaptation, fantasy)"
     },
     "grade5-spelling-rules": {
-      "name": "Yazım ve Noktalama",
-      "description": "Ünlü uzunluğu, s sesleri ve noktalama için yazım kurallarına hakim olma"
+      "name": "Spelling and Punctuation",
+      "description": "Mastering spelling rules for vowel length, s-sounds, and punctuation"
     },
     "grade5-dramatic-play": {
-      "name": "Dramatik Oyun ve İfade",
-      "description": "Metinleri yorumlamak ve öz ifadeyi geliştirmek için teatral ifade kullanma"
+      "name": "Dramatic Play and Expression",
+      "description": "Using theatrical expression to interpret texts and develop self-expression"
     },
     "grade7-ballads-poetry": {
-      "name": "Baladlar ve Şiir Analizi",
-      "description": "Ölçü, kafiye şemaları, edebi araçlar, anlatı yapısı ve şiirsel biçimin nasıl atmosfer ve ruh hali yarattığını inceleyerek baladları ve şiirleri analiz etme"
+      "name": "Ballads and Poetry Analysis",
+      "description": "Analyzing ballads and poems by examining meter, rhyme schemes, literary devices, narrative structure, and how poetic form creates mood and atmosphere"
     },
     "grade7-dramatic-performance": {
-      "name": "Dramatik Performans ve Sahne Oluşturma",
-      "description": "Orijinal sahneler yaratma, karakterleri yorumlama ve metin anlama için teatral ifade kullanma"
+      "name": "Dramatic Performance and Scene Creation",
+      "description": "Creating original scenes, interpreting characters, and using theatrical expression for text comprehension"
     },
     "grade7-youth-literature": {
-      "name": "Gençlik Edebiyatı Analizi",
-      "description": "Modern ve klasik gençlik romanlarını, kısa anlatıları, temaları, karakter gelişimini ve anlatı tekniklerini analiz etme"
+      "name": "Youth Literature Analysis",
+      "description": "Analyzing modern and classic youth novels, short narratives, themes, character development, and narrative techniques"
     },
     "grade7-argumentative-writing": {
-      "name": "Tartışmacı Yazı",
-      "description": "Mektuplar dahil resmi tartışmacı metinler yazma, argümanları geçerlilik sırasına göre düzenleme ve iddiaları akıl yürütme ve kanıtlarla destekleme"
+      "name": "Argumentative Writing",
+      "description": "Writing formal argumentative texts including letters, organizing arguments by validity, and supporting claims with reasoning and evidence"
     },
     "grade7-subjunctive-mood": {
-      "name": "Dilek Kipi (Konjunktiv)",
-      "description": "Dolaylı anlatım, aktarılan konuşma ve varsayımsal veya gerçeğe aykırı durumları ifade etmek için dilek kipi I ve II kullanma"
+      "name": "Subjunctive Mood (Konjunktiv)",
+      "description": "Using subjunctive I and II for indirect speech, reported speech, and expressing hypothetical or contrary-to-fact situations"
     },
     "grade7-media-literacy": {
-      "name": "Medya Okuryazarlığı ve Kaynak Değerlendirme",
-      "description": "İnternet araştırması, kaynak güvenilirliğini değerlendirme, bilgi kalitesini karşılaştırma"
+      "name": "Media Literacy and Source Evaluation",
+      "description": "Internet research, evaluating source reliability, comparing information quality"
     },
     "grade7-reading-documentation": {
-      "name": "Okuma ve Not Alma",
-      "description": "Okuma deneyimlerini derinleştirmek için okuma günlükleri, dokümantasyon stratejileri ve anlama takibi"
+      "name": "Reading and Note-Taking",
+      "description": "Reading journals, documentation strategies, and comprehension tracking for deepening reading experiences"
     },
     "grade7-complex-sentences": {
-      "name": "Karmaşık Cümle Yapıları",
-      "description": "Koşul, sonuç, ödün ve karşıtlık cümlecikleri; bileşik-karmaşık cümleleri oluşturma ve analiz etme"
+      "name": "Complex Sentence Structures",
+      "description": "Conditional, consequential, concessive, and adversative clauses; constructing and analyzing compound-complex sentences"
     },
     "grade7-indirect-speech": {
-      "name": "Dolaylı Anlatım ve Alıntı Yapma",
-      "description": "Doğrudan anlatımı dolaylı anlatıma dönüştürme, kaynakları doğru parafrazlama ve alıntılanan içeriği düzgün işaretleme"
+      "name": "Indirect Speech and Paraphrasing",
+      "description": "Converting direct speech to indirect speech, paraphrasing sources accurately, and properly marking borrowed content"
     },
     "grade7-oral-presentations": {
-      "name": "Yapılandırılmış Sözlü Sunumlar",
-      "description": "Görselleştirme yardımcıları, retorik araçları ve izleyici etkileşim teknikleriyle sunumlar yapma"
+      "name": "Structured Oral Presentations",
+      "description": "Delivering presentations with visualization aids, rhetorical devices, and audience engagement techniques"
     },
     "grade7-discussion-debate": {
-      "name": "Tartışma ve Münazara Becerileri",
-      "description": "Demokratik diyalog ve resmi münazaraya katılma, çatışmaları yapıcı çözme, yapılandırılmış argümanlarla bakış açılarını sunma ve savunma ve karşıt pozisyonları gerekçeli karşı argümanlarla ele alma"
+      "name": "Discussion and Debate Skills",
+      "description": "Engage in democratic dialogue and formal debate, resolve conflicts constructively, present and defend viewpoints with structured arguments, and address opposing positions with reasoned counter-arguments"
     },
     "grade7-advanced-punctuation": {
-      "name": "İleri Noktalama",
-      "description": "Karmaşık cümlelerde, doğrudan konuşmada ve alıntılarda noktalama kurallarına hakim olma"
+      "name": "Advanced Punctuation",
+      "description": "Commas with infinitive phrases and appositives, quotation marks for titles and speech, and punctuation in compound-complex sentences"
     },
     "grade8-drama-analysis": {
-      "name": "Drama Analizi",
-      "description": "Dramatik yapı, diyalog ve sahne talimatlarını anlama"
-    },
-    "grade8-expository-writing": {
-      "name": "Açıklayıcı Yazma",
-      "description": "Karmaşık konuları hedef kitle için açık bir şekilde açıklayan bilgilendirici metinler yazma"
+      "name": "Drama Analysis",
+      "description": "Understanding dramatic structure, dialogue, and stage directions"
     },
     "grade8-konjunktiv-reported-speech": {
-      "name": "Konjunktiv ve Dolaylı Anlatım",
-      "description": "Dolaylı anlatım ve varsayımsal durumlar için Konjunktiv I ve II kullanımı, doğru form oluşturma ve yerine koyma kuralları dahil"
-    },
-    "grade8-media-criticism": {
-      "name": "Medya Eleştirisi",
-      "description": "Medya kaynaklarını ve önyargıları eleştirel bir şekilde değerlendirme"
+      "name": "Konjunktiv and Reported Speech",
+      "description": "Using Konjunktiv I and II for indirect speech and hypothetical situations, including proper form formation and substitution rules"
     },
     "grade8-short-story-interpretation": {
-      "name": "Kısa Öykü Yorumlama",
-      "description": "Kurzgeschichten (Alman kısa öyküleri) analiz etme ve yorumlama"
+      "name": "Short Story Interpretation",
+      "description": "Analyzing and interpreting Kurzgeschichten"
     },
-    "grade8-news-reporting": {
-      "name": "Haber ve Röportaj",
-      "description": "Haber ile görüşü ayırt etme, gazetecilik metin türlerini analiz etme"
+    "grade8-media-criticism": {
+      "name": "Media Criticism",
+      "description": "Critically evaluating media sources and bias"
     },
-    "grade8-narrative-techniques": {
-      "name": "Anlatı Teknikleri",
-      "description": "Düz yazıda anlatı perspektifi, zaman yapısı ve edebi araçları analiz etme"
-    },
-    "grade8-syntax-analysis": {
-      "name": "Sözdizimi Analizi",
-      "description": "Karmaşık cümle yapılarını ve yan cümle türlerini dilbilgisel modeller kullanarak analiz etme"
+    "grade8-expository-writing": {
+      "name": "Expository Writing",
+      "description": "Writing informative texts explaining complex topics clearly for a target audience"
     },
     "grade8-presentation-techniques": {
-      "name": "Sunum Teknikleri",
-      "description": "Görsel yardımlarla yapılandırılmış sunumlar yapma"
+      "name": "Presentation Techniques",
+      "description": "Delivering structured presentations with visual aids"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Syntax Analysis",
+      "description": "Analyzing complex sentence structures and clause types using grammatical models"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Narrative Techniques",
+      "description": "Analyzing narrative perspective, time structure, and literary devices in prose"
+    },
+    "grade8-news-reporting": {
+      "name": "News and Reporting",
+      "description": "Distinguishing news from opinion, analyzing journalistic text types"
     },
     "grade8-listening-note-taking": {
-      "name": "Dinleme ve Not Alma",
-      "description": "Sözlü metinlerden önemli bilgileri çıkarma ve not alma stratejilerini kullanarak verimli bir şekilde belgeleme"
+      "name": "Listening and Note-Taking",
+      "description": "Extracting key information from spoken texts and documenting it efficiently using note-taking strategies"
     },
     "grade8-word-formation-etymology": {
-      "name": "Sözcük Oluşumu ve Etimoloji",
-      "description": "Sözcük kökenlerini, ön ekleri, son ekleri, bileşik sözcük oluşumunu ve bilinmeyen kelimeleri çözmek için Yunanca ve Latince kökleri anlamak"
+      "name": "Word Formation and Etymology",
+      "description": "Understanding word origins, prefixes, suffixes, compound word formation, and Greek and Latin roots to decode unfamiliar vocabulary"
+    },
+    "grade8-linear-argumentation": {
+      "name": "Linear Argumentation",
+      "description": "Writing structured argumentative texts with clear thesis and evidence, using linear progression from weakest to strongest arguments"
+    },
+    "grade9-active-listening": {
+      "name": "Active Listening",
+      "description": "Responding to complex oral presentations with note-taking, questioning, and summarizing"
+    },
+    "grade9-character-analysis": {
+      "name": "Character Analysis",
+      "description": "Deep analysis of literary characters, their development, motivation, and relationships"
+    },
+    "grade9-debate-skills": {
+      "name": "Debate Skills",
+      "description": "Participating in formal debates with structured arguments and responding to opponents"
+    },
+    "grade9-dialectical-argumentation": {
+      "name": "Dialectical Argumentation",
+      "description": "Writing pro-contra essays with balanced perspectives using dialectical structure"
+    },
+    "grade9-language-variation": {
+      "name": "Language Variation",
+      "description": "Understanding dialects, sociolects, register, and code-switching in German language use"
+    },
+    "grade9-novella-analysis": {
+      "name": "Novella Analysis",
+      "description": "Analyzing the novella as a genre with its structural elements including unerhörte Begebenheit, Dingsymbol, and frame narratives"
+    },
+    "grade9-poetry-forms": {
+      "name": "Poetry Forms and Analysis",
+      "description": "Understanding verse forms, meter, rhyme schemes, and imagery"
+    },
+    "grade9-research-writing": {
+      "name": "Research Writing",
+      "description": "Integrating sources, proper citation, and synthesizing research into coherent arguments"
+    },
+    "grade9-rhetorical-devices": {
+      "name": "Rhetorical Devices",
+      "description": "Identifying and analyzing persuasive techniques and rhetorical strategies in texts and speeches"
+    },
+    "grade9-satire-irony": {
+      "name": "Satire and Irony",
+      "description": "Recognizing and analyzing satirical texts, irony, sarcasm, and parody"
+    },
+    "grade9-semantic-fields": {
+      "name": "Semantic Fields and Connotation",
+      "description": "Analyzing word meanings in context - semantic fields, connotation vs denotation, euphemism"
+    },
+    "grade9-textgebundene-eroerterung": {
+      "name": "Text-Based Discussion",
+      "description": "Writing text-based argumentative essays (textgebundene Erörterung)"
+    },
+    "grade10-drama-interpretation": {
+      "name": "Drama Interpretation",
+      "description": "Analyzing classical and modern dramatic works using dramatic theory and historical context"
+    },
+    "grade10-essay-writing": {
+      "name": "Essay Writing",
+      "description": "Writing opinion essays with personal voice, balancing analysis with perspective"
+    },
+    "grade10-formal-discourse": {
+      "name": "Formal Discourse",
+      "description": "Participating in academic discussions, building on others' contributions, and using evidence"
+    },
+    "grade10-genre-conventions": {
+      "name": "Genre Conventions",
+      "description": "Understanding and applying genre expectations, analyzing genre subversion and hybridization"
+    },
+    "grade10-language-history": {
+      "name": "Language History",
+      "description": "Understanding the development of the German language from Old High German through to Modern High German"
+    },
+    "grade10-literary-essay": {
+      "name": "Literary Essay",
+      "description": "Writing analytical essays on literary texts with thesis development and evidence integration"
+    },
+    "grade10-material-based-writing": {
+      "name": "Material-Based Writing",
+      "description": "Synthesizing multiple sources into coherent texts while maintaining objectivity"
+    },
+    "grade10-media-production": {
+      "name": "Media Production",
+      "description": "Creating multimedia content with purpose - podcasts, video essays, infographics"
+    },
+    "grade10-novel-interpretation": {
+      "name": "Novel Interpretation",
+      "description": "Comprehensive analysis of longer narrative works including structure, themes, and character development"
+    },
+    "grade10-pragmatics": {
+      "name": "Pragmatics",
+      "description": "Understanding how context shapes meaning in communication through speech acts, implicature, presupposition, and politeness strategies"
+    },
+    "grade10-speech-analysis": {
+      "name": "Speech Analysis",
+      "description": "Analyzing political and public speeches for structure, rhetoric, and persuasive strategies"
+    },
+    "grade10-text-comparison": {
+      "name": "Text Comparison",
+      "description": "Comparing texts across genres and epochs with comparative thesis development"
+    },
+    "grade11-classical-drama": {
+      "name": "Classical German Drama",
+      "description": "Analyzing dramatic works from Weimarer Klassik period, including Schiller and Goethe's major plays"
+    },
+    "grade11-enlightenment-literature": {
+      "name": "Enlightenment Literature",
+      "description": "Analyzing Aufklärung texts and ideas through works like Lessing's Nathan der Weise and Emilia Galotti"
+    },
+    "grade11-film-analysis": {
+      "name": "Film Analysis",
+      "description": "Analyzing cinematic techniques and comparing literary texts with film adaptations"
+    },
+    "grade11-intertextuality": {
+      "name": "Intertextuality",
+      "description": "Recognizing and analyzing textual references, adaptations, allusions, and archetypal patterns"
+    },
+    "grade11-language-manipulation": {
+      "name": "Language and Manipulation",
+      "description": "Analyzing propaganda and persuasive language techniques including framing, spin, and the relationship between language and power"
+    },
+    "grade11-language-philosophy": {
+      "name": "Language and Philosophy",
+      "description": "Exploring language criticism and communication theory through philosophical perspectives"
+    },
+    "grade11-literary-interpretation": {
+      "name": "Advanced Literary Interpretation",
+      "description": "Developing thesis-driven interpretations with secondary literature engagement and hermeneutic analysis"
+    },
+    "grade11-lyric-analysis": {
+      "name": "Advanced Lyric Analysis",
+      "description": "In-depth poetry analysis across epochs from Baroque to modern"
+    },
+    "grade11-rhetoric-oratory": {
+      "name": "Rhetoric and Oratory",
+      "description": "Advanced persuasion techniques and public speaking through classical rhetoric and political oratory"
+    },
+    "grade11-seminar-discussion": {
+      "name": "Seminar Discussion",
+      "description": "Leading and contributing to academic discourse, preparing discussion questions"
+    },
+    "grade11-sturm-und-drang": {
+      "name": "Sturm und Drang",
+      "description": "Understanding the Sturm und Drang movement's rebellion against rationalism through the Genie concept, emotion, and nature"
+    },
+    "grade11-wissenschaftliches-schreiben": {
+      "name": "Academic Writing",
+      "description": "Scholarly writing conventions including citations, footnotes, bibliography, and academic register"
+    },
+    "grade12-academic-presentation": {
+      "name": "Academic Presentation",
+      "description": "Delivering research-based presentations and responding to scholarly questions"
+    },
+    "grade12-author-study": {
+      "name": "Author Studies",
+      "description": "In-depth study of major German authors - biographical context, career development, scholarly positions"
+    },
+    "grade12-comparative-analysis": {
+      "name": "Comparative Literature Analysis",
+      "description": "Comparing literary works across epochs and cultures with sophisticated analytical structure"
+    },
+    "grade12-drama-theory": {
+      "name": "Drama Theory",
+      "description": "Understanding dramatic theory and concepts from Aristotle to modern theater"
+    },
+    "grade12-expressionism": {
+      "name": "Expressionism",
+      "description": "Analyzing Expressionist poetry and prose through aesthetics, form, and historical context"
+    },
+    "grade12-facharbeit": {
+      "name": "Research Paper (Facharbeit)",
+      "description": "Writing extended academic research papers (10-15 pages) with systematic research, academic methodology, and oral defense"
+    },
+    "grade12-language-change": {
+      "name": "Language Change",
+      "description": "Analyzing contemporary language developments including Anglicisms, internet language, and gender-inclusive language"
+    },
+    "grade12-media-theory": {
+      "name": "Media Theory",
+      "description": "Understanding key media theories (McLuhan basics), digital transformation, media's social role"
+    },
+    "grade12-prose-interpretation": {
+      "name": "Prose Interpretation (Abitur Level)",
+      "description": "Advanced narrative text analysis at Abitur level - novels and short prose"
+    },
+    "grade12-realism-naturalism": {
+      "name": "Realism and Naturalism",
+      "description": "Understanding 19th-century literary movements including Realism and Naturalism through works by Fontane, Keller, Storm, and Hauptmann"
+    },
+    "grade12-romanticism": {
+      "name": "Romanticism Literature",
+      "description": "Analyzing Romantic texts, themes, and aesthetics in German literature - exploring Sehnsucht, nature, dreams, and the uncanny through works by Novalis, Eichendorff, E.T.A. Hoffmann, Brentano, and Heine"
+    },
+    "grade12-text-interpretation-abitur": {
+      "name": "Text Interpretation (Abitur Level)",
+      "description": "Exam-level literary analysis - writing comprehensive text interpretations under exam conditions and meeting Abitur evaluation criteria"
+    },
+    "grade13-abitur-essay": {
+      "name": "Abitur Essay Writing",
+      "description": "Mastering all Abitur essay formats under exam conditions - literary interpretation, text-based argumentation, and material synthesis"
+    },
+    "grade13-creative-writing": {
+      "name": "Creative Writing (Advanced)",
+      "description": "Producing creative texts with literary awareness - short prose, poetry, experimental forms"
+    },
+    "grade13-eroerterung-literarischer-texte": {
+      "name": "Literary Discussion",
+      "description": "Argumentative writing on literary topics with thesis-driven structure"
+    },
+    "grade13-exam-preparation": {
+      "name": "Abitur Exam Strategies",
+      "description": "Applying all German language arts skills under exam conditions - time management, task analysis, strategic planning, and self-assessment"
+    },
+    "grade13-gedichtvergleich": {
+      "name": "Poetry Comparison (Gedichtvergleich)",
+      "description": "Comparative analysis of poems - Abitur format with balanced treatment"
+    },
+    "grade13-language-reflection": {
+      "name": "Language Reflection",
+      "description": "Meta-linguistic awareness and analysis at the highest level"
+    },
+    "grade13-literary-epochs-overview": {
+      "name": "Literary Epochs Synthesis",
+      "description": "Connecting and comparing all major epochs from Baroque to Gegenwartsliteratur"
+    },
+    "grade13-literature-society": {
+      "name": "Literature and Society",
+      "description": "Connecting literature to social contexts through Literatursoziologie and engaged criticism"
+    },
+    "grade13-materialgestuetztes-schreiben": {
+      "name": "Material-Based Writing (Abitur)",
+      "description": "Synthesizing diverse sources for argumentative texts at Abitur level - integrating multiple perspectives while developing original positions"
+    },
+    "grade13-modern-literature": {
+      "name": "Modern and Contemporary German Literature",
+      "description": "Post-1945 German literature - analyzing responses to WWII, Holocaust, German division and reunification, and contemporary themes through works by Böll, Grass, Wolf, Bernhard, and contemporary authors"
+    },
+    "grade13-presentation-defense": {
+      "name": "Presentation and Defense",
+      "description": "Defending positions in academic contexts and oral exam preparation"
+    },
+    "grade13-textanalyse-pragmatisch": {
+      "name": "Pragmatic Text Analysis",
+      "description": "Analyzing non-fictional texts at highest level - essays, speeches, philosophical texts"
     }
   }
 }

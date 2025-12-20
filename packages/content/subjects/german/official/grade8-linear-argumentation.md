@@ -57,7 +57,7 @@ real_world_context:
 anti_patterns:
   - Avoid topics requiring political or economic expertise beyond grade level
   - Don't introduce counterarguments in the conclusion section
-  - Avoid arguments depending on complex statistical or scientific data analysis
+  - Avoid arguments requiring complex statistical or scientific analysis
   - Don't mix linear with dialectical (pro-contra) structure in same text
   - Avoid evidence sources unfamiliar or inaccessible to 13-14 year olds
 version: 1
