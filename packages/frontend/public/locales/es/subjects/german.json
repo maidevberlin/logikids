@@ -351,6 +351,50 @@
     "grade7-advanced-punctuation": {
       "name": "Puntuacion avanzada",
       "description": "Comas con frases infinitivas y aposiciones, comillas para titulos y discurso, y puntuacion en oraciones compuestas-complejas"
+    },
+    "grade8-drama-analysis": {
+      "name": "Analisis de drama",
+      "description": "Comprension de la estructura dramatica, el dialogo y las acotaciones escenicas"
+    },
+    "grade8-expository-writing": {
+      "name": "Escritura expositiva",
+      "description": "Redaccion de textos informativos que explican temas complejos de manera clara para un publico objetivo"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv y discurso indirecto",
+      "description": "Uso del Konjunktiv I y II para el discurso indirecto y situaciones hipoteticas, incluida la formacion correcta de formas y reglas de sustitucion"
+    },
+    "grade8-media-criticism": {
+      "name": "Critica de medios",
+      "description": "Evaluacion critica de fuentes de medios y sesgos"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Interpretación de cuentos cortos",
+      "description": "Analizar e interpretar Kurzgeschichten (cuentos cortos alemanes)"
+    },
+    "grade8-news-reporting": {
+      "name": "Noticias y reportajes",
+      "description": "Distincion entre noticias y opinion, analisis de tipos de textos periodisticos"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Analisis sintactico",
+      "description": "Analisis de estructuras oracionales complejas y tipos de clausulas utilizando modelos gramaticales"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Tecnicas narrativas",
+      "description": "Analisis de la perspectiva narrativa, la estructura temporal y los recursos literarios en prosa"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Formacion de palabras y etimologia",
+      "description": "Comprension de los origenes de las palabras, prefijos, sufijos, formacion de compuestos y raices griegas y latinas para decodificar vocabulario desconocido"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Tecnicas de presentacion",
+      "description": "Realizar presentaciones estructuradas con ayudas visuales"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Comprension auditiva y toma de notas",
+      "description": "Extraer informacion clave de textos orales y documentarla eficientemente usando estrategias de toma de notas"
     }
   }
 }

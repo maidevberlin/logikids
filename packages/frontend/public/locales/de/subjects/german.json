@@ -351,6 +351,50 @@
     "grade7-advanced-punctuation": {
       "name": "Erweiterte Zeichensetzung",
       "description": "Kommas bei Infinitivsätzen und Appositionen, Anführungszeichen für Titel und direkte Rede sowie Zeichensetzung in mehrfach zusammengesetzten Sätzen"
+    },
+    "grade8-drama-analysis": {
+      "name": "Dramenanalyse",
+      "description": "Verständnis dramatischer Struktur, Dialoge und Regieanweisungen"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv und indirekte Rede",
+      "description": "Verwendung von Konjunktiv I und II für indirekte Rede und hypothetische Situationen, einschließlich korrekter Formbildung und Ersatzregeln"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Kurzgeschichten-Interpretation",
+      "description": "Kurzgeschichten analysieren und interpretieren"
+    },
+    "grade8-media-criticism": {
+      "name": "Medienkritik",
+      "description": "Kritische Bewertung von Medienquellen und Voreingenommenheit"
+    },
+    "grade8-expository-writing": {
+      "name": "Erklärende Texte",
+      "description": "Verfassen informativer Texte, die komplexe Themen klar für eine Zielgruppe erklären"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Präsentationstechniken",
+      "description": "Strukturierte Präsentationen mit visuellen Hilfsmitteln halten"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Syntaxanalyse",
+      "description": "Analyse komplexer Satzstrukturen und Nebensatzarten mithilfe grammatischer Modelle"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Erzähltechniken",
+      "description": "Analyse von Erzählperspektive, Zeitstruktur und literarischen Mitteln in Prosatexten"
+    },
+    "grade8-news-reporting": {
+      "name": "Nachrichten und Berichterstattung",
+      "description": "Unterscheidung von Nachrichten und Meinung, Analyse journalistischer Texttypen"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Wortbildung und Etymologie",
+      "description": "Verständnis von Wortherkünften, Präfixen, Suffixen, Komposita und griechisch-lateinischen Wurzeln zur Erschließung unbekannter Wörter"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Hörverstehen und Notizen",
+      "description": "Kerninformationen aus gesprochenen Texten entnehmen und effizient mit Notizstrategien dokumentieren"
     }
   }
 }

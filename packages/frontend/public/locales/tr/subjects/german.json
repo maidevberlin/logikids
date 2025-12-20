@@ -351,6 +351,50 @@
     "grade7-advanced-punctuation": {
       "name": "İleri Noktalama",
       "description": "Karmaşık cümlelerde, doğrudan konuşmada ve alıntılarda noktalama kurallarına hakim olma"
+    },
+    "grade8-drama-analysis": {
+      "name": "Drama Analizi",
+      "description": "Dramatik yapı, diyalog ve sahne talimatlarını anlama"
+    },
+    "grade8-expository-writing": {
+      "name": "Açıklayıcı Yazma",
+      "description": "Karmaşık konuları hedef kitle için açık bir şekilde açıklayan bilgilendirici metinler yazma"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv ve Dolaylı Anlatım",
+      "description": "Dolaylı anlatım ve varsayımsal durumlar için Konjunktiv I ve II kullanımı, doğru form oluşturma ve yerine koyma kuralları dahil"
+    },
+    "grade8-media-criticism": {
+      "name": "Medya Eleştirisi",
+      "description": "Medya kaynaklarını ve önyargıları eleştirel bir şekilde değerlendirme"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Kısa Öykü Yorumlama",
+      "description": "Kurzgeschichten (Alman kısa öyküleri) analiz etme ve yorumlama"
+    },
+    "grade8-news-reporting": {
+      "name": "Haber ve Röportaj",
+      "description": "Haber ile görüşü ayırt etme, gazetecilik metin türlerini analiz etme"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Anlatı Teknikleri",
+      "description": "Düz yazıda anlatı perspektifi, zaman yapısı ve edebi araçları analiz etme"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Sözdizimi Analizi",
+      "description": "Karmaşık cümle yapılarını ve yan cümle türlerini dilbilgisel modeller kullanarak analiz etme"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Sunum Teknikleri",
+      "description": "Görsel yardımlarla yapılandırılmış sunumlar yapma"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Dinleme ve Not Alma",
+      "description": "Sözlü metinlerden önemli bilgileri çıkarma ve not alma stratejilerini kullanarak verimli bir şekilde belgeleme"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Sözcük Oluşumu ve Etimoloji",
+      "description": "Sözcük kökenlerini, ön ekleri, son ekleri, bileşik sözcük oluşumunu ve bilinmeyen kelimeleri çözmek için Yunanca ve Latince kökleri anlamak"
     }
   }
 }

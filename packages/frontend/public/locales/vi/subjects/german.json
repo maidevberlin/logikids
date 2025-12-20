@@ -351,6 +351,50 @@
     "grade7-advanced-punctuation": {
       "name": "Dấu câu nâng cao",
       "description": "Dấu phẩy với cụm nguyên mẫu và cụm đồng vị, dấu ngoặc kép cho tiêu đề và lời nói và dấu câu trong câu ghép-phức"
+    },
+    "grade8-drama-analysis": {
+      "name": "Phân tích kịch",
+      "description": "Hiểu cấu trúc kịch, đối thoại và chỉ dẫn sân khấu"
+    },
+    "grade8-expository-writing": {
+      "name": "Viết giải thích",
+      "description": "Viết các văn bản thông tin giải thích các chủ đề phức tạp một cách rõ ràng cho đối tượng mục tiêu"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv và lời nói gián tiếp",
+      "description": "Sử dụng Konjunktiv I và II cho lời nói gián tiếp và tình huống giả định, bao gồm việc hình thành dạng chính xác và quy tắc thay thế"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Kỹ thuật thuyết trình",
+      "description": "Trình bày các bài thuyết trình có cấu trúc với phương tiện trực quan"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Diễn giải truyện ngắn",
+      "description": "Phân tích và diễn giải Kurzgeschichten (truyện ngắn tiếng Đức)"
+    },
+    "grade8-media-criticism": {
+      "name": "Phê bình phương tiện truyền thông",
+      "description": "Đánh giá phê phán các nguồn phương tiện truyền thông và thành kiến"
+    },
+    "grade8-news-reporting": {
+      "name": "Tin tức và báo cáo",
+      "description": "Phân biệt tin tức và ý kiến, phân tích các loại văn bản báo chí"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Phân tích cú pháp",
+      "description": "Phân tích cấu trúc câu phức tạp và các loại mệnh đề sử dụng mô hình ngữ pháp"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Kỹ thuật tự sự",
+      "description": "Phân tích góc nhìn tự sự, cấu trúc thời gian và các phương tiện văn học trong văn xuôi"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Nghe và ghi chú",
+      "description": "Trích xuất thông tin chính từ văn bản nói và ghi lại hiệu quả bằng các chiến lược ghi chú"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Hình thành từ và từ nguyên học",
+      "description": "Hiểu nguồn gốc từ, tiền tố, hậu tố, cách tạo từ ghép và gốc Hy Lạp và La Tinh để giải mã từ vựng xa lạ"
     }
   }
 }

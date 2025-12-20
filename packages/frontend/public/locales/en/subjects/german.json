@@ -351,6 +351,50 @@
     "grade7-advanced-punctuation": {
       "name": "Advanced Punctuation",
       "description": "Commas with infinitive phrases and appositives, quotation marks for titles and speech, and punctuation in compound-complex sentences"
+    },
+    "grade8-drama-analysis": {
+      "name": "Drama Analysis",
+      "description": "Understanding dramatic structure, dialogue, and stage directions"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv and Reported Speech",
+      "description": "Using Konjunktiv I and II for indirect speech and hypothetical situations, including proper form formation and substitution rules"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Short Story Interpretation",
+      "description": "Analyzing and interpreting Kurzgeschichten"
+    },
+    "grade8-media-criticism": {
+      "name": "Media Criticism",
+      "description": "Critically evaluating media sources and bias"
+    },
+    "grade8-expository-writing": {
+      "name": "Expository Writing",
+      "description": "Writing informative texts explaining complex topics clearly for a target audience"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Presentation Techniques",
+      "description": "Delivering structured presentations with visual aids"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Syntax Analysis",
+      "description": "Analyzing complex sentence structures and clause types using grammatical models"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Narrative Techniques",
+      "description": "Analyzing narrative perspective, time structure, and literary devices in prose"
+    },
+    "grade8-news-reporting": {
+      "name": "News and Reporting",
+      "description": "Distinguishing news from opinion, analyzing journalistic text types"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Listening and Note-Taking",
+      "description": "Extracting key information from spoken texts and documenting it efficiently using note-taking strategies"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Word Formation and Etymology",
+      "description": "Understanding word origins, prefixes, suffixes, compound word formation, and Greek and Latin roots to decode unfamiliar vocabulary"
     }
   }
 }

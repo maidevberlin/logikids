@@ -351,6 +351,50 @@
     "grade7-advanced-punctuation": {
       "name": "Ponctuation avancee",
       "description": "Virgules avec les propositions infinitives et les appositions, guillemets pour les titres et le discours, et ponctuation dans les phrases composees-complexes"
+    },
+    "grade8-drama-analysis": {
+      "name": "Analyse dramatique",
+      "description": "Comprehension de la structure dramatique, du dialogue et des indications sceniques"
+    },
+    "grade8-expository-writing": {
+      "name": "Ecriture explicative",
+      "description": "Redaction de textes informatifs expliquant des sujets complexes de maniere claire pour un public cible"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv et discours indirect",
+      "description": "Utilisation du Konjunktiv I et II pour le discours indirect et les situations hypothetiques, y compris la formation correcte des formes et les regles de substitution"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Ecoute et prise de notes",
+      "description": "Extraire des informations cles de textes oraux et les documenter efficacement en utilisant des strategies de prise de notes"
+    },
+    "grade8-media-criticism": {
+      "name": "Critique des medias",
+      "description": "Evaluation critique des sources mediatiques et des biais"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Interprétation de nouvelles",
+      "description": "Analyser et interpréter les Kurzgeschichten (nouvelles allemandes)"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Analyse syntaxique",
+      "description": "Analyse de structures de phrases complexes et de types de propositions a l'aide de modeles grammaticaux"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Techniques de presentation",
+      "description": "Realiser des presentations structurees avec des supports visuels"
+    },
+    "grade8-news-reporting": {
+      "name": "Actualites et reportages",
+      "description": "Distinguer les nouvelles de l'opinion, analyser les types de textes journalistiques"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Techniques narratives",
+      "description": "Analyse de la perspective narrative, de la structure temporelle et des procedes litteraires dans la prose"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Formation des mots et etymologie",
+      "description": "Comprendre les origines des mots, les prefixes, les suffixes, la formation des composes et les racines grecques et latines pour decoder le vocabulaire inconnu"
     }
   }
 }
