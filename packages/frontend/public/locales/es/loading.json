@@ -87,6 +87,18 @@
       "Con ingles puedes unirte a proyectos y colaboraciones internacionales",
       "Las resenas de productos en ingles te ayudan a encontrar la verdad antes de comprar"
     ],
+    "history": [
+      "La historia te ayuda a entender por que existen los conflictos actuales - y que podria terminarlos",
+      "Reconocer patrones de propaganda te protege de ser manipulado hoy",
+      "La historia explica por que las fronteras y los paises tienen la forma que tienen",
+      "Entender tradiciones y costumbres tiene sentido cuando conoces sus origenes",
+      "El conocimiento historico te ayuda a ver a traves de las tacticas de manipulacion politica",
+      "La historia explica por que algunos lugares son mas ricos que otros",
+      "Entender monumentos y memoriales se enriquece con el contexto historico",
+      "La historia explica por que existen ciertas leyes y derechos - y por que importan",
+      "Aprender de los errores del pasado te ayuda a evitar repetirlos en tu propia vida",
+      "La historia te ayuda a entender las historias de tu familia y tu herencia cultural"
+    ],
     "fallback": [
       "Lo que aprendes aqui te ayuda con problemas reales de la vida cotidiana",
       "El conocimiento te protege de ser estafado",
@@ -154,6 +166,15 @@
       "Aprende expresiones e idioms comunes!",
       "Construye tu vocabulario leyendo regularmente!",
       "No tengas miedo de cometer errores al hablar!"
+    ],
+    "history": [
+      "Conecta eventos para entender las relaciones de causa y efecto!",
+      "Las fuentes primarias revelan perspectivas autenticas del pasado!",
+      "Las lineas de tiempo te ayudan a visualizar secuencias de eventos historicos!",
+      "Compara diferentes puntos de vista sobre el mismo evento historico!",
+      "Busca patrones que se repiten a lo largo de la historia!",
+      "El contexto es clave - siempre considera el periodo de tiempo!",
+      "Los mapas muestran como la geografia dio forma a los desarrollos historicos!"
     ],
     "fallback": [
       "Tomate tu tiempo para entender completamente la pregunta!",
@@ -251,6 +272,15 @@
       "'I am' es la oracion completa mas corta en ingles!",
       "El ingles tiene mas sinonimos que la mayoria de los otros idiomas!"
     ],
+    "history": [
+      "El sistema de escritura mas antiguo conocido tiene mas de 5,000 anos!",
+      "Los historiadores usan la arqueologia para entender civilizaciones antes de la escritura!",
+      "Muchos 'hechos' historicos fueron luego probados como mitos o propaganda!",
+      "La historia esta siendo constantemente reinterpretada a medida que surgen nuevas evidencias!",
+      "Las tradiciones orales preservaron la historia durante miles de anos antes de la escritura!",
+      "Los museos de todo el mundo contienen millones de artefactos historicos!",
+      "Las civilizaciones antiguas inventaron muchas cosas que todavia usamos hoy!"
+    ],
     "fallback": [
       "Aprender cosas nuevas reconfigura fisicamente tu cerebro!",
       "La curiosidad es lo que impulsa el descubrimiento y la innovacion!",
@@ -289,6 +319,11 @@
       "Domina el idioma global de la comunicacion!",
       "El ingles abre puertas a oportunidades en todo el mundo!",
       "Preparate para mejorar tus habilidades linguisticas!"
+    ],
+    "history": [
+      "Descubre las historias que dieron forma a nuestro mundo!",
+      "Aprende de los exitos y errores del pasado!",
+      "Conviertete en un detective del tiempo y descubre la verdad!"
     ],
     "fallback": ["Preparate para un desafio atractivo!", "Vas a aprender algo nuevo hoy!"]
   }
