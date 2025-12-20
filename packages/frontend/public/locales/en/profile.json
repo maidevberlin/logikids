@@ -91,7 +91,10 @@
       "message2": "Ready to start fresh? You'll need a new invite code to continue your learning journey!",
       "startButton": "Start Fresh",
       "note": "This will clear your local data"
-    }
+    },
+    "parentZone": "Parent Zone",
+    "usageStats": "Usage Statistics",
+    "usageStatsDescription": "View AI usage and cost tracking"
   },
   "settings": {
     "title": "Settings",
