@@ -87,6 +87,18 @@
       "Với tiếng Anh bạn có thể tham gia các dự án và hợp tác quốc tế",
       "Đánh giá sản phẩm tiếng Anh giúp bạn tìm sự thật trước khi mua"
     ],
+    "history": [
+      "Lịch sử giúp bạn hiểu tại sao các xung đột hiện tại tồn tại – và điều gì có thể chấm dứt chúng",
+      "Nhận ra các mẫu tuyên truyền bảo vệ bạn khỏi bị thao túng ngày nay",
+      "Lịch sử giải thích tại sao biên giới và các quốc gia có hình dạng như vậy",
+      "Hiểu truyền thống và phong tục có ý nghĩa khi bạn biết nguồn gốc của chúng",
+      "Kiến thức lịch sử giúp bạn nhìn thấu các chiến thuật thao túng chính trị",
+      "Lịch sử giải thích tại sao một số nơi giàu hơn những nơi khác",
+      "Hiểu các di tích và đài tưởng niệm trở nên phong phú hơn với bối cảnh lịch sử",
+      "Lịch sử giải thích tại sao một số luật và quyền tồn tại – và tại sao chúng quan trọng",
+      "Học từ những sai lầm trong quá khứ giúp bạn tránh lặp lại chúng trong cuộc sống của mình",
+      "Lịch sử giúp bạn hiểu câu chuyện gia đình và di sản văn hóa của bạn"
+    ],
     "fallback": [
       "Những gì bạn học ở đây giúp bạn với các vấn đề thực tế trong cuộc sống hàng ngày",
       "Kiến thức bảo vệ bạn khỏi bị lừa",
@@ -154,6 +166,15 @@
       "Học các thành ngữ và cách diễn đạt phổ biến!",
       "Xây dựng vốn từ vựng của bạn bằng cách đọc thường xuyên!",
       "Đừng ngại mắc lỗi khi nói!"
+    ],
+    "history": [
+      "Liên kết các sự kiện để hiểu mối quan hệ nhân quả!",
+      "Nguồn sơ cấp tiết lộ quan điểm xác thực từ quá khứ!",
+      "Dòng thời gian giúp bạn hình dung trình tự các sự kiện lịch sử!",
+      "So sánh các quan điểm khác nhau về cùng một sự kiện lịch sử!",
+      "Tìm kiếm các mẫu lặp lại xuyên suốt lịch sử!",
+      "Bối cảnh là chìa khóa – luôn xem xét thời kỳ!",
+      "Bản đồ cho thấy địa lý đã định hình sự phát triển lịch sử như thế nào!"
     ],
     "fallback": [
       "Dành thời gian để hiểu đầy đủ câu hỏi!",
@@ -251,6 +272,15 @@
       "'I am' là câu hoàn chỉnh ngắn nhất trong tiếng Anh!",
       "Tiếng Anh có nhiều từ đồng nghĩa hơn hầu hết các ngôn ngữ khác!"
     ],
+    "history": [
+      "Hệ thống chữ viết lâu đời nhất được biết đến đã hơn 5.000 tuổi!",
+      "Các nhà sử học sử dụng khảo cổ học để hiểu các nền văn minh trước khi có chữ viết!",
+      "Nhiều 'sự thật' lịch sử sau đó được chứng minh là thần thoại hoặc tuyên truyền!",
+      "Lịch sử liên tục được diễn giải lại khi có bằng chứng mới!",
+      "Truyền thống truyền miệng đã bảo tồn lịch sử hàng nghìn năm trước khi có chữ viết!",
+      "Các bảo tàng trên khắp thế giới chứa hàng triệu hiện vật lịch sử!",
+      "Các nền văn minh cổ đại đã phát minh nhiều thứ chúng ta vẫn sử dụng ngày nay!"
+    ],
     "fallback": [
       "Học những điều mới thực sự thay đổi cấu trúc não bạn!",
       "Tò mò là thứ thúc đẩy khám phá và đổi mới!",
@@ -289,6 +319,11 @@
       "Làm chủ ngôn ngữ giao tiếp toàn cầu!",
       "Tiếng Anh mở ra cánh cửa đến cơ hội trên toàn thế giới!",
       "Sẵn sàng nâng cao kỹ năng ngôn ngữ của bạn!"
+    ],
+    "history": [
+      "Khám phá những câu chuyện đã định hình thế giới của chúng ta!",
+      "Học từ những thành công và sai lầm của quá khứ!",
+      "Trở thành thám tử thời gian và khám phá sự thật!"
     ],
     "fallback": ["Sẵn sàng cho một thử thách hấp dẫn!", "Bạn sắp học một điều gì đó mới hôm nay!"]
   }

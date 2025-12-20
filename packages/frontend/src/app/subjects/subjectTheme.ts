@@ -1,4 +1,13 @@
-import { Calculator, Brain, Atom, Languages, Music, BookOpen, type LucideIcon } from 'lucide-react'
+import {
+  Calculator,
+  Brain,
+  Atom,
+  Languages,
+  Music,
+  BookOpen,
+  Landmark,
+  type LucideIcon,
+} from 'lucide-react'
 
 /**
  * Subject Theme Configuration - SINGLE SOURCE OF TRUTH
@@ -106,6 +115,20 @@ export const subjectThemes: Record<string, SubjectTheme> = {
       active: 'bg-pink-100 text-pink-800',
       glass: 'bg-pink-500/75',
       glassBorder: 'border-pink-300',
+    },
+  },
+  history: {
+    icon: Landmark,
+    colors: {
+      bg: 'bg-teal-500',
+      hover: 'hover:bg-teal-600',
+      text: 'text-teal-500',
+      bgLight: 'bg-teal-50',
+      hoverLight: 'hover:bg-teal-100',
+      badge: 'bg-teal-100 text-teal-800',
+      active: 'bg-teal-100 text-teal-800',
+      glass: 'bg-teal-500/75',
+      glassBorder: 'border-teal-300',
     },
   },
 }

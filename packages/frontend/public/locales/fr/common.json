@@ -208,6 +208,11 @@
       "description": "Apprentissage et comprehension de la langue anglaise",
       "concepts": {}
     },
+    "history": {
+      "label": "Histoire",
+      "description": "Explore le passe - les personnes, evenements et societes qui ont faconne notre monde",
+      "concepts": {}
+    },
     "surpriseMe": {
       "title": "Surprise-moi !",
       "description": "Lance-toi dans une aventure d'apprentissage aleatoire",

@@ -208,6 +208,11 @@
       "description": "English language learning and understanding",
       "concepts": {}
     },
+    "history": {
+      "label": "History",
+      "description": "Explore the past - people, events, and societies that shaped our world",
+      "concepts": {}
+    },
     "surpriseMe": {
       "title": "Surprise Me!",
       "description": "Jump into a random learning adventure",

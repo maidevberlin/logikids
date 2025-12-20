@@ -6,6 +6,7 @@ const SUBJECT_NAMESPACES = [
   'subjects/math',
   'subjects/german',
   'subjects/english',
+  'subjects/history',
   'subjects/physics',
   'subjects/biology',
   'subjects/logic',

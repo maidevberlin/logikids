@@ -87,6 +87,18 @@
       "Avec l'anglais tu peux rejoindre des projets et collaborations internationaux",
       "Les avis de produits en anglais t'aident a trouver la verite avant d'acheter"
     ],
+    "history": [
+      "L'histoire t'aide a comprendre pourquoi les conflits actuels existent - et ce qui pourrait les resoudre",
+      "Reconnaitre les schemas de propagande te protege de la manipulation aujourd'hui",
+      "L'histoire explique pourquoi les frontieres et les pays ont la forme qu'ils ont",
+      "Comprendre les traditions et coutumes prend du sens quand tu connais leurs origines",
+      "La connaissance historique t'aide a voir a travers les tactiques de manipulation politique",
+      "L'histoire explique pourquoi certains endroits sont plus riches que d'autres",
+      "Comprendre les monuments et memoriaux devient plus riche avec le contexte historique",
+      "L'histoire explique pourquoi certaines lois et droits existent - et pourquoi ils comptent",
+      "Apprendre des erreurs du passe t'aide a eviter de les repeter dans ta propre vie",
+      "L'histoire t'aide a comprendre les histoires de ta famille et ton heritage culturel"
+    ],
     "fallback": [
       "Ce que tu apprends ici t'aide avec les vrais problemes de la vie quotidienne",
       "La connaissance te protege des arnaques",
@@ -154,6 +166,15 @@
       "Apprends les expressions et idiomes courants !",
       "Enrichis ton vocabulaire en lisant regulierement !",
       "N'aie pas peur de faire des erreurs en parlant !"
+    ],
+    "history": [
+      "Relie les evenements pour comprendre les relations de cause a effet !",
+      "Les sources primaires revelent des perspectives authentiques du passe !",
+      "Les frises chronologiques t'aident a visualiser les sequences d'evenements historiques !",
+      "Compare differents points de vue sur le meme evenement historique !",
+      "Cherche les patterns qui se repetent a travers l'histoire !",
+      "Le contexte est cle - considere toujours la periode !",
+      "Les cartes montrent comment la geographie a faconne les developpements historiques !"
     ],
     "fallback": [
       "Prends ton temps pour bien comprendre la question !",
@@ -251,6 +272,15 @@
       "'I am' est la phrase complete la plus courte en anglais !",
       "L'anglais a plus de synonymes que la plupart des autres langues !"
     ],
+    "history": [
+      "Le plus ancien systeme d'ecriture connu a plus de 5 000 ans !",
+      "Les historiens utilisent l'archeologie pour comprendre les civilisations avant l'ecriture !",
+      "Beaucoup de 'faits' historiques se sont averes etre des mythes ou de la propagande !",
+      "L'histoire est constamment reinterpretee a mesure que de nouvelles preuves emergent !",
+      "Les traditions orales ont preserve l'histoire pendant des milliers d'annees avant l'ecriture !",
+      "Les musees du monde entier contiennent des millions d'artefacts historiques !",
+      "Les civilisations anciennes ont invente beaucoup de choses que nous utilisons encore aujourd'hui !"
+    ],
     "fallback": [
       "Apprendre de nouvelles choses recable physiquement ton cerveau !",
       "La curiosite est ce qui motive la decouverte et l'innovation !",
@@ -289,6 +319,11 @@
       "Maitrise la langue globale de la communication !",
       "L'anglais ouvre des portes a des opportunites dans le monde entier !",
       "Prepare-toi a ameliorer tes competences linguistiques !"
+    ],
+    "history": [
+      "Decouvre les histoires qui ont faconne notre monde !",
+      "Apprends des succes et des erreurs du passe !",
+      "Deviens un detective du temps et decouvre la verite !"
     ],
     "fallback": [
       "Prepare-toi pour un defi captivant !",

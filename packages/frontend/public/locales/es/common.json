@@ -208,6 +208,11 @@
       "description": "Aprendizaje y comprension del idioma ingles",
       "concepts": {}
     },
+    "history": {
+      "label": "Historia",
+      "description": "Explora el pasado - personas, eventos y sociedades que dieron forma a nuestro mundo",
+      "concepts": {}
+    },
     "surpriseMe": {
       "title": "Sorprendeme!",
       "description": "Lanzate a una aventura de aprendizaje aleatoria",

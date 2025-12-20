@@ -208,6 +208,11 @@
       "description": "Englisch lernen und verstehen",
       "concepts": {}
     },
+    "history": {
+      "label": "Geschichte",
+      "description": "Entdecke die Vergangenheit - Menschen, Ereignisse und Gesellschaften, die unsere Welt geprägt haben",
+      "concepts": {}
+    },
     "surpriseMe": {
       "title": "Überrasch mich!",
       "description": "Spring in ein zufälliges Lernabenteuer",

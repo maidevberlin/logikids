@@ -208,6 +208,11 @@
       "description": "Học tập và hiểu biết tiếng Anh",
       "concepts": {}
     },
+    "history": {
+      "label": "Lịch sử",
+      "description": "Khám phá quá khứ - con người, sự kiện và xã hội đã định hình thế giới của chúng ta",
+      "concepts": {}
+    },
     "surpriseMe": {
       "title": "Làm tôi ngạc nhiên!",
       "description": "Nhảy vào một cuộc phiêu lưu học tập ngẫu nhiên",
