@@ -13,7 +13,7 @@ import bgGrade7_13 from '@/assets/subjects/grade7-13.png'
 import bgGrade7_13Mobile from '@/assets/subjects/grade7-13.mobile.png'
 
 // School subject ordering (when they typically start in school)
-const SUBJECT_ORDER = ['math', 'german', 'english', 'physics', 'logic', 'music']
+const SUBJECT_ORDER = ['math', 'german', 'english', 'history', 'physics', 'logic', 'music']
 
 // Extended type for internal use
 type SubjectWithDisabled = SubjectInfo & { isDisabledForGrade?: boolean }

@@ -86,6 +86,19 @@ export const encouragement: Record<string, string[]> = {
     'encouragement.english.9', // Product reviews before buying
   ],
 
+  history: [
+    'encouragement.history.0', // Understanding current conflicts through their roots
+    'encouragement.history.1', // Recognizing propaganda patterns
+    'encouragement.history.2', // Why borders and countries are shaped this way
+    'encouragement.history.3', // Understanding traditions and customs
+    'encouragement.history.4', // Seeing through political manipulation
+    'encouragement.history.5', // Why some places are richer than others
+    'encouragement.history.6', // Understanding monuments and memorials
+    'encouragement.history.7', // Why laws and rights exist
+    'encouragement.history.8', // Learning from past mistakes
+    'encouragement.history.9', // Understanding family stories and heritage
+  ],
+
   fallback: [
     'encouragement.fallback.0', // Real problems in everyday life
     'encouragement.fallback.1', // Knowledge protects from being ripped off

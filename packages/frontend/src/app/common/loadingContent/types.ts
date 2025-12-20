@@ -38,6 +38,8 @@ export interface LoadingContent {
   german: SubjectLoadingContent
   /** English language content */
   english: SubjectLoadingContent
+  /** History content */
+  history: SubjectLoadingContent
   /** Subject-specific encouragement messages connecting learning to real life */
   encouragement: Record<string, string[]>
 }
@@ -45,4 +47,4 @@ export interface LoadingContent {
 /**
  * Valid subject identifiers in the system.
  */
-export type SubjectId = 'math' | 'physics' | 'logic' | 'music' | 'german' | 'english'
+export type SubjectId = 'math' | 'physics' | 'logic' | 'music' | 'german' | 'english' | 'history'

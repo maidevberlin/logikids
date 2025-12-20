@@ -26,6 +26,7 @@ import { logicContent } from './logic'
 import { musicContent } from './music'
 import { germanContent } from './german'
 import { englishContent } from './english'
+import { historyContent } from './history'
 import { encouragement } from './shared'
 
 // Export types
@@ -69,6 +70,7 @@ export const loadingContent: LoadingContent = {
   music: musicContent,
   german: germanContent,
   english: englishContent,
+  history: historyContent,
   encouragement,
 }
 
