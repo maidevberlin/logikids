@@ -1,0 +1,58 @@
+{
+  "morning": [
+    "Bonjour",
+    "Salut",
+    "Content de te voir",
+    "Pret a commencer la journee",
+    "Faisons de cette journee une reussite",
+    "Content de te revoir",
+    "On va apprendre quelque chose de cool",
+    "Tu vas y arriver",
+    "C'est parti",
+    "Pret pour l'aventure",
+    "Ravi de te revoir",
+    "Commencons"
+  ],
+  "afternoon": [
+    "Salut",
+    "Bon apres-midi",
+    "Content de te revoir",
+    "Ravi de te voir",
+    "Continuons sur notre lancee",
+    "Pret pour la suite",
+    "Tu te debrouilles super bien",
+    "Place a quelque chose d'amusant",
+    "On s'y met ensemble",
+    "Bon timing",
+    "Pret a apprendre",
+    "Allons-y"
+  ],
+  "evening": [
+    "Bonsoir",
+    "Salut",
+    "Toujours en forme",
+    "Content de te revoir",
+    "Belle perseverance",
+    "Continuons a apprendre",
+    "Tu assures aujourd'hui",
+    "Pret pour la suite",
+    "C'est le moment de se challenger",
+    "En pleine forme",
+    "Faisons des progres",
+    "Impressionnant"
+  ],
+  "night": [
+    "Salut oiseau de nuit",
+    "Encore la",
+    "Quelle perseverance",
+    "Content de te revoir",
+    "Tu es inarretable",
+    "Apprenant nocturne",
+    "Tu as l'air concentre",
+    "Finissons en beaute",
+    "Encore un petit tour",
+    "Tu as de l'energie",
+    "Pret a reflechir",
+    "C'est parti"
+  ]
+}

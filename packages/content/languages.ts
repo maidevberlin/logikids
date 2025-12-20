@@ -26,6 +26,18 @@ export const LANGUAGES = {
     displayName: 'English',
     tts: { languageCode: 'en-US', envVar: 'TTS_VOICE_EN', defaultVoice: 'en-US-Standard-C' },
   },
+  es: {
+    label: 'Español',
+    countryCode: 'ES',
+    displayName: 'Spanish',
+    tts: { languageCode: 'es-ES', envVar: 'TTS_VOICE_ES', defaultVoice: 'es-ES-Standard-A' },
+  },
+  fr: {
+    label: 'Français',
+    countryCode: 'FR',
+    displayName: 'French',
+    tts: { languageCode: 'fr-FR', envVar: 'TTS_VOICE_FR', defaultVoice: 'fr-FR-Standard-A' },
+  },
   tr: {
     label: 'Türkçe',
     countryCode: 'TR',
