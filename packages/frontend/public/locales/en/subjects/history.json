@@ -1,3 +1,100 @@
 {
-  "concepts": {}
+  "concepts": {
+    "grade6-alexander-great": {
+      "name": "Alexander the Great",
+      "description": "Explore Alexander the Great's conquests, empire building, spread of Hellenism, and the impact individuals can have on history"
+    },
+    "grade6-stone-age": {
+      "name": "Life in the Stone Age",
+      "description": "Compare and contrast life in the Old Stone Age (Paleolithic) and New Stone Age (Neolithic), understanding the transition from hunters and gatherers to farmers and settlers"
+    },
+    "grade6-charlemagne": {
+      "name": "Charlemagne and the Frankish Empire",
+      "description": "The rise of the Frankish kingdom, Charlemagne's coronation as Emperor, and the synthesis of Germanic, Christian, and Roman traditions that shaped medieval Europe"
+    },
+    "grade6-ancient-egypt": {
+      "name": "Ancient Egypt and the Nile",
+      "description": "Ancient Egypt as an early civilization - the Nile's geographic significance, pharaonic rule, pyramids, society, and religion"
+    },
+    "grade6-athenian-democracy": {
+      "name": "Athenian Democracy",
+      "description": "Explores the development of Athenian democracy from Solon's reforms through Pericles' Golden Age and the constitutional foundations of ancient democratic governance"
+    },
+    "grade6-greek-culture": {
+      "name": "Greek Culture & Legacy",
+      "description": "Explore Greek cultural achievements including mythology, epic poetry, the Olympic Games, theater traditions, and the impact of the Persian Wars on Greek identity"
+    },
+    "grade6-greek-polis": {
+      "name": "The Greek Polis",
+      "description": "Greek city-states, influence of landscape on political development, and Greek colonization around the Mediterranean"
+    },
+    "grade6-historical-sources": {
+      "name": "Historical Sources and Archaeological Methods",
+      "description": "Identify and analyze different types of historical sources and understand how archaeologists study the past"
+    },
+    "grade6-roman-republic": {
+      "name": "The Roman Republic",
+      "description": "Exploring Rome's mythical founding, the structure of the Republic including the Senate and social classes, and the transition from Republic to imperial rule"
+    },
+    "grade6-roman-empire": {
+      "name": "The Roman Empire",
+      "description": "Augustus and the Pax Romana, life in Roman provinces, the Limes frontier system, and Romanization throughout the empire"
+    },
+    "grade6-judaism-christianity": {
+      "name": "Judaism and Early Christianity",
+      "description": "Judaism in the Roman Empire including diaspora and temple destruction, and Christianity's development from persecuted minority to state religion"
+    },
+    "grade6-fall-of-rome": {
+      "name": "Fall of Rome and Migration Period",
+      "description": "Decline and fall of the Roman Empire, the Migration Period (Völkerwanderung), and the Mediterranean tripartition"
+    },
+    "grade7-age-of-discovery": {
+      "name": "Gutenberg and the Age of Discovery",
+      "description": "Explores the invention of the printing press and European exploration of the Americas in the late 15th century"
+    },
+    "grade7-crusades": {
+      "name": "The Crusades",
+      "description": "Explore the Crusades as a period of religious conflict, military campaigns, and cultural exchange between Christian Europe and the Islamic world, including the fall of Constantinople"
+    },
+    "grade7-investiture-controversy": {
+      "name": "Church vs. State - The Investiture Controversy",
+      "description": "Understand the power struggle between medieval popes and emperors over the right to appoint bishops and the resulting conflict that shaped church-state relations"
+    },
+    "grade7-medieval-cities": {
+      "name": "Medieval Cities and Trade",
+      "description": "Medieval urban development, city rights, the Hanseatic League, trade networks, and the emergence of the Bürger class"
+    },
+    "grade7-monastic-life": {
+      "name": "Monastic Life",
+      "description": "Explore medieval monasteries as religious communities, cultural centers, and centers of learning"
+    },
+    "grade7-absolutism": {
+      "name": "Absolutism and Louis XIV",
+      "description": "French absolutism under Louis XIV, Versailles as a symbol of power, government structures of absolute monarchy, and the balance of power in early modern Europe"
+    },
+    "grade7-medieval-kingship": {
+      "name": "Medieval Kingship and Feudalism",
+      "description": "Understand medieval rulership structures, the feudal system, and the development of the Holy Roman Empire under Otto I"
+    },
+    "grade7-baroque": {
+      "name": "Baroque Art and Architecture",
+      "description": "Baroque art and architecture as cultural and political expression, buildings as symbols of power from Greek theater to modern government buildings, and the connection between artistic style and political ideology"
+    },
+    "grade7-renaissance": {
+      "name": "Renaissance and Humanism",
+      "description": "Explore the Renaissance period as a cultural rebirth featuring human-centered thinking, artistic innovation, and a new worldview that transformed European society"
+    },
+    "grade7-reformation": {
+      "name": "The Reformation",
+      "description": "Martin Luther's 95 Theses (1517), the religious split between Catholics and Protestants, the Peasants' War, and witch persecution in 16th-century Europe"
+    },
+    "grade7-thirty-years-war": {
+      "name": "Thirty Years' War",
+      "description": "Understand the causes, course, devastation, and consequences of the Thirty Years' War (1618-1648) and the Peace of Westphalia"
+    },
+    "grade7-medieval-society": {
+      "name": "Medieval Social Order",
+      "description": "Understand the medieval three-estate system (clergy, nobility, peasants), the manorial system (Grundherrschaft), and daily life across social classes"
+    }
+  }
 }
