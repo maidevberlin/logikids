@@ -1,0 +1,330 @@
+{
+  "header": "Preparando tu ejercicio...",
+  "timeRemaining": "Aproximadamente {{seconds}} segundos restantes...",
+  "almostThere": "Casi listo... generando una gran pregunta para ti!",
+  "stages": {
+    "analyzing": "Analizando tu nivel de aprendizaje...",
+    "crafting": "Creando tu pregunta...",
+    "generating": "Generando pistas y soluciones...",
+    "finalizing": "Toques finales..."
+  },
+  "contentTypes": {
+    "tip": "Consejo",
+    "fact": "Sabias que?",
+    "preview": "Proximamente",
+    "encouragement": "Sigue asi!"
+  },
+  "encouragement": {
+    "math": [
+      "Los porcentajes te ayudan a detectar cuando una 'oferta' es solo marketing",
+      "Las proporciones te ayudan a escalar recetas para mas o menos personas",
+      "Los calculos de intereses te muestran lo caro que es realmente un prestamo - antes de firmar",
+      "Las estadisticas te ayudan a ver a traves de graficos enganosos en las noticias",
+      "El calculo mental te hace mas rapido dividiendo la cuenta con amigos",
+      "La probabilidad explica por que jugar a la loteria casi nunca funciona",
+      "Calcular el area te dice cuanta pintura necesitas antes de empezar",
+      "Entender la escala te ayuda a saber que tan lejos estan realmente los lugares en un mapa",
+      "Las fracciones te ayudan a dividir pizza, pastel o costos de manera justa",
+      "La conversion de unidades ayuda con recetas de internet que usan tazas y onzas"
+    ],
+    "physics": [
+      "La fisica explica por que la bateria de tu telefono se agota mas rapido en invierno",
+      "La optica muestra por que te ves mas delgado o mas ancho en diferentes espejos",
+      "La transferencia de calor explica por que te congelas tan rapido con una camiseta mojada",
+      "La electricidad te ayuda a entender por que algunos cargadores son mas rapidos que otros",
+      "La mecanica explica por que no te caes cuando montas en bicicleta",
+      "El sonido explica por que ves el relampago antes de escuchar el trueno",
+      "La aerodinamica muestra por que los alerones de los autos no son solo decorativos",
+      "La friccion explica por que las llantas de invierno agarran mejor en la nieve",
+      "La presion explica por que te duelen los oidos en los aviones o al bucear",
+      "La flotabilidad explica por que enormes barcos de acero pueden flotar"
+    ],
+    "logic": [
+      "La logica te ayuda a distinguir las noticias falsas de las reales",
+      "El pensamiento logico te ayuda a detectar cuando alguien usa malos argumentos para convencerte",
+      "La logica te ayuda a verificar si las resenas en linea son reales o falsas",
+      "Cuando reconoces patrones, resuelves puzzles en juegos mas rapido",
+      "La logica te ayuda a encontrar la ruta mas rapida, no solo la mas corta",
+      "El pensamiento logico te ayuda a ver a traves de la publicidad manipuladora",
+      "Depurar es logica aplicada - ya sea codigo o dispositivos rotos",
+      "La logica te ayuda a distinguir los titulos sensacionalistas de las noticias reales",
+      "El pensamiento si-entonces te ayuda a prever las consecuencias de las decisiones",
+      "La logica te ayuda a descubrir quien miente en Hombre Lobo o Among Us"
+    ],
+    "music": [
+      "El ritmo te ayuda no solo con la musica, sino tambien con el baile y los deportes",
+      "El entrenamiento auditivo te ayuda a notar cuando alguien canta desafinado en el karaoke",
+      "La teoria musical explica por que algunas canciones suenan tristes y otras alegres",
+      "Mantener el tempo importa para el rap, el beatbox y la edicion de videos",
+      "Si reconoces intervalos, puedes tocar melodias de oido",
+      "La armonia explica por que ciertos acordes te dan escalofrios",
+      "Leer partituras te permite tocar cualquier pieza sin haberla escuchado primero",
+      "Entender las dinamicas te ayuda a percibir las emociones en la musica mas conscientemente",
+      "Con teoria musical, produces tus propios beats que realmente suenan bien",
+      "El ritmo te ayuda a mantenerte en el tempo cuando bailas o haces deportes"
+    ],
+    "german": [
+      "La comprension lectora te ayuda a entender contratos y terminos antes de aceptar",
+      "La conciencia linguistica te ayuda a detectar cuando los anuncios intentan manipularte",
+      "Escribir bien te ayuda a redactar quejas que realmente obtienen resultados",
+      "Las habilidades de lectura te protegen de correos de phishing y estafas",
+      "Con vocabulario, expresas exactamente lo que quieres decir - sin malentendidos",
+      "La gramatica te ayuda a escribir mensajes que no seran malinterpretados",
+      "El analisis de texto te ayuda a ver a traves de los discursos politicos y sus trucos",
+      "Entender las instrucciones de los medicamentos significa tomarlos correctamente",
+      "Con buen aleman, escribes mensajes que se toman en serio",
+      "Las habilidades linguisticas te ayudan a distinguir los titulos sensacionalistas de las noticias reales"
+    ],
+    "english": [
+      "Con ingles puedes disfrutar juegos, series y YouTube sin subtitulos",
+      "La mayoria de los tutoriales de programacion y ayuda tecnica estan en ingles",
+      "El ingles te ayuda a comunicarte en casi cualquier lugar cuando viajas",
+      "Con ingles puedes chatear y jugar con personas de todo el mundo",
+      "Entender las letras de las canciones es mas divertido que solo tararear",
+      "Entender los mensajes de error en ingles te ahorra horas de solucion de problemas",
+      "Reddit, Discord y las comunidades internacionales funcionan principalmente en ingles",
+      "Las ultimas noticias de tecnologia salen en ingles primero - a menudo semanas antes de las traducciones",
+      "Con ingles puedes unirte a proyectos y colaboraciones internacionales",
+      "Las resenas de productos en ingles te ayudan a encontrar la verdad antes de comprar"
+    ],
+    "history": [
+      "La historia te ayuda a entender por que existen los conflictos actuales - y que podria terminarlos",
+      "Reconocer patrones de propaganda te protege de ser manipulado hoy",
+      "La historia explica por que las fronteras y los paises tienen la forma que tienen",
+      "Entender tradiciones y costumbres tiene sentido cuando conoces sus origenes",
+      "El conocimiento historico te ayuda a ver a traves de las tacticas de manipulacion politica",
+      "La historia explica por que algunos lugares son mas ricos que otros",
+      "Entender monumentos y memoriales se enriquece con el contexto historico",
+      "La historia explica por que existen ciertas leyes y derechos - y por que importan",
+      "Aprender de los errores del pasado te ayuda a evitar repetirlos en tu propia vida",
+      "La historia te ayuda a entender las historias de tu familia y tu herencia cultural"
+    ],
+    "fallback": [
+      "Lo que aprendes aqui te ayuda con problemas reales de la vida cotidiana",
+      "El conocimiento te protege de ser estafado",
+      "Entender supera a memorizar - y dura mas",
+      "Los errores estan bien siempre que entiendas que salio mal",
+      "Cada tema se conecta con tu vida real - a veces solo tienes que buscar",
+      "Entender las conexiones te hace mas dificil de manipular",
+      "Las tareas dificiles te hacen mas fuerte que las faciles",
+      "La curiosidad impulsa todo lo que aprenderas",
+      "El pensamiento critico te ayuda a distinguir la buena informacion de la mala",
+      "Cuanto mas entiendes, mejores decisiones tomas"
+    ]
+  },
+  "tips": {
+    "math": [
+      "Divide los problemas complejos en pasos mas pequenos y manejables!",
+      "Dibuja diagramas o imagenes para visualizar el problema!",
+      "Verifica tu respuesta trabajando hacia atras a traves de los pasos!",
+      "Busca patrones en los numeros para encontrar atajos inteligentes!",
+      "Practica el calculo mental regularmente para desarrollar sentido numerico!",
+      "Escribe lo que sabes antes de empezar a resolver!",
+      "No tengas miedo de probar diferentes enfoques!"
+    ],
+    "physics": [
+      "Dibuja diagramas de fuerzas para entender como interactuan las cosas!",
+      "Presta mucha atencion a las unidades en tus calculos!",
+      "Piensa en ejemplos del mundo real para entender mejor los conceptos!",
+      "Recuerda: la energia siempre se conserva en sistemas cerrados!",
+      "La direccion del vector importa tanto como su magnitud!",
+      "Piensa en la simetria para simplificar problemas complejos!",
+      "Los experimentos te ayudan a verificar las predicciones teoricas!"
+    ],
+    "logic": [
+      "Lee el problema cuidadosamente antes de sacar conclusiones!",
+      "Dibuja tablas de verdad para organizar tu informacion claramente!",
+      "Busca contradicciones para eliminar respuestas incorrectas!",
+      "Divide declaraciones complejas en partes mas simples!",
+      "Considera todas las posibilidades de manera sistematica!",
+      "Las declaraciones si-entonces son la base del razonamiento logico!",
+      "Practica reconocer patrones logicos comunes!"
+    ],
+    "music": [
+      "Escucha atentamente para identificar patrones que se repiten en las melodias!",
+      "Practica el ritmo aplaudiendo o golpeando con los pies la musica!",
+      "Entender las escalas te ayuda con la composicion!",
+      "Cuenta los tiempos cuidadosamente para mantenerte en compas!",
+      "La notacion musical es un lenguaje que puedes aprender paso a paso!",
+      "Canta o tararea melodias para interiorizar las relaciones de tono!",
+      "La practica regular desarrolla tu intuicion musical!"
+    ],
+    "german": [
+      "Leer textos en aleman regularmente ayuda a construir vocabulario naturalmente!",
+      "Presta atencion a los generos de los sustantivos: der, die y das!",
+      "Practica las conjugaciones de verbos regularmente para ganar fluidez!",
+      "Las palabras compuestas alemanas cuentan sus propias historias interesantes!",
+      "Escucha a hablantes alemanes para mejorar tu pronunciacion!",
+      "La estructura de las oraciones sigue patrones que puedes aprender!",
+      "Intenta sumergirte en el idioma todos los dias!"
+    ],
+    "english": [
+      "Leer textos diversos mejora tus habilidades de comprension!",
+      "Usa pistas del contexto para entender palabras nuevas!",
+      "Practica la escritura para reforzar las reglas gramaticales!",
+      "Escucha a hablantes nativos para aprender el ritmo natural!",
+      "Aprende expresiones e idioms comunes!",
+      "Construye tu vocabulario leyendo regularmente!",
+      "No tengas miedo de cometer errores al hablar!"
+    ],
+    "history": [
+      "Conecta eventos para entender las relaciones de causa y efecto!",
+      "Las fuentes primarias revelan perspectivas autenticas del pasado!",
+      "Las lineas de tiempo te ayudan a visualizar secuencias de eventos historicos!",
+      "Compara diferentes puntos de vista sobre el mismo evento historico!",
+      "Busca patrones que se repiten a lo largo de la historia!",
+      "El contexto es clave - siempre considera el periodo de tiempo!",
+      "Los mapas muestran como la geografia dio forma a los desarrollos historicos!"
+    ],
+    "fallback": [
+      "Tomate tu tiempo para entender completamente la pregunta!",
+      "Divide los problemas en pasos manejables!",
+      "Revisa tu respuesta cuidadosamente antes de enviar!",
+      "Aprende de tus errores para mejorar!",
+      "La practica hace al maestro!"
+    ]
+  },
+  "facts": {
+    "math": [
+      "El numero cero fue inventado alrededor del 500 d.C. en India!",
+      "El numero Pi ha sido calculado a mas de 100 billones de digitos!",
+      "La secuencia de Fibonacci aparece en todas partes en la naturaleza, desde girasoles hasta pinas!",
+      "Los antiguos egipcios usaban fracciones desde el 1800 a.C.!",
+      "Un googol es el numero 1 seguido de 100 ceros - inspiro el nombre de Google!",
+      "Hay diferentes tamanos de infinito en matematicas!",
+      "El signo igual (=) fue inventado en 1557 por Robert Recorde!",
+      "111,111,111 x 111,111,111 = 12,345,678,987,654,321 - un palindromo perfecto!",
+      "La palabra 'forty' es el unico numero en ingles con letras en orden alfabetico!",
+      "2520 es el numero mas pequeno divisible por todos los numeros del 1 al 10!",
+      "Un balon de futbol esta hecho exactamente de 12 pentagonos y 20 hexagonos!",
+      "Las abejas construyen celdas hexagonales porque los hexagonos usan menos cera!",
+      "La suma de los angulos en cualquier triangulo es siempre exactamente 180 grados!",
+      "Una cinta de Mobius es una superficie con un solo lado y un solo borde!",
+      "Los antiguos babilonios usaban base 60, por eso tenemos 60 segundos en un minuto!",
+      "Los antiguos romanos no tenian simbolo para el cero en su sistema numerico!",
+      "Carl Friedrich Gauss sumo los numeros del 1 al 100 en segundos cuando era nino - la suma es 5050!",
+      "Las semillas de girasol crecen en espirales que siguen la secuencia de Fibonacci!",
+      "Los copos de nieve siempre tienen exactamente 6 lados debido a como se unen las moleculas de agua!",
+      "La proporcion aurea (1.618...) aparece en arte famoso, arquitectura y naturaleza!",
+      "Si barajas bien una baraja de cartas, ese orden exacto probablemente nunca ha existido antes!",
+      "Hay mas secuencias posibles de partidas de ajedrez que atomos en el universo observable!",
+      "En una sala de solo 23 personas, hay un 50% de probabilidad de que dos compartan cumpleanos!",
+      "El numero 7 es el numero 'aleatorio' mas popular que la gente elige entre 1 y 10!",
+      "Un circulo tiene infinitas lineas de simetria!",
+      "El abaco se usaba para calculos en la antigua Mesopotamia alrededor del 2700 a.C.!",
+      "Los numeros primos se llaman 'primos' del latin 'primus' que significa 'primero' o 'fundamental'!",
+      "El numero primo mas grande conocido tiene mas de 24 millones de digitos!",
+      "El cero es el unico numero que no puede representarse en numeros romanos!",
+      "La palabra 'matematicas' viene del griego 'mathema' que significa 'conocimiento' o 'aprendizaje'!",
+      "Los numeros palindromos como 121 y 1331 se leen igual de adelante hacia atras!",
+      "El numero 1 no se considera un numero primo porque los primos deben tener exactamente dos divisores!",
+      "Todo numero par mayor que 2 puede escribirse como la suma de dos numeros primos!",
+      "Un numero perfecto es igual a la suma de sus divisores - 6 = 1+2+3 es el primero!",
+      "El simbolo de la division (÷) se llama obelo!",
+      "Los numeros negativos fueron rechazados por los matematicos hasta el siglo XVIII!",
+      "Los antiguos griegos pensaban que el numero 1 no era ni par ni impar!",
+      "Un jiffy es una unidad de tiempo real: 1/100 de segundo!",
+      "El numero 5 es el unico numero primo que termina en 5!",
+      "Multiplica 9 por cualquier numero, y los digitos del resultado siempre suman 9!"
+    ],
+    "physics": [
+      "La luz viaja a 299,792,458 metros por segundo en el vacio!",
+      "El sonido viaja mucho mas rapido a traves de solidos que a traves del aire!",
+      "Eres ligeramente mas alto en la manana debido al efecto de la gravedad en tu columna!",
+      "Los relampagos son en realidad mas calientes que la superficie del Sol!",
+      "Un dia en Venus es mas largo que todo su ano!",
+      "El agua puede hervir y congelarse al mismo tiempo en el punto triple!",
+      "Algunas estrellas de neutrones pueden girar mas de 600 veces por segundo!"
+    ],
+    "logic": [
+      "Aristoteles fundo la logica formal hace mas de 2,400 anos!",
+      "Las computadoras usan logica binaria con solo 0s y 1s!",
+      "Una paradoja es una declaracion que se contradice a si misma!",
+      "Los puzzles de Sudoku son en realidad ejercicios de deduccion logica!",
+      "George Boole invento el algebra booleana en 1854!",
+      "Resolver puzzles de logica mejora tus habilidades de pensamiento critico!",
+      "Sherlock Holmes es famoso por usar el razonamiento deductivo!"
+    ],
+    "music": [
+      "La musica activa casi todas las regiones de tu cerebro!",
+      "El instrumento musical mas antiguo conocido tiene mas de 40,000 anos!",
+      "Mozart compuso su primera pieza musical a solo 5 anos!",
+      "Las octavas suenan similares porque sus frecuencias se duplican!",
+      "Hay mas de 1,500 instrumentos musicales diferentes en todo el mundo!",
+      "Beethoven compuso musica increible incluso cuando estaba completamente sordo!",
+      "Escuchar musica puede mejorar tu memoria y concentracion!"
+    ],
+    "german": [
+      "El aleman es hablado por mas de 130 millones de personas en todo el mundo!",
+      "La palabra alemana mas larga oficialmente usada tiene 63 letras!",
+      "El aleman tiene tres generos gramaticales para los sustantivos!",
+      "Muchas palabras en ingles en realidad vienen de raices alemanas!",
+      "Todos los sustantivos alemanes siempre se escriben con mayuscula!",
+      "El aleman austriaco y suizo tienen sus propias caracteristicas unicas!",
+      "Aprender aleman abre puertas a una rica literatura y filosofia!"
+    ],
+    "english": [
+      "El ingles tiene mas de 170,000 palabras actualmente en uso activo!",
+      "Shakespeare invento mas de 1,700 palabras que todavia usamos hoy!",
+      "El ingles es idioma oficial en 67 paises diferentes!",
+      "La palabra 'Go!' es en realidad una oracion completa!",
+      "El ingles ha tomado prestadas palabras de mas de 350 idiomas diferentes!",
+      "'I am' es la oracion completa mas corta en ingles!",
+      "El ingles tiene mas sinonimos que la mayoria de los otros idiomas!"
+    ],
+    "history": [
+      "El sistema de escritura mas antiguo conocido tiene mas de 5,000 anos!",
+      "Los historiadores usan la arqueologia para entender civilizaciones antes de la escritura!",
+      "Muchos 'hechos' historicos fueron luego probados como mitos o propaganda!",
+      "La historia esta siendo constantemente reinterpretada a medida que surgen nuevas evidencias!",
+      "Las tradiciones orales preservaron la historia durante miles de anos antes de la escritura!",
+      "Los museos de todo el mundo contienen millones de artefactos historicos!",
+      "Las civilizaciones antiguas inventaron muchas cosas que todavia usamos hoy!"
+    ],
+    "fallback": [
+      "Aprender cosas nuevas reconfigura fisicamente tu cerebro!",
+      "La curiosidad es lo que impulsa el descubrimiento y la innovacion!",
+      "Cada experto fue alguna vez un completo principiante!",
+      "Tu cerebro nunca deja de aprender a lo largo de tu vida!",
+      "Hacer conexiones entre ideas ayuda a fortalecer la memoria!"
+    ]
+  },
+  "previews": {
+    "math": [
+      "Preparate para explorar numeros y patrones fascinantes!",
+      "Las matematicas nos ayudan a resolver problemas del mundo real todos los dias!",
+      "Cada ecuacion cuenta su propia historia unica!"
+    ],
+    "physics": [
+      "Descubre como funciona realmente el universo!",
+      "La fisica explica todo, desde atomos diminutos hasta galaxias masivas!",
+      "Preparate para explorar fuerzas, energia y movimiento!"
+    ],
+    "logic": [
+      "Afila tu razonamiento y habilidades de pensamiento critico!",
+      "La logica te ayuda a resolver puzzles y tomar mejores decisiones!",
+      "Preparate para pensar los problemas paso a paso!"
+    ],
+    "music": [
+      "Explora el hermoso mundo del sonido y el ritmo!",
+      "La musica combina matematicas, creatividad y emocion!",
+      "Preparate para descubrir patrones musicales fascinantes!"
+    ],
+    "german": [
+      "Domina el idioma de Goethe, Kafka y Einstein!",
+      "La gramatica alemana es logica y sigue patrones claros!",
+      "Preparate para expandir tus habilidades linguisticas!"
+    ],
+    "english": [
+      "Domina el idioma global de la comunicacion!",
+      "El ingles abre puertas a oportunidades en todo el mundo!",
+      "Preparate para mejorar tus habilidades linguisticas!"
+    ],
+    "history": [
+      "Descubre las historias que dieron forma a nuestro mundo!",
+      "Aprende de los exitos y errores del pasado!",
+      "Conviertete en un detective del tiempo y descubre la verdad!"
+    ],
+    "fallback": ["Preparate para un desafio atractivo!", "Vas a aprender algo nuevo hoy!"]
+  }
+}

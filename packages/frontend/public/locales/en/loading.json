@@ -87,6 +87,18 @@
       "With English you can join international projects and collaborations",
       "English product reviews help you find the truth before buying"
     ],
+    "history": [
+      "History helps you understand why current conflicts exist – and what might end them",
+      "Recognizing propaganda patterns protects you from being manipulated today",
+      "History explains why borders and countries are shaped the way they are",
+      "Understanding traditions and customs makes sense when you know their origins",
+      "Historical knowledge helps you see through political manipulation tactics",
+      "History explains why some places are richer than others",
+      "Understanding monuments and memorials becomes richer with historical context",
+      "History explains why certain laws and rights exist – and why they matter",
+      "Learning from past mistakes helps you avoid repeating them in your own life",
+      "History helps you understand your family stories and cultural heritage"
+    ],
     "fallback": [
       "What you learn here helps you with real problems in everyday life",
       "Knowledge protects you from getting ripped off",
@@ -154,6 +166,15 @@
       "Learn common idioms and expressions!",
       "Build your vocabulary by reading regularly!",
       "Don't be afraid to make mistakes when speaking!"
+    ],
+    "history": [
+      "Connect events to understand cause and effect relationships!",
+      "Primary sources reveal authentic perspectives from the past!",
+      "Timelines help you visualize sequences of historical events!",
+      "Compare different viewpoints on the same historical event!",
+      "Look for patterns that repeat throughout history!",
+      "Context is key – always consider the time period!",
+      "Maps show how geography shaped historical developments!"
     ],
     "fallback": [
       "Take your time to fully understand the question!",
@@ -251,6 +272,15 @@
       "'I am' is the shortest complete sentence in English!",
       "English has more synonyms than most other languages!"
     ],
+    "history": [
+      "The oldest known writing system is over 5,000 years old!",
+      "Historians use archaeology to understand civilizations before writing!",
+      "Many historical 'facts' were later proven to be myths or propaganda!",
+      "History is constantly being reinterpreted as new evidence emerges!",
+      "Oral traditions preserved history for thousands of years before writing!",
+      "Museums around the world hold millions of historical artifacts!",
+      "Ancient civilizations invented many things we still use today!"
+    ],
     "fallback": [
       "Learning new things physically rewires your brain!",
       "Curiosity is what drives discovery and innovation!",
@@ -289,6 +319,11 @@
       "Master the global language of communication!",
       "English opens doors to opportunities worldwide!",
       "Get ready to enhance your language skills!"
+    ],
+    "history": [
+      "Discover the stories that shaped our world!",
+      "Learn from the successes and mistakes of the past!",
+      "Become a detective of time and uncover the truth!"
     ],
     "fallback": [
       "Get ready for an engaging challenge!",

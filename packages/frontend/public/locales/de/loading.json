@@ -87,6 +87,18 @@
       "Mit Englisch kannst du bei internationalen Projekten und Kollaborationen mitmachen",
       "Englische Produktbewertungen helfen dir, vor dem Kauf die Wahrheit zu finden"
     ],
+    "history": [
+      "Geschichte hilft dir zu verstehen, warum aktuelle Konflikte existieren – und was sie beenden könnte",
+      "Propaganda-Muster erkennen schützt dich davor, heute manipuliert zu werden",
+      "Geschichte erklärt, warum Grenzen und Länder so geformt sind, wie sie sind",
+      "Traditionen und Bräuche verstehen ergibt Sinn, wenn du ihre Ursprünge kennst",
+      "Geschichtswissen hilft dir, politische Manipulationstaktiken zu durchschauen",
+      "Geschichte erklärt, warum manche Orte reicher sind als andere",
+      "Denkmäler und Gedenkstätten verstehen wird reicher mit historischem Kontext",
+      "Geschichte erklärt, warum bestimmte Gesetze und Rechte existieren – und warum sie wichtig sind",
+      "Aus vergangenen Fehlern lernen hilft dir, sie in deinem eigenen Leben nicht zu wiederholen",
+      "Geschichte hilft dir, deine Familiengeschichten und kulturelles Erbe zu verstehen"
+    ],
     "fallback": [
       "Was du hier lernst, hilft dir bei echten Problemen im Alltag",
       "Wissen schützt dich davor, über den Tisch gezogen zu werden",
@@ -154,6 +166,15 @@
       "Lerne gebräuchliche Redewendungen und Ausdrücke!",
       "Erweitere deinen Wortschatz durch regelmäßiges Lesen!",
       "Hab keine Angst, beim Sprechen Fehler zu machen!"
+    ],
+    "history": [
+      "Verbinde Ereignisse, um Ursache-Wirkungs-Beziehungen zu verstehen!",
+      "Primärquellen zeigen authentische Perspektiven aus der Vergangenheit!",
+      "Zeitleisten helfen dir, historische Ereignisfolgen zu visualisieren!",
+      "Vergleiche verschiedene Sichtweisen auf dasselbe historische Ereignis!",
+      "Suche nach Mustern, die sich durch die Geschichte wiederholen!",
+      "Kontext ist entscheidend – berücksichtige immer die Epoche!",
+      "Karten zeigen, wie Geografie historische Entwicklungen beeinflusste!"
     ],
     "fallback": [
       "Nimm dir Zeit, die Frage vollständig zu verstehen!",
@@ -251,6 +272,15 @@
       "'I am' ist der kürzeste vollständige Satz im Englischen!",
       "Englisch hat mehr Synonyme als die meisten anderen Sprachen!"
     ],
+    "history": [
+      "Das älteste bekannte Schriftsystem ist über 5.000 Jahre alt!",
+      "Historiker nutzen Archäologie, um Zivilisationen vor der Schrift zu verstehen!",
+      "Viele historische 'Fakten' stellten sich später als Mythen oder Propaganda heraus!",
+      "Geschichte wird ständig neu interpretiert, wenn neue Beweise auftauchen!",
+      "Mündliche Überlieferungen bewahrten Geschichte tausende Jahre vor der Schrift!",
+      "Museen weltweit beherbergen Millionen von historischen Artefakten!",
+      "Antike Zivilisationen erfanden viele Dinge, die wir heute noch nutzen!"
+    ],
     "fallback": [
       "Das Lernen neuer Dinge verändert physisch dein Gehirn!",
       "Neugier ist der Motor für Entdeckungen und Innovationen!",
@@ -289,6 +319,11 @@
       "Meistere die globale Sprache der Kommunikation!",
       "Englisch öffnet Türen zu weltweiten Möglichkeiten!",
       "Mach dich bereit, deine Sprachkenntnisse zu verbessern!"
+    ],
+    "history": [
+      "Entdecke die Geschichten, die unsere Welt geprägt haben!",
+      "Lerne aus den Erfolgen und Fehlern der Vergangenheit!",
+      "Werde zum Detektiv der Zeit und enthülle die Wahrheit!"
     ],
     "fallback": [
       "Mach dich bereit für eine spannende Herausforderung!",

@@ -91,7 +91,10 @@
       "message2": "Bereit für einen Neuanfang? Du brauchst einen neuen Einladungscode, um deine Lernreise fortzusetzen!",
       "startButton": "Neu starten",
       "note": "Dies löscht deine lokalen Daten"
-    }
+    },
+    "parentZone": "Elternbereich",
+    "usageStats": "Nutzungsstatistiken",
+    "usageStatsDescription": "KI-Nutzung und Kostenübersicht anzeigen"
   },
   "settings": {
     "title": "Einstellungen",

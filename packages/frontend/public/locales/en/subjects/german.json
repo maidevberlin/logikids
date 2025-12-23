@@ -351,6 +351,294 @@
     "grade7-advanced-punctuation": {
       "name": "Advanced Punctuation",
       "description": "Commas with infinitive phrases and appositives, quotation marks for titles and speech, and punctuation in compound-complex sentences"
+    },
+    "grade8-drama-analysis": {
+      "name": "Drama Analysis",
+      "description": "Understanding dramatic structure, dialogue, and stage directions"
+    },
+    "grade8-konjunktiv-reported-speech": {
+      "name": "Konjunktiv and Reported Speech",
+      "description": "Using Konjunktiv I and II for indirect speech and hypothetical situations, including proper form formation and substitution rules"
+    },
+    "grade8-short-story-interpretation": {
+      "name": "Short Story Interpretation",
+      "description": "Analyzing and interpreting Kurzgeschichten"
+    },
+    "grade8-media-criticism": {
+      "name": "Media Criticism",
+      "description": "Critically evaluating media sources and bias"
+    },
+    "grade8-expository-writing": {
+      "name": "Expository Writing",
+      "description": "Writing informative texts explaining complex topics clearly for a target audience"
+    },
+    "grade8-presentation-techniques": {
+      "name": "Presentation Techniques",
+      "description": "Delivering structured presentations with visual aids"
+    },
+    "grade8-syntax-analysis": {
+      "name": "Syntax Analysis",
+      "description": "Analyzing complex sentence structures and clause types using grammatical models"
+    },
+    "grade8-narrative-techniques": {
+      "name": "Narrative Techniques",
+      "description": "Analyzing narrative perspective, time structure, and literary devices in prose"
+    },
+    "grade8-news-reporting": {
+      "name": "News and Reporting",
+      "description": "Distinguishing news from opinion, analyzing journalistic text types"
+    },
+    "grade8-listening-note-taking": {
+      "name": "Listening and Note-Taking",
+      "description": "Extracting key information from spoken texts and documenting it efficiently using note-taking strategies"
+    },
+    "grade8-word-formation-etymology": {
+      "name": "Word Formation and Etymology",
+      "description": "Understanding word origins, prefixes, suffixes, compound word formation, and Greek and Latin roots to decode unfamiliar vocabulary"
+    },
+    "grade8-linear-argumentation": {
+      "name": "Linear Argumentation",
+      "description": "Writing structured argumentative texts with clear thesis and evidence, using linear progression from weakest to strongest arguments"
+    },
+    "grade9-active-listening": {
+      "name": "Active Listening",
+      "description": "Responding to complex oral presentations with note-taking, questioning, and summarizing"
+    },
+    "grade9-character-analysis": {
+      "name": "Character Analysis",
+      "description": "Deep analysis of literary characters, their development, motivation, and relationships"
+    },
+    "grade9-debate-skills": {
+      "name": "Debate Skills",
+      "description": "Participating in formal debates with structured arguments and responding to opponents"
+    },
+    "grade9-dialectical-argumentation": {
+      "name": "Dialectical Argumentation",
+      "description": "Writing pro-contra essays with balanced perspectives using dialectical structure"
+    },
+    "grade9-language-variation": {
+      "name": "Language Variation",
+      "description": "Understanding dialects, sociolects, register, and code-switching in German language use"
+    },
+    "grade9-novella-analysis": {
+      "name": "Novella Analysis",
+      "description": "Analyzing the novella as a genre with its structural elements including unerhörte Begebenheit, Dingsymbol, and frame narratives"
+    },
+    "grade9-poetry-forms": {
+      "name": "Poetry Forms and Analysis",
+      "description": "Understanding verse forms, meter, rhyme schemes, and imagery"
+    },
+    "grade9-research-writing": {
+      "name": "Research Writing",
+      "description": "Integrating sources, proper citation, and synthesizing research into coherent arguments"
+    },
+    "grade9-rhetorical-devices": {
+      "name": "Rhetorical Devices",
+      "description": "Identifying and analyzing persuasive techniques and rhetorical strategies in texts and speeches"
+    },
+    "grade9-satire-irony": {
+      "name": "Satire and Irony",
+      "description": "Recognizing and analyzing satirical texts, irony, sarcasm, and parody"
+    },
+    "grade9-semantic-fields": {
+      "name": "Semantic Fields and Connotation",
+      "description": "Analyzing word meanings in context - semantic fields, connotation vs denotation, euphemism"
+    },
+    "grade9-textgebundene-eroerterung": {
+      "name": "Text-Based Discussion",
+      "description": "Writing text-based argumentative essays (textgebundene Erörterung)"
+    },
+    "grade10-drama-interpretation": {
+      "name": "Drama Interpretation",
+      "description": "Analyzing classical and modern dramatic works using dramatic theory and historical context"
+    },
+    "grade10-essay-writing": {
+      "name": "Essay Writing",
+      "description": "Writing opinion essays with personal voice, balancing analysis with perspective"
+    },
+    "grade10-formal-discourse": {
+      "name": "Formal Discourse",
+      "description": "Participating in academic discussions, building on others' contributions, and using evidence"
+    },
+    "grade10-genre-conventions": {
+      "name": "Genre Conventions",
+      "description": "Understanding and applying genre expectations, analyzing genre subversion and hybridization"
+    },
+    "grade10-language-history": {
+      "name": "Language History",
+      "description": "Understanding the development of the German language from Old High German through to Modern High German"
+    },
+    "grade10-literary-essay": {
+      "name": "Literary Essay",
+      "description": "Writing analytical essays on literary texts with thesis development and evidence integration"
+    },
+    "grade10-material-based-writing": {
+      "name": "Material-Based Writing",
+      "description": "Synthesizing multiple sources into coherent texts while maintaining objectivity"
+    },
+    "grade10-media-production": {
+      "name": "Media Production",
+      "description": "Creating multimedia content with purpose - podcasts, video essays, infographics"
+    },
+    "grade10-novel-interpretation": {
+      "name": "Novel Interpretation",
+      "description": "Comprehensive analysis of longer narrative works including structure, themes, and character development"
+    },
+    "grade10-pragmatics": {
+      "name": "Pragmatics",
+      "description": "Understanding how context shapes meaning in communication through speech acts, implicature, presupposition, and politeness strategies"
+    },
+    "grade10-speech-analysis": {
+      "name": "Speech Analysis",
+      "description": "Analyzing political and public speeches for structure, rhetoric, and persuasive strategies"
+    },
+    "grade10-text-comparison": {
+      "name": "Text Comparison",
+      "description": "Comparing texts across genres and epochs with comparative thesis development"
+    },
+    "grade11-classical-drama": {
+      "name": "Classical German Drama",
+      "description": "Analyzing dramatic works from Weimarer Klassik period, including Schiller and Goethe's major plays"
+    },
+    "grade11-enlightenment-literature": {
+      "name": "Enlightenment Literature",
+      "description": "Analyzing Aufklärung texts and ideas through works like Lessing's Nathan der Weise and Emilia Galotti"
+    },
+    "grade11-film-analysis": {
+      "name": "Film Analysis",
+      "description": "Analyzing cinematic techniques and comparing literary texts with film adaptations"
+    },
+    "grade11-intertextuality": {
+      "name": "Intertextuality",
+      "description": "Recognizing and analyzing textual references, adaptations, allusions, and archetypal patterns"
+    },
+    "grade11-language-manipulation": {
+      "name": "Language and Manipulation",
+      "description": "Analyzing propaganda and persuasive language techniques including framing, spin, and the relationship between language and power"
+    },
+    "grade11-language-philosophy": {
+      "name": "Language and Philosophy",
+      "description": "Exploring language criticism and communication theory through philosophical perspectives"
+    },
+    "grade11-literary-interpretation": {
+      "name": "Advanced Literary Interpretation",
+      "description": "Developing thesis-driven interpretations with secondary literature engagement and hermeneutic analysis"
+    },
+    "grade11-lyric-analysis": {
+      "name": "Advanced Lyric Analysis",
+      "description": "In-depth poetry analysis across epochs from Baroque to modern"
+    },
+    "grade11-rhetoric-oratory": {
+      "name": "Rhetoric and Oratory",
+      "description": "Advanced persuasion techniques and public speaking through classical rhetoric and political oratory"
+    },
+    "grade11-seminar-discussion": {
+      "name": "Seminar Discussion",
+      "description": "Leading and contributing to academic discourse, preparing discussion questions"
+    },
+    "grade11-sturm-und-drang": {
+      "name": "Sturm und Drang",
+      "description": "Understanding the Sturm und Drang movement's rebellion against rationalism through the Genie concept, emotion, and nature"
+    },
+    "grade11-wissenschaftliches-schreiben": {
+      "name": "Academic Writing",
+      "description": "Scholarly writing conventions including citations, footnotes, bibliography, and academic register"
+    },
+    "grade12-academic-presentation": {
+      "name": "Academic Presentation",
+      "description": "Delivering research-based presentations and responding to scholarly questions"
+    },
+    "grade12-author-study": {
+      "name": "Author Studies",
+      "description": "In-depth study of major German authors - biographical context, career development, scholarly positions"
+    },
+    "grade12-comparative-analysis": {
+      "name": "Comparative Literature Analysis",
+      "description": "Comparing literary works across epochs and cultures with sophisticated analytical structure"
+    },
+    "grade12-drama-theory": {
+      "name": "Drama Theory",
+      "description": "Understanding dramatic theory and concepts from Aristotle to modern theater"
+    },
+    "grade12-expressionism": {
+      "name": "Expressionism",
+      "description": "Analyzing Expressionist poetry and prose through aesthetics, form, and historical context"
+    },
+    "grade12-facharbeit": {
+      "name": "Research Paper (Facharbeit)",
+      "description": "Writing extended academic research papers (10-15 pages) with systematic research, academic methodology, and oral defense"
+    },
+    "grade12-language-change": {
+      "name": "Language Change",
+      "description": "Analyzing contemporary language developments including Anglicisms, internet language, and gender-inclusive language"
+    },
+    "grade12-media-theory": {
+      "name": "Media Theory",
+      "description": "Understanding key media theories (McLuhan basics), digital transformation, media's social role"
+    },
+    "grade12-prose-interpretation": {
+      "name": "Prose Interpretation (Abitur Level)",
+      "description": "Advanced narrative text analysis at Abitur level - novels and short prose"
+    },
+    "grade12-realism-naturalism": {
+      "name": "Realism and Naturalism",
+      "description": "Understanding 19th-century literary movements including Realism and Naturalism through works by Fontane, Keller, Storm, and Hauptmann"
+    },
+    "grade12-romanticism": {
+      "name": "Romanticism Literature",
+      "description": "Analyzing Romantic texts, themes, and aesthetics in German literature - exploring Sehnsucht, nature, dreams, and the uncanny through works by Novalis, Eichendorff, E.T.A. Hoffmann, Brentano, and Heine"
+    },
+    "grade12-text-interpretation-abitur": {
+      "name": "Text Interpretation (Abitur Level)",
+      "description": "Exam-level literary analysis - writing comprehensive text interpretations under exam conditions and meeting Abitur evaluation criteria"
+    },
+    "grade13-abitur-essay": {
+      "name": "Abitur Essay Writing",
+      "description": "Mastering all Abitur essay formats under exam conditions - literary interpretation, text-based argumentation, and material synthesis"
+    },
+    "grade13-creative-writing": {
+      "name": "Creative Writing (Advanced)",
+      "description": "Producing creative texts with literary awareness - short prose, poetry, experimental forms"
+    },
+    "grade13-eroerterung-literarischer-texte": {
+      "name": "Literary Discussion",
+      "description": "Argumentative writing on literary topics with thesis-driven structure"
+    },
+    "grade13-exam-preparation": {
+      "name": "Abitur Exam Strategies",
+      "description": "Applying all German language arts skills under exam conditions - time management, task analysis, strategic planning, and self-assessment"
+    },
+    "grade13-gedichtvergleich": {
+      "name": "Poetry Comparison (Gedichtvergleich)",
+      "description": "Comparative analysis of poems - Abitur format with balanced treatment"
+    },
+    "grade13-language-reflection": {
+      "name": "Language Reflection",
+      "description": "Meta-linguistic awareness and analysis at the highest level"
+    },
+    "grade13-literary-epochs-overview": {
+      "name": "Literary Epochs Synthesis",
+      "description": "Connecting and comparing all major epochs from Baroque to Gegenwartsliteratur"
+    },
+    "grade13-literature-society": {
+      "name": "Literature and Society",
+      "description": "Connecting literature to social contexts through Literatursoziologie and engaged criticism"
+    },
+    "grade13-materialgestuetztes-schreiben": {
+      "name": "Material-Based Writing (Abitur)",
+      "description": "Synthesizing diverse sources for argumentative texts at Abitur level - integrating multiple perspectives while developing original positions"
+    },
+    "grade13-modern-literature": {
+      "name": "Modern and Contemporary German Literature",
+      "description": "Post-1945 German literature - analyzing responses to WWII, Holocaust, German division and reunification, and contemporary themes through works by Böll, Grass, Wolf, Bernhard, and contemporary authors"
+    },
+    "grade13-presentation-defense": {
+      "name": "Presentation and Defense",
+      "description": "Defending positions in academic contexts and oral exam preparation"
+    },
+    "grade13-textanalyse-pragmatisch": {
+      "name": "Pragmatic Text Analysis",
+      "description": "Analyzing non-fictional texts at highest level - essays, speeches, philosophical texts"
     }
   }
 }

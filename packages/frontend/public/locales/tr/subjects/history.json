@@ -1,0 +1,100 @@
+{
+  "concepts": {
+    "grade6-ancient-egypt": {
+      "name": "Antik Mısır ve Nil",
+      "description": "Erken bir uygarlık olarak Antik Mısır - Nil'in coğrafi önemi, firavun yönetimi, piramitler, toplum ve din"
+    },
+    "grade6-alexander-great": {
+      "name": "Büyük İskender",
+      "description": "Büyük İskender'in fetihlerini, imparatorluk kurmasını, Helenizm'in yayılmasını ve bireylerin tarih üzerindeki etkisini keşfedin"
+    },
+    "grade6-athenian-democracy": {
+      "name": "Atina Demokrasisi",
+      "description": "Solon'un reformlarından Perikles'in Altın Çağı'na kadar Atina demokrasisinin gelişimini ve antik demokratik yönetimin anayasal temellerini keşfeder"
+    },
+    "grade6-charlemagne": {
+      "name": "Şarlman ve Frank İmparatorluğu",
+      "description": "Frank Krallığı'nın yükselişi, Şarlman'ın imparator olarak taç giymesi ve ortaçağ Avrupası'nı şekillendiren Germen, Hristiyan ve Roma geleneklerinin sentezi"
+    },
+    "grade6-fall-of-rome": {
+      "name": "Roma'nın Düşüşü ve Göç Dönemi",
+      "description": "Roma İmparatorluğu'nun düşüşü ve çöküşü, Kavimler Göçü (Völkerwanderung) ve Akdeniz üçlü bölünmesi"
+    },
+    "grade6-historical-sources": {
+      "name": "Tarihî Kaynaklar ve Arkeolojik Yöntemler",
+      "description": "Farklı tarihî kaynak türlerini tanımlayın ve analiz edin, arkeologların geçmişi nasıl incelediklerini anlayın"
+    },
+    "grade6-judaism-christianity": {
+      "name": "Yahudilik ve Erken Hristiyanlık",
+      "description": "Roma İmparatorluğu'nda Yahudilik, diaspora ve tapınağın yıkımı, ve Hristiyanlığın zulüm gören azınlıktan devlet dinine dönüşümü"
+    },
+    "grade6-greek-culture": {
+      "name": "Yunan Kültürü ve Mirası",
+      "description": "Mitoloji, destanlar, Olimpiyat Oyunları, tiyatro gelenekleri ve Pers Savaşları'nın Yunan kimliği üzerindeki etkisi dahil olmak üzere Yunan kültürel başarılarını keşfedin"
+    },
+    "grade6-greek-polis": {
+      "name": "Yunan Polis'i",
+      "description": "Yunan şehir devletleri, coğrafyanın siyasi gelişim üzerindeki etkisi ve Akdeniz çevresinde Yunan kolonizasyonu"
+    },
+    "grade6-roman-empire": {
+      "name": "Roma İmparatorluğu",
+      "description": "Augustus ve Pax Romana, Roma eyaletlerinde yaşam, Limes sınır sistemi ve imparatorluk genelinde Romalılaşma"
+    },
+    "grade6-roman-republic": {
+      "name": "Roma Cumhuriyeti",
+      "description": "Roma'nın efsanevi kuruluşu, Senato ve sosyal sınıflar dahil Cumhuriyet yapısı ve Cumhuriyet'ten imparatorluk yönetimine geçişin keşfi"
+    },
+    "grade6-stone-age": {
+      "name": "Taş Çağı'nda Yaşam",
+      "description": "Eski Taş Çağı ve Yeni Taş Çağı'ndaki yaşamı karşılaştırın, avcı-toplayıcılardan çiftçilere ve yerleşimcilere geçişi anlayın"
+    },
+    "grade7-age-of-discovery": {
+      "name": "Gutenberg ve Keşifler Çağı",
+      "description": "15. yüzyılın sonlarında matbaanın icadını ve Avrupa'nın Amerika kıtalarını keşfini araştırır"
+    },
+    "grade7-crusades": {
+      "name": "Haçlı Seferleri",
+      "description": "Haçlı Seferlerini Hristiyan Avrupa ile İslam dünyası arasında dini çatışma, askeri seferler ve kültürel alışverişin yaşandığı bir dönem olarak, Konstantinopolis'in düşüşü de dahil olmak üzere keşfedin"
+    },
+    "grade7-investiture-controversy": {
+      "name": "Kilise vs. Devlet - Azil Kavgası",
+      "description": "Ortaçağ papalarıyla imparatorlar arasında piskopos atama hakkı için yapılan güç mücadelesini ve kilise-devlet ilişkilerini şekillendiren çatışmayı anlayın"
+    },
+    "grade7-medieval-cities": {
+      "name": "Ortaçağ Şehirleri ve Ticaret",
+      "description": "Ortaçağ kentsel gelişimi, şehir hakları, Hansa Birliği, ticaret ağları ve burjuva sınıfının ortaya çıkışı"
+    },
+    "grade7-medieval-kingship": {
+      "name": "Ortaçağ Krallığı ve Feodalizm",
+      "description": "Ortaçağ yönetim yapılarını, feodal sistemi ve I. Otto döneminde Kutsal Roma İmparatorluğu'nun gelişimini anlamak"
+    },
+    "grade7-monastic-life": {
+      "name": "Manastır Yaşamı",
+      "description": "Ortaçağ manastırlarını dini topluluklar, kültür merkezleri ve öğrenim yerleri olarak keşfedin"
+    },
+    "grade7-reformation": {
+      "name": "Reformasyon",
+      "description": "Martin Luther'in 95 Tezi (1517), Katolikler ve Protestanlar arasındaki dini bölünme, Köylü Savaşı ve 16. yüzyıl Avrupa'sında cadı avı"
+    },
+    "grade7-absolutism": {
+      "name": "Mutlakiyetçilik ve XIV. Louis",
+      "description": "XIV. Louis döneminde Fransız mutlakiyetçiliği, iktidar sembolü olarak Versailles, mutlak monarşinin hükümet yapıları ve erken modern Avrupa'da güç dengesi"
+    },
+    "grade7-baroque": {
+      "name": "Barok Sanat ve Mimari",
+      "description": "Kültürel ve politik ifade olarak Barok sanat ve mimari, Yunan tiyatrosundan modern hükümet binalarına kadar iktidar sembolleri olarak yapılar ve sanatsal üslup ile politik ideoloji arasındaki bağlantı"
+    },
+    "grade7-renaissance": {
+      "name": "Rönesans ve Hümanizm",
+      "description": "Rönesans dönemini, insan merkezli düşünce, sanatsal yenilik ve Avrupa toplumunu dönüştüren yeni bir dünya görüşü ile kültürel bir yeniden doğuş olarak keşfedin"
+    },
+    "grade7-thirty-years-war": {
+      "name": "Otuz Yıl Savaşları",
+      "description": "Otuz Yıl Savaşları'nın (1618-1648) nedenlerini, seyrini, yıkımını ve sonuçlarını ve Vestfalya Barışı'nı anlayın"
+    },
+    "grade7-medieval-society": {
+      "name": "Ortaçağ Sosyal Düzeni",
+      "description": "Ortaçağ üç tabaka sistemini (ruhban sınıfı, soylular, köylüler), toprak lordluğu sistemini (Grundherrschaft) ve farklı sosyal sınıflardaki günlük yaşamı anlayın"
+    }
+  }
+}

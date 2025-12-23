@@ -45,6 +45,95 @@ interface TranslationResult {
   orphaned: Array<{ lang: string; key: string }>
 }
 
+interface KeyParityResult {
+  file: string
+  lang: string
+  missingKeys: string[]
+  extraKeys: string[]
+}
+
+// Recursively get all keys from an object with dot notation
+function getAllKeys(obj: Record<string, unknown>, prefix = ''): string[] {
+  const keys: string[] = []
+
+  for (const key of Object.keys(obj)) {
+    const fullKey = prefix ? `${prefix}.${key}` : key
+    const value = obj[key]
+
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      keys.push(...getAllKeys(value as Record<string, unknown>, fullKey))
+    } else {
+      keys.push(fullKey)
+    }
+  }
+
+  return keys.sort()
+}
+
+// Check key parity across all translation files
+function checkKeyParity(): KeyParityResult[] {
+  const localesPath = getLocalesPath()
+  const refLang = 'en'
+  const refPath = join(localesPath, refLang)
+  const results: KeyParityResult[] = []
+
+  // Get all JSON files from reference language (excluding subjects/)
+  const refFiles = readdirSync(refPath).filter((f) => f.endsWith('.json'))
+
+  for (const file of refFiles) {
+    const refFilePath = join(refPath, file)
+
+    let refKeys: string[]
+    try {
+      const refContent = JSON.parse(readFileSync(refFilePath, 'utf-8'))
+      refKeys = getAllKeys(refContent)
+    } catch {
+      continue // Skip if can't parse reference
+    }
+
+    // Compare with each other language
+    for (const lang of SUPPORTED_LANGUAGES) {
+      if (lang === refLang) continue
+
+      const langFilePath = join(localesPath, lang, file)
+
+      if (!existsSync(langFilePath)) {
+        results.push({
+          file,
+          lang,
+          missingKeys: ['(entire file missing)'],
+          extraKeys: [],
+        })
+        continue
+      }
+
+      try {
+        const langContent = JSON.parse(readFileSync(langFilePath, 'utf-8'))
+        const langKeys = getAllKeys(langContent)
+
+        const refSet = new Set(refKeys)
+        const langSet = new Set(langKeys)
+
+        const missingKeys = refKeys.filter((k) => !langSet.has(k))
+        const extraKeys = langKeys.filter((k) => !refSet.has(k))
+
+        if (missingKeys.length > 0 || extraKeys.length > 0) {
+          results.push({ file, lang, missingKeys, extraKeys })
+        }
+      } catch {
+        results.push({
+          file,
+          lang,
+          missingKeys: ['(parse error)'],
+          extraKeys: [],
+        })
+      }
+    }
+  }
+
+  return results
+}
+
 // Check translations for a concept
 function checkConceptTranslations(conceptId: string, subject: string): TranslationResult {
   const localesPath = getLocalesPath()
@@ -283,11 +372,60 @@ function checkAll(): number {
     return 1
   }
 
+  // Check key parity across translation files
+  console.log(`\n${'═'.repeat(60)}`)
+  console.log(`KEY PARITY CHECK (reference: en)`)
+  console.log('═'.repeat(60))
+
+  const keyParityResults = checkKeyParity()
+  let keyParityFailed = false
+
+  if (keyParityResults.length === 0) {
+    console.log(`\n✅ All translation files have matching keys`)
+  } else {
+    keyParityFailed = true
+    // Group by file
+    const byFile = new Map<string, KeyParityResult[]>()
+    for (const result of keyParityResults) {
+      const existing = byFile.get(result.file) || []
+      existing.push(result)
+      byFile.set(result.file, existing)
+    }
+
+    for (const [file, results] of byFile) {
+      console.log(`\n📄 ${file}:`)
+      for (const result of results) {
+        if (result.missingKeys.length > 0) {
+          console.log(`  ${result.lang}: ❌ Missing ${result.missingKeys.length} key(s)`)
+          for (const key of result.missingKeys.slice(0, 10)) {
+            console.log(`    - ${key}`)
+          }
+          if (result.missingKeys.length > 10) {
+            console.log(`    ... and ${result.missingKeys.length - 10} more`)
+          }
+        }
+        if (result.extraKeys.length > 0) {
+          console.log(`  ${result.lang}: ⚠️  Extra ${result.extraKeys.length} key(s)`)
+          for (const key of result.extraKeys.slice(0, 5)) {
+            console.log(`    + ${key}`)
+          }
+          if (result.extraKeys.length > 5) {
+            console.log(`    ... and ${result.extraKeys.length - 5} more`)
+          }
+        }
+      }
+    }
+  }
+
+  // Check concept translations
   const subjects = readdirSync(contentPath, { withFileTypes: true })
     .filter((d) => d.isDirectory())
     .map((d) => d.name)
     .sort()
 
+  console.log(`\n${'═'.repeat(60)}`)
+  console.log(`CONCEPT TRANSLATIONS`)
+  console.log('═'.repeat(60))
   console.log(`\n🔍 Checking translations for ${subjects.length} subjects\n`)
 
   let totalPassed = 0
@@ -300,10 +438,13 @@ function checkAll(): number {
   }
 
   console.log(`\n${'═'.repeat(60)}`)
-  console.log(`TOTAL: ${totalPassed} passed, ${totalFailed} failed`)
+  console.log(`SUMMARY`)
+  console.log('═'.repeat(60))
+  console.log(`  Key parity:          ${keyParityFailed ? '❌ FAILED' : '✅ PASSED'}`)
+  console.log(`  Concept translations: ${totalPassed} passed, ${totalFailed} failed`)
   console.log('═'.repeat(60))
 
-  return totalFailed > 0 ? 1 : 0
+  return keyParityFailed || totalFailed > 0 ? 1 : 0
 }
 
 // Usage

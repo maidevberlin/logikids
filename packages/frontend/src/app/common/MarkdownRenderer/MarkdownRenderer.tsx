@@ -169,8 +169,8 @@ function MarkdownRendererComponent({
                       src={src}
                       alt={alt}
                       {...props}
-                      className="max-w-full w-auto h-auto rounded-lg object-contain"
-                      style={{ maxHeight: '500px' }}
+                      className="max-w-full h-auto rounded-lg object-contain"
+                      style={{ maxHeight: '500px', minWidth: '200px', width: 'auto' }}
                     />
                     {/* Enlarge indicator */}
                     <div className="absolute bottom-2 right-2 bg-black/60 text-white rounded-full p-1.5 shadow-md group-hover:bg-black/80 transition-colors">

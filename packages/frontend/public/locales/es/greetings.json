@@ -1,0 +1,58 @@
+{
+  "morning": [
+    "Buenos dias",
+    "Hola",
+    "Que bueno verte",
+    "Listo para empezar el dia",
+    "Hagamos de hoy algo increible",
+    "Bienvenido de vuelta",
+    "Hora de aprender algo genial",
+    "Tu puedes",
+    "Vamos alla",
+    "Listo para la aventura",
+    "Que gusto verte de nuevo",
+    "Empecemos"
+  ],
+  "afternoon": [
+    "Hola",
+    "Buenas tardes",
+    "Bienvenido de vuelta",
+    "Que bueno verte",
+    "Sigamos con el impulso",
+    "Listo para mas",
+    "Lo estas haciendo genial",
+    "Hora de algo divertido",
+    "Abordemos esto juntos",
+    "Buen momento",
+    "Listo para aprender",
+    "Sumerjámonos"
+  ],
+  "evening": [
+    "Buenas noches",
+    "Hola",
+    "Todavia con energia",
+    "Bienvenido de vuelta",
+    "Gran dedicacion",
+    "Sigamos aprendiendo",
+    "Estas en racha hoy",
+    "Listo para mas",
+    "Hora de desafiarte",
+    "Te ves genial",
+    "Hagamos progreso",
+    "Impresionante esfuerzo"
+  ],
+  "night": [
+    "Hola buho nocturno",
+    "Todavia aqui",
+    "Impresionante dedicacion",
+    "Bienvenido de vuelta",
+    "Eres imparable",
+    "Aprendiz nocturno",
+    "Te ves concentrado",
+    "Terminemos con fuerza",
+    "Una ronda mas",
+    "Tienes energia",
+    "Listo para pensar",
+    "Vamos"
+  ]
+}

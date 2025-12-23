@@ -1,0 +1,100 @@
+{
+  "concepts": {
+    "grade6-ancient-egypt": {
+      "name": "Ai Cập cổ đại và sông Nile",
+      "description": "Ai Cập cổ đại như một nền văn minh sớm - tầm quan trọng địa lý của sông Nile, chế độ Pharaoh, kim tự tháp, xã hội và tôn giáo"
+    },
+    "grade6-alexander-great": {
+      "name": "Alexander Đại đế",
+      "description": "Khám phá các cuộc chinh phục của Alexander Đại đế, xây dựng đế chế, lan truyền chủ nghĩa Hy Lạp và tác động của cá nhân lên lịch sử"
+    },
+    "grade6-athenian-democracy": {
+      "name": "Nền Dân Chủ Athens",
+      "description": "Khám phá sự phát triển của nền dân chủ Athens từ các cải cách của Solon qua Thời kỳ Hoàng kim của Pericles và nền tảng hiến pháp của quản trị dân chủ cổ đại"
+    },
+    "grade6-charlemagne": {
+      "name": "Charlemagne và Đế chế Frank",
+      "description": "Sự trỗi dậy của vương quốc Frank, lễ đăng quang của Charlemagne làm Hoàng đế và sự tổng hợp các truyền thống Đức, Cơ đốc và La Mã đã định hình châu Âu thời Trung cổ"
+    },
+    "grade6-fall-of-rome": {
+      "name": "Sự sụp đổ của La Mã và Thời kỳ Di cư",
+      "description": "Sự suy tàn và sụp đổ của Đế chế La Mã, Thời kỳ Di cư (Völkerwanderung) và sự phân chia Địa Trung Hải thành ba phần"
+    },
+    "grade6-historical-sources": {
+      "name": "Nguồn lịch sử và Phương pháp khảo cổ",
+      "description": "Xác định và phân tích các loại nguồn lịch sử khác nhau và hiểu cách các nhà khảo cổ học nghiên cứu quá khứ"
+    },
+    "grade6-judaism-christianity": {
+      "name": "Do Thái giáo và Kitô giáo Sơ khai",
+      "description": "Do Thái giáo trong Đế chế La Mã bao gồm diaspora và sự phá hủy đền thờ, và sự phát triển của Kitô giáo từ thiểu số bị bách hại thành quốc giáo"
+    },
+    "grade6-greek-culture": {
+      "name": "Văn hóa và Di sản Hy Lạp",
+      "description": "Khám phá thành tựu văn hóa Hy Lạp bao gồm thần thoại, thơ sử thi, Thế vận hội Olympic, truyền thống sân khấu và tác động của Chiến tranh Ba Tư đến bản sắc Hy Lạp"
+    },
+    "grade6-greek-polis": {
+      "name": "Polis Hy Lạp",
+      "description": "Các thành bang Hy Lạp, ảnh hưởng của địa hình đối với sự phát triển chính trị và thuộc địa hóa Hy Lạp quanh Địa Trung Hải"
+    },
+    "grade6-roman-empire": {
+      "name": "Đế chế La Mã",
+      "description": "Augustus và Pax Romana, cuộc sống ở các tỉnh La Mã, hệ thống biên giới Limes và quá trình La Mã hóa trên khắp đế chế"
+    },
+    "grade6-roman-republic": {
+      "name": "Cộng hòa La Mã",
+      "description": "Khám phá sự thành lập huyền thoại của Rome, cấu trúc Cộng hòa bao gồm Thượng viện và các tầng lớp xã hội, và quá trình chuyển đổi từ Cộng hòa sang chế độ đế quốc"
+    },
+    "grade6-stone-age": {
+      "name": "Cuộc sống thời Đồ Đá",
+      "description": "So sánh cuộc sống trong thời kỳ Đồ Đá Cũ và Đồ Đá Mới, hiểu sự chuyển đổi từ thợ săn bắt hái lượm sang nông dân và người định cư"
+    },
+    "grade7-age-of-discovery": {
+      "name": "Gutenberg và Thời đại Khám phá",
+      "description": "Khám phá phát minh ra máy in và cuộc thám hiểm châu Mỹ của người Châu Âu vào cuối thế kỷ 15"
+    },
+    "grade7-crusades": {
+      "name": "Các cuộc Thập tự chinh",
+      "description": "Khám phá các cuộc Thập tự chinh như một thời kỳ xung đột tôn giáo, chiến dịch quân sự và trao đổi văn hóa giữa châu Âu Cơ đốc giáo và thế giới Hồi giáo, bao gồm cả sự sụp đổ của Constantinople"
+    },
+    "grade7-investiture-controversy": {
+      "name": "Giáo hội vs. Nhà nước - Cuộc tranh chấp Investiture",
+      "description": "Hiểu cuộc đấu tranh quyền lực giữa các giáo hoàng và hoàng đế thời trung cổ về quyền bổ nhiệm giám mục và xung đột định hình mối quan hệ giáo hội-nhà nước"
+    },
+    "grade7-medieval-cities": {
+      "name": "Thành phố và Thương mại thời Trung cổ",
+      "description": "Phát triển đô thị thời trung cổ, quyền thành phố, Liên minh Hanseatic, mạng lưới thương mại và sự xuất hiện của giai cấp thị dân"
+    },
+    "grade7-medieval-kingship": {
+      "name": "Chế Độ Quân Chủ và Phong Kiến Thời Trung Cổ",
+      "description": "Hiểu cấu trúc cai trị thời trung cổ, hệ thống phong kiến và sự phát triển của Đế chế La Mã Thần Thánh dưới thời Otto I"
+    },
+    "grade7-monastic-life": {
+      "name": "Cuộc sống Tu viện",
+      "description": "Khám phá các tu viện thời trung cổ như cộng đồng tôn giáo, trung tâm văn hóa và trung tâm học tập"
+    },
+    "grade7-reformation": {
+      "name": "Cải cách Tin lành",
+      "description": "95 luận điểm của Martin Luther (1517), sự chia rẽ tôn giáo giữa Công giáo và Tin lành, Chiến tranh Nông dân, và cuộc săn phù thủy ở châu Âu thế kỷ 16"
+    },
+    "grade7-absolutism": {
+      "name": "Chủ nghĩa chuyên chế và Louis XIV",
+      "description": "Chủ nghĩa chuyên chế của Pháp dưới thời Louis XIV, Versailles như biểu tượng quyền lực, cấu trúc chính phủ của chế độ quân chủ chuyên chế và sự cân bằng quyền lực ở châu Âu cận đại"
+    },
+    "grade7-baroque": {
+      "name": "Nghệ thuật và Kiến trúc Baroque",
+      "description": "Nghệ thuật và kiến trúc Baroque như biểu hiện văn hóa và chính trị, các tòa nhà như biểu tượng quyền lực từ nhà hát Hy Lạp đến các tòa nhà chính phủ hiện đại, và mối liên hệ giữa phong cách nghệ thuật và hệ tư tưởng chính trị"
+    },
+    "grade7-renaissance": {
+      "name": "Phục Hưng và Chủ Nghĩa Nhân Văn",
+      "description": "Khám phá thời kỳ Phục hưng như một sự tái sinh văn hóa với tư duy lấy con người làm trung tâm, đổi mới nghệ thuật và một thế giới quan mới đã biến đổi xã hội châu Âu"
+    },
+    "grade7-thirty-years-war": {
+      "name": "Chiến tranh Ba mươi năm",
+      "description": "Hiểu nguyên nhân, tiến trình, sự tàn phá và hậu quả của Chiến tranh Ba mươi năm (1618-1648) và Hòa ước Westphalia"
+    },
+    "grade7-medieval-society": {
+      "name": "Trật Tự Xã Hội Thời Trung Cổ",
+      "description": "Hiểu hệ thống ba giai cấp thời trung cổ (giáo sĩ, quý tộc, nông dân), hệ thống điền trang (Grundherrschaft) và cuộc sống hàng ngày của các giai cấp xã hội"
+    }
+  }
+}

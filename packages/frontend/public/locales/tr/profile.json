@@ -91,7 +91,10 @@
       "message2": "Yeni başlamaya hazır mısın? Öğrenme yolculuğuna devam etmek için yeni bir davet koduna ihtiyacın olacak!",
       "startButton": "Yeniden Başla",
       "note": "Bu, yerel verilerini temizleyecek"
-    }
+    },
+    "parentZone": "Ebeveyn Alanı",
+    "usageStats": "Kullanım İstatistikleri",
+    "usageStatsDescription": "Yapay zeka kullanımı ve maliyet takibini görüntüle"
   },
   "settings": {
     "title": "Ayarlar",

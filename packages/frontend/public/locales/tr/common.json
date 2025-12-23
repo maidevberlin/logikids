@@ -208,6 +208,11 @@
       "description": "İngilizce dil öğrenimi ve anlama",
       "concepts": {}
     },
+    "history": {
+      "label": "Tarih",
+      "description": "Geçmişi keşfet - dünyamızı şekillendiren insanlar, olaylar ve toplumlar",
+      "concepts": {}
+    },
     "surpriseMe": {
       "title": "Beni Şaşırt!",
       "description": "Rastgele bir öğrenme macerasına atla",

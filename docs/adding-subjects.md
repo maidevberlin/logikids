@@ -8,15 +8,14 @@ Subjects are auto-discovered from the filesystem. No backend code changes needed
 
 ## Quick Checklist
 
-### Create (5 files/directories)
+### Create
 
 1. `packages/content/subjects/{subject}/base.md`
 2. `packages/content/subjects/{subject}/official/*.md` (concept files)
 3. `packages/frontend/src/app/common/loadingContent/{subject}.ts`
-4. `packages/frontend/public/locales/en/subjects/{subject}.json`
-5. `packages/frontend/public/locales/de/subjects/{subject}.json`
+4. `packages/frontend/public/locales/*/subjects/{subject}.json` (all languages)
 
-### Update (10 files)
+### Update
 
 1. `packages/frontend/src/app/subjects/subjectTheme.ts` - colors & icon
 2. `packages/frontend/src/app/subjects/SubjectsPage.tsx` - display order
@@ -24,10 +23,14 @@ Subjects are auto-discovered from the filesystem. No backend code changes needed
 4. `packages/frontend/src/app/common/loadingContent/index.ts` - import & register
 5. `packages/frontend/src/app/common/loadingContent/types.ts` - type definitions
 6. `packages/frontend/src/app/common/loadingContent/shared.ts` - encouragement
-7. `packages/frontend/public/locales/en/common.json` - subject label
-8. `packages/frontend/public/locales/de/common.json` - subject label
-9. `packages/frontend/public/locales/en/loading.json` - tips, facts, previews
-10. `packages/frontend/public/locales/de/loading.json` - tips, facts, previews
+7. `packages/frontend/public/locales/*/common.json` - subject label (all languages)
+8. `packages/frontend/public/locales/*/loading.json` - tips, facts, previews (all languages)
+
+### Verify
+
+```bash
+bun run check:translations
+```
 
 ---
 
@@ -194,62 +197,40 @@ export const encouragement: Record<string, string[]> = {
 
 ## Step 6: Translations
 
-### common.json (both en/de)
+Add translations for **all supported languages**. Start with English, then run the check script to see what's missing:
 
-Add to `subjects` object:
+```bash
+bun run check:translations
+```
+
+The script will report all missing keys for each language.
+
+### Required keys
+
+**common.json** - add to `subjects` object:
 
 ```json
 "newsubject": {
   "label": "Subject Name",
   "description": "Brief description",
-  "concepts": {
-    "grade5-example": "Example Concept"
-  }
+  "concepts": {}
 }
 ```
 
-### loading.json (both en/de)
-
-Add arrays for tips, facts, previews, and encouragement:
+**loading.json** - add arrays for tips, facts, previews, and encouragement:
 
 ```json
-"tips": {
-  "newsubject": [
-    "Tip 1 text",
-    "Tip 2 text"
-  ]
-},
-"facts": {
-  "newsubject": [
-    "Fact 1 text",
-    "Fact 2 text"
-  ]
-},
-"previews": {
-  "newsubject": [
-    "Preview 1 text",
-    "Preview 2 text"
-  ]
-},
-"encouragement": {
-  "newsubject": [
-    "Real-life connection 1",
-    "Real-life connection 2"
-  ]
-}
+"encouragement": { "newsubject": [...] },
+"tips": { "newsubject": [...] },
+"facts": { "newsubject": [...] },
+"previews": { "newsubject": [...] }
 ```
 
-### subjects/{subject}.json (both en/de)
-
-Create new file with subject-specific translations:
+**subjects/{subject}.json** - create for each language:
 
 ```json
 {
-  "concepts": {
-    "grade5-example": {
-      "name": "Example Concept"
-    }
-  }
+  "concepts": {}
 }
 ```
 

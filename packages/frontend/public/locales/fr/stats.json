@@ -1,0 +1,97 @@
+{
+  "title": "Ta progression",
+  "greeting": "Salut {{name}}, voici ton profil de jeu !",
+  "noTasksYet": "Aucun exercice termine. Commence ton aventure !",
+  "totalTasks": "Total des exercices",
+  "tasks": "exercices",
+  "successRate": "Taux de reussite",
+  "averageHints": "Indices moy.",
+  "bySubject": "Progression par matiere",
+  "success": "reussite",
+  "hints": "Indices",
+  "hero": {
+    "level": "Niveau {{level}}",
+    "tasksToNext": "{{current}} / {{next}} exercices",
+    "skills": "Competences"
+  },
+  "metrics": {
+    "streak": "Serie",
+    "days": "jours",
+    "bestStreak": "Record : {{days}}",
+    "perfectRun": "Sans faute",
+    "inARow": "d'affilee",
+    "allTimeBest": "Record : {{count}}",
+    "noHints": "Maitre sans indice",
+    "thisWeek": "cette semaine",
+    "accuracy": "Precision",
+    "personalBest": "Record personnel !",
+    "success": "reussite"
+  },
+  "achievements": {
+    "title": "Succes",
+    "unlocked": "Debloques",
+    "locked": "Verrouilles",
+    "progress": "{{current}} / {{total}}",
+    "firstSteps": {
+      "name": "Premiers pas",
+      "description": "Termine 5 exercices",
+      "calculationDetails": "Termine au moins 5 exercices dans toutes les matieres et difficultes. Progression : {{totalTasks}} / 5 exercices."
+    },
+    "dedicated": {
+      "name": "Assidu",
+      "description": "Maintiens une serie de 3 jours",
+      "calculationDetails": "Termine au moins un exercice par jour pendant 3 jours consecutifs. Ta serie actuelle : {{currentStreak}} jours. Record : {{bestStreak}} jours."
+    },
+    "weekWarrior": {
+      "name": "Guerrier de la semaine",
+      "description": "Maintiens une serie de 7 jours",
+      "calculationDetails": "Termine au moins un exercice par jour pendant 7 jours consecutifs. Ta serie actuelle : {{currentStreak}} jours. Record : {{bestStreak}} jours."
+    },
+    "sharpshooter": {
+      "name": "Tireur d'elite",
+      "description": "Termine 10 exercices avec 100% de reussite",
+      "calculationDetails": "Termine 10 exercices d'affilee avec des scores parfaits (aucune erreur). Serie actuelle : {{currentPerfect}}. Record : {{bestPerfect}}."
+    },
+    "speedDemon": {
+      "name": "Rapide comme l'eclair",
+      "description": "5 exercices sans indices cette semaine",
+      "calculationDetails": "Termine 5 exercices sans utiliser d'indices dans la meme semaine. Cette semaine : {{noHintThisWeek}} / 5 exercices."
+    },
+    "polymath": {
+      "name": "Polymathe",
+      "description": "Obtiens 3+ etoiles dans toutes les matieres",
+      "calculationDetails": "Atteins au moins 3 etoiles dans toutes les matieres disponibles. Chaque matiere necessite beaucoup de pratique et une grande precision pour atteindre 3+ etoiles."
+    },
+    "scholar": {
+      "name": "Erudit",
+      "description": "Atteins le niveau 10",
+      "calculationDetails": "Atteins le niveau 10 en terminant 100 exercices au total. Le niveau 10 se debloque a 100 exercices. Progression : {{totalTasks}} / 100 exercices."
+    },
+    "master": {
+      "name": "Maitre",
+      "description": "Obtiens 5 etoiles (max) dans une matiere",
+      "calculationDetails": "Atteins la maitrise 5 etoiles dans n'importe quelle matiere. Necessite plus de 100 exercices avec un taux de reussite de plus de 90% dans cette matiere."
+    }
+  },
+  "empty": {
+    "noStreak": "Commence ta serie aujourd'hui !",
+    "noAchievements": "Termine des exercices pour debloquer des succes !",
+    "keepPracticing": "Termine des exercices pour ameliorer tes competences !"
+  },
+  "achievementDetails": {
+    "description": "Description",
+    "status": "Statut",
+    "unlocked": "Debloque",
+    "progress": "Progression",
+    "calculation": "Calcul",
+    "currentData": "Donnees actuelles",
+    "totalTasksCompleted": "Total des exercices termines",
+    "currentStreak": "Serie actuelle",
+    "bestStreak": "Meilleure serie",
+    "days": "jours",
+    "currentPerfectRun": "Serie parfaite actuelle",
+    "bestPerfectRun": "Meilleure serie parfaite",
+    "tasksWithoutHintsThisWeek": "Exercices sans indices cette semaine",
+    "tier": "Niveau"
+  }
+}

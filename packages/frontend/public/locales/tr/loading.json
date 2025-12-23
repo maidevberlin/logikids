@@ -87,6 +87,18 @@
       "İngilizce ile uluslararası projelere ve işbirliklerine katılabilirsin",
       "İngilizce ürün incelemeleri, satın almadan önce gerçeği bulmanı sağlar"
     ],
+    "history": [
+      "Tarih, günümüz çatışmalarının neden var olduğunu anlamanı sağlar - ve neyin onları bitirebileceğini",
+      "Propaganda kalıplarını tanımak, bugün manipüle edilmekten korur",
+      "Tarih, sınırların ve ülkelerin neden böyle şekillendiğini açıklar",
+      "Gelenekleri ve görenekleri anlamak, kökenlerini bildiğinde anlam kazanır",
+      "Tarihi bilgi, siyasi manipülasyon taktiklerini görmenizi sağlar",
+      "Tarih, bazı yerlerin neden diğerlerinden daha zengin olduğunu açıklar",
+      "Anıtları ve hatıra mekanlarını anlamak, tarihi bağlamla zenginleşir",
+      "Tarih, belirli yasa ve hakların neden var olduğunu ve neden önemli olduğunu açıklar",
+      "Geçmiş hatalardan öğrenmek, kendi hayatında bunları tekrarlamamanı sağlar",
+      "Tarih, aile hikayelerini ve kültürel mirasını anlamanı sağlar"
+    ],
     "fallback": [
       "Burada öğrendiklerin günlük hayatta gerçek problemlere yardımcı olur",
       "Bilgi seni dolandırılmaktan korur",
@@ -154,6 +166,15 @@
       "Yaygın deyimleri ve ifadeleri öğren!",
       "Düzenli okuyarak kelime hazineni geliştir!",
       "Konuşurken hata yapmaktan korkma!"
+    ],
+    "history": [
+      "Sebep-sonuç ilişkilerini anlamak için olayları bağla!",
+      "Birincil kaynaklar, geçmişten otantik bakış açıları sunar!",
+      "Zaman çizelgeleri, tarihi olayların sıralamasını görselleştirmene yardımcı olur!",
+      "Aynı tarihi olay hakkında farklı bakış açılarını karşılaştır!",
+      "Tarih boyunca tekrarlanan kalıpları ara!",
+      "Bağlam anahtardır - her zaman dönemi göz önünde bulundur!",
+      "Haritalar, coğrafyanın tarihi gelişmeleri nasıl şekillendirdiğini gösterir!"
     ],
     "fallback": [
       "Soruyu tam olarak anlamak için zaman ayır!",
@@ -251,6 +272,15 @@
       "'I am' (Ben varım) İngilizce'deki en kısa tam cümledir!",
       "İngilizce'de çoğu dilden daha fazla eş anlamlı kelime var!"
     ],
+    "history": [
+      "Bilinen en eski yazı sistemi 5.000 yıldan eski!",
+      "Tarihçiler, yazıdan önceki medeniyetleri anlamak için arkeolojiyi kullanır!",
+      "Birçok tarihi 'gerçek' daha sonra mit veya propaganda olduğu kanıtlandı!",
+      "Tarih, yeni kanıtlar ortaya çıktıkça sürekli yeniden yorumlanıyor!",
+      "Sözlü gelenekler, yazıdan önce binlerce yıl tarihi korudu!",
+      "Dünyanın dört bir yanındaki müzeler milyonlarca tarihi eser barındırıyor!",
+      "Antik medeniyetler, bugün hâlâ kullandığımız birçok şeyi icat etti!"
+    ],
     "fallback": [
       "Yeni şeyler öğrenmek beynini fiziksel olarak yeniden şekillendirir!",
       "Merak, keşfi ve yeniliği harekete geçirir!",
@@ -289,6 +319,11 @@
       "Küresel iletişim dilinde ustalaş!",
       "İngilizce, dünya çapında fırsatlara kapı açar!",
       "Dil becerilerini geliştirmeye hazırlan!"
+    ],
+    "history": [
+      "Dünyamızı şekillendiren hikayeleri keşfet!",
+      "Geçmişin başarılarından ve hatalarından öğren!",
+      "Bir zaman dedektifi ol ve gerçeği ortaya çıkar!"
     ],
     "fallback": ["İlgi çekici bir meydan okumaya hazırlan!", "Bugün yeni bir şey öğreneceksin!"]
   }

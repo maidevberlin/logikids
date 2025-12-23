@@ -1,0 +1,97 @@
+{
+  "title": "Tu progreso",
+  "greeting": "Hola {{name}}, aqui esta tu perfil de juego!",
+  "noTasksYet": "Aun no has completado ejercicios. Comienza tu aventura!",
+  "totalTasks": "Total de ejercicios",
+  "tasks": "ejercicios",
+  "successRate": "Tasa de exito",
+  "averageHints": "Pistas prom.",
+  "bySubject": "Progreso por materia",
+  "success": "exito",
+  "hints": "Pistas",
+  "hero": {
+    "level": "Nivel {{level}}",
+    "tasksToNext": "{{current}} / {{next}} ejercicios",
+    "skills": "Habilidades"
+  },
+  "metrics": {
+    "streak": "Racha",
+    "days": "dias",
+    "bestStreak": "Record: {{days}}",
+    "perfectRun": "Racha perfecta",
+    "inARow": "seguidas",
+    "allTimeBest": "Record: {{count}}",
+    "noHints": "Maestro sin pistas",
+    "thisWeek": "esta semana",
+    "accuracy": "Precision",
+    "personalBest": "Record personal!",
+    "success": "exito"
+  },
+  "achievements": {
+    "title": "Logros",
+    "unlocked": "Desbloqueados",
+    "locked": "Bloqueados",
+    "progress": "{{current}} / {{total}}",
+    "firstSteps": {
+      "name": "Primeros pasos",
+      "description": "Completa 5 ejercicios",
+      "calculationDetails": "Completa al menos 5 ejercicios en todas las materias y dificultades. Progreso: {{totalTasks}} / 5 ejercicios."
+    },
+    "dedicated": {
+      "name": "Dedicado",
+      "description": "Mantén una racha de 3 dias",
+      "calculationDetails": "Completa al menos un ejercicio por dia durante 3 dias consecutivos. Tu racha actual: {{currentStreak}} dias. Record: {{bestStreak}} dias."
+    },
+    "weekWarrior": {
+      "name": "Guerrero de la semana",
+      "description": "Manten una racha de 7 dias",
+      "calculationDetails": "Completa al menos un ejercicio por dia durante 7 dias consecutivos. Tu racha actual: {{currentStreak}} dias. Record: {{bestStreak}} dias."
+    },
+    "sharpshooter": {
+      "name": "Francotirador",
+      "description": "Completa 10 ejercicios con 100% de precision",
+      "calculationDetails": "Completa 10 ejercicios seguidos con puntuaciones perfectas (sin errores). Racha actual: {{currentPerfect}}. Record: {{bestPerfect}}."
+    },
+    "speedDemon": {
+      "name": "Veloz como el rayo",
+      "description": "5 ejercicios sin pistas esta semana",
+      "calculationDetails": "Completa 5 ejercicios sin usar pistas en la misma semana. Esta semana: {{noHintThisWeek}} / 5 ejercicios."
+    },
+    "polymath": {
+      "name": "Erudito",
+      "description": "Consigue 3+ estrellas en todas las materias",
+      "calculationDetails": "Alcanza al menos 3 estrellas en todas las materias disponibles. Cada materia requiere mucha practica y alta precision para alcanzar 3+ estrellas."
+    },
+    "scholar": {
+      "name": "Estudioso",
+      "description": "Alcanza el nivel 10",
+      "calculationDetails": "Alcanza el nivel 10 completando 100 ejercicios en total. El nivel 10 se desbloquea a los 100 ejercicios. Progreso: {{totalTasks}} / 100 ejercicios."
+    },
+    "master": {
+      "name": "Maestro",
+      "description": "Consigue 5 estrellas (maximo) en cualquier materia",
+      "calculationDetails": "Alcanza el dominio de 5 estrellas en cualquier materia. Requiere mas de 100 ejercicios con mas del 90% de tasa de exito en esa materia."
+    }
+  },
+  "empty": {
+    "noStreak": "Comienza tu racha hoy!",
+    "noAchievements": "Completa ejercicios para desbloquear logros!",
+    "keepPracticing": "Completa ejercicios para mejorar tus habilidades!"
+  },
+  "achievementDetails": {
+    "description": "Descripcion",
+    "status": "Estado",
+    "unlocked": "Desbloqueado",
+    "progress": "Progreso",
+    "calculation": "Calculo",
+    "currentData": "Datos actuales",
+    "totalTasksCompleted": "Total de ejercicios completados",
+    "currentStreak": "Racha actual",
+    "bestStreak": "Mejor racha",
+    "days": "dias",
+    "currentPerfectRun": "Racha perfecta actual",
+    "bestPerfectRun": "Mejor racha perfecta",
+    "tasksWithoutHintsThisWeek": "Ejercicios sin pistas esta semana",
+    "tier": "Nivel"
+  }
+}
