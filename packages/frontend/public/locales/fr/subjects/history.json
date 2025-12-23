@@ -1,0 +1,100 @@
+{
+  "concepts": {
+    "grade6-ancient-egypt": {
+      "name": "L'Égypte ancienne et le Nil",
+      "description": "L'Égypte ancienne en tant que civilisation précoce - l'importance géographique du Nil, le règne pharaonique, les pyramides, la société et la religion"
+    },
+    "grade6-alexander-great": {
+      "name": "Alexandre le Grand",
+      "description": "Explorez les conquêtes d'Alexandre le Grand, la construction de son empire, la diffusion de l'hellénisme et l'impact des individus sur l'histoire"
+    },
+    "grade6-athenian-democracy": {
+      "name": "La Démocratie Athénienne",
+      "description": "Explore le développement de la démocratie athénienne depuis les réformes de Solon jusqu'à l'Âge d'or de Périclès et les fondements constitutionnels de la gouvernance démocratique antique"
+    },
+    "grade6-charlemagne": {
+      "name": "Charlemagne et l'Empire Franc",
+      "description": "L'essor du royaume franc, le couronnement de Charlemagne comme empereur et la synthèse des traditions germaniques, chrétiennes et romaines qui ont façonné l'Europe médiévale"
+    },
+    "grade6-fall-of-rome": {
+      "name": "Chute de Rome et Période des Migrations",
+      "description": "Déclin et chute de l'Empire romain, la période des migrations (Völkerwanderung) et la tripartition méditerranéenne"
+    },
+    "grade6-greek-culture": {
+      "name": "Culture et Héritage Grec",
+      "description": "Explorez les réalisations culturelles grecques incluant la mythologie, la poésie épique, les Jeux Olympiques, les traditions théâtrales et l'impact des Guerres Médiques sur l'identité grecque"
+    },
+    "grade6-greek-polis": {
+      "name": "La Polis grecque",
+      "description": "Cités-États grecques, influence du paysage sur le développement politique et colonisation grecque autour de la Méditerranée"
+    },
+    "grade6-historical-sources": {
+      "name": "Sources historiques et méthodes archéologiques",
+      "description": "Identifier et analyser différents types de sources historiques et comprendre comment les archéologues étudient le passé"
+    },
+    "grade6-judaism-christianity": {
+      "name": "Judaïsme et Christianisme Primitif",
+      "description": "Le judaïsme dans l'Empire romain incluant la diaspora et la destruction du temple, et le développement du christianisme de minorité persécutée à religion d'État"
+    },
+    "grade6-roman-empire": {
+      "name": "L'Empire Romain",
+      "description": "Auguste et la Pax Romana, la vie dans les provinces romaines, le système frontalier du Limes et la romanisation à travers l'empire"
+    },
+    "grade6-roman-republic": {
+      "name": "La République Romaine",
+      "description": "Exploration de la fondation mythique de Rome, la structure de la République incluant le Sénat et les classes sociales, et la transition de la République au gouvernement impérial"
+    },
+    "grade6-stone-age": {
+      "name": "La vie à l'âge de pierre",
+      "description": "Comparez la vie au Paléolithique et au Néolithique, en comprenant la transition des chasseurs-cueilleurs aux agriculteurs et colons"
+    },
+    "grade7-age-of-discovery": {
+      "name": "Gutenberg et l'ère des découvertes",
+      "description": "Explore l'invention de l'imprimerie et l'exploration européenne des Amériques à la fin du XVe siècle"
+    },
+    "grade7-crusades": {
+      "name": "Les Croisades",
+      "description": "Explorez les Croisades comme une période de conflit religieux, de campagnes militaires et d'échanges culturels entre l'Europe chrétienne et le monde islamique, y compris la chute de Constantinople"
+    },
+    "grade7-investiture-controversy": {
+      "name": "Église vs. État - La Querelle des Investitures",
+      "description": "Comprendre la lutte de pouvoir entre papes et empereurs médiévaux pour le droit de nommer les évêques et le conflit résultant qui a façonné les relations église-état"
+    },
+    "grade7-medieval-cities": {
+      "name": "Villes médiévales et commerce",
+      "description": "Développement urbain médiéval, droits de cité, la Ligue hanséatique, réseaux commerciaux et émergence de la bourgeoisie"
+    },
+    "grade7-medieval-kingship": {
+      "name": "Royauté et Féodalisme Médiévaux",
+      "description": "Comprendre les structures de pouvoir médiévales, le système féodal et le développement du Saint-Empire romain germanique sous Otton Ier"
+    },
+    "grade7-monastic-life": {
+      "name": "Vie Monastique",
+      "description": "Explorez les monastères médiévaux en tant que communautés religieuses, centres culturels et lieux d'apprentissage"
+    },
+    "grade7-reformation": {
+      "name": "La Réforme",
+      "description": "Les 95 thèses de Martin Luther (1517), la division religieuse entre catholiques et protestants, la guerre des Paysans et la persécution des sorcières dans l'Europe du XVIe siècle"
+    },
+    "grade7-absolutism": {
+      "name": "Absolutisme et Louis XIV",
+      "description": "L'absolutisme français sous Louis XIV, Versailles comme symbole de pouvoir, structures gouvernementales de la monarchie absolue et l'équilibre des pouvoirs dans l'Europe moderne"
+    },
+    "grade7-baroque": {
+      "name": "Art et Architecture Baroque",
+      "description": "L'art et l'architecture baroques comme expression culturelle et politique, les bâtiments comme symboles de pouvoir du théâtre grec aux édifices gouvernementaux modernes, et le lien entre style artistique et idéologie politique"
+    },
+    "grade7-renaissance": {
+      "name": "Renaissance et Humanisme",
+      "description": "Explorer la période de la Renaissance comme une renaissance culturelle caractérisée par une pensée centrée sur l'humain, l'innovation artistique et une nouvelle vision du monde qui a transformé la société européenne"
+    },
+    "grade7-thirty-years-war": {
+      "name": "Guerre de Trente Ans",
+      "description": "Comprendre les causes, le déroulement, la dévastation et les conséquences de la Guerre de Trente Ans (1618-1648) et la Paix de Westphalie"
+    },
+    "grade7-medieval-society": {
+      "name": "Ordre Social Médiéval",
+      "description": "Comprendre le système médiéval des trois ordres (clergé, noblesse, paysans), le système seigneurial (Grundherrschaft) et la vie quotidienne dans les différentes classes sociales"
+    }
+  }
+}

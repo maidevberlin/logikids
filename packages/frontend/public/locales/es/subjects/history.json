@@ -1,0 +1,100 @@
+{
+  "concepts": {
+    "grade6-ancient-egypt": {
+      "name": "Antiguo Egipto y el Nilo",
+      "description": "El Antiguo Egipto como civilización temprana - la importancia geográfica del Nilo, el gobierno faraónico, las pirámides, la sociedad y la religión"
+    },
+    "grade6-alexander-great": {
+      "name": "Alejandro Magno",
+      "description": "Explora las conquistas de Alejandro Magno, la construcción de su imperio, la difusión del helenismo y el impacto de los individuos en la historia"
+    },
+    "grade6-athenian-democracy": {
+      "name": "La Democracia Ateniense",
+      "description": "Explora el desarrollo de la democracia ateniense desde las reformas de Solón hasta la Edad de Oro de Pericles y los fundamentos constitucionales de la gobernanza democrática antigua"
+    },
+    "grade6-charlemagne": {
+      "name": "Carlomagno y el Imperio Franco",
+      "description": "El ascenso del reino franco, la coronación de Carlomagno como emperador y la síntesis de tradiciones germánicas, cristianas y romanas que dieron forma a la Europa medieval"
+    },
+    "grade6-fall-of-rome": {
+      "name": "Caída de Roma y Período de las Migraciones",
+      "description": "Decadencia y caída del Imperio Romano, el Período de las Migraciones (Völkerwanderung) y la tripartición mediterránea"
+    },
+    "grade6-greek-culture": {
+      "name": "Cultura y Legado Griego",
+      "description": "Explora los logros culturales griegos incluyendo mitología, poesía épica, los Juegos Olímpicos, tradiciones teatrales y el impacto de las Guerras Médicas en la identidad griega"
+    },
+    "grade6-greek-polis": {
+      "name": "La Polis Griega",
+      "description": "Ciudades-estado griegas, influencia del paisaje en el desarrollo político y colonización griega alrededor del Mediterráneo"
+    },
+    "grade6-historical-sources": {
+      "name": "Fuentes Históricas y Métodos Arqueológicos",
+      "description": "Identificar y analizar diferentes tipos de fuentes históricas y comprender cómo los arqueólogos estudian el pasado"
+    },
+    "grade6-judaism-christianity": {
+      "name": "Judaísmo y Cristianismo Temprano",
+      "description": "El judaísmo en el Imperio Romano incluyendo la diáspora y destrucción del templo, y el desarrollo del cristianismo de minoría perseguida a religión estatal"
+    },
+    "grade6-roman-empire": {
+      "name": "El Imperio Romano",
+      "description": "Augusto y la Pax Romana, la vida en las provincias romanas, el sistema fronterizo del Limes y la romanización en todo el imperio"
+    },
+    "grade6-roman-republic": {
+      "name": "La República Romana",
+      "description": "Exploración de la fundación mítica de Roma, la estructura de la República incluyendo el Senado y las clases sociales, y la transición de la República al gobierno imperial"
+    },
+    "grade6-stone-age": {
+      "name": "La vida en la Edad de Piedra",
+      "description": "Compara y contrasta la vida en el Paleolítico y el Neolítico, comprendiendo la transición de cazadores-recolectores a agricultores y colonos"
+    },
+    "grade7-age-of-discovery": {
+      "name": "Gutenberg y la Era de los Descubrimientos",
+      "description": "Explora la invención de la imprenta y la exploración europea de las Américas a finales del siglo XV"
+    },
+    "grade7-crusades": {
+      "name": "Las Cruzadas",
+      "description": "Explora las Cruzadas como un período de conflicto religioso, campañas militares e intercambio cultural entre la Europa cristiana y el mundo islámico, incluida la caída de Constantinopla"
+    },
+    "grade7-investiture-controversy": {
+      "name": "Iglesia vs. Estado - La Querella de las Investiduras",
+      "description": "Comprende la lucha de poder entre papas y emperadores medievales por el derecho a nombrar obispos y el conflicto resultante que moldeó las relaciones iglesia-estado"
+    },
+    "grade7-medieval-cities": {
+      "name": "Ciudades Medievales y Comercio",
+      "description": "Desarrollo urbano medieval, derechos de ciudad, la Liga Hanseática, redes comerciales y el surgimiento de la clase burguesa"
+    },
+    "grade7-medieval-kingship": {
+      "name": "Monarquía y Feudalismo Medievales",
+      "description": "Comprender las estructuras de gobierno medievales, el sistema feudal y el desarrollo del Sacro Imperio Romano bajo Otón I"
+    },
+    "grade7-monastic-life": {
+      "name": "Vida Monástica",
+      "description": "Explora los monasterios medievales como comunidades religiosas, centros culturales y lugares de aprendizaje"
+    },
+    "grade7-reformation": {
+      "name": "La Reforma",
+      "description": "Las 95 tesis de Martín Lutero (1517), la división religiosa entre católicos y protestantes, la Guerra de los Campesinos y la persecución de brujas en la Europa del siglo XVI"
+    },
+    "grade7-absolutism": {
+      "name": "Absolutismo y Luis XIV",
+      "description": "El absolutismo francés bajo Luis XIV, Versalles como símbolo de poder, estructuras gubernamentales de la monarquía absoluta y el equilibrio de poderes en la Europa moderna temprana"
+    },
+    "grade7-baroque": {
+      "name": "Arte y Arquitectura Barroca",
+      "description": "El arte y la arquitectura barrocos como expresión cultural y política, edificios como símbolos de poder desde el teatro griego hasta los edificios gubernamentales modernos, y la conexión entre estilo artístico e ideología política"
+    },
+    "grade7-renaissance": {
+      "name": "Renacimiento y Humanismo",
+      "description": "Explorar el período del Renacimiento como un renacimiento cultural con pensamiento centrado en el ser humano, innovación artística y una nueva visión del mundo que transformó la sociedad europea"
+    },
+    "grade7-thirty-years-war": {
+      "name": "Guerra de los Treinta Años",
+      "description": "Comprender las causas, el curso, la devastación y las consecuencias de la Guerra de los Treinta Años (1618-1648) y la Paz de Westfalia"
+    },
+    "grade7-medieval-society": {
+      "name": "Orden Social Medieval",
+      "description": "Comprender el sistema medieval de tres estamentos (clero, nobleza, campesinos), el sistema señorial (Grundherrschaft) y la vida cotidiana en las diferentes clases sociales"
+    }
+  }
+}

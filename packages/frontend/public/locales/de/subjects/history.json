@@ -1,3 +1,100 @@
 {
-  "concepts": {}
+  "concepts": {
+    "grade6-alexander-great": {
+      "name": "Alexander der Große",
+      "description": "Erforsche Alexanders Eroberungen, Reichsbildung, Verbreitung des Hellenismus und den Einfluss von Einzelpersonen auf die Geschichte"
+    },
+    "grade6-stone-age": {
+      "name": "Leben in der Steinzeit",
+      "description": "Vergleichen und kontrastieren Sie das Leben in der Altsteinzeit (Paläolithikum) und der Jungsteinzeit (Neolithikum) und verstehen Sie den Übergang von Jägern und Sammlern zu Bauern und Siedlern"
+    },
+    "grade6-charlemagne": {
+      "name": "Karl der Große und das Frankenreich",
+      "description": "Der Aufstieg des Frankenreichs, Karls Kaiserkrönung und die Verschmelzung germanischer, christlicher und römischer Traditionen, die das mittelalterliche Europa prägten"
+    },
+    "grade6-ancient-egypt": {
+      "name": "Das Alte Ägypten und der Nil",
+      "description": "Das Alte Ägypten als frühe Hochkultur - die geografische Bedeutung des Nils, die Herrschaft der Pharaonen, Pyramiden, Gesellschaft und Religion"
+    },
+    "grade6-athenian-democracy": {
+      "name": "Die Attische Demokratie",
+      "description": "Erforscht die Entwicklung der attischen Demokratie von Solons Reformen über das Goldene Zeitalter des Perikles bis zu den verfassungsmäßigen Grundlagen der antiken demokratischen Regierungsführung"
+    },
+    "grade6-greek-culture": {
+      "name": "Griechische Kultur und Erbe",
+      "description": "Entdecke die kulturellen Errungenschaften der Griechen: Mythologie, Epen, Olympische Spiele, Theater und die Auswirkungen der Perserkriege auf die griechische Identität"
+    },
+    "grade6-greek-polis": {
+      "name": "Die griechische Polis",
+      "description": "Griechische Stadtstaaten, Einfluss der Landschaft auf die politische Entwicklung und griechische Kolonisation im Mittelmeerraum"
+    },
+    "grade6-historical-sources": {
+      "name": "Historische Quellen und archäologische Methoden",
+      "description": "Verschiedene Arten historischer Quellen identifizieren und analysieren sowie verstehen, wie Archäologen die Vergangenheit erforschen"
+    },
+    "grade6-roman-republic": {
+      "name": "Die Römische Republik",
+      "description": "Die mythische Gründung Roms, die Struktur der Republik einschließlich Senat und Gesellschaftsklassen sowie der Übergang von der Republik zur Kaiserzeit"
+    },
+    "grade6-roman-empire": {
+      "name": "Das Römische Kaiserreich",
+      "description": "Augustus und die Pax Romana, das Leben in römischen Provinzen, das Limes-Grenzsystem und die Romanisierung im gesamten Reich"
+    },
+    "grade6-judaism-christianity": {
+      "name": "Judentum und frühes Christentum",
+      "description": "Judentum im Römischen Reich einschließlich Diaspora und Tempelzerstörung, sowie die Entwicklung des Christentums von verfolgter Minderheit zur Staatsreligion"
+    },
+    "grade6-fall-of-rome": {
+      "name": "Der Untergang Roms und die Völkerwanderung",
+      "description": "Der Niedergang und Fall des Römischen Reiches, die Völkerwanderung germanischer Stämme und die Dreiteilung des Mittelmeerraums"
+    },
+    "grade7-age-of-discovery": {
+      "name": "Gutenberg und das Zeitalter der Entdeckungen",
+      "description": "Erforscht die Erfindung des Buchdrucks und die europäische Erkundung Amerikas im späten 15. Jahrhundert"
+    },
+    "grade7-crusades": {
+      "name": "Die Kreuzzüge",
+      "description": "Erforsche die Kreuzzüge als eine Zeit religiöser Konflikte, militärischer Feldzüge und kulturellen Austauschs zwischen dem christlichen Europa und der islamischen Welt, einschließlich des Falls von Konstantinopel"
+    },
+    "grade7-investiture-controversy": {
+      "name": "Kirche gegen Staat - Der Investiturstreit",
+      "description": "Verstehe den Machtkampf zwischen mittelalterlichen Päpsten und Kaisern um das Recht zur Bischofsernennung und den daraus resultierenden Konflikt, der die Beziehungen zwischen Kirche und Staat prägte"
+    },
+    "grade7-medieval-kingship": {
+      "name": "Mittelalterliches Königtum und Lehnswesen",
+      "description": "Verstehe mittelalterliche Herrschaftsstrukturen, das Lehnswesen und die Entwicklung des Heiligen Römischen Reiches unter Otto I."
+    },
+    "grade7-medieval-cities": {
+      "name": "Mittelalterliche Städte und Handel",
+      "description": "Mittelalterliche Stadtentwicklung, Stadtrechte, die Hanse, Handelsnetzwerke und die Entstehung des Bürgertums"
+    },
+    "grade7-monastic-life": {
+      "name": "Klösterliches Leben",
+      "description": "Entdecke mittelalterliche Klöster als religiöse Gemeinschaften, kulturelle Zentren und Orte des Lernens"
+    },
+    "grade7-absolutism": {
+      "name": "Absolutismus und Ludwig XIV.",
+      "description": "Der französische Absolutismus unter Ludwig XIV., Versailles als Machtsymbol, Regierungsstrukturen der absoluten Monarchie und das europäische Gleichgewicht der Kräfte"
+    },
+    "grade7-baroque": {
+      "name": "Barock - Kunst und Architektur",
+      "description": "Barocke Kunst und Architektur als kultureller und politischer Ausdruck, Bauwerke als Machtsymbole vom griechischen Theater bis zu modernen Regierungsgebäuden und die Verbindung zwischen künstlerischem Stil und politischer Ideologie"
+    },
+    "grade7-renaissance": {
+      "name": "Renaissance und Humanismus",
+      "description": "Erforsche die Renaissance als kulturelle Wiedergeburt mit menschenzentriertem Denken, künstlerischen Innovationen und einer neuen Weltanschauung, die die europäische Gesellschaft veränderte"
+    },
+    "grade7-reformation": {
+      "name": "Die Reformation",
+      "description": "Martin Luthers 95 Thesen (1517), die religiöse Spaltung zwischen Katholiken und Protestanten, der Bauernkrieg und Hexenverfolgung im Europa des 16. Jahrhunderts"
+    },
+    "grade7-thirty-years-war": {
+      "name": "Dreißigjähriger Krieg",
+      "description": "Verstehe die Ursachen, den Verlauf, die Verwüstung und die Folgen des Dreißigjährigen Krieges (1618-1648) und den Westfälischen Frieden"
+    },
+    "grade7-medieval-society": {
+      "name": "Mittelalterliche Ständeordnung",
+      "description": "Verstehe das mittelalterliche Dreiständesystem (Klerus, Adel, Bauern), die Grundherrschaft und das tägliche Leben in den verschiedenen Ständen"
+    }
+  }
 }
