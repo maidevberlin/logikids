@@ -148,10 +148,8 @@ export function SubjectConceptSelector({
               {' • '}
               {conceptDisplayName}
             </span>
-            {/* Mobile: Show only subject name */}
-            <span className="sm:hidden">
-              {t(`subjects.${subject}.label`, { defaultValue: currentSubject?.name || subject })}
-            </span>
+            {/* Mobile: Show only concept name (subject is indicated by icon + color) */}
+            <span className="sm:hidden truncate max-w-[150px]">{conceptDisplayName}</span>
           </span>
         </Button>
       </PopoverTrigger>
