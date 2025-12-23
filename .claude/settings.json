@@ -46,7 +46,14 @@
       "Bash(wc:*)",
       "Bash(docker:*)",
       "Bash(./invite:*)",
-      "Bash(./restart.sh)"
+      "Bash(./restart.sh)",
+      "Bash(git add:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git stash:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(git log:*)"
     ]
   },
   "hooks": {
